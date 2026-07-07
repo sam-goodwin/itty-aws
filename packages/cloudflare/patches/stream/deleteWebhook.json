@@ -1,0 +1,88 @@
+{
+  "description": "Align stream#WebhooksDelete with distilled cloudflare/stream deleteWebhook",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#WebhooksDelete",
+      "path": "/shapes/com.cloudflare.stream#DeleteWebhook"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#WebhooksDeleteRequest",
+      "path": "/shapes/com.cloudflare.stream#DeleteWebhookRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.stream#DeleteWebhook/input/target",
+      "value": "com.cloudflare.stream#DeleteWebhookRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#WebhooksDeleteResponse",
+      "path": "/shapes/com.cloudflare.stream#DeleteWebhookResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.stream#DeleteWebhook/output/target",
+      "value": "com.cloudflare.stream#DeleteWebhookResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#WebhookNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#DeleteWebhook/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.stream#WebhookNotFound"
+        },
+        {
+          "target": "com.cloudflare.stream#Forbidden"
+        }
+      ]
+    }
+  ]
+}

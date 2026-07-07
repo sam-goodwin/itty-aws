@@ -9,1250 +9,53 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export type AuditLogsListRequestDirection = "desc" | "asc" | (string & {});
-export const AuditLogsListRequestDirection = /*@__PURE__*/ S.String;
-
-export interface AuditLogsListRequest {
-  /** Finds a specific log by its ID. */
-  id?: string;
-  action?: string;
-  actor?: string;
-  /** Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339. */
-  before?: string;
-  /** Changes the direction of the chronological sorting. */
-  direction?: AuditLogsListRequestDirection;
-  /** Indicates that this request is an export of logs in CSV format. */
-  export?: boolean;
-  /** Indicates whether or not to hide user level audit logs. */
-  hideUserLogs?: boolean;
-  /** Defines which page of results to return. */
-  page?: number;
-  /** Sets the number of results to return per page. */
-  perPage?: number;
-  /** Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339. */
-  since?: string;
-  zone?: string;
-}
-export const AuditLogsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String.pipe(T.Query())),
-    action: S.optional(S.String.pipe(T.Query())),
-    actor: S.optional(S.String.pipe(T.Query())),
-    before: S.optional(S.String.pipe(T.Query())),
-    direction: S.optional(AuditLogsListRequestDirection.pipe(T.Query())),
-    export: S.optional(S.Boolean.pipe(T.Query())),
-    hideUserLogs: S.optional(S.Boolean.pipe(T.Query("hide_user_logs"))),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    since: S.optional(S.String.pipe(T.Query())),
-    zone: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/user/audit_logs", code: 200 })),
-).annotate({
-  identifier: "AuditLogsListRequest",
-}) as any as S.Schema<AuditLogsListRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface AuditLogsListResponse {
-  objectErrorsMessagesResultSuccess__: unknown;
-  AaaAPIResponseCommonObjectErrorsMessagesSuccess__: unknown;
-}
-export const AuditLogsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectErrorsMessagesResultSuccess__: S.Unknown.pipe(
-      T.Body("object { errors, messages, result, success }"),
-    ),
-    AaaAPIResponseCommonObjectErrorsMessagesSuccess__: S.Unknown.pipe(
-      T.Body("AaaAPIResponseCommon object { errors, messages, success }"),
-    ),
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "AuditLogsListResponse",
-}) as any as S.Schema<AuditLogsListResponse>;
+  [{ status: 403 }],
+) {}
 
-export type BillingHistoryListRequestOrder =
-  | "type"
-  | "occurred_at"
-  | "action"
-  | (string & {});
-export const BillingHistoryListRequestOrder = /*@__PURE__*/ S.String;
-
-export interface BillingHistoryListRequest {
-  /** The billing item action. */
-  action?: string;
-  /** When the billing item was created. */
-  occurredAt?: string;
-  /** Field to order billing history by. */
-  order?: BillingHistoryListRequestOrder;
-  /** Page number of paginated results. */
-  page?: number;
-  /** Number of items per page. */
-  perPage?: number;
-  /** The billing item type. */
-  type?: string;
-}
-export const BillingHistoryListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(S.String.pipe(T.Query())),
-    occurredAt: S.optional(S.String.pipe(T.Query("occurred_at"))),
-    order: S.optional(BillingHistoryListRequestOrder.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    type: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/user/billing/history", code: 200 })),
-).annotate({
-  identifier: "BillingHistoryListRequest",
-}) as any as S.Schema<BillingHistoryListRequest>;
-
-export interface BillingHistoryListResultItemZone {
-  name?: string;
-}
-export const BillingHistoryListResultItemZone = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.optional(S.String),
+export class InvalidRoute extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "BillingHistoryListResultItemZone",
-}) as any as S.Schema<BillingHistoryListResultItemZone>;
+  [{ code: 7003 }],
+) {}
 
-export interface BillingHistoryListResultItem {
-  /** Billing item identifier tag. */
-  id: string;
-  /** The billing item action. */
-  action: string;
-  /** The amount associated with this billing item. */
-  amount: number;
-  /** The monetary unit in which pricing information is displayed. */
-  currency: string;
-  /** The billing item description. */
-  description: string;
-  /** When the billing item was created. */
-  occurredAt: string;
-  /** The billing item type. */
-  type: string;
-  zone: BillingHistoryListResultItemZone;
-}
-export const BillingHistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    action: S.String,
-    amount: S.Number,
-    currency: S.String,
-    description: S.String,
-    occurredAt: S.String.pipe(T.Body("occurred_at")),
-    type: S.String,
-    zone: BillingHistoryListResultItemZone,
+export class InvalidTokenName extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidTokenName>()("InvalidTokenName", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "BillingHistoryListResultItem",
-}) as any as S.Schema<BillingHistoryListResultItem>;
+  [{ code: 400, message: { includes: "name must have a length" } }],
+) {}
 
-export type BillingHistoryListResultList = BillingHistoryListResultItem[];
-export const BillingHistoryListResultList = /*@__PURE__*/ S.Array(
-  BillingHistoryListResultItem,
-) as any as S.Schema<BillingHistoryListResultList>;
-
-export interface BillingHistoryListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: BillingHistoryListResultList;
-}
-export const BillingHistoryListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(BillingHistoryListResultList.pipe(T.EnvelopePayload())),
+export class MethodNotAllowed extends T.applyErrorMatchers(
+  S.TaggedErrorClass<MethodNotAllowed>()("MethodNotAllowed", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "BillingHistoryListResponse",
-}) as any as S.Schema<BillingHistoryListResponse>;
+  [{ code: 7001 }],
+) {}
 
-export interface BillingProfileGetRequest {}
-export const BillingProfileGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/user/billing/profile", code: 200 }),
-  ),
-).annotate({
-  identifier: "BillingProfileGetRequest",
-}) as any as S.Schema<BillingProfileGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BillingProfileGetResponse {
-  /** Billing item identifier tag. */
-  id?: string;
-  accountType?: string;
-  address?: string;
-  address2?: string;
-  balance?: string;
-  cardExpiryMonth?: number;
-  cardExpiryYear?: number;
-  cardNumber?: string;
-  city?: string;
-  company?: string;
-  country?: string;
-  createdOn?: string;
-  deviceData?: string;
-  editedOn?: string;
-  enterpriseBillingEmail?: string;
-  enterprisePrimaryEmail?: string;
-  firstName?: string;
-  isPartner?: boolean;
-  lastName?: string;
-  nextBillDate?: string;
-  paymentAddress?: string;
-  paymentAddress2?: string;
-  paymentCity?: string;
-  paymentCountry?: string;
-  paymentEmail?: string;
-  paymentFirstName?: string;
-  paymentGateway?: string;
-  paymentLastName?: string;
-  paymentNonce?: string;
-  paymentState?: string;
-  paymentZipcode?: string;
-  primaryEmail?: string;
-  state?: string;
-  taxIdType?: string;
-  telephone?: string;
-  useLegacy?: boolean;
-  validationCode?: string;
-  vat?: string;
-  zipcode?: string;
-}
-export const BillingProfileGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    accountType: S.optional(S.String.pipe(T.Body("account_type"))),
-    address: S.optional(S.String),
-    address2: S.optional(S.String),
-    balance: S.optional(S.String),
-    cardExpiryMonth: S.optional(S.Number.pipe(T.Body("card_expiry_month"))),
-    cardExpiryYear: S.optional(S.Number.pipe(T.Body("card_expiry_year"))),
-    cardNumber: S.optional(S.String.pipe(T.Body("card_number"))),
-    city: S.optional(S.String),
-    company: S.optional(S.String),
-    country: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    deviceData: S.optional(S.String.pipe(T.Body("device_data"))),
-    editedOn: S.optional(S.String.pipe(T.Body("edited_on"))),
-    enterpriseBillingEmail: S.optional(
-      S.String.pipe(T.Body("enterprise_billing_email")),
-    ),
-    enterprisePrimaryEmail: S.optional(
-      S.String.pipe(T.Body("enterprise_primary_email")),
-    ),
-    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
-    isPartner: S.optional(S.Boolean.pipe(T.Body("is_partner"))),
-    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
-    nextBillDate: S.optional(S.String.pipe(T.Body("next_bill_date"))),
-    paymentAddress: S.optional(S.String.pipe(T.Body("payment_address"))),
-    paymentAddress2: S.optional(S.String.pipe(T.Body("payment_address2"))),
-    paymentCity: S.optional(S.String.pipe(T.Body("payment_city"))),
-    paymentCountry: S.optional(S.String.pipe(T.Body("payment_country"))),
-    paymentEmail: S.optional(S.String.pipe(T.Body("payment_email"))),
-    paymentFirstName: S.optional(S.String.pipe(T.Body("payment_first_name"))),
-    paymentGateway: S.optional(S.String.pipe(T.Body("payment_gateway"))),
-    paymentLastName: S.optional(S.String.pipe(T.Body("payment_last_name"))),
-    paymentNonce: S.optional(S.String.pipe(T.Body("payment_nonce"))),
-    paymentState: S.optional(S.String.pipe(T.Body("payment_state"))),
-    paymentZipcode: S.optional(S.String.pipe(T.Body("payment_zipcode"))),
-    primaryEmail: S.optional(S.String.pipe(T.Body("primary_email"))),
-    state: S.optional(S.String),
-    taxIdType: S.optional(S.String.pipe(T.Body("tax_id_type"))),
-    telephone: S.optional(S.String),
-    useLegacy: S.optional(S.Boolean.pipe(T.Body("use_legacy"))),
-    validationCode: S.optional(S.String.pipe(T.Body("validation_code"))),
-    vat: S.optional(S.String),
-    zipcode: S.optional(S.String),
+export class PermissionGroupNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PermissionGroupNotFound>()("PermissionGroupNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "BillingProfileGetResponse",
-}) as any as S.Schema<BillingProfileGetResponse>;
+  [{ code: 1001, message: { includes: "Permission group" } }],
+) {}
 
-export interface EditRequest {
-  /** The country in which the user lives. */
-  country?: string;
-  /** User's first name */
-  firstName?: string;
-  /** User's last name */
-  lastName?: string;
-  /** User's telephone number */
-  telephone?: string;
-  /** The zipcode or postal code where the user lives. */
-  zipcode?: string;
-}
-export const EditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    country: S.optional(S.String),
-    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
-    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
-    telephone: S.optional(S.String),
-    zipcode: S.optional(S.String),
-  }).pipe(T.Http({ method: "PATCH", uri: "/user", code: 200 })),
-).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
-
-export type EditResponseBetasList = string[];
-export const EditResponseBetasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseBetasList>;
-
-export type EditResponseOrganizationsItemPermissionsList = unknown[];
-export const EditResponseOrganizationsItemPermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<EditResponseOrganizationsItemPermissionsList>;
-
-export type EditResponseOrganizationsItemRolesList = string[];
-export const EditResponseOrganizationsItemRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseOrganizationsItemRolesList>;
-
-export interface EditResponseOrganizationsItem {
-  /** Identifier */
-  id?: string;
-  /** Organization name. */
-  name?: string;
-  /** Access permissions for this User. */
-  permissions?: EditResponseOrganizationsItemPermissionsList;
-  /** List of roles that a user has within an organization. */
-  roles?: EditResponseOrganizationsItemRolesList;
-  /** Whether the user is a member of the organization or has an invitation pending. */
-  status?: unknown;
-}
-export const EditResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    permissions: S.optional(EditResponseOrganizationsItemPermissionsList),
-    roles: S.optional(EditResponseOrganizationsItemRolesList),
-    status: S.optional(S.Unknown),
+export class TokenNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<TokenNotFound>()("TokenNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "EditResponseOrganizationsItem",
-}) as any as S.Schema<EditResponseOrganizationsItem>;
-
-export type EditResponseOrganizationsList = EditResponseOrganizationsItem[];
-export const EditResponseOrganizationsList = /*@__PURE__*/ S.Array(
-  EditResponseOrganizationsItem,
-) as any as S.Schema<EditResponseOrganizationsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EditResponse {
-  /** Identifier of the user. */
-  id: string;
-  /** Current email address of the user. */
-  email: string;
-  /** Lists the betas that the user is participating in. */
-  betas?: EditResponseBetasList;
-  /** The country in which the user lives. */
-  country?: string;
-  /** User's first name */
-  firstName?: string;
-  /** Indicates whether user has any business zones */
-  hasBusinessZones?: boolean;
-  /** Indicates whether user has any enterprise zones */
-  hasEnterpriseZones?: boolean;
-  /** Indicates whether user has any pro zones */
-  hasProZones?: boolean;
-  /** User's last name */
-  lastName?: string;
-  organizations?: EditResponseOrganizationsList;
-  /** Indicates whether user has been suspended */
-  suspended?: boolean;
-  /** User's telephone number */
-  telephone?: string;
-  /** Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication. */
-  twoFactorAuthenticationEnabled?: boolean;
-  /** Indicates whether two-factor authentication is required by one of the accounts that the user is a member of. */
-  twoFactorAuthenticationLocked?: boolean;
-  /** The zipcode or postal code where the user lives. */
-  zipcode?: string;
-}
-export const EditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    email: S.String,
-    betas: S.optional(EditResponseBetasList),
-    country: S.optional(S.String),
-    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
-    hasBusinessZones: S.optional(S.Boolean.pipe(T.Body("has_business_zones"))),
-    hasEnterpriseZones: S.optional(
-      S.Boolean.pipe(T.Body("has_enterprise_zones")),
-    ),
-    hasProZones: S.optional(S.Boolean.pipe(T.Body("has_pro_zones"))),
-    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
-    organizations: S.optional(EditResponseOrganizationsList),
-    suspended: S.optional(S.Boolean),
-    telephone: S.optional(S.String),
-    twoFactorAuthenticationEnabled: S.optional(
-      S.Boolean.pipe(T.Body("two_factor_authentication_enabled")),
-    ),
-    twoFactorAuthenticationLocked: S.optional(
-      S.Boolean.pipe(T.Body("two_factor_authentication_locked")),
-    ),
-    zipcode: S.optional(S.String),
-  }),
-).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
-
-export interface GetRequest {}
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
-
-export type GetResponseBetasList = string[];
-export const GetResponseBetasList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseBetasList>;
-
-export type GetResponseOrganizationsItemPermissionsList = unknown[];
-export const GetResponseOrganizationsItemPermissionsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<GetResponseOrganizationsItemPermissionsList>;
-
-export type GetResponseOrganizationsItemRolesList = string[];
-export const GetResponseOrganizationsItemRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<GetResponseOrganizationsItemRolesList>;
-
-export interface GetResponseOrganizationsItem {
-  /** Identifier */
-  id?: string;
-  /** Organization name. */
-  name?: string;
-  /** Access permissions for this User. */
-  permissions?: GetResponseOrganizationsItemPermissionsList;
-  /** List of roles that a user has within an organization. */
-  roles?: GetResponseOrganizationsItemRolesList;
-  /** Whether the user is a member of the organization or has an invitation pending. */
-  status?: unknown;
-}
-export const GetResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    permissions: S.optional(GetResponseOrganizationsItemPermissionsList),
-    roles: S.optional(GetResponseOrganizationsItemRolesList),
-    status: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "GetResponseOrganizationsItem",
-}) as any as S.Schema<GetResponseOrganizationsItem>;
-
-export type GetResponseOrganizationsList = GetResponseOrganizationsItem[];
-export const GetResponseOrganizationsList = /*@__PURE__*/ S.Array(
-  GetResponseOrganizationsItem,
-) as any as S.Schema<GetResponseOrganizationsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
-  /** Identifier of the user. */
-  id: string;
-  /** Current email address of the user. */
-  email: string;
-  /** Lists the betas that the user is participating in. */
-  betas?: GetResponseBetasList;
-  /** The country in which the user lives. */
-  country?: string;
-  /** User's first name */
-  firstName?: string;
-  /** Indicates whether user has any business zones */
-  hasBusinessZones?: boolean;
-  /** Indicates whether user has any enterprise zones */
-  hasEnterpriseZones?: boolean;
-  /** Indicates whether user has any pro zones */
-  hasProZones?: boolean;
-  /** User's last name */
-  lastName?: string;
-  organizations?: GetResponseOrganizationsList;
-  /** Indicates whether user has been suspended */
-  suspended?: boolean;
-  /** User's telephone number */
-  telephone?: string;
-  /** Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication. */
-  twoFactorAuthenticationEnabled?: boolean;
-  /** Indicates whether two-factor authentication is required by one of the accounts that the user is a member of. */
-  twoFactorAuthenticationLocked?: boolean;
-  /** The zipcode or postal code where the user lives. */
-  zipcode?: string;
-}
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    email: S.String,
-    betas: S.optional(GetResponseBetasList),
-    country: S.optional(S.String),
-    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
-    hasBusinessZones: S.optional(S.Boolean.pipe(T.Body("has_business_zones"))),
-    hasEnterpriseZones: S.optional(
-      S.Boolean.pipe(T.Body("has_enterprise_zones")),
-    ),
-    hasProZones: S.optional(S.Boolean.pipe(T.Body("has_pro_zones"))),
-    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
-    organizations: S.optional(GetResponseOrganizationsList),
-    suspended: S.optional(S.Boolean),
-    telephone: S.optional(S.String),
-    twoFactorAuthenticationEnabled: S.optional(
-      S.Boolean.pipe(T.Body("two_factor_authentication_enabled")),
-    ),
-    twoFactorAuthenticationLocked: S.optional(
-      S.Boolean.pipe(T.Body("two_factor_authentication_locked")),
-    ),
-    zipcode: S.optional(S.String),
-  }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
-
-export type InvitesEditRequestStatus = "accepted" | "rejected" | (string & {});
-export const InvitesEditRequestStatus = /*@__PURE__*/ S.String;
-
-export interface InvitesEditRequest {
-  /** Invite identifier tag. */
-  inviteId: string;
-  /** Status of your response to the invitation (rejected or accepted). */
-  status: InvitesEditRequestStatus;
-}
-export const InvitesEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inviteId: S.String.pipe(T.Label("invite_id")),
-    status: InvitesEditRequestStatus,
-  }).pipe(
-    T.Http({ method: "PATCH", uri: "/user/invites/{invite_id}", code: 200 }),
-  ),
-).annotate({
-  identifier: "InvitesEditRequest",
-}) as any as S.Schema<InvitesEditRequest>;
-
-export type InvitesEditResponseRolesList = string[];
-export const InvitesEditResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvitesEditResponseRolesList>;
-
-export type InvitesEditResponseStatus =
-  | "pending"
-  | "accepted"
-  | "rejected"
-  | "expired"
-  | (string & {});
-export const InvitesEditResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InvitesEditResponse {
-  /** ID of the user to add to the organization. */
-  invitedMemberId: string;
-  /** ID of the organization the user will be added to. */
-  organizationId: string;
-  /** Invite identifier tag. */
-  id?: string;
-  /** When the invite is no longer active. */
-  expiresOn?: string;
-  /** The email address of the user who created the invite. */
-  invitedBy?: string;
-  /** Email address of the user to add to the organization. */
-  invitedMemberEmail?: string;
-  /** When the invite was sent. */
-  invitedOn?: string;
-  organizationIsEnforcingTwofactor?: boolean;
-  /** Organization name. */
-  organizationName?: string;
-  /** List of role names the membership has for this account. */
-  roles?: InvitesEditResponseRolesList;
-  /** Current status of the invitation. */
-  status?: InvitesEditResponseStatus;
-}
-export const InvitesEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invitedMemberId: S.String.pipe(T.Body("invited_member_id")),
-    organizationId: S.String.pipe(T.Body("organization_id")),
-    id: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    invitedBy: S.optional(S.String.pipe(T.Body("invited_by"))),
-    invitedMemberEmail: S.optional(
-      S.String.pipe(T.Body("invited_member_email")),
-    ),
-    invitedOn: S.optional(S.String.pipe(T.Body("invited_on"))),
-    organizationIsEnforcingTwofactor: S.optional(
-      S.Boolean.pipe(T.Body("organization_is_enforcing_twofactor")),
-    ),
-    organizationName: S.optional(S.String.pipe(T.Body("organization_name"))),
-    roles: S.optional(InvitesEditResponseRolesList),
-    status: S.optional(InvitesEditResponseStatus),
-  }),
-).annotate({
-  identifier: "InvitesEditResponse",
-}) as any as S.Schema<InvitesEditResponse>;
-
-export interface InvitesGetRequest {
-  /** Invite identifier tag. */
-  inviteId: string;
-}
-export const InvitesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inviteId: S.String.pipe(T.Label("invite_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/user/invites/{invite_id}", code: 200 }),
-  ),
-).annotate({
-  identifier: "InvitesGetRequest",
-}) as any as S.Schema<InvitesGetRequest>;
-
-export type InvitesGetResponseRolesList = string[];
-export const InvitesGetResponseRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvitesGetResponseRolesList>;
-
-export type InvitesGetResponseStatus =
-  | "pending"
-  | "accepted"
-  | "rejected"
-  | "expired"
-  | (string & {});
-export const InvitesGetResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InvitesGetResponse {
-  /** ID of the user to add to the organization. */
-  invitedMemberId: string;
-  /** ID of the organization the user will be added to. */
-  organizationId: string;
-  /** Invite identifier tag. */
-  id?: string;
-  /** When the invite is no longer active. */
-  expiresOn?: string;
-  /** The email address of the user who created the invite. */
-  invitedBy?: string;
-  /** Email address of the user to add to the organization. */
-  invitedMemberEmail?: string;
-  /** When the invite was sent. */
-  invitedOn?: string;
-  organizationIsEnforcingTwofactor?: boolean;
-  /** Organization name. */
-  organizationName?: string;
-  /** List of role names the membership has for this account. */
-  roles?: InvitesGetResponseRolesList;
-  /** Current status of the invitation. */
-  status?: InvitesGetResponseStatus;
-}
-export const InvitesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invitedMemberId: S.String.pipe(T.Body("invited_member_id")),
-    organizationId: S.String.pipe(T.Body("organization_id")),
-    id: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    invitedBy: S.optional(S.String.pipe(T.Body("invited_by"))),
-    invitedMemberEmail: S.optional(
-      S.String.pipe(T.Body("invited_member_email")),
-    ),
-    invitedOn: S.optional(S.String.pipe(T.Body("invited_on"))),
-    organizationIsEnforcingTwofactor: S.optional(
-      S.Boolean.pipe(T.Body("organization_is_enforcing_twofactor")),
-    ),
-    organizationName: S.optional(S.String.pipe(T.Body("organization_name"))),
-    roles: S.optional(InvitesGetResponseRolesList),
-    status: S.optional(InvitesGetResponseStatus),
-  }),
-).annotate({
-  identifier: "InvitesGetResponse",
-}) as any as S.Schema<InvitesGetResponse>;
-
-export interface InvitesListRequest {}
-export const InvitesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/invites", code: 200 })),
-).annotate({
-  identifier: "InvitesListRequest",
-}) as any as S.Schema<InvitesListRequest>;
-
-export type InvitesListResultItemRolesList = string[];
-export const InvitesListResultItemRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvitesListResultItemRolesList>;
-
-export type InvitesListResultItemStatus =
-  | "pending"
-  | "accepted"
-  | "rejected"
-  | "expired"
-  | (string & {});
-export const InvitesListResultItemStatus = /*@__PURE__*/ S.String;
-
-export interface InvitesListResultItem {
-  /** ID of the user to add to the organization. */
-  invitedMemberId: string;
-  /** ID of the organization the user will be added to. */
-  organizationId: string;
-  /** Invite identifier tag. */
-  id?: string;
-  /** When the invite is no longer active. */
-  expiresOn?: string;
-  /** The email address of the user who created the invite. */
-  invitedBy?: string;
-  /** Email address of the user to add to the organization. */
-  invitedMemberEmail?: string;
-  /** When the invite was sent. */
-  invitedOn?: string;
-  organizationIsEnforcingTwofactor?: boolean;
-  /** Organization name. */
-  organizationName?: string;
-  /** List of role names the membership has for this account. */
-  roles?: InvitesListResultItemRolesList;
-  /** Current status of the invitation. */
-  status?: InvitesListResultItemStatus;
-}
-export const InvitesListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invitedMemberId: S.String.pipe(T.Body("invited_member_id")),
-    organizationId: S.String.pipe(T.Body("organization_id")),
-    id: S.optional(S.String),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    invitedBy: S.optional(S.String.pipe(T.Body("invited_by"))),
-    invitedMemberEmail: S.optional(
-      S.String.pipe(T.Body("invited_member_email")),
-    ),
-    invitedOn: S.optional(S.String.pipe(T.Body("invited_on"))),
-    organizationIsEnforcingTwofactor: S.optional(
-      S.Boolean.pipe(T.Body("organization_is_enforcing_twofactor")),
-    ),
-    organizationName: S.optional(S.String.pipe(T.Body("organization_name"))),
-    roles: S.optional(InvitesListResultItemRolesList),
-    status: S.optional(InvitesListResultItemStatus),
-  }),
-).annotate({
-  identifier: "InvitesListResultItem",
-}) as any as S.Schema<InvitesListResultItem>;
-
-export type InvitesListResultList = InvitesListResultItem[];
-export const InvitesListResultList = /*@__PURE__*/ S.Array(
-  InvitesListResultItem,
-) as any as S.Schema<InvitesListResultList>;
-
-export interface InvitesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvitesListResultList;
-}
-export const InvitesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(InvitesListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "InvitesListResponse",
-}) as any as S.Schema<InvitesListResponse>;
-
-export interface OrganizationsDeleteRequest {
-  /** Identifier */
-  organizationId: string;
-}
-export const OrganizationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organizationId: S.String.pipe(T.Label("organization_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/user/organizations/{organization_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "OrganizationsDeleteRequest",
-}) as any as S.Schema<OrganizationsDeleteRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface OrganizationsDeleteResponse {
-  /** Identifier */
-  id?: string;
-}
-export const OrganizationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "OrganizationsDeleteResponse",
-}) as any as S.Schema<OrganizationsDeleteResponse>;
-
-export interface OrganizationsGetRequest {
-  /** Identifier */
-  organizationId: string;
-}
-export const OrganizationsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organizationId: S.String.pipe(T.Label("organization_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/user/organizations/{organization_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "OrganizationsGetRequest",
-}) as any as S.Schema<OrganizationsGetRequest>;
-
-export interface OrganizationsGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const OrganizationsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "OrganizationsGetResponse",
-}) as any as S.Schema<OrganizationsGetResponse>;
-
-export type OrganizationsListRequestDirection = "asc" | "desc" | (string & {});
-export const OrganizationsListRequestDirection = /*@__PURE__*/ S.String;
-
-export type OrganizationsListRequestMatch = "any" | "all" | (string & {});
-export const OrganizationsListRequestMatch = /*@__PURE__*/ S.String;
-
-export type OrganizationsListRequestOrder =
-  | "id"
-  | "name"
-  | "status"
-  | (string & {});
-export const OrganizationsListRequestOrder = /*@__PURE__*/ S.String;
-
-export type OrganizationsListRequestStatus =
-  | "member"
-  | "invited"
-  | (string & {});
-export const OrganizationsListRequestStatus = /*@__PURE__*/ S.String;
-
-export interface OrganizationsListRequest {
-  /** Direction to order organizations. */
-  direction?: OrganizationsListRequestDirection;
-  /** Whether to match all search requirements or at least one (any). */
-  match?: OrganizationsListRequestMatch;
-  /** Organization name. */
-  name?: string;
-  /** Field to order organizations by. */
-  order?: OrganizationsListRequestOrder;
-  /** Page number of paginated results. */
-  page?: number;
-  /** Number of organizations per page. */
-  perPage?: number;
-  /** Whether the user is a member of the organization or has an inivitation pending. */
-  status?: OrganizationsListRequestStatus;
-}
-export const OrganizationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    direction: S.optional(OrganizationsListRequestDirection.pipe(T.Query())),
-    match: S.optional(OrganizationsListRequestMatch.pipe(T.Query())),
-    name: S.optional(S.String.pipe(T.Query())),
-    order: S.optional(OrganizationsListRequestOrder.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    status: S.optional(OrganizationsListRequestStatus.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/user/organizations", code: 200 })),
-).annotate({
-  identifier: "OrganizationsListRequest",
-}) as any as S.Schema<OrganizationsListRequest>;
-
-export type OrganizationsListResultItemPermissionsList = unknown[];
-export const OrganizationsListResultItemPermissionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<OrganizationsListResultItemPermissionsList>;
-
-export type OrganizationsListResultItemRolesList = string[];
-export const OrganizationsListResultItemRolesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OrganizationsListResultItemRolesList>;
-
-export interface OrganizationsListResultItem {
-  /** Identifier */
-  id?: string;
-  /** Organization name. */
-  name?: string;
-  /** Access permissions for this User. */
-  permissions?: OrganizationsListResultItemPermissionsList;
-  /** List of roles that a user has within an organization. */
-  roles?: OrganizationsListResultItemRolesList;
-  /** Whether the user is a member of the organization or has an invitation pending. */
-  status?: unknown;
-}
-export const OrganizationsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-    permissions: S.optional(OrganizationsListResultItemPermissionsList),
-    roles: S.optional(OrganizationsListResultItemRolesList),
-    status: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "OrganizationsListResultItem",
-}) as any as S.Schema<OrganizationsListResultItem>;
-
-export type OrganizationsListResultList = OrganizationsListResultItem[];
-export const OrganizationsListResultList = /*@__PURE__*/ S.Array(
-  OrganizationsListResultItem,
-) as any as S.Schema<OrganizationsListResultList>;
-
-export interface OrganizationsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: OrganizationsListResultList;
-}
-export const OrganizationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(OrganizationsListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "OrganizationsListResponse",
-}) as any as S.Schema<OrganizationsListResponse>;
-
-export interface SubscriptionsDeleteRequest {
-  /** Subscription identifier tag. */
-  identifier: string;
-}
-export const SubscriptionsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/user/subscriptions/{identifier}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SubscriptionsDeleteRequest",
-}) as any as S.Schema<SubscriptionsDeleteRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface SubscriptionsDeleteResponse {
-  /** Subscription identifier tag. */
-  subscriptionId?: string;
-}
-export const SubscriptionsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    subscriptionId: S.optional(S.String.pipe(T.Body("subscription_id"))),
-  }),
-).annotate({
-  identifier: "SubscriptionsDeleteResponse",
-}) as any as S.Schema<SubscriptionsDeleteResponse>;
-
-export interface SubscriptionsGetRequest {}
-export const SubscriptionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(
-    T.Http({ method: "GET", uri: "/user/subscriptions", code: 200 }),
-  ),
-).annotate({
-  identifier: "SubscriptionsGetRequest",
-}) as any as S.Schema<SubscriptionsGetRequest>;
-
-export type SubscriptionsGetResultItemFrequency =
-  | "weekly"
-  | "monthly"
-  | "quarterly"
-  | "yearly"
-  | (string & {});
-export const SubscriptionsGetResultItemFrequency = /*@__PURE__*/ S.String;
-
-export type SubscriptionsGetResultItemRatePlanId =
-  | "free"
-  | "lite"
-  | "pro"
-  | (string & {});
-export const SubscriptionsGetResultItemRatePlanId = /*@__PURE__*/ S.String;
-
-export type SubscriptionsGetResultItemRatePlanSetsList = string[];
-export const SubscriptionsGetResultItemRatePlanSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsGetResultItemRatePlanSetsList>;
-
-export interface SubscriptionsGetResultItemRatePlan {
-  /** The ID of the rate plan. */
-  id?: SubscriptionsGetResultItemRatePlanId;
-  /** The currency applied to the rate plan subscription. */
-  currency?: string;
-  /** Whether this rate plan is managed externally from Cloudflare. */
-  externallyManaged?: boolean;
-  /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
-  isContract?: boolean;
-  /** The full name of the rate plan. */
-  publicName?: string;
-  /** The scope that this rate plan applies to. */
-  scope?: string;
-  /** The list of sets this rate plan applies to. Returns array of strings. */
-  sets?: SubscriptionsGetResultItemRatePlanSetsList;
-}
-export const SubscriptionsGetResultItemRatePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(SubscriptionsGetResultItemRatePlanId),
-    currency: S.optional(S.String),
-    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
-    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
-    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
-    scope: S.optional(S.String),
-    sets: S.optional(SubscriptionsGetResultItemRatePlanSetsList),
-  }),
-).annotate({
-  identifier: "SubscriptionsGetResultItemRatePlan",
-}) as any as S.Schema<SubscriptionsGetResultItemRatePlan>;
-
-export type SubscriptionsGetResultItemState =
-  | "Trial"
-  | "Provisioned"
-  | "Paid"
-  | (string & {});
-export const SubscriptionsGetResultItemState = /*@__PURE__*/ S.String;
-
-export interface SubscriptionsGetResultItem {
-  /** Subscription identifier tag. */
-  id?: string;
-  /** The monetary unit in which pricing information is displayed. */
-  currency?: string;
-  /** The end of the current period and also when the next billing is due. */
-  currentPeriodEnd?: string;
-  /** When the current billing period started. May match initial_period_start if this is the first period. */
-  currentPeriodStart?: string;
-  /** How often the subscription is renewed automatically. */
-  frequency?: SubscriptionsGetResultItemFrequency;
-  /** The price of the subscription that will be billed, in US dollars. */
-  price?: number;
-  /** The rate plan applied to the subscription. */
-  ratePlan?: SubscriptionsGetResultItemRatePlan;
-  /** The state that the subscription is in. */
-  state?: SubscriptionsGetResultItemState;
-}
-export const SubscriptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    currency: S.optional(S.String),
-    currentPeriodEnd: S.optional(S.String.pipe(T.Body("current_period_end"))),
-    currentPeriodStart: S.optional(
-      S.String.pipe(T.Body("current_period_start")),
-    ),
-    frequency: S.optional(SubscriptionsGetResultItemFrequency),
-    price: S.optional(S.Number),
-    ratePlan: S.optional(
-      SubscriptionsGetResultItemRatePlan.pipe(T.Body("rate_plan")),
-    ),
-    state: S.optional(SubscriptionsGetResultItemState),
-  }),
-).annotate({
-  identifier: "SubscriptionsGetResultItem",
-}) as any as S.Schema<SubscriptionsGetResultItem>;
-
-export type SubscriptionsGetResultList = SubscriptionsGetResultItem[];
-export const SubscriptionsGetResultList = /*@__PURE__*/ S.Array(
-  SubscriptionsGetResultItem,
-) as any as S.Schema<SubscriptionsGetResultList>;
-
-export interface SubscriptionsGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SubscriptionsGetResultList;
-}
-export const SubscriptionsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SubscriptionsGetResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "SubscriptionsGetResponse",
-}) as any as S.Schema<SubscriptionsGetResponse>;
-
-export type SubscriptionsUpdateRequestFrequency =
-  | "weekly"
-  | "monthly"
-  | "quarterly"
-  | "yearly"
-  | (string & {});
-export const SubscriptionsUpdateRequestFrequency = /*@__PURE__*/ S.String;
-
-export type SubscriptionsUpdateRequestRatePlanId =
-  | "free"
-  | "lite"
-  | "pro"
-  | (string & {});
-export const SubscriptionsUpdateRequestRatePlanId = /*@__PURE__*/ S.String;
-
-export type SubscriptionsUpdateRequestRatePlanSetsList = string[];
-export const SubscriptionsUpdateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
-
-export interface SubscriptionsUpdateRequestRatePlan {
-  /** The ID of the rate plan. */
-  id?: SubscriptionsUpdateRequestRatePlanId;
-  /** The currency applied to the rate plan subscription. */
-  currency?: string;
-  /** Whether this rate plan is managed externally from Cloudflare. */
-  externallyManaged?: boolean;
-  /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
-  isContract?: boolean;
-  /** The full name of the rate plan. */
-  publicName?: string;
-  /** The scope that this rate plan applies to. */
-  scope?: string;
-  /** The list of sets this rate plan applies to. Returns array of strings. */
-  sets?: SubscriptionsUpdateRequestRatePlanSetsList;
-}
-export const SubscriptionsUpdateRequestRatePlan = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(SubscriptionsUpdateRequestRatePlanId),
-    currency: S.optional(S.String),
-    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
-    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
-    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
-    scope: S.optional(S.String),
-    sets: S.optional(SubscriptionsUpdateRequestRatePlanSetsList),
-  }),
-).annotate({
-  identifier: "SubscriptionsUpdateRequestRatePlan",
-}) as any as S.Schema<SubscriptionsUpdateRequestRatePlan>;
-
-export interface SubscriptionsUpdateRequest {
-  /** Subscription identifier tag. */
-  identifier: string;
-  /** How often the subscription is renewed automatically. */
-  frequency?: SubscriptionsUpdateRequestFrequency;
-  /** The rate plan applied to the subscription. */
-  ratePlan?: SubscriptionsUpdateRequestRatePlan;
-}
-export const SubscriptionsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifier: S.String.pipe(T.Label()),
-    frequency: S.optional(SubscriptionsUpdateRequestFrequency),
-    ratePlan: S.optional(
-      SubscriptionsUpdateRequestRatePlan.pipe(T.Body("rate_plan")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/user/subscriptions/{identifier}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SubscriptionsUpdateRequest",
-}) as any as S.Schema<SubscriptionsUpdateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SubscriptionsUpdateResponse {
-  unknown: unknown;
-  string: unknown;
-}
-export const SubscriptionsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unknown: S.Unknown,
-    string: S.Unknown,
-  }),
-).annotate({
-  identifier: "SubscriptionsUpdateResponse",
-}) as any as S.Schema<SubscriptionsUpdateResponse>;
-
-export interface TenantsListRequest {}
-export const TenantsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/tenants", code: 200 })),
-).annotate({
-  identifier: "TenantsListRequest",
-}) as any as S.Schema<TenantsListRequest>;
-
-export interface TenantsListResultItemMetaFlags {
-  accountCreation: string;
-  accountDeletion: string;
-  accountMigration: string;
-  accountMobility: string;
-  subOrgCreation: string;
-}
-export const TenantsListResultItemMetaFlags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountCreation: S.String.pipe(T.Body("account_creation")),
-    accountDeletion: S.String.pipe(T.Body("account_deletion")),
-    accountMigration: S.String.pipe(T.Body("account_migration")),
-    accountMobility: S.String.pipe(T.Body("account_mobility")),
-    subOrgCreation: S.String.pipe(T.Body("sub_org_creation")),
-  }),
-).annotate({
-  identifier: "TenantsListResultItemMetaFlags",
-}) as any as S.Schema<TenantsListResultItemMetaFlags>;
-
-export type TenantsListResultItemMetaHierarchyTagsList = string[];
-export const TenantsListResultItemMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TenantsListResultItemMetaHierarchyTagsList>;
-
-export interface TenantsListResultItemMeta {
-  /** Enable features for Organizations. */
-  flags?: TenantsListResultItemMetaFlags;
-  /** Ordered chain of organization tags from the root organization down to */
-  hierarchyTags?: TenantsListResultItemMetaHierarchyTagsList;
-  managedBy?: string;
-}
-export const TenantsListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flags: S.optional(TenantsListResultItemMetaFlags),
-    hierarchyTags: S.optional(
-      TenantsListResultItemMetaHierarchyTagsList.pipe(T.Body("hierarchy_tags")),
-    ),
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "TenantsListResultItemMeta",
-}) as any as S.Schema<TenantsListResultItemMeta>;
-
-export interface TenantsListResultItemParent {
-  id: string;
-  name: string;
-}
-export const TenantsListResultItemParent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "TenantsListResultItemParent",
-}) as any as S.Schema<TenantsListResultItemParent>;
-
-export interface TenantsListResultItemProfile {
-  businessAddress: string;
-  businessEmail: string;
-  businessName: string;
-  businessPhone: string;
-  externalMetadata: string;
-}
-export const TenantsListResultItemProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessAddress: S.String.pipe(T.Body("business_address")),
-    businessEmail: S.String.pipe(T.Body("business_email")),
-    businessName: S.String.pipe(T.Body("business_name")),
-    businessPhone: S.String.pipe(T.Body("business_phone")),
-    externalMetadata: S.String.pipe(T.Body("external_metadata")),
-  }),
-).annotate({
-  identifier: "TenantsListResultItemProfile",
-}) as any as S.Schema<TenantsListResultItemProfile>;
-
-export interface TenantsListResultItem {
-  id: string;
-  createTime: string;
-  meta: TenantsListResultItemMeta;
-  name: string;
-  parent?: TenantsListResultItemParent;
-  profile?: TenantsListResultItemProfile;
-}
-export const TenantsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createTime: S.String.pipe(T.Body("create_time")),
-    meta: TenantsListResultItemMeta,
-    name: S.String,
-    parent: S.optional(TenantsListResultItemParent),
-    profile: S.optional(TenantsListResultItemProfile),
-  }),
-).annotate({
-  identifier: "TenantsListResultItem",
-}) as any as S.Schema<TenantsListResultItem>;
-
-export type TenantsListResultList = TenantsListResultItem[];
-export const TenantsListResultList = /*@__PURE__*/ S.Array(
-  TenantsListResultItem,
-) as any as S.Schema<TenantsListResultList>;
-
-export interface TenantsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TenantsListResultList;
-}
-export const TenantsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(TenantsListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "TenantsListResponse",
-}) as any as S.Schema<TenantsListResponse>;
+  [{ code: 1003 }],
+) {}
 
 export type TokensCreateRequestPoliciesItemEffect =
   | "allow"
@@ -1415,7 +218,7 @@ export const TokensCreateRequestCondition = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensCreateRequestCondition",
 }) as any as S.Schema<TokensCreateRequestCondition>;
 
-export interface TokensCreateRequest {
+export interface CreateTokenRequest {
   /** Token name. */
   name: string;
   /** List of access policies assigned to the token. */
@@ -1426,7 +229,7 @@ export interface TokensCreateRequest {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string;
 }
-export const TokensCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     name: S.String,
     policies: TokensCreateRequestPoliciesList,
@@ -1435,8 +238,8 @@ export const TokensCreateRequest = /*@__PURE__*/ S.suspend(() =>
     notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
   }).pipe(T.Http({ method: "POST", uri: "/user/tokens", code: 200 })),
 ).annotate({
-  identifier: "TokensCreateRequest",
-}) as any as S.Schema<TokensCreateRequest>;
+  identifier: "CreateTokenRequest",
+}) as any as S.Schema<CreateTokenRequest>;
 
 export type TokensCreateResponseConditionRequestIpInList = unknown[];
 export const TokensCreateResponseConditionRequestIpInList =
@@ -1610,7 +413,7 @@ export type TokensCreateResponseStatus =
 export const TokensCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TokensCreateResponse {
+export interface CreateTokenResponse {
   /** Token identifier tag. */
   id?: string;
   condition?: TokensCreateResponseCondition;
@@ -1633,7 +436,7 @@ export interface TokensCreateResponse {
   /** The token value. */
   value?: unknown;
 }
-export const TokensCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     condition: S.optional(TokensCreateResponseCondition),
@@ -1648,47 +451,434 @@ export const TokensCreateResponse = /*@__PURE__*/ S.suspend(() =>
     value: S.optional(S.Unknown),
   }),
 ).annotate({
-  identifier: "TokensCreateResponse",
-}) as any as S.Schema<TokensCreateResponse>;
+  identifier: "CreateTokenResponse",
+}) as any as S.Schema<CreateTokenResponse>;
 
-export interface TokensDeleteRequest {
+export interface DeleteOrganizationRequest {
+  /** Identifier */
+  organizationId: string;
+}
+export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organizationId: S.String.pipe(T.Label("organization_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/user/organizations/{organization_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteOrganizationRequest",
+}) as any as S.Schema<DeleteOrganizationRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface DeleteOrganizationResponse {
+  /** Identifier */
+  id?: string;
+}
+export const DeleteOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteOrganizationResponse",
+}) as any as S.Schema<DeleteOrganizationResponse>;
+
+export interface DeleteSubscriptionRequest {
+  /** Subscription identifier tag. */
+  identifier: string;
+}
+export const DeleteSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identifier: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/user/subscriptions/{identifier}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSubscriptionRequest",
+}) as any as S.Schema<DeleteSubscriptionRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface DeleteSubscriptionResponse {
+  /** Subscription identifier tag. */
+  subscriptionId?: string;
+}
+export const DeleteSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    subscriptionId: S.optional(S.String.pipe(T.Body("subscription_id"))),
+  }),
+).annotate({
+  identifier: "DeleteSubscriptionResponse",
+}) as any as S.Schema<DeleteSubscriptionResponse>;
+
+export interface DeleteTokenRequest {
   /** Token identifier tag. */
   tokenId: string;
 }
-export const TokensDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String.pipe(T.Label("token_id")),
   }).pipe(
     T.Http({ method: "DELETE", uri: "/user/tokens/{token_id}", code: 200 }),
   ),
 ).annotate({
-  identifier: "TokensDeleteRequest",
-}) as any as S.Schema<TokensDeleteRequest>;
+  identifier: "DeleteTokenRequest",
+}) as any as S.Schema<DeleteTokenRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TokensDeleteResponse {
+export interface DeleteTokenResponse {
   /** Identifier */
   id: string;
 }
-export const TokensDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
 ).annotate({
-  identifier: "TokensDeleteResponse",
-}) as any as S.Schema<TokensDeleteResponse>;
+  identifier: "DeleteTokenResponse",
+}) as any as S.Schema<DeleteTokenResponse>;
 
-export interface TokensGetRequest {
+export interface GetBillingProfileRequest {}
+export const GetBillingProfileRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({ method: "GET", uri: "/user/billing/profile", code: 200 }),
+  ),
+).annotate({
+  identifier: "GetBillingProfileRequest",
+}) as any as S.Schema<GetBillingProfileRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetBillingProfileResponse {
+  /** Billing item identifier tag. */
+  id?: string;
+  accountType?: string;
+  address?: string;
+  address2?: string;
+  balance?: string;
+  cardExpiryMonth?: number;
+  cardExpiryYear?: number;
+  cardNumber?: string;
+  city?: string;
+  company?: string;
+  country?: string;
+  createdOn?: string;
+  deviceData?: string;
+  editedOn?: string;
+  enterpriseBillingEmail?: string;
+  enterprisePrimaryEmail?: string;
+  firstName?: string;
+  isPartner?: boolean;
+  lastName?: string;
+  nextBillDate?: string;
+  paymentAddress?: string;
+  paymentAddress2?: string;
+  paymentCity?: string;
+  paymentCountry?: string;
+  paymentEmail?: string;
+  paymentFirstName?: string;
+  paymentGateway?: string;
+  paymentLastName?: string;
+  paymentNonce?: string;
+  paymentState?: string;
+  paymentZipcode?: string;
+  primaryEmail?: string;
+  state?: string;
+  taxIdType?: string;
+  telephone?: string;
+  useLegacy?: boolean;
+  validationCode?: string;
+  vat?: string;
+  zipcode?: string;
+}
+export const GetBillingProfileResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    accountType: S.optional(S.String.pipe(T.Body("account_type"))),
+    address: S.optional(S.String),
+    address2: S.optional(S.String),
+    balance: S.optional(S.String),
+    cardExpiryMonth: S.optional(S.Number.pipe(T.Body("card_expiry_month"))),
+    cardExpiryYear: S.optional(S.Number.pipe(T.Body("card_expiry_year"))),
+    cardNumber: S.optional(S.String.pipe(T.Body("card_number"))),
+    city: S.optional(S.String),
+    company: S.optional(S.String),
+    country: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    deviceData: S.optional(S.String.pipe(T.Body("device_data"))),
+    editedOn: S.optional(S.String.pipe(T.Body("edited_on"))),
+    enterpriseBillingEmail: S.optional(
+      S.String.pipe(T.Body("enterprise_billing_email")),
+    ),
+    enterprisePrimaryEmail: S.optional(
+      S.String.pipe(T.Body("enterprise_primary_email")),
+    ),
+    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
+    isPartner: S.optional(S.Boolean.pipe(T.Body("is_partner"))),
+    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
+    nextBillDate: S.optional(S.String.pipe(T.Body("next_bill_date"))),
+    paymentAddress: S.optional(S.String.pipe(T.Body("payment_address"))),
+    paymentAddress2: S.optional(S.String.pipe(T.Body("payment_address2"))),
+    paymentCity: S.optional(S.String.pipe(T.Body("payment_city"))),
+    paymentCountry: S.optional(S.String.pipe(T.Body("payment_country"))),
+    paymentEmail: S.optional(S.String.pipe(T.Body("payment_email"))),
+    paymentFirstName: S.optional(S.String.pipe(T.Body("payment_first_name"))),
+    paymentGateway: S.optional(S.String.pipe(T.Body("payment_gateway"))),
+    paymentLastName: S.optional(S.String.pipe(T.Body("payment_last_name"))),
+    paymentNonce: S.optional(S.String.pipe(T.Body("payment_nonce"))),
+    paymentState: S.optional(S.String.pipe(T.Body("payment_state"))),
+    paymentZipcode: S.optional(S.String.pipe(T.Body("payment_zipcode"))),
+    primaryEmail: S.optional(S.String.pipe(T.Body("primary_email"))),
+    state: S.optional(S.String),
+    taxIdType: S.optional(S.String.pipe(T.Body("tax_id_type"))),
+    telephone: S.optional(S.String),
+    useLegacy: S.optional(S.Boolean.pipe(T.Body("use_legacy"))),
+    validationCode: S.optional(S.String.pipe(T.Body("validation_code"))),
+    vat: S.optional(S.String),
+    zipcode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetBillingProfileResponse",
+}) as any as S.Schema<GetBillingProfileResponse>;
+
+export interface GetInviteRequest {
+  /** Invite identifier tag. */
+  inviteId: string;
+}
+export const GetInviteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inviteId: S.String.pipe(T.Label("invite_id")),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/user/invites/{invite_id}", code: 200 }),
+  ),
+).annotate({
+  identifier: "GetInviteRequest",
+}) as any as S.Schema<GetInviteRequest>;
+
+export type InvitesGetResponseRolesList = string[];
+export const InvitesGetResponseRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InvitesGetResponseRolesList>;
+
+export type InvitesGetResponseStatus =
+  | "pending"
+  | "accepted"
+  | "rejected"
+  | "expired"
+  | (string & {});
+export const InvitesGetResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetInviteResponse {
+  /** ID of the user to add to the organization. */
+  invitedMemberId: string;
+  /** ID of the organization the user will be added to. */
+  organizationId: string;
+  /** Invite identifier tag. */
+  id?: string;
+  /** When the invite is no longer active. */
+  expiresOn?: string;
+  /** The email address of the user who created the invite. */
+  invitedBy?: string;
+  /** Email address of the user to add to the organization. */
+  invitedMemberEmail?: string;
+  /** When the invite was sent. */
+  invitedOn?: string;
+  organizationIsEnforcingTwofactor?: boolean;
+  /** Organization name. */
+  organizationName?: string;
+  /** List of role names the membership has for this account. */
+  roles?: InvitesGetResponseRolesList;
+  /** Current status of the invitation. */
+  status?: InvitesGetResponseStatus;
+}
+export const GetInviteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invitedMemberId: S.String.pipe(T.Body("invited_member_id")),
+    organizationId: S.String.pipe(T.Body("organization_id")),
+    id: S.optional(S.String),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    invitedBy: S.optional(S.String.pipe(T.Body("invited_by"))),
+    invitedMemberEmail: S.optional(
+      S.String.pipe(T.Body("invited_member_email")),
+    ),
+    invitedOn: S.optional(S.String.pipe(T.Body("invited_on"))),
+    organizationIsEnforcingTwofactor: S.optional(
+      S.Boolean.pipe(T.Body("organization_is_enforcing_twofactor")),
+    ),
+    organizationName: S.optional(S.String.pipe(T.Body("organization_name"))),
+    roles: S.optional(InvitesGetResponseRolesList),
+    status: S.optional(InvitesGetResponseStatus),
+  }),
+).annotate({
+  identifier: "GetInviteResponse",
+}) as any as S.Schema<GetInviteResponse>;
+
+export interface GetOrganizationRequest {
+  /** Identifier */
+  organizationId: string;
+}
+export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organizationId: S.String.pipe(T.Label("organization_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/user/organizations/{organization_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetOrganizationRequest",
+}) as any as S.Schema<GetOrganizationRequest>;
+
+export interface GetOrganizationResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const GetOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "GetOrganizationResponse",
+}) as any as S.Schema<GetOrganizationResponse>;
+
+export interface GetSubscriptionRequest {}
+export const GetSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(
+    T.Http({ method: "GET", uri: "/user/subscriptions", code: 200 }),
+  ),
+).annotate({
+  identifier: "GetSubscriptionRequest",
+}) as any as S.Schema<GetSubscriptionRequest>;
+
+export type SubscriptionsGetResultItemFrequency =
+  | "weekly"
+  | "monthly"
+  | "quarterly"
+  | "yearly"
+  | (string & {});
+export const SubscriptionsGetResultItemFrequency = /*@__PURE__*/ S.String;
+
+export type SubscriptionsGetResultItemRatePlanId =
+  | "free"
+  | "lite"
+  | "pro"
+  | (string & {});
+export const SubscriptionsGetResultItemRatePlanId = /*@__PURE__*/ S.String;
+
+export type SubscriptionsGetResultItemRatePlanSetsList = string[];
+export const SubscriptionsGetResultItemRatePlanSetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SubscriptionsGetResultItemRatePlanSetsList>;
+
+export interface SubscriptionsGetResultItemRatePlan {
+  /** The ID of the rate plan. */
+  id?: SubscriptionsGetResultItemRatePlanId;
+  /** The currency applied to the rate plan subscription. */
+  currency?: string;
+  /** Whether this rate plan is managed externally from Cloudflare. */
+  externallyManaged?: boolean;
+  /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
+  isContract?: boolean;
+  /** The full name of the rate plan. */
+  publicName?: string;
+  /** The scope that this rate plan applies to. */
+  scope?: string;
+  /** The list of sets this rate plan applies to. Returns array of strings. */
+  sets?: SubscriptionsGetResultItemRatePlanSetsList;
+}
+export const SubscriptionsGetResultItemRatePlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(SubscriptionsGetResultItemRatePlanId),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
+    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
+    scope: S.optional(S.String),
+    sets: S.optional(SubscriptionsGetResultItemRatePlanSetsList),
+  }),
+).annotate({
+  identifier: "SubscriptionsGetResultItemRatePlan",
+}) as any as S.Schema<SubscriptionsGetResultItemRatePlan>;
+
+export type SubscriptionsGetResultItemState =
+  | "Trial"
+  | "Provisioned"
+  | "Paid"
+  | (string & {});
+export const SubscriptionsGetResultItemState = /*@__PURE__*/ S.String;
+
+export interface SubscriptionsGetResultItem {
+  /** Subscription identifier tag. */
+  id?: string;
+  /** The monetary unit in which pricing information is displayed. */
+  currency?: string;
+  /** The end of the current period and also when the next billing is due. */
+  currentPeriodEnd?: string;
+  /** When the current billing period started. May match initial_period_start if this is the first period. */
+  currentPeriodStart?: string;
+  /** How often the subscription is renewed automatically. */
+  frequency?: SubscriptionsGetResultItemFrequency;
+  /** The price of the subscription that will be billed, in US dollars. */
+  price?: number;
+  /** The rate plan applied to the subscription. */
+  ratePlan?: SubscriptionsGetResultItemRatePlan;
+  /** The state that the subscription is in. */
+  state?: SubscriptionsGetResultItemState;
+}
+export const SubscriptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    currency: S.optional(S.String),
+    currentPeriodEnd: S.optional(S.String.pipe(T.Body("current_period_end"))),
+    currentPeriodStart: S.optional(
+      S.String.pipe(T.Body("current_period_start")),
+    ),
+    frequency: S.optional(SubscriptionsGetResultItemFrequency),
+    price: S.optional(S.Number),
+    ratePlan: S.optional(
+      SubscriptionsGetResultItemRatePlan.pipe(T.Body("rate_plan")),
+    ),
+    state: S.optional(SubscriptionsGetResultItemState),
+  }),
+).annotate({
+  identifier: "SubscriptionsGetResultItem",
+}) as any as S.Schema<SubscriptionsGetResultItem>;
+
+export type SubscriptionsGetResultList = SubscriptionsGetResultItem[];
+export const SubscriptionsGetResultList = /*@__PURE__*/ S.Array(
+  SubscriptionsGetResultItem,
+) as any as S.Schema<SubscriptionsGetResultList>;
+
+export interface GetSubscriptionResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: SubscriptionsGetResultList;
+}
+export const GetSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(SubscriptionsGetResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "GetSubscriptionResponse",
+}) as any as S.Schema<GetSubscriptionResponse>;
+
+export interface GetTokenRequest {
   /** Token identifier tag. */
   tokenId: string;
 }
-export const TokensGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String.pipe(T.Label("token_id")),
   }).pipe(T.Http({ method: "GET", uri: "/user/tokens/{token_id}", code: 200 })),
 ).annotate({
-  identifier: "TokensGetRequest",
-}) as any as S.Schema<TokensGetRequest>;
+  identifier: "GetTokenRequest",
+}) as any as S.Schema<GetTokenRequest>;
 
 export type TokensGetResponseConditionRequestIpInList = unknown[];
 export const TokensGetResponseConditionRequestIpInList = /*@__PURE__*/ S.Array(
@@ -1856,7 +1046,7 @@ export type TokensGetResponseStatus =
 export const TokensGetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TokensGetResponse {
+export interface GetTokenResponse {
   /** Token identifier tag. */
   id?: string;
   condition?: TokensGetResponseCondition;
@@ -1877,7 +1067,7 @@ export interface TokensGetResponse {
   /** Status of the token. */
   status?: TokensGetResponseStatus;
 }
-export const TokensGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     condition: S.optional(TokensGetResponseCondition),
@@ -1891,13 +1081,662 @@ export const TokensGetResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(TokensGetResponseStatus),
   }),
 ).annotate({
-  identifier: "TokensGetResponse",
-}) as any as S.Schema<TokensGetResponse>;
+  identifier: "GetTokenResponse",
+}) as any as S.Schema<GetTokenResponse>;
+
+export interface GetUserRequest {}
+export const GetUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user", code: 200 })),
+).annotate({ identifier: "GetUserRequest" }) as any as S.Schema<GetUserRequest>;
+
+export type GetResponseBetasList = string[];
+export const GetResponseBetasList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseBetasList>;
+
+export type GetResponseOrganizationsItemPermissionsList = unknown[];
+export const GetResponseOrganizationsItemPermissionsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<GetResponseOrganizationsItemPermissionsList>;
+
+export type GetResponseOrganizationsItemRolesList = string[];
+export const GetResponseOrganizationsItemRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<GetResponseOrganizationsItemRolesList>;
+
+export interface GetResponseOrganizationsItem {
+  /** Identifier */
+  id?: string;
+  /** Organization name. */
+  name?: string;
+  /** Access permissions for this User. */
+  permissions?: GetResponseOrganizationsItemPermissionsList;
+  /** List of roles that a user has within an organization. */
+  roles?: GetResponseOrganizationsItemRolesList;
+  /** Whether the user is a member of the organization or has an invitation pending. */
+  status?: unknown;
+}
+export const GetResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    permissions: S.optional(GetResponseOrganizationsItemPermissionsList),
+    roles: S.optional(GetResponseOrganizationsItemRolesList),
+    status: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "GetResponseOrganizationsItem",
+}) as any as S.Schema<GetResponseOrganizationsItem>;
+
+export type GetResponseOrganizationsList = GetResponseOrganizationsItem[];
+export const GetResponseOrganizationsList = /*@__PURE__*/ S.Array(
+  GetResponseOrganizationsItem,
+) as any as S.Schema<GetResponseOrganizationsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetUserResponse {
+  /** Identifier of the user. */
+  id: string;
+  /** Current email address of the user. */
+  email: string;
+  /** Lists the betas that the user is participating in. */
+  betas?: GetResponseBetasList;
+  /** The country in which the user lives. */
+  country?: string;
+  /** User's first name */
+  firstName?: string;
+  /** Indicates whether user has any business zones */
+  hasBusinessZones?: boolean;
+  /** Indicates whether user has any enterprise zones */
+  hasEnterpriseZones?: boolean;
+  /** Indicates whether user has any pro zones */
+  hasProZones?: boolean;
+  /** User's last name */
+  lastName?: string;
+  organizations?: GetResponseOrganizationsList;
+  /** Indicates whether user has been suspended */
+  suspended?: boolean;
+  /** User's telephone number */
+  telephone?: string;
+  /** Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication. */
+  twoFactorAuthenticationEnabled?: boolean;
+  /** Indicates whether two-factor authentication is required by one of the accounts that the user is a member of. */
+  twoFactorAuthenticationLocked?: boolean;
+  /** The zipcode or postal code where the user lives. */
+  zipcode?: string;
+}
+export const GetUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    email: S.String,
+    betas: S.optional(GetResponseBetasList),
+    country: S.optional(S.String),
+    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
+    hasBusinessZones: S.optional(S.Boolean.pipe(T.Body("has_business_zones"))),
+    hasEnterpriseZones: S.optional(
+      S.Boolean.pipe(T.Body("has_enterprise_zones")),
+    ),
+    hasProZones: S.optional(S.Boolean.pipe(T.Body("has_pro_zones"))),
+    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
+    organizations: S.optional(GetResponseOrganizationsList),
+    suspended: S.optional(S.Boolean),
+    telephone: S.optional(S.String),
+    twoFactorAuthenticationEnabled: S.optional(
+      S.Boolean.pipe(T.Body("two_factor_authentication_enabled")),
+    ),
+    twoFactorAuthenticationLocked: S.optional(
+      S.Boolean.pipe(T.Body("two_factor_authentication_locked")),
+    ),
+    zipcode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetUserResponse",
+}) as any as S.Schema<GetUserResponse>;
+
+export type AuditLogsListRequestDirection = "desc" | "asc" | (string & {});
+export const AuditLogsListRequestDirection = /*@__PURE__*/ S.String;
+
+export interface ListAuditLogsRequest {
+  /** Finds a specific log by its ID. */
+  id?: string;
+  action?: string;
+  actor?: string;
+  /** Limits the returned results to logs older than the specified date. A `full-date` that conforms to RFC3339. */
+  before?: string;
+  /** Changes the direction of the chronological sorting. */
+  direction?: AuditLogsListRequestDirection;
+  /** Indicates that this request is an export of logs in CSV format. */
+  export?: boolean;
+  /** Indicates whether or not to hide user level audit logs. */
+  hideUserLogs?: boolean;
+  /** Defines which page of results to return. */
+  page?: number;
+  /** Sets the number of results to return per page. */
+  perPage?: number;
+  /** Limits the returned results to logs newer than the specified date. A `full-date` that conforms to RFC3339. */
+  since?: string;
+  zone?: string;
+}
+export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String.pipe(T.Query())),
+    action: S.optional(S.String.pipe(T.Query())),
+    actor: S.optional(S.String.pipe(T.Query())),
+    before: S.optional(S.String.pipe(T.Query())),
+    direction: S.optional(AuditLogsListRequestDirection.pipe(T.Query())),
+    export: S.optional(S.Boolean.pipe(T.Query())),
+    hideUserLogs: S.optional(S.Boolean.pipe(T.Query("hide_user_logs"))),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    since: S.optional(S.String.pipe(T.Query())),
+    zone: S.optional(S.String.pipe(T.Query())),
+  }).pipe(T.Http({ method: "GET", uri: "/user/audit_logs", code: 200 })),
+).annotate({
+  identifier: "ListAuditLogsRequest",
+}) as any as S.Schema<ListAuditLogsRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface ListAuditLogsResponse {
+  objectErrorsMessagesResultSuccess__: unknown;
+  AaaAPIResponseCommonObjectErrorsMessagesSuccess__: unknown;
+}
+export const ListAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectErrorsMessagesResultSuccess__: S.Unknown.pipe(
+      T.Body("object { errors, messages, result, success }"),
+    ),
+    AaaAPIResponseCommonObjectErrorsMessagesSuccess__: S.Unknown.pipe(
+      T.Body("AaaAPIResponseCommon object { errors, messages, success }"),
+    ),
+  }),
+).annotate({
+  identifier: "ListAuditLogsResponse",
+}) as any as S.Schema<ListAuditLogsResponse>;
+
+export type BillingHistoryListRequestOrder =
+  | "type"
+  | "occurred_at"
+  | "action"
+  | (string & {});
+export const BillingHistoryListRequestOrder = /*@__PURE__*/ S.String;
+
+export interface ListBillingHistoriesRequest {
+  /** The billing item action. */
+  action?: string;
+  /** When the billing item was created. */
+  occurredAt?: string;
+  /** Field to order billing history by. */
+  order?: BillingHistoryListRequestOrder;
+  /** Page number of paginated results. */
+  page?: number;
+  /** Number of items per page. */
+  perPage?: number;
+  /** The billing item type. */
+  type?: string;
+}
+export const ListBillingHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.optional(S.String.pipe(T.Query())),
+    occurredAt: S.optional(S.String.pipe(T.Query("occurred_at"))),
+    order: S.optional(BillingHistoryListRequestOrder.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    type: S.optional(S.String.pipe(T.Query())),
+  }).pipe(T.Http({ method: "GET", uri: "/user/billing/history", code: 200 })),
+).annotate({
+  identifier: "ListBillingHistoriesRequest",
+}) as any as S.Schema<ListBillingHistoriesRequest>;
+
+export interface BillingHistoryListResultItemZone {
+  name?: string;
+}
+export const BillingHistoryListResultItemZone = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "BillingHistoryListResultItemZone",
+}) as any as S.Schema<BillingHistoryListResultItemZone>;
+
+export interface BillingHistoryListResultItem {
+  /** Billing item identifier tag. */
+  id: string;
+  /** The billing item action. */
+  action: string;
+  /** The amount associated with this billing item. */
+  amount: number;
+  /** The monetary unit in which pricing information is displayed. */
+  currency: string;
+  /** The billing item description. */
+  description: string;
+  /** When the billing item was created. */
+  occurredAt: string;
+  /** The billing item type. */
+  type: string;
+  zone: BillingHistoryListResultItemZone;
+}
+export const BillingHistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    action: S.String,
+    amount: S.Number,
+    currency: S.String,
+    description: S.String,
+    occurredAt: S.String.pipe(T.Body("occurred_at")),
+    type: S.String,
+    zone: BillingHistoryListResultItemZone,
+  }),
+).annotate({
+  identifier: "BillingHistoryListResultItem",
+}) as any as S.Schema<BillingHistoryListResultItem>;
+
+export type BillingHistoryListResultList = BillingHistoryListResultItem[];
+export const BillingHistoryListResultList = /*@__PURE__*/ S.Array(
+  BillingHistoryListResultItem,
+) as any as S.Schema<BillingHistoryListResultList>;
+
+export interface ListBillingHistoriesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: BillingHistoryListResultList;
+}
+export const ListBillingHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(BillingHistoryListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListBillingHistoriesResponse",
+}) as any as S.Schema<ListBillingHistoriesResponse>;
+
+export interface ListInvitesRequest {}
+export const ListInvitesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/invites", code: 200 })),
+).annotate({
+  identifier: "ListInvitesRequest",
+}) as any as S.Schema<ListInvitesRequest>;
+
+export type InvitesListResultItemRolesList = string[];
+export const InvitesListResultItemRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InvitesListResultItemRolesList>;
+
+export type InvitesListResultItemStatus =
+  | "pending"
+  | "accepted"
+  | "rejected"
+  | "expired"
+  | (string & {});
+export const InvitesListResultItemStatus = /*@__PURE__*/ S.String;
+
+export interface InvitesListResultItem {
+  /** ID of the user to add to the organization. */
+  invitedMemberId: string;
+  /** ID of the organization the user will be added to. */
+  organizationId: string;
+  /** Invite identifier tag. */
+  id?: string;
+  /** When the invite is no longer active. */
+  expiresOn?: string;
+  /** The email address of the user who created the invite. */
+  invitedBy?: string;
+  /** Email address of the user to add to the organization. */
+  invitedMemberEmail?: string;
+  /** When the invite was sent. */
+  invitedOn?: string;
+  organizationIsEnforcingTwofactor?: boolean;
+  /** Organization name. */
+  organizationName?: string;
+  /** List of role names the membership has for this account. */
+  roles?: InvitesListResultItemRolesList;
+  /** Current status of the invitation. */
+  status?: InvitesListResultItemStatus;
+}
+export const InvitesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invitedMemberId: S.String.pipe(T.Body("invited_member_id")),
+    organizationId: S.String.pipe(T.Body("organization_id")),
+    id: S.optional(S.String),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    invitedBy: S.optional(S.String.pipe(T.Body("invited_by"))),
+    invitedMemberEmail: S.optional(
+      S.String.pipe(T.Body("invited_member_email")),
+    ),
+    invitedOn: S.optional(S.String.pipe(T.Body("invited_on"))),
+    organizationIsEnforcingTwofactor: S.optional(
+      S.Boolean.pipe(T.Body("organization_is_enforcing_twofactor")),
+    ),
+    organizationName: S.optional(S.String.pipe(T.Body("organization_name"))),
+    roles: S.optional(InvitesListResultItemRolesList),
+    status: S.optional(InvitesListResultItemStatus),
+  }),
+).annotate({
+  identifier: "InvitesListResultItem",
+}) as any as S.Schema<InvitesListResultItem>;
+
+export type InvitesListResultList = InvitesListResultItem[];
+export const InvitesListResultList = /*@__PURE__*/ S.Array(
+  InvitesListResultItem,
+) as any as S.Schema<InvitesListResultList>;
+
+export interface ListInvitesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: InvitesListResultList;
+}
+export const ListInvitesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(InvitesListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListInvitesResponse",
+}) as any as S.Schema<ListInvitesResponse>;
+
+export type OrganizationsListRequestDirection = "asc" | "desc" | (string & {});
+export const OrganizationsListRequestDirection = /*@__PURE__*/ S.String;
+
+export type OrganizationsListRequestMatch = "any" | "all" | (string & {});
+export const OrganizationsListRequestMatch = /*@__PURE__*/ S.String;
+
+export type OrganizationsListRequestOrder =
+  | "id"
+  | "name"
+  | "status"
+  | (string & {});
+export const OrganizationsListRequestOrder = /*@__PURE__*/ S.String;
+
+export type OrganizationsListRequestStatus =
+  | "member"
+  | "invited"
+  | (string & {});
+export const OrganizationsListRequestStatus = /*@__PURE__*/ S.String;
+
+export interface ListOrganizationsRequest {
+  /** Direction to order organizations. */
+  direction?: OrganizationsListRequestDirection;
+  /** Whether to match all search requirements or at least one (any). */
+  match?: OrganizationsListRequestMatch;
+  /** Organization name. */
+  name?: string;
+  /** Field to order organizations by. */
+  order?: OrganizationsListRequestOrder;
+  /** Page number of paginated results. */
+  page?: number;
+  /** Number of organizations per page. */
+  perPage?: number;
+  /** Whether the user is a member of the organization or has an inivitation pending. */
+  status?: OrganizationsListRequestStatus;
+}
+export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    direction: S.optional(OrganizationsListRequestDirection.pipe(T.Query())),
+    match: S.optional(OrganizationsListRequestMatch.pipe(T.Query())),
+    name: S.optional(S.String.pipe(T.Query())),
+    order: S.optional(OrganizationsListRequestOrder.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    status: S.optional(OrganizationsListRequestStatus.pipe(T.Query())),
+  }).pipe(T.Http({ method: "GET", uri: "/user/organizations", code: 200 })),
+).annotate({
+  identifier: "ListOrganizationsRequest",
+}) as any as S.Schema<ListOrganizationsRequest>;
+
+export type OrganizationsListResultItemPermissionsList = unknown[];
+export const OrganizationsListResultItemPermissionsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<OrganizationsListResultItemPermissionsList>;
+
+export type OrganizationsListResultItemRolesList = string[];
+export const OrganizationsListResultItemRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OrganizationsListResultItemRolesList>;
+
+export interface OrganizationsListResultItem {
+  /** Identifier */
+  id?: string;
+  /** Organization name. */
+  name?: string;
+  /** Access permissions for this User. */
+  permissions?: OrganizationsListResultItemPermissionsList;
+  /** List of roles that a user has within an organization. */
+  roles?: OrganizationsListResultItemRolesList;
+  /** Whether the user is a member of the organization or has an invitation pending. */
+  status?: unknown;
+}
+export const OrganizationsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    permissions: S.optional(OrganizationsListResultItemPermissionsList),
+    roles: S.optional(OrganizationsListResultItemRolesList),
+    status: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "OrganizationsListResultItem",
+}) as any as S.Schema<OrganizationsListResultItem>;
+
+export type OrganizationsListResultList = OrganizationsListResultItem[];
+export const OrganizationsListResultList = /*@__PURE__*/ S.Array(
+  OrganizationsListResultItem,
+) as any as S.Schema<OrganizationsListResultList>;
+
+export interface ListOrganizationsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: OrganizationsListResultList;
+}
+export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(OrganizationsListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListOrganizationsResponse",
+}) as any as S.Schema<ListOrganizationsResponse>;
+
+export interface ListTenantsRequest {}
+export const ListTenantsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}).pipe(T.Http({ method: "GET", uri: "/user/tenants", code: 200 })),
+).annotate({
+  identifier: "ListTenantsRequest",
+}) as any as S.Schema<ListTenantsRequest>;
+
+export interface TenantsListResultItemMetaFlags {
+  accountCreation: string;
+  accountDeletion: string;
+  accountMigration: string;
+  accountMobility: string;
+  subOrgCreation: string;
+}
+export const TenantsListResultItemMetaFlags = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountCreation: S.String.pipe(T.Body("account_creation")),
+    accountDeletion: S.String.pipe(T.Body("account_deletion")),
+    accountMigration: S.String.pipe(T.Body("account_migration")),
+    accountMobility: S.String.pipe(T.Body("account_mobility")),
+    subOrgCreation: S.String.pipe(T.Body("sub_org_creation")),
+  }),
+).annotate({
+  identifier: "TenantsListResultItemMetaFlags",
+}) as any as S.Schema<TenantsListResultItemMetaFlags>;
+
+export type TenantsListResultItemMetaHierarchyTagsList = string[];
+export const TenantsListResultItemMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TenantsListResultItemMetaHierarchyTagsList>;
+
+export interface TenantsListResultItemMeta {
+  /** Enable features for Organizations. */
+  flags?: TenantsListResultItemMetaFlags;
+  /** Ordered chain of organization tags from the root organization down to */
+  hierarchyTags?: TenantsListResultItemMetaHierarchyTagsList;
+  managedBy?: string;
+}
+export const TenantsListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flags: S.optional(TenantsListResultItemMetaFlags),
+    hierarchyTags: S.optional(
+      TenantsListResultItemMetaHierarchyTagsList.pipe(T.Body("hierarchy_tags")),
+    ),
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "TenantsListResultItemMeta",
+}) as any as S.Schema<TenantsListResultItemMeta>;
+
+export interface TenantsListResultItemParent {
+  id: string;
+  name: string;
+}
+export const TenantsListResultItemParent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "TenantsListResultItemParent",
+}) as any as S.Schema<TenantsListResultItemParent>;
+
+export interface TenantsListResultItemProfile {
+  businessAddress: string;
+  businessEmail: string;
+  businessName: string;
+  businessPhone: string;
+  externalMetadata: string;
+}
+export const TenantsListResultItemProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    businessAddress: S.String.pipe(T.Body("business_address")),
+    businessEmail: S.String.pipe(T.Body("business_email")),
+    businessName: S.String.pipe(T.Body("business_name")),
+    businessPhone: S.String.pipe(T.Body("business_phone")),
+    externalMetadata: S.String.pipe(T.Body("external_metadata")),
+  }),
+).annotate({
+  identifier: "TenantsListResultItemProfile",
+}) as any as S.Schema<TenantsListResultItemProfile>;
+
+export interface TenantsListResultItem {
+  id: string;
+  createTime: string;
+  meta: TenantsListResultItemMeta;
+  name: string;
+  parent?: TenantsListResultItemParent;
+  profile?: TenantsListResultItemProfile;
+}
+export const TenantsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createTime: S.String.pipe(T.Body("create_time")),
+    meta: TenantsListResultItemMeta,
+    name: S.String,
+    parent: S.optional(TenantsListResultItemParent),
+    profile: S.optional(TenantsListResultItemProfile),
+  }),
+).annotate({
+  identifier: "TenantsListResultItem",
+}) as any as S.Schema<TenantsListResultItem>;
+
+export type TenantsListResultList = TenantsListResultItem[];
+export const TenantsListResultList = /*@__PURE__*/ S.Array(
+  TenantsListResultItem,
+) as any as S.Schema<TenantsListResultList>;
+
+export interface ListTenantsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: TenantsListResultList;
+}
+export const ListTenantsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(TenantsListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListTenantsResponse",
+}) as any as S.Schema<ListTenantsResponse>;
+
+export interface ListTokenPermissionGroupsRequest {
+  /** Filter by the name of the permission group. */
+  name?: string;
+  /** Filter by the scope of the permission group. */
+  scope?: string;
+}
+export const ListTokenPermissionGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.optional(S.String.pipe(T.Query())),
+    scope: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/user/tokens/permission_groups", code: 200 }),
+  ),
+).annotate({
+  identifier: "ListTokenPermissionGroupsRequest",
+}) as any as S.Schema<ListTokenPermissionGroupsRequest>;
+
+export type TokensPermissionGroupsListResultItemCategory =
+  | "developer_platform"
+  | "ai_and_machine_learning"
+  | "dns_and_zones"
+  | (string & {});
+export const TokensPermissionGroupsListResultItemCategory =
+  /*@__PURE__*/ S.String;
+
+export type TokensPermissionGroupsListResultItemScopesItem =
+  | "com.cloudflare.api.account"
+  | "com.cloudflare.api.account.zone"
+  | "com.cloudflare.api.user"
+  | "com.cloudflare.edge.r2.bucket"
+  | (string & {});
+export const TokensPermissionGroupsListResultItemScopesItem =
+  /*@__PURE__*/ S.String;
+
+export type TokensPermissionGroupsListResultItemScopesList =
+  TokensPermissionGroupsListResultItemScopesItem[];
+export const TokensPermissionGroupsListResultItemScopesList =
+  /*@__PURE__*/ S.Array(
+    TokensPermissionGroupsListResultItemScopesItem,
+  ) as any as S.Schema<TokensPermissionGroupsListResultItemScopesList>;
+
+export interface TokensPermissionGroupsListResultItem {
+  /** Public ID. */
+  id?: string;
+  /** Product category that this permission group belongs to. */
+  category?: TokensPermissionGroupsListResultItemCategory;
+  /** Permission Group Name */
+  name?: string;
+  /** Resources to which the Permission Group is scoped */
+  scopes?: TokensPermissionGroupsListResultItemScopesList;
+}
+export const TokensPermissionGroupsListResultItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      category: S.optional(TokensPermissionGroupsListResultItemCategory),
+      name: S.optional(S.String),
+      scopes: S.optional(TokensPermissionGroupsListResultItemScopesList),
+    }),
+).annotate({
+  identifier: "TokensPermissionGroupsListResultItem",
+}) as any as S.Schema<TokensPermissionGroupsListResultItem>;
+
+export type TokensPermissionGroupsListResultList =
+  TokensPermissionGroupsListResultItem[];
+export const TokensPermissionGroupsListResultList = /*@__PURE__*/ S.Array(
+  TokensPermissionGroupsListResultItem,
+) as any as S.Schema<TokensPermissionGroupsListResultList>;
+
+export interface ListTokenPermissionGroupsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: TokensPermissionGroupsListResultList;
+}
+export const ListTokenPermissionGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      TokensPermissionGroupsListResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "ListTokenPermissionGroupsResponse",
+}) as any as S.Schema<ListTokenPermissionGroupsResponse>;
 
 export type TokensListRequestDirection = "asc" | "desc" | (string & {});
 export const TokensListRequestDirection = /*@__PURE__*/ S.String;
 
-export interface TokensListRequest {
+export interface ListTokensRequest {
   /** Direction to order results. */
   direction?: TokensListRequestDirection;
   /** Page number of paginated results. */
@@ -1905,15 +1744,15 @@ export interface TokensListRequest {
   /** Maximum number of results per page. */
   perPage?: number;
 }
-export const TokensListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListTokensRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     direction: S.optional(TokensListRequestDirection.pipe(T.Query())),
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(T.Http({ method: "GET", uri: "/user/tokens", code: 200 })),
 ).annotate({
-  identifier: "TokensListRequest",
-}) as any as S.Schema<TokensListRequest>;
+  identifier: "ListTokensRequest",
+}) as any as S.Schema<ListTokensRequest>;
 
 export type TokensListResultItemConditionRequestIpInList = unknown[];
 export const TokensListResultItemConditionRequestIpInList =
@@ -2129,100 +1968,343 @@ export const TokensListResultList = /*@__PURE__*/ S.Array(
   TokensListResultItem,
 ) as any as S.Schema<TokensListResultList>;
 
-export interface TokensListResponse {
+export interface ListTokensResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TokensListResultList;
 }
-export const TokensListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(TokensListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "TokensListResponse",
-}) as any as S.Schema<TokensListResponse>;
+  identifier: "ListTokensResponse",
+}) as any as S.Schema<ListTokensResponse>;
 
-export interface TokensPermissionGroupsListRequest {
-  /** Filter by the name of the permission group. */
-  name?: string;
-  /** Filter by the scope of the permission group. */
-  scope?: string;
+export type InvitesEditRequestStatus = "accepted" | "rejected" | (string & {});
+export const InvitesEditRequestStatus = /*@__PURE__*/ S.String;
+
+export interface PatchInviteRequest {
+  /** Invite identifier tag. */
+  inviteId: string;
+  /** Status of your response to the invitation (rejected or accepted). */
+  status: InvitesEditRequestStatus;
 }
-export const TokensPermissionGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const PatchInviteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    name: S.optional(S.String.pipe(T.Query())),
-    scope: S.optional(S.String.pipe(T.Query())),
+    inviteId: S.String.pipe(T.Label("invite_id")),
+    status: InvitesEditRequestStatus,
   }).pipe(
-    T.Http({ method: "GET", uri: "/user/tokens/permission_groups", code: 200 }),
+    T.Http({ method: "PATCH", uri: "/user/invites/{invite_id}", code: 200 }),
   ),
 ).annotate({
-  identifier: "TokensPermissionGroupsListRequest",
-}) as any as S.Schema<TokensPermissionGroupsListRequest>;
+  identifier: "PatchInviteRequest",
+}) as any as S.Schema<PatchInviteRequest>;
 
-export type TokensPermissionGroupsListResultItemCategory =
-  | "developer_platform"
-  | "ai_and_machine_learning"
-  | "dns_and_zones"
+export type InvitesEditResponseRolesList = string[];
+export const InvitesEditResponseRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InvitesEditResponseRolesList>;
+
+export type InvitesEditResponseStatus =
+  | "pending"
+  | "accepted"
+  | "rejected"
+  | "expired"
   | (string & {});
-export const TokensPermissionGroupsListResultItemCategory =
-  /*@__PURE__*/ S.String;
+export const InvitesEditResponseStatus = /*@__PURE__*/ S.String;
 
-export type TokensPermissionGroupsListResultItemScopesItem =
-  | "com.cloudflare.api.account"
-  | "com.cloudflare.api.account.zone"
-  | "com.cloudflare.api.user"
-  | "com.cloudflare.edge.r2.bucket"
-  | (string & {});
-export const TokensPermissionGroupsListResultItemScopesItem =
-  /*@__PURE__*/ S.String;
-
-export type TokensPermissionGroupsListResultItemScopesList =
-  TokensPermissionGroupsListResultItemScopesItem[];
-export const TokensPermissionGroupsListResultItemScopesList =
-  /*@__PURE__*/ S.Array(
-    TokensPermissionGroupsListResultItemScopesItem,
-  ) as any as S.Schema<TokensPermissionGroupsListResultItemScopesList>;
-
-export interface TokensPermissionGroupsListResultItem {
-  /** Public ID. */
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchInviteResponse {
+  /** ID of the user to add to the organization. */
+  invitedMemberId: string;
+  /** ID of the organization the user will be added to. */
+  organizationId: string;
+  /** Invite identifier tag. */
   id?: string;
-  /** Product category that this permission group belongs to. */
-  category?: TokensPermissionGroupsListResultItemCategory;
-  /** Permission Group Name */
-  name?: string;
-  /** Resources to which the Permission Group is scoped */
-  scopes?: TokensPermissionGroupsListResultItemScopesList;
+  /** When the invite is no longer active. */
+  expiresOn?: string;
+  /** The email address of the user who created the invite. */
+  invitedBy?: string;
+  /** Email address of the user to add to the organization. */
+  invitedMemberEmail?: string;
+  /** When the invite was sent. */
+  invitedOn?: string;
+  organizationIsEnforcingTwofactor?: boolean;
+  /** Organization name. */
+  organizationName?: string;
+  /** List of role names the membership has for this account. */
+  roles?: InvitesEditResponseRolesList;
+  /** Current status of the invitation. */
+  status?: InvitesEditResponseStatus;
 }
-export const TokensPermissionGroupsListResultItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      category: S.optional(TokensPermissionGroupsListResultItemCategory),
-      name: S.optional(S.String),
-      scopes: S.optional(TokensPermissionGroupsListResultItemScopesList),
-    }),
-).annotate({
-  identifier: "TokensPermissionGroupsListResultItem",
-}) as any as S.Schema<TokensPermissionGroupsListResultItem>;
-
-export type TokensPermissionGroupsListResultList =
-  TokensPermissionGroupsListResultItem[];
-export const TokensPermissionGroupsListResultList = /*@__PURE__*/ S.Array(
-  TokensPermissionGroupsListResultItem,
-) as any as S.Schema<TokensPermissionGroupsListResultList>;
-
-export interface TokensPermissionGroupsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TokensPermissionGroupsListResultList;
-}
-export const TokensPermissionGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const PatchInviteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      TokensPermissionGroupsListResultList.pipe(T.EnvelopePayload()),
+    invitedMemberId: S.String.pipe(T.Body("invited_member_id")),
+    organizationId: S.String.pipe(T.Body("organization_id")),
+    id: S.optional(S.String),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    invitedBy: S.optional(S.String.pipe(T.Body("invited_by"))),
+    invitedMemberEmail: S.optional(
+      S.String.pipe(T.Body("invited_member_email")),
     ),
+    invitedOn: S.optional(S.String.pipe(T.Body("invited_on"))),
+    organizationIsEnforcingTwofactor: S.optional(
+      S.Boolean.pipe(T.Body("organization_is_enforcing_twofactor")),
+    ),
+    organizationName: S.optional(S.String.pipe(T.Body("organization_name"))),
+    roles: S.optional(InvitesEditResponseRolesList),
+    status: S.optional(InvitesEditResponseStatus),
   }),
 ).annotate({
-  identifier: "TokensPermissionGroupsListResponse",
-}) as any as S.Schema<TokensPermissionGroupsListResponse>;
+  identifier: "PatchInviteResponse",
+}) as any as S.Schema<PatchInviteResponse>;
+
+export interface PatchUserRequest {
+  /** The country in which the user lives. */
+  country?: string;
+  /** User's first name */
+  firstName?: string;
+  /** User's last name */
+  lastName?: string;
+  /** User's telephone number */
+  telephone?: string;
+  /** The zipcode or postal code where the user lives. */
+  zipcode?: string;
+}
+export const PatchUserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    country: S.optional(S.String),
+    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
+    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
+    telephone: S.optional(S.String),
+    zipcode: S.optional(S.String),
+  }).pipe(T.Http({ method: "PATCH", uri: "/user", code: 200 })),
+).annotate({
+  identifier: "PatchUserRequest",
+}) as any as S.Schema<PatchUserRequest>;
+
+export type EditResponseBetasList = string[];
+export const EditResponseBetasList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseBetasList>;
+
+export type EditResponseOrganizationsItemPermissionsList = unknown[];
+export const EditResponseOrganizationsItemPermissionsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<EditResponseOrganizationsItemPermissionsList>;
+
+export type EditResponseOrganizationsItemRolesList = string[];
+export const EditResponseOrganizationsItemRolesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseOrganizationsItemRolesList>;
+
+export interface EditResponseOrganizationsItem {
+  /** Identifier */
+  id?: string;
+  /** Organization name. */
+  name?: string;
+  /** Access permissions for this User. */
+  permissions?: EditResponseOrganizationsItemPermissionsList;
+  /** List of roles that a user has within an organization. */
+  roles?: EditResponseOrganizationsItemRolesList;
+  /** Whether the user is a member of the organization or has an invitation pending. */
+  status?: unknown;
+}
+export const EditResponseOrganizationsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+    permissions: S.optional(EditResponseOrganizationsItemPermissionsList),
+    roles: S.optional(EditResponseOrganizationsItemRolesList),
+    status: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "EditResponseOrganizationsItem",
+}) as any as S.Schema<EditResponseOrganizationsItem>;
+
+export type EditResponseOrganizationsList = EditResponseOrganizationsItem[];
+export const EditResponseOrganizationsList = /*@__PURE__*/ S.Array(
+  EditResponseOrganizationsItem,
+) as any as S.Schema<EditResponseOrganizationsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchUserResponse {
+  /** Identifier of the user. */
+  id: string;
+  /** Current email address of the user. */
+  email: string;
+  /** Lists the betas that the user is participating in. */
+  betas?: EditResponseBetasList;
+  /** The country in which the user lives. */
+  country?: string;
+  /** User's first name */
+  firstName?: string;
+  /** Indicates whether user has any business zones */
+  hasBusinessZones?: boolean;
+  /** Indicates whether user has any enterprise zones */
+  hasEnterpriseZones?: boolean;
+  /** Indicates whether user has any pro zones */
+  hasProZones?: boolean;
+  /** User's last name */
+  lastName?: string;
+  organizations?: EditResponseOrganizationsList;
+  /** Indicates whether user has been suspended */
+  suspended?: boolean;
+  /** User's telephone number */
+  telephone?: string;
+  /** Indicates whether two-factor authentication is enabled for the user account. Does not apply to API authentication. */
+  twoFactorAuthenticationEnabled?: boolean;
+  /** Indicates whether two-factor authentication is required by one of the accounts that the user is a member of. */
+  twoFactorAuthenticationLocked?: boolean;
+  /** The zipcode or postal code where the user lives. */
+  zipcode?: string;
+}
+export const PatchUserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    email: S.String,
+    betas: S.optional(EditResponseBetasList),
+    country: S.optional(S.String),
+    firstName: S.optional(S.String.pipe(T.Body("first_name"))),
+    hasBusinessZones: S.optional(S.Boolean.pipe(T.Body("has_business_zones"))),
+    hasEnterpriseZones: S.optional(
+      S.Boolean.pipe(T.Body("has_enterprise_zones")),
+    ),
+    hasProZones: S.optional(S.Boolean.pipe(T.Body("has_pro_zones"))),
+    lastName: S.optional(S.String.pipe(T.Body("last_name"))),
+    organizations: S.optional(EditResponseOrganizationsList),
+    suspended: S.optional(S.Boolean),
+    telephone: S.optional(S.String),
+    twoFactorAuthenticationEnabled: S.optional(
+      S.Boolean.pipe(T.Body("two_factor_authentication_enabled")),
+    ),
+    twoFactorAuthenticationLocked: S.optional(
+      S.Boolean.pipe(T.Body("two_factor_authentication_locked")),
+    ),
+    zipcode: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PatchUserResponse",
+}) as any as S.Schema<PatchUserResponse>;
+
+export type SubscriptionsUpdateRequestFrequency =
+  | "weekly"
+  | "monthly"
+  | "quarterly"
+  | "yearly"
+  | (string & {});
+export const SubscriptionsUpdateRequestFrequency = /*@__PURE__*/ S.String;
+
+export type SubscriptionsUpdateRequestRatePlanId =
+  | "free"
+  | "lite"
+  | "pro"
+  | (string & {});
+export const SubscriptionsUpdateRequestRatePlanId = /*@__PURE__*/ S.String;
+
+export type SubscriptionsUpdateRequestRatePlanSetsList = string[];
+export const SubscriptionsUpdateRequestRatePlanSetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SubscriptionsUpdateRequestRatePlanSetsList>;
+
+export interface SubscriptionsUpdateRequestRatePlan {
+  /** The ID of the rate plan. */
+  id?: SubscriptionsUpdateRequestRatePlanId;
+  /** The currency applied to the rate plan subscription. */
+  currency?: string;
+  /** Whether this rate plan is managed externally from Cloudflare. */
+  externallyManaged?: boolean;
+  /** Whether a rate plan is enterprise-based (or newly adopted term contract). */
+  isContract?: boolean;
+  /** The full name of the rate plan. */
+  publicName?: string;
+  /** The scope that this rate plan applies to. */
+  scope?: string;
+  /** The list of sets this rate plan applies to. Returns array of strings. */
+  sets?: SubscriptionsUpdateRequestRatePlanSetsList;
+}
+export const SubscriptionsUpdateRequestRatePlan = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(SubscriptionsUpdateRequestRatePlanId),
+    currency: S.optional(S.String),
+    externallyManaged: S.optional(S.Boolean.pipe(T.Body("externally_managed"))),
+    isContract: S.optional(S.Boolean.pipe(T.Body("is_contract"))),
+    publicName: S.optional(S.String.pipe(T.Body("public_name"))),
+    scope: S.optional(S.String),
+    sets: S.optional(SubscriptionsUpdateRequestRatePlanSetsList),
+  }),
+).annotate({
+  identifier: "SubscriptionsUpdateRequestRatePlan",
+}) as any as S.Schema<SubscriptionsUpdateRequestRatePlan>;
+
+export interface PutSubscriptionRequest {
+  /** Subscription identifier tag. */
+  identifier: string;
+  /** How often the subscription is renewed automatically. */
+  frequency?: SubscriptionsUpdateRequestFrequency;
+  /** The rate plan applied to the subscription. */
+  ratePlan?: SubscriptionsUpdateRequestRatePlan;
+}
+export const PutSubscriptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identifier: S.String.pipe(T.Label()),
+    frequency: S.optional(SubscriptionsUpdateRequestFrequency),
+    ratePlan: S.optional(
+      SubscriptionsUpdateRequestRatePlan.pipe(T.Body("rate_plan")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/user/subscriptions/{identifier}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PutSubscriptionRequest",
+}) as any as S.Schema<PutSubscriptionRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PutSubscriptionResponse {
+  unknown: unknown;
+  string: unknown;
+}
+export const PutSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    unknown: S.Unknown,
+    string: S.Unknown,
+  }),
+).annotate({
+  identifier: "PutSubscriptionResponse",
+}) as any as S.Schema<PutSubscriptionResponse>;
+
+export interface PutTokenValueRequest {
+  /** Token identifier tag. */
+  tokenId: string;
+  body: unknown;
+}
+export const PutTokenValueRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    tokenId: S.String.pipe(T.Label("token_id")),
+    body: S.Unknown,
+  }).pipe(
+    T.Http({ method: "PUT", uri: "/user/tokens/{token_id}/value", code: 200 }),
+  ),
+).annotate({
+  identifier: "PutTokenValueRequest",
+}) as any as S.Schema<PutTokenValueRequest>;
+
+export interface PutTokenValueResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const PutTokenValueResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "PutTokenValueResponse",
+}) as any as S.Schema<PutTokenValueResponse>;
 
 export type TokensUpdateRequestPoliciesItemEffect =
   | "allow"
@@ -2392,7 +2474,7 @@ export type TokensUpdateRequestStatus =
   | (string & {});
 export const TokensUpdateRequestStatus = /*@__PURE__*/ S.String;
 
-export interface TokensUpdateRequest {
+export interface UpdateTokenRequest {
   /** Token identifier tag. */
   tokenId: string;
   /** Token name. */
@@ -2407,7 +2489,7 @@ export interface TokensUpdateRequest {
   /** Status of the token. */
   status?: TokensUpdateRequestStatus;
 }
-export const TokensUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tokenId: S.String.pipe(T.Label("token_id")),
     name: S.String,
@@ -2418,8 +2500,8 @@ export const TokensUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(TokensUpdateRequestStatus),
   }).pipe(T.Http({ method: "PUT", uri: "/user/tokens/{token_id}", code: 200 })),
 ).annotate({
-  identifier: "TokensUpdateRequest",
-}) as any as S.Schema<TokensUpdateRequest>;
+  identifier: "UpdateTokenRequest",
+}) as any as S.Schema<UpdateTokenRequest>;
 
 export type TokensUpdateResponseConditionRequestIpInList = unknown[];
 export const TokensUpdateResponseConditionRequestIpInList =
@@ -2593,7 +2675,7 @@ export type TokensUpdateResponseStatus =
 export const TokensUpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TokensUpdateResponse {
+export interface UpdateTokenResponse {
   /** Token identifier tag. */
   id?: string;
   condition?: TokensUpdateResponseCondition;
@@ -2614,7 +2696,7 @@ export interface TokensUpdateResponse {
   /** Status of the token. */
   status?: TokensUpdateResponseStatus;
 }
-export const TokensUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     condition: S.optional(TokensUpdateResponseCondition),
@@ -2628,45 +2710,17 @@ export const TokensUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(TokensUpdateResponseStatus),
   }),
 ).annotate({
-  identifier: "TokensUpdateResponse",
-}) as any as S.Schema<TokensUpdateResponse>;
+  identifier: "UpdateTokenResponse",
+}) as any as S.Schema<UpdateTokenResponse>;
 
-export interface TokensValueUpdateRequest {
-  /** Token identifier tag. */
-  tokenId: string;
-  body: unknown;
-}
-export const TokensValueUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    tokenId: S.String.pipe(T.Label("token_id")),
-    body: S.Unknown,
-  }).pipe(
-    T.Http({ method: "PUT", uri: "/user/tokens/{token_id}/value", code: 200 }),
-  ),
-).annotate({
-  identifier: "TokensValueUpdateRequest",
-}) as any as S.Schema<TokensValueUpdateRequest>;
-
-export interface TokensValueUpdateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const TokensValueUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "TokensValueUpdateResponse",
-}) as any as S.Schema<TokensValueUpdateResponse>;
-
-export interface TokensVerifyRequest {}
-export const TokensVerifyRequest = /*@__PURE__*/ S.suspend(() =>
+export interface VerifyTokenRequest {}
+export const VerifyTokenRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}).pipe(
     T.Http({ method: "GET", uri: "/user/tokens/verify", code: 200 }),
   ),
 ).annotate({
-  identifier: "TokensVerifyRequest",
-}) as any as S.Schema<TokensVerifyRequest>;
+  identifier: "VerifyTokenRequest",
+}) as any as S.Schema<VerifyTokenRequest>;
 
 export type TokensVerifyResponseStatus =
   | "active"
@@ -2676,7 +2730,7 @@ export type TokensVerifyResponseStatus =
 export const TokensVerifyResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TokensVerifyResponse {
+export interface VerifyTokenResponse {
   /** Token identifier tag. */
   id: string;
   /** Status of the token. */
@@ -2686,7 +2740,7 @@ export interface TokensVerifyResponse {
   /** The time before which the token MUST NOT be accepted for processing. */
   notBefore?: string;
 }
-export const TokensVerifyResponse = /*@__PURE__*/ S.suspend(() =>
+export const VerifyTokenResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: TokensVerifyResponseStatus,
@@ -2694,327 +2748,362 @@ export const TokensVerifyResponse = /*@__PURE__*/ S.suspend(() =>
     notBefore: S.optional(S.String.pipe(T.Body("not_before"))),
   }),
 ).annotate({
-  identifier: "TokensVerifyResponse",
-}) as any as S.Schema<TokensVerifyResponse>;
+  identifier: "VerifyTokenResponse",
+}) as any as S.Schema<VerifyTokenResponse>;
 
-export type AuditLogsListError = CloudflareOpError;
-/** Gets a list of audit logs for a user account. Can be filtered by who made the change, on which zone, and the timeframe of the change. */
-export const auditLogsList: API.OperationMethod<
-  AuditLogsListRequest,
-  AuditLogsListResponse,
-  AuditLogsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AuditLogsListRequest,
-  output: AuditLogsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type BillingHistoryListError = CloudflareOpError;
-/** Accesses your billing history object. */
-export const billingHistoryList: API.OperationMethod<
-  BillingHistoryListRequest,
-  BillingHistoryListResponse,
-  BillingHistoryListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingHistoryListRequest,
-  output: BillingHistoryListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type BillingProfileGetError = CloudflareOpError;
-/** Accesses your billing profile object. */
-export const billingProfileGet: API.OperationMethod<
-  BillingProfileGetRequest,
-  BillingProfileGetResponse,
-  BillingProfileGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingProfileGetRequest,
-  output: BillingProfileGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type EditError = CloudflareOpError;
-/** Edit part of your user details. */
-export const edit: API.OperationMethod<
-  EditRequest,
-  EditResponse,
-  EditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EditRequest,
-  output: EditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GetError = CloudflareOpError;
-/** Retrieves detailed information about the currently authenticated user, including email, name, and account memberships. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type InvitesEditError = CloudflareOpError;
-/** Responds to an invitation. */
-export const invitesEdit: API.OperationMethod<
-  InvitesEditRequest,
-  InvitesEditResponse,
-  InvitesEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvitesEditRequest,
-  output: InvitesEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type InvitesGetError = CloudflareOpError;
-/** Gets the details of an invitation. */
-export const invitesGet: API.OperationMethod<
-  InvitesGetRequest,
-  InvitesGetResponse,
-  InvitesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvitesGetRequest,
-  output: InvitesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type InvitesListError = CloudflareOpError;
-/** Lists all invitations associated with my user. */
-export const invitesList: API.OperationMethod<
-  InvitesListRequest,
-  InvitesListResponse,
-  InvitesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvitesListRequest,
-  output: InvitesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type OrganizationsDeleteError = CloudflareOpError;
-/** Removes association to an organization. */
-export const organizationsDelete: API.OperationMethod<
-  OrganizationsDeleteRequest,
-  OrganizationsDeleteResponse,
-  OrganizationsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrganizationsDeleteRequest,
-  output: OrganizationsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type OrganizationsGetError = CloudflareOpError;
-/** Gets a specific organization the user is associated with. */
-export const organizationsGet: API.OperationMethod<
-  OrganizationsGetRequest,
-  OrganizationsGetResponse,
-  OrganizationsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrganizationsGetRequest,
-  output: OrganizationsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type OrganizationsListError = CloudflareOpError;
-/** Lists organizations the user is associated with. */
-export const organizationsList: API.OperationMethod<
-  OrganizationsListRequest,
-  OrganizationsListResponse,
-  OrganizationsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrganizationsListRequest,
-  output: OrganizationsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SubscriptionsDeleteError = CloudflareOpError;
-/** Deletes a user's subscription. */
-export const subscriptionsDelete: API.OperationMethod<
-  SubscriptionsDeleteRequest,
-  SubscriptionsDeleteResponse,
-  SubscriptionsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsDeleteRequest,
-  output: SubscriptionsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SubscriptionsGetError = CloudflareOpError;
-/** Lists all of a user's subscriptions. */
-export const subscriptionsGet: API.OperationMethod<
-  SubscriptionsGetRequest,
-  SubscriptionsGetResponse,
-  SubscriptionsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsGetRequest,
-  output: SubscriptionsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SubscriptionsUpdateError = CloudflareOpError;
-/** Updates a user's subscriptions. */
-export const subscriptionsUpdate: API.OperationMethod<
-  SubscriptionsUpdateRequest,
-  SubscriptionsUpdateResponse,
-  SubscriptionsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubscriptionsUpdateRequest,
-  output: SubscriptionsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type TenantsListError = CloudflareOpError;
-/** Retrieves list of tenants the authenticated user / method has access to. */
-export const tenantsList: API.OperationMethod<
-  TenantsListRequest,
-  TenantsListResponse,
-  TenantsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: TenantsListRequest,
-  output: TenantsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type TokensCreateError = CloudflareOpError;
+export type CreateTokenError =
+  | InvalidRoute
+  | InvalidTokenName
+  | PermissionGroupNotFound
+  | CloudflareOpError;
 /** Create a new access token. */
-export const tokensCreate: API.OperationMethod<
-  TokensCreateRequest,
-  TokensCreateResponse,
-  TokensCreateError,
+export const createToken: API.OperationMethod<
+  CreateTokenRequest,
+  CreateTokenResponse,
+  CreateTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TokensCreateRequest,
-  output: TokensCreateResponse,
+  input: CreateTokenRequest,
+  output: CreateTokenResponse,
+  errors: [
+    InvalidRoute,
+    InvalidTokenName,
+    PermissionGroupNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteOrganizationError = CloudflareOpError;
+/** Removes association to an organization. */
+export const deleteOrganization: API.OperationMethod<
+  DeleteOrganizationRequest,
+  DeleteOrganizationResponse,
+  DeleteOrganizationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteOrganizationRequest,
+  output: DeleteOrganizationResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type TokensDeleteError = CloudflareOpError;
+export type DeleteSubscriptionError = CloudflareOpError;
+/** Deletes a user's subscription. */
+export const deleteSubscription: API.OperationMethod<
+  DeleteSubscriptionRequest,
+  DeleteSubscriptionResponse,
+  DeleteSubscriptionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSubscriptionRequest,
+  output: DeleteSubscriptionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteTokenError =
+  | InvalidRoute
+  | MethodNotAllowed
+  | TokenNotFound
+  | CloudflareOpError;
 /** Destroy a token. */
-export const tokensDelete: API.OperationMethod<
-  TokensDeleteRequest,
-  TokensDeleteResponse,
-  TokensDeleteError,
+export const deleteToken: API.OperationMethod<
+  DeleteTokenRequest,
+  DeleteTokenResponse,
+  DeleteTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TokensDeleteRequest,
-  output: TokensDeleteResponse,
+  input: DeleteTokenRequest,
+  output: DeleteTokenResponse,
+  errors: [
+    InvalidRoute,
+    MethodNotAllowed,
+    TokenNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetBillingProfileError = CloudflareOpError;
+/** Accesses your billing profile object. */
+export const getBillingProfile: API.OperationMethod<
+  GetBillingProfileRequest,
+  GetBillingProfileResponse,
+  GetBillingProfileError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBillingProfileRequest,
+  output: GetBillingProfileResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type TokensGetError = CloudflareOpError;
+export type GetInviteError = CloudflareOpError;
+/** Gets the details of an invitation. */
+export const getInvite: API.OperationMethod<
+  GetInviteRequest,
+  GetInviteResponse,
+  GetInviteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetInviteRequest,
+  output: GetInviteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetOrganizationError = CloudflareOpError;
+/** Gets a specific organization the user is associated with. */
+export const getOrganization: API.OperationMethod<
+  GetOrganizationRequest,
+  GetOrganizationResponse,
+  GetOrganizationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOrganizationRequest,
+  output: GetOrganizationResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSubscriptionError = CloudflareOpError;
+/** Lists all of a user's subscriptions. */
+export const getSubscription: API.OperationMethod<
+  GetSubscriptionRequest,
+  GetSubscriptionResponse,
+  GetSubscriptionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSubscriptionRequest,
+  output: GetSubscriptionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetTokenError = InvalidRoute | TokenNotFound | CloudflareOpError;
 /** Get information about a specific token. */
-export const tokensGet: API.OperationMethod<
-  TokensGetRequest,
-  TokensGetResponse,
-  TokensGetError,
+export const getToken: API.OperationMethod<
+  GetTokenRequest,
+  GetTokenResponse,
+  GetTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TokensGetRequest,
-  output: TokensGetResponse,
+  input: GetTokenRequest,
+  output: GetTokenResponse,
+  errors: [InvalidRoute, TokenNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetUserError = CloudflareOpError;
+/** Retrieves detailed information about the currently authenticated user, including email, name, and account memberships. */
+export const getUser: API.OperationMethod<
+  GetUserRequest,
+  GetUserResponse,
+  GetUserError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetUserRequest,
+  output: GetUserResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type TokensListError = CloudflareOpError;
-/** List all access tokens you created. */
-export const tokensList: API.OperationMethod<
-  TokensListRequest,
-  TokensListResponse,
-  TokensListError,
+export type ListAuditLogsError = CloudflareOpError;
+/** Gets a list of audit logs for a user account. Can be filtered by who made the change, on which zone, and the timeframe of the change. */
+export const listAuditLogs: API.OperationMethod<
+  ListAuditLogsRequest,
+  ListAuditLogsResponse,
+  ListAuditLogsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TokensListRequest,
-  output: TokensListResponse,
+  input: ListAuditLogsRequest,
+  output: ListAuditLogsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type TokensPermissionGroupsListError = CloudflareOpError;
+export type ListBillingHistoriesError = CloudflareOpError;
+/** Accesses your billing history object. */
+export const listBillingHistories: API.OperationMethod<
+  ListBillingHistoriesRequest,
+  ListBillingHistoriesResponse,
+  ListBillingHistoriesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListBillingHistoriesRequest,
+  output: ListBillingHistoriesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListInvitesError = CloudflareOpError;
+/** Lists all invitations associated with my user. */
+export const listInvites: API.OperationMethod<
+  ListInvitesRequest,
+  ListInvitesResponse,
+  ListInvitesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListInvitesRequest,
+  output: ListInvitesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListOrganizationsError = CloudflareOpError;
+/** Lists organizations the user is associated with. */
+export const listOrganizations: API.OperationMethod<
+  ListOrganizationsRequest,
+  ListOrganizationsResponse,
+  ListOrganizationsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOrganizationsRequest,
+  output: ListOrganizationsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListTenantsError = CloudflareOpError;
+/** Retrieves list of tenants the authenticated user / method has access to. */
+export const listTenants: API.OperationMethod<
+  ListTenantsRequest,
+  ListTenantsResponse,
+  ListTenantsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListTenantsRequest,
+  output: ListTenantsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListTokenPermissionGroupsError = CloudflareOpError;
 /** Find all available permission groups for API Tokens. */
-export const tokensPermissionGroupsList: API.OperationMethod<
-  TokensPermissionGroupsListRequest,
-  TokensPermissionGroupsListResponse,
-  TokensPermissionGroupsListError,
+export const listTokenPermissionGroups: API.OperationMethod<
+  ListTokenPermissionGroupsRequest,
+  ListTokenPermissionGroupsResponse,
+  ListTokenPermissionGroupsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TokensPermissionGroupsListRequest,
-  output: TokensPermissionGroupsListResponse,
+  input: ListTokenPermissionGroupsRequest,
+  output: ListTokenPermissionGroupsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type TokensUpdateError = CloudflareOpError;
-/** Update an existing token. */
-export const tokensUpdate: API.OperationMethod<
-  TokensUpdateRequest,
-  TokensUpdateResponse,
-  TokensUpdateError,
+export type ListTokensError = CloudflareOpError;
+/** List all access tokens you created. */
+export const listTokens: API.OperationMethod<
+  ListTokensRequest,
+  ListTokensResponse,
+  ListTokensError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TokensUpdateRequest,
-  output: TokensUpdateResponse,
+  input: ListTokensRequest,
+  output: ListTokensResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type TokensValueUpdateError = CloudflareOpError;
+export type PatchInviteError = CloudflareOpError;
+/** Responds to an invitation. */
+export const patchInvite: API.OperationMethod<
+  PatchInviteRequest,
+  PatchInviteResponse,
+  PatchInviteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchInviteRequest,
+  output: PatchInviteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchUserError = CloudflareOpError;
+/** Edit part of your user details. */
+export const patchUser: API.OperationMethod<
+  PatchUserRequest,
+  PatchUserResponse,
+  PatchUserError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchUserRequest,
+  output: PatchUserResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutSubscriptionError = CloudflareOpError;
+/** Updates a user's subscriptions. */
+export const putSubscription: API.OperationMethod<
+  PutSubscriptionRequest,
+  PutSubscriptionResponse,
+  PutSubscriptionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutSubscriptionRequest,
+  output: PutSubscriptionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutTokenValueError =
+  | InvalidRoute
+  | TokenNotFound
+  | CloudflareOpError;
 /** Roll the token secret. */
-export const tokensValueUpdate: API.OperationMethod<
-  TokensValueUpdateRequest,
-  TokensValueUpdateResponse,
-  TokensValueUpdateError,
+export const putTokenValue: API.OperationMethod<
+  PutTokenValueRequest,
+  PutTokenValueResponse,
+  PutTokenValueError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TokensValueUpdateRequest,
-  output: TokensValueUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PutTokenValueRequest,
+  output: PutTokenValueResponse,
+  errors: [InvalidRoute, TokenNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type TokensVerifyError = CloudflareOpError;
-/** Test whether a token works. */
-export const tokensVerify: API.OperationMethod<
-  TokensVerifyRequest,
-  TokensVerifyResponse,
-  TokensVerifyError,
+export type UpdateTokenError =
+  | InvalidRoute
+  | MethodNotAllowed
+  | TokenNotFound
+  | PermissionGroupNotFound
+  | CloudflareOpError;
+/** Update an existing token. */
+export const updateToken: API.OperationMethod<
+  UpdateTokenRequest,
+  UpdateTokenResponse,
+  UpdateTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TokensVerifyRequest,
-  output: TokensVerifyResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateTokenRequest,
+  output: UpdateTokenResponse,
+  errors: [
+    InvalidRoute,
+    MethodNotAllowed,
+    TokenNotFound,
+    PermissionGroupNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type VerifyTokenError = Forbidden | CloudflareOpError;
+/** Test whether a token works. */
+export const verifyToken: API.OperationMethod<
+  VerifyTokenRequest,
+  VerifyTokenResponse,
+  VerifyTokenError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: VerifyTokenRequest,
+  output: VerifyTokenResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

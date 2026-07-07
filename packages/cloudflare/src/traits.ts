@@ -58,13 +58,17 @@ export const errorMatchersSymbol = Symbol.for(
 /**
  * One wire-matching rule for a typed error class. A matcher matches a v4
  * envelope failure when every present field matches: `code` equals the
- * envelope error's code, `status` equals the HTTP status, and
- * `message.includes` is a case-insensitive substring of the error message.
+ * envelope error's code, `status` equals the HTTP status, and `message`
+ * either equals the error message (string form) or satisfies
+ * `includes` (substring) / `matches` (regex). A matcher with no fields
+ * matches nothing. Semantics mirror the distilled cloudflare SDK.
  */
 export interface ErrorMatcher {
   readonly code?: number;
   readonly status?: number;
-  readonly message?: { readonly includes: string };
+  readonly message?:
+    | string
+    | { readonly includes?: string; readonly matches?: string };
 }
 
 /**

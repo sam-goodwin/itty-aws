@@ -9,7 +9,45 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface CreateRequest {
+export class CustomNameserverAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CustomNameserverAlreadyExists>()(
+    "CustomNameserverAlreadyExists",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ message: { includes: "already exist" } }],
+) {}
+
+export class CustomNameserverNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CustomNameserverNotFound>()("CustomNameserverNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export class CustomNameserversNotEnabled extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CustomNameserversNotEnabled>()(
+    "CustomNameserversNotEnabled",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 1002, message: { includes: "not enabled" } }],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export interface CreateCustomNameserverRequest {
   /** Account identifier tag. */
   accountId: string;
   /** The FQDN of the name server. */
@@ -17,7 +55,7 @@ export interface CreateRequest {
   /** The number of the set that this name server belongs to. */
   nsSet?: number;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     nsName: S.String.pipe(T.Body("ns_name")),
@@ -29,7 +67,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreateCustomNameserverRequest",
+}) as any as S.Schema<CreateCustomNameserverRequest>;
 
 export type CreateResponseDnsRecordsItemType = "A" | "AAAA" | (string & {});
 export const CreateResponseDnsRecordsItemType = /*@__PURE__*/ S.String;
@@ -62,7 +102,7 @@ export type CreateResponseStatus =
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
+export interface CreateCustomNameserverResponse {
   /** A and AAAA records associated with the nameserver. */
   dnsRecords: CreateResponseDnsRecordsList;
   /** The FQDN of the name server. */
@@ -74,7 +114,7 @@ export interface CreateResponse {
   /** The number of the set that this name server belongs to. */
   nsSet?: number;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dnsRecords: CreateResponseDnsRecordsList.pipe(T.Body("dns_records")),
     nsName: S.String.pipe(T.Body("ns_name")),
@@ -82,15 +122,17 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
     zoneTag: S.String.pipe(T.Body("zone_tag")),
     nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
   }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+).annotate({
+  identifier: "CreateCustomNameserverResponse",
+}) as any as S.Schema<CreateCustomNameserverResponse>;
 
-export interface DeleteRequest {
+export interface DeleteCustomNameserverRequest {
   /** Account identifier tag. */
   accountId: string;
   /** The FQDN of the name server. */
   customNsId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     customNsId: S.String.pipe(T.Label("custom_ns_id")),
@@ -101,28 +143,32 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeleteCustomNameserverRequest",
+}) as any as S.Schema<DeleteCustomNameserverRequest>;
 
 export type DeleteResultList = string[];
 export const DeleteResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteResultList>;
 
-export interface DeleteResponse {
+export interface DeleteCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DeleteResultList;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DeleteResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+).annotate({
+  identifier: "DeleteCustomNameserverResponse",
+}) as any as S.Schema<DeleteCustomNameserverResponse>;
 
-export interface GetRequest {
+export interface GetCustomNameserverRequest {
   /** Account identifier tag. */
   accountId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -132,7 +178,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetCustomNameserverRequest",
+}) as any as S.Schema<GetCustomNameserverRequest>;
 
 export type GetResultItemDnsRecordsItemType = "A" | "AAAA" | (string & {});
 export const GetResultItemDnsRecordsItemType = /*@__PURE__*/ S.String;
@@ -191,54 +239,84 @@ export const GetResultList = /*@__PURE__*/ S.Array(
   GetResultItem,
 ) as any as S.Schema<GetResultList>;
 
-export interface GetResponse {
+export interface GetCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GetResultList;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GetResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetCustomNameserverResponse",
+}) as any as S.Schema<GetCustomNameserverResponse>;
 
-export type CreateError = CloudflareOpError;
+export type CreateCustomNameserverError =
+  | CustomNameserversNotEnabled
+  | CustomNameserverAlreadyExists
+  | Forbidden
+  | CloudflareOpError;
 /** Adds a custom nameserver to the account for use as a vanity nameserver on zones. */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createCustomNameserver: API.OperationMethod<
+  CreateCustomNameserverRequest,
+  CreateCustomNameserverResponse,
+  CreateCustomNameserverError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateCustomNameserverRequest,
+  output: CreateCustomNameserverResponse,
+  errors: [
+    CustomNameserversNotEnabled,
+    CustomNameserverAlreadyExists,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type DeleteError = CloudflareOpError;
+export type DeleteCustomNameserverError =
+  | CustomNameserversNotEnabled
+  | CustomNameserverNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Removes a custom nameserver from the account. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteCustomNameserver: API.OperationMethod<
+  DeleteCustomNameserverRequest,
+  DeleteCustomNameserverResponse,
+  DeleteCustomNameserverError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteCustomNameserverRequest,
+  output: DeleteCustomNameserverResponse,
+  errors: [
+    CustomNameserversNotEnabled,
+    CustomNameserverNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
+export type GetCustomNameserverError =
+  | CustomNameserversNotEnabled
+  | Forbidden
+  | CloudflareOpError;
 /** List an account's custom nameservers. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getCustomNameserver: API.OperationMethod<
+  GetCustomNameserverRequest,
+  GetCustomNameserverResponse,
+  GetCustomNameserverError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetCustomNameserverRequest,
+  output: GetCustomNameserverResponse,
+  errors: [
+    CustomNameserversNotEnabled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

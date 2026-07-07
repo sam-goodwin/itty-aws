@@ -9,6 +9,72 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class CatalogSyncNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CatalogSyncNotFound>()("CatalogSyncNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export class CloudIntegrationNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CloudIntegrationNotFound>()("CloudIntegrationNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export class FeatureNotEnabled extends T.applyErrorMatchers(
+  S.TaggedErrorClass<FeatureNotEnabled>()("FeatureNotEnabled", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1012, status: 403 }],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class OnRampNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<OnRampNotFound>()("OnRampNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export interface ApplyOnRampRequest {
+  accountId: string;
+  onrampId: string;
+}
+export const ApplyOnRampRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    onrampId: S.String.pipe(T.Label("onramp_id")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/apply",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ApplyOnRampRequest",
+}) as any as S.Schema<ApplyOnRampRequest>;
+
+export interface ApplyOnRampResponse {}
+export const ApplyOnRampResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ApplyOnRampResponse",
+}) as any as S.Schema<ApplyOnRampResponse>;
+
 export type CatalogSyncsCreateRequestDestinationType =
   | "NONE"
   | "ZERO_TRUST_LIST"
@@ -21,7 +87,7 @@ export type CatalogSyncsCreateRequestUpdateMode =
   | (string & {});
 export const CatalogSyncsCreateRequestUpdateMode = /*@__PURE__*/ S.String;
 
-export interface CatalogSyncsCreateRequest {
+export interface CreateCatalogSyncRequest {
   accountId: string;
   forwarded?: string;
   destinationType: CatalogSyncsCreateRequestDestinationType;
@@ -30,7 +96,7 @@ export interface CatalogSyncsCreateRequest {
   description?: string;
   policy?: string;
 }
-export const CatalogSyncsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     forwarded: S.optional(S.String.pipe(T.Header())),
@@ -49,8 +115,8 @@ export const CatalogSyncsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CatalogSyncsCreateRequest",
-}) as any as S.Schema<CatalogSyncsCreateRequest>;
+  identifier: "CreateCatalogSyncRequest",
+}) as any as S.Schema<CreateCatalogSyncRequest>;
 
 export type CatalogSyncsCreateResponseDestinationType =
   | "NONE"
@@ -73,7 +139,7 @@ export const CatalogSyncsCreateResponseErrorsMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<CatalogSyncsCreateResponseErrorsMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CatalogSyncsCreateResponse {
+export interface CreateCatalogSyncResponse {
   id: string;
   description: string;
   destinationId: string;
@@ -87,7 +153,7 @@ export interface CatalogSyncsCreateResponse {
   lastAttemptedUpdateAt?: string;
   lastSuccessfulUpdateAt?: string;
 }
-export const CatalogSyncsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     description: S.String,
@@ -113,534 +179,8 @@ export const CatalogSyncsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "CatalogSyncsCreateResponse",
-}) as any as S.Schema<CatalogSyncsCreateResponse>;
-
-export interface CatalogSyncsDeleteRequest {
-  accountId: string;
-  syncId: string;
-  deleteDestination?: boolean;
-}
-export const CatalogSyncsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    syncId: S.String.pipe(T.Label("sync_id")),
-    deleteDestination: S.optional(
-      S.Boolean.pipe(T.Query("delete_destination")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CatalogSyncsDeleteRequest",
-}) as any as S.Schema<CatalogSyncsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CatalogSyncsDeleteResponse {
-  id: string;
-}
-export const CatalogSyncsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "CatalogSyncsDeleteResponse",
-}) as any as S.Schema<CatalogSyncsDeleteResponse>;
-
-export type CatalogSyncsEditRequestUpdateMode =
-  | "AUTO"
-  | "MANUAL"
-  | (string & {});
-export const CatalogSyncsEditRequestUpdateMode = /*@__PURE__*/ S.String;
-
-export interface CatalogSyncsEditRequest {
-  accountId: string;
-  syncId: string;
-  description?: string;
-  name?: string;
-  policy?: string;
-  updateMode?: CatalogSyncsEditRequestUpdateMode;
-}
-export const CatalogSyncsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    syncId: S.String.pipe(T.Label("sync_id")),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
-    policy: S.optional(S.String),
-    updateMode: S.optional(
-      CatalogSyncsEditRequestUpdateMode.pipe(T.Body("update_mode")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CatalogSyncsEditRequest",
-}) as any as S.Schema<CatalogSyncsEditRequest>;
-
-export type CatalogSyncsEditResponseDestinationType =
-  | "NONE"
-  | "ZERO_TRUST_LIST"
-  | (string & {});
-export const CatalogSyncsEditResponseDestinationType = /*@__PURE__*/ S.String;
-
-export type CatalogSyncsEditResponseUpdateMode =
-  | "AUTO"
-  | "MANUAL"
-  | (string & {});
-export const CatalogSyncsEditResponseUpdateMode = /*@__PURE__*/ S.String;
-
-export type CatalogSyncsEditResponseErrorsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CatalogSyncsEditResponseErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CatalogSyncsEditResponseErrorsMap>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CatalogSyncsEditResponse {
-  id: string;
-  description: string;
-  destinationId: string;
-  destinationType: CatalogSyncsEditResponseDestinationType;
-  lastUserUpdateAt: string;
-  name: string;
-  policy: string;
-  updateMode: CatalogSyncsEditResponseUpdateMode;
-  errors?: CatalogSyncsEditResponseErrorsMap;
-  includesDiscoveriesUntil?: string;
-  lastAttemptedUpdateAt?: string;
-  lastSuccessfulUpdateAt?: string;
-}
-export const CatalogSyncsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.String,
-    destinationId: S.String.pipe(T.Body("destination_id")),
-    destinationType: CatalogSyncsEditResponseDestinationType.pipe(
-      T.Body("destination_type"),
-    ),
-    lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
-    name: S.String,
-    policy: S.String,
-    updateMode: CatalogSyncsEditResponseUpdateMode.pipe(T.Body("update_mode")),
-    errors: S.optional(CatalogSyncsEditResponseErrorsMap),
-    includesDiscoveriesUntil: S.optional(
-      S.String.pipe(T.Body("includes_discoveries_until")),
-    ),
-    lastAttemptedUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_attempted_update_at")),
-    ),
-    lastSuccessfulUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_successful_update_at")),
-    ),
-  }),
-).annotate({
-  identifier: "CatalogSyncsEditResponse",
-}) as any as S.Schema<CatalogSyncsEditResponse>;
-
-export interface CatalogSyncsGetRequest {
-  accountId: string;
-  syncId: string;
-}
-export const CatalogSyncsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    syncId: S.String.pipe(T.Label("sync_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CatalogSyncsGetRequest",
-}) as any as S.Schema<CatalogSyncsGetRequest>;
-
-export type CatalogSyncsGetResponseDestinationType =
-  | "NONE"
-  | "ZERO_TRUST_LIST"
-  | (string & {});
-export const CatalogSyncsGetResponseDestinationType = /*@__PURE__*/ S.String;
-
-export type CatalogSyncsGetResponseUpdateMode =
-  | "AUTO"
-  | "MANUAL"
-  | (string & {});
-export const CatalogSyncsGetResponseUpdateMode = /*@__PURE__*/ S.String;
-
-export type CatalogSyncsGetResponseErrorsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CatalogSyncsGetResponseErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CatalogSyncsGetResponseErrorsMap>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CatalogSyncsGetResponse {
-  id: string;
-  description: string;
-  destinationId: string;
-  destinationType: CatalogSyncsGetResponseDestinationType;
-  lastUserUpdateAt: string;
-  name: string;
-  policy: string;
-  updateMode: CatalogSyncsGetResponseUpdateMode;
-  errors?: CatalogSyncsGetResponseErrorsMap;
-  includesDiscoveriesUntil?: string;
-  lastAttemptedUpdateAt?: string;
-  lastSuccessfulUpdateAt?: string;
-}
-export const CatalogSyncsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.String,
-    destinationId: S.String.pipe(T.Body("destination_id")),
-    destinationType: CatalogSyncsGetResponseDestinationType.pipe(
-      T.Body("destination_type"),
-    ),
-    lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
-    name: S.String,
-    policy: S.String,
-    updateMode: CatalogSyncsGetResponseUpdateMode.pipe(T.Body("update_mode")),
-    errors: S.optional(CatalogSyncsGetResponseErrorsMap),
-    includesDiscoveriesUntil: S.optional(
-      S.String.pipe(T.Body("includes_discoveries_until")),
-    ),
-    lastAttemptedUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_attempted_update_at")),
-    ),
-    lastSuccessfulUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_successful_update_at")),
-    ),
-  }),
-).annotate({
-  identifier: "CatalogSyncsGetResponse",
-}) as any as S.Schema<CatalogSyncsGetResponse>;
-
-export interface CatalogSyncsListRequest {
-  accountId: string;
-}
-export const CatalogSyncsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CatalogSyncsListRequest",
-}) as any as S.Schema<CatalogSyncsListRequest>;
-
-export type CatalogSyncsListResultItemDestinationType =
-  | "NONE"
-  | "ZERO_TRUST_LIST"
-  | (string & {});
-export const CatalogSyncsListResultItemDestinationType = /*@__PURE__*/ S.String;
-
-export type CatalogSyncsListResultItemUpdateMode =
-  | "AUTO"
-  | "MANUAL"
-  | (string & {});
-export const CatalogSyncsListResultItemUpdateMode = /*@__PURE__*/ S.String;
-
-export type CatalogSyncsListResultItemErrorsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CatalogSyncsListResultItemErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CatalogSyncsListResultItemErrorsMap>;
-
-export interface CatalogSyncsListResultItem {
-  id: string;
-  description: string;
-  destinationId: string;
-  destinationType: CatalogSyncsListResultItemDestinationType;
-  lastUserUpdateAt: string;
-  name: string;
-  policy: string;
-  updateMode: CatalogSyncsListResultItemUpdateMode;
-  errors?: CatalogSyncsListResultItemErrorsMap;
-  includesDiscoveriesUntil?: string;
-  lastAttemptedUpdateAt?: string;
-  lastSuccessfulUpdateAt?: string;
-}
-export const CatalogSyncsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.String,
-    destinationId: S.String.pipe(T.Body("destination_id")),
-    destinationType: CatalogSyncsListResultItemDestinationType.pipe(
-      T.Body("destination_type"),
-    ),
-    lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
-    name: S.String,
-    policy: S.String,
-    updateMode: CatalogSyncsListResultItemUpdateMode.pipe(
-      T.Body("update_mode"),
-    ),
-    errors: S.optional(CatalogSyncsListResultItemErrorsMap),
-    includesDiscoveriesUntil: S.optional(
-      S.String.pipe(T.Body("includes_discoveries_until")),
-    ),
-    lastAttemptedUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_attempted_update_at")),
-    ),
-    lastSuccessfulUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_successful_update_at")),
-    ),
-  }),
-).annotate({
-  identifier: "CatalogSyncsListResultItem",
-}) as any as S.Schema<CatalogSyncsListResultItem>;
-
-export type CatalogSyncsListResultList = CatalogSyncsListResultItem[];
-export const CatalogSyncsListResultList = /*@__PURE__*/ S.Array(
-  CatalogSyncsListResultItem,
-) as any as S.Schema<CatalogSyncsListResultList>;
-
-export interface CatalogSyncsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CatalogSyncsListResultList;
-}
-export const CatalogSyncsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(CatalogSyncsListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "CatalogSyncsListResponse",
-}) as any as S.Schema<CatalogSyncsListResponse>;
-
-export type CatalogSyncsPrebuiltPoliciesListRequestDestinationType =
-  | "NONE"
-  | "ZERO_TRUST_LIST"
-  | (string & {});
-export const CatalogSyncsPrebuiltPoliciesListRequestDestinationType =
-  /*@__PURE__*/ S.String;
-
-export interface CatalogSyncsPrebuiltPoliciesListRequest {
-  accountId: string;
-  /** Specify type of destination, omit to return all. */
-  destinationType?: CatalogSyncsPrebuiltPoliciesListRequestDestinationType;
-}
-export const CatalogSyncsPrebuiltPoliciesListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      destinationType: S.optional(
-        CatalogSyncsPrebuiltPoliciesListRequestDestinationType.pipe(
-          T.Query("destination_type"),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/prebuilt-policies",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "CatalogSyncsPrebuiltPoliciesListRequest",
-}) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListRequest>;
-
-export type CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem =
-  "NONE" | "ZERO_TRUST_LIST" | (string & {});
-export const CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem =
-  /*@__PURE__*/ S.String;
-
-export type CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList =
-  CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem[];
-export const CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList =
-  /*@__PURE__*/ S.Array(
-    CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem,
-  ) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList>;
-
-export interface CatalogSyncsPrebuiltPoliciesListResultItem {
-  applicableDestinations: CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList;
-  policyDescription: string;
-  policyName: string;
-  policyString: string;
-}
-export const CatalogSyncsPrebuiltPoliciesListResultItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      applicableDestinations:
-        CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList.pipe(
-          T.Body("applicable_destinations"),
-        ),
-      policyDescription: S.String.pipe(T.Body("policy_description")),
-      policyName: S.String.pipe(T.Body("policy_name")),
-      policyString: S.String.pipe(T.Body("policy_string")),
-    }),
-  ).annotate({
-    identifier: "CatalogSyncsPrebuiltPoliciesListResultItem",
-  }) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListResultItem>;
-
-export type CatalogSyncsPrebuiltPoliciesListResultList =
-  CatalogSyncsPrebuiltPoliciesListResultItem[];
-export const CatalogSyncsPrebuiltPoliciesListResultList = /*@__PURE__*/ S.Array(
-  CatalogSyncsPrebuiltPoliciesListResultItem,
-) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListResultList>;
-
-export interface CatalogSyncsPrebuiltPoliciesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CatalogSyncsPrebuiltPoliciesListResultList;
-}
-export const CatalogSyncsPrebuiltPoliciesListResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(
-        CatalogSyncsPrebuiltPoliciesListResultList.pipe(T.EnvelopePayload()),
-      ),
-    }),
-).annotate({
-  identifier: "CatalogSyncsPrebuiltPoliciesListResponse",
-}) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListResponse>;
-
-export interface CatalogSyncsRefreshRequest {
-  accountId: string;
-  syncId: string;
-}
-export const CatalogSyncsRefreshRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    syncId: S.String.pipe(T.Label("sync_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}/refresh",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CatalogSyncsRefreshRequest",
-}) as any as S.Schema<CatalogSyncsRefreshRequest>;
-
-export interface CatalogSyncsRefreshResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
-export const CatalogSyncsRefreshResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "CatalogSyncsRefreshResponse",
-}) as any as S.Schema<CatalogSyncsRefreshResponse>;
-
-export type CatalogSyncsUpdateRequestUpdateMode =
-  | "AUTO"
-  | "MANUAL"
-  | (string & {});
-export const CatalogSyncsUpdateRequestUpdateMode = /*@__PURE__*/ S.String;
-
-export interface CatalogSyncsUpdateRequest {
-  accountId: string;
-  syncId: string;
-  description?: string;
-  name?: string;
-  policy?: string;
-  updateMode?: CatalogSyncsUpdateRequestUpdateMode;
-}
-export const CatalogSyncsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    syncId: S.String.pipe(T.Label("sync_id")),
-    description: S.optional(S.String),
-    name: S.optional(S.String),
-    policy: S.optional(S.String),
-    updateMode: S.optional(
-      CatalogSyncsUpdateRequestUpdateMode.pipe(T.Body("update_mode")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CatalogSyncsUpdateRequest",
-}) as any as S.Schema<CatalogSyncsUpdateRequest>;
-
-export type CatalogSyncsUpdateResponseDestinationType =
-  | "NONE"
-  | "ZERO_TRUST_LIST"
-  | (string & {});
-export const CatalogSyncsUpdateResponseDestinationType = /*@__PURE__*/ S.String;
-
-export type CatalogSyncsUpdateResponseUpdateMode =
-  | "AUTO"
-  | "MANUAL"
-  | (string & {});
-export const CatalogSyncsUpdateResponseUpdateMode = /*@__PURE__*/ S.String;
-
-export type CatalogSyncsUpdateResponseErrorsMap = {
-  [key: string]: unknown | undefined;
-};
-export const CatalogSyncsUpdateResponseErrorsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<CatalogSyncsUpdateResponseErrorsMap>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CatalogSyncsUpdateResponse {
-  id: string;
-  description: string;
-  destinationId: string;
-  destinationType: CatalogSyncsUpdateResponseDestinationType;
-  lastUserUpdateAt: string;
-  name: string;
-  policy: string;
-  updateMode: CatalogSyncsUpdateResponseUpdateMode;
-  errors?: CatalogSyncsUpdateResponseErrorsMap;
-  includesDiscoveriesUntil?: string;
-  lastAttemptedUpdateAt?: string;
-  lastSuccessfulUpdateAt?: string;
-}
-export const CatalogSyncsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.String,
-    destinationId: S.String.pipe(T.Body("destination_id")),
-    destinationType: CatalogSyncsUpdateResponseDestinationType.pipe(
-      T.Body("destination_type"),
-    ),
-    lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
-    name: S.String,
-    policy: S.String,
-    updateMode: CatalogSyncsUpdateResponseUpdateMode.pipe(
-      T.Body("update_mode"),
-    ),
-    errors: S.optional(CatalogSyncsUpdateResponseErrorsMap),
-    includesDiscoveriesUntil: S.optional(
-      S.String.pipe(T.Body("includes_discoveries_until")),
-    ),
-    lastAttemptedUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_attempted_update_at")),
-    ),
-    lastSuccessfulUpdateAt: S.optional(
-      S.String.pipe(T.Body("last_successful_update_at")),
-    ),
-  }),
-).annotate({
-  identifier: "CatalogSyncsUpdateResponse",
-}) as any as S.Schema<CatalogSyncsUpdateResponse>;
+  identifier: "CreateCatalogSyncResponse",
+}) as any as S.Schema<CreateCatalogSyncResponse>;
 
 export type CloudIntegrationsCreateRequestCloudType =
   | "AWS"
@@ -650,14 +190,14 @@ export type CloudIntegrationsCreateRequestCloudType =
   | (string & {});
 export const CloudIntegrationsCreateRequestCloudType = /*@__PURE__*/ S.String;
 
-export interface CloudIntegrationsCreateRequest {
+export interface CreateCloudIntegrationRequest {
   accountId: string;
   forwarded?: string;
   cloudType: CloudIntegrationsCreateRequestCloudType;
   friendlyName: string;
   description?: string;
 }
-export const CloudIntegrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     forwarded: S.optional(S.String.pipe(T.Header())),
@@ -674,8 +214,8 @@ export const CloudIntegrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CloudIntegrationsCreateRequest",
-}) as any as S.Schema<CloudIntegrationsCreateRequest>;
+  identifier: "CreateCloudIntegrationRequest",
+}) as any as S.Schema<CreateCloudIntegrationRequest>;
 
 export type CloudIntegrationsCreateResponseCloudType =
   | "AWS"
@@ -868,7 +408,7 @@ export const CloudIntegrationsCreateResponseStatus = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CloudIntegrationsCreateResponseStatus>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CloudIntegrationsCreateResponse {
+export interface CreateCloudIntegrationResponse {
   id: string;
   cloudType: CloudIntegrationsCreateResponseCloudType;
   friendlyName: string;
@@ -884,7 +424,7 @@ export interface CloudIntegrationsCreateResponse {
   gcpServiceAccountEmail?: string;
   status?: CloudIntegrationsCreateResponseStatus;
 }
-export const CloudIntegrationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: CloudIntegrationsCreateResponseCloudType.pipe(
@@ -910,1359 +450,8 @@ export const CloudIntegrationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(CloudIntegrationsCreateResponseStatus),
   }),
 ).annotate({
-  identifier: "CloudIntegrationsCreateResponse",
-}) as any as S.Schema<CloudIntegrationsCreateResponse>;
-
-export interface CloudIntegrationsDeleteRequest {
-  accountId: string;
-  providerId: string;
-}
-export const CloudIntegrationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    providerId: S.String.pipe(T.Label("provider_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CloudIntegrationsDeleteRequest",
-}) as any as S.Schema<CloudIntegrationsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CloudIntegrationsDeleteResponse {
-  id: string;
-}
-export const CloudIntegrationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "CloudIntegrationsDeleteResponse",
-}) as any as S.Schema<CloudIntegrationsDeleteResponse>;
-
-export interface CloudIntegrationsDiscoverRequest {
-  accountId: string;
-  providerId: string;
-  v2?: boolean;
-}
-export const CloudIntegrationsDiscoverRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    providerId: S.String.pipe(T.Label("provider_id")),
-    v2: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}/discover",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CloudIntegrationsDiscoverRequest",
-}) as any as S.Schema<CloudIntegrationsDiscoverRequest>;
-
-export interface CloudIntegrationsDiscoverResponse {}
-export const CloudIntegrationsDiscoverResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CloudIntegrationsDiscoverResponse",
-}) as any as S.Schema<CloudIntegrationsDiscoverResponse>;
-
-export interface CloudIntegrationsDiscoverAllRequest {
-  accountId: string;
-}
-export const CloudIntegrationsDiscoverAllRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/providers/discover",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CloudIntegrationsDiscoverAllRequest",
-}) as any as S.Schema<CloudIntegrationsDiscoverAllRequest>;
-
-export interface CloudIntegrationsDiscoverAllResponse {}
-export const CloudIntegrationsDiscoverAllResponse = /*@__PURE__*/ S.suspend(
-  () => S.Struct({}),
-).annotate({
-  identifier: "CloudIntegrationsDiscoverAllResponse",
-}) as any as S.Schema<CloudIntegrationsDiscoverAllResponse>;
-
-export interface CloudIntegrationsEditRequest {
-  accountId: string;
-  providerId: string;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  friendlyName?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
-}
-export const CloudIntegrationsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    providerId: S.String.pipe(T.Label("provider_id")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
-    azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
-    ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
-    gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CloudIntegrationsEditRequest",
-}) as any as S.Schema<CloudIntegrationsEditRequest>;
-
-export type CloudIntegrationsEditResponseCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE"
-  | (string & {});
-export const CloudIntegrationsEditResponseCloudType = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsEditResponseLifecycleState =
-  | "ACTIVE"
-  | "PENDING_SETUP"
-  | "RETIRED"
-  | (string & {});
-export const CloudIntegrationsEditResponseLifecycleState =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsEditResponseState =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsEditResponseState = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsEditResponseStateV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsEditResponseStateV2 = /*@__PURE__*/ S.String;
-
-export interface CloudIntegrationsEditResponseStatusDiscoveryProgress {
-  done: number;
-  total: number;
-  unit: string;
-}
-export const CloudIntegrationsEditResponseStatusDiscoveryProgress =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      done: S.Number,
-      total: S.Number,
-      unit: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsEditResponseStatusDiscoveryProgress",
-  }) as any as S.Schema<CloudIntegrationsEditResponseStatusDiscoveryProgress>;
-
-export interface CloudIntegrationsEditResponseStatusDiscoveryProgressV2 {
-  done: number;
-  total: number;
-  unit: string;
-}
-export const CloudIntegrationsEditResponseStatusDiscoveryProgressV2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      done: S.Number,
-      total: S.Number,
-      unit: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsEditResponseStatusDiscoveryProgressV2",
-  }) as any as S.Schema<CloudIntegrationsEditResponseStatusDiscoveryProgressV2>;
-
-export type CloudIntegrationsEditResponseStatusLastDiscoveryStatus =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsEditResponseStatusLastDiscoveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsEditResponseStatusRegionsList = string[];
-export const CloudIntegrationsEditResponseStatusRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CloudIntegrationsEditResponseStatusRegionsList>;
-
-export type CloudIntegrationsEditResponseStatusInUseByItemClientType =
-  | "MAGIC_WAN_CLOUD_ONRAMP"
-  | (string & {});
-export const CloudIntegrationsEditResponseStatusInUseByItemClientType =
-  /*@__PURE__*/ S.String;
-
-export interface CloudIntegrationsEditResponseStatusInUseByItem {
-  id: string;
-  clientType: CloudIntegrationsEditResponseStatusInUseByItemClientType;
-  name: string;
-}
-export const CloudIntegrationsEditResponseStatusInUseByItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      clientType: CloudIntegrationsEditResponseStatusInUseByItemClientType.pipe(
-        T.Body("client_type"),
-      ),
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsEditResponseStatusInUseByItem",
-  }) as any as S.Schema<CloudIntegrationsEditResponseStatusInUseByItem>;
-
-export type CloudIntegrationsEditResponseStatusInUseByList =
-  CloudIntegrationsEditResponseStatusInUseByItem[];
-export const CloudIntegrationsEditResponseStatusInUseByList =
-  /*@__PURE__*/ S.Array(
-    CloudIntegrationsEditResponseStatusInUseByItem,
-  ) as any as S.Schema<CloudIntegrationsEditResponseStatusInUseByList>;
-
-export interface CloudIntegrationsEditResponseStatus {
-  discoveryProgress: CloudIntegrationsEditResponseStatusDiscoveryProgress;
-  discoveryProgressV2: CloudIntegrationsEditResponseStatusDiscoveryProgressV2;
-  lastDiscoveryStatus: CloudIntegrationsEditResponseStatusLastDiscoveryStatus;
-  lastDiscoveryStatusV2: CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2;
-  regions: CloudIntegrationsEditResponseStatusRegionsList;
-  credentialsGoodSince?: string;
-  credentialsMissingSince?: string;
-  credentialsRejectedSince?: string;
-  discoveryMessage?: string;
-  discoveryMessageV2?: string;
-  inUseBy?: CloudIntegrationsEditResponseStatusInUseByList;
-  lastDiscoveryCompletedAt?: string;
-  lastDiscoveryCompletedAtV2?: string;
-  lastDiscoveryStartedAt?: string;
-  lastDiscoveryStartedAtV2?: string;
-  lastUpdated?: string;
-}
-export const CloudIntegrationsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discoveryProgress:
-      CloudIntegrationsEditResponseStatusDiscoveryProgress.pipe(
-        T.Body("discovery_progress"),
-      ),
-    discoveryProgressV2:
-      CloudIntegrationsEditResponseStatusDiscoveryProgressV2.pipe(
-        T.Body("discovery_progress_v2"),
-      ),
-    lastDiscoveryStatus:
-      CloudIntegrationsEditResponseStatusLastDiscoveryStatus.pipe(
-        T.Body("last_discovery_status"),
-      ),
-    lastDiscoveryStatusV2:
-      CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2.pipe(
-        T.Body("last_discovery_status_v2"),
-      ),
-    regions: CloudIntegrationsEditResponseStatusRegionsList,
-    credentialsGoodSince: S.optional(
-      S.String.pipe(T.Body("credentials_good_since")),
-    ),
-    credentialsMissingSince: S.optional(
-      S.String.pipe(T.Body("credentials_missing_since")),
-    ),
-    credentialsRejectedSince: S.optional(
-      S.String.pipe(T.Body("credentials_rejected_since")),
-    ),
-    discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
-    discoveryMessageV2: S.optional(
-      S.String.pipe(T.Body("discovery_message_v2")),
-    ),
-    inUseBy: S.optional(
-      CloudIntegrationsEditResponseStatusInUseByList.pipe(T.Body("in_use_by")),
-    ),
-    lastDiscoveryCompletedAt: S.optional(
-      S.String.pipe(T.Body("last_discovery_completed_at")),
-    ),
-    lastDiscoveryCompletedAtV2: S.optional(
-      S.String.pipe(T.Body("last_discovery_completed_at_v2")),
-    ),
-    lastDiscoveryStartedAt: S.optional(
-      S.String.pipe(T.Body("last_discovery_started_at")),
-    ),
-    lastDiscoveryStartedAtV2: S.optional(
-      S.String.pipe(T.Body("last_discovery_started_at_v2")),
-    ),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-  }),
-).annotate({
-  identifier: "CloudIntegrationsEditResponseStatus",
-}) as any as S.Schema<CloudIntegrationsEditResponseStatus>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CloudIntegrationsEditResponse {
-  id: string;
-  cloudType: CloudIntegrationsEditResponseCloudType;
-  friendlyName: string;
-  lastUpdated: string;
-  lifecycleState: CloudIntegrationsEditResponseLifecycleState;
-  state: CloudIntegrationsEditResponseState;
-  stateV2: CloudIntegrationsEditResponseStateV2;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
-  status?: CloudIntegrationsEditResponseStatus;
-}
-export const CloudIntegrationsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudType: CloudIntegrationsEditResponseCloudType.pipe(
-      T.Body("cloud_type"),
-    ),
-    friendlyName: S.String.pipe(T.Body("friendly_name")),
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    lifecycleState: CloudIntegrationsEditResponseLifecycleState.pipe(
-      T.Body("lifecycle_state"),
-    ),
-    state: CloudIntegrationsEditResponseState,
-    stateV2: CloudIntegrationsEditResponseStateV2.pipe(T.Body("state_v2")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
-    azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
-    ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
-    gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
-    ),
-    status: S.optional(CloudIntegrationsEditResponseStatus),
-  }),
-).annotate({
-  identifier: "CloudIntegrationsEditResponse",
-}) as any as S.Schema<CloudIntegrationsEditResponse>;
-
-export interface CloudIntegrationsGetRequest {
-  accountId: string;
-  providerId: string;
-  status?: boolean;
-}
-export const CloudIntegrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    providerId: S.String.pipe(T.Label("provider_id")),
-    status: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CloudIntegrationsGetRequest",
-}) as any as S.Schema<CloudIntegrationsGetRequest>;
-
-export type CloudIntegrationsGetResponseCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE"
-  | (string & {});
-export const CloudIntegrationsGetResponseCloudType = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsGetResponseLifecycleState =
-  | "ACTIVE"
-  | "PENDING_SETUP"
-  | "RETIRED"
-  | (string & {});
-export const CloudIntegrationsGetResponseLifecycleState =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsGetResponseState =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsGetResponseState = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsGetResponseStateV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsGetResponseStateV2 = /*@__PURE__*/ S.String;
-
-export interface CloudIntegrationsGetResponseStatusDiscoveryProgress {
-  done: number;
-  total: number;
-  unit: string;
-}
-export const CloudIntegrationsGetResponseStatusDiscoveryProgress =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      done: S.Number,
-      total: S.Number,
-      unit: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsGetResponseStatusDiscoveryProgress",
-  }) as any as S.Schema<CloudIntegrationsGetResponseStatusDiscoveryProgress>;
-
-export interface CloudIntegrationsGetResponseStatusDiscoveryProgressV2 {
-  done: number;
-  total: number;
-  unit: string;
-}
-export const CloudIntegrationsGetResponseStatusDiscoveryProgressV2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      done: S.Number,
-      total: S.Number,
-      unit: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsGetResponseStatusDiscoveryProgressV2",
-  }) as any as S.Schema<CloudIntegrationsGetResponseStatusDiscoveryProgressV2>;
-
-export type CloudIntegrationsGetResponseStatusLastDiscoveryStatus =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsGetResponseStatusLastDiscoveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsGetResponseStatusRegionsList = string[];
-export const CloudIntegrationsGetResponseStatusRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CloudIntegrationsGetResponseStatusRegionsList>;
-
-export type CloudIntegrationsGetResponseStatusInUseByItemClientType =
-  | "MAGIC_WAN_CLOUD_ONRAMP"
-  | (string & {});
-export const CloudIntegrationsGetResponseStatusInUseByItemClientType =
-  /*@__PURE__*/ S.String;
-
-export interface CloudIntegrationsGetResponseStatusInUseByItem {
-  id: string;
-  clientType: CloudIntegrationsGetResponseStatusInUseByItemClientType;
-  name: string;
-}
-export const CloudIntegrationsGetResponseStatusInUseByItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      clientType: CloudIntegrationsGetResponseStatusInUseByItemClientType.pipe(
-        T.Body("client_type"),
-      ),
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsGetResponseStatusInUseByItem",
-  }) as any as S.Schema<CloudIntegrationsGetResponseStatusInUseByItem>;
-
-export type CloudIntegrationsGetResponseStatusInUseByList =
-  CloudIntegrationsGetResponseStatusInUseByItem[];
-export const CloudIntegrationsGetResponseStatusInUseByList =
-  /*@__PURE__*/ S.Array(
-    CloudIntegrationsGetResponseStatusInUseByItem,
-  ) as any as S.Schema<CloudIntegrationsGetResponseStatusInUseByList>;
-
-export interface CloudIntegrationsGetResponseStatus {
-  discoveryProgress: CloudIntegrationsGetResponseStatusDiscoveryProgress;
-  discoveryProgressV2: CloudIntegrationsGetResponseStatusDiscoveryProgressV2;
-  lastDiscoveryStatus: CloudIntegrationsGetResponseStatusLastDiscoveryStatus;
-  lastDiscoveryStatusV2: CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2;
-  regions: CloudIntegrationsGetResponseStatusRegionsList;
-  credentialsGoodSince?: string;
-  credentialsMissingSince?: string;
-  credentialsRejectedSince?: string;
-  discoveryMessage?: string;
-  discoveryMessageV2?: string;
-  inUseBy?: CloudIntegrationsGetResponseStatusInUseByList;
-  lastDiscoveryCompletedAt?: string;
-  lastDiscoveryCompletedAtV2?: string;
-  lastDiscoveryStartedAt?: string;
-  lastDiscoveryStartedAtV2?: string;
-  lastUpdated?: string;
-}
-export const CloudIntegrationsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    discoveryProgress: CloudIntegrationsGetResponseStatusDiscoveryProgress.pipe(
-      T.Body("discovery_progress"),
-    ),
-    discoveryProgressV2:
-      CloudIntegrationsGetResponseStatusDiscoveryProgressV2.pipe(
-        T.Body("discovery_progress_v2"),
-      ),
-    lastDiscoveryStatus:
-      CloudIntegrationsGetResponseStatusLastDiscoveryStatus.pipe(
-        T.Body("last_discovery_status"),
-      ),
-    lastDiscoveryStatusV2:
-      CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2.pipe(
-        T.Body("last_discovery_status_v2"),
-      ),
-    regions: CloudIntegrationsGetResponseStatusRegionsList,
-    credentialsGoodSince: S.optional(
-      S.String.pipe(T.Body("credentials_good_since")),
-    ),
-    credentialsMissingSince: S.optional(
-      S.String.pipe(T.Body("credentials_missing_since")),
-    ),
-    credentialsRejectedSince: S.optional(
-      S.String.pipe(T.Body("credentials_rejected_since")),
-    ),
-    discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
-    discoveryMessageV2: S.optional(
-      S.String.pipe(T.Body("discovery_message_v2")),
-    ),
-    inUseBy: S.optional(
-      CloudIntegrationsGetResponseStatusInUseByList.pipe(T.Body("in_use_by")),
-    ),
-    lastDiscoveryCompletedAt: S.optional(
-      S.String.pipe(T.Body("last_discovery_completed_at")),
-    ),
-    lastDiscoveryCompletedAtV2: S.optional(
-      S.String.pipe(T.Body("last_discovery_completed_at_v2")),
-    ),
-    lastDiscoveryStartedAt: S.optional(
-      S.String.pipe(T.Body("last_discovery_started_at")),
-    ),
-    lastDiscoveryStartedAtV2: S.optional(
-      S.String.pipe(T.Body("last_discovery_started_at_v2")),
-    ),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-  }),
-).annotate({
-  identifier: "CloudIntegrationsGetResponseStatus",
-}) as any as S.Schema<CloudIntegrationsGetResponseStatus>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CloudIntegrationsGetResponse {
-  id: string;
-  cloudType: CloudIntegrationsGetResponseCloudType;
-  friendlyName: string;
-  lastUpdated: string;
-  lifecycleState: CloudIntegrationsGetResponseLifecycleState;
-  state: CloudIntegrationsGetResponseState;
-  stateV2: CloudIntegrationsGetResponseStateV2;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
-  status?: CloudIntegrationsGetResponseStatus;
-}
-export const CloudIntegrationsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudType: CloudIntegrationsGetResponseCloudType.pipe(T.Body("cloud_type")),
-    friendlyName: S.String.pipe(T.Body("friendly_name")),
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    lifecycleState: CloudIntegrationsGetResponseLifecycleState.pipe(
-      T.Body("lifecycle_state"),
-    ),
-    state: CloudIntegrationsGetResponseState,
-    stateV2: CloudIntegrationsGetResponseStateV2.pipe(T.Body("state_v2")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
-    azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
-    ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
-    gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
-    ),
-    status: S.optional(CloudIntegrationsGetResponseStatus),
-  }),
-).annotate({
-  identifier: "CloudIntegrationsGetResponse",
-}) as any as S.Schema<CloudIntegrationsGetResponse>;
-
-export interface CloudIntegrationsInitialSetupRequest {
-  accountId: string;
-  providerId: string;
-}
-export const CloudIntegrationsInitialSetupRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      providerId: S.String.pipe(T.Label("provider_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}/initial_setup",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "CloudIntegrationsInitialSetupRequest",
-}) as any as S.Schema<CloudIntegrationsInitialSetupRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CloudIntegrationsInitialSetupResponse {
-  McnAwsTrustPolicyObjectAwsTrustPolicyItemType__: unknown;
-  McnAzureSetupObjectAzureConsentUrlIntegrationIdentityTagItemTypeTagCliCommand__: unknown;
-  McnGcpSetupObjectIntegrationIdentityTagItemTypeTagCliCommand__: unknown;
-}
-export const CloudIntegrationsInitialSetupResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      McnAwsTrustPolicyObjectAwsTrustPolicyItemType__: S.Unknown.pipe(
-        T.Body("McnAwsTrustPolicy object { aws_trust_policy, item_type }"),
-      ),
-      McnAzureSetupObjectAzureConsentUrlIntegrationIdentityTagItemTypeTagCliCommand__:
-        S.Unknown.pipe(
-          T.Body(
-            "McnAzureSetup object { azure_consent_url, integration_identity_tag, item_type, tag_cli_command }",
-          ),
-        ),
-      McnGcpSetupObjectIntegrationIdentityTagItemTypeTagCliCommand__:
-        S.Unknown.pipe(
-          T.Body(
-            "McnGcpSetup object { integration_identity_tag, item_type, tag_cli_command }",
-          ),
-        ),
-    }),
-).annotate({
-  identifier: "CloudIntegrationsInitialSetupResponse",
-}) as any as S.Schema<CloudIntegrationsInitialSetupResponse>;
-
-export interface CloudIntegrationsListRequest {
-  accountId: string;
-  cloudflare?: boolean;
-  desc?: boolean;
-  /** One of ["updated_at", "id", "cloud_type", "name"]. */
-  orderBy?: string;
-  status?: boolean;
-}
-export const CloudIntegrationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cloudflare: S.optional(S.Boolean.pipe(T.Query())),
-    desc: S.optional(S.Boolean.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
-    status: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/providers",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CloudIntegrationsListRequest",
-}) as any as S.Schema<CloudIntegrationsListRequest>;
-
-export type CloudIntegrationsListResultItemCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE"
-  | (string & {});
-export const CloudIntegrationsListResultItemCloudType = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsListResultItemLifecycleState =
-  | "ACTIVE"
-  | "PENDING_SETUP"
-  | "RETIRED"
-  | (string & {});
-export const CloudIntegrationsListResultItemLifecycleState =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsListResultItemState =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsListResultItemState = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsListResultItemStateV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsListResultItemStateV2 = /*@__PURE__*/ S.String;
-
-export interface CloudIntegrationsListResultItemStatusDiscoveryProgress {
-  done: number;
-  total: number;
-  unit: string;
-}
-export const CloudIntegrationsListResultItemStatusDiscoveryProgress =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      done: S.Number,
-      total: S.Number,
-      unit: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsListResultItemStatusDiscoveryProgress",
-  }) as any as S.Schema<CloudIntegrationsListResultItemStatusDiscoveryProgress>;
-
-export interface CloudIntegrationsListResultItemStatusDiscoveryProgressV2 {
-  done: number;
-  total: number;
-  unit: string;
-}
-export const CloudIntegrationsListResultItemStatusDiscoveryProgressV2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      done: S.Number,
-      total: S.Number,
-      unit: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsListResultItemStatusDiscoveryProgressV2",
-  }) as any as S.Schema<CloudIntegrationsListResultItemStatusDiscoveryProgressV2>;
-
-export type CloudIntegrationsListResultItemStatusLastDiscoveryStatus =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsListResultItemStatusLastDiscoveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsListResultItemStatusRegionsList = string[];
-export const CloudIntegrationsListResultItemStatusRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CloudIntegrationsListResultItemStatusRegionsList>;
-
-export type CloudIntegrationsListResultItemStatusInUseByItemClientType =
-  | "MAGIC_WAN_CLOUD_ONRAMP"
-  | (string & {});
-export const CloudIntegrationsListResultItemStatusInUseByItemClientType =
-  /*@__PURE__*/ S.String;
-
-export interface CloudIntegrationsListResultItemStatusInUseByItem {
-  id: string;
-  clientType: CloudIntegrationsListResultItemStatusInUseByItemClientType;
-  name: string;
-}
-export const CloudIntegrationsListResultItemStatusInUseByItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      clientType:
-        CloudIntegrationsListResultItemStatusInUseByItemClientType.pipe(
-          T.Body("client_type"),
-        ),
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsListResultItemStatusInUseByItem",
-  }) as any as S.Schema<CloudIntegrationsListResultItemStatusInUseByItem>;
-
-export type CloudIntegrationsListResultItemStatusInUseByList =
-  CloudIntegrationsListResultItemStatusInUseByItem[];
-export const CloudIntegrationsListResultItemStatusInUseByList =
-  /*@__PURE__*/ S.Array(
-    CloudIntegrationsListResultItemStatusInUseByItem,
-  ) as any as S.Schema<CloudIntegrationsListResultItemStatusInUseByList>;
-
-export interface CloudIntegrationsListResultItemStatus {
-  discoveryProgress: CloudIntegrationsListResultItemStatusDiscoveryProgress;
-  discoveryProgressV2: CloudIntegrationsListResultItemStatusDiscoveryProgressV2;
-  lastDiscoveryStatus: CloudIntegrationsListResultItemStatusLastDiscoveryStatus;
-  lastDiscoveryStatusV2: CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2;
-  regions: CloudIntegrationsListResultItemStatusRegionsList;
-  credentialsGoodSince?: string;
-  credentialsMissingSince?: string;
-  credentialsRejectedSince?: string;
-  discoveryMessage?: string;
-  discoveryMessageV2?: string;
-  inUseBy?: CloudIntegrationsListResultItemStatusInUseByList;
-  lastDiscoveryCompletedAt?: string;
-  lastDiscoveryCompletedAtV2?: string;
-  lastDiscoveryStartedAt?: string;
-  lastDiscoveryStartedAtV2?: string;
-  lastUpdated?: string;
-}
-export const CloudIntegrationsListResultItemStatus = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      discoveryProgress:
-        CloudIntegrationsListResultItemStatusDiscoveryProgress.pipe(
-          T.Body("discovery_progress"),
-        ),
-      discoveryProgressV2:
-        CloudIntegrationsListResultItemStatusDiscoveryProgressV2.pipe(
-          T.Body("discovery_progress_v2"),
-        ),
-      lastDiscoveryStatus:
-        CloudIntegrationsListResultItemStatusLastDiscoveryStatus.pipe(
-          T.Body("last_discovery_status"),
-        ),
-      lastDiscoveryStatusV2:
-        CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2.pipe(
-          T.Body("last_discovery_status_v2"),
-        ),
-      regions: CloudIntegrationsListResultItemStatusRegionsList,
-      credentialsGoodSince: S.optional(
-        S.String.pipe(T.Body("credentials_good_since")),
-      ),
-      credentialsMissingSince: S.optional(
-        S.String.pipe(T.Body("credentials_missing_since")),
-      ),
-      credentialsRejectedSince: S.optional(
-        S.String.pipe(T.Body("credentials_rejected_since")),
-      ),
-      discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
-      discoveryMessageV2: S.optional(
-        S.String.pipe(T.Body("discovery_message_v2")),
-      ),
-      inUseBy: S.optional(
-        CloudIntegrationsListResultItemStatusInUseByList.pipe(
-          T.Body("in_use_by"),
-        ),
-      ),
-      lastDiscoveryCompletedAt: S.optional(
-        S.String.pipe(T.Body("last_discovery_completed_at")),
-      ),
-      lastDiscoveryCompletedAtV2: S.optional(
-        S.String.pipe(T.Body("last_discovery_completed_at_v2")),
-      ),
-      lastDiscoveryStartedAt: S.optional(
-        S.String.pipe(T.Body("last_discovery_started_at")),
-      ),
-      lastDiscoveryStartedAtV2: S.optional(
-        S.String.pipe(T.Body("last_discovery_started_at_v2")),
-      ),
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    }),
-).annotate({
-  identifier: "CloudIntegrationsListResultItemStatus",
-}) as any as S.Schema<CloudIntegrationsListResultItemStatus>;
-
-export interface CloudIntegrationsListResultItem {
-  id: string;
-  cloudType: CloudIntegrationsListResultItemCloudType;
-  friendlyName: string;
-  lastUpdated: string;
-  lifecycleState: CloudIntegrationsListResultItemLifecycleState;
-  state: CloudIntegrationsListResultItemState;
-  stateV2: CloudIntegrationsListResultItemStateV2;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
-  status?: CloudIntegrationsListResultItemStatus;
-}
-export const CloudIntegrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudType: CloudIntegrationsListResultItemCloudType.pipe(
-      T.Body("cloud_type"),
-    ),
-    friendlyName: S.String.pipe(T.Body("friendly_name")),
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    lifecycleState: CloudIntegrationsListResultItemLifecycleState.pipe(
-      T.Body("lifecycle_state"),
-    ),
-    state: CloudIntegrationsListResultItemState,
-    stateV2: CloudIntegrationsListResultItemStateV2.pipe(T.Body("state_v2")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
-    azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
-    ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
-    gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
-    ),
-    status: S.optional(CloudIntegrationsListResultItemStatus),
-  }),
-).annotate({
-  identifier: "CloudIntegrationsListResultItem",
-}) as any as S.Schema<CloudIntegrationsListResultItem>;
-
-export type CloudIntegrationsListResultList = CloudIntegrationsListResultItem[];
-export const CloudIntegrationsListResultList = /*@__PURE__*/ S.Array(
-  CloudIntegrationsListResultItem,
-) as any as S.Schema<CloudIntegrationsListResultList>;
-
-export interface CloudIntegrationsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CloudIntegrationsListResultList;
-}
-export const CloudIntegrationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      CloudIntegrationsListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "CloudIntegrationsListResponse",
-}) as any as S.Schema<CloudIntegrationsListResponse>;
-
-export interface CloudIntegrationsUpdateRequest {
-  accountId: string;
-  providerId: string;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  friendlyName?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
-}
-export const CloudIntegrationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    providerId: S.String.pipe(T.Label("provider_id")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
-    azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
-    ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
-    gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CloudIntegrationsUpdateRequest",
-}) as any as S.Schema<CloudIntegrationsUpdateRequest>;
-
-export type CloudIntegrationsUpdateResponseCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE"
-  | (string & {});
-export const CloudIntegrationsUpdateResponseCloudType = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsUpdateResponseLifecycleState =
-  | "ACTIVE"
-  | "PENDING_SETUP"
-  | "RETIRED"
-  | (string & {});
-export const CloudIntegrationsUpdateResponseLifecycleState =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsUpdateResponseState =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsUpdateResponseState = /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsUpdateResponseStateV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsUpdateResponseStateV2 = /*@__PURE__*/ S.String;
-
-export interface CloudIntegrationsUpdateResponseStatusDiscoveryProgress {
-  done: number;
-  total: number;
-  unit: string;
-}
-export const CloudIntegrationsUpdateResponseStatusDiscoveryProgress =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      done: S.Number,
-      total: S.Number,
-      unit: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsUpdateResponseStatusDiscoveryProgress",
-  }) as any as S.Schema<CloudIntegrationsUpdateResponseStatusDiscoveryProgress>;
-
-export interface CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2 {
-  done: number;
-  total: number;
-  unit: string;
-}
-export const CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2 =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      done: S.Number,
-      total: S.Number,
-      unit: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2",
-  }) as any as S.Schema<CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2>;
-
-export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
-  | "UNSPECIFIED"
-  | "PENDING"
-  | "DISCOVERING"
-  | (string & {});
-export const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
-  /*@__PURE__*/ S.String;
-
-export type CloudIntegrationsUpdateResponseStatusRegionsList = string[];
-export const CloudIntegrationsUpdateResponseStatusRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<CloudIntegrationsUpdateResponseStatusRegionsList>;
-
-export type CloudIntegrationsUpdateResponseStatusInUseByItemClientType =
-  | "MAGIC_WAN_CLOUD_ONRAMP"
-  | (string & {});
-export const CloudIntegrationsUpdateResponseStatusInUseByItemClientType =
-  /*@__PURE__*/ S.String;
-
-export interface CloudIntegrationsUpdateResponseStatusInUseByItem {
-  id: string;
-  clientType: CloudIntegrationsUpdateResponseStatusInUseByItemClientType;
-  name: string;
-}
-export const CloudIntegrationsUpdateResponseStatusInUseByItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      clientType:
-        CloudIntegrationsUpdateResponseStatusInUseByItemClientType.pipe(
-          T.Body("client_type"),
-        ),
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "CloudIntegrationsUpdateResponseStatusInUseByItem",
-  }) as any as S.Schema<CloudIntegrationsUpdateResponseStatusInUseByItem>;
-
-export type CloudIntegrationsUpdateResponseStatusInUseByList =
-  CloudIntegrationsUpdateResponseStatusInUseByItem[];
-export const CloudIntegrationsUpdateResponseStatusInUseByList =
-  /*@__PURE__*/ S.Array(
-    CloudIntegrationsUpdateResponseStatusInUseByItem,
-  ) as any as S.Schema<CloudIntegrationsUpdateResponseStatusInUseByList>;
-
-export interface CloudIntegrationsUpdateResponseStatus {
-  discoveryProgress: CloudIntegrationsUpdateResponseStatusDiscoveryProgress;
-  discoveryProgressV2: CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2;
-  lastDiscoveryStatus: CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus;
-  lastDiscoveryStatusV2: CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2;
-  regions: CloudIntegrationsUpdateResponseStatusRegionsList;
-  credentialsGoodSince?: string;
-  credentialsMissingSince?: string;
-  credentialsRejectedSince?: string;
-  discoveryMessage?: string;
-  discoveryMessageV2?: string;
-  inUseBy?: CloudIntegrationsUpdateResponseStatusInUseByList;
-  lastDiscoveryCompletedAt?: string;
-  lastDiscoveryCompletedAtV2?: string;
-  lastDiscoveryStartedAt?: string;
-  lastDiscoveryStartedAtV2?: string;
-  lastUpdated?: string;
-}
-export const CloudIntegrationsUpdateResponseStatus = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      discoveryProgress:
-        CloudIntegrationsUpdateResponseStatusDiscoveryProgress.pipe(
-          T.Body("discovery_progress"),
-        ),
-      discoveryProgressV2:
-        CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2.pipe(
-          T.Body("discovery_progress_v2"),
-        ),
-      lastDiscoveryStatus:
-        CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus.pipe(
-          T.Body("last_discovery_status"),
-        ),
-      lastDiscoveryStatusV2:
-        CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2.pipe(
-          T.Body("last_discovery_status_v2"),
-        ),
-      regions: CloudIntegrationsUpdateResponseStatusRegionsList,
-      credentialsGoodSince: S.optional(
-        S.String.pipe(T.Body("credentials_good_since")),
-      ),
-      credentialsMissingSince: S.optional(
-        S.String.pipe(T.Body("credentials_missing_since")),
-      ),
-      credentialsRejectedSince: S.optional(
-        S.String.pipe(T.Body("credentials_rejected_since")),
-      ),
-      discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
-      discoveryMessageV2: S.optional(
-        S.String.pipe(T.Body("discovery_message_v2")),
-      ),
-      inUseBy: S.optional(
-        CloudIntegrationsUpdateResponseStatusInUseByList.pipe(
-          T.Body("in_use_by"),
-        ),
-      ),
-      lastDiscoveryCompletedAt: S.optional(
-        S.String.pipe(T.Body("last_discovery_completed_at")),
-      ),
-      lastDiscoveryCompletedAtV2: S.optional(
-        S.String.pipe(T.Body("last_discovery_completed_at_v2")),
-      ),
-      lastDiscoveryStartedAt: S.optional(
-        S.String.pipe(T.Body("last_discovery_started_at")),
-      ),
-      lastDiscoveryStartedAtV2: S.optional(
-        S.String.pipe(T.Body("last_discovery_started_at_v2")),
-      ),
-      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
-    }),
-).annotate({
-  identifier: "CloudIntegrationsUpdateResponseStatus",
-}) as any as S.Schema<CloudIntegrationsUpdateResponseStatus>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CloudIntegrationsUpdateResponse {
-  id: string;
-  cloudType: CloudIntegrationsUpdateResponseCloudType;
-  friendlyName: string;
-  lastUpdated: string;
-  lifecycleState: CloudIntegrationsUpdateResponseLifecycleState;
-  state: CloudIntegrationsUpdateResponseState;
-  stateV2: CloudIntegrationsUpdateResponseStateV2;
-  awsArn?: string;
-  azureSubscriptionId?: string;
-  azureTenantId?: string;
-  description?: string;
-  gcpProjectId?: string;
-  gcpServiceAccountEmail?: string;
-  status?: CloudIntegrationsUpdateResponseStatus;
-}
-export const CloudIntegrationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudType: CloudIntegrationsUpdateResponseCloudType.pipe(
-      T.Body("cloud_type"),
-    ),
-    friendlyName: S.String.pipe(T.Body("friendly_name")),
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    lifecycleState: CloudIntegrationsUpdateResponseLifecycleState.pipe(
-      T.Body("lifecycle_state"),
-    ),
-    state: CloudIntegrationsUpdateResponseState,
-    stateV2: CloudIntegrationsUpdateResponseStateV2.pipe(T.Body("state_v2")),
-    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
-    azureSubscriptionId: S.optional(
-      S.String.pipe(T.Body("azure_subscription_id")),
-    ),
-    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
-    description: S.optional(S.String),
-    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
-    gcpServiceAccountEmail: S.optional(
-      S.String.pipe(T.Body("gcp_service_account_email")),
-    ),
-    status: S.optional(CloudIntegrationsUpdateResponseStatus),
-  }),
-).annotate({
-  identifier: "CloudIntegrationsUpdateResponse",
-}) as any as S.Schema<CloudIntegrationsUpdateResponse>;
-
-export type OnRampsAddressSpacesEditRequestPrefixesList = string[];
-export const OnRampsAddressSpacesEditRequestPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsAddressSpacesEditRequestPrefixesList>;
-
-export interface OnRampsAddressSpacesEditRequest {
-  accountId: string;
-  prefixes: OnRampsAddressSpacesEditRequestPrefixesList;
-}
-export const OnRampsAddressSpacesEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    prefixes: OnRampsAddressSpacesEditRequestPrefixesList,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "OnRampsAddressSpacesEditRequest",
-}) as any as S.Schema<OnRampsAddressSpacesEditRequest>;
-
-export type OnRampsAddressSpacesEditResponsePrefixesList = string[];
-export const OnRampsAddressSpacesEditResponsePrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsAddressSpacesEditResponsePrefixesList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface OnRampsAddressSpacesEditResponse {
-  prefixes: OnRampsAddressSpacesEditResponsePrefixesList;
-}
-export const OnRampsAddressSpacesEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes: OnRampsAddressSpacesEditResponsePrefixesList,
-  }),
-).annotate({
-  identifier: "OnRampsAddressSpacesEditResponse",
-}) as any as S.Schema<OnRampsAddressSpacesEditResponse>;
-
-export interface OnRampsAddressSpacesListRequest {
-  accountId: string;
-}
-export const OnRampsAddressSpacesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "OnRampsAddressSpacesListRequest",
-}) as any as S.Schema<OnRampsAddressSpacesListRequest>;
-
-export type OnRampsAddressSpacesListResponsePrefixesList = string[];
-export const OnRampsAddressSpacesListResponsePrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsAddressSpacesListResponsePrefixesList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface OnRampsAddressSpacesListResponse {
-  prefixes: OnRampsAddressSpacesListResponsePrefixesList;
-}
-export const OnRampsAddressSpacesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes: OnRampsAddressSpacesListResponsePrefixesList,
-  }),
-).annotate({
-  identifier: "OnRampsAddressSpacesListResponse",
-}) as any as S.Schema<OnRampsAddressSpacesListResponse>;
-
-export type OnRampsAddressSpacesUpdateRequestPrefixesList = string[];
-export const OnRampsAddressSpacesUpdateRequestPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsAddressSpacesUpdateRequestPrefixesList>;
-
-export interface OnRampsAddressSpacesUpdateRequest {
-  accountId: string;
-  prefixes: OnRampsAddressSpacesUpdateRequestPrefixesList;
-}
-export const OnRampsAddressSpacesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    prefixes: OnRampsAddressSpacesUpdateRequestPrefixesList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "OnRampsAddressSpacesUpdateRequest",
-}) as any as S.Schema<OnRampsAddressSpacesUpdateRequest>;
-
-export type OnRampsAddressSpacesUpdateResponsePrefixesList = string[];
-export const OnRampsAddressSpacesUpdateResponsePrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsAddressSpacesUpdateResponsePrefixesList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface OnRampsAddressSpacesUpdateResponse {
-  prefixes: OnRampsAddressSpacesUpdateResponsePrefixesList;
-}
-export const OnRampsAddressSpacesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    prefixes: OnRampsAddressSpacesUpdateResponsePrefixesList,
-  }),
-).annotate({
-  identifier: "OnRampsAddressSpacesUpdateResponse",
-}) as any as S.Schema<OnRampsAddressSpacesUpdateResponse>;
-
-export interface OnRampsApplyRequest {
-  accountId: string;
-  onrampId: string;
-}
-export const OnRampsApplyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    onrampId: S.String.pipe(T.Label("onramp_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/apply",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "OnRampsApplyRequest",
-}) as any as S.Schema<OnRampsApplyRequest>;
-
-export interface OnRampsApplyResponse {}
-export const OnRampsApplyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OnRampsApplyResponse",
-}) as any as S.Schema<OnRampsApplyResponse>;
+  identifier: "CreateCloudIntegrationResponse",
+}) as any as S.Schema<CreateCloudIntegrationResponse>;
 
 export type OnRampsCreateRequestCloudType =
   | "AWS"
@@ -2287,7 +476,7 @@ export const OnRampsCreateRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<OnRampsCreateRequestAttachedVpcsList>;
 
-export interface OnRampsCreateRequest {
+export interface CreateOnRampRequest {
   accountId: string;
   forwarded?: string;
   cloudType: OnRampsCreateRequestCloudType;
@@ -2309,7 +498,7 @@ export interface OnRampsCreateRequest {
   region?: string;
   vpc?: string;
 }
-export const OnRampsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     forwarded: S.optional(S.String.pipe(T.Header())),
@@ -2347,8 +536,8 @@ export const OnRampsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OnRampsCreateRequest",
-}) as any as S.Schema<OnRampsCreateRequest>;
+  identifier: "CreateOnRampRequest",
+}) as any as S.Schema<CreateOnRampRequest>;
 
 export type OnRampsCreateResponseCloudType =
   | "AWS"
@@ -2648,7 +837,7 @@ export const OnRampsCreateResponseVpcsByIdUnavailableList =
   ) as any as S.Schema<OnRampsCreateResponseVpcsByIdUnavailableList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface OnRampsCreateResponse {
+export interface CreateOnRampResponse {
   id: string;
   cloudType: OnRampsCreateResponseCloudType;
   dynamicRouting: boolean;
@@ -2680,7 +869,7 @@ export interface OnRampsCreateResponse {
   /** The list of vpc IDs for which resource details failed to generate. */
   vpcsByIdUnavailable?: OnRampsCreateResponseVpcsByIdUnavailableList;
 }
-export const OnRampsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: OnRampsCreateResponseCloudType.pipe(T.Body("cloud_type")),
@@ -2749,16 +938,82 @@ export const OnRampsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "OnRampsCreateResponse",
-}) as any as S.Schema<OnRampsCreateResponse>;
+  identifier: "CreateOnRampResponse",
+}) as any as S.Schema<CreateOnRampResponse>;
 
-export interface OnRampsDeleteRequest {
+export interface DeleteCatalogSyncRequest {
+  accountId: string;
+  syncId: string;
+  deleteDestination?: boolean;
+}
+export const DeleteCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    syncId: S.String.pipe(T.Label("sync_id")),
+    deleteDestination: S.optional(
+      S.Boolean.pipe(T.Query("delete_destination")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCatalogSyncRequest",
+}) as any as S.Schema<DeleteCatalogSyncRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteCatalogSyncResponse {
+  id: string;
+}
+export const DeleteCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "DeleteCatalogSyncResponse",
+}) as any as S.Schema<DeleteCatalogSyncResponse>;
+
+export interface DeleteCloudIntegrationRequest {
+  accountId: string;
+  providerId: string;
+}
+export const DeleteCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    providerId: S.String.pipe(T.Label("provider_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCloudIntegrationRequest",
+}) as any as S.Schema<DeleteCloudIntegrationRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteCloudIntegrationResponse {
+  id: string;
+}
+export const DeleteCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "DeleteCloudIntegrationResponse",
+}) as any as S.Schema<DeleteCloudIntegrationResponse>;
+
+export interface DeleteOnRampRequest {
   accountId: string;
   onrampId: string;
   destroy?: boolean;
   force?: boolean;
 }
-export const OnRampsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
@@ -2772,481 +1027,78 @@ export const OnRampsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OnRampsDeleteRequest",
-}) as any as S.Schema<OnRampsDeleteRequest>;
+  identifier: "DeleteOnRampRequest",
+}) as any as S.Schema<DeleteOnRampRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface OnRampsDeleteResponse {
+export interface DeleteOnRampResponse {
   id: string;
 }
-export const OnRampsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
 ).annotate({
-  identifier: "OnRampsDeleteResponse",
-}) as any as S.Schema<OnRampsDeleteResponse>;
+  identifier: "DeleteOnRampResponse",
+}) as any as S.Schema<DeleteOnRampResponse>;
 
-export type OnRampsEditRequestAttachedHubsList = string[];
-export const OnRampsEditRequestAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditRequestAttachedHubsList>;
-
-export type OnRampsEditRequestAttachedVpcsList = string[];
-export const OnRampsEditRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditRequestAttachedVpcsList>;
-
-export interface OnRampsEditRequest {
+export interface DiscoverAllCloudIntegrationRequest {
   accountId: string;
-  onrampId: string;
-  attachedHubs?: OnRampsEditRequestAttachedHubsList;
-  attachedVpcs?: OnRampsEditRequestAttachedVpcsList;
-  description?: string;
-  installRoutesInCloud?: boolean;
-  installRoutesInMagicWan?: boolean;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  name?: string;
-  vpc?: string;
 }
-export const OnRampsEditRequest = /*@__PURE__*/ S.suspend(() =>
+export const DiscoverAllCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    onrampId: S.String.pipe(T.Label("onramp_id")),
-    attachedHubs: S.optional(
-      OnRampsEditRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
-    ),
-    attachedVpcs: S.optional(
-      OnRampsEditRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
-    ),
-    description: S.optional(S.String),
-    installRoutesInCloud: S.optional(
-      S.Boolean.pipe(T.Body("install_routes_in_cloud")),
-    ),
-    installRoutesInMagicWan: S.optional(
-      S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
-    ),
-    manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
-    ),
-    manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
-    ),
-    name: S.optional(S.String),
-    vpc: S.optional(S.String),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/cloud/providers/discover",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "OnRampsEditRequest",
-}) as any as S.Schema<OnRampsEditRequest>;
+  identifier: "DiscoverAllCloudIntegrationRequest",
+}) as any as S.Schema<DiscoverAllCloudIntegrationRequest>;
 
-export type OnRampsEditResponseCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | (string & {});
-export const OnRampsEditResponseCloudType = /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponseType =
-  | "OnrampTypeSingle"
-  | "OnrampTypeHub"
-  | (string & {});
-export const OnRampsEditResponseType = /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponseAttachedHubsList = string[];
-export const OnRampsEditResponseAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponseAttachedHubsList>;
-
-export type OnRampsEditResponseAttachedVpcsList = string[];
-export const OnRampsEditResponseAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponseAttachedVpcsList>;
-
-export interface OnRampsEditResponsePlannedMonthlyCostEstimate {
-  currency: string;
-  currentMonthlyCost: number;
-  diff: number;
-  proposedMonthlyCost: number;
-}
-export const OnRampsEditResponsePlannedMonthlyCostEstimate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      currency: S.String,
-      currentMonthlyCost: S.Number.pipe(T.Body("current_monthly_cost")),
-      diff: S.Number,
-      proposedMonthlyCost: S.Number.pipe(T.Body("proposed_monthly_cost")),
-    }),
-  ).annotate({
-    identifier: "OnRampsEditResponsePlannedMonthlyCostEstimate",
-  }) as any as S.Schema<OnRampsEditResponsePlannedMonthlyCostEstimate>;
-
-export interface OnRampsEditResponsePlannedResourcesItemDiff {
-  diff: string;
-  leftDescription: string;
-  leftYaml: string;
-  rightDescription: string;
-  rightYaml: string;
-}
-export const OnRampsEditResponsePlannedResourcesItemDiff =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      diff: S.String,
-      leftDescription: S.String.pipe(T.Body("left_description")),
-      leftYaml: S.String.pipe(T.Body("left_yaml")),
-      rightDescription: S.String.pipe(T.Body("right_description")),
-      rightYaml: S.String.pipe(T.Body("right_yaml")),
-    }),
-  ).annotate({
-    identifier: "OnRampsEditResponsePlannedResourcesItemDiff",
-  }) as any as S.Schema<OnRampsEditResponsePlannedResourcesItemDiff>;
-
-export type OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList =
-  string[];
-export const OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList>;
-
-export interface OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff {
-  currency: string;
-  currentMonthlyCost: number;
-  diff: number;
-  proposedMonthlyCost: number;
-}
-export const OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      currency: S.String,
-      currentMonthlyCost: S.Number.pipe(T.Body("current_monthly_cost")),
-      diff: S.Number,
-      proposedMonthlyCost: S.Number.pipe(T.Body("proposed_monthly_cost")),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff",
-  }) as any as S.Schema<OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff>;
-
-export type OnRampsEditResponsePlannedResourcesItemPlannedAction =
-  | "no_op"
-  | "create"
-  | "update"
-  | (string & {});
-export const OnRampsEditResponsePlannedResourcesItemPlannedAction =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponsePlannedResourcesItemResourceCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE"
-  | (string & {});
-export const OnRampsEditResponsePlannedResourcesItemResourceCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsEditResponsePlannedResourcesItemResourceResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | (string & {});
-export const OnRampsEditResponsePlannedResourcesItemResourceResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsEditResponsePlannedResourcesItemResource {
-  id: string;
-  cloudType: OnRampsEditResponsePlannedResourcesItemResourceCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsEditResponsePlannedResourcesItemResourceResourceType;
-  title: string;
-}
-export const OnRampsEditResponsePlannedResourcesItemResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType: OnRampsEditResponsePlannedResourcesItemResourceCloudType.pipe(
-        T.Body("cloud_type"),
-      ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsEditResponsePlannedResourcesItemResourceResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier: "OnRampsEditResponsePlannedResourcesItemResource",
-  }) as any as S.Schema<OnRampsEditResponsePlannedResourcesItemResource>;
-
-export interface OnRampsEditResponsePlannedResourcesItem {
-  diff: OnRampsEditResponsePlannedResourcesItemDiff;
-  keysRequireReplace: OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList;
-  monthlyCostEstimateDiff: OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff;
-  plannedAction: OnRampsEditResponsePlannedResourcesItemPlannedAction;
-  resource: OnRampsEditResponsePlannedResourcesItemResource;
-}
-export const OnRampsEditResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      diff: OnRampsEditResponsePlannedResourcesItemDiff,
-      keysRequireReplace:
-        OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList.pipe(
-          T.Body("keys_require_replace"),
-        ),
-      monthlyCostEstimateDiff:
-        OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff.pipe(
-          T.Body("monthly_cost_estimate_diff"),
-        ),
-      plannedAction: OnRampsEditResponsePlannedResourcesItemPlannedAction.pipe(
-        T.Body("planned_action"),
-      ),
-      resource: OnRampsEditResponsePlannedResourcesItemResource,
-    }),
+export interface DiscoverAllCloudIntegrationResponse {}
+export const DiscoverAllCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "OnRampsEditResponsePlannedResourcesItem",
-}) as any as S.Schema<OnRampsEditResponsePlannedResourcesItem>;
+  identifier: "DiscoverAllCloudIntegrationResponse",
+}) as any as S.Schema<DiscoverAllCloudIntegrationResponse>;
 
-export type OnRampsEditResponsePlannedResourcesList =
-  OnRampsEditResponsePlannedResourcesItem[];
-export const OnRampsEditResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
-  OnRampsEditResponsePlannedResourcesItem,
-) as any as S.Schema<OnRampsEditResponsePlannedResourcesList>;
-
-export interface OnRampsEditResponsePostApplyMonthlyCostEstimate {
-  currency: string;
-  monthlyCost: number;
+export interface DiscoverCloudIntegrationRequest {
+  accountId: string;
+  providerId: string;
+  v2?: boolean;
 }
-export const OnRampsEditResponsePostApplyMonthlyCostEstimate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      currency: S.String,
-      monthlyCost: S.Number.pipe(T.Body("monthly_cost")),
-    }),
-  ).annotate({
-    identifier: "OnRampsEditResponsePostApplyMonthlyCostEstimate",
-  }) as any as S.Schema<OnRampsEditResponsePostApplyMonthlyCostEstimate>;
-
-export type OnRampsEditResponsePostApplyResourcesMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsEditResponsePostApplyResourcesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsEditResponsePostApplyResourcesMap>;
-
-export interface OnRampsEditResponseStatusApplyProgress {
-  done: number;
-  total: number;
-}
-export const OnRampsEditResponseStatusApplyProgress = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      done: S.Number,
-      total: S.Number,
-    }),
-).annotate({
-  identifier: "OnRampsEditResponseStatusApplyProgress",
-}) as any as S.Schema<OnRampsEditResponseStatusApplyProgress>;
-
-export type OnRampsEditResponseStatusLifecycleState =
-  | "OnrampNeedsApply"
-  | "OnrampPendingPlan"
-  | "OnrampPlanning"
-  | (string & {});
-export const OnRampsEditResponseStatusLifecycleState = /*@__PURE__*/ S.String;
-
-export interface OnRampsEditResponseStatusPlanProgress {
-  done: number;
-  total: number;
-}
-export const OnRampsEditResponseStatusPlanProgress = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      done: S.Number,
-      total: S.Number,
-    }),
-).annotate({
-  identifier: "OnRampsEditResponseStatusPlanProgress",
-}) as any as S.Schema<OnRampsEditResponseStatusPlanProgress>;
-
-export type OnRampsEditResponseStatusRoutesList = string[];
-export const OnRampsEditResponseStatusRoutesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponseStatusRoutesList>;
-
-export type OnRampsEditResponseStatusTunnelsList = string[];
-export const OnRampsEditResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponseStatusTunnelsList>;
-
-export type OnRampsEditResponseStatusLifecycleErrorsMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsEditResponseStatusLifecycleErrorsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsEditResponseStatusLifecycleErrorsMap>;
-
-export interface OnRampsEditResponseStatus {
-  applyProgress: OnRampsEditResponseStatusApplyProgress;
-  lifecycleState: OnRampsEditResponseStatusLifecycleState;
-  planProgress: OnRampsEditResponseStatusPlanProgress;
-  routes: OnRampsEditResponseStatusRoutesList;
-  tunnels: OnRampsEditResponseStatusTunnelsList;
-  lifecycleErrors?: OnRampsEditResponseStatusLifecycleErrorsMap;
-}
-export const OnRampsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
+export const DiscoverCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    applyProgress: OnRampsEditResponseStatusApplyProgress.pipe(
-      T.Body("apply_progress"),
-    ),
-    lifecycleState: OnRampsEditResponseStatusLifecycleState.pipe(
-      T.Body("lifecycle_state"),
-    ),
-    planProgress: OnRampsEditResponseStatusPlanProgress.pipe(
-      T.Body("plan_progress"),
-    ),
-    routes: OnRampsEditResponseStatusRoutesList,
-    tunnels: OnRampsEditResponseStatusTunnelsList,
-    lifecycleErrors: S.optional(
-      OnRampsEditResponseStatusLifecycleErrorsMap.pipe(
-        T.Body("lifecycle_errors"),
-      ),
-    ),
-  }),
+    accountId: S.String.pipe(T.Label("account_id")),
+    providerId: S.String.pipe(T.Label("provider_id")),
+    v2: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}/discover",
+      code: 200,
+    }),
+  ),
 ).annotate({
-  identifier: "OnRampsEditResponseStatus",
-}) as any as S.Schema<OnRampsEditResponseStatus>;
+  identifier: "DiscoverCloudIntegrationRequest",
+}) as any as S.Schema<DiscoverCloudIntegrationRequest>;
 
-export type OnRampsEditResponseVpcsByIdMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsEditResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdMap>;
-
-export type OnRampsEditResponseVpcsByIdUnavailableList = string[];
-export const OnRampsEditResponseVpcsByIdUnavailableList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsEditResponseVpcsByIdUnavailableList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface OnRampsEditResponse {
-  id: string;
-  cloudType: OnRampsEditResponseCloudType;
-  dynamicRouting: boolean;
-  installRoutesInCloud: boolean;
-  installRoutesInMagicWan: boolean;
-  name: string;
-  type: OnRampsEditResponseType;
-  updatedAt: string;
-  attachedHubs?: OnRampsEditResponseAttachedHubsList;
-  attachedVpcs?: OnRampsEditResponseAttachedVpcsList;
-  cloudAsn?: number;
-  description?: string;
-  hub?: string;
-  lastAppliedAt?: string;
-  lastExportedAt?: string;
-  lastPlannedAt?: string;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  plannedMonthlyCostEstimate?: OnRampsEditResponsePlannedMonthlyCostEstimate;
-  plannedResources?: OnRampsEditResponsePlannedResourcesList;
-  plannedResourcesUnavailable?: boolean;
-  postApplyMonthlyCostEstimate?: OnRampsEditResponsePostApplyMonthlyCostEstimate;
-  postApplyResources?: OnRampsEditResponsePostApplyResourcesMap;
-  postApplyResourcesUnavailable?: boolean;
-  region?: string;
-  status?: OnRampsEditResponseStatus;
-  vpc?: string;
-  vpcsById?: OnRampsEditResponseVpcsByIdMap;
-  /** The list of vpc IDs for which resource details failed to generate. */
-  vpcsByIdUnavailable?: OnRampsEditResponseVpcsByIdUnavailableList;
-}
-export const OnRampsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudType: OnRampsEditResponseCloudType.pipe(T.Body("cloud_type")),
-    dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
-    installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
-    installRoutesInMagicWan: S.Boolean.pipe(
-      T.Body("install_routes_in_magic_wan"),
-    ),
-    name: S.String,
-    type: OnRampsEditResponseType,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    attachedHubs: S.optional(
-      OnRampsEditResponseAttachedHubsList.pipe(T.Body("attached_hubs")),
-    ),
-    attachedVpcs: S.optional(
-      OnRampsEditResponseAttachedVpcsList.pipe(T.Body("attached_vpcs")),
-    ),
-    cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
-    description: S.optional(S.String),
-    hub: S.optional(S.String),
-    lastAppliedAt: S.optional(S.String.pipe(T.Body("last_applied_at"))),
-    lastExportedAt: S.optional(S.String.pipe(T.Body("last_exported_at"))),
-    lastPlannedAt: S.optional(S.String.pipe(T.Body("last_planned_at"))),
-    manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
-    ),
-    manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
-    ),
-    plannedMonthlyCostEstimate: S.optional(
-      OnRampsEditResponsePlannedMonthlyCostEstimate.pipe(
-        T.Body("planned_monthly_cost_estimate"),
-      ),
-    ),
-    plannedResources: S.optional(
-      OnRampsEditResponsePlannedResourcesList.pipe(T.Body("planned_resources")),
-    ),
-    plannedResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("planned_resources_unavailable")),
-    ),
-    postApplyMonthlyCostEstimate: S.optional(
-      OnRampsEditResponsePostApplyMonthlyCostEstimate.pipe(
-        T.Body("post_apply_monthly_cost_estimate"),
-      ),
-    ),
-    postApplyResources: S.optional(
-      OnRampsEditResponsePostApplyResourcesMap.pipe(
-        T.Body("post_apply_resources"),
-      ),
-    ),
-    postApplyResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("post_apply_resources_unavailable")),
-    ),
-    region: S.optional(S.String),
-    status: S.optional(OnRampsEditResponseStatus),
-    vpc: S.optional(S.String),
-    vpcsById: S.optional(
-      OnRampsEditResponseVpcsByIdMap.pipe(T.Body("vpcs_by_id")),
-    ),
-    vpcsByIdUnavailable: S.optional(
-      OnRampsEditResponseVpcsByIdUnavailableList.pipe(
-        T.Body("vpcs_by_id_unavailable"),
-      ),
-    ),
-  }),
+export interface DiscoverCloudIntegrationResponse {}
+export const DiscoverCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "OnRampsEditResponse",
-}) as any as S.Schema<OnRampsEditResponse>;
+  identifier: "DiscoverCloudIntegrationResponse",
+}) as any as S.Schema<DiscoverCloudIntegrationResponse>;
 
-export interface OnRampsExportRequest {
+export interface ExportOnRampRequest {
   accountId: string;
   onrampId: string;
 }
-export const OnRampsExportRequest = /*@__PURE__*/ S.suspend(() =>
+export const ExportOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
@@ -3258,17 +1110,418 @@ export const OnRampsExportRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OnRampsExportRequest",
-}) as any as S.Schema<OnRampsExportRequest>;
+  identifier: "ExportOnRampRequest",
+}) as any as S.Schema<ExportOnRampRequest>;
 
-export interface OnRampsExportResponse {}
-export const OnRampsExportResponse = /*@__PURE__*/ S.suspend(() =>
+export interface ExportOnRampResponse {}
+export const ExportOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "OnRampsExportResponse",
-}) as any as S.Schema<OnRampsExportResponse>;
+  identifier: "ExportOnRampResponse",
+}) as any as S.Schema<ExportOnRampResponse>;
 
-export interface OnRampsGetRequest {
+export type ResourcesExportRequestResourceIdList = string[];
+export const ResourcesExportRequestResourceIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourcesExportRequestResourceIdList>;
+
+export type ResourcesExportRequestResourceType =
+  | "aws_customer_gateway"
+  | "aws_egress_only_internet_gateway"
+  | "aws_internet_gateway"
+  | (string & {});
+export const ResourcesExportRequestResourceType = /*@__PURE__*/ S.String;
+
+export type ResourcesExportRequestResourceTypeList =
+  ResourcesExportRequestResourceType[];
+export const ResourcesExportRequestResourceTypeList = /*@__PURE__*/ S.Array(
+  ResourcesExportRequestResourceType,
+) as any as S.Schema<ResourcesExportRequestResourceTypeList>;
+
+export type ResourcesExportRequestSearchList = string[];
+export const ResourcesExportRequestSearchList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourcesExportRequestSearchList>;
+
+export interface ExportResourceRequest {
+  accountId: string;
+  desc?: boolean;
+  /** One of ["id", "resource_type", "region"]. */
+  orderBy?: string;
+  providerId?: string;
+  region?: string;
+  resourceGroup?: string;
+  resourceId?: ResourcesExportRequestResourceIdList;
+  resourceType?: ResourcesExportRequestResourceTypeList;
+  search?: ResourcesExportRequestSearchList;
+  v2?: boolean;
+}
+export const ExportResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    desc: S.optional(S.Boolean.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+    providerId: S.optional(S.String.pipe(T.Query("provider_id"))),
+    region: S.optional(S.String.pipe(T.Query())),
+    resourceGroup: S.optional(S.String.pipe(T.Query("resource_group"))),
+    resourceId: S.optional(
+      ResourcesExportRequestResourceIdList.pipe(T.Query("resource_id")),
+    ),
+    resourceType: S.optional(
+      ResourcesExportRequestResourceTypeList.pipe(T.Query("resource_type")),
+    ),
+    search: S.optional(ResourcesExportRequestSearchList.pipe(T.Query())),
+    v2: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cloud/resources/export",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ExportResourceRequest",
+}) as any as S.Schema<ExportResourceRequest>;
+
+export interface ExportResourceResponse {}
+export const ExportResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ExportResourceResponse",
+}) as any as S.Schema<ExportResourceResponse>;
+
+export interface GetCatalogSyncRequest {
+  accountId: string;
+  syncId: string;
+}
+export const GetCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    syncId: S.String.pipe(T.Label("sync_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetCatalogSyncRequest",
+}) as any as S.Schema<GetCatalogSyncRequest>;
+
+export type CatalogSyncsGetResponseDestinationType =
+  | "NONE"
+  | "ZERO_TRUST_LIST"
+  | (string & {});
+export const CatalogSyncsGetResponseDestinationType = /*@__PURE__*/ S.String;
+
+export type CatalogSyncsGetResponseUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
+export const CatalogSyncsGetResponseUpdateMode = /*@__PURE__*/ S.String;
+
+export type CatalogSyncsGetResponseErrorsMap = {
+  [key: string]: unknown | undefined;
+};
+export const CatalogSyncsGetResponseErrorsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<CatalogSyncsGetResponseErrorsMap>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetCatalogSyncResponse {
+  id: string;
+  description: string;
+  destinationId: string;
+  destinationType: CatalogSyncsGetResponseDestinationType;
+  lastUserUpdateAt: string;
+  name: string;
+  policy: string;
+  updateMode: CatalogSyncsGetResponseUpdateMode;
+  errors?: CatalogSyncsGetResponseErrorsMap;
+  includesDiscoveriesUntil?: string;
+  lastAttemptedUpdateAt?: string;
+  lastSuccessfulUpdateAt?: string;
+}
+export const GetCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    description: S.String,
+    destinationId: S.String.pipe(T.Body("destination_id")),
+    destinationType: CatalogSyncsGetResponseDestinationType.pipe(
+      T.Body("destination_type"),
+    ),
+    lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
+    name: S.String,
+    policy: S.String,
+    updateMode: CatalogSyncsGetResponseUpdateMode.pipe(T.Body("update_mode")),
+    errors: S.optional(CatalogSyncsGetResponseErrorsMap),
+    includesDiscoveriesUntil: S.optional(
+      S.String.pipe(T.Body("includes_discoveries_until")),
+    ),
+    lastAttemptedUpdateAt: S.optional(
+      S.String.pipe(T.Body("last_attempted_update_at")),
+    ),
+    lastSuccessfulUpdateAt: S.optional(
+      S.String.pipe(T.Body("last_successful_update_at")),
+    ),
+  }),
+).annotate({
+  identifier: "GetCatalogSyncResponse",
+}) as any as S.Schema<GetCatalogSyncResponse>;
+
+export interface GetCloudIntegrationRequest {
+  accountId: string;
+  providerId: string;
+  status?: boolean;
+}
+export const GetCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    providerId: S.String.pipe(T.Label("provider_id")),
+    status: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetCloudIntegrationRequest",
+}) as any as S.Schema<GetCloudIntegrationRequest>;
+
+export type CloudIntegrationsGetResponseCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | "CLOUDFLARE"
+  | (string & {});
+export const CloudIntegrationsGetResponseCloudType = /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsGetResponseLifecycleState =
+  | "ACTIVE"
+  | "PENDING_SETUP"
+  | "RETIRED"
+  | (string & {});
+export const CloudIntegrationsGetResponseLifecycleState =
+  /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsGetResponseState =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsGetResponseState = /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsGetResponseStateV2 =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsGetResponseStateV2 = /*@__PURE__*/ S.String;
+
+export interface CloudIntegrationsGetResponseStatusDiscoveryProgress {
+  done: number;
+  total: number;
+  unit: string;
+}
+export const CloudIntegrationsGetResponseStatusDiscoveryProgress =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      done: S.Number,
+      total: S.Number,
+      unit: S.String,
+    }),
+  ).annotate({
+    identifier: "CloudIntegrationsGetResponseStatusDiscoveryProgress",
+  }) as any as S.Schema<CloudIntegrationsGetResponseStatusDiscoveryProgress>;
+
+export interface CloudIntegrationsGetResponseStatusDiscoveryProgressV2 {
+  done: number;
+  total: number;
+  unit: string;
+}
+export const CloudIntegrationsGetResponseStatusDiscoveryProgressV2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      done: S.Number,
+      total: S.Number,
+      unit: S.String,
+    }),
+  ).annotate({
+    identifier: "CloudIntegrationsGetResponseStatusDiscoveryProgressV2",
+  }) as any as S.Schema<CloudIntegrationsGetResponseStatusDiscoveryProgressV2>;
+
+export type CloudIntegrationsGetResponseStatusLastDiscoveryStatus =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsGetResponseStatusLastDiscoveryStatus =
+  /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2 =
+  /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsGetResponseStatusRegionsList = string[];
+export const CloudIntegrationsGetResponseStatusRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CloudIntegrationsGetResponseStatusRegionsList>;
+
+export type CloudIntegrationsGetResponseStatusInUseByItemClientType =
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
+export const CloudIntegrationsGetResponseStatusInUseByItemClientType =
+  /*@__PURE__*/ S.String;
+
+export interface CloudIntegrationsGetResponseStatusInUseByItem {
+  id: string;
+  clientType: CloudIntegrationsGetResponseStatusInUseByItemClientType;
+  name: string;
+}
+export const CloudIntegrationsGetResponseStatusInUseByItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      clientType: CloudIntegrationsGetResponseStatusInUseByItemClientType.pipe(
+        T.Body("client_type"),
+      ),
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "CloudIntegrationsGetResponseStatusInUseByItem",
+  }) as any as S.Schema<CloudIntegrationsGetResponseStatusInUseByItem>;
+
+export type CloudIntegrationsGetResponseStatusInUseByList =
+  CloudIntegrationsGetResponseStatusInUseByItem[];
+export const CloudIntegrationsGetResponseStatusInUseByList =
+  /*@__PURE__*/ S.Array(
+    CloudIntegrationsGetResponseStatusInUseByItem,
+  ) as any as S.Schema<CloudIntegrationsGetResponseStatusInUseByList>;
+
+export interface CloudIntegrationsGetResponseStatus {
+  discoveryProgress: CloudIntegrationsGetResponseStatusDiscoveryProgress;
+  discoveryProgressV2: CloudIntegrationsGetResponseStatusDiscoveryProgressV2;
+  lastDiscoveryStatus: CloudIntegrationsGetResponseStatusLastDiscoveryStatus;
+  lastDiscoveryStatusV2: CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2;
+  regions: CloudIntegrationsGetResponseStatusRegionsList;
+  credentialsGoodSince?: string;
+  credentialsMissingSince?: string;
+  credentialsRejectedSince?: string;
+  discoveryMessage?: string;
+  discoveryMessageV2?: string;
+  inUseBy?: CloudIntegrationsGetResponseStatusInUseByList;
+  lastDiscoveryCompletedAt?: string;
+  lastDiscoveryCompletedAtV2?: string;
+  lastDiscoveryStartedAt?: string;
+  lastDiscoveryStartedAtV2?: string;
+  lastUpdated?: string;
+}
+export const CloudIntegrationsGetResponseStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    discoveryProgress: CloudIntegrationsGetResponseStatusDiscoveryProgress.pipe(
+      T.Body("discovery_progress"),
+    ),
+    discoveryProgressV2:
+      CloudIntegrationsGetResponseStatusDiscoveryProgressV2.pipe(
+        T.Body("discovery_progress_v2"),
+      ),
+    lastDiscoveryStatus:
+      CloudIntegrationsGetResponseStatusLastDiscoveryStatus.pipe(
+        T.Body("last_discovery_status"),
+      ),
+    lastDiscoveryStatusV2:
+      CloudIntegrationsGetResponseStatusLastDiscoveryStatusV2.pipe(
+        T.Body("last_discovery_status_v2"),
+      ),
+    regions: CloudIntegrationsGetResponseStatusRegionsList,
+    credentialsGoodSince: S.optional(
+      S.String.pipe(T.Body("credentials_good_since")),
+    ),
+    credentialsMissingSince: S.optional(
+      S.String.pipe(T.Body("credentials_missing_since")),
+    ),
+    credentialsRejectedSince: S.optional(
+      S.String.pipe(T.Body("credentials_rejected_since")),
+    ),
+    discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
+    discoveryMessageV2: S.optional(
+      S.String.pipe(T.Body("discovery_message_v2")),
+    ),
+    inUseBy: S.optional(
+      CloudIntegrationsGetResponseStatusInUseByList.pipe(T.Body("in_use_by")),
+    ),
+    lastDiscoveryCompletedAt: S.optional(
+      S.String.pipe(T.Body("last_discovery_completed_at")),
+    ),
+    lastDiscoveryCompletedAtV2: S.optional(
+      S.String.pipe(T.Body("last_discovery_completed_at_v2")),
+    ),
+    lastDiscoveryStartedAt: S.optional(
+      S.String.pipe(T.Body("last_discovery_started_at")),
+    ),
+    lastDiscoveryStartedAtV2: S.optional(
+      S.String.pipe(T.Body("last_discovery_started_at_v2")),
+    ),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+  }),
+).annotate({
+  identifier: "CloudIntegrationsGetResponseStatus",
+}) as any as S.Schema<CloudIntegrationsGetResponseStatus>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetCloudIntegrationResponse {
+  id: string;
+  cloudType: CloudIntegrationsGetResponseCloudType;
+  friendlyName: string;
+  lastUpdated: string;
+  lifecycleState: CloudIntegrationsGetResponseLifecycleState;
+  state: CloudIntegrationsGetResponseState;
+  stateV2: CloudIntegrationsGetResponseStateV2;
+  awsArn?: string;
+  azureSubscriptionId?: string;
+  azureTenantId?: string;
+  description?: string;
+  gcpProjectId?: string;
+  gcpServiceAccountEmail?: string;
+  status?: CloudIntegrationsGetResponseStatus;
+}
+export const GetCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    cloudType: CloudIntegrationsGetResponseCloudType.pipe(T.Body("cloud_type")),
+    friendlyName: S.String.pipe(T.Body("friendly_name")),
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    lifecycleState: CloudIntegrationsGetResponseLifecycleState.pipe(
+      T.Body("lifecycle_state"),
+    ),
+    state: CloudIntegrationsGetResponseState,
+    stateV2: CloudIntegrationsGetResponseStateV2.pipe(T.Body("state_v2")),
+    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    azureSubscriptionId: S.optional(
+      S.String.pipe(T.Body("azure_subscription_id")),
+    ),
+    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
+    description: S.optional(S.String),
+    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    gcpServiceAccountEmail: S.optional(
+      S.String.pipe(T.Body("gcp_service_account_email")),
+    ),
+    status: S.optional(CloudIntegrationsGetResponseStatus),
+  }),
+).annotate({
+  identifier: "GetCloudIntegrationResponse",
+}) as any as S.Schema<GetCloudIntegrationResponse>;
+
+export interface GetOnRampRequest {
   accountId: string;
   onrampId: string;
   plannedResources?: boolean;
@@ -3276,7 +1529,7 @@ export interface OnRampsGetRequest {
   status?: boolean;
   vpcs?: boolean;
 }
-export const OnRampsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetOnRampRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     onrampId: S.String.pipe(T.Label("onramp_id")),
@@ -3294,8 +1547,8 @@ export const OnRampsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OnRampsGetRequest",
-}) as any as S.Schema<OnRampsGetRequest>;
+  identifier: "GetOnRampRequest",
+}) as any as S.Schema<GetOnRampRequest>;
 
 export type OnRampsGetResponseCloudType =
   | "AWS"
@@ -3590,7 +1843,7 @@ export const OnRampsGetResponseVpcsByIdUnavailableList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<OnRampsGetResponseVpcsByIdUnavailableList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface OnRampsGetResponse {
+export interface GetOnRampResponse {
   id: string;
   cloudType: OnRampsGetResponseCloudType;
   dynamicRouting: boolean;
@@ -3622,7 +1875,7 @@ export interface OnRampsGetResponse {
   /** The list of vpc IDs for which resource details failed to generate. */
   vpcsByIdUnavailable?: OnRampsGetResponseVpcsByIdUnavailableList;
 }
-export const OnRampsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetOnRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cloudType: OnRampsGetResponseCloudType.pipe(T.Body("cloud_type")),
@@ -3689,10 +1942,875 @@ export const OnRampsGetResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "OnRampsGetResponse",
-}) as any as S.Schema<OnRampsGetResponse>;
+  identifier: "GetOnRampResponse",
+}) as any as S.Schema<GetOnRampResponse>;
 
-export interface OnRampsListRequest {
+export interface GetResourceRequest {
+  accountId: string;
+  resourceId: string;
+  v2?: boolean;
+}
+export const GetResourceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    resourceId: S.String.pipe(T.Label("resource_id")),
+    v2: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cloud/resources/{resource_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetResourceRequest",
+}) as any as S.Schema<GetResourceRequest>;
+
+export type ResourcesGetResponseCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | "CLOUDFLARE"
+  | (string & {});
+export const ResourcesGetResponseCloudType = /*@__PURE__*/ S.String;
+
+export type ResourcesGetResponseConfigMap = {
+  [key: string]: unknown | undefined;
+};
+export const ResourcesGetResponseConfigMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ResourcesGetResponseConfigMap>;
+
+export interface ResourcesGetResponseMonthlyCostEstimate {
+  currency: string;
+  monthlyCost: number;
+}
+export const ResourcesGetResponseMonthlyCostEstimate = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      currency: S.String,
+      monthlyCost: S.Number.pipe(T.Body("monthly_cost")),
+    }),
+).annotate({
+  identifier: "ResourcesGetResponseMonthlyCostEstimate",
+}) as any as S.Schema<ResourcesGetResponseMonthlyCostEstimate>;
+
+export type ResourcesGetResponseObservationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const ResourcesGetResponseObservationsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ResourcesGetResponseObservationsMap>;
+
+export type ResourcesGetResponseProviderIdsList = string[];
+export const ResourcesGetResponseProviderIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ResourcesGetResponseProviderIdsList>;
+
+export type ResourcesGetResponseProviderNamesByIdMap = {
+  [key: string]: unknown | undefined;
+};
+export const ResourcesGetResponseProviderNamesByIdMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ResourcesGetResponseProviderNamesByIdMap>;
+
+export type ResourcesGetResponseResourceType =
+  | "aws_customer_gateway"
+  | "aws_egress_only_internet_gateway"
+  | "aws_internet_gateway"
+  | (string & {});
+export const ResourcesGetResponseResourceType = /*@__PURE__*/ S.String;
+
+export interface ResourcesGetResponseSectionsItemHiddenItemsItemValue {
+  McnStringItemObjectItemTypeString__: unknown;
+  McnYamlItemObjectItemTypeYaml__: unknown;
+  McnYamlDiffItemObjectItemTypeYamlDiff__: unknown;
+  McnResourcePreviewItemObjectItemTypeResourcePreview__: unknown;
+  McnListItemObjectItemTypeList__: unknown;
+}
+export const ResourcesGetResponseSectionsItemHiddenItemsItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      McnStringItemObjectItemTypeString__: S.Unknown.pipe(
+        T.Body("McnStringItem object { item_type, string }"),
+      ),
+      McnYamlItemObjectItemTypeYaml__: S.Unknown.pipe(
+        T.Body("McnYamlItem object { item_type, yaml }"),
+      ),
+      McnYamlDiffItemObjectItemTypeYamlDiff__: S.Unknown.pipe(
+        T.Body("McnYamlDiffItem object { item_type, yaml_diff }"),
+      ),
+      McnResourcePreviewItemObjectItemTypeResourcePreview__: S.Unknown.pipe(
+        T.Body("McnResourcePreviewItem object { item_type, resource_preview }"),
+      ),
+      McnListItemObjectItemTypeList__: S.Unknown.pipe(
+        T.Body("McnListItem object { item_type, list }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "ResourcesGetResponseSectionsItemHiddenItemsItemValue",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValue>;
+
+export interface ResourcesGetResponseSectionsItemHiddenItemsItem {
+  helpText?: string;
+  name?: string;
+  value?: ResourcesGetResponseSectionsItemHiddenItemsItemValue;
+}
+export const ResourcesGetResponseSectionsItemHiddenItemsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      helpText: S.optional(S.String),
+      name: S.optional(S.String),
+      value: S.optional(ResourcesGetResponseSectionsItemHiddenItemsItemValue),
+    }),
+  ).annotate({
+    identifier: "ResourcesGetResponseSectionsItemHiddenItemsItem",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItem>;
+
+export type ResourcesGetResponseSectionsItemHiddenItemsList =
+  ResourcesGetResponseSectionsItemHiddenItemsItem[];
+export const ResourcesGetResponseSectionsItemHiddenItemsList =
+  /*@__PURE__*/ S.Array(
+    ResourcesGetResponseSectionsItemHiddenItemsItem,
+  ) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsList>;
+
+export interface ResourcesGetResponseSectionsItemVisibleItemsItemValue {
+  McnStringItemObjectItemTypeString__: unknown;
+  McnYamlItemObjectItemTypeYaml__: unknown;
+  McnYamlDiffItemObjectItemTypeYamlDiff__: unknown;
+  McnResourcePreviewItemObjectItemTypeResourcePreview__: unknown;
+  McnListItemObjectItemTypeList__: unknown;
+}
+export const ResourcesGetResponseSectionsItemVisibleItemsItemValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      McnStringItemObjectItemTypeString__: S.Unknown.pipe(
+        T.Body("McnStringItem object { item_type, string }"),
+      ),
+      McnYamlItemObjectItemTypeYaml__: S.Unknown.pipe(
+        T.Body("McnYamlItem object { item_type, yaml }"),
+      ),
+      McnYamlDiffItemObjectItemTypeYamlDiff__: S.Unknown.pipe(
+        T.Body("McnYamlDiffItem object { item_type, yaml_diff }"),
+      ),
+      McnResourcePreviewItemObjectItemTypeResourcePreview__: S.Unknown.pipe(
+        T.Body("McnResourcePreviewItem object { item_type, resource_preview }"),
+      ),
+      McnListItemObjectItemTypeList__: S.Unknown.pipe(
+        T.Body("McnListItem object { item_type, list }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "ResourcesGetResponseSectionsItemVisibleItemsItemValue",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValue>;
+
+export interface ResourcesGetResponseSectionsItemVisibleItemsItem {
+  helpText?: string;
+  name?: string;
+  value?: ResourcesGetResponseSectionsItemVisibleItemsItemValue;
+}
+export const ResourcesGetResponseSectionsItemVisibleItemsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      helpText: S.optional(S.String),
+      name: S.optional(S.String),
+      value: S.optional(ResourcesGetResponseSectionsItemVisibleItemsItemValue),
+    }),
+  ).annotate({
+    identifier: "ResourcesGetResponseSectionsItemVisibleItemsItem",
+  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItem>;
+
+export type ResourcesGetResponseSectionsItemVisibleItemsList =
+  ResourcesGetResponseSectionsItemVisibleItemsItem[];
+export const ResourcesGetResponseSectionsItemVisibleItemsList =
+  /*@__PURE__*/ S.Array(
+    ResourcesGetResponseSectionsItemVisibleItemsItem,
+  ) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsList>;
+
+export interface ResourcesGetResponseSectionsItem {
+  hiddenItems: ResourcesGetResponseSectionsItemHiddenItemsList;
+  name: string;
+  visibleItems: ResourcesGetResponseSectionsItemVisibleItemsList;
+  helpText?: string;
+}
+export const ResourcesGetResponseSectionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    hiddenItems: ResourcesGetResponseSectionsItemHiddenItemsList.pipe(
+      T.Body("hidden_items"),
+    ),
+    name: S.String,
+    visibleItems: ResourcesGetResponseSectionsItemVisibleItemsList.pipe(
+      T.Body("visible_items"),
+    ),
+    helpText: S.optional(S.String.pipe(T.Body("help_text"))),
+  }),
+).annotate({
+  identifier: "ResourcesGetResponseSectionsItem",
+}) as any as S.Schema<ResourcesGetResponseSectionsItem>;
+
+export type ResourcesGetResponseSectionsList =
+  ResourcesGetResponseSectionsItem[];
+export const ResourcesGetResponseSectionsList = /*@__PURE__*/ S.Array(
+  ResourcesGetResponseSectionsItem,
+) as any as S.Schema<ResourcesGetResponseSectionsList>;
+
+export type ResourcesGetResponseStateMap = {
+  [key: string]: unknown | undefined;
+};
+export const ResourcesGetResponseStateMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ResourcesGetResponseStateMap>;
+
+export type ResourcesGetResponseTagsMap = {
+  [key: string]: unknown | undefined;
+};
+export const ResourcesGetResponseTagsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ResourcesGetResponseTagsMap>;
+
+export type ResourcesGetResponseManagedByItemClientType =
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
+export const ResourcesGetResponseManagedByItemClientType =
+  /*@__PURE__*/ S.String;
+
+export interface ResourcesGetResponseManagedByItem {
+  id: string;
+  clientType: ResourcesGetResponseManagedByItemClientType;
+  name: string;
+}
+export const ResourcesGetResponseManagedByItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    clientType: ResourcesGetResponseManagedByItemClientType.pipe(
+      T.Body("client_type"),
+    ),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "ResourcesGetResponseManagedByItem",
+}) as any as S.Schema<ResourcesGetResponseManagedByItem>;
+
+export type ResourcesGetResponseManagedByList =
+  ResourcesGetResponseManagedByItem[];
+export const ResourcesGetResponseManagedByList = /*@__PURE__*/ S.Array(
+  ResourcesGetResponseManagedByItem,
+) as any as S.Schema<ResourcesGetResponseManagedByList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetResourceResponse {
+  id: string;
+  accountId: string;
+  cloudType: ResourcesGetResponseCloudType;
+  config: ResourcesGetResponseConfigMap;
+  deploymentProvider: string;
+  managed: boolean;
+  monthlyCostEstimate: ResourcesGetResponseMonthlyCostEstimate;
+  name: string;
+  nativeId: string;
+  observations: ResourcesGetResponseObservationsMap;
+  providerIds: ResourcesGetResponseProviderIdsList;
+  providerNamesById: ResourcesGetResponseProviderNamesByIdMap;
+  region: string;
+  resourceGroup: string;
+  resourceType: ResourcesGetResponseResourceType;
+  sections: ResourcesGetResponseSectionsList;
+  state: ResourcesGetResponseStateMap;
+  tags: ResourcesGetResponseTagsMap;
+  updatedAt: string;
+  url: string;
+  managedBy?: ResourcesGetResponseManagedByList;
+}
+export const GetResourceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    accountId: S.String.pipe(T.Body("account_id")),
+    cloudType: ResourcesGetResponseCloudType.pipe(T.Body("cloud_type")),
+    config: ResourcesGetResponseConfigMap,
+    deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
+    managed: S.Boolean,
+    monthlyCostEstimate: ResourcesGetResponseMonthlyCostEstimate.pipe(
+      T.Body("monthly_cost_estimate"),
+    ),
+    name: S.String,
+    nativeId: S.String.pipe(T.Body("native_id")),
+    observations: ResourcesGetResponseObservationsMap,
+    providerIds: ResourcesGetResponseProviderIdsList.pipe(
+      T.Body("provider_ids"),
+    ),
+    providerNamesById: ResourcesGetResponseProviderNamesByIdMap.pipe(
+      T.Body("provider_names_by_id"),
+    ),
+    region: S.String,
+    resourceGroup: S.String.pipe(T.Body("resource_group")),
+    resourceType: ResourcesGetResponseResourceType.pipe(
+      T.Body("resource_type"),
+    ),
+    sections: ResourcesGetResponseSectionsList,
+    state: ResourcesGetResponseStateMap,
+    tags: ResourcesGetResponseTagsMap,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    url: S.String,
+    managedBy: S.optional(
+      ResourcesGetResponseManagedByList.pipe(T.Body("managed_by")),
+    ),
+  }),
+).annotate({
+  identifier: "GetResourceResponse",
+}) as any as S.Schema<GetResourceResponse>;
+
+export interface InitialSetupCloudIntegrationRequest {
+  accountId: string;
+  providerId: string;
+}
+export const InitialSetupCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    providerId: S.String.pipe(T.Label("provider_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}/initial_setup",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InitialSetupCloudIntegrationRequest",
+}) as any as S.Schema<InitialSetupCloudIntegrationRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface InitialSetupCloudIntegrationResponse {
+  McnAwsTrustPolicyObjectAwsTrustPolicyItemType__: unknown;
+  McnAzureSetupObjectAzureConsentUrlIntegrationIdentityTagItemTypeTagCliCommand__: unknown;
+  McnGcpSetupObjectIntegrationIdentityTagItemTypeTagCliCommand__: unknown;
+}
+export const InitialSetupCloudIntegrationResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      McnAwsTrustPolicyObjectAwsTrustPolicyItemType__: S.Unknown.pipe(
+        T.Body("McnAwsTrustPolicy object { aws_trust_policy, item_type }"),
+      ),
+      McnAzureSetupObjectAzureConsentUrlIntegrationIdentityTagItemTypeTagCliCommand__:
+        S.Unknown.pipe(
+          T.Body(
+            "McnAzureSetup object { azure_consent_url, integration_identity_tag, item_type, tag_cli_command }",
+          ),
+        ),
+      McnGcpSetupObjectIntegrationIdentityTagItemTypeTagCliCommand__:
+        S.Unknown.pipe(
+          T.Body(
+            "McnGcpSetup object { integration_identity_tag, item_type, tag_cli_command }",
+          ),
+        ),
+    }),
+).annotate({
+  identifier: "InitialSetupCloudIntegrationResponse",
+}) as any as S.Schema<InitialSetupCloudIntegrationResponse>;
+
+export type CatalogSyncsPrebuiltPoliciesListRequestDestinationType =
+  | "NONE"
+  | "ZERO_TRUST_LIST"
+  | (string & {});
+export const CatalogSyncsPrebuiltPoliciesListRequestDestinationType =
+  /*@__PURE__*/ S.String;
+
+export interface ListCatalogSyncPrebuiltPoliciesRequest {
+  accountId: string;
+  /** Specify type of destination, omit to return all. */
+  destinationType?: CatalogSyncsPrebuiltPoliciesListRequestDestinationType;
+}
+export const ListCatalogSyncPrebuiltPoliciesRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      destinationType: S.optional(
+        CatalogSyncsPrebuiltPoliciesListRequestDestinationType.pipe(
+          T.Query("destination_type"),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/prebuilt-policies",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "ListCatalogSyncPrebuiltPoliciesRequest",
+}) as any as S.Schema<ListCatalogSyncPrebuiltPoliciesRequest>;
+
+export type CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem =
+  "NONE" | "ZERO_TRUST_LIST" | (string & {});
+export const CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem =
+  /*@__PURE__*/ S.String;
+
+export type CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList =
+  CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem[];
+export const CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList =
+  /*@__PURE__*/ S.Array(
+    CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsItem,
+  ) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList>;
+
+export interface CatalogSyncsPrebuiltPoliciesListResultItem {
+  applicableDestinations: CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList;
+  policyDescription: string;
+  policyName: string;
+  policyString: string;
+}
+export const CatalogSyncsPrebuiltPoliciesListResultItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      applicableDestinations:
+        CatalogSyncsPrebuiltPoliciesListResultItemApplicableDestinationsList.pipe(
+          T.Body("applicable_destinations"),
+        ),
+      policyDescription: S.String.pipe(T.Body("policy_description")),
+      policyName: S.String.pipe(T.Body("policy_name")),
+      policyString: S.String.pipe(T.Body("policy_string")),
+    }),
+  ).annotate({
+    identifier: "CatalogSyncsPrebuiltPoliciesListResultItem",
+  }) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListResultItem>;
+
+export type CatalogSyncsPrebuiltPoliciesListResultList =
+  CatalogSyncsPrebuiltPoliciesListResultItem[];
+export const CatalogSyncsPrebuiltPoliciesListResultList = /*@__PURE__*/ S.Array(
+  CatalogSyncsPrebuiltPoliciesListResultItem,
+) as any as S.Schema<CatalogSyncsPrebuiltPoliciesListResultList>;
+
+export interface ListCatalogSyncPrebuiltPoliciesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: CatalogSyncsPrebuiltPoliciesListResultList;
+}
+export const ListCatalogSyncPrebuiltPoliciesResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      result: S.optional(
+        CatalogSyncsPrebuiltPoliciesListResultList.pipe(T.EnvelopePayload()),
+      ),
+    }),
+).annotate({
+  identifier: "ListCatalogSyncPrebuiltPoliciesResponse",
+}) as any as S.Schema<ListCatalogSyncPrebuiltPoliciesResponse>;
+
+export interface ListCatalogSyncsRequest {
+  accountId: string;
+}
+export const ListCatalogSyncsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListCatalogSyncsRequest",
+}) as any as S.Schema<ListCatalogSyncsRequest>;
+
+export type CatalogSyncsListResultItemDestinationType =
+  | "NONE"
+  | "ZERO_TRUST_LIST"
+  | (string & {});
+export const CatalogSyncsListResultItemDestinationType = /*@__PURE__*/ S.String;
+
+export type CatalogSyncsListResultItemUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
+export const CatalogSyncsListResultItemUpdateMode = /*@__PURE__*/ S.String;
+
+export type CatalogSyncsListResultItemErrorsMap = {
+  [key: string]: unknown | undefined;
+};
+export const CatalogSyncsListResultItemErrorsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<CatalogSyncsListResultItemErrorsMap>;
+
+export interface CatalogSyncsListResultItem {
+  id: string;
+  description: string;
+  destinationId: string;
+  destinationType: CatalogSyncsListResultItemDestinationType;
+  lastUserUpdateAt: string;
+  name: string;
+  policy: string;
+  updateMode: CatalogSyncsListResultItemUpdateMode;
+  errors?: CatalogSyncsListResultItemErrorsMap;
+  includesDiscoveriesUntil?: string;
+  lastAttemptedUpdateAt?: string;
+  lastSuccessfulUpdateAt?: string;
+}
+export const CatalogSyncsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    description: S.String,
+    destinationId: S.String.pipe(T.Body("destination_id")),
+    destinationType: CatalogSyncsListResultItemDestinationType.pipe(
+      T.Body("destination_type"),
+    ),
+    lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
+    name: S.String,
+    policy: S.String,
+    updateMode: CatalogSyncsListResultItemUpdateMode.pipe(
+      T.Body("update_mode"),
+    ),
+    errors: S.optional(CatalogSyncsListResultItemErrorsMap),
+    includesDiscoveriesUntil: S.optional(
+      S.String.pipe(T.Body("includes_discoveries_until")),
+    ),
+    lastAttemptedUpdateAt: S.optional(
+      S.String.pipe(T.Body("last_attempted_update_at")),
+    ),
+    lastSuccessfulUpdateAt: S.optional(
+      S.String.pipe(T.Body("last_successful_update_at")),
+    ),
+  }),
+).annotate({
+  identifier: "CatalogSyncsListResultItem",
+}) as any as S.Schema<CatalogSyncsListResultItem>;
+
+export type CatalogSyncsListResultList = CatalogSyncsListResultItem[];
+export const CatalogSyncsListResultList = /*@__PURE__*/ S.Array(
+  CatalogSyncsListResultItem,
+) as any as S.Schema<CatalogSyncsListResultList>;
+
+export interface ListCatalogSyncsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: CatalogSyncsListResultList;
+}
+export const ListCatalogSyncsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(CatalogSyncsListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListCatalogSyncsResponse",
+}) as any as S.Schema<ListCatalogSyncsResponse>;
+
+export interface ListCloudIntegrationsRequest {
+  accountId: string;
+  cloudflare?: boolean;
+  desc?: boolean;
+  /** One of ["updated_at", "id", "cloud_type", "name"]. */
+  orderBy?: string;
+  status?: boolean;
+}
+export const ListCloudIntegrationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cloudflare: S.optional(S.Boolean.pipe(T.Query())),
+    desc: S.optional(S.Boolean.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+    status: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cloud/providers",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListCloudIntegrationsRequest",
+}) as any as S.Schema<ListCloudIntegrationsRequest>;
+
+export type CloudIntegrationsListResultItemCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | "CLOUDFLARE"
+  | (string & {});
+export const CloudIntegrationsListResultItemCloudType = /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsListResultItemLifecycleState =
+  | "ACTIVE"
+  | "PENDING_SETUP"
+  | "RETIRED"
+  | (string & {});
+export const CloudIntegrationsListResultItemLifecycleState =
+  /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsListResultItemState =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsListResultItemState = /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsListResultItemStateV2 =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsListResultItemStateV2 = /*@__PURE__*/ S.String;
+
+export interface CloudIntegrationsListResultItemStatusDiscoveryProgress {
+  done: number;
+  total: number;
+  unit: string;
+}
+export const CloudIntegrationsListResultItemStatusDiscoveryProgress =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      done: S.Number,
+      total: S.Number,
+      unit: S.String,
+    }),
+  ).annotate({
+    identifier: "CloudIntegrationsListResultItemStatusDiscoveryProgress",
+  }) as any as S.Schema<CloudIntegrationsListResultItemStatusDiscoveryProgress>;
+
+export interface CloudIntegrationsListResultItemStatusDiscoveryProgressV2 {
+  done: number;
+  total: number;
+  unit: string;
+}
+export const CloudIntegrationsListResultItemStatusDiscoveryProgressV2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      done: S.Number,
+      total: S.Number,
+      unit: S.String,
+    }),
+  ).annotate({
+    identifier: "CloudIntegrationsListResultItemStatusDiscoveryProgressV2",
+  }) as any as S.Schema<CloudIntegrationsListResultItemStatusDiscoveryProgressV2>;
+
+export type CloudIntegrationsListResultItemStatusLastDiscoveryStatus =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsListResultItemStatusLastDiscoveryStatus =
+  /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2 =
+  /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsListResultItemStatusRegionsList = string[];
+export const CloudIntegrationsListResultItemStatusRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CloudIntegrationsListResultItemStatusRegionsList>;
+
+export type CloudIntegrationsListResultItemStatusInUseByItemClientType =
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
+export const CloudIntegrationsListResultItemStatusInUseByItemClientType =
+  /*@__PURE__*/ S.String;
+
+export interface CloudIntegrationsListResultItemStatusInUseByItem {
+  id: string;
+  clientType: CloudIntegrationsListResultItemStatusInUseByItemClientType;
+  name: string;
+}
+export const CloudIntegrationsListResultItemStatusInUseByItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      clientType:
+        CloudIntegrationsListResultItemStatusInUseByItemClientType.pipe(
+          T.Body("client_type"),
+        ),
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "CloudIntegrationsListResultItemStatusInUseByItem",
+  }) as any as S.Schema<CloudIntegrationsListResultItemStatusInUseByItem>;
+
+export type CloudIntegrationsListResultItemStatusInUseByList =
+  CloudIntegrationsListResultItemStatusInUseByItem[];
+export const CloudIntegrationsListResultItemStatusInUseByList =
+  /*@__PURE__*/ S.Array(
+    CloudIntegrationsListResultItemStatusInUseByItem,
+  ) as any as S.Schema<CloudIntegrationsListResultItemStatusInUseByList>;
+
+export interface CloudIntegrationsListResultItemStatus {
+  discoveryProgress: CloudIntegrationsListResultItemStatusDiscoveryProgress;
+  discoveryProgressV2: CloudIntegrationsListResultItemStatusDiscoveryProgressV2;
+  lastDiscoveryStatus: CloudIntegrationsListResultItemStatusLastDiscoveryStatus;
+  lastDiscoveryStatusV2: CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2;
+  regions: CloudIntegrationsListResultItemStatusRegionsList;
+  credentialsGoodSince?: string;
+  credentialsMissingSince?: string;
+  credentialsRejectedSince?: string;
+  discoveryMessage?: string;
+  discoveryMessageV2?: string;
+  inUseBy?: CloudIntegrationsListResultItemStatusInUseByList;
+  lastDiscoveryCompletedAt?: string;
+  lastDiscoveryCompletedAtV2?: string;
+  lastDiscoveryStartedAt?: string;
+  lastDiscoveryStartedAtV2?: string;
+  lastUpdated?: string;
+}
+export const CloudIntegrationsListResultItemStatus = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      discoveryProgress:
+        CloudIntegrationsListResultItemStatusDiscoveryProgress.pipe(
+          T.Body("discovery_progress"),
+        ),
+      discoveryProgressV2:
+        CloudIntegrationsListResultItemStatusDiscoveryProgressV2.pipe(
+          T.Body("discovery_progress_v2"),
+        ),
+      lastDiscoveryStatus:
+        CloudIntegrationsListResultItemStatusLastDiscoveryStatus.pipe(
+          T.Body("last_discovery_status"),
+        ),
+      lastDiscoveryStatusV2:
+        CloudIntegrationsListResultItemStatusLastDiscoveryStatusV2.pipe(
+          T.Body("last_discovery_status_v2"),
+        ),
+      regions: CloudIntegrationsListResultItemStatusRegionsList,
+      credentialsGoodSince: S.optional(
+        S.String.pipe(T.Body("credentials_good_since")),
+      ),
+      credentialsMissingSince: S.optional(
+        S.String.pipe(T.Body("credentials_missing_since")),
+      ),
+      credentialsRejectedSince: S.optional(
+        S.String.pipe(T.Body("credentials_rejected_since")),
+      ),
+      discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
+      discoveryMessageV2: S.optional(
+        S.String.pipe(T.Body("discovery_message_v2")),
+      ),
+      inUseBy: S.optional(
+        CloudIntegrationsListResultItemStatusInUseByList.pipe(
+          T.Body("in_use_by"),
+        ),
+      ),
+      lastDiscoveryCompletedAt: S.optional(
+        S.String.pipe(T.Body("last_discovery_completed_at")),
+      ),
+      lastDiscoveryCompletedAtV2: S.optional(
+        S.String.pipe(T.Body("last_discovery_completed_at_v2")),
+      ),
+      lastDiscoveryStartedAt: S.optional(
+        S.String.pipe(T.Body("last_discovery_started_at")),
+      ),
+      lastDiscoveryStartedAtV2: S.optional(
+        S.String.pipe(T.Body("last_discovery_started_at_v2")),
+      ),
+      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+    }),
+).annotate({
+  identifier: "CloudIntegrationsListResultItemStatus",
+}) as any as S.Schema<CloudIntegrationsListResultItemStatus>;
+
+export interface CloudIntegrationsListResultItem {
+  id: string;
+  cloudType: CloudIntegrationsListResultItemCloudType;
+  friendlyName: string;
+  lastUpdated: string;
+  lifecycleState: CloudIntegrationsListResultItemLifecycleState;
+  state: CloudIntegrationsListResultItemState;
+  stateV2: CloudIntegrationsListResultItemStateV2;
+  awsArn?: string;
+  azureSubscriptionId?: string;
+  azureTenantId?: string;
+  description?: string;
+  gcpProjectId?: string;
+  gcpServiceAccountEmail?: string;
+  status?: CloudIntegrationsListResultItemStatus;
+}
+export const CloudIntegrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    cloudType: CloudIntegrationsListResultItemCloudType.pipe(
+      T.Body("cloud_type"),
+    ),
+    friendlyName: S.String.pipe(T.Body("friendly_name")),
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    lifecycleState: CloudIntegrationsListResultItemLifecycleState.pipe(
+      T.Body("lifecycle_state"),
+    ),
+    state: CloudIntegrationsListResultItemState,
+    stateV2: CloudIntegrationsListResultItemStateV2.pipe(T.Body("state_v2")),
+    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    azureSubscriptionId: S.optional(
+      S.String.pipe(T.Body("azure_subscription_id")),
+    ),
+    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
+    description: S.optional(S.String),
+    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    gcpServiceAccountEmail: S.optional(
+      S.String.pipe(T.Body("gcp_service_account_email")),
+    ),
+    status: S.optional(CloudIntegrationsListResultItemStatus),
+  }),
+).annotate({
+  identifier: "CloudIntegrationsListResultItem",
+}) as any as S.Schema<CloudIntegrationsListResultItem>;
+
+export type CloudIntegrationsListResultList = CloudIntegrationsListResultItem[];
+export const CloudIntegrationsListResultList = /*@__PURE__*/ S.Array(
+  CloudIntegrationsListResultItem,
+) as any as S.Schema<CloudIntegrationsListResultList>;
+
+export interface ListCloudIntegrationsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: CloudIntegrationsListResultList;
+}
+export const ListCloudIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      CloudIntegrationsListResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "ListCloudIntegrationsResponse",
+}) as any as S.Schema<ListCloudIntegrationsResponse>;
+
+export interface ListOnRampAddressSpacesRequest {
+  accountId: string;
+}
+export const ListOnRampAddressSpacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListOnRampAddressSpacesRequest",
+}) as any as S.Schema<ListOnRampAddressSpacesRequest>;
+
+export type OnRampsAddressSpacesListResponsePrefixesList = string[];
+export const OnRampsAddressSpacesListResponsePrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<OnRampsAddressSpacesListResponsePrefixesList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface ListOnRampAddressSpacesResponse {
+  prefixes: OnRampsAddressSpacesListResponsePrefixesList;
+}
+export const ListOnRampAddressSpacesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    prefixes: OnRampsAddressSpacesListResponsePrefixesList,
+  }),
+).annotate({
+  identifier: "ListOnRampAddressSpacesResponse",
+}) as any as S.Schema<ListOnRampAddressSpacesResponse>;
+
+export interface ListOnRampsRequest {
   accountId: string;
   desc?: boolean;
   /** One of ["updated_at", "id", "cloud_type", "name"]. */
@@ -3700,7 +2818,7 @@ export interface OnRampsListRequest {
   status?: boolean;
   vpcs?: boolean;
 }
-export const OnRampsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListOnRampsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     desc: S.optional(S.Boolean.pipe(T.Query())),
@@ -3715,8 +2833,8 @@ export const OnRampsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OnRampsListRequest",
-}) as any as S.Schema<OnRampsListRequest>;
+  identifier: "ListOnRampsRequest",
+}) as any as S.Schema<ListOnRampsRequest>;
 
 export type OnRampsListResultItemCloudType =
   | "AWS"
@@ -4124,893 +3242,17 @@ export const OnRampsListResultList = /*@__PURE__*/ S.Array(
   OnRampsListResultItem,
 ) as any as S.Schema<OnRampsListResultList>;
 
-export interface OnRampsListResponse {
+export interface ListOnRampsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: OnRampsListResultList;
 }
-export const OnRampsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListOnRampsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(OnRampsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "OnRampsListResponse",
-}) as any as S.Schema<OnRampsListResponse>;
-
-export interface OnRampsPlanRequest {
-  accountId: string;
-  onrampId: string;
-}
-export const OnRampsPlanRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    onrampId: S.String.pipe(T.Label("onramp_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/plan",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "OnRampsPlanRequest",
-}) as any as S.Schema<OnRampsPlanRequest>;
-
-export interface OnRampsPlanResponse {}
-export const OnRampsPlanResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "OnRampsPlanResponse",
-}) as any as S.Schema<OnRampsPlanResponse>;
-
-export type OnRampsUpdateRequestAttachedHubsList = string[];
-export const OnRampsUpdateRequestAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateRequestAttachedHubsList>;
-
-export type OnRampsUpdateRequestAttachedVpcsList = string[];
-export const OnRampsUpdateRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateRequestAttachedVpcsList>;
-
-export interface OnRampsUpdateRequest {
-  accountId: string;
-  onrampId: string;
-  attachedHubs?: OnRampsUpdateRequestAttachedHubsList;
-  attachedVpcs?: OnRampsUpdateRequestAttachedVpcsList;
-  description?: string;
-  installRoutesInCloud?: boolean;
-  installRoutesInMagicWan?: boolean;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  name?: string;
-  vpc?: string;
-}
-export const OnRampsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    onrampId: S.String.pipe(T.Label("onramp_id")),
-    attachedHubs: S.optional(
-      OnRampsUpdateRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
-    ),
-    attachedVpcs: S.optional(
-      OnRampsUpdateRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
-    ),
-    description: S.optional(S.String),
-    installRoutesInCloud: S.optional(
-      S.Boolean.pipe(T.Body("install_routes_in_cloud")),
-    ),
-    installRoutesInMagicWan: S.optional(
-      S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
-    ),
-    manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
-    ),
-    manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
-    ),
-    name: S.optional(S.String),
-    vpc: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "OnRampsUpdateRequest",
-}) as any as S.Schema<OnRampsUpdateRequest>;
-
-export type OnRampsUpdateResponseCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | (string & {});
-export const OnRampsUpdateResponseCloudType = /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponseType =
-  | "OnrampTypeSingle"
-  | "OnrampTypeHub"
-  | (string & {});
-export const OnRampsUpdateResponseType = /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponseAttachedHubsList = string[];
-export const OnRampsUpdateResponseAttachedHubsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseAttachedHubsList>;
-
-export type OnRampsUpdateResponseAttachedVpcsList = string[];
-export const OnRampsUpdateResponseAttachedVpcsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseAttachedVpcsList>;
-
-export interface OnRampsUpdateResponsePlannedMonthlyCostEstimate {
-  currency: string;
-  currentMonthlyCost: number;
-  diff: number;
-  proposedMonthlyCost: number;
-}
-export const OnRampsUpdateResponsePlannedMonthlyCostEstimate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      currency: S.String,
-      currentMonthlyCost: S.Number.pipe(T.Body("current_monthly_cost")),
-      diff: S.Number,
-      proposedMonthlyCost: S.Number.pipe(T.Body("proposed_monthly_cost")),
-    }),
-  ).annotate({
-    identifier: "OnRampsUpdateResponsePlannedMonthlyCostEstimate",
-  }) as any as S.Schema<OnRampsUpdateResponsePlannedMonthlyCostEstimate>;
-
-export interface OnRampsUpdateResponsePlannedResourcesItemDiff {
-  diff: string;
-  leftDescription: string;
-  leftYaml: string;
-  rightDescription: string;
-  rightYaml: string;
-}
-export const OnRampsUpdateResponsePlannedResourcesItemDiff =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      diff: S.String,
-      leftDescription: S.String.pipe(T.Body("left_description")),
-      leftYaml: S.String.pipe(T.Body("left_yaml")),
-      rightDescription: S.String.pipe(T.Body("right_description")),
-      rightYaml: S.String.pipe(T.Body("right_yaml")),
-    }),
-  ).annotate({
-    identifier: "OnRampsUpdateResponsePlannedResourcesItemDiff",
-  }) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemDiff>;
-
-export type OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList =
-  string[];
-export const OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList>;
-
-export interface OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff {
-  currency: string;
-  currentMonthlyCost: number;
-  diff: number;
-  proposedMonthlyCost: number;
-}
-export const OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      currency: S.String,
-      currentMonthlyCost: S.Number.pipe(T.Body("current_monthly_cost")),
-      diff: S.Number,
-      proposedMonthlyCost: S.Number.pipe(T.Body("proposed_monthly_cost")),
-    }),
-  ).annotate({
-    identifier:
-      "OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff",
-  }) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff>;
-
-export type OnRampsUpdateResponsePlannedResourcesItemPlannedAction =
-  | "no_op"
-  | "create"
-  | "update"
-  | (string & {});
-export const OnRampsUpdateResponsePlannedResourcesItemPlannedAction =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponsePlannedResourcesItemResourceCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE"
-  | (string & {});
-export const OnRampsUpdateResponsePlannedResourcesItemResourceCloudType =
-  /*@__PURE__*/ S.String;
-
-export type OnRampsUpdateResponsePlannedResourcesItemResourceResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | (string & {});
-export const OnRampsUpdateResponsePlannedResourcesItemResourceResourceType =
-  /*@__PURE__*/ S.String;
-
-export interface OnRampsUpdateResponsePlannedResourcesItemResource {
-  id: string;
-  cloudType: OnRampsUpdateResponsePlannedResourcesItemResourceCloudType;
-  detail: string;
-  name: string;
-  resourceType: OnRampsUpdateResponsePlannedResourcesItemResourceResourceType;
-  title: string;
-}
-export const OnRampsUpdateResponsePlannedResourcesItemResource =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudType:
-        OnRampsUpdateResponsePlannedResourcesItemResourceCloudType.pipe(
-          T.Body("cloud_type"),
-        ),
-      detail: S.String,
-      name: S.String,
-      resourceType:
-        OnRampsUpdateResponsePlannedResourcesItemResourceResourceType.pipe(
-          T.Body("resource_type"),
-        ),
-      title: S.String,
-    }),
-  ).annotate({
-    identifier: "OnRampsUpdateResponsePlannedResourcesItemResource",
-  }) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemResource>;
-
-export interface OnRampsUpdateResponsePlannedResourcesItem {
-  diff: OnRampsUpdateResponsePlannedResourcesItemDiff;
-  keysRequireReplace: OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList;
-  monthlyCostEstimateDiff: OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff;
-  plannedAction: OnRampsUpdateResponsePlannedResourcesItemPlannedAction;
-  resource: OnRampsUpdateResponsePlannedResourcesItemResource;
-}
-export const OnRampsUpdateResponsePlannedResourcesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      diff: OnRampsUpdateResponsePlannedResourcesItemDiff,
-      keysRequireReplace:
-        OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList.pipe(
-          T.Body("keys_require_replace"),
-        ),
-      monthlyCostEstimateDiff:
-        OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff.pipe(
-          T.Body("monthly_cost_estimate_diff"),
-        ),
-      plannedAction:
-        OnRampsUpdateResponsePlannedResourcesItemPlannedAction.pipe(
-          T.Body("planned_action"),
-        ),
-      resource: OnRampsUpdateResponsePlannedResourcesItemResource,
-    }),
-  ).annotate({
-    identifier: "OnRampsUpdateResponsePlannedResourcesItem",
-  }) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItem>;
-
-export type OnRampsUpdateResponsePlannedResourcesList =
-  OnRampsUpdateResponsePlannedResourcesItem[];
-export const OnRampsUpdateResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
-  OnRampsUpdateResponsePlannedResourcesItem,
-) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesList>;
-
-export interface OnRampsUpdateResponsePostApplyMonthlyCostEstimate {
-  currency: string;
-  monthlyCost: number;
-}
-export const OnRampsUpdateResponsePostApplyMonthlyCostEstimate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      currency: S.String,
-      monthlyCost: S.Number.pipe(T.Body("monthly_cost")),
-    }),
-  ).annotate({
-    identifier: "OnRampsUpdateResponsePostApplyMonthlyCostEstimate",
-  }) as any as S.Schema<OnRampsUpdateResponsePostApplyMonthlyCostEstimate>;
-
-export type OnRampsUpdateResponsePostApplyResourcesMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsUpdateResponsePostApplyResourcesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesMap>;
-
-export interface OnRampsUpdateResponseStatusApplyProgress {
-  done: number;
-  total: number;
-}
-export const OnRampsUpdateResponseStatusApplyProgress = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      done: S.Number,
-      total: S.Number,
-    }),
-).annotate({
-  identifier: "OnRampsUpdateResponseStatusApplyProgress",
-}) as any as S.Schema<OnRampsUpdateResponseStatusApplyProgress>;
-
-export type OnRampsUpdateResponseStatusLifecycleState =
-  | "OnrampNeedsApply"
-  | "OnrampPendingPlan"
-  | "OnrampPlanning"
-  | (string & {});
-export const OnRampsUpdateResponseStatusLifecycleState = /*@__PURE__*/ S.String;
-
-export interface OnRampsUpdateResponseStatusPlanProgress {
-  done: number;
-  total: number;
-}
-export const OnRampsUpdateResponseStatusPlanProgress = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      done: S.Number,
-      total: S.Number,
-    }),
-).annotate({
-  identifier: "OnRampsUpdateResponseStatusPlanProgress",
-}) as any as S.Schema<OnRampsUpdateResponseStatusPlanProgress>;
-
-export type OnRampsUpdateResponseStatusRoutesList = string[];
-export const OnRampsUpdateResponseStatusRoutesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseStatusRoutesList>;
-
-export type OnRampsUpdateResponseStatusTunnelsList = string[];
-export const OnRampsUpdateResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<OnRampsUpdateResponseStatusTunnelsList>;
-
-export type OnRampsUpdateResponseStatusLifecycleErrorsMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsUpdateResponseStatusLifecycleErrorsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<OnRampsUpdateResponseStatusLifecycleErrorsMap>;
-
-export interface OnRampsUpdateResponseStatus {
-  applyProgress: OnRampsUpdateResponseStatusApplyProgress;
-  lifecycleState: OnRampsUpdateResponseStatusLifecycleState;
-  planProgress: OnRampsUpdateResponseStatusPlanProgress;
-  routes: OnRampsUpdateResponseStatusRoutesList;
-  tunnels: OnRampsUpdateResponseStatusTunnelsList;
-  lifecycleErrors?: OnRampsUpdateResponseStatusLifecycleErrorsMap;
-}
-export const OnRampsUpdateResponseStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    applyProgress: OnRampsUpdateResponseStatusApplyProgress.pipe(
-      T.Body("apply_progress"),
-    ),
-    lifecycleState: OnRampsUpdateResponseStatusLifecycleState.pipe(
-      T.Body("lifecycle_state"),
-    ),
-    planProgress: OnRampsUpdateResponseStatusPlanProgress.pipe(
-      T.Body("plan_progress"),
-    ),
-    routes: OnRampsUpdateResponseStatusRoutesList,
-    tunnels: OnRampsUpdateResponseStatusTunnelsList,
-    lifecycleErrors: S.optional(
-      OnRampsUpdateResponseStatusLifecycleErrorsMap.pipe(
-        T.Body("lifecycle_errors"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "OnRampsUpdateResponseStatus",
-}) as any as S.Schema<OnRampsUpdateResponseStatus>;
-
-export type OnRampsUpdateResponseVpcsByIdMap = {
-  [key: string]: unknown | undefined;
-};
-export const OnRampsUpdateResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<OnRampsUpdateResponseVpcsByIdMap>;
-
-export type OnRampsUpdateResponseVpcsByIdUnavailableList = string[];
-export const OnRampsUpdateResponseVpcsByIdUnavailableList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdUnavailableList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface OnRampsUpdateResponse {
-  id: string;
-  cloudType: OnRampsUpdateResponseCloudType;
-  dynamicRouting: boolean;
-  installRoutesInCloud: boolean;
-  installRoutesInMagicWan: boolean;
-  name: string;
-  type: OnRampsUpdateResponseType;
-  updatedAt: string;
-  attachedHubs?: OnRampsUpdateResponseAttachedHubsList;
-  attachedVpcs?: OnRampsUpdateResponseAttachedVpcsList;
-  cloudAsn?: number;
-  description?: string;
-  hub?: string;
-  lastAppliedAt?: string;
-  lastExportedAt?: string;
-  lastPlannedAt?: string;
-  manageHubToHubAttachments?: boolean;
-  manageVpcToHubAttachments?: boolean;
-  plannedMonthlyCostEstimate?: OnRampsUpdateResponsePlannedMonthlyCostEstimate;
-  plannedResources?: OnRampsUpdateResponsePlannedResourcesList;
-  plannedResourcesUnavailable?: boolean;
-  postApplyMonthlyCostEstimate?: OnRampsUpdateResponsePostApplyMonthlyCostEstimate;
-  postApplyResources?: OnRampsUpdateResponsePostApplyResourcesMap;
-  postApplyResourcesUnavailable?: boolean;
-  region?: string;
-  status?: OnRampsUpdateResponseStatus;
-  vpc?: string;
-  vpcsById?: OnRampsUpdateResponseVpcsByIdMap;
-  /** The list of vpc IDs for which resource details failed to generate. */
-  vpcsByIdUnavailable?: OnRampsUpdateResponseVpcsByIdUnavailableList;
-}
-export const OnRampsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudType: OnRampsUpdateResponseCloudType.pipe(T.Body("cloud_type")),
-    dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
-    installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
-    installRoutesInMagicWan: S.Boolean.pipe(
-      T.Body("install_routes_in_magic_wan"),
-    ),
-    name: S.String,
-    type: OnRampsUpdateResponseType,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    attachedHubs: S.optional(
-      OnRampsUpdateResponseAttachedHubsList.pipe(T.Body("attached_hubs")),
-    ),
-    attachedVpcs: S.optional(
-      OnRampsUpdateResponseAttachedVpcsList.pipe(T.Body("attached_vpcs")),
-    ),
-    cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
-    description: S.optional(S.String),
-    hub: S.optional(S.String),
-    lastAppliedAt: S.optional(S.String.pipe(T.Body("last_applied_at"))),
-    lastExportedAt: S.optional(S.String.pipe(T.Body("last_exported_at"))),
-    lastPlannedAt: S.optional(S.String.pipe(T.Body("last_planned_at"))),
-    manageHubToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
-    ),
-    manageVpcToHubAttachments: S.optional(
-      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
-    ),
-    plannedMonthlyCostEstimate: S.optional(
-      OnRampsUpdateResponsePlannedMonthlyCostEstimate.pipe(
-        T.Body("planned_monthly_cost_estimate"),
-      ),
-    ),
-    plannedResources: S.optional(
-      OnRampsUpdateResponsePlannedResourcesList.pipe(
-        T.Body("planned_resources"),
-      ),
-    ),
-    plannedResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("planned_resources_unavailable")),
-    ),
-    postApplyMonthlyCostEstimate: S.optional(
-      OnRampsUpdateResponsePostApplyMonthlyCostEstimate.pipe(
-        T.Body("post_apply_monthly_cost_estimate"),
-      ),
-    ),
-    postApplyResources: S.optional(
-      OnRampsUpdateResponsePostApplyResourcesMap.pipe(
-        T.Body("post_apply_resources"),
-      ),
-    ),
-    postApplyResourcesUnavailable: S.optional(
-      S.Boolean.pipe(T.Body("post_apply_resources_unavailable")),
-    ),
-    region: S.optional(S.String),
-    status: S.optional(OnRampsUpdateResponseStatus),
-    vpc: S.optional(S.String),
-    vpcsById: S.optional(
-      OnRampsUpdateResponseVpcsByIdMap.pipe(T.Body("vpcs_by_id")),
-    ),
-    vpcsByIdUnavailable: S.optional(
-      OnRampsUpdateResponseVpcsByIdUnavailableList.pipe(
-        T.Body("vpcs_by_id_unavailable"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "OnRampsUpdateResponse",
-}) as any as S.Schema<OnRampsUpdateResponse>;
-
-export type ResourcesExportRequestResourceIdList = string[];
-export const ResourcesExportRequestResourceIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesExportRequestResourceIdList>;
-
-export type ResourcesExportRequestResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | (string & {});
-export const ResourcesExportRequestResourceType = /*@__PURE__*/ S.String;
-
-export type ResourcesExportRequestResourceTypeList =
-  ResourcesExportRequestResourceType[];
-export const ResourcesExportRequestResourceTypeList = /*@__PURE__*/ S.Array(
-  ResourcesExportRequestResourceType,
-) as any as S.Schema<ResourcesExportRequestResourceTypeList>;
-
-export type ResourcesExportRequestSearchList = string[];
-export const ResourcesExportRequestSearchList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesExportRequestSearchList>;
-
-export interface ResourcesExportRequest {
-  accountId: string;
-  desc?: boolean;
-  /** One of ["id", "resource_type", "region"]. */
-  orderBy?: string;
-  providerId?: string;
-  region?: string;
-  resourceGroup?: string;
-  resourceId?: ResourcesExportRequestResourceIdList;
-  resourceType?: ResourcesExportRequestResourceTypeList;
-  search?: ResourcesExportRequestSearchList;
-  v2?: boolean;
-}
-export const ResourcesExportRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    desc: S.optional(S.Boolean.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
-    providerId: S.optional(S.String.pipe(T.Query("provider_id"))),
-    region: S.optional(S.String.pipe(T.Query())),
-    resourceGroup: S.optional(S.String.pipe(T.Query("resource_group"))),
-    resourceId: S.optional(
-      ResourcesExportRequestResourceIdList.pipe(T.Query("resource_id")),
-    ),
-    resourceType: S.optional(
-      ResourcesExportRequestResourceTypeList.pipe(T.Query("resource_type")),
-    ),
-    search: S.optional(ResourcesExportRequestSearchList.pipe(T.Query())),
-    v2: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/resources/export",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ResourcesExportRequest",
-}) as any as S.Schema<ResourcesExportRequest>;
-
-export interface ResourcesExportResponse {}
-export const ResourcesExportResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ResourcesExportResponse",
-}) as any as S.Schema<ResourcesExportResponse>;
-
-export interface ResourcesGetRequest {
-  accountId: string;
-  resourceId: string;
-  v2?: boolean;
-}
-export const ResourcesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    resourceId: S.String.pipe(T.Label("resource_id")),
-    v2: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cloud/resources/{resource_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ResourcesGetRequest",
-}) as any as S.Schema<ResourcesGetRequest>;
-
-export type ResourcesGetResponseCloudType =
-  | "AWS"
-  | "AZURE"
-  | "GOOGLE"
-  | "CLOUDFLARE"
-  | (string & {});
-export const ResourcesGetResponseCloudType = /*@__PURE__*/ S.String;
-
-export type ResourcesGetResponseConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const ResourcesGetResponseConfigMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesGetResponseConfigMap>;
-
-export interface ResourcesGetResponseMonthlyCostEstimate {
-  currency: string;
-  monthlyCost: number;
-}
-export const ResourcesGetResponseMonthlyCostEstimate = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      currency: S.String,
-      monthlyCost: S.Number.pipe(T.Body("monthly_cost")),
-    }),
-).annotate({
-  identifier: "ResourcesGetResponseMonthlyCostEstimate",
-}) as any as S.Schema<ResourcesGetResponseMonthlyCostEstimate>;
-
-export type ResourcesGetResponseObservationsMap = {
-  [key: string]: unknown | undefined;
-};
-export const ResourcesGetResponseObservationsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesGetResponseObservationsMap>;
-
-export type ResourcesGetResponseProviderIdsList = string[];
-export const ResourcesGetResponseProviderIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ResourcesGetResponseProviderIdsList>;
-
-export type ResourcesGetResponseProviderNamesByIdMap = {
-  [key: string]: unknown | undefined;
-};
-export const ResourcesGetResponseProviderNamesByIdMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesGetResponseProviderNamesByIdMap>;
-
-export type ResourcesGetResponseResourceType =
-  | "aws_customer_gateway"
-  | "aws_egress_only_internet_gateway"
-  | "aws_internet_gateway"
-  | (string & {});
-export const ResourcesGetResponseResourceType = /*@__PURE__*/ S.String;
-
-export interface ResourcesGetResponseSectionsItemHiddenItemsItemValue {
-  McnStringItemObjectItemTypeString__: unknown;
-  McnYamlItemObjectItemTypeYaml__: unknown;
-  McnYamlDiffItemObjectItemTypeYamlDiff__: unknown;
-  McnResourcePreviewItemObjectItemTypeResourcePreview__: unknown;
-  McnListItemObjectItemTypeList__: unknown;
-}
-export const ResourcesGetResponseSectionsItemHiddenItemsItemValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      McnStringItemObjectItemTypeString__: S.Unknown.pipe(
-        T.Body("McnStringItem object { item_type, string }"),
-      ),
-      McnYamlItemObjectItemTypeYaml__: S.Unknown.pipe(
-        T.Body("McnYamlItem object { item_type, yaml }"),
-      ),
-      McnYamlDiffItemObjectItemTypeYamlDiff__: S.Unknown.pipe(
-        T.Body("McnYamlDiffItem object { item_type, yaml_diff }"),
-      ),
-      McnResourcePreviewItemObjectItemTypeResourcePreview__: S.Unknown.pipe(
-        T.Body("McnResourcePreviewItem object { item_type, resource_preview }"),
-      ),
-      McnListItemObjectItemTypeList__: S.Unknown.pipe(
-        T.Body("McnListItem object { item_type, list }"),
-      ),
-    }),
-  ).annotate({
-    identifier: "ResourcesGetResponseSectionsItemHiddenItemsItemValue",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItemValue>;
-
-export interface ResourcesGetResponseSectionsItemHiddenItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: ResourcesGetResponseSectionsItemHiddenItemsItemValue;
-}
-export const ResourcesGetResponseSectionsItemHiddenItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
-      value: S.optional(ResourcesGetResponseSectionsItemHiddenItemsItemValue),
-    }),
-  ).annotate({
-    identifier: "ResourcesGetResponseSectionsItemHiddenItemsItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsItem>;
-
-export type ResourcesGetResponseSectionsItemHiddenItemsList =
-  ResourcesGetResponseSectionsItemHiddenItemsItem[];
-export const ResourcesGetResponseSectionsItemHiddenItemsList =
-  /*@__PURE__*/ S.Array(
-    ResourcesGetResponseSectionsItemHiddenItemsItem,
-  ) as any as S.Schema<ResourcesGetResponseSectionsItemHiddenItemsList>;
-
-export interface ResourcesGetResponseSectionsItemVisibleItemsItemValue {
-  McnStringItemObjectItemTypeString__: unknown;
-  McnYamlItemObjectItemTypeYaml__: unknown;
-  McnYamlDiffItemObjectItemTypeYamlDiff__: unknown;
-  McnResourcePreviewItemObjectItemTypeResourcePreview__: unknown;
-  McnListItemObjectItemTypeList__: unknown;
-}
-export const ResourcesGetResponseSectionsItemVisibleItemsItemValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      McnStringItemObjectItemTypeString__: S.Unknown.pipe(
-        T.Body("McnStringItem object { item_type, string }"),
-      ),
-      McnYamlItemObjectItemTypeYaml__: S.Unknown.pipe(
-        T.Body("McnYamlItem object { item_type, yaml }"),
-      ),
-      McnYamlDiffItemObjectItemTypeYamlDiff__: S.Unknown.pipe(
-        T.Body("McnYamlDiffItem object { item_type, yaml_diff }"),
-      ),
-      McnResourcePreviewItemObjectItemTypeResourcePreview__: S.Unknown.pipe(
-        T.Body("McnResourcePreviewItem object { item_type, resource_preview }"),
-      ),
-      McnListItemObjectItemTypeList__: S.Unknown.pipe(
-        T.Body("McnListItem object { item_type, list }"),
-      ),
-    }),
-  ).annotate({
-    identifier: "ResourcesGetResponseSectionsItemVisibleItemsItemValue",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItemValue>;
-
-export interface ResourcesGetResponseSectionsItemVisibleItemsItem {
-  helpText?: string;
-  name?: string;
-  value?: ResourcesGetResponseSectionsItemVisibleItemsItemValue;
-}
-export const ResourcesGetResponseSectionsItemVisibleItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      helpText: S.optional(S.String),
-      name: S.optional(S.String),
-      value: S.optional(ResourcesGetResponseSectionsItemVisibleItemsItemValue),
-    }),
-  ).annotate({
-    identifier: "ResourcesGetResponseSectionsItemVisibleItemsItem",
-  }) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsItem>;
-
-export type ResourcesGetResponseSectionsItemVisibleItemsList =
-  ResourcesGetResponseSectionsItemVisibleItemsItem[];
-export const ResourcesGetResponseSectionsItemVisibleItemsList =
-  /*@__PURE__*/ S.Array(
-    ResourcesGetResponseSectionsItemVisibleItemsItem,
-  ) as any as S.Schema<ResourcesGetResponseSectionsItemVisibleItemsList>;
-
-export interface ResourcesGetResponseSectionsItem {
-  hiddenItems: ResourcesGetResponseSectionsItemHiddenItemsList;
-  name: string;
-  visibleItems: ResourcesGetResponseSectionsItemVisibleItemsList;
-  helpText?: string;
-}
-export const ResourcesGetResponseSectionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    hiddenItems: ResourcesGetResponseSectionsItemHiddenItemsList.pipe(
-      T.Body("hidden_items"),
-    ),
-    name: S.String,
-    visibleItems: ResourcesGetResponseSectionsItemVisibleItemsList.pipe(
-      T.Body("visible_items"),
-    ),
-    helpText: S.optional(S.String.pipe(T.Body("help_text"))),
-  }),
-).annotate({
-  identifier: "ResourcesGetResponseSectionsItem",
-}) as any as S.Schema<ResourcesGetResponseSectionsItem>;
-
-export type ResourcesGetResponseSectionsList =
-  ResourcesGetResponseSectionsItem[];
-export const ResourcesGetResponseSectionsList = /*@__PURE__*/ S.Array(
-  ResourcesGetResponseSectionsItem,
-) as any as S.Schema<ResourcesGetResponseSectionsList>;
-
-export type ResourcesGetResponseStateMap = {
-  [key: string]: unknown | undefined;
-};
-export const ResourcesGetResponseStateMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesGetResponseStateMap>;
-
-export type ResourcesGetResponseTagsMap = {
-  [key: string]: unknown | undefined;
-};
-export const ResourcesGetResponseTagsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ResourcesGetResponseTagsMap>;
-
-export type ResourcesGetResponseManagedByItemClientType =
-  | "MAGIC_WAN_CLOUD_ONRAMP"
-  | (string & {});
-export const ResourcesGetResponseManagedByItemClientType =
-  /*@__PURE__*/ S.String;
-
-export interface ResourcesGetResponseManagedByItem {
-  id: string;
-  clientType: ResourcesGetResponseManagedByItemClientType;
-  name: string;
-}
-export const ResourcesGetResponseManagedByItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    clientType: ResourcesGetResponseManagedByItemClientType.pipe(
-      T.Body("client_type"),
-    ),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ResourcesGetResponseManagedByItem",
-}) as any as S.Schema<ResourcesGetResponseManagedByItem>;
-
-export type ResourcesGetResponseManagedByList =
-  ResourcesGetResponseManagedByItem[];
-export const ResourcesGetResponseManagedByList = /*@__PURE__*/ S.Array(
-  ResourcesGetResponseManagedByItem,
-) as any as S.Schema<ResourcesGetResponseManagedByList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ResourcesGetResponse {
-  id: string;
-  accountId: string;
-  cloudType: ResourcesGetResponseCloudType;
-  config: ResourcesGetResponseConfigMap;
-  deploymentProvider: string;
-  managed: boolean;
-  monthlyCostEstimate: ResourcesGetResponseMonthlyCostEstimate;
-  name: string;
-  nativeId: string;
-  observations: ResourcesGetResponseObservationsMap;
-  providerIds: ResourcesGetResponseProviderIdsList;
-  providerNamesById: ResourcesGetResponseProviderNamesByIdMap;
-  region: string;
-  resourceGroup: string;
-  resourceType: ResourcesGetResponseResourceType;
-  sections: ResourcesGetResponseSectionsList;
-  state: ResourcesGetResponseStateMap;
-  tags: ResourcesGetResponseTagsMap;
-  updatedAt: string;
-  url: string;
-  managedBy?: ResourcesGetResponseManagedByList;
-}
-export const ResourcesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    accountId: S.String.pipe(T.Body("account_id")),
-    cloudType: ResourcesGetResponseCloudType.pipe(T.Body("cloud_type")),
-    config: ResourcesGetResponseConfigMap,
-    deploymentProvider: S.String.pipe(T.Body("deployment_provider")),
-    managed: S.Boolean,
-    monthlyCostEstimate: ResourcesGetResponseMonthlyCostEstimate.pipe(
-      T.Body("monthly_cost_estimate"),
-    ),
-    name: S.String,
-    nativeId: S.String.pipe(T.Body("native_id")),
-    observations: ResourcesGetResponseObservationsMap,
-    providerIds: ResourcesGetResponseProviderIdsList.pipe(
-      T.Body("provider_ids"),
-    ),
-    providerNamesById: ResourcesGetResponseProviderNamesByIdMap.pipe(
-      T.Body("provider_names_by_id"),
-    ),
-    region: S.String,
-    resourceGroup: S.String.pipe(T.Body("resource_group")),
-    resourceType: ResourcesGetResponseResourceType.pipe(
-      T.Body("resource_type"),
-    ),
-    sections: ResourcesGetResponseSectionsList,
-    state: ResourcesGetResponseStateMap,
-    tags: ResourcesGetResponseTagsMap,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    url: S.String,
-    managedBy: S.optional(
-      ResourcesGetResponseManagedByList.pipe(T.Body("managed_by")),
-    ),
-  }),
-).annotate({
-  identifier: "ResourcesGetResponse",
-}) as any as S.Schema<ResourcesGetResponse>;
+  identifier: "ListOnRampsResponse",
+}) as any as S.Schema<ListOnRampsResponse>;
 
 export type ResourcesListRequestResourceIdList = string[];
 export const ResourcesListRequestResourceIdList = /*@__PURE__*/ S.Array(
@@ -5035,7 +3277,7 @@ export const ResourcesListRequestSearchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ResourcesListRequestSearchList>;
 
-export interface ResourcesListRequest {
+export interface ListResourcesRequest {
   accountId: string;
   cloudflare?: boolean;
   desc?: boolean;
@@ -5052,7 +3294,7 @@ export interface ResourcesListRequest {
   search?: ResourcesListRequestSearchList;
   v2?: boolean;
 }
-export const ResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListResourcesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cloudflare: S.optional(S.Boolean.pipe(T.Query())),
@@ -5080,8 +3322,8 @@ export const ResourcesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ResourcesListRequest",
-}) as any as S.Schema<ResourcesListRequest>;
+  identifier: "ListResourcesRequest",
+}) as any as S.Schema<ListResourcesRequest>;
 
 export type ResourcesListResultItemCloudType =
   | "AWS"
@@ -5391,23 +3633,913 @@ export const ResourcesListResultList = /*@__PURE__*/ S.Array(
   ResourcesListResultItem,
 ) as any as S.Schema<ResourcesListResultList>;
 
-export interface ResourcesListResponse {
+export interface ListResourcesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ResourcesListResultList;
 }
-export const ResourcesListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ResourcesListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "ResourcesListResponse",
-}) as any as S.Schema<ResourcesListResponse>;
+  identifier: "ListResourcesResponse",
+}) as any as S.Schema<ListResourcesResponse>;
 
-export interface ResourcesPolicyPreviewRequest {
+export type CatalogSyncsEditRequestUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
+export const CatalogSyncsEditRequestUpdateMode = /*@__PURE__*/ S.String;
+
+export interface PatchCatalogSyncRequest {
+  accountId: string;
+  syncId: string;
+  description?: string;
+  name?: string;
+  policy?: string;
+  updateMode?: CatalogSyncsEditRequestUpdateMode;
+}
+export const PatchCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    syncId: S.String.pipe(T.Label("sync_id")),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    policy: S.optional(S.String),
+    updateMode: S.optional(
+      CatalogSyncsEditRequestUpdateMode.pipe(T.Body("update_mode")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchCatalogSyncRequest",
+}) as any as S.Schema<PatchCatalogSyncRequest>;
+
+export type CatalogSyncsEditResponseDestinationType =
+  | "NONE"
+  | "ZERO_TRUST_LIST"
+  | (string & {});
+export const CatalogSyncsEditResponseDestinationType = /*@__PURE__*/ S.String;
+
+export type CatalogSyncsEditResponseUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
+export const CatalogSyncsEditResponseUpdateMode = /*@__PURE__*/ S.String;
+
+export type CatalogSyncsEditResponseErrorsMap = {
+  [key: string]: unknown | undefined;
+};
+export const CatalogSyncsEditResponseErrorsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<CatalogSyncsEditResponseErrorsMap>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchCatalogSyncResponse {
+  id: string;
+  description: string;
+  destinationId: string;
+  destinationType: CatalogSyncsEditResponseDestinationType;
+  lastUserUpdateAt: string;
+  name: string;
+  policy: string;
+  updateMode: CatalogSyncsEditResponseUpdateMode;
+  errors?: CatalogSyncsEditResponseErrorsMap;
+  includesDiscoveriesUntil?: string;
+  lastAttemptedUpdateAt?: string;
+  lastSuccessfulUpdateAt?: string;
+}
+export const PatchCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    description: S.String,
+    destinationId: S.String.pipe(T.Body("destination_id")),
+    destinationType: CatalogSyncsEditResponseDestinationType.pipe(
+      T.Body("destination_type"),
+    ),
+    lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
+    name: S.String,
+    policy: S.String,
+    updateMode: CatalogSyncsEditResponseUpdateMode.pipe(T.Body("update_mode")),
+    errors: S.optional(CatalogSyncsEditResponseErrorsMap),
+    includesDiscoveriesUntil: S.optional(
+      S.String.pipe(T.Body("includes_discoveries_until")),
+    ),
+    lastAttemptedUpdateAt: S.optional(
+      S.String.pipe(T.Body("last_attempted_update_at")),
+    ),
+    lastSuccessfulUpdateAt: S.optional(
+      S.String.pipe(T.Body("last_successful_update_at")),
+    ),
+  }),
+).annotate({
+  identifier: "PatchCatalogSyncResponse",
+}) as any as S.Schema<PatchCatalogSyncResponse>;
+
+export interface PatchCloudIntegrationRequest {
+  accountId: string;
+  providerId: string;
+  awsArn?: string;
+  azureSubscriptionId?: string;
+  azureTenantId?: string;
+  description?: string;
+  friendlyName?: string;
+  gcpProjectId?: string;
+  gcpServiceAccountEmail?: string;
+}
+export const PatchCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    providerId: S.String.pipe(T.Label("provider_id")),
+    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    azureSubscriptionId: S.optional(
+      S.String.pipe(T.Body("azure_subscription_id")),
+    ),
+    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
+    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    gcpServiceAccountEmail: S.optional(
+      S.String.pipe(T.Body("gcp_service_account_email")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchCloudIntegrationRequest",
+}) as any as S.Schema<PatchCloudIntegrationRequest>;
+
+export type CloudIntegrationsEditResponseCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | "CLOUDFLARE"
+  | (string & {});
+export const CloudIntegrationsEditResponseCloudType = /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsEditResponseLifecycleState =
+  | "ACTIVE"
+  | "PENDING_SETUP"
+  | "RETIRED"
+  | (string & {});
+export const CloudIntegrationsEditResponseLifecycleState =
+  /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsEditResponseState =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsEditResponseState = /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsEditResponseStateV2 =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsEditResponseStateV2 = /*@__PURE__*/ S.String;
+
+export interface CloudIntegrationsEditResponseStatusDiscoveryProgress {
+  done: number;
+  total: number;
+  unit: string;
+}
+export const CloudIntegrationsEditResponseStatusDiscoveryProgress =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      done: S.Number,
+      total: S.Number,
+      unit: S.String,
+    }),
+  ).annotate({
+    identifier: "CloudIntegrationsEditResponseStatusDiscoveryProgress",
+  }) as any as S.Schema<CloudIntegrationsEditResponseStatusDiscoveryProgress>;
+
+export interface CloudIntegrationsEditResponseStatusDiscoveryProgressV2 {
+  done: number;
+  total: number;
+  unit: string;
+}
+export const CloudIntegrationsEditResponseStatusDiscoveryProgressV2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      done: S.Number,
+      total: S.Number,
+      unit: S.String,
+    }),
+  ).annotate({
+    identifier: "CloudIntegrationsEditResponseStatusDiscoveryProgressV2",
+  }) as any as S.Schema<CloudIntegrationsEditResponseStatusDiscoveryProgressV2>;
+
+export type CloudIntegrationsEditResponseStatusLastDiscoveryStatus =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsEditResponseStatusLastDiscoveryStatus =
+  /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2 =
+  /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsEditResponseStatusRegionsList = string[];
+export const CloudIntegrationsEditResponseStatusRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CloudIntegrationsEditResponseStatusRegionsList>;
+
+export type CloudIntegrationsEditResponseStatusInUseByItemClientType =
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
+export const CloudIntegrationsEditResponseStatusInUseByItemClientType =
+  /*@__PURE__*/ S.String;
+
+export interface CloudIntegrationsEditResponseStatusInUseByItem {
+  id: string;
+  clientType: CloudIntegrationsEditResponseStatusInUseByItemClientType;
+  name: string;
+}
+export const CloudIntegrationsEditResponseStatusInUseByItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      clientType: CloudIntegrationsEditResponseStatusInUseByItemClientType.pipe(
+        T.Body("client_type"),
+      ),
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "CloudIntegrationsEditResponseStatusInUseByItem",
+  }) as any as S.Schema<CloudIntegrationsEditResponseStatusInUseByItem>;
+
+export type CloudIntegrationsEditResponseStatusInUseByList =
+  CloudIntegrationsEditResponseStatusInUseByItem[];
+export const CloudIntegrationsEditResponseStatusInUseByList =
+  /*@__PURE__*/ S.Array(
+    CloudIntegrationsEditResponseStatusInUseByItem,
+  ) as any as S.Schema<CloudIntegrationsEditResponseStatusInUseByList>;
+
+export interface CloudIntegrationsEditResponseStatus {
+  discoveryProgress: CloudIntegrationsEditResponseStatusDiscoveryProgress;
+  discoveryProgressV2: CloudIntegrationsEditResponseStatusDiscoveryProgressV2;
+  lastDiscoveryStatus: CloudIntegrationsEditResponseStatusLastDiscoveryStatus;
+  lastDiscoveryStatusV2: CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2;
+  regions: CloudIntegrationsEditResponseStatusRegionsList;
+  credentialsGoodSince?: string;
+  credentialsMissingSince?: string;
+  credentialsRejectedSince?: string;
+  discoveryMessage?: string;
+  discoveryMessageV2?: string;
+  inUseBy?: CloudIntegrationsEditResponseStatusInUseByList;
+  lastDiscoveryCompletedAt?: string;
+  lastDiscoveryCompletedAtV2?: string;
+  lastDiscoveryStartedAt?: string;
+  lastDiscoveryStartedAtV2?: string;
+  lastUpdated?: string;
+}
+export const CloudIntegrationsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    discoveryProgress:
+      CloudIntegrationsEditResponseStatusDiscoveryProgress.pipe(
+        T.Body("discovery_progress"),
+      ),
+    discoveryProgressV2:
+      CloudIntegrationsEditResponseStatusDiscoveryProgressV2.pipe(
+        T.Body("discovery_progress_v2"),
+      ),
+    lastDiscoveryStatus:
+      CloudIntegrationsEditResponseStatusLastDiscoveryStatus.pipe(
+        T.Body("last_discovery_status"),
+      ),
+    lastDiscoveryStatusV2:
+      CloudIntegrationsEditResponseStatusLastDiscoveryStatusV2.pipe(
+        T.Body("last_discovery_status_v2"),
+      ),
+    regions: CloudIntegrationsEditResponseStatusRegionsList,
+    credentialsGoodSince: S.optional(
+      S.String.pipe(T.Body("credentials_good_since")),
+    ),
+    credentialsMissingSince: S.optional(
+      S.String.pipe(T.Body("credentials_missing_since")),
+    ),
+    credentialsRejectedSince: S.optional(
+      S.String.pipe(T.Body("credentials_rejected_since")),
+    ),
+    discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
+    discoveryMessageV2: S.optional(
+      S.String.pipe(T.Body("discovery_message_v2")),
+    ),
+    inUseBy: S.optional(
+      CloudIntegrationsEditResponseStatusInUseByList.pipe(T.Body("in_use_by")),
+    ),
+    lastDiscoveryCompletedAt: S.optional(
+      S.String.pipe(T.Body("last_discovery_completed_at")),
+    ),
+    lastDiscoveryCompletedAtV2: S.optional(
+      S.String.pipe(T.Body("last_discovery_completed_at_v2")),
+    ),
+    lastDiscoveryStartedAt: S.optional(
+      S.String.pipe(T.Body("last_discovery_started_at")),
+    ),
+    lastDiscoveryStartedAtV2: S.optional(
+      S.String.pipe(T.Body("last_discovery_started_at_v2")),
+    ),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+  }),
+).annotate({
+  identifier: "CloudIntegrationsEditResponseStatus",
+}) as any as S.Schema<CloudIntegrationsEditResponseStatus>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchCloudIntegrationResponse {
+  id: string;
+  cloudType: CloudIntegrationsEditResponseCloudType;
+  friendlyName: string;
+  lastUpdated: string;
+  lifecycleState: CloudIntegrationsEditResponseLifecycleState;
+  state: CloudIntegrationsEditResponseState;
+  stateV2: CloudIntegrationsEditResponseStateV2;
+  awsArn?: string;
+  azureSubscriptionId?: string;
+  azureTenantId?: string;
+  description?: string;
+  gcpProjectId?: string;
+  gcpServiceAccountEmail?: string;
+  status?: CloudIntegrationsEditResponseStatus;
+}
+export const PatchCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    cloudType: CloudIntegrationsEditResponseCloudType.pipe(
+      T.Body("cloud_type"),
+    ),
+    friendlyName: S.String.pipe(T.Body("friendly_name")),
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    lifecycleState: CloudIntegrationsEditResponseLifecycleState.pipe(
+      T.Body("lifecycle_state"),
+    ),
+    state: CloudIntegrationsEditResponseState,
+    stateV2: CloudIntegrationsEditResponseStateV2.pipe(T.Body("state_v2")),
+    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    azureSubscriptionId: S.optional(
+      S.String.pipe(T.Body("azure_subscription_id")),
+    ),
+    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
+    description: S.optional(S.String),
+    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    gcpServiceAccountEmail: S.optional(
+      S.String.pipe(T.Body("gcp_service_account_email")),
+    ),
+    status: S.optional(CloudIntegrationsEditResponseStatus),
+  }),
+).annotate({
+  identifier: "PatchCloudIntegrationResponse",
+}) as any as S.Schema<PatchCloudIntegrationResponse>;
+
+export type OnRampsEditRequestAttachedHubsList = string[];
+export const OnRampsEditRequestAttachedHubsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsEditRequestAttachedHubsList>;
+
+export type OnRampsEditRequestAttachedVpcsList = string[];
+export const OnRampsEditRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsEditRequestAttachedVpcsList>;
+
+export interface PatchOnRampRequest {
+  accountId: string;
+  onrampId: string;
+  attachedHubs?: OnRampsEditRequestAttachedHubsList;
+  attachedVpcs?: OnRampsEditRequestAttachedVpcsList;
+  description?: string;
+  installRoutesInCloud?: boolean;
+  installRoutesInMagicWan?: boolean;
+  manageHubToHubAttachments?: boolean;
+  manageVpcToHubAttachments?: boolean;
+  name?: string;
+  vpc?: string;
+}
+export const PatchOnRampRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    onrampId: S.String.pipe(T.Label("onramp_id")),
+    attachedHubs: S.optional(
+      OnRampsEditRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
+    ),
+    attachedVpcs: S.optional(
+      OnRampsEditRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
+    ),
+    description: S.optional(S.String),
+    installRoutesInCloud: S.optional(
+      S.Boolean.pipe(T.Body("install_routes_in_cloud")),
+    ),
+    installRoutesInMagicWan: S.optional(
+      S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
+    ),
+    manageHubToHubAttachments: S.optional(
+      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+    ),
+    manageVpcToHubAttachments: S.optional(
+      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+    ),
+    name: S.optional(S.String),
+    vpc: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchOnRampRequest",
+}) as any as S.Schema<PatchOnRampRequest>;
+
+export type OnRampsEditResponseCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | (string & {});
+export const OnRampsEditResponseCloudType = /*@__PURE__*/ S.String;
+
+export type OnRampsEditResponseType =
+  | "OnrampTypeSingle"
+  | "OnrampTypeHub"
+  | (string & {});
+export const OnRampsEditResponseType = /*@__PURE__*/ S.String;
+
+export type OnRampsEditResponseAttachedHubsList = string[];
+export const OnRampsEditResponseAttachedHubsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsEditResponseAttachedHubsList>;
+
+export type OnRampsEditResponseAttachedVpcsList = string[];
+export const OnRampsEditResponseAttachedVpcsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsEditResponseAttachedVpcsList>;
+
+export interface OnRampsEditResponsePlannedMonthlyCostEstimate {
+  currency: string;
+  currentMonthlyCost: number;
+  diff: number;
+  proposedMonthlyCost: number;
+}
+export const OnRampsEditResponsePlannedMonthlyCostEstimate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      currency: S.String,
+      currentMonthlyCost: S.Number.pipe(T.Body("current_monthly_cost")),
+      diff: S.Number,
+      proposedMonthlyCost: S.Number.pipe(T.Body("proposed_monthly_cost")),
+    }),
+  ).annotate({
+    identifier: "OnRampsEditResponsePlannedMonthlyCostEstimate",
+  }) as any as S.Schema<OnRampsEditResponsePlannedMonthlyCostEstimate>;
+
+export interface OnRampsEditResponsePlannedResourcesItemDiff {
+  diff: string;
+  leftDescription: string;
+  leftYaml: string;
+  rightDescription: string;
+  rightYaml: string;
+}
+export const OnRampsEditResponsePlannedResourcesItemDiff =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      diff: S.String,
+      leftDescription: S.String.pipe(T.Body("left_description")),
+      leftYaml: S.String.pipe(T.Body("left_yaml")),
+      rightDescription: S.String.pipe(T.Body("right_description")),
+      rightYaml: S.String.pipe(T.Body("right_yaml")),
+    }),
+  ).annotate({
+    identifier: "OnRampsEditResponsePlannedResourcesItemDiff",
+  }) as any as S.Schema<OnRampsEditResponsePlannedResourcesItemDiff>;
+
+export type OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList =
+  string[];
+export const OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList>;
+
+export interface OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff {
+  currency: string;
+  currentMonthlyCost: number;
+  diff: number;
+  proposedMonthlyCost: number;
+}
+export const OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      currency: S.String,
+      currentMonthlyCost: S.Number.pipe(T.Body("current_monthly_cost")),
+      diff: S.Number,
+      proposedMonthlyCost: S.Number.pipe(T.Body("proposed_monthly_cost")),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff",
+  }) as any as S.Schema<OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff>;
+
+export type OnRampsEditResponsePlannedResourcesItemPlannedAction =
+  | "no_op"
+  | "create"
+  | "update"
+  | (string & {});
+export const OnRampsEditResponsePlannedResourcesItemPlannedAction =
+  /*@__PURE__*/ S.String;
+
+export type OnRampsEditResponsePlannedResourcesItemResourceCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | "CLOUDFLARE"
+  | (string & {});
+export const OnRampsEditResponsePlannedResourcesItemResourceCloudType =
+  /*@__PURE__*/ S.String;
+
+export type OnRampsEditResponsePlannedResourcesItemResourceResourceType =
+  | "aws_customer_gateway"
+  | "aws_egress_only_internet_gateway"
+  | "aws_internet_gateway"
+  | (string & {});
+export const OnRampsEditResponsePlannedResourcesItemResourceResourceType =
+  /*@__PURE__*/ S.String;
+
+export interface OnRampsEditResponsePlannedResourcesItemResource {
+  id: string;
+  cloudType: OnRampsEditResponsePlannedResourcesItemResourceCloudType;
+  detail: string;
+  name: string;
+  resourceType: OnRampsEditResponsePlannedResourcesItemResourceResourceType;
+  title: string;
+}
+export const OnRampsEditResponsePlannedResourcesItemResource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudType: OnRampsEditResponsePlannedResourcesItemResourceCloudType.pipe(
+        T.Body("cloud_type"),
+      ),
+      detail: S.String,
+      name: S.String,
+      resourceType:
+        OnRampsEditResponsePlannedResourcesItemResourceResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      title: S.String,
+    }),
+  ).annotate({
+    identifier: "OnRampsEditResponsePlannedResourcesItemResource",
+  }) as any as S.Schema<OnRampsEditResponsePlannedResourcesItemResource>;
+
+export interface OnRampsEditResponsePlannedResourcesItem {
+  diff: OnRampsEditResponsePlannedResourcesItemDiff;
+  keysRequireReplace: OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList;
+  monthlyCostEstimateDiff: OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff;
+  plannedAction: OnRampsEditResponsePlannedResourcesItemPlannedAction;
+  resource: OnRampsEditResponsePlannedResourcesItemResource;
+}
+export const OnRampsEditResponsePlannedResourcesItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      diff: OnRampsEditResponsePlannedResourcesItemDiff,
+      keysRequireReplace:
+        OnRampsEditResponsePlannedResourcesItemKeysRequireReplaceList.pipe(
+          T.Body("keys_require_replace"),
+        ),
+      monthlyCostEstimateDiff:
+        OnRampsEditResponsePlannedResourcesItemMonthlyCostEstimateDiff.pipe(
+          T.Body("monthly_cost_estimate_diff"),
+        ),
+      plannedAction: OnRampsEditResponsePlannedResourcesItemPlannedAction.pipe(
+        T.Body("planned_action"),
+      ),
+      resource: OnRampsEditResponsePlannedResourcesItemResource,
+    }),
+).annotate({
+  identifier: "OnRampsEditResponsePlannedResourcesItem",
+}) as any as S.Schema<OnRampsEditResponsePlannedResourcesItem>;
+
+export type OnRampsEditResponsePlannedResourcesList =
+  OnRampsEditResponsePlannedResourcesItem[];
+export const OnRampsEditResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
+  OnRampsEditResponsePlannedResourcesItem,
+) as any as S.Schema<OnRampsEditResponsePlannedResourcesList>;
+
+export interface OnRampsEditResponsePostApplyMonthlyCostEstimate {
+  currency: string;
+  monthlyCost: number;
+}
+export const OnRampsEditResponsePostApplyMonthlyCostEstimate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      currency: S.String,
+      monthlyCost: S.Number.pipe(T.Body("monthly_cost")),
+    }),
+  ).annotate({
+    identifier: "OnRampsEditResponsePostApplyMonthlyCostEstimate",
+  }) as any as S.Schema<OnRampsEditResponsePostApplyMonthlyCostEstimate>;
+
+export type OnRampsEditResponsePostApplyResourcesMap = {
+  [key: string]: unknown | undefined;
+};
+export const OnRampsEditResponsePostApplyResourcesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<OnRampsEditResponsePostApplyResourcesMap>;
+
+export interface OnRampsEditResponseStatusApplyProgress {
+  done: number;
+  total: number;
+}
+export const OnRampsEditResponseStatusApplyProgress = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      done: S.Number,
+      total: S.Number,
+    }),
+).annotate({
+  identifier: "OnRampsEditResponseStatusApplyProgress",
+}) as any as S.Schema<OnRampsEditResponseStatusApplyProgress>;
+
+export type OnRampsEditResponseStatusLifecycleState =
+  | "OnrampNeedsApply"
+  | "OnrampPendingPlan"
+  | "OnrampPlanning"
+  | (string & {});
+export const OnRampsEditResponseStatusLifecycleState = /*@__PURE__*/ S.String;
+
+export interface OnRampsEditResponseStatusPlanProgress {
+  done: number;
+  total: number;
+}
+export const OnRampsEditResponseStatusPlanProgress = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      done: S.Number,
+      total: S.Number,
+    }),
+).annotate({
+  identifier: "OnRampsEditResponseStatusPlanProgress",
+}) as any as S.Schema<OnRampsEditResponseStatusPlanProgress>;
+
+export type OnRampsEditResponseStatusRoutesList = string[];
+export const OnRampsEditResponseStatusRoutesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsEditResponseStatusRoutesList>;
+
+export type OnRampsEditResponseStatusTunnelsList = string[];
+export const OnRampsEditResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsEditResponseStatusTunnelsList>;
+
+export type OnRampsEditResponseStatusLifecycleErrorsMap = {
+  [key: string]: unknown | undefined;
+};
+export const OnRampsEditResponseStatusLifecycleErrorsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<OnRampsEditResponseStatusLifecycleErrorsMap>;
+
+export interface OnRampsEditResponseStatus {
+  applyProgress: OnRampsEditResponseStatusApplyProgress;
+  lifecycleState: OnRampsEditResponseStatusLifecycleState;
+  planProgress: OnRampsEditResponseStatusPlanProgress;
+  routes: OnRampsEditResponseStatusRoutesList;
+  tunnels: OnRampsEditResponseStatusTunnelsList;
+  lifecycleErrors?: OnRampsEditResponseStatusLifecycleErrorsMap;
+}
+export const OnRampsEditResponseStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applyProgress: OnRampsEditResponseStatusApplyProgress.pipe(
+      T.Body("apply_progress"),
+    ),
+    lifecycleState: OnRampsEditResponseStatusLifecycleState.pipe(
+      T.Body("lifecycle_state"),
+    ),
+    planProgress: OnRampsEditResponseStatusPlanProgress.pipe(
+      T.Body("plan_progress"),
+    ),
+    routes: OnRampsEditResponseStatusRoutesList,
+    tunnels: OnRampsEditResponseStatusTunnelsList,
+    lifecycleErrors: S.optional(
+      OnRampsEditResponseStatusLifecycleErrorsMap.pipe(
+        T.Body("lifecycle_errors"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "OnRampsEditResponseStatus",
+}) as any as S.Schema<OnRampsEditResponseStatus>;
+
+export type OnRampsEditResponseVpcsByIdMap = {
+  [key: string]: unknown | undefined;
+};
+export const OnRampsEditResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<OnRampsEditResponseVpcsByIdMap>;
+
+export type OnRampsEditResponseVpcsByIdUnavailableList = string[];
+export const OnRampsEditResponseVpcsByIdUnavailableList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsEditResponseVpcsByIdUnavailableList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchOnRampResponse {
+  id: string;
+  cloudType: OnRampsEditResponseCloudType;
+  dynamicRouting: boolean;
+  installRoutesInCloud: boolean;
+  installRoutesInMagicWan: boolean;
+  name: string;
+  type: OnRampsEditResponseType;
+  updatedAt: string;
+  attachedHubs?: OnRampsEditResponseAttachedHubsList;
+  attachedVpcs?: OnRampsEditResponseAttachedVpcsList;
+  cloudAsn?: number;
+  description?: string;
+  hub?: string;
+  lastAppliedAt?: string;
+  lastExportedAt?: string;
+  lastPlannedAt?: string;
+  manageHubToHubAttachments?: boolean;
+  manageVpcToHubAttachments?: boolean;
+  plannedMonthlyCostEstimate?: OnRampsEditResponsePlannedMonthlyCostEstimate;
+  plannedResources?: OnRampsEditResponsePlannedResourcesList;
+  plannedResourcesUnavailable?: boolean;
+  postApplyMonthlyCostEstimate?: OnRampsEditResponsePostApplyMonthlyCostEstimate;
+  postApplyResources?: OnRampsEditResponsePostApplyResourcesMap;
+  postApplyResourcesUnavailable?: boolean;
+  region?: string;
+  status?: OnRampsEditResponseStatus;
+  vpc?: string;
+  vpcsById?: OnRampsEditResponseVpcsByIdMap;
+  /** The list of vpc IDs for which resource details failed to generate. */
+  vpcsByIdUnavailable?: OnRampsEditResponseVpcsByIdUnavailableList;
+}
+export const PatchOnRampResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    cloudType: OnRampsEditResponseCloudType.pipe(T.Body("cloud_type")),
+    dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
+    installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
+    installRoutesInMagicWan: S.Boolean.pipe(
+      T.Body("install_routes_in_magic_wan"),
+    ),
+    name: S.String,
+    type: OnRampsEditResponseType,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    attachedHubs: S.optional(
+      OnRampsEditResponseAttachedHubsList.pipe(T.Body("attached_hubs")),
+    ),
+    attachedVpcs: S.optional(
+      OnRampsEditResponseAttachedVpcsList.pipe(T.Body("attached_vpcs")),
+    ),
+    cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
+    description: S.optional(S.String),
+    hub: S.optional(S.String),
+    lastAppliedAt: S.optional(S.String.pipe(T.Body("last_applied_at"))),
+    lastExportedAt: S.optional(S.String.pipe(T.Body("last_exported_at"))),
+    lastPlannedAt: S.optional(S.String.pipe(T.Body("last_planned_at"))),
+    manageHubToHubAttachments: S.optional(
+      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+    ),
+    manageVpcToHubAttachments: S.optional(
+      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+    ),
+    plannedMonthlyCostEstimate: S.optional(
+      OnRampsEditResponsePlannedMonthlyCostEstimate.pipe(
+        T.Body("planned_monthly_cost_estimate"),
+      ),
+    ),
+    plannedResources: S.optional(
+      OnRampsEditResponsePlannedResourcesList.pipe(T.Body("planned_resources")),
+    ),
+    plannedResourcesUnavailable: S.optional(
+      S.Boolean.pipe(T.Body("planned_resources_unavailable")),
+    ),
+    postApplyMonthlyCostEstimate: S.optional(
+      OnRampsEditResponsePostApplyMonthlyCostEstimate.pipe(
+        T.Body("post_apply_monthly_cost_estimate"),
+      ),
+    ),
+    postApplyResources: S.optional(
+      OnRampsEditResponsePostApplyResourcesMap.pipe(
+        T.Body("post_apply_resources"),
+      ),
+    ),
+    postApplyResourcesUnavailable: S.optional(
+      S.Boolean.pipe(T.Body("post_apply_resources_unavailable")),
+    ),
+    region: S.optional(S.String),
+    status: S.optional(OnRampsEditResponseStatus),
+    vpc: S.optional(S.String),
+    vpcsById: S.optional(
+      OnRampsEditResponseVpcsByIdMap.pipe(T.Body("vpcs_by_id")),
+    ),
+    vpcsByIdUnavailable: S.optional(
+      OnRampsEditResponseVpcsByIdUnavailableList.pipe(
+        T.Body("vpcs_by_id_unavailable"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PatchOnRampResponse",
+}) as any as S.Schema<PatchOnRampResponse>;
+
+export type OnRampsAddressSpacesEditRequestPrefixesList = string[];
+export const OnRampsAddressSpacesEditRequestPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<OnRampsAddressSpacesEditRequestPrefixesList>;
+
+export interface PatchOnRampAddressSpaceRequest {
+  accountId: string;
+  prefixes: OnRampsAddressSpacesEditRequestPrefixesList;
+}
+export const PatchOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixes: OnRampsAddressSpacesEditRequestPrefixesList,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchOnRampAddressSpaceRequest",
+}) as any as S.Schema<PatchOnRampAddressSpaceRequest>;
+
+export type OnRampsAddressSpacesEditResponsePrefixesList = string[];
+export const OnRampsAddressSpacesEditResponsePrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<OnRampsAddressSpacesEditResponsePrefixesList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchOnRampAddressSpaceResponse {
+  prefixes: OnRampsAddressSpacesEditResponsePrefixesList;
+}
+export const PatchOnRampAddressSpaceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    prefixes: OnRampsAddressSpacesEditResponsePrefixesList,
+  }),
+).annotate({
+  identifier: "PatchOnRampAddressSpaceResponse",
+}) as any as S.Schema<PatchOnRampAddressSpaceResponse>;
+
+export interface PlanOnRampRequest {
+  accountId: string;
+  onrampId: string;
+}
+export const PlanOnRampRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    onrampId: S.String.pipe(T.Label("onramp_id")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}/plan",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PlanOnRampRequest",
+}) as any as S.Schema<PlanOnRampRequest>;
+
+export interface PlanOnRampResponse {}
+export const PlanOnRampResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "PlanOnRampResponse",
+}) as any as S.Schema<PlanOnRampResponse>;
+
+export interface PolicyPreviewResourceRequest {
   accountId: string;
   policy: string;
 }
-export const ResourcesPolicyPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+export const PolicyPreviewResourceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policy: S.String,
@@ -5419,479 +4551,1580 @@ export const ResourcesPolicyPreviewRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ResourcesPolicyPreviewRequest",
-}) as any as S.Schema<ResourcesPolicyPreviewRequest>;
+  identifier: "PolicyPreviewResourceRequest",
+}) as any as S.Schema<PolicyPreviewResourceRequest>;
 
-export interface ResourcesPolicyPreviewResponse {
+export interface PolicyPreviewResourceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: string;
 }
-export const ResourcesPolicyPreviewResponse = /*@__PURE__*/ S.suspend(() =>
+export const PolicyPreviewResourceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "ResourcesPolicyPreviewResponse",
-}) as any as S.Schema<ResourcesPolicyPreviewResponse>;
+  identifier: "PolicyPreviewResourceResponse",
+}) as any as S.Schema<PolicyPreviewResourceResponse>;
 
-export type CatalogSyncsCreateError = CloudflareOpError;
-/** Create a new Catalog Sync (Closed Beta). */
-export const catalogSyncsCreate: API.OperationMethod<
-  CatalogSyncsCreateRequest,
-  CatalogSyncsCreateResponse,
-  CatalogSyncsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CatalogSyncsCreateRequest,
-  output: CatalogSyncsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type OnRampsAddressSpacesUpdateRequestPrefixesList = string[];
+export const OnRampsAddressSpacesUpdateRequestPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<OnRampsAddressSpacesUpdateRequestPrefixesList>;
 
-export type CatalogSyncsDeleteError = CloudflareOpError;
-/** Delete a Catalog Sync (Closed Beta). */
-export const catalogSyncsDelete: API.OperationMethod<
-  CatalogSyncsDeleteRequest,
-  CatalogSyncsDeleteResponse,
-  CatalogSyncsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CatalogSyncsDeleteRequest,
-  output: CatalogSyncsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface PutOnRampAddressSpaceRequest {
+  accountId: string;
+  prefixes: OnRampsAddressSpacesUpdateRequestPrefixesList;
+}
+export const PutOnRampAddressSpaceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    prefixes: OnRampsAddressSpacesUpdateRequestPrefixesList,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/cloud/onramps/magic_wan_address_space",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PutOnRampAddressSpaceRequest",
+}) as any as S.Schema<PutOnRampAddressSpaceRequest>;
 
-export type CatalogSyncsEditError = CloudflareOpError;
-/** Update a Catalog Sync (Closed Beta). */
-export const catalogSyncsEdit: API.OperationMethod<
-  CatalogSyncsEditRequest,
-  CatalogSyncsEditResponse,
-  CatalogSyncsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CatalogSyncsEditRequest,
-  output: CatalogSyncsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type OnRampsAddressSpacesUpdateResponsePrefixesList = string[];
+export const OnRampsAddressSpacesUpdateResponsePrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<OnRampsAddressSpacesUpdateResponsePrefixesList>;
 
-export type CatalogSyncsGetError = CloudflareOpError;
-/** Read a Catalog Sync (Closed Beta). */
-export const catalogSyncsGet: API.OperationMethod<
-  CatalogSyncsGetRequest,
-  CatalogSyncsGetResponse,
-  CatalogSyncsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CatalogSyncsGetRequest,
-  output: CatalogSyncsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PutOnRampAddressSpaceResponse {
+  prefixes: OnRampsAddressSpacesUpdateResponsePrefixesList;
+}
+export const PutOnRampAddressSpaceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    prefixes: OnRampsAddressSpacesUpdateResponsePrefixesList,
+  }),
+).annotate({
+  identifier: "PutOnRampAddressSpaceResponse",
+}) as any as S.Schema<PutOnRampAddressSpaceResponse>;
 
-export type CatalogSyncsListError = CloudflareOpError;
-/** List Catalog Syncs (Closed Beta). */
-export const catalogSyncsList: API.OperationMethod<
-  CatalogSyncsListRequest,
-  CatalogSyncsListResponse,
-  CatalogSyncsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CatalogSyncsListRequest,
-  output: CatalogSyncsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface RefreshCatalogSyncRequest {
+  accountId: string;
+  syncId: string;
+}
+export const RefreshCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    syncId: S.String.pipe(T.Label("sync_id")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}/refresh",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RefreshCatalogSyncRequest",
+}) as any as S.Schema<RefreshCatalogSyncRequest>;
 
-export type CatalogSyncsPrebuiltPoliciesListError = CloudflareOpError;
-/** List prebuilt catalog sync policies (Closed Beta). */
-export const catalogSyncsPrebuiltPoliciesList: API.OperationMethod<
-  CatalogSyncsPrebuiltPoliciesListRequest,
-  CatalogSyncsPrebuiltPoliciesListResponse,
-  CatalogSyncsPrebuiltPoliciesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CatalogSyncsPrebuiltPoliciesListRequest,
-  output: CatalogSyncsPrebuiltPoliciesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface RefreshCatalogSyncResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: string;
+}
+export const RefreshCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.String.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "RefreshCatalogSyncResponse",
+}) as any as S.Schema<RefreshCatalogSyncResponse>;
 
-export type CatalogSyncsRefreshError = CloudflareOpError;
-/** Refresh a Catalog Sync's destination by running the sync policy against latest resource catalog (Closed Beta). */
-export const catalogSyncsRefresh: API.OperationMethod<
-  CatalogSyncsRefreshRequest,
-  CatalogSyncsRefreshResponse,
-  CatalogSyncsRefreshError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CatalogSyncsRefreshRequest,
-  output: CatalogSyncsRefreshResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type CatalogSyncsUpdateRequestUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
+export const CatalogSyncsUpdateRequestUpdateMode = /*@__PURE__*/ S.String;
 
-export type CatalogSyncsUpdateError = CloudflareOpError;
-/** Update a Catalog Sync (Closed Beta). */
-export const catalogSyncsUpdate: API.OperationMethod<
-  CatalogSyncsUpdateRequest,
-  CatalogSyncsUpdateResponse,
-  CatalogSyncsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CatalogSyncsUpdateRequest,
-  output: CatalogSyncsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface UpdateCatalogSyncRequest {
+  accountId: string;
+  syncId: string;
+  description?: string;
+  name?: string;
+  policy?: string;
+  updateMode?: CatalogSyncsUpdateRequestUpdateMode;
+}
+export const UpdateCatalogSyncRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    syncId: S.String.pipe(T.Label("sync_id")),
+    description: S.optional(S.String),
+    name: S.optional(S.String),
+    policy: S.optional(S.String),
+    updateMode: S.optional(
+      CatalogSyncsUpdateRequestUpdateMode.pipe(T.Body("update_mode")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/cloud/catalog-syncs/{sync_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCatalogSyncRequest",
+}) as any as S.Schema<UpdateCatalogSyncRequest>;
 
-export type CloudIntegrationsCreateError = CloudflareOpError;
-/** Create a new Cloud Integration (Closed Beta). */
-export const cloudIntegrationsCreate: API.OperationMethod<
-  CloudIntegrationsCreateRequest,
-  CloudIntegrationsCreateResponse,
-  CloudIntegrationsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CloudIntegrationsCreateRequest,
-  output: CloudIntegrationsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type CatalogSyncsUpdateResponseDestinationType =
+  | "NONE"
+  | "ZERO_TRUST_LIST"
+  | (string & {});
+export const CatalogSyncsUpdateResponseDestinationType = /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsDeleteError = CloudflareOpError;
-/** Delete a Cloud Integration (Closed Beta). */
-export const cloudIntegrationsDelete: API.OperationMethod<
-  CloudIntegrationsDeleteRequest,
-  CloudIntegrationsDeleteResponse,
-  CloudIntegrationsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CloudIntegrationsDeleteRequest,
-  output: CloudIntegrationsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type CatalogSyncsUpdateResponseUpdateMode =
+  | "AUTO"
+  | "MANUAL"
+  | (string & {});
+export const CatalogSyncsUpdateResponseUpdateMode = /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsDiscoverError = CloudflareOpError;
-/** Run discovery for a Cloud Integration (Closed Beta). */
-export const cloudIntegrationsDiscover: API.OperationMethod<
-  CloudIntegrationsDiscoverRequest,
-  CloudIntegrationsDiscoverResponse,
-  CloudIntegrationsDiscoverError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CloudIntegrationsDiscoverRequest,
-  output: CloudIntegrationsDiscoverResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type CatalogSyncsUpdateResponseErrorsMap = {
+  [key: string]: unknown | undefined;
+};
+export const CatalogSyncsUpdateResponseErrorsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<CatalogSyncsUpdateResponseErrorsMap>;
 
-export type CloudIntegrationsDiscoverAllError = CloudflareOpError;
-/** Run discovery for all Cloud Integrations in an account (Closed Beta). */
-export const cloudIntegrationsDiscoverAll: API.OperationMethod<
-  CloudIntegrationsDiscoverAllRequest,
-  CloudIntegrationsDiscoverAllResponse,
-  CloudIntegrationsDiscoverAllError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CloudIntegrationsDiscoverAllRequest,
-  output: CloudIntegrationsDiscoverAllResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateCatalogSyncResponse {
+  id: string;
+  description: string;
+  destinationId: string;
+  destinationType: CatalogSyncsUpdateResponseDestinationType;
+  lastUserUpdateAt: string;
+  name: string;
+  policy: string;
+  updateMode: CatalogSyncsUpdateResponseUpdateMode;
+  errors?: CatalogSyncsUpdateResponseErrorsMap;
+  includesDiscoveriesUntil?: string;
+  lastAttemptedUpdateAt?: string;
+  lastSuccessfulUpdateAt?: string;
+}
+export const UpdateCatalogSyncResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    description: S.String,
+    destinationId: S.String.pipe(T.Body("destination_id")),
+    destinationType: CatalogSyncsUpdateResponseDestinationType.pipe(
+      T.Body("destination_type"),
+    ),
+    lastUserUpdateAt: S.String.pipe(T.Body("last_user_update_at")),
+    name: S.String,
+    policy: S.String,
+    updateMode: CatalogSyncsUpdateResponseUpdateMode.pipe(
+      T.Body("update_mode"),
+    ),
+    errors: S.optional(CatalogSyncsUpdateResponseErrorsMap),
+    includesDiscoveriesUntil: S.optional(
+      S.String.pipe(T.Body("includes_discoveries_until")),
+    ),
+    lastAttemptedUpdateAt: S.optional(
+      S.String.pipe(T.Body("last_attempted_update_at")),
+    ),
+    lastSuccessfulUpdateAt: S.optional(
+      S.String.pipe(T.Body("last_successful_update_at")),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateCatalogSyncResponse",
+}) as any as S.Schema<UpdateCatalogSyncResponse>;
 
-export type CloudIntegrationsEditError = CloudflareOpError;
-/** Update a Cloud Integration (Closed Beta). */
-export const cloudIntegrationsEdit: API.OperationMethod<
-  CloudIntegrationsEditRequest,
-  CloudIntegrationsEditResponse,
-  CloudIntegrationsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CloudIntegrationsEditRequest,
-  output: CloudIntegrationsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface UpdateCloudIntegrationRequest {
+  accountId: string;
+  providerId: string;
+  awsArn?: string;
+  azureSubscriptionId?: string;
+  azureTenantId?: string;
+  description?: string;
+  friendlyName?: string;
+  gcpProjectId?: string;
+  gcpServiceAccountEmail?: string;
+}
+export const UpdateCloudIntegrationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    providerId: S.String.pipe(T.Label("provider_id")),
+    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    azureSubscriptionId: S.optional(
+      S.String.pipe(T.Body("azure_subscription_id")),
+    ),
+    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
+    description: S.optional(S.String),
+    friendlyName: S.optional(S.String.pipe(T.Body("friendly_name"))),
+    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    gcpServiceAccountEmail: S.optional(
+      S.String.pipe(T.Body("gcp_service_account_email")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/cloud/providers/{provider_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCloudIntegrationRequest",
+}) as any as S.Schema<UpdateCloudIntegrationRequest>;
 
-export type CloudIntegrationsGetError = CloudflareOpError;
-/** Read a Cloud Integration (Closed Beta). */
-export const cloudIntegrationsGet: API.OperationMethod<
-  CloudIntegrationsGetRequest,
-  CloudIntegrationsGetResponse,
-  CloudIntegrationsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CloudIntegrationsGetRequest,
-  output: CloudIntegrationsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type CloudIntegrationsUpdateResponseCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | "CLOUDFLARE"
+  | (string & {});
+export const CloudIntegrationsUpdateResponseCloudType = /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsInitialSetupError = CloudflareOpError;
-/** Get initial configuration to complete Cloud Integration setup (Closed Beta). */
-export const cloudIntegrationsInitialSetup: API.OperationMethod<
-  CloudIntegrationsInitialSetupRequest,
-  CloudIntegrationsInitialSetupResponse,
-  CloudIntegrationsInitialSetupError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CloudIntegrationsInitialSetupRequest,
-  output: CloudIntegrationsInitialSetupResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type CloudIntegrationsUpdateResponseLifecycleState =
+  | "ACTIVE"
+  | "PENDING_SETUP"
+  | "RETIRED"
+  | (string & {});
+export const CloudIntegrationsUpdateResponseLifecycleState =
+  /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsListError = CloudflareOpError;
-/** List Cloud Integrations (Closed Beta). */
-export const cloudIntegrationsList: API.OperationMethod<
-  CloudIntegrationsListRequest,
-  CloudIntegrationsListResponse,
-  CloudIntegrationsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CloudIntegrationsListRequest,
-  output: CloudIntegrationsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type CloudIntegrationsUpdateResponseState =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsUpdateResponseState = /*@__PURE__*/ S.String;
 
-export type CloudIntegrationsUpdateError = CloudflareOpError;
-/** Update a Cloud Integration (Closed Beta). */
-export const cloudIntegrationsUpdate: API.OperationMethod<
-  CloudIntegrationsUpdateRequest,
-  CloudIntegrationsUpdateResponse,
-  CloudIntegrationsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CloudIntegrationsUpdateRequest,
-  output: CloudIntegrationsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type CloudIntegrationsUpdateResponseStateV2 =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsUpdateResponseStateV2 = /*@__PURE__*/ S.String;
 
-export type OnRampsAddressSpacesEditError = CloudflareOpError;
-/** Update the Magic WAN Address Space (Closed Beta). */
-export const onRampsAddressSpacesEdit: API.OperationMethod<
-  OnRampsAddressSpacesEditRequest,
-  OnRampsAddressSpacesEditResponse,
-  OnRampsAddressSpacesEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OnRampsAddressSpacesEditRequest,
-  output: OnRampsAddressSpacesEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface CloudIntegrationsUpdateResponseStatusDiscoveryProgress {
+  done: number;
+  total: number;
+  unit: string;
+}
+export const CloudIntegrationsUpdateResponseStatusDiscoveryProgress =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      done: S.Number,
+      total: S.Number,
+      unit: S.String,
+    }),
+  ).annotate({
+    identifier: "CloudIntegrationsUpdateResponseStatusDiscoveryProgress",
+  }) as any as S.Schema<CloudIntegrationsUpdateResponseStatusDiscoveryProgress>;
 
-export type OnRampsAddressSpacesListError = CloudflareOpError;
-/** Read the Magic WAN Address Space (Closed Beta). */
-export const onRampsAddressSpacesList: API.OperationMethod<
-  OnRampsAddressSpacesListRequest,
-  OnRampsAddressSpacesListResponse,
-  OnRampsAddressSpacesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OnRampsAddressSpacesListRequest,
-  output: OnRampsAddressSpacesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2 {
+  done: number;
+  total: number;
+  unit: string;
+}
+export const CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2 =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      done: S.Number,
+      total: S.Number,
+      unit: S.String,
+    }),
+  ).annotate({
+    identifier: "CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2",
+  }) as any as S.Schema<CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2>;
 
-export type OnRampsAddressSpacesUpdateError = CloudflareOpError;
-/** Update the Magic WAN Address Space (Closed Beta). */
-export const onRampsAddressSpacesUpdate: API.OperationMethod<
-  OnRampsAddressSpacesUpdateRequest,
-  OnRampsAddressSpacesUpdateResponse,
-  OnRampsAddressSpacesUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OnRampsAddressSpacesUpdateRequest,
-  output: OnRampsAddressSpacesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus =
+  /*@__PURE__*/ S.String;
 
-export type OnRampsApplyError = CloudflareOpError;
+export type CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
+  | "UNSPECIFIED"
+  | "PENDING"
+  | "DISCOVERING"
+  | (string & {});
+export const CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2 =
+  /*@__PURE__*/ S.String;
+
+export type CloudIntegrationsUpdateResponseStatusRegionsList = string[];
+export const CloudIntegrationsUpdateResponseStatusRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CloudIntegrationsUpdateResponseStatusRegionsList>;
+
+export type CloudIntegrationsUpdateResponseStatusInUseByItemClientType =
+  | "MAGIC_WAN_CLOUD_ONRAMP"
+  | (string & {});
+export const CloudIntegrationsUpdateResponseStatusInUseByItemClientType =
+  /*@__PURE__*/ S.String;
+
+export interface CloudIntegrationsUpdateResponseStatusInUseByItem {
+  id: string;
+  clientType: CloudIntegrationsUpdateResponseStatusInUseByItemClientType;
+  name: string;
+}
+export const CloudIntegrationsUpdateResponseStatusInUseByItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      clientType:
+        CloudIntegrationsUpdateResponseStatusInUseByItemClientType.pipe(
+          T.Body("client_type"),
+        ),
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "CloudIntegrationsUpdateResponseStatusInUseByItem",
+  }) as any as S.Schema<CloudIntegrationsUpdateResponseStatusInUseByItem>;
+
+export type CloudIntegrationsUpdateResponseStatusInUseByList =
+  CloudIntegrationsUpdateResponseStatusInUseByItem[];
+export const CloudIntegrationsUpdateResponseStatusInUseByList =
+  /*@__PURE__*/ S.Array(
+    CloudIntegrationsUpdateResponseStatusInUseByItem,
+  ) as any as S.Schema<CloudIntegrationsUpdateResponseStatusInUseByList>;
+
+export interface CloudIntegrationsUpdateResponseStatus {
+  discoveryProgress: CloudIntegrationsUpdateResponseStatusDiscoveryProgress;
+  discoveryProgressV2: CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2;
+  lastDiscoveryStatus: CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus;
+  lastDiscoveryStatusV2: CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2;
+  regions: CloudIntegrationsUpdateResponseStatusRegionsList;
+  credentialsGoodSince?: string;
+  credentialsMissingSince?: string;
+  credentialsRejectedSince?: string;
+  discoveryMessage?: string;
+  discoveryMessageV2?: string;
+  inUseBy?: CloudIntegrationsUpdateResponseStatusInUseByList;
+  lastDiscoveryCompletedAt?: string;
+  lastDiscoveryCompletedAtV2?: string;
+  lastDiscoveryStartedAt?: string;
+  lastDiscoveryStartedAtV2?: string;
+  lastUpdated?: string;
+}
+export const CloudIntegrationsUpdateResponseStatus = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      discoveryProgress:
+        CloudIntegrationsUpdateResponseStatusDiscoveryProgress.pipe(
+          T.Body("discovery_progress"),
+        ),
+      discoveryProgressV2:
+        CloudIntegrationsUpdateResponseStatusDiscoveryProgressV2.pipe(
+          T.Body("discovery_progress_v2"),
+        ),
+      lastDiscoveryStatus:
+        CloudIntegrationsUpdateResponseStatusLastDiscoveryStatus.pipe(
+          T.Body("last_discovery_status"),
+        ),
+      lastDiscoveryStatusV2:
+        CloudIntegrationsUpdateResponseStatusLastDiscoveryStatusV2.pipe(
+          T.Body("last_discovery_status_v2"),
+        ),
+      regions: CloudIntegrationsUpdateResponseStatusRegionsList,
+      credentialsGoodSince: S.optional(
+        S.String.pipe(T.Body("credentials_good_since")),
+      ),
+      credentialsMissingSince: S.optional(
+        S.String.pipe(T.Body("credentials_missing_since")),
+      ),
+      credentialsRejectedSince: S.optional(
+        S.String.pipe(T.Body("credentials_rejected_since")),
+      ),
+      discoveryMessage: S.optional(S.String.pipe(T.Body("discovery_message"))),
+      discoveryMessageV2: S.optional(
+        S.String.pipe(T.Body("discovery_message_v2")),
+      ),
+      inUseBy: S.optional(
+        CloudIntegrationsUpdateResponseStatusInUseByList.pipe(
+          T.Body("in_use_by"),
+        ),
+      ),
+      lastDiscoveryCompletedAt: S.optional(
+        S.String.pipe(T.Body("last_discovery_completed_at")),
+      ),
+      lastDiscoveryCompletedAtV2: S.optional(
+        S.String.pipe(T.Body("last_discovery_completed_at_v2")),
+      ),
+      lastDiscoveryStartedAt: S.optional(
+        S.String.pipe(T.Body("last_discovery_started_at")),
+      ),
+      lastDiscoveryStartedAtV2: S.optional(
+        S.String.pipe(T.Body("last_discovery_started_at_v2")),
+      ),
+      lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+    }),
+).annotate({
+  identifier: "CloudIntegrationsUpdateResponseStatus",
+}) as any as S.Schema<CloudIntegrationsUpdateResponseStatus>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateCloudIntegrationResponse {
+  id: string;
+  cloudType: CloudIntegrationsUpdateResponseCloudType;
+  friendlyName: string;
+  lastUpdated: string;
+  lifecycleState: CloudIntegrationsUpdateResponseLifecycleState;
+  state: CloudIntegrationsUpdateResponseState;
+  stateV2: CloudIntegrationsUpdateResponseStateV2;
+  awsArn?: string;
+  azureSubscriptionId?: string;
+  azureTenantId?: string;
+  description?: string;
+  gcpProjectId?: string;
+  gcpServiceAccountEmail?: string;
+  status?: CloudIntegrationsUpdateResponseStatus;
+}
+export const UpdateCloudIntegrationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    cloudType: CloudIntegrationsUpdateResponseCloudType.pipe(
+      T.Body("cloud_type"),
+    ),
+    friendlyName: S.String.pipe(T.Body("friendly_name")),
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    lifecycleState: CloudIntegrationsUpdateResponseLifecycleState.pipe(
+      T.Body("lifecycle_state"),
+    ),
+    state: CloudIntegrationsUpdateResponseState,
+    stateV2: CloudIntegrationsUpdateResponseStateV2.pipe(T.Body("state_v2")),
+    awsArn: S.optional(S.String.pipe(T.Body("aws_arn"))),
+    azureSubscriptionId: S.optional(
+      S.String.pipe(T.Body("azure_subscription_id")),
+    ),
+    azureTenantId: S.optional(S.String.pipe(T.Body("azure_tenant_id"))),
+    description: S.optional(S.String),
+    gcpProjectId: S.optional(S.String.pipe(T.Body("gcp_project_id"))),
+    gcpServiceAccountEmail: S.optional(
+      S.String.pipe(T.Body("gcp_service_account_email")),
+    ),
+    status: S.optional(CloudIntegrationsUpdateResponseStatus),
+  }),
+).annotate({
+  identifier: "UpdateCloudIntegrationResponse",
+}) as any as S.Schema<UpdateCloudIntegrationResponse>;
+
+export type OnRampsUpdateRequestAttachedHubsList = string[];
+export const OnRampsUpdateRequestAttachedHubsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsUpdateRequestAttachedHubsList>;
+
+export type OnRampsUpdateRequestAttachedVpcsList = string[];
+export const OnRampsUpdateRequestAttachedVpcsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsUpdateRequestAttachedVpcsList>;
+
+export interface UpdateOnRampRequest {
+  accountId: string;
+  onrampId: string;
+  attachedHubs?: OnRampsUpdateRequestAttachedHubsList;
+  attachedVpcs?: OnRampsUpdateRequestAttachedVpcsList;
+  description?: string;
+  installRoutesInCloud?: boolean;
+  installRoutesInMagicWan?: boolean;
+  manageHubToHubAttachments?: boolean;
+  manageVpcToHubAttachments?: boolean;
+  name?: string;
+  vpc?: string;
+}
+export const UpdateOnRampRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    onrampId: S.String.pipe(T.Label("onramp_id")),
+    attachedHubs: S.optional(
+      OnRampsUpdateRequestAttachedHubsList.pipe(T.Body("attached_hubs")),
+    ),
+    attachedVpcs: S.optional(
+      OnRampsUpdateRequestAttachedVpcsList.pipe(T.Body("attached_vpcs")),
+    ),
+    description: S.optional(S.String),
+    installRoutesInCloud: S.optional(
+      S.Boolean.pipe(T.Body("install_routes_in_cloud")),
+    ),
+    installRoutesInMagicWan: S.optional(
+      S.Boolean.pipe(T.Body("install_routes_in_magic_wan")),
+    ),
+    manageHubToHubAttachments: S.optional(
+      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+    ),
+    manageVpcToHubAttachments: S.optional(
+      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+    ),
+    name: S.optional(S.String),
+    vpc: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/cloud/onramps/{onramp_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateOnRampRequest",
+}) as any as S.Schema<UpdateOnRampRequest>;
+
+export type OnRampsUpdateResponseCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | (string & {});
+export const OnRampsUpdateResponseCloudType = /*@__PURE__*/ S.String;
+
+export type OnRampsUpdateResponseType =
+  | "OnrampTypeSingle"
+  | "OnrampTypeHub"
+  | (string & {});
+export const OnRampsUpdateResponseType = /*@__PURE__*/ S.String;
+
+export type OnRampsUpdateResponseAttachedHubsList = string[];
+export const OnRampsUpdateResponseAttachedHubsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsUpdateResponseAttachedHubsList>;
+
+export type OnRampsUpdateResponseAttachedVpcsList = string[];
+export const OnRampsUpdateResponseAttachedVpcsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsUpdateResponseAttachedVpcsList>;
+
+export interface OnRampsUpdateResponsePlannedMonthlyCostEstimate {
+  currency: string;
+  currentMonthlyCost: number;
+  diff: number;
+  proposedMonthlyCost: number;
+}
+export const OnRampsUpdateResponsePlannedMonthlyCostEstimate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      currency: S.String,
+      currentMonthlyCost: S.Number.pipe(T.Body("current_monthly_cost")),
+      diff: S.Number,
+      proposedMonthlyCost: S.Number.pipe(T.Body("proposed_monthly_cost")),
+    }),
+  ).annotate({
+    identifier: "OnRampsUpdateResponsePlannedMonthlyCostEstimate",
+  }) as any as S.Schema<OnRampsUpdateResponsePlannedMonthlyCostEstimate>;
+
+export interface OnRampsUpdateResponsePlannedResourcesItemDiff {
+  diff: string;
+  leftDescription: string;
+  leftYaml: string;
+  rightDescription: string;
+  rightYaml: string;
+}
+export const OnRampsUpdateResponsePlannedResourcesItemDiff =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      diff: S.String,
+      leftDescription: S.String.pipe(T.Body("left_description")),
+      leftYaml: S.String.pipe(T.Body("left_yaml")),
+      rightDescription: S.String.pipe(T.Body("right_description")),
+      rightYaml: S.String.pipe(T.Body("right_yaml")),
+    }),
+  ).annotate({
+    identifier: "OnRampsUpdateResponsePlannedResourcesItemDiff",
+  }) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemDiff>;
+
+export type OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList =
+  string[];
+export const OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList>;
+
+export interface OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff {
+  currency: string;
+  currentMonthlyCost: number;
+  diff: number;
+  proposedMonthlyCost: number;
+}
+export const OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      currency: S.String,
+      currentMonthlyCost: S.Number.pipe(T.Body("current_monthly_cost")),
+      diff: S.Number,
+      proposedMonthlyCost: S.Number.pipe(T.Body("proposed_monthly_cost")),
+    }),
+  ).annotate({
+    identifier:
+      "OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff",
+  }) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff>;
+
+export type OnRampsUpdateResponsePlannedResourcesItemPlannedAction =
+  | "no_op"
+  | "create"
+  | "update"
+  | (string & {});
+export const OnRampsUpdateResponsePlannedResourcesItemPlannedAction =
+  /*@__PURE__*/ S.String;
+
+export type OnRampsUpdateResponsePlannedResourcesItemResourceCloudType =
+  | "AWS"
+  | "AZURE"
+  | "GOOGLE"
+  | "CLOUDFLARE"
+  | (string & {});
+export const OnRampsUpdateResponsePlannedResourcesItemResourceCloudType =
+  /*@__PURE__*/ S.String;
+
+export type OnRampsUpdateResponsePlannedResourcesItemResourceResourceType =
+  | "aws_customer_gateway"
+  | "aws_egress_only_internet_gateway"
+  | "aws_internet_gateway"
+  | (string & {});
+export const OnRampsUpdateResponsePlannedResourcesItemResourceResourceType =
+  /*@__PURE__*/ S.String;
+
+export interface OnRampsUpdateResponsePlannedResourcesItemResource {
+  id: string;
+  cloudType: OnRampsUpdateResponsePlannedResourcesItemResourceCloudType;
+  detail: string;
+  name: string;
+  resourceType: OnRampsUpdateResponsePlannedResourcesItemResourceResourceType;
+  title: string;
+}
+export const OnRampsUpdateResponsePlannedResourcesItemResource =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudType:
+        OnRampsUpdateResponsePlannedResourcesItemResourceCloudType.pipe(
+          T.Body("cloud_type"),
+        ),
+      detail: S.String,
+      name: S.String,
+      resourceType:
+        OnRampsUpdateResponsePlannedResourcesItemResourceResourceType.pipe(
+          T.Body("resource_type"),
+        ),
+      title: S.String,
+    }),
+  ).annotate({
+    identifier: "OnRampsUpdateResponsePlannedResourcesItemResource",
+  }) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItemResource>;
+
+export interface OnRampsUpdateResponsePlannedResourcesItem {
+  diff: OnRampsUpdateResponsePlannedResourcesItemDiff;
+  keysRequireReplace: OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList;
+  monthlyCostEstimateDiff: OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff;
+  plannedAction: OnRampsUpdateResponsePlannedResourcesItemPlannedAction;
+  resource: OnRampsUpdateResponsePlannedResourcesItemResource;
+}
+export const OnRampsUpdateResponsePlannedResourcesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      diff: OnRampsUpdateResponsePlannedResourcesItemDiff,
+      keysRequireReplace:
+        OnRampsUpdateResponsePlannedResourcesItemKeysRequireReplaceList.pipe(
+          T.Body("keys_require_replace"),
+        ),
+      monthlyCostEstimateDiff:
+        OnRampsUpdateResponsePlannedResourcesItemMonthlyCostEstimateDiff.pipe(
+          T.Body("monthly_cost_estimate_diff"),
+        ),
+      plannedAction:
+        OnRampsUpdateResponsePlannedResourcesItemPlannedAction.pipe(
+          T.Body("planned_action"),
+        ),
+      resource: OnRampsUpdateResponsePlannedResourcesItemResource,
+    }),
+  ).annotate({
+    identifier: "OnRampsUpdateResponsePlannedResourcesItem",
+  }) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesItem>;
+
+export type OnRampsUpdateResponsePlannedResourcesList =
+  OnRampsUpdateResponsePlannedResourcesItem[];
+export const OnRampsUpdateResponsePlannedResourcesList = /*@__PURE__*/ S.Array(
+  OnRampsUpdateResponsePlannedResourcesItem,
+) as any as S.Schema<OnRampsUpdateResponsePlannedResourcesList>;
+
+export interface OnRampsUpdateResponsePostApplyMonthlyCostEstimate {
+  currency: string;
+  monthlyCost: number;
+}
+export const OnRampsUpdateResponsePostApplyMonthlyCostEstimate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      currency: S.String,
+      monthlyCost: S.Number.pipe(T.Body("monthly_cost")),
+    }),
+  ).annotate({
+    identifier: "OnRampsUpdateResponsePostApplyMonthlyCostEstimate",
+  }) as any as S.Schema<OnRampsUpdateResponsePostApplyMonthlyCostEstimate>;
+
+export type OnRampsUpdateResponsePostApplyResourcesMap = {
+  [key: string]: unknown | undefined;
+};
+export const OnRampsUpdateResponsePostApplyResourcesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<OnRampsUpdateResponsePostApplyResourcesMap>;
+
+export interface OnRampsUpdateResponseStatusApplyProgress {
+  done: number;
+  total: number;
+}
+export const OnRampsUpdateResponseStatusApplyProgress = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      done: S.Number,
+      total: S.Number,
+    }),
+).annotate({
+  identifier: "OnRampsUpdateResponseStatusApplyProgress",
+}) as any as S.Schema<OnRampsUpdateResponseStatusApplyProgress>;
+
+export type OnRampsUpdateResponseStatusLifecycleState =
+  | "OnrampNeedsApply"
+  | "OnrampPendingPlan"
+  | "OnrampPlanning"
+  | (string & {});
+export const OnRampsUpdateResponseStatusLifecycleState = /*@__PURE__*/ S.String;
+
+export interface OnRampsUpdateResponseStatusPlanProgress {
+  done: number;
+  total: number;
+}
+export const OnRampsUpdateResponseStatusPlanProgress = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      done: S.Number,
+      total: S.Number,
+    }),
+).annotate({
+  identifier: "OnRampsUpdateResponseStatusPlanProgress",
+}) as any as S.Schema<OnRampsUpdateResponseStatusPlanProgress>;
+
+export type OnRampsUpdateResponseStatusRoutesList = string[];
+export const OnRampsUpdateResponseStatusRoutesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsUpdateResponseStatusRoutesList>;
+
+export type OnRampsUpdateResponseStatusTunnelsList = string[];
+export const OnRampsUpdateResponseStatusTunnelsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<OnRampsUpdateResponseStatusTunnelsList>;
+
+export type OnRampsUpdateResponseStatusLifecycleErrorsMap = {
+  [key: string]: unknown | undefined;
+};
+export const OnRampsUpdateResponseStatusLifecycleErrorsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<OnRampsUpdateResponseStatusLifecycleErrorsMap>;
+
+export interface OnRampsUpdateResponseStatus {
+  applyProgress: OnRampsUpdateResponseStatusApplyProgress;
+  lifecycleState: OnRampsUpdateResponseStatusLifecycleState;
+  planProgress: OnRampsUpdateResponseStatusPlanProgress;
+  routes: OnRampsUpdateResponseStatusRoutesList;
+  tunnels: OnRampsUpdateResponseStatusTunnelsList;
+  lifecycleErrors?: OnRampsUpdateResponseStatusLifecycleErrorsMap;
+}
+export const OnRampsUpdateResponseStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    applyProgress: OnRampsUpdateResponseStatusApplyProgress.pipe(
+      T.Body("apply_progress"),
+    ),
+    lifecycleState: OnRampsUpdateResponseStatusLifecycleState.pipe(
+      T.Body("lifecycle_state"),
+    ),
+    planProgress: OnRampsUpdateResponseStatusPlanProgress.pipe(
+      T.Body("plan_progress"),
+    ),
+    routes: OnRampsUpdateResponseStatusRoutesList,
+    tunnels: OnRampsUpdateResponseStatusTunnelsList,
+    lifecycleErrors: S.optional(
+      OnRampsUpdateResponseStatusLifecycleErrorsMap.pipe(
+        T.Body("lifecycle_errors"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "OnRampsUpdateResponseStatus",
+}) as any as S.Schema<OnRampsUpdateResponseStatus>;
+
+export type OnRampsUpdateResponseVpcsByIdMap = {
+  [key: string]: unknown | undefined;
+};
+export const OnRampsUpdateResponseVpcsByIdMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<OnRampsUpdateResponseVpcsByIdMap>;
+
+export type OnRampsUpdateResponseVpcsByIdUnavailableList = string[];
+export const OnRampsUpdateResponseVpcsByIdUnavailableList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<OnRampsUpdateResponseVpcsByIdUnavailableList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateOnRampResponse {
+  id: string;
+  cloudType: OnRampsUpdateResponseCloudType;
+  dynamicRouting: boolean;
+  installRoutesInCloud: boolean;
+  installRoutesInMagicWan: boolean;
+  name: string;
+  type: OnRampsUpdateResponseType;
+  updatedAt: string;
+  attachedHubs?: OnRampsUpdateResponseAttachedHubsList;
+  attachedVpcs?: OnRampsUpdateResponseAttachedVpcsList;
+  cloudAsn?: number;
+  description?: string;
+  hub?: string;
+  lastAppliedAt?: string;
+  lastExportedAt?: string;
+  lastPlannedAt?: string;
+  manageHubToHubAttachments?: boolean;
+  manageVpcToHubAttachments?: boolean;
+  plannedMonthlyCostEstimate?: OnRampsUpdateResponsePlannedMonthlyCostEstimate;
+  plannedResources?: OnRampsUpdateResponsePlannedResourcesList;
+  plannedResourcesUnavailable?: boolean;
+  postApplyMonthlyCostEstimate?: OnRampsUpdateResponsePostApplyMonthlyCostEstimate;
+  postApplyResources?: OnRampsUpdateResponsePostApplyResourcesMap;
+  postApplyResourcesUnavailable?: boolean;
+  region?: string;
+  status?: OnRampsUpdateResponseStatus;
+  vpc?: string;
+  vpcsById?: OnRampsUpdateResponseVpcsByIdMap;
+  /** The list of vpc IDs for which resource details failed to generate. */
+  vpcsByIdUnavailable?: OnRampsUpdateResponseVpcsByIdUnavailableList;
+}
+export const UpdateOnRampResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    cloudType: OnRampsUpdateResponseCloudType.pipe(T.Body("cloud_type")),
+    dynamicRouting: S.Boolean.pipe(T.Body("dynamic_routing")),
+    installRoutesInCloud: S.Boolean.pipe(T.Body("install_routes_in_cloud")),
+    installRoutesInMagicWan: S.Boolean.pipe(
+      T.Body("install_routes_in_magic_wan"),
+    ),
+    name: S.String,
+    type: OnRampsUpdateResponseType,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    attachedHubs: S.optional(
+      OnRampsUpdateResponseAttachedHubsList.pipe(T.Body("attached_hubs")),
+    ),
+    attachedVpcs: S.optional(
+      OnRampsUpdateResponseAttachedVpcsList.pipe(T.Body("attached_vpcs")),
+    ),
+    cloudAsn: S.optional(S.Number.pipe(T.Body("cloud_asn"))),
+    description: S.optional(S.String),
+    hub: S.optional(S.String),
+    lastAppliedAt: S.optional(S.String.pipe(T.Body("last_applied_at"))),
+    lastExportedAt: S.optional(S.String.pipe(T.Body("last_exported_at"))),
+    lastPlannedAt: S.optional(S.String.pipe(T.Body("last_planned_at"))),
+    manageHubToHubAttachments: S.optional(
+      S.Boolean.pipe(T.Body("manage_hub_to_hub_attachments")),
+    ),
+    manageVpcToHubAttachments: S.optional(
+      S.Boolean.pipe(T.Body("manage_vpc_to_hub_attachments")),
+    ),
+    plannedMonthlyCostEstimate: S.optional(
+      OnRampsUpdateResponsePlannedMonthlyCostEstimate.pipe(
+        T.Body("planned_monthly_cost_estimate"),
+      ),
+    ),
+    plannedResources: S.optional(
+      OnRampsUpdateResponsePlannedResourcesList.pipe(
+        T.Body("planned_resources"),
+      ),
+    ),
+    plannedResourcesUnavailable: S.optional(
+      S.Boolean.pipe(T.Body("planned_resources_unavailable")),
+    ),
+    postApplyMonthlyCostEstimate: S.optional(
+      OnRampsUpdateResponsePostApplyMonthlyCostEstimate.pipe(
+        T.Body("post_apply_monthly_cost_estimate"),
+      ),
+    ),
+    postApplyResources: S.optional(
+      OnRampsUpdateResponsePostApplyResourcesMap.pipe(
+        T.Body("post_apply_resources"),
+      ),
+    ),
+    postApplyResourcesUnavailable: S.optional(
+      S.Boolean.pipe(T.Body("post_apply_resources_unavailable")),
+    ),
+    region: S.optional(S.String),
+    status: S.optional(OnRampsUpdateResponseStatus),
+    vpc: S.optional(S.String),
+    vpcsById: S.optional(
+      OnRampsUpdateResponseVpcsByIdMap.pipe(T.Body("vpcs_by_id")),
+    ),
+    vpcsByIdUnavailable: S.optional(
+      OnRampsUpdateResponseVpcsByIdUnavailableList.pipe(
+        T.Body("vpcs_by_id_unavailable"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateOnRampResponse",
+}) as any as S.Schema<UpdateOnRampResponse>;
+
+export type ApplyOnRampError = CloudflareOpError;
 /** Apply an On-ramp (Closed Beta). */
-export const onRampsApply: API.OperationMethod<
-  OnRampsApplyRequest,
-  OnRampsApplyResponse,
-  OnRampsApplyError,
+export const applyOnRamp: API.OperationMethod<
+  ApplyOnRampRequest,
+  ApplyOnRampResponse,
+  ApplyOnRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OnRampsApplyRequest,
-  output: OnRampsApplyResponse,
+  input: ApplyOnRampRequest,
+  output: ApplyOnRampResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type OnRampsCreateError = CloudflareOpError;
+export type CreateCatalogSyncError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudflareOpError;
+/** Create a new Catalog Sync (Closed Beta). */
+export const createCatalogSync: API.OperationMethod<
+  CreateCatalogSyncRequest,
+  CreateCatalogSyncResponse,
+  CreateCatalogSyncError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCatalogSyncRequest,
+  output: CreateCatalogSyncResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateCloudIntegrationError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudflareOpError;
+/** Create a new Cloud Integration (Closed Beta). */
+export const createCloudIntegration: API.OperationMethod<
+  CreateCloudIntegrationRequest,
+  CreateCloudIntegrationResponse,
+  CreateCloudIntegrationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCloudIntegrationRequest,
+  output: CreateCloudIntegrationResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateOnRampError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudflareOpError;
 /** Create a new On-ramp (Closed Beta). */
-export const onRampsCreate: API.OperationMethod<
-  OnRampsCreateRequest,
-  OnRampsCreateResponse,
-  OnRampsCreateError,
+export const createOnRamp: API.OperationMethod<
+  CreateOnRampRequest,
+  CreateOnRampResponse,
+  CreateOnRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OnRampsCreateRequest,
-  output: OnRampsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateOnRampRequest,
+  output: CreateOnRampResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type OnRampsDeleteError = CloudflareOpError;
+export type DeleteCatalogSyncError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CatalogSyncNotFound
+  | CloudflareOpError;
+/** Delete a Catalog Sync (Closed Beta). */
+export const deleteCatalogSync: API.OperationMethod<
+  DeleteCatalogSyncRequest,
+  DeleteCatalogSyncResponse,
+  DeleteCatalogSyncError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCatalogSyncRequest,
+  output: DeleteCatalogSyncResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CatalogSyncNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteCloudIntegrationError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudIntegrationNotFound
+  | CloudflareOpError;
+/** Delete a Cloud Integration (Closed Beta). */
+export const deleteCloudIntegration: API.OperationMethod<
+  DeleteCloudIntegrationRequest,
+  DeleteCloudIntegrationResponse,
+  DeleteCloudIntegrationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCloudIntegrationRequest,
+  output: DeleteCloudIntegrationResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CloudIntegrationNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteOnRampError =
+  | FeatureNotEnabled
+  | Forbidden
+  | OnRampNotFound
+  | CloudflareOpError;
 /** Delete an On-ramp (Closed Beta). */
-export const onRampsDelete: API.OperationMethod<
-  OnRampsDeleteRequest,
-  OnRampsDeleteResponse,
-  OnRampsDeleteError,
+export const deleteOnRamp: API.OperationMethod<
+  DeleteOnRampRequest,
+  DeleteOnRampResponse,
+  DeleteOnRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OnRampsDeleteRequest,
-  output: OnRampsDeleteResponse,
+  input: DeleteOnRampRequest,
+  output: DeleteOnRampResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    OnRampNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DiscoverAllCloudIntegrationError = CloudflareOpError;
+/** Run discovery for all Cloud Integrations in an account (Closed Beta). */
+export const discoverAllCloudIntegration: API.OperationMethod<
+  DiscoverAllCloudIntegrationRequest,
+  DiscoverAllCloudIntegrationResponse,
+  DiscoverAllCloudIntegrationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DiscoverAllCloudIntegrationRequest,
+  output: DiscoverAllCloudIntegrationResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type OnRampsEditError = CloudflareOpError;
-/** Update an On-ramp (Closed Beta). */
-export const onRampsEdit: API.OperationMethod<
-  OnRampsEditRequest,
-  OnRampsEditResponse,
-  OnRampsEditError,
+export type DiscoverCloudIntegrationError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudflareOpError;
+/** Run discovery for a Cloud Integration (Closed Beta). */
+export const discoverCloudIntegration: API.OperationMethod<
+  DiscoverCloudIntegrationRequest,
+  DiscoverCloudIntegrationResponse,
+  DiscoverCloudIntegrationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OnRampsEditRequest,
-  output: OnRampsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DiscoverCloudIntegrationRequest,
+  output: DiscoverCloudIntegrationResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type OnRampsExportError = CloudflareOpError;
+export type ExportOnRampError = CloudflareOpError;
 /** Export an On-ramp to terraform ready file(s) (Closed Beta). */
-export const onRampsExport: API.OperationMethod<
-  OnRampsExportRequest,
-  OnRampsExportResponse,
-  OnRampsExportError,
+export const exportOnRamp: API.OperationMethod<
+  ExportOnRampRequest,
+  ExportOnRampResponse,
+  ExportOnRampError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OnRampsExportRequest,
-  output: OnRampsExportResponse,
+  input: ExportOnRampRequest,
+  output: ExportOnRampResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type OnRampsGetError = CloudflareOpError;
-/** Read an On-ramp (Closed Beta). */
-export const onRampsGet: API.OperationMethod<
-  OnRampsGetRequest,
-  OnRampsGetResponse,
-  OnRampsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OnRampsGetRequest,
-  output: OnRampsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type OnRampsListError = CloudflareOpError;
-/** List On-ramps (Closed Beta). */
-export const onRampsList: API.OperationMethod<
-  OnRampsListRequest,
-  OnRampsListResponse,
-  OnRampsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OnRampsListRequest,
-  output: OnRampsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type OnRampsPlanError = CloudflareOpError;
-/** Plan an On-ramp (Closed Beta). */
-export const onRampsPlan: API.OperationMethod<
-  OnRampsPlanRequest,
-  OnRampsPlanResponse,
-  OnRampsPlanError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OnRampsPlanRequest,
-  output: OnRampsPlanResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type OnRampsUpdateError = CloudflareOpError;
-/** Update an On-ramp (Closed Beta). */
-export const onRampsUpdate: API.OperationMethod<
-  OnRampsUpdateRequest,
-  OnRampsUpdateResponse,
-  OnRampsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OnRampsUpdateRequest,
-  output: OnRampsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ResourcesExportError = CloudflareOpError;
+export type ExportResourceError = CloudflareOpError;
 /** Export resources in the Resource Catalog as a JSON file (Closed Beta). */
-export const resourcesExport: API.OperationMethod<
-  ResourcesExportRequest,
-  ResourcesExportResponse,
-  ResourcesExportError,
+export const exportResource: API.OperationMethod<
+  ExportResourceRequest,
+  ExportResourceResponse,
+  ExportResourceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResourcesExportRequest,
-  output: ResourcesExportResponse,
+  input: ExportResourceRequest,
+  output: ExportResourceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ResourcesGetError = CloudflareOpError;
+export type GetCatalogSyncError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CatalogSyncNotFound
+  | CloudflareOpError;
+/** Read a Catalog Sync (Closed Beta). */
+export const getCatalogSync: API.OperationMethod<
+  GetCatalogSyncRequest,
+  GetCatalogSyncResponse,
+  GetCatalogSyncError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCatalogSyncRequest,
+  output: GetCatalogSyncResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CatalogSyncNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetCloudIntegrationError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudIntegrationNotFound
+  | CloudflareOpError;
+/** Read a Cloud Integration (Closed Beta). */
+export const getCloudIntegration: API.OperationMethod<
+  GetCloudIntegrationRequest,
+  GetCloudIntegrationResponse,
+  GetCloudIntegrationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCloudIntegrationRequest,
+  output: GetCloudIntegrationResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CloudIntegrationNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetOnRampError =
+  | FeatureNotEnabled
+  | Forbidden
+  | OnRampNotFound
+  | CloudflareOpError;
+/** Read an On-ramp (Closed Beta). */
+export const getOnRamp: API.OperationMethod<
+  GetOnRampRequest,
+  GetOnRampResponse,
+  GetOnRampError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOnRampRequest,
+  output: GetOnRampResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    OnRampNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetResourceError = CloudflareOpError;
 /** Read an resource from the Resource Catalog (Closed Beta). */
-export const resourcesGet: API.OperationMethod<
-  ResourcesGetRequest,
-  ResourcesGetResponse,
-  ResourcesGetError,
+export const getResource: API.OperationMethod<
+  GetResourceRequest,
+  GetResourceResponse,
+  GetResourceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResourcesGetRequest,
-  output: ResourcesGetResponse,
+  input: GetResourceRequest,
+  output: GetResourceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ResourcesListError = CloudflareOpError;
+export type InitialSetupCloudIntegrationError = CloudflareOpError;
+/** Get initial configuration to complete Cloud Integration setup (Closed Beta). */
+export const initialSetupCloudIntegration: API.OperationMethod<
+  InitialSetupCloudIntegrationRequest,
+  InitialSetupCloudIntegrationResponse,
+  InitialSetupCloudIntegrationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: InitialSetupCloudIntegrationRequest,
+  output: InitialSetupCloudIntegrationResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListCatalogSyncPrebuiltPoliciesError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudflareOpError;
+/** List prebuilt catalog sync policies (Closed Beta). */
+export const listCatalogSyncPrebuiltPolicies: API.OperationMethod<
+  ListCatalogSyncPrebuiltPoliciesRequest,
+  ListCatalogSyncPrebuiltPoliciesResponse,
+  ListCatalogSyncPrebuiltPoliciesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCatalogSyncPrebuiltPoliciesRequest,
+  output: ListCatalogSyncPrebuiltPoliciesResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListCatalogSyncsError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudflareOpError;
+/** List Catalog Syncs (Closed Beta). */
+export const listCatalogSyncs: API.OperationMethod<
+  ListCatalogSyncsRequest,
+  ListCatalogSyncsResponse,
+  ListCatalogSyncsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCatalogSyncsRequest,
+  output: ListCatalogSyncsResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListCloudIntegrationsError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudflareOpError;
+/** List Cloud Integrations (Closed Beta). */
+export const listCloudIntegrations: API.OperationMethod<
+  ListCloudIntegrationsRequest,
+  ListCloudIntegrationsResponse,
+  ListCloudIntegrationsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCloudIntegrationsRequest,
+  output: ListCloudIntegrationsResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListOnRampAddressSpacesError = CloudflareOpError;
+/** Read the Magic WAN Address Space (Closed Beta). */
+export const listOnRampAddressSpaces: API.OperationMethod<
+  ListOnRampAddressSpacesRequest,
+  ListOnRampAddressSpacesResponse,
+  ListOnRampAddressSpacesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOnRampAddressSpacesRequest,
+  output: ListOnRampAddressSpacesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListOnRampsError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudflareOpError;
+/** List On-ramps (Closed Beta). */
+export const listOnRamps: API.OperationMethod<
+  ListOnRampsRequest,
+  ListOnRampsResponse,
+  ListOnRampsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOnRampsRequest,
+  output: ListOnRampsResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListResourcesError = CloudflareOpError;
 /** List resources in the Resource Catalog (Closed Beta). */
-export const resourcesList: API.OperationMethod<
-  ResourcesListRequest,
-  ResourcesListResponse,
-  ResourcesListError,
+export const listResources: API.OperationMethod<
+  ListResourcesRequest,
+  ListResourcesResponse,
+  ListResourcesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResourcesListRequest,
-  output: ResourcesListResponse,
+  input: ListResourcesRequest,
+  output: ListResourcesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ResourcesPolicyPreviewError = CloudflareOpError;
-/** Preview Rego query result against the latest resource catalog (Closed Beta). */
-export const resourcesPolicyPreview: API.OperationMethod<
-  ResourcesPolicyPreviewRequest,
-  ResourcesPolicyPreviewResponse,
-  ResourcesPolicyPreviewError,
+export type PatchCatalogSyncError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CatalogSyncNotFound
+  | CloudflareOpError;
+/** Update a Catalog Sync (Closed Beta). */
+export const patchCatalogSync: API.OperationMethod<
+  PatchCatalogSyncRequest,
+  PatchCatalogSyncResponse,
+  PatchCatalogSyncError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ResourcesPolicyPreviewRequest,
-  output: ResourcesPolicyPreviewResponse,
+  input: PatchCatalogSyncRequest,
+  output: PatchCatalogSyncResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CatalogSyncNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchCloudIntegrationError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudIntegrationNotFound
+  | CloudflareOpError;
+/** Update a Cloud Integration (Closed Beta). */
+export const patchCloudIntegration: API.OperationMethod<
+  PatchCloudIntegrationRequest,
+  PatchCloudIntegrationResponse,
+  PatchCloudIntegrationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchCloudIntegrationRequest,
+  output: PatchCloudIntegrationResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CloudIntegrationNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchOnRampError =
+  | FeatureNotEnabled
+  | Forbidden
+  | OnRampNotFound
+  | CloudflareOpError;
+/** Update an On-ramp (Closed Beta). */
+export const patchOnRamp: API.OperationMethod<
+  PatchOnRampRequest,
+  PatchOnRampResponse,
+  PatchOnRampError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchOnRampRequest,
+  output: PatchOnRampResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    OnRampNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchOnRampAddressSpaceError = CloudflareOpError;
+/** Update the Magic WAN Address Space (Closed Beta). */
+export const patchOnRampAddressSpace: API.OperationMethod<
+  PatchOnRampAddressSpaceRequest,
+  PatchOnRampAddressSpaceResponse,
+  PatchOnRampAddressSpaceError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchOnRampAddressSpaceRequest,
+  output: PatchOnRampAddressSpaceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PlanOnRampError = CloudflareOpError;
+/** Plan an On-ramp (Closed Beta). */
+export const planOnRamp: API.OperationMethod<
+  PlanOnRampRequest,
+  PlanOnRampResponse,
+  PlanOnRampError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PlanOnRampRequest,
+  output: PlanOnRampResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PolicyPreviewResourceError = CloudflareOpError;
+/** Preview Rego query result against the latest resource catalog (Closed Beta). */
+export const policyPreviewResource: API.OperationMethod<
+  PolicyPreviewResourceRequest,
+  PolicyPreviewResourceResponse,
+  PolicyPreviewResourceError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PolicyPreviewResourceRequest,
+  output: PolicyPreviewResourceResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutOnRampAddressSpaceError = CloudflareOpError;
+/** Update the Magic WAN Address Space (Closed Beta). */
+export const putOnRampAddressSpace: API.OperationMethod<
+  PutOnRampAddressSpaceRequest,
+  PutOnRampAddressSpaceResponse,
+  PutOnRampAddressSpaceError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutOnRampAddressSpaceRequest,
+  output: PutOnRampAddressSpaceResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type RefreshCatalogSyncError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CatalogSyncNotFound
+  | CloudflareOpError;
+/** Refresh a Catalog Sync's destination by running the sync policy against latest resource catalog (Closed Beta). */
+export const refreshCatalogSync: API.OperationMethod<
+  RefreshCatalogSyncRequest,
+  RefreshCatalogSyncResponse,
+  RefreshCatalogSyncError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RefreshCatalogSyncRequest,
+  output: RefreshCatalogSyncResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CatalogSyncNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateCatalogSyncError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CatalogSyncNotFound
+  | CloudflareOpError;
+/** Update a Catalog Sync (Closed Beta). */
+export const updateCatalogSync: API.OperationMethod<
+  UpdateCatalogSyncRequest,
+  UpdateCatalogSyncResponse,
+  UpdateCatalogSyncError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCatalogSyncRequest,
+  output: UpdateCatalogSyncResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CatalogSyncNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateCloudIntegrationError =
+  | FeatureNotEnabled
+  | Forbidden
+  | CloudIntegrationNotFound
+  | CloudflareOpError;
+/** Update a Cloud Integration (Closed Beta). */
+export const updateCloudIntegration: API.OperationMethod<
+  UpdateCloudIntegrationRequest,
+  UpdateCloudIntegrationResponse,
+  UpdateCloudIntegrationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCloudIntegrationRequest,
+  output: UpdateCloudIntegrationResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    CloudIntegrationNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateOnRampError =
+  | FeatureNotEnabled
+  | Forbidden
+  | OnRampNotFound
+  | CloudflareOpError;
+/** Update an On-ramp (Closed Beta). */
+export const updateOnRamp: API.OperationMethod<
+  UpdateOnRampRequest,
+  UpdateOnRampResponse,
+  UpdateOnRampError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateOnRampRequest,
+  output: UpdateOnRampResponse,
+  errors: [
+    FeatureNotEnabled,
+    Forbidden,
+    OnRampNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

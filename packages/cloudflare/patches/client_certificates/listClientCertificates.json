@@ -1,0 +1,62 @@
+{
+  "description": "Align client_certificates#List with distilled cloudflare/client-certificates listClientCertificates",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.client_certificates#List",
+      "path": "/shapes/com.cloudflare.client_certificates#ListClientCertificates"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.client_certificates#ListRequest",
+      "path": "/shapes/com.cloudflare.client_certificates#ListClientCertificatesRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.client_certificates#ListClientCertificates/input/target",
+      "value": "com.cloudflare.client_certificates#ListClientCertificatesRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.client_certificates#ListResponse",
+      "path": "/shapes/com.cloudflare.client_certificates#ListClientCertificatesResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.client_certificates#ListClientCertificates/output/target",
+      "value": "com.cloudflare.client_certificates#ListClientCertificatesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.client_certificates#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.client_certificates#ListClientCertificates/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.client_certificates#Forbidden"
+        }
+      ]
+    }
+  ]
+}

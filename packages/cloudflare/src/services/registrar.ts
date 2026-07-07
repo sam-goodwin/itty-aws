@@ -9,18 +9,48 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class RegistrarDomainNotOwned extends T.applyErrorMatchers(
+  S.TaggedErrorClass<RegistrarDomainNotOwned>()("RegistrarDomainNotOwned", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [
+    {
+      code: 10000,
+      status: 403,
+      message: { includes: "Domain doesn't belong to the user" },
+    },
+  ],
+) {}
+
+export class RegistrarUpdateNotAllowed extends T.applyErrorMatchers(
+  S.TaggedErrorClass<RegistrarUpdateNotAllowed>()("RegistrarUpdateNotAllowed", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 422 }],
+) {}
+
 export type CheckRequestDomainsList = string[];
 export const CheckRequestDomainsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<CheckRequestDomainsList>;
 
-export interface CheckRequest {
+export interface CheckRegistrarRequest {
   /** Identifier */
   accountId: string;
   /** List of fully qualified domain names (FQDNs) to check for availability. Each domain must include the extension. */
   domains: CheckRequestDomainsList;
 }
-export const CheckRequest = /*@__PURE__*/ S.suspend(() =>
+export const CheckRegistrarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domains: CheckRequestDomainsList,
@@ -31,7 +61,9 @@ export const CheckRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "CheckRequest" }) as any as S.Schema<CheckRequest>;
+).annotate({
+  identifier: "CheckRegistrarRequest",
+}) as any as S.Schema<CheckRegistrarRequest>;
 
 export interface CheckResponseDomainsItemPricing {
   /** ISO-4217 currency code for the prices (e.g., "USD", "EUR", "GBP"). */
@@ -94,23 +126,25 @@ export const CheckResponseDomainsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CheckResponseDomainsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CheckResponse {
+export interface CheckRegistrarResponse {
   /** Array of domain availability results. Domains on unsupported */
   domains: CheckResponseDomainsList;
 }
-export const CheckResponse = /*@__PURE__*/ S.suspend(() =>
+export const CheckRegistrarResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: CheckResponseDomainsList,
   }),
-).annotate({ identifier: "CheckResponse" }) as any as S.Schema<CheckResponse>;
+).annotate({
+  identifier: "CheckRegistrarResponse",
+}) as any as S.Schema<CheckRegistrarResponse>;
 
-export interface DomainsGetRequest {
+export interface GetDomainRequest {
   /** Identifier */
   accountId: string;
   /** Fully qualified domain name (FQDN) including the extension */
   domainName: string;
 }
-export const DomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -122,26 +156,214 @@ export const DomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DomainsGetRequest",
-}) as any as S.Schema<DomainsGetRequest>;
+  identifier: "GetDomainRequest",
+}) as any as S.Schema<GetDomainRequest>;
 
-export interface DomainsGetResponse {
+export interface GetDomainResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const DomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DomainsGetResponse",
-}) as any as S.Schema<DomainsGetResponse>;
+  identifier: "GetDomainResponse",
+}) as any as S.Schema<GetDomainResponse>;
 
-export interface DomainsListRequest {
+export interface GetRegistrationStatusRequest {
+  /** Identifier */
+  accountId: string;
+  /** Fully qualified domain name (FQDN) including the extension */
+  domainName: string;
+}
+export const GetRegistrationStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    domainName: S.String.pipe(T.Label("domain_name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/registrar/registrations/{domain_name}/registration-status",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetRegistrationStatusRequest",
+}) as any as S.Schema<GetRegistrationStatusRequest>;
+
+export interface RegistrationStatusGetResponseLinks {
+  /** URL to this status resource. */
+  self: string;
+  /** URL to the domain resource. */
+  resource?: string;
+}
+export const RegistrationStatusGetResponseLinks = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    self: S.String,
+    resource: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RegistrationStatusGetResponseLinks",
+}) as any as S.Schema<RegistrationStatusGetResponseLinks>;
+
+export type RegistrationStatusGetResponseState =
+  | "pending"
+  | "in_progress"
+  | "action_required"
+  | (string & {});
+export const RegistrationStatusGetResponseState = /*@__PURE__*/ S.String;
+
+export type RegistrationStatusGetResponseContextMap = {
+  [key: string]: unknown | undefined;
+};
+export const RegistrationStatusGetResponseContextMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<RegistrationStatusGetResponseContextMap>;
+
+export interface RegistrationStatusGetResponseError {
+  /** Machine-readable error code identifying the failure reason. */
+  code: string;
+  /** Human-readable explanation of the failure. May include registry-specific details. */
+  message: string;
+}
+export const RegistrationStatusGetResponseError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.String,
+    message: S.String,
+  }),
+).annotate({
+  identifier: "RegistrationStatusGetResponseError",
+}) as any as S.Schema<RegistrationStatusGetResponseError>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetRegistrationStatusResponse {
+  /** Whether the workflow has reached a terminal state. `true` when */
+  completed: boolean;
+  createdAt: string;
+  links: RegistrationStatusGetResponseLinks;
+  /** Workflow lifecycle state. */
+  state: RegistrationStatusGetResponseState;
+  updatedAt: string;
+  /** Workflow-specific data for this workflow. */
+  context?: RegistrationStatusGetResponseContextMap;
+  /** Error details when a workflow reaches the `failed` state. The specific */
+  error?: RegistrationStatusGetResponseError;
+}
+export const GetRegistrationStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    completed: S.Boolean,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    links: RegistrationStatusGetResponseLinks,
+    state: RegistrationStatusGetResponseState,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    context: S.optional(RegistrationStatusGetResponseContextMap),
+    error: S.optional(RegistrationStatusGetResponseError),
+  }),
+).annotate({
+  identifier: "GetRegistrationStatusResponse",
+}) as any as S.Schema<GetRegistrationStatusResponse>;
+
+export interface GetUpdateStatusRequest {
+  /** Identifier */
+  accountId: string;
+  /** Fully qualified domain name (FQDN) including the extension */
+  domainName: string;
+}
+export const GetUpdateStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    domainName: S.String.pipe(T.Label("domain_name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/registrar/registrations/{domain_name}/update-status",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetUpdateStatusRequest",
+}) as any as S.Schema<GetUpdateStatusRequest>;
+
+export interface UpdateStatusGetResponseLinks {
+  /** URL to this status resource. */
+  self: string;
+  /** URL to the domain resource. */
+  resource?: string;
+}
+export const UpdateStatusGetResponseLinks = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    self: S.String,
+    resource: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateStatusGetResponseLinks",
+}) as any as S.Schema<UpdateStatusGetResponseLinks>;
+
+export type UpdateStatusGetResponseState =
+  | "pending"
+  | "in_progress"
+  | "action_required"
+  | (string & {});
+export const UpdateStatusGetResponseState = /*@__PURE__*/ S.String;
+
+export type UpdateStatusGetResponseContextMap = {
+  [key: string]: unknown | undefined;
+};
+export const UpdateStatusGetResponseContextMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UpdateStatusGetResponseContextMap>;
+
+export interface UpdateStatusGetResponseError {
+  /** Machine-readable error code identifying the failure reason. */
+  code: string;
+  /** Human-readable explanation of the failure. May include registry-specific details. */
+  message: string;
+}
+export const UpdateStatusGetResponseError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.String,
+    message: S.String,
+  }),
+).annotate({
+  identifier: "UpdateStatusGetResponseError",
+}) as any as S.Schema<UpdateStatusGetResponseError>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetUpdateStatusResponse {
+  /** Whether the workflow has reached a terminal state. `true` when */
+  completed: boolean;
+  createdAt: string;
+  links: UpdateStatusGetResponseLinks;
+  /** Workflow lifecycle state. */
+  state: UpdateStatusGetResponseState;
+  updatedAt: string;
+  /** Workflow-specific data for this workflow. */
+  context?: UpdateStatusGetResponseContextMap;
+  /** Error details when a workflow reaches the `failed` state. The specific */
+  error?: UpdateStatusGetResponseError;
+}
+export const GetUpdateStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    completed: S.Boolean,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    links: UpdateStatusGetResponseLinks,
+    state: UpdateStatusGetResponseState,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    context: S.optional(UpdateStatusGetResponseContextMap),
+    error: S.optional(UpdateStatusGetResponseError),
+  }),
+).annotate({
+  identifier: "GetUpdateStatusResponse",
+}) as any as S.Schema<GetUpdateStatusResponse>;
+
+export interface ListDomainsRequest {
   /** Identifier */
   accountId: string;
 }
-export const DomainsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -152,8 +374,8 @@ export const DomainsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DomainsListRequest",
-}) as any as S.Schema<DomainsListRequest>;
+  identifier: "ListDomainsRequest",
+}) as any as S.Schema<ListDomainsRequest>;
 
 export interface DomainsListResultItemRegistrantContact {
   /** Address. */
@@ -341,19 +563,19 @@ export const DomainsListResultList = /*@__PURE__*/ S.Array(
   DomainsListResultItem,
 ) as any as S.Schema<DomainsListResultList>;
 
-export interface DomainsListResponse {
+export interface ListDomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DomainsListResultList;
 }
-export const DomainsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DomainsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DomainsListResponse",
-}) as any as S.Schema<DomainsListResponse>;
+  identifier: "ListDomainsResponse",
+}) as any as S.Schema<ListDomainsResponse>;
 
-export interface DomainsUpdateRequest {
+export interface PutDomainRequest {
   /** Identifier */
   accountId: string;
   /** Fully qualified domain name (FQDN) including the extension */
@@ -365,7 +587,7 @@ export interface DomainsUpdateRequest {
   /** Privacy option controls redacting WHOIS information. */
   privacy?: boolean;
 }
-export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutDomainRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     domainName: S.String.pipe(T.Label("domain_name")),
@@ -380,20 +602,20 @@ export const DomainsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DomainsUpdateRequest",
-}) as any as S.Schema<DomainsUpdateRequest>;
+  identifier: "PutDomainRequest",
+}) as any as S.Schema<PutDomainRequest>;
 
-export interface DomainsUpdateResponse {
+export interface PutDomainResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const DomainsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutDomainResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DomainsUpdateResponse",
-}) as any as S.Schema<DomainsUpdateResponse>;
+  identifier: "PutDomainResponse",
+}) as any as S.Schema<PutDomainResponse>;
 
 export interface RegistrationsCreateRequestContactsRegistrantPostalInfoAddress {
   /** City or locality name. */
@@ -855,106 +1077,12 @@ export const RegistrationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RegistrationsListResponse",
 }) as any as S.Schema<RegistrationsListResponse>;
 
-export interface RegistrationStatusGetRequest {
-  /** Identifier */
-  accountId: string;
-  /** Fully qualified domain name (FQDN) including the extension */
-  domainName: string;
-}
-export const RegistrationStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    domainName: S.String.pipe(T.Label("domain_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/registrar/registrations/{domain_name}/registration-status",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RegistrationStatusGetRequest",
-}) as any as S.Schema<RegistrationStatusGetRequest>;
-
-export interface RegistrationStatusGetResponseLinks {
-  /** URL to this status resource. */
-  self: string;
-  /** URL to the domain resource. */
-  resource?: string;
-}
-export const RegistrationStatusGetResponseLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    self: S.String,
-    resource: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RegistrationStatusGetResponseLinks",
-}) as any as S.Schema<RegistrationStatusGetResponseLinks>;
-
-export type RegistrationStatusGetResponseState =
-  | "pending"
-  | "in_progress"
-  | "action_required"
-  | (string & {});
-export const RegistrationStatusGetResponseState = /*@__PURE__*/ S.String;
-
-export type RegistrationStatusGetResponseContextMap = {
-  [key: string]: unknown | undefined;
-};
-export const RegistrationStatusGetResponseContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<RegistrationStatusGetResponseContextMap>;
-
-export interface RegistrationStatusGetResponseError {
-  /** Machine-readable error code identifying the failure reason. */
-  code: string;
-  /** Human-readable explanation of the failure. May include registry-specific details. */
-  message: string;
-}
-export const RegistrationStatusGetResponseError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    message: S.String,
-  }),
-).annotate({
-  identifier: "RegistrationStatusGetResponseError",
-}) as any as S.Schema<RegistrationStatusGetResponseError>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RegistrationStatusGetResponse {
-  /** Whether the workflow has reached a terminal state. `true` when */
-  completed: boolean;
-  createdAt: string;
-  links: RegistrationStatusGetResponseLinks;
-  /** Workflow lifecycle state. */
-  state: RegistrationStatusGetResponseState;
-  updatedAt: string;
-  /** Workflow-specific data for this workflow. */
-  context?: RegistrationStatusGetResponseContextMap;
-  /** Error details when a workflow reaches the `failed` state. The specific */
-  error?: RegistrationStatusGetResponseError;
-}
-export const RegistrationStatusGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completed: S.Boolean,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    links: RegistrationStatusGetResponseLinks,
-    state: RegistrationStatusGetResponseState,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    context: S.optional(RegistrationStatusGetResponseContextMap),
-    error: S.optional(RegistrationStatusGetResponseError),
-  }),
-).annotate({
-  identifier: "RegistrationStatusGetResponse",
-}) as any as S.Schema<RegistrationStatusGetResponse>;
-
 export type SearchRequestExtensionsList = string[];
 export const SearchRequestExtensionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SearchRequestExtensionsList>;
 
-export interface SearchRequest {
+export interface SearchRegistrarRequest {
   /** Identifier */
   accountId: string;
   /** The search term to find domain suggestions. Accepts keywords, phrases, or full domain names. */
@@ -964,7 +1092,7 @@ export interface SearchRequest {
   /** Maximum number of domain suggestions to return. Defaults to 20 if not specified. */
   limit?: number;
 }
-export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
+export const SearchRegistrarRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     q: S.String.pipe(T.Query()),
@@ -977,7 +1105,9 @@ export const SearchRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "SearchRequest" }) as any as S.Schema<SearchRequest>;
+).annotate({
+  identifier: "SearchRegistrarRequest",
+}) as any as S.Schema<SearchRegistrarRequest>;
 
 export interface SearchResponseDomainsItemPricing {
   /** ISO-4217 currency code for the prices (e.g., "USD", "EUR", "GBP"). */
@@ -1040,163 +1170,109 @@ export const SearchResponseDomainsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchResponseDomainsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SearchResponse {
+export interface SearchRegistrarResponse {
   /** Array of domain suggestions sorted by relevance. May be empty if no domains match the search criteria. */
   domains: SearchResponseDomainsList;
 }
-export const SearchResponse = /*@__PURE__*/ S.suspend(() =>
+export const SearchRegistrarResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: SearchResponseDomainsList,
   }),
-).annotate({ identifier: "SearchResponse" }) as any as S.Schema<SearchResponse>;
-
-export interface UpdateStatusGetRequest {
-  /** Identifier */
-  accountId: string;
-  /** Fully qualified domain name (FQDN) including the extension */
-  domainName: string;
-}
-export const UpdateStatusGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    domainName: S.String.pipe(T.Label("domain_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/registrar/registrations/{domain_name}/update-status",
-      code: 200,
-    }),
-  ),
 ).annotate({
-  identifier: "UpdateStatusGetRequest",
-}) as any as S.Schema<UpdateStatusGetRequest>;
+  identifier: "SearchRegistrarResponse",
+}) as any as S.Schema<SearchRegistrarResponse>;
 
-export interface UpdateStatusGetResponseLinks {
-  /** URL to this status resource. */
-  self: string;
-  /** URL to the domain resource. */
-  resource?: string;
-}
-export const UpdateStatusGetResponseLinks = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    self: S.String,
-    resource: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UpdateStatusGetResponseLinks",
-}) as any as S.Schema<UpdateStatusGetResponseLinks>;
-
-export type UpdateStatusGetResponseState =
-  | "pending"
-  | "in_progress"
-  | "action_required"
-  | (string & {});
-export const UpdateStatusGetResponseState = /*@__PURE__*/ S.String;
-
-export type UpdateStatusGetResponseContextMap = {
-  [key: string]: unknown | undefined;
-};
-export const UpdateStatusGetResponseContextMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<UpdateStatusGetResponseContextMap>;
-
-export interface UpdateStatusGetResponseError {
-  /** Machine-readable error code identifying the failure reason. */
-  code: string;
-  /** Human-readable explanation of the failure. May include registry-specific details. */
-  message: string;
-}
-export const UpdateStatusGetResponseError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    message: S.String,
-  }),
-).annotate({
-  identifier: "UpdateStatusGetResponseError",
-}) as any as S.Schema<UpdateStatusGetResponseError>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateStatusGetResponse {
-  /** Whether the workflow has reached a terminal state. `true` when */
-  completed: boolean;
-  createdAt: string;
-  links: UpdateStatusGetResponseLinks;
-  /** Workflow lifecycle state. */
-  state: UpdateStatusGetResponseState;
-  updatedAt: string;
-  /** Workflow-specific data for this workflow. */
-  context?: UpdateStatusGetResponseContextMap;
-  /** Error details when a workflow reaches the `failed` state. The specific */
-  error?: UpdateStatusGetResponseError;
-}
-export const UpdateStatusGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    completed: S.Boolean,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    links: UpdateStatusGetResponseLinks,
-    state: UpdateStatusGetResponseState,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    context: S.optional(UpdateStatusGetResponseContextMap),
-    error: S.optional(UpdateStatusGetResponseError),
-  }),
-).annotate({
-  identifier: "UpdateStatusGetResponse",
-}) as any as S.Schema<UpdateStatusGetResponse>;
-
-export type CheckError = CloudflareOpError;
+export type CheckRegistrarError = CloudflareOpError;
 /** Performs real-time, authoritative availability checks directly against domain registries. Use this endpoint to verify a domain is available before attempting registration via `POST /registrations`. **Important:** Unlike the Search endpoint, these results are authoritative and reflect current registry status. Always check availability immediately before registration as domain status can change rapidly. **Note:** This endpoint uses POST to accept a list of domains in the request body. It is a read-only operation — it does not create, modify, or reserve any domains. */
-export const check: API.OperationMethod<
-  CheckRequest,
-  CheckResponse,
-  CheckError,
+export const checkRegistrar: API.OperationMethod<
+  CheckRegistrarRequest,
+  CheckRegistrarResponse,
+  CheckRegistrarError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CheckRequest,
-  output: CheckResponse,
+  input: CheckRegistrarRequest,
+  output: CheckRegistrarResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DomainsGetError = CloudflareOpError;
+export type GetDomainError = Forbidden | CloudflareOpError;
 /** Show individual domain. */
-export const domainsGet: API.OperationMethod<
-  DomainsGetRequest,
-  DomainsGetResponse,
-  DomainsGetError,
+export const getDomain: API.OperationMethod<
+  GetDomainRequest,
+  GetDomainResponse,
+  GetDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DomainsGetRequest,
-  output: DomainsGetResponse,
+  input: GetDomainRequest,
+  output: GetDomainResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetRegistrationStatusError = CloudflareOpError;
+/** Returns the current status of a domain registration workflow. Use this endpoint to poll for completion when the POST response returned `202 Accepted`. The URL is provided in the `links.self` field of the workflow status response. Poll this endpoint until the workflow reaches a terminal state or a state that requires user attention. **Terminal states:** `succeeded` and `failed` are terminal and always have `completed: true`. **Non-terminal states:** - `action_required` has `completed: false` and will not resolve on its own. The workflow is paused pending user intervention. - `blocked` has `completed: false` and indicates the workflow is waiting on a third party such as the extension registry or losing registrar. Continue polling while informing the user of the delay. Use increasing backoff between polls. When `state: blocked`, use a longer polling interval and do not poll indefinitely. A naive polling loop that only checks `completed` can run indefinitely when `state: action_required`. Break explicitly on `action_required`: ```js let status; do { await new Promise(r => setTimeout(r, 2000)); status = await cloudflare.request({ method: 'GET', path: reg.result.links.self, }); } while ( !status.result.completed && status.result.state !== 'action_required' ); if (status.result.state === 'action_required') { // Surface context.action and context.confirmation_sent_to to the user. // Do not re-submit the registration request. } ``` */
+export const getRegistrationStatus: API.OperationMethod<
+  GetRegistrationStatusRequest,
+  GetRegistrationStatusResponse,
+  GetRegistrationStatusError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRegistrationStatusRequest,
+  output: GetRegistrationStatusResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DomainsListError = CloudflareOpError;
+export type GetUpdateStatusError = CloudflareOpError;
+/** Returns the current status of a domain update workflow. Use this endpoint to poll for completion when the PATCH response returned `202 Accepted`. The URL is provided in the `links.self` field of the workflow status response. Poll this endpoint until the workflow reaches a terminal state or a state that requires user attention. Use increasing backoff between polls. When the workflow remains blocked on a third party, use a longer polling interval and do not poll indefinitely. */
+export const getUpdateStatus: API.OperationMethod<
+  GetUpdateStatusRequest,
+  GetUpdateStatusResponse,
+  GetUpdateStatusError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetUpdateStatusRequest,
+  output: GetUpdateStatusResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListDomainsError = Forbidden | CloudflareOpError;
 /** List domains handled by Registrar. */
-export const domainsList: API.OperationMethod<
-  DomainsListRequest,
-  DomainsListResponse,
-  DomainsListError,
+export const listDomains: API.OperationMethod<
+  ListDomainsRequest,
+  ListDomainsResponse,
+  ListDomainsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DomainsListRequest,
-  output: DomainsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ListDomainsRequest,
+  output: ListDomainsResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DomainsUpdateError = CloudflareOpError;
+export type PutDomainError =
+  | RegistrarDomainNotOwned
+  | RegistrarUpdateNotAllowed
+  | Forbidden
+  | CloudflareOpError;
 /** Update individual domain. */
-export const domainsUpdate: API.OperationMethod<
-  DomainsUpdateRequest,
-  DomainsUpdateResponse,
-  DomainsUpdateError,
+export const putDomain: API.OperationMethod<
+  PutDomainRequest,
+  PutDomainResponse,
+  PutDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DomainsUpdateRequest,
-  output: DomainsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PutDomainRequest,
+  output: PutDomainResponse,
+  errors: [
+    RegistrarDomainNotOwned,
+    RegistrarUpdateNotAllowed,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
@@ -1256,44 +1332,16 @@ export const registrationsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-export type RegistrationStatusGetError = CloudflareOpError;
-/** Returns the current status of a domain registration workflow. Use this endpoint to poll for completion when the POST response returned `202 Accepted`. The URL is provided in the `links.self` field of the workflow status response. Poll this endpoint until the workflow reaches a terminal state or a state that requires user attention. **Terminal states:** `succeeded` and `failed` are terminal and always have `completed: true`. **Non-terminal states:** - `action_required` has `completed: false` and will not resolve on its own. The workflow is paused pending user intervention. - `blocked` has `completed: false` and indicates the workflow is waiting on a third party such as the extension registry or losing registrar. Continue polling while informing the user of the delay. Use increasing backoff between polls. When `state: blocked`, use a longer polling interval and do not poll indefinitely. A naive polling loop that only checks `completed` can run indefinitely when `state: action_required`. Break explicitly on `action_required`: ```js let status; do { await new Promise(r => setTimeout(r, 2000)); status = await cloudflare.request({ method: 'GET', path: reg.result.links.self, }); } while ( !status.result.completed && status.result.state !== 'action_required' ); if (status.result.state === 'action_required') { // Surface context.action and context.confirmation_sent_to to the user. // Do not re-submit the registration request. } ``` */
-export const registrationStatusGet: API.OperationMethod<
-  RegistrationStatusGetRequest,
-  RegistrationStatusGetResponse,
-  RegistrationStatusGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RegistrationStatusGetRequest,
-  output: RegistrationStatusGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SearchError = CloudflareOpError;
+export type SearchRegistrarError = CloudflareOpError;
 /** Searches for domain name suggestions based on a keyword, phrase, or partial domain name. Returns a list of potentially available domains with pricing information. **Important:** Results are non-authoritative and based on cached data. Always use the `/domain-check` endpoint to verify real-time availability before attempting registration. Suggestions are scoped to extensions supported for programmatic registration via this API (`POST /registrations`). Domains on unsupported extensions will not appear in results, even if they are available at the registry level. */
-export const search: API.OperationMethod<
-  SearchRequest,
-  SearchResponse,
-  SearchError,
+export const searchRegistrar: API.OperationMethod<
+  SearchRegistrarRequest,
+  SearchRegistrarResponse,
+  SearchRegistrarError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchRequest,
-  output: SearchResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type UpdateStatusGetError = CloudflareOpError;
-/** Returns the current status of a domain update workflow. Use this endpoint to poll for completion when the PATCH response returned `202 Accepted`. The URL is provided in the `links.self` field of the workflow status response. Poll this endpoint until the workflow reaches a terminal state or a state that requires user attention. Use increasing backoff between polls. When the workflow remains blocked on a third party, use a longer polling interval and do not poll indefinitely. */
-export const updateStatusGet: API.OperationMethod<
-  UpdateStatusGetRequest,
-  UpdateStatusGetResponse,
-  UpdateStatusGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateStatusGetRequest,
-  output: UpdateStatusGetResponse,
+  input: SearchRegistrarRequest,
+  output: SearchRegistrarResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

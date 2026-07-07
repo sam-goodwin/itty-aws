@@ -1,0 +1,78 @@
+{
+  "description": "Align images#V1BlobsGet with distilled cloudflare/images getV1Blob",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.images#V1BlobsGet",
+      "path": "/shapes/com.cloudflare.images#GetV1Blob"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.images#V1BlobsGetRequest",
+      "path": "/shapes/com.cloudflare.images#GetV1BlobRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.images#GetV1Blob/input/target",
+      "value": "com.cloudflare.images#GetV1BlobRequest"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.images#ImagesAccessNotEnabled",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 5403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.images#ImageNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 5404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.images#GetV1Blob/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.images#ImagesAccessNotEnabled"
+        },
+        {
+          "target": "com.cloudflare.images#ImageNotFound"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "description": "Align r2#BucketsObjectsUpload with distilled cloudflare/r2 uploadBucketObject",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsObjectsUpload",
+      "path": "/shapes/com.cloudflare.r2#UploadBucketObject"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsObjectsUploadRequest",
+      "path": "/shapes/com.cloudflare.r2#UploadBucketObjectRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#UploadBucketObject/input/target",
+      "value": "com.cloudflare.r2#UploadBucketObjectRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsObjectsUploadResponse",
+      "path": "/shapes/com.cloudflare.r2#UploadBucketObjectResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#UploadBucketObject/output/target",
+      "value": "com.cloudflare.r2#UploadBucketObjectResponse"
+    }
+  ]
+}

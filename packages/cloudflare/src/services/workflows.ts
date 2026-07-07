@@ -9,125 +9,69 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface DeleteRequest {
-  accountId: string;
-  workflowName: string;
-}
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    workflowName: S.String.pipe(T.Label("workflow_name")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/workflows/{workflow_name}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
-
-export type DeleteResponseStatus = "ok" | (string & {});
-export const DeleteResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
-  status: DeleteResponseStatus;
-  success: boolean;
-}
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: DeleteResponseStatus,
-    success: S.Boolean,
+export class InstanceAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InstanceAlreadyExists>()("InstanceAlreadyExists", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+  [{ code: 10405 }],
+) {}
 
-export interface GetRequest {
-  accountId: string;
-  workflowName: string;
-}
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    workflowName: S.String.pipe(T.Label("workflow_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workflows/{workflow_name}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
-
-export interface GetResponseInstances {
-  complete?: number;
-  errored?: number;
-  paused?: number;
-  queued?: number;
-  rollingBack?: number;
-  running?: number;
-  terminated?: number;
-  waiting?: number;
-  waitingForPause?: number;
-}
-export const GetResponseInstances = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    complete: S.optional(S.Number),
-    errored: S.optional(S.Number),
-    paused: S.optional(S.Number),
-    queued: S.optional(S.Number),
-    rollingBack: S.optional(S.Number),
-    running: S.optional(S.Number),
-    terminated: S.optional(S.Number),
-    waiting: S.optional(S.Number),
-    waitingForPause: S.optional(S.Number),
+export class InstanceCannotTerminate extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InstanceCannotTerminate>()("InstanceCannotTerminate", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "GetResponseInstances",
-}) as any as S.Schema<GetResponseInstances>;
+  [{ code: 10401 }],
+) {}
 
-export interface GetResponseSchedulesItem {
-  cron: string;
-  nextInstance: string;
-}
-export const GetResponseSchedulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cron: S.String,
-    nextInstance: S.String.pipe(T.Body("next_instance")),
+export class InstanceNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InstanceNotFound>()("InstanceNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "GetResponseSchedulesItem",
-}) as any as S.Schema<GetResponseSchedulesItem>;
+  [{ code: 10400 }],
+) {}
 
-export type GetResponseSchedulesList = GetResponseSchedulesItem[];
-export const GetResponseSchedulesList = /*@__PURE__*/ S.Array(
-  GetResponseSchedulesItem,
-) as any as S.Schema<GetResponseSchedulesList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
-  id: string;
-  className: string;
-  createdOn: string;
-  instances: GetResponseInstances;
-  modifiedOn: string;
-  name: string;
-  scriptName: string;
-  triggeredOn: string;
-  schedules?: GetResponseSchedulesList;
-}
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    className: S.String.pipe(T.Body("class_name")),
-    createdOn: S.String.pipe(T.Body("created_on")),
-    instances: GetResponseInstances,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    scriptName: S.String.pipe(T.Body("script_name")),
-    triggeredOn: S.String.pipe(T.Body("triggered_on")),
-    schedules: S.optional(GetResponseSchedulesList),
+export class InvalidBody extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidBody>()("InvalidBody", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+  [{ code: 10002 }],
+) {}
+
+export class InvalidRoute extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7003 }],
+) {}
+
+export class VersionNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<VersionNotFound>()("VersionNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10300 }],
+) {}
+
+export class WorkflowInternalError extends T.applyErrorMatchers(
+  S.TaggedErrorClass<WorkflowInternalError>()("WorkflowInternalError", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10001 }],
+) {}
+
+export class WorkflowNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<WorkflowNotFound>()("WorkflowNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10200 }],
+) {}
 
 export interface InstancesBulkRequestBodyItemInstanceRetentionErrorRetention {
   /** Specifies the duration in milliseconds. */
@@ -207,12 +151,12 @@ export const InstancesBulkRequestBodyList = /*@__PURE__*/ S.Array(
   InstancesBulkRequestBodyItem,
 ) as any as S.Schema<InstancesBulkRequestBodyList>;
 
-export interface InstancesBulkRequest {
+export interface BulkInstanceRequest {
   accountId: string;
   workflowName: string;
   body?: InstancesBulkRequestBodyList;
 }
-export const InstancesBulkRequest = /*@__PURE__*/ S.suspend(() =>
+export const BulkInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -225,8 +169,8 @@ export const InstancesBulkRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "InstancesBulkRequest",
-}) as any as S.Schema<InstancesBulkRequest>;
+  identifier: "BulkInstanceRequest",
+}) as any as S.Schema<BulkInstanceRequest>;
 
 export type InstancesBulkResultItemStatus =
   | "queued"
@@ -268,17 +212,17 @@ export const InstancesBulkResultList = /*@__PURE__*/ S.Array(
   InstancesBulkResultItem,
 ) as any as S.Schema<InstancesBulkResultList>;
 
-export interface InstancesBulkResponse {
+export interface BulkInstanceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InstancesBulkResultList;
 }
-export const InstancesBulkResponse = /*@__PURE__*/ S.suspend(() =>
+export const BulkInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(InstancesBulkResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "InstancesBulkResponse",
-}) as any as S.Schema<InstancesBulkResponse>;
+  identifier: "BulkInstanceResponse",
+}) as any as S.Schema<BulkInstanceResponse>;
 
 export interface InstancesCreateRequestInstanceRetentionErrorRetention {
   /** Specifies the duration in milliseconds. */
@@ -334,14 +278,14 @@ export const InstancesCreateRequestInstanceRetention = /*@__PURE__*/ S.suspend(
   identifier: "InstancesCreateRequestInstanceRetention",
 }) as any as S.Schema<InstancesCreateRequestInstanceRetention>;
 
-export interface InstancesCreateRequest {
+export interface CreateInstanceRequest {
   accountId: string;
   workflowName: string;
   instanceId?: string;
   instanceRetention?: InstancesCreateRequestInstanceRetention;
   params?: unknown;
 }
-export const InstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -360,8 +304,8 @@ export const InstancesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "InstancesCreateRequest",
-}) as any as S.Schema<InstancesCreateRequest>;
+  identifier: "CreateInstanceRequest",
+}) as any as S.Schema<CreateInstanceRequest>;
 
 export type InstancesCreateResponseStatus =
   | "queued"
@@ -378,14 +322,14 @@ export type InstancesCreateResponseTriggerSource =
 export const InstancesCreateResponseTriggerSource = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InstancesCreateResponse {
+export interface CreateInstanceResponse {
   id: string;
   status: InstancesCreateResponseStatus;
   versionId: string;
   workflowId: string;
   triggerSource?: InstancesCreateResponseTriggerSource;
 }
-export const InstancesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     status: InstancesCreateResponseStatus,
@@ -396,10 +340,10 @@ export const InstancesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "InstancesCreateResponse",
-}) as any as S.Schema<InstancesCreateResponse>;
+  identifier: "CreateInstanceResponse",
+}) as any as S.Schema<CreateInstanceResponse>;
 
-export interface InstancesEventsCreateRequest {
+export interface CreateInstanceEventRequest {
   accountId: string;
   workflowName: string;
   /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
@@ -407,7 +351,7 @@ export interface InstancesEventsCreateRequest {
   eventType: string;
   body?: unknown;
 }
-export const InstancesEventsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateInstanceEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -422,20 +366,56 @@ export const InstancesEventsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "InstancesEventsCreateRequest",
-}) as any as S.Schema<InstancesEventsCreateRequest>;
+  identifier: "CreateInstanceEventRequest",
+}) as any as S.Schema<CreateInstanceEventRequest>;
 
-export interface InstancesEventsCreateResponse {
+export interface CreateInstanceEventResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const InstancesEventsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateInstanceEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "InstancesEventsCreateResponse",
-}) as any as S.Schema<InstancesEventsCreateResponse>;
+  identifier: "CreateInstanceEventResponse",
+}) as any as S.Schema<CreateInstanceEventResponse>;
+
+export interface DeleteWorkflowRequest {
+  accountId: string;
+  workflowName: string;
+}
+export const DeleteWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/workflows/{workflow_name}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteWorkflowRequest",
+}) as any as S.Schema<DeleteWorkflowRequest>;
+
+export type DeleteResponseStatus = "ok" | (string & {});
+export const DeleteResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteWorkflowResponse {
+  status: DeleteResponseStatus;
+  success: boolean;
+}
+export const DeleteWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: DeleteResponseStatus,
+    success: S.Boolean,
+  }),
+).annotate({
+  identifier: "DeleteWorkflowResponse",
+}) as any as S.Schema<DeleteWorkflowResponse>;
 
 export type InstancesGetRequestOrder = "asc" | "desc" | (string & {});
 export const InstancesGetRequestOrder = /*@__PURE__*/ S.String;
@@ -443,7 +423,7 @@ export const InstancesGetRequestOrder = /*@__PURE__*/ S.String;
 export type InstancesGetRequestSimple = "true" | "false" | (string & {});
 export const InstancesGetRequestSimple = /*@__PURE__*/ S.String;
 
-export interface InstancesGetRequest {
+export interface GetInstanceRequest {
   accountId: string;
   workflowName: string;
   /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
@@ -453,7 +433,7 @@ export interface InstancesGetRequest {
   /** When true, omits step details and returns only metadata with step_count. */
   simple?: InstancesGetRequestSimple;
 }
-export const InstancesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetInstanceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -468,8 +448,8 @@ export const InstancesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "InstancesGetRequest",
-}) as any as S.Schema<InstancesGetRequest>;
+  identifier: "GetInstanceRequest",
+}) as any as S.Schema<GetInstanceRequest>;
 
 export interface InstancesGetResponseError {
   message: string;
@@ -596,7 +576,7 @@ export const InstancesGetResponseSchedule = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InstancesGetResponseSchedule>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InstancesGetResponse {
+export interface GetInstanceResponse {
   end: string;
   error: InstancesGetResponseError;
   output: InstancesGetResponseOutput;
@@ -612,7 +592,7 @@ export interface InstancesGetResponse {
   versionId: string;
   schedule?: InstancesGetResponseSchedule;
 }
-export const InstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     end: S.String,
     error: InstancesGetResponseError,
@@ -630,447 +610,15 @@ export const InstancesGetResponse = /*@__PURE__*/ S.suspend(() =>
     schedule: S.optional(InstancesGetResponseSchedule),
   }),
 ).annotate({
-  identifier: "InstancesGetResponse",
-}) as any as S.Schema<InstancesGetResponse>;
+  identifier: "GetInstanceResponse",
+}) as any as S.Schema<GetInstanceResponse>;
 
-export type InstancesListRequestDirection = "asc" | "desc" | (string & {});
-export const InstancesListRequestDirection = /*@__PURE__*/ S.String;
-
-export type InstancesListRequestStatus =
-  | "queued"
-  | "running"
-  | "paused"
-  | (string & {});
-export const InstancesListRequestStatus = /*@__PURE__*/ S.String;
-
-export interface InstancesListRequest {
-  accountId: string;
-  workflowName: string;
-  /** Opaque token for cursor-based pagination. Mutually exclusive with `page`. */
-  cursor?: string;
-  /** Accepts ISO 8601 with no timezone offsets and in UTC. */
-  dateEnd?: string;
-  /** Accepts ISO 8601 with no timezone offsets and in UTC. */
-  dateStart?: string;
-  /** Defines the direction for cursor-based pagination. */
-  direction?: InstancesListRequestDirection;
-  /** Deprecated: use `cursor` for pagination instead. */
-  page?: number;
-  perPage?: number;
-  status?: InstancesListRequestStatus;
-}
-export const InstancesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    workflowName: S.String.pipe(T.Label("workflow_name")),
-    cursor: S.optional(S.String.pipe(T.Query())),
-    dateEnd: S.optional(S.String.pipe(T.Query("date_end"))),
-    dateStart: S.optional(S.String.pipe(T.Query("date_start"))),
-    direction: S.optional(InstancesListRequestDirection.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    status: S.optional(InstancesListRequestStatus.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workflows/{workflow_name}/instances",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InstancesListRequest",
-}) as any as S.Schema<InstancesListRequest>;
-
-export type InstancesListResultItemStatus =
-  | "queued"
-  | "running"
-  | "paused"
-  | (string & {});
-export const InstancesListResultItemStatus = /*@__PURE__*/ S.String;
-
-export type InstancesListResultItemTriggerSource =
-  | "unknown"
-  | "api"
-  | "binding"
-  | (string & {});
-export const InstancesListResultItemTriggerSource = /*@__PURE__*/ S.String;
-
-export interface InstancesListResultItem {
-  id: string;
-  createdOn: string;
-  endedOn: string;
-  modifiedOn: string;
-  startedOn: string;
-  status: InstancesListResultItemStatus;
-  versionId: string;
-  workflowId: string;
-  triggerSource?: InstancesListResultItemTriggerSource;
-}
-export const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    endedOn: S.String.pipe(T.Body("ended_on")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    startedOn: S.String.pipe(T.Body("started_on")),
-    status: InstancesListResultItemStatus,
-    versionId: S.String.pipe(T.Body("version_id")),
-    workflowId: S.String.pipe(T.Body("workflow_id")),
-    triggerSource: S.optional(
-      InstancesListResultItemTriggerSource.pipe(T.Body("trigger_source")),
-    ),
-  }),
-).annotate({
-  identifier: "InstancesListResultItem",
-}) as any as S.Schema<InstancesListResultItem>;
-
-export type InstancesListResultList = InstancesListResultItem[];
-export const InstancesListResultList = /*@__PURE__*/ S.Array(
-  InstancesListResultItem,
-) as any as S.Schema<InstancesListResultList>;
-
-export interface InstancesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InstancesListResultList;
-}
-export const InstancesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(InstancesListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "InstancesListResponse",
-}) as any as S.Schema<InstancesListResponse>;
-
-export interface InstancesStatusEditRequestBody {
-  StatusObjectStatus__: unknown;
-  StatusObjectStatus2: unknown;
-  objectStatusRollback__: unknown;
-  objectStatusFrom__: unknown;
-}
-export const InstancesStatusEditRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    StatusObjectStatus__: S.Unknown.pipe(T.Body("Status object { status }")),
-    StatusObjectStatus2: S.Unknown.pipe(T.Body("Status object { status }")),
-    objectStatusRollback__: S.Unknown.pipe(
-      T.Body("object { status, rollback }"),
-    ),
-    objectStatusFrom__: S.Unknown.pipe(T.Body("object { status, from }")),
-  }),
-).annotate({
-  identifier: "InstancesStatusEditRequestBody",
-}) as any as S.Schema<InstancesStatusEditRequestBody>;
-
-export interface InstancesStatusEditRequest {
-  accountId: string;
-  workflowName: string;
-  /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
-  instanceId: string;
-  body?: InstancesStatusEditRequestBody;
-}
-export const InstancesStatusEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    workflowName: S.String.pipe(T.Label("workflow_name")),
-    instanceId: S.String.pipe(T.Label("instance_id")),
-    body: S.optional(InstancesStatusEditRequestBody),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/status",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InstancesStatusEditRequest",
-}) as any as S.Schema<InstancesStatusEditRequest>;
-
-export type InstancesStatusEditResponseStatus =
-  | "queued"
-  | "running"
-  | "paused"
-  | (string & {});
-export const InstancesStatusEditResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InstancesStatusEditResponse {
-  status: InstancesStatusEditResponseStatus;
-  /** Accepts ISO 8601 with no timezone offsets and in UTC. */
-  timestamp: string;
-}
-export const InstancesStatusEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: InstancesStatusEditResponseStatus,
-    timestamp: S.String,
-  }),
-).annotate({
-  identifier: "InstancesStatusEditResponse",
-}) as any as S.Schema<InstancesStatusEditResponse>;
-
-export type InstancesStepRequestType = "step" | "waitForEvent" | (string & {});
-export const InstancesStepRequestType = /*@__PURE__*/ S.String;
-
-export interface InstancesStepRequest {
-  accountId: string;
-  workflowName: string;
-  /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
-  instanceId: string;
-  /** Exact step name from the instance logs response, including the generated counter suffix. */
-  name: string;
-  /** Step type to disambiguate step.do and waitForEvent entries that share the same name. */
-  type: InstancesStepRequestType;
-  /** Specific attempt number to retrieve output or error for. */
-  attempt?: number;
-}
-export const InstancesStepRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    workflowName: S.String.pipe(T.Label("workflow_name")),
-    instanceId: S.String.pipe(T.Label("instance_id")),
-    name: S.String.pipe(T.Query()),
-    type: InstancesStepRequestType.pipe(T.Query()),
-    attempt: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/step",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InstancesStepRequest",
-}) as any as S.Schema<InstancesStepRequest>;
-
-export interface InstancesStepResponseError {
-  message: string;
-  name: string;
-}
-export const InstancesStepResponseError = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "InstancesStepResponseError",
-}) as any as S.Schema<InstancesStepResponseError>;
-
-export type InstancesStepResponseStatus =
-  | "queued"
-  | "running"
-  | "paused"
-  | (string & {});
-export const InstancesStepResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InstancesStepResponse {
-  /** Error details when status='errored'; null otherwise. */
-  error: InstancesStepResponseError;
-  status: InstancesStepResponseStatus;
-  /** Full step output or waitForEvent payload without truncation. Sensitive outputs are returned as '[REDACTED]'. Populated when status='complete'. May be a ReadableStream when the step returned one from step.do; stream outputs are served as application/octet-stream rather than JSON. */
-  output?: unknown;
-}
-export const InstancesStepResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    error: InstancesStepResponseError,
-    status: InstancesStepResponseStatus,
-    output: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "InstancesStepResponse",
-}) as any as S.Schema<InstancesStepResponse>;
-
-export interface ListRequest {
-  accountId: string;
-  page?: number;
-  perPage?: number;
-  /** Allows filtering workflows` name. */
-  search?: string;
-}
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/workflows",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
-
-export interface ListResultItemInstances {
-  complete?: number;
-  errored?: number;
-  paused?: number;
-  queued?: number;
-  rollingBack?: number;
-  running?: number;
-  terminated?: number;
-  waiting?: number;
-  waitingForPause?: number;
-}
-export const ListResultItemInstances = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    complete: S.optional(S.Number),
-    errored: S.optional(S.Number),
-    paused: S.optional(S.Number),
-    queued: S.optional(S.Number),
-    rollingBack: S.optional(S.Number),
-    running: S.optional(S.Number),
-    terminated: S.optional(S.Number),
-    waiting: S.optional(S.Number),
-    waitingForPause: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "ListResultItemInstances",
-}) as any as S.Schema<ListResultItemInstances>;
-
-export interface ListResultItemSchedulesItem {
-  cron: string;
-  nextInstance: string;
-}
-export const ListResultItemSchedulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cron: S.String,
-    nextInstance: S.String.pipe(T.Body("next_instance")),
-  }),
-).annotate({
-  identifier: "ListResultItemSchedulesItem",
-}) as any as S.Schema<ListResultItemSchedulesItem>;
-
-export type ListResultItemSchedulesList = ListResultItemSchedulesItem[];
-export const ListResultItemSchedulesList = /*@__PURE__*/ S.Array(
-  ListResultItemSchedulesItem,
-) as any as S.Schema<ListResultItemSchedulesList>;
-
-export interface ListResultItem {
-  id: string;
-  className: string;
-  createdOn: string;
-  instances: ListResultItemInstances;
-  modifiedOn: string;
-  name: string;
-  scriptName: string;
-  triggeredOn: string;
-  schedules?: ListResultItemSchedulesList;
-}
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    className: S.String.pipe(T.Body("class_name")),
-    createdOn: S.String.pipe(T.Body("created_on")),
-    instances: ListResultItemInstances,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    scriptName: S.String.pipe(T.Body("script_name")),
-    triggeredOn: S.String.pipe(T.Body("triggered_on")),
-    schedules: S.optional(ListResultItemSchedulesList),
-  }),
-).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
-
-export type ListResultList = ListResultItem[];
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
-
-export interface ListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
-}
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
-
-export interface UpdateRequestLimits {
-  steps?: number;
-}
-export const UpdateRequestLimits = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    steps: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "UpdateRequestLimits",
-}) as any as S.Schema<UpdateRequestLimits>;
-
-export interface UpdateRequestSchedulesItem {
-  cron: string;
-}
-export const UpdateRequestSchedulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cron: S.String,
-  }),
-).annotate({
-  identifier: "UpdateRequestSchedulesItem",
-}) as any as S.Schema<UpdateRequestSchedulesItem>;
-
-export type UpdateRequestSchedulesList = UpdateRequestSchedulesItem[];
-export const UpdateRequestSchedulesList = /*@__PURE__*/ S.Array(
-  UpdateRequestSchedulesItem,
-) as any as S.Schema<UpdateRequestSchedulesList>;
-
-export interface UpdateRequest {
-  accountId: string;
-  workflowName: string;
-  className: string;
-  scriptName: string;
-  limits?: UpdateRequestLimits;
-  schedules?: UpdateRequestSchedulesList;
-}
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    workflowName: S.String.pipe(T.Label("workflow_name")),
-    className: S.String.pipe(T.Body("class_name")),
-    scriptName: S.String.pipe(T.Body("script_name")),
-    limits: S.optional(UpdateRequestLimits),
-    schedules: S.optional(UpdateRequestSchedulesList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/workflows/{workflow_name}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
-  id: string;
-  className: string;
-  createdOn: string;
-  isDeleted: number;
-  modifiedOn: string;
-  name: string;
-  scriptName: string;
-  terminatorRunning: number;
-  triggeredOn: string;
-  versionId: string;
-}
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    className: S.String.pipe(T.Body("class_name")),
-    createdOn: S.String.pipe(T.Body("created_on")),
-    isDeleted: S.Number.pipe(T.Body("is_deleted")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    scriptName: S.String.pipe(T.Body("script_name")),
-    terminatorRunning: S.Number.pipe(T.Body("terminator_running")),
-    triggeredOn: S.String.pipe(T.Body("triggered_on")),
-    versionId: S.String.pipe(T.Body("version_id")),
-  }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
-
-export interface VersionsGetRequest {
+export interface GetVersionRequest {
   accountId: string;
   workflowName: string;
   versionId: string;
 }
-export const VersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -1083,8 +631,8 @@ export const VersionsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "VersionsGetRequest",
-}) as any as S.Schema<VersionsGetRequest>;
+  identifier: "GetVersionRequest",
+}) as any as S.Schema<GetVersionRequest>;
 
 export type VersionsGetResponseLanguage =
   | "javascript"
@@ -1104,7 +652,7 @@ export const VersionsGetResponseLimits = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VersionsGetResponseLimits>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface VersionsGetResponse {
+export interface GetVersionResponse {
   id: string;
   className: string;
   createdOn: string;
@@ -1115,7 +663,7 @@ export interface VersionsGetResponse {
   workflowId: string;
   limits?: VersionsGetResponseLimits;
 }
-export const VersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     className: S.String.pipe(T.Body("class_name")),
@@ -1127,15 +675,107 @@ export const VersionsGetResponse = /*@__PURE__*/ S.suspend(() =>
     limits: S.optional(VersionsGetResponseLimits),
   }),
 ).annotate({
-  identifier: "VersionsGetResponse",
-}) as any as S.Schema<VersionsGetResponse>;
+  identifier: "GetVersionResponse",
+}) as any as S.Schema<GetVersionResponse>;
 
-export interface VersionsGraphRequest {
+export interface GetWorkflowRequest {
+  accountId: string;
+  workflowName: string;
+}
+export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/workflows/{workflow_name}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetWorkflowRequest",
+}) as any as S.Schema<GetWorkflowRequest>;
+
+export interface GetResponseInstances {
+  complete?: number;
+  errored?: number;
+  paused?: number;
+  queued?: number;
+  rollingBack?: number;
+  running?: number;
+  terminated?: number;
+  waiting?: number;
+  waitingForPause?: number;
+}
+export const GetResponseInstances = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    complete: S.optional(S.Number),
+    errored: S.optional(S.Number),
+    paused: S.optional(S.Number),
+    queued: S.optional(S.Number),
+    rollingBack: S.optional(S.Number),
+    running: S.optional(S.Number),
+    terminated: S.optional(S.Number),
+    waiting: S.optional(S.Number),
+    waitingForPause: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GetResponseInstances",
+}) as any as S.Schema<GetResponseInstances>;
+
+export interface GetResponseSchedulesItem {
+  cron: string;
+  nextInstance: string;
+}
+export const GetResponseSchedulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cron: S.String,
+    nextInstance: S.String.pipe(T.Body("next_instance")),
+  }),
+).annotate({
+  identifier: "GetResponseSchedulesItem",
+}) as any as S.Schema<GetResponseSchedulesItem>;
+
+export type GetResponseSchedulesList = GetResponseSchedulesItem[];
+export const GetResponseSchedulesList = /*@__PURE__*/ S.Array(
+  GetResponseSchedulesItem,
+) as any as S.Schema<GetResponseSchedulesList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetWorkflowResponse {
+  id: string;
+  className: string;
+  createdOn: string;
+  instances: GetResponseInstances;
+  modifiedOn: string;
+  name: string;
+  scriptName: string;
+  triggeredOn: string;
+  schedules?: GetResponseSchedulesList;
+}
+export const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    className: S.String.pipe(T.Body("class_name")),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    instances: GetResponseInstances,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    scriptName: S.String.pipe(T.Body("script_name")),
+    triggeredOn: S.String.pipe(T.Body("triggered_on")),
+    schedules: S.optional(GetResponseSchedulesList),
+  }),
+).annotate({
+  identifier: "GetWorkflowResponse",
+}) as any as S.Schema<GetWorkflowResponse>;
+
+export interface GraphVersionRequest {
   accountId: string;
   workflowName: string;
   versionId: string;
 }
-export const VersionsGraphRequest = /*@__PURE__*/ S.suspend(() =>
+export const GraphVersionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -1148,8 +788,8 @@ export const VersionsGraphRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "VersionsGraphRequest",
-}) as any as S.Schema<VersionsGraphRequest>;
+  identifier: "GraphVersionRequest",
+}) as any as S.Schema<GraphVersionRequest>;
 
 export type VersionsGraphResponseGraphWorkflowFunctionsMap = {
   [key: string]: unknown | undefined;
@@ -1272,7 +912,7 @@ export const VersionsGraphResponseGraph = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<VersionsGraphResponseGraph>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface VersionsGraphResponse {
+export interface GraphVersionResponse {
   id: string;
   className: string;
   createdOn: string;
@@ -1281,7 +921,7 @@ export interface VersionsGraphResponse {
   modifiedOn: string;
   workflowId: string;
 }
-export const VersionsGraphResponse = /*@__PURE__*/ S.suspend(() =>
+export const GraphVersionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     className: S.String.pipe(T.Body("class_name")),
@@ -1291,16 +931,124 @@ export const VersionsGraphResponse = /*@__PURE__*/ S.suspend(() =>
     workflowId: S.String.pipe(T.Body("workflow_id")),
   }),
 ).annotate({
-  identifier: "VersionsGraphResponse",
-}) as any as S.Schema<VersionsGraphResponse>;
+  identifier: "GraphVersionResponse",
+}) as any as S.Schema<GraphVersionResponse>;
 
-export interface VersionsListRequest {
+export type InstancesListRequestDirection = "asc" | "desc" | (string & {});
+export const InstancesListRequestDirection = /*@__PURE__*/ S.String;
+
+export type InstancesListRequestStatus =
+  | "queued"
+  | "running"
+  | "paused"
+  | (string & {});
+export const InstancesListRequestStatus = /*@__PURE__*/ S.String;
+
+export interface ListInstancesRequest {
+  accountId: string;
+  workflowName: string;
+  /** Opaque token for cursor-based pagination. Mutually exclusive with `page`. */
+  cursor?: string;
+  /** Accepts ISO 8601 with no timezone offsets and in UTC. */
+  dateEnd?: string;
+  /** Accepts ISO 8601 with no timezone offsets and in UTC. */
+  dateStart?: string;
+  /** Defines the direction for cursor-based pagination. */
+  direction?: InstancesListRequestDirection;
+  /** Deprecated: use `cursor` for pagination instead. */
+  page?: number;
+  perPage?: number;
+  status?: InstancesListRequestStatus;
+}
+export const ListInstancesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+    cursor: S.optional(S.String.pipe(T.Query())),
+    dateEnd: S.optional(S.String.pipe(T.Query("date_end"))),
+    dateStart: S.optional(S.String.pipe(T.Query("date_start"))),
+    direction: S.optional(InstancesListRequestDirection.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    status: S.optional(InstancesListRequestStatus.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/workflows/{workflow_name}/instances",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListInstancesRequest",
+}) as any as S.Schema<ListInstancesRequest>;
+
+export type InstancesListResultItemStatus =
+  | "queued"
+  | "running"
+  | "paused"
+  | (string & {});
+export const InstancesListResultItemStatus = /*@__PURE__*/ S.String;
+
+export type InstancesListResultItemTriggerSource =
+  | "unknown"
+  | "api"
+  | "binding"
+  | (string & {});
+export const InstancesListResultItemTriggerSource = /*@__PURE__*/ S.String;
+
+export interface InstancesListResultItem {
+  id: string;
+  createdOn: string;
+  endedOn: string;
+  modifiedOn: string;
+  startedOn: string;
+  status: InstancesListResultItemStatus;
+  versionId: string;
+  workflowId: string;
+  triggerSource?: InstancesListResultItemTriggerSource;
+}
+export const InstancesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    endedOn: S.String.pipe(T.Body("ended_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    startedOn: S.String.pipe(T.Body("started_on")),
+    status: InstancesListResultItemStatus,
+    versionId: S.String.pipe(T.Body("version_id")),
+    workflowId: S.String.pipe(T.Body("workflow_id")),
+    triggerSource: S.optional(
+      InstancesListResultItemTriggerSource.pipe(T.Body("trigger_source")),
+    ),
+  }),
+).annotate({
+  identifier: "InstancesListResultItem",
+}) as any as S.Schema<InstancesListResultItem>;
+
+export type InstancesListResultList = InstancesListResultItem[];
+export const InstancesListResultList = /*@__PURE__*/ S.Array(
+  InstancesListResultItem,
+) as any as S.Schema<InstancesListResultList>;
+
+export interface ListInstancesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: InstancesListResultList;
+}
+export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(InstancesListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListInstancesResponse",
+}) as any as S.Schema<ListInstancesResponse>;
+
+export interface ListVersionsRequest {
   accountId: string;
   workflowName: string;
   page?: number;
   perPage?: number;
 }
-export const VersionsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     workflowName: S.String.pipe(T.Label("workflow_name")),
@@ -1314,8 +1062,8 @@ export const VersionsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "VersionsListRequest",
-}) as any as S.Schema<VersionsListRequest>;
+  identifier: "ListVersionsRequest",
+}) as any as S.Schema<ListVersionsRequest>;
 
 export type VersionsListResultItemLanguage =
   | "javascript"
@@ -1365,210 +1113,654 @@ export const VersionsListResultList = /*@__PURE__*/ S.Array(
   VersionsListResultItem,
 ) as any as S.Schema<VersionsListResultList>;
 
-export interface VersionsListResponse {
+export interface ListVersionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: VersionsListResultList;
 }
-export const VersionsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(VersionsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "VersionsListResponse",
-}) as any as S.Schema<VersionsListResponse>;
+  identifier: "ListVersionsResponse",
+}) as any as S.Schema<ListVersionsResponse>;
 
-export type DeleteError = CloudflareOpError;
-/** Deletes a Workflow. This only deletes the Workflow and does not delete or modify any Worker associated to this Workflow or bounded to it. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface ListWorkflowsRequest {
+  accountId: string;
+  page?: number;
+  perPage?: number;
+  /** Allows filtering workflows` name. */
+  search?: string;
+}
+export const ListWorkflowsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    search: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/workflows",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListWorkflowsRequest",
+}) as any as S.Schema<ListWorkflowsRequest>;
 
-export type GetError = CloudflareOpError;
-/** Retrieves configuration and metadata for a specific workflow. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface ListResultItemInstances {
+  complete?: number;
+  errored?: number;
+  paused?: number;
+  queued?: number;
+  rollingBack?: number;
+  running?: number;
+  terminated?: number;
+  waiting?: number;
+  waitingForPause?: number;
+}
+export const ListResultItemInstances = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    complete: S.optional(S.Number),
+    errored: S.optional(S.Number),
+    paused: S.optional(S.Number),
+    queued: S.optional(S.Number),
+    rollingBack: S.optional(S.Number),
+    running: S.optional(S.Number),
+    terminated: S.optional(S.Number),
+    waiting: S.optional(S.Number),
+    waitingForPause: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ListResultItemInstances",
+}) as any as S.Schema<ListResultItemInstances>;
 
-export type InstancesBulkError = CloudflareOpError;
+export interface ListResultItemSchedulesItem {
+  cron: string;
+  nextInstance: string;
+}
+export const ListResultItemSchedulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cron: S.String,
+    nextInstance: S.String.pipe(T.Body("next_instance")),
+  }),
+).annotate({
+  identifier: "ListResultItemSchedulesItem",
+}) as any as S.Schema<ListResultItemSchedulesItem>;
+
+export type ListResultItemSchedulesList = ListResultItemSchedulesItem[];
+export const ListResultItemSchedulesList = /*@__PURE__*/ S.Array(
+  ListResultItemSchedulesItem,
+) as any as S.Schema<ListResultItemSchedulesList>;
+
+export interface ListResultItem {
+  id: string;
+  className: string;
+  createdOn: string;
+  instances: ListResultItemInstances;
+  modifiedOn: string;
+  name: string;
+  scriptName: string;
+  triggeredOn: string;
+  schedules?: ListResultItemSchedulesList;
+}
+export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    className: S.String.pipe(T.Body("class_name")),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    instances: ListResultItemInstances,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    scriptName: S.String.pipe(T.Body("script_name")),
+    triggeredOn: S.String.pipe(T.Body("triggered_on")),
+    schedules: S.optional(ListResultItemSchedulesList),
+  }),
+).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
+
+export type ListResultList = ListResultItem[];
+export const ListResultList = /*@__PURE__*/ S.Array(
+  ListResultItem,
+) as any as S.Schema<ListResultList>;
+
+export interface ListWorkflowsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: ListResultList;
+}
+export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListWorkflowsResponse",
+}) as any as S.Schema<ListWorkflowsResponse>;
+
+export interface InstancesStatusEditRequestBody {
+  StatusObjectStatus__: unknown;
+  StatusObjectStatus2: unknown;
+  objectStatusRollback__: unknown;
+  objectStatusFrom__: unknown;
+}
+export const InstancesStatusEditRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    StatusObjectStatus__: S.Unknown.pipe(T.Body("Status object { status }")),
+    StatusObjectStatus2: S.Unknown.pipe(T.Body("Status object { status }")),
+    objectStatusRollback__: S.Unknown.pipe(
+      T.Body("object { status, rollback }"),
+    ),
+    objectStatusFrom__: S.Unknown.pipe(T.Body("object { status, from }")),
+  }),
+).annotate({
+  identifier: "InstancesStatusEditRequestBody",
+}) as any as S.Schema<InstancesStatusEditRequestBody>;
+
+export interface PatchInstanceStatusRequest {
+  accountId: string;
+  workflowName: string;
+  /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
+  instanceId: string;
+  body?: InstancesStatusEditRequestBody;
+}
+export const PatchInstanceStatusRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+    instanceId: S.String.pipe(T.Label("instance_id")),
+    body: S.optional(InstancesStatusEditRequestBody),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/status",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchInstanceStatusRequest",
+}) as any as S.Schema<PatchInstanceStatusRequest>;
+
+export type InstancesStatusEditResponseStatus =
+  | "queued"
+  | "running"
+  | "paused"
+  | (string & {});
+export const InstancesStatusEditResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchInstanceStatusResponse {
+  status: InstancesStatusEditResponseStatus;
+  /** Accepts ISO 8601 with no timezone offsets and in UTC. */
+  timestamp: string;
+}
+export const PatchInstanceStatusResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: InstancesStatusEditResponseStatus,
+    timestamp: S.String,
+  }),
+).annotate({
+  identifier: "PatchInstanceStatusResponse",
+}) as any as S.Schema<PatchInstanceStatusResponse>;
+
+export interface UpdateRequestLimits {
+  steps?: number;
+}
+export const UpdateRequestLimits = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    steps: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "UpdateRequestLimits",
+}) as any as S.Schema<UpdateRequestLimits>;
+
+export interface UpdateRequestSchedulesItem {
+  cron: string;
+}
+export const UpdateRequestSchedulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cron: S.String,
+  }),
+).annotate({
+  identifier: "UpdateRequestSchedulesItem",
+}) as any as S.Schema<UpdateRequestSchedulesItem>;
+
+export type UpdateRequestSchedulesList = UpdateRequestSchedulesItem[];
+export const UpdateRequestSchedulesList = /*@__PURE__*/ S.Array(
+  UpdateRequestSchedulesItem,
+) as any as S.Schema<UpdateRequestSchedulesList>;
+
+export interface PutWorkflowRequest {
+  accountId: string;
+  workflowName: string;
+  className: string;
+  scriptName: string;
+  limits?: UpdateRequestLimits;
+  schedules?: UpdateRequestSchedulesList;
+}
+export const PutWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+    className: S.String.pipe(T.Body("class_name")),
+    scriptName: S.String.pipe(T.Body("script_name")),
+    limits: S.optional(UpdateRequestLimits),
+    schedules: S.optional(UpdateRequestSchedulesList),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/workflows/{workflow_name}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PutWorkflowRequest",
+}) as any as S.Schema<PutWorkflowRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PutWorkflowResponse {
+  id: string;
+  className: string;
+  createdOn: string;
+  isDeleted: number;
+  modifiedOn: string;
+  name: string;
+  scriptName: string;
+  terminatorRunning: number;
+  triggeredOn: string;
+  versionId: string;
+}
+export const PutWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    className: S.String.pipe(T.Body("class_name")),
+    createdOn: S.String.pipe(T.Body("created_on")),
+    isDeleted: S.Number.pipe(T.Body("is_deleted")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    scriptName: S.String.pipe(T.Body("script_name")),
+    terminatorRunning: S.Number.pipe(T.Body("terminator_running")),
+    triggeredOn: S.String.pipe(T.Body("triggered_on")),
+    versionId: S.String.pipe(T.Body("version_id")),
+  }),
+).annotate({
+  identifier: "PutWorkflowResponse",
+}) as any as S.Schema<PutWorkflowResponse>;
+
+export type InstancesStepRequestType = "step" | "waitForEvent" | (string & {});
+export const InstancesStepRequestType = /*@__PURE__*/ S.String;
+
+export interface StepInstanceRequest {
+  accountId: string;
+  workflowName: string;
+  /** Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression. */
+  instanceId: string;
+  /** Exact step name from the instance logs response, including the generated counter suffix. */
+  name: string;
+  /** Step type to disambiguate step.do and waitForEvent entries that share the same name. */
+  type: InstancesStepRequestType;
+  /** Specific attempt number to retrieve output or error for. */
+  attempt?: number;
+}
+export const StepInstanceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    workflowName: S.String.pipe(T.Label("workflow_name")),
+    instanceId: S.String.pipe(T.Label("instance_id")),
+    name: S.String.pipe(T.Query()),
+    type: InstancesStepRequestType.pipe(T.Query()),
+    attempt: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/step",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "StepInstanceRequest",
+}) as any as S.Schema<StepInstanceRequest>;
+
+export interface InstancesStepResponseError {
+  message: string;
+  name: string;
+}
+export const InstancesStepResponseError = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.String,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "InstancesStepResponseError",
+}) as any as S.Schema<InstancesStepResponseError>;
+
+export type InstancesStepResponseStatus =
+  | "queued"
+  | "running"
+  | "paused"
+  | (string & {});
+export const InstancesStepResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface StepInstanceResponse {
+  /** Error details when status='errored'; null otherwise. */
+  error: InstancesStepResponseError;
+  status: InstancesStepResponseStatus;
+  /** Full step output or waitForEvent payload without truncation. Sensitive outputs are returned as '[REDACTED]'. Populated when status='complete'. May be a ReadableStream when the step returned one from step.do; stream outputs are served as application/octet-stream rather than JSON. */
+  output?: unknown;
+}
+export const StepInstanceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    error: InstancesStepResponseError,
+    status: InstancesStepResponseStatus,
+    output: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "StepInstanceResponse",
+}) as any as S.Schema<StepInstanceResponse>;
+
+export type BulkInstanceError =
+  | WorkflowNotFound
+  | InstanceAlreadyExists
+  | InvalidRoute
+  | InvalidBody
+  | CloudflareOpError;
 /** Creates multiple workflow instances in a single batch operation. */
-export const instancesBulk: API.OperationMethod<
-  InstancesBulkRequest,
-  InstancesBulkResponse,
-  InstancesBulkError,
+export const bulkInstance: API.OperationMethod<
+  BulkInstanceRequest,
+  BulkInstanceResponse,
+  BulkInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InstancesBulkRequest,
-  output: InstancesBulkResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: BulkInstanceRequest,
+  output: BulkInstanceResponse,
+  errors: [
+    WorkflowNotFound,
+    InstanceAlreadyExists,
+    InvalidRoute,
+    InvalidBody,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type InstancesCreateError = CloudflareOpError;
+export type CreateInstanceError =
+  | WorkflowNotFound
+  | InstanceAlreadyExists
+  | InvalidRoute
+  | InvalidBody
+  | CloudflareOpError;
 /** Creates a new instance of a workflow, starting its execution. */
-export const instancesCreate: API.OperationMethod<
-  InstancesCreateRequest,
-  InstancesCreateResponse,
-  InstancesCreateError,
+export const createInstance: API.OperationMethod<
+  CreateInstanceRequest,
+  CreateInstanceResponse,
+  CreateInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InstancesCreateRequest,
-  output: InstancesCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateInstanceRequest,
+  output: CreateInstanceResponse,
+  errors: [
+    WorkflowNotFound,
+    InstanceAlreadyExists,
+    InvalidRoute,
+    InvalidBody,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type InstancesEventsCreateError = CloudflareOpError;
+export type CreateInstanceEventError =
+  | WorkflowNotFound
+  | InvalidRoute
+  | InstanceNotFound
+  | InvalidBody
+  | CloudflareOpError;
 /** Sends an event to a running workflow instance to trigger state transitions. */
-export const instancesEventsCreate: API.OperationMethod<
-  InstancesEventsCreateRequest,
-  InstancesEventsCreateResponse,
-  InstancesEventsCreateError,
+export const createInstanceEvent: API.OperationMethod<
+  CreateInstanceEventRequest,
+  CreateInstanceEventResponse,
+  CreateInstanceEventError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InstancesEventsCreateRequest,
-  output: InstancesEventsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateInstanceEventRequest,
+  output: CreateInstanceEventResponse,
+  errors: [
+    WorkflowNotFound,
+    InvalidRoute,
+    InstanceNotFound,
+    InvalidBody,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type InstancesGetError = CloudflareOpError;
+export type DeleteWorkflowError =
+  | WorkflowNotFound
+  | InvalidRoute
+  | CloudflareOpError;
+/** Deletes a Workflow. This only deletes the Workflow and does not delete or modify any Worker associated to this Workflow or bounded to it. */
+export const deleteWorkflow: API.OperationMethod<
+  DeleteWorkflowRequest,
+  DeleteWorkflowResponse,
+  DeleteWorkflowError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteWorkflowRequest,
+  output: DeleteWorkflowResponse,
+  errors: [
+    WorkflowNotFound,
+    InvalidRoute,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetInstanceError =
+  | WorkflowNotFound
+  | InvalidRoute
+  | InstanceNotFound
+  | CloudflareOpError;
 /** Retrieves logs and execution status for a specific workflow instance. */
-export const instancesGet: API.OperationMethod<
-  InstancesGetRequest,
-  InstancesGetResponse,
-  InstancesGetError,
+export const getInstance: API.OperationMethod<
+  GetInstanceRequest,
+  GetInstanceResponse,
+  GetInstanceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InstancesGetRequest,
-  output: InstancesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetInstanceRequest,
+  output: GetInstanceResponse,
+  errors: [
+    WorkflowNotFound,
+    InvalidRoute,
+    InstanceNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type InstancesListError = CloudflareOpError;
-/** Lists all instances of a workflow with their execution status. */
-export const instancesList: API.OperationMethod<
-  InstancesListRequest,
-  InstancesListResponse,
-  InstancesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InstancesListRequest,
-  output: InstancesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type InstancesStatusEditError = CloudflareOpError;
-/** Changes the execution status of a workflow instance (e.g., pause, resume, terminate). */
-export const instancesStatusEdit: API.OperationMethod<
-  InstancesStatusEditRequest,
-  InstancesStatusEditResponse,
-  InstancesStatusEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InstancesStatusEditRequest,
-  output: InstancesStatusEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type InstancesStepError = CloudflareOpError;
-/** Retrieves the full, untruncated output for a specific step on a workflow instance. Returns a flat status-shaped JSON body with step `status` ('running' | 'waiting' | 'complete' | 'errored'), `error` (nullable), and `output` (the step value, or null while running/waiting/errored). When the step returned a ReadableStream from step.do, the response is served as 'application/octet-stream' with the raw bytes as the body instead of JSON. A `status='running'` response with non-null `error` indicates the step is currently retrying after a prior attempt failed. */
-export const instancesStep: API.OperationMethod<
-  InstancesStepRequest,
-  InstancesStepResponse,
-  InstancesStepError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InstancesStepRequest,
-  output: InstancesStepResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ListError = CloudflareOpError;
-/** Lists all workflows configured for the account. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type UpdateError = CloudflareOpError;
-/** Creates a new workflow or updates an existing workflow definition. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type VersionsGetError = CloudflareOpError;
+export type GetVersionError =
+  | WorkflowNotFound
+  | InvalidRoute
+  | VersionNotFound
+  | CloudflareOpError;
 /** Retrieves details for a specific deployed workflow version. */
-export const versionsGet: API.OperationMethod<
-  VersionsGetRequest,
-  VersionsGetResponse,
-  VersionsGetError,
+export const getVersion: API.OperationMethod<
+  GetVersionRequest,
+  GetVersionResponse,
+  GetVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VersionsGetRequest,
-  output: VersionsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetVersionRequest,
+  output: GetVersionResponse,
+  errors: [
+    WorkflowNotFound,
+    InvalidRoute,
+    VersionNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type VersionsGraphError = CloudflareOpError;
+export type GetWorkflowError =
+  | WorkflowNotFound
+  | InvalidRoute
+  | CloudflareOpError;
+/** Retrieves configuration and metadata for a specific workflow. */
+export const getWorkflow: API.OperationMethod<
+  GetWorkflowRequest,
+  GetWorkflowResponse,
+  GetWorkflowError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetWorkflowRequest,
+  output: GetWorkflowResponse,
+  errors: [
+    WorkflowNotFound,
+    InvalidRoute,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GraphVersionError = CloudflareOpError;
 /** Retrieves the graph visualization of a workflow version. */
-export const versionsGraph: API.OperationMethod<
-  VersionsGraphRequest,
-  VersionsGraphResponse,
-  VersionsGraphError,
+export const graphVersion: API.OperationMethod<
+  GraphVersionRequest,
+  GraphVersionResponse,
+  GraphVersionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VersionsGraphRequest,
-  output: VersionsGraphResponse,
+  input: GraphVersionRequest,
+  output: GraphVersionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type VersionsListError = CloudflareOpError;
-/** Lists all deployed versions of a workflow. */
-export const versionsList: API.OperationMethod<
-  VersionsListRequest,
-  VersionsListResponse,
-  VersionsListError,
+export type ListInstancesError =
+  | WorkflowNotFound
+  | WorkflowInternalError
+  | InvalidRoute
+  | InvalidBody
+  | CloudflareOpError;
+/** Lists all instances of a workflow with their execution status. */
+export const listInstances: API.OperationMethod<
+  ListInstancesRequest,
+  ListInstancesResponse,
+  ListInstancesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: VersionsListRequest,
-  output: VersionsListResponse,
+  input: ListInstancesRequest,
+  output: ListInstancesResponse,
+  errors: [
+    WorkflowNotFound,
+    WorkflowInternalError,
+    InvalidRoute,
+    InvalidBody,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListVersionsError =
+  | WorkflowNotFound
+  | InvalidRoute
+  | CloudflareOpError;
+/** Lists all deployed versions of a workflow. */
+export const listVersions: API.OperationMethod<
+  ListVersionsRequest,
+  ListVersionsResponse,
+  ListVersionsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListVersionsRequest,
+  output: ListVersionsResponse,
+  errors: [
+    WorkflowNotFound,
+    InvalidRoute,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListWorkflowsError = CloudflareOpError;
+/** Lists all workflows configured for the account. */
+export const listWorkflows: API.OperationMethod<
+  ListWorkflowsRequest,
+  ListWorkflowsResponse,
+  ListWorkflowsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWorkflowsRequest,
+  output: ListWorkflowsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchInstanceStatusError =
+  | WorkflowNotFound
+  | InvalidRoute
+  | InstanceNotFound
+  | InstanceCannotTerminate
+  | CloudflareOpError;
+/** Changes the execution status of a workflow instance (e.g., pause, resume, terminate). */
+export const patchInstanceStatus: API.OperationMethod<
+  PatchInstanceStatusRequest,
+  PatchInstanceStatusResponse,
+  PatchInstanceStatusError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchInstanceStatusRequest,
+  output: PatchInstanceStatusResponse,
+  errors: [
+    WorkflowNotFound,
+    InvalidRoute,
+    InstanceNotFound,
+    InstanceCannotTerminate,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutWorkflowError =
+  | WorkflowInternalError
+  | InvalidRoute
+  | CloudflareOpError;
+/** Creates a new workflow or updates an existing workflow definition. */
+export const putWorkflow: API.OperationMethod<
+  PutWorkflowRequest,
+  PutWorkflowResponse,
+  PutWorkflowError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutWorkflowRequest,
+  output: PutWorkflowResponse,
+  errors: [
+    WorkflowInternalError,
+    InvalidRoute,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type StepInstanceError = CloudflareOpError;
+/** Retrieves the full, untruncated output for a specific step on a workflow instance. Returns a flat status-shaped JSON body with step `status` ('running' | 'waiting' | 'complete' | 'errored'), `error` (nullable), and `output` (the step value, or null while running/waiting/errored). When the step returned a ReadableStream from step.do, the response is served as 'application/octet-stream' with the raw bytes as the body instead of JSON. A `status='running'` response with non-null `error` indicates the step is currently retrying after a prior attempt failed. */
+export const stepInstance: API.OperationMethod<
+  StepInstanceRequest,
+  StepInstanceResponse,
+  StepInstanceError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StepInstanceRequest,
+  output: StepInstanceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

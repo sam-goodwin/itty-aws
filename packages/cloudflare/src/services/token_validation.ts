@@ -9,611 +9,46 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface ConfigurationCreateRequestCredentialsKeysItem {
-  /** JSON representation of an RSA key. */
-  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
-  /** JSON representation of an ES256 key */
-  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
-  /** JSON representation of an ES384 key */
-  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
-}
-export const ConfigurationCreateRequestCredentialsKeysItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
-        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
-      ),
-      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
-        T.Body(
-          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
-        ),
-      ),
-      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
-        T.Body(
-          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigurationCreateRequestCredentialsKeysItem",
-  }) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysItem>;
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
 
-export type ConfigurationCreateRequestCredentialsKeysList =
-  ConfigurationCreateRequestCredentialsKeysItem[];
-export const ConfigurationCreateRequestCredentialsKeysList =
-  /*@__PURE__*/ S.Array(
-    ConfigurationCreateRequestCredentialsKeysItem,
-  ) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysList>;
-
-export interface ConfigurationCreateRequestCredentials {
-  keys: ConfigurationCreateRequestCredentialsKeysList;
-}
-export const ConfigurationCreateRequestCredentials = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      keys: ConfigurationCreateRequestCredentialsKeysList,
-    }),
-).annotate({
-  identifier: "ConfigurationCreateRequestCredentials",
-}) as any as S.Schema<ConfigurationCreateRequestCredentials>;
-
-export type ConfigurationCreateRequestTokenSourcesList = string[];
-export const ConfigurationCreateRequestTokenSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationCreateRequestTokenSourcesList>;
-
-export type ConfigurationCreateRequestTokenType = "JWT" | (string & {});
-export const ConfigurationCreateRequestTokenType = /*@__PURE__*/ S.String;
-
-export interface ConfigurationCreateRequest {
-  /** Identifier. */
-  zoneId: string;
-  credentials: ConfigurationCreateRequestCredentials;
-  description: string;
-  title: string;
-  tokenSources: ConfigurationCreateRequestTokenSourcesList;
-  tokenType: ConfigurationCreateRequestTokenType;
-}
-export const ConfigurationCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    credentials: ConfigurationCreateRequestCredentials,
-    description: S.String,
-    title: S.String,
-    tokenSources: ConfigurationCreateRequestTokenSourcesList.pipe(
-      T.Body("token_sources"),
-    ),
-    tokenType: ConfigurationCreateRequestTokenType.pipe(T.Body("token_type")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/token_validation/config",
-      code: 200,
-    }),
+export class TokenConfigurationNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<TokenConfigurationNotFound>()(
+    "TokenConfigurationNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
   ),
-).annotate({
-  identifier: "ConfigurationCreateRequest",
-}) as any as S.Schema<ConfigurationCreateRequest>;
+  [{ status: 404 }],
+) {}
 
-export interface ConfigurationCreateResponseCredentialsKeysItem {
-  /** JSON representation of an RSA key. */
-  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
-  /** JSON representation of an ES256 key */
-  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
-  /** JSON representation of an ES384 key */
-  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
-}
-export const ConfigurationCreateResponseCredentialsKeysItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
-        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
-      ),
-      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
-        T.Body(
-          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
-        ),
-      ),
-      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
-        T.Body(
-          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigurationCreateResponseCredentialsKeysItem",
-  }) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItem>;
-
-export type ConfigurationCreateResponseCredentialsKeysList =
-  ConfigurationCreateResponseCredentialsKeysItem[];
-export const ConfigurationCreateResponseCredentialsKeysList =
-  /*@__PURE__*/ S.Array(
-    ConfigurationCreateResponseCredentialsKeysItem,
-  ) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysList>;
-
-export interface ConfigurationCreateResponseCredentials {
-  keys: ConfigurationCreateResponseCredentialsKeysList;
-}
-export const ConfigurationCreateResponseCredentials = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      keys: ConfigurationCreateResponseCredentialsKeysList,
-    }),
-).annotate({
-  identifier: "ConfigurationCreateResponseCredentials",
-}) as any as S.Schema<ConfigurationCreateResponseCredentials>;
-
-export type ConfigurationCreateResponseTokenSourcesList = string[];
-export const ConfigurationCreateResponseTokenSourcesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConfigurationCreateResponseTokenSourcesList>;
-
-export type ConfigurationCreateResponseTokenType = "JWT" | (string & {});
-export const ConfigurationCreateResponseTokenType = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConfigurationCreateResponse {
-  /** UUID. */
-  id: string;
-  createdAt: string;
-  credentials: ConfigurationCreateResponseCredentials;
-  description: string;
-  lastUpdated: string;
-  title: string;
-  tokenSources: ConfigurationCreateResponseTokenSourcesList;
-  tokenType: ConfigurationCreateResponseTokenType;
-}
-export const ConfigurationCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    credentials: ConfigurationCreateResponseCredentials,
-    description: S.String,
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    title: S.String,
-    tokenSources: ConfigurationCreateResponseTokenSourcesList.pipe(
-      T.Body("token_sources"),
-    ),
-    tokenType: ConfigurationCreateResponseTokenType.pipe(T.Body("token_type")),
-  }),
-).annotate({
-  identifier: "ConfigurationCreateResponse",
-}) as any as S.Schema<ConfigurationCreateResponse>;
-
-export interface ConfigurationCredentialsUpdateRequestKeysItem {
-  /** JSON representation of an RSA key. */
-  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
-  /** JSON representation of an ES256 key */
-  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
-  /** JSON representation of an ES384 key */
-  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
-}
-export const ConfigurationCredentialsUpdateRequestKeysItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
-        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
-      ),
-      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
-        T.Body(
-          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
-        ),
-      ),
-      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
-        T.Body(
-          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigurationCredentialsUpdateRequestKeysItem",
-  }) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItem>;
-
-export type ConfigurationCredentialsUpdateRequestKeysList =
-  ConfigurationCredentialsUpdateRequestKeysItem[];
-export const ConfigurationCredentialsUpdateRequestKeysList =
-  /*@__PURE__*/ S.Array(
-    ConfigurationCredentialsUpdateRequestKeysItem,
-  ) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysList>;
-
-export interface ConfigurationCredentialsUpdateRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** UUID. */
-  configId: string;
-  keys: ConfigurationCredentialsUpdateRequestKeysList;
-}
-export const ConfigurationCredentialsUpdateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      zoneId: S.String.pipe(T.Label("zone_id")),
-      configId: S.String.pipe(T.Label("config_id")),
-      keys: ConfigurationCredentialsUpdateRequestKeysList,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/token_validation/config/{config_id}/credentials",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ConfigurationCredentialsUpdateRequest",
-}) as any as S.Schema<ConfigurationCredentialsUpdateRequest>;
-
-export interface ConfigurationCredentialsUpdateResponseKeysItem {
-  /** JSON representation of an RSA key. */
-  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
-  /** JSON representation of an ES256 key */
-  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
-  /** JSON representation of an ES384 key */
-  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
-}
-export const ConfigurationCredentialsUpdateResponseKeysItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
-        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
-      ),
-      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
-        T.Body(
-          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
-        ),
-      ),
-      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
-        T.Body(
-          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigurationCredentialsUpdateResponseKeysItem",
-  }) as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItem>;
-
-export type ConfigurationCredentialsUpdateResponseKeysList =
-  ConfigurationCredentialsUpdateResponseKeysItem[];
-export const ConfigurationCredentialsUpdateResponseKeysList =
-  /*@__PURE__*/ S.Array(
-    ConfigurationCredentialsUpdateResponseKeysItem,
-  ) as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysList>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ConfigurationCredentialsUpdateResponse {
-  keys: ConfigurationCredentialsUpdateResponseKeysList;
-}
-export const ConfigurationCredentialsUpdateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      keys: ConfigurationCredentialsUpdateResponseKeysList,
-    }),
-).annotate({
-  identifier: "ConfigurationCredentialsUpdateResponse",
-}) as any as S.Schema<ConfigurationCredentialsUpdateResponse>;
-
-export interface ConfigurationDeleteRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** UUID. */
-  configId: string;
-}
-export const ConfigurationDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    configId: S.String.pipe(T.Label("config_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/token_validation/config/{config_id}",
-      code: 200,
-    }),
+export class TokenValidationNotEntitled extends T.applyErrorMatchers(
+  S.TaggedErrorClass<TokenValidationNotEntitled>()(
+    "TokenValidationNotEntitled",
+    {
+      code: S.Number,
+      message: S.String,
+    },
   ),
-).annotate({
-  identifier: "ConfigurationDeleteRequest",
-}) as any as S.Schema<ConfigurationDeleteRequest>;
+  [{ code: 10403 }],
+) {}
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConfigurationDeleteResponse {
-  /** UUID. */
-  id?: string;
-}
-export const ConfigurationDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConfigurationDeleteResponse",
-}) as any as S.Schema<ConfigurationDeleteResponse>;
-
-export type ConfigurationEditRequestTokenSourcesList = string[];
-export const ConfigurationEditRequestTokenSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationEditRequestTokenSourcesList>;
-
-export interface ConfigurationEditRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** UUID. */
-  configId: string;
-  description?: string;
-  title?: string;
-  tokenSources?: ConfigurationEditRequestTokenSourcesList;
-}
-export const ConfigurationEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    configId: S.String.pipe(T.Label("config_id")),
-    description: S.optional(S.String),
-    title: S.optional(S.String),
-    tokenSources: S.optional(
-      ConfigurationEditRequestTokenSourcesList.pipe(T.Body("token_sources")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/token_validation/config/{config_id}",
-      code: 200,
-    }),
+export class TokenValidationRuleNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<TokenValidationRuleNotFound>()(
+    "TokenValidationRuleNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
   ),
-).annotate({
-  identifier: "ConfigurationEditRequest",
-}) as any as S.Schema<ConfigurationEditRequest>;
-
-export type ConfigurationEditResponseTokenSourcesList = string[];
-export const ConfigurationEditResponseTokenSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationEditResponseTokenSourcesList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConfigurationEditResponse {
-  /** UUID. */
-  id?: string;
-  description?: string;
-  title?: string;
-  tokenSources?: ConfigurationEditResponseTokenSourcesList;
-}
-export const ConfigurationEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    title: S.optional(S.String),
-    tokenSources: S.optional(
-      ConfigurationEditResponseTokenSourcesList.pipe(T.Body("token_sources")),
-    ),
-  }),
-).annotate({
-  identifier: "ConfigurationEditResponse",
-}) as any as S.Schema<ConfigurationEditResponse>;
-
-export interface ConfigurationGetRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** UUID. */
-  configId: string;
-}
-export const ConfigurationGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    configId: S.String.pipe(T.Label("config_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/token_validation/config/{config_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ConfigurationGetRequest",
-}) as any as S.Schema<ConfigurationGetRequest>;
-
-export interface ConfigurationGetResponseCredentialsKeysItem {
-  /** JSON representation of an RSA key. */
-  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
-  /** JSON representation of an ES256 key */
-  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
-  /** JSON representation of an ES384 key */
-  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
-}
-export const ConfigurationGetResponseCredentialsKeysItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
-        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
-      ),
-      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
-        T.Body(
-          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
-        ),
-      ),
-      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
-        T.Body(
-          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigurationGetResponseCredentialsKeysItem",
-  }) as any as S.Schema<ConfigurationGetResponseCredentialsKeysItem>;
-
-export type ConfigurationGetResponseCredentialsKeysList =
-  ConfigurationGetResponseCredentialsKeysItem[];
-export const ConfigurationGetResponseCredentialsKeysList =
-  /*@__PURE__*/ S.Array(
-    ConfigurationGetResponseCredentialsKeysItem,
-  ) as any as S.Schema<ConfigurationGetResponseCredentialsKeysList>;
-
-export interface ConfigurationGetResponseCredentials {
-  keys: ConfigurationGetResponseCredentialsKeysList;
-}
-export const ConfigurationGetResponseCredentials = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    keys: ConfigurationGetResponseCredentialsKeysList,
-  }),
-).annotate({
-  identifier: "ConfigurationGetResponseCredentials",
-}) as any as S.Schema<ConfigurationGetResponseCredentials>;
-
-export type ConfigurationGetResponseTokenSourcesList = string[];
-export const ConfigurationGetResponseTokenSourcesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ConfigurationGetResponseTokenSourcesList>;
-
-export type ConfigurationGetResponseTokenType = "JWT" | (string & {});
-export const ConfigurationGetResponseTokenType = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConfigurationGetResponse {
-  /** UUID. */
-  id: string;
-  createdAt: string;
-  credentials: ConfigurationGetResponseCredentials;
-  description: string;
-  lastUpdated: string;
-  title: string;
-  tokenSources: ConfigurationGetResponseTokenSourcesList;
-  tokenType: ConfigurationGetResponseTokenType;
-}
-export const ConfigurationGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    credentials: ConfigurationGetResponseCredentials,
-    description: S.String,
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    title: S.String,
-    tokenSources: ConfigurationGetResponseTokenSourcesList.pipe(
-      T.Body("token_sources"),
-    ),
-    tokenType: ConfigurationGetResponseTokenType.pipe(T.Body("token_type")),
-  }),
-).annotate({
-  identifier: "ConfigurationGetResponse",
-}) as any as S.Schema<ConfigurationGetResponse>;
-
-export interface ConfigurationListRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Page number of paginated results. */
-  page?: number;
-  /** Maximum number of results per page. */
-  perPage?: number;
-}
-export const ConfigurationListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/token_validation/config",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ConfigurationListRequest",
-}) as any as S.Schema<ConfigurationListRequest>;
-
-export interface ConfigurationListResultItemCredentialsKeysItem {
-  /** JSON representation of an RSA key. */
-  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
-  /** JSON representation of an ES256 key */
-  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
-  /** JSON representation of an ES384 key */
-  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
-}
-export const ConfigurationListResultItemCredentialsKeysItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
-        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
-      ),
-      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
-        T.Body(
-          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
-        ),
-      ),
-      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
-        T.Body(
-          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigurationListResultItemCredentialsKeysItem",
-  }) as any as S.Schema<ConfigurationListResultItemCredentialsKeysItem>;
-
-export type ConfigurationListResultItemCredentialsKeysList =
-  ConfigurationListResultItemCredentialsKeysItem[];
-export const ConfigurationListResultItemCredentialsKeysList =
-  /*@__PURE__*/ S.Array(
-    ConfigurationListResultItemCredentialsKeysItem,
-  ) as any as S.Schema<ConfigurationListResultItemCredentialsKeysList>;
-
-export interface ConfigurationListResultItemCredentials {
-  keys: ConfigurationListResultItemCredentialsKeysList;
-}
-export const ConfigurationListResultItemCredentials = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      keys: ConfigurationListResultItemCredentialsKeysList,
-    }),
-).annotate({
-  identifier: "ConfigurationListResultItemCredentials",
-}) as any as S.Schema<ConfigurationListResultItemCredentials>;
-
-export type ConfigurationListResultItemTokenSourcesList = string[];
-export const ConfigurationListResultItemTokenSourcesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConfigurationListResultItemTokenSourcesList>;
-
-export type ConfigurationListResultItemTokenType = "JWT" | (string & {});
-export const ConfigurationListResultItemTokenType = /*@__PURE__*/ S.String;
-
-export interface ConfigurationListResultItem {
-  /** UUID. */
-  id: string;
-  createdAt: string;
-  credentials: ConfigurationListResultItemCredentials;
-  description: string;
-  lastUpdated: string;
-  title: string;
-  tokenSources: ConfigurationListResultItemTokenSourcesList;
-  tokenType: ConfigurationListResultItemTokenType;
-}
-export const ConfigurationListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    credentials: ConfigurationListResultItemCredentials,
-    description: S.String,
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    title: S.String,
-    tokenSources: ConfigurationListResultItemTokenSourcesList.pipe(
-      T.Body("token_sources"),
-    ),
-    tokenType: ConfigurationListResultItemTokenType.pipe(T.Body("token_type")),
-  }),
-).annotate({
-  identifier: "ConfigurationListResultItem",
-}) as any as S.Schema<ConfigurationListResultItem>;
-
-export type ConfigurationListResultList = ConfigurationListResultItem[];
-export const ConfigurationListResultList = /*@__PURE__*/ S.Array(
-  ConfigurationListResultItem,
-) as any as S.Schema<ConfigurationListResultList>;
-
-export interface ConfigurationListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ConfigurationListResultList;
-}
-export const ConfigurationListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ConfigurationListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "ConfigurationListResponse",
-}) as any as S.Schema<ConfigurationListResponse>;
+  [{ status: 404 }],
+) {}
 
 export type RulesBulkCreateRequestBodyItemAction =
   | "log"
@@ -729,12 +164,12 @@ export const RulesBulkCreateRequestBodyList = /*@__PURE__*/ S.Array(
   RulesBulkCreateRequestBodyItem,
 ) as any as S.Schema<RulesBulkCreateRequestBodyList>;
 
-export interface RulesBulkCreateRequest {
+export interface BulkCreateRulesRequest {
   /** Identifier. */
   zoneId: string;
   body: RulesBulkCreateRequestBodyList;
 }
-export const RulesBulkCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const BulkCreateRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: RulesBulkCreateRequestBodyList,
@@ -746,8 +181,8 @@ export const RulesBulkCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RulesBulkCreateRequest",
-}) as any as S.Schema<RulesBulkCreateRequest>;
+  identifier: "BulkCreateRulesRequest",
+}) as any as S.Schema<BulkCreateRulesRequest>;
 
 export type RulesBulkCreateResultItemAction = "log" | "block" | (string & {});
 export const RulesBulkCreateResultItemAction = /*@__PURE__*/ S.String;
@@ -863,17 +298,17 @@ export const RulesBulkCreateResultList = /*@__PURE__*/ S.Array(
   RulesBulkCreateResultItem,
 ) as any as S.Schema<RulesBulkCreateResultList>;
 
-export interface RulesBulkCreateResponse {
+export interface BulkCreateRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesBulkCreateResultList;
 }
-export const RulesBulkCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesBulkCreateResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RulesBulkCreateResponse",
-}) as any as S.Schema<RulesBulkCreateResponse>;
+  identifier: "BulkCreateRulesResponse",
+}) as any as S.Schema<BulkCreateRulesResponse>;
 
 export type RulesBulkEditRequestBodyItemAction =
   | "log"
@@ -1016,12 +451,12 @@ export const RulesBulkEditRequestBodyList = /*@__PURE__*/ S.Array(
   RulesBulkEditRequestBodyItem,
 ) as any as S.Schema<RulesBulkEditRequestBodyList>;
 
-export interface RulesBulkEditRequest {
+export interface BulkPatchRulesRequest {
   /** Identifier. */
   zoneId: string;
   body: RulesBulkEditRequestBodyList;
 }
-export const RulesBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
+export const BulkPatchRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: RulesBulkEditRequestBodyList,
@@ -1033,8 +468,8 @@ export const RulesBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RulesBulkEditRequest",
-}) as any as S.Schema<RulesBulkEditRequest>;
+  identifier: "BulkPatchRulesRequest",
+}) as any as S.Schema<BulkPatchRulesRequest>;
 
 export type RulesBulkEditResultItemAction = "log" | "block" | (string & {});
 export const RulesBulkEditResultItemAction = /*@__PURE__*/ S.String;
@@ -1148,17 +583,189 @@ export const RulesBulkEditResultList = /*@__PURE__*/ S.Array(
   RulesBulkEditResultItem,
 ) as any as S.Schema<RulesBulkEditResultList>;
 
-export interface RulesBulkEditResponse {
+export interface BulkPatchRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesBulkEditResultList;
 }
-export const RulesBulkEditResponse = /*@__PURE__*/ S.suspend(() =>
+export const BulkPatchRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesBulkEditResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RulesBulkEditResponse",
-}) as any as S.Schema<RulesBulkEditResponse>;
+  identifier: "BulkPatchRulesResponse",
+}) as any as S.Schema<BulkPatchRulesResponse>;
+
+export interface ConfigurationCreateRequestCredentialsKeysItem {
+  /** JSON representation of an RSA key. */
+  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
+  /** JSON representation of an ES256 key */
+  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
+  /** JSON representation of an ES384 key */
+  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
+}
+export const ConfigurationCreateRequestCredentialsKeysItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
+        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
+      ),
+      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigurationCreateRequestCredentialsKeysItem",
+  }) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysItem>;
+
+export type ConfigurationCreateRequestCredentialsKeysList =
+  ConfigurationCreateRequestCredentialsKeysItem[];
+export const ConfigurationCreateRequestCredentialsKeysList =
+  /*@__PURE__*/ S.Array(
+    ConfigurationCreateRequestCredentialsKeysItem,
+  ) as any as S.Schema<ConfigurationCreateRequestCredentialsKeysList>;
+
+export interface ConfigurationCreateRequestCredentials {
+  keys: ConfigurationCreateRequestCredentialsKeysList;
+}
+export const ConfigurationCreateRequestCredentials = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      keys: ConfigurationCreateRequestCredentialsKeysList,
+    }),
+).annotate({
+  identifier: "ConfigurationCreateRequestCredentials",
+}) as any as S.Schema<ConfigurationCreateRequestCredentials>;
+
+export type ConfigurationCreateRequestTokenSourcesList = string[];
+export const ConfigurationCreateRequestTokenSourcesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ConfigurationCreateRequestTokenSourcesList>;
+
+export type ConfigurationCreateRequestTokenType = "JWT" | (string & {});
+export const ConfigurationCreateRequestTokenType = /*@__PURE__*/ S.String;
+
+export interface CreateConfigurationRequest {
+  /** Identifier. */
+  zoneId: string;
+  credentials: ConfigurationCreateRequestCredentials;
+  description: string;
+  title: string;
+  tokenSources: ConfigurationCreateRequestTokenSourcesList;
+  tokenType: ConfigurationCreateRequestTokenType;
+}
+export const CreateConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    credentials: ConfigurationCreateRequestCredentials,
+    description: S.String,
+    title: S.String,
+    tokenSources: ConfigurationCreateRequestTokenSourcesList.pipe(
+      T.Body("token_sources"),
+    ),
+    tokenType: ConfigurationCreateRequestTokenType.pipe(T.Body("token_type")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/token_validation/config",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateConfigurationRequest",
+}) as any as S.Schema<CreateConfigurationRequest>;
+
+export interface ConfigurationCreateResponseCredentialsKeysItem {
+  /** JSON representation of an RSA key. */
+  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
+  /** JSON representation of an ES256 key */
+  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
+  /** JSON representation of an ES384 key */
+  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
+}
+export const ConfigurationCreateResponseCredentialsKeysItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
+        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
+      ),
+      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigurationCreateResponseCredentialsKeysItem",
+  }) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysItem>;
+
+export type ConfigurationCreateResponseCredentialsKeysList =
+  ConfigurationCreateResponseCredentialsKeysItem[];
+export const ConfigurationCreateResponseCredentialsKeysList =
+  /*@__PURE__*/ S.Array(
+    ConfigurationCreateResponseCredentialsKeysItem,
+  ) as any as S.Schema<ConfigurationCreateResponseCredentialsKeysList>;
+
+export interface ConfigurationCreateResponseCredentials {
+  keys: ConfigurationCreateResponseCredentialsKeysList;
+}
+export const ConfigurationCreateResponseCredentials = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      keys: ConfigurationCreateResponseCredentialsKeysList,
+    }),
+).annotate({
+  identifier: "ConfigurationCreateResponseCredentials",
+}) as any as S.Schema<ConfigurationCreateResponseCredentials>;
+
+export type ConfigurationCreateResponseTokenSourcesList = string[];
+export const ConfigurationCreateResponseTokenSourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConfigurationCreateResponseTokenSourcesList>;
+
+export type ConfigurationCreateResponseTokenType = "JWT" | (string & {});
+export const ConfigurationCreateResponseTokenType = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateConfigurationResponse {
+  /** UUID. */
+  id: string;
+  createdAt: string;
+  credentials: ConfigurationCreateResponseCredentials;
+  description: string;
+  lastUpdated: string;
+  title: string;
+  tokenSources: ConfigurationCreateResponseTokenSourcesList;
+  tokenType: ConfigurationCreateResponseTokenType;
+}
+export const CreateConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    credentials: ConfigurationCreateResponseCredentials,
+    description: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    title: S.String,
+    tokenSources: ConfigurationCreateResponseTokenSourcesList.pipe(
+      T.Body("token_sources"),
+    ),
+    tokenType: ConfigurationCreateResponseTokenType.pipe(T.Body("token_type")),
+  }),
+).annotate({
+  identifier: "CreateConfigurationResponse",
+}) as any as S.Schema<CreateConfigurationResponse>;
 
 export type RulesCreateRequestAction = "log" | "block" | (string & {});
 export const RulesCreateRequestAction = /*@__PURE__*/ S.String;
@@ -1232,7 +839,7 @@ export const RulesCreateRequestSelector = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesCreateRequestSelector",
 }) as any as S.Schema<RulesCreateRequestSelector>;
 
-export interface RulesCreateRequest {
+export interface CreateRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
@@ -1248,7 +855,7 @@ export interface RulesCreateRequest {
   /** A human-readable name for the rule. */
   title: string;
 }
-export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     action: RulesCreateRequestAction,
@@ -1265,8 +872,8 @@ export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RulesCreateRequest",
-}) as any as S.Schema<RulesCreateRequest>;
+  identifier: "CreateRuleRequest",
+}) as any as S.Schema<CreateRuleRequest>;
 
 export type RulesCreateResponseAction = "log" | "block" | (string & {});
 export const RulesCreateResponseAction = /*@__PURE__*/ S.String;
@@ -1341,7 +948,7 @@ export const RulesCreateResponseSelector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesCreateResponseSelector>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RulesCreateResponse {
+export interface CreateRuleResponse {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
   action: RulesCreateResponseAction;
   /** A human-readable description that gives more details than `title`. */
@@ -1359,7 +966,7 @@ export interface RulesCreateResponse {
   createdAt?: string;
   lastUpdated?: string;
 }
-export const RulesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesCreateResponseAction,
     description: S.String,
@@ -1372,16 +979,50 @@ export const RulesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
   }),
 ).annotate({
-  identifier: "RulesCreateResponse",
-}) as any as S.Schema<RulesCreateResponse>;
+  identifier: "CreateRuleResponse",
+}) as any as S.Schema<CreateRuleResponse>;
 
-export interface RulesDeleteRequest {
+export interface DeleteConfigurationRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** UUID. */
+  configId: string;
+}
+export const DeleteConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    configId: S.String.pipe(T.Label("config_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/token_validation/config/{config_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteConfigurationRequest",
+}) as any as S.Schema<DeleteConfigurationRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteConfigurationResponse {
+  /** UUID. */
+  id?: string;
+}
+export const DeleteConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteConfigurationResponse",
+}) as any as S.Schema<DeleteConfigurationResponse>;
+
+export interface DeleteRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
   ruleId: string;
 }
-export const RulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
@@ -1393,270 +1034,133 @@ export const RulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RulesDeleteRequest",
-}) as any as S.Schema<RulesDeleteRequest>;
+  identifier: "DeleteRuleRequest",
+}) as any as S.Schema<DeleteRuleRequest>;
 
-export interface RulesDeleteResponse {
+export interface DeleteRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const RulesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RulesDeleteResponse",
-}) as any as S.Schema<RulesDeleteResponse>;
+  identifier: "DeleteRuleResponse",
+}) as any as S.Schema<DeleteRuleResponse>;
 
-export type RulesEditRequestAction = "log" | "block" | (string & {});
-export const RulesEditRequestAction = /*@__PURE__*/ S.String;
-
-export interface RulesEditRequestPosition {
-  APIShieldIndexObjectIndex__: unknown;
-  /** Move rule to after rule with ID. */
-  APIShieldBeforeObjectBefore__: unknown;
-  /** Move rule to before rule with ID. */
-  APIShieldAfterObjectAfter__: unknown;
-}
-export const RulesEditRequestPosition = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    APIShieldIndexObjectIndex__: S.Unknown.pipe(
-      T.Body("APIShieldIndex object { index }"),
-    ),
-    APIShieldBeforeObjectBefore__: S.Unknown.pipe(
-      T.Body("APIShieldBefore object { before }"),
-    ),
-    APIShieldAfterObjectAfter__: S.Unknown.pipe(
-      T.Body("APIShieldAfter object { after }"),
-    ),
-  }),
-).annotate({
-  identifier: "RulesEditRequestPosition",
-}) as any as S.Schema<RulesEditRequestPosition>;
-
-export type RulesEditRequestSelectorExcludeItemOperationIdsList = string[];
-export const RulesEditRequestSelectorExcludeItemOperationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RulesEditRequestSelectorExcludeItemOperationIdsList>;
-
-export interface RulesEditRequestSelectorExcludeItem {
-  /** Excluded operation IDs. */
-  operationIds?: RulesEditRequestSelectorExcludeItemOperationIdsList;
-}
-export const RulesEditRequestSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operationIds: S.optional(
-      RulesEditRequestSelectorExcludeItemOperationIdsList.pipe(
-        T.Body("operation_ids"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "RulesEditRequestSelectorExcludeItem",
-}) as any as S.Schema<RulesEditRequestSelectorExcludeItem>;
-
-export type RulesEditRequestSelectorExcludeList =
-  RulesEditRequestSelectorExcludeItem[];
-export const RulesEditRequestSelectorExcludeList = /*@__PURE__*/ S.Array(
-  RulesEditRequestSelectorExcludeItem,
-) as any as S.Schema<RulesEditRequestSelectorExcludeList>;
-
-export type RulesEditRequestSelectorIncludeItemHostList = string[];
-export const RulesEditRequestSelectorIncludeItemHostList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RulesEditRequestSelectorIncludeItemHostList>;
-
-export interface RulesEditRequestSelectorIncludeItem {
-  /** Included hostnames. */
-  host?: RulesEditRequestSelectorIncludeItemHostList;
-}
-export const RulesEditRequestSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(RulesEditRequestSelectorIncludeItemHostList),
-  }),
-).annotate({
-  identifier: "RulesEditRequestSelectorIncludeItem",
-}) as any as S.Schema<RulesEditRequestSelectorIncludeItem>;
-
-export type RulesEditRequestSelectorIncludeList =
-  RulesEditRequestSelectorIncludeItem[];
-export const RulesEditRequestSelectorIncludeList = /*@__PURE__*/ S.Array(
-  RulesEditRequestSelectorIncludeItem,
-) as any as S.Schema<RulesEditRequestSelectorIncludeList>;
-
-export interface RulesEditRequestSelector {
-  /** Ignore operations that were otherwise included by `include`. */
-  exclude?: RulesEditRequestSelectorExcludeList;
-  /** Select all matching operations. */
-  include?: RulesEditRequestSelectorIncludeList;
-}
-export const RulesEditRequestSelector = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    exclude: S.optional(RulesEditRequestSelectorExcludeList),
-    include: S.optional(RulesEditRequestSelectorIncludeList),
-  }),
-).annotate({
-  identifier: "RulesEditRequestSelector",
-}) as any as S.Schema<RulesEditRequestSelector>;
-
-export interface RulesEditRequest {
+export interface GetConfigurationRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
-  ruleId: string;
-  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
-  action?: RulesEditRequestAction;
-  /** A human-readable description that gives more details than `title`. */
-  description?: string;
-  /** Toggle rule on or off. */
-  enabled?: boolean;
-  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
-  expression?: string;
-  /** Update rule order among zone rules. */
-  position?: RulesEditRequestPosition;
-  /** Select operations covered by this rule. */
-  selector?: RulesEditRequestSelector;
-  /** A human-readable name for the rule. */
-  title?: string;
+  configId: string;
 }
-export const RulesEditRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    ruleId: S.String.pipe(T.Label("rule_id")),
-    action: S.optional(RulesEditRequestAction),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    expression: S.optional(S.String),
-    position: S.optional(RulesEditRequestPosition),
-    selector: S.optional(RulesEditRequestSelector),
-    title: S.optional(S.String),
+    configId: S.String.pipe(T.Label("config_id")),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/token_validation/rules/{rule_id}",
+      method: "GET",
+      uri: "/zones/{zone_id}/token_validation/config/{config_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "RulesEditRequest",
-}) as any as S.Schema<RulesEditRequest>;
+  identifier: "GetConfigurationRequest",
+}) as any as S.Schema<GetConfigurationRequest>;
 
-export type RulesEditResponseAction = "log" | "block" | (string & {});
-export const RulesEditResponseAction = /*@__PURE__*/ S.String;
-
-export type RulesEditResponseSelectorExcludeItemOperationIdsList = string[];
-export const RulesEditResponseSelectorExcludeItemOperationIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RulesEditResponseSelectorExcludeItemOperationIdsList>;
-
-export interface RulesEditResponseSelectorExcludeItem {
-  /** Excluded operation IDs. */
-  operationIds?: RulesEditResponseSelectorExcludeItemOperationIdsList;
+export interface ConfigurationGetResponseCredentialsKeysItem {
+  /** JSON representation of an RSA key. */
+  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
+  /** JSON representation of an ES256 key */
+  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
+  /** JSON representation of an ES384 key */
+  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
 }
-export const RulesEditResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(
-  () =>
+export const ConfigurationGetResponseCredentialsKeysItem =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      operationIds: S.optional(
-        RulesEditResponseSelectorExcludeItemOperationIdsList.pipe(
-          T.Body("operation_ids"),
+      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
+        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
+      ),
+      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
         ),
       ),
     }),
-).annotate({
-  identifier: "RulesEditResponseSelectorExcludeItem",
-}) as any as S.Schema<RulesEditResponseSelectorExcludeItem>;
+  ).annotate({
+    identifier: "ConfigurationGetResponseCredentialsKeysItem",
+  }) as any as S.Schema<ConfigurationGetResponseCredentialsKeysItem>;
 
-export type RulesEditResponseSelectorExcludeList =
-  RulesEditResponseSelectorExcludeItem[];
-export const RulesEditResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
-  RulesEditResponseSelectorExcludeItem,
-) as any as S.Schema<RulesEditResponseSelectorExcludeList>;
-
-export type RulesEditResponseSelectorIncludeItemHostList = string[];
-export const RulesEditResponseSelectorIncludeItemHostList =
+export type ConfigurationGetResponseCredentialsKeysList =
+  ConfigurationGetResponseCredentialsKeysItem[];
+export const ConfigurationGetResponseCredentialsKeysList =
   /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RulesEditResponseSelectorIncludeItemHostList>;
+    ConfigurationGetResponseCredentialsKeysItem,
+  ) as any as S.Schema<ConfigurationGetResponseCredentialsKeysList>;
 
-export interface RulesEditResponseSelectorIncludeItem {
-  /** Included hostnames. */
-  host?: RulesEditResponseSelectorIncludeItemHostList;
+export interface ConfigurationGetResponseCredentials {
+  keys: ConfigurationGetResponseCredentialsKeysList;
 }
-export const RulesEditResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      host: S.optional(RulesEditResponseSelectorIncludeItemHostList),
-    }),
-).annotate({
-  identifier: "RulesEditResponseSelectorIncludeItem",
-}) as any as S.Schema<RulesEditResponseSelectorIncludeItem>;
-
-export type RulesEditResponseSelectorIncludeList =
-  RulesEditResponseSelectorIncludeItem[];
-export const RulesEditResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
-  RulesEditResponseSelectorIncludeItem,
-) as any as S.Schema<RulesEditResponseSelectorIncludeList>;
-
-export interface RulesEditResponseSelector {
-  /** Ignore operations that were otherwise included by `include`. */
-  exclude?: RulesEditResponseSelectorExcludeList;
-  /** Select all matching operations. */
-  include?: RulesEditResponseSelectorIncludeList;
-}
-export const RulesEditResponseSelector = /*@__PURE__*/ S.suspend(() =>
+export const ConfigurationGetResponseCredentials = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    exclude: S.optional(RulesEditResponseSelectorExcludeList),
-    include: S.optional(RulesEditResponseSelectorIncludeList),
+    keys: ConfigurationGetResponseCredentialsKeysList,
   }),
 ).annotate({
-  identifier: "RulesEditResponseSelector",
-}) as any as S.Schema<RulesEditResponseSelector>;
+  identifier: "ConfigurationGetResponseCredentials",
+}) as any as S.Schema<ConfigurationGetResponseCredentials>;
+
+export type ConfigurationGetResponseTokenSourcesList = string[];
+export const ConfigurationGetResponseTokenSourcesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ConfigurationGetResponseTokenSourcesList>;
+
+export type ConfigurationGetResponseTokenType = "JWT" | (string & {});
+export const ConfigurationGetResponseTokenType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RulesEditResponse {
-  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
-  action: RulesEditResponseAction;
-  /** A human-readable description that gives more details than `title`. */
-  description: string;
-  /** Toggle rule on or off. */
-  enabled: boolean;
-  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
-  expression: string;
-  /** Select operations covered by this rule. */
-  selector: RulesEditResponseSelector;
-  /** A human-readable name for the rule. */
-  title: string;
+export interface GetConfigurationResponse {
   /** UUID. */
-  id?: string;
-  createdAt?: string;
-  lastUpdated?: string;
+  id: string;
+  createdAt: string;
+  credentials: ConfigurationGetResponseCredentials;
+  description: string;
+  lastUpdated: string;
+  title: string;
+  tokenSources: ConfigurationGetResponseTokenSourcesList;
+  tokenType: ConfigurationGetResponseTokenType;
 }
-export const RulesEditResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    action: RulesEditResponseAction,
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    credentials: ConfigurationGetResponseCredentials,
     description: S.String,
-    enabled: S.Boolean,
-    expression: S.String,
-    selector: RulesEditResponseSelector,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
     title: S.String,
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+    tokenSources: ConfigurationGetResponseTokenSourcesList.pipe(
+      T.Body("token_sources"),
+    ),
+    tokenType: ConfigurationGetResponseTokenType.pipe(T.Body("token_type")),
   }),
 ).annotate({
-  identifier: "RulesEditResponse",
-}) as any as S.Schema<RulesEditResponse>;
+  identifier: "GetConfigurationResponse",
+}) as any as S.Schema<GetConfigurationResponse>;
 
-export interface RulesGetRequest {
+export interface GetRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** UUID. */
   ruleId: string;
 }
-export const RulesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     ruleId: S.String.pipe(T.Label("rule_id")),
@@ -1667,9 +1171,7 @@ export const RulesGetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({
-  identifier: "RulesGetRequest",
-}) as any as S.Schema<RulesGetRequest>;
+).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
 export type RulesGetResponseAction = "log" | "block" | (string & {});
 export const RulesGetResponseAction = /*@__PURE__*/ S.String;
@@ -1742,7 +1244,7 @@ export const RulesGetResponseSelector = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RulesGetResponseSelector>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RulesGetResponse {
+export interface GetRuleResponse {
   /** Action to take on requests that match operations included in `selector` and fail `expression`. */
   action: RulesGetResponseAction;
   /** A human-readable description that gives more details than `title`. */
@@ -1760,7 +1262,7 @@ export interface RulesGetResponse {
   createdAt?: string;
   lastUpdated?: string;
 }
-export const RulesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     action: RulesGetResponseAction,
     description: S.String,
@@ -1773,8 +1275,134 @@ export const RulesGetResponse = /*@__PURE__*/ S.suspend(() =>
     lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
   }),
 ).annotate({
-  identifier: "RulesGetResponse",
-}) as any as S.Schema<RulesGetResponse>;
+  identifier: "GetRuleResponse",
+}) as any as S.Schema<GetRuleResponse>;
+
+export interface ListConfigurationsRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Page number of paginated results. */
+  page?: number;
+  /** Maximum number of results per page. */
+  perPage?: number;
+}
+export const ListConfigurationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/token_validation/config",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListConfigurationsRequest",
+}) as any as S.Schema<ListConfigurationsRequest>;
+
+export interface ConfigurationListResultItemCredentialsKeysItem {
+  /** JSON representation of an RSA key. */
+  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
+  /** JSON representation of an ES256 key */
+  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
+  /** JSON representation of an ES384 key */
+  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
+}
+export const ConfigurationListResultItemCredentialsKeysItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
+        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
+      ),
+      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigurationListResultItemCredentialsKeysItem",
+  }) as any as S.Schema<ConfigurationListResultItemCredentialsKeysItem>;
+
+export type ConfigurationListResultItemCredentialsKeysList =
+  ConfigurationListResultItemCredentialsKeysItem[];
+export const ConfigurationListResultItemCredentialsKeysList =
+  /*@__PURE__*/ S.Array(
+    ConfigurationListResultItemCredentialsKeysItem,
+  ) as any as S.Schema<ConfigurationListResultItemCredentialsKeysList>;
+
+export interface ConfigurationListResultItemCredentials {
+  keys: ConfigurationListResultItemCredentialsKeysList;
+}
+export const ConfigurationListResultItemCredentials = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      keys: ConfigurationListResultItemCredentialsKeysList,
+    }),
+).annotate({
+  identifier: "ConfigurationListResultItemCredentials",
+}) as any as S.Schema<ConfigurationListResultItemCredentials>;
+
+export type ConfigurationListResultItemTokenSourcesList = string[];
+export const ConfigurationListResultItemTokenSourcesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConfigurationListResultItemTokenSourcesList>;
+
+export type ConfigurationListResultItemTokenType = "JWT" | (string & {});
+export const ConfigurationListResultItemTokenType = /*@__PURE__*/ S.String;
+
+export interface ConfigurationListResultItem {
+  /** UUID. */
+  id: string;
+  createdAt: string;
+  credentials: ConfigurationListResultItemCredentials;
+  description: string;
+  lastUpdated: string;
+  title: string;
+  tokenSources: ConfigurationListResultItemTokenSourcesList;
+  tokenType: ConfigurationListResultItemTokenType;
+}
+export const ConfigurationListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    credentials: ConfigurationListResultItemCredentials,
+    description: S.String,
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    title: S.String,
+    tokenSources: ConfigurationListResultItemTokenSourcesList.pipe(
+      T.Body("token_sources"),
+    ),
+    tokenType: ConfigurationListResultItemTokenType.pipe(T.Body("token_type")),
+  }),
+).annotate({
+  identifier: "ConfigurationListResultItem",
+}) as any as S.Schema<ConfigurationListResultItem>;
+
+export type ConfigurationListResultList = ConfigurationListResultItem[];
+export const ConfigurationListResultList = /*@__PURE__*/ S.Array(
+  ConfigurationListResultItem,
+) as any as S.Schema<ConfigurationListResultList>;
+
+export interface ListConfigurationsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: ConfigurationListResultList;
+}
+export const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(ConfigurationListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListConfigurationsResponse",
+}) as any as S.Schema<ListConfigurationsResponse>;
 
 export type RulesListRequestAction = "log" | "block" | (string & {});
 export const RulesListRequestAction = /*@__PURE__*/ S.String;
@@ -1784,7 +1412,7 @@ export const RulesListRequestTokenConfigurationList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<RulesListRequestTokenConfigurationList>;
 
-export interface RulesListRequest {
+export interface ListRulesRequest {
   /** Identifier. */
   zoneId: string;
   /** Select rules with these IDs. */
@@ -1806,7 +1434,7 @@ export interface RulesListRequest {
   /** Select rules using any of these token configurations. */
   tokenConfiguration?: RulesListRequestTokenConfigurationList;
 }
-export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -1830,8 +1458,8 @@ export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RulesListRequest",
-}) as any as S.Schema<RulesListRequest>;
+  identifier: "ListRulesRequest",
+}) as any as S.Schema<ListRulesRequest>;
 
 export type RulesListResultItemAction = "log" | "block" | (string & {});
 export const RulesListResultItemAction = /*@__PURE__*/ S.String;
@@ -1944,196 +1572,707 @@ export const RulesListResultList = /*@__PURE__*/ S.Array(
   RulesListResultItem,
 ) as any as S.Schema<RulesListResultList>;
 
-export interface RulesListResponse {
+export interface ListRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesListResultList;
 }
-export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RulesListResponse",
-}) as any as S.Schema<RulesListResponse>;
+  identifier: "ListRulesResponse",
+}) as any as S.Schema<ListRulesResponse>;
 
-export type ConfigurationCreateError = CloudflareOpError;
-/** Create a new Token Validation configuration */
-export const configurationCreate: API.OperationMethod<
-  ConfigurationCreateRequest,
-  ConfigurationCreateResponse,
-  ConfigurationCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationCreateRequest,
-  output: ConfigurationCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type ConfigurationEditRequestTokenSourcesList = string[];
+export const ConfigurationEditRequestTokenSourcesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ConfigurationEditRequestTokenSourcesList>;
 
-export type ConfigurationCredentialsUpdateError = CloudflareOpError;
-/** Update Token Configuration credentials */
-export const configurationCredentialsUpdate: API.OperationMethod<
-  ConfigurationCredentialsUpdateRequest,
-  ConfigurationCredentialsUpdateResponse,
-  ConfigurationCredentialsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationCredentialsUpdateRequest,
-  output: ConfigurationCredentialsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface PatchConfigurationRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** UUID. */
+  configId: string;
+  description?: string;
+  title?: string;
+  tokenSources?: ConfigurationEditRequestTokenSourcesList;
+}
+export const PatchConfigurationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    configId: S.String.pipe(T.Label("config_id")),
+    description: S.optional(S.String),
+    title: S.optional(S.String),
+    tokenSources: S.optional(
+      ConfigurationEditRequestTokenSourcesList.pipe(T.Body("token_sources")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/token_validation/config/{config_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchConfigurationRequest",
+}) as any as S.Schema<PatchConfigurationRequest>;
 
-export type ConfigurationDeleteError = CloudflareOpError;
-/** Delete Token Configuration */
-export const configurationDelete: API.OperationMethod<
-  ConfigurationDeleteRequest,
-  ConfigurationDeleteResponse,
-  ConfigurationDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationDeleteRequest,
-  output: ConfigurationDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type ConfigurationEditResponseTokenSourcesList = string[];
+export const ConfigurationEditResponseTokenSourcesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ConfigurationEditResponseTokenSourcesList>;
 
-export type ConfigurationEditError = CloudflareOpError;
-/** Edit fields of an existing Token Configuration */
-export const configurationEdit: API.OperationMethod<
-  ConfigurationEditRequest,
-  ConfigurationEditResponse,
-  ConfigurationEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationEditRequest,
-  output: ConfigurationEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchConfigurationResponse {
+  /** UUID. */
+  id?: string;
+  description?: string;
+  title?: string;
+  tokenSources?: ConfigurationEditResponseTokenSourcesList;
+}
+export const PatchConfigurationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    title: S.optional(S.String),
+    tokenSources: S.optional(
+      ConfigurationEditResponseTokenSourcesList.pipe(T.Body("token_sources")),
+    ),
+  }),
+).annotate({
+  identifier: "PatchConfigurationResponse",
+}) as any as S.Schema<PatchConfigurationResponse>;
 
-export type ConfigurationGetError = CloudflareOpError;
-/** Get a single Token Configuration */
-export const configurationGet: API.OperationMethod<
-  ConfigurationGetRequest,
-  ConfigurationGetResponse,
-  ConfigurationGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationGetRequest,
-  output: ConfigurationGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type RulesEditRequestAction = "log" | "block" | (string & {});
+export const RulesEditRequestAction = /*@__PURE__*/ S.String;
 
-export type ConfigurationListError = CloudflareOpError;
-/** Lists all token validation configurations for this zone */
-export const configurationList: API.OperationMethod<
-  ConfigurationListRequest,
-  ConfigurationListResponse,
-  ConfigurationListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigurationListRequest,
-  output: ConfigurationListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface RulesEditRequestPosition {
+  APIShieldIndexObjectIndex__: unknown;
+  /** Move rule to after rule with ID. */
+  APIShieldBeforeObjectBefore__: unknown;
+  /** Move rule to before rule with ID. */
+  APIShieldAfterObjectAfter__: unknown;
+}
+export const RulesEditRequestPosition = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    APIShieldIndexObjectIndex__: S.Unknown.pipe(
+      T.Body("APIShieldIndex object { index }"),
+    ),
+    APIShieldBeforeObjectBefore__: S.Unknown.pipe(
+      T.Body("APIShieldBefore object { before }"),
+    ),
+    APIShieldAfterObjectAfter__: S.Unknown.pipe(
+      T.Body("APIShieldAfter object { after }"),
+    ),
+  }),
+).annotate({
+  identifier: "RulesEditRequestPosition",
+}) as any as S.Schema<RulesEditRequestPosition>;
 
-export type RulesBulkCreateError = CloudflareOpError;
+export type RulesEditRequestSelectorExcludeItemOperationIdsList = string[];
+export const RulesEditRequestSelectorExcludeItemOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesEditRequestSelectorExcludeItemOperationIdsList>;
+
+export interface RulesEditRequestSelectorExcludeItem {
+  /** Excluded operation IDs. */
+  operationIds?: RulesEditRequestSelectorExcludeItemOperationIdsList;
+}
+export const RulesEditRequestSelectorExcludeItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operationIds: S.optional(
+      RulesEditRequestSelectorExcludeItemOperationIdsList.pipe(
+        T.Body("operation_ids"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "RulesEditRequestSelectorExcludeItem",
+}) as any as S.Schema<RulesEditRequestSelectorExcludeItem>;
+
+export type RulesEditRequestSelectorExcludeList =
+  RulesEditRequestSelectorExcludeItem[];
+export const RulesEditRequestSelectorExcludeList = /*@__PURE__*/ S.Array(
+  RulesEditRequestSelectorExcludeItem,
+) as any as S.Schema<RulesEditRequestSelectorExcludeList>;
+
+export type RulesEditRequestSelectorIncludeItemHostList = string[];
+export const RulesEditRequestSelectorIncludeItemHostList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesEditRequestSelectorIncludeItemHostList>;
+
+export interface RulesEditRequestSelectorIncludeItem {
+  /** Included hostnames. */
+  host?: RulesEditRequestSelectorIncludeItemHostList;
+}
+export const RulesEditRequestSelectorIncludeItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    host: S.optional(RulesEditRequestSelectorIncludeItemHostList),
+  }),
+).annotate({
+  identifier: "RulesEditRequestSelectorIncludeItem",
+}) as any as S.Schema<RulesEditRequestSelectorIncludeItem>;
+
+export type RulesEditRequestSelectorIncludeList =
+  RulesEditRequestSelectorIncludeItem[];
+export const RulesEditRequestSelectorIncludeList = /*@__PURE__*/ S.Array(
+  RulesEditRequestSelectorIncludeItem,
+) as any as S.Schema<RulesEditRequestSelectorIncludeList>;
+
+export interface RulesEditRequestSelector {
+  /** Ignore operations that were otherwise included by `include`. */
+  exclude?: RulesEditRequestSelectorExcludeList;
+  /** Select all matching operations. */
+  include?: RulesEditRequestSelectorIncludeList;
+}
+export const RulesEditRequestSelector = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exclude: S.optional(RulesEditRequestSelectorExcludeList),
+    include: S.optional(RulesEditRequestSelectorIncludeList),
+  }),
+).annotate({
+  identifier: "RulesEditRequestSelector",
+}) as any as S.Schema<RulesEditRequestSelector>;
+
+export interface PatchRuleRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** UUID. */
+  ruleId: string;
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
+  action?: RulesEditRequestAction;
+  /** A human-readable description that gives more details than `title`. */
+  description?: string;
+  /** Toggle rule on or off. */
+  enabled?: boolean;
+  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
+  expression?: string;
+  /** Update rule order among zone rules. */
+  position?: RulesEditRequestPosition;
+  /** Select operations covered by this rule. */
+  selector?: RulesEditRequestSelector;
+  /** A human-readable name for the rule. */
+  title?: string;
+}
+export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    ruleId: S.String.pipe(T.Label("rule_id")),
+    action: S.optional(RulesEditRequestAction),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    expression: S.optional(S.String),
+    position: S.optional(RulesEditRequestPosition),
+    selector: S.optional(RulesEditRequestSelector),
+    title: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/token_validation/rules/{rule_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchRuleRequest",
+}) as any as S.Schema<PatchRuleRequest>;
+
+export type RulesEditResponseAction = "log" | "block" | (string & {});
+export const RulesEditResponseAction = /*@__PURE__*/ S.String;
+
+export type RulesEditResponseSelectorExcludeItemOperationIdsList = string[];
+export const RulesEditResponseSelectorExcludeItemOperationIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesEditResponseSelectorExcludeItemOperationIdsList>;
+
+export interface RulesEditResponseSelectorExcludeItem {
+  /** Excluded operation IDs. */
+  operationIds?: RulesEditResponseSelectorExcludeItemOperationIdsList;
+}
+export const RulesEditResponseSelectorExcludeItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      operationIds: S.optional(
+        RulesEditResponseSelectorExcludeItemOperationIdsList.pipe(
+          T.Body("operation_ids"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "RulesEditResponseSelectorExcludeItem",
+}) as any as S.Schema<RulesEditResponseSelectorExcludeItem>;
+
+export type RulesEditResponseSelectorExcludeList =
+  RulesEditResponseSelectorExcludeItem[];
+export const RulesEditResponseSelectorExcludeList = /*@__PURE__*/ S.Array(
+  RulesEditResponseSelectorExcludeItem,
+) as any as S.Schema<RulesEditResponseSelectorExcludeList>;
+
+export type RulesEditResponseSelectorIncludeItemHostList = string[];
+export const RulesEditResponseSelectorIncludeItemHostList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RulesEditResponseSelectorIncludeItemHostList>;
+
+export interface RulesEditResponseSelectorIncludeItem {
+  /** Included hostnames. */
+  host?: RulesEditResponseSelectorIncludeItemHostList;
+}
+export const RulesEditResponseSelectorIncludeItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      host: S.optional(RulesEditResponseSelectorIncludeItemHostList),
+    }),
+).annotate({
+  identifier: "RulesEditResponseSelectorIncludeItem",
+}) as any as S.Schema<RulesEditResponseSelectorIncludeItem>;
+
+export type RulesEditResponseSelectorIncludeList =
+  RulesEditResponseSelectorIncludeItem[];
+export const RulesEditResponseSelectorIncludeList = /*@__PURE__*/ S.Array(
+  RulesEditResponseSelectorIncludeItem,
+) as any as S.Schema<RulesEditResponseSelectorIncludeList>;
+
+export interface RulesEditResponseSelector {
+  /** Ignore operations that were otherwise included by `include`. */
+  exclude?: RulesEditResponseSelectorExcludeList;
+  /** Select all matching operations. */
+  include?: RulesEditResponseSelectorIncludeList;
+}
+export const RulesEditResponseSelector = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    exclude: S.optional(RulesEditResponseSelectorExcludeList),
+    include: S.optional(RulesEditResponseSelectorIncludeList),
+  }),
+).annotate({
+  identifier: "RulesEditResponseSelector",
+}) as any as S.Schema<RulesEditResponseSelector>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchRuleResponse {
+  /** Action to take on requests that match operations included in `selector` and fail `expression`. */
+  action: RulesEditResponseAction;
+  /** A human-readable description that gives more details than `title`. */
+  description: string;
+  /** Toggle rule on or off. */
+  enabled: boolean;
+  /** Rule expression. Requests that fail to match this expression will be subject to `action`. */
+  expression: string;
+  /** Select operations covered by this rule. */
+  selector: RulesEditResponseSelector;
+  /** A human-readable name for the rule. */
+  title: string;
+  /** UUID. */
+  id?: string;
+  createdAt?: string;
+  lastUpdated?: string;
+}
+export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: RulesEditResponseAction,
+    description: S.String,
+    enabled: S.Boolean,
+    expression: S.String,
+    selector: RulesEditResponseSelector,
+    title: S.String,
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    lastUpdated: S.optional(S.String.pipe(T.Body("last_updated"))),
+  }),
+).annotate({
+  identifier: "PatchRuleResponse",
+}) as any as S.Schema<PatchRuleResponse>;
+
+export interface ConfigurationCredentialsUpdateRequestKeysItem {
+  /** JSON representation of an RSA key. */
+  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
+  /** JSON representation of an ES256 key */
+  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
+  /** JSON representation of an ES384 key */
+  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
+}
+export const ConfigurationCredentialsUpdateRequestKeysItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
+        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
+      ),
+      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigurationCredentialsUpdateRequestKeysItem",
+  }) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysItem>;
+
+export type ConfigurationCredentialsUpdateRequestKeysList =
+  ConfigurationCredentialsUpdateRequestKeysItem[];
+export const ConfigurationCredentialsUpdateRequestKeysList =
+  /*@__PURE__*/ S.Array(
+    ConfigurationCredentialsUpdateRequestKeysItem,
+  ) as any as S.Schema<ConfigurationCredentialsUpdateRequestKeysList>;
+
+export interface PutConfigurationCredentialRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** UUID. */
+  configId: string;
+  keys: ConfigurationCredentialsUpdateRequestKeysList;
+}
+export const PutConfigurationCredentialRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    configId: S.String.pipe(T.Label("config_id")),
+    keys: ConfigurationCredentialsUpdateRequestKeysList,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/zones/{zone_id}/token_validation/config/{config_id}/credentials",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PutConfigurationCredentialRequest",
+}) as any as S.Schema<PutConfigurationCredentialRequest>;
+
+export interface ConfigurationCredentialsUpdateResponseKeysItem {
+  /** JSON representation of an RSA key. */
+  APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: unknown;
+  /** JSON representation of an ES256 key */
+  APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: unknown;
+  /** JSON representation of an ES384 key */
+  APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: unknown;
+}
+export const ConfigurationCredentialsUpdateResponseKeysItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      APIShieldCredentialsJWTKeyRSAObjectAlgEKid2More__: S.Unknown.pipe(
+        T.Body("APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"),
+      ),
+      APIShieldCredentialsJWTKeyEcEs256ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+      APIShieldCredentialsJWTKeyEcEs384ObjectAlgCrvKid3More__: S.Unknown.pipe(
+        T.Body(
+          "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }",
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConfigurationCredentialsUpdateResponseKeysItem",
+  }) as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysItem>;
+
+export type ConfigurationCredentialsUpdateResponseKeysList =
+  ConfigurationCredentialsUpdateResponseKeysItem[];
+export const ConfigurationCredentialsUpdateResponseKeysList =
+  /*@__PURE__*/ S.Array(
+    ConfigurationCredentialsUpdateResponseKeysItem,
+  ) as any as S.Schema<ConfigurationCredentialsUpdateResponseKeysList>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface PutConfigurationCredentialResponse {
+  keys: ConfigurationCredentialsUpdateResponseKeysList;
+}
+export const PutConfigurationCredentialResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    keys: ConfigurationCredentialsUpdateResponseKeysList,
+  }),
+).annotate({
+  identifier: "PutConfigurationCredentialResponse",
+}) as any as S.Schema<PutConfigurationCredentialResponse>;
+
+export type BulkCreateRulesError = CloudflareOpError;
 /** Create zone token validation rules. A request can create multiple Token Validation Rules. */
-export const rulesBulkCreate: API.OperationMethod<
-  RulesBulkCreateRequest,
-  RulesBulkCreateResponse,
-  RulesBulkCreateError,
+export const bulkCreateRules: API.OperationMethod<
+  BulkCreateRulesRequest,
+  BulkCreateRulesResponse,
+  BulkCreateRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesBulkCreateRequest,
-  output: RulesBulkCreateResponse,
+  input: BulkCreateRulesRequest,
+  output: BulkCreateRulesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RulesBulkEditError = CloudflareOpError;
+export type BulkPatchRulesError = CloudflareOpError;
 /** Edit token validation rules. A request can update multiple Token Validation Rules. Rules can be re-ordered using the `position` field. Returns all updated rules. */
-export const rulesBulkEdit: API.OperationMethod<
-  RulesBulkEditRequest,
-  RulesBulkEditResponse,
-  RulesBulkEditError,
+export const bulkPatchRules: API.OperationMethod<
+  BulkPatchRulesRequest,
+  BulkPatchRulesResponse,
+  BulkPatchRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesBulkEditRequest,
-  output: RulesBulkEditResponse,
+  input: BulkPatchRulesRequest,
+  output: BulkPatchRulesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RulesCreateError = CloudflareOpError;
+export type CreateConfigurationError =
+  | TokenValidationNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Create a new Token Validation configuration */
+export const createConfiguration: API.OperationMethod<
+  CreateConfigurationRequest,
+  CreateConfigurationResponse,
+  CreateConfigurationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateConfigurationRequest,
+  output: CreateConfigurationResponse,
+  errors: [
+    TokenValidationNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateRuleError =
+  | TokenValidationNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Create a token validation rule. */
-export const rulesCreate: API.OperationMethod<
-  RulesCreateRequest,
-  RulesCreateResponse,
-  RulesCreateError,
+export const createRule: API.OperationMethod<
+  CreateRuleRequest,
+  CreateRuleResponse,
+  CreateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesCreateRequest,
-  output: RulesCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateRuleRequest,
+  output: CreateRuleResponse,
+  errors: [
+    TokenValidationNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type RulesDeleteError = CloudflareOpError;
+export type DeleteConfigurationError =
+  | TokenConfigurationNotFound
+  | TokenValidationNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Delete Token Configuration */
+export const deleteConfiguration: API.OperationMethod<
+  DeleteConfigurationRequest,
+  DeleteConfigurationResponse,
+  DeleteConfigurationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConfigurationRequest,
+  output: DeleteConfigurationResponse,
+  errors: [
+    TokenConfigurationNotFound,
+    TokenValidationNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteRuleError =
+  | TokenValidationRuleNotFound
+  | TokenValidationNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Delete a zone token validation rule. */
-export const rulesDelete: API.OperationMethod<
-  RulesDeleteRequest,
-  RulesDeleteResponse,
-  RulesDeleteError,
+export const deleteRule: API.OperationMethod<
+  DeleteRuleRequest,
+  DeleteRuleResponse,
+  DeleteRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesDeleteRequest,
-  output: RulesDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteRuleRequest,
+  output: DeleteRuleResponse,
+  errors: [
+    TokenValidationRuleNotFound,
+    TokenValidationNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type RulesEditError = CloudflareOpError;
-/** Edit a zone token validation rule. */
-export const rulesEdit: API.OperationMethod<
-  RulesEditRequest,
-  RulesEditResponse,
-  RulesEditError,
+export type GetConfigurationError =
+  | TokenConfigurationNotFound
+  | TokenValidationNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Get a single Token Configuration */
+export const getConfiguration: API.OperationMethod<
+  GetConfigurationRequest,
+  GetConfigurationResponse,
+  GetConfigurationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesEditRequest,
-  output: RulesEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetConfigurationRequest,
+  output: GetConfigurationResponse,
+  errors: [
+    TokenConfigurationNotFound,
+    TokenValidationNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type RulesGetError = CloudflareOpError;
+export type GetRuleError =
+  | TokenValidationRuleNotFound
+  | TokenValidationNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Get a zone token validation rule. */
-export const rulesGet: API.OperationMethod<
-  RulesGetRequest,
-  RulesGetResponse,
-  RulesGetError,
+export const getRule: API.OperationMethod<
+  GetRuleRequest,
+  GetRuleResponse,
+  GetRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesGetRequest,
-  output: RulesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetRuleRequest,
+  output: GetRuleResponse,
+  errors: [
+    TokenValidationRuleNotFound,
+    TokenValidationNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type RulesListError = CloudflareOpError;
-/** List token validation rules */
-export const rulesList: API.OperationMethod<
-  RulesListRequest,
-  RulesListResponse,
-  RulesListError,
+export type ListConfigurationsError =
+  | TokenValidationNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Lists all token validation configurations for this zone */
+export const listConfigurations: API.OperationMethod<
+  ListConfigurationsRequest,
+  ListConfigurationsResponse,
+  ListConfigurationsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesListRequest,
-  output: RulesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ListConfigurationsRequest,
+  output: ListConfigurationsResponse,
+  errors: [
+    TokenValidationNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListRulesError =
+  | TokenValidationNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** List token validation rules */
+export const listRules: API.OperationMethod<
+  ListRulesRequest,
+  ListRulesResponse,
+  ListRulesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRulesRequest,
+  output: ListRulesResponse,
+  errors: [
+    TokenValidationNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchConfigurationError =
+  | TokenConfigurationNotFound
+  | TokenValidationNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Edit fields of an existing Token Configuration */
+export const patchConfiguration: API.OperationMethod<
+  PatchConfigurationRequest,
+  PatchConfigurationResponse,
+  PatchConfigurationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchConfigurationRequest,
+  output: PatchConfigurationResponse,
+  errors: [
+    TokenConfigurationNotFound,
+    TokenValidationNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchRuleError =
+  | TokenValidationRuleNotFound
+  | TokenValidationNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Edit a zone token validation rule. */
+export const patchRule: API.OperationMethod<
+  PatchRuleRequest,
+  PatchRuleResponse,
+  PatchRuleError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchRuleRequest,
+  output: PatchRuleResponse,
+  errors: [
+    TokenValidationRuleNotFound,
+    TokenValidationNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutConfigurationCredentialError =
+  | TokenConfigurationNotFound
+  | TokenValidationNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Update Token Configuration credentials */
+export const putConfigurationCredential: API.OperationMethod<
+  PutConfigurationCredentialRequest,
+  PutConfigurationCredentialResponse,
+  PutConfigurationCredentialError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutConfigurationCredentialRequest,
+  output: PutConfigurationCredentialResponse,
+  errors: [
+    TokenConfigurationNotFound,
+    TokenValidationNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

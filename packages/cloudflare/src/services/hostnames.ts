@@ -9,6 +9,36 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class AdvancedCertificateManagerRequired extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AdvancedCertificateManagerRequired>()(
+    "AdvancedCertificateManagerRequired",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 1450 }],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class HostnameTlsSettingNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<HostnameTlsSettingNotFound>()(
+    "HostnameTlsSettingNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ status: 404 }],
+) {}
+
 export type SettingsTlsDeleteRequestSettingId =
   | "ciphers"
   | "min_tls_version"
@@ -16,7 +46,7 @@ export type SettingsTlsDeleteRequestSettingId =
   | (string & {});
 export const SettingsTlsDeleteRequestSettingId = /*@__PURE__*/ S.String;
 
-export interface SettingsTlsDeleteRequest {
+export interface DeleteSettingTlsRequest {
   /** Identifier. */
   zoneId: string;
   /** The TLS Setting name. */
@@ -24,7 +54,7 @@ export interface SettingsTlsDeleteRequest {
   /** The hostname for which the tls settings are set. */
   hostname: string;
 }
-export const SettingsTlsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: SettingsTlsDeleteRequestSettingId.pipe(T.Label("setting_id")),
@@ -37,8 +67,8 @@ export const SettingsTlsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SettingsTlsDeleteRequest",
-}) as any as S.Schema<SettingsTlsDeleteRequest>;
+  identifier: "DeleteSettingTlsRequest",
+}) as any as S.Schema<DeleteSettingTlsRequest>;
 
 export interface SettingsTlsDeleteResponseValue {
   "10Or11Or12Or3More": unknown;
@@ -57,7 +87,7 @@ export const SettingsTlsDeleteResponseValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsTlsDeleteResponseValue>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsTlsDeleteResponse {
+export interface DeleteSettingTlsResponse {
   /** This is the time the tls setting was originally created for this hostname. */
   createdAt?: string;
   /** The hostname for which the tls settings are set. */
@@ -69,7 +99,7 @@ export interface SettingsTlsDeleteResponse {
   /** The TLS setting value. */
   value?: SettingsTlsDeleteResponseValue;
 }
-export const SettingsTlsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     hostname: S.optional(S.String),
@@ -78,8 +108,8 @@ export const SettingsTlsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
     value: S.optional(SettingsTlsDeleteResponseValue),
   }),
 ).annotate({
-  identifier: "SettingsTlsDeleteResponse",
-}) as any as S.Schema<SettingsTlsDeleteResponse>;
+  identifier: "DeleteSettingTlsResponse",
+}) as any as S.Schema<DeleteSettingTlsResponse>;
 
 export type SettingsTlsGetRequestSettingId =
   | "ciphers"
@@ -88,13 +118,13 @@ export type SettingsTlsGetRequestSettingId =
   | (string & {});
 export const SettingsTlsGetRequestSettingId = /*@__PURE__*/ S.String;
 
-export interface SettingsTlsGetRequest {
+export interface GetSettingTlsRequest {
   /** Identifier. */
   zoneId: string;
   /** The TLS Setting name. */
   settingId: SettingsTlsGetRequestSettingId;
 }
-export const SettingsTlsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: SettingsTlsGetRequestSettingId.pipe(T.Label("setting_id")),
@@ -106,8 +136,8 @@ export const SettingsTlsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SettingsTlsGetRequest",
-}) as any as S.Schema<SettingsTlsGetRequest>;
+  identifier: "GetSettingTlsRequest",
+}) as any as S.Schema<GetSettingTlsRequest>;
 
 export interface SettingsTlsGetResultItemValue {
   "10Or11Or12Or3More": unknown;
@@ -154,17 +184,17 @@ export const SettingsTlsGetResultList = /*@__PURE__*/ S.Array(
   SettingsTlsGetResultItem,
 ) as any as S.Schema<SettingsTlsGetResultList>;
 
-export interface SettingsTlsGetResponse {
+export interface GetSettingTlsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsTlsGetResultList;
 }
-export const SettingsTlsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SettingsTlsGetResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "SettingsTlsGetResponse",
-}) as any as S.Schema<SettingsTlsGetResponse>;
+  identifier: "GetSettingTlsResponse",
+}) as any as S.Schema<GetSettingTlsResponse>;
 
 export type SettingsTlsUpdateRequestSettingId =
   | "ciphers"
@@ -189,7 +219,7 @@ export const SettingsTlsUpdateRequestValue = /*@__PURE__*/ S.suspend(() =>
   identifier: "SettingsTlsUpdateRequestValue",
 }) as any as S.Schema<SettingsTlsUpdateRequestValue>;
 
-export interface SettingsTlsUpdateRequest {
+export interface PutSettingTlsRequest {
   /** Identifier. */
   zoneId: string;
   /** The TLS Setting name. */
@@ -199,7 +229,7 @@ export interface SettingsTlsUpdateRequest {
   /** The TLS setting value. */
   value: SettingsTlsUpdateRequestValue;
 }
-export const SettingsTlsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutSettingTlsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     settingId: SettingsTlsUpdateRequestSettingId.pipe(T.Label("setting_id")),
@@ -213,8 +243,8 @@ export const SettingsTlsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SettingsTlsUpdateRequest",
-}) as any as S.Schema<SettingsTlsUpdateRequest>;
+  identifier: "PutSettingTlsRequest",
+}) as any as S.Schema<PutSettingTlsRequest>;
 
 export interface SettingsTlsUpdateResponseValue {
   "10Or11Or12Or3More": unknown;
@@ -233,7 +263,7 @@ export const SettingsTlsUpdateResponseValue = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SettingsTlsUpdateResponseValue>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsTlsUpdateResponse {
+export interface PutSettingTlsResponse {
   /** This is the time the tls setting was originally created for this hostname. */
   createdAt?: string;
   /** The hostname for which the tls settings are set. */
@@ -245,7 +275,7 @@ export interface SettingsTlsUpdateResponse {
   /** The TLS setting value. */
   value?: SettingsTlsUpdateResponseValue;
 }
-export const SettingsTlsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     hostname: S.optional(S.String),
@@ -254,47 +284,73 @@ export const SettingsTlsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     value: S.optional(SettingsTlsUpdateResponseValue),
   }),
 ).annotate({
-  identifier: "SettingsTlsUpdateResponse",
-}) as any as S.Schema<SettingsTlsUpdateResponse>;
+  identifier: "PutSettingTlsResponse",
+}) as any as S.Schema<PutSettingTlsResponse>;
 
-export type SettingsTlsDeleteError = CloudflareOpError;
+export type DeleteSettingTlsError =
+  | AdvancedCertificateManagerRequired
+  | HostnameTlsSettingNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Delete the tls setting value for the hostname. */
-export const settingsTlsDelete: API.OperationMethod<
-  SettingsTlsDeleteRequest,
-  SettingsTlsDeleteResponse,
-  SettingsTlsDeleteError,
+export const deleteSettingTls: API.OperationMethod<
+  DeleteSettingTlsRequest,
+  DeleteSettingTlsResponse,
+  DeleteSettingTlsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsTlsDeleteRequest,
-  output: SettingsTlsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteSettingTlsRequest,
+  output: DeleteSettingTlsResponse,
+  errors: [
+    AdvancedCertificateManagerRequired,
+    HostnameTlsSettingNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsTlsGetError = CloudflareOpError;
+export type GetSettingTlsError =
+  | AdvancedCertificateManagerRequired
+  | Forbidden
+  | CloudflareOpError;
 /** List the requested TLS setting for the hostnames under this zone. */
-export const settingsTlsGet: API.OperationMethod<
-  SettingsTlsGetRequest,
-  SettingsTlsGetResponse,
-  SettingsTlsGetError,
+export const getSettingTls: API.OperationMethod<
+  GetSettingTlsRequest,
+  GetSettingTlsResponse,
+  GetSettingTlsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsTlsGetRequest,
-  output: SettingsTlsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetSettingTlsRequest,
+  output: GetSettingTlsResponse,
+  errors: [
+    AdvancedCertificateManagerRequired,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsTlsUpdateError = CloudflareOpError;
+export type PutSettingTlsError =
+  | AdvancedCertificateManagerRequired
+  | Forbidden
+  | CloudflareOpError;
 /** Update the tls setting value for the hostname. */
-export const settingsTlsUpdate: API.OperationMethod<
-  SettingsTlsUpdateRequest,
-  SettingsTlsUpdateResponse,
-  SettingsTlsUpdateError,
+export const putSettingTls: API.OperationMethod<
+  PutSettingTlsRequest,
+  PutSettingTlsResponse,
+  PutSettingTlsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsTlsUpdateRequest,
-  output: SettingsTlsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PutSettingTlsRequest,
+  output: PutSettingTlsResponse,
+  errors: [
+    AdvancedCertificateManagerRequired,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

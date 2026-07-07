@@ -1,0 +1,88 @@
+{
+  "description": "Align r2#BucketsDomainsManagedUpdate with distilled cloudflare/r2 putBucketDomainManaged",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsDomainsManagedUpdate",
+      "path": "/shapes/com.cloudflare.r2#PutBucketDomainManaged"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsDomainsManagedUpdateRequest",
+      "path": "/shapes/com.cloudflare.r2#PutBucketDomainManagedRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#PutBucketDomainManaged/input/target",
+      "value": "com.cloudflare.r2#PutBucketDomainManagedRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsDomainsManagedUpdateResponse",
+      "path": "/shapes/com.cloudflare.r2#PutBucketDomainManagedResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#PutBucketDomainManaged/output/target",
+      "value": "com.cloudflare.r2#PutBucketDomainManagedResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#NoSuchBucket",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10006
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#PutBucketDomainManaged/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.r2#NoSuchBucket"
+        },
+        {
+          "target": "com.cloudflare.r2#InvalidRoute"
+        }
+      ]
+    }
+  ]
+}

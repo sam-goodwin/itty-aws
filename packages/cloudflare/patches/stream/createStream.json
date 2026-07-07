@@ -1,0 +1,20 @@
+{
+  "description": "Align stream#Create with distilled cloudflare/stream createStream",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#Create",
+      "path": "/shapes/com.cloudflare.stream#CreateStream"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#CreateRequest",
+      "path": "/shapes/com.cloudflare.stream#CreateStreamRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.stream#CreateStream/input/target",
+      "value": "com.cloudflare.stream#CreateStreamRequest"
+    }
+  ]
+}

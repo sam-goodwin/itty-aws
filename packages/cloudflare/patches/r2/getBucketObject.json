@@ -1,0 +1,20 @@
+{
+  "description": "Align r2#BucketsObjectsGet with distilled cloudflare/r2 getBucketObject",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsObjectsGet",
+      "path": "/shapes/com.cloudflare.r2#GetBucketObject"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsObjectsGetRequest",
+      "path": "/shapes/com.cloudflare.r2#GetBucketObjectRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#GetBucketObject/input/target",
+      "value": "com.cloudflare.r2#GetBucketObjectRequest"
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "description": "Align calls#SfuCreate with distilled cloudflare/calls createSfu",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.calls#SfuCreate",
+      "path": "/shapes/com.cloudflare.calls#CreateSfu"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.calls#SfuCreateRequest",
+      "path": "/shapes/com.cloudflare.calls#CreateSfuRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.calls#CreateSfu/input/target",
+      "value": "com.cloudflare.calls#CreateSfuRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.calls#SfuCreateResponse",
+      "path": "/shapes/com.cloudflare.calls#CreateSfuResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.calls#CreateSfu/output/target",
+      "value": "com.cloudflare.calls#CreateSfuResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.calls#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.calls#CreateSfu/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.calls#Forbidden"
+        }
+      ]
+    }
+  ]
+}

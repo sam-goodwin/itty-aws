@@ -9,21 +9,48 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface GetRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class InvalidSettingValue extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidSettingValue>()("InvalidSettingValue", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1146, message: { includes: "origin_post_quantum_encryption" } }],
+) {}
+
+export class InvalidZoneIdentifier extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidZoneIdentifier>()("InvalidZoneIdentifier", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7003 }],
+) {}
+
+export interface GetOriginPostQuantumEncryptionRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+export const GetOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "GetOriginPostQuantumEncryptionRequest",
+}) as any as S.Schema<GetOriginPostQuantumEncryptionRequest>;
 
 export type GetResponseId = "origin_pqe" | (string & {});
 export const GetResponseId = /*@__PURE__*/ S.String;
@@ -36,7 +63,7 @@ export type GetResponseValue =
 export const GetResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetOriginPostQuantumEncryptionResponse {
   /** The identifier of the caching setting. */
   id: GetResponseId;
   /** Whether the setting is editable. */
@@ -46,14 +73,17 @@ export interface GetResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: GetResponseId,
-    editable: S.Boolean,
-    value: GetResponseValue,
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+export const GetOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: GetResponseId,
+      editable: S.Boolean,
+      value: GetResponseValue,
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    }),
+).annotate({
+  identifier: "GetOriginPostQuantumEncryptionResponse",
+}) as any as S.Schema<GetOriginPostQuantumEncryptionResponse>;
 
 export type UpdateRequestValue =
   | "preferred"
@@ -62,24 +92,27 @@ export type UpdateRequestValue =
   | (string & {});
 export const UpdateRequestValue = /*@__PURE__*/ S.String;
 
-export interface UpdateRequest {
+export interface PutOriginPostQuantumEncryptionRequest {
   /** Identifier. */
   zoneId: string;
   /** Value of the Origin Post Quantum Encryption Setting. */
   value: UpdateRequestValue;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    value: UpdateRequestValue,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+export const PutOriginPostQuantumEncryptionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      value: UpdateRequestValue,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/cache/origin_post_quantum_encryption",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "PutOriginPostQuantumEncryptionRequest",
+}) as any as S.Schema<PutOriginPostQuantumEncryptionRequest>;
 
 export type UpdateResponseId = "origin_pqe" | (string & {});
 export const UpdateResponseId = /*@__PURE__*/ S.String;
@@ -92,7 +125,7 @@ export type UpdateResponseValue =
 export const UpdateResponseValue = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface PutOriginPostQuantumEncryptionResponse {
   /** The identifier of the caching setting. */
   id: UpdateResponseId;
   /** Whether the setting is editable. */
@@ -102,39 +135,60 @@ export interface UpdateResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: UpdateResponseId,
-    editable: S.Boolean,
-    value: UpdateResponseValue,
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+export const PutOriginPostQuantumEncryptionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: UpdateResponseId,
+      editable: S.Boolean,
+      value: UpdateResponseValue,
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    }),
+).annotate({
+  identifier: "PutOriginPostQuantumEncryptionResponse",
+}) as any as S.Schema<PutOriginPostQuantumEncryptionResponse>;
 
-export type GetError = CloudflareOpError;
+export type GetOriginPostQuantumEncryptionError =
+  | InvalidZoneIdentifier
+  | Forbidden
+  | CloudflareOpError;
 /** Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getOriginPostQuantumEncryption: API.OperationMethod<
+  GetOriginPostQuantumEncryptionRequest,
+  GetOriginPostQuantumEncryptionResponse,
+  GetOriginPostQuantumEncryptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetOriginPostQuantumEncryptionRequest,
+  output: GetOriginPostQuantumEncryptionResponse,
+  errors: [
+    InvalidZoneIdentifier,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
+export type PutOriginPostQuantumEncryptionError =
+  | InvalidZoneIdentifier
+  | InvalidSettingValue
+  | Forbidden
+  | CloudflareOpError;
 /** Instructs Cloudflare to use Post-Quantum (PQ) key agreement algorithms when connecting to your origin. Preferred instructs Cloudflare to opportunistically send a Post-Quantum keyshare in the first message to the origin (for fastest connections when the origin supports and prefers PQ), supported means that PQ algorithms are advertised but only used when requested by the origin, and off means that PQ algorithms are not advertised. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export const putOriginPostQuantumEncryption: API.OperationMethod<
+  PutOriginPostQuantumEncryptionRequest,
+  PutOriginPostQuantumEncryptionResponse,
+  PutOriginPostQuantumEncryptionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PutOriginPostQuantumEncryptionRequest,
+  output: PutOriginPostQuantumEncryptionResponse,
+  errors: [
+    InvalidZoneIdentifier,
+    InvalidSettingValue,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

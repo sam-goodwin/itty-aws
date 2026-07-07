@@ -9,6 +9,49 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class CertificateAlreadyRevoked extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CertificateAlreadyRevoked>()("CertificateAlreadyRevoked", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1014 }],
+) {}
+
+export class CertificateNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CertificateNotFound>()("CertificateNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1101 }],
+) {}
+
+export class CertificateRevocationFailed extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CertificateRevocationFailed>()(
+    "CertificateRevocationFailed",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 1000 }],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class HostnameNotAuthorized extends T.applyErrorMatchers(
+  S.TaggedErrorClass<HostnameNotAuthorized>()("HostnameNotAuthorized", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1010 }],
+) {}
+
 export type CreateRequestHostnamesList = string[];
 export const CreateRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
@@ -37,7 +80,7 @@ export const CreateRequestRequestedValidity = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestRequestedValidity",
 }) as any as S.Schema<CreateRequestRequestedValidity>;
 
-export interface CreateRequest {
+export interface CreateOriginCaCertificateRequest {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
   /** Array of hostnames or wildcard names bound to the certificate. */
@@ -47,7 +90,7 @@ export interface CreateRequest {
   /** The number of days for which the certificate should be valid. */
   requestedValidity?: CreateRequestRequestedValidity;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
     hostnames: CreateRequestHostnamesList,
@@ -56,7 +99,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
       CreateRequestRequestedValidity.pipe(T.Body("requested_validity")),
     ),
   }).pipe(T.Http({ method: "POST", uri: "/certificates", code: 200 })),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreateOriginCaCertificateRequest",
+}) as any as S.Schema<CreateOriginCaCertificateRequest>;
 
 export type CreateResponseHostnamesList = string[];
 export const CreateResponseHostnamesList = /*@__PURE__*/ S.Array(
@@ -87,7 +132,7 @@ export const CreateResponseRequestedValidity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseRequestedValidity>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
+export interface CreateOriginCaCertificateResponse {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
   /** Array of hostnames or wildcard names bound to the certificate. */
@@ -103,7 +148,7 @@ export interface CreateResponse {
   /** When the certificate will expire. */
   expiresOn?: string;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
     hostnames: CreateResponseHostnamesList,
@@ -115,13 +160,15 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.String),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
   }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+).annotate({
+  identifier: "CreateOriginCaCertificateResponse",
+}) as any as S.Schema<CreateOriginCaCertificateResponse>;
 
-export interface DeleteRequest {
+export interface DeleteOriginCaCertificateRequest {
   /** Identifier. */
   certificateId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateId: S.String.pipe(T.Label("certificate_id")),
   }).pipe(
@@ -131,33 +178,39 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeleteOriginCaCertificateRequest",
+}) as any as S.Schema<DeleteOriginCaCertificateRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
+export interface DeleteOriginCaCertificateResponse {
   /** Identifier. */
   id?: string;
   /** When the certificate was revoked. */
   revokedAt?: string;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     revokedAt: S.optional(S.String.pipe(T.Body("revoked_at"))),
   }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+).annotate({
+  identifier: "DeleteOriginCaCertificateResponse",
+}) as any as S.Schema<DeleteOriginCaCertificateResponse>;
 
-export interface GetRequest {
+export interface GetOriginCaCertificateRequest {
   /** Identifier. */
   certificateId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetOriginCaCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     certificateId: S.String.pipe(T.Label("certificate_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/certificates/{certificate_id}", code: 200 }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetOriginCaCertificateRequest",
+}) as any as S.Schema<GetOriginCaCertificateRequest>;
 
 export type GetResponseHostnamesList = string[];
 export const GetResponseHostnamesList = /*@__PURE__*/ S.Array(
@@ -188,7 +241,7 @@ export const GetResponseRequestedValidity = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseRequestedValidity>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetOriginCaCertificateResponse {
   /** The Certificate Signing Request (CSR). Must be newline-encoded. */
   csr: string;
   /** Array of hostnames or wildcard names bound to the certificate. */
@@ -204,7 +257,7 @@ export interface GetResponse {
   /** When the certificate will expire. */
   expiresOn?: string;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetOriginCaCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     csr: S.String,
     hostnames: GetResponseHostnamesList,
@@ -216,9 +269,11 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     certificate: S.optional(S.String),
     expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetOriginCaCertificateResponse",
+}) as any as S.Schema<GetOriginCaCertificateResponse>;
 
-export interface ListRequest {
+export interface ListOriginCaCertificatesRequest {
   /** Identifier. */
   zoneId: string;
   /** Limit to the number of records returned. */
@@ -230,7 +285,7 @@ export interface ListRequest {
   /** Number of records per page. */
   perPage?: number;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListOriginCaCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Query("zone_id")),
     limit: S.optional(S.Number.pipe(T.Query())),
@@ -238,7 +293,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(T.Http({ method: "GET", uri: "/certificates", code: 200 })),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListOriginCaCertificatesRequest",
+}) as any as S.Schema<ListOriginCaCertificatesRequest>;
 
 export type ListResultItemHostnamesList = string[];
 export const ListResultItemHostnamesList = /*@__PURE__*/ S.Array(
@@ -303,68 +360,98 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListOriginCaCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListOriginCaCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListOriginCaCertificatesResponse",
+}) as any as S.Schema<ListOriginCaCertificatesResponse>;
 
-export type CreateError = CloudflareOpError;
+export type CreateOriginCaCertificateError =
+  | HostnameNotAuthorized
+  | Forbidden
+  | CloudflareOpError;
 /** Create an Origin CA certificate. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)). */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createOriginCaCertificate: API.OperationMethod<
+  CreateOriginCaCertificateRequest,
+  CreateOriginCaCertificateResponse,
+  CreateOriginCaCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateOriginCaCertificateRequest,
+  output: CreateOriginCaCertificateResponse,
+  errors: [
+    HostnameNotAuthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type DeleteError = CloudflareOpError;
+export type DeleteOriginCaCertificateError =
+  | CertificateNotFound
+  | CertificateAlreadyRevoked
+  | CertificateRevocationFailed
+  | Forbidden
+  | CloudflareOpError;
 /** Revoke an existing Origin CA certificate by its serial number. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)). */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteOriginCaCertificate: API.OperationMethod<
+  DeleteOriginCaCertificateRequest,
+  DeleteOriginCaCertificateResponse,
+  DeleteOriginCaCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteOriginCaCertificateRequest,
+  output: DeleteOriginCaCertificateResponse,
+  errors: [
+    CertificateNotFound,
+    CertificateAlreadyRevoked,
+    CertificateRevocationFailed,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
+export type GetOriginCaCertificateError =
+  | CertificateNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Get an existing Origin CA certificate by its serial number. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)). */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getOriginCaCertificate: API.OperationMethod<
+  GetOriginCaCertificateRequest,
+  GetOriginCaCertificateResponse,
+  GetOriginCaCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetOriginCaCertificateRequest,
+  output: GetOriginCaCertificateResponse,
+  errors: [
+    CertificateNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type ListError = CloudflareOpError;
+export type ListOriginCaCertificatesError = Forbidden | CloudflareOpError;
 /** List all existing Origin CA certificates for a given zone. You can use an Origin CA Key as your User Service Key or an API token when calling this endpoint ([see above](#requests)). */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
+export const listOriginCaCertificates: API.OperationMethod<
+  ListOriginCaCertificatesRequest,
+  ListOriginCaCertificatesResponse,
+  ListOriginCaCertificatesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ListOriginCaCertificatesRequest,
+  output: ListOriginCaCertificatesResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

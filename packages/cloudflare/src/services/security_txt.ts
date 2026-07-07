@@ -9,11 +9,27 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface DeleteRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class SecurityTxtInvalid extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SecurityTxtInvalid>()("SecurityTxtInvalid", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10400, message: { includes: "invalid or missing values" } }],
+) {}
+
+export interface DeleteSecurityTxtRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -23,18 +39,22 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeleteSecurityTxtRequest",
+}) as any as S.Schema<DeleteSecurityTxtRequest>;
 
-export interface DeleteResponse {}
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteSecurityTxtResponse {}
+export const DeleteSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+).annotate({
+  identifier: "DeleteSecurityTxtResponse",
+}) as any as S.Schema<DeleteSecurityTxtResponse>;
 
-export interface GetRequest {
+export interface GetSecurityTxtRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -44,7 +64,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetSecurityTxtRequest",
+}) as any as S.Schema<GetSecurityTxtRequest>;
 
 export type GetResponseAcknowledgmentsList = string[];
 export const GetResponseAcknowledgmentsList = /*@__PURE__*/ S.Array(
@@ -77,7 +99,7 @@ export const GetResponsePolicyList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponsePolicyList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetSecurityTxtResponse {
   acknowledgments?: GetResponseAcknowledgmentsList;
   canonical?: GetResponseCanonicalList;
   contact?: GetResponseContactList;
@@ -88,7 +110,7 @@ export interface GetResponse {
   policy?: GetResponsePolicyList;
   preferredLanguages?: string;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     acknowledgments: S.optional(GetResponseAcknowledgmentsList),
     canonical: S.optional(GetResponseCanonicalList),
@@ -102,7 +124,9 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
       S.String.pipe(T.Body("preferred_languages")),
     ),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetSecurityTxtResponse",
+}) as any as S.Schema<GetSecurityTxtResponse>;
 
 export type UpdateRequestAcknowledgmentsList = string[];
 export const UpdateRequestAcknowledgmentsList = /*@__PURE__*/ S.Array(
@@ -134,7 +158,7 @@ export const UpdateRequestPolicyList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestPolicyList>;
 
-export interface UpdateRequest {
+export interface PutSecurityTxtRequest {
   /** Identifier. */
   zoneId: string;
   acknowledgments?: UpdateRequestAcknowledgmentsList;
@@ -147,7 +171,7 @@ export interface UpdateRequest {
   policy?: UpdateRequestPolicyList;
   preferredLanguages?: string;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutSecurityTxtRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     acknowledgments: S.optional(UpdateRequestAcknowledgmentsList),
@@ -168,51 +192,63 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "PutSecurityTxtRequest",
+}) as any as S.Schema<PutSecurityTxtRequest>;
 
-export interface UpdateResponse {}
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export interface PutSecurityTxtResponse {}
+export const PutSecurityTxtResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "PutSecurityTxtResponse",
+}) as any as S.Schema<PutSecurityTxtResponse>;
 
-export type DeleteError = CloudflareOpError;
+export type DeleteSecurityTxtError = Forbidden | CloudflareOpError;
 /** Removes the security.txt file configuration for a zone. The /.well-known/security.txt endpoint will no longer be served. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteSecurityTxt: API.OperationMethod<
+  DeleteSecurityTxtRequest,
+  DeleteSecurityTxtResponse,
+  DeleteSecurityTxtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteSecurityTxtRequest,
+  output: DeleteSecurityTxtResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
+export type GetSecurityTxtError = Forbidden | CloudflareOpError;
 /** Retrieves the current security.txt file configuration for a zone, used for security vulnerability reporting. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getSecurityTxt: API.OperationMethod<
+  GetSecurityTxtRequest,
+  GetSecurityTxtResponse,
+  GetSecurityTxtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetSecurityTxtRequest,
+  output: GetSecurityTxtResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
+export type PutSecurityTxtError =
+  | Forbidden
+  | SecurityTxtInvalid
+  | CloudflareOpError;
 /** Updates the security.txt file configuration for a zone, which provides security researchers with vulnerability reporting information. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export const putSecurityTxt: API.OperationMethod<
+  PutSecurityTxtRequest,
+  PutSecurityTxtResponse,
+  PutSecurityTxtError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PutSecurityTxtRequest,
+  output: PutSecurityTxtResponse,
+  errors: [
+    Forbidden,
+    SecurityTxtInvalid,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

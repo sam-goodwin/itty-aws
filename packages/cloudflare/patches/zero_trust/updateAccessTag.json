@@ -1,0 +1,62 @@
+{
+  "description": "Align zero_trust#AccessTagsUpdate with distilled cloudflare/zero-trust updateAccessTag",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#AccessTagsUpdate",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateAccessTag"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#AccessTagsUpdateRequest",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateAccessTagRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateAccessTag/input/target",
+      "value": "com.cloudflare.zero_trust#UpdateAccessTagRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#AccessTagsUpdateResponse",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateAccessTagResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateAccessTag/output/target",
+      "value": "com.cloudflare.zero_trust#UpdateAccessTagResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#AccessTagNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 12135
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#UpdateAccessTag/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#AccessTagNotFound"
+        }
+      ]
+    }
+  ]
+}

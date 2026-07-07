@@ -9,13 +9,156 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface ConnectionsGetRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class NotEntitled extends T.applyErrorMatchers(
+  S.TaggedErrorClass<NotEntitled>()("NotEntitled", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403, message: { includes: "not entitled" } }],
+) {}
+
+export class PolicyNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PolicyNotFound>()("PolicyNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404, message: { includes: "Could not find Policy" } }],
+) {}
+
+export class PolicyQuotaExceeded extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PolicyQuotaExceeded>()("PolicyQuotaExceeded", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [
+    {
+      status: 400,
+      message: {
+        includes:
+          "exceeded the maximum number of rules in the phase http_response_page_shield",
+      },
+    },
+  ],
+) {}
+
+export type PoliciesCreateRequestAction =
+  | "allow"
+  | "log"
+  | "add_reporting_directives"
+  | (string & {});
+export const PoliciesCreateRequestAction = /*@__PURE__*/ S.String;
+
+export interface CreatePolicyRequest {
+  /** Identifier */
+  zoneId: string;
+  /** The action to take if the expression matches */
+  action: PoliciesCreateRequestAction;
+  /** A description for the policy */
+  description: string;
+  /** Whether the policy is enabled */
+  enabled: boolean;
+  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
+  expression: string;
+  /** The policy which will be applied */
+  value: string;
+}
+export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    action: PoliciesCreateRequestAction,
+    description: S.String,
+    enabled: S.Boolean,
+    expression: S.String,
+    value: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/page_shield/policies",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreatePolicyRequest",
+}) as any as S.Schema<CreatePolicyRequest>;
+
+export type PoliciesCreateResponseAction =
+  | "allow"
+  | "log"
+  | "add_reporting_directives"
+  | (string & {});
+export const PoliciesCreateResponseAction = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreatePolicyResponse {
+  /** Identifier */
+  id: string;
+  /** The action to take if the expression matches */
+  action: PoliciesCreateResponseAction;
+  /** A description for the policy */
+  description: string;
+  /** Whether the policy is enabled */
+  enabled: boolean;
+  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
+  expression: string;
+  /** The policy which will be applied */
+  value: string;
+}
+export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    action: PoliciesCreateResponseAction,
+    description: S.String,
+    enabled: S.Boolean,
+    expression: S.String,
+    value: S.String,
+  }),
+).annotate({
+  identifier: "CreatePolicyResponse",
+}) as any as S.Schema<CreatePolicyResponse>;
+
+export interface DeletePolicyRequest {
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  policyId: string;
+}
+export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeletePolicyRequest",
+}) as any as S.Schema<DeletePolicyRequest>;
+
+export interface DeletePolicyResponse {}
+export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeletePolicyResponse",
+}) as any as S.Schema<DeletePolicyResponse>;
+
+export interface GetConnectionRequest {
   /** Identifier */
   zoneId: string;
   /** Identifier */
   connectionId: string;
 }
-export const ConnectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetConnectionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     connectionId: S.String.pipe(T.Label("connection_id")),
@@ -27,8 +170,8 @@ export const ConnectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConnectionsGetRequest",
-}) as any as S.Schema<ConnectionsGetRequest>;
+  identifier: "GetConnectionRequest",
+}) as any as S.Schema<GetConnectionRequest>;
 
 export type ConnectionsGetResponseMaliciousDomainCategoriesList = string[];
 export const ConnectionsGetResponseMaliciousDomainCategoriesList =
@@ -48,7 +191,7 @@ export const ConnectionsGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConnectionsGetResponsePageUrlsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConnectionsGetResponse {
+export interface GetConnectionResponse {
   /** Identifier */
   id: string;
   addedAt: string;
@@ -64,7 +207,7 @@ export interface ConnectionsGetResponse {
   pageUrls?: ConnectionsGetResponsePageUrlsList;
   urlReportedMalicious?: boolean;
 }
-export const ConnectionsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetConnectionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     addedAt: S.String.pipe(T.Body("added_at")),
@@ -95,8 +238,336 @@ export const ConnectionsGetResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "ConnectionsGetResponse",
-}) as any as S.Schema<ConnectionsGetResponse>;
+  identifier: "GetConnectionResponse",
+}) as any as S.Schema<GetConnectionResponse>;
+
+export interface GetCookyRequest {
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  cookieId: string;
+}
+export const GetCookyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    cookieId: S.String.pipe(T.Label("cookie_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/page_shield/cookies/{cookie_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetCookyRequest",
+}) as any as S.Schema<GetCookyRequest>;
+
+export type CookiesGetResponseType = "first_party" | "unknown" | (string & {});
+export const CookiesGetResponseType = /*@__PURE__*/ S.String;
+
+export type CookiesGetResponsePageUrlsList = string[];
+export const CookiesGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CookiesGetResponsePageUrlsList>;
+
+export type CookiesGetResponseSameSiteAttribute =
+  | "lax"
+  | "strict"
+  | "none"
+  | (string & {});
+export const CookiesGetResponseSameSiteAttribute = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetCookyResponse {
+  /** Identifier */
+  id: string;
+  firstSeenAt: string;
+  host: string;
+  lastSeenAt: string;
+  name: string;
+  type: CookiesGetResponseType;
+  domainAttribute?: string;
+  expiresAttribute?: string;
+  httpOnlyAttribute?: boolean;
+  maxAgeAttribute?: number;
+  pageUrls?: CookiesGetResponsePageUrlsList;
+  pathAttribute?: string;
+  sameSiteAttribute?: CookiesGetResponseSameSiteAttribute;
+  secureAttribute?: boolean;
+}
+export const GetCookyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
+    host: S.String,
+    lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
+    name: S.String,
+    type: CookiesGetResponseType,
+    domainAttribute: S.optional(S.String.pipe(T.Body("domain_attribute"))),
+    expiresAttribute: S.optional(S.String.pipe(T.Body("expires_attribute"))),
+    httpOnlyAttribute: S.optional(
+      S.Boolean.pipe(T.Body("http_only_attribute")),
+    ),
+    maxAgeAttribute: S.optional(S.Number.pipe(T.Body("max_age_attribute"))),
+    pageUrls: S.optional(
+      CookiesGetResponsePageUrlsList.pipe(T.Body("page_urls")),
+    ),
+    pathAttribute: S.optional(S.String.pipe(T.Body("path_attribute"))),
+    sameSiteAttribute: S.optional(
+      CookiesGetResponseSameSiteAttribute.pipe(T.Body("same_site_attribute")),
+    ),
+    secureAttribute: S.optional(S.Boolean.pipe(T.Body("secure_attribute"))),
+  }),
+).annotate({
+  identifier: "GetCookyResponse",
+}) as any as S.Schema<GetCookyResponse>;
+
+export interface GetPageShieldRequest {
+  /** Identifier */
+  zoneId: string;
+}
+export const GetPageShieldRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/zones/{zone_id}/page_shield", code: 200 }),
+  ),
+).annotate({
+  identifier: "GetPageShieldRequest",
+}) as any as S.Schema<GetPageShieldRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetPageShieldResponse {
+  /** When true, indicates that Page Shield is enabled. */
+  enabled: boolean;
+  /** The timestamp of when Page Shield was last updated. */
+  updatedAt: string;
+  /** When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report */
+  useCloudflareReportingEndpoint: boolean;
+  /** When true, the paths associated with connections URLs will also be analyzed. */
+  useConnectionUrlPath: boolean;
+}
+export const GetPageShieldResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    useCloudflareReportingEndpoint: S.Boolean.pipe(
+      T.Body("use_cloudflare_reporting_endpoint"),
+    ),
+    useConnectionUrlPath: S.Boolean.pipe(T.Body("use_connection_url_path")),
+  }),
+).annotate({
+  identifier: "GetPageShieldResponse",
+}) as any as S.Schema<GetPageShieldResponse>;
+
+export interface GetPolicyRequest {
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  policyId: string;
+}
+export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetPolicyRequest",
+}) as any as S.Schema<GetPolicyRequest>;
+
+export type PoliciesGetResponseAction =
+  | "allow"
+  | "log"
+  | "add_reporting_directives"
+  | (string & {});
+export const PoliciesGetResponseAction = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetPolicyResponse {
+  /** Identifier */
+  id: string;
+  /** The action to take if the expression matches */
+  action: PoliciesGetResponseAction;
+  /** A description for the policy */
+  description: string;
+  /** Whether the policy is enabled */
+  enabled: boolean;
+  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
+  expression: string;
+  /** The policy which will be applied */
+  value: string;
+}
+export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    action: PoliciesGetResponseAction,
+    description: S.String,
+    enabled: S.Boolean,
+    expression: S.String,
+    value: S.String,
+  }),
+).annotate({
+  identifier: "GetPolicyResponse",
+}) as any as S.Schema<GetPolicyResponse>;
+
+export interface GetScriptRequest {
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  scriptId: string;
+}
+export const GetScriptRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    scriptId: S.String.pipe(T.Label("script_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/page_shield/scripts/{script_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetScriptRequest",
+}) as any as S.Schema<GetScriptRequest>;
+
+export type ScriptsGetResponseMaliciousDomainCategoriesList = string[];
+export const ScriptsGetResponseMaliciousDomainCategoriesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScriptsGetResponseMaliciousDomainCategoriesList>;
+
+export type ScriptsGetResponseMaliciousUrlCategoriesList = string[];
+export const ScriptsGetResponseMaliciousUrlCategoriesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ScriptsGetResponseMaliciousUrlCategoriesList>;
+
+export type ScriptsGetResponsePageUrlsList = string[];
+export const ScriptsGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ScriptsGetResponsePageUrlsList>;
+
+export interface ScriptsGetResponseVersionsItem {
+  /** The cryptomining score of the JavaScript content. */
+  cryptominingScore?: number;
+  /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
+  dataflowScore?: number;
+  /** The timestamp of when the script was last fetched. */
+  fetchedAt?: string;
+  /** The computed hash of the analyzed script. */
+  hash?: string;
+  /** The integrity score of the JavaScript content. */
+  jsIntegrityScore?: number;
+  /** The magecart score of the JavaScript content. */
+  magecartScore?: number;
+  /** The malware score of the JavaScript content. */
+  malwareScore?: number;
+  /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
+  obfuscationScore?: number;
+}
+export const ScriptsGetResponseVersionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cryptominingScore: S.optional(S.Number.pipe(T.Body("cryptomining_score"))),
+    dataflowScore: S.optional(S.Number.pipe(T.Body("dataflow_score"))),
+    fetchedAt: S.optional(S.String.pipe(T.Body("fetched_at"))),
+    hash: S.optional(S.String),
+    jsIntegrityScore: S.optional(S.Number.pipe(T.Body("js_integrity_score"))),
+    magecartScore: S.optional(S.Number.pipe(T.Body("magecart_score"))),
+    malwareScore: S.optional(S.Number.pipe(T.Body("malware_score"))),
+    obfuscationScore: S.optional(S.Number.pipe(T.Body("obfuscation_score"))),
+  }),
+).annotate({
+  identifier: "ScriptsGetResponseVersionsItem",
+}) as any as S.Schema<ScriptsGetResponseVersionsItem>;
+
+export type ScriptsGetResponseVersionsList = ScriptsGetResponseVersionsItem[];
+export const ScriptsGetResponseVersionsList = /*@__PURE__*/ S.Array(
+  ScriptsGetResponseVersionsItem,
+) as any as S.Schema<ScriptsGetResponseVersionsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetScriptResponse {
+  /** Identifier */
+  id: string;
+  addedAt: string;
+  firstSeenAt: string;
+  host: string;
+  lastSeenAt: string;
+  url: string;
+  urlContainsCdnCgiPath: boolean;
+  /** The cryptomining score of the JavaScript content. */
+  cryptominingScore?: number;
+  /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
+  dataflowScore?: number;
+  domainReportedMalicious?: boolean;
+  /** The timestamp of when the script was last fetched. */
+  fetchedAt?: string;
+  firstPageUrl?: string;
+  /** The computed hash of the analyzed script. */
+  hash?: string;
+  /** The integrity score of the JavaScript content. */
+  jsIntegrityScore?: number;
+  /** The magecart score of the JavaScript content. */
+  magecartScore?: number;
+  maliciousDomainCategories?: ScriptsGetResponseMaliciousDomainCategoriesList;
+  maliciousUrlCategories?: ScriptsGetResponseMaliciousUrlCategoriesList;
+  /** The malware score of the JavaScript content. */
+  malwareScore?: number;
+  /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
+  obfuscationScore?: number;
+  pageUrls?: ScriptsGetResponsePageUrlsList;
+  urlReportedMalicious?: boolean;
+  versions?: ScriptsGetResponseVersionsList;
+}
+export const GetScriptResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    addedAt: S.String.pipe(T.Body("added_at")),
+    firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
+    host: S.String,
+    lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
+    url: S.String,
+    urlContainsCdnCgiPath: S.Boolean.pipe(T.Body("url_contains_cdn_cgi_path")),
+    cryptominingScore: S.optional(S.Number.pipe(T.Body("cryptomining_score"))),
+    dataflowScore: S.optional(S.Number.pipe(T.Body("dataflow_score"))),
+    domainReportedMalicious: S.optional(
+      S.Boolean.pipe(T.Body("domain_reported_malicious")),
+    ),
+    fetchedAt: S.optional(S.String.pipe(T.Body("fetched_at"))),
+    firstPageUrl: S.optional(S.String.pipe(T.Body("first_page_url"))),
+    hash: S.optional(S.String),
+    jsIntegrityScore: S.optional(S.Number.pipe(T.Body("js_integrity_score"))),
+    magecartScore: S.optional(S.Number.pipe(T.Body("magecart_score"))),
+    maliciousDomainCategories: S.optional(
+      ScriptsGetResponseMaliciousDomainCategoriesList.pipe(
+        T.Body("malicious_domain_categories"),
+      ),
+    ),
+    maliciousUrlCategories: S.optional(
+      ScriptsGetResponseMaliciousUrlCategoriesList.pipe(
+        T.Body("malicious_url_categories"),
+      ),
+    ),
+    malwareScore: S.optional(S.Number.pipe(T.Body("malware_score"))),
+    obfuscationScore: S.optional(S.Number.pipe(T.Body("obfuscation_score"))),
+    pageUrls: S.optional(
+      ScriptsGetResponsePageUrlsList.pipe(T.Body("page_urls")),
+    ),
+    urlReportedMalicious: S.optional(
+      S.Boolean.pipe(T.Body("url_reported_malicious")),
+    ),
+    versions: S.optional(ScriptsGetResponseVersionsList),
+  }),
+).annotate({
+  identifier: "GetScriptResponse",
+}) as any as S.Schema<GetScriptResponse>;
 
 export type ConnectionsListRequestDirection = "asc" | "desc" | (string & {});
 export const ConnectionsListRequestDirection = /*@__PURE__*/ S.String;
@@ -110,7 +581,7 @@ export type ConnectionsListRequestOrderBy =
   | (string & {});
 export const ConnectionsListRequestOrderBy = /*@__PURE__*/ S.String;
 
-export interface ConnectionsListRequest {
+export interface ListConnectionsRequest {
   /** Identifier */
   zoneId: string;
   /** The direction used to sort returned connections. */
@@ -138,7 +609,7 @@ export interface ConnectionsListRequest {
   /** Includes connections whose URL contain one or more URL-encoded URLs separated by commas. */
   urls?: string;
 }
-export const ConnectionsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListConnectionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(ConnectionsListRequestDirection.pipe(T.Query())),
@@ -165,8 +636,8 @@ export const ConnectionsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConnectionsListRequest",
-}) as any as S.Schema<ConnectionsListRequest>;
+  identifier: "ListConnectionsRequest",
+}) as any as S.Schema<ListConnectionsRequest>;
 
 export type ConnectionsListResultItemMaliciousDomainCategoriesList = string[];
 export const ConnectionsListResultItemMaliciousDomainCategoriesList =
@@ -240,98 +711,17 @@ export const ConnectionsListResultList = /*@__PURE__*/ S.Array(
   ConnectionsListResultItem,
 ) as any as S.Schema<ConnectionsListResultList>;
 
-export interface ConnectionsListResponse {
+export interface ListConnectionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ConnectionsListResultList;
 }
-export const ConnectionsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ConnectionsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "ConnectionsListResponse",
-}) as any as S.Schema<ConnectionsListResponse>;
-
-export interface CookiesGetRequest {
-  /** Identifier */
-  zoneId: string;
-  /** Identifier */
-  cookieId: string;
-}
-export const CookiesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    cookieId: S.String.pipe(T.Label("cookie_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/page_shield/cookies/{cookie_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CookiesGetRequest",
-}) as any as S.Schema<CookiesGetRequest>;
-
-export type CookiesGetResponseType = "first_party" | "unknown" | (string & {});
-export const CookiesGetResponseType = /*@__PURE__*/ S.String;
-
-export type CookiesGetResponsePageUrlsList = string[];
-export const CookiesGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CookiesGetResponsePageUrlsList>;
-
-export type CookiesGetResponseSameSiteAttribute =
-  | "lax"
-  | "strict"
-  | "none"
-  | (string & {});
-export const CookiesGetResponseSameSiteAttribute = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CookiesGetResponse {
-  /** Identifier */
-  id: string;
-  firstSeenAt: string;
-  host: string;
-  lastSeenAt: string;
-  name: string;
-  type: CookiesGetResponseType;
-  domainAttribute?: string;
-  expiresAttribute?: string;
-  httpOnlyAttribute?: boolean;
-  maxAgeAttribute?: number;
-  pageUrls?: CookiesGetResponsePageUrlsList;
-  pathAttribute?: string;
-  sameSiteAttribute?: CookiesGetResponseSameSiteAttribute;
-  secureAttribute?: boolean;
-}
-export const CookiesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
-    host: S.String,
-    lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
-    name: S.String,
-    type: CookiesGetResponseType,
-    domainAttribute: S.optional(S.String.pipe(T.Body("domain_attribute"))),
-    expiresAttribute: S.optional(S.String.pipe(T.Body("expires_attribute"))),
-    httpOnlyAttribute: S.optional(
-      S.Boolean.pipe(T.Body("http_only_attribute")),
-    ),
-    maxAgeAttribute: S.optional(S.Number.pipe(T.Body("max_age_attribute"))),
-    pageUrls: S.optional(
-      CookiesGetResponsePageUrlsList.pipe(T.Body("page_urls")),
-    ),
-    pathAttribute: S.optional(S.String.pipe(T.Body("path_attribute"))),
-    sameSiteAttribute: S.optional(
-      CookiesGetResponseSameSiteAttribute.pipe(T.Body("same_site_attribute")),
-    ),
-    secureAttribute: S.optional(S.Boolean.pipe(T.Body("secure_attribute"))),
-  }),
-).annotate({
-  identifier: "CookiesGetResponse",
-}) as any as S.Schema<CookiesGetResponse>;
+  identifier: "ListConnectionsResponse",
+}) as any as S.Schema<ListConnectionsResponse>;
 
 export type CookiesListRequestDirection = "asc" | "desc" | (string & {});
 export const CookiesListRequestDirection = /*@__PURE__*/ S.String;
@@ -355,7 +745,7 @@ export const CookiesListRequestSameSite = /*@__PURE__*/ S.String;
 export type CookiesListRequestType = "first_party" | "unknown" | (string & {});
 export const CookiesListRequestType = /*@__PURE__*/ S.String;
 
-export interface CookiesListRequest {
+export interface ListCookiesRequest {
   /** Identifier */
   zoneId: string;
   /** The direction used to sort returned cookies.' */
@@ -387,7 +777,7 @@ export interface CookiesListRequest {
   /** Filters the returned cookies that match the specified type attribute */
   type?: CookiesListRequestType;
 }
-export const CookiesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListCookiesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(CookiesListRequestDirection.pipe(T.Query())),
@@ -412,8 +802,8 @@ export const CookiesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CookiesListRequest",
-}) as any as S.Schema<CookiesListRequest>;
+  identifier: "ListCookiesRequest",
+}) as any as S.Schema<ListCookiesRequest>;
 
 export type CookiesListResultItemType =
   | "first_party"
@@ -484,216 +874,23 @@ export const CookiesListResultList = /*@__PURE__*/ S.Array(
   CookiesListResultItem,
 ) as any as S.Schema<CookiesListResultList>;
 
-export interface CookiesListResponse {
+export interface ListCookiesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: CookiesListResultList;
 }
-export const CookiesListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListCookiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(CookiesListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "CookiesListResponse",
-}) as any as S.Schema<CookiesListResponse>;
+  identifier: "ListCookiesResponse",
+}) as any as S.Schema<ListCookiesResponse>;
 
-export interface GetRequest {
+export interface ListPoliciesRequest {
   /** Identifier */
   zoneId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/page_shield", code: 200 }),
-  ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
-  /** When true, indicates that Page Shield is enabled. */
-  enabled: boolean;
-  /** The timestamp of when Page Shield was last updated. */
-  updatedAt: string;
-  /** When true, CSP reports will be sent to https://csp-reporting.cloudflare.com/cdn-cgi/script_monitor/report */
-  useCloudflareReportingEndpoint: boolean;
-  /** When true, the paths associated with connections URLs will also be analyzed. */
-  useConnectionUrlPath: boolean;
-}
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    useCloudflareReportingEndpoint: S.Boolean.pipe(
-      T.Body("use_cloudflare_reporting_endpoint"),
-    ),
-    useConnectionUrlPath: S.Boolean.pipe(T.Body("use_connection_url_path")),
-  }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
-
-export type PoliciesCreateRequestAction =
-  | "allow"
-  | "log"
-  | "add_reporting_directives"
-  | (string & {});
-export const PoliciesCreateRequestAction = /*@__PURE__*/ S.String;
-
-export interface PoliciesCreateRequest {
-  /** Identifier */
-  zoneId: string;
-  /** The action to take if the expression matches */
-  action: PoliciesCreateRequestAction;
-  /** A description for the policy */
-  description: string;
-  /** Whether the policy is enabled */
-  enabled: boolean;
-  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
-  expression: string;
-  /** The policy which will be applied */
-  value: string;
-}
-export const PoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    action: PoliciesCreateRequestAction,
-    description: S.String,
-    enabled: S.Boolean,
-    expression: S.String,
-    value: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/page_shield/policies",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoliciesCreateRequest",
-}) as any as S.Schema<PoliciesCreateRequest>;
-
-export type PoliciesCreateResponseAction =
-  | "allow"
-  | "log"
-  | "add_reporting_directives"
-  | (string & {});
-export const PoliciesCreateResponseAction = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoliciesCreateResponse {
-  /** Identifier */
-  id: string;
-  /** The action to take if the expression matches */
-  action: PoliciesCreateResponseAction;
-  /** A description for the policy */
-  description: string;
-  /** Whether the policy is enabled */
-  enabled: boolean;
-  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
-  expression: string;
-  /** The policy which will be applied */
-  value: string;
-}
-export const PoliciesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    action: PoliciesCreateResponseAction,
-    description: S.String,
-    enabled: S.Boolean,
-    expression: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "PoliciesCreateResponse",
-}) as any as S.Schema<PoliciesCreateResponse>;
-
-export interface PoliciesDeleteRequest {
-  /** Identifier */
-  zoneId: string;
-  /** Identifier */
-  policyId: string;
-}
-export const PoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoliciesDeleteRequest",
-}) as any as S.Schema<PoliciesDeleteRequest>;
-
-export interface PoliciesDeleteResponse {}
-export const PoliciesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PoliciesDeleteResponse",
-}) as any as S.Schema<PoliciesDeleteResponse>;
-
-export interface PoliciesGetRequest {
-  /** Identifier */
-  zoneId: string;
-  /** Identifier */
-  policyId: string;
-}
-export const PoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoliciesGetRequest",
-}) as any as S.Schema<PoliciesGetRequest>;
-
-export type PoliciesGetResponseAction =
-  | "allow"
-  | "log"
-  | "add_reporting_directives"
-  | (string & {});
-export const PoliciesGetResponseAction = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoliciesGetResponse {
-  /** Identifier */
-  id: string;
-  /** The action to take if the expression matches */
-  action: PoliciesGetResponseAction;
-  /** A description for the policy */
-  description: string;
-  /** Whether the policy is enabled */
-  enabled: boolean;
-  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
-  expression: string;
-  /** The policy which will be applied */
-  value: string;
-}
-export const PoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    action: PoliciesGetResponseAction,
-    description: S.String,
-    enabled: S.Boolean,
-    expression: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "PoliciesGetResponse",
-}) as any as S.Schema<PoliciesGetResponse>;
-
-export interface PoliciesListRequest {
-  /** Identifier */
-  zoneId: string;
-}
-export const PoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -704,8 +901,8 @@ export const PoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PoliciesListRequest",
-}) as any as S.Schema<PoliciesListRequest>;
+  identifier: "ListPoliciesRequest",
+}) as any as S.Schema<ListPoliciesRequest>;
 
 export type PoliciesListResultItemAction =
   | "allow"
@@ -746,248 +943,17 @@ export const PoliciesListResultList = /*@__PURE__*/ S.Array(
   PoliciesListResultItem,
 ) as any as S.Schema<PoliciesListResultList>;
 
-export interface PoliciesListResponse {
+export interface ListPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PoliciesListResultList;
 }
-export const PoliciesListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PoliciesListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "PoliciesListResponse",
-}) as any as S.Schema<PoliciesListResponse>;
-
-export type PoliciesUpdateRequestAction =
-  | "allow"
-  | "log"
-  | "add_reporting_directives"
-  | (string & {});
-export const PoliciesUpdateRequestAction = /*@__PURE__*/ S.String;
-
-export interface PoliciesUpdateRequest {
-  /** Identifier */
-  zoneId: string;
-  /** Identifier */
-  policyId: string;
-  /** The action to take if the expression matches */
-  action?: PoliciesUpdateRequestAction;
-  /** A description for the policy */
-  description?: string;
-  /** Whether the policy is enabled */
-  enabled?: boolean;
-  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
-  expression?: string;
-  /** The policy which will be applied */
-  value?: string;
-}
-export const PoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    policyId: S.String.pipe(T.Label("policy_id")),
-    action: S.optional(PoliciesUpdateRequestAction),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    expression: S.optional(S.String),
-    value: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoliciesUpdateRequest",
-}) as any as S.Schema<PoliciesUpdateRequest>;
-
-export type PoliciesUpdateResponseAction =
-  | "allow"
-  | "log"
-  | "add_reporting_directives"
-  | (string & {});
-export const PoliciesUpdateResponseAction = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoliciesUpdateResponse {
-  /** Identifier */
-  id: string;
-  /** The action to take if the expression matches */
-  action: PoliciesUpdateResponseAction;
-  /** A description for the policy */
-  description: string;
-  /** Whether the policy is enabled */
-  enabled: boolean;
-  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
-  expression: string;
-  /** The policy which will be applied */
-  value: string;
-}
-export const PoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    action: PoliciesUpdateResponseAction,
-    description: S.String,
-    enabled: S.Boolean,
-    expression: S.String,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "PoliciesUpdateResponse",
-}) as any as S.Schema<PoliciesUpdateResponse>;
-
-export interface ScriptsGetRequest {
-  /** Identifier */
-  zoneId: string;
-  /** Identifier */
-  scriptId: string;
-}
-export const ScriptsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    scriptId: S.String.pipe(T.Label("script_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/page_shield/scripts/{script_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ScriptsGetRequest",
-}) as any as S.Schema<ScriptsGetRequest>;
-
-export type ScriptsGetResponseMaliciousDomainCategoriesList = string[];
-export const ScriptsGetResponseMaliciousDomainCategoriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsGetResponseMaliciousDomainCategoriesList>;
-
-export type ScriptsGetResponseMaliciousUrlCategoriesList = string[];
-export const ScriptsGetResponseMaliciousUrlCategoriesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ScriptsGetResponseMaliciousUrlCategoriesList>;
-
-export type ScriptsGetResponsePageUrlsList = string[];
-export const ScriptsGetResponsePageUrlsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ScriptsGetResponsePageUrlsList>;
-
-export interface ScriptsGetResponseVersionsItem {
-  /** The cryptomining score of the JavaScript content. */
-  cryptominingScore?: number;
-  /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  dataflowScore?: number;
-  /** The timestamp of when the script was last fetched. */
-  fetchedAt?: string;
-  /** The computed hash of the analyzed script. */
-  hash?: string;
-  /** The integrity score of the JavaScript content. */
-  jsIntegrityScore?: number;
-  /** The magecart score of the JavaScript content. */
-  magecartScore?: number;
-  /** The malware score of the JavaScript content. */
-  malwareScore?: number;
-  /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  obfuscationScore?: number;
-}
-export const ScriptsGetResponseVersionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cryptominingScore: S.optional(S.Number.pipe(T.Body("cryptomining_score"))),
-    dataflowScore: S.optional(S.Number.pipe(T.Body("dataflow_score"))),
-    fetchedAt: S.optional(S.String.pipe(T.Body("fetched_at"))),
-    hash: S.optional(S.String),
-    jsIntegrityScore: S.optional(S.Number.pipe(T.Body("js_integrity_score"))),
-    magecartScore: S.optional(S.Number.pipe(T.Body("magecart_score"))),
-    malwareScore: S.optional(S.Number.pipe(T.Body("malware_score"))),
-    obfuscationScore: S.optional(S.Number.pipe(T.Body("obfuscation_score"))),
-  }),
-).annotate({
-  identifier: "ScriptsGetResponseVersionsItem",
-}) as any as S.Schema<ScriptsGetResponseVersionsItem>;
-
-export type ScriptsGetResponseVersionsList = ScriptsGetResponseVersionsItem[];
-export const ScriptsGetResponseVersionsList = /*@__PURE__*/ S.Array(
-  ScriptsGetResponseVersionsItem,
-) as any as S.Schema<ScriptsGetResponseVersionsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ScriptsGetResponse {
-  /** Identifier */
-  id: string;
-  addedAt: string;
-  firstSeenAt: string;
-  host: string;
-  lastSeenAt: string;
-  url: string;
-  urlContainsCdnCgiPath: boolean;
-  /** The cryptomining score of the JavaScript content. */
-  cryptominingScore?: number;
-  /** The dataflow score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  dataflowScore?: number;
-  domainReportedMalicious?: boolean;
-  /** The timestamp of when the script was last fetched. */
-  fetchedAt?: string;
-  firstPageUrl?: string;
-  /** The computed hash of the analyzed script. */
-  hash?: string;
-  /** The integrity score of the JavaScript content. */
-  jsIntegrityScore?: number;
-  /** The magecart score of the JavaScript content. */
-  magecartScore?: number;
-  maliciousDomainCategories?: ScriptsGetResponseMaliciousDomainCategoriesList;
-  maliciousUrlCategories?: ScriptsGetResponseMaliciousUrlCategoriesList;
-  /** The malware score of the JavaScript content. */
-  malwareScore?: number;
-  /** The obfuscation score of the JavaScript content. This field has been deprecated in favour of js_integrity_score. */
-  obfuscationScore?: number;
-  pageUrls?: ScriptsGetResponsePageUrlsList;
-  urlReportedMalicious?: boolean;
-  versions?: ScriptsGetResponseVersionsList;
-}
-export const ScriptsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    addedAt: S.String.pipe(T.Body("added_at")),
-    firstSeenAt: S.String.pipe(T.Body("first_seen_at")),
-    host: S.String,
-    lastSeenAt: S.String.pipe(T.Body("last_seen_at")),
-    url: S.String,
-    urlContainsCdnCgiPath: S.Boolean.pipe(T.Body("url_contains_cdn_cgi_path")),
-    cryptominingScore: S.optional(S.Number.pipe(T.Body("cryptomining_score"))),
-    dataflowScore: S.optional(S.Number.pipe(T.Body("dataflow_score"))),
-    domainReportedMalicious: S.optional(
-      S.Boolean.pipe(T.Body("domain_reported_malicious")),
-    ),
-    fetchedAt: S.optional(S.String.pipe(T.Body("fetched_at"))),
-    firstPageUrl: S.optional(S.String.pipe(T.Body("first_page_url"))),
-    hash: S.optional(S.String),
-    jsIntegrityScore: S.optional(S.Number.pipe(T.Body("js_integrity_score"))),
-    magecartScore: S.optional(S.Number.pipe(T.Body("magecart_score"))),
-    maliciousDomainCategories: S.optional(
-      ScriptsGetResponseMaliciousDomainCategoriesList.pipe(
-        T.Body("malicious_domain_categories"),
-      ),
-    ),
-    maliciousUrlCategories: S.optional(
-      ScriptsGetResponseMaliciousUrlCategoriesList.pipe(
-        T.Body("malicious_url_categories"),
-      ),
-    ),
-    malwareScore: S.optional(S.Number.pipe(T.Body("malware_score"))),
-    obfuscationScore: S.optional(S.Number.pipe(T.Body("obfuscation_score"))),
-    pageUrls: S.optional(
-      ScriptsGetResponsePageUrlsList.pipe(T.Body("page_urls")),
-    ),
-    urlReportedMalicious: S.optional(
-      S.Boolean.pipe(T.Body("url_reported_malicious")),
-    ),
-    versions: S.optional(ScriptsGetResponseVersionsList),
-  }),
-).annotate({
-  identifier: "ScriptsGetResponse",
-}) as any as S.Schema<ScriptsGetResponse>;
+  identifier: "ListPoliciesResponse",
+}) as any as S.Schema<ListPoliciesResponse>;
 
 export type ScriptsListRequestDirection = "asc" | "desc" | (string & {});
 export const ScriptsListRequestDirection = /*@__PURE__*/ S.String;
@@ -1001,7 +967,7 @@ export type ScriptsListRequestOrderBy =
   | (string & {});
 export const ScriptsListRequestOrderBy = /*@__PURE__*/ S.String;
 
-export interface ScriptsListRequest {
+export interface ListScriptsRequest {
   /** Identifier */
   zoneId: string;
   /** The direction used to sort returned scripts. */
@@ -1031,7 +997,7 @@ export interface ScriptsListRequest {
   /** Includes scripts whose URL contain one or more URL-encoded URLs separated by commas. */
   urls?: string;
 }
-export const ScriptsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListScriptsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(ScriptsListRequestDirection.pipe(T.Query())),
@@ -1059,8 +1025,8 @@ export const ScriptsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ScriptsListRequest",
-}) as any as S.Schema<ScriptsListRequest>;
+  identifier: "ListScriptsRequest",
+}) as any as S.Schema<ListScriptsRequest>;
 
 export type ScriptsListResultItemMaliciousDomainCategoriesList = string[];
 export const ScriptsListResultItemMaliciousDomainCategoriesList =
@@ -1158,19 +1124,19 @@ export const ScriptsListResultList = /*@__PURE__*/ S.Array(
   ScriptsListResultItem,
 ) as any as S.Schema<ScriptsListResultList>;
 
-export interface ScriptsListResponse {
+export interface ListScriptsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ScriptsListResultList;
 }
-export const ScriptsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListScriptsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ScriptsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "ScriptsListResponse",
-}) as any as S.Schema<ScriptsListResponse>;
+  identifier: "ListScriptsResponse",
+}) as any as S.Schema<ListScriptsResponse>;
 
-export interface UpdateRequest {
+export interface PutPageShieldRequest {
   /** Identifier */
   zoneId: string;
   /** When true, indicates that Page Shield is enabled. */
@@ -1180,7 +1146,7 @@ export interface UpdateRequest {
   /** When true, the paths associated with connections URLs will also be analyzed. */
   useConnectionUrlPath?: boolean;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutPageShieldRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
@@ -1193,10 +1159,12 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({ method: "PUT", uri: "/zones/{zone_id}/page_shield", code: 200 }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "PutPageShieldRequest",
+}) as any as S.Schema<PutPageShieldRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface PutPageShieldResponse {
   /** When true, indicates that Page Shield is enabled. */
   enabled: boolean;
   /** The timestamp of when Page Shield was last updated. */
@@ -1206,7 +1174,7 @@ export interface UpdateResponse {
   /** When true, the paths associated with connections URLs will also be analyzed. */
   useConnectionUrlPath: boolean;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutPageShieldResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     updatedAt: S.String.pipe(T.Body("updated_at")),
@@ -1215,186 +1183,274 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     useConnectionUrlPath: S.Boolean.pipe(T.Body("use_connection_url_path")),
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "PutPageShieldResponse",
+}) as any as S.Schema<PutPageShieldResponse>;
 
-export type ConnectionsGetError = CloudflareOpError;
-/** Fetches a connection detected by Page Shield by connection ID. */
-export const connectionsGet: API.OperationMethod<
-  ConnectionsGetRequest,
-  ConnectionsGetResponse,
-  ConnectionsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionsGetRequest,
-  output: ConnectionsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type PoliciesUpdateRequestAction =
+  | "allow"
+  | "log"
+  | "add_reporting_directives"
+  | (string & {});
+export const PoliciesUpdateRequestAction = /*@__PURE__*/ S.String;
 
-export type ConnectionsListError = CloudflareOpError;
-/** Lists all connections detected by Page Shield. */
-export const connectionsList: API.OperationMethod<
-  ConnectionsListRequest,
-  ConnectionsListResponse,
-  ConnectionsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectionsListRequest,
-  output: ConnectionsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface UpdatePolicyRequest {
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  policyId: string;
+  /** The action to take if the expression matches */
+  action?: PoliciesUpdateRequestAction;
+  /** A description for the policy */
+  description?: string;
+  /** Whether the policy is enabled */
+  enabled?: boolean;
+  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
+  expression?: string;
+  /** The policy which will be applied */
+  value?: string;
+}
+export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
+    action: S.optional(PoliciesUpdateRequestAction),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    expression: S.optional(S.String),
+    value: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/zones/{zone_id}/page_shield/policies/{policy_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePolicyRequest",
+}) as any as S.Schema<UpdatePolicyRequest>;
 
-export type CookiesGetError = CloudflareOpError;
-/** Fetches a cookie collected by Page Shield by cookie ID. */
-export const cookiesGet: API.OperationMethod<
-  CookiesGetRequest,
-  CookiesGetResponse,
-  CookiesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CookiesGetRequest,
-  output: CookiesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type PoliciesUpdateResponseAction =
+  | "allow"
+  | "log"
+  | "add_reporting_directives"
+  | (string & {});
+export const PoliciesUpdateResponseAction = /*@__PURE__*/ S.String;
 
-export type CookiesListError = CloudflareOpError;
-/** Lists all cookies collected by Page Shield. */
-export const cookiesList: API.OperationMethod<
-  CookiesListRequest,
-  CookiesListResponse,
-  CookiesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CookiesListRequest,
-  output: CookiesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdatePolicyResponse {
+  /** Identifier */
+  id: string;
+  /** The action to take if the expression matches */
+  action: PoliciesUpdateResponseAction;
+  /** A description for the policy */
+  description: string;
+  /** Whether the policy is enabled */
+  enabled: boolean;
+  /** The expression which must match for the policy to be applied, using the Cloudflare Firewall rule expression syntax */
+  expression: string;
+  /** The policy which will be applied */
+  value: string;
+}
+export const UpdatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    action: PoliciesUpdateResponseAction,
+    description: S.String,
+    enabled: S.Boolean,
+    expression: S.String,
+    value: S.String,
+  }),
+).annotate({
+  identifier: "UpdatePolicyResponse",
+}) as any as S.Schema<UpdatePolicyResponse>;
 
-export type GetError = CloudflareOpError;
-/** Fetches the Page Shield settings. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PoliciesCreateError = CloudflareOpError;
+export type CreatePolicyError =
+  | PolicyQuotaExceeded
+  | Forbidden
+  | CloudflareOpError;
 /** Create a Page Shield policy. */
-export const policiesCreate: API.OperationMethod<
-  PoliciesCreateRequest,
-  PoliciesCreateResponse,
-  PoliciesCreateError,
+export const createPolicy: API.OperationMethod<
+  CreatePolicyRequest,
+  CreatePolicyResponse,
+  CreatePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesCreateRequest,
-  output: PoliciesCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreatePolicyRequest,
+  output: CreatePolicyResponse,
+  errors: [
+    PolicyQuotaExceeded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type PoliciesDeleteError = CloudflareOpError;
+export type DeletePolicyError = PolicyNotFound | Forbidden | CloudflareOpError;
 /** Delete a Page Shield policy by ID. */
-export const policiesDelete: API.OperationMethod<
-  PoliciesDeleteRequest,
-  PoliciesDeleteResponse,
-  PoliciesDeleteError,
+export const deletePolicy: API.OperationMethod<
+  DeletePolicyRequest,
+  DeletePolicyResponse,
+  DeletePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesDeleteRequest,
-  output: PoliciesDeleteResponse,
+  input: DeletePolicyRequest,
+  output: DeletePolicyResponse,
+  errors: [PolicyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetConnectionError = CloudflareOpError;
+/** Fetches a connection detected by Page Shield by connection ID. */
+export const getConnection: API.OperationMethod<
+  GetConnectionRequest,
+  GetConnectionResponse,
+  GetConnectionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectionRequest,
+  output: GetConnectionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type PoliciesGetError = CloudflareOpError;
+export type GetCookyError = CloudflareOpError;
+/** Fetches a cookie collected by Page Shield by cookie ID. */
+export const getCooky: API.OperationMethod<
+  GetCookyRequest,
+  GetCookyResponse,
+  GetCookyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCookyRequest,
+  output: GetCookyResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetPageShieldError = Forbidden | CloudflareOpError;
+/** Fetches the Page Shield settings. */
+export const getPageShield: API.OperationMethod<
+  GetPageShieldRequest,
+  GetPageShieldResponse,
+  GetPageShieldError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPageShieldRequest,
+  output: GetPageShieldResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetPolicyError = PolicyNotFound | Forbidden | CloudflareOpError;
 /** Fetches a Page Shield policy by ID. */
-export const policiesGet: API.OperationMethod<
-  PoliciesGetRequest,
-  PoliciesGetResponse,
-  PoliciesGetError,
+export const getPolicy: API.OperationMethod<
+  GetPolicyRequest,
+  GetPolicyResponse,
+  GetPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesGetRequest,
-  output: PoliciesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetPolicyRequest,
+  output: GetPolicyResponse,
+  errors: [PolicyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type PoliciesListError = CloudflareOpError;
-/** Lists all Page Shield policies. */
-export const policiesList: API.OperationMethod<
-  PoliciesListRequest,
-  PoliciesListResponse,
-  PoliciesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesListRequest,
-  output: PoliciesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PoliciesUpdateError = CloudflareOpError;
-/** Update a Page Shield policy by ID. */
-export const policiesUpdate: API.OperationMethod<
-  PoliciesUpdateRequest,
-  PoliciesUpdateResponse,
-  PoliciesUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesUpdateRequest,
-  output: PoliciesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ScriptsGetError = CloudflareOpError;
+export type GetScriptError = CloudflareOpError;
 /** Fetches a script detected by Page Shield by script ID. */
-export const scriptsGet: API.OperationMethod<
-  ScriptsGetRequest,
-  ScriptsGetResponse,
-  ScriptsGetError,
+export const getScript: API.OperationMethod<
+  GetScriptRequest,
+  GetScriptResponse,
+  GetScriptError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScriptsGetRequest,
-  output: ScriptsGetResponse,
+  input: GetScriptRequest,
+  output: GetScriptResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ScriptsListError = CloudflareOpError;
+export type ListConnectionsError = CloudflareOpError;
+/** Lists all connections detected by Page Shield. */
+export const listConnections: API.OperationMethod<
+  ListConnectionsRequest,
+  ListConnectionsResponse,
+  ListConnectionsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConnectionsRequest,
+  output: ListConnectionsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListCookiesError = CloudflareOpError;
+/** Lists all cookies collected by Page Shield. */
+export const listCookies: API.OperationMethod<
+  ListCookiesRequest,
+  ListCookiesResponse,
+  ListCookiesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCookiesRequest,
+  output: ListCookiesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListPoliciesError = Forbidden | CloudflareOpError;
+/** Lists all Page Shield policies. */
+export const listPolicies: API.OperationMethod<
+  ListPoliciesRequest,
+  ListPoliciesResponse,
+  ListPoliciesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPoliciesRequest,
+  output: ListPoliciesResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListScriptsError = CloudflareOpError;
 /** Lists all scripts detected by Page Shield. */
-export const scriptsList: API.OperationMethod<
-  ScriptsListRequest,
-  ScriptsListResponse,
-  ScriptsListError,
+export const listScripts: API.OperationMethod<
+  ListScriptsRequest,
+  ListScriptsResponse,
+  ListScriptsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScriptsListRequest,
-  output: ScriptsListResponse,
+  input: ListScriptsRequest,
+  output: ListScriptsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
+export type PutPageShieldError = NotEntitled | Forbidden | CloudflareOpError;
 /** Updates Page Shield settings. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export const putPageShield: API.OperationMethod<
+  PutPageShieldRequest,
+  PutPageShieldResponse,
+  PutPageShieldError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PutPageShieldRequest,
+  output: PutPageShieldResponse,
+  errors: [NotEntitled, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdatePolicyError = PolicyNotFound | Forbidden | CloudflareOpError;
+/** Update a Page Shield policy by ID. */
+export const updatePolicy: API.OperationMethod<
+  UpdatePolicyRequest,
+  UpdatePolicyResponse,
+  UpdatePolicyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePolicyRequest,
+  output: UpdatePolicyResponse,
+  errors: [PolicyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

@@ -9,6 +9,22 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class WidgetNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<WidgetNotFound>()("WidgetNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10404 }, { code: 10407 }],
+) {}
+
 export type WidgetsCreateRequestDirection = "asc" | "desc" | (string & {});
 export const WidgetsCreateRequestDirection = /*@__PURE__*/ S.String;
 
@@ -42,7 +58,7 @@ export const WidgetsCreateRequestClearanceLevel = /*@__PURE__*/ S.String;
 export type WidgetsCreateRequestRegion = "world" | "china" | (string & {});
 export const WidgetsCreateRequestRegion = /*@__PURE__*/ S.String;
 
-export interface WidgetsCreateRequest {
+export interface CreateWidgetRequest {
   /** Identifier */
   accountId: string;
   /** Direction to order widgets. */
@@ -71,7 +87,7 @@ export interface WidgetsCreateRequest {
   /** Region where this widget can be used. This cannot be changed after creation. */
   region?: WidgetsCreateRequestRegion;
 }
-export const WidgetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(WidgetsCreateRequestDirection.pipe(T.Query())),
@@ -97,8 +113,8 @@ export const WidgetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WidgetsCreateRequest",
-}) as any as S.Schema<WidgetsCreateRequest>;
+  identifier: "CreateWidgetRequest",
+}) as any as S.Schema<CreateWidgetRequest>;
 
 export type WidgetsCreateResponseClearanceLevel =
   | "no_clearance"
@@ -124,7 +140,7 @@ export type WidgetsCreateResponseRegion = "world" | "china" | (string & {});
 export const WidgetsCreateResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WidgetsCreateResponse {
+export interface CreateWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
   botFightMode: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
@@ -149,7 +165,7 @@ export interface WidgetsCreateResponse {
   /** Widget item identifier tag. */
   sitekey: string;
 }
-export const WidgetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
     clearanceLevel: WidgetsCreateResponseClearanceLevel.pipe(
@@ -167,16 +183,16 @@ export const WidgetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     sitekey: S.String,
   }),
 ).annotate({
-  identifier: "WidgetsCreateResponse",
-}) as any as S.Schema<WidgetsCreateResponse>;
+  identifier: "CreateWidgetResponse",
+}) as any as S.Schema<CreateWidgetResponse>;
 
-export interface WidgetsDeleteRequest {
+export interface DeleteWidgetRequest {
   /** Identifier */
   accountId: string;
   /** Widget item identifier tag. */
   sitekey: string;
 }
-export const WidgetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
@@ -188,8 +204,8 @@ export const WidgetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WidgetsDeleteRequest",
-}) as any as S.Schema<WidgetsDeleteRequest>;
+  identifier: "DeleteWidgetRequest",
+}) as any as S.Schema<DeleteWidgetRequest>;
 
 export type WidgetsDeleteResponseClearanceLevel =
   | "no_clearance"
@@ -215,7 +231,7 @@ export type WidgetsDeleteResponseRegion = "world" | "china" | (string & {});
 export const WidgetsDeleteResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WidgetsDeleteResponse {
+export interface DeleteWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
   botFightMode: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
@@ -240,7 +256,7 @@ export interface WidgetsDeleteResponse {
   /** Widget item identifier tag. */
   sitekey: string;
 }
-export const WidgetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
     clearanceLevel: WidgetsDeleteResponseClearanceLevel.pipe(
@@ -258,16 +274,16 @@ export const WidgetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
     sitekey: S.String,
   }),
 ).annotate({
-  identifier: "WidgetsDeleteResponse",
-}) as any as S.Schema<WidgetsDeleteResponse>;
+  identifier: "DeleteWidgetResponse",
+}) as any as S.Schema<DeleteWidgetResponse>;
 
-export interface WidgetsGetRequest {
+export interface GetWidgetRequest {
   /** Identifier */
   accountId: string;
   /** Widget item identifier tag. */
   sitekey: string;
 }
-export const WidgetsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
@@ -279,8 +295,8 @@ export const WidgetsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WidgetsGetRequest",
-}) as any as S.Schema<WidgetsGetRequest>;
+  identifier: "GetWidgetRequest",
+}) as any as S.Schema<GetWidgetRequest>;
 
 export type WidgetsGetResponseClearanceLevel =
   | "no_clearance"
@@ -306,7 +322,7 @@ export type WidgetsGetResponseRegion = "world" | "china" | (string & {});
 export const WidgetsGetResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WidgetsGetResponse {
+export interface GetWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
   botFightMode: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
@@ -331,7 +347,7 @@ export interface WidgetsGetResponse {
   /** Widget item identifier tag. */
   sitekey: string;
 }
-export const WidgetsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
     clearanceLevel: WidgetsGetResponseClearanceLevel.pipe(
@@ -349,8 +365,8 @@ export const WidgetsGetResponse = /*@__PURE__*/ S.suspend(() =>
     sitekey: S.String,
   }),
 ).annotate({
-  identifier: "WidgetsGetResponse",
-}) as any as S.Schema<WidgetsGetResponse>;
+  identifier: "GetWidgetResponse",
+}) as any as S.Schema<GetWidgetResponse>;
 
 export type WidgetsListRequestDirection = "asc" | "desc" | (string & {});
 export const WidgetsListRequestDirection = /*@__PURE__*/ S.String;
@@ -358,7 +374,7 @@ export const WidgetsListRequestDirection = /*@__PURE__*/ S.String;
 export type WidgetsListRequestOrder = "id" | "sitekey" | "name" | (string & {});
 export const WidgetsListRequestOrder = /*@__PURE__*/ S.String;
 
-export interface WidgetsListRequest {
+export interface ListWidgetsRequest {
   /** Identifier */
   accountId: string;
   /** Direction to order widgets. */
@@ -372,7 +388,7 @@ export interface WidgetsListRequest {
   /** Number of items per page. */
   perPage?: number;
 }
-export const WidgetsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListWidgetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(WidgetsListRequestDirection.pipe(T.Query())),
@@ -388,8 +404,8 @@ export const WidgetsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WidgetsListRequest",
-}) as any as S.Schema<WidgetsListRequest>;
+  identifier: "ListWidgetsRequest",
+}) as any as S.Schema<ListWidgetsRequest>;
 
 export type WidgetsListResultItemClearanceLevel =
   | "no_clearance"
@@ -462,19 +478,19 @@ export const WidgetsListResultList = /*@__PURE__*/ S.Array(
   WidgetsListResultItem,
 ) as any as S.Schema<WidgetsListResultList>;
 
-export interface WidgetsListResponse {
+export interface ListWidgetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: WidgetsListResultList;
 }
-export const WidgetsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListWidgetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(WidgetsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "WidgetsListResponse",
-}) as any as S.Schema<WidgetsListResponse>;
+  identifier: "ListWidgetsResponse",
+}) as any as S.Schema<ListWidgetsResponse>;
 
-export interface WidgetsRotateSecretRequest {
+export interface RotateSecretWidgetRequest {
   /** Identifier */
   accountId: string;
   /** Widget item identifier tag. */
@@ -482,7 +498,7 @@ export interface WidgetsRotateSecretRequest {
   /** If `invalidate_immediately` is set to `false`, the previous secret will */
   invalidateImmediately?: boolean;
 }
-export const WidgetsRotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
+export const RotateSecretWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
@@ -497,8 +513,8 @@ export const WidgetsRotateSecretRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WidgetsRotateSecretRequest",
-}) as any as S.Schema<WidgetsRotateSecretRequest>;
+  identifier: "RotateSecretWidgetRequest",
+}) as any as S.Schema<RotateSecretWidgetRequest>;
 
 export type WidgetsRotateSecretResponseClearanceLevel =
   | "no_clearance"
@@ -527,7 +543,7 @@ export type WidgetsRotateSecretResponseRegion =
 export const WidgetsRotateSecretResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WidgetsRotateSecretResponse {
+export interface RotateSecretWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
   botFightMode: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
@@ -552,7 +568,7 @@ export interface WidgetsRotateSecretResponse {
   /** Widget item identifier tag. */
   sitekey: string;
 }
-export const WidgetsRotateSecretResponse = /*@__PURE__*/ S.suspend(() =>
+export const RotateSecretWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
     clearanceLevel: WidgetsRotateSecretResponseClearanceLevel.pipe(
@@ -570,8 +586,8 @@ export const WidgetsRotateSecretResponse = /*@__PURE__*/ S.suspend(() =>
     sitekey: S.String,
   }),
 ).annotate({
-  identifier: "WidgetsRotateSecretResponse",
-}) as any as S.Schema<WidgetsRotateSecretResponse>;
+  identifier: "RotateSecretWidgetResponse",
+}) as any as S.Schema<RotateSecretWidgetResponse>;
 
 export type WidgetsUpdateRequestDomainsList = unknown[];
 export const WidgetsUpdateRequestDomainsList = /*@__PURE__*/ S.Array(
@@ -596,7 +612,7 @@ export const WidgetsUpdateRequestClearanceLevel = /*@__PURE__*/ S.String;
 export type WidgetsUpdateRequestRegion = "world" | "china" | (string & {});
 export const WidgetsUpdateRequestRegion = /*@__PURE__*/ S.String;
 
-export interface WidgetsUpdateRequest {
+export interface UpdateWidgetRequest {
   /** Identifier */
   accountId: string;
   /** Widget item identifier tag. */
@@ -617,7 +633,7 @@ export interface WidgetsUpdateRequest {
   /** Region where this widget can be used. This cannot be changed after creation. */
   region?: WidgetsUpdateRequestRegion;
 }
-export const WidgetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateWidgetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sitekey: S.String.pipe(T.Label()),
@@ -639,8 +655,8 @@ export const WidgetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WidgetsUpdateRequest",
-}) as any as S.Schema<WidgetsUpdateRequest>;
+  identifier: "UpdateWidgetRequest",
+}) as any as S.Schema<UpdateWidgetRequest>;
 
 export type WidgetsUpdateResponseClearanceLevel =
   | "no_clearance"
@@ -666,7 +682,7 @@ export type WidgetsUpdateResponseRegion = "world" | "china" | (string & {});
 export const WidgetsUpdateResponseRegion = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WidgetsUpdateResponse {
+export interface UpdateWidgetResponse {
   /** If bot_fight_mode is set to `true`, Cloudflare issues computationally */
   botFightMode: boolean;
   /** If Turnstile is embedded on a Cloudflare site and the widget should grant challenge clearance, */
@@ -691,7 +707,7 @@ export interface WidgetsUpdateResponse {
   /** Widget item identifier tag. */
   sitekey: string;
 }
-export const WidgetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateWidgetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     botFightMode: S.Boolean.pipe(T.Body("bot_fight_mode")),
     clearanceLevel: WidgetsUpdateResponseClearanceLevel.pipe(
@@ -709,89 +725,89 @@ export const WidgetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     sitekey: S.String,
   }),
 ).annotate({
-  identifier: "WidgetsUpdateResponse",
-}) as any as S.Schema<WidgetsUpdateResponse>;
+  identifier: "UpdateWidgetResponse",
+}) as any as S.Schema<UpdateWidgetResponse>;
 
-export type WidgetsCreateError = CloudflareOpError;
+export type CreateWidgetError = CloudflareOpError;
 /** Lists challenge widgets. */
-export const widgetsCreate: API.OperationMethod<
-  WidgetsCreateRequest,
-  WidgetsCreateResponse,
-  WidgetsCreateError,
+export const createWidget: API.OperationMethod<
+  CreateWidgetRequest,
+  CreateWidgetResponse,
+  CreateWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WidgetsCreateRequest,
-  output: WidgetsCreateResponse,
+  input: CreateWidgetRequest,
+  output: CreateWidgetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WidgetsDeleteError = CloudflareOpError;
+export type DeleteWidgetError = WidgetNotFound | Forbidden | CloudflareOpError;
 /** Destroy a Turnstile Widget. */
-export const widgetsDelete: API.OperationMethod<
-  WidgetsDeleteRequest,
-  WidgetsDeleteResponse,
-  WidgetsDeleteError,
+export const deleteWidget: API.OperationMethod<
+  DeleteWidgetRequest,
+  DeleteWidgetResponse,
+  DeleteWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WidgetsDeleteRequest,
-  output: WidgetsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteWidgetRequest,
+  output: DeleteWidgetResponse,
+  errors: [WidgetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WidgetsGetError = CloudflareOpError;
+export type GetWidgetError = WidgetNotFound | Forbidden | CloudflareOpError;
 /** Show a single challenge widget configuration. */
-export const widgetsGet: API.OperationMethod<
-  WidgetsGetRequest,
-  WidgetsGetResponse,
-  WidgetsGetError,
+export const getWidget: API.OperationMethod<
+  GetWidgetRequest,
+  GetWidgetResponse,
+  GetWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WidgetsGetRequest,
-  output: WidgetsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetWidgetRequest,
+  output: GetWidgetResponse,
+  errors: [WidgetNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WidgetsListError = CloudflareOpError;
+export type ListWidgetsError = CloudflareOpError;
 /** Lists all turnstile widgets of an account. */
-export const widgetsList: API.OperationMethod<
-  WidgetsListRequest,
-  WidgetsListResponse,
-  WidgetsListError,
+export const listWidgets: API.OperationMethod<
+  ListWidgetsRequest,
+  ListWidgetsResponse,
+  ListWidgetsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WidgetsListRequest,
-  output: WidgetsListResponse,
+  input: ListWidgetsRequest,
+  output: ListWidgetsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WidgetsRotateSecretError = CloudflareOpError;
+export type RotateSecretWidgetError = CloudflareOpError;
 /** Generate a new secret key for this widget. If `invalidate_immediately` is set to `false`, the previous secret remains valid for 2 hours. Note that secrets cannot be rotated again during the grace period. */
-export const widgetsRotateSecret: API.OperationMethod<
-  WidgetsRotateSecretRequest,
-  WidgetsRotateSecretResponse,
-  WidgetsRotateSecretError,
+export const rotateSecretWidget: API.OperationMethod<
+  RotateSecretWidgetRequest,
+  RotateSecretWidgetResponse,
+  RotateSecretWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WidgetsRotateSecretRequest,
-  output: WidgetsRotateSecretResponse,
+  input: RotateSecretWidgetRequest,
+  output: RotateSecretWidgetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WidgetsUpdateError = CloudflareOpError;
+export type UpdateWidgetError = CloudflareOpError;
 /** Update the configuration of a widget. */
-export const widgetsUpdate: API.OperationMethod<
-  WidgetsUpdateRequest,
-  WidgetsUpdateResponse,
-  WidgetsUpdateError,
+export const updateWidget: API.OperationMethod<
+  UpdateWidgetRequest,
+  UpdateWidgetResponse,
+  UpdateWidgetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WidgetsUpdateRequest,
-  output: WidgetsUpdateResponse,
+  input: UpdateWidgetRequest,
+  output: UpdateWidgetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

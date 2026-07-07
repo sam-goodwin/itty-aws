@@ -9,11 +9,11 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface GetRequest {
+export interface GetDcvDelegationRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetDcvDelegationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -23,29 +23,33 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetDcvDelegationRequest",
+}) as any as S.Schema<GetDcvDelegationRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetDcvDelegationResponse {
   /** The DCV Delegation unique identifier. */
   uuid?: string;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetDcvDelegationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     uuid: S.optional(S.String),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetDcvDelegationResponse",
+}) as any as S.Schema<GetDcvDelegationResponse>;
 
-export type GetError = CloudflareOpError;
+export type GetDcvDelegationError = CloudflareOpError;
 /** Retrieve the account and zone specific unique identifier used as part of the CNAME target for DCV Delegation. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getDcvDelegation: API.OperationMethod<
+  GetDcvDelegationRequest,
+  GetDcvDelegationResponse,
+  GetDcvDelegationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
+  input: GetDcvDelegationRequest,
+  output: GetDcvDelegationResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

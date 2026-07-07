@@ -9,6 +9,62 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class DuplicateLockdown extends T.applyErrorMatchers(
+  S.TaggedErrorClass<DuplicateLockdown>()("DuplicateLockdown", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [
+    {
+      code: 10009,
+      message: { includes: "zonelockdown.api.duplicate_of_existing" },
+    },
+  ],
+) {}
+
+export class DuplicateUaRule extends T.applyErrorMatchers(
+  S.TaggedErrorClass<DuplicateUaRule>()("DuplicateUaRule", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [
+    {
+      code: 10009,
+      message: { includes: "firewalluablock.api.duplicate_of_existing" },
+    },
+  ],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class LockdownNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<LockdownNotFound>()("LockdownNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [
+    { code: 10001, message: { includes: "zonelockdown.api.not_found" } },
+    { status: 404 },
+  ],
+) {}
+
+export class UaRuleNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<UaRuleNotFound>()("UaRuleNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [
+    { code: 10001, message: { includes: "firewalluablock.api.not_found" } },
+    { status: 404 },
+  ],
+) {}
+
 export interface AccessRulesCreateRequestConfiguration {
   AccessRuleIPConfigurationObjectTargetValue__: unknown;
   IPV6ConfigurationObjectTargetValue__: unknown;
@@ -715,454 +771,11 @@ export const AccessRulesListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AccessRulesListResponse",
 }) as any as S.Schema<AccessRulesListResponse>;
 
-export interface LockdownsCreateRequestConfigurations {
-  LockdownIPConfigurationObjectTargetValue__: unknown;
-  LockdownCIDRConfigurationObjectTargetValue__: unknown;
-}
-export const LockdownsCreateRequestConfigurations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownIPConfiguration object { target, value }"),
-      ),
-      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownCIDRConfiguration object { target, value }"),
-      ),
-    }),
-).annotate({
-  identifier: "LockdownsCreateRequestConfigurations",
-}) as any as S.Schema<LockdownsCreateRequestConfigurations>;
-
-export type LockdownsCreateRequestUrlsList = unknown[];
-export const LockdownsCreateRequestUrlsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LockdownsCreateRequestUrlsList>;
-
-export interface LockdownsCreateRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: LockdownsCreateRequestConfigurations;
-  /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
-  urls: LockdownsCreateRequestUrlsList;
-  /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
-  description?: string;
-  /** When true, indicates that the rule is currently paused. */
-  paused?: boolean;
-  /** The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority. */
-  priority?: number;
-}
-export const LockdownsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    configurations: LockdownsCreateRequestConfigurations,
-    urls: LockdownsCreateRequestUrlsList,
-    description: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    priority: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/firewall/lockdowns",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LockdownsCreateRequest",
-}) as any as S.Schema<LockdownsCreateRequest>;
-
-export interface LockdownsCreateResponseConfigurations {
-  LockdownIPConfigurationObjectTargetValue__: unknown;
-  LockdownCIDRConfigurationObjectTargetValue__: unknown;
-}
-export const LockdownsCreateResponseConfigurations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownIPConfiguration object { target, value }"),
-      ),
-      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownCIDRConfiguration object { target, value }"),
-      ),
-    }),
-).annotate({
-  identifier: "LockdownsCreateResponseConfigurations",
-}) as any as S.Schema<LockdownsCreateResponseConfigurations>;
-
-export type LockdownsCreateResponseUrlsList = unknown[];
-export const LockdownsCreateResponseUrlsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LockdownsCreateResponseUrlsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LockdownsCreateResponse {
-  /** The unique identifier of the Zone Lockdown rule. */
-  id: string;
-  /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: LockdownsCreateResponseConfigurations;
-  /** The timestamp of when the rule was created. */
-  createdOn: string;
-  /** An informative summary of the rule. */
-  description: string;
-  /** The timestamp of when the rule was last modified. */
-  modifiedOn: string;
-  /** When true, indicates that the rule is currently paused. */
-  paused: boolean;
-  /** The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
-  urls: LockdownsCreateResponseUrlsList;
-}
-export const LockdownsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    configurations: LockdownsCreateResponseConfigurations,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    description: S.String,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    paused: S.Boolean,
-    urls: LockdownsCreateResponseUrlsList,
-  }),
-).annotate({
-  identifier: "LockdownsCreateResponse",
-}) as any as S.Schema<LockdownsCreateResponse>;
-
-export interface LockdownsDeleteRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The unique identifier of the Zone Lockdown rule. */
-  lockDownsId: string;
-}
-export const LockdownsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    lockDownsId: S.String.pipe(T.Label("lock_downs_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LockdownsDeleteRequest",
-}) as any as S.Schema<LockdownsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LockdownsDeleteResponse {
-  /** The unique identifier of the Zone Lockdown rule. */
-  id?: string;
-}
-export const LockdownsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LockdownsDeleteResponse",
-}) as any as S.Schema<LockdownsDeleteResponse>;
-
-export interface LockdownsGetRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The unique identifier of the Zone Lockdown rule. */
-  lockDownsId: string;
-}
-export const LockdownsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    lockDownsId: S.String.pipe(T.Label("lock_downs_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LockdownsGetRequest",
-}) as any as S.Schema<LockdownsGetRequest>;
-
-export interface LockdownsGetResponseConfigurations {
-  LockdownIPConfigurationObjectTargetValue__: unknown;
-  LockdownCIDRConfigurationObjectTargetValue__: unknown;
-}
-export const LockdownsGetResponseConfigurations = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("LockdownIPConfiguration object { target, value }"),
-    ),
-    LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("LockdownCIDRConfiguration object { target, value }"),
-    ),
-  }),
-).annotate({
-  identifier: "LockdownsGetResponseConfigurations",
-}) as any as S.Schema<LockdownsGetResponseConfigurations>;
-
-export type LockdownsGetResponseUrlsList = unknown[];
-export const LockdownsGetResponseUrlsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LockdownsGetResponseUrlsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LockdownsGetResponse {
-  /** The unique identifier of the Zone Lockdown rule. */
-  id: string;
-  /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: LockdownsGetResponseConfigurations;
-  /** The timestamp of when the rule was created. */
-  createdOn: string;
-  /** An informative summary of the rule. */
-  description: string;
-  /** The timestamp of when the rule was last modified. */
-  modifiedOn: string;
-  /** When true, indicates that the rule is currently paused. */
-  paused: boolean;
-  /** The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
-  urls: LockdownsGetResponseUrlsList;
-}
-export const LockdownsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    configurations: LockdownsGetResponseConfigurations,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    description: S.String,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    paused: S.Boolean,
-    urls: LockdownsGetResponseUrlsList,
-  }),
-).annotate({
-  identifier: "LockdownsGetResponse",
-}) as any as S.Schema<LockdownsGetResponse>;
-
-export interface LockdownsListRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The timestamp of when the rule was created. */
-  createdOn?: string;
-  /** A string to search for in the description of existing rules. */
-  description?: string;
-  /** A string to search for in the description of existing rules. */
-  descriptionSearch?: string;
-  /** A single IP address to search for in existing rules. */
-  ip?: string;
-  /** A single IP address range to search for in existing rules. */
-  ipRangeSearch?: string;
-  /** A single IP address to search for in existing rules. */
-  ipSearch?: string;
-  /** The timestamp of when the rule was last modified. */
-  modifiedOn?: string;
-  /** Page number of paginated results. */
-  page?: number;
-  /** The maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`. */
-  perPage?: number;
-  /** The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority. */
-  priority?: number;
-  /** A single URI to search for in the list of URLs of existing rules. */
-  uriSearch?: string;
-}
-export const LockdownsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    createdOn: S.optional(S.String.pipe(T.Query("created_on"))),
-    description: S.optional(S.String.pipe(T.Query())),
-    descriptionSearch: S.optional(S.String.pipe(T.Query("description_search"))),
-    ip: S.optional(S.String.pipe(T.Query())),
-    ipRangeSearch: S.optional(S.String.pipe(T.Query("ip_range_search"))),
-    ipSearch: S.optional(S.String.pipe(T.Query("ip_search"))),
-    modifiedOn: S.optional(S.String.pipe(T.Query("modified_on"))),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    priority: S.optional(S.Number.pipe(T.Query())),
-    uriSearch: S.optional(S.String.pipe(T.Query("uri_search"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/lockdowns",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LockdownsListRequest",
-}) as any as S.Schema<LockdownsListRequest>;
-
-export interface LockdownsListResultItemConfigurations {
-  LockdownIPConfigurationObjectTargetValue__: unknown;
-  LockdownCIDRConfigurationObjectTargetValue__: unknown;
-}
-export const LockdownsListResultItemConfigurations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownIPConfiguration object { target, value }"),
-      ),
-      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownCIDRConfiguration object { target, value }"),
-      ),
-    }),
-).annotate({
-  identifier: "LockdownsListResultItemConfigurations",
-}) as any as S.Schema<LockdownsListResultItemConfigurations>;
-
-export type LockdownsListResultItemUrlsList = unknown[];
-export const LockdownsListResultItemUrlsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LockdownsListResultItemUrlsList>;
-
-export interface LockdownsListResultItem {
-  /** The unique identifier of the Zone Lockdown rule. */
-  id: string;
-  /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: LockdownsListResultItemConfigurations;
-  /** The timestamp of when the rule was created. */
-  createdOn: string;
-  /** An informative summary of the rule. */
-  description: string;
-  /** The timestamp of when the rule was last modified. */
-  modifiedOn: string;
-  /** When true, indicates that the rule is currently paused. */
-  paused: boolean;
-  /** The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
-  urls: LockdownsListResultItemUrlsList;
-}
-export const LockdownsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    configurations: LockdownsListResultItemConfigurations,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    description: S.String,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    paused: S.Boolean,
-    urls: LockdownsListResultItemUrlsList,
-  }),
-).annotate({
-  identifier: "LockdownsListResultItem",
-}) as any as S.Schema<LockdownsListResultItem>;
-
-export type LockdownsListResultList = LockdownsListResultItem[];
-export const LockdownsListResultList = /*@__PURE__*/ S.Array(
-  LockdownsListResultItem,
-) as any as S.Schema<LockdownsListResultList>;
-
-export interface LockdownsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LockdownsListResultList;
-}
-export const LockdownsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(LockdownsListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "LockdownsListResponse",
-}) as any as S.Schema<LockdownsListResponse>;
-
-export interface LockdownsUpdateRequestConfigurations {
-  LockdownIPConfigurationObjectTargetValue__: unknown;
-  LockdownCIDRConfigurationObjectTargetValue__: unknown;
-}
-export const LockdownsUpdateRequestConfigurations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownIPConfiguration object { target, value }"),
-      ),
-      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownCIDRConfiguration object { target, value }"),
-      ),
-    }),
-).annotate({
-  identifier: "LockdownsUpdateRequestConfigurations",
-}) as any as S.Schema<LockdownsUpdateRequestConfigurations>;
-
-export type LockdownsUpdateRequestUrlsList = unknown[];
-export const LockdownsUpdateRequestUrlsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LockdownsUpdateRequestUrlsList>;
-
-export interface LockdownsUpdateRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The unique identifier of the Zone Lockdown rule. */
-  lockDownsId: string;
-  /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: LockdownsUpdateRequestConfigurations;
-  /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
-  urls: LockdownsUpdateRequestUrlsList;
-}
-export const LockdownsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    lockDownsId: S.String.pipe(T.Label("lock_downs_id")),
-    configurations: LockdownsUpdateRequestConfigurations,
-    urls: LockdownsUpdateRequestUrlsList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LockdownsUpdateRequest",
-}) as any as S.Schema<LockdownsUpdateRequest>;
-
-export interface LockdownsUpdateResponseConfigurations {
-  LockdownIPConfigurationObjectTargetValue__: unknown;
-  LockdownCIDRConfigurationObjectTargetValue__: unknown;
-}
-export const LockdownsUpdateResponseConfigurations = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownIPConfiguration object { target, value }"),
-      ),
-      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-        T.Body("LockdownCIDRConfiguration object { target, value }"),
-      ),
-    }),
-).annotate({
-  identifier: "LockdownsUpdateResponseConfigurations",
-}) as any as S.Schema<LockdownsUpdateResponseConfigurations>;
-
-export type LockdownsUpdateResponseUrlsList = unknown[];
-export const LockdownsUpdateResponseUrlsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<LockdownsUpdateResponseUrlsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LockdownsUpdateResponse {
-  /** The unique identifier of the Zone Lockdown rule. */
-  id: string;
-  /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
-  configurations: LockdownsUpdateResponseConfigurations;
-  /** The timestamp of when the rule was created. */
-  createdOn: string;
-  /** An informative summary of the rule. */
-  description: string;
-  /** The timestamp of when the rule was last modified. */
-  modifiedOn: string;
-  /** When true, indicates that the rule is currently paused. */
-  paused: boolean;
-  /** The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
-  urls: LockdownsUpdateResponseUrlsList;
-}
-export const LockdownsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    configurations: LockdownsUpdateResponseConfigurations,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    description: S.String,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    paused: S.Boolean,
-    urls: LockdownsUpdateResponseUrlsList,
-  }),
-).annotate({
-  identifier: "LockdownsUpdateResponse",
-}) as any as S.Schema<LockdownsUpdateResponse>;
-
-export interface RulesBulkDeleteRequest {
+export interface BulkDeleteRulesRequest {
   /** Defines an identifier. */
   zoneId: string;
 }
-export const RulesBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const BulkDeleteRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -1173,8 +786,8 @@ export const RulesBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RulesBulkDeleteRequest",
-}) as any as S.Schema<RulesBulkDeleteRequest>;
+  identifier: "BulkDeleteRulesRequest",
+}) as any as S.Schema<BulkDeleteRulesRequest>;
 
 export interface RulesBulkDeleteResultItemFilter {
   FirewallFilterObjectIdDescriptionExpression2More__: unknown;
@@ -1234,24 +847,24 @@ export const RulesBulkDeleteResultList = /*@__PURE__*/ S.Array(
   RulesBulkDeleteResultItem,
 ) as any as S.Schema<RulesBulkDeleteResultList>;
 
-export interface RulesBulkDeleteResponse {
+export interface BulkDeleteRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesBulkDeleteResultList;
 }
-export const RulesBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const BulkDeleteRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesBulkDeleteResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RulesBulkDeleteResponse",
-}) as any as S.Schema<RulesBulkDeleteResponse>;
+  identifier: "BulkDeleteRulesResponse",
+}) as any as S.Schema<BulkDeleteRulesResponse>;
 
-export interface RulesBulkEditRequest {
+export interface BulkPatchRulesRequest {
   /** Defines an identifier. */
   zoneId: string;
   body: unknown;
 }
-export const RulesBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
+export const BulkPatchRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
@@ -1263,8 +876,8 @@ export const RulesBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RulesBulkEditRequest",
-}) as any as S.Schema<RulesBulkEditRequest>;
+  identifier: "BulkPatchRulesRequest",
+}) as any as S.Schema<BulkPatchRulesRequest>;
 
 export interface RulesBulkEditResultItemFilter {
   FirewallFilterObjectIdDescriptionExpression2More__: unknown;
@@ -1324,24 +937,24 @@ export const RulesBulkEditResultList = /*@__PURE__*/ S.Array(
   RulesBulkEditResultItem,
 ) as any as S.Schema<RulesBulkEditResultList>;
 
-export interface RulesBulkEditResponse {
+export interface BulkPatchRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesBulkEditResultList;
 }
-export const RulesBulkEditResponse = /*@__PURE__*/ S.suspend(() =>
+export const BulkPatchRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesBulkEditResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RulesBulkEditResponse",
-}) as any as S.Schema<RulesBulkEditResponse>;
+  identifier: "BulkPatchRulesResponse",
+}) as any as S.Schema<BulkPatchRulesResponse>;
 
-export interface RulesBulkUpdateRequest {
+export interface BulkPutRulesRequest {
   /** Defines an identifier. */
   zoneId: string;
   body: unknown;
 }
-export const RulesBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const BulkPutRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Unknown,
@@ -1353,8 +966,8 @@ export const RulesBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RulesBulkUpdateRequest",
-}) as any as S.Schema<RulesBulkUpdateRequest>;
+  identifier: "BulkPutRulesRequest",
+}) as any as S.Schema<BulkPutRulesRequest>;
 
 export interface RulesBulkUpdateResultItemFilter {
   FirewallFilterObjectIdDescriptionExpression2More__: unknown;
@@ -1414,17 +1027,127 @@ export const RulesBulkUpdateResultList = /*@__PURE__*/ S.Array(
   RulesBulkUpdateResultItem,
 ) as any as S.Schema<RulesBulkUpdateResultList>;
 
-export interface RulesBulkUpdateResponse {
+export interface BulkPutRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesBulkUpdateResultList;
 }
-export const RulesBulkUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const BulkPutRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesBulkUpdateResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RulesBulkUpdateResponse",
-}) as any as S.Schema<RulesBulkUpdateResponse>;
+  identifier: "BulkPutRulesResponse",
+}) as any as S.Schema<BulkPutRulesResponse>;
+
+export interface LockdownsCreateRequestConfigurations {
+  LockdownIPConfigurationObjectTargetValue__: unknown;
+  LockdownCIDRConfigurationObjectTargetValue__: unknown;
+}
+export const LockdownsCreateRequestConfigurations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
+        T.Body("LockdownIPConfiguration object { target, value }"),
+      ),
+      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
+        T.Body("LockdownCIDRConfiguration object { target, value }"),
+      ),
+    }),
+).annotate({
+  identifier: "LockdownsCreateRequestConfigurations",
+}) as any as S.Schema<LockdownsCreateRequestConfigurations>;
+
+export type LockdownsCreateRequestUrlsList = unknown[];
+export const LockdownsCreateRequestUrlsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<LockdownsCreateRequestUrlsList>;
+
+export interface CreateLockdownRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
+  configurations: LockdownsCreateRequestConfigurations;
+  /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
+  urls: LockdownsCreateRequestUrlsList;
+  /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
+  description?: string;
+  /** When true, indicates that the rule is currently paused. */
+  paused?: boolean;
+  /** The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority. */
+  priority?: number;
+}
+export const CreateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    configurations: LockdownsCreateRequestConfigurations,
+    urls: LockdownsCreateRequestUrlsList,
+    description: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    priority: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/firewall/lockdowns",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateLockdownRequest",
+}) as any as S.Schema<CreateLockdownRequest>;
+
+export interface LockdownsCreateResponseConfigurations {
+  LockdownIPConfigurationObjectTargetValue__: unknown;
+  LockdownCIDRConfigurationObjectTargetValue__: unknown;
+}
+export const LockdownsCreateResponseConfigurations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
+        T.Body("LockdownIPConfiguration object { target, value }"),
+      ),
+      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
+        T.Body("LockdownCIDRConfiguration object { target, value }"),
+      ),
+    }),
+).annotate({
+  identifier: "LockdownsCreateResponseConfigurations",
+}) as any as S.Schema<LockdownsCreateResponseConfigurations>;
+
+export type LockdownsCreateResponseUrlsList = unknown[];
+export const LockdownsCreateResponseUrlsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<LockdownsCreateResponseUrlsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateLockdownResponse {
+  /** The unique identifier of the Zone Lockdown rule. */
+  id: string;
+  /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
+  configurations: LockdownsCreateResponseConfigurations;
+  /** The timestamp of when the rule was created. */
+  createdOn: string;
+  /** An informative summary of the rule. */
+  description: string;
+  /** The timestamp of when the rule was last modified. */
+  modifiedOn: string;
+  /** When true, indicates that the rule is currently paused. */
+  paused: boolean;
+  /** The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
+  urls: LockdownsCreateResponseUrlsList;
+}
+export const CreateLockdownResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    configurations: LockdownsCreateResponseConfigurations,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    description: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    paused: S.Boolean,
+    urls: LockdownsCreateResponseUrlsList,
+  }),
+).annotate({
+  identifier: "CreateLockdownResponse",
+}) as any as S.Schema<CreateLockdownResponse>;
 
 export type RulesCreateRequestActionMode =
   | "simulate"
@@ -1490,14 +1213,14 @@ export const RulesCreateRequestFilter = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesCreateRequestFilter",
 }) as any as S.Schema<RulesCreateRequestFilter>;
 
-export interface RulesCreateRequest {
+export interface CreateRuleRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
   action: RulesCreateRequestAction;
   filter: RulesCreateRequestFilter;
 }
-export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     action: RulesCreateRequestAction,
@@ -1510,8 +1233,8 @@ export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RulesCreateRequest",
-}) as any as S.Schema<RulesCreateRequest>;
+  identifier: "CreateRuleRequest",
+}) as any as S.Schema<CreateRuleRequest>;
 
 export interface RulesCreateResultItemFilter {
   FirewallFilterObjectIdDescriptionExpression2More__: unknown;
@@ -1571,508 +1294,17 @@ export const RulesCreateResultList = /*@__PURE__*/ S.Array(
   RulesCreateResultItem,
 ) as any as S.Schema<RulesCreateResultList>;
 
-export interface RulesCreateResponse {
+export interface CreateRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesCreateResultList;
 }
-export const RulesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesCreateResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RulesCreateResponse",
-}) as any as S.Schema<RulesCreateResponse>;
-
-export interface RulesDeleteRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The unique identifier of the firewall rule. */
-  ruleId: string;
-}
-export const RulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RulesDeleteRequest",
-}) as any as S.Schema<RulesDeleteRequest>;
-
-export interface RulesDeleteResponseFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
-}
-export const RulesDeleteResponseFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
-  }),
-).annotate({
-  identifier: "RulesDeleteResponseFilter",
-}) as any as S.Schema<RulesDeleteResponseFilter>;
-
-export type RulesDeleteResponseProductsList = unknown[];
-export const RulesDeleteResponseProductsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RulesDeleteResponseProductsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RulesDeleteResponse {
-  /** The unique identifier of the firewall rule. */
-  id?: string;
-  /** The action to apply to a matched request. The `log` action is only available on an Enterprise plan. */
-  action?: unknown;
-  /** An informative summary of the firewall rule. */
-  description?: string;
-  filter?: RulesDeleteResponseFilter;
-  /** When true, indicates that the firewall rule is currently paused. */
-  paused?: boolean;
-  /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority. */
-  priority?: number;
-  products?: RulesDeleteResponseProductsList;
-  /** A short reference tag. Allows you to select related firewall rules. */
-  ref?: string;
-}
-export const RulesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(S.Unknown),
-    description: S.optional(S.String),
-    filter: S.optional(RulesDeleteResponseFilter),
-    paused: S.optional(S.Boolean),
-    priority: S.optional(S.Number),
-    products: S.optional(RulesDeleteResponseProductsList),
-    ref: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesDeleteResponse",
-}) as any as S.Schema<RulesDeleteResponse>;
-
-export interface RulesEditRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The unique identifier of the firewall rule. */
-  ruleId: string;
-}
-export const RulesEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RulesEditRequest",
-}) as any as S.Schema<RulesEditRequest>;
-
-export interface RulesEditResultItemFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
-}
-export const RulesEditResultItemFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
-  }),
-).annotate({
-  identifier: "RulesEditResultItemFilter",
-}) as any as S.Schema<RulesEditResultItemFilter>;
-
-export type RulesEditResultItemProductsList = unknown[];
-export const RulesEditResultItemProductsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RulesEditResultItemProductsList>;
-
-export interface RulesEditResultItem {
-  /** The unique identifier of the firewall rule. */
-  id?: string;
-  /** The action to apply to a matched request. The `log` action is only available on an Enterprise plan. */
-  action?: unknown;
-  /** An informative summary of the firewall rule. */
-  description?: string;
-  filter?: RulesEditResultItemFilter;
-  /** When true, indicates that the firewall rule is currently paused. */
-  paused?: boolean;
-  /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority. */
-  priority?: number;
-  products?: RulesEditResultItemProductsList;
-  /** A short reference tag. Allows you to select related firewall rules. */
-  ref?: string;
-}
-export const RulesEditResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(S.Unknown),
-    description: S.optional(S.String),
-    filter: S.optional(RulesEditResultItemFilter),
-    paused: S.optional(S.Boolean),
-    priority: S.optional(S.Number),
-    products: S.optional(RulesEditResultItemProductsList),
-    ref: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesEditResultItem",
-}) as any as S.Schema<RulesEditResultItem>;
-
-export type RulesEditResultList = RulesEditResultItem[];
-export const RulesEditResultList = /*@__PURE__*/ S.Array(
-  RulesEditResultItem,
-) as any as S.Schema<RulesEditResultList>;
-
-export interface RulesEditResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RulesEditResultList;
-}
-export const RulesEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(RulesEditResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "RulesEditResponse",
-}) as any as S.Schema<RulesEditResponse>;
-
-export interface RulesGetRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The unique identifier of the firewall rule. */
-  ruleId: string;
-}
-export const RulesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RulesGetRequest",
-}) as any as S.Schema<RulesGetRequest>;
-
-export interface RulesGetResponseFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
-}
-export const RulesGetResponseFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
-  }),
-).annotate({
-  identifier: "RulesGetResponseFilter",
-}) as any as S.Schema<RulesGetResponseFilter>;
-
-export type RulesGetResponseProductsList = unknown[];
-export const RulesGetResponseProductsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RulesGetResponseProductsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RulesGetResponse {
-  /** The unique identifier of the firewall rule. */
-  id?: string;
-  /** The action to apply to a matched request. The `log` action is only available on an Enterprise plan. */
-  action?: unknown;
-  /** An informative summary of the firewall rule. */
-  description?: string;
-  filter?: RulesGetResponseFilter;
-  /** When true, indicates that the firewall rule is currently paused. */
-  paused?: boolean;
-  /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority. */
-  priority?: number;
-  products?: RulesGetResponseProductsList;
-  /** A short reference tag. Allows you to select related firewall rules. */
-  ref?: string;
-}
-export const RulesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(S.Unknown),
-    description: S.optional(S.String),
-    filter: S.optional(RulesGetResponseFilter),
-    paused: S.optional(S.Boolean),
-    priority: S.optional(S.Number),
-    products: S.optional(RulesGetResponseProductsList),
-    ref: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesGetResponse",
-}) as any as S.Schema<RulesGetResponse>;
-
-export interface RulesListRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The unique identifier of the firewall rule. */
-  id?: string;
-  /** The action to search for. Must be an exact match. */
-  action?: string;
-  /** A case-insensitive string to find in the description. */
-  description?: string;
-  /** Page number of paginated results. */
-  page?: number;
-  /** When true, indicates that the firewall rule is currently paused. */
-  paused?: boolean;
-  /** Number of firewall rules per page. */
-  perPage?: number;
-}
-export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    id: S.optional(S.String.pipe(T.Query())),
-    action: S.optional(S.String.pipe(T.Query())),
-    description: S.optional(S.String.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    paused: S.optional(S.Boolean.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/rules",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RulesListRequest",
-}) as any as S.Schema<RulesListRequest>;
-
-export interface RulesListResultItemFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
-}
-export const RulesListResultItemFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
-  }),
-).annotate({
-  identifier: "RulesListResultItemFilter",
-}) as any as S.Schema<RulesListResultItemFilter>;
-
-export type RulesListResultItemProductsList = unknown[];
-export const RulesListResultItemProductsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RulesListResultItemProductsList>;
-
-export interface RulesListResultItem {
-  /** The unique identifier of the firewall rule. */
-  id?: string;
-  /** The action to apply to a matched request. The `log` action is only available on an Enterprise plan. */
-  action?: unknown;
-  /** An informative summary of the firewall rule. */
-  description?: string;
-  filter?: RulesListResultItemFilter;
-  /** When true, indicates that the firewall rule is currently paused. */
-  paused?: boolean;
-  /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority. */
-  priority?: number;
-  products?: RulesListResultItemProductsList;
-  /** A short reference tag. Allows you to select related firewall rules. */
-  ref?: string;
-}
-export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(S.Unknown),
-    description: S.optional(S.String),
-    filter: S.optional(RulesListResultItemFilter),
-    paused: S.optional(S.Boolean),
-    priority: S.optional(S.Number),
-    products: S.optional(RulesListResultItemProductsList),
-    ref: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesListResultItem",
-}) as any as S.Schema<RulesListResultItem>;
-
-export type RulesListResultList = RulesListResultItem[];
-export const RulesListResultList = /*@__PURE__*/ S.Array(
-  RulesListResultItem,
-) as any as S.Schema<RulesListResultList>;
-
-export interface RulesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RulesListResultList;
-}
-export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(RulesListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "RulesListResponse",
-}) as any as S.Schema<RulesListResponse>;
-
-export type RulesUpdateRequestActionMode =
-  | "simulate"
-  | "ban"
-  | "challenge"
-  | (string & {});
-export const RulesUpdateRequestActionMode = /*@__PURE__*/ S.String;
-
-export interface RulesUpdateRequestActionResponse {
-  /** The response body to return. The value must conform to the configured content type. */
-  body?: string;
-  /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
-  contentType?: string;
-}
-export const RulesUpdateRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    body: S.optional(S.String),
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-  }),
-).annotate({
-  identifier: "RulesUpdateRequestActionResponse",
-}) as any as S.Schema<RulesUpdateRequestActionResponse>;
-
-export interface RulesUpdateRequestAction {
-  /** The action to perform. */
-  mode?: RulesUpdateRequestActionMode;
-  /** A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional. */
-  response?: RulesUpdateRequestActionResponse;
-  /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. */
-  timeout?: number;
-}
-export const RulesUpdateRequestAction = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(RulesUpdateRequestActionMode),
-    response: S.optional(RulesUpdateRequestActionResponse),
-    timeout: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RulesUpdateRequestAction",
-}) as any as S.Schema<RulesUpdateRequestAction>;
-
-export interface RulesUpdateRequestFilter {
-  /** The unique identifier of the filter. */
-  id?: string;
-  /** An informative summary of the filter. */
-  description?: string;
-  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
-  expression?: string;
-  /** When true, indicates that the filter is currently paused. */
-  paused?: boolean;
-  /** A short reference tag. Allows you to select related filters. */
-  ref?: string;
-}
-export const RulesUpdateRequestFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    expression: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-    ref: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesUpdateRequestFilter",
-}) as any as S.Schema<RulesUpdateRequestFilter>;
-
-export interface RulesUpdateRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The unique identifier of the firewall rule. */
-  ruleId: string;
-  /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
-  action: RulesUpdateRequestAction;
-  filter: RulesUpdateRequestFilter;
-}
-export const RulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    ruleId: S.String.pipe(T.Label("rule_id")),
-    action: RulesUpdateRequestAction,
-    filter: RulesUpdateRequestFilter,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RulesUpdateRequest",
-}) as any as S.Schema<RulesUpdateRequest>;
-
-export interface RulesUpdateResponseFilter {
-  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
-  DeletedFilterObjectIdDeleted__: unknown;
-}
-export const RulesUpdateResponseFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
-      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
-    ),
-    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
-      T.Body("DeletedFilter object { id, deleted }"),
-    ),
-  }),
-).annotate({
-  identifier: "RulesUpdateResponseFilter",
-}) as any as S.Schema<RulesUpdateResponseFilter>;
-
-export type RulesUpdateResponseProductsList = unknown[];
-export const RulesUpdateResponseProductsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RulesUpdateResponseProductsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RulesUpdateResponse {
-  /** The unique identifier of the firewall rule. */
-  id?: string;
-  /** The action to apply to a matched request. The `log` action is only available on an Enterprise plan. */
-  action?: unknown;
-  /** An informative summary of the firewall rule. */
-  description?: string;
-  filter?: RulesUpdateResponseFilter;
-  /** When true, indicates that the firewall rule is currently paused. */
-  paused?: boolean;
-  /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority. */
-  priority?: number;
-  products?: RulesUpdateResponseProductsList;
-  /** A short reference tag. Allows you to select related firewall rules. */
-  ref?: string;
-}
-export const RulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    action: S.optional(S.Unknown),
-    description: S.optional(S.String),
-    filter: S.optional(RulesUpdateResponseFilter),
-    paused: S.optional(S.Boolean),
-    priority: S.optional(S.Number),
-    products: S.optional(RulesUpdateResponseProductsList),
-    ref: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RulesUpdateResponse",
-}) as any as S.Schema<RulesUpdateResponse>;
+  identifier: "CreateRuleResponse",
+}) as any as S.Schema<CreateRuleResponse>;
 
 export type UaRulesCreateRequestConfigurationTarget = "ua" | (string & {});
 export const UaRulesCreateRequestConfigurationTarget = /*@__PURE__*/ S.String;
@@ -2099,7 +1331,7 @@ export type UaRulesCreateRequestMode =
   | (string & {});
 export const UaRulesCreateRequestMode = /*@__PURE__*/ S.String;
 
-export interface UaRulesCreateRequest {
+export interface CreateUaRuleRequest {
   /** Defines an identifier. */
   zoneId: string;
   configuration: UaRulesCreateRequestConfiguration;
@@ -2110,7 +1342,7 @@ export interface UaRulesCreateRequest {
   /** When true, indicates that the rule is currently paused. */
   paused?: boolean;
 }
-export const UaRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateUaRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     configuration: UaRulesCreateRequestConfiguration,
@@ -2125,8 +1357,8 @@ export const UaRulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "UaRulesCreateRequest",
-}) as any as S.Schema<UaRulesCreateRequest>;
+  identifier: "CreateUaRuleRequest",
+}) as any as S.Schema<CreateUaRuleRequest>;
 
 export interface UaRulesCreateResponseConfiguration {
   /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
@@ -2152,7 +1384,7 @@ export type UaRulesCreateResponseMode =
 export const UaRulesCreateResponseMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UaRulesCreateResponse {
+export interface CreateUaRuleResponse {
   /** The unique identifier of the User Agent Blocking rule. */
   id?: string;
   /** The configuration object for the current rule. */
@@ -2164,7 +1396,7 @@ export interface UaRulesCreateResponse {
   /** When true, indicates that the rule is currently paused. */
   paused?: boolean;
 }
-export const UaRulesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     configuration: S.optional(UaRulesCreateResponseConfiguration),
@@ -2173,373 +1405,21 @@ export const UaRulesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     paused: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "UaRulesCreateResponse",
-}) as any as S.Schema<UaRulesCreateResponse>;
-
-export interface UaRulesDeleteRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The unique identifier of the User Agent Blocking rule. */
-  uaRuleId: string;
-}
-export const UaRulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    uaRuleId: S.String.pipe(T.Label("ua_rule_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UaRulesDeleteRequest",
-}) as any as S.Schema<UaRulesDeleteRequest>;
-
-export interface UaRulesDeleteResponseConfiguration {
-  /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
-  target?: string;
-  /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
-  value?: string;
-}
-export const UaRulesDeleteResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UaRulesDeleteResponseConfiguration",
-}) as any as S.Schema<UaRulesDeleteResponseConfiguration>;
-
-export type UaRulesDeleteResponseMode =
-  | "block"
-  | "challenge"
-  | "js_challenge"
-  | "managed_challenge"
-  | (string & {});
-export const UaRulesDeleteResponseMode = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UaRulesDeleteResponse {
-  /** The unique identifier of the User Agent Blocking rule. */
-  id?: string;
-  /** The configuration object for the current rule. */
-  configuration?: UaRulesDeleteResponseConfiguration;
-  /** An informative summary of the rule. */
-  description?: string;
-  /** The action to apply to a matched request. */
-  mode?: UaRulesDeleteResponseMode;
-  /** When true, indicates that the rule is currently paused. */
-  paused?: boolean;
-}
-export const UaRulesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    configuration: S.optional(UaRulesDeleteResponseConfiguration),
-    description: S.optional(S.String),
-    mode: S.optional(UaRulesDeleteResponseMode),
-    paused: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UaRulesDeleteResponse",
-}) as any as S.Schema<UaRulesDeleteResponse>;
-
-export interface UaRulesGetRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The unique identifier of the User Agent Blocking rule. */
-  uaRuleId: string;
-}
-export const UaRulesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    uaRuleId: S.String.pipe(T.Label("ua_rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UaRulesGetRequest",
-}) as any as S.Schema<UaRulesGetRequest>;
-
-export interface UaRulesGetResponseConfiguration {
-  /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
-  target?: string;
-  /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
-  value?: string;
-}
-export const UaRulesGetResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UaRulesGetResponseConfiguration",
-}) as any as S.Schema<UaRulesGetResponseConfiguration>;
-
-export type UaRulesGetResponseMode =
-  | "block"
-  | "challenge"
-  | "js_challenge"
-  | "managed_challenge"
-  | (string & {});
-export const UaRulesGetResponseMode = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UaRulesGetResponse {
-  /** The unique identifier of the User Agent Blocking rule. */
-  id?: string;
-  /** The configuration object for the current rule. */
-  configuration?: UaRulesGetResponseConfiguration;
-  /** An informative summary of the rule. */
-  description?: string;
-  /** The action to apply to a matched request. */
-  mode?: UaRulesGetResponseMode;
-  /** When true, indicates that the rule is currently paused. */
-  paused?: boolean;
-}
-export const UaRulesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    configuration: S.optional(UaRulesGetResponseConfiguration),
-    description: S.optional(S.String),
-    mode: S.optional(UaRulesGetResponseMode),
-    paused: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UaRulesGetResponse",
-}) as any as S.Schema<UaRulesGetResponse>;
-
-export interface UaRulesListRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** A string to search for in the description of existing rules. */
-  description?: string;
-  /** Page number of paginated results. */
-  page?: number;
-  /** When true, indicates that the rule is currently paused. */
-  paused?: boolean;
-  /** The maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`. */
-  perPage?: number;
-  /** A string to search for in the user agent values of existing rules. */
-  userAgent?: string;
-}
-export const UaRulesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    description: S.optional(S.String.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    paused: S.optional(S.Boolean.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    userAgent: S.optional(S.String.pipe(T.Query("user_agent"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/ua_rules",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UaRulesListRequest",
-}) as any as S.Schema<UaRulesListRequest>;
-
-export interface UaRulesListResultItemConfiguration {
-  /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
-  target?: string;
-  /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
-  value?: string;
-}
-export const UaRulesListResultItemConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UaRulesListResultItemConfiguration",
-}) as any as S.Schema<UaRulesListResultItemConfiguration>;
-
-export type UaRulesListResultItemMode =
-  | "block"
-  | "challenge"
-  | "js_challenge"
-  | "managed_challenge"
-  | (string & {});
-export const UaRulesListResultItemMode = /*@__PURE__*/ S.String;
-
-export interface UaRulesListResultItem {
-  /** The unique identifier of the User Agent Blocking rule. */
-  id?: string;
-  /** The configuration object for the current rule. */
-  configuration?: UaRulesListResultItemConfiguration;
-  /** An informative summary of the rule. */
-  description?: string;
-  /** The action to apply to a matched request. */
-  mode?: UaRulesListResultItemMode;
-  /** When true, indicates that the rule is currently paused. */
-  paused?: boolean;
-}
-export const UaRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    configuration: S.optional(UaRulesListResultItemConfiguration),
-    description: S.optional(S.String),
-    mode: S.optional(UaRulesListResultItemMode),
-    paused: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UaRulesListResultItem",
-}) as any as S.Schema<UaRulesListResultItem>;
-
-export type UaRulesListResultList = UaRulesListResultItem[];
-export const UaRulesListResultList = /*@__PURE__*/ S.Array(
-  UaRulesListResultItem,
-) as any as S.Schema<UaRulesListResultList>;
-
-export interface UaRulesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: UaRulesListResultList;
-}
-export const UaRulesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(UaRulesListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "UaRulesListResponse",
-}) as any as S.Schema<UaRulesListResponse>;
-
-export interface UaRulesUpdateRequestConfiguration {
-  AccessRuleIPConfigurationObjectTargetValue__: unknown;
-  IPV6ConfigurationObjectTargetValue__: unknown;
-  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
-  ASNConfigurationObjectTargetValue__: unknown;
-  CountryConfigurationObjectTargetValue__: unknown;
-}
-export const UaRulesUpdateRequestConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("AccessRuleIPConfiguration object { target, value }"),
-    ),
-    IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("IPV6Configuration object { target, value }"),
-    ),
-    AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("AccessRuleCIDRConfiguration object { target, value }"),
-    ),
-    ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("ASNConfiguration object { target, value }"),
-    ),
-    CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
-      T.Body("CountryConfiguration object { target, value }"),
-    ),
-  }),
-).annotate({
-  identifier: "UaRulesUpdateRequestConfiguration",
-}) as any as S.Schema<UaRulesUpdateRequestConfiguration>;
-
-export type UaRulesUpdateRequestMode =
-  | "block"
-  | "challenge"
-  | "whitelist"
-  | (string & {});
-export const UaRulesUpdateRequestMode = /*@__PURE__*/ S.String;
-
-export interface UaRulesUpdateRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The unique identifier of the User Agent Blocking rule. */
-  uaRuleId: string;
-  /** The rule configuration. */
-  configuration: UaRulesUpdateRequestConfiguration;
-  /** The action to apply to a matched request. */
-  mode: UaRulesUpdateRequestMode;
-  /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
-  description?: string;
-  /** When true, indicates that the rule is currently paused. */
-  paused?: boolean;
-}
-export const UaRulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    uaRuleId: S.String.pipe(T.Label("ua_rule_id")),
-    configuration: UaRulesUpdateRequestConfiguration,
-    mode: UaRulesUpdateRequestMode,
-    description: S.optional(S.String),
-    paused: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UaRulesUpdateRequest",
-}) as any as S.Schema<UaRulesUpdateRequest>;
-
-export interface UaRulesUpdateResponseConfiguration {
-  /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
-  target?: string;
-  /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
-  value?: string;
-}
-export const UaRulesUpdateResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    target: S.optional(S.String),
-    value: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "UaRulesUpdateResponseConfiguration",
-}) as any as S.Schema<UaRulesUpdateResponseConfiguration>;
-
-export type UaRulesUpdateResponseMode =
-  | "block"
-  | "challenge"
-  | "js_challenge"
-  | "managed_challenge"
-  | (string & {});
-export const UaRulesUpdateResponseMode = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UaRulesUpdateResponse {
-  /** The unique identifier of the User Agent Blocking rule. */
-  id?: string;
-  /** The configuration object for the current rule. */
-  configuration?: UaRulesUpdateResponseConfiguration;
-  /** An informative summary of the rule. */
-  description?: string;
-  /** The action to apply to a matched request. */
-  mode?: UaRulesUpdateResponseMode;
-  /** When true, indicates that the rule is currently paused. */
-  paused?: boolean;
-}
-export const UaRulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    configuration: S.optional(UaRulesUpdateResponseConfiguration),
-    description: S.optional(S.String),
-    mode: S.optional(UaRulesUpdateResponseMode),
-    paused: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "UaRulesUpdateResponse",
-}) as any as S.Schema<UaRulesUpdateResponse>;
+  identifier: "CreateUaRuleResponse",
+}) as any as S.Schema<CreateUaRuleResponse>;
 
 export type WafOverridesCreateRequestUrlsList = unknown[];
 export const WafOverridesCreateRequestUrlsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WafOverridesCreateRequestUrlsList>;
 
-export interface WafOverridesCreateRequest {
+export interface CreateWafOverrideRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls: WafOverridesCreateRequestUrlsList;
 }
-export const WafOverridesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateWafOverrideRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     urls: WafOverridesCreateRequestUrlsList,
@@ -2551,8 +1431,8 @@ export const WafOverridesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WafOverridesCreateRequest",
-}) as any as S.Schema<WafOverridesCreateRequest>;
+  identifier: "CreateWafOverrideRequest",
+}) as any as S.Schema<CreateWafOverrideRequest>;
 
 export type WafOverridesCreateResponseGroupsMap = {
   [key: string]: unknown | undefined;
@@ -2633,7 +1513,7 @@ export const WafOverridesCreateResponseUrlsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<WafOverridesCreateResponseUrlsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WafOverridesCreateResponse {
+export interface CreateWafOverrideResponse {
   /** The unique identifier of the WAF override. */
   id?: string;
   /** An informative summary of the current URI-based WAF override. */
@@ -2651,7 +1531,7 @@ export interface WafOverridesCreateResponse {
   /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls?: WafOverridesCreateResponseUrlsList;
 }
-export const WafOverridesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateWafOverrideResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     description: S.optional(S.String),
@@ -2665,16 +1545,194 @@ export const WafOverridesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     urls: S.optional(WafOverridesCreateResponseUrlsList),
   }),
 ).annotate({
-  identifier: "WafOverridesCreateResponse",
-}) as any as S.Schema<WafOverridesCreateResponse>;
+  identifier: "CreateWafOverrideResponse",
+}) as any as S.Schema<CreateWafOverrideResponse>;
 
-export interface WafOverridesDeleteRequest {
+export interface DeleteLockdownRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the Zone Lockdown rule. */
+  lockDownsId: string;
+}
+export const DeleteLockdownRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    lockDownsId: S.String.pipe(T.Label("lock_downs_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteLockdownRequest",
+}) as any as S.Schema<DeleteLockdownRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteLockdownResponse {
+  /** The unique identifier of the Zone Lockdown rule. */
+  id?: string;
+}
+export const DeleteLockdownResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteLockdownResponse",
+}) as any as S.Schema<DeleteLockdownResponse>;
+
+export interface DeleteRuleRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the firewall rule. */
+  ruleId: string;
+}
+export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    ruleId: S.String.pipe(T.Label("rule_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRuleRequest",
+}) as any as S.Schema<DeleteRuleRequest>;
+
+export interface RulesDeleteResponseFilter {
+  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
+  DeletedFilterObjectIdDeleted__: unknown;
+}
+export const RulesDeleteResponseFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
+      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
+    ),
+    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
+      T.Body("DeletedFilter object { id, deleted }"),
+    ),
+  }),
+).annotate({
+  identifier: "RulesDeleteResponseFilter",
+}) as any as S.Schema<RulesDeleteResponseFilter>;
+
+export type RulesDeleteResponseProductsList = unknown[];
+export const RulesDeleteResponseProductsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RulesDeleteResponseProductsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteRuleResponse {
+  /** The unique identifier of the firewall rule. */
+  id?: string;
+  /** The action to apply to a matched request. The `log` action is only available on an Enterprise plan. */
+  action?: unknown;
+  /** An informative summary of the firewall rule. */
+  description?: string;
+  filter?: RulesDeleteResponseFilter;
+  /** When true, indicates that the firewall rule is currently paused. */
+  paused?: boolean;
+  /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority. */
+  priority?: number;
+  products?: RulesDeleteResponseProductsList;
+  /** A short reference tag. Allows you to select related firewall rules. */
+  ref?: string;
+}
+export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    action: S.optional(S.Unknown),
+    description: S.optional(S.String),
+    filter: S.optional(RulesDeleteResponseFilter),
+    paused: S.optional(S.Boolean),
+    priority: S.optional(S.Number),
+    products: S.optional(RulesDeleteResponseProductsList),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteRuleResponse",
+}) as any as S.Schema<DeleteRuleResponse>;
+
+export interface DeleteUaRuleRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the User Agent Blocking rule. */
+  uaRuleId: string;
+}
+export const DeleteUaRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    uaRuleId: S.String.pipe(T.Label("ua_rule_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteUaRuleRequest",
+}) as any as S.Schema<DeleteUaRuleRequest>;
+
+export interface UaRulesDeleteResponseConfiguration {
+  /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
+  target?: string;
+  /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
+  value?: string;
+}
+export const UaRulesDeleteResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    target: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UaRulesDeleteResponseConfiguration",
+}) as any as S.Schema<UaRulesDeleteResponseConfiguration>;
+
+export type UaRulesDeleteResponseMode =
+  | "block"
+  | "challenge"
+  | "js_challenge"
+  | "managed_challenge"
+  | (string & {});
+export const UaRulesDeleteResponseMode = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteUaRuleResponse {
+  /** The unique identifier of the User Agent Blocking rule. */
+  id?: string;
+  /** The configuration object for the current rule. */
+  configuration?: UaRulesDeleteResponseConfiguration;
+  /** An informative summary of the rule. */
+  description?: string;
+  /** The action to apply to a matched request. */
+  mode?: UaRulesDeleteResponseMode;
+  /** When true, indicates that the rule is currently paused. */
+  paused?: boolean;
+}
+export const DeleteUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    configuration: S.optional(UaRulesDeleteResponseConfiguration),
+    description: S.optional(S.String),
+    mode: S.optional(UaRulesDeleteResponseMode),
+    paused: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DeleteUaRuleResponse",
+}) as any as S.Schema<DeleteUaRuleResponse>;
+
+export interface DeleteWafOverrideRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The unique identifier of the WAF override. */
   overridesId: string;
 }
-export const WafOverridesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteWafOverrideRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     overridesId: S.String.pipe(T.Label("overrides_id")),
@@ -2686,29 +1744,245 @@ export const WafOverridesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WafOverridesDeleteRequest",
-}) as any as S.Schema<WafOverridesDeleteRequest>;
+  identifier: "DeleteWafOverrideRequest",
+}) as any as S.Schema<DeleteWafOverrideRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WafOverridesDeleteResponse {
+export interface DeleteWafOverrideResponse {
   /** The unique identifier of the WAF override. */
   id?: string;
 }
-export const WafOverridesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteWafOverrideResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "WafOverridesDeleteResponse",
-}) as any as S.Schema<WafOverridesDeleteResponse>;
+  identifier: "DeleteWafOverrideResponse",
+}) as any as S.Schema<DeleteWafOverrideResponse>;
 
-export interface WafOverridesGetRequest {
+export interface GetLockdownRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the Zone Lockdown rule. */
+  lockDownsId: string;
+}
+export const GetLockdownRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    lockDownsId: S.String.pipe(T.Label("lock_downs_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetLockdownRequest",
+}) as any as S.Schema<GetLockdownRequest>;
+
+export interface LockdownsGetResponseConfigurations {
+  LockdownIPConfigurationObjectTargetValue__: unknown;
+  LockdownCIDRConfigurationObjectTargetValue__: unknown;
+}
+export const LockdownsGetResponseConfigurations = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
+      T.Body("LockdownIPConfiguration object { target, value }"),
+    ),
+    LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
+      T.Body("LockdownCIDRConfiguration object { target, value }"),
+    ),
+  }),
+).annotate({
+  identifier: "LockdownsGetResponseConfigurations",
+}) as any as S.Schema<LockdownsGetResponseConfigurations>;
+
+export type LockdownsGetResponseUrlsList = unknown[];
+export const LockdownsGetResponseUrlsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<LockdownsGetResponseUrlsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetLockdownResponse {
+  /** The unique identifier of the Zone Lockdown rule. */
+  id: string;
+  /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
+  configurations: LockdownsGetResponseConfigurations;
+  /** The timestamp of when the rule was created. */
+  createdOn: string;
+  /** An informative summary of the rule. */
+  description: string;
+  /** The timestamp of when the rule was last modified. */
+  modifiedOn: string;
+  /** When true, indicates that the rule is currently paused. */
+  paused: boolean;
+  /** The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
+  urls: LockdownsGetResponseUrlsList;
+}
+export const GetLockdownResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    configurations: LockdownsGetResponseConfigurations,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    description: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    paused: S.Boolean,
+    urls: LockdownsGetResponseUrlsList,
+  }),
+).annotate({
+  identifier: "GetLockdownResponse",
+}) as any as S.Schema<GetLockdownResponse>;
+
+export interface GetRuleRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the firewall rule. */
+  ruleId: string;
+}
+export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    ruleId: S.String.pipe(T.Label("rule_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
+
+export interface RulesGetResponseFilter {
+  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
+  DeletedFilterObjectIdDeleted__: unknown;
+}
+export const RulesGetResponseFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
+      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
+    ),
+    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
+      T.Body("DeletedFilter object { id, deleted }"),
+    ),
+  }),
+).annotate({
+  identifier: "RulesGetResponseFilter",
+}) as any as S.Schema<RulesGetResponseFilter>;
+
+export type RulesGetResponseProductsList = unknown[];
+export const RulesGetResponseProductsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RulesGetResponseProductsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetRuleResponse {
+  /** The unique identifier of the firewall rule. */
+  id?: string;
+  /** The action to apply to a matched request. The `log` action is only available on an Enterprise plan. */
+  action?: unknown;
+  /** An informative summary of the firewall rule. */
+  description?: string;
+  filter?: RulesGetResponseFilter;
+  /** When true, indicates that the firewall rule is currently paused. */
+  paused?: boolean;
+  /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority. */
+  priority?: number;
+  products?: RulesGetResponseProductsList;
+  /** A short reference tag. Allows you to select related firewall rules. */
+  ref?: string;
+}
+export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    action: S.optional(S.Unknown),
+    description: S.optional(S.String),
+    filter: S.optional(RulesGetResponseFilter),
+    paused: S.optional(S.Boolean),
+    priority: S.optional(S.Number),
+    products: S.optional(RulesGetResponseProductsList),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetRuleResponse",
+}) as any as S.Schema<GetRuleResponse>;
+
+export interface GetUaRuleRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the User Agent Blocking rule. */
+  uaRuleId: string;
+}
+export const GetUaRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    uaRuleId: S.String.pipe(T.Label("ua_rule_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetUaRuleRequest",
+}) as any as S.Schema<GetUaRuleRequest>;
+
+export interface UaRulesGetResponseConfiguration {
+  /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
+  target?: string;
+  /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
+  value?: string;
+}
+export const UaRulesGetResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    target: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UaRulesGetResponseConfiguration",
+}) as any as S.Schema<UaRulesGetResponseConfiguration>;
+
+export type UaRulesGetResponseMode =
+  | "block"
+  | "challenge"
+  | "js_challenge"
+  | "managed_challenge"
+  | (string & {});
+export const UaRulesGetResponseMode = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetUaRuleResponse {
+  /** The unique identifier of the User Agent Blocking rule. */
+  id?: string;
+  /** The configuration object for the current rule. */
+  configuration?: UaRulesGetResponseConfiguration;
+  /** An informative summary of the rule. */
+  description?: string;
+  /** The action to apply to a matched request. */
+  mode?: UaRulesGetResponseMode;
+  /** When true, indicates that the rule is currently paused. */
+  paused?: boolean;
+}
+export const GetUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    configuration: S.optional(UaRulesGetResponseConfiguration),
+    description: S.optional(S.String),
+    mode: S.optional(UaRulesGetResponseMode),
+    paused: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GetUaRuleResponse",
+}) as any as S.Schema<GetUaRuleResponse>;
+
+export interface GetWafOverrideRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The unique identifier of the WAF override. */
   overridesId: string;
 }
-export const WafOverridesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetWafOverrideRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     overridesId: S.String.pipe(T.Label("overrides_id")),
@@ -2720,8 +1994,8 @@ export const WafOverridesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WafOverridesGetRequest",
-}) as any as S.Schema<WafOverridesGetRequest>;
+  identifier: "GetWafOverrideRequest",
+}) as any as S.Schema<GetWafOverrideRequest>;
 
 export type WafOverridesGetResponseGroupsMap = {
   [key: string]: unknown | undefined;
@@ -2801,7 +2075,7 @@ export const WafOverridesGetResponseUrlsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<WafOverridesGetResponseUrlsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WafOverridesGetResponse {
+export interface GetWafOverrideResponse {
   /** The unique identifier of the WAF override. */
   id?: string;
   /** An informative summary of the current URI-based WAF override. */
@@ -2819,7 +2093,7 @@ export interface WafOverridesGetResponse {
   /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls?: WafOverridesGetResponseUrlsList;
 }
-export const WafOverridesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetWafOverrideResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     description: S.optional(S.String),
@@ -2833,10 +2107,450 @@ export const WafOverridesGetResponse = /*@__PURE__*/ S.suspend(() =>
     urls: S.optional(WafOverridesGetResponseUrlsList),
   }),
 ).annotate({
-  identifier: "WafOverridesGetResponse",
-}) as any as S.Schema<WafOverridesGetResponse>;
+  identifier: "GetWafOverrideResponse",
+}) as any as S.Schema<GetWafOverrideResponse>;
 
-export interface WafOverridesListRequest {
+export interface GetWafPackageRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** Defines a package identifier. */
+  packageId: string;
+}
+export const GetWafPackageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    packageId: S.String.pipe(T.Label("package_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetWafPackageRequest",
+}) as any as S.Schema<GetWafPackageRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetWafPackageResponse {
+  FirewallAPIResponseSingleObjectErrorsMessagesResultSuccess__: unknown;
+  ResultObjectResult__: unknown;
+}
+export const GetWafPackageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FirewallAPIResponseSingleObjectErrorsMessagesResultSuccess__:
+      S.Unknown.pipe(
+        T.Body(
+          "FirewallAPIResponseSingle object { errors, messages, result, success }",
+        ),
+      ),
+    ResultObjectResult__: S.Unknown.pipe(T.Body("Result object { result }")),
+  }),
+).annotate({
+  identifier: "GetWafPackageResponse",
+}) as any as S.Schema<GetWafPackageResponse>;
+
+export interface GetWafPackageGroupRequest {
+  /** Defines an identifier of a schema. */
+  zoneId: string;
+  /** Defines the unique identifier of a WAF package. */
+  packageId: string;
+  /** Defines the unique identifier of a WAF package. */
+  groupId: string;
+}
+export const GetWafPackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    packageId: S.String.pipe(T.Label("package_id")),
+    groupId: S.String.pipe(T.Label("group_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetWafPackageGroupRequest",
+}) as any as S.Schema<GetWafPackageGroupRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetWafPackageGroupResponse {
+  unknown: unknown;
+  string: unknown;
+}
+export const GetWafPackageGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    unknown: S.Unknown,
+    string: S.Unknown,
+  }),
+).annotate({
+  identifier: "GetWafPackageGroupResponse",
+}) as any as S.Schema<GetWafPackageGroupResponse>;
+
+export interface GetWafPackageRuleRequest {
+  /** Defines an identifier of a schema. */
+  zoneId: string;
+  /** Defines the unique identifier of a WAF package. */
+  packageId: string;
+  /** Defines the unique identifier of a WAF package. */
+  ruleId: string;
+}
+export const GetWafPackageRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    packageId: S.String.pipe(T.Label("package_id")),
+    ruleId: S.String.pipe(T.Label("rule_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetWafPackageRuleRequest",
+}) as any as S.Schema<GetWafPackageRuleRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetWafPackageRuleResponse {
+  unknown: unknown;
+  string: unknown;
+}
+export const GetWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    unknown: S.Unknown,
+    string: S.Unknown,
+  }),
+).annotate({
+  identifier: "GetWafPackageRuleResponse",
+}) as any as S.Schema<GetWafPackageRuleResponse>;
+
+export interface ListLockdownsRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The timestamp of when the rule was created. */
+  createdOn?: string;
+  /** A string to search for in the description of existing rules. */
+  description?: string;
+  /** A string to search for in the description of existing rules. */
+  descriptionSearch?: string;
+  /** A single IP address to search for in existing rules. */
+  ip?: string;
+  /** A single IP address range to search for in existing rules. */
+  ipRangeSearch?: string;
+  /** A single IP address to search for in existing rules. */
+  ipSearch?: string;
+  /** The timestamp of when the rule was last modified. */
+  modifiedOn?: string;
+  /** Page number of paginated results. */
+  page?: number;
+  /** The maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`. */
+  perPage?: number;
+  /** The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority. */
+  priority?: number;
+  /** A single URI to search for in the list of URLs of existing rules. */
+  uriSearch?: string;
+}
+export const ListLockdownsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    createdOn: S.optional(S.String.pipe(T.Query("created_on"))),
+    description: S.optional(S.String.pipe(T.Query())),
+    descriptionSearch: S.optional(S.String.pipe(T.Query("description_search"))),
+    ip: S.optional(S.String.pipe(T.Query())),
+    ipRangeSearch: S.optional(S.String.pipe(T.Query("ip_range_search"))),
+    ipSearch: S.optional(S.String.pipe(T.Query("ip_search"))),
+    modifiedOn: S.optional(S.String.pipe(T.Query("modified_on"))),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    priority: S.optional(S.Number.pipe(T.Query())),
+    uriSearch: S.optional(S.String.pipe(T.Query("uri_search"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/firewall/lockdowns",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListLockdownsRequest",
+}) as any as S.Schema<ListLockdownsRequest>;
+
+export interface LockdownsListResultItemConfigurations {
+  LockdownIPConfigurationObjectTargetValue__: unknown;
+  LockdownCIDRConfigurationObjectTargetValue__: unknown;
+}
+export const LockdownsListResultItemConfigurations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
+        T.Body("LockdownIPConfiguration object { target, value }"),
+      ),
+      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
+        T.Body("LockdownCIDRConfiguration object { target, value }"),
+      ),
+    }),
+).annotate({
+  identifier: "LockdownsListResultItemConfigurations",
+}) as any as S.Schema<LockdownsListResultItemConfigurations>;
+
+export type LockdownsListResultItemUrlsList = unknown[];
+export const LockdownsListResultItemUrlsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<LockdownsListResultItemUrlsList>;
+
+export interface LockdownsListResultItem {
+  /** The unique identifier of the Zone Lockdown rule. */
+  id: string;
+  /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
+  configurations: LockdownsListResultItemConfigurations;
+  /** The timestamp of when the rule was created. */
+  createdOn: string;
+  /** An informative summary of the rule. */
+  description: string;
+  /** The timestamp of when the rule was last modified. */
+  modifiedOn: string;
+  /** When true, indicates that the rule is currently paused. */
+  paused: boolean;
+  /** The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
+  urls: LockdownsListResultItemUrlsList;
+}
+export const LockdownsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    configurations: LockdownsListResultItemConfigurations,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    description: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    paused: S.Boolean,
+    urls: LockdownsListResultItemUrlsList,
+  }),
+).annotate({
+  identifier: "LockdownsListResultItem",
+}) as any as S.Schema<LockdownsListResultItem>;
+
+export type LockdownsListResultList = LockdownsListResultItem[];
+export const LockdownsListResultList = /*@__PURE__*/ S.Array(
+  LockdownsListResultItem,
+) as any as S.Schema<LockdownsListResultList>;
+
+export interface ListLockdownsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: LockdownsListResultList;
+}
+export const ListLockdownsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(LockdownsListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListLockdownsResponse",
+}) as any as S.Schema<ListLockdownsResponse>;
+
+export interface ListRulesRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the firewall rule. */
+  id?: string;
+  /** The action to search for. Must be an exact match. */
+  action?: string;
+  /** A case-insensitive string to find in the description. */
+  description?: string;
+  /** Page number of paginated results. */
+  page?: number;
+  /** When true, indicates that the firewall rule is currently paused. */
+  paused?: boolean;
+  /** Number of firewall rules per page. */
+  perPage?: number;
+}
+export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    id: S.optional(S.String.pipe(T.Query())),
+    action: S.optional(S.String.pipe(T.Query())),
+    description: S.optional(S.String.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    paused: S.optional(S.Boolean.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/firewall/rules",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListRulesRequest",
+}) as any as S.Schema<ListRulesRequest>;
+
+export interface RulesListResultItemFilter {
+  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
+  DeletedFilterObjectIdDeleted__: unknown;
+}
+export const RulesListResultItemFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
+      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
+    ),
+    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
+      T.Body("DeletedFilter object { id, deleted }"),
+    ),
+  }),
+).annotate({
+  identifier: "RulesListResultItemFilter",
+}) as any as S.Schema<RulesListResultItemFilter>;
+
+export type RulesListResultItemProductsList = unknown[];
+export const RulesListResultItemProductsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RulesListResultItemProductsList>;
+
+export interface RulesListResultItem {
+  /** The unique identifier of the firewall rule. */
+  id?: string;
+  /** The action to apply to a matched request. The `log` action is only available on an Enterprise plan. */
+  action?: unknown;
+  /** An informative summary of the firewall rule. */
+  description?: string;
+  filter?: RulesListResultItemFilter;
+  /** When true, indicates that the firewall rule is currently paused. */
+  paused?: boolean;
+  /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority. */
+  priority?: number;
+  products?: RulesListResultItemProductsList;
+  /** A short reference tag. Allows you to select related firewall rules. */
+  ref?: string;
+}
+export const RulesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    action: S.optional(S.Unknown),
+    description: S.optional(S.String),
+    filter: S.optional(RulesListResultItemFilter),
+    paused: S.optional(S.Boolean),
+    priority: S.optional(S.Number),
+    products: S.optional(RulesListResultItemProductsList),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RulesListResultItem",
+}) as any as S.Schema<RulesListResultItem>;
+
+export type RulesListResultList = RulesListResultItem[];
+export const RulesListResultList = /*@__PURE__*/ S.Array(
+  RulesListResultItem,
+) as any as S.Schema<RulesListResultList>;
+
+export interface ListRulesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: RulesListResultList;
+}
+export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(RulesListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListRulesResponse",
+}) as any as S.Schema<ListRulesResponse>;
+
+export interface ListUaRulesRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** A string to search for in the description of existing rules. */
+  description?: string;
+  /** Page number of paginated results. */
+  page?: number;
+  /** When true, indicates that the rule is currently paused. */
+  paused?: boolean;
+  /** The maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`. */
+  perPage?: number;
+  /** A string to search for in the user agent values of existing rules. */
+  userAgent?: string;
+}
+export const ListUaRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    description: S.optional(S.String.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    paused: S.optional(S.Boolean.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    userAgent: S.optional(S.String.pipe(T.Query("user_agent"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/firewall/ua_rules",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListUaRulesRequest",
+}) as any as S.Schema<ListUaRulesRequest>;
+
+export interface UaRulesListResultItemConfiguration {
+  /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
+  target?: string;
+  /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
+  value?: string;
+}
+export const UaRulesListResultItemConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    target: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UaRulesListResultItemConfiguration",
+}) as any as S.Schema<UaRulesListResultItemConfiguration>;
+
+export type UaRulesListResultItemMode =
+  | "block"
+  | "challenge"
+  | "js_challenge"
+  | "managed_challenge"
+  | (string & {});
+export const UaRulesListResultItemMode = /*@__PURE__*/ S.String;
+
+export interface UaRulesListResultItem {
+  /** The unique identifier of the User Agent Blocking rule. */
+  id?: string;
+  /** The configuration object for the current rule. */
+  configuration?: UaRulesListResultItemConfiguration;
+  /** An informative summary of the rule. */
+  description?: string;
+  /** The action to apply to a matched request. */
+  mode?: UaRulesListResultItemMode;
+  /** When true, indicates that the rule is currently paused. */
+  paused?: boolean;
+}
+export const UaRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    configuration: S.optional(UaRulesListResultItemConfiguration),
+    description: S.optional(S.String),
+    mode: S.optional(UaRulesListResultItemMode),
+    paused: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "UaRulesListResultItem",
+}) as any as S.Schema<UaRulesListResultItem>;
+
+export type UaRulesListResultList = UaRulesListResultItem[];
+export const UaRulesListResultList = /*@__PURE__*/ S.Array(
+  UaRulesListResultItem,
+) as any as S.Schema<UaRulesListResultList>;
+
+export interface ListUaRulesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: UaRulesListResultList;
+}
+export const ListUaRulesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(UaRulesListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListUaRulesResponse",
+}) as any as S.Schema<ListUaRulesResponse>;
+
+export interface ListWafOverridesRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The page number of paginated results. */
@@ -2844,7 +2558,7 @@ export interface WafOverridesListRequest {
   /** The number of WAF overrides per page. */
   perPage?: number;
 }
-export const WafOverridesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListWafOverridesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -2857,8 +2571,8 @@ export const WafOverridesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WafOverridesListRequest",
-}) as any as S.Schema<WafOverridesListRequest>;
+  identifier: "ListWafOverridesRequest",
+}) as any as S.Schema<ListWafOverridesRequest>;
 
 export type WafOverridesListResultItemGroupsMap = {
   [key: string]: unknown | undefined;
@@ -2978,17 +2692,913 @@ export const WafOverridesListResultList = /*@__PURE__*/ S.Array(
   WafOverridesListResultItem,
 ) as any as S.Schema<WafOverridesListResultList>;
 
-export interface WafOverridesListResponse {
+export interface ListWafOverridesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: WafOverridesListResultList;
 }
-export const WafOverridesListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListWafOverridesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(WafOverridesListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "WafOverridesListResponse",
-}) as any as S.Schema<WafOverridesListResponse>;
+  identifier: "ListWafOverridesResponse",
+}) as any as S.Schema<ListWafOverridesResponse>;
+
+export type WafPackagesGroupsListRequestDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
+export const WafPackagesGroupsListRequestDirection = /*@__PURE__*/ S.String;
+
+export type WafPackagesGroupsListRequestMatch = "any" | "all" | (string & {});
+export const WafPackagesGroupsListRequestMatch = /*@__PURE__*/ S.String;
+
+export type WafPackagesGroupsListRequestMode = "on" | "off" | (string & {});
+export const WafPackagesGroupsListRequestMode = /*@__PURE__*/ S.String;
+
+export type WafPackagesGroupsListRequestOrder =
+  | "mode"
+  | "rules_count"
+  | (string & {});
+export const WafPackagesGroupsListRequestOrder = /*@__PURE__*/ S.String;
+
+export interface ListWafPackageGroupsRequest {
+  /** Defines an identifier of a schema. */
+  zoneId: string;
+  /** Defines the unique identifier of a WAF package. */
+  packageId: string;
+  /** Defines the direction used to sort returned rule groups. */
+  direction?: WafPackagesGroupsListRequestDirection;
+  /** Defines the condition for search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
+  match?: WafPackagesGroupsListRequestMatch;
+  /** Defines the state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable. */
+  mode?: WafPackagesGroupsListRequestMode;
+  /** Defines the name of the rule group. */
+  name?: string;
+  /** Defines the field used to sort returned rule groups. */
+  order?: WafPackagesGroupsListRequestOrder;
+  /** Defines the page number of paginated results. */
+  page?: number;
+  /** Defines the number of rule groups per page. */
+  perPage?: number;
+  /** Defines the number of rules in the current rule group. */
+  rulesCount?: number;
+}
+export const ListWafPackageGroupsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    packageId: S.String.pipe(T.Label("package_id")),
+    direction: S.optional(
+      WafPackagesGroupsListRequestDirection.pipe(T.Query()),
+    ),
+    match: S.optional(WafPackagesGroupsListRequestMatch.pipe(T.Query())),
+    mode: S.optional(WafPackagesGroupsListRequestMode.pipe(T.Query())),
+    name: S.optional(S.String.pipe(T.Query())),
+    order: S.optional(WafPackagesGroupsListRequestOrder.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    rulesCount: S.optional(S.Number.pipe(T.Query("rules_count"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListWafPackageGroupsRequest",
+}) as any as S.Schema<ListWafPackageGroupsRequest>;
+
+export type WafPackagesGroupsListResultItemMode = "on" | "off" | (string & {});
+export const WafPackagesGroupsListResultItemMode = /*@__PURE__*/ S.String;
+
+export type WafPackagesGroupsListResultItemAllowedModesItem =
+  | "on"
+  | "off"
+  | (string & {});
+export const WafPackagesGroupsListResultItemAllowedModesItem =
+  /*@__PURE__*/ S.String;
+
+export type WafPackagesGroupsListResultItemAllowedModesList =
+  WafPackagesGroupsListResultItemAllowedModesItem[];
+export const WafPackagesGroupsListResultItemAllowedModesList =
+  /*@__PURE__*/ S.Array(
+    WafPackagesGroupsListResultItemAllowedModesItem,
+  ) as any as S.Schema<WafPackagesGroupsListResultItemAllowedModesList>;
+
+export interface WafPackagesGroupsListResultItem {
+  /** Defines the unique identifier of the rule group. */
+  id: string;
+  /** Defines an informative summary of what the rule group does. */
+  description: string;
+  /** Defines the state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable. */
+  mode: WafPackagesGroupsListResultItemMode;
+  /** Defines the name of the rule group. */
+  name: string;
+  /** Defines the number of rules in the current rule group. */
+  rulesCount: number;
+  /** Defines the available states for the rule group. */
+  allowedModes?: WafPackagesGroupsListResultItemAllowedModesList;
+  /** Defines the number of rules within the group that have been modified from their default configuration. */
+  modifiedRulesCount?: number;
+  /** Defines the unique identifier of a WAF package. */
+  packageId?: string;
+}
+export const WafPackagesGroupsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    description: S.String,
+    mode: WafPackagesGroupsListResultItemMode,
+    name: S.String,
+    rulesCount: S.Number.pipe(T.Body("rules_count")),
+    allowedModes: S.optional(
+      WafPackagesGroupsListResultItemAllowedModesList.pipe(
+        T.Body("allowed_modes"),
+      ),
+    ),
+    modifiedRulesCount: S.optional(
+      S.Number.pipe(T.Body("modified_rules_count")),
+    ),
+    packageId: S.optional(S.String.pipe(T.Body("package_id"))),
+  }),
+).annotate({
+  identifier: "WafPackagesGroupsListResultItem",
+}) as any as S.Schema<WafPackagesGroupsListResultItem>;
+
+export type WafPackagesGroupsListResultList = WafPackagesGroupsListResultItem[];
+export const WafPackagesGroupsListResultList = /*@__PURE__*/ S.Array(
+  WafPackagesGroupsListResultItem,
+) as any as S.Schema<WafPackagesGroupsListResultList>;
+
+export interface ListWafPackageGroupsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: WafPackagesGroupsListResultList;
+}
+export const ListWafPackageGroupsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      WafPackagesGroupsListResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "ListWafPackageGroupsResponse",
+}) as any as S.Schema<ListWafPackageGroupsResponse>;
+
+export type WafPackagesRulesListRequestDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
+export const WafPackagesRulesListRequestDirection = /*@__PURE__*/ S.String;
+
+export type WafPackagesRulesListRequestMatch = "any" | "all" | (string & {});
+export const WafPackagesRulesListRequestMatch = /*@__PURE__*/ S.String;
+
+export type WafPackagesRulesListRequestMode =
+  | "DIS"
+  | "CHL"
+  | "BLK"
+  | "SIM"
+  | (string & {});
+export const WafPackagesRulesListRequestMode = /*@__PURE__*/ S.String;
+
+export type WafPackagesRulesListRequestOrder =
+  | "priority"
+  | "group_id"
+  | "description"
+  | (string & {});
+export const WafPackagesRulesListRequestOrder = /*@__PURE__*/ S.String;
+
+export interface ListWafPackageRulesRequest {
+  /** Defines an identifier of a schema. */
+  zoneId: string;
+  /** Defines the unique identifier of a WAF package. */
+  packageId: string;
+  /** Defines the public description of the WAF rule. */
+  description?: string;
+  /** Defines the direction used to sort returned rules. */
+  direction?: WafPackagesRulesListRequestDirection;
+  /** Defines the unique identifier of the rule group. */
+  groupId?: string;
+  /** Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
+  match?: WafPackagesRulesListRequestMatch;
+  /** Defines the action/mode a rule has been overridden to perform. */
+  mode?: WafPackagesRulesListRequestMode;
+  /** Defines the field used to sort returned rules. */
+  order?: WafPackagesRulesListRequestOrder;
+  /** Defines the page number of paginated results. */
+  page?: number;
+  /** Defines the number of rules per page. */
+  perPage?: number;
+  /** Defines the order in which the individual WAF rule is executed within its rule group. */
+  priority?: string;
+}
+export const ListWafPackageRulesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    packageId: S.String.pipe(T.Label("package_id")),
+    description: S.optional(S.String.pipe(T.Query())),
+    direction: S.optional(WafPackagesRulesListRequestDirection.pipe(T.Query())),
+    groupId: S.optional(S.String.pipe(T.Query("group_id"))),
+    match: S.optional(WafPackagesRulesListRequestMatch.pipe(T.Query())),
+    mode: S.optional(WafPackagesRulesListRequestMode.pipe(T.Query())),
+    order: S.optional(WafPackagesRulesListRequestOrder.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    priority: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListWafPackageRulesRequest",
+}) as any as S.Schema<ListWafPackageRulesRequest>;
+
+export interface WafPackagesRulesListResultItem {
+  /** When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package. */
+  WAFManagedRulesAnomalyRuleObjectIdAllowedModesDescription4More__: unknown;
+  /** When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed. */
+  WAFManagedRulesTraditionalDenyRuleObjectIdAllowedModesDefaultMode5More__: unknown;
+  /** When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed. */
+  WAFManagedRulesTraditionalAllowRuleObjectIdAllowedModesDescription4More__: unknown;
+}
+export const WafPackagesRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WAFManagedRulesAnomalyRuleObjectIdAllowedModesDescription4More__:
+      S.Unknown.pipe(
+        T.Body(
+          "WAFManagedRulesAnomalyRule object { id, allowed_modes, description, 4 more }",
+        ),
+      ),
+    WAFManagedRulesTraditionalDenyRuleObjectIdAllowedModesDefaultMode5More__:
+      S.Unknown.pipe(
+        T.Body(
+          "WAFManagedRulesTraditionalDenyRule object { id, allowed_modes, default_mode, 5 more }",
+        ),
+      ),
+    WAFManagedRulesTraditionalAllowRuleObjectIdAllowedModesDescription4More__:
+      S.Unknown.pipe(
+        T.Body(
+          "WAFManagedRulesTraditionalAllowRule object { id, allowed_modes, description, 4 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "WafPackagesRulesListResultItem",
+}) as any as S.Schema<WafPackagesRulesListResultItem>;
+
+export type WafPackagesRulesListResultList = WafPackagesRulesListResultItem[];
+export const WafPackagesRulesListResultList = /*@__PURE__*/ S.Array(
+  WafPackagesRulesListResultItem,
+) as any as S.Schema<WafPackagesRulesListResultList>;
+
+export interface ListWafPackageRulesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: WafPackagesRulesListResultList;
+}
+export const ListWafPackageRulesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      WafPackagesRulesListResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "ListWafPackageRulesResponse",
+}) as any as S.Schema<ListWafPackageRulesResponse>;
+
+export type WafPackagesListRequestDirection = "asc" | "desc" | (string & {});
+export const WafPackagesListRequestDirection = /*@__PURE__*/ S.String;
+
+export type WafPackagesListRequestMatch = "any" | "all" | (string & {});
+export const WafPackagesListRequestMatch = /*@__PURE__*/ S.String;
+
+export type WafPackagesListRequestOrder = "name" | (string & {});
+export const WafPackagesListRequestOrder = /*@__PURE__*/ S.String;
+
+export interface ListWafPackagesRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The direction used to sort returned packages. */
+  direction?: WafPackagesListRequestDirection;
+  /** When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
+  match?: WafPackagesListRequestMatch;
+  /** The name of the WAF package. */
+  name?: string;
+  /** The field used to sort returned packages. */
+  order?: WafPackagesListRequestOrder;
+  /** The page number of paginated results. */
+  page?: number;
+  /** The number of packages per page. */
+  perPage?: number;
+}
+export const ListWafPackagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    direction: S.optional(WafPackagesListRequestDirection.pipe(T.Query())),
+    match: S.optional(WafPackagesListRequestMatch.pipe(T.Query())),
+    name: S.optional(S.String.pipe(T.Query())),
+    order: S.optional(WafPackagesListRequestOrder.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/firewall/waf/packages",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListWafPackagesRequest",
+}) as any as S.Schema<ListWafPackagesRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface ListWafPackagesResponse {
+  FirewallAPIResponseCollectionObjectErrorsMessagesResult2More__: unknown;
+  ResultObjectResult__: unknown;
+}
+export const ListWafPackagesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FirewallAPIResponseCollectionObjectErrorsMessagesResult2More__:
+      S.Unknown.pipe(
+        T.Body(
+          "FirewallAPIResponseCollection object { errors, messages, result, 2 more }",
+        ),
+      ),
+    ResultObjectResult__: S.Unknown.pipe(T.Body("Result object { result }")),
+  }),
+).annotate({
+  identifier: "ListWafPackagesResponse",
+}) as any as S.Schema<ListWafPackagesResponse>;
+
+export interface PatchRuleRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the firewall rule. */
+  ruleId: string;
+}
+export const PatchRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    ruleId: S.String.pipe(T.Label("rule_id")),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchRuleRequest",
+}) as any as S.Schema<PatchRuleRequest>;
+
+export interface RulesEditResultItemFilter {
+  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
+  DeletedFilterObjectIdDeleted__: unknown;
+}
+export const RulesEditResultItemFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
+      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
+    ),
+    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
+      T.Body("DeletedFilter object { id, deleted }"),
+    ),
+  }),
+).annotate({
+  identifier: "RulesEditResultItemFilter",
+}) as any as S.Schema<RulesEditResultItemFilter>;
+
+export type RulesEditResultItemProductsList = unknown[];
+export const RulesEditResultItemProductsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RulesEditResultItemProductsList>;
+
+export interface RulesEditResultItem {
+  /** The unique identifier of the firewall rule. */
+  id?: string;
+  /** The action to apply to a matched request. The `log` action is only available on an Enterprise plan. */
+  action?: unknown;
+  /** An informative summary of the firewall rule. */
+  description?: string;
+  filter?: RulesEditResultItemFilter;
+  /** When true, indicates that the firewall rule is currently paused. */
+  paused?: boolean;
+  /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority. */
+  priority?: number;
+  products?: RulesEditResultItemProductsList;
+  /** A short reference tag. Allows you to select related firewall rules. */
+  ref?: string;
+}
+export const RulesEditResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    action: S.optional(S.Unknown),
+    description: S.optional(S.String),
+    filter: S.optional(RulesEditResultItemFilter),
+    paused: S.optional(S.Boolean),
+    priority: S.optional(S.Number),
+    products: S.optional(RulesEditResultItemProductsList),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RulesEditResultItem",
+}) as any as S.Schema<RulesEditResultItem>;
+
+export type RulesEditResultList = RulesEditResultItem[];
+export const RulesEditResultList = /*@__PURE__*/ S.Array(
+  RulesEditResultItem,
+) as any as S.Schema<RulesEditResultList>;
+
+export interface PatchRuleResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: RulesEditResultList;
+}
+export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(RulesEditResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "PatchRuleResponse",
+}) as any as S.Schema<PatchRuleResponse>;
+
+export type WafPackagesGroupsEditRequestMode = "on" | "off" | (string & {});
+export const WafPackagesGroupsEditRequestMode = /*@__PURE__*/ S.String;
+
+export interface PatchWafPackageGroupRequest {
+  /** Defines an identifier of a schema. */
+  zoneId: string;
+  /** Defines the unique identifier of a WAF package. */
+  packageId: string;
+  /** Defines the unique identifier of a WAF package. */
+  groupId: string;
+  /** Defines the state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable. */
+  mode?: WafPackagesGroupsEditRequestMode;
+}
+export const PatchWafPackageGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    packageId: S.String.pipe(T.Label("package_id")),
+    groupId: S.String.pipe(T.Label("group_id")),
+    mode: S.optional(WafPackagesGroupsEditRequestMode),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchWafPackageGroupRequest",
+}) as any as S.Schema<PatchWafPackageGroupRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchWafPackageGroupResponse {
+  unknown: unknown;
+  string: unknown;
+}
+export const PatchWafPackageGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    unknown: S.Unknown,
+    string: S.Unknown,
+  }),
+).annotate({
+  identifier: "PatchWafPackageGroupResponse",
+}) as any as S.Schema<PatchWafPackageGroupResponse>;
+
+export type WafPackagesRulesEditRequestMode =
+  | "default"
+  | "disable"
+  | "simulate"
+  | (string & {});
+export const WafPackagesRulesEditRequestMode = /*@__PURE__*/ S.String;
+
+export interface PatchWafPackageRuleRequest {
+  /** Defines an identifier of a schema. */
+  zoneId: string;
+  /** Defines the unique identifier of a WAF package. */
+  packageId: string;
+  /** Defines the unique identifier of a WAF package. */
+  ruleId: string;
+  /** Defines the mode/action of the rule when triggered. You must use a value from the `allowed_modes` array of the current rule. */
+  mode?: WafPackagesRulesEditRequestMode;
+}
+export const PatchWafPackageRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    packageId: S.String.pipe(T.Label("package_id")),
+    ruleId: S.String.pipe(T.Label("rule_id")),
+    mode: S.optional(WafPackagesRulesEditRequestMode),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchWafPackageRuleRequest",
+}) as any as S.Schema<PatchWafPackageRuleRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchWafPackageRuleResponse {
+  /** When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package. */
+  WAFManagedRulesAnomalyRuleObjectIdAllowedModesDescription4More__: unknown;
+  /** When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed. */
+  WAFManagedRulesTraditionalDenyRuleObjectIdAllowedModesDefaultMode5More__: unknown;
+  /** When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed. */
+  WAFManagedRulesTraditionalAllowRuleObjectIdAllowedModesDescription4More__: unknown;
+}
+export const PatchWafPackageRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    WAFManagedRulesAnomalyRuleObjectIdAllowedModesDescription4More__:
+      S.Unknown.pipe(
+        T.Body(
+          "WAFManagedRulesAnomalyRule object { id, allowed_modes, description, 4 more }",
+        ),
+      ),
+    WAFManagedRulesTraditionalDenyRuleObjectIdAllowedModesDefaultMode5More__:
+      S.Unknown.pipe(
+        T.Body(
+          "WAFManagedRulesTraditionalDenyRule object { id, allowed_modes, default_mode, 5 more }",
+        ),
+      ),
+    WAFManagedRulesTraditionalAllowRuleObjectIdAllowedModesDescription4More__:
+      S.Unknown.pipe(
+        T.Body(
+          "WAFManagedRulesTraditionalAllowRule object { id, allowed_modes, description, 4 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "PatchWafPackageRuleResponse",
+}) as any as S.Schema<PatchWafPackageRuleResponse>;
+
+export interface LockdownsUpdateRequestConfigurations {
+  LockdownIPConfigurationObjectTargetValue__: unknown;
+  LockdownCIDRConfigurationObjectTargetValue__: unknown;
+}
+export const LockdownsUpdateRequestConfigurations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
+        T.Body("LockdownIPConfiguration object { target, value }"),
+      ),
+      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
+        T.Body("LockdownCIDRConfiguration object { target, value }"),
+      ),
+    }),
+).annotate({
+  identifier: "LockdownsUpdateRequestConfigurations",
+}) as any as S.Schema<LockdownsUpdateRequestConfigurations>;
+
+export type LockdownsUpdateRequestUrlsList = unknown[];
+export const LockdownsUpdateRequestUrlsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<LockdownsUpdateRequestUrlsList>;
+
+export interface UpdateLockdownRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the Zone Lockdown rule. */
+  lockDownsId: string;
+  /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
+  configurations: LockdownsUpdateRequestConfigurations;
+  /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
+  urls: LockdownsUpdateRequestUrlsList;
+}
+export const UpdateLockdownRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    lockDownsId: S.String.pipe(T.Label("lock_downs_id")),
+    configurations: LockdownsUpdateRequestConfigurations,
+    urls: LockdownsUpdateRequestUrlsList,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateLockdownRequest",
+}) as any as S.Schema<UpdateLockdownRequest>;
+
+export interface LockdownsUpdateResponseConfigurations {
+  LockdownIPConfigurationObjectTargetValue__: unknown;
+  LockdownCIDRConfigurationObjectTargetValue__: unknown;
+}
+export const LockdownsUpdateResponseConfigurations = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      LockdownIPConfigurationObjectTargetValue__: S.Unknown.pipe(
+        T.Body("LockdownIPConfiguration object { target, value }"),
+      ),
+      LockdownCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
+        T.Body("LockdownCIDRConfiguration object { target, value }"),
+      ),
+    }),
+).annotate({
+  identifier: "LockdownsUpdateResponseConfigurations",
+}) as any as S.Schema<LockdownsUpdateResponseConfigurations>;
+
+export type LockdownsUpdateResponseUrlsList = unknown[];
+export const LockdownsUpdateResponseUrlsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<LockdownsUpdateResponseUrlsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateLockdownResponse {
+  /** The unique identifier of the Zone Lockdown rule. */
+  id: string;
+  /** A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations. */
+  configurations: LockdownsUpdateResponseConfigurations;
+  /** The timestamp of when the rule was created. */
+  createdOn: string;
+  /** An informative summary of the rule. */
+  description: string;
+  /** The timestamp of when the rule was last modified. */
+  modifiedOn: string;
+  /** When true, indicates that the rule is currently paused. */
+  paused: boolean;
+  /** The URLs to include in the rule definition. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
+  urls: LockdownsUpdateResponseUrlsList;
+}
+export const UpdateLockdownResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    configurations: LockdownsUpdateResponseConfigurations,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    description: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    paused: S.Boolean,
+    urls: LockdownsUpdateResponseUrlsList,
+  }),
+).annotate({
+  identifier: "UpdateLockdownResponse",
+}) as any as S.Schema<UpdateLockdownResponse>;
+
+export type RulesUpdateRequestActionMode =
+  | "simulate"
+  | "ban"
+  | "challenge"
+  | (string & {});
+export const RulesUpdateRequestActionMode = /*@__PURE__*/ S.String;
+
+export interface RulesUpdateRequestActionResponse {
+  /** The response body to return. The value must conform to the configured content type. */
+  body?: string;
+  /** The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`. */
+  contentType?: string;
+}
+export const RulesUpdateRequestActionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    body: S.optional(S.String),
+    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+  }),
+).annotate({
+  identifier: "RulesUpdateRequestActionResponse",
+}) as any as S.Schema<RulesUpdateRequestActionResponse>;
+
+export interface RulesUpdateRequestAction {
+  /** The action to perform. */
+  mode?: RulesUpdateRequestActionMode;
+  /** A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional. */
+  response?: RulesUpdateRequestActionResponse;
+  /** The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period. */
+  timeout?: number;
+}
+export const RulesUpdateRequestAction = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: S.optional(RulesUpdateRequestActionMode),
+    response: S.optional(RulesUpdateRequestActionResponse),
+    timeout: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RulesUpdateRequestAction",
+}) as any as S.Schema<RulesUpdateRequestAction>;
+
+export interface RulesUpdateRequestFilter {
+  /** The unique identifier of the filter. */
+  id?: string;
+  /** An informative summary of the filter. */
+  description?: string;
+  /** The filter expression. For more information, refer to [Expressions](https://developers.cloudflare.com/ruleset-engine/rules-language/expressions/). */
+  expression?: string;
+  /** When true, indicates that the filter is currently paused. */
+  paused?: boolean;
+  /** A short reference tag. Allows you to select related filters. */
+  ref?: string;
+}
+export const RulesUpdateRequestFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    expression: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "RulesUpdateRequestFilter",
+}) as any as S.Schema<RulesUpdateRequestFilter>;
+
+export interface UpdateRuleRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the firewall rule. */
+  ruleId: string;
+  /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
+  action: RulesUpdateRequestAction;
+  filter: RulesUpdateRequestFilter;
+}
+export const UpdateRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    ruleId: S.String.pipe(T.Label("rule_id")),
+    action: RulesUpdateRequestAction,
+    filter: RulesUpdateRequestFilter,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/zones/{zone_id}/firewall/rules/{rule_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateRuleRequest",
+}) as any as S.Schema<UpdateRuleRequest>;
+
+export interface RulesUpdateResponseFilter {
+  FirewallFilterObjectIdDescriptionExpression2More__: unknown;
+  DeletedFilterObjectIdDeleted__: unknown;
+}
+export const RulesUpdateResponseFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    FirewallFilterObjectIdDescriptionExpression2More__: S.Unknown.pipe(
+      T.Body("FirewallFilter object { id, description, expression, 2 more }"),
+    ),
+    DeletedFilterObjectIdDeleted__: S.Unknown.pipe(
+      T.Body("DeletedFilter object { id, deleted }"),
+    ),
+  }),
+).annotate({
+  identifier: "RulesUpdateResponseFilter",
+}) as any as S.Schema<RulesUpdateResponseFilter>;
+
+export type RulesUpdateResponseProductsList = unknown[];
+export const RulesUpdateResponseProductsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<RulesUpdateResponseProductsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateRuleResponse {
+  /** The unique identifier of the firewall rule. */
+  id?: string;
+  /** The action to apply to a matched request. The `log` action is only available on an Enterprise plan. */
+  action?: unknown;
+  /** An informative summary of the firewall rule. */
+  description?: string;
+  filter?: RulesUpdateResponseFilter;
+  /** When true, indicates that the firewall rule is currently paused. */
+  paused?: boolean;
+  /** The priority of the rule. Optional value used to define the processing order. A lower number indicates a higher priority. If not provided, rules with a defined priority will be processed before rules without a priority. */
+  priority?: number;
+  products?: RulesUpdateResponseProductsList;
+  /** A short reference tag. Allows you to select related firewall rules. */
+  ref?: string;
+}
+export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    action: S.optional(S.Unknown),
+    description: S.optional(S.String),
+    filter: S.optional(RulesUpdateResponseFilter),
+    paused: S.optional(S.Boolean),
+    priority: S.optional(S.Number),
+    products: S.optional(RulesUpdateResponseProductsList),
+    ref: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateRuleResponse",
+}) as any as S.Schema<UpdateRuleResponse>;
+
+export interface UaRulesUpdateRequestConfiguration {
+  AccessRuleIPConfigurationObjectTargetValue__: unknown;
+  IPV6ConfigurationObjectTargetValue__: unknown;
+  AccessRuleCIDRConfigurationObjectTargetValue__: unknown;
+  ASNConfigurationObjectTargetValue__: unknown;
+  CountryConfigurationObjectTargetValue__: unknown;
+}
+export const UaRulesUpdateRequestConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AccessRuleIPConfigurationObjectTargetValue__: S.Unknown.pipe(
+      T.Body("AccessRuleIPConfiguration object { target, value }"),
+    ),
+    IPV6ConfigurationObjectTargetValue__: S.Unknown.pipe(
+      T.Body("IPV6Configuration object { target, value }"),
+    ),
+    AccessRuleCIDRConfigurationObjectTargetValue__: S.Unknown.pipe(
+      T.Body("AccessRuleCIDRConfiguration object { target, value }"),
+    ),
+    ASNConfigurationObjectTargetValue__: S.Unknown.pipe(
+      T.Body("ASNConfiguration object { target, value }"),
+    ),
+    CountryConfigurationObjectTargetValue__: S.Unknown.pipe(
+      T.Body("CountryConfiguration object { target, value }"),
+    ),
+  }),
+).annotate({
+  identifier: "UaRulesUpdateRequestConfiguration",
+}) as any as S.Schema<UaRulesUpdateRequestConfiguration>;
+
+export type UaRulesUpdateRequestMode =
+  | "block"
+  | "challenge"
+  | "whitelist"
+  | (string & {});
+export const UaRulesUpdateRequestMode = /*@__PURE__*/ S.String;
+
+export interface UpdateUaRuleRequest {
+  /** Defines an identifier. */
+  zoneId: string;
+  /** The unique identifier of the User Agent Blocking rule. */
+  uaRuleId: string;
+  /** The rule configuration. */
+  configuration: UaRulesUpdateRequestConfiguration;
+  /** The action to apply to a matched request. */
+  mode: UaRulesUpdateRequestMode;
+  /** An informative summary of the rule. This value is sanitized and any tags will be removed. */
+  description?: string;
+  /** When true, indicates that the rule is currently paused. */
+  paused?: boolean;
+}
+export const UpdateUaRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    uaRuleId: S.String.pipe(T.Label("ua_rule_id")),
+    configuration: UaRulesUpdateRequestConfiguration,
+    mode: UaRulesUpdateRequestMode,
+    description: S.optional(S.String),
+    paused: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateUaRuleRequest",
+}) as any as S.Schema<UpdateUaRuleRequest>;
+
+export interface UaRulesUpdateResponseConfiguration {
+  /** The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules. */
+  target?: string;
+  /** The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value. */
+  value?: string;
+}
+export const UaRulesUpdateResponseConfiguration = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    target: S.optional(S.String),
+    value: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UaRulesUpdateResponseConfiguration",
+}) as any as S.Schema<UaRulesUpdateResponseConfiguration>;
+
+export type UaRulesUpdateResponseMode =
+  | "block"
+  | "challenge"
+  | "js_challenge"
+  | "managed_challenge"
+  | (string & {});
+export const UaRulesUpdateResponseMode = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateUaRuleResponse {
+  /** The unique identifier of the User Agent Blocking rule. */
+  id?: string;
+  /** The configuration object for the current rule. */
+  configuration?: UaRulesUpdateResponseConfiguration;
+  /** An informative summary of the rule. */
+  description?: string;
+  /** The action to apply to a matched request. */
+  mode?: UaRulesUpdateResponseMode;
+  /** When true, indicates that the rule is currently paused. */
+  paused?: boolean;
+}
+export const UpdateUaRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    configuration: S.optional(UaRulesUpdateResponseConfiguration),
+    description: S.optional(S.String),
+    mode: S.optional(UaRulesUpdateResponseMode),
+    paused: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "UpdateUaRuleResponse",
+}) as any as S.Schema<UpdateUaRuleResponse>;
 
 export type WafOverridesUpdateRequestRewriteActionBlock =
   | "challenge"
@@ -3060,7 +3670,7 @@ export const WafOverridesUpdateRequestUrlsList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<WafOverridesUpdateRequestUrlsList>;
 
-export interface WafOverridesUpdateRequest {
+export interface UpdateWafOverrideRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The unique identifier of the WAF override. */
@@ -3074,7 +3684,7 @@ export interface WafOverridesUpdateRequest {
   /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls: WafOverridesUpdateRequestUrlsList;
 }
-export const WafOverridesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateWafOverrideRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     overridesId: S.String.pipe(T.Label("overrides_id")),
@@ -3092,8 +3702,8 @@ export const WafOverridesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WafOverridesUpdateRequest",
-}) as any as S.Schema<WafOverridesUpdateRequest>;
+  identifier: "UpdateWafOverrideRequest",
+}) as any as S.Schema<UpdateWafOverrideRequest>;
 
 export type WafOverridesUpdateResponseGroupsMap = {
   [key: string]: unknown | undefined;
@@ -3174,7 +3784,7 @@ export const WafOverridesUpdateResponseUrlsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<WafOverridesUpdateResponseUrlsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WafOverridesUpdateResponse {
+export interface UpdateWafOverrideResponse {
   /** The unique identifier of the WAF override. */
   id?: string;
   /** An informative summary of the current URI-based WAF override. */
@@ -3192,7 +3802,7 @@ export interface WafOverridesUpdateResponse {
   /** The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns. */
   urls?: WafOverridesUpdateResponseUrlsList;
 }
-export const WafOverridesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateWafOverrideResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     description: S.optional(S.String),
@@ -3206,564 +3816,8 @@ export const WafOverridesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     urls: S.optional(WafOverridesUpdateResponseUrlsList),
   }),
 ).annotate({
-  identifier: "WafOverridesUpdateResponse",
-}) as any as S.Schema<WafOverridesUpdateResponse>;
-
-export interface WafPackagesGetRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** Defines a package identifier. */
-  packageId: string;
-}
-export const WafPackagesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    packageId: S.String.pipe(T.Label("package_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WafPackagesGetRequest",
-}) as any as S.Schema<WafPackagesGetRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface WafPackagesGetResponse {
-  FirewallAPIResponseSingleObjectErrorsMessagesResultSuccess__: unknown;
-  ResultObjectResult__: unknown;
-}
-export const WafPackagesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FirewallAPIResponseSingleObjectErrorsMessagesResultSuccess__:
-      S.Unknown.pipe(
-        T.Body(
-          "FirewallAPIResponseSingle object { errors, messages, result, success }",
-        ),
-      ),
-    ResultObjectResult__: S.Unknown.pipe(T.Body("Result object { result }")),
-  }),
-).annotate({
-  identifier: "WafPackagesGetResponse",
-}) as any as S.Schema<WafPackagesGetResponse>;
-
-export type WafPackagesGroupsEditRequestMode = "on" | "off" | (string & {});
-export const WafPackagesGroupsEditRequestMode = /*@__PURE__*/ S.String;
-
-export interface WafPackagesGroupsEditRequest {
-  /** Defines an identifier of a schema. */
-  zoneId: string;
-  /** Defines the unique identifier of a WAF package. */
-  packageId: string;
-  /** Defines the unique identifier of a WAF package. */
-  groupId: string;
-  /** Defines the state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable. */
-  mode?: WafPackagesGroupsEditRequestMode;
-}
-export const WafPackagesGroupsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    packageId: S.String.pipe(T.Label("package_id")),
-    groupId: S.String.pipe(T.Label("group_id")),
-    mode: S.optional(WafPackagesGroupsEditRequestMode),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WafPackagesGroupsEditRequest",
-}) as any as S.Schema<WafPackagesGroupsEditRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WafPackagesGroupsEditResponse {
-  unknown: unknown;
-  string: unknown;
-}
-export const WafPackagesGroupsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unknown: S.Unknown,
-    string: S.Unknown,
-  }),
-).annotate({
-  identifier: "WafPackagesGroupsEditResponse",
-}) as any as S.Schema<WafPackagesGroupsEditResponse>;
-
-export interface WafPackagesGroupsGetRequest {
-  /** Defines an identifier of a schema. */
-  zoneId: string;
-  /** Defines the unique identifier of a WAF package. */
-  packageId: string;
-  /** Defines the unique identifier of a WAF package. */
-  groupId: string;
-}
-export const WafPackagesGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    packageId: S.String.pipe(T.Label("package_id")),
-    groupId: S.String.pipe(T.Label("group_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WafPackagesGroupsGetRequest",
-}) as any as S.Schema<WafPackagesGroupsGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WafPackagesGroupsGetResponse {
-  unknown: unknown;
-  string: unknown;
-}
-export const WafPackagesGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unknown: S.Unknown,
-    string: S.Unknown,
-  }),
-).annotate({
-  identifier: "WafPackagesGroupsGetResponse",
-}) as any as S.Schema<WafPackagesGroupsGetResponse>;
-
-export type WafPackagesGroupsListRequestDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
-export const WafPackagesGroupsListRequestDirection = /*@__PURE__*/ S.String;
-
-export type WafPackagesGroupsListRequestMatch = "any" | "all" | (string & {});
-export const WafPackagesGroupsListRequestMatch = /*@__PURE__*/ S.String;
-
-export type WafPackagesGroupsListRequestMode = "on" | "off" | (string & {});
-export const WafPackagesGroupsListRequestMode = /*@__PURE__*/ S.String;
-
-export type WafPackagesGroupsListRequestOrder =
-  | "mode"
-  | "rules_count"
-  | (string & {});
-export const WafPackagesGroupsListRequestOrder = /*@__PURE__*/ S.String;
-
-export interface WafPackagesGroupsListRequest {
-  /** Defines an identifier of a schema. */
-  zoneId: string;
-  /** Defines the unique identifier of a WAF package. */
-  packageId: string;
-  /** Defines the direction used to sort returned rule groups. */
-  direction?: WafPackagesGroupsListRequestDirection;
-  /** Defines the condition for search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
-  match?: WafPackagesGroupsListRequestMatch;
-  /** Defines the state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable. */
-  mode?: WafPackagesGroupsListRequestMode;
-  /** Defines the name of the rule group. */
-  name?: string;
-  /** Defines the field used to sort returned rule groups. */
-  order?: WafPackagesGroupsListRequestOrder;
-  /** Defines the page number of paginated results. */
-  page?: number;
-  /** Defines the number of rule groups per page. */
-  perPage?: number;
-  /** Defines the number of rules in the current rule group. */
-  rulesCount?: number;
-}
-export const WafPackagesGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    packageId: S.String.pipe(T.Label("package_id")),
-    direction: S.optional(
-      WafPackagesGroupsListRequestDirection.pipe(T.Query()),
-    ),
-    match: S.optional(WafPackagesGroupsListRequestMatch.pipe(T.Query())),
-    mode: S.optional(WafPackagesGroupsListRequestMode.pipe(T.Query())),
-    name: S.optional(S.String.pipe(T.Query())),
-    order: S.optional(WafPackagesGroupsListRequestOrder.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    rulesCount: S.optional(S.Number.pipe(T.Query("rules_count"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WafPackagesGroupsListRequest",
-}) as any as S.Schema<WafPackagesGroupsListRequest>;
-
-export type WafPackagesGroupsListResultItemMode = "on" | "off" | (string & {});
-export const WafPackagesGroupsListResultItemMode = /*@__PURE__*/ S.String;
-
-export type WafPackagesGroupsListResultItemAllowedModesItem =
-  | "on"
-  | "off"
-  | (string & {});
-export const WafPackagesGroupsListResultItemAllowedModesItem =
-  /*@__PURE__*/ S.String;
-
-export type WafPackagesGroupsListResultItemAllowedModesList =
-  WafPackagesGroupsListResultItemAllowedModesItem[];
-export const WafPackagesGroupsListResultItemAllowedModesList =
-  /*@__PURE__*/ S.Array(
-    WafPackagesGroupsListResultItemAllowedModesItem,
-  ) as any as S.Schema<WafPackagesGroupsListResultItemAllowedModesList>;
-
-export interface WafPackagesGroupsListResultItem {
-  /** Defines the unique identifier of the rule group. */
-  id: string;
-  /** Defines an informative summary of what the rule group does. */
-  description: string;
-  /** Defines the state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable. */
-  mode: WafPackagesGroupsListResultItemMode;
-  /** Defines the name of the rule group. */
-  name: string;
-  /** Defines the number of rules in the current rule group. */
-  rulesCount: number;
-  /** Defines the available states for the rule group. */
-  allowedModes?: WafPackagesGroupsListResultItemAllowedModesList;
-  /** Defines the number of rules within the group that have been modified from their default configuration. */
-  modifiedRulesCount?: number;
-  /** Defines the unique identifier of a WAF package. */
-  packageId?: string;
-}
-export const WafPackagesGroupsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.String,
-    mode: WafPackagesGroupsListResultItemMode,
-    name: S.String,
-    rulesCount: S.Number.pipe(T.Body("rules_count")),
-    allowedModes: S.optional(
-      WafPackagesGroupsListResultItemAllowedModesList.pipe(
-        T.Body("allowed_modes"),
-      ),
-    ),
-    modifiedRulesCount: S.optional(
-      S.Number.pipe(T.Body("modified_rules_count")),
-    ),
-    packageId: S.optional(S.String.pipe(T.Body("package_id"))),
-  }),
-).annotate({
-  identifier: "WafPackagesGroupsListResultItem",
-}) as any as S.Schema<WafPackagesGroupsListResultItem>;
-
-export type WafPackagesGroupsListResultList = WafPackagesGroupsListResultItem[];
-export const WafPackagesGroupsListResultList = /*@__PURE__*/ S.Array(
-  WafPackagesGroupsListResultItem,
-) as any as S.Schema<WafPackagesGroupsListResultList>;
-
-export interface WafPackagesGroupsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: WafPackagesGroupsListResultList;
-}
-export const WafPackagesGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      WafPackagesGroupsListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "WafPackagesGroupsListResponse",
-}) as any as S.Schema<WafPackagesGroupsListResponse>;
-
-export type WafPackagesListRequestDirection = "asc" | "desc" | (string & {});
-export const WafPackagesListRequestDirection = /*@__PURE__*/ S.String;
-
-export type WafPackagesListRequestMatch = "any" | "all" | (string & {});
-export const WafPackagesListRequestMatch = /*@__PURE__*/ S.String;
-
-export type WafPackagesListRequestOrder = "name" | (string & {});
-export const WafPackagesListRequestOrder = /*@__PURE__*/ S.String;
-
-export interface WafPackagesListRequest {
-  /** Defines an identifier. */
-  zoneId: string;
-  /** The direction used to sort returned packages. */
-  direction?: WafPackagesListRequestDirection;
-  /** When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
-  match?: WafPackagesListRequestMatch;
-  /** The name of the WAF package. */
-  name?: string;
-  /** The field used to sort returned packages. */
-  order?: WafPackagesListRequestOrder;
-  /** The page number of paginated results. */
-  page?: number;
-  /** The number of packages per page. */
-  perPage?: number;
-}
-export const WafPackagesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    direction: S.optional(WafPackagesListRequestDirection.pipe(T.Query())),
-    match: S.optional(WafPackagesListRequestMatch.pipe(T.Query())),
-    name: S.optional(S.String.pipe(T.Query())),
-    order: S.optional(WafPackagesListRequestOrder.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/packages",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WafPackagesListRequest",
-}) as any as S.Schema<WafPackagesListRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface WafPackagesListResponse {
-  FirewallAPIResponseCollectionObjectErrorsMessagesResult2More__: unknown;
-  ResultObjectResult__: unknown;
-}
-export const WafPackagesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    FirewallAPIResponseCollectionObjectErrorsMessagesResult2More__:
-      S.Unknown.pipe(
-        T.Body(
-          "FirewallAPIResponseCollection object { errors, messages, result, 2 more }",
-        ),
-      ),
-    ResultObjectResult__: S.Unknown.pipe(T.Body("Result object { result }")),
-  }),
-).annotate({
-  identifier: "WafPackagesListResponse",
-}) as any as S.Schema<WafPackagesListResponse>;
-
-export type WafPackagesRulesEditRequestMode =
-  | "default"
-  | "disable"
-  | "simulate"
-  | (string & {});
-export const WafPackagesRulesEditRequestMode = /*@__PURE__*/ S.String;
-
-export interface WafPackagesRulesEditRequest {
-  /** Defines an identifier of a schema. */
-  zoneId: string;
-  /** Defines the unique identifier of a WAF package. */
-  packageId: string;
-  /** Defines the unique identifier of a WAF package. */
-  ruleId: string;
-  /** Defines the mode/action of the rule when triggered. You must use a value from the `allowed_modes` array of the current rule. */
-  mode?: WafPackagesRulesEditRequestMode;
-}
-export const WafPackagesRulesEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    packageId: S.String.pipe(T.Label("package_id")),
-    ruleId: S.String.pipe(T.Label("rule_id")),
-    mode: S.optional(WafPackagesRulesEditRequestMode),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WafPackagesRulesEditRequest",
-}) as any as S.Schema<WafPackagesRulesEditRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WafPackagesRulesEditResponse {
-  /** When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package. */
-  WAFManagedRulesAnomalyRuleObjectIdAllowedModesDescription4More__: unknown;
-  /** When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed. */
-  WAFManagedRulesTraditionalDenyRuleObjectIdAllowedModesDefaultMode5More__: unknown;
-  /** When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed. */
-  WAFManagedRulesTraditionalAllowRuleObjectIdAllowedModesDescription4More__: unknown;
-}
-export const WafPackagesRulesEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    WAFManagedRulesAnomalyRuleObjectIdAllowedModesDescription4More__:
-      S.Unknown.pipe(
-        T.Body(
-          "WAFManagedRulesAnomalyRule object { id, allowed_modes, description, 4 more }",
-        ),
-      ),
-    WAFManagedRulesTraditionalDenyRuleObjectIdAllowedModesDefaultMode5More__:
-      S.Unknown.pipe(
-        T.Body(
-          "WAFManagedRulesTraditionalDenyRule object { id, allowed_modes, default_mode, 5 more }",
-        ),
-      ),
-    WAFManagedRulesTraditionalAllowRuleObjectIdAllowedModesDescription4More__:
-      S.Unknown.pipe(
-        T.Body(
-          "WAFManagedRulesTraditionalAllowRule object { id, allowed_modes, description, 4 more }",
-        ),
-      ),
-  }),
-).annotate({
-  identifier: "WafPackagesRulesEditResponse",
-}) as any as S.Schema<WafPackagesRulesEditResponse>;
-
-export interface WafPackagesRulesGetRequest {
-  /** Defines an identifier of a schema. */
-  zoneId: string;
-  /** Defines the unique identifier of a WAF package. */
-  packageId: string;
-  /** Defines the unique identifier of a WAF package. */
-  ruleId: string;
-}
-export const WafPackagesRulesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    packageId: S.String.pipe(T.Label("package_id")),
-    ruleId: S.String.pipe(T.Label("rule_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WafPackagesRulesGetRequest",
-}) as any as S.Schema<WafPackagesRulesGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WafPackagesRulesGetResponse {
-  unknown: unknown;
-  string: unknown;
-}
-export const WafPackagesRulesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unknown: S.Unknown,
-    string: S.Unknown,
-  }),
-).annotate({
-  identifier: "WafPackagesRulesGetResponse",
-}) as any as S.Schema<WafPackagesRulesGetResponse>;
-
-export type WafPackagesRulesListRequestDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
-export const WafPackagesRulesListRequestDirection = /*@__PURE__*/ S.String;
-
-export type WafPackagesRulesListRequestMatch = "any" | "all" | (string & {});
-export const WafPackagesRulesListRequestMatch = /*@__PURE__*/ S.String;
-
-export type WafPackagesRulesListRequestMode =
-  | "DIS"
-  | "CHL"
-  | "BLK"
-  | "SIM"
-  | (string & {});
-export const WafPackagesRulesListRequestMode = /*@__PURE__*/ S.String;
-
-export type WafPackagesRulesListRequestOrder =
-  | "priority"
-  | "group_id"
-  | "description"
-  | (string & {});
-export const WafPackagesRulesListRequestOrder = /*@__PURE__*/ S.String;
-
-export interface WafPackagesRulesListRequest {
-  /** Defines an identifier of a schema. */
-  zoneId: string;
-  /** Defines the unique identifier of a WAF package. */
-  packageId: string;
-  /** Defines the public description of the WAF rule. */
-  description?: string;
-  /** Defines the direction used to sort returned rules. */
-  direction?: WafPackagesRulesListRequestDirection;
-  /** Defines the unique identifier of the rule group. */
-  groupId?: string;
-  /** Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match. */
-  match?: WafPackagesRulesListRequestMatch;
-  /** Defines the action/mode a rule has been overridden to perform. */
-  mode?: WafPackagesRulesListRequestMode;
-  /** Defines the field used to sort returned rules. */
-  order?: WafPackagesRulesListRequestOrder;
-  /** Defines the page number of paginated results. */
-  page?: number;
-  /** Defines the number of rules per page. */
-  perPage?: number;
-  /** Defines the order in which the individual WAF rule is executed within its rule group. */
-  priority?: string;
-}
-export const WafPackagesRulesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    packageId: S.String.pipe(T.Label("package_id")),
-    description: S.optional(S.String.pipe(T.Query())),
-    direction: S.optional(WafPackagesRulesListRequestDirection.pipe(T.Query())),
-    groupId: S.optional(S.String.pipe(T.Query("group_id"))),
-    match: S.optional(WafPackagesRulesListRequestMatch.pipe(T.Query())),
-    mode: S.optional(WafPackagesRulesListRequestMode.pipe(T.Query())),
-    order: S.optional(WafPackagesRulesListRequestOrder.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    priority: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WafPackagesRulesListRequest",
-}) as any as S.Schema<WafPackagesRulesListRequest>;
-
-export interface WafPackagesRulesListResultItem {
-  /** When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package. */
-  WAFManagedRulesAnomalyRuleObjectIdAllowedModesDescription4More__: unknown;
-  /** When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed. */
-  WAFManagedRulesTraditionalDenyRuleObjectIdAllowedModesDefaultMode5More__: unknown;
-  /** When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed. */
-  WAFManagedRulesTraditionalAllowRuleObjectIdAllowedModesDescription4More__: unknown;
-}
-export const WafPackagesRulesListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    WAFManagedRulesAnomalyRuleObjectIdAllowedModesDescription4More__:
-      S.Unknown.pipe(
-        T.Body(
-          "WAFManagedRulesAnomalyRule object { id, allowed_modes, description, 4 more }",
-        ),
-      ),
-    WAFManagedRulesTraditionalDenyRuleObjectIdAllowedModesDefaultMode5More__:
-      S.Unknown.pipe(
-        T.Body(
-          "WAFManagedRulesTraditionalDenyRule object { id, allowed_modes, default_mode, 5 more }",
-        ),
-      ),
-    WAFManagedRulesTraditionalAllowRuleObjectIdAllowedModesDescription4More__:
-      S.Unknown.pipe(
-        T.Body(
-          "WAFManagedRulesTraditionalAllowRule object { id, allowed_modes, description, 4 more }",
-        ),
-      ),
-  }),
-).annotate({
-  identifier: "WafPackagesRulesListResultItem",
-}) as any as S.Schema<WafPackagesRulesListResultItem>;
-
-export type WafPackagesRulesListResultList = WafPackagesRulesListResultItem[];
-export const WafPackagesRulesListResultList = /*@__PURE__*/ S.Array(
-  WafPackagesRulesListResultItem,
-) as any as S.Schema<WafPackagesRulesListResultList>;
-
-export interface WafPackagesRulesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: WafPackagesRulesListResultList;
-}
-export const WafPackagesRulesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      WafPackagesRulesListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "WafPackagesRulesListResponse",
-}) as any as S.Schema<WafPackagesRulesListResponse>;
+  identifier: "UpdateWafOverrideResponse",
+}) as any as S.Schema<UpdateWafOverrideResponse>;
 
 export type AccessRulesCreateError = CloudflareOpError;
 /** Creates a new IP Access rule for an account or zone. The rule will apply to all zones in the account or zone. Note: To create an IP Access rule that applies to a single zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints. */
@@ -3835,450 +3889,481 @@ export const accessRulesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-export type LockdownsCreateError = CloudflareOpError;
-/** Creates a new Zone Lockdown rule. */
-export const lockdownsCreate: API.OperationMethod<
-  LockdownsCreateRequest,
-  LockdownsCreateResponse,
-  LockdownsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LockdownsCreateRequest,
-  output: LockdownsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LockdownsDeleteError = CloudflareOpError;
-/** Deletes an existing Zone Lockdown rule. */
-export const lockdownsDelete: API.OperationMethod<
-  LockdownsDeleteRequest,
-  LockdownsDeleteResponse,
-  LockdownsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LockdownsDeleteRequest,
-  output: LockdownsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LockdownsGetError = CloudflareOpError;
-/** Fetches the details of a Zone Lockdown rule. */
-export const lockdownsGet: API.OperationMethod<
-  LockdownsGetRequest,
-  LockdownsGetResponse,
-  LockdownsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LockdownsGetRequest,
-  output: LockdownsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LockdownsListError = CloudflareOpError;
-/** Fetches Zone Lockdown rules. You can filter the results using several optional parameters. */
-export const lockdownsList: API.OperationMethod<
-  LockdownsListRequest,
-  LockdownsListResponse,
-  LockdownsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LockdownsListRequest,
-  output: LockdownsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LockdownsUpdateError = CloudflareOpError;
-/** Updates an existing Zone Lockdown rule. */
-export const lockdownsUpdate: API.OperationMethod<
-  LockdownsUpdateRequest,
-  LockdownsUpdateResponse,
-  LockdownsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LockdownsUpdateRequest,
-  output: LockdownsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RulesBulkDeleteError = CloudflareOpError;
+export type BulkDeleteRulesError = CloudflareOpError;
 /** Deletes existing firewall rules. */
-export const rulesBulkDelete: API.OperationMethod<
-  RulesBulkDeleteRequest,
-  RulesBulkDeleteResponse,
-  RulesBulkDeleteError,
+export const bulkDeleteRules: API.OperationMethod<
+  BulkDeleteRulesRequest,
+  BulkDeleteRulesResponse,
+  BulkDeleteRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesBulkDeleteRequest,
-  output: RulesBulkDeleteResponse,
+  input: BulkDeleteRulesRequest,
+  output: BulkDeleteRulesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RulesBulkEditError = CloudflareOpError;
+export type BulkPatchRulesError = CloudflareOpError;
 /** Updates the priority of existing firewall rules. */
-export const rulesBulkEdit: API.OperationMethod<
-  RulesBulkEditRequest,
-  RulesBulkEditResponse,
-  RulesBulkEditError,
+export const bulkPatchRules: API.OperationMethod<
+  BulkPatchRulesRequest,
+  BulkPatchRulesResponse,
+  BulkPatchRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesBulkEditRequest,
-  output: RulesBulkEditResponse,
+  input: BulkPatchRulesRequest,
+  output: BulkPatchRulesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RulesBulkUpdateError = CloudflareOpError;
+export type BulkPutRulesError = CloudflareOpError;
 /** Updates one or more existing firewall rules. */
-export const rulesBulkUpdate: API.OperationMethod<
-  RulesBulkUpdateRequest,
-  RulesBulkUpdateResponse,
-  RulesBulkUpdateError,
+export const bulkPutRules: API.OperationMethod<
+  BulkPutRulesRequest,
+  BulkPutRulesResponse,
+  BulkPutRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesBulkUpdateRequest,
-  output: RulesBulkUpdateResponse,
+  input: BulkPutRulesRequest,
+  output: BulkPutRulesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RulesCreateError = CloudflareOpError;
+export type CreateLockdownError =
+  | DuplicateLockdown
+  | Forbidden
+  | CloudflareOpError;
+/** Creates a new Zone Lockdown rule. */
+export const createLockdown: API.OperationMethod<
+  CreateLockdownRequest,
+  CreateLockdownResponse,
+  CreateLockdownError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateLockdownRequest,
+  output: CreateLockdownResponse,
+  errors: [
+    DuplicateLockdown,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateRuleError = CloudflareOpError;
 /** Create one or more firewall rules. */
-export const rulesCreate: API.OperationMethod<
-  RulesCreateRequest,
-  RulesCreateResponse,
-  RulesCreateError,
+export const createRule: API.OperationMethod<
+  CreateRuleRequest,
+  CreateRuleResponse,
+  CreateRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesCreateRequest,
-  output: RulesCreateResponse,
+  input: CreateRuleRequest,
+  output: CreateRuleResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RulesDeleteError = CloudflareOpError;
-/** Deletes an existing firewall rule. */
-export const rulesDelete: API.OperationMethod<
-  RulesDeleteRequest,
-  RulesDeleteResponse,
-  RulesDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RulesDeleteRequest,
-  output: RulesDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RulesEditError = CloudflareOpError;
-/** Updates the priority of an existing firewall rule. */
-export const rulesEdit: API.OperationMethod<
-  RulesEditRequest,
-  RulesEditResponse,
-  RulesEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RulesEditRequest,
-  output: RulesEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RulesGetError = CloudflareOpError;
-/** Fetches the details of a firewall rule. */
-export const rulesGet: API.OperationMethod<
-  RulesGetRequest,
-  RulesGetResponse,
-  RulesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RulesGetRequest,
-  output: RulesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RulesListError = CloudflareOpError;
-/** Fetches firewall rules in a zone. You can filter the results using several optional parameters. */
-export const rulesList: API.OperationMethod<
-  RulesListRequest,
-  RulesListResponse,
-  RulesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RulesListRequest,
-  output: RulesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RulesUpdateError = CloudflareOpError;
-/** Updates an existing firewall rule. */
-export const rulesUpdate: API.OperationMethod<
-  RulesUpdateRequest,
-  RulesUpdateResponse,
-  RulesUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RulesUpdateRequest,
-  output: RulesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type UaRulesCreateError = CloudflareOpError;
+export type CreateUaRuleError = DuplicateUaRule | Forbidden | CloudflareOpError;
 /** Creates a new User Agent Blocking rule in a zone. */
-export const uaRulesCreate: API.OperationMethod<
-  UaRulesCreateRequest,
-  UaRulesCreateResponse,
-  UaRulesCreateError,
+export const createUaRule: API.OperationMethod<
+  CreateUaRuleRequest,
+  CreateUaRuleResponse,
+  CreateUaRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UaRulesCreateRequest,
-  output: UaRulesCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateUaRuleRequest,
+  output: CreateUaRuleResponse,
+  errors: [DuplicateUaRule, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UaRulesDeleteError = CloudflareOpError;
-/** Deletes an existing User Agent Blocking rule. */
-export const uaRulesDelete: API.OperationMethod<
-  UaRulesDeleteRequest,
-  UaRulesDeleteResponse,
-  UaRulesDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UaRulesDeleteRequest,
-  output: UaRulesDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type UaRulesGetError = CloudflareOpError;
-/** Fetches the details of a User Agent Blocking rule. */
-export const uaRulesGet: API.OperationMethod<
-  UaRulesGetRequest,
-  UaRulesGetResponse,
-  UaRulesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UaRulesGetRequest,
-  output: UaRulesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type UaRulesListError = CloudflareOpError;
-/** Fetches User Agent Blocking rules in a zone. You can filter the results using several optional parameters. */
-export const uaRulesList: API.OperationMethod<
-  UaRulesListRequest,
-  UaRulesListResponse,
-  UaRulesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UaRulesListRequest,
-  output: UaRulesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type UaRulesUpdateError = CloudflareOpError;
-/** Updates an existing User Agent Blocking rule. */
-export const uaRulesUpdate: API.OperationMethod<
-  UaRulesUpdateRequest,
-  UaRulesUpdateResponse,
-  UaRulesUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UaRulesUpdateRequest,
-  output: UaRulesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WafOverridesCreateError = CloudflareOpError;
+export type CreateWafOverrideError = CloudflareOpError;
 /** Creates a URI-based WAF override for a zone. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafOverridesCreate: API.OperationMethod<
-  WafOverridesCreateRequest,
-  WafOverridesCreateResponse,
-  WafOverridesCreateError,
+export const createWafOverride: API.OperationMethod<
+  CreateWafOverrideRequest,
+  CreateWafOverrideResponse,
+  CreateWafOverrideError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WafOverridesCreateRequest,
-  output: WafOverridesCreateResponse,
+  input: CreateWafOverrideRequest,
+  output: CreateWafOverrideResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WafOverridesDeleteError = CloudflareOpError;
+export type DeleteLockdownError =
+  | LockdownNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Deletes an existing Zone Lockdown rule. */
+export const deleteLockdown: API.OperationMethod<
+  DeleteLockdownRequest,
+  DeleteLockdownResponse,
+  DeleteLockdownError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteLockdownRequest,
+  output: DeleteLockdownResponse,
+  errors: [LockdownNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteRuleError = CloudflareOpError;
+/** Deletes an existing firewall rule. */
+export const deleteRule: API.OperationMethod<
+  DeleteRuleRequest,
+  DeleteRuleResponse,
+  DeleteRuleError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRuleRequest,
+  output: DeleteRuleResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteUaRuleError = UaRuleNotFound | Forbidden | CloudflareOpError;
+/** Deletes an existing User Agent Blocking rule. */
+export const deleteUaRule: API.OperationMethod<
+  DeleteUaRuleRequest,
+  DeleteUaRuleResponse,
+  DeleteUaRuleError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteUaRuleRequest,
+  output: DeleteUaRuleResponse,
+  errors: [UaRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteWafOverrideError = CloudflareOpError;
 /** Deletes an existing URI-based WAF override. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafOverridesDelete: API.OperationMethod<
-  WafOverridesDeleteRequest,
-  WafOverridesDeleteResponse,
-  WafOverridesDeleteError,
+export const deleteWafOverride: API.OperationMethod<
+  DeleteWafOverrideRequest,
+  DeleteWafOverrideResponse,
+  DeleteWafOverrideError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WafOverridesDeleteRequest,
-  output: WafOverridesDeleteResponse,
+  input: DeleteWafOverrideRequest,
+  output: DeleteWafOverrideResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WafOverridesGetError = CloudflareOpError;
+export type GetLockdownError = LockdownNotFound | Forbidden | CloudflareOpError;
+/** Fetches the details of a Zone Lockdown rule. */
+export const getLockdown: API.OperationMethod<
+  GetLockdownRequest,
+  GetLockdownResponse,
+  GetLockdownError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLockdownRequest,
+  output: GetLockdownResponse,
+  errors: [LockdownNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetRuleError = CloudflareOpError;
+/** Fetches the details of a firewall rule. */
+export const getRule: API.OperationMethod<
+  GetRuleRequest,
+  GetRuleResponse,
+  GetRuleError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRuleRequest,
+  output: GetRuleResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetUaRuleError = UaRuleNotFound | Forbidden | CloudflareOpError;
+/** Fetches the details of a User Agent Blocking rule. */
+export const getUaRule: API.OperationMethod<
+  GetUaRuleRequest,
+  GetUaRuleResponse,
+  GetUaRuleError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetUaRuleRequest,
+  output: GetUaRuleResponse,
+  errors: [UaRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetWafOverrideError = CloudflareOpError;
 /** Fetches the details of a URI-based WAF override. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafOverridesGet: API.OperationMethod<
-  WafOverridesGetRequest,
-  WafOverridesGetResponse,
-  WafOverridesGetError,
+export const getWafOverride: API.OperationMethod<
+  GetWafOverrideRequest,
+  GetWafOverrideResponse,
+  GetWafOverrideError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WafOverridesGetRequest,
-  output: WafOverridesGetResponse,
+  input: GetWafOverrideRequest,
+  output: GetWafOverrideResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WafOverridesListError = CloudflareOpError;
-/** Fetches the URI-based WAF overrides in a zone. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafOverridesList: API.OperationMethod<
-  WafOverridesListRequest,
-  WafOverridesListResponse,
-  WafOverridesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WafOverridesListRequest,
-  output: WafOverridesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WafOverridesUpdateError = CloudflareOpError;
-/** Updates an existing URI-based WAF override. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafOverridesUpdate: API.OperationMethod<
-  WafOverridesUpdateRequest,
-  WafOverridesUpdateResponse,
-  WafOverridesUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WafOverridesUpdateRequest,
-  output: WafOverridesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WafPackagesGetError = CloudflareOpError;
+export type GetWafPackageError = CloudflareOpError;
 /** Fetches the details of a WAF package. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafPackagesGet: API.OperationMethod<
-  WafPackagesGetRequest,
-  WafPackagesGetResponse,
-  WafPackagesGetError,
+export const getWafPackage: API.OperationMethod<
+  GetWafPackageRequest,
+  GetWafPackageResponse,
+  GetWafPackageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WafPackagesGetRequest,
-  output: WafPackagesGetResponse,
+  input: GetWafPackageRequest,
+  output: GetWafPackageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WafPackagesGroupsEditError = CloudflareOpError;
-/** Updates a WAF rule group. You can update the state (`mode` parameter) of a rule group. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafPackagesGroupsEdit: API.OperationMethod<
-  WafPackagesGroupsEditRequest,
-  WafPackagesGroupsEditResponse,
-  WafPackagesGroupsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WafPackagesGroupsEditRequest,
-  output: WafPackagesGroupsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WafPackagesGroupsGetError = CloudflareOpError;
+export type GetWafPackageGroupError = CloudflareOpError;
 /** Fetches the details of a WAF rule group. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafPackagesGroupsGet: API.OperationMethod<
-  WafPackagesGroupsGetRequest,
-  WafPackagesGroupsGetResponse,
-  WafPackagesGroupsGetError,
+export const getWafPackageGroup: API.OperationMethod<
+  GetWafPackageGroupRequest,
+  GetWafPackageGroupResponse,
+  GetWafPackageGroupError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WafPackagesGroupsGetRequest,
-  output: WafPackagesGroupsGetResponse,
+  input: GetWafPackageGroupRequest,
+  output: GetWafPackageGroupResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WafPackagesGroupsListError = CloudflareOpError;
-/** Fetches the WAF rule groups in a WAF package. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafPackagesGroupsList: API.OperationMethod<
-  WafPackagesGroupsListRequest,
-  WafPackagesGroupsListResponse,
-  WafPackagesGroupsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WafPackagesGroupsListRequest,
-  output: WafPackagesGroupsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WafPackagesListError = CloudflareOpError;
-/** Fetches WAF packages for a zone. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafPackagesList: API.OperationMethod<
-  WafPackagesListRequest,
-  WafPackagesListResponse,
-  WafPackagesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WafPackagesListRequest,
-  output: WafPackagesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WafPackagesRulesEditError = CloudflareOpError;
-/** Updates a WAF rule. You can only update the mode/action of the rule. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafPackagesRulesEdit: API.OperationMethod<
-  WafPackagesRulesEditRequest,
-  WafPackagesRulesEditResponse,
-  WafPackagesRulesEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WafPackagesRulesEditRequest,
-  output: WafPackagesRulesEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WafPackagesRulesGetError = CloudflareOpError;
+export type GetWafPackageRuleError = CloudflareOpError;
 /** Fetches the details of a WAF rule in a WAF package. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafPackagesRulesGet: API.OperationMethod<
-  WafPackagesRulesGetRequest,
-  WafPackagesRulesGetResponse,
-  WafPackagesRulesGetError,
+export const getWafPackageRule: API.OperationMethod<
+  GetWafPackageRuleRequest,
+  GetWafPackageRuleResponse,
+  GetWafPackageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WafPackagesRulesGetRequest,
-  output: WafPackagesRulesGetResponse,
+  input: GetWafPackageRuleRequest,
+  output: GetWafPackageRuleResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WafPackagesRulesListError = CloudflareOpError;
-/** Fetches WAF rules in a WAF package. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
-export const wafPackagesRulesList: API.OperationMethod<
-  WafPackagesRulesListRequest,
-  WafPackagesRulesListResponse,
-  WafPackagesRulesListError,
+export type ListLockdownsError = Forbidden | CloudflareOpError;
+/** Fetches Zone Lockdown rules. You can filter the results using several optional parameters. */
+export const listLockdowns: API.OperationMethod<
+  ListLockdownsRequest,
+  ListLockdownsResponse,
+  ListLockdownsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WafPackagesRulesListRequest,
-  output: WafPackagesRulesListResponse,
+  input: ListLockdownsRequest,
+  output: ListLockdownsResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListRulesError = CloudflareOpError;
+/** Fetches firewall rules in a zone. You can filter the results using several optional parameters. */
+export const listRules: API.OperationMethod<
+  ListRulesRequest,
+  ListRulesResponse,
+  ListRulesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRulesRequest,
+  output: ListRulesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListUaRulesError = Forbidden | CloudflareOpError;
+/** Fetches User Agent Blocking rules in a zone. You can filter the results using several optional parameters. */
+export const listUaRules: API.OperationMethod<
+  ListUaRulesRequest,
+  ListUaRulesResponse,
+  ListUaRulesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListUaRulesRequest,
+  output: ListUaRulesResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListWafOverridesError = CloudflareOpError;
+/** Fetches the URI-based WAF overrides in a zone. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
+export const listWafOverrides: API.OperationMethod<
+  ListWafOverridesRequest,
+  ListWafOverridesResponse,
+  ListWafOverridesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWafOverridesRequest,
+  output: ListWafOverridesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListWafPackageGroupsError = CloudflareOpError;
+/** Fetches the WAF rule groups in a WAF package. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
+export const listWafPackageGroups: API.OperationMethod<
+  ListWafPackageGroupsRequest,
+  ListWafPackageGroupsResponse,
+  ListWafPackageGroupsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWafPackageGroupsRequest,
+  output: ListWafPackageGroupsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListWafPackageRulesError = CloudflareOpError;
+/** Fetches WAF rules in a WAF package. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
+export const listWafPackageRules: API.OperationMethod<
+  ListWafPackageRulesRequest,
+  ListWafPackageRulesResponse,
+  ListWafPackageRulesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWafPackageRulesRequest,
+  output: ListWafPackageRulesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListWafPackagesError = CloudflareOpError;
+/** Fetches WAF packages for a zone. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
+export const listWafPackages: API.OperationMethod<
+  ListWafPackagesRequest,
+  ListWafPackagesResponse,
+  ListWafPackagesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWafPackagesRequest,
+  output: ListWafPackagesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchRuleError = CloudflareOpError;
+/** Updates the priority of an existing firewall rule. */
+export const patchRule: API.OperationMethod<
+  PatchRuleRequest,
+  PatchRuleResponse,
+  PatchRuleError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchRuleRequest,
+  output: PatchRuleResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchWafPackageGroupError = CloudflareOpError;
+/** Updates a WAF rule group. You can update the state (`mode` parameter) of a rule group. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
+export const patchWafPackageGroup: API.OperationMethod<
+  PatchWafPackageGroupRequest,
+  PatchWafPackageGroupResponse,
+  PatchWafPackageGroupError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchWafPackageGroupRequest,
+  output: PatchWafPackageGroupResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchWafPackageRuleError = CloudflareOpError;
+/** Updates a WAF rule. You can only update the mode/action of the rule. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
+export const patchWafPackageRule: API.OperationMethod<
+  PatchWafPackageRuleRequest,
+  PatchWafPackageRuleResponse,
+  PatchWafPackageRuleError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchWafPackageRuleRequest,
+  output: PatchWafPackageRuleResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateLockdownError =
+  | LockdownNotFound
+  | DuplicateLockdown
+  | Forbidden
+  | CloudflareOpError;
+/** Updates an existing Zone Lockdown rule. */
+export const updateLockdown: API.OperationMethod<
+  UpdateLockdownRequest,
+  UpdateLockdownResponse,
+  UpdateLockdownError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateLockdownRequest,
+  output: UpdateLockdownResponse,
+  errors: [
+    LockdownNotFound,
+    DuplicateLockdown,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateRuleError = CloudflareOpError;
+/** Updates an existing firewall rule. */
+export const updateRule: API.OperationMethod<
+  UpdateRuleRequest,
+  UpdateRuleResponse,
+  UpdateRuleError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRuleRequest,
+  output: UpdateRuleResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateUaRuleError =
+  | UaRuleNotFound
+  | DuplicateUaRule
+  | Forbidden
+  | CloudflareOpError;
+/** Updates an existing User Agent Blocking rule. */
+export const updateUaRule: API.OperationMethod<
+  UpdateUaRuleRequest,
+  UpdateUaRuleResponse,
+  UpdateUaRuleError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateUaRuleRequest,
+  output: UpdateUaRuleResponse,
+  errors: [
+    UaRuleNotFound,
+    DuplicateUaRule,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateWafOverrideError = CloudflareOpError;
+/** Updates an existing URI-based WAF override. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/). */
+export const updateWafOverride: API.OperationMethod<
+  UpdateWafOverrideRequest,
+  UpdateWafOverrideResponse,
+  UpdateWafOverrideError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateWafOverrideRequest,
+  output: UpdateWafOverrideResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

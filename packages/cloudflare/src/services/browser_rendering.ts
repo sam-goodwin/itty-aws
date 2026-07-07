@@ -9,6 +9,117 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export interface ActivateDevtoolBrowserTargetRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Browser session ID. */
+  sessionId: string;
+  /** Target ID to activate. */
+  targetId: string;
+}
+export const ActivateDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    sessionId: S.String.pipe(T.Label("session_id")),
+    targetId: S.String.pipe(T.Label("target_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/activate/{target_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ActivateDevtoolBrowserTargetRequest",
+}) as any as S.Schema<ActivateDevtoolBrowserTargetRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface ActivateDevtoolBrowserTargetResponse {
+  /** Target activated. */
+  message: string;
+}
+export const ActivateDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      message: S.String,
+    }),
+).annotate({
+  identifier: "ActivateDevtoolBrowserTargetResponse",
+}) as any as S.Schema<ActivateDevtoolBrowserTargetResponse>;
+
+export interface CloseDevtoolBrowserTargetRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Browser session ID. */
+  sessionId: string;
+  /** Target ID to close. */
+  targetId: string;
+}
+export const CloseDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    sessionId: S.String.pipe(T.Label("session_id")),
+    targetId: S.String.pipe(T.Label("target_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/close/{target_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CloseDevtoolBrowserTargetRequest",
+}) as any as S.Schema<CloseDevtoolBrowserTargetRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CloseDevtoolBrowserTargetResponse {
+  /** Target is closing. */
+  message: string;
+}
+export const CloseDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.String,
+  }),
+).annotate({
+  identifier: "CloseDevtoolBrowserTargetResponse",
+}) as any as S.Schema<CloseDevtoolBrowserTargetResponse>;
+
+export interface ConnectDevtoolBrowserRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Browser session ID to connect to. */
+  sessionId: string;
+  /** Keep-alive time in ms (only valid when acquiring new session). */
+  keepAlive?: number;
+  /** Use experimental browser. */
+  lab?: boolean;
+  recording?: boolean;
+}
+export const ConnectDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    sessionId: S.String.pipe(T.Label("session_id")),
+    keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
+    lab: S.optional(S.Boolean.pipe(T.Query())),
+    recording: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ConnectDevtoolBrowserRequest",
+}) as any as S.Schema<ConnectDevtoolBrowserRequest>;
+
+export interface ConnectDevtoolBrowserResponse {}
+export const ConnectDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ConnectDevtoolBrowserResponse",
+}) as any as S.Schema<ConnectDevtoolBrowserResponse>;
+
 export interface ContentCreateRequestBody {
   objectUrlActionTimeoutAddScriptTag16More__: unknown;
   objectHtmlActionTimeoutAddScriptTag16More__: unknown;
@@ -26,14 +137,14 @@ export const ContentCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "ContentCreateRequestBody",
 }) as any as S.Schema<ContentCreateRequestBody>;
 
-export interface ContentCreateRequest {
+export interface CreateContentRequest {
   /** Account ID. */
   accountId: string;
   /** Cache TTL default is 5s. Set to 0 to disable. */
   cacheTTL?: number;
   body: ContentCreateRequestBody;
 }
-export const ContentCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
@@ -46,20 +157,20 @@ export const ContentCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ContentCreateRequest",
-}) as any as S.Schema<ContentCreateRequest>;
+  identifier: "CreateContentRequest",
+}) as any as S.Schema<CreateContentRequest>;
 
-export interface ContentCreateResponse {
+export interface CreateContentResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: string;
 }
-export const ContentCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "ContentCreateResponse",
-}) as any as S.Schema<ContentCreateResponse>;
+  identifier: "CreateContentResponse",
+}) as any as S.Schema<CreateContentResponse>;
 
 export interface CrawlCreateRequestBody {
   objectUrlActionTimeoutAddScriptTag25More__: unknown;
@@ -78,14 +189,14 @@ export const CrawlCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "CrawlCreateRequestBody",
 }) as any as S.Schema<CrawlCreateRequestBody>;
 
-export interface CrawlCreateRequest {
+export interface CreateCrawlRequest {
   /** Account ID. */
   accountId: string;
   /** Cache TTL default is 5s. Set to 0 to disable. */
   cacheTTL?: number;
   body: CrawlCreateRequestBody;
 }
-export const CrawlCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCrawlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cacheTTL: S.optional(S.Number.pipe(T.Query())),
@@ -98,28 +209,685 @@ export const CrawlCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CrawlCreateRequest",
-}) as any as S.Schema<CrawlCreateRequest>;
+  identifier: "CreateCrawlRequest",
+}) as any as S.Schema<CreateCrawlRequest>;
 
-export interface CrawlCreateResponse {
+export interface CreateCrawlResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: string;
 }
-export const CrawlCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCrawlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "CrawlCreateResponse",
-}) as any as S.Schema<CrawlCreateResponse>;
+  identifier: "CreateCrawlResponse",
+}) as any as S.Schema<CreateCrawlResponse>;
 
-export interface CrawlDeleteRequest {
+export interface CreateDevtoolBrowserRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Keep-alive time in milliseconds. */
+  keepAlive?: number;
+  /** Use experimental browser. */
+  lab?: boolean;
+  /** How long the live view URL remains valid, in milliseconds (max 60 minutes). Only used when targets is true. */
+  liveViewUrlExpiresInMs?: number;
+  recording?: boolean;
+  /** Include browser targets in response. */
+  targets?: boolean;
+}
+export const CreateDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
+    lab: S.optional(S.Boolean.pipe(T.Query())),
+    liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
+    recording: S.optional(S.Boolean.pipe(T.Query())),
+    targets: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/browser-rendering/devtools/browser",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateDevtoolBrowserRequest",
+}) as any as S.Schema<CreateDevtoolBrowserRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CreateDevtoolBrowserResponse {
+  /** Browser session ID. */
+  sessionId: string;
+  /** WebSocket URL for the session. */
+  webSocketDebuggerUrl?: string;
+}
+export const CreateDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionId: S.String,
+    webSocketDebuggerUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateDevtoolBrowserResponse",
+}) as any as S.Schema<CreateDevtoolBrowserResponse>;
+
+export interface CreateDevtoolBrowserTargetRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Browser session ID. */
+  sessionId: string;
+  /** How long the live view URL remains valid, in milliseconds (max 60 minutes) */
+  liveViewUrlExpiresInMs?: number;
+  url?: string;
+}
+export const CreateDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    sessionId: S.String.pipe(T.Label("session_id")),
+    liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
+    url: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/new",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateDevtoolBrowserTargetRequest",
+}) as any as S.Schema<CreateDevtoolBrowserTargetRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CreateDevtoolBrowserTargetResponse {
+  /** Target ID. */
+  id: string;
+  /** Target type (page, background_page, worker, etc.). */
+  type: string;
+  /** URL of the target. */
+  url: string;
+  /** Target description. */
+  description?: string;
+  /** DevTools frontend URL. */
+  devtoolsFrontendUrl?: string;
+  /** Title of the target. */
+  title?: string;
+  /** WebSocket URL for debugging this target. */
+  webSocketDebuggerUrl?: string;
+}
+export const CreateDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    type: S.String,
+    url: S.String,
+    description: S.optional(S.String),
+    devtoolsFrontendUrl: S.optional(S.String),
+    title: S.optional(S.String),
+    webSocketDebuggerUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateDevtoolBrowserTargetResponse",
+}) as any as S.Schema<CreateDevtoolBrowserTargetResponse>;
+
+export interface JsonCreateRequestBody {
+  objectHtmlActionTimeoutAddScriptTag19More__: unknown;
+  objectUrlActionTimeoutAddScriptTag19More__: unknown;
+}
+export const JsonCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectHtmlActionTimeoutAddScriptTag19More__: S.Unknown.pipe(
+      T.Body("object { html, actionTimeout, addScriptTag, 19 more }"),
+    ),
+    objectUrlActionTimeoutAddScriptTag19More__: S.Unknown.pipe(
+      T.Body("object { url, actionTimeout, addScriptTag, 19 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "JsonCreateRequestBody",
+}) as any as S.Schema<JsonCreateRequestBody>;
+
+export interface CreateJsonRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Cache TTL default is 5s. Set to 0 to disable. */
+  cacheTTL?: number;
+  body: JsonCreateRequestBody;
+}
+export const CreateJsonRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cacheTTL: S.optional(S.Number.pipe(T.Query())),
+    body: JsonCreateRequestBody,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/browser-rendering/json",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateJsonRequest",
+}) as any as S.Schema<CreateJsonRequest>;
+
+export type JsonCreateResultMap = { [key: string]: unknown | undefined };
+export const JsonCreateResultMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<JsonCreateResultMap>;
+
+export interface CreateJsonResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: JsonCreateResultMap;
+}
+export const CreateJsonResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(JsonCreateResultMap.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "CreateJsonResponse",
+}) as any as S.Schema<CreateJsonResponse>;
+
+export interface LinksCreateRequestBody {
+  objectHtmlActionTimeoutAddScriptTag18More__: unknown;
+  objectUrlActionTimeoutAddScriptTag18More__: unknown;
+}
+export const LinksCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectHtmlActionTimeoutAddScriptTag18More__: S.Unknown.pipe(
+      T.Body("object { html, actionTimeout, addScriptTag, 18 more }"),
+    ),
+    objectUrlActionTimeoutAddScriptTag18More__: S.Unknown.pipe(
+      T.Body("object { url, actionTimeout, addScriptTag, 18 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "LinksCreateRequestBody",
+}) as any as S.Schema<LinksCreateRequestBody>;
+
+export interface CreateLinkRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Cache TTL default is 5s. Set to 0 to disable. */
+  cacheTTL?: number;
+  body: LinksCreateRequestBody;
+}
+export const CreateLinkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cacheTTL: S.optional(S.Number.pipe(T.Query())),
+    body: LinksCreateRequestBody,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/browser-rendering/links",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateLinkRequest",
+}) as any as S.Schema<CreateLinkRequest>;
+
+export type LinksCreateResultList = string[];
+export const LinksCreateResultList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<LinksCreateResultList>;
+
+export interface CreateLinkResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: LinksCreateResultList;
+}
+export const CreateLinkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(LinksCreateResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "CreateLinkResponse",
+}) as any as S.Schema<CreateLinkResponse>;
+
+export interface MarkdownCreateRequestBody {
+  objectUrlActionTimeoutAddScriptTag16More__: unknown;
+  objectHtmlActionTimeoutAddScriptTag16More__: unknown;
+}
+export const MarkdownCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectUrlActionTimeoutAddScriptTag16More__: S.Unknown.pipe(
+      T.Body("object { url, actionTimeout, addScriptTag, 16 more }"),
+    ),
+    objectHtmlActionTimeoutAddScriptTag16More__: S.Unknown.pipe(
+      T.Body("object { html, actionTimeout, addScriptTag, 16 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "MarkdownCreateRequestBody",
+}) as any as S.Schema<MarkdownCreateRequestBody>;
+
+export interface CreateMarkdownRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Cache TTL default is 5s. Set to 0 to disable. */
+  cacheTTL?: number;
+  body: MarkdownCreateRequestBody;
+}
+export const CreateMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cacheTTL: S.optional(S.Number.pipe(T.Query())),
+    body: MarkdownCreateRequestBody,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/browser-rendering/markdown",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateMarkdownRequest",
+}) as any as S.Schema<CreateMarkdownRequest>;
+
+export interface CreateMarkdownResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: string;
+}
+export const CreateMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.String.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "CreateMarkdownResponse",
+}) as any as S.Schema<CreateMarkdownResponse>;
+
+export interface PdfCreateRequestBody {
+  objectHtmlActionTimeoutAddScriptTag17More__: unknown;
+  objectUrlActionTimeoutAddScriptTag17More__: unknown;
+}
+export const PdfCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectHtmlActionTimeoutAddScriptTag17More__: S.Unknown.pipe(
+      T.Body("object { html, actionTimeout, addScriptTag, 17 more }"),
+    ),
+    objectUrlActionTimeoutAddScriptTag17More__: S.Unknown.pipe(
+      T.Body("object { url, actionTimeout, addScriptTag, 17 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "PdfCreateRequestBody",
+}) as any as S.Schema<PdfCreateRequestBody>;
+
+export interface CreatePdfRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Cache TTL default is 5s. Set to 0 to disable. */
+  cacheTTL?: number;
+  body: PdfCreateRequestBody;
+}
+export const CreatePdfRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cacheTTL: S.optional(S.Number.pipe(T.Query())),
+    body: PdfCreateRequestBody,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/browser-rendering/pdf",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreatePdfRequest",
+}) as any as S.Schema<CreatePdfRequest>;
+
+export interface CreatePdfResponse {}
+export const CreatePdfResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreatePdfResponse",
+}) as any as S.Schema<CreatePdfResponse>;
+
+export interface ScrapeCreateRequestBody {
+  objectElementsHtmlActionTimeout17More__: unknown;
+  objectElementsUrlActionTimeout17More__: unknown;
+}
+export const ScrapeCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectElementsHtmlActionTimeout17More__: S.Unknown.pipe(
+      T.Body("object { elements, html, actionTimeout, 17 more }"),
+    ),
+    objectElementsUrlActionTimeout17More__: S.Unknown.pipe(
+      T.Body("object { elements, url, actionTimeout, 17 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "ScrapeCreateRequestBody",
+}) as any as S.Schema<ScrapeCreateRequestBody>;
+
+export interface CreateScrapeRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Cache TTL default is 5s. Set to 0 to disable. */
+  cacheTTL?: number;
+  body: ScrapeCreateRequestBody;
+}
+export const CreateScrapeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cacheTTL: S.optional(S.Number.pipe(T.Query())),
+    body: ScrapeCreateRequestBody,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/browser-rendering/scrape",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateScrapeRequest",
+}) as any as S.Schema<CreateScrapeRequest>;
+
+export interface ScrapeCreateResultItemResultsAttributesItem {
+  /** Attribute name. */
+  name: string;
+  /** Attribute value. */
+  value: string;
+}
+export const ScrapeCreateResultItemResultsAttributesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      value: S.String,
+    }),
+  ).annotate({
+    identifier: "ScrapeCreateResultItemResultsAttributesItem",
+  }) as any as S.Schema<ScrapeCreateResultItemResultsAttributesItem>;
+
+export type ScrapeCreateResultItemResultsAttributesList =
+  ScrapeCreateResultItemResultsAttributesItem[];
+export const ScrapeCreateResultItemResultsAttributesList =
+  /*@__PURE__*/ S.Array(
+    ScrapeCreateResultItemResultsAttributesItem,
+  ) as any as S.Schema<ScrapeCreateResultItemResultsAttributesList>;
+
+export interface ScrapeCreateResultItemResults {
+  attributes: ScrapeCreateResultItemResultsAttributesList;
+  /** Element height. */
+  height: number;
+  /** HTML content. */
+  html: string;
+  /** Element left. */
+  left: number;
+  /** Text content. */
+  text: string;
+  /** Element top. */
+  top: number;
+  /** Element width. */
+  width: number;
+}
+export const ScrapeCreateResultItemResults = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    attributes: ScrapeCreateResultItemResultsAttributesList,
+    height: S.Number,
+    html: S.String,
+    left: S.Number,
+    text: S.String,
+    top: S.Number,
+    width: S.Number,
+  }),
+).annotate({
+  identifier: "ScrapeCreateResultItemResults",
+}) as any as S.Schema<ScrapeCreateResultItemResults>;
+
+export interface ScrapeCreateResultItem {
+  results: ScrapeCreateResultItemResults;
+  /** Selector. */
+  selector: string;
+}
+export const ScrapeCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    results: ScrapeCreateResultItemResults,
+    selector: S.String,
+  }),
+).annotate({
+  identifier: "ScrapeCreateResultItem",
+}) as any as S.Schema<ScrapeCreateResultItem>;
+
+export type ScrapeCreateResultList = ScrapeCreateResultItem[];
+export const ScrapeCreateResultList = /*@__PURE__*/ S.Array(
+  ScrapeCreateResultItem,
+) as any as S.Schema<ScrapeCreateResultList>;
+
+export interface CreateScrapeResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: ScrapeCreateResultList;
+}
+export const CreateScrapeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(ScrapeCreateResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "CreateScrapeResponse",
+}) as any as S.Schema<CreateScrapeResponse>;
+
+export interface ScreenshotCreateRequestBody {
+  objectHtmlActionTimeoutAddScriptTag19More__: unknown;
+  objectUrlActionTimeoutAddScriptTag19More__: unknown;
+}
+export const ScreenshotCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectHtmlActionTimeoutAddScriptTag19More__: S.Unknown.pipe(
+      T.Body("object { html, actionTimeout, addScriptTag, 19 more }"),
+    ),
+    objectUrlActionTimeoutAddScriptTag19More__: S.Unknown.pipe(
+      T.Body("object { url, actionTimeout, addScriptTag, 19 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "ScreenshotCreateRequestBody",
+}) as any as S.Schema<ScreenshotCreateRequestBody>;
+
+export interface CreateScreenshotRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Cache TTL default is 5s. Set to 0 to disable. */
+  cacheTTL?: number;
+  body: ScreenshotCreateRequestBody;
+}
+export const CreateScreenshotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cacheTTL: S.optional(S.Number.pipe(T.Query())),
+    body: ScreenshotCreateRequestBody,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/browser-rendering/screenshot",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateScreenshotRequest",
+}) as any as S.Schema<CreateScreenshotRequest>;
+
+export interface CreateScreenshotResponse {}
+export const CreateScreenshotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateScreenshotResponse",
+}) as any as S.Schema<CreateScreenshotResponse>;
+
+export interface SnapshotCreateRequestBody {
+  objectHtmlActionTimeoutAddScriptTag18More__: unknown;
+  objectUrlActionTimeoutAddScriptTag18More__: unknown;
+}
+export const SnapshotCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectHtmlActionTimeoutAddScriptTag18More__: S.Unknown.pipe(
+      T.Body("object { html, actionTimeout, addScriptTag, 18 more }"),
+    ),
+    objectUrlActionTimeoutAddScriptTag18More__: S.Unknown.pipe(
+      T.Body("object { url, actionTimeout, addScriptTag, 18 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "SnapshotCreateRequestBody",
+}) as any as S.Schema<SnapshotCreateRequestBody>;
+
+export interface CreateSnapshotRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Cache TTL default is 5s. Set to 0 to disable. */
+  cacheTTL?: number;
+  body: SnapshotCreateRequestBody;
+}
+export const CreateSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cacheTTL: S.optional(S.Number.pipe(T.Query())),
+    body: SnapshotCreateRequestBody,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/browser-rendering/snapshot",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateSnapshotRequest",
+}) as any as S.Schema<CreateSnapshotRequest>;
+
+export interface SnapshotCreateResponseAccessibilityTreeChecked {
+  boolean: unknown;
+}
+export const SnapshotCreateResponseAccessibilityTreeChecked =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "SnapshotCreateResponseAccessibilityTreeChecked",
+  }) as any as S.Schema<SnapshotCreateResponseAccessibilityTreeChecked>;
+
+export type SnapshotCreateResponseAccessibilityTreeChildrenList = unknown[];
+export const SnapshotCreateResponseAccessibilityTreeChildrenList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<SnapshotCreateResponseAccessibilityTreeChildrenList>;
+
+export interface SnapshotCreateResponseAccessibilityTreePressed {
+  boolean: unknown;
+}
+export const SnapshotCreateResponseAccessibilityTreePressed =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "SnapshotCreateResponseAccessibilityTreePressed",
+  }) as any as S.Schema<SnapshotCreateResponseAccessibilityTreePressed>;
+
+export interface SnapshotCreateResponseAccessibilityTreeValue {
+  string: unknown;
+  number: unknown;
+}
+export const SnapshotCreateResponseAccessibilityTreeValue =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "SnapshotCreateResponseAccessibilityTreeValue",
+  }) as any as S.Schema<SnapshotCreateResponseAccessibilityTreeValue>;
+
+export interface SnapshotCreateResponseAccessibilityTree {
+  role: string;
+  autocomplete?: string;
+  checked?: SnapshotCreateResponseAccessibilityTreeChecked;
+  children?: SnapshotCreateResponseAccessibilityTreeChildrenList;
+  description?: string;
+  disabled?: boolean;
+  expanded?: boolean;
+  focused?: boolean;
+  haspopup?: string;
+  invalid?: string;
+  keyshortcuts?: string;
+  level?: number;
+  modal?: boolean;
+  multiline?: boolean;
+  multiselectable?: boolean;
+  name?: string;
+  orientation?: string;
+  pressed?: SnapshotCreateResponseAccessibilityTreePressed;
+  readonly?: boolean;
+  required?: boolean;
+  roledescription?: string;
+  selected?: boolean;
+  value?: SnapshotCreateResponseAccessibilityTreeValue;
+  valuemax?: number;
+  valuemin?: number;
+  valuetext?: string;
+}
+export const SnapshotCreateResponseAccessibilityTree = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      role: S.String,
+      autocomplete: S.optional(S.String),
+      checked: S.optional(SnapshotCreateResponseAccessibilityTreeChecked),
+      children: S.optional(SnapshotCreateResponseAccessibilityTreeChildrenList),
+      description: S.optional(S.String),
+      disabled: S.optional(S.Boolean),
+      expanded: S.optional(S.Boolean),
+      focused: S.optional(S.Boolean),
+      haspopup: S.optional(S.String),
+      invalid: S.optional(S.String),
+      keyshortcuts: S.optional(S.String),
+      level: S.optional(S.Number),
+      modal: S.optional(S.Boolean),
+      multiline: S.optional(S.Boolean),
+      multiselectable: S.optional(S.Boolean),
+      name: S.optional(S.String),
+      orientation: S.optional(S.String),
+      pressed: S.optional(SnapshotCreateResponseAccessibilityTreePressed),
+      readonly: S.optional(S.Boolean),
+      required: S.optional(S.Boolean),
+      roledescription: S.optional(S.String),
+      selected: S.optional(S.Boolean),
+      value: S.optional(SnapshotCreateResponseAccessibilityTreeValue),
+      valuemax: S.optional(S.Number),
+      valuemin: S.optional(S.Number),
+      valuetext: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "SnapshotCreateResponseAccessibilityTree",
+}) as any as S.Schema<SnapshotCreateResponseAccessibilityTree>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateSnapshotResponse {
+  /** Accessibility tree node */
+  accessibilityTree?: SnapshotCreateResponseAccessibilityTree;
+  /** HTML content. */
+  content?: string;
+  /** Markdown content. */
+  markdown?: string;
+  /** Base64 encoded image. */
+  screenshot?: string;
+}
+export const CreateSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accessibilityTree: S.optional(SnapshotCreateResponseAccessibilityTree),
+    content: S.optional(S.String),
+    markdown: S.optional(S.String),
+    screenshot: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateSnapshotResponse",
+}) as any as S.Schema<CreateSnapshotResponse>;
+
+export interface DeleteCrawlRequest {
   /** Account ID. */
   accountId: string;
   /** The ID of the crawl job to cancel. */
   jobId: string;
 }
-export const CrawlDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCrawlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
@@ -131,24 +899,63 @@ export const CrawlDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CrawlDeleteRequest",
-}) as any as S.Schema<CrawlDeleteRequest>;
+  identifier: "DeleteCrawlRequest",
+}) as any as S.Schema<DeleteCrawlRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CrawlDeleteResponse {
+export interface DeleteCrawlResponse {
   /** The ID of the cancelled job. */
   jobId: string;
   /** Cancellation confirmation message. */
   message: string;
 }
-export const CrawlDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCrawlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     jobId: S.String.pipe(T.Body("job_id")),
     message: S.String,
   }),
 ).annotate({
-  identifier: "CrawlDeleteResponse",
-}) as any as S.Schema<CrawlDeleteResponse>;
+  identifier: "DeleteCrawlResponse",
+}) as any as S.Schema<DeleteCrawlResponse>;
+
+export interface DeleteDevtoolBrowserRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Browser session ID to close. */
+  sessionId: string;
+}
+export const DeleteDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    sessionId: S.String.pipe(T.Label("session_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDevtoolBrowserRequest",
+}) as any as S.Schema<DeleteDevtoolBrowserRequest>;
+
+export type DevtoolsBrowserDeleteResponseStatus =
+  | "closing"
+  | "closed"
+  | (string & {});
+export const DevtoolsBrowserDeleteResponseStatus = /*@__PURE__*/ S.String;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface DeleteDevtoolBrowserResponse {
+  status: DevtoolsBrowserDeleteResponseStatus;
+}
+export const DeleteDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    status: DevtoolsBrowserDeleteResponseStatus,
+  }),
+).annotate({
+  identifier: "DeleteDevtoolBrowserResponse",
+}) as any as S.Schema<DeleteDevtoolBrowserResponse>;
 
 export type CrawlGetRequestStatus =
   | "queued"
@@ -157,7 +964,7 @@ export type CrawlGetRequestStatus =
   | (string & {});
 export const CrawlGetRequestStatus = /*@__PURE__*/ S.String;
 
-export interface CrawlGetRequest {
+export interface GetCrawlRequest {
   /** Account ID. */
   accountId: string;
   /** Crawl job ID. */
@@ -171,7 +978,7 @@ export interface CrawlGetRequest {
   /** Filter by URL status. */
   status?: CrawlGetRequestStatus;
 }
-export const CrawlGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetCrawlRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
@@ -187,8 +994,8 @@ export const CrawlGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CrawlGetRequest",
-}) as any as S.Schema<CrawlGetRequest>;
+  identifier: "GetCrawlRequest",
+}) as any as S.Schema<GetCrawlRequest>;
 
 export interface CrawlGetResponseRecordsItemMetadata {
   /** HTTP status code of the crawled page. */
@@ -255,7 +1062,7 @@ export const CrawlGetResponseRecordsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CrawlGetResponseRecordsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CrawlGetResponse {
+export interface GetCrawlResponse {
   /** Crawl job ID. */
   id: string;
   /** Total seconds spent in browser so far. */
@@ -273,7 +1080,7 @@ export interface CrawlGetResponse {
   /** Cursor for pagination. */
   cursor?: string;
 }
-export const CrawlGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCrawlResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     browserSecondsUsed: S.Number,
@@ -285,166 +1092,10 @@ export const CrawlGetResponse = /*@__PURE__*/ S.suspend(() =>
     cursor: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "CrawlGetResponse",
-}) as any as S.Schema<CrawlGetResponse>;
+  identifier: "GetCrawlResponse",
+}) as any as S.Schema<GetCrawlResponse>;
 
-export interface DevtoolsBrowserConnectRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Browser session ID to connect to. */
-  sessionId: string;
-  /** Keep-alive time in ms (only valid when acquiring new session). */
-  keepAlive?: number;
-  /** Use experimental browser. */
-  lab?: boolean;
-  recording?: boolean;
-}
-export const DevtoolsBrowserConnectRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    sessionId: S.String.pipe(T.Label("session_id")),
-    keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
-    lab: S.optional(S.Boolean.pipe(T.Query())),
-    recording: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DevtoolsBrowserConnectRequest",
-}) as any as S.Schema<DevtoolsBrowserConnectRequest>;
-
-export interface DevtoolsBrowserConnectResponse {}
-export const DevtoolsBrowserConnectResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DevtoolsBrowserConnectResponse",
-}) as any as S.Schema<DevtoolsBrowserConnectResponse>;
-
-export interface DevtoolsBrowserCreateRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Keep-alive time in milliseconds. */
-  keepAlive?: number;
-  /** Use experimental browser. */
-  lab?: boolean;
-  /** How long the live view URL remains valid, in milliseconds (max 60 minutes). Only used when targets is true. */
-  liveViewUrlExpiresInMs?: number;
-  recording?: boolean;
-  /** Include browser targets in response. */
-  targets?: boolean;
-}
-export const DevtoolsBrowserCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
-    lab: S.optional(S.Boolean.pipe(T.Query())),
-    liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
-    recording: S.optional(S.Boolean.pipe(T.Query())),
-    targets: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DevtoolsBrowserCreateRequest",
-}) as any as S.Schema<DevtoolsBrowserCreateRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DevtoolsBrowserCreateResponse {
-  /** Browser session ID. */
-  sessionId: string;
-  /** WebSocket URL for the session. */
-  webSocketDebuggerUrl?: string;
-}
-export const DevtoolsBrowserCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.String,
-    webSocketDebuggerUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DevtoolsBrowserCreateResponse",
-}) as any as S.Schema<DevtoolsBrowserCreateResponse>;
-
-export interface DevtoolsBrowserDeleteRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Browser session ID to close. */
-  sessionId: string;
-}
-export const DevtoolsBrowserDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    sessionId: S.String.pipe(T.Label("session_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DevtoolsBrowserDeleteRequest",
-}) as any as S.Schema<DevtoolsBrowserDeleteRequest>;
-
-export type DevtoolsBrowserDeleteResponseStatus =
-  | "closing"
-  | "closed"
-  | (string & {});
-export const DevtoolsBrowserDeleteResponseStatus = /*@__PURE__*/ S.String;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DevtoolsBrowserDeleteResponse {
-  status: DevtoolsBrowserDeleteResponseStatus;
-}
-export const DevtoolsBrowserDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    status: DevtoolsBrowserDeleteResponseStatus,
-  }),
-).annotate({
-  identifier: "DevtoolsBrowserDeleteResponse",
-}) as any as S.Schema<DevtoolsBrowserDeleteResponse>;
-
-export interface DevtoolsBrowserLaunchRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Keep-alive time in ms (only valid when acquiring new session). */
-  keepAlive?: number;
-  /** Use experimental browser. */
-  lab?: boolean;
-  recording?: boolean;
-}
-export const DevtoolsBrowserLaunchRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
-    lab: S.optional(S.Boolean.pipe(T.Query())),
-    recording: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DevtoolsBrowserLaunchRequest",
-}) as any as S.Schema<DevtoolsBrowserLaunchRequest>;
-
-export interface DevtoolsBrowserLaunchResponse {}
-export const DevtoolsBrowserLaunchResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DevtoolsBrowserLaunchResponse",
-}) as any as S.Schema<DevtoolsBrowserLaunchResponse>;
-
-export interface DevtoolsBrowserPageGetRequest {
+export interface GetDevtoolBrowserPageRequest {
   /** Account ID. */
   accountId: string;
   /** Browser session ID. */
@@ -452,7 +1103,7 @@ export interface DevtoolsBrowserPageGetRequest {
   /** Target ID, e.g. page ID. */
   targetId: string;
 }
-export const DevtoolsBrowserPageGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetDevtoolBrowserPageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -465,23 +1116,295 @@ export const DevtoolsBrowserPageGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DevtoolsBrowserPageGetRequest",
-}) as any as S.Schema<DevtoolsBrowserPageGetRequest>;
+  identifier: "GetDevtoolBrowserPageRequest",
+}) as any as S.Schema<GetDevtoolBrowserPageRequest>;
 
-export interface DevtoolsBrowserPageGetResponse {}
-export const DevtoolsBrowserPageGetResponse = /*@__PURE__*/ S.suspend(() =>
+export interface GetDevtoolBrowserPageResponse {}
+export const GetDevtoolBrowserPageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "DevtoolsBrowserPageGetResponse",
-}) as any as S.Schema<DevtoolsBrowserPageGetResponse>;
+  identifier: "GetDevtoolBrowserPageResponse",
+}) as any as S.Schema<GetDevtoolBrowserPageResponse>;
 
-export interface DevtoolsBrowserProtocolRequest {
+export interface GetDevtoolBrowserTargetRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Browser session ID. */
+  sessionId: string;
+  /** Target ID. */
+  targetId: string;
+}
+export const GetDevtoolBrowserTargetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    sessionId: S.String.pipe(T.Label("session_id")),
+    targetId: S.String.pipe(T.Label("target_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list/{target_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetDevtoolBrowserTargetRequest",
+}) as any as S.Schema<GetDevtoolBrowserTargetRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetDevtoolBrowserTargetResponse {
+  /** Target ID. */
+  id: string;
+  /** Target type (page, background_page, worker, etc.). */
+  type: string;
+  /** URL of the target. */
+  url: string;
+  /** Target description. */
+  description?: string;
+  /** DevTools frontend URL. */
+  devtoolsFrontendUrl?: string;
+  /** Title of the target. */
+  title?: string;
+  /** WebSocket URL for debugging this target. */
+  webSocketDebuggerUrl?: string;
+}
+export const GetDevtoolBrowserTargetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    type: S.String,
+    url: S.String,
+    description: S.optional(S.String),
+    devtoolsFrontendUrl: S.optional(S.String),
+    title: S.optional(S.String),
+    webSocketDebuggerUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetDevtoolBrowserTargetResponse",
+}) as any as S.Schema<GetDevtoolBrowserTargetResponse>;
+
+export interface GetDevtoolSessionRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Session ID. */
+  sessionId: string;
+}
+export const GetDevtoolSessionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    sessionId: S.String.pipe(T.Label("session_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/browser-rendering/devtools/session/{session_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetDevtoolSessionRequest",
+}) as any as S.Schema<GetDevtoolSessionRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetDevtoolSessionResponse {
+  /** Session ID. */
+  sessionId: string;
+  /** Reason for session closure. */
+  closeReason?: string;
+  /** Human-readable close reason. */
+  closeReasonText?: string;
+  /** Connection end time. */
+  connectionEndTime?: number;
+  /** Connection ID. */
+  connectionId?: string;
+  /** Connection start time. */
+  connectionStartTime?: number;
+  /** DevTools frontend URL. */
+  devtoolsFrontendUrl?: string;
+  /** Session end time. */
+  endTime?: number;
+  /** Last updated timestamp. */
+  lastUpdated?: number;
+  /** Session start time. */
+  startTime?: number;
+  /** WebSocket URL for debugging this target. */
+  webSocketDebuggerUrl?: string;
+}
+export const GetDevtoolSessionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionId: S.String,
+    closeReason: S.optional(S.String),
+    closeReasonText: S.optional(S.String),
+    connectionEndTime: S.optional(S.Number),
+    connectionId: S.optional(S.String),
+    connectionStartTime: S.optional(S.Number),
+    devtoolsFrontendUrl: S.optional(S.String),
+    endTime: S.optional(S.Number),
+    lastUpdated: S.optional(S.Number),
+    startTime: S.optional(S.Number),
+    webSocketDebuggerUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetDevtoolSessionResponse",
+}) as any as S.Schema<GetDevtoolSessionResponse>;
+
+export interface LaunchDevtoolBrowserRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Keep-alive time in ms (only valid when acquiring new session). */
+  keepAlive?: number;
+  /** Use experimental browser. */
+  lab?: boolean;
+  recording?: boolean;
+}
+export const LaunchDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    keepAlive: S.optional(S.Number.pipe(T.Query("keep_alive"))),
+    lab: S.optional(S.Boolean.pipe(T.Query())),
+    recording: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/browser-rendering/devtools/browser",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "LaunchDevtoolBrowserRequest",
+}) as any as S.Schema<LaunchDevtoolBrowserRequest>;
+
+export interface LaunchDevtoolBrowserResponse {}
+export const LaunchDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "LaunchDevtoolBrowserResponse",
+}) as any as S.Schema<LaunchDevtoolBrowserResponse>;
+
+export interface ListDevtoolBrowserTargetsRequest {
+  /** Account ID. */
+  accountId: string;
+  /** Browser session ID. */
+  sessionId: string;
+  /** How long the live view URLs remain valid, in milliseconds (max 60 minutes) */
+  liveViewUrlExpiresInMs?: number;
+}
+export const ListDevtoolBrowserTargetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    sessionId: S.String.pipe(T.Label("session_id")),
+    liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListDevtoolBrowserTargetsRequest",
+}) as any as S.Schema<ListDevtoolBrowserTargetsRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface ListDevtoolBrowserTargetsResponse {
+  /** Target ID. */
+  id: string;
+  /** Target type (page, background_page, worker, etc.). */
+  type: string;
+  /** URL of the target. */
+  url: string;
+  /** Target description. */
+  description?: string;
+  /** DevTools frontend URL. */
+  devtoolsFrontendUrl?: string;
+  /** Title of the target. */
+  title?: string;
+  /** WebSocket URL for debugging this target. */
+  webSocketDebuggerUrl?: string;
+}
+export const ListDevtoolBrowserTargetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    type: S.String,
+    url: S.String,
+    description: S.optional(S.String),
+    devtoolsFrontendUrl: S.optional(S.String),
+    title: S.optional(S.String),
+    webSocketDebuggerUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDevtoolBrowserTargetsResponse",
+}) as any as S.Schema<ListDevtoolBrowserTargetsResponse>;
+
+export interface ListDevtoolSessionsRequest {
+  /** Account ID. */
+  accountId: string;
+  limit?: number;
+  offset?: number;
+}
+export const ListDevtoolSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/browser-rendering/devtools/session",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListDevtoolSessionsRequest",
+}) as any as S.Schema<ListDevtoolSessionsRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface ListDevtoolSessionsResponse {
+  /** Session ID. */
+  sessionId: string;
+  /** Reason for session closure. */
+  closeReason?: string;
+  /** Human-readable close reason. */
+  closeReasonText?: string;
+  /** Connection end time. */
+  connectionEndTime?: number;
+  /** Connection ID. */
+  connectionId?: string;
+  /** Connection start time. */
+  connectionStartTime?: number;
+  /** DevTools frontend URL. */
+  devtoolsFrontendUrl?: string;
+  /** Session end time. */
+  endTime?: number;
+  /** Last updated timestamp. */
+  lastUpdated?: number;
+  /** Session start time. */
+  startTime?: number;
+  /** WebSocket URL for debugging this target. */
+  webSocketDebuggerUrl?: string;
+}
+export const ListDevtoolSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sessionId: S.String,
+    closeReason: S.optional(S.String),
+    closeReasonText: S.optional(S.String),
+    connectionEndTime: S.optional(S.Number),
+    connectionId: S.optional(S.String),
+    connectionStartTime: S.optional(S.Number),
+    devtoolsFrontendUrl: S.optional(S.String),
+    endTime: S.optional(S.Number),
+    lastUpdated: S.optional(S.Number),
+    startTime: S.optional(S.Number),
+    webSocketDebuggerUrl: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListDevtoolSessionsResponse",
+}) as any as S.Schema<ListDevtoolSessionsResponse>;
+
+export interface ProtocolDevtoolBrowserRequest {
   /** Account ID. */
   accountId: string;
   /** Browser session ID. */
   sessionId: string;
 }
-export const DevtoolsBrowserProtocolRequest = /*@__PURE__*/ S.suspend(() =>
+export const ProtocolDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -493,8 +1416,8 @@ export const DevtoolsBrowserProtocolRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DevtoolsBrowserProtocolRequest",
-}) as any as S.Schema<DevtoolsBrowserProtocolRequest>;
+  identifier: "ProtocolDevtoolBrowserRequest",
+}) as any as S.Schema<ProtocolDevtoolBrowserRequest>;
 
 export type DevtoolsBrowserProtocolResponseDomainsItemCommandsItemMap = {
   [key: string]: unknown | undefined;
@@ -606,272 +1529,28 @@ export const DevtoolsBrowserProtocolResponseVersion = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DevtoolsBrowserProtocolResponseVersion>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DevtoolsBrowserProtocolResponse {
+export interface ProtocolDevtoolBrowserResponse {
   /** List of protocol domains. */
   domains: DevtoolsBrowserProtocolResponseDomainsList;
   /** Protocol version. */
   version?: DevtoolsBrowserProtocolResponseVersion;
 }
-export const DevtoolsBrowserProtocolResponse = /*@__PURE__*/ S.suspend(() =>
+export const ProtocolDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     domains: DevtoolsBrowserProtocolResponseDomainsList,
     version: S.optional(DevtoolsBrowserProtocolResponseVersion),
   }),
 ).annotate({
-  identifier: "DevtoolsBrowserProtocolResponse",
-}) as any as S.Schema<DevtoolsBrowserProtocolResponse>;
+  identifier: "ProtocolDevtoolBrowserResponse",
+}) as any as S.Schema<ProtocolDevtoolBrowserResponse>;
 
-export interface DevtoolsBrowserTargetsActivateRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Browser session ID. */
-  sessionId: string;
-  /** Target ID to activate. */
-  targetId: string;
-}
-export const DevtoolsBrowserTargetsActivateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      sessionId: S.String.pipe(T.Label("session_id")),
-      targetId: S.String.pipe(T.Label("target_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/activate/{target_id}",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "DevtoolsBrowserTargetsActivateRequest",
-}) as any as S.Schema<DevtoolsBrowserTargetsActivateRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DevtoolsBrowserTargetsActivateResponse {
-  /** Target activated. */
-  message: string;
-}
-export const DevtoolsBrowserTargetsActivateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      message: S.String,
-    }),
-).annotate({
-  identifier: "DevtoolsBrowserTargetsActivateResponse",
-}) as any as S.Schema<DevtoolsBrowserTargetsActivateResponse>;
-
-export interface DevtoolsBrowserTargetsCloseRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Browser session ID. */
-  sessionId: string;
-  /** Target ID to close. */
-  targetId: string;
-}
-export const DevtoolsBrowserTargetsCloseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    sessionId: S.String.pipe(T.Label("session_id")),
-    targetId: S.String.pipe(T.Label("target_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/close/{target_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DevtoolsBrowserTargetsCloseRequest",
-}) as any as S.Schema<DevtoolsBrowserTargetsCloseRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DevtoolsBrowserTargetsCloseResponse {
-  /** Target is closing. */
-  message: string;
-}
-export const DevtoolsBrowserTargetsCloseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-  }),
-).annotate({
-  identifier: "DevtoolsBrowserTargetsCloseResponse",
-}) as any as S.Schema<DevtoolsBrowserTargetsCloseResponse>;
-
-export interface DevtoolsBrowserTargetsCreateRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Browser session ID. */
-  sessionId: string;
-  /** How long the live view URL remains valid, in milliseconds (max 60 minutes) */
-  liveViewUrlExpiresInMs?: number;
-  url?: string;
-}
-export const DevtoolsBrowserTargetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    sessionId: S.String.pipe(T.Label("session_id")),
-    liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
-    url: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/new",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DevtoolsBrowserTargetsCreateRequest",
-}) as any as S.Schema<DevtoolsBrowserTargetsCreateRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DevtoolsBrowserTargetsCreateResponse {
-  /** Target ID. */
-  id: string;
-  /** Target type (page, background_page, worker, etc.). */
-  type: string;
-  /** URL of the target. */
-  url: string;
-  /** Target description. */
-  description?: string;
-  /** DevTools frontend URL. */
-  devtoolsFrontendUrl?: string;
-  /** Title of the target. */
-  title?: string;
-  /** WebSocket URL for debugging this target. */
-  webSocketDebuggerUrl?: string;
-}
-export const DevtoolsBrowserTargetsCreateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      type: S.String,
-      url: S.String,
-      description: S.optional(S.String),
-      devtoolsFrontendUrl: S.optional(S.String),
-      title: S.optional(S.String),
-      webSocketDebuggerUrl: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "DevtoolsBrowserTargetsCreateResponse",
-}) as any as S.Schema<DevtoolsBrowserTargetsCreateResponse>;
-
-export interface DevtoolsBrowserTargetsGetRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Browser session ID. */
-  sessionId: string;
-  /** Target ID. */
-  targetId: string;
-}
-export const DevtoolsBrowserTargetsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    sessionId: S.String.pipe(T.Label("session_id")),
-    targetId: S.String.pipe(T.Label("target_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list/{target_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DevtoolsBrowserTargetsGetRequest",
-}) as any as S.Schema<DevtoolsBrowserTargetsGetRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DevtoolsBrowserTargetsGetResponse {
-  /** Target ID. */
-  id: string;
-  /** Target type (page, background_page, worker, etc.). */
-  type: string;
-  /** URL of the target. */
-  url: string;
-  /** Target description. */
-  description?: string;
-  /** DevTools frontend URL. */
-  devtoolsFrontendUrl?: string;
-  /** Title of the target. */
-  title?: string;
-  /** WebSocket URL for debugging this target. */
-  webSocketDebuggerUrl?: string;
-}
-export const DevtoolsBrowserTargetsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    description: S.optional(S.String),
-    devtoolsFrontendUrl: S.optional(S.String),
-    title: S.optional(S.String),
-    webSocketDebuggerUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DevtoolsBrowserTargetsGetResponse",
-}) as any as S.Schema<DevtoolsBrowserTargetsGetResponse>;
-
-export interface DevtoolsBrowserTargetsListRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Browser session ID. */
-  sessionId: string;
-  /** How long the live view URLs remain valid, in milliseconds (max 60 minutes) */
-  liveViewUrlExpiresInMs?: number;
-}
-export const DevtoolsBrowserTargetsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    sessionId: S.String.pipe(T.Label("session_id")),
-    liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/browser/{session_id}/json/list",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DevtoolsBrowserTargetsListRequest",
-}) as any as S.Schema<DevtoolsBrowserTargetsListRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DevtoolsBrowserTargetsListResponse {
-  /** Target ID. */
-  id: string;
-  /** Target type (page, background_page, worker, etc.). */
-  type: string;
-  /** URL of the target. */
-  url: string;
-  /** Target description. */
-  description?: string;
-  /** DevTools frontend URL. */
-  devtoolsFrontendUrl?: string;
-  /** Title of the target. */
-  title?: string;
-  /** WebSocket URL for debugging this target. */
-  webSocketDebuggerUrl?: string;
-}
-export const DevtoolsBrowserTargetsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    type: S.String,
-    url: S.String,
-    description: S.optional(S.String),
-    devtoolsFrontendUrl: S.optional(S.String),
-    title: S.optional(S.String),
-    webSocketDebuggerUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DevtoolsBrowserTargetsListResponse",
-}) as any as S.Schema<DevtoolsBrowserTargetsListResponse>;
-
-export interface DevtoolsBrowserVersionRequest {
+export interface VersionDevtoolBrowserRequest {
   /** Account ID. */
   accountId: string;
   /** Browser session ID. */
   sessionId: string;
 }
-export const DevtoolsBrowserVersionRequest = /*@__PURE__*/ S.suspend(() =>
+export const VersionDevtoolBrowserRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sessionId: S.String.pipe(T.Label("session_id")),
@@ -883,11 +1562,11 @@ export const DevtoolsBrowserVersionRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DevtoolsBrowserVersionRequest",
-}) as any as S.Schema<DevtoolsBrowserVersionRequest>;
+  identifier: "VersionDevtoolBrowserRequest",
+}) as any as S.Schema<VersionDevtoolBrowserRequest>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DevtoolsBrowserVersionResponse {
+export interface VersionDevtoolBrowserResponse {
   /** Browser name and version. */
   Browser: string;
   /** Chrome DevTools Protocol version. */
@@ -901,7 +1580,7 @@ export interface DevtoolsBrowserVersionResponse {
   /** WebSocket URL for debugging the browser. */
   webSocketDebuggerUrl: string;
 }
-export const DevtoolsBrowserVersionResponse = /*@__PURE__*/ S.suspend(() =>
+export const VersionDevtoolBrowserResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     Browser: S.String,
     ProtocolVersion_: S.String.pipe(T.Body('"Protocol-Version"')),
@@ -911,1036 +1590,355 @@ export const DevtoolsBrowserVersionResponse = /*@__PURE__*/ S.suspend(() =>
     webSocketDebuggerUrl: S.String,
   }),
 ).annotate({
-  identifier: "DevtoolsBrowserVersionResponse",
-}) as any as S.Schema<DevtoolsBrowserVersionResponse>;
+  identifier: "VersionDevtoolBrowserResponse",
+}) as any as S.Schema<VersionDevtoolBrowserResponse>;
 
-export interface DevtoolsSessionGetRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Session ID. */
-  sessionId: string;
-}
-export const DevtoolsSessionGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    sessionId: S.String.pipe(T.Label("session_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/session/{session_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DevtoolsSessionGetRequest",
-}) as any as S.Schema<DevtoolsSessionGetRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DevtoolsSessionGetResponse {
-  /** Session ID. */
-  sessionId: string;
-  /** Reason for session closure. */
-  closeReason?: string;
-  /** Human-readable close reason. */
-  closeReasonText?: string;
-  /** Connection end time. */
-  connectionEndTime?: number;
-  /** Connection ID. */
-  connectionId?: string;
-  /** Connection start time. */
-  connectionStartTime?: number;
-  /** DevTools frontend URL. */
-  devtoolsFrontendUrl?: string;
-  /** Session end time. */
-  endTime?: number;
-  /** Last updated timestamp. */
-  lastUpdated?: number;
-  /** Session start time. */
-  startTime?: number;
-  /** WebSocket URL for debugging this target. */
-  webSocketDebuggerUrl?: string;
-}
-export const DevtoolsSessionGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.String,
-    closeReason: S.optional(S.String),
-    closeReasonText: S.optional(S.String),
-    connectionEndTime: S.optional(S.Number),
-    connectionId: S.optional(S.String),
-    connectionStartTime: S.optional(S.Number),
-    devtoolsFrontendUrl: S.optional(S.String),
-    endTime: S.optional(S.Number),
-    lastUpdated: S.optional(S.Number),
-    startTime: S.optional(S.Number),
-    webSocketDebuggerUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DevtoolsSessionGetResponse",
-}) as any as S.Schema<DevtoolsSessionGetResponse>;
-
-export interface DevtoolsSessionListRequest {
-  /** Account ID. */
-  accountId: string;
-  limit?: number;
-  offset?: number;
-}
-export const DevtoolsSessionListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/browser-rendering/devtools/session",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DevtoolsSessionListRequest",
-}) as any as S.Schema<DevtoolsSessionListRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DevtoolsSessionListResponse {
-  /** Session ID. */
-  sessionId: string;
-  /** Reason for session closure. */
-  closeReason?: string;
-  /** Human-readable close reason. */
-  closeReasonText?: string;
-  /** Connection end time. */
-  connectionEndTime?: number;
-  /** Connection ID. */
-  connectionId?: string;
-  /** Connection start time. */
-  connectionStartTime?: number;
-  /** DevTools frontend URL. */
-  devtoolsFrontendUrl?: string;
-  /** Session end time. */
-  endTime?: number;
-  /** Last updated timestamp. */
-  lastUpdated?: number;
-  /** Session start time. */
-  startTime?: number;
-  /** WebSocket URL for debugging this target. */
-  webSocketDebuggerUrl?: string;
-}
-export const DevtoolsSessionListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sessionId: S.String,
-    closeReason: S.optional(S.String),
-    closeReasonText: S.optional(S.String),
-    connectionEndTime: S.optional(S.Number),
-    connectionId: S.optional(S.String),
-    connectionStartTime: S.optional(S.Number),
-    devtoolsFrontendUrl: S.optional(S.String),
-    endTime: S.optional(S.Number),
-    lastUpdated: S.optional(S.Number),
-    startTime: S.optional(S.Number),
-    webSocketDebuggerUrl: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DevtoolsSessionListResponse",
-}) as any as S.Schema<DevtoolsSessionListResponse>;
-
-export interface JsonCreateRequestBody {
-  objectHtmlActionTimeoutAddScriptTag19More__: unknown;
-  objectUrlActionTimeoutAddScriptTag19More__: unknown;
-}
-export const JsonCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectHtmlActionTimeoutAddScriptTag19More__: S.Unknown.pipe(
-      T.Body("object { html, actionTimeout, addScriptTag, 19 more }"),
-    ),
-    objectUrlActionTimeoutAddScriptTag19More__: S.Unknown.pipe(
-      T.Body("object { url, actionTimeout, addScriptTag, 19 more }"),
-    ),
-  }),
-).annotate({
-  identifier: "JsonCreateRequestBody",
-}) as any as S.Schema<JsonCreateRequestBody>;
-
-export interface JsonCreateRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Cache TTL default is 5s. Set to 0 to disable. */
-  cacheTTL?: number;
-  body: JsonCreateRequestBody;
-}
-export const JsonCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: JsonCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/json",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "JsonCreateRequest",
-}) as any as S.Schema<JsonCreateRequest>;
-
-export type JsonCreateResultMap = { [key: string]: unknown | undefined };
-export const JsonCreateResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<JsonCreateResultMap>;
-
-export interface JsonCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: JsonCreateResultMap;
-}
-export const JsonCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(JsonCreateResultMap.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "JsonCreateResponse",
-}) as any as S.Schema<JsonCreateResponse>;
-
-export interface LinksCreateRequestBody {
-  objectHtmlActionTimeoutAddScriptTag18More__: unknown;
-  objectUrlActionTimeoutAddScriptTag18More__: unknown;
-}
-export const LinksCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectHtmlActionTimeoutAddScriptTag18More__: S.Unknown.pipe(
-      T.Body("object { html, actionTimeout, addScriptTag, 18 more }"),
-    ),
-    objectUrlActionTimeoutAddScriptTag18More__: S.Unknown.pipe(
-      T.Body("object { url, actionTimeout, addScriptTag, 18 more }"),
-    ),
-  }),
-).annotate({
-  identifier: "LinksCreateRequestBody",
-}) as any as S.Schema<LinksCreateRequestBody>;
-
-export interface LinksCreateRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Cache TTL default is 5s. Set to 0 to disable. */
-  cacheTTL?: number;
-  body: LinksCreateRequestBody;
-}
-export const LinksCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: LinksCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/links",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LinksCreateRequest",
-}) as any as S.Schema<LinksCreateRequest>;
-
-export type LinksCreateResultList = string[];
-export const LinksCreateResultList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LinksCreateResultList>;
-
-export interface LinksCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LinksCreateResultList;
-}
-export const LinksCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(LinksCreateResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "LinksCreateResponse",
-}) as any as S.Schema<LinksCreateResponse>;
-
-export interface MarkdownCreateRequestBody {
-  objectUrlActionTimeoutAddScriptTag16More__: unknown;
-  objectHtmlActionTimeoutAddScriptTag16More__: unknown;
-}
-export const MarkdownCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectUrlActionTimeoutAddScriptTag16More__: S.Unknown.pipe(
-      T.Body("object { url, actionTimeout, addScriptTag, 16 more }"),
-    ),
-    objectHtmlActionTimeoutAddScriptTag16More__: S.Unknown.pipe(
-      T.Body("object { html, actionTimeout, addScriptTag, 16 more }"),
-    ),
-  }),
-).annotate({
-  identifier: "MarkdownCreateRequestBody",
-}) as any as S.Schema<MarkdownCreateRequestBody>;
-
-export interface MarkdownCreateRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Cache TTL default is 5s. Set to 0 to disable. */
-  cacheTTL?: number;
-  body: MarkdownCreateRequestBody;
-}
-export const MarkdownCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: MarkdownCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/markdown",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MarkdownCreateRequest",
-}) as any as S.Schema<MarkdownCreateRequest>;
-
-export interface MarkdownCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
-export const MarkdownCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "MarkdownCreateResponse",
-}) as any as S.Schema<MarkdownCreateResponse>;
-
-export interface PdfCreateRequestBody {
-  objectHtmlActionTimeoutAddScriptTag17More__: unknown;
-  objectUrlActionTimeoutAddScriptTag17More__: unknown;
-}
-export const PdfCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectHtmlActionTimeoutAddScriptTag17More__: S.Unknown.pipe(
-      T.Body("object { html, actionTimeout, addScriptTag, 17 more }"),
-    ),
-    objectUrlActionTimeoutAddScriptTag17More__: S.Unknown.pipe(
-      T.Body("object { url, actionTimeout, addScriptTag, 17 more }"),
-    ),
-  }),
-).annotate({
-  identifier: "PdfCreateRequestBody",
-}) as any as S.Schema<PdfCreateRequestBody>;
-
-export interface PdfCreateRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Cache TTL default is 5s. Set to 0 to disable. */
-  cacheTTL?: number;
-  body: PdfCreateRequestBody;
-}
-export const PdfCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: PdfCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/pdf",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PdfCreateRequest",
-}) as any as S.Schema<PdfCreateRequest>;
-
-export interface PdfCreateResponse {}
-export const PdfCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PdfCreateResponse",
-}) as any as S.Schema<PdfCreateResponse>;
-
-export interface ScrapeCreateRequestBody {
-  objectElementsHtmlActionTimeout17More__: unknown;
-  objectElementsUrlActionTimeout17More__: unknown;
-}
-export const ScrapeCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectElementsHtmlActionTimeout17More__: S.Unknown.pipe(
-      T.Body("object { elements, html, actionTimeout, 17 more }"),
-    ),
-    objectElementsUrlActionTimeout17More__: S.Unknown.pipe(
-      T.Body("object { elements, url, actionTimeout, 17 more }"),
-    ),
-  }),
-).annotate({
-  identifier: "ScrapeCreateRequestBody",
-}) as any as S.Schema<ScrapeCreateRequestBody>;
-
-export interface ScrapeCreateRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Cache TTL default is 5s. Set to 0 to disable. */
-  cacheTTL?: number;
-  body: ScrapeCreateRequestBody;
-}
-export const ScrapeCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: ScrapeCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/scrape",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ScrapeCreateRequest",
-}) as any as S.Schema<ScrapeCreateRequest>;
-
-export interface ScrapeCreateResultItemResultsAttributesItem {
-  /** Attribute name. */
-  name: string;
-  /** Attribute value. */
-  value: string;
-}
-export const ScrapeCreateResultItemResultsAttributesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "ScrapeCreateResultItemResultsAttributesItem",
-  }) as any as S.Schema<ScrapeCreateResultItemResultsAttributesItem>;
-
-export type ScrapeCreateResultItemResultsAttributesList =
-  ScrapeCreateResultItemResultsAttributesItem[];
-export const ScrapeCreateResultItemResultsAttributesList =
-  /*@__PURE__*/ S.Array(
-    ScrapeCreateResultItemResultsAttributesItem,
-  ) as any as S.Schema<ScrapeCreateResultItemResultsAttributesList>;
-
-export interface ScrapeCreateResultItemResults {
-  attributes: ScrapeCreateResultItemResultsAttributesList;
-  /** Element height. */
-  height: number;
-  /** HTML content. */
-  html: string;
-  /** Element left. */
-  left: number;
-  /** Text content. */
-  text: string;
-  /** Element top. */
-  top: number;
-  /** Element width. */
-  width: number;
-}
-export const ScrapeCreateResultItemResults = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    attributes: ScrapeCreateResultItemResultsAttributesList,
-    height: S.Number,
-    html: S.String,
-    left: S.Number,
-    text: S.String,
-    top: S.Number,
-    width: S.Number,
-  }),
-).annotate({
-  identifier: "ScrapeCreateResultItemResults",
-}) as any as S.Schema<ScrapeCreateResultItemResults>;
-
-export interface ScrapeCreateResultItem {
-  results: ScrapeCreateResultItemResults;
-  /** Selector. */
-  selector: string;
-}
-export const ScrapeCreateResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    results: ScrapeCreateResultItemResults,
-    selector: S.String,
-  }),
-).annotate({
-  identifier: "ScrapeCreateResultItem",
-}) as any as S.Schema<ScrapeCreateResultItem>;
-
-export type ScrapeCreateResultList = ScrapeCreateResultItem[];
-export const ScrapeCreateResultList = /*@__PURE__*/ S.Array(
-  ScrapeCreateResultItem,
-) as any as S.Schema<ScrapeCreateResultList>;
-
-export interface ScrapeCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ScrapeCreateResultList;
-}
-export const ScrapeCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ScrapeCreateResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "ScrapeCreateResponse",
-}) as any as S.Schema<ScrapeCreateResponse>;
-
-export interface ScreenshotCreateRequestBody {
-  objectHtmlActionTimeoutAddScriptTag19More__: unknown;
-  objectUrlActionTimeoutAddScriptTag19More__: unknown;
-}
-export const ScreenshotCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectHtmlActionTimeoutAddScriptTag19More__: S.Unknown.pipe(
-      T.Body("object { html, actionTimeout, addScriptTag, 19 more }"),
-    ),
-    objectUrlActionTimeoutAddScriptTag19More__: S.Unknown.pipe(
-      T.Body("object { url, actionTimeout, addScriptTag, 19 more }"),
-    ),
-  }),
-).annotate({
-  identifier: "ScreenshotCreateRequestBody",
-}) as any as S.Schema<ScreenshotCreateRequestBody>;
-
-export interface ScreenshotCreateRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Cache TTL default is 5s. Set to 0 to disable. */
-  cacheTTL?: number;
-  body: ScreenshotCreateRequestBody;
-}
-export const ScreenshotCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: ScreenshotCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/screenshot",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ScreenshotCreateRequest",
-}) as any as S.Schema<ScreenshotCreateRequest>;
-
-export interface ScreenshotCreateResponse {}
-export const ScreenshotCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ScreenshotCreateResponse",
-}) as any as S.Schema<ScreenshotCreateResponse>;
-
-export interface SnapshotCreateRequestBody {
-  objectHtmlActionTimeoutAddScriptTag18More__: unknown;
-  objectUrlActionTimeoutAddScriptTag18More__: unknown;
-}
-export const SnapshotCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectHtmlActionTimeoutAddScriptTag18More__: S.Unknown.pipe(
-      T.Body("object { html, actionTimeout, addScriptTag, 18 more }"),
-    ),
-    objectUrlActionTimeoutAddScriptTag18More__: S.Unknown.pipe(
-      T.Body("object { url, actionTimeout, addScriptTag, 18 more }"),
-    ),
-  }),
-).annotate({
-  identifier: "SnapshotCreateRequestBody",
-}) as any as S.Schema<SnapshotCreateRequestBody>;
-
-export interface SnapshotCreateRequest {
-  /** Account ID. */
-  accountId: string;
-  /** Cache TTL default is 5s. Set to 0 to disable. */
-  cacheTTL?: number;
-  body: SnapshotCreateRequestBody;
-}
-export const SnapshotCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cacheTTL: S.optional(S.Number.pipe(T.Query())),
-    body: SnapshotCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/browser-rendering/snapshot",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SnapshotCreateRequest",
-}) as any as S.Schema<SnapshotCreateRequest>;
-
-export interface SnapshotCreateResponseAccessibilityTreeChecked {
-  boolean: unknown;
-}
-export const SnapshotCreateResponseAccessibilityTreeChecked =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      boolean: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "SnapshotCreateResponseAccessibilityTreeChecked",
-  }) as any as S.Schema<SnapshotCreateResponseAccessibilityTreeChecked>;
-
-export type SnapshotCreateResponseAccessibilityTreeChildrenList = unknown[];
-export const SnapshotCreateResponseAccessibilityTreeChildrenList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<SnapshotCreateResponseAccessibilityTreeChildrenList>;
-
-export interface SnapshotCreateResponseAccessibilityTreePressed {
-  boolean: unknown;
-}
-export const SnapshotCreateResponseAccessibilityTreePressed =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      boolean: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "SnapshotCreateResponseAccessibilityTreePressed",
-  }) as any as S.Schema<SnapshotCreateResponseAccessibilityTreePressed>;
-
-export interface SnapshotCreateResponseAccessibilityTreeValue {
-  string: unknown;
-  number: unknown;
-}
-export const SnapshotCreateResponseAccessibilityTreeValue =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "SnapshotCreateResponseAccessibilityTreeValue",
-  }) as any as S.Schema<SnapshotCreateResponseAccessibilityTreeValue>;
-
-export interface SnapshotCreateResponseAccessibilityTree {
-  role: string;
-  autocomplete?: string;
-  checked?: SnapshotCreateResponseAccessibilityTreeChecked;
-  children?: SnapshotCreateResponseAccessibilityTreeChildrenList;
-  description?: string;
-  disabled?: boolean;
-  expanded?: boolean;
-  focused?: boolean;
-  haspopup?: string;
-  invalid?: string;
-  keyshortcuts?: string;
-  level?: number;
-  modal?: boolean;
-  multiline?: boolean;
-  multiselectable?: boolean;
-  name?: string;
-  orientation?: string;
-  pressed?: SnapshotCreateResponseAccessibilityTreePressed;
-  readonly?: boolean;
-  required?: boolean;
-  roledescription?: string;
-  selected?: boolean;
-  value?: SnapshotCreateResponseAccessibilityTreeValue;
-  valuemax?: number;
-  valuemin?: number;
-  valuetext?: string;
-}
-export const SnapshotCreateResponseAccessibilityTree = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      role: S.String,
-      autocomplete: S.optional(S.String),
-      checked: S.optional(SnapshotCreateResponseAccessibilityTreeChecked),
-      children: S.optional(SnapshotCreateResponseAccessibilityTreeChildrenList),
-      description: S.optional(S.String),
-      disabled: S.optional(S.Boolean),
-      expanded: S.optional(S.Boolean),
-      focused: S.optional(S.Boolean),
-      haspopup: S.optional(S.String),
-      invalid: S.optional(S.String),
-      keyshortcuts: S.optional(S.String),
-      level: S.optional(S.Number),
-      modal: S.optional(S.Boolean),
-      multiline: S.optional(S.Boolean),
-      multiselectable: S.optional(S.Boolean),
-      name: S.optional(S.String),
-      orientation: S.optional(S.String),
-      pressed: S.optional(SnapshotCreateResponseAccessibilityTreePressed),
-      readonly: S.optional(S.Boolean),
-      required: S.optional(S.Boolean),
-      roledescription: S.optional(S.String),
-      selected: S.optional(S.Boolean),
-      value: S.optional(SnapshotCreateResponseAccessibilityTreeValue),
-      valuemax: S.optional(S.Number),
-      valuemin: S.optional(S.Number),
-      valuetext: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SnapshotCreateResponseAccessibilityTree",
-}) as any as S.Schema<SnapshotCreateResponseAccessibilityTree>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SnapshotCreateResponse {
-  /** Accessibility tree node */
-  accessibilityTree?: SnapshotCreateResponseAccessibilityTree;
-  /** HTML content. */
-  content?: string;
-  /** Markdown content. */
-  markdown?: string;
-  /** Base64 encoded image. */
-  screenshot?: string;
-}
-export const SnapshotCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accessibilityTree: S.optional(SnapshotCreateResponseAccessibilityTree),
-    content: S.optional(S.String),
-    markdown: S.optional(S.String),
-    screenshot: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SnapshotCreateResponse",
-}) as any as S.Schema<SnapshotCreateResponse>;
-
-export type ContentCreateError = CloudflareOpError;
-/** Fetches rendered HTML content from provided URL or HTML. Check available options like `gotoOptions` and `waitFor*` to control page load behaviour. */
-export const contentCreate: API.OperationMethod<
-  ContentCreateRequest,
-  ContentCreateResponse,
-  ContentCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ContentCreateRequest,
-  output: ContentCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CrawlCreateError = CloudflareOpError;
-/** Starts a crawl job for the provided URL and its children. Check available options like `gotoOptions` and `waitFor*` to control page load behaviour. */
-export const crawlCreate: API.OperationMethod<
-  CrawlCreateRequest,
-  CrawlCreateResponse,
-  CrawlCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CrawlCreateRequest,
-  output: CrawlCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CrawlDeleteError = CloudflareOpError;
-/** Cancels an ongoing crawl job by setting its status to cancelled and stopping all queued URLs. */
-export const crawlDelete: API.OperationMethod<
-  CrawlDeleteRequest,
-  CrawlDeleteResponse,
-  CrawlDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CrawlDeleteRequest,
-  output: CrawlDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CrawlGetError = CloudflareOpError;
-/** Returns the result of a crawl job. */
-export const crawlGet: API.OperationMethod<
-  CrawlGetRequest,
-  CrawlGetResponse,
-  CrawlGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CrawlGetRequest,
-  output: CrawlGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DevtoolsBrowserConnectError = CloudflareOpError;
-/** Establishes a WebSocket connection to an existing browser session. */
-export const devtoolsBrowserConnect: API.OperationMethod<
-  DevtoolsBrowserConnectRequest,
-  DevtoolsBrowserConnectResponse,
-  DevtoolsBrowserConnectError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsBrowserConnectRequest,
-  output: DevtoolsBrowserConnectResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DevtoolsBrowserCreateError = CloudflareOpError;
-/** Acquires a browser and returns its session ID and websocket URL. */
-export const devtoolsBrowserCreate: API.OperationMethod<
-  DevtoolsBrowserCreateRequest,
-  DevtoolsBrowserCreateResponse,
-  DevtoolsBrowserCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsBrowserCreateRequest,
-  output: DevtoolsBrowserCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DevtoolsBrowserDeleteError = CloudflareOpError;
-/** Closes an existing browser session. */
-export const devtoolsBrowserDelete: API.OperationMethod<
-  DevtoolsBrowserDeleteRequest,
-  DevtoolsBrowserDeleteResponse,
-  DevtoolsBrowserDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsBrowserDeleteRequest,
-  output: DevtoolsBrowserDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DevtoolsBrowserLaunchError = CloudflareOpError;
-/** Acquires and establishes a WebSocket connection to a browser session. */
-export const devtoolsBrowserLaunch: API.OperationMethod<
-  DevtoolsBrowserLaunchRequest,
-  DevtoolsBrowserLaunchResponse,
-  DevtoolsBrowserLaunchError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsBrowserLaunchRequest,
-  output: DevtoolsBrowserLaunchResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DevtoolsBrowserPageGetError = CloudflareOpError;
-/** Establishes a WebSocket connection to a specific Chrome DevTools target or page. */
-export const devtoolsBrowserPageGet: API.OperationMethod<
-  DevtoolsBrowserPageGetRequest,
-  DevtoolsBrowserPageGetResponse,
-  DevtoolsBrowserPageGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsBrowserPageGetRequest,
-  output: DevtoolsBrowserPageGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DevtoolsBrowserProtocolError = CloudflareOpError;
-/** Returns the complete Chrome DevTools Protocol schema including all domains, commands, events, and types. This schema describes the entire CDP API surface. */
-export const devtoolsBrowserProtocol: API.OperationMethod<
-  DevtoolsBrowserProtocolRequest,
-  DevtoolsBrowserProtocolResponse,
-  DevtoolsBrowserProtocolError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsBrowserProtocolRequest,
-  output: DevtoolsBrowserProtocolResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DevtoolsBrowserTargetsActivateError = CloudflareOpError;
+export type ActivateDevtoolBrowserTargetError = CloudflareOpError;
 /** Activates (brings to front) a specific browser target by its ID. */
-export const devtoolsBrowserTargetsActivate: API.OperationMethod<
-  DevtoolsBrowserTargetsActivateRequest,
-  DevtoolsBrowserTargetsActivateResponse,
-  DevtoolsBrowserTargetsActivateError,
+export const activateDevtoolBrowserTarget: API.OperationMethod<
+  ActivateDevtoolBrowserTargetRequest,
+  ActivateDevtoolBrowserTargetResponse,
+  ActivateDevtoolBrowserTargetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsBrowserTargetsActivateRequest,
-  output: DevtoolsBrowserTargetsActivateResponse,
+  input: ActivateDevtoolBrowserTargetRequest,
+  output: ActivateDevtoolBrowserTargetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DevtoolsBrowserTargetsCloseError = CloudflareOpError;
+export type CloseDevtoolBrowserTargetError = CloudflareOpError;
 /** Closes a specific browser target (tab, page, etc.) by its ID. Returns 'Target is closing' on success or an error if the target is not found. */
-export const devtoolsBrowserTargetsClose: API.OperationMethod<
-  DevtoolsBrowserTargetsCloseRequest,
-  DevtoolsBrowserTargetsCloseResponse,
-  DevtoolsBrowserTargetsCloseError,
+export const closeDevtoolBrowserTarget: API.OperationMethod<
+  CloseDevtoolBrowserTargetRequest,
+  CloseDevtoolBrowserTargetResponse,
+  CloseDevtoolBrowserTargetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsBrowserTargetsCloseRequest,
-  output: DevtoolsBrowserTargetsCloseResponse,
+  input: CloseDevtoolBrowserTargetRequest,
+  output: CloseDevtoolBrowserTargetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DevtoolsBrowserTargetsCreateError = CloudflareOpError;
+export type ConnectDevtoolBrowserError = CloudflareOpError;
+/** Establishes a WebSocket connection to an existing browser session. */
+export const connectDevtoolBrowser: API.OperationMethod<
+  ConnectDevtoolBrowserRequest,
+  ConnectDevtoolBrowserResponse,
+  ConnectDevtoolBrowserError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ConnectDevtoolBrowserRequest,
+  output: ConnectDevtoolBrowserResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateContentError = CloudflareOpError;
+/** Fetches rendered HTML content from provided URL or HTML. Check available options like `gotoOptions` and `waitFor*` to control page load behaviour. */
+export const createContent: API.OperationMethod<
+  CreateContentRequest,
+  CreateContentResponse,
+  CreateContentError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateContentRequest,
+  output: CreateContentResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateCrawlError = CloudflareOpError;
+/** Starts a crawl job for the provided URL and its children. Check available options like `gotoOptions` and `waitFor*` to control page load behaviour. */
+export const createCrawl: API.OperationMethod<
+  CreateCrawlRequest,
+  CreateCrawlResponse,
+  CreateCrawlError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCrawlRequest,
+  output: CreateCrawlResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateDevtoolBrowserError = CloudflareOpError;
+/** Acquires a browser and returns its session ID and websocket URL. */
+export const createDevtoolBrowser: API.OperationMethod<
+  CreateDevtoolBrowserRequest,
+  CreateDevtoolBrowserResponse,
+  CreateDevtoolBrowserError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateDevtoolBrowserRequest,
+  output: CreateDevtoolBrowserResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateDevtoolBrowserTargetError = CloudflareOpError;
 /** Opens a new tab in the browser. Optionally specify a URL to navigate to. */
-export const devtoolsBrowserTargetsCreate: API.OperationMethod<
-  DevtoolsBrowserTargetsCreateRequest,
-  DevtoolsBrowserTargetsCreateResponse,
-  DevtoolsBrowserTargetsCreateError,
+export const createDevtoolBrowserTarget: API.OperationMethod<
+  CreateDevtoolBrowserTargetRequest,
+  CreateDevtoolBrowserTargetResponse,
+  CreateDevtoolBrowserTargetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsBrowserTargetsCreateRequest,
-  output: DevtoolsBrowserTargetsCreateResponse,
+  input: CreateDevtoolBrowserTargetRequest,
+  output: CreateDevtoolBrowserTargetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DevtoolsBrowserTargetsGetError = CloudflareOpError;
-/** Returns the debuggable target with the given ID. */
-export const devtoolsBrowserTargetsGet: API.OperationMethod<
-  DevtoolsBrowserTargetsGetRequest,
-  DevtoolsBrowserTargetsGetResponse,
-  DevtoolsBrowserTargetsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsBrowserTargetsGetRequest,
-  output: DevtoolsBrowserTargetsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DevtoolsBrowserTargetsListError = CloudflareOpError;
-/** Returns a list of all debuggable targets including tabs, pages, service workers, and other browser contexts. */
-export const devtoolsBrowserTargetsList: API.OperationMethod<
-  DevtoolsBrowserTargetsListRequest,
-  DevtoolsBrowserTargetsListResponse,
-  DevtoolsBrowserTargetsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsBrowserTargetsListRequest,
-  output: DevtoolsBrowserTargetsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DevtoolsBrowserVersionError = CloudflareOpError;
-/** Get browser version metadata. */
-export const devtoolsBrowserVersion: API.OperationMethod<
-  DevtoolsBrowserVersionRequest,
-  DevtoolsBrowserVersionResponse,
-  DevtoolsBrowserVersionError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsBrowserVersionRequest,
-  output: DevtoolsBrowserVersionResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DevtoolsSessionGetError = CloudflareOpError;
-/** Get details for a specific browser session. */
-export const devtoolsSessionGet: API.OperationMethod<
-  DevtoolsSessionGetRequest,
-  DevtoolsSessionGetResponse,
-  DevtoolsSessionGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsSessionGetRequest,
-  output: DevtoolsSessionGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DevtoolsSessionListError = CloudflareOpError;
-/** List active browser sessions. */
-export const devtoolsSessionList: API.OperationMethod<
-  DevtoolsSessionListRequest,
-  DevtoolsSessionListResponse,
-  DevtoolsSessionListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DevtoolsSessionListRequest,
-  output: DevtoolsSessionListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type JsonCreateError = CloudflareOpError;
+export type CreateJsonError = CloudflareOpError;
 /** Gets json from a webpage from a provided URL or HTML. Pass `prompt` or `schema` in the body. Control page loading with `gotoOptions` and `waitFor*` options. */
-export const jsonCreate: API.OperationMethod<
-  JsonCreateRequest,
-  JsonCreateResponse,
-  JsonCreateError,
+export const createJson: API.OperationMethod<
+  CreateJsonRequest,
+  CreateJsonResponse,
+  CreateJsonError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: JsonCreateRequest,
-  output: JsonCreateResponse,
+  input: CreateJsonRequest,
+  output: CreateJsonResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LinksCreateError = CloudflareOpError;
+export type CreateLinkError = CloudflareOpError;
 /** Get links from a web page. */
-export const linksCreate: API.OperationMethod<
-  LinksCreateRequest,
-  LinksCreateResponse,
-  LinksCreateError,
+export const createLink: API.OperationMethod<
+  CreateLinkRequest,
+  CreateLinkResponse,
+  CreateLinkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LinksCreateRequest,
-  output: LinksCreateResponse,
+  input: CreateLinkRequest,
+  output: CreateLinkResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type MarkdownCreateError = CloudflareOpError;
+export type CreateMarkdownError = CloudflareOpError;
 /** Gets markdown of a webpage from provided URL or HTML. Control page loading with `gotoOptions` and `waitFor*` options. */
-export const markdownCreate: API.OperationMethod<
-  MarkdownCreateRequest,
-  MarkdownCreateResponse,
-  MarkdownCreateError,
+export const createMarkdown: API.OperationMethod<
+  CreateMarkdownRequest,
+  CreateMarkdownResponse,
+  CreateMarkdownError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MarkdownCreateRequest,
-  output: MarkdownCreateResponse,
+  input: CreateMarkdownRequest,
+  output: CreateMarkdownResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type PdfCreateError = CloudflareOpError;
+export type CreatePdfError = CloudflareOpError;
 /** Fetches rendered PDF from provided URL or HTML. Check available options like `gotoOptions` and `waitFor*` to control page load behaviour. */
-export const pdfCreate: API.OperationMethod<
-  PdfCreateRequest,
-  PdfCreateResponse,
-  PdfCreateError,
+export const createPdf: API.OperationMethod<
+  CreatePdfRequest,
+  CreatePdfResponse,
+  CreatePdfError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PdfCreateRequest,
-  output: PdfCreateResponse,
+  input: CreatePdfRequest,
+  output: CreatePdfResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ScrapeCreateError = CloudflareOpError;
+export type CreateScrapeError = CloudflareOpError;
 /** Get meta attributes like height, width, text and others of selected elements. */
-export const scrapeCreate: API.OperationMethod<
-  ScrapeCreateRequest,
-  ScrapeCreateResponse,
-  ScrapeCreateError,
+export const createScrape: API.OperationMethod<
+  CreateScrapeRequest,
+  CreateScrapeResponse,
+  CreateScrapeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScrapeCreateRequest,
-  output: ScrapeCreateResponse,
+  input: CreateScrapeRequest,
+  output: CreateScrapeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ScreenshotCreateError = CloudflareOpError;
+export type CreateScreenshotError = CloudflareOpError;
 /** Takes a screenshot of a webpage from provided URL or HTML. Control page loading with `gotoOptions` and `waitFor*` options. Customize screenshots with `viewport`, `fullPage`, `clip` and others. */
-export const screenshotCreate: API.OperationMethod<
-  ScreenshotCreateRequest,
-  ScreenshotCreateResponse,
-  ScreenshotCreateError,
+export const createScreenshot: API.OperationMethod<
+  CreateScreenshotRequest,
+  CreateScreenshotResponse,
+  CreateScreenshotError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ScreenshotCreateRequest,
-  output: ScreenshotCreateResponse,
+  input: CreateScreenshotRequest,
+  output: CreateScreenshotResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SnapshotCreateError = CloudflareOpError;
+export type CreateSnapshotError = CloudflareOpError;
 /** Returns the page's HTML content and screenshot. Control page loading with `gotoOptions` and `waitFor*` options. Customize screenshots with `viewport`, `fullPage`, `clip` and others. */
-export const snapshotCreate: API.OperationMethod<
-  SnapshotCreateRequest,
-  SnapshotCreateResponse,
-  SnapshotCreateError,
+export const createSnapshot: API.OperationMethod<
+  CreateSnapshotRequest,
+  CreateSnapshotResponse,
+  CreateSnapshotError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SnapshotCreateRequest,
-  output: SnapshotCreateResponse,
+  input: CreateSnapshotRequest,
+  output: CreateSnapshotResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteCrawlError = CloudflareOpError;
+/** Cancels an ongoing crawl job by setting its status to cancelled and stopping all queued URLs. */
+export const deleteCrawl: API.OperationMethod<
+  DeleteCrawlRequest,
+  DeleteCrawlResponse,
+  DeleteCrawlError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCrawlRequest,
+  output: DeleteCrawlResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteDevtoolBrowserError = CloudflareOpError;
+/** Closes an existing browser session. */
+export const deleteDevtoolBrowser: API.OperationMethod<
+  DeleteDevtoolBrowserRequest,
+  DeleteDevtoolBrowserResponse,
+  DeleteDevtoolBrowserError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDevtoolBrowserRequest,
+  output: DeleteDevtoolBrowserResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetCrawlError = CloudflareOpError;
+/** Returns the result of a crawl job. */
+export const getCrawl: API.OperationMethod<
+  GetCrawlRequest,
+  GetCrawlResponse,
+  GetCrawlError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCrawlRequest,
+  output: GetCrawlResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetDevtoolBrowserPageError = CloudflareOpError;
+/** Establishes a WebSocket connection to a specific Chrome DevTools target or page. */
+export const getDevtoolBrowserPage: API.OperationMethod<
+  GetDevtoolBrowserPageRequest,
+  GetDevtoolBrowserPageResponse,
+  GetDevtoolBrowserPageError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDevtoolBrowserPageRequest,
+  output: GetDevtoolBrowserPageResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetDevtoolBrowserTargetError = CloudflareOpError;
+/** Returns the debuggable target with the given ID. */
+export const getDevtoolBrowserTarget: API.OperationMethod<
+  GetDevtoolBrowserTargetRequest,
+  GetDevtoolBrowserTargetResponse,
+  GetDevtoolBrowserTargetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDevtoolBrowserTargetRequest,
+  output: GetDevtoolBrowserTargetResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetDevtoolSessionError = CloudflareOpError;
+/** Get details for a specific browser session. */
+export const getDevtoolSession: API.OperationMethod<
+  GetDevtoolSessionRequest,
+  GetDevtoolSessionResponse,
+  GetDevtoolSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDevtoolSessionRequest,
+  output: GetDevtoolSessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type LaunchDevtoolBrowserError = CloudflareOpError;
+/** Acquires and establishes a WebSocket connection to a browser session. */
+export const launchDevtoolBrowser: API.OperationMethod<
+  LaunchDevtoolBrowserRequest,
+  LaunchDevtoolBrowserResponse,
+  LaunchDevtoolBrowserError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: LaunchDevtoolBrowserRequest,
+  output: LaunchDevtoolBrowserResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListDevtoolBrowserTargetsError = CloudflareOpError;
+/** Returns a list of all debuggable targets including tabs, pages, service workers, and other browser contexts. */
+export const listDevtoolBrowserTargets: API.OperationMethod<
+  ListDevtoolBrowserTargetsRequest,
+  ListDevtoolBrowserTargetsResponse,
+  ListDevtoolBrowserTargetsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDevtoolBrowserTargetsRequest,
+  output: ListDevtoolBrowserTargetsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListDevtoolSessionsError = CloudflareOpError;
+/** List active browser sessions. */
+export const listDevtoolSessions: API.OperationMethod<
+  ListDevtoolSessionsRequest,
+  ListDevtoolSessionsResponse,
+  ListDevtoolSessionsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDevtoolSessionsRequest,
+  output: ListDevtoolSessionsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ProtocolDevtoolBrowserError = CloudflareOpError;
+/** Returns the complete Chrome DevTools Protocol schema including all domains, commands, events, and types. This schema describes the entire CDP API surface. */
+export const protocolDevtoolBrowser: API.OperationMethod<
+  ProtocolDevtoolBrowserRequest,
+  ProtocolDevtoolBrowserResponse,
+  ProtocolDevtoolBrowserError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ProtocolDevtoolBrowserRequest,
+  output: ProtocolDevtoolBrowserResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type VersionDevtoolBrowserError = CloudflareOpError;
+/** Get browser version metadata. */
+export const versionDevtoolBrowser: API.OperationMethod<
+  VersionDevtoolBrowserRequest,
+  VersionDevtoolBrowserResponse,
+  VersionDevtoolBrowserError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: VersionDevtoolBrowserRequest,
+  output: VersionDevtoolBrowserResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

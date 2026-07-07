@@ -9,7 +9,63 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface CredentialsCreateRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class InvalidCredential extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidCredential>()("InvalidCredential", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 30004 }, { code: 30005 }],
+) {}
+
+export class InvalidRoute extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7003 }],
+) {}
+
+export class NoSuchBucket extends T.applyErrorMatchers(
+  S.TaggedErrorClass<NoSuchBucket>()("NoSuchBucket", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10006 }],
+) {}
+
+export class TableNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<TableNotFound>()("TableNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10001 }, { code: 40403 }],
+) {}
+
+export class WarehouseInactive extends T.applyErrorMatchers(
+  S.TaggedErrorClass<WarehouseInactive>()("WarehouseInactive", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 40402 }],
+) {}
+
+export class WarehouseNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<WarehouseNotFound>()("WarehouseNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 40401 }],
+) {}
+
+export interface CreateCredentialRequest {
   /** Use this to identify the account. */
   accountId: string;
   /** Specifies the R2 bucket name. */
@@ -17,7 +73,7 @@ export interface CredentialsCreateRequest {
   /** Provides the Cloudflare API token for accessing R2. */
   token: string;
 }
-export const CredentialsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCredentialRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -30,28 +86,28 @@ export const CredentialsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CredentialsCreateRequest",
-}) as any as S.Schema<CredentialsCreateRequest>;
+  identifier: "CreateCredentialRequest",
+}) as any as S.Schema<CreateCredentialRequest>;
 
-export interface CredentialsCreateResponse {
+export interface CreateCredentialResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const CredentialsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCredentialResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "CredentialsCreateResponse",
-}) as any as S.Schema<CredentialsCreateResponse>;
+  identifier: "CreateCredentialResponse",
+}) as any as S.Schema<CreateCredentialResponse>;
 
-export interface DisableRequest {
+export interface DisableR2DataCatalogRequest {
   /** Use this to identify the account. */
   accountId: string;
   /** Specifies the R2 bucket name. */
   bucketName: string;
 }
-export const DisableRequest = /*@__PURE__*/ S.suspend(() =>
+export const DisableR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -62,22 +118,24 @@ export const DisableRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DisableRequest" }) as any as S.Schema<DisableRequest>;
+).annotate({
+  identifier: "DisableR2DataCatalogRequest",
+}) as any as S.Schema<DisableR2DataCatalogRequest>;
 
-export interface DisableResponse {}
-export const DisableResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DisableR2DataCatalogResponse {}
+export const DisableR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "DisableResponse",
-}) as any as S.Schema<DisableResponse>;
+  identifier: "DisableR2DataCatalogResponse",
+}) as any as S.Schema<DisableR2DataCatalogResponse>;
 
-export interface EnableRequest {
+export interface EnableR2DataCatalogRequest {
   /** Use this to identify the account. */
   accountId: string;
   /** Specifies the R2 bucket name. */
   bucketName: string;
 }
-export const EnableRequest = /*@__PURE__*/ S.suspend(() =>
+export const EnableR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -88,29 +146,283 @@ export const EnableRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "EnableRequest" }) as any as S.Schema<EnableRequest>;
+).annotate({
+  identifier: "EnableR2DataCatalogRequest",
+}) as any as S.Schema<EnableR2DataCatalogRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EnableResponse {
+export interface EnableR2DataCatalogResponse {
   /** Use this to uniquely identify the activated catalog. */
   id: string;
   /** Specifies the name of the activated catalog. */
   name: string;
 }
-export const EnableResponse = /*@__PURE__*/ S.suspend(() =>
+export const EnableR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
   }),
-).annotate({ identifier: "EnableResponse" }) as any as S.Schema<EnableResponse>;
+).annotate({
+  identifier: "EnableR2DataCatalogResponse",
+}) as any as S.Schema<EnableR2DataCatalogResponse>;
 
-export interface GetRequest {
+export interface GetMaintenanceConfigRequest {
   /** Use this to identify the account. */
   accountId: string;
   /** Specifies the R2 bucket name. */
   bucketName: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    bucketName: S.String.pipe(T.Label("bucket_name")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetMaintenanceConfigRequest",
+}) as any as S.Schema<GetMaintenanceConfigRequest>;
+
+export type MaintenanceConfigsGetResponseCredentialStatus =
+  | "present"
+  | "absent"
+  | (string & {});
+export const MaintenanceConfigsGetResponseCredentialStatus =
+  /*@__PURE__*/ S.String;
+
+export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
+  | "enabled"
+  | "disabled"
+  | (string & {});
+export const MaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
+  /*@__PURE__*/ S.String;
+
+export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
+  "64" | "128" | "256" | "512" | (string & {});
+export const MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
+  /*@__PURE__*/ S.String;
+
+export interface MaintenanceConfigsGetResponseMaintenanceConfigCompaction {
+  /** Specifies the state of maintenance operations. */
+  state: MaintenanceConfigsGetResponseMaintenanceConfigCompactionState;
+  /** Sets the target file size for compaction in megabytes. Defaults to "128". */
+  targetSizeMb: MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb;
+}
+export const MaintenanceConfigsGetResponseMaintenanceConfigCompaction =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: MaintenanceConfigsGetResponseMaintenanceConfigCompactionState,
+      targetSizeMb:
+        MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb.pipe(
+          T.Body("target_size_mb"),
+        ),
+    }),
+  ).annotate({
+    identifier: "MaintenanceConfigsGetResponseMaintenanceConfigCompaction",
+  }) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
+
+export type MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
+  "enabled" | "disabled" | (string & {});
+export const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
+  /*@__PURE__*/ S.String;
+
+export interface MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration {
+  /** Specifies the maximum age for snapshots. The system deletes snapshots older than this age. */
+  maxSnapshotAge: string;
+  /** Specifies the minimum number of snapshots to retain. Defaults to 100. */
+  minSnapshotsToKeep: number;
+  /** Specifies the state of maintenance operations. */
+  state: MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState;
+}
+export const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
+      minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
+      state:
+        MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState,
+    }),
+  ).annotate({
+    identifier:
+      "MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration",
+  }) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration>;
+
+export interface MaintenanceConfigsGetResponseMaintenanceConfig {
+  /** Configures compaction for catalog maintenance. */
+  compaction?: MaintenanceConfigsGetResponseMaintenanceConfigCompaction;
+  /** Configures snapshot expiration settings. */
+  snapshotExpiration?: MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration;
+}
+export const MaintenanceConfigsGetResponseMaintenanceConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      compaction: S.optional(
+        MaintenanceConfigsGetResponseMaintenanceConfigCompaction,
+      ),
+      snapshotExpiration: S.optional(
+        MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration.pipe(
+          T.Body("snapshot_expiration"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "MaintenanceConfigsGetResponseMaintenanceConfig",
+  }) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfig>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetMaintenanceConfigResponse {
+  /** Shows the credential configuration status. */
+  credentialStatus: MaintenanceConfigsGetResponseCredentialStatus;
+  /** Configures maintenance for the catalog. */
+  maintenanceConfig: MaintenanceConfigsGetResponseMaintenanceConfig;
+}
+export const GetMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    credentialStatus: MaintenanceConfigsGetResponseCredentialStatus.pipe(
+      T.Body("credential_status"),
+    ),
+    maintenanceConfig: MaintenanceConfigsGetResponseMaintenanceConfig.pipe(
+      T.Body("maintenance_config"),
+    ),
+  }),
+).annotate({
+  identifier: "GetMaintenanceConfigResponse",
+}) as any as S.Schema<GetMaintenanceConfigResponse>;
+
+export interface GetNamespaceTableMaintenanceConfigRequest {
+  /** Use this to identify the account. */
+  accountId: string;
+  /** Specifies the R2 bucket name. */
+  bucketName: string;
+  namespace: string;
+  tableName: string;
+}
+export const GetNamespaceTableMaintenanceConfigRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      bucketName: S.String.pipe(T.Label("bucket_name")),
+      namespace: S.String.pipe(T.Label()),
+      tableName: S.String.pipe(T.Label("table_name")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "GetNamespaceTableMaintenanceConfigRequest",
+  }) as any as S.Schema<GetNamespaceTableMaintenanceConfigRequest>;
+
+export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
+  "enabled" | "disabled" | (string & {});
+export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
+  /*@__PURE__*/ S.String;
+
+export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
+  "64" | "128" | "256" | "512" | (string & {});
+export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
+  /*@__PURE__*/ S.String;
+
+export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction {
+  /** Specifies the state of maintenance operations. */
+  state: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState;
+  /** Sets the target file size for compaction in megabytes. Defaults to "128". */
+  targetSizeMb: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb;
+}
+export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state:
+        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState,
+      targetSizeMb:
+        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb.pipe(
+          T.Body("target_size_mb"),
+        ),
+    }),
+  ).annotate({
+    identifier:
+      "NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction",
+  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
+
+export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
+  "enabled" | "disabled" | (string & {});
+export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
+  /*@__PURE__*/ S.String;
+
+export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration {
+  /** Specifies the maximum age for snapshots. The system deletes snapshots older than this age. */
+  maxSnapshotAge: string;
+  /** Specifies the minimum number of snapshots to retain. Defaults to 100. */
+  minSnapshotsToKeep: number;
+  /** Specifies the state of maintenance operations. */
+  state: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState;
+}
+export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
+      minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
+      state:
+        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState,
+    }),
+  ).annotate({
+    identifier:
+      "NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration",
+  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration>;
+
+export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig {
+  /** Configures compaction settings for table optimization. */
+  compaction?: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction;
+  /** Configures snapshot expiration settings. */
+  snapshotExpiration?: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration;
+}
+export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      compaction: S.optional(
+        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction,
+      ),
+      snapshotExpiration: S.optional(
+        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration.pipe(
+          T.Body("snapshot_expiration"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig",
+  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetNamespaceTableMaintenanceConfigResponse {
+  /** Configures maintenance for the table. */
+  maintenanceConfig: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig;
+}
+export const GetNamespaceTableMaintenanceConfigResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      maintenanceConfig:
+        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig.pipe(
+          T.Body("maintenance_config"),
+        ),
+    }),
+  ).annotate({
+    identifier: "GetNamespaceTableMaintenanceConfigResponse",
+  }) as any as S.Schema<GetNamespaceTableMaintenanceConfigResponse>;
+
+export interface GetR2DataCatalogRequest {
+  /** Use this to identify the account. */
+  accountId: string;
+  /** Specifies the R2 bucket name. */
+  bucketName: string;
+}
+export const GetR2DataCatalogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -121,7 +433,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetR2DataCatalogRequest",
+}) as any as S.Schema<GetR2DataCatalogRequest>;
 
 export type GetResponseStatus = "active" | "inactive" | (string & {});
 export const GetResponseStatus = /*@__PURE__*/ S.String;
@@ -209,7 +523,7 @@ export const GetResponseMaintenanceConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseMaintenanceConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetR2DataCatalogResponse {
   /** Use this to uniquely identify the catalog. */
   id: string;
   /** Specifies the associated R2 bucket name. */
@@ -223,7 +537,7 @@ export interface GetResponse {
   /** Configures maintenance for the catalog. */
   maintenanceConfig?: GetResponseMaintenanceConfig;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetR2DataCatalogResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     bucket: S.String,
@@ -236,13 +550,268 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
       GetResponseMaintenanceConfig.pipe(T.Body("maintenance_config")),
     ),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetR2DataCatalogResponse",
+}) as any as S.Schema<GetR2DataCatalogResponse>;
 
-export interface ListRequest {
+export interface ListNamespacesRequest {
+  /** Use this to identify the account. */
+  accountId: string;
+  /** Specifies the R2 bucket name. */
+  bucketName: string;
+  /** Maximum number of namespaces to return per page. */
+  pageSize?: number;
+  /** Opaque pagination token from a previous response. */
+  pageToken?: string;
+  /** Parent namespace to filter by. Only returns direct children of this namespace. */
+  parent?: string;
+  /** Whether to include additional metadata (timestamps). */
+  returnDetails?: boolean;
+  /** Whether to include namespace UUIDs in the response. */
+  returnUuids?: boolean;
+}
+export const ListNamespacesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    bucketName: S.String.pipe(T.Label("bucket_name")),
+    pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
+    pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
+    parent: S.optional(S.String.pipe(T.Query())),
+    returnDetails: S.optional(S.Boolean.pipe(T.Query("return_details"))),
+    returnUuids: S.optional(S.Boolean.pipe(T.Query("return_uuids"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListNamespacesRequest",
+}) as any as S.Schema<ListNamespacesRequest>;
+
+export type NamespacesListResponseNamespacesList = unknown[];
+export const NamespacesListResponseNamespacesList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<NamespacesListResponseNamespacesList>;
+
+export type NamespacesListResponseDetailsItemNamespaceList = string[];
+export const NamespacesListResponseDetailsItemNamespaceList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespacesListResponseDetailsItemNamespaceList>;
+
+export interface NamespacesListResponseDetailsItem {
+  /** Specifies the hierarchical namespace parts as an array of strings. */
+  namespace: NamespacesListResponseDetailsItemNamespaceList;
+  /** Contains the UUID that persists across renames. */
+  namespaceUuid: string;
+  /** Indicates the creation timestamp in ISO 8601 format. */
+  createdAt?: string;
+  /** Shows the last update timestamp in ISO 8601 format. Null if never updated. */
+  updatedAt?: string;
+}
+export const NamespacesListResponseDetailsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespace: NamespacesListResponseDetailsItemNamespaceList,
+    namespaceUuid: S.String.pipe(T.Body("namespace_uuid")),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+  }),
+).annotate({
+  identifier: "NamespacesListResponseDetailsItem",
+}) as any as S.Schema<NamespacesListResponseDetailsItem>;
+
+export type NamespacesListResponseDetailsList =
+  NamespacesListResponseDetailsItem[];
+export const NamespacesListResponseDetailsList = /*@__PURE__*/ S.Array(
+  NamespacesListResponseDetailsItem,
+) as any as S.Schema<NamespacesListResponseDetailsList>;
+
+export type NamespacesListResponseNamespaceUuidsList = string[];
+export const NamespacesListResponseNamespaceUuidsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NamespacesListResponseNamespaceUuidsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface ListNamespacesResponse {
+  /** Lists namespaces in the catalog. */
+  namespaces: NamespacesListResponseNamespacesList;
+  /** Contains detailed metadata for each namespace when return_details is true. */
+  details?: NamespacesListResponseDetailsList;
+  /** Contains UUIDs for each namespace when return_uuids is true. */
+  namespaceUuids?: NamespacesListResponseNamespaceUuidsList;
+  /** Use this opaque token to fetch the next page of results. */
+  nextPageToken?: string;
+}
+export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    namespaces: NamespacesListResponseNamespacesList,
+    details: S.optional(NamespacesListResponseDetailsList),
+    namespaceUuids: S.optional(
+      NamespacesListResponseNamespaceUuidsList.pipe(T.Body("namespace_uuids")),
+    ),
+    nextPageToken: S.optional(S.String.pipe(T.Body("next_page_token"))),
+  }),
+).annotate({
+  identifier: "ListNamespacesResponse",
+}) as any as S.Schema<ListNamespacesResponse>;
+
+export interface ListNamespaceTablesRequest {
+  /** Use this to identify the account. */
+  accountId: string;
+  /** Specifies the R2 bucket name. */
+  bucketName: string;
+  namespace: string;
+  /** Maximum number of tables to return per page. */
+  pageSize?: number;
+  /** Opaque pagination token from a previous response. */
+  pageToken?: string;
+  /** Whether to include additional metadata (timestamps, locations). */
+  returnDetails?: boolean;
+  /** Whether to include table UUIDs in the response. */
+  returnUuids?: boolean;
+}
+export const ListNamespaceTablesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    bucketName: S.String.pipe(T.Label("bucket_name")),
+    namespace: S.String.pipe(T.Label()),
+    pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
+    pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
+    returnDetails: S.optional(S.Boolean.pipe(T.Query("return_details"))),
+    returnUuids: S.optional(S.Boolean.pipe(T.Query("return_uuids"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListNamespaceTablesRequest",
+}) as any as S.Schema<ListNamespaceTablesRequest>;
+
+export type NamespacesTablesListResponseIdentifiersItemNamespaceList = string[];
+export const NamespacesTablesListResponseIdentifiersItemNamespaceList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespacesTablesListResponseIdentifiersItemNamespaceList>;
+
+export interface NamespacesTablesListResponseIdentifiersItem {
+  /** Specifies the table name. */
+  name: string;
+  /** Specifies the hierarchical namespace parts as an array of strings. */
+  namespace: NamespacesTablesListResponseIdentifiersItemNamespaceList;
+}
+export const NamespacesTablesListResponseIdentifiersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      namespace: NamespacesTablesListResponseIdentifiersItemNamespaceList,
+    }),
+  ).annotate({
+    identifier: "NamespacesTablesListResponseIdentifiersItem",
+  }) as any as S.Schema<NamespacesTablesListResponseIdentifiersItem>;
+
+export type NamespacesTablesListResponseIdentifiersList =
+  NamespacesTablesListResponseIdentifiersItem[];
+export const NamespacesTablesListResponseIdentifiersList =
+  /*@__PURE__*/ S.Array(
+    NamespacesTablesListResponseIdentifiersItem,
+  ) as any as S.Schema<NamespacesTablesListResponseIdentifiersList>;
+
+export type NamespacesTablesListResponseDetailsItemIdentifierNamespaceList =
+  string[];
+export const NamespacesTablesListResponseDetailsItemIdentifierNamespaceList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespacesTablesListResponseDetailsItemIdentifierNamespaceList>;
+
+export interface NamespacesTablesListResponseDetailsItemIdentifier {
+  /** Specifies the table name. */
+  name: string;
+  /** Specifies the hierarchical namespace parts as an array of strings. */
+  namespace: NamespacesTablesListResponseDetailsItemIdentifierNamespaceList;
+}
+export const NamespacesTablesListResponseDetailsItemIdentifier =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      namespace: NamespacesTablesListResponseDetailsItemIdentifierNamespaceList,
+    }),
+  ).annotate({
+    identifier: "NamespacesTablesListResponseDetailsItemIdentifier",
+  }) as any as S.Schema<NamespacesTablesListResponseDetailsItemIdentifier>;
+
+export interface NamespacesTablesListResponseDetailsItem {
+  /** Specifies a unique table identifier within a catalog. */
+  identifier: NamespacesTablesListResponseDetailsItemIdentifier;
+  /** Contains the UUID that persists across renames. */
+  tableUuid: string;
+  /** Indicates the creation timestamp in ISO 8601 format. */
+  createdAt?: string;
+  /** Specifies the base S3 URI for table storage location. */
+  location?: string;
+  /** Contains the S3 URI to table metadata file. Null for staged tables. */
+  metadataLocation?: string;
+  /** Shows the last update timestamp in ISO 8601 format. Null if never updated. */
+  updatedAt?: string;
+}
+export const NamespacesTablesListResponseDetailsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      identifier: NamespacesTablesListResponseDetailsItemIdentifier,
+      tableUuid: S.String.pipe(T.Body("table_uuid")),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      location: S.optional(S.String),
+      metadataLocation: S.optional(S.String.pipe(T.Body("metadata_location"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+).annotate({
+  identifier: "NamespacesTablesListResponseDetailsItem",
+}) as any as S.Schema<NamespacesTablesListResponseDetailsItem>;
+
+export type NamespacesTablesListResponseDetailsList =
+  NamespacesTablesListResponseDetailsItem[];
+export const NamespacesTablesListResponseDetailsList = /*@__PURE__*/ S.Array(
+  NamespacesTablesListResponseDetailsItem,
+) as any as S.Schema<NamespacesTablesListResponseDetailsList>;
+
+export type NamespacesTablesListResponseTableUuidsList = string[];
+export const NamespacesTablesListResponseTableUuidsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<NamespacesTablesListResponseTableUuidsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface ListNamespaceTablesResponse {
+  /** Lists tables in the namespace. */
+  identifiers: NamespacesTablesListResponseIdentifiersList;
+  /** Contains detailed metadata for each table when return_details is true. */
+  details?: NamespacesTablesListResponseDetailsList;
+  /** Use this opaque token to fetch the next page of results. */
+  nextPageToken?: string;
+  /** Contains UUIDs for each table when return_uuids is true. */
+  tableUuids?: NamespacesTablesListResponseTableUuidsList;
+}
+export const ListNamespaceTablesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    identifiers: NamespacesTablesListResponseIdentifiersList,
+    details: S.optional(NamespacesTablesListResponseDetailsList),
+    nextPageToken: S.optional(S.String.pipe(T.Body("next_page_token"))),
+    tableUuids: S.optional(
+      NamespacesTablesListResponseTableUuidsList.pipe(T.Body("table_uuids")),
+    ),
+  }),
+).annotate({
+  identifier: "ListNamespaceTablesResponse",
+}) as any as S.Schema<ListNamespaceTablesResponse>;
+
+export interface ListR2DataCatalogsRequest {
   /** Use this to identify the account. */
   accountId: string;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListR2DataCatalogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -252,7 +821,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListR2DataCatalogsRequest",
+}) as any as S.Schema<ListR2DataCatalogsRequest>;
 
 export type ListResponseWarehousesItemStatus =
   | "active"
@@ -389,142 +960,17 @@ export const ListResponseWarehousesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResponseWarehousesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ListResponse {
+export interface ListR2DataCatalogsResponse {
   /** Lists catalogs in the account. */
   warehouses: ListResponseWarehousesList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListR2DataCatalogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     warehouses: ListResponseWarehousesList,
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
-
-export interface MaintenanceConfigsGetRequest {
-  /** Use this to identify the account. */
-  accountId: string;
-  /** Specifies the R2 bucket name. */
-  bucketName: string;
-}
-export const MaintenanceConfigsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    bucketName: S.String.pipe(T.Label("bucket_name")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/maintenance-configs",
-      code: 200,
-    }),
-  ),
 ).annotate({
-  identifier: "MaintenanceConfigsGetRequest",
-}) as any as S.Schema<MaintenanceConfigsGetRequest>;
-
-export type MaintenanceConfigsGetResponseCredentialStatus =
-  | "present"
-  | "absent"
-  | (string & {});
-export const MaintenanceConfigsGetResponseCredentialStatus =
-  /*@__PURE__*/ S.String;
-
-export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
-  | "enabled"
-  | "disabled"
-  | (string & {});
-export const MaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
-  /*@__PURE__*/ S.String;
-
-export type MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512" | (string & {});
-export const MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
-  /*@__PURE__*/ S.String;
-
-export interface MaintenanceConfigsGetResponseMaintenanceConfigCompaction {
-  /** Specifies the state of maintenance operations. */
-  state: MaintenanceConfigsGetResponseMaintenanceConfigCompactionState;
-  /** Sets the target file size for compaction in megabytes. Defaults to "128". */
-  targetSizeMb: MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb;
-}
-export const MaintenanceConfigsGetResponseMaintenanceConfigCompaction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: MaintenanceConfigsGetResponseMaintenanceConfigCompactionState,
-      targetSizeMb:
-        MaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb.pipe(
-          T.Body("target_size_mb"),
-        ),
-    }),
-  ).annotate({
-    identifier: "MaintenanceConfigsGetResponseMaintenanceConfigCompaction",
-  }) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
-
-export type MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
-  "enabled" | "disabled" | (string & {});
-export const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
-  /*@__PURE__*/ S.String;
-
-export interface MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration {
-  /** Specifies the maximum age for snapshots. The system deletes snapshots older than this age. */
-  maxSnapshotAge: string;
-  /** Specifies the minimum number of snapshots to retain. Defaults to 100. */
-  minSnapshotsToKeep: number;
-  /** Specifies the state of maintenance operations. */
-  state: MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState;
-}
-export const MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
-      minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-      state:
-        MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState,
-    }),
-  ).annotate({
-    identifier:
-      "MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration",
-  }) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration>;
-
-export interface MaintenanceConfigsGetResponseMaintenanceConfig {
-  /** Configures compaction for catalog maintenance. */
-  compaction?: MaintenanceConfigsGetResponseMaintenanceConfigCompaction;
-  /** Configures snapshot expiration settings. */
-  snapshotExpiration?: MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration;
-}
-export const MaintenanceConfigsGetResponseMaintenanceConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      compaction: S.optional(
-        MaintenanceConfigsGetResponseMaintenanceConfigCompaction,
-      ),
-      snapshotExpiration: S.optional(
-        MaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration.pipe(
-          T.Body("snapshot_expiration"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "MaintenanceConfigsGetResponseMaintenanceConfig",
-  }) as any as S.Schema<MaintenanceConfigsGetResponseMaintenanceConfig>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MaintenanceConfigsGetResponse {
-  /** Shows the credential configuration status. */
-  credentialStatus: MaintenanceConfigsGetResponseCredentialStatus;
-  /** Configures maintenance for the catalog. */
-  maintenanceConfig: MaintenanceConfigsGetResponseMaintenanceConfig;
-}
-export const MaintenanceConfigsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    credentialStatus: MaintenanceConfigsGetResponseCredentialStatus.pipe(
-      T.Body("credential_status"),
-    ),
-    maintenanceConfig: MaintenanceConfigsGetResponseMaintenanceConfig.pipe(
-      T.Body("maintenance_config"),
-    ),
-  }),
-).annotate({
-  identifier: "MaintenanceConfigsGetResponse",
-}) as any as S.Schema<MaintenanceConfigsGetResponse>;
+  identifier: "ListR2DataCatalogsResponse",
+}) as any as S.Schema<ListR2DataCatalogsResponse>;
 
 export type MaintenanceConfigsUpdateRequestCompactionState =
   | "enabled"
@@ -590,7 +1036,7 @@ export const MaintenanceConfigsUpdateRequestSnapshotExpiration =
     identifier: "MaintenanceConfigsUpdateRequestSnapshotExpiration",
   }) as any as S.Schema<MaintenanceConfigsUpdateRequestSnapshotExpiration>;
 
-export interface MaintenanceConfigsUpdateRequest {
+export interface UpdateMaintenanceConfigRequest {
   /** Use this to identify the account. */
   accountId: string;
   /** Specifies the R2 bucket name. */
@@ -600,7 +1046,7 @@ export interface MaintenanceConfigsUpdateRequest {
   /** Updates snapshot expiration configuration (all fields optional). */
   snapshotExpiration?: MaintenanceConfigsUpdateRequestSnapshotExpiration;
 }
-export const MaintenanceConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateMaintenanceConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     bucketName: S.String.pipe(T.Label("bucket_name")),
@@ -618,8 +1064,8 @@ export const MaintenanceConfigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MaintenanceConfigsUpdateRequest",
-}) as any as S.Schema<MaintenanceConfigsUpdateRequest>;
+  identifier: "UpdateMaintenanceConfigRequest",
+}) as any as S.Schema<UpdateMaintenanceConfigRequest>;
 
 export type MaintenanceConfigsUpdateResponseCompactionState =
   | "enabled"
@@ -682,13 +1128,13 @@ export const MaintenanceConfigsUpdateResponseSnapshotExpiration =
   }) as any as S.Schema<MaintenanceConfigsUpdateResponseSnapshotExpiration>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MaintenanceConfigsUpdateResponse {
+export interface UpdateMaintenanceConfigResponse {
   /** Configures compaction for catalog maintenance. */
   compaction?: MaintenanceConfigsUpdateResponseCompaction;
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: MaintenanceConfigsUpdateResponseSnapshotExpiration;
 }
-export const MaintenanceConfigsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateMaintenanceConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     compaction: S.optional(MaintenanceConfigsUpdateResponseCompaction),
     snapshotExpiration: S.optional(
@@ -698,384 +1144,8 @@ export const MaintenanceConfigsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "MaintenanceConfigsUpdateResponse",
-}) as any as S.Schema<MaintenanceConfigsUpdateResponse>;
-
-export interface NamespacesListRequest {
-  /** Use this to identify the account. */
-  accountId: string;
-  /** Specifies the R2 bucket name. */
-  bucketName: string;
-  /** Maximum number of namespaces to return per page. */
-  pageSize?: number;
-  /** Opaque pagination token from a previous response. */
-  pageToken?: string;
-  /** Parent namespace to filter by. Only returns direct children of this namespace. */
-  parent?: string;
-  /** Whether to include additional metadata (timestamps). */
-  returnDetails?: boolean;
-  /** Whether to include namespace UUIDs in the response. */
-  returnUuids?: boolean;
-}
-export const NamespacesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    bucketName: S.String.pipe(T.Label("bucket_name")),
-    pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
-    pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
-    parent: S.optional(S.String.pipe(T.Query())),
-    returnDetails: S.optional(S.Boolean.pipe(T.Query("return_details"))),
-    returnUuids: S.optional(S.Boolean.pipe(T.Query("return_uuids"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NamespacesListRequest",
-}) as any as S.Schema<NamespacesListRequest>;
-
-export type NamespacesListResponseNamespacesList = unknown[];
-export const NamespacesListResponseNamespacesList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<NamespacesListResponseNamespacesList>;
-
-export type NamespacesListResponseDetailsItemNamespaceList = string[];
-export const NamespacesListResponseDetailsItemNamespaceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesListResponseDetailsItemNamespaceList>;
-
-export interface NamespacesListResponseDetailsItem {
-  /** Specifies the hierarchical namespace parts as an array of strings. */
-  namespace: NamespacesListResponseDetailsItemNamespaceList;
-  /** Contains the UUID that persists across renames. */
-  namespaceUuid: string;
-  /** Indicates the creation timestamp in ISO 8601 format. */
-  createdAt?: string;
-  /** Shows the last update timestamp in ISO 8601 format. Null if never updated. */
-  updatedAt?: string;
-}
-export const NamespacesListResponseDetailsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespace: NamespacesListResponseDetailsItemNamespaceList,
-    namespaceUuid: S.String.pipe(T.Body("namespace_uuid")),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
-).annotate({
-  identifier: "NamespacesListResponseDetailsItem",
-}) as any as S.Schema<NamespacesListResponseDetailsItem>;
-
-export type NamespacesListResponseDetailsList =
-  NamespacesListResponseDetailsItem[];
-export const NamespacesListResponseDetailsList = /*@__PURE__*/ S.Array(
-  NamespacesListResponseDetailsItem,
-) as any as S.Schema<NamespacesListResponseDetailsList>;
-
-export type NamespacesListResponseNamespaceUuidsList = string[];
-export const NamespacesListResponseNamespaceUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesListResponseNamespaceUuidsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface NamespacesListResponse {
-  /** Lists namespaces in the catalog. */
-  namespaces: NamespacesListResponseNamespacesList;
-  /** Contains detailed metadata for each namespace when return_details is true. */
-  details?: NamespacesListResponseDetailsList;
-  /** Contains UUIDs for each namespace when return_uuids is true. */
-  namespaceUuids?: NamespacesListResponseNamespaceUuidsList;
-  /** Use this opaque token to fetch the next page of results. */
-  nextPageToken?: string;
-}
-export const NamespacesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    namespaces: NamespacesListResponseNamespacesList,
-    details: S.optional(NamespacesListResponseDetailsList),
-    namespaceUuids: S.optional(
-      NamespacesListResponseNamespaceUuidsList.pipe(T.Body("namespace_uuids")),
-    ),
-    nextPageToken: S.optional(S.String.pipe(T.Body("next_page_token"))),
-  }),
-).annotate({
-  identifier: "NamespacesListResponse",
-}) as any as S.Schema<NamespacesListResponse>;
-
-export interface NamespacesTablesListRequest {
-  /** Use this to identify the account. */
-  accountId: string;
-  /** Specifies the R2 bucket name. */
-  bucketName: string;
-  namespace: string;
-  /** Maximum number of tables to return per page. */
-  pageSize?: number;
-  /** Opaque pagination token from a previous response. */
-  pageToken?: string;
-  /** Whether to include additional metadata (timestamps, locations). */
-  returnDetails?: boolean;
-  /** Whether to include table UUIDs in the response. */
-  returnUuids?: boolean;
-}
-export const NamespacesTablesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    bucketName: S.String.pipe(T.Label("bucket_name")),
-    namespace: S.String.pipe(T.Label()),
-    pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
-    pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
-    returnDetails: S.optional(S.Boolean.pipe(T.Query("return_details"))),
-    returnUuids: S.optional(S.Boolean.pipe(T.Query("return_uuids"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "NamespacesTablesListRequest",
-}) as any as S.Schema<NamespacesTablesListRequest>;
-
-export type NamespacesTablesListResponseIdentifiersItemNamespaceList = string[];
-export const NamespacesTablesListResponseIdentifiersItemNamespaceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesTablesListResponseIdentifiersItemNamespaceList>;
-
-export interface NamespacesTablesListResponseIdentifiersItem {
-  /** Specifies the table name. */
-  name: string;
-  /** Specifies the hierarchical namespace parts as an array of strings. */
-  namespace: NamespacesTablesListResponseIdentifiersItemNamespaceList;
-}
-export const NamespacesTablesListResponseIdentifiersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: NamespacesTablesListResponseIdentifiersItemNamespaceList,
-    }),
-  ).annotate({
-    identifier: "NamespacesTablesListResponseIdentifiersItem",
-  }) as any as S.Schema<NamespacesTablesListResponseIdentifiersItem>;
-
-export type NamespacesTablesListResponseIdentifiersList =
-  NamespacesTablesListResponseIdentifiersItem[];
-export const NamespacesTablesListResponseIdentifiersList =
-  /*@__PURE__*/ S.Array(
-    NamespacesTablesListResponseIdentifiersItem,
-  ) as any as S.Schema<NamespacesTablesListResponseIdentifiersList>;
-
-export type NamespacesTablesListResponseDetailsItemIdentifierNamespaceList =
-  string[];
-export const NamespacesTablesListResponseDetailsItemIdentifierNamespaceList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<NamespacesTablesListResponseDetailsItemIdentifierNamespaceList>;
-
-export interface NamespacesTablesListResponseDetailsItemIdentifier {
-  /** Specifies the table name. */
-  name: string;
-  /** Specifies the hierarchical namespace parts as an array of strings. */
-  namespace: NamespacesTablesListResponseDetailsItemIdentifierNamespaceList;
-}
-export const NamespacesTablesListResponseDetailsItemIdentifier =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      namespace: NamespacesTablesListResponseDetailsItemIdentifierNamespaceList,
-    }),
-  ).annotate({
-    identifier: "NamespacesTablesListResponseDetailsItemIdentifier",
-  }) as any as S.Schema<NamespacesTablesListResponseDetailsItemIdentifier>;
-
-export interface NamespacesTablesListResponseDetailsItem {
-  /** Specifies a unique table identifier within a catalog. */
-  identifier: NamespacesTablesListResponseDetailsItemIdentifier;
-  /** Contains the UUID that persists across renames. */
-  tableUuid: string;
-  /** Indicates the creation timestamp in ISO 8601 format. */
-  createdAt?: string;
-  /** Specifies the base S3 URI for table storage location. */
-  location?: string;
-  /** Contains the S3 URI to table metadata file. Null for staged tables. */
-  metadataLocation?: string;
-  /** Shows the last update timestamp in ISO 8601 format. Null if never updated. */
-  updatedAt?: string;
-}
-export const NamespacesTablesListResponseDetailsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      identifier: NamespacesTablesListResponseDetailsItemIdentifier,
-      tableUuid: S.String.pipe(T.Body("table_uuid")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      location: S.optional(S.String),
-      metadataLocation: S.optional(S.String.pipe(T.Body("metadata_location"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
-).annotate({
-  identifier: "NamespacesTablesListResponseDetailsItem",
-}) as any as S.Schema<NamespacesTablesListResponseDetailsItem>;
-
-export type NamespacesTablesListResponseDetailsList =
-  NamespacesTablesListResponseDetailsItem[];
-export const NamespacesTablesListResponseDetailsList = /*@__PURE__*/ S.Array(
-  NamespacesTablesListResponseDetailsItem,
-) as any as S.Schema<NamespacesTablesListResponseDetailsList>;
-
-export type NamespacesTablesListResponseTableUuidsList = string[];
-export const NamespacesTablesListResponseTableUuidsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<NamespacesTablesListResponseTableUuidsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface NamespacesTablesListResponse {
-  /** Lists tables in the namespace. */
-  identifiers: NamespacesTablesListResponseIdentifiersList;
-  /** Contains detailed metadata for each table when return_details is true. */
-  details?: NamespacesTablesListResponseDetailsList;
-  /** Use this opaque token to fetch the next page of results. */
-  nextPageToken?: string;
-  /** Contains UUIDs for each table when return_uuids is true. */
-  tableUuids?: NamespacesTablesListResponseTableUuidsList;
-}
-export const NamespacesTablesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    identifiers: NamespacesTablesListResponseIdentifiersList,
-    details: S.optional(NamespacesTablesListResponseDetailsList),
-    nextPageToken: S.optional(S.String.pipe(T.Body("next_page_token"))),
-    tableUuids: S.optional(
-      NamespacesTablesListResponseTableUuidsList.pipe(T.Body("table_uuids")),
-    ),
-  }),
-).annotate({
-  identifier: "NamespacesTablesListResponse",
-}) as any as S.Schema<NamespacesTablesListResponse>;
-
-export interface NamespacesTablesMaintenanceConfigsGetRequest {
-  /** Use this to identify the account. */
-  accountId: string;
-  /** Specifies the R2 bucket name. */
-  bucketName: string;
-  namespace: string;
-  tableName: string;
-}
-export const NamespacesTablesMaintenanceConfigsGetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      bucketName: S.String.pipe(T.Label("bucket_name")),
-      namespace: S.String.pipe(T.Label()),
-      tableName: S.String.pipe(T.Label("table_name")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/r2-catalog/{bucket_name}/namespaces/{namespace}/tables/{table_name}/maintenance-configs",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "NamespacesTablesMaintenanceConfigsGetRequest",
-  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetRequest>;
-
-export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
-  "enabled" | "disabled" | (string & {});
-export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState =
-  /*@__PURE__*/ S.String;
-
-export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
-  "64" | "128" | "256" | "512" | (string & {});
-export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb =
-  /*@__PURE__*/ S.String;
-
-export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction {
-  /** Specifies the state of maintenance operations. */
-  state: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState;
-  /** Sets the target file size for compaction in megabytes. Defaults to "128". */
-  targetSizeMb: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb;
-}
-export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionState,
-      targetSizeMb:
-        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompactionTargetSizeMb.pipe(
-          T.Body("target_size_mb"),
-        ),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction",
-  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction>;
-
-export type NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
-  "enabled" | "disabled" | (string & {});
-export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState =
-  /*@__PURE__*/ S.String;
-
-export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration {
-  /** Specifies the maximum age for snapshots. The system deletes snapshots older than this age. */
-  maxSnapshotAge: string;
-  /** Specifies the minimum number of snapshots to retain. Defaults to 100. */
-  minSnapshotsToKeep: number;
-  /** Specifies the state of maintenance operations. */
-  state: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState;
-}
-export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maxSnapshotAge: S.String.pipe(T.Body("max_snapshot_age")),
-      minSnapshotsToKeep: S.Number.pipe(T.Body("min_snapshots_to_keep")),
-      state:
-        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpirationState,
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration",
-  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration>;
-
-export interface NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig {
-  /** Configures compaction settings for table optimization. */
-  compaction?: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction;
-  /** Configures snapshot expiration settings. */
-  snapshotExpiration?: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration;
-}
-export const NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      compaction: S.optional(
-        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigCompaction,
-      ),
-      snapshotExpiration: S.optional(
-        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfigSnapshotExpiration.pipe(
-          T.Body("snapshot_expiration"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig",
-  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface NamespacesTablesMaintenanceConfigsGetResponse {
-  /** Configures maintenance for the table. */
-  maintenanceConfig: NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig;
-}
-export const NamespacesTablesMaintenanceConfigsGetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      maintenanceConfig:
-        NamespacesTablesMaintenanceConfigsGetResponseMaintenanceConfig.pipe(
-          T.Body("maintenance_config"),
-        ),
-    }),
-  ).annotate({
-    identifier: "NamespacesTablesMaintenanceConfigsGetResponse",
-  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsGetResponse>;
+  identifier: "UpdateMaintenanceConfigResponse",
+}) as any as S.Schema<UpdateMaintenanceConfigResponse>;
 
 export type NamespacesTablesMaintenanceConfigsUpdateRequestCompactionState =
   | "enabled"
@@ -1140,7 +1210,7 @@ export const NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration =
       "NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration",
   }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration>;
 
-export interface NamespacesTablesMaintenanceConfigsUpdateRequest {
+export interface UpdateNamespaceTableMaintenanceConfigRequest {
   /** Use this to identify the account. */
   accountId: string;
   /** Specifies the R2 bucket name. */
@@ -1152,7 +1222,7 @@ export interface NamespacesTablesMaintenanceConfigsUpdateRequest {
   /** Updates snapshot expiration configuration (all fields optional). */
   snapshotExpiration?: NamespacesTablesMaintenanceConfigsUpdateRequestSnapshotExpiration;
 }
-export const NamespacesTablesMaintenanceConfigsUpdateRequest =
+export const UpdateNamespaceTableMaintenanceConfigRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
@@ -1175,8 +1245,8 @@ export const NamespacesTablesMaintenanceConfigsUpdateRequest =
       }),
     ),
   ).annotate({
-    identifier: "NamespacesTablesMaintenanceConfigsUpdateRequest",
-  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateRequest>;
+    identifier: "UpdateNamespaceTableMaintenanceConfigRequest",
+  }) as any as S.Schema<UpdateNamespaceTableMaintenanceConfigRequest>;
 
 export type NamespacesTablesMaintenanceConfigsUpdateResponseCompactionState =
   | "enabled"
@@ -1236,13 +1306,13 @@ export const NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration 
   }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface NamespacesTablesMaintenanceConfigsUpdateResponse {
+export interface UpdateNamespaceTableMaintenanceConfigResponse {
   /** Configures compaction settings for table optimization. */
   compaction?: NamespacesTablesMaintenanceConfigsUpdateResponseCompaction;
   /** Configures snapshot expiration settings. */
   snapshotExpiration?: NamespacesTablesMaintenanceConfigsUpdateResponseSnapshotExpiration;
 }
-export const NamespacesTablesMaintenanceConfigsUpdateResponse =
+export const UpdateNamespaceTableMaintenanceConfigResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       compaction: S.optional(
@@ -1255,159 +1325,250 @@ export const NamespacesTablesMaintenanceConfigsUpdateResponse =
       ),
     }),
   ).annotate({
-    identifier: "NamespacesTablesMaintenanceConfigsUpdateResponse",
-  }) as any as S.Schema<NamespacesTablesMaintenanceConfigsUpdateResponse>;
+    identifier: "UpdateNamespaceTableMaintenanceConfigResponse",
+  }) as any as S.Schema<UpdateNamespaceTableMaintenanceConfigResponse>;
 
-export type CredentialsCreateError = CloudflareOpError;
+export type CreateCredentialError =
+  | InvalidRoute
+  | InvalidCredential
+  | CloudflareOpError;
 /** Store authentication credentials for a catalog. These credentials are used to authenticate with R2 storage when performing catalog operations. */
-export const credentialsCreate: API.OperationMethod<
-  CredentialsCreateRequest,
-  CredentialsCreateResponse,
-  CredentialsCreateError,
+export const createCredential: API.OperationMethod<
+  CreateCredentialRequest,
+  CreateCredentialResponse,
+  CreateCredentialError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CredentialsCreateRequest,
-  output: CredentialsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateCredentialRequest,
+  output: CreateCredentialResponse,
+  errors: [
+    InvalidRoute,
+    InvalidCredential,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type DisableError = CloudflareOpError;
+export type DisableR2DataCatalogError =
+  | NoSuchBucket
+  | InvalidRoute
+  | WarehouseNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Disable an R2 bucket as a catalog. This operation deactivates the catalog but preserves existing metadata and data files. The catalog can be re-enabled later. */
-export const disable: API.OperationMethod<
-  DisableRequest,
-  DisableResponse,
-  DisableError,
+export const disableR2DataCatalog: API.OperationMethod<
+  DisableR2DataCatalogRequest,
+  DisableR2DataCatalogResponse,
+  DisableR2DataCatalogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DisableRequest,
-  output: DisableResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DisableR2DataCatalogRequest,
+  output: DisableR2DataCatalogResponse,
+  errors: [
+    NoSuchBucket,
+    InvalidRoute,
+    WarehouseNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type EnableError = CloudflareOpError;
+export type EnableR2DataCatalogError =
+  | NoSuchBucket
+  | InvalidRoute
+  | CloudflareOpError;
 /** Enable an R2 bucket as an Apache Iceberg catalog. This operation creates the necessary catalog infrastructure and activates the bucket for storing Iceberg metadata and data files. */
-export const enable: API.OperationMethod<
-  EnableRequest,
-  EnableResponse,
-  EnableError,
+export const enableR2DataCatalog: API.OperationMethod<
+  EnableR2DataCatalogRequest,
+  EnableR2DataCatalogResponse,
+  EnableR2DataCatalogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EnableRequest,
-  output: EnableResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: EnableR2DataCatalogRequest,
+  output: EnableR2DataCatalogResponse,
+  errors: [NoSuchBucket, InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
-/** Retrieve detailed information about a specific R2 catalog by bucket name. Returns catalog status, maintenance configuration, and credential status. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ListError = CloudflareOpError;
-/** Returns a list of R2 buckets that have been enabled as Apache Iceberg catalogs for the specified account. Each catalog represents an R2 bucket configured to store Iceberg metadata and data files. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type MaintenanceConfigsGetError = CloudflareOpError;
+export type GetMaintenanceConfigError =
+  | InvalidRoute
+  | WarehouseInactive
+  | WarehouseNotFound
+  | CloudflareOpError;
 /** Retrieve the maintenance configuration for a specific catalog, including compaction settings and credential status. */
-export const maintenanceConfigsGet: API.OperationMethod<
-  MaintenanceConfigsGetRequest,
-  MaintenanceConfigsGetResponse,
-  MaintenanceConfigsGetError,
+export const getMaintenanceConfig: API.OperationMethod<
+  GetMaintenanceConfigRequest,
+  GetMaintenanceConfigResponse,
+  GetMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MaintenanceConfigsGetRequest,
-  output: MaintenanceConfigsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetMaintenanceConfigRequest,
+  output: GetMaintenanceConfigResponse,
+  errors: [
+    InvalidRoute,
+    WarehouseInactive,
+    WarehouseNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type MaintenanceConfigsUpdateError = CloudflareOpError;
-/** Update the maintenance configuration for a catalog. This allows you to enable or disable compaction and adjust target file sizes for optimization. */
-export const maintenanceConfigsUpdate: API.OperationMethod<
-  MaintenanceConfigsUpdateRequest,
-  MaintenanceConfigsUpdateResponse,
-  MaintenanceConfigsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MaintenanceConfigsUpdateRequest,
-  output: MaintenanceConfigsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type NamespacesListError = CloudflareOpError;
-/** Returns a list of namespaces in the specified R2 catalog. Supports hierarchical filtering and pagination for efficient traversal of large namespace hierarchies. */
-export const namespacesList: API.OperationMethod<
-  NamespacesListRequest,
-  NamespacesListResponse,
-  NamespacesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NamespacesListRequest,
-  output: NamespacesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type NamespacesTablesListError = CloudflareOpError;
-/** Returns a list of tables in the specified namespace within an R2 catalog. Supports pagination for efficient traversal of large table collections. */
-export const namespacesTablesList: API.OperationMethod<
-  NamespacesTablesListRequest,
-  NamespacesTablesListResponse,
-  NamespacesTablesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: NamespacesTablesListRequest,
-  output: NamespacesTablesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type NamespacesTablesMaintenanceConfigsGetError = CloudflareOpError;
+export type GetNamespaceTableMaintenanceConfigError =
+  | TableNotFound
+  | InvalidRoute
+  | WarehouseInactive
+  | CloudflareOpError;
 /** Retrieve the maintenance configuration for a specific table, including compaction settings. */
-export const namespacesTablesMaintenanceConfigsGet: API.OperationMethod<
-  NamespacesTablesMaintenanceConfigsGetRequest,
-  NamespacesTablesMaintenanceConfigsGetResponse,
-  NamespacesTablesMaintenanceConfigsGetError,
+export const getNamespaceTableMaintenanceConfig: API.OperationMethod<
+  GetNamespaceTableMaintenanceConfigRequest,
+  GetNamespaceTableMaintenanceConfigResponse,
+  GetNamespaceTableMaintenanceConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NamespacesTablesMaintenanceConfigsGetRequest,
-  output: NamespacesTablesMaintenanceConfigsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetNamespaceTableMaintenanceConfigRequest,
+  output: GetNamespaceTableMaintenanceConfigResponse,
+  errors: [
+    TableNotFound,
+    InvalidRoute,
+    WarehouseInactive,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type NamespacesTablesMaintenanceConfigsUpdateError = CloudflareOpError;
-/** Update the maintenance configuration for a specific table. This allows you to enable or disable compaction and adjust target file sizes for optimization. */
-export const namespacesTablesMaintenanceConfigsUpdate: API.OperationMethod<
-  NamespacesTablesMaintenanceConfigsUpdateRequest,
-  NamespacesTablesMaintenanceConfigsUpdateResponse,
-  NamespacesTablesMaintenanceConfigsUpdateError,
+export type GetR2DataCatalogError =
+  | NoSuchBucket
+  | InvalidRoute
+  | WarehouseNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Retrieve detailed information about a specific R2 catalog by bucket name. Returns catalog status, maintenance configuration, and credential status. */
+export const getR2DataCatalog: API.OperationMethod<
+  GetR2DataCatalogRequest,
+  GetR2DataCatalogResponse,
+  GetR2DataCatalogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: NamespacesTablesMaintenanceConfigsUpdateRequest,
-  output: NamespacesTablesMaintenanceConfigsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetR2DataCatalogRequest,
+  output: GetR2DataCatalogResponse,
+  errors: [
+    NoSuchBucket,
+    InvalidRoute,
+    WarehouseNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListNamespacesError =
+  | InvalidRoute
+  | WarehouseInactive
+  | WarehouseNotFound
+  | CloudflareOpError;
+/** Returns a list of namespaces in the specified R2 catalog. Supports hierarchical filtering and pagination for efficient traversal of large namespace hierarchies. */
+export const listNamespaces: API.OperationMethod<
+  ListNamespacesRequest,
+  ListNamespacesResponse,
+  ListNamespacesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListNamespacesRequest,
+  output: ListNamespacesResponse,
+  errors: [
+    InvalidRoute,
+    WarehouseInactive,
+    WarehouseNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListNamespaceTablesError =
+  | InvalidRoute
+  | WarehouseInactive
+  | CloudflareOpError;
+/** Returns a list of tables in the specified namespace within an R2 catalog. Supports pagination for efficient traversal of large table collections. */
+export const listNamespaceTables: API.OperationMethod<
+  ListNamespaceTablesRequest,
+  ListNamespaceTablesResponse,
+  ListNamespaceTablesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListNamespaceTablesRequest,
+  output: ListNamespaceTablesResponse,
+  errors: [
+    InvalidRoute,
+    WarehouseInactive,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListR2DataCatalogsError = InvalidRoute | CloudflareOpError;
+/** Returns a list of R2 buckets that have been enabled as Apache Iceberg catalogs for the specified account. Each catalog represents an R2 bucket configured to store Iceberg metadata and data files. */
+export const listR2DataCatalogs: API.OperationMethod<
+  ListR2DataCatalogsRequest,
+  ListR2DataCatalogsResponse,
+  ListR2DataCatalogsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListR2DataCatalogsRequest,
+  output: ListR2DataCatalogsResponse,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateMaintenanceConfigError =
+  | InvalidRoute
+  | WarehouseInactive
+  | CloudflareOpError;
+/** Update the maintenance configuration for a catalog. This allows you to enable or disable compaction and adjust target file sizes for optimization. */
+export const updateMaintenanceConfig: API.OperationMethod<
+  UpdateMaintenanceConfigRequest,
+  UpdateMaintenanceConfigResponse,
+  UpdateMaintenanceConfigError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMaintenanceConfigRequest,
+  output: UpdateMaintenanceConfigResponse,
+  errors: [
+    InvalidRoute,
+    WarehouseInactive,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateNamespaceTableMaintenanceConfigError =
+  | TableNotFound
+  | InvalidRoute
+  | WarehouseInactive
+  | CloudflareOpError;
+/** Update the maintenance configuration for a specific table. This allows you to enable or disable compaction and adjust target file sizes for optimization. */
+export const updateNamespaceTableMaintenanceConfig: API.OperationMethod<
+  UpdateNamespaceTableMaintenanceConfigRequest,
+  UpdateNamespaceTableMaintenanceConfigResponse,
+  UpdateNamespaceTableMaintenanceConfigError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateNamespaceTableMaintenanceConfigRequest,
+  output: UpdateNamespaceTableMaintenanceConfigResponse,
+  errors: [
+    TableNotFound,
+    InvalidRoute,
+    WarehouseInactive,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

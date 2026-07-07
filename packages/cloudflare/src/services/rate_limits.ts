@@ -138,7 +138,7 @@ export const CreateRequestMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestMatch",
 }) as any as S.Schema<CreateRequestMatch>;
 
-export interface CreateRequest {
+export interface CreateRateLimitRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
@@ -150,7 +150,7 @@ export interface CreateRequest {
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
   threshold: number;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     action: CreateRequestAction,
@@ -160,7 +160,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({ method: "POST", uri: "/zones/{zone_id}/rate_limits", code: 200 }),
   ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreateRateLimitRequest",
+}) as any as S.Schema<CreateRateLimitRequest>;
 
 export type CreateResponseActionMode =
   | "simulate"
@@ -314,7 +316,7 @@ export const CreateResponseMatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseMatch>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
+export interface CreateRateLimitResponse {
   /** The unique identifier of the rate limit. */
   id?: string;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
@@ -332,7 +334,7 @@ export interface CreateResponse {
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
   threshold?: number;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     action: S.optional(CreateResponseAction),
@@ -343,15 +345,17 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
     period: S.optional(S.Number),
     threshold: S.optional(S.Number),
   }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+).annotate({
+  identifier: "CreateRateLimitResponse",
+}) as any as S.Schema<CreateRateLimitResponse>;
 
-export interface DeleteRequest {
+export interface DeleteRateLimitRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Defines the unique identifier of the rate limit. */
   rateLimitId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rateLimitId: S.String.pipe(T.Label("rate_limit_id")),
@@ -362,7 +366,9 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeleteRateLimitRequest",
+}) as any as S.Schema<DeleteRateLimitRequest>;
 
 export type DeleteResponseActionMode =
   | "simulate"
@@ -516,7 +522,7 @@ export const DeleteResponseMatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DeleteResponseMatch>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
+export interface DeleteRateLimitResponse {
   /** The unique identifier of the rate limit. */
   id?: string;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
@@ -534,7 +540,7 @@ export interface DeleteResponse {
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
   threshold?: number;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     action: S.optional(DeleteResponseAction),
@@ -545,7 +551,9 @@ export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
     period: S.optional(S.Number),
     threshold: S.optional(S.Number),
   }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+).annotate({
+  identifier: "DeleteRateLimitResponse",
+}) as any as S.Schema<DeleteRateLimitResponse>;
 
 export type EditRequestActionMode =
   | "simulate"
@@ -676,7 +684,7 @@ export const EditRequestMatch = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestMatch",
 }) as any as S.Schema<EditRequestMatch>;
 
-export interface EditRequest {
+export interface EditRateLimitRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Defines the unique identifier of the rate limit. */
@@ -690,7 +698,7 @@ export interface EditRequest {
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
   threshold: number;
 }
-export const EditRequest = /*@__PURE__*/ S.suspend(() =>
+export const EditRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rateLimitId: S.String.pipe(T.Label("rate_limit_id")),
@@ -705,7 +713,9 @@ export const EditRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
+).annotate({
+  identifier: "EditRateLimitRequest",
+}) as any as S.Schema<EditRateLimitRequest>;
 
 export type EditResponseActionMode =
   | "simulate"
@@ -859,7 +869,7 @@ export const EditResponseMatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditResponseMatch>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EditResponse {
+export interface EditRateLimitResponse {
   /** The unique identifier of the rate limit. */
   id?: string;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
@@ -877,7 +887,7 @@ export interface EditResponse {
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
   threshold?: number;
 }
-export const EditResponse = /*@__PURE__*/ S.suspend(() =>
+export const EditRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     action: S.optional(EditResponseAction),
@@ -888,15 +898,17 @@ export const EditResponse = /*@__PURE__*/ S.suspend(() =>
     period: S.optional(S.Number),
     threshold: S.optional(S.Number),
   }),
-).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
+).annotate({
+  identifier: "EditRateLimitResponse",
+}) as any as S.Schema<EditRateLimitResponse>;
 
-export interface GetRequest {
+export interface GetRateLimitRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Defines the unique identifier of the rate limit. */
   rateLimitId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetRateLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rateLimitId: S.String.pipe(T.Label("rate_limit_id")),
@@ -907,7 +919,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetRateLimitRequest",
+}) as any as S.Schema<GetRateLimitRequest>;
 
 export type GetResponseActionMode =
   | "simulate"
@@ -1061,7 +1075,7 @@ export const GetResponseMatch = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseMatch>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetRateLimitResponse {
   /** The unique identifier of the rate limit. */
   id?: string;
   /** The action to perform when the threshold of matched traffic within the configured period is exceeded. */
@@ -1079,7 +1093,7 @@ export interface GetResponse {
   /** The threshold that will trigger the configured mitigation action. Configure this value along with the `period` property to establish a threshold per period. */
   threshold?: number;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetRateLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     action: S.optional(GetResponseAction),
@@ -1090,9 +1104,11 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     period: S.optional(S.Number),
     threshold: S.optional(S.Number),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetRateLimitResponse",
+}) as any as S.Schema<GetRateLimitResponse>;
 
-export interface ListRequest {
+export interface ListRateLimitsRequest {
   /** Defines an identifier. */
   zoneId: string;
   /** Defines the page number of paginated results. */
@@ -1100,7 +1116,7 @@ export interface ListRequest {
   /** Defines the maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`. */
   perPage?: number;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListRateLimitsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -1108,7 +1124,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/rate_limits", code: 200 }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListRateLimitsRequest",
+}) as any as S.Schema<ListRateLimitsRequest>;
 
 export type ListResultItemActionMode =
   | "simulate"
@@ -1297,82 +1315,84 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListRateLimitsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListRateLimitsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListRateLimitsResponse",
+}) as any as S.Schema<ListRateLimitsResponse>;
 
-export type CreateError = CloudflareOpError;
+export type CreateRateLimitError = CloudflareOpError;
 /** Creates a new rate limit for a zone. Refer to the object definition for a list of required attributes. */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createRateLimit: API.OperationMethod<
+  CreateRateLimitRequest,
+  CreateRateLimitResponse,
+  CreateRateLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
+  input: CreateRateLimitRequest,
+  output: CreateRateLimitResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DeleteError = CloudflareOpError;
+export type DeleteRateLimitError = CloudflareOpError;
 /** Deletes an existing rate limit. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteRateLimit: API.OperationMethod<
+  DeleteRateLimitRequest,
+  DeleteRateLimitResponse,
+  DeleteRateLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
+  input: DeleteRateLimitRequest,
+  output: DeleteRateLimitResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type EditError = CloudflareOpError;
+export type EditRateLimitError = CloudflareOpError;
 /** Updates an existing rate limit. */
-export const edit: API.OperationMethod<
-  EditRequest,
-  EditResponse,
-  EditError,
+export const editRateLimit: API.OperationMethod<
+  EditRateLimitRequest,
+  EditRateLimitResponse,
+  EditRateLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditRequest,
-  output: EditResponse,
+  input: EditRateLimitRequest,
+  output: EditRateLimitResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
+export type GetRateLimitError = CloudflareOpError;
 /** Fetches the details of a rate limit. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getRateLimit: API.OperationMethod<
+  GetRateLimitRequest,
+  GetRateLimitResponse,
+  GetRateLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
+  input: GetRateLimitRequest,
+  output: GetRateLimitResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ListError = CloudflareOpError;
+export type ListRateLimitsError = CloudflareOpError;
 /** Fetches the rate limits for a zone. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
+export const listRateLimits: API.OperationMethod<
+  ListRateLimitsRequest,
+  ListRateLimitsResponse,
+  ListRateLimitsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
+  input: ListRateLimitsRequest,
+  output: ListRateLimitsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

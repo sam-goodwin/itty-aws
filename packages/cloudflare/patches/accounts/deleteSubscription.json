@@ -1,0 +1,88 @@
+{
+  "description": "Align accounts#SubscriptionsDelete with distilled cloudflare/accounts deleteSubscription",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#SubscriptionsDelete",
+      "path": "/shapes/com.cloudflare.accounts#DeleteSubscription"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#SubscriptionsDeleteRequest",
+      "path": "/shapes/com.cloudflare.accounts#DeleteSubscriptionRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#DeleteSubscription/input/target",
+      "value": "com.cloudflare.accounts#DeleteSubscriptionRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#SubscriptionsDeleteResponse",
+      "path": "/shapes/com.cloudflare.accounts#DeleteSubscriptionResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#DeleteSubscription/output/target",
+      "value": "com.cloudflare.accounts#DeleteSubscriptionResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#EndpointNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1199
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.accounts#DeleteSubscription/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.accounts#InvalidRoute"
+        },
+        {
+          "target": "com.cloudflare.accounts#EndpointNotFound"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "description": "Align vectorize#IndexesMetadataIndexCreate with distilled cloudflare/vectorize createIndexMetadataIndex",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.vectorize#IndexesMetadataIndexCreate",
+      "path": "/shapes/com.cloudflare.vectorize#CreateIndexMetadataIndex"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.vectorize#IndexesMetadataIndexCreateRequest",
+      "path": "/shapes/com.cloudflare.vectorize#CreateIndexMetadataIndexRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.vectorize#CreateIndexMetadataIndex/input/target",
+      "value": "com.cloudflare.vectorize#CreateIndexMetadataIndexRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.vectorize#IndexesMetadataIndexCreateResponse",
+      "path": "/shapes/com.cloudflare.vectorize#CreateIndexMetadataIndexResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.vectorize#CreateIndexMetadataIndex/output/target",
+      "value": "com.cloudflare.vectorize#CreateIndexMetadataIndexResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.vectorize#NotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 3000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.vectorize#MetadataIndexAlreadyExists",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 40004
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.vectorize#MetadataIndexInvalidType",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 40026
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.vectorize#CreateIndexMetadataIndex/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.vectorize#NotFound"
+        },
+        {
+          "target": "com.cloudflare.vectorize#MetadataIndexAlreadyExists"
+        },
+        {
+          "target": "com.cloudflare.vectorize#MetadataIndexInvalidType"
+        }
+      ]
+    }
+  ]
+}

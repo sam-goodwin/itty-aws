@@ -1,0 +1,94 @@
+{
+  "description": "Align alerting#SilencesUpdate with distilled cloudflare/alerting updateSilence",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#SilencesUpdate",
+      "path": "/shapes/com.cloudflare.alerting#UpdateSilence"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#SilencesUpdateRequest",
+      "path": "/shapes/com.cloudflare.alerting#UpdateSilenceRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.alerting#UpdateSilence/input/target",
+      "value": "com.cloudflare.alerting#UpdateSilenceRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.alerting#SilencesUpdateResponse",
+      "path": "/shapes/com.cloudflare.alerting#UpdateSilenceResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.alerting#UpdateSilence/output/target",
+      "value": "com.cloudflare.alerting#UpdateSilenceResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#SilenceNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 0,
+              "message": {
+                "includes": "silence not found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#InvalidSilence",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 0,
+              "message": {
+                "includes": "invalid silence"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.alerting#UpdateSilence/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.alerting#SilenceNotFound"
+        },
+        {
+          "target": "com.cloudflare.alerting#InvalidSilence"
+        }
+      ]
+    }
+  ]
+}

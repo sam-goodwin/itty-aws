@@ -9,7 +9,196 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface BillingUsageGetRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class OrganizationNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<OrganizationNotFound>()("OrganizationNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export interface CreateRequestParent {
+  id: string;
+  name: string;
+}
+export const CreateRequestParent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "CreateRequestParent",
+}) as any as S.Schema<CreateRequestParent>;
+
+export interface CreateRequestProfile {
+  businessAddress: string;
+  businessEmail: string;
+  businessName: string;
+  businessPhone: string;
+  externalMetadata: string;
+}
+export const CreateRequestProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    businessAddress: S.String.pipe(T.Body("business_address")),
+    businessEmail: S.String.pipe(T.Body("business_email")),
+    businessName: S.String.pipe(T.Body("business_name")),
+    businessPhone: S.String.pipe(T.Body("business_phone")),
+    externalMetadata: S.String.pipe(T.Body("external_metadata")),
+  }),
+).annotate({
+  identifier: "CreateRequestProfile",
+}) as any as S.Schema<CreateRequestProfile>;
+
+export interface CreateOrganizationRequest {
+  name: string;
+  parent?: CreateRequestParent;
+  profile?: CreateRequestProfile;
+}
+export const CreateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    parent: S.optional(CreateRequestParent),
+    profile: S.optional(CreateRequestProfile),
+  }).pipe(T.Http({ method: "POST", uri: "/organizations", code: 200 })),
+).annotate({
+  identifier: "CreateOrganizationRequest",
+}) as any as S.Schema<CreateOrganizationRequest>;
+
+export interface CreateResponseMetaFlags {
+  accountCreation: string;
+  accountDeletion: string;
+  accountMigration: string;
+  accountMobility: string;
+  subOrgCreation: string;
+}
+export const CreateResponseMetaFlags = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountCreation: S.String.pipe(T.Body("account_creation")),
+    accountDeletion: S.String.pipe(T.Body("account_deletion")),
+    accountMigration: S.String.pipe(T.Body("account_migration")),
+    accountMobility: S.String.pipe(T.Body("account_mobility")),
+    subOrgCreation: S.String.pipe(T.Body("sub_org_creation")),
+  }),
+).annotate({
+  identifier: "CreateResponseMetaFlags",
+}) as any as S.Schema<CreateResponseMetaFlags>;
+
+export type CreateResponseMetaHierarchyTagsList = string[];
+export const CreateResponseMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CreateResponseMetaHierarchyTagsList>;
+
+export interface CreateResponseMeta {
+  /** Enable features for Organizations. */
+  flags?: CreateResponseMetaFlags;
+  /** Ordered chain of organization tags from the root organization down to */
+  hierarchyTags?: CreateResponseMetaHierarchyTagsList;
+  managedBy?: string;
+}
+export const CreateResponseMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flags: S.optional(CreateResponseMetaFlags),
+    hierarchyTags: S.optional(
+      CreateResponseMetaHierarchyTagsList.pipe(T.Body("hierarchy_tags")),
+    ),
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "CreateResponseMeta",
+}) as any as S.Schema<CreateResponseMeta>;
+
+export interface CreateResponseParent {
+  id: string;
+  name: string;
+}
+export const CreateResponseParent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "CreateResponseParent",
+}) as any as S.Schema<CreateResponseParent>;
+
+export interface CreateResponseProfile {
+  businessAddress: string;
+  businessEmail: string;
+  businessName: string;
+  businessPhone: string;
+  externalMetadata: string;
+}
+export const CreateResponseProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    businessAddress: S.String.pipe(T.Body("business_address")),
+    businessEmail: S.String.pipe(T.Body("business_email")),
+    businessName: S.String.pipe(T.Body("business_name")),
+    businessPhone: S.String.pipe(T.Body("business_phone")),
+    externalMetadata: S.String.pipe(T.Body("external_metadata")),
+  }),
+).annotate({
+  identifier: "CreateResponseProfile",
+}) as any as S.Schema<CreateResponseProfile>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateOrganizationResponse {
+  id: string;
+  createTime: string;
+  meta: CreateResponseMeta;
+  name: string;
+  parent?: CreateResponseParent;
+  profile?: CreateResponseProfile;
+}
+export const CreateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createTime: S.String.pipe(T.Body("create_time")),
+    meta: CreateResponseMeta,
+    name: S.String,
+    parent: S.optional(CreateResponseParent),
+    profile: S.optional(CreateResponseProfile),
+  }),
+).annotate({
+  identifier: "CreateOrganizationResponse",
+}) as any as S.Schema<CreateOrganizationResponse>;
+
+export interface DeleteOrganizationRequest {
+  organizationId: string;
+}
+export const DeleteOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    organizationId: S.String.pipe(T.Label("organization_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/organizations/{organization_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteOrganizationRequest",
+}) as any as S.Schema<DeleteOrganizationRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteOrganizationResponse {
+  id: string;
+}
+export const DeleteOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "DeleteOrganizationResponse",
+}) as any as S.Schema<DeleteOrganizationResponse>;
+
+export interface GetBillingUsageRequest {
   /** Represents a Cloudflare resource identifier tag. */
   organizationId: string;
   /** Start date for the usage query (ISO 8601). Required if `to` is set. When omitted along with `to`, defaults to the start of the current month. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
@@ -19,7 +208,7 @@ export interface BillingUsageGetRequest {
   /** End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
   to?: string;
 }
-export const BillingUsageGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBillingUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
     from: S.optional(S.String.pipe(T.Query())),
@@ -33,8 +222,8 @@ export const BillingUsageGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "BillingUsageGetRequest",
-}) as any as S.Schema<BillingUsageGetRequest>;
+  identifier: "GetBillingUsageRequest",
+}) as any as S.Schema<GetBillingUsageRequest>;
 
 export type BillingUsageGetResultItemChargeCategory = "Usage" | (string & {});
 export const BillingUsageGetResultItemChargeCategory = /*@__PURE__*/ S.String;
@@ -162,187 +351,22 @@ export const BillingUsageGetResultList = /*@__PURE__*/ S.Array(
   BillingUsageGetResultItem,
 ) as any as S.Schema<BillingUsageGetResultList>;
 
-export interface BillingUsageGetResponse {
+export interface GetBillingUsageResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: BillingUsageGetResultList;
 }
-export const BillingUsageGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetBillingUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(BillingUsageGetResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "BillingUsageGetResponse",
-}) as any as S.Schema<BillingUsageGetResponse>;
+  identifier: "GetBillingUsageResponse",
+}) as any as S.Schema<GetBillingUsageResponse>;
 
-export interface CreateRequestParent {
-  id: string;
-  name: string;
-}
-export const CreateRequestParent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "CreateRequestParent",
-}) as any as S.Schema<CreateRequestParent>;
-
-export interface CreateRequestProfile {
-  businessAddress: string;
-  businessEmail: string;
-  businessName: string;
-  businessPhone: string;
-  externalMetadata: string;
-}
-export const CreateRequestProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessAddress: S.String.pipe(T.Body("business_address")),
-    businessEmail: S.String.pipe(T.Body("business_email")),
-    businessName: S.String.pipe(T.Body("business_name")),
-    businessPhone: S.String.pipe(T.Body("business_phone")),
-    externalMetadata: S.String.pipe(T.Body("external_metadata")),
-  }),
-).annotate({
-  identifier: "CreateRequestProfile",
-}) as any as S.Schema<CreateRequestProfile>;
-
-export interface CreateRequest {
-  name: string;
-  parent?: CreateRequestParent;
-  profile?: CreateRequestProfile;
-}
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    parent: S.optional(CreateRequestParent),
-    profile: S.optional(CreateRequestProfile),
-  }).pipe(T.Http({ method: "POST", uri: "/organizations", code: 200 })),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
-
-export interface CreateResponseMetaFlags {
-  accountCreation: string;
-  accountDeletion: string;
-  accountMigration: string;
-  accountMobility: string;
-  subOrgCreation: string;
-}
-export const CreateResponseMetaFlags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountCreation: S.String.pipe(T.Body("account_creation")),
-    accountDeletion: S.String.pipe(T.Body("account_deletion")),
-    accountMigration: S.String.pipe(T.Body("account_migration")),
-    accountMobility: S.String.pipe(T.Body("account_mobility")),
-    subOrgCreation: S.String.pipe(T.Body("sub_org_creation")),
-  }),
-).annotate({
-  identifier: "CreateResponseMetaFlags",
-}) as any as S.Schema<CreateResponseMetaFlags>;
-
-export type CreateResponseMetaHierarchyTagsList = string[];
-export const CreateResponseMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<CreateResponseMetaHierarchyTagsList>;
-
-export interface CreateResponseMeta {
-  /** Enable features for Organizations. */
-  flags?: CreateResponseMetaFlags;
-  /** Ordered chain of organization tags from the root organization down to */
-  hierarchyTags?: CreateResponseMetaHierarchyTagsList;
-  managedBy?: string;
-}
-export const CreateResponseMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flags: S.optional(CreateResponseMetaFlags),
-    hierarchyTags: S.optional(
-      CreateResponseMetaHierarchyTagsList.pipe(T.Body("hierarchy_tags")),
-    ),
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "CreateResponseMeta",
-}) as any as S.Schema<CreateResponseMeta>;
-
-export interface CreateResponseParent {
-  id: string;
-  name: string;
-}
-export const CreateResponseParent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "CreateResponseParent",
-}) as any as S.Schema<CreateResponseParent>;
-
-export interface CreateResponseProfile {
-  businessAddress: string;
-  businessEmail: string;
-  businessName: string;
-  businessPhone: string;
-  externalMetadata: string;
-}
-export const CreateResponseProfile = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessAddress: S.String.pipe(T.Body("business_address")),
-    businessEmail: S.String.pipe(T.Body("business_email")),
-    businessName: S.String.pipe(T.Body("business_name")),
-    businessPhone: S.String.pipe(T.Body("business_phone")),
-    externalMetadata: S.String.pipe(T.Body("external_metadata")),
-  }),
-).annotate({
-  identifier: "CreateResponseProfile",
-}) as any as S.Schema<CreateResponseProfile>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
-  id: string;
-  createTime: string;
-  meta: CreateResponseMeta;
-  name: string;
-  parent?: CreateResponseParent;
-  profile?: CreateResponseProfile;
-}
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createTime: S.String.pipe(T.Body("create_time")),
-    meta: CreateResponseMeta,
-    name: S.String,
-    parent: S.optional(CreateResponseParent),
-    profile: S.optional(CreateResponseProfile),
-  }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
-
-export interface DeleteRequest {
+export interface GetOrganizationRequest {
   organizationId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organizationId: S.String.pipe(T.Label("organization_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/organizations/{organization_id}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
-  id: string;
-}
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
-
-export interface GetRequest {
-  organizationId: string;
-}
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
   }).pipe(
@@ -352,7 +376,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetOrganizationRequest",
+}) as any as S.Schema<GetOrganizationRequest>;
 
 export interface GetResponseMetaFlags {
   accountCreation: string;
@@ -430,7 +456,7 @@ export const GetResponseProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseProfile>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetOrganizationResponse {
   id: string;
   createTime: string;
   meta: GetResponseMeta;
@@ -438,7 +464,7 @@ export interface GetResponse {
   parent?: GetResponseParent;
   profile?: GetResponseProfile;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createTime: S.String.pipe(T.Body("create_time")),
@@ -447,99 +473,36 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     parent: S.optional(GetResponseParent),
     profile: S.optional(GetResponseProfile),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
-
-export type ListRequestIdList = string[];
-export const ListRequestIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListRequestIdList>;
-
-export interface ListRequest {
-  /** Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements */
-  id?: ListRequestIdList;
-  containing?: string;
-  name?: string;
-  /** The amount of items to return. Defaults to 10. */
-  pageSize?: number;
-  /** An opaque token returned from the last list response that when */
-  pageToken?: string;
-  parent?: string;
-}
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(ListRequestIdList.pipe(T.Query())),
-    containing: S.optional(S.String.pipe(T.Query())),
-    name: S.optional(S.String.pipe(T.Query())),
-    pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
-    pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
-    parent: S.optional(S.String.pipe(T.Query())),
-  }).pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 })),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
-
-export interface ListResultItemMetaFlags {
-  accountCreation: string;
-  accountDeletion: string;
-  accountMigration: string;
-  accountMobility: string;
-  subOrgCreation: string;
-}
-export const ListResultItemMetaFlags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountCreation: S.String.pipe(T.Body("account_creation")),
-    accountDeletion: S.String.pipe(T.Body("account_deletion")),
-    accountMigration: S.String.pipe(T.Body("account_migration")),
-    accountMobility: S.String.pipe(T.Body("account_mobility")),
-    subOrgCreation: S.String.pipe(T.Body("sub_org_creation")),
-  }),
 ).annotate({
-  identifier: "ListResultItemMetaFlags",
-}) as any as S.Schema<ListResultItemMetaFlags>;
+  identifier: "GetOrganizationResponse",
+}) as any as S.Schema<GetOrganizationResponse>;
 
-export type ListResultItemMetaHierarchyTagsList = string[];
-export const ListResultItemMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ListResultItemMetaHierarchyTagsList>;
-
-export interface ListResultItemMeta {
-  /** Enable features for Organizations. */
-  flags?: ListResultItemMetaFlags;
-  /** Ordered chain of organization tags from the root organization down to */
-  hierarchyTags?: ListResultItemMetaHierarchyTagsList;
-  managedBy?: string;
+export interface GetOrganizationProfileRequest {
+  organizationId: string;
 }
-export const ListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
+export const GetOrganizationProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    flags: S.optional(ListResultItemMetaFlags),
-    hierarchyTags: S.optional(
-      ListResultItemMetaHierarchyTagsList.pipe(T.Body("hierarchy_tags")),
-    ),
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
+    organizationId: S.String.pipe(T.Label("organization_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/organizations/{organization_id}/profile",
+      code: 200,
+    }),
+  ),
 ).annotate({
-  identifier: "ListResultItemMeta",
-}) as any as S.Schema<ListResultItemMeta>;
+  identifier: "GetOrganizationProfileRequest",
+}) as any as S.Schema<GetOrganizationProfileRequest>;
 
-export interface ListResultItemParent {
-  id: string;
-  name: string;
-}
-export const ListResultItemParent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ListResultItemParent",
-}) as any as S.Schema<ListResultItemParent>;
-
-export interface ListResultItemProfile {
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetOrganizationProfileResponse {
   businessAddress: string;
   businessEmail: string;
   businessName: string;
   businessPhone: string;
   externalMetadata: string;
 }
-export const ListResultItemProfile = /*@__PURE__*/ S.suspend(() =>
+export const GetOrganizationProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     businessAddress: S.String.pipe(T.Body("business_address")),
     businessEmail: S.String.pipe(T.Body("business_email")),
@@ -548,47 +511,13 @@ export const ListResultItemProfile = /*@__PURE__*/ S.suspend(() =>
     externalMetadata: S.String.pipe(T.Body("external_metadata")),
   }),
 ).annotate({
-  identifier: "ListResultItemProfile",
-}) as any as S.Schema<ListResultItemProfile>;
-
-export interface ListResultItem {
-  id: string;
-  createTime: string;
-  meta: ListResultItemMeta;
-  name: string;
-  parent?: ListResultItemParent;
-  profile?: ListResultItemProfile;
-}
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createTime: S.String.pipe(T.Body("create_time")),
-    meta: ListResultItemMeta,
-    name: S.String,
-    parent: S.optional(ListResultItemParent),
-    profile: S.optional(ListResultItemProfile),
-  }),
-).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
-
-export type ListResultList = ListResultItem[];
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
-
-export interface ListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
-}
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+  identifier: "GetOrganizationProfileResponse",
+}) as any as S.Schema<GetOrganizationProfileResponse>;
 
 export type LogsAuditListRequestDirection = "desc" | "asc" | (string & {});
 export const LogsAuditListRequestDirection = /*@__PURE__*/ S.String;
 
-export interface LogsAuditListRequest {
+export interface ListLogAuditsRequest {
   /** The unique id that identifies the organization. */
   organizationId: string;
   /** Limits the returned results to logs older than the specified date. This can be a date string 2019-04-30 (interpreted in UTC) or an absolute timestamp that conforms to RFC3339. */
@@ -620,7 +549,7 @@ export interface LogsAuditListRequest {
   resourceScope?: string;
   resourceType?: string;
 }
-export const LogsAuditListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListLogAuditsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
     before: S.String.pipe(T.Query()),
@@ -654,8 +583,8 @@ export const LogsAuditListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "LogsAuditListRequest",
-}) as any as S.Schema<LogsAuditListRequest>;
+  identifier: "ListLogAuditsRequest",
+}) as any as S.Schema<ListLogAuditsRequest>;
 
 export interface LogsAuditListResultItemAction {
   /** A short description of the action performed. */
@@ -814,17 +743,157 @@ export const LogsAuditListResultList = /*@__PURE__*/ S.Array(
   LogsAuditListResultItem,
 ) as any as S.Schema<LogsAuditListResultList>;
 
-export interface LogsAuditListResponse {
+export interface ListLogAuditsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: LogsAuditListResultList;
 }
-export const LogsAuditListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListLogAuditsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(LogsAuditListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "LogsAuditListResponse",
-}) as any as S.Schema<LogsAuditListResponse>;
+  identifier: "ListLogAuditsResponse",
+}) as any as S.Schema<ListLogAuditsResponse>;
+
+export type ListRequestIdList = string[];
+export const ListRequestIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListRequestIdList>;
+
+export interface ListOrganizationsRequest {
+  /** Only return organizations with the specified IDs (ex. id=foo&id=bar). Send multiple elements */
+  id?: ListRequestIdList;
+  containing?: string;
+  name?: string;
+  /** The amount of items to return. Defaults to 10. */
+  pageSize?: number;
+  /** An opaque token returned from the last list response that when */
+  pageToken?: string;
+  parent?: string;
+}
+export const ListOrganizationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(ListRequestIdList.pipe(T.Query())),
+    containing: S.optional(S.String.pipe(T.Query())),
+    name: S.optional(S.String.pipe(T.Query())),
+    pageSize: S.optional(S.Number.pipe(T.Query("page_size"))),
+    pageToken: S.optional(S.String.pipe(T.Query("page_token"))),
+    parent: S.optional(S.String.pipe(T.Query())),
+  }).pipe(T.Http({ method: "GET", uri: "/organizations", code: 200 })),
+).annotate({
+  identifier: "ListOrganizationsRequest",
+}) as any as S.Schema<ListOrganizationsRequest>;
+
+export interface ListResultItemMetaFlags {
+  accountCreation: string;
+  accountDeletion: string;
+  accountMigration: string;
+  accountMobility: string;
+  subOrgCreation: string;
+}
+export const ListResultItemMetaFlags = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountCreation: S.String.pipe(T.Body("account_creation")),
+    accountDeletion: S.String.pipe(T.Body("account_deletion")),
+    accountMigration: S.String.pipe(T.Body("account_migration")),
+    accountMobility: S.String.pipe(T.Body("account_mobility")),
+    subOrgCreation: S.String.pipe(T.Body("sub_org_creation")),
+  }),
+).annotate({
+  identifier: "ListResultItemMetaFlags",
+}) as any as S.Schema<ListResultItemMetaFlags>;
+
+export type ListResultItemMetaHierarchyTagsList = string[];
+export const ListResultItemMetaHierarchyTagsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ListResultItemMetaHierarchyTagsList>;
+
+export interface ListResultItemMeta {
+  /** Enable features for Organizations. */
+  flags?: ListResultItemMetaFlags;
+  /** Ordered chain of organization tags from the root organization down to */
+  hierarchyTags?: ListResultItemMetaHierarchyTagsList;
+  managedBy?: string;
+}
+export const ListResultItemMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flags: S.optional(ListResultItemMetaFlags),
+    hierarchyTags: S.optional(
+      ListResultItemMetaHierarchyTagsList.pipe(T.Body("hierarchy_tags")),
+    ),
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "ListResultItemMeta",
+}) as any as S.Schema<ListResultItemMeta>;
+
+export interface ListResultItemParent {
+  id: string;
+  name: string;
+}
+export const ListResultItemParent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+  }),
+).annotate({
+  identifier: "ListResultItemParent",
+}) as any as S.Schema<ListResultItemParent>;
+
+export interface ListResultItemProfile {
+  businessAddress: string;
+  businessEmail: string;
+  businessName: string;
+  businessPhone: string;
+  externalMetadata: string;
+}
+export const ListResultItemProfile = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    businessAddress: S.String.pipe(T.Body("business_address")),
+    businessEmail: S.String.pipe(T.Body("business_email")),
+    businessName: S.String.pipe(T.Body("business_name")),
+    businessPhone: S.String.pipe(T.Body("business_phone")),
+    externalMetadata: S.String.pipe(T.Body("external_metadata")),
+  }),
+).annotate({
+  identifier: "ListResultItemProfile",
+}) as any as S.Schema<ListResultItemProfile>;
+
+export interface ListResultItem {
+  id: string;
+  createTime: string;
+  meta: ListResultItemMeta;
+  name: string;
+  parent?: ListResultItemParent;
+  profile?: ListResultItemProfile;
+}
+export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createTime: S.String.pipe(T.Body("create_time")),
+    meta: ListResultItemMeta,
+    name: S.String,
+    parent: S.optional(ListResultItemParent),
+    profile: S.optional(ListResultItemProfile),
+  }),
+).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
+
+export type ListResultList = ListResultItem[];
+export const ListResultList = /*@__PURE__*/ S.Array(
+  ListResultItem,
+) as any as S.Schema<ListResultList>;
+
+export interface ListOrganizationsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: ListResultList;
+}
+export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListOrganizationsResponse",
+}) as any as S.Schema<ListOrganizationsResponse>;
 
 export interface MembersCreateRequestMemberUser {
   email: string;
@@ -1250,44 +1319,7 @@ export const OrganizationAccountsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationAccountsGetResponse",
 }) as any as S.Schema<OrganizationAccountsGetResponse>;
 
-export interface OrganizationProfileGetRequest {
-  organizationId: string;
-}
-export const OrganizationProfileGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    organizationId: S.String.pipe(T.Label("organization_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/organizations/{organization_id}/profile",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "OrganizationProfileGetRequest",
-}) as any as S.Schema<OrganizationProfileGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface OrganizationProfileGetResponse {
-  businessAddress: string;
-  businessEmail: string;
-  businessName: string;
-  businessPhone: string;
-  externalMetadata: string;
-}
-export const OrganizationProfileGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    businessAddress: S.String.pipe(T.Body("business_address")),
-    businessEmail: S.String.pipe(T.Body("business_email")),
-    businessName: S.String.pipe(T.Body("business_name")),
-    businessPhone: S.String.pipe(T.Body("business_phone")),
-    externalMetadata: S.String.pipe(T.Body("external_metadata")),
-  }),
-).annotate({
-  identifier: "OrganizationProfileGetResponse",
-}) as any as S.Schema<OrganizationProfileGetResponse>;
-
-export interface OrganizationProfileUpdateRequest {
+export interface PutOrganizationProfileRequest {
   organizationId: string;
   businessAddress: string;
   businessEmail: string;
@@ -1295,7 +1327,7 @@ export interface OrganizationProfileUpdateRequest {
   businessPhone: string;
   externalMetadata: string;
 }
-export const OrganizationProfileUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutOrganizationProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
     businessAddress: S.String.pipe(T.Body("business_address")),
@@ -1311,15 +1343,15 @@ export const OrganizationProfileUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "OrganizationProfileUpdateRequest",
-}) as any as S.Schema<OrganizationProfileUpdateRequest>;
+  identifier: "PutOrganizationProfileRequest",
+}) as any as S.Schema<PutOrganizationProfileRequest>;
 
-export interface OrganizationProfileUpdateResponse {}
-export const OrganizationProfileUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export interface PutOrganizationProfileResponse {}
+export const PutOrganizationProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "OrganizationProfileUpdateResponse",
-}) as any as S.Schema<OrganizationProfileUpdateResponse>;
+  identifier: "PutOrganizationProfileResponse",
+}) as any as S.Schema<PutOrganizationProfileResponse>;
 
 export interface UpdateRequestParent {
   id: string;
@@ -1353,13 +1385,13 @@ export const UpdateRequestProfile = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestProfile",
 }) as any as S.Schema<UpdateRequestProfile>;
 
-export interface UpdateRequest {
+export interface UpdateOrganizationRequest {
   organizationId: string;
   name: string;
   parent?: UpdateRequestParent;
   profile?: UpdateRequestProfile;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateOrganizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     organizationId: S.String.pipe(T.Label("organization_id")),
     name: S.String,
@@ -1372,7 +1404,9 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "UpdateOrganizationRequest",
+}) as any as S.Schema<UpdateOrganizationRequest>;
 
 export interface UpdateResponseMetaFlags {
   accountCreation: string;
@@ -1450,7 +1484,7 @@ export const UpdateResponseProfile = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponseProfile>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface UpdateOrganizationResponse {
   id: string;
   createTime: string;
   meta: UpdateResponseMeta;
@@ -1458,7 +1492,7 @@ export interface UpdateResponse {
   parent?: UpdateResponseParent;
   profile?: UpdateResponseProfile;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateOrganizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createTime: S.String.pipe(T.Body("create_time")),
@@ -1467,89 +1501,129 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
     parent: S.optional(UpdateResponseParent),
     profile: S.optional(UpdateResponseProfile),
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "UpdateOrganizationResponse",
+}) as any as S.Schema<UpdateOrganizationResponse>;
 
-export type BillingUsageGetError = CloudflareOpError;
-/** Returns cost and usage data for all accounts within an organization, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. The response includes usage for every account belonging to the specified organization. **Note:** Cost and pricing fields are not yet populated and will be absent from responses until billing integration is complete. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. */
-export const billingUsageGet: API.OperationMethod<
-  BillingUsageGetRequest,
-  BillingUsageGetResponse,
-  BillingUsageGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingUsageGetRequest,
-  output: BillingUsageGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CreateError = CloudflareOpError;
+export type CreateOrganizationError = Forbidden | CloudflareOpError;
 /** Create a new organization for a user. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createOrganization: API.OperationMethod<
+  CreateOrganizationRequest,
+  CreateOrganizationResponse,
+  CreateOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateOrganizationRequest,
+  output: CreateOrganizationResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DeleteError = CloudflareOpError;
+export type DeleteOrganizationError =
+  | OrganizationNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Delete an organization. The organization MUST be empty before deleting. It must not contain any sub-organizations, accounts, members or users. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) **Access Control:** Restricted to enterprise organizations. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteOrganization: API.OperationMethod<
+  DeleteOrganizationRequest,
+  DeleteOrganizationResponse,
+  DeleteOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
+  input: DeleteOrganizationRequest,
+  output: DeleteOrganizationResponse,
+  errors: [
+    OrganizationNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetBillingUsageError = CloudflareOpError;
+/** Returns cost and usage data for all accounts within an organization, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. The response includes usage for every account belonging to the specified organization. **Note:** Cost and pricing fields are not yet populated and will be absent from responses until billing integration is complete. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. */
+export const getBillingUsage: API.OperationMethod<
+  GetBillingUsageRequest,
+  GetBillingUsageResponse,
+  GetBillingUsageError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBillingUsageRequest,
+  output: GetBillingUsageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
+export type GetOrganizationError =
+  | OrganizationNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Retrieve the details of a certain organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getOrganization: API.OperationMethod<
+  GetOrganizationRequest,
+  GetOrganizationResponse,
+  GetOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetOrganizationRequest,
+  output: GetOrganizationResponse,
+  errors: [
+    OrganizationNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type ListError = CloudflareOpError;
-/** Retrieve a list of organizations a particular user has access to. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
+export type GetOrganizationProfileError =
+  | OrganizationNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Get an organizations profile if it exists. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+export const getOrganizationProfile: API.OperationMethod<
+  GetOrganizationProfileRequest,
+  GetOrganizationProfileResponse,
+  GetOrganizationProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetOrganizationProfileRequest,
+  output: GetOrganizationProfileResponse,
+  errors: [
+    OrganizationNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type LogsAuditListError = CloudflareOpError;
+export type ListLogAuditsError = CloudflareOpError;
 /** Gets a list of audit logs for an organization. */
-export const logsAuditList: API.OperationMethod<
-  LogsAuditListRequest,
-  LogsAuditListResponse,
-  LogsAuditListError,
+export const listLogAudits: API.OperationMethod<
+  ListLogAuditsRequest,
+  ListLogAuditsResponse,
+  ListLogAuditsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogsAuditListRequest,
-  output: LogsAuditListResponse,
+  input: ListLogAuditsRequest,
+  output: ListLogAuditsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListOrganizationsError = Forbidden | CloudflareOpError;
+/** Retrieve a list of organizations a particular user has access to. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
+export const listOrganizations: API.OperationMethod<
+  ListOrganizationsRequest,
+  ListOrganizationsResponse,
+  ListOrganizationsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListOrganizationsRequest,
+  output: ListOrganizationsResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
@@ -1623,44 +1697,46 @@ export const organizationAccountsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-export type OrganizationProfileGetError = CloudflareOpError;
-/** Get an organizations profile if it exists. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
-export const organizationProfileGet: API.OperationMethod<
-  OrganizationProfileGetRequest,
-  OrganizationProfileGetResponse,
-  OrganizationProfileGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: OrganizationProfileGetRequest,
-  output: OrganizationProfileGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type OrganizationProfileUpdateError = CloudflareOpError;
+export type PutOrganizationProfileError =
+  | OrganizationNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Modify organization profile. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
-export const organizationProfileUpdate: API.OperationMethod<
-  OrganizationProfileUpdateRequest,
-  OrganizationProfileUpdateResponse,
-  OrganizationProfileUpdateError,
+export const putOrganizationProfile: API.OperationMethod<
+  PutOrganizationProfileRequest,
+  PutOrganizationProfileResponse,
+  PutOrganizationProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: OrganizationProfileUpdateRequest,
-  output: OrganizationProfileUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PutOrganizationProfileRequest,
+  output: PutOrganizationProfileResponse,
+  errors: [
+    OrganizationNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
+export type UpdateOrganizationError =
+  | OrganizationNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Modify organization. (Currently in Public Beta - see https://developers.cloudflare.com/fundamentals/organizations/) */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export const updateOrganization: API.OperationMethod<
+  UpdateOrganizationRequest,
+  UpdateOrganizationResponse,
+  UpdateOrganizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateOrganizationRequest,
+  output: UpdateOrganizationResponse,
+  errors: [
+    OrganizationNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

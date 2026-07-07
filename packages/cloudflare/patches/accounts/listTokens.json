@@ -1,0 +1,30 @@
+{
+  "description": "Align accounts#TokensList with distilled cloudflare/accounts listTokens",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#TokensList",
+      "path": "/shapes/com.cloudflare.accounts#ListTokens"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#TokensListRequest",
+      "path": "/shapes/com.cloudflare.accounts#ListTokensRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#ListTokens/input/target",
+      "value": "com.cloudflare.accounts#ListTokensRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.accounts#TokensListResponse",
+      "path": "/shapes/com.cloudflare.accounts#ListTokensResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.accounts#ListTokens/output/target",
+      "value": "com.cloudflare.accounts#ListTokensResponse"
+    }
+  ]
+}

@@ -9,6 +9,38 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class CustomCertificateNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CustomCertificateNotFound>()("CustomCertificateNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class PlanLevelNotAllowed extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PlanLevelNotAllowed>()("PlanLevelNotAllowed", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1011 }],
+) {}
+
+export class ZoneNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<ZoneNotFound>()("ZoneNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 400, message: { includes: "Cannot find a valid zone" } }],
+) {}
+
 export type CreateRequestDeploy = "staging" | "production" | (string & {});
 export const CreateRequestDeploy = /*@__PURE__*/ S.String;
 
@@ -33,7 +65,7 @@ export const CreateRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
 export type CreateRequestType = "legacy_custom" | "sni_custom" | (string & {});
 export const CreateRequestType = /*@__PURE__*/ S.String;
 
-export interface CreateRequest {
+export interface CreateCustomCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** The zone's SSL certificate or certificate and the intermediate(s). */
@@ -53,7 +85,7 @@ export interface CreateRequest {
   /** The type 'legacy_custom' enables support for legacy clients which do not include SNI in the TLS handshake. */
   type?: CreateRequestType;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
@@ -73,7 +105,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreateCustomCertificateRequest",
+}) as any as S.Schema<CreateCustomCertificateRequest>;
 
 export type CreateResponseGeoRestrictionsLabel =
   | "us"
@@ -171,7 +205,7 @@ export type CreateResponseStatus =
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
+export interface CreateCustomCertificateResponse {
   /** Identifier. */
   id: string;
   /** Identifier. */
@@ -201,7 +235,7 @@ export interface CreateResponse {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn?: string;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
@@ -225,15 +259,17 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(CreateResponseStatus),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
   }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+).annotate({
+  identifier: "CreateCustomCertificateResponse",
+}) as any as S.Schema<CreateCustomCertificateResponse>;
 
-export interface DeleteRequest {
+export interface DeleteCustomCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   customCertificateId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customCertificateId: S.String.pipe(T.Label("custom_certificate_id")),
@@ -244,241 +280,30 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeleteCustomCertificateRequest",
+}) as any as S.Schema<DeleteCustomCertificateRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
+export interface DeleteCustomCertificateResponse {
   /** Identifier. */
   id?: string;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
-
-export type EditRequestDeploy = "staging" | "production" | (string & {});
-export const EditRequestDeploy = /*@__PURE__*/ S.String;
-
-export type EditRequestGeoRestrictionsLabel =
-  | "us"
-  | "eu"
-  | "highest_security"
-  | (string & {});
-export const EditRequestGeoRestrictionsLabel = /*@__PURE__*/ S.String;
-
-export interface EditRequestGeoRestrictions {
-  label?: EditRequestGeoRestrictionsLabel;
-}
-export const EditRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(EditRequestGeoRestrictionsLabel),
-  }),
 ).annotate({
-  identifier: "EditRequestGeoRestrictions",
-}) as any as S.Schema<EditRequestGeoRestrictions>;
+  identifier: "DeleteCustomCertificateResponse",
+}) as any as S.Schema<DeleteCustomCertificateResponse>;
 
-export interface EditRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Identifier. */
-  customCertificateId: string;
-  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: unknown;
-  /** The zone's SSL certificate or certificate and the intermediate(s). */
-  certificate?: string;
-  /** The identifier for the Custom CSR that was used. */
-  customCsrId?: string;
-  /** The environment to deploy the certificate to, defaults to production. */
-  deploy?: EditRequestDeploy;
-  /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
-  geoRestrictions?: EditRequestGeoRestrictions;
-  /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected. */
-  policy?: string;
-  /** The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
-  privateKey?: string;
-}
-export const EditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    customCertificateId: S.String.pipe(T.Label("custom_certificate_id")),
-    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
-    certificate: S.optional(S.String),
-    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
-    deploy: S.optional(EditRequestDeploy),
-    geoRestrictions: S.optional(
-      EditRequestGeoRestrictions.pipe(T.Body("geo_restrictions")),
-    ),
-    policy: S.optional(S.String),
-    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/custom_certificates/{custom_certificate_id}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
-
-export type EditResponseGeoRestrictionsLabel =
-  | "us"
-  | "eu"
-  | "highest_security"
-  | (string & {});
-export const EditResponseGeoRestrictionsLabel = /*@__PURE__*/ S.String;
-
-export interface EditResponseGeoRestrictions {
-  label?: EditResponseGeoRestrictionsLabel;
-}
-export const EditResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    label: S.optional(EditResponseGeoRestrictionsLabel),
-  }),
-).annotate({
-  identifier: "EditResponseGeoRestrictions",
-}) as any as S.Schema<EditResponseGeoRestrictions>;
-
-export type EditResponseHostsList = string[];
-export const EditResponseHostsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseHostsList>;
-
-export type EditResponseKeylessServerPermissionsList = string[];
-export const EditResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseKeylessServerPermissionsList>;
-
-export type EditResponseKeylessServerStatus =
-  | "active"
-  | "deleted"
-  | (string & {});
-export const EditResponseKeylessServerStatus = /*@__PURE__*/ S.String;
-
-export interface EditResponseKeylessServerTunnel {
-  /** Private IP of the Key Server Host. */
-  privateIp: string;
-  /** Cloudflare Tunnel Virtual Network ID. */
-  vnetId: string;
-}
-export const EditResponseKeylessServerTunnel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateIp: S.String.pipe(T.Body("private_ip")),
-    vnetId: S.String.pipe(T.Body("vnet_id")),
-  }),
-).annotate({
-  identifier: "EditResponseKeylessServerTunnel",
-}) as any as S.Schema<EditResponseKeylessServerTunnel>;
-
-export interface EditResponseKeylessServer {
-  /** Keyless certificate identifier tag. */
-  id: string;
-  /** When the Keyless SSL was created. */
-  createdOn: string;
-  /** Whether or not the Keyless SSL is on or off. */
-  enabled: boolean;
-  /** The keyless SSL name. */
-  host: string;
-  /** When the Keyless SSL was last modified. */
-  modifiedOn: string;
-  /** The keyless SSL name. */
-  name: string;
-  /** Available permissions for the Keyless SSL for the current user requesting the item. */
-  permissions: EditResponseKeylessServerPermissionsList;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
-  port: number;
-  /** Status of the Keyless SSL. */
-  status: EditResponseKeylessServerStatus;
-  /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: EditResponseKeylessServerTunnel;
-}
-export const EditResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    enabled: S.Boolean,
-    host: S.String,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    permissions: EditResponseKeylessServerPermissionsList,
-    port: S.Number,
-    status: EditResponseKeylessServerStatus,
-    tunnel: S.optional(EditResponseKeylessServerTunnel),
-  }),
-).annotate({
-  identifier: "EditResponseKeylessServer",
-}) as any as S.Schema<EditResponseKeylessServer>;
-
-export type EditResponseStatus =
-  | "active"
-  | "expired"
-  | "deleted"
-  | (string & {});
-export const EditResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EditResponse {
-  /** Identifier. */
-  id: string;
-  /** Identifier. */
-  zoneId: string;
-  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
-  bundleMethod?: unknown;
-  /** The identifier for the Custom CSR that was used. */
-  customCsrId?: string;
-  /** When the certificate from the authority expires. */
-  expiresOn?: string;
-  /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
-  geoRestrictions?: EditResponseGeoRestrictions;
-  hosts?: EditResponseHostsList;
-  /** The certificate authority that issued the certificate. */
-  issuer?: string;
-  keylessServer?: EditResponseKeylessServer;
-  /** When the certificate was last modified. */
-  modifiedOn?: string;
-  /** The policy restrictions returned by the API. This field is returned in responses */
-  policyRestrictions?: string;
-  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-  priority?: number;
-  /** The type of hash used for the certificate. */
-  signature?: string;
-  /** Status of the zone's custom SSL. */
-  status?: EditResponseStatus;
-  /** When the certificate was uploaded to Cloudflare. */
-  uploadedOn?: string;
-}
-export const EditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    zoneId: S.String.pipe(T.Body("zone_id")),
-    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
-    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
-    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
-    geoRestrictions: S.optional(
-      EditResponseGeoRestrictions.pipe(T.Body("geo_restrictions")),
-    ),
-    hosts: S.optional(EditResponseHostsList),
-    issuer: S.optional(S.String),
-    keylessServer: S.optional(
-      EditResponseKeylessServer.pipe(T.Body("keyless_server")),
-    ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    policyRestrictions: S.optional(
-      S.String.pipe(T.Body("policy_restrictions")),
-    ),
-    priority: S.optional(S.Number),
-    signature: S.optional(S.String),
-    status: S.optional(EditResponseStatus),
-    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
-  }),
-).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
-
-export interface GetRequest {
+export interface GetCustomCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   customCertificateId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     customCertificateId: S.String.pipe(T.Label("custom_certificate_id")),
@@ -489,7 +314,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetCustomCertificateRequest",
+}) as any as S.Schema<GetCustomCertificateRequest>;
 
 export type GetResponseGeoRestrictionsLabel =
   | "us"
@@ -587,7 +414,7 @@ export type GetResponseStatus =
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetCustomCertificateResponse {
   /** Identifier. */
   id: string;
   /** Identifier. */
@@ -617,7 +444,7 @@ export interface GetResponse {
   /** When the certificate was uploaded to Cloudflare. */
   uploadedOn?: string;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     zoneId: S.String.pipe(T.Body("zone_id")),
@@ -641,7 +468,9 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(GetResponseStatus),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetCustomCertificateResponse",
+}) as any as S.Schema<GetCustomCertificateResponse>;
 
 export type ListRequestMatch = "any" | "all" | (string & {});
 export const ListRequestMatch = /*@__PURE__*/ S.String;
@@ -653,7 +482,7 @@ export type ListRequestStatus =
   | (string & {});
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
-export interface ListRequest {
+export interface ListCustomCertificatesRequest {
   /** Identifier. */
   zoneId: string;
   /** Whether to match all search requirements or at least one (any). */
@@ -665,7 +494,7 @@ export interface ListRequest {
   /** Status of the zone's custom SSL. */
   status?: ListRequestStatus;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListCustomCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     match: S.optional(ListRequestMatch.pipe(T.Query())),
@@ -679,7 +508,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListCustomCertificatesRequest",
+}) as any as S.Schema<ListCustomCertificatesRequest>;
 
 export type ListResultItemGeoRestrictionsLabel =
   | "us"
@@ -837,15 +668,236 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListCustomCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListCustomCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListCustomCertificatesResponse",
+}) as any as S.Schema<ListCustomCertificatesResponse>;
+
+export type EditRequestDeploy = "staging" | "production" | (string & {});
+export const EditRequestDeploy = /*@__PURE__*/ S.String;
+
+export type EditRequestGeoRestrictionsLabel =
+  | "us"
+  | "eu"
+  | "highest_security"
+  | (string & {});
+export const EditRequestGeoRestrictionsLabel = /*@__PURE__*/ S.String;
+
+export interface EditRequestGeoRestrictions {
+  label?: EditRequestGeoRestrictionsLabel;
+}
+export const EditRequestGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    label: S.optional(EditRequestGeoRestrictionsLabel),
+  }),
+).annotate({
+  identifier: "EditRequestGeoRestrictions",
+}) as any as S.Schema<EditRequestGeoRestrictions>;
+
+export interface PatchCustomCertificateRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  customCertificateId: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
+  bundleMethod?: unknown;
+  /** The zone's SSL certificate or certificate and the intermediate(s). */
+  certificate?: string;
+  /** The identifier for the Custom CSR that was used. */
+  customCsrId?: string;
+  /** The environment to deploy the certificate to, defaults to production. */
+  deploy?: EditRequestDeploy;
+  /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
+  geoRestrictions?: EditRequestGeoRestrictions;
+  /** Specify the policy that determines the region where your private key will be held locally. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Any combination of countries, specified by their two letter country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements) can be chosen, such as 'country: IN', as well as 'region: EU' which refers to the EU region. If there are too few data centers satisfying the policy, it will be rejected. */
+  policy?: string;
+  /** The zone's private key. Not required if custom_csr_id is provided, in which case the private key is retrieved from the CSR record held by Cloudflare. */
+  privateKey?: string;
+}
+export const PatchCustomCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    customCertificateId: S.String.pipe(T.Label("custom_certificate_id")),
+    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    certificate: S.optional(S.String),
+    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
+    deploy: S.optional(EditRequestDeploy),
+    geoRestrictions: S.optional(
+      EditRequestGeoRestrictions.pipe(T.Body("geo_restrictions")),
+    ),
+    policy: S.optional(S.String),
+    privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/custom_certificates/{custom_certificate_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchCustomCertificateRequest",
+}) as any as S.Schema<PatchCustomCertificateRequest>;
+
+export type EditResponseGeoRestrictionsLabel =
+  | "us"
+  | "eu"
+  | "highest_security"
+  | (string & {});
+export const EditResponseGeoRestrictionsLabel = /*@__PURE__*/ S.String;
+
+export interface EditResponseGeoRestrictions {
+  label?: EditResponseGeoRestrictionsLabel;
+}
+export const EditResponseGeoRestrictions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    label: S.optional(EditResponseGeoRestrictionsLabel),
+  }),
+).annotate({
+  identifier: "EditResponseGeoRestrictions",
+}) as any as S.Schema<EditResponseGeoRestrictions>;
+
+export type EditResponseHostsList = string[];
+export const EditResponseHostsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseHostsList>;
+
+export type EditResponseKeylessServerPermissionsList = string[];
+export const EditResponseKeylessServerPermissionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseKeylessServerPermissionsList>;
+
+export type EditResponseKeylessServerStatus =
+  | "active"
+  | "deleted"
+  | (string & {});
+export const EditResponseKeylessServerStatus = /*@__PURE__*/ S.String;
+
+export interface EditResponseKeylessServerTunnel {
+  /** Private IP of the Key Server Host. */
+  privateIp: string;
+  /** Cloudflare Tunnel Virtual Network ID. */
+  vnetId: string;
+}
+export const EditResponseKeylessServerTunnel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateIp: S.String.pipe(T.Body("private_ip")),
+    vnetId: S.String.pipe(T.Body("vnet_id")),
+  }),
+).annotate({
+  identifier: "EditResponseKeylessServerTunnel",
+}) as any as S.Schema<EditResponseKeylessServerTunnel>;
+
+export interface EditResponseKeylessServer {
+  /** Keyless certificate identifier tag. */
+  id: string;
+  /** When the Keyless SSL was created. */
+  createdOn: string;
+  /** Whether or not the Keyless SSL is on or off. */
+  enabled: boolean;
+  /** The keyless SSL name. */
+  host: string;
+  /** When the Keyless SSL was last modified. */
+  modifiedOn: string;
+  /** The keyless SSL name. */
+  name: string;
+  /** Available permissions for the Keyless SSL for the current user requesting the item. */
+  permissions: EditResponseKeylessServerPermissionsList;
+  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  port: number;
+  /** Status of the Keyless SSL. */
+  status: EditResponseKeylessServerStatus;
+  /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
+  tunnel?: EditResponseKeylessServerTunnel;
+}
+export const EditResponseKeylessServer = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    enabled: S.Boolean,
+    host: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    permissions: EditResponseKeylessServerPermissionsList,
+    port: S.Number,
+    status: EditResponseKeylessServerStatus,
+    tunnel: S.optional(EditResponseKeylessServerTunnel),
+  }),
+).annotate({
+  identifier: "EditResponseKeylessServer",
+}) as any as S.Schema<EditResponseKeylessServer>;
+
+export type EditResponseStatus =
+  | "active"
+  | "expired"
+  | "deleted"
+  | (string & {});
+export const EditResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchCustomCertificateResponse {
+  /** Identifier. */
+  id: string;
+  /** Identifier. */
+  zoneId: string;
+  /** A ubiquitous bundle has the highest probability of being verified everywhere, even by clients using outdated or unusual trust stores. An optimal bundle uses the shortest chain and newest intermediates. And the force bundle verifies the chain, but does not otherwise modify it. */
+  bundleMethod?: unknown;
+  /** The identifier for the Custom CSR that was used. */
+  customCsrId?: string;
+  /** When the certificate from the authority expires. */
+  expiresOn?: string;
+  /** Specify the region where your private key can be held locally for optimal TLS performance. HTTPS connections to any excluded data center will still be fully encrypted, but will incur some latency while Keyless SSL is used to complete the handshake with the nearest allowed data center. Options allow distribution to only to U.S. data centers, only to E.U. data centers, or only to highest security data centers. Default distribution is to all Cloudflare datacenters, for optimal performance. */
+  geoRestrictions?: EditResponseGeoRestrictions;
+  hosts?: EditResponseHostsList;
+  /** The certificate authority that issued the certificate. */
+  issuer?: string;
+  keylessServer?: EditResponseKeylessServer;
+  /** When the certificate was last modified. */
+  modifiedOn?: string;
+  /** The policy restrictions returned by the API. This field is returned in responses */
+  policyRestrictions?: string;
+  /** The order/priority in which the certificate will be used in a request. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
+  priority?: number;
+  /** The type of hash used for the certificate. */
+  signature?: string;
+  /** Status of the zone's custom SSL. */
+  status?: EditResponseStatus;
+  /** When the certificate was uploaded to Cloudflare. */
+  uploadedOn?: string;
+}
+export const PatchCustomCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    zoneId: S.String.pipe(T.Body("zone_id")),
+    bundleMethod: S.optional(S.Unknown.pipe(T.Body("bundle_method"))),
+    customCsrId: S.optional(S.String.pipe(T.Body("custom_csr_id"))),
+    expiresOn: S.optional(S.String.pipe(T.Body("expires_on"))),
+    geoRestrictions: S.optional(
+      EditResponseGeoRestrictions.pipe(T.Body("geo_restrictions")),
+    ),
+    hosts: S.optional(EditResponseHostsList),
+    issuer: S.optional(S.String),
+    keylessServer: S.optional(
+      EditResponseKeylessServer.pipe(T.Body("keyless_server")),
+    ),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    policyRestrictions: S.optional(
+      S.String.pipe(T.Body("policy_restrictions")),
+    ),
+    priority: S.optional(S.Number),
+    signature: S.optional(S.String),
+    status: S.optional(EditResponseStatus),
+    uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
+  }),
+).annotate({
+  identifier: "PatchCustomCertificateResponse",
+}) as any as S.Schema<PatchCustomCertificateResponse>;
 
 export interface PrioritizeUpdateRequestCertificatesItem {
   /** Identifier. */
@@ -869,13 +921,13 @@ export const PrioritizeUpdateRequestCertificatesList = /*@__PURE__*/ S.Array(
   PrioritizeUpdateRequestCertificatesItem,
 ) as any as S.Schema<PrioritizeUpdateRequestCertificatesList>;
 
-export interface PrioritizeUpdateRequest {
+export interface PutPrioritizeRequest {
   /** Identifier. */
   zoneId: string;
   /** Array of ordered certificates. */
   certificates: PrioritizeUpdateRequestCertificatesList;
 }
-export const PrioritizeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutPrioritizeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificates: PrioritizeUpdateRequestCertificatesList,
@@ -887,8 +939,8 @@ export const PrioritizeUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PrioritizeUpdateRequest",
-}) as any as S.Schema<PrioritizeUpdateRequest>;
+  identifier: "PutPrioritizeRequest",
+}) as any as S.Schema<PutPrioritizeRequest>;
 
 export type PrioritizeUpdateResultItemGeoRestrictionsLabel =
   | "us"
@@ -1056,98 +1108,154 @@ export const PrioritizeUpdateResultList = /*@__PURE__*/ S.Array(
   PrioritizeUpdateResultItem,
 ) as any as S.Schema<PrioritizeUpdateResultList>;
 
-export interface PrioritizeUpdateResponse {
+export interface PutPrioritizeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PrioritizeUpdateResultList;
 }
-export const PrioritizeUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutPrioritizeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PrioritizeUpdateResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "PrioritizeUpdateResponse",
-}) as any as S.Schema<PrioritizeUpdateResponse>;
+  identifier: "PutPrioritizeResponse",
+}) as any as S.Schema<PutPrioritizeResponse>;
 
-export type CreateError = CloudflareOpError;
+export type CreateCustomCertificateError =
+  | PlanLevelNotAllowed
+  | Forbidden
+  | CloudflareOpError;
 /** Upload a new SSL certificate for a zone. */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createCustomCertificate: API.OperationMethod<
+  CreateCustomCertificateRequest,
+  CreateCustomCertificateResponse,
+  CreateCustomCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateCustomCertificateRequest,
+  output: CreateCustomCertificateResponse,
+  errors: [
+    PlanLevelNotAllowed,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type DeleteError = CloudflareOpError;
+export type DeleteCustomCertificateError =
+  | CustomCertificateNotFound
+  | PlanLevelNotAllowed
+  | Forbidden
+  | CloudflareOpError;
 /** Remove a SSL certificate from a zone. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteCustomCertificate: API.OperationMethod<
+  DeleteCustomCertificateRequest,
+  DeleteCustomCertificateResponse,
+  DeleteCustomCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteCustomCertificateRequest,
+  output: DeleteCustomCertificateResponse,
+  errors: [
+    CustomCertificateNotFound,
+    PlanLevelNotAllowed,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type EditError = CloudflareOpError;
-/** Upload a new private key and/or PEM/CRT for the SSL certificate. Note: PATCHing a configuration for sni_custom certificates will result in a new resource id being returned, and the previous one being deleted. */
-export const edit: API.OperationMethod<
-  EditRequest,
-  EditResponse,
-  EditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EditRequest,
-  output: EditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GetError = CloudflareOpError;
+export type GetCustomCertificateError =
+  | CustomCertificateNotFound
+  | PlanLevelNotAllowed
+  | Forbidden
+  | CloudflareOpError;
 /** Retrieves details for a specific custom SSL certificate, including certificate metadata, bundle method, geographic restrictions, and associated keyless server configuration. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getCustomCertificate: API.OperationMethod<
+  GetCustomCertificateRequest,
+  GetCustomCertificateResponse,
+  GetCustomCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetCustomCertificateRequest,
+  output: GetCustomCertificateResponse,
+  errors: [
+    CustomCertificateNotFound,
+    PlanLevelNotAllowed,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type ListError = CloudflareOpError;
+export type ListCustomCertificatesError =
+  | PlanLevelNotAllowed
+  | ZoneNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** List, search, and filter all of your custom SSL certificates. The higher priority will break ties across overlapping 'legacy_custom' certificates, but 'legacy_custom' certificates will always supercede 'sni_custom' certificates. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
+export const listCustomCertificates: API.OperationMethod<
+  ListCustomCertificatesRequest,
+  ListCustomCertificatesResponse,
+  ListCustomCertificatesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ListCustomCertificatesRequest,
+  output: ListCustomCertificatesResponse,
+  errors: [
+    PlanLevelNotAllowed,
+    ZoneNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type PrioritizeUpdateError = CloudflareOpError;
-/** If a zone has multiple SSL certificates, you can set the order in which they should be used during a request. The higher priority will break ties across overlapping 'legacy_custom' certificates. */
-export const prioritizeUpdate: API.OperationMethod<
-  PrioritizeUpdateRequest,
-  PrioritizeUpdateResponse,
-  PrioritizeUpdateError,
+export type PatchCustomCertificateError =
+  | CustomCertificateNotFound
+  | PlanLevelNotAllowed
+  | Forbidden
+  | CloudflareOpError;
+/** Upload a new private key and/or PEM/CRT for the SSL certificate. Note: PATCHing a configuration for sni_custom certificates will result in a new resource id being returned, and the previous one being deleted. */
+export const patchCustomCertificate: API.OperationMethod<
+  PatchCustomCertificateRequest,
+  PatchCustomCertificateResponse,
+  PatchCustomCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PrioritizeUpdateRequest,
-  output: PrioritizeUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PatchCustomCertificateRequest,
+  output: PatchCustomCertificateResponse,
+  errors: [
+    CustomCertificateNotFound,
+    PlanLevelNotAllowed,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutPrioritizeError =
+  | PlanLevelNotAllowed
+  | Forbidden
+  | CloudflareOpError;
+/** If a zone has multiple SSL certificates, you can set the order in which they should be used during a request. The higher priority will break ties across overlapping 'legacy_custom' certificates. */
+export const putPrioritize: API.OperationMethod<
+  PutPrioritizeRequest,
+  PutPrioritizeResponse,
+  PutPrioritizeError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutPrioritizeRequest,
+  output: PutPrioritizeResponse,
+  errors: [
+    PlanLevelNotAllowed,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

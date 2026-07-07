@@ -1,0 +1,88 @@
+{
+  "description": "Align r2#BucketsDomainsCustomDelete with distilled cloudflare/r2 deleteBucketDomainCustom",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsDomainsCustomDelete",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketDomainCustom"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsDomainsCustomDeleteRequest",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketDomainCustomRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketDomainCustom/input/target",
+      "value": "com.cloudflare.r2#DeleteBucketDomainCustomRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsDomainsCustomDeleteResponse",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketDomainCustomResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketDomainCustom/output/target",
+      "value": "com.cloudflare.r2#DeleteBucketDomainCustomResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#DomainNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10053
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#NoSuchBucket",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10006
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketDomainCustom/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.r2#DomainNotFound"
+        },
+        {
+          "target": "com.cloudflare.r2#NoSuchBucket"
+        }
+      ]
+    }
+  ]
+}

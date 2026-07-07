@@ -9,6 +9,30 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class HealthcheckAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<HealthcheckAlreadyExists>()("HealthcheckAlreadyExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ message: { includes: "already exists" } }],
+) {}
+
+export class HealthcheckNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<HealthcheckNotFound>()("HealthcheckNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
 export type CreateRequestCheckRegionsList = unknown[];
 export const CreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   S.Unknown,
@@ -85,7 +109,7 @@ export const CreateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestTcpConfig",
 }) as any as S.Schema<CreateRequestTcpConfig>;
 
-export interface CreateRequest {
+export interface CreateHealthcheckRequest {
   /** Identifier */
   zoneId: string;
   /** The hostname or IP address of the origin server to run health checks on. */
@@ -115,7 +139,7 @@ export interface CreateRequest {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     address: S.String,
@@ -138,7 +162,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({ method: "POST", uri: "/zones/{zone_id}/healthchecks", code: 200 }),
   ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreateHealthcheckRequest",
+}) as any as S.Schema<CreateHealthcheckRequest>;
 
 export type CreateResponseCheckRegionsList = unknown[];
 export const CreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
@@ -225,7 +251,7 @@ export const CreateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
+export interface CreateHealthcheckResponse {
   /** Identifier */
   id?: string;
   /** The hostname or IP address of the origin server to run health checks on. */
@@ -261,7 +287,7 @@ export interface CreateResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
@@ -288,125 +314,101 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+).annotate({
+  identifier: "CreateHealthcheckResponse",
+}) as any as S.Schema<CreateHealthcheckResponse>;
 
-export interface DeleteRequest {
-  /** Identifier */
-  zoneId: string;
-  /** Identifier */
-  healthcheckId: string;
-}
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
-  /** Identifier */
-  id?: string;
-}
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
-
-export type EditRequestCheckRegionsList = unknown[];
-export const EditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
+export type PreviewsCreateRequestCheckRegionsList = unknown[];
+export const PreviewsCreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<EditRequestCheckRegionsList>;
+) as any as S.Schema<PreviewsCreateRequestCheckRegionsList>;
 
-export type EditRequestHttpConfigExpectedCodesList = string[];
-export const EditRequestHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestHttpConfigExpectedCodesList>;
+export type PreviewsCreateRequestHttpConfigExpectedCodesList = string[];
+export const PreviewsCreateRequestHttpConfigExpectedCodesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PreviewsCreateRequestHttpConfigExpectedCodesList>;
 
-export type EditRequestHttpConfigHeaderMap = {
+export type PreviewsCreateRequestHttpConfigHeaderMap = {
   [key: string]: unknown | undefined;
 };
-export const EditRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
+export const PreviewsCreateRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
-) as any as S.Schema<EditRequestHttpConfigHeaderMap>;
+) as any as S.Schema<PreviewsCreateRequestHttpConfigHeaderMap>;
 
-export type EditRequestHttpConfigMethod = "GET" | "HEAD" | (string & {});
-export const EditRequestHttpConfigMethod = /*@__PURE__*/ S.String;
+export type PreviewsCreateRequestHttpConfigMethod =
+  | "GET"
+  | "HEAD"
+  | (string & {});
+export const PreviewsCreateRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
-export interface EditRequestHttpConfig {
+export interface PreviewsCreateRequestHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
   expectedBody?: string;
   /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
-  expectedCodes?: EditRequestHttpConfigExpectedCodesList;
+  expectedCodes?: PreviewsCreateRequestHttpConfigExpectedCodesList;
   /** Follow redirects if the origin returns a 3xx status code. */
   followRedirects?: boolean;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
-  header?: EditRequestHttpConfigHeaderMap;
+  header?: PreviewsCreateRequestHttpConfigHeaderMap;
   /** The HTTP method to use for the health check. */
-  method?: EditRequestHttpConfigMethod;
+  method?: PreviewsCreateRequestHttpConfigMethod;
   /** The endpoint path to health check against. */
   path?: string;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
-export const EditRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
+export const PreviewsCreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
     expectedCodes: S.optional(
-      EditRequestHttpConfigExpectedCodesList.pipe(T.Body("expected_codes")),
+      PreviewsCreateRequestHttpConfigExpectedCodesList.pipe(
+        T.Body("expected_codes"),
+      ),
     ),
     followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(EditRequestHttpConfigHeaderMap),
-    method: S.optional(EditRequestHttpConfigMethod),
+    header: S.optional(PreviewsCreateRequestHttpConfigHeaderMap),
+    method: S.optional(PreviewsCreateRequestHttpConfigMethod),
     path: S.optional(S.String),
     port: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "EditRequestHttpConfig",
-}) as any as S.Schema<EditRequestHttpConfig>;
+  identifier: "PreviewsCreateRequestHttpConfig",
+}) as any as S.Schema<PreviewsCreateRequestHttpConfig>;
 
-export type EditRequestTcpConfigMethod =
+export type PreviewsCreateRequestTcpConfigMethod =
   | "connection_established"
   | (string & {});
-export const EditRequestTcpConfigMethod = /*@__PURE__*/ S.String;
+export const PreviewsCreateRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
-export interface EditRequestTcpConfig {
+export interface PreviewsCreateRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
-  method?: EditRequestTcpConfigMethod;
+  method?: PreviewsCreateRequestTcpConfigMethod;
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-export const EditRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
+export const PreviewsCreateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    method: S.optional(EditRequestTcpConfigMethod),
+    method: S.optional(PreviewsCreateRequestTcpConfigMethod),
     port: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "EditRequestTcpConfig",
-}) as any as S.Schema<EditRequestTcpConfig>;
+  identifier: "PreviewsCreateRequestTcpConfig",
+}) as any as S.Schema<PreviewsCreateRequestTcpConfig>;
 
-export interface EditRequest {
+export interface CreatePreviewRequest {
   /** Identifier */
   zoneId: string;
-  /** Identifier */
-  healthcheckId: string;
   /** The hostname or IP address of the origin server to run health checks on. */
   address: string;
   /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
   name: string;
   /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
-  checkRegions?: EditRequestCheckRegionsList;
+  checkRegions?: PreviewsCreateRequestCheckRegionsList;
   /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
   consecutiveFails?: number;
   /** The number of consecutive successes required from a health check before changing the health to healthy. */
@@ -414,7 +416,7 @@ export interface EditRequest {
   /** A human-readable description of the health check. */
   description?: string;
   /** Parameters specific to an HTTP or HTTPS health check. */
-  httpConfig?: EditRequestHttpConfig;
+  httpConfig?: PreviewsCreateRequestHttpConfig;
   /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
   interval?: number;
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
@@ -422,134 +424,145 @@ export interface EditRequest {
   /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
   /** Parameters specific to TCP health check. */
-  tcpConfig?: EditRequestTcpConfig;
+  tcpConfig?: PreviewsCreateRequestTcpConfig;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const EditRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreatePreviewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
     address: S.String,
     name: S.String,
     checkRegions: S.optional(
-      EditRequestCheckRegionsList.pipe(T.Body("check_regions")),
+      PreviewsCreateRequestCheckRegionsList.pipe(T.Body("check_regions")),
     ),
     consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
     consecutiveSuccesses: S.optional(
       S.Number.pipe(T.Body("consecutive_successes")),
     ),
     description: S.optional(S.String),
-    httpConfig: S.optional(EditRequestHttpConfig.pipe(T.Body("http_config"))),
+    httpConfig: S.optional(
+      PreviewsCreateRequestHttpConfig.pipe(T.Body("http_config")),
+    ),
     interval: S.optional(S.Number),
     retries: S.optional(S.Number),
     suspended: S.optional(S.Boolean),
-    tcpConfig: S.optional(EditRequestTcpConfig.pipe(T.Body("tcp_config"))),
+    tcpConfig: S.optional(
+      PreviewsCreateRequestTcpConfig.pipe(T.Body("tcp_config")),
+    ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
+      method: "POST",
+      uri: "/zones/{zone_id}/healthchecks/preview",
       code: 200,
     }),
   ),
-).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
+).annotate({
+  identifier: "CreatePreviewRequest",
+}) as any as S.Schema<CreatePreviewRequest>;
 
-export type EditResponseCheckRegionsList = unknown[];
-export const EditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
+export type PreviewsCreateResponseCheckRegionsList = unknown[];
+export const PreviewsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<EditResponseCheckRegionsList>;
+) as any as S.Schema<PreviewsCreateResponseCheckRegionsList>;
 
-export type EditResponseHttpConfigExpectedCodesList = string[];
-export const EditResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseHttpConfigExpectedCodesList>;
+export type PreviewsCreateResponseHttpConfigExpectedCodesList = string[];
+export const PreviewsCreateResponseHttpConfigExpectedCodesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PreviewsCreateResponseHttpConfigExpectedCodesList>;
 
-export type EditResponseHttpConfigHeaderMap = {
+export type PreviewsCreateResponseHttpConfigHeaderMap = {
   [key: string]: unknown | undefined;
 };
-export const EditResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
+export const PreviewsCreateResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
-) as any as S.Schema<EditResponseHttpConfigHeaderMap>;
+) as any as S.Schema<PreviewsCreateResponseHttpConfigHeaderMap>;
 
-export type EditResponseHttpConfigMethod = "GET" | "HEAD" | (string & {});
-export const EditResponseHttpConfigMethod = /*@__PURE__*/ S.String;
+export type PreviewsCreateResponseHttpConfigMethod =
+  | "GET"
+  | "HEAD"
+  | (string & {});
+export const PreviewsCreateResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
-export interface EditResponseHttpConfig {
+export interface PreviewsCreateResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
   expectedBody?: string;
   /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
-  expectedCodes?: EditResponseHttpConfigExpectedCodesList;
+  expectedCodes?: PreviewsCreateResponseHttpConfigExpectedCodesList;
   /** Follow redirects if the origin returns a 3xx status code. */
   followRedirects?: boolean;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
-  header?: EditResponseHttpConfigHeaderMap;
+  header?: PreviewsCreateResponseHttpConfigHeaderMap;
   /** The HTTP method to use for the health check. */
-  method?: EditResponseHttpConfigMethod;
+  method?: PreviewsCreateResponseHttpConfigMethod;
   /** The endpoint path to health check against. */
   path?: string;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
-export const EditResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
+export const PreviewsCreateResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
     expectedCodes: S.optional(
-      EditResponseHttpConfigExpectedCodesList.pipe(T.Body("expected_codes")),
+      PreviewsCreateResponseHttpConfigExpectedCodesList.pipe(
+        T.Body("expected_codes"),
+      ),
     ),
     followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(EditResponseHttpConfigHeaderMap),
-    method: S.optional(EditResponseHttpConfigMethod),
+    header: S.optional(PreviewsCreateResponseHttpConfigHeaderMap),
+    method: S.optional(PreviewsCreateResponseHttpConfigMethod),
     path: S.optional(S.String),
     port: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "EditResponseHttpConfig",
-}) as any as S.Schema<EditResponseHttpConfig>;
+  identifier: "PreviewsCreateResponseHttpConfig",
+}) as any as S.Schema<PreviewsCreateResponseHttpConfig>;
 
-export type EditResponseStatus =
+export type PreviewsCreateResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
   | "suspended"
   | (string & {});
-export const EditResponseStatus = /*@__PURE__*/ S.String;
+export const PreviewsCreateResponseStatus = /*@__PURE__*/ S.String;
 
-export type EditResponseTcpConfigMethod =
+export type PreviewsCreateResponseTcpConfigMethod =
   | "connection_established"
   | (string & {});
-export const EditResponseTcpConfigMethod = /*@__PURE__*/ S.String;
+export const PreviewsCreateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
-export interface EditResponseTcpConfig {
+export interface PreviewsCreateResponseTcpConfig {
   /** The TCP connection method to use for the health check. */
-  method?: EditResponseTcpConfigMethod;
+  method?: PreviewsCreateResponseTcpConfigMethod;
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-export const EditResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
+export const PreviewsCreateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    method: S.optional(EditResponseTcpConfigMethod),
+    method: S.optional(PreviewsCreateResponseTcpConfigMethod),
     port: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "EditResponseTcpConfig",
-}) as any as S.Schema<EditResponseTcpConfig>;
+  identifier: "PreviewsCreateResponseTcpConfig",
+}) as any as S.Schema<PreviewsCreateResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EditResponse {
+export interface CreatePreviewResponse {
   /** Identifier */
   id?: string;
   /** The hostname or IP address of the origin server to run health checks on. */
   address?: string;
   /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
-  checkRegions?: EditResponseCheckRegionsList;
+  checkRegions?: PreviewsCreateResponseCheckRegionsList;
   /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
   consecutiveFails?: number;
   /** The number of consecutive successes required from a health check before changing the health to healthy. */
@@ -560,7 +573,7 @@ export interface EditResponse {
   /** The current failure reason if status is unhealthy. */
   failureReason?: string;
   /** Parameters specific to an HTTP or HTTPS health check. */
-  httpConfig?: EditResponseHttpConfig;
+  httpConfig?: PreviewsCreateResponseHttpConfig;
   /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
   interval?: number;
   modifiedOn?: string;
@@ -569,22 +582,22 @@ export interface EditResponse {
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number;
   /** The current status of the origin server according to the health check. */
-  status?: EditResponseStatus;
+  status?: PreviewsCreateResponseStatus;
   /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
   /** Parameters specific to TCP health check. */
-  tcpConfig?: EditResponseTcpConfig;
+  tcpConfig?: PreviewsCreateResponseTcpConfig;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const EditResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreatePreviewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
     checkRegions: S.optional(
-      EditResponseCheckRegionsList.pipe(T.Body("check_regions")),
+      PreviewsCreateResponseCheckRegionsList.pipe(T.Body("check_regions")),
     ),
     consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
     consecutiveSuccesses: S.optional(
@@ -593,26 +606,100 @@ export const EditResponse = /*@__PURE__*/ S.suspend(() =>
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     description: S.optional(S.String),
     failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
-    httpConfig: S.optional(EditResponseHttpConfig.pipe(T.Body("http_config"))),
+    httpConfig: S.optional(
+      PreviewsCreateResponseHttpConfig.pipe(T.Body("http_config")),
+    ),
     interval: S.optional(S.Number),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     name: S.optional(S.String),
     retries: S.optional(S.Number),
-    status: S.optional(EditResponseStatus),
+    status: S.optional(PreviewsCreateResponseStatus),
     suspended: S.optional(S.Boolean),
-    tcpConfig: S.optional(EditResponseTcpConfig.pipe(T.Body("tcp_config"))),
+    tcpConfig: S.optional(
+      PreviewsCreateResponseTcpConfig.pipe(T.Body("tcp_config")),
+    ),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }),
-).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
+).annotate({
+  identifier: "CreatePreviewResponse",
+}) as any as S.Schema<CreatePreviewResponse>;
 
-export interface GetRequest {
+export interface DeleteHealthcheckRequest {
   /** Identifier */
   zoneId: string;
   /** Identifier */
   healthcheckId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteHealthcheckRequest",
+}) as any as S.Schema<DeleteHealthcheckRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteHealthcheckResponse {
+  /** Identifier */
+  id?: string;
+}
+export const DeleteHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteHealthcheckResponse",
+}) as any as S.Schema<DeleteHealthcheckResponse>;
+
+export interface DeletePreviewRequest {
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  healthcheckId: string;
+}
+export const DeletePreviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/healthchecks/preview/{healthcheck_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeletePreviewRequest",
+}) as any as S.Schema<DeletePreviewRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeletePreviewResponse {
+  /** Identifier */
+  id?: string;
+}
+export const DeletePreviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeletePreviewResponse",
+}) as any as S.Schema<DeletePreviewResponse>;
+
+export interface GetHealthcheckRequest {
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  healthcheckId: string;
+}
+export const GetHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
@@ -623,7 +710,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetHealthcheckRequest",
+}) as any as S.Schema<GetHealthcheckRequest>;
 
 export type GetResponseCheckRegionsList = unknown[];
 export const GetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
@@ -710,7 +799,7 @@ export const GetResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetHealthcheckResponse {
   /** Identifier */
   id?: string;
   /** The hostname or IP address of the origin server to run health checks on. */
@@ -746,7 +835,7 @@ export interface GetResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
@@ -771,9 +860,192 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetHealthcheckResponse",
+}) as any as S.Schema<GetHealthcheckResponse>;
 
-export interface ListRequest {
+export interface GetPreviewRequest {
+  /** Identifier */
+  zoneId: string;
+  /** Identifier */
+  healthcheckId: string;
+}
+export const GetPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/healthchecks/preview/{healthcheck_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetPreviewRequest",
+}) as any as S.Schema<GetPreviewRequest>;
+
+export type PreviewsGetResponseCheckRegionsList = unknown[];
+export const PreviewsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<PreviewsGetResponseCheckRegionsList>;
+
+export type PreviewsGetResponseHttpConfigExpectedCodesList = string[];
+export const PreviewsGetResponseHttpConfigExpectedCodesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<PreviewsGetResponseHttpConfigExpectedCodesList>;
+
+export type PreviewsGetResponseHttpConfigHeaderMap = {
+  [key: string]: unknown | undefined;
+};
+export const PreviewsGetResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<PreviewsGetResponseHttpConfigHeaderMap>;
+
+export type PreviewsGetResponseHttpConfigMethod =
+  | "GET"
+  | "HEAD"
+  | (string & {});
+export const PreviewsGetResponseHttpConfigMethod = /*@__PURE__*/ S.String;
+
+export interface PreviewsGetResponseHttpConfig {
+  /** Do not validate the certificate when the health check uses HTTPS. */
+  allowInsecure?: boolean;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
+  expectedBody?: string;
+  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
+  expectedCodes?: PreviewsGetResponseHttpConfigExpectedCodesList;
+  /** Follow redirects if the origin returns a 3xx status code. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
+  header?: PreviewsGetResponseHttpConfigHeaderMap;
+  /** The HTTP method to use for the health check. */
+  method?: PreviewsGetResponseHttpConfigMethod;
+  /** The endpoint path to health check against. */
+  path?: string;
+  /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
+  port?: number;
+}
+export const PreviewsGetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(
+      PreviewsGetResponseHttpConfigExpectedCodesList.pipe(
+        T.Body("expected_codes"),
+      ),
+    ),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
+    header: S.optional(PreviewsGetResponseHttpConfigHeaderMap),
+    method: S.optional(PreviewsGetResponseHttpConfigMethod),
+    path: S.optional(S.String),
+    port: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PreviewsGetResponseHttpConfig",
+}) as any as S.Schema<PreviewsGetResponseHttpConfig>;
+
+export type PreviewsGetResponseStatus =
+  | "unknown"
+  | "healthy"
+  | "unhealthy"
+  | "suspended"
+  | (string & {});
+export const PreviewsGetResponseStatus = /*@__PURE__*/ S.String;
+
+export type PreviewsGetResponseTcpConfigMethod =
+  | "connection_established"
+  | (string & {});
+export const PreviewsGetResponseTcpConfigMethod = /*@__PURE__*/ S.String;
+
+export interface PreviewsGetResponseTcpConfig {
+  /** The TCP connection method to use for the health check. */
+  method?: PreviewsGetResponseTcpConfigMethod;
+  /** Port number to connect to for the health check. Defaults to 80. */
+  port?: number;
+}
+export const PreviewsGetResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    method: S.optional(PreviewsGetResponseTcpConfigMethod),
+    port: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PreviewsGetResponseTcpConfig",
+}) as any as S.Schema<PreviewsGetResponseTcpConfig>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetPreviewResponse {
+  /** Identifier */
+  id?: string;
+  /** The hostname or IP address of the origin server to run health checks on. */
+  address?: string;
+  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
+  checkRegions?: PreviewsGetResponseCheckRegionsList;
+  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
+  consecutiveFails?: number;
+  /** The number of consecutive successes required from a health check before changing the health to healthy. */
+  consecutiveSuccesses?: number;
+  createdOn?: string;
+  /** A human-readable description of the health check. */
+  description?: string;
+  /** The current failure reason if status is unhealthy. */
+  failureReason?: string;
+  /** Parameters specific to an HTTP or HTTPS health check. */
+  httpConfig?: PreviewsGetResponseHttpConfig;
+  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
+  interval?: number;
+  modifiedOn?: string;
+  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
+  name?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** The current status of the origin server according to the health check. */
+  status?: PreviewsGetResponseStatus;
+  /** If suspended, no health checks are sent to the origin. */
+  suspended?: boolean;
+  /** Parameters specific to TCP health check. */
+  tcpConfig?: PreviewsGetResponseTcpConfig;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
+  type?: string;
+}
+export const GetPreviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    address: S.optional(S.String),
+    checkRegions: S.optional(
+      PreviewsGetResponseCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
+    consecutiveSuccesses: S.optional(
+      S.Number.pipe(T.Body("consecutive_successes")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
+    httpConfig: S.optional(
+      PreviewsGetResponseHttpConfig.pipe(T.Body("http_config")),
+    ),
+    interval: S.optional(S.Number),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+    retries: S.optional(S.Number),
+    status: S.optional(PreviewsGetResponseStatus),
+    suspended: S.optional(S.Boolean),
+    tcpConfig: S.optional(
+      PreviewsGetResponseTcpConfig.pipe(T.Body("tcp_config")),
+    ),
+    timeout: S.optional(S.Number),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetPreviewResponse",
+}) as any as S.Schema<GetPreviewResponse>;
+
+export interface ListHealthchecksRequest {
   /** Identifier */
   zoneId: string;
   /** Page number of paginated results. */
@@ -781,7 +1053,7 @@ export interface ListRequest {
   /** Maximum number of results per page. Must be a multiple of 5. */
   perPage?: number;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListHealthchecksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -789,7 +1061,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/healthchecks", code: 200 }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListHealthchecksRequest",
+}) as any as S.Schema<ListHealthchecksRequest>;
 
 export type ListResultItemCheckRegionsList = unknown[];
 export const ListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
@@ -945,107 +1219,105 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListHealthchecksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListHealthchecksResponse",
+}) as any as S.Schema<ListHealthchecksResponse>;
 
-export type PreviewsCreateRequestCheckRegionsList = unknown[];
-export const PreviewsCreateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
+export type EditRequestCheckRegionsList = unknown[];
+export const EditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<PreviewsCreateRequestCheckRegionsList>;
+) as any as S.Schema<EditRequestCheckRegionsList>;
 
-export type PreviewsCreateRequestHttpConfigExpectedCodesList = string[];
-export const PreviewsCreateRequestHttpConfigExpectedCodesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PreviewsCreateRequestHttpConfigExpectedCodesList>;
+export type EditRequestHttpConfigExpectedCodesList = string[];
+export const EditRequestHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditRequestHttpConfigExpectedCodesList>;
 
-export type PreviewsCreateRequestHttpConfigHeaderMap = {
+export type EditRequestHttpConfigHeaderMap = {
   [key: string]: unknown | undefined;
 };
-export const PreviewsCreateRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
+export const EditRequestHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
-) as any as S.Schema<PreviewsCreateRequestHttpConfigHeaderMap>;
+) as any as S.Schema<EditRequestHttpConfigHeaderMap>;
 
-export type PreviewsCreateRequestHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
-export const PreviewsCreateRequestHttpConfigMethod = /*@__PURE__*/ S.String;
+export type EditRequestHttpConfigMethod = "GET" | "HEAD" | (string & {});
+export const EditRequestHttpConfigMethod = /*@__PURE__*/ S.String;
 
-export interface PreviewsCreateRequestHttpConfig {
+export interface EditRequestHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
   expectedBody?: string;
   /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
-  expectedCodes?: PreviewsCreateRequestHttpConfigExpectedCodesList;
+  expectedCodes?: EditRequestHttpConfigExpectedCodesList;
   /** Follow redirects if the origin returns a 3xx status code. */
   followRedirects?: boolean;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
-  header?: PreviewsCreateRequestHttpConfigHeaderMap;
+  header?: EditRequestHttpConfigHeaderMap;
   /** The HTTP method to use for the health check. */
-  method?: PreviewsCreateRequestHttpConfigMethod;
+  method?: EditRequestHttpConfigMethod;
   /** The endpoint path to health check against. */
   path?: string;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
-export const PreviewsCreateRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
+export const EditRequestHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
     expectedCodes: S.optional(
-      PreviewsCreateRequestHttpConfigExpectedCodesList.pipe(
-        T.Body("expected_codes"),
-      ),
+      EditRequestHttpConfigExpectedCodesList.pipe(T.Body("expected_codes")),
     ),
     followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(PreviewsCreateRequestHttpConfigHeaderMap),
-    method: S.optional(PreviewsCreateRequestHttpConfigMethod),
+    header: S.optional(EditRequestHttpConfigHeaderMap),
+    method: S.optional(EditRequestHttpConfigMethod),
     path: S.optional(S.String),
     port: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "PreviewsCreateRequestHttpConfig",
-}) as any as S.Schema<PreviewsCreateRequestHttpConfig>;
+  identifier: "EditRequestHttpConfig",
+}) as any as S.Schema<EditRequestHttpConfig>;
 
-export type PreviewsCreateRequestTcpConfigMethod =
+export type EditRequestTcpConfigMethod =
   | "connection_established"
   | (string & {});
-export const PreviewsCreateRequestTcpConfigMethod = /*@__PURE__*/ S.String;
+export const EditRequestTcpConfigMethod = /*@__PURE__*/ S.String;
 
-export interface PreviewsCreateRequestTcpConfig {
+export interface EditRequestTcpConfig {
   /** The TCP connection method to use for the health check. */
-  method?: PreviewsCreateRequestTcpConfigMethod;
+  method?: EditRequestTcpConfigMethod;
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-export const PreviewsCreateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
+export const EditRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    method: S.optional(PreviewsCreateRequestTcpConfigMethod),
+    method: S.optional(EditRequestTcpConfigMethod),
     port: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "PreviewsCreateRequestTcpConfig",
-}) as any as S.Schema<PreviewsCreateRequestTcpConfig>;
+  identifier: "EditRequestTcpConfig",
+}) as any as S.Schema<EditRequestTcpConfig>;
 
-export interface PreviewsCreateRequest {
+export interface PatchHealthcheckRequest {
   /** Identifier */
   zoneId: string;
+  /** Identifier */
+  healthcheckId: string;
   /** The hostname or IP address of the origin server to run health checks on. */
   address: string;
   /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
   name: string;
   /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
-  checkRegions?: PreviewsCreateRequestCheckRegionsList;
+  checkRegions?: EditRequestCheckRegionsList;
   /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
   consecutiveFails?: number;
   /** The number of consecutive successes required from a health check before changing the health to healthy. */
@@ -1053,7 +1325,7 @@ export interface PreviewsCreateRequest {
   /** A human-readable description of the health check. */
   description?: string;
   /** Parameters specific to an HTTP or HTTPS health check. */
-  httpConfig?: PreviewsCreateRequestHttpConfig;
+  httpConfig?: EditRequestHttpConfig;
   /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
   interval?: number;
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
@@ -1061,145 +1333,136 @@ export interface PreviewsCreateRequest {
   /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
   /** Parameters specific to TCP health check. */
-  tcpConfig?: PreviewsCreateRequestTcpConfig;
+  tcpConfig?: EditRequestTcpConfig;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const PreviewsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PatchHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
+    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
     address: S.String,
     name: S.String,
     checkRegions: S.optional(
-      PreviewsCreateRequestCheckRegionsList.pipe(T.Body("check_regions")),
+      EditRequestCheckRegionsList.pipe(T.Body("check_regions")),
     ),
     consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
     consecutiveSuccesses: S.optional(
       S.Number.pipe(T.Body("consecutive_successes")),
     ),
     description: S.optional(S.String),
-    httpConfig: S.optional(
-      PreviewsCreateRequestHttpConfig.pipe(T.Body("http_config")),
-    ),
+    httpConfig: S.optional(EditRequestHttpConfig.pipe(T.Body("http_config"))),
     interval: S.optional(S.Number),
     retries: S.optional(S.Number),
     suspended: S.optional(S.Boolean),
-    tcpConfig: S.optional(
-      PreviewsCreateRequestTcpConfig.pipe(T.Body("tcp_config")),
-    ),
+    tcpConfig: S.optional(EditRequestTcpConfig.pipe(T.Body("tcp_config"))),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/healthchecks/preview",
+      method: "PATCH",
+      uri: "/zones/{zone_id}/healthchecks/{healthcheck_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "PreviewsCreateRequest",
-}) as any as S.Schema<PreviewsCreateRequest>;
+  identifier: "PatchHealthcheckRequest",
+}) as any as S.Schema<PatchHealthcheckRequest>;
 
-export type PreviewsCreateResponseCheckRegionsList = unknown[];
-export const PreviewsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
+export type EditResponseCheckRegionsList = unknown[];
+export const EditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<PreviewsCreateResponseCheckRegionsList>;
+) as any as S.Schema<EditResponseCheckRegionsList>;
 
-export type PreviewsCreateResponseHttpConfigExpectedCodesList = string[];
-export const PreviewsCreateResponseHttpConfigExpectedCodesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PreviewsCreateResponseHttpConfigExpectedCodesList>;
+export type EditResponseHttpConfigExpectedCodesList = string[];
+export const EditResponseHttpConfigExpectedCodesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseHttpConfigExpectedCodesList>;
 
-export type PreviewsCreateResponseHttpConfigHeaderMap = {
+export type EditResponseHttpConfigHeaderMap = {
   [key: string]: unknown | undefined;
 };
-export const PreviewsCreateResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
+export const EditResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
-) as any as S.Schema<PreviewsCreateResponseHttpConfigHeaderMap>;
+) as any as S.Schema<EditResponseHttpConfigHeaderMap>;
 
-export type PreviewsCreateResponseHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
-export const PreviewsCreateResponseHttpConfigMethod = /*@__PURE__*/ S.String;
+export type EditResponseHttpConfigMethod = "GET" | "HEAD" | (string & {});
+export const EditResponseHttpConfigMethod = /*@__PURE__*/ S.String;
 
-export interface PreviewsCreateResponseHttpConfig {
+export interface EditResponseHttpConfig {
   /** Do not validate the certificate when the health check uses HTTPS. */
   allowInsecure?: boolean;
   /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
   expectedBody?: string;
   /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
-  expectedCodes?: PreviewsCreateResponseHttpConfigExpectedCodesList;
+  expectedCodes?: EditResponseHttpConfigExpectedCodesList;
   /** Follow redirects if the origin returns a 3xx status code. */
   followRedirects?: boolean;
   /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
-  header?: PreviewsCreateResponseHttpConfigHeaderMap;
+  header?: EditResponseHttpConfigHeaderMap;
   /** The HTTP method to use for the health check. */
-  method?: PreviewsCreateResponseHttpConfigMethod;
+  method?: EditResponseHttpConfigMethod;
   /** The endpoint path to health check against. */
   path?: string;
   /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
   port?: number;
 }
-export const PreviewsCreateResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
+export const EditResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
     expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
     expectedCodes: S.optional(
-      PreviewsCreateResponseHttpConfigExpectedCodesList.pipe(
-        T.Body("expected_codes"),
-      ),
+      EditResponseHttpConfigExpectedCodesList.pipe(T.Body("expected_codes")),
     ),
     followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(PreviewsCreateResponseHttpConfigHeaderMap),
-    method: S.optional(PreviewsCreateResponseHttpConfigMethod),
+    header: S.optional(EditResponseHttpConfigHeaderMap),
+    method: S.optional(EditResponseHttpConfigMethod),
     path: S.optional(S.String),
     port: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "PreviewsCreateResponseHttpConfig",
-}) as any as S.Schema<PreviewsCreateResponseHttpConfig>;
+  identifier: "EditResponseHttpConfig",
+}) as any as S.Schema<EditResponseHttpConfig>;
 
-export type PreviewsCreateResponseStatus =
+export type EditResponseStatus =
   | "unknown"
   | "healthy"
   | "unhealthy"
   | "suspended"
   | (string & {});
-export const PreviewsCreateResponseStatus = /*@__PURE__*/ S.String;
+export const EditResponseStatus = /*@__PURE__*/ S.String;
 
-export type PreviewsCreateResponseTcpConfigMethod =
+export type EditResponseTcpConfigMethod =
   | "connection_established"
   | (string & {});
-export const PreviewsCreateResponseTcpConfigMethod = /*@__PURE__*/ S.String;
+export const EditResponseTcpConfigMethod = /*@__PURE__*/ S.String;
 
-export interface PreviewsCreateResponseTcpConfig {
+export interface EditResponseTcpConfig {
   /** The TCP connection method to use for the health check. */
-  method?: PreviewsCreateResponseTcpConfigMethod;
+  method?: EditResponseTcpConfigMethod;
   /** Port number to connect to for the health check. Defaults to 80. */
   port?: number;
 }
-export const PreviewsCreateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
+export const EditResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    method: S.optional(PreviewsCreateResponseTcpConfigMethod),
+    method: S.optional(EditResponseTcpConfigMethod),
     port: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "PreviewsCreateResponseTcpConfig",
-}) as any as S.Schema<PreviewsCreateResponseTcpConfig>;
+  identifier: "EditResponseTcpConfig",
+}) as any as S.Schema<EditResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PreviewsCreateResponse {
+export interface PatchHealthcheckResponse {
   /** Identifier */
   id?: string;
   /** The hostname or IP address of the origin server to run health checks on. */
   address?: string;
   /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
-  checkRegions?: PreviewsCreateResponseCheckRegionsList;
+  checkRegions?: EditResponseCheckRegionsList;
   /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
   consecutiveFails?: number;
   /** The number of consecutive successes required from a health check before changing the health to healthy. */
@@ -1210,7 +1473,7 @@ export interface PreviewsCreateResponse {
   /** The current failure reason if status is unhealthy. */
   failureReason?: string;
   /** Parameters specific to an HTTP or HTTPS health check. */
-  httpConfig?: PreviewsCreateResponseHttpConfig;
+  httpConfig?: EditResponseHttpConfig;
   /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
   interval?: number;
   modifiedOn?: string;
@@ -1219,22 +1482,22 @@ export interface PreviewsCreateResponse {
   /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
   retries?: number;
   /** The current status of the origin server according to the health check. */
-  status?: PreviewsCreateResponseStatus;
+  status?: EditResponseStatus;
   /** If suspended, no health checks are sent to the origin. */
   suspended?: boolean;
   /** Parameters specific to TCP health check. */
-  tcpConfig?: PreviewsCreateResponseTcpConfig;
+  tcpConfig?: EditResponseTcpConfig;
   /** The timeout (in seconds) before marking the health check as failed. */
   timeout?: number;
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const PreviewsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PatchHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
     checkRegions: S.optional(
-      PreviewsCreateResponseCheckRegionsList.pipe(T.Body("check_regions")),
+      EditResponseCheckRegionsList.pipe(T.Body("check_regions")),
     ),
     consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
     consecutiveSuccesses: S.optional(
@@ -1243,239 +1506,20 @@ export const PreviewsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
     description: S.optional(S.String),
     failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
-    httpConfig: S.optional(
-      PreviewsCreateResponseHttpConfig.pipe(T.Body("http_config")),
-    ),
+    httpConfig: S.optional(EditResponseHttpConfig.pipe(T.Body("http_config"))),
     interval: S.optional(S.Number),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     name: S.optional(S.String),
     retries: S.optional(S.Number),
-    status: S.optional(PreviewsCreateResponseStatus),
+    status: S.optional(EditResponseStatus),
     suspended: S.optional(S.Boolean),
-    tcpConfig: S.optional(
-      PreviewsCreateResponseTcpConfig.pipe(T.Body("tcp_config")),
-    ),
+    tcpConfig: S.optional(EditResponseTcpConfig.pipe(T.Body("tcp_config"))),
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "PreviewsCreateResponse",
-}) as any as S.Schema<PreviewsCreateResponse>;
-
-export interface PreviewsDeleteRequest {
-  /** Identifier */
-  zoneId: string;
-  /** Identifier */
-  healthcheckId: string;
-}
-export const PreviewsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/healthchecks/preview/{healthcheck_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PreviewsDeleteRequest",
-}) as any as S.Schema<PreviewsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PreviewsDeleteResponse {
-  /** Identifier */
-  id?: string;
-}
-export const PreviewsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PreviewsDeleteResponse",
-}) as any as S.Schema<PreviewsDeleteResponse>;
-
-export interface PreviewsGetRequest {
-  /** Identifier */
-  zoneId: string;
-  /** Identifier */
-  healthcheckId: string;
-}
-export const PreviewsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/healthchecks/preview/{healthcheck_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PreviewsGetRequest",
-}) as any as S.Schema<PreviewsGetRequest>;
-
-export type PreviewsGetResponseCheckRegionsList = unknown[];
-export const PreviewsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PreviewsGetResponseCheckRegionsList>;
-
-export type PreviewsGetResponseHttpConfigExpectedCodesList = string[];
-export const PreviewsGetResponseHttpConfigExpectedCodesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<PreviewsGetResponseHttpConfigExpectedCodesList>;
-
-export type PreviewsGetResponseHttpConfigHeaderMap = {
-  [key: string]: unknown | undefined;
-};
-export const PreviewsGetResponseHttpConfigHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PreviewsGetResponseHttpConfigHeaderMap>;
-
-export type PreviewsGetResponseHttpConfigMethod =
-  | "GET"
-  | "HEAD"
-  | (string & {});
-export const PreviewsGetResponseHttpConfigMethod = /*@__PURE__*/ S.String;
-
-export interface PreviewsGetResponseHttpConfig {
-  /** Do not validate the certificate when the health check uses HTTPS. */
-  allowInsecure?: boolean;
-  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. */
-  expectedBody?: string;
-  /** The expected HTTP response codes (e.g. "200") or code ranges (e.g. "2xx" for all codes starting with 2) of the health check. */
-  expectedCodes?: PreviewsGetResponseHttpConfigExpectedCodesList;
-  /** Follow redirects if the origin returns a 3xx status code. */
-  followRedirects?: boolean;
-  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. */
-  header?: PreviewsGetResponseHttpConfigHeaderMap;
-  /** The HTTP method to use for the health check. */
-  method?: PreviewsGetResponseHttpConfigMethod;
-  /** The endpoint path to health check against. */
-  path?: string;
-  /** Port number to connect to for the health check. Defaults to 80 if type is HTTP or 443 if type is HTTPS. */
-  port?: number;
-}
-export const PreviewsGetResponseHttpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(
-      PreviewsGetResponseHttpConfigExpectedCodesList.pipe(
-        T.Body("expected_codes"),
-      ),
-    ),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(PreviewsGetResponseHttpConfigHeaderMap),
-    method: S.optional(PreviewsGetResponseHttpConfigMethod),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PreviewsGetResponseHttpConfig",
-}) as any as S.Schema<PreviewsGetResponseHttpConfig>;
-
-export type PreviewsGetResponseStatus =
-  | "unknown"
-  | "healthy"
-  | "unhealthy"
-  | "suspended"
-  | (string & {});
-export const PreviewsGetResponseStatus = /*@__PURE__*/ S.String;
-
-export type PreviewsGetResponseTcpConfigMethod =
-  | "connection_established"
-  | (string & {});
-export const PreviewsGetResponseTcpConfigMethod = /*@__PURE__*/ S.String;
-
-export interface PreviewsGetResponseTcpConfig {
-  /** The TCP connection method to use for the health check. */
-  method?: PreviewsGetResponseTcpConfigMethod;
-  /** Port number to connect to for the health check. Defaults to 80. */
-  port?: number;
-}
-export const PreviewsGetResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    method: S.optional(PreviewsGetResponseTcpConfigMethod),
-    port: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PreviewsGetResponseTcpConfig",
-}) as any as S.Schema<PreviewsGetResponseTcpConfig>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PreviewsGetResponse {
-  /** Identifier */
-  id?: string;
-  /** The hostname or IP address of the origin server to run health checks on. */
-  address?: string;
-  /** A list of regions from which to run health checks. Null means Cloudflare will pick a default region. */
-  checkRegions?: PreviewsGetResponseCheckRegionsList;
-  /** The number of consecutive fails required from a health check before changing the health to unhealthy. */
-  consecutiveFails?: number;
-  /** The number of consecutive successes required from a health check before changing the health to healthy. */
-  consecutiveSuccesses?: number;
-  createdOn?: string;
-  /** A human-readable description of the health check. */
-  description?: string;
-  /** The current failure reason if status is unhealthy. */
-  failureReason?: string;
-  /** Parameters specific to an HTTP or HTTPS health check. */
-  httpConfig?: PreviewsGetResponseHttpConfig;
-  /** The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations. */
-  interval?: number;
-  modifiedOn?: string;
-  /** A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** The current status of the origin server according to the health check. */
-  status?: PreviewsGetResponseStatus;
-  /** If suspended, no health checks are sent to the origin. */
-  suspended?: boolean;
-  /** Parameters specific to TCP health check. */
-  tcpConfig?: PreviewsGetResponseTcpConfig;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
-  type?: string;
-}
-export const PreviewsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    address: S.optional(S.String),
-    checkRegions: S.optional(
-      PreviewsGetResponseCheckRegionsList.pipe(T.Body("check_regions")),
-    ),
-    consecutiveFails: S.optional(S.Number.pipe(T.Body("consecutive_fails"))),
-    consecutiveSuccesses: S.optional(
-      S.Number.pipe(T.Body("consecutive_successes")),
-    ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
-    httpConfig: S.optional(
-      PreviewsGetResponseHttpConfig.pipe(T.Body("http_config")),
-    ),
-    interval: S.optional(S.Number),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    retries: S.optional(S.Number),
-    status: S.optional(PreviewsGetResponseStatus),
-    suspended: S.optional(S.Boolean),
-    tcpConfig: S.optional(
-      PreviewsGetResponseTcpConfig.pipe(T.Body("tcp_config")),
-    ),
-    timeout: S.optional(S.Number),
-    type: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PreviewsGetResponse",
-}) as any as S.Schema<PreviewsGetResponse>;
+  identifier: "PatchHealthcheckResponse",
+}) as any as S.Schema<PatchHealthcheckResponse>;
 
 export type UpdateRequestCheckRegionsList = unknown[];
 export const UpdateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
@@ -1553,7 +1597,7 @@ export const UpdateRequestTcpConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestTcpConfig",
 }) as any as S.Schema<UpdateRequestTcpConfig>;
 
-export interface UpdateRequest {
+export interface UpdateHealthcheckRequest {
   /** Identifier */
   zoneId: string;
   /** Identifier */
@@ -1585,7 +1629,7 @@ export interface UpdateRequest {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     healthcheckId: S.String.pipe(T.Label("healthcheck_id")),
@@ -1613,7 +1657,9 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "UpdateHealthcheckRequest",
+}) as any as S.Schema<UpdateHealthcheckRequest>;
 
 export type UpdateResponseCheckRegionsList = unknown[];
 export const UpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
@@ -1700,7 +1746,7 @@ export const UpdateResponseTcpConfig = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<UpdateResponseTcpConfig>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface UpdateHealthcheckResponse {
   /** Identifier */
   id?: string;
   /** The hostname or IP address of the origin server to run health checks on. */
@@ -1736,7 +1782,7 @@ export interface UpdateResponse {
   /** The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'. */
   type?: string;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     address: S.optional(S.String),
@@ -1763,130 +1809,164 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
     timeout: S.optional(S.Number),
     type: S.optional(S.String),
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "UpdateHealthcheckResponse",
+}) as any as S.Schema<UpdateHealthcheckResponse>;
 
-export type CreateError = CloudflareOpError;
+export type CreateHealthcheckError =
+  | HealthcheckAlreadyExists
+  | Forbidden
+  | CloudflareOpError;
 /** Create a new health check. */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createHealthcheck: API.OperationMethod<
+  CreateHealthcheckRequest,
+  CreateHealthcheckResponse,
+  CreateHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateHealthcheckRequest,
+  output: CreateHealthcheckResponse,
+  errors: [
+    HealthcheckAlreadyExists,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type DeleteError = CloudflareOpError;
-/** Delete a health check. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type EditError = CloudflareOpError;
-/** Patch a configured health check. */
-export const edit: API.OperationMethod<
-  EditRequest,
-  EditResponse,
-  EditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EditRequest,
-  output: EditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GetError = CloudflareOpError;
-/** Fetch a single configured health check. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ListError = CloudflareOpError;
-/** List configured health checks. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PreviewsCreateError = CloudflareOpError;
+export type CreatePreviewError = CloudflareOpError;
 /** Create a new preview health check. */
-export const previewsCreate: API.OperationMethod<
-  PreviewsCreateRequest,
-  PreviewsCreateResponse,
-  PreviewsCreateError,
+export const createPreview: API.OperationMethod<
+  CreatePreviewRequest,
+  CreatePreviewResponse,
+  CreatePreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PreviewsCreateRequest,
-  output: PreviewsCreateResponse,
+  input: CreatePreviewRequest,
+  output: CreatePreviewResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type PreviewsDeleteError = CloudflareOpError;
+export type DeleteHealthcheckError =
+  | HealthcheckNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Delete a health check. */
-export const previewsDelete: API.OperationMethod<
-  PreviewsDeleteRequest,
-  PreviewsDeleteResponse,
-  PreviewsDeleteError,
+export const deleteHealthcheck: API.OperationMethod<
+  DeleteHealthcheckRequest,
+  DeleteHealthcheckResponse,
+  DeleteHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PreviewsDeleteRequest,
-  output: PreviewsDeleteResponse,
+  input: DeleteHealthcheckRequest,
+  output: DeleteHealthcheckResponse,
+  errors: [
+    HealthcheckNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeletePreviewError = CloudflareOpError;
+/** Delete a health check. */
+export const deletePreview: API.OperationMethod<
+  DeletePreviewRequest,
+  DeletePreviewResponse,
+  DeletePreviewError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePreviewRequest,
+  output: DeletePreviewResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type PreviewsGetError = CloudflareOpError;
+export type GetHealthcheckError =
+  | HealthcheckNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Fetch a single configured health check. */
+export const getHealthcheck: API.OperationMethod<
+  GetHealthcheckRequest,
+  GetHealthcheckResponse,
+  GetHealthcheckError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetHealthcheckRequest,
+  output: GetHealthcheckResponse,
+  errors: [
+    HealthcheckNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetPreviewError = CloudflareOpError;
 /** Fetch a single configured health check preview. */
-export const previewsGet: API.OperationMethod<
-  PreviewsGetRequest,
-  PreviewsGetResponse,
-  PreviewsGetError,
+export const getPreview: API.OperationMethod<
+  GetPreviewRequest,
+  GetPreviewResponse,
+  GetPreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PreviewsGetRequest,
-  output: PreviewsGetResponse,
+  input: GetPreviewRequest,
+  output: GetPreviewResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
-/** Update a configured health check. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export type ListHealthchecksError = Forbidden | CloudflareOpError;
+/** List configured health checks. */
+export const listHealthchecks: API.OperationMethod<
+  ListHealthchecksRequest,
+  ListHealthchecksResponse,
+  ListHealthchecksError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
+  input: ListHealthchecksRequest,
+  output: ListHealthchecksResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchHealthcheckError = CloudflareOpError;
+/** Patch a configured health check. */
+export const patchHealthcheck: API.OperationMethod<
+  PatchHealthcheckRequest,
+  PatchHealthcheckResponse,
+  PatchHealthcheckError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchHealthcheckRequest,
+  output: PatchHealthcheckResponse,
   errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateHealthcheckError =
+  | HealthcheckNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Update a configured health check. */
+export const updateHealthcheck: API.OperationMethod<
+  UpdateHealthcheckRequest,
+  UpdateHealthcheckResponse,
+  UpdateHealthcheckError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateHealthcheckRequest,
+  output: UpdateHealthcheckResponse,
+  errors: [
+    HealthcheckNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

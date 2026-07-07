@@ -1,0 +1,93 @@
+{
+  "description": "Align vectorize#IndexesMetadataIndexList with distilled cloudflare/vectorize listIndexMetadataIndexes",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.vectorize#IndexesMetadataIndexList",
+      "path": "/shapes/com.cloudflare.vectorize#ListIndexMetadataIndexes"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.vectorize#IndexesMetadataIndexListRequest",
+      "path": "/shapes/com.cloudflare.vectorize#ListIndexMetadataIndexesRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.vectorize#ListIndexMetadataIndexes/input/target",
+      "value": "com.cloudflare.vectorize#ListIndexMetadataIndexesRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.vectorize#IndexesMetadataIndexListResponse",
+      "path": "/shapes/com.cloudflare.vectorize#ListIndexMetadataIndexesResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.vectorize#ListIndexMetadataIndexes/output/target",
+      "value": "com.cloudflare.vectorize#ListIndexMetadataIndexesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.vectorize#NotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 3000
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.vectorize#Gone",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 3005
+            },
+            {
+              "message": {
+                "includes": "index deleted"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.vectorize#ListIndexMetadataIndexes/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.vectorize#NotFound"
+        },
+        {
+          "target": "com.cloudflare.vectorize#Gone"
+        }
+      ]
+    }
+  ]
+}

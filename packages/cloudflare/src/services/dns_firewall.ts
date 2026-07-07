@@ -9,6 +9,372 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class DnsFirewallNotEntitled extends T.applyErrorMatchers(
+  S.TaggedErrorClass<DnsFirewallNotEntitled>()("DnsFirewallNotEntitled", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10101 }],
+) {}
+
+export class DnsFirewallNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<DnsFirewallNotFound>()("DnsFirewallNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 11001 }],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export type CreateRequestUpstreamIpsList = unknown[];
+export const CreateRequestUpstreamIpsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<CreateRequestUpstreamIpsList>;
+
+export interface CreateRequestAttackMitigation {
+  /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
+  enabled?: boolean;
+  /** Only mitigate attacks when upstream servers seem unhealthy */
+  onlyWhenUpstreamUnhealthy?: boolean;
+}
+export const CreateRequestAttackMitigation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    onlyWhenUpstreamUnhealthy: S.optional(
+      S.Boolean.pipe(T.Body("only_when_upstream_unhealthy")),
+    ),
+  }),
+).annotate({
+  identifier: "CreateRequestAttackMitigation",
+}) as any as S.Schema<CreateRequestAttackMitigation>;
+
+export interface CreateDnsFirewallRequest {
+  /** Identifier. */
+  accountId: string;
+  /** DNS Firewall cluster name */
+  name: string;
+  upstreamIps: CreateRequestUpstreamIpsList;
+  /** Attack mitigation settings */
+  attackMitigation?: CreateRequestAttackMitigation;
+  /** Whether to refuse to answer queries for the ANY type */
+  deprecateAnyRequests?: boolean;
+  /** Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later. */
+  dnsFirewallIpCount?: number;
+  /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
+  ecsFallback?: boolean;
+  /** By default, Cloudflare attempts to cache responses for as long as */
+  maximumCacheTtl?: number;
+  /** By default, Cloudflare attempts to cache responses for as long as */
+  minimumCacheTtl?: number;
+  /** This setting controls how long DNS Firewall should cache negative */
+  negativeCacheTtl?: number;
+  /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
+  ratelimit?: number;
+  /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
+  retries?: number;
+}
+export const CreateDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.String,
+    upstreamIps: CreateRequestUpstreamIpsList.pipe(T.Body("upstream_ips")),
+    attackMitigation: S.optional(
+      CreateRequestAttackMitigation.pipe(T.Body("attack_mitigation")),
+    ),
+    deprecateAnyRequests: S.optional(
+      S.Boolean.pipe(T.Body("deprecate_any_requests")),
+    ),
+    dnsFirewallIpCount: S.optional(
+      S.Number.pipe(T.Body("dns_firewall_ip_count")),
+    ),
+    ecsFallback: S.optional(S.Boolean.pipe(T.Body("ecs_fallback"))),
+    maximumCacheTtl: S.optional(S.Number.pipe(T.Body("maximum_cache_ttl"))),
+    minimumCacheTtl: S.optional(S.Number.pipe(T.Body("minimum_cache_ttl"))),
+    negativeCacheTtl: S.optional(S.Number.pipe(T.Body("negative_cache_ttl"))),
+    ratelimit: S.optional(S.Number),
+    retries: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/dns_firewall",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateDnsFirewallRequest",
+}) as any as S.Schema<CreateDnsFirewallRequest>;
+
+export type CreateResponseDnsFirewallIpsList = unknown[];
+export const CreateResponseDnsFirewallIpsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<CreateResponseDnsFirewallIpsList>;
+
+export type CreateResponseUpstreamIpsList = unknown[];
+export const CreateResponseUpstreamIpsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<CreateResponseUpstreamIpsList>;
+
+export interface CreateResponseAttackMitigation {
+  /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
+  enabled?: boolean;
+  /** Only mitigate attacks when upstream servers seem unhealthy */
+  onlyWhenUpstreamUnhealthy?: boolean;
+}
+export const CreateResponseAttackMitigation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    onlyWhenUpstreamUnhealthy: S.optional(
+      S.Boolean.pipe(T.Body("only_when_upstream_unhealthy")),
+    ),
+  }),
+).annotate({
+  identifier: "CreateResponseAttackMitigation",
+}) as any as S.Schema<CreateResponseAttackMitigation>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateDnsFirewallResponse {
+  /** Identifier. */
+  id: string;
+  /** Whether to refuse to answer queries for the ANY type */
+  deprecateAnyRequests: boolean;
+  dnsFirewallIps: CreateResponseDnsFirewallIpsList;
+  /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
+  ecsFallback: boolean;
+  /** By default, Cloudflare attempts to cache responses for as long as */
+  maximumCacheTtl: number;
+  /** By default, Cloudflare attempts to cache responses for as long as */
+  minimumCacheTtl: number;
+  /** Last modification of DNS Firewall cluster */
+  modifiedOn: string;
+  /** DNS Firewall cluster name */
+  name: string;
+  /** This setting controls how long DNS Firewall should cache negative */
+  negativeCacheTtl: number;
+  /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
+  ratelimit: number;
+  /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
+  retries: number;
+  upstreamIps: CreateResponseUpstreamIpsList;
+  /** Attack mitigation settings */
+  attackMitigation?: CreateResponseAttackMitigation;
+}
+export const CreateDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
+    dnsFirewallIps: CreateResponseDnsFirewallIpsList.pipe(
+      T.Body("dns_firewall_ips"),
+    ),
+    ecsFallback: S.Boolean.pipe(T.Body("ecs_fallback")),
+    maximumCacheTtl: S.Number.pipe(T.Body("maximum_cache_ttl")),
+    minimumCacheTtl: S.Number.pipe(T.Body("minimum_cache_ttl")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    negativeCacheTtl: S.Number.pipe(T.Body("negative_cache_ttl")),
+    ratelimit: S.Number,
+    retries: S.Number,
+    upstreamIps: CreateResponseUpstreamIpsList.pipe(T.Body("upstream_ips")),
+    attackMitigation: S.optional(
+      CreateResponseAttackMitigation.pipe(T.Body("attack_mitigation")),
+    ),
+  }),
+).annotate({
+  identifier: "CreateDnsFirewallResponse",
+}) as any as S.Schema<CreateDnsFirewallResponse>;
+
+export interface DeleteDnsFirewallRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  dnsFirewallId: string;
+}
+export const DeleteDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDnsFirewallRequest",
+}) as any as S.Schema<DeleteDnsFirewallRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteDnsFirewallResponse {
+  /** Identifier. */
+  id?: string;
+}
+export const DeleteDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteDnsFirewallResponse",
+}) as any as S.Schema<DeleteDnsFirewallResponse>;
+
+export interface GetAnalyticReportRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  dnsFirewallId: string;
+  /** A comma-separated list of dimensions to group results by. */
+  dimensions?: string;
+  /** Segmentation filter in 'attribute operator value' format. */
+  filters?: string;
+  /** Limit number of returned metrics. */
+  limit?: number;
+  /** A comma-separated list of metrics to query. */
+  metrics?: string;
+  /** Start date and time of requesting data period in ISO 8601 format. */
+  since?: string;
+  /** A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
+  sort?: string;
+  /** End date and time of requesting data period in ISO 8601 format. */
+  until?: string;
+}
+export const GetAnalyticReportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
+    dimensions: S.optional(S.String.pipe(T.Query())),
+    filters: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    metrics: S.optional(S.String.pipe(T.Query())),
+    since: S.optional(S.String.pipe(T.Query())),
+    sort: S.optional(S.String.pipe(T.Query())),
+    until: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/dns_analytics/report",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetAnalyticReportRequest",
+}) as any as S.Schema<GetAnalyticReportRequest>;
+
+export type AnalyticsReportsGetResponseDataItemDimensionsList = string[];
+export const AnalyticsReportsGetResponseDataItemDimensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsGetResponseDataItemDimensionsList>;
+
+export type AnalyticsReportsGetResponseDataItemMetricsList = number[];
+export const AnalyticsReportsGetResponseDataItemMetricsList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<AnalyticsReportsGetResponseDataItemMetricsList>;
+
+export interface AnalyticsReportsGetResponseDataItem {
+  /** Array of dimension values, representing the combination of dimension values corresponding to this row. */
+  dimensions: AnalyticsReportsGetResponseDataItemDimensionsList;
+  /** Array with one item per requested metric. Each item is a single value. */
+  metrics: AnalyticsReportsGetResponseDataItemMetricsList;
+}
+export const AnalyticsReportsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dimensions: AnalyticsReportsGetResponseDataItemDimensionsList,
+    metrics: AnalyticsReportsGetResponseDataItemMetricsList,
+  }),
+).annotate({
+  identifier: "AnalyticsReportsGetResponseDataItem",
+}) as any as S.Schema<AnalyticsReportsGetResponseDataItem>;
+
+export type AnalyticsReportsGetResponseDataList =
+  AnalyticsReportsGetResponseDataItem[];
+export const AnalyticsReportsGetResponseDataList = /*@__PURE__*/ S.Array(
+  AnalyticsReportsGetResponseDataItem,
+) as any as S.Schema<AnalyticsReportsGetResponseDataList>;
+
+export type AnalyticsReportsGetResponseQueryDimensionsList = string[];
+export const AnalyticsReportsGetResponseQueryDimensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsGetResponseQueryDimensionsList>;
+
+export type AnalyticsReportsGetResponseQueryMetricsList = string[];
+export const AnalyticsReportsGetResponseQueryMetricsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsGetResponseQueryMetricsList>;
+
+export type AnalyticsReportsGetResponseQuerySortList = string[];
+export const AnalyticsReportsGetResponseQuerySortList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AnalyticsReportsGetResponseQuerySortList>;
+
+export interface AnalyticsReportsGetResponseQuery {
+  /** Array of dimension names. */
+  dimensions: AnalyticsReportsGetResponseQueryDimensionsList;
+  /** Limit number of returned metrics. */
+  limit: number;
+  /** Array of metric names. */
+  metrics: AnalyticsReportsGetResponseQueryMetricsList;
+  /** Start date and time of requesting data period in ISO 8601 format. */
+  since: string;
+  /** End date and time of requesting data period in ISO 8601 format. */
+  until: string;
+  /** Segmentation filter in 'attribute operator value' format. */
+  filters?: string;
+  /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
+  sort?: AnalyticsReportsGetResponseQuerySortList;
+}
+export const AnalyticsReportsGetResponseQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dimensions: AnalyticsReportsGetResponseQueryDimensionsList,
+    limit: S.Number,
+    metrics: AnalyticsReportsGetResponseQueryMetricsList,
+    since: S.String,
+    until: S.String,
+    filters: S.optional(S.String),
+    sort: S.optional(AnalyticsReportsGetResponseQuerySortList),
+  }),
+).annotate({
+  identifier: "AnalyticsReportsGetResponseQuery",
+}) as any as S.Schema<AnalyticsReportsGetResponseQuery>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetAnalyticReportResponse {
+  /** Array with one row per combination of dimension values. */
+  data: AnalyticsReportsGetResponseDataList;
+  /** Number of seconds between current time and last processed event, in another words how many seconds of data could be missing. */
+  dataLag: number;
+  /** Maximum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  max: unknown;
+  /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  min: unknown;
+  query: AnalyticsReportsGetResponseQuery;
+  /** Total number of rows in the result. */
+  rows: number;
+  /** Total results for metrics across all data (object mapping metric names to values). */
+  totals: unknown;
+}
+export const GetAnalyticReportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: AnalyticsReportsGetResponseDataList,
+    dataLag: S.Number.pipe(T.Body("data_lag")),
+    max: S.Unknown,
+    min: S.Unknown,
+    query: AnalyticsReportsGetResponseQuery,
+    rows: S.Number,
+    totals: S.Unknown,
+  }),
+).annotate({
+  identifier: "GetAnalyticReportResponse",
+}) as any as S.Schema<GetAnalyticReportResponse>;
+
 export type AnalyticsReportsBytimesGetRequestTimeDelta =
   | "all"
   | "auto"
@@ -17,7 +383,7 @@ export type AnalyticsReportsBytimesGetRequestTimeDelta =
 export const AnalyticsReportsBytimesGetRequestTimeDelta =
   /*@__PURE__*/ S.String;
 
-export interface AnalyticsReportsBytimesGetRequest {
+export interface GetAnalyticReportBytimeRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier. */
@@ -39,7 +405,7 @@ export interface AnalyticsReportsBytimesGetRequest {
   /** End date and time of requesting data period in ISO 8601 format. */
   until?: string;
 }
-export const AnalyticsReportsBytimesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAnalyticReportBytimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
@@ -61,8 +427,8 @@ export const AnalyticsReportsBytimesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AnalyticsReportsBytimesGetRequest",
-}) as any as S.Schema<AnalyticsReportsBytimesGetRequest>;
+  identifier: "GetAnalyticReportBytimeRequest",
+}) as any as S.Schema<GetAnalyticReportBytimeRequest>;
 
 export type AnalyticsReportsBytimesGetResponseDataItemDimensionsList = string[];
 export const AnalyticsReportsBytimesGetResponseDataItemDimensionsList =
@@ -167,7 +533,7 @@ export const AnalyticsReportsBytimesGetResponseTimeIntervalsList =
   ) as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AnalyticsReportsBytimesGetResponse {
+export interface GetAnalyticReportBytimeResponse {
   /** Array with one row per combination of dimension values. */
   data: AnalyticsReportsBytimesGetResponseDataList;
   /** Number of seconds between current time and last processed event, in another words how many seconds of data could be missing. */
@@ -184,7 +550,7 @@ export interface AnalyticsReportsBytimesGetResponse {
   /** Total results for metrics across all data (object mapping metric names to values). */
   totals: unknown;
 }
-export const AnalyticsReportsBytimesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetAnalyticReportBytimeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AnalyticsReportsBytimesGetResponseDataList,
     dataLag: S.Number.pipe(T.Body("data_lag")),
@@ -198,502 +564,16 @@ export const AnalyticsReportsBytimesGetResponse = /*@__PURE__*/ S.suspend(() =>
     totals: S.Unknown,
   }),
 ).annotate({
-  identifier: "AnalyticsReportsBytimesGetResponse",
-}) as any as S.Schema<AnalyticsReportsBytimesGetResponse>;
+  identifier: "GetAnalyticReportBytimeResponse",
+}) as any as S.Schema<GetAnalyticReportBytimeResponse>;
 
-export interface AnalyticsReportsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Identifier. */
-  dnsFirewallId: string;
-  /** A comma-separated list of dimensions to group results by. */
-  dimensions?: string;
-  /** Segmentation filter in 'attribute operator value' format. */
-  filters?: string;
-  /** Limit number of returned metrics. */
-  limit?: number;
-  /** A comma-separated list of metrics to query. */
-  metrics?: string;
-  /** Start date and time of requesting data period in ISO 8601 format. */
-  since?: string;
-  /** A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
-  sort?: string;
-  /** End date and time of requesting data period in ISO 8601 format. */
-  until?: string;
-}
-export const AnalyticsReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
-    dimensions: S.optional(S.String.pipe(T.Query())),
-    filters: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    metrics: S.optional(S.String.pipe(T.Query())),
-    since: S.optional(S.String.pipe(T.Query())),
-    sort: S.optional(S.String.pipe(T.Query())),
-    until: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/dns_analytics/report",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AnalyticsReportsGetRequest",
-}) as any as S.Schema<AnalyticsReportsGetRequest>;
-
-export type AnalyticsReportsGetResponseDataItemDimensionsList = string[];
-export const AnalyticsReportsGetResponseDataItemDimensionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsReportsGetResponseDataItemDimensionsList>;
-
-export type AnalyticsReportsGetResponseDataItemMetricsList = number[];
-export const AnalyticsReportsGetResponseDataItemMetricsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<AnalyticsReportsGetResponseDataItemMetricsList>;
-
-export interface AnalyticsReportsGetResponseDataItem {
-  /** Array of dimension values, representing the combination of dimension values corresponding to this row. */
-  dimensions: AnalyticsReportsGetResponseDataItemDimensionsList;
-  /** Array with one item per requested metric. Each item is a single value. */
-  metrics: AnalyticsReportsGetResponseDataItemMetricsList;
-}
-export const AnalyticsReportsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: AnalyticsReportsGetResponseDataItemDimensionsList,
-    metrics: AnalyticsReportsGetResponseDataItemMetricsList,
-  }),
-).annotate({
-  identifier: "AnalyticsReportsGetResponseDataItem",
-}) as any as S.Schema<AnalyticsReportsGetResponseDataItem>;
-
-export type AnalyticsReportsGetResponseDataList =
-  AnalyticsReportsGetResponseDataItem[];
-export const AnalyticsReportsGetResponseDataList = /*@__PURE__*/ S.Array(
-  AnalyticsReportsGetResponseDataItem,
-) as any as S.Schema<AnalyticsReportsGetResponseDataList>;
-
-export type AnalyticsReportsGetResponseQueryDimensionsList = string[];
-export const AnalyticsReportsGetResponseQueryDimensionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsReportsGetResponseQueryDimensionsList>;
-
-export type AnalyticsReportsGetResponseQueryMetricsList = string[];
-export const AnalyticsReportsGetResponseQueryMetricsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsReportsGetResponseQueryMetricsList>;
-
-export type AnalyticsReportsGetResponseQuerySortList = string[];
-export const AnalyticsReportsGetResponseQuerySortList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsReportsGetResponseQuerySortList>;
-
-export interface AnalyticsReportsGetResponseQuery {
-  /** Array of dimension names. */
-  dimensions: AnalyticsReportsGetResponseQueryDimensionsList;
-  /** Limit number of returned metrics. */
-  limit: number;
-  /** Array of metric names. */
-  metrics: AnalyticsReportsGetResponseQueryMetricsList;
-  /** Start date and time of requesting data period in ISO 8601 format. */
-  since: string;
-  /** End date and time of requesting data period in ISO 8601 format. */
-  until: string;
-  /** Segmentation filter in 'attribute operator value' format. */
-  filters?: string;
-  /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
-  sort?: AnalyticsReportsGetResponseQuerySortList;
-}
-export const AnalyticsReportsGetResponseQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: AnalyticsReportsGetResponseQueryDimensionsList,
-    limit: S.Number,
-    metrics: AnalyticsReportsGetResponseQueryMetricsList,
-    since: S.String,
-    until: S.String,
-    filters: S.optional(S.String),
-    sort: S.optional(AnalyticsReportsGetResponseQuerySortList),
-  }),
-).annotate({
-  identifier: "AnalyticsReportsGetResponseQuery",
-}) as any as S.Schema<AnalyticsReportsGetResponseQuery>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AnalyticsReportsGetResponse {
-  /** Array with one row per combination of dimension values. */
-  data: AnalyticsReportsGetResponseDataList;
-  /** Number of seconds between current time and last processed event, in another words how many seconds of data could be missing. */
-  dataLag: number;
-  /** Maximum results for each metric (object mapping metric names to values). Currently always an empty object. */
-  max: unknown;
-  /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
-  min: unknown;
-  query: AnalyticsReportsGetResponseQuery;
-  /** Total number of rows in the result. */
-  rows: number;
-  /** Total results for metrics across all data (object mapping metric names to values). */
-  totals: unknown;
-}
-export const AnalyticsReportsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: AnalyticsReportsGetResponseDataList,
-    dataLag: S.Number.pipe(T.Body("data_lag")),
-    max: S.Unknown,
-    min: S.Unknown,
-    query: AnalyticsReportsGetResponseQuery,
-    rows: S.Number,
-    totals: S.Unknown,
-  }),
-).annotate({
-  identifier: "AnalyticsReportsGetResponse",
-}) as any as S.Schema<AnalyticsReportsGetResponse>;
-
-export type CreateRequestUpstreamIpsList = unknown[];
-export const CreateRequestUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateRequestUpstreamIpsList>;
-
-export interface CreateRequestAttackMitigation {
-  /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
-  enabled?: boolean;
-  /** Only mitigate attacks when upstream servers seem unhealthy */
-  onlyWhenUpstreamUnhealthy?: boolean;
-}
-export const CreateRequestAttackMitigation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    onlyWhenUpstreamUnhealthy: S.optional(
-      S.Boolean.pipe(T.Body("only_when_upstream_unhealthy")),
-    ),
-  }),
-).annotate({
-  identifier: "CreateRequestAttackMitigation",
-}) as any as S.Schema<CreateRequestAttackMitigation>;
-
-export interface CreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** DNS Firewall cluster name */
-  name: string;
-  upstreamIps: CreateRequestUpstreamIpsList;
-  /** Attack mitigation settings */
-  attackMitigation?: CreateRequestAttackMitigation;
-  /** Whether to refuse to answer queries for the ANY type */
-  deprecateAnyRequests?: boolean;
-  /** Number of IPv4 addresses to assign to the DNS Firewall cluster. Only used during cluster creation and cannot be changed later. */
-  dnsFirewallIpCount?: number;
-  /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
-  ecsFallback?: boolean;
-  /** By default, Cloudflare attempts to cache responses for as long as */
-  maximumCacheTtl?: number;
-  /** By default, Cloudflare attempts to cache responses for as long as */
-  minimumCacheTtl?: number;
-  /** This setting controls how long DNS Firewall should cache negative */
-  negativeCacheTtl?: number;
-  /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
-  ratelimit?: number;
-  /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
-  retries?: number;
-}
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    name: S.String,
-    upstreamIps: CreateRequestUpstreamIpsList.pipe(T.Body("upstream_ips")),
-    attackMitigation: S.optional(
-      CreateRequestAttackMitigation.pipe(T.Body("attack_mitigation")),
-    ),
-    deprecateAnyRequests: S.optional(
-      S.Boolean.pipe(T.Body("deprecate_any_requests")),
-    ),
-    dnsFirewallIpCount: S.optional(
-      S.Number.pipe(T.Body("dns_firewall_ip_count")),
-    ),
-    ecsFallback: S.optional(S.Boolean.pipe(T.Body("ecs_fallback"))),
-    maximumCacheTtl: S.optional(S.Number.pipe(T.Body("maximum_cache_ttl"))),
-    minimumCacheTtl: S.optional(S.Number.pipe(T.Body("minimum_cache_ttl"))),
-    negativeCacheTtl: S.optional(S.Number.pipe(T.Body("negative_cache_ttl"))),
-    ratelimit: S.optional(S.Number),
-    retries: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dns_firewall",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
-
-export type CreateResponseDnsFirewallIpsList = unknown[];
-export const CreateResponseDnsFirewallIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateResponseDnsFirewallIpsList>;
-
-export type CreateResponseUpstreamIpsList = unknown[];
-export const CreateResponseUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<CreateResponseUpstreamIpsList>;
-
-export interface CreateResponseAttackMitigation {
-  /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
-  enabled?: boolean;
-  /** Only mitigate attacks when upstream servers seem unhealthy */
-  onlyWhenUpstreamUnhealthy?: boolean;
-}
-export const CreateResponseAttackMitigation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    onlyWhenUpstreamUnhealthy: S.optional(
-      S.Boolean.pipe(T.Body("only_when_upstream_unhealthy")),
-    ),
-  }),
-).annotate({
-  identifier: "CreateResponseAttackMitigation",
-}) as any as S.Schema<CreateResponseAttackMitigation>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
-  /** Identifier. */
-  id: string;
-  /** Whether to refuse to answer queries for the ANY type */
-  deprecateAnyRequests: boolean;
-  dnsFirewallIps: CreateResponseDnsFirewallIpsList;
-  /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
-  ecsFallback: boolean;
-  /** By default, Cloudflare attempts to cache responses for as long as */
-  maximumCacheTtl: number;
-  /** By default, Cloudflare attempts to cache responses for as long as */
-  minimumCacheTtl: number;
-  /** Last modification of DNS Firewall cluster */
-  modifiedOn: string;
-  /** DNS Firewall cluster name */
-  name: string;
-  /** This setting controls how long DNS Firewall should cache negative */
-  negativeCacheTtl: number;
-  /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
-  ratelimit: number;
-  /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
-  retries: number;
-  upstreamIps: CreateResponseUpstreamIpsList;
-  /** Attack mitigation settings */
-  attackMitigation?: CreateResponseAttackMitigation;
-}
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
-    dnsFirewallIps: CreateResponseDnsFirewallIpsList.pipe(
-      T.Body("dns_firewall_ips"),
-    ),
-    ecsFallback: S.Boolean.pipe(T.Body("ecs_fallback")),
-    maximumCacheTtl: S.Number.pipe(T.Body("maximum_cache_ttl")),
-    minimumCacheTtl: S.Number.pipe(T.Body("minimum_cache_ttl")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    negativeCacheTtl: S.Number.pipe(T.Body("negative_cache_ttl")),
-    ratelimit: S.Number,
-    retries: S.Number,
-    upstreamIps: CreateResponseUpstreamIpsList.pipe(T.Body("upstream_ips")),
-    attackMitigation: S.optional(
-      CreateResponseAttackMitigation.pipe(T.Body("attack_mitigation")),
-    ),
-  }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
-
-export interface DeleteRequest {
+export interface GetDnsFirewallRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier. */
   dnsFirewallId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
-  /** Identifier. */
-  id?: string;
-}
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
-
-export interface EditRequestAttackMitigation {
-  /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
-  enabled?: boolean;
-  /** Only mitigate attacks when upstream servers seem unhealthy */
-  onlyWhenUpstreamUnhealthy?: boolean;
-}
-export const EditRequestAttackMitigation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    onlyWhenUpstreamUnhealthy: S.optional(
-      S.Boolean.pipe(T.Body("only_when_upstream_unhealthy")),
-    ),
-  }),
-).annotate({
-  identifier: "EditRequestAttackMitigation",
-}) as any as S.Schema<EditRequestAttackMitigation>;
-
-export type EditRequestUpstreamIpsList = unknown[];
-export const EditRequestUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<EditRequestUpstreamIpsList>;
-
-export interface EditRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Identifier. */
-  dnsFirewallId: string;
-  /** Attack mitigation settings */
-  attackMitigation?: EditRequestAttackMitigation;
-  /** Whether to refuse to answer queries for the ANY type */
-  deprecateAnyRequests?: boolean;
-  /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
-  ecsFallback?: boolean;
-  /** By default, Cloudflare attempts to cache responses for as long as */
-  maximumCacheTtl?: number;
-  /** By default, Cloudflare attempts to cache responses for as long as */
-  minimumCacheTtl?: number;
-  /** DNS Firewall cluster name */
-  name?: string;
-  /** This setting controls how long DNS Firewall should cache negative */
-  negativeCacheTtl?: number;
-  /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
-  ratelimit?: number;
-  /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
-  retries?: number;
-  upstreamIps?: EditRequestUpstreamIpsList;
-}
-export const EditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
-    attackMitigation: S.optional(
-      EditRequestAttackMitigation.pipe(T.Body("attack_mitigation")),
-    ),
-    deprecateAnyRequests: S.optional(
-      S.Boolean.pipe(T.Body("deprecate_any_requests")),
-    ),
-    ecsFallback: S.optional(S.Boolean.pipe(T.Body("ecs_fallback"))),
-    maximumCacheTtl: S.optional(S.Number.pipe(T.Body("maximum_cache_ttl"))),
-    minimumCacheTtl: S.optional(S.Number.pipe(T.Body("minimum_cache_ttl"))),
-    name: S.optional(S.String),
-    negativeCacheTtl: S.optional(S.Number.pipe(T.Body("negative_cache_ttl"))),
-    ratelimit: S.optional(S.Number),
-    retries: S.optional(S.Number),
-    upstreamIps: S.optional(
-      EditRequestUpstreamIpsList.pipe(T.Body("upstream_ips")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
-
-export type EditResponseDnsFirewallIpsList = unknown[];
-export const EditResponseDnsFirewallIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<EditResponseDnsFirewallIpsList>;
-
-export type EditResponseUpstreamIpsList = unknown[];
-export const EditResponseUpstreamIpsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<EditResponseUpstreamIpsList>;
-
-export interface EditResponseAttackMitigation {
-  /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
-  enabled?: boolean;
-  /** Only mitigate attacks when upstream servers seem unhealthy */
-  onlyWhenUpstreamUnhealthy?: boolean;
-}
-export const EditResponseAttackMitigation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    onlyWhenUpstreamUnhealthy: S.optional(
-      S.Boolean.pipe(T.Body("only_when_upstream_unhealthy")),
-    ),
-  }),
-).annotate({
-  identifier: "EditResponseAttackMitigation",
-}) as any as S.Schema<EditResponseAttackMitigation>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EditResponse {
-  /** Identifier. */
-  id: string;
-  /** Whether to refuse to answer queries for the ANY type */
-  deprecateAnyRequests: boolean;
-  dnsFirewallIps: EditResponseDnsFirewallIpsList;
-  /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
-  ecsFallback: boolean;
-  /** By default, Cloudflare attempts to cache responses for as long as */
-  maximumCacheTtl: number;
-  /** By default, Cloudflare attempts to cache responses for as long as */
-  minimumCacheTtl: number;
-  /** Last modification of DNS Firewall cluster */
-  modifiedOn: string;
-  /** DNS Firewall cluster name */
-  name: string;
-  /** This setting controls how long DNS Firewall should cache negative */
-  negativeCacheTtl: number;
-  /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
-  ratelimit: number;
-  /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
-  retries: number;
-  upstreamIps: EditResponseUpstreamIpsList;
-  /** Attack mitigation settings */
-  attackMitigation?: EditResponseAttackMitigation;
-}
-export const EditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
-    dnsFirewallIps: EditResponseDnsFirewallIpsList.pipe(
-      T.Body("dns_firewall_ips"),
-    ),
-    ecsFallback: S.Boolean.pipe(T.Body("ecs_fallback")),
-    maximumCacheTtl: S.Number.pipe(T.Body("maximum_cache_ttl")),
-    minimumCacheTtl: S.Number.pipe(T.Body("minimum_cache_ttl")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    negativeCacheTtl: S.Number.pipe(T.Body("negative_cache_ttl")),
-    ratelimit: S.Number,
-    retries: S.Number,
-    upstreamIps: EditResponseUpstreamIpsList.pipe(T.Body("upstream_ips")),
-    attackMitigation: S.optional(
-      EditResponseAttackMitigation.pipe(T.Body("attack_mitigation")),
-    ),
-  }),
-).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
-
-export interface GetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Identifier. */
-  dnsFirewallId: string;
-}
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
@@ -704,7 +584,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetDnsFirewallRequest",
+}) as any as S.Schema<GetDnsFirewallRequest>;
 
 export type GetResponseDnsFirewallIpsList = unknown[];
 export const GetResponseDnsFirewallIpsList = /*@__PURE__*/ S.Array(
@@ -734,7 +616,7 @@ export const GetResponseAttackMitigation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseAttackMitigation>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetDnsFirewallResponse {
   /** Identifier. */
   id: string;
   /** Whether to refuse to answer queries for the ANY type */
@@ -760,7 +642,7 @@ export interface GetResponse {
   /** Attack mitigation settings */
   attackMitigation?: GetResponseAttackMitigation;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
@@ -780,9 +662,53 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
       GetResponseAttackMitigation.pipe(T.Body("attack_mitigation")),
     ),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetDnsFirewallResponse",
+}) as any as S.Schema<GetDnsFirewallResponse>;
 
-export interface ListRequest {
+export interface GetReverseDnRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  dnsFirewallId: string;
+}
+export const GetReverseDnRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetReverseDnRequest",
+}) as any as S.Schema<GetReverseDnRequest>;
+
+export type ReverseDnsGetResponsePtrMap = {
+  [key: string]: unknown | undefined;
+};
+export const ReverseDnsGetResponsePtrMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<ReverseDnsGetResponsePtrMap>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetReverseDnResponse {
+  /** Map of cluster IP addresses to PTR record contents */
+  ptr: ReverseDnsGetResponsePtrMap;
+}
+export const GetReverseDnResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ptr: ReverseDnsGetResponsePtrMap,
+  }),
+).annotate({
+  identifier: "GetReverseDnResponse",
+}) as any as S.Schema<GetReverseDnResponse>;
+
+export interface ListDnsFirewallsRequest {
   /** Identifier. */
   accountId: string;
   /** Page number of paginated results */
@@ -790,7 +716,7 @@ export interface ListRequest {
   /** Number of clusters per page */
   perPage?: number;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListDnsFirewallsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -802,7 +728,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListDnsFirewallsRequest",
+}) as any as S.Schema<ListDnsFirewallsRequest>;
 
 export type ListResultItemDnsFirewallIpsList = unknown[];
 export const ListResultItemDnsFirewallIpsList = /*@__PURE__*/ S.Array(
@@ -884,15 +812,173 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListDnsFirewallsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListDnsFirewallsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListDnsFirewallsResponse",
+}) as any as S.Schema<ListDnsFirewallsResponse>;
+
+export interface EditRequestAttackMitigation {
+  /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
+  enabled?: boolean;
+  /** Only mitigate attacks when upstream servers seem unhealthy */
+  onlyWhenUpstreamUnhealthy?: boolean;
+}
+export const EditRequestAttackMitigation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    onlyWhenUpstreamUnhealthy: S.optional(
+      S.Boolean.pipe(T.Body("only_when_upstream_unhealthy")),
+    ),
+  }),
+).annotate({
+  identifier: "EditRequestAttackMitigation",
+}) as any as S.Schema<EditRequestAttackMitigation>;
+
+export type EditRequestUpstreamIpsList = unknown[];
+export const EditRequestUpstreamIpsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<EditRequestUpstreamIpsList>;
+
+export interface PatchDnsFirewallRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  dnsFirewallId: string;
+  /** Attack mitigation settings */
+  attackMitigation?: EditRequestAttackMitigation;
+  /** Whether to refuse to answer queries for the ANY type */
+  deprecateAnyRequests?: boolean;
+  /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
+  ecsFallback?: boolean;
+  /** By default, Cloudflare attempts to cache responses for as long as */
+  maximumCacheTtl?: number;
+  /** By default, Cloudflare attempts to cache responses for as long as */
+  minimumCacheTtl?: number;
+  /** DNS Firewall cluster name */
+  name?: string;
+  /** This setting controls how long DNS Firewall should cache negative */
+  negativeCacheTtl?: number;
+  /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
+  ratelimit?: number;
+  /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
+  retries?: number;
+  upstreamIps?: EditRequestUpstreamIpsList;
+}
+export const PatchDnsFirewallRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
+    attackMitigation: S.optional(
+      EditRequestAttackMitigation.pipe(T.Body("attack_mitigation")),
+    ),
+    deprecateAnyRequests: S.optional(
+      S.Boolean.pipe(T.Body("deprecate_any_requests")),
+    ),
+    ecsFallback: S.optional(S.Boolean.pipe(T.Body("ecs_fallback"))),
+    maximumCacheTtl: S.optional(S.Number.pipe(T.Body("maximum_cache_ttl"))),
+    minimumCacheTtl: S.optional(S.Number.pipe(T.Body("minimum_cache_ttl"))),
+    name: S.optional(S.String),
+    negativeCacheTtl: S.optional(S.Number.pipe(T.Body("negative_cache_ttl"))),
+    ratelimit: S.optional(S.Number),
+    retries: S.optional(S.Number),
+    upstreamIps: S.optional(
+      EditRequestUpstreamIpsList.pipe(T.Body("upstream_ips")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchDnsFirewallRequest",
+}) as any as S.Schema<PatchDnsFirewallRequest>;
+
+export type EditResponseDnsFirewallIpsList = unknown[];
+export const EditResponseDnsFirewallIpsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<EditResponseDnsFirewallIpsList>;
+
+export type EditResponseUpstreamIpsList = unknown[];
+export const EditResponseUpstreamIpsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<EditResponseUpstreamIpsList>;
+
+export interface EditResponseAttackMitigation {
+  /** When enabled, automatically mitigate random-prefix attacks to protect upstream DNS servers */
+  enabled?: boolean;
+  /** Only mitigate attacks when upstream servers seem unhealthy */
+  onlyWhenUpstreamUnhealthy?: boolean;
+}
+export const EditResponseAttackMitigation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    onlyWhenUpstreamUnhealthy: S.optional(
+      S.Boolean.pipe(T.Body("only_when_upstream_unhealthy")),
+    ),
+  }),
+).annotate({
+  identifier: "EditResponseAttackMitigation",
+}) as any as S.Schema<EditResponseAttackMitigation>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchDnsFirewallResponse {
+  /** Identifier. */
+  id: string;
+  /** Whether to refuse to answer queries for the ANY type */
+  deprecateAnyRequests: boolean;
+  dnsFirewallIps: EditResponseDnsFirewallIpsList;
+  /** Whether to forward client IP (resolver) subnet if no EDNS Client Subnet is sent */
+  ecsFallback: boolean;
+  /** By default, Cloudflare attempts to cache responses for as long as */
+  maximumCacheTtl: number;
+  /** By default, Cloudflare attempts to cache responses for as long as */
+  minimumCacheTtl: number;
+  /** Last modification of DNS Firewall cluster */
+  modifiedOn: string;
+  /** DNS Firewall cluster name */
+  name: string;
+  /** This setting controls how long DNS Firewall should cache negative */
+  negativeCacheTtl: number;
+  /** Maximum number of DNS queries per second that will be forwarded to your upstream nameservers. The limit is enforced per server, where each server receives a fraction of the configured value. The actual aggregate rate for a data center may vary depending on how many servers are present. Responses served from cache do not count toward this limit. Set to null to disable rate limiting. */
+  ratelimit: number;
+  /** Number of retries for fetching DNS responses from upstream nameservers (not counting the initial attempt) */
+  retries: number;
+  upstreamIps: EditResponseUpstreamIpsList;
+  /** Attack mitigation settings */
+  attackMitigation?: EditResponseAttackMitigation;
+}
+export const PatchDnsFirewallResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    deprecateAnyRequests: S.Boolean.pipe(T.Body("deprecate_any_requests")),
+    dnsFirewallIps: EditResponseDnsFirewallIpsList.pipe(
+      T.Body("dns_firewall_ips"),
+    ),
+    ecsFallback: S.Boolean.pipe(T.Body("ecs_fallback")),
+    maximumCacheTtl: S.Number.pipe(T.Body("maximum_cache_ttl")),
+    minimumCacheTtl: S.Number.pipe(T.Body("minimum_cache_ttl")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    negativeCacheTtl: S.Number.pipe(T.Body("negative_cache_ttl")),
+    ratelimit: S.Number,
+    retries: S.Number,
+    upstreamIps: EditResponseUpstreamIpsList.pipe(T.Body("upstream_ips")),
+    attackMitigation: S.optional(
+      EditResponseAttackMitigation.pipe(T.Body("attack_mitigation")),
+    ),
+  }),
+).annotate({
+  identifier: "PatchDnsFirewallResponse",
+}) as any as S.Schema<PatchDnsFirewallResponse>;
 
 export type ReverseDnsEditRequestPtrMap = {
   [key: string]: unknown | undefined;
@@ -902,7 +988,7 @@ export const ReverseDnsEditRequestPtrMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<ReverseDnsEditRequestPtrMap>;
 
-export interface ReverseDnsEditRequest {
+export interface PatchReverseDnRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier. */
@@ -910,7 +996,7 @@ export interface ReverseDnsEditRequest {
   /** Map of cluster IP addresses to PTR record contents */
   ptr?: ReverseDnsEditRequestPtrMap;
 }
-export const ReverseDnsEditRequest = /*@__PURE__*/ S.suspend(() =>
+export const PatchReverseDnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
@@ -923,8 +1009,8 @@ export const ReverseDnsEditRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ReverseDnsEditRequest",
-}) as any as S.Schema<ReverseDnsEditRequest>;
+  identifier: "PatchReverseDnRequest",
+}) as any as S.Schema<PatchReverseDnRequest>;
 
 export type ReverseDnsEditResponsePtrMap = {
   [key: string]: unknown | undefined;
@@ -935,182 +1021,188 @@ export const ReverseDnsEditResponsePtrMap = /*@__PURE__*/ S.Record(
 ) as any as S.Schema<ReverseDnsEditResponsePtrMap>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ReverseDnsEditResponse {
+export interface PatchReverseDnResponse {
   /** Map of cluster IP addresses to PTR record contents */
   ptr: ReverseDnsEditResponsePtrMap;
 }
-export const ReverseDnsEditResponse = /*@__PURE__*/ S.suspend(() =>
+export const PatchReverseDnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ptr: ReverseDnsEditResponsePtrMap,
   }),
 ).annotate({
-  identifier: "ReverseDnsEditResponse",
-}) as any as S.Schema<ReverseDnsEditResponse>;
+  identifier: "PatchReverseDnResponse",
+}) as any as S.Schema<PatchReverseDnResponse>;
 
-export interface ReverseDnsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Identifier. */
-  dnsFirewallId: string;
-}
-export const ReverseDnsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    dnsFirewallId: S.String.pipe(T.Label("dns_firewall_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_firewall/{dns_firewall_id}/reverse_dns",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ReverseDnsGetRequest",
-}) as any as S.Schema<ReverseDnsGetRequest>;
-
-export type ReverseDnsGetResponsePtrMap = {
-  [key: string]: unknown | undefined;
-};
-export const ReverseDnsGetResponsePtrMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<ReverseDnsGetResponsePtrMap>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ReverseDnsGetResponse {
-  /** Map of cluster IP addresses to PTR record contents */
-  ptr: ReverseDnsGetResponsePtrMap;
-}
-export const ReverseDnsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ptr: ReverseDnsGetResponsePtrMap,
-  }),
-).annotate({
-  identifier: "ReverseDnsGetResponse",
-}) as any as S.Schema<ReverseDnsGetResponse>;
-
-export type AnalyticsReportsBytimesGetError = CloudflareOpError;
-/** Retrieves a list of aggregate metrics grouped by time interval. See [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters. */
-export const analyticsReportsBytimesGet: API.OperationMethod<
-  AnalyticsReportsBytimesGetRequest,
-  AnalyticsReportsBytimesGetResponse,
-  AnalyticsReportsBytimesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AnalyticsReportsBytimesGetRequest,
-  output: AnalyticsReportsBytimesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AnalyticsReportsGetError = CloudflareOpError;
-/** Retrieves a list of summarised aggregate metrics over a given time period. See [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters. */
-export const analyticsReportsGet: API.OperationMethod<
-  AnalyticsReportsGetRequest,
-  AnalyticsReportsGetResponse,
-  AnalyticsReportsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AnalyticsReportsGetRequest,
-  output: AnalyticsReportsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CreateError = CloudflareOpError;
+export type CreateDnsFirewallError =
+  | DnsFirewallNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Create a DNS Firewall cluster */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createDnsFirewall: API.OperationMethod<
+  CreateDnsFirewallRequest,
+  CreateDnsFirewallResponse,
+  CreateDnsFirewallError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateDnsFirewallRequest,
+  output: CreateDnsFirewallResponse,
+  errors: [
+    DnsFirewallNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type DeleteError = CloudflareOpError;
+export type DeleteDnsFirewallError =
+  | DnsFirewallNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Delete a DNS Firewall cluster */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteDnsFirewall: API.OperationMethod<
+  DeleteDnsFirewallRequest,
+  DeleteDnsFirewallResponse,
+  DeleteDnsFirewallError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
+  input: DeleteDnsFirewallRequest,
+  output: DeleteDnsFirewallResponse,
+  errors: [
+    DnsFirewallNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetAnalyticReportError = CloudflareOpError;
+/** Retrieves a list of summarised aggregate metrics over a given time period. See [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters. */
+export const getAnalyticReport: API.OperationMethod<
+  GetAnalyticReportRequest,
+  GetAnalyticReportResponse,
+  GetAnalyticReportError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAnalyticReportRequest,
+  output: GetAnalyticReportResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type EditError = CloudflareOpError;
-/** Modify the configuration of a DNS Firewall cluster */
-export const edit: API.OperationMethod<
-  EditRequest,
-  EditResponse,
-  EditError,
+export type GetAnalyticReportBytimeError = CloudflareOpError;
+/** Retrieves a list of aggregate metrics grouped by time interval. See [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters. */
+export const getAnalyticReportBytime: API.OperationMethod<
+  GetAnalyticReportBytimeRequest,
+  GetAnalyticReportBytimeResponse,
+  GetAnalyticReportBytimeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EditRequest,
-  output: EditResponse,
+  input: GetAnalyticReportBytimeRequest,
+  output: GetAnalyticReportBytimeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
+export type GetDnsFirewallError =
+  | DnsFirewallNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Show a single DNS Firewall cluster for an account */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getDnsFirewall: API.OperationMethod<
+  GetDnsFirewallRequest,
+  GetDnsFirewallResponse,
+  GetDnsFirewallError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetDnsFirewallRequest,
+  output: GetDnsFirewallResponse,
+  errors: [
+    DnsFirewallNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type ListError = CloudflareOpError;
-/** List DNS Firewall clusters for an account */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ReverseDnsEditError = CloudflareOpError;
-/** Update reverse DNS configuration (PTR records) for a DNS Firewall cluster */
-export const reverseDnsEdit: API.OperationMethod<
-  ReverseDnsEditRequest,
-  ReverseDnsEditResponse,
-  ReverseDnsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReverseDnsEditRequest,
-  output: ReverseDnsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ReverseDnsGetError = CloudflareOpError;
+export type GetReverseDnError =
+  | DnsFirewallNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Show reverse DNS configuration (PTR records) for a DNS Firewall cluster */
-export const reverseDnsGet: API.OperationMethod<
-  ReverseDnsGetRequest,
-  ReverseDnsGetResponse,
-  ReverseDnsGetError,
+export const getReverseDn: API.OperationMethod<
+  GetReverseDnRequest,
+  GetReverseDnResponse,
+  GetReverseDnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ReverseDnsGetRequest,
-  output: ReverseDnsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetReverseDnRequest,
+  output: GetReverseDnResponse,
+  errors: [
+    DnsFirewallNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListDnsFirewallsError = Forbidden | CloudflareOpError;
+/** List DNS Firewall clusters for an account */
+export const listDnsFirewalls: API.OperationMethod<
+  ListDnsFirewallsRequest,
+  ListDnsFirewallsResponse,
+  ListDnsFirewallsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDnsFirewallsRequest,
+  output: ListDnsFirewallsResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchDnsFirewallError =
+  | DnsFirewallNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Modify the configuration of a DNS Firewall cluster */
+export const patchDnsFirewall: API.OperationMethod<
+  PatchDnsFirewallRequest,
+  PatchDnsFirewallResponse,
+  PatchDnsFirewallError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchDnsFirewallRequest,
+  output: PatchDnsFirewallResponse,
+  errors: [
+    DnsFirewallNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchReverseDnError =
+  | DnsFirewallNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Update reverse DNS configuration (PTR records) for a DNS Firewall cluster */
+export const patchReverseDn: API.OperationMethod<
+  PatchReverseDnRequest,
+  PatchReverseDnResponse,
+  PatchReverseDnError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchReverseDnRequest,
+  output: PatchReverseDnResponse,
+  errors: [
+    DnsFirewallNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

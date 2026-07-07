@@ -9,7 +9,31 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface ControlCmbConfigCreateRequest {
+export class CmbConfigNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CmbConfigNotFound>()("CmbConfigNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class LogsControlNotAuthorized extends T.applyErrorMatchers(
+  S.TaggedErrorClass<LogsControlNotAuthorized>()("LogsControlNotAuthorized", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10000, message: { includes: "Unauthorized" } }],
+) {}
+
+export interface CreateControlCmbConfigRequest {
   /** Identifier. */
   accountId: string;
   /** Allow out of region access */
@@ -17,7 +41,7 @@ export interface ControlCmbConfigCreateRequest {
   /** Name of the region. */
   regions?: string;
 }
-export const ControlCmbConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     allowOutOfRegionAccess: S.optional(
@@ -32,17 +56,17 @@ export const ControlCmbConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ControlCmbConfigCreateRequest",
-}) as any as S.Schema<ControlCmbConfigCreateRequest>;
+  identifier: "CreateControlCmbConfigRequest",
+}) as any as S.Schema<CreateControlCmbConfigRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ControlCmbConfigCreateResponse {
+export interface CreateControlCmbConfigResponse {
   /** Allow out of region access */
   allowOutOfRegionAccess?: boolean;
   /** Name of the region. */
   regions?: string;
 }
-export const ControlCmbConfigCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowOutOfRegionAccess: S.optional(
       S.Boolean.pipe(T.Body("allow_out_of_region_access")),
@@ -50,14 +74,48 @@ export const ControlCmbConfigCreateResponse = /*@__PURE__*/ S.suspend(() =>
     regions: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "ControlCmbConfigCreateResponse",
-}) as any as S.Schema<ControlCmbConfigCreateResponse>;
+  identifier: "CreateControlCmbConfigResponse",
+}) as any as S.Schema<CreateControlCmbConfigResponse>;
 
-export interface ControlCmbConfigDeleteRequest {
+export interface CreateControlRetentionRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** The log retention flag for Logpull API. */
+  flag?: boolean;
+}
+export const CreateControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    flag: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/logs/control/retention/flag",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateControlRetentionRequest",
+}) as any as S.Schema<CreateControlRetentionRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateControlRetentionResponse {
+  /** The log retention flag for Logpull API. */
+  flag?: boolean;
+}
+export const CreateControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flag: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CreateControlRetentionResponse",
+}) as any as S.Schema<CreateControlRetentionResponse>;
+
+export interface DeleteControlCmbConfigRequest {
   /** Identifier. */
   accountId: string;
 }
-export const ControlCmbConfigDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -68,26 +126,26 @@ export const ControlCmbConfigDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ControlCmbConfigDeleteRequest",
-}) as any as S.Schema<ControlCmbConfigDeleteRequest>;
+  identifier: "DeleteControlCmbConfigRequest",
+}) as any as S.Schema<DeleteControlCmbConfigRequest>;
 
-export interface ControlCmbConfigDeleteResponse {
+export interface DeleteControlCmbConfigResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const ControlCmbConfigDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "ControlCmbConfigDeleteResponse",
-}) as any as S.Schema<ControlCmbConfigDeleteResponse>;
+  identifier: "DeleteControlCmbConfigResponse",
+}) as any as S.Schema<DeleteControlCmbConfigResponse>;
 
-export interface ControlCmbConfigGetRequest {
+export interface GetControlCmbConfigRequest {
   /** Identifier. */
   accountId: string;
 }
-export const ControlCmbConfigGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetControlCmbConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -98,17 +156,17 @@ export const ControlCmbConfigGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ControlCmbConfigGetRequest",
-}) as any as S.Schema<ControlCmbConfigGetRequest>;
+  identifier: "GetControlCmbConfigRequest",
+}) as any as S.Schema<GetControlCmbConfigRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ControlCmbConfigGetResponse {
+export interface GetControlCmbConfigResponse {
   /** Allow out of region access */
   allowOutOfRegionAccess?: boolean;
   /** Name of the region. */
   regions?: string;
 }
-export const ControlCmbConfigGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetControlCmbConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowOutOfRegionAccess: S.optional(
       S.Boolean.pipe(T.Body("allow_out_of_region_access")),
@@ -116,48 +174,14 @@ export const ControlCmbConfigGetResponse = /*@__PURE__*/ S.suspend(() =>
     regions: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "ControlCmbConfigGetResponse",
-}) as any as S.Schema<ControlCmbConfigGetResponse>;
+  identifier: "GetControlCmbConfigResponse",
+}) as any as S.Schema<GetControlCmbConfigResponse>;
 
-export interface ControlRetentionCreateRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** The log retention flag for Logpull API. */
-  flag?: boolean;
-}
-export const ControlRetentionCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    flag: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/logs/control/retention/flag",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ControlRetentionCreateRequest",
-}) as any as S.Schema<ControlRetentionCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ControlRetentionCreateResponse {
-  /** The log retention flag for Logpull API. */
-  flag?: boolean;
-}
-export const ControlRetentionCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flag: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "ControlRetentionCreateResponse",
-}) as any as S.Schema<ControlRetentionCreateResponse>;
-
-export interface ControlRetentionGetRequest {
+export interface GetControlRetentionRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const ControlRetentionGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetControlRetentionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -168,21 +192,152 @@ export const ControlRetentionGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ControlRetentionGetRequest",
-}) as any as S.Schema<ControlRetentionGetRequest>;
+  identifier: "GetControlRetentionRequest",
+}) as any as S.Schema<GetControlRetentionRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ControlRetentionGetResponse {
+export interface GetControlRetentionResponse {
   /** The log retention flag for Logpull API. */
   flag?: boolean;
 }
-export const ControlRetentionGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     flag: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "ControlRetentionGetResponse",
-}) as any as S.Schema<ControlRetentionGetResponse>;
+  identifier: "GetControlRetentionResponse",
+}) as any as S.Schema<GetControlRetentionResponse>;
+
+export type RayidGetRequestTimestamps =
+  | "unix"
+  | "unixnano"
+  | "rfc3339"
+  | (string & {});
+export const RayidGetRequestTimestamps = /*@__PURE__*/ S.String;
+
+export interface GetRayidRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Ray identifier. */
+  rayId: string;
+  /** The `/received` route by default returns a limited set of fields, and allows customers to override the default field set by specifying individual fields. The reasons for this are: 1. Most customers require only a small subset of fields, but that subset varies from customer to customer; 2. Flat schema is much easier to work with downstream (importing into BigTable etc); 3. Performance (time to process, file size). If `?fields=` is not specified, default field set is returned. This default field set may change at any time. When `?fields=` is provided, each record is returned with the specified fields. `fields` must be specified as a comma separated list without any whitespaces, and all fields must exist. The order in which fields are specified does not matter, and the order of fields in the response is not specified. */
+  fields?: string;
+  /** By default, timestamps in responses are returned as Unix nanosecond integers. The `?timestamps=` argument can be set to change the format in which response timestamps are returned. Possible values are: `unix`, `unixnano`, `rfc3339`. Note that `unix` and `unixnano` return timestamps as integers; `rfc3339` returns timestamps as strings. */
+  timestamps?: RayidGetRequestTimestamps;
+}
+export const GetRayidRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    rayId: S.String.pipe(T.Label("ray_id")),
+    fields: S.optional(S.String.pipe(T.Query())),
+    timestamps: S.optional(RayidGetRequestTimestamps.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/logs/rayids/{ray_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetRayidRequest",
+}) as any as S.Schema<GetRayidRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetRayidResponse {
+  string: unknown;
+  unknown: unknown;
+}
+export const GetRayidResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    string: S.Unknown,
+    unknown: S.Unknown,
+  }),
+).annotate({
+  identifier: "GetRayidResponse",
+}) as any as S.Schema<GetRayidResponse>;
+
+export type ReceivedGetRequestTimestamps =
+  | "unix"
+  | "unixnano"
+  | "rfc3339"
+  | (string & {});
+export const ReceivedGetRequestTimestamps = /*@__PURE__*/ S.String;
+
+export interface GetReceivedRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Sets the (exclusive) end of the requested time frame. This can be a unix timestamp (in seconds or nanoseconds), or an absolute timestamp that conforms to RFC 3339. `end` must be at least five minutes earlier than now and must be later than `start`. Difference between `start` and `end` must be not greater than one hour. */
+  end: string;
+  /** When `?count=` is provided, the response will contain up to `count` results. Since results are not sorted, you are likely to get different data for repeated requests. `count` must be an integer > 0. */
+  count?: number;
+  /** The `/received` route by default returns a limited set of fields, and allows customers to override the default field set by specifying individual fields. The reasons for this are: 1. Most customers require only a small subset of fields, but that subset varies from customer to customer; 2. Flat schema is much easier to work with downstream (importing into BigTable etc); 3. Performance (time to process, file size). If `?fields=` is not specified, default field set is returned. This default field set may change at any time. When `?fields=` is provided, each record is returned with the specified fields. `fields` must be specified as a comma separated list without any whitespaces, and all fields must exist. The order in which fields are specified does not matter, and the order of fields in the response is not specified. */
+  fields?: string;
+  /** When `?sample=` is provided, a sample of matching records is returned. If `sample=0.1` then 10% of records will be returned. Sampling is random: repeated calls will not only return different records, but likely will also vary slightly in number of returned records. When `?count=` is also specified, `count` is applied to the number of returned records, not the sampled records. So, with `sample=0.05` and `count=7`, when there is a total of 100 records available, approximately five will be returned. When there are 1000 records, seven will be returned. When there are 10,000 records, seven will be returned. */
+  sample?: number;
+  /** Sets the (inclusive) beginning of the requested time frame. This can be a unix timestamp (in seconds or nanoseconds), or an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than seven days. */
+  start?: string;
+  /** By default, timestamps in responses are returned as Unix nanosecond integers. The `?timestamps=` argument can be set to change the format in which response timestamps are returned. Possible values are: `unix`, `unixnano`, `rfc3339`. Note that `unix` and `unixnano` return timestamps as integers; `rfc3339` returns timestamps as strings. */
+  timestamps?: ReceivedGetRequestTimestamps;
+}
+export const GetReceivedRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    end: S.String.pipe(T.Query()),
+    count: S.optional(S.Number.pipe(T.Query())),
+    fields: S.optional(S.String.pipe(T.Query())),
+    sample: S.optional(S.Number.pipe(T.Query())),
+    start: S.optional(S.String.pipe(T.Query())),
+    timestamps: S.optional(ReceivedGetRequestTimestamps.pipe(T.Query())),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/received", code: 200 }),
+  ),
+).annotate({
+  identifier: "GetReceivedRequest",
+}) as any as S.Schema<GetReceivedRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetReceivedResponse {
+  string: unknown;
+  unknown: unknown;
+}
+export const GetReceivedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    string: S.Unknown,
+    unknown: S.Unknown,
+  }),
+).annotate({
+  identifier: "GetReceivedResponse",
+}) as any as S.Schema<GetReceivedResponse>;
+
+export interface GetReceivedFieldRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const GetReceivedFieldRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/logs/received/fields",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetReceivedFieldRequest",
+}) as any as S.Schema<GetReceivedFieldRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetReceivedFieldResponse {
+  key?: string;
+}
+export const GetReceivedFieldResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetReceivedFieldResponse",
+}) as any as S.Schema<GetReceivedFieldResponse>;
 
 export interface LogExplorerDatasetsAvailableListRequest {
   accountsOrZones: string;
@@ -657,203 +812,158 @@ export const LogExplorerQuerySqlResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "LogExplorerQuerySqlResponse",
 }) as any as S.Schema<LogExplorerQuerySqlResponse>;
 
-export type RayidGetRequestTimestamps =
-  | "unix"
-  | "unixnano"
-  | "rfc3339"
-  | (string & {});
-export const RayidGetRequestTimestamps = /*@__PURE__*/ S.String;
-
-export interface RayidGetRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Ray identifier. */
-  rayId: string;
-  /** The `/received` route by default returns a limited set of fields, and allows customers to override the default field set by specifying individual fields. The reasons for this are: 1. Most customers require only a small subset of fields, but that subset varies from customer to customer; 2. Flat schema is much easier to work with downstream (importing into BigTable etc); 3. Performance (time to process, file size). If `?fields=` is not specified, default field set is returned. This default field set may change at any time. When `?fields=` is provided, each record is returned with the specified fields. `fields` must be specified as a comma separated list without any whitespaces, and all fields must exist. The order in which fields are specified does not matter, and the order of fields in the response is not specified. */
-  fields?: string;
-  /** By default, timestamps in responses are returned as Unix nanosecond integers. The `?timestamps=` argument can be set to change the format in which response timestamps are returned. Possible values are: `unix`, `unixnano`, `rfc3339`. Note that `unix` and `unixnano` return timestamps as integers; `rfc3339` returns timestamps as strings. */
-  timestamps?: RayidGetRequestTimestamps;
-}
-export const RayidGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    rayId: S.String.pipe(T.Label("ray_id")),
-    fields: S.optional(S.String.pipe(T.Query())),
-    timestamps: S.optional(RayidGetRequestTimestamps.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/logs/rayids/{ray_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RayidGetRequest",
-}) as any as S.Schema<RayidGetRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface RayidGetResponse {
-  string: unknown;
-  unknown: unknown;
-}
-export const RayidGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    string: S.Unknown,
-    unknown: S.Unknown,
-  }),
-).annotate({
-  identifier: "RayidGetResponse",
-}) as any as S.Schema<RayidGetResponse>;
-
-export interface ReceivedFieldsGetRequest {
-  /** Identifier. */
-  zoneId: string;
-}
-export const ReceivedFieldsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/logs/received/fields",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ReceivedFieldsGetRequest",
-}) as any as S.Schema<ReceivedFieldsGetRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ReceivedFieldsGetResponse {
-  key?: string;
-}
-export const ReceivedFieldsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ReceivedFieldsGetResponse",
-}) as any as S.Schema<ReceivedFieldsGetResponse>;
-
-export type ReceivedGetRequestTimestamps =
-  | "unix"
-  | "unixnano"
-  | "rfc3339"
-  | (string & {});
-export const ReceivedGetRequestTimestamps = /*@__PURE__*/ S.String;
-
-export interface ReceivedGetRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Sets the (exclusive) end of the requested time frame. This can be a unix timestamp (in seconds or nanoseconds), or an absolute timestamp that conforms to RFC 3339. `end` must be at least five minutes earlier than now and must be later than `start`. Difference between `start` and `end` must be not greater than one hour. */
-  end: string;
-  /** When `?count=` is provided, the response will contain up to `count` results. Since results are not sorted, you are likely to get different data for repeated requests. `count` must be an integer > 0. */
-  count?: number;
-  /** The `/received` route by default returns a limited set of fields, and allows customers to override the default field set by specifying individual fields. The reasons for this are: 1. Most customers require only a small subset of fields, but that subset varies from customer to customer; 2. Flat schema is much easier to work with downstream (importing into BigTable etc); 3. Performance (time to process, file size). If `?fields=` is not specified, default field set is returned. This default field set may change at any time. When `?fields=` is provided, each record is returned with the specified fields. `fields` must be specified as a comma separated list without any whitespaces, and all fields must exist. The order in which fields are specified does not matter, and the order of fields in the response is not specified. */
-  fields?: string;
-  /** When `?sample=` is provided, a sample of matching records is returned. If `sample=0.1` then 10% of records will be returned. Sampling is random: repeated calls will not only return different records, but likely will also vary slightly in number of returned records. When `?count=` is also specified, `count` is applied to the number of returned records, not the sampled records. So, with `sample=0.05` and `count=7`, when there is a total of 100 records available, approximately five will be returned. When there are 1000 records, seven will be returned. When there are 10,000 records, seven will be returned. */
-  sample?: number;
-  /** Sets the (inclusive) beginning of the requested time frame. This can be a unix timestamp (in seconds or nanoseconds), or an absolute timestamp that conforms to RFC 3339. At this point in time, it cannot exceed a time in the past greater than seven days. */
-  start?: string;
-  /** By default, timestamps in responses are returned as Unix nanosecond integers. The `?timestamps=` argument can be set to change the format in which response timestamps are returned. Possible values are: `unix`, `unixnano`, `rfc3339`. Note that `unix` and `unixnano` return timestamps as integers; `rfc3339` returns timestamps as strings. */
-  timestamps?: ReceivedGetRequestTimestamps;
-}
-export const ReceivedGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    end: S.String.pipe(T.Query()),
-    count: S.optional(S.Number.pipe(T.Query())),
-    fields: S.optional(S.String.pipe(T.Query())),
-    sample: S.optional(S.Number.pipe(T.Query())),
-    start: S.optional(S.String.pipe(T.Query())),
-    timestamps: S.optional(ReceivedGetRequestTimestamps.pipe(T.Query())),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/logs/received", code: 200 }),
-  ),
-).annotate({
-  identifier: "ReceivedGetRequest",
-}) as any as S.Schema<ReceivedGetRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ReceivedGetResponse {
-  string: unknown;
-  unknown: unknown;
-}
-export const ReceivedGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    string: S.Unknown,
-    unknown: S.Unknown,
-  }),
-).annotate({
-  identifier: "ReceivedGetResponse",
-}) as any as S.Schema<ReceivedGetResponse>;
-
-export type ControlCmbConfigCreateError = CloudflareOpError;
+export type CreateControlCmbConfigError =
+  | LogsControlNotAuthorized
+  | Forbidden
+  | CloudflareOpError;
 /** Updates CMB config. */
-export const controlCmbConfigCreate: API.OperationMethod<
-  ControlCmbConfigCreateRequest,
-  ControlCmbConfigCreateResponse,
-  ControlCmbConfigCreateError,
+export const createControlCmbConfig: API.OperationMethod<
+  CreateControlCmbConfigRequest,
+  CreateControlCmbConfigResponse,
+  CreateControlCmbConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ControlCmbConfigCreateRequest,
-  output: ControlCmbConfigCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateControlCmbConfigRequest,
+  output: CreateControlCmbConfigResponse,
+  errors: [
+    LogsControlNotAuthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type ControlCmbConfigDeleteError = CloudflareOpError;
-/** Deletes CMB config. */
-export const controlCmbConfigDelete: API.OperationMethod<
-  ControlCmbConfigDeleteRequest,
-  ControlCmbConfigDeleteResponse,
-  ControlCmbConfigDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ControlCmbConfigDeleteRequest,
-  output: ControlCmbConfigDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ControlCmbConfigGetError = CloudflareOpError;
-/** Gets CMB config. */
-export const controlCmbConfigGet: API.OperationMethod<
-  ControlCmbConfigGetRequest,
-  ControlCmbConfigGetResponse,
-  ControlCmbConfigGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ControlCmbConfigGetRequest,
-  output: ControlCmbConfigGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ControlRetentionCreateError = CloudflareOpError;
+export type CreateControlRetentionError =
+  | LogsControlNotAuthorized
+  | Forbidden
+  | CloudflareOpError;
 /** Updates log retention flag for Logpull API. */
-export const controlRetentionCreate: API.OperationMethod<
-  ControlRetentionCreateRequest,
-  ControlRetentionCreateResponse,
-  ControlRetentionCreateError,
+export const createControlRetention: API.OperationMethod<
+  CreateControlRetentionRequest,
+  CreateControlRetentionResponse,
+  CreateControlRetentionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ControlRetentionCreateRequest,
-  output: ControlRetentionCreateResponse,
+  input: CreateControlRetentionRequest,
+  output: CreateControlRetentionResponse,
+  errors: [
+    LogsControlNotAuthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteControlCmbConfigError =
+  | LogsControlNotAuthorized
+  | CmbConfigNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Deletes CMB config. */
+export const deleteControlCmbConfig: API.OperationMethod<
+  DeleteControlCmbConfigRequest,
+  DeleteControlCmbConfigResponse,
+  DeleteControlCmbConfigError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteControlCmbConfigRequest,
+  output: DeleteControlCmbConfigResponse,
+  errors: [
+    LogsControlNotAuthorized,
+    CmbConfigNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetControlCmbConfigError =
+  | LogsControlNotAuthorized
+  | CmbConfigNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Gets CMB config. */
+export const getControlCmbConfig: API.OperationMethod<
+  GetControlCmbConfigRequest,
+  GetControlCmbConfigResponse,
+  GetControlCmbConfigError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetControlCmbConfigRequest,
+  output: GetControlCmbConfigResponse,
+  errors: [
+    LogsControlNotAuthorized,
+    CmbConfigNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetControlRetentionError =
+  | LogsControlNotAuthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Gets log retention flag for Logpull API. */
+export const getControlRetention: API.OperationMethod<
+  GetControlRetentionRequest,
+  GetControlRetentionResponse,
+  GetControlRetentionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetControlRetentionRequest,
+  output: GetControlRetentionResponse,
+  errors: [
+    LogsControlNotAuthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetRayidError = CloudflareOpError;
+/** The `/rayids` api route allows lookups by specific rayid. The rayids route will return zero, one, or more records (ray ids are not unique). */
+export const getRayid: API.OperationMethod<
+  GetRayidRequest,
+  GetRayidResponse,
+  GetRayidError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRayidRequest,
+  output: GetRayidResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ControlRetentionGetError = CloudflareOpError;
-/** Gets log retention flag for Logpull API. */
-export const controlRetentionGet: API.OperationMethod<
-  ControlRetentionGetRequest,
-  ControlRetentionGetResponse,
-  ControlRetentionGetError,
+export type GetReceivedError = CloudflareOpError;
+/** The `/received` api route allows customers to retrieve their edge HTTP logs. The basic access pattern is "give me all the logs for zone Z for minute M", where the minute M refers to the time records were received at Cloudflare's central data center. `start` is inclusive, and `end` is exclusive. Because of that, to get all data, at minutely cadence, starting at 10AM, the proper values are: `start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z`, then `start=2018-05-20T10:01:00Z&end=2018-05-20T10:02:00Z` and so on; the overlap will be handled properly. */
+export const getReceived: API.OperationMethod<
+  GetReceivedRequest,
+  GetReceivedResponse,
+  GetReceivedError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ControlRetentionGetRequest,
-  output: ControlRetentionGetResponse,
+  input: GetReceivedRequest,
+  output: GetReceivedResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetReceivedFieldError = CloudflareOpError;
+/** Lists all fields available. The response is json object with key-value pairs, where keys are field names, and values are descriptions. */
+export const getReceivedField: API.OperationMethod<
+  GetReceivedFieldRequest,
+  GetReceivedFieldResponse,
+  GetReceivedFieldError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetReceivedFieldRequest,
+  output: GetReceivedFieldResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
@@ -938,48 +1048,6 @@ export const logExplorerQuerySql: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: LogExplorerQuerySqlRequest,
   output: LogExplorerQuerySqlResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RayidGetError = CloudflareOpError;
-/** The `/rayids` api route allows lookups by specific rayid. The rayids route will return zero, one, or more records (ray ids are not unique). */
-export const rayidGet: API.OperationMethod<
-  RayidGetRequest,
-  RayidGetResponse,
-  RayidGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RayidGetRequest,
-  output: RayidGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ReceivedFieldsGetError = CloudflareOpError;
-/** Lists all fields available. The response is json object with key-value pairs, where keys are field names, and values are descriptions. */
-export const receivedFieldsGet: API.OperationMethod<
-  ReceivedFieldsGetRequest,
-  ReceivedFieldsGetResponse,
-  ReceivedFieldsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReceivedFieldsGetRequest,
-  output: ReceivedFieldsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ReceivedGetError = CloudflareOpError;
-/** The `/received` api route allows customers to retrieve their edge HTTP logs. The basic access pattern is "give me all the logs for zone Z for minute M", where the minute M refers to the time records were received at Cloudflare's central data center. `start` is inclusive, and `end` is exclusive. Because of that, to get all data, at minutely cadence, starting at 10AM, the proper values are: `start=2018-05-20T10:00:00Z&end=2018-05-20T10:01:00Z`, then `start=2018-05-20T10:01:00Z&end=2018-05-20T10:02:00Z` and so on; the overlap will be handled properly. */
-export const receivedGet: API.OperationMethod<
-  ReceivedGetRequest,
-  ReceivedGetResponse,
-  ReceivedGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ReceivedGetRequest,
-  output: ReceivedGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

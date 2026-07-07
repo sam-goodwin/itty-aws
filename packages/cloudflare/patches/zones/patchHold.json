@@ -1,0 +1,149 @@
+{
+  "description": "Align zones#HoldsEdit with distilled cloudflare/zones patchHold",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zones#HoldsEdit",
+      "path": "/shapes/com.cloudflare.zones#PatchHold"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zones#HoldsEditRequest",
+      "path": "/shapes/com.cloudflare.zones#PatchHoldRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zones#PatchHold/input/target",
+      "value": "com.cloudflare.zones#PatchHoldRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zones#HoldsEditResponse",
+      "path": "/shapes/com.cloudflare.zones#PatchHoldResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zones#PatchHold/output/target",
+      "value": "com.cloudflare.zones#PatchHoldResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#ZoneHoldNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1003,
+              "message": {
+                "includes": "No Zone Hold Found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#ZoneHoldsRequireEnterprise",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1005,
+              "message": {
+                "includes": "Zone holds are only available on Enterprise zones"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#InvalidZoneIdentifier",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 9109,
+              "message": {
+                "includes": "Invalid zone identifier"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zones#PatchHold/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zones#ZoneHoldNotFound"
+        },
+        {
+          "target": "com.cloudflare.zones#ZoneHoldsRequireEnterprise"
+        },
+        {
+          "target": "com.cloudflare.zones#InvalidZoneIdentifier"
+        },
+        {
+          "target": "com.cloudflare.zones#Forbidden"
+        }
+      ]
+    }
+  ]
+}

@@ -9,11 +9,41 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class EndpointHealthcheckNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<EndpointHealthcheckNotFound>()(
+    "EndpointHealthcheckNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 1022 }],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class InvalidHealthcheckEndpoint extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidHealthcheckEndpoint>()(
+    "InvalidHealthcheckEndpoint",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 1002 }],
+) {}
+
 export type EndpointHealthchecksCreateRequestCheckType = "icmp" | (string & {});
 export const EndpointHealthchecksCreateRequestCheckType =
   /*@__PURE__*/ S.String;
 
-export interface EndpointHealthchecksCreateRequest {
+export interface CreateEndpointHealthcheckRequest {
   /** Identifier */
   accountId: string;
   /** type of check to perform */
@@ -23,7 +53,7 @@ export interface EndpointHealthchecksCreateRequest {
   /** Optional name associated with this check */
   name?: string;
 }
-export const EndpointHealthchecksCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     checkType: EndpointHealthchecksCreateRequestCheckType.pipe(
@@ -39,8 +69,8 @@ export const EndpointHealthchecksCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EndpointHealthchecksCreateRequest",
-}) as any as S.Schema<EndpointHealthchecksCreateRequest>;
+  identifier: "CreateEndpointHealthcheckRequest",
+}) as any as S.Schema<CreateEndpointHealthcheckRequest>;
 
 export type EndpointHealthchecksCreateResponseCheckType =
   | "icmp"
@@ -49,7 +79,7 @@ export const EndpointHealthchecksCreateResponseCheckType =
   /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EndpointHealthchecksCreateResponse {
+export interface CreateEndpointHealthcheckResponse {
   /** type of check to perform */
   checkType: EndpointHealthchecksCreateResponseCheckType;
   /** the IP address of the host to perform checks against */
@@ -59,7 +89,7 @@ export interface EndpointHealthchecksCreateResponse {
   /** Optional name associated with this check */
   name?: string;
 }
-export const EndpointHealthchecksCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     checkType: EndpointHealthchecksCreateResponseCheckType.pipe(
       T.Body("check_type"),
@@ -69,195 +99,8 @@ export const EndpointHealthchecksCreateResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "EndpointHealthchecksCreateResponse",
-}) as any as S.Schema<EndpointHealthchecksCreateResponse>;
-
-export interface EndpointHealthchecksDeleteRequest {
-  /** Identifier */
-  accountId: string;
-  /** UUID. */
-  id: string;
-}
-export const EndpointHealthchecksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EndpointHealthchecksDeleteRequest",
-}) as any as S.Schema<EndpointHealthchecksDeleteRequest>;
-
-export interface EndpointHealthchecksDeleteResponse {}
-export const EndpointHealthchecksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "EndpointHealthchecksDeleteResponse",
-}) as any as S.Schema<EndpointHealthchecksDeleteResponse>;
-
-export interface EndpointHealthchecksGetRequest {
-  /** Identifier */
-  accountId: string;
-  /** UUID. */
-  id: string;
-}
-export const EndpointHealthchecksGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EndpointHealthchecksGetRequest",
-}) as any as S.Schema<EndpointHealthchecksGetRequest>;
-
-export type EndpointHealthchecksGetResponseCheckType = "icmp" | (string & {});
-export const EndpointHealthchecksGetResponseCheckType = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EndpointHealthchecksGetResponse {
-  /** type of check to perform */
-  checkType: EndpointHealthchecksGetResponseCheckType;
-  /** the IP address of the host to perform checks against */
-  endpoint: string;
-  /** UUID. */
-  id?: string;
-  /** Optional name associated with this check */
-  name?: string;
-}
-export const EndpointHealthchecksGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkType: EndpointHealthchecksGetResponseCheckType.pipe(
-      T.Body("check_type"),
-    ),
-    endpoint: S.String,
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EndpointHealthchecksGetResponse",
-}) as any as S.Schema<EndpointHealthchecksGetResponse>;
-
-export interface EndpointHealthchecksListRequest {
-  /** Identifier */
-  accountId: string;
-}
-export const EndpointHealthchecksListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EndpointHealthchecksListRequest",
-}) as any as S.Schema<EndpointHealthchecksListRequest>;
-
-export type EndpointHealthchecksListResponseCheckType = "icmp" | (string & {});
-export const EndpointHealthchecksListResponseCheckType = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EndpointHealthchecksListResponse {
-  /** type of check to perform */
-  checkType: EndpointHealthchecksListResponseCheckType;
-  /** the IP address of the host to perform checks against */
-  endpoint: string;
-  /** UUID. */
-  id?: string;
-  /** Optional name associated with this check */
-  name?: string;
-}
-export const EndpointHealthchecksListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkType: EndpointHealthchecksListResponseCheckType.pipe(
-      T.Body("check_type"),
-    ),
-    endpoint: S.String,
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EndpointHealthchecksListResponse",
-}) as any as S.Schema<EndpointHealthchecksListResponse>;
-
-export type EndpointHealthchecksUpdateRequestCheckType = "icmp" | (string & {});
-export const EndpointHealthchecksUpdateRequestCheckType =
-  /*@__PURE__*/ S.String;
-
-export interface EndpointHealthchecksUpdateRequest {
-  /** Identifier */
-  accountId: string;
-  /** UUID. */
-  id: string;
-  /** type of check to perform */
-  checkType: EndpointHealthchecksUpdateRequestCheckType;
-  /** the IP address of the host to perform checks against */
-  endpoint: string;
-  /** Optional name associated with this check */
-  name?: string;
-}
-export const EndpointHealthchecksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    id: S.String.pipe(T.Label()),
-    checkType: EndpointHealthchecksUpdateRequestCheckType.pipe(
-      T.Body("check_type"),
-    ),
-    endpoint: S.String,
-    name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EndpointHealthchecksUpdateRequest",
-}) as any as S.Schema<EndpointHealthchecksUpdateRequest>;
-
-export type EndpointHealthchecksUpdateResponseCheckType =
-  | "icmp"
-  | (string & {});
-export const EndpointHealthchecksUpdateResponseCheckType =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EndpointHealthchecksUpdateResponse {
-  /** type of check to perform */
-  checkType: EndpointHealthchecksUpdateResponseCheckType;
-  /** the IP address of the host to perform checks against */
-  endpoint: string;
-  /** UUID. */
-  id?: string;
-  /** Optional name associated with this check */
-  name?: string;
-}
-export const EndpointHealthchecksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    checkType: EndpointHealthchecksUpdateResponseCheckType.pipe(
-      T.Body("check_type"),
-    ),
-    endpoint: S.String,
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "EndpointHealthchecksUpdateResponse",
-}) as any as S.Schema<EndpointHealthchecksUpdateResponse>;
+  identifier: "CreateEndpointHealthcheckResponse",
+}) as any as S.Schema<CreateEndpointHealthcheckResponse>;
 
 export type TraceroutesCreateRequestTargetsList = string[];
 export const TraceroutesCreateRequestTargetsList = /*@__PURE__*/ S.Array(
@@ -302,7 +145,7 @@ export const TraceroutesCreateRequestOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "TraceroutesCreateRequestOptions",
 }) as any as S.Schema<TraceroutesCreateRequestOptions>;
 
-export interface TraceroutesCreateRequest {
+export interface CreateTracerouteRequest {
   /** Identifier */
   accountId: string;
   targets: TraceroutesCreateRequestTargetsList;
@@ -310,7 +153,7 @@ export interface TraceroutesCreateRequest {
   colos?: TraceroutesCreateRequestColosList;
   options?: TraceroutesCreateRequestOptions;
 }
-export const TraceroutesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateTracerouteRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     targets: TraceroutesCreateRequestTargetsList,
@@ -324,8 +167,8 @@ export const TraceroutesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "TraceroutesCreateRequest",
-}) as any as S.Schema<TraceroutesCreateRequest>;
+  identifier: "CreateTracerouteRequest",
+}) as any as S.Schema<CreateTracerouteRequest>;
 
 export interface TraceroutesCreateResultItemColosItemColo {
   /** Source colo city. */
@@ -480,98 +323,319 @@ export const TraceroutesCreateResultList = /*@__PURE__*/ S.Array(
   TraceroutesCreateResultItem,
 ) as any as S.Schema<TraceroutesCreateResultList>;
 
-export interface TraceroutesCreateResponse {
+export interface CreateTracerouteResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TraceroutesCreateResultList;
 }
-export const TraceroutesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateTracerouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(TraceroutesCreateResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "TraceroutesCreateResponse",
-}) as any as S.Schema<TraceroutesCreateResponse>;
+  identifier: "CreateTracerouteResponse",
+}) as any as S.Schema<CreateTracerouteResponse>;
 
-export type EndpointHealthchecksCreateError = CloudflareOpError;
+export interface DeleteEndpointHealthcheckRequest {
+  /** Identifier */
+  accountId: string;
+  /** UUID. */
+  id: string;
+}
+export const DeleteEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteEndpointHealthcheckRequest",
+}) as any as S.Schema<DeleteEndpointHealthcheckRequest>;
+
+export interface DeleteEndpointHealthcheckResponse {}
+export const DeleteEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteEndpointHealthcheckResponse",
+}) as any as S.Schema<DeleteEndpointHealthcheckResponse>;
+
+export interface GetEndpointHealthcheckRequest {
+  /** Identifier */
+  accountId: string;
+  /** UUID. */
+  id: string;
+}
+export const GetEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetEndpointHealthcheckRequest",
+}) as any as S.Schema<GetEndpointHealthcheckRequest>;
+
+export type EndpointHealthchecksGetResponseCheckType = "icmp" | (string & {});
+export const EndpointHealthchecksGetResponseCheckType = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetEndpointHealthcheckResponse {
+  /** type of check to perform */
+  checkType: EndpointHealthchecksGetResponseCheckType;
+  /** the IP address of the host to perform checks against */
+  endpoint: string;
+  /** UUID. */
+  id?: string;
+  /** Optional name associated with this check */
+  name?: string;
+}
+export const GetEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    checkType: EndpointHealthchecksGetResponseCheckType.pipe(
+      T.Body("check_type"),
+    ),
+    endpoint: S.String,
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetEndpointHealthcheckResponse",
+}) as any as S.Schema<GetEndpointHealthcheckResponse>;
+
+export interface ListEndpointHealthchecksRequest {
+  /** Identifier */
+  accountId: string;
+}
+export const ListEndpointHealthchecksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListEndpointHealthchecksRequest",
+}) as any as S.Schema<ListEndpointHealthchecksRequest>;
+
+export type EndpointHealthchecksListResponseCheckType = "icmp" | (string & {});
+export const EndpointHealthchecksListResponseCheckType = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface ListEndpointHealthchecksResponse {
+  /** type of check to perform */
+  checkType: EndpointHealthchecksListResponseCheckType;
+  /** the IP address of the host to perform checks against */
+  endpoint: string;
+  /** UUID. */
+  id?: string;
+  /** Optional name associated with this check */
+  name?: string;
+}
+export const ListEndpointHealthchecksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    checkType: EndpointHealthchecksListResponseCheckType.pipe(
+      T.Body("check_type"),
+    ),
+    endpoint: S.String,
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListEndpointHealthchecksResponse",
+}) as any as S.Schema<ListEndpointHealthchecksResponse>;
+
+export type EndpointHealthchecksUpdateRequestCheckType = "icmp" | (string & {});
+export const EndpointHealthchecksUpdateRequestCheckType =
+  /*@__PURE__*/ S.String;
+
+export interface UpdateEndpointHealthcheckRequest {
+  /** Identifier */
+  accountId: string;
+  /** UUID. */
+  id: string;
+  /** type of check to perform */
+  checkType: EndpointHealthchecksUpdateRequestCheckType;
+  /** the IP address of the host to perform checks against */
+  endpoint: string;
+  /** Optional name associated with this check */
+  name?: string;
+}
+export const UpdateEndpointHealthcheckRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    id: S.String.pipe(T.Label()),
+    checkType: EndpointHealthchecksUpdateRequestCheckType.pipe(
+      T.Body("check_type"),
+    ),
+    endpoint: S.String,
+    name: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/diagnostics/endpoint-healthchecks/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateEndpointHealthcheckRequest",
+}) as any as S.Schema<UpdateEndpointHealthcheckRequest>;
+
+export type EndpointHealthchecksUpdateResponseCheckType =
+  | "icmp"
+  | (string & {});
+export const EndpointHealthchecksUpdateResponseCheckType =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateEndpointHealthcheckResponse {
+  /** type of check to perform */
+  checkType: EndpointHealthchecksUpdateResponseCheckType;
+  /** the IP address of the host to perform checks against */
+  endpoint: string;
+  /** UUID. */
+  id?: string;
+  /** Optional name associated with this check */
+  name?: string;
+}
+export const UpdateEndpointHealthcheckResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    checkType: EndpointHealthchecksUpdateResponseCheckType.pipe(
+      T.Body("check_type"),
+    ),
+    endpoint: S.String,
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateEndpointHealthcheckResponse",
+}) as any as S.Schema<UpdateEndpointHealthcheckResponse>;
+
+export type CreateEndpointHealthcheckError =
+  | InvalidHealthcheckEndpoint
+  | Forbidden
+  | CloudflareOpError;
 /** Create Endpoint Health Check. */
-export const endpointHealthchecksCreate: API.OperationMethod<
-  EndpointHealthchecksCreateRequest,
-  EndpointHealthchecksCreateResponse,
-  EndpointHealthchecksCreateError,
+export const createEndpointHealthcheck: API.OperationMethod<
+  CreateEndpointHealthcheckRequest,
+  CreateEndpointHealthcheckResponse,
+  CreateEndpointHealthcheckError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EndpointHealthchecksCreateRequest,
-  output: EndpointHealthchecksCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateEndpointHealthcheckRequest,
+  output: CreateEndpointHealthcheckResponse,
+  errors: [
+    InvalidHealthcheckEndpoint,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type EndpointHealthchecksDeleteError = CloudflareOpError;
-/** Delete Endpoint Health Check. */
-export const endpointHealthchecksDelete: API.OperationMethod<
-  EndpointHealthchecksDeleteRequest,
-  EndpointHealthchecksDeleteResponse,
-  EndpointHealthchecksDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EndpointHealthchecksDeleteRequest,
-  output: EndpointHealthchecksDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type EndpointHealthchecksGetError = CloudflareOpError;
-/** Get a single Endpoint Health Check. */
-export const endpointHealthchecksGet: API.OperationMethod<
-  EndpointHealthchecksGetRequest,
-  EndpointHealthchecksGetResponse,
-  EndpointHealthchecksGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EndpointHealthchecksGetRequest,
-  output: EndpointHealthchecksGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type EndpointHealthchecksListError = CloudflareOpError;
-/** List Endpoint Health Checks. */
-export const endpointHealthchecksList: API.OperationMethod<
-  EndpointHealthchecksListRequest,
-  EndpointHealthchecksListResponse,
-  EndpointHealthchecksListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EndpointHealthchecksListRequest,
-  output: EndpointHealthchecksListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type EndpointHealthchecksUpdateError = CloudflareOpError;
-/** Update a Endpoint Health Check. */
-export const endpointHealthchecksUpdate: API.OperationMethod<
-  EndpointHealthchecksUpdateRequest,
-  EndpointHealthchecksUpdateResponse,
-  EndpointHealthchecksUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EndpointHealthchecksUpdateRequest,
-  output: EndpointHealthchecksUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type TraceroutesCreateError = CloudflareOpError;
+export type CreateTracerouteError = CloudflareOpError;
 /** Run traceroutes from Cloudflare colos. */
-export const traceroutesCreate: API.OperationMethod<
-  TraceroutesCreateRequest,
-  TraceroutesCreateResponse,
-  TraceroutesCreateError,
+export const createTraceroute: API.OperationMethod<
+  CreateTracerouteRequest,
+  CreateTracerouteResponse,
+  CreateTracerouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TraceroutesCreateRequest,
-  output: TraceroutesCreateResponse,
+  input: CreateTracerouteRequest,
+  output: CreateTracerouteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteEndpointHealthcheckError =
+  | EndpointHealthcheckNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Delete Endpoint Health Check. */
+export const deleteEndpointHealthcheck: API.OperationMethod<
+  DeleteEndpointHealthcheckRequest,
+  DeleteEndpointHealthcheckResponse,
+  DeleteEndpointHealthcheckError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteEndpointHealthcheckRequest,
+  output: DeleteEndpointHealthcheckResponse,
+  errors: [
+    EndpointHealthcheckNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetEndpointHealthcheckError =
+  | EndpointHealthcheckNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Get a single Endpoint Health Check. */
+export const getEndpointHealthcheck: API.OperationMethod<
+  GetEndpointHealthcheckRequest,
+  GetEndpointHealthcheckResponse,
+  GetEndpointHealthcheckError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEndpointHealthcheckRequest,
+  output: GetEndpointHealthcheckResponse,
+  errors: [
+    EndpointHealthcheckNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListEndpointHealthchecksError = Forbidden | CloudflareOpError;
+/** List Endpoint Health Checks. */
+export const listEndpointHealthchecks: API.OperationMethod<
+  ListEndpointHealthchecksRequest,
+  ListEndpointHealthchecksResponse,
+  ListEndpointHealthchecksError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEndpointHealthchecksRequest,
+  output: ListEndpointHealthchecksResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateEndpointHealthcheckError =
+  | EndpointHealthcheckNotFound
+  | InvalidHealthcheckEndpoint
+  | Forbidden
+  | CloudflareOpError;
+/** Update a Endpoint Health Check. */
+export const updateEndpointHealthcheck: API.OperationMethod<
+  UpdateEndpointHealthcheckRequest,
+  UpdateEndpointHealthcheckResponse,
+  UpdateEndpointHealthcheckError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateEndpointHealthcheckRequest,
+  output: UpdateEndpointHealthcheckResponse,
+  errors: [
+    EndpointHealthcheckNotFound,
+    InvalidHealthcheckEndpoint,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

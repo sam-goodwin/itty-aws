@@ -9,11 +9,66 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface CustomTopicsGetRequest {
+export class AiSecurityNotEntitled extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AiSecurityNotEntitled>()("AiSecurityNotEntitled", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 13101, message: { includes: "not entitled" } }],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class ZoneNotAuthorized extends T.applyErrorMatchers(
+  S.TaggedErrorClass<ZoneNotAuthorized>()("ZoneNotAuthorized", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10000, message: { includes: "Authentication error" } }],
+) {}
+
+export interface GetAiSecurityRequest {
   /** Defines the zone. */
   zoneId: string;
 }
-export const CustomTopicsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAiSecurityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/ai-security/settings",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetAiSecurityRequest",
+}) as any as S.Schema<GetAiSecurityRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetAiSecurityResponse {
+  /** Whether AI Security for Apps is enabled on the zone. */
+  enabled?: boolean;
+}
+export const GetAiSecurityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GetAiSecurityResponse",
+}) as any as S.Schema<GetAiSecurityResponse>;
+
+export interface GetCustomTopicRequest {
+  /** Defines the zone. */
+  zoneId: string;
+}
+export const GetCustomTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -24,8 +79,8 @@ export const CustomTopicsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CustomTopicsGetRequest",
-}) as any as S.Schema<CustomTopicsGetRequest>;
+  identifier: "GetCustomTopicRequest",
+}) as any as S.Schema<GetCustomTopicRequest>;
 
 export interface CustomTopicsGetResponseTopicsItem {
   /** Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens. */
@@ -49,17 +104,51 @@ export const CustomTopicsGetResponseTopicsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CustomTopicsGetResponseTopicsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CustomTopicsGetResponse {
+export interface GetCustomTopicResponse {
   /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsGetResponseTopicsList;
 }
-export const CustomTopicsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCustomTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topics: S.optional(CustomTopicsGetResponseTopicsList),
   }),
 ).annotate({
-  identifier: "CustomTopicsGetResponse",
-}) as any as S.Schema<CustomTopicsGetResponse>;
+  identifier: "GetCustomTopicResponse",
+}) as any as S.Schema<GetCustomTopicResponse>;
+
+export interface PutAiSecurityRequest {
+  /** Defines the zone. */
+  zoneId: string;
+  /** Whether AI Security for Apps is enabled on the zone. */
+  enabled?: boolean;
+}
+export const PutAiSecurityRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    enabled: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/zones/{zone_id}/ai-security/settings",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PutAiSecurityRequest",
+}) as any as S.Schema<PutAiSecurityRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PutAiSecurityResponse {
+  /** Whether AI Security for Apps is enabled on the zone. */
+  enabled?: boolean;
+}
+export const PutAiSecurityResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "PutAiSecurityResponse",
+}) as any as S.Schema<PutAiSecurityResponse>;
 
 export interface CustomTopicsUpdateRequestTopicsItem {
   /** Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens. */
@@ -82,13 +171,13 @@ export const CustomTopicsUpdateRequestTopicsList = /*@__PURE__*/ S.Array(
   CustomTopicsUpdateRequestTopicsItem,
 ) as any as S.Schema<CustomTopicsUpdateRequestTopicsList>;
 
-export interface CustomTopicsUpdateRequest {
+export interface PutCustomTopicRequest {
   /** Defines the zone. */
   zoneId: string;
   /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsUpdateRequestTopicsList;
 }
-export const CustomTopicsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutCustomTopicRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     topics: S.optional(CustomTopicsUpdateRequestTopicsList),
@@ -100,8 +189,8 @@ export const CustomTopicsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CustomTopicsUpdateRequest",
-}) as any as S.Schema<CustomTopicsUpdateRequest>;
+  identifier: "PutCustomTopicRequest",
+}) as any as S.Schema<PutCustomTopicRequest>;
 
 export interface CustomTopicsUpdateResponseTopicsItem {
   /** Unique label identifier. Must contain only lowercase letters (a–z), digits (0–9), and hyphens. */
@@ -126,127 +215,110 @@ export const CustomTopicsUpdateResponseTopicsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CustomTopicsUpdateResponseTopicsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CustomTopicsUpdateResponse {
+export interface PutCustomTopicResponse {
   /** Custom topic categories for AI Security for Apps content detection. */
   topics?: CustomTopicsUpdateResponseTopicsList;
 }
-export const CustomTopicsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutCustomTopicResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     topics: S.optional(CustomTopicsUpdateResponseTopicsList),
   }),
 ).annotate({
-  identifier: "CustomTopicsUpdateResponse",
-}) as any as S.Schema<CustomTopicsUpdateResponse>;
+  identifier: "PutCustomTopicResponse",
+}) as any as S.Schema<PutCustomTopicResponse>;
 
-export interface GetRequest {
-  /** Defines the zone. */
-  zoneId: string;
-}
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/ai-security/settings",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
-  /** Whether AI Security for Apps is enabled on the zone. */
-  enabled?: boolean;
-}
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
-
-export interface UpdateRequest {
-  /** Defines the zone. */
-  zoneId: string;
-  /** Whether AI Security for Apps is enabled on the zone. */
-  enabled?: boolean;
-}
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    enabled: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/zones/{zone_id}/ai-security/settings",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
-  /** Whether AI Security for Apps is enabled on the zone. */
-  enabled?: boolean;
-}
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-  }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
-
-export type CustomTopicsGetError = CloudflareOpError;
-/** Get the AI Security for Apps custom topic categories for a zone. */
-export const customTopicsGet: API.OperationMethod<
-  CustomTopicsGetRequest,
-  CustomTopicsGetResponse,
-  CustomTopicsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomTopicsGetRequest,
-  output: CustomTopicsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CustomTopicsUpdateError = CloudflareOpError;
-/** Set the AI Security for Apps custom topic categories for a zone. A maximum of 20 custom topics can be configured per zone. Each topic label must be 2–20 characters using only lowercase letters (a–z), digits (0–9), and hyphens. Each topic description must be 2–50 printable ASCII characters. Changes can take up to a minute to propagate to the zone. */
-export const customTopicsUpdate: API.OperationMethod<
-  CustomTopicsUpdateRequest,
-  CustomTopicsUpdateResponse,
-  CustomTopicsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomTopicsUpdateRequest,
-  output: CustomTopicsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GetError = CloudflareOpError;
+export type GetAiSecurityError =
+  | AiSecurityNotEntitled
+  | ZoneNotAuthorized
+  | Forbidden
+  | CloudflareOpError;
 /** Get whether AI Security for Apps is enabled or disabled for a zone. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getAiSecurity: API.OperationMethod<
+  GetAiSecurityRequest,
+  GetAiSecurityResponse,
+  GetAiSecurityError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetAiSecurityRequest,
+  output: GetAiSecurityResponse,
+  errors: [
+    AiSecurityNotEntitled,
+    ZoneNotAuthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
-/** Enable or disable AI Security for Apps for a zone. Changes can take up to a minute to propagate to the zone. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export type GetCustomTopicError =
+  | AiSecurityNotEntitled
+  | ZoneNotAuthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Get the AI Security for Apps custom topic categories for a zone. */
+export const getCustomTopic: API.OperationMethod<
+  GetCustomTopicRequest,
+  GetCustomTopicResponse,
+  GetCustomTopicError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetCustomTopicRequest,
+  output: GetCustomTopicResponse,
+  errors: [
+    AiSecurityNotEntitled,
+    ZoneNotAuthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutAiSecurityError =
+  | AiSecurityNotEntitled
+  | ZoneNotAuthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Enable or disable AI Security for Apps for a zone. Changes can take up to a minute to propagate to the zone. */
+export const putAiSecurity: API.OperationMethod<
+  PutAiSecurityRequest,
+  PutAiSecurityResponse,
+  PutAiSecurityError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutAiSecurityRequest,
+  output: PutAiSecurityResponse,
+  errors: [
+    AiSecurityNotEntitled,
+    ZoneNotAuthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutCustomTopicError =
+  | AiSecurityNotEntitled
+  | ZoneNotAuthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Set the AI Security for Apps custom topic categories for a zone. A maximum of 20 custom topics can be configured per zone. Each topic label must be 2–20 characters using only lowercase letters (a–z), digits (0–9), and hyphens. Each topic description must be 2–50 printable ASCII characters. Changes can take up to a minute to propagate to the zone. */
+export const putCustomTopic: API.OperationMethod<
+  PutCustomTopicRequest,
+  PutCustomTopicResponse,
+  PutCustomTopicError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutCustomTopicRequest,
+  output: PutCustomTopicResponse,
+  errors: [
+    AiSecurityNotEntitled,
+    ZoneNotAuthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

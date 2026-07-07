@@ -1,0 +1,115 @@
+{
+  "description": "Align workers#ObservabilityDestinationsUpdate with distilled cloudflare/workers patchObservabilityDestination",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ObservabilityDestinationsUpdate",
+      "path": "/shapes/com.cloudflare.workers#PatchObservabilityDestination"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ObservabilityDestinationsUpdateRequest",
+      "path": "/shapes/com.cloudflare.workers#PatchObservabilityDestinationRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#PatchObservabilityDestination/input/target",
+      "value": "com.cloudflare.workers#PatchObservabilityDestinationRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ObservabilityDestinationsUpdateResponse",
+      "path": "/shapes/com.cloudflare.workers#PatchObservabilityDestinationResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#PatchObservabilityDestination/output/target",
+      "value": "com.cloudflare.workers#PatchObservabilityDestinationResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#ObservabilityDestinationNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#ObservabilityDestinationPreflightFailed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 400,
+              "message": "Bad Request"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#PatchObservabilityDestination/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.workers#ObservabilityDestinationNotFound"
+        },
+        {
+          "target": "com.cloudflare.workers#ObservabilityDestinationPreflightFailed"
+        },
+        {
+          "target": "com.cloudflare.workers#Forbidden"
+        }
+      ]
+    }
+  ]
+}

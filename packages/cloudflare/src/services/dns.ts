@@ -9,534 +9,106 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export type AnalyticsReportsBytimesGetRequestTimeDelta =
-  | "all"
-  | "auto"
-  | "year"
-  | (string & {});
-export const AnalyticsReportsBytimesGetRequestTimeDelta =
-  /*@__PURE__*/ S.String;
+export class AclNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AclNotFound>()("AclNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
 
-export interface AnalyticsReportsBytimesGetRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** A comma-separated list of dimensions to group results by. */
-  dimensions?: string;
-  /** Segmentation filter in 'attribute operator value' format. */
-  filters?: string;
-  /** Limit number of returned metrics. */
-  limit?: number;
-  /** A comma-separated list of metrics to query. */
-  metrics?: string;
-  /** Start date and time of requesting data period in ISO 8601 format. */
-  since?: string;
-  /** A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
-  sort?: string;
-  /** Unit of time to group data by. */
-  timeDelta?: AnalyticsReportsBytimesGetRequestTimeDelta;
-  /** End date and time of requesting data period in ISO 8601 format. */
-  until?: string;
-}
-export const AnalyticsReportsBytimesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    dimensions: S.optional(S.String.pipe(T.Query())),
-    filters: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    metrics: S.optional(S.String.pipe(T.Query())),
-    since: S.optional(S.String.pipe(T.Query())),
-    sort: S.optional(S.String.pipe(T.Query())),
-    timeDelta: S.optional(
-      AnalyticsReportsBytimesGetRequestTimeDelta.pipe(T.Query("time_delta")),
-    ),
-    until: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/dns_analytics/report/bytime",
-      code: 200,
-    }),
+export class DnsRecordAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<DnsRecordAlreadyExists>()("DnsRecordAlreadyExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [
+    { code: 81057 },
+    { code: 81058 },
+    { status: 400, message: { includes: "identical record already exists" } },
+  ],
+) {}
+
+export class DnsSettingNotAvailable extends T.applyErrorMatchers(
+  S.TaggedErrorClass<DnsSettingNotAvailable>()("DnsSettingNotAvailable", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1003 }],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class IncomingZoneTransferNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<IncomingZoneTransferNotFound>()(
+    "IncomingZoneTransferNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
   ),
-).annotate({
-  identifier: "AnalyticsReportsBytimesGetRequest",
-}) as any as S.Schema<AnalyticsReportsBytimesGetRequest>;
+  [{ status: 404 }],
+) {}
 
-export type AnalyticsReportsBytimesGetResponseDataItemDimensionsList = string[];
-export const AnalyticsReportsBytimesGetResponseDataItemDimensionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemDimensionsList>;
-
-export type AnalyticsReportsBytimesGetResponseDataItemMetricsList = unknown[];
-export const AnalyticsReportsBytimesGetResponseDataItemMetricsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemMetricsList>;
-
-export interface AnalyticsReportsBytimesGetResponseDataItem {
-  /** Array of dimension values, representing the combination of dimension values corresponding to this row. */
-  dimensions: AnalyticsReportsBytimesGetResponseDataItemDimensionsList;
-  /** Array with one item per requested metric. Each item is an array of values, broken down by time interval. */
-  metrics: AnalyticsReportsBytimesGetResponseDataItemMetricsList;
-}
-export const AnalyticsReportsBytimesGetResponseDataItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dimensions: AnalyticsReportsBytimesGetResponseDataItemDimensionsList,
-      metrics: AnalyticsReportsBytimesGetResponseDataItemMetricsList,
-    }),
-  ).annotate({
-    identifier: "AnalyticsReportsBytimesGetResponseDataItem",
-  }) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItem>;
-
-export type AnalyticsReportsBytimesGetResponseDataList =
-  AnalyticsReportsBytimesGetResponseDataItem[];
-export const AnalyticsReportsBytimesGetResponseDataList = /*@__PURE__*/ S.Array(
-  AnalyticsReportsBytimesGetResponseDataItem,
-) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataList>;
-
-export type AnalyticsReportsBytimesGetResponseQueryDimensionsList = string[];
-export const AnalyticsReportsBytimesGetResponseQueryDimensionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryDimensionsList>;
-
-export type AnalyticsReportsBytimesGetResponseQueryMetricsList = string[];
-export const AnalyticsReportsBytimesGetResponseQueryMetricsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryMetricsList>;
-
-export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
-  | "all"
-  | "auto"
-  | "year"
-  | (string & {});
-export const AnalyticsReportsBytimesGetResponseQueryTimeDelta =
-  /*@__PURE__*/ S.String;
-
-export type AnalyticsReportsBytimesGetResponseQuerySortList = string[];
-export const AnalyticsReportsBytimesGetResponseQuerySortList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuerySortList>;
-
-export interface AnalyticsReportsBytimesGetResponseQuery {
-  /** Array of dimension names. */
-  dimensions: AnalyticsReportsBytimesGetResponseQueryDimensionsList;
-  /** Limit number of returned metrics. */
-  limit: number;
-  /** Array of metric names. */
-  metrics: AnalyticsReportsBytimesGetResponseQueryMetricsList;
-  /** Start date and time of requesting data period in ISO 8601 format. */
-  since: string;
-  /** Unit of time to group data by. */
-  timeDelta: AnalyticsReportsBytimesGetResponseQueryTimeDelta;
-  /** End date and time of requesting data period in ISO 8601 format. */
-  until: string;
-  /** Segmentation filter in 'attribute operator value' format. */
-  filters?: string;
-  /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
-  sort?: AnalyticsReportsBytimesGetResponseQuerySortList;
-}
-export const AnalyticsReportsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      dimensions: AnalyticsReportsBytimesGetResponseQueryDimensionsList,
-      limit: S.Number,
-      metrics: AnalyticsReportsBytimesGetResponseQueryMetricsList,
-      since: S.String,
-      timeDelta: AnalyticsReportsBytimesGetResponseQueryTimeDelta.pipe(
-        T.Body("time_delta"),
-      ),
-      until: S.String,
-      filters: S.optional(S.String),
-      sort: S.optional(AnalyticsReportsBytimesGetResponseQuerySortList),
-    }),
-).annotate({
-  identifier: "AnalyticsReportsBytimesGetResponseQuery",
-}) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuery>;
-
-export type AnalyticsReportsBytimesGetResponseTimeIntervalsList = unknown[];
-export const AnalyticsReportsBytimesGetResponseTimeIntervalsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AnalyticsReportsBytimesGetResponse {
-  /** Array with one row per combination of dimension values. */
-  data: AnalyticsReportsBytimesGetResponseDataList;
-  /** Number of seconds between current time and last processed event, in another words how many seconds of data could be missing. */
-  dataLag: number;
-  /** Maximum results for each metric (object mapping metric names to values). Currently always an empty object. */
-  max: unknown;
-  /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
-  min: unknown;
-  query: AnalyticsReportsBytimesGetResponseQuery;
-  /** Total number of rows in the result. */
-  rows: number;
-  /** Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time. */
-  timeIntervals: AnalyticsReportsBytimesGetResponseTimeIntervalsList;
-  /** Total results for metrics across all data (object mapping metric names to values). */
-  totals: unknown;
-}
-export const AnalyticsReportsBytimesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: AnalyticsReportsBytimesGetResponseDataList,
-    dataLag: S.Number.pipe(T.Body("data_lag")),
-    max: S.Unknown,
-    min: S.Unknown,
-    query: AnalyticsReportsBytimesGetResponseQuery,
-    rows: S.Number,
-    timeIntervals: AnalyticsReportsBytimesGetResponseTimeIntervalsList.pipe(
-      T.Body("time_intervals"),
-    ),
-    totals: S.Unknown,
+export class InternalDnsNotAvailable extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InternalDnsNotAvailable>()("InternalDnsNotAvailable", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "AnalyticsReportsBytimesGetResponse",
-}) as any as S.Schema<AnalyticsReportsBytimesGetResponse>;
+  [{ code: 1029 }],
+) {}
 
-export interface AnalyticsReportsGetRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** A comma-separated list of dimensions to group results by. */
-  dimensions?: string;
-  /** Segmentation filter in 'attribute operator value' format. */
-  filters?: string;
-  /** Limit number of returned metrics. */
-  limit?: number;
-  /** A comma-separated list of metrics to query. */
-  metrics?: string;
-  /** Start date and time of requesting data period in ISO 8601 format. */
-  since?: string;
-  /** A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
-  sort?: string;
-  /** End date and time of requesting data period in ISO 8601 format. */
-  until?: string;
-}
-export const AnalyticsReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    dimensions: S.optional(S.String.pipe(T.Query())),
-    filters: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    metrics: S.optional(S.String.pipe(T.Query())),
-    since: S.optional(S.String.pipe(T.Query())),
-    sort: S.optional(S.String.pipe(T.Query())),
-    until: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/dns_analytics/report",
-      code: 200,
-    }),
+export class OutgoingZoneTransferNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<OutgoingZoneTransferNotFound>()(
+    "OutgoingZoneTransferNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
   ),
-).annotate({
-  identifier: "AnalyticsReportsGetRequest",
-}) as any as S.Schema<AnalyticsReportsGetRequest>;
+  [{ status: 404 }],
+) {}
 
-export type AnalyticsReportsGetResponseDataItemDimensionsList = string[];
-export const AnalyticsReportsGetResponseDataItemDimensionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsReportsGetResponseDataItemDimensionsList>;
-
-export type AnalyticsReportsGetResponseDataItemMetricsList = number[];
-export const AnalyticsReportsGetResponseDataItemMetricsList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<AnalyticsReportsGetResponseDataItemMetricsList>;
-
-export interface AnalyticsReportsGetResponseDataItem {
-  /** Array of dimension values, representing the combination of dimension values corresponding to this row. */
-  dimensions: AnalyticsReportsGetResponseDataItemDimensionsList;
-  /** Array with one item per requested metric. Each item is a single value. */
-  metrics: AnalyticsReportsGetResponseDataItemMetricsList;
-}
-export const AnalyticsReportsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: AnalyticsReportsGetResponseDataItemDimensionsList,
-    metrics: AnalyticsReportsGetResponseDataItemMetricsList,
-  }),
-).annotate({
-  identifier: "AnalyticsReportsGetResponseDataItem",
-}) as any as S.Schema<AnalyticsReportsGetResponseDataItem>;
-
-export type AnalyticsReportsGetResponseDataList =
-  AnalyticsReportsGetResponseDataItem[];
-export const AnalyticsReportsGetResponseDataList = /*@__PURE__*/ S.Array(
-  AnalyticsReportsGetResponseDataItem,
-) as any as S.Schema<AnalyticsReportsGetResponseDataList>;
-
-export type AnalyticsReportsGetResponseQueryDimensionsList = string[];
-export const AnalyticsReportsGetResponseQueryDimensionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsReportsGetResponseQueryDimensionsList>;
-
-export type AnalyticsReportsGetResponseQueryMetricsList = string[];
-export const AnalyticsReportsGetResponseQueryMetricsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<AnalyticsReportsGetResponseQueryMetricsList>;
-
-export type AnalyticsReportsGetResponseQuerySortList = string[];
-export const AnalyticsReportsGetResponseQuerySortList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AnalyticsReportsGetResponseQuerySortList>;
-
-export interface AnalyticsReportsGetResponseQuery {
-  /** Array of dimension names. */
-  dimensions: AnalyticsReportsGetResponseQueryDimensionsList;
-  /** Limit number of returned metrics. */
-  limit: number;
-  /** Array of metric names. */
-  metrics: AnalyticsReportsGetResponseQueryMetricsList;
-  /** Start date and time of requesting data period in ISO 8601 format. */
-  since: string;
-  /** End date and time of requesting data period in ISO 8601 format. */
-  until: string;
-  /** Segmentation filter in 'attribute operator value' format. */
-  filters?: string;
-  /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
-  sort?: AnalyticsReportsGetResponseQuerySortList;
-}
-export const AnalyticsReportsGetResponseQuery = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dimensions: AnalyticsReportsGetResponseQueryDimensionsList,
-    limit: S.Number,
-    metrics: AnalyticsReportsGetResponseQueryMetricsList,
-    since: S.String,
-    until: S.String,
-    filters: S.optional(S.String),
-    sort: S.optional(AnalyticsReportsGetResponseQuerySortList),
-  }),
-).annotate({
-  identifier: "AnalyticsReportsGetResponseQuery",
-}) as any as S.Schema<AnalyticsReportsGetResponseQuery>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AnalyticsReportsGetResponse {
-  /** Array with one row per combination of dimension values. */
-  data: AnalyticsReportsGetResponseDataList;
-  /** Number of seconds between current time and last processed event, in another words how many seconds of data could be missing. */
-  dataLag: number;
-  /** Maximum results for each metric (object mapping metric names to values). Currently always an empty object. */
-  max: unknown;
-  /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
-  min: unknown;
-  query: AnalyticsReportsGetResponseQuery;
-  /** Total number of rows in the result. */
-  rows: number;
-  /** Total results for metrics across all data (object mapping metric names to values). */
-  totals: unknown;
-}
-export const AnalyticsReportsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: AnalyticsReportsGetResponseDataList,
-    dataLag: S.Number.pipe(T.Body("data_lag")),
-    max: S.Unknown,
-    min: S.Unknown,
-    query: AnalyticsReportsGetResponseQuery,
-    rows: S.Number,
-    totals: S.Unknown,
-  }),
-).annotate({
-  identifier: "AnalyticsReportsGetResponse",
-}) as any as S.Schema<AnalyticsReportsGetResponse>;
-
-export interface DnssecDeleteRequest {
-  /** Identifier. */
-  zoneId: string;
-}
-export const DnssecDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "DELETE", uri: "/zones/{zone_id}/dnssec", code: 200 }),
+export class OutgoingZoneTransfersNotAllowed extends T.applyErrorMatchers(
+  S.TaggedErrorClass<OutgoingZoneTransfersNotAllowed>()(
+    "OutgoingZoneTransfersNotAllowed",
+    {
+      code: S.Number,
+      message: S.String,
+    },
   ),
-).annotate({
-  identifier: "DnssecDeleteRequest",
-}) as any as S.Schema<DnssecDeleteRequest>;
+  [{ status: 401 }],
+) {}
 
-export interface DnssecDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
-export const DnssecDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
+export class PeerNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PeerNotFound>()("PeerNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "DnssecDeleteResponse",
-}) as any as S.Schema<DnssecDeleteResponse>;
+  [{ status: 404 }],
+) {}
 
-export type DnssecEditRequestStatus = "active" | "disabled" | (string & {});
-export const DnssecEditRequestStatus = /*@__PURE__*/ S.String;
-
-export interface DnssecEditRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** If true, multi-signer DNSSEC is enabled on the zone, allowing multiple */
-  dnssecMultiSigner?: boolean;
-  /** If true, allows Cloudflare to transfer in a DNSSEC-signed zone */
-  dnssecPresigned?: boolean;
-  /** If true, enables the use of NSEC3 together with DNSSEC on the zone. */
-  dnssecUseNsec3?: boolean;
-  /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
-  status?: DnssecEditRequestStatus;
-}
-export const DnssecEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    dnssecMultiSigner: S.optional(
-      S.Boolean.pipe(T.Body("dnssec_multi_signer")),
-    ),
-    dnssecPresigned: S.optional(S.Boolean.pipe(T.Body("dnssec_presigned"))),
-    dnssecUseNsec3: S.optional(S.Boolean.pipe(T.Body("dnssec_use_nsec3"))),
-    status: S.optional(DnssecEditRequestStatus),
-  }).pipe(
-    T.Http({ method: "PATCH", uri: "/zones/{zone_id}/dnssec", code: 200 }),
-  ),
-).annotate({
-  identifier: "DnssecEditRequest",
-}) as any as S.Schema<DnssecEditRequest>;
-
-export type DnssecEditResponseStatus =
-  | "active"
-  | "pending"
-  | "disabled"
-  | (string & {});
-export const DnssecEditResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DnssecEditResponse {
-  /** Algorithm key code. */
-  algorithm?: string;
-  /** Digest hash. */
-  digest?: string;
-  /** Type of digest algorithm. */
-  digestAlgorithm?: string;
-  /** Coded type for digest algorithm. */
-  digestType?: string;
-  /** If true, multi-signer DNSSEC is enabled on the zone, allowing multiple */
-  dnssecMultiSigner?: boolean;
-  /** If true, allows Cloudflare to transfer in a DNSSEC-signed zone */
-  dnssecPresigned?: boolean;
-  /** If true, enables the use of NSEC3 together with DNSSEC on the zone. */
-  dnssecUseNsec3?: boolean;
-  /** Full DS record. */
-  ds?: string;
-  /** Flag for DNSSEC record. */
-  flags?: number;
-  /** Code for key tag. */
-  keyTag?: number;
-  /** Algorithm key type. */
-  keyType?: string;
-  /** When DNSSEC was last modified. */
-  modifiedOn?: string;
-  /** Public key for DS record. */
-  publicKey?: string;
-  /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
-  status?: DnssecEditResponseStatus;
-}
-export const DnssecEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.String),
-    digest: S.optional(S.String),
-    digestAlgorithm: S.optional(S.String.pipe(T.Body("digest_algorithm"))),
-    digestType: S.optional(S.String.pipe(T.Body("digest_type"))),
-    dnssecMultiSigner: S.optional(
-      S.Boolean.pipe(T.Body("dnssec_multi_signer")),
-    ),
-    dnssecPresigned: S.optional(S.Boolean.pipe(T.Body("dnssec_presigned"))),
-    dnssecUseNsec3: S.optional(S.Boolean.pipe(T.Body("dnssec_use_nsec3"))),
-    ds: S.optional(S.String),
-    flags: S.optional(S.Number),
-    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-    keyType: S.optional(S.String.pipe(T.Body("key_type"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-    status: S.optional(DnssecEditResponseStatus),
+export class TsigNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<TsigNotFound>()("TsigNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "DnssecEditResponse",
-}) as any as S.Schema<DnssecEditResponse>;
+  [{ status: 404 }],
+) {}
 
-export interface DnssecGetRequest {
-  /** Identifier. */
-  zoneId: string;
-}
-export const DnssecGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/dnssec", code: 200 })),
-).annotate({
-  identifier: "DnssecGetRequest",
-}) as any as S.Schema<DnssecGetRequest>;
-
-export type DnssecGetResponseStatus =
-  | "active"
-  | "pending"
-  | "disabled"
-  | (string & {});
-export const DnssecGetResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DnssecGetResponse {
-  /** Algorithm key code. */
-  algorithm?: string;
-  /** Digest hash. */
-  digest?: string;
-  /** Type of digest algorithm. */
-  digestAlgorithm?: string;
-  /** Coded type for digest algorithm. */
-  digestType?: string;
-  /** If true, multi-signer DNSSEC is enabled on the zone, allowing multiple */
-  dnssecMultiSigner?: boolean;
-  /** If true, allows Cloudflare to transfer in a DNSSEC-signed zone */
-  dnssecPresigned?: boolean;
-  /** If true, enables the use of NSEC3 together with DNSSEC on the zone. */
-  dnssecUseNsec3?: boolean;
-  /** Full DS record. */
-  ds?: string;
-  /** Flag for DNSSEC record. */
-  flags?: number;
-  /** Code for key tag. */
-  keyTag?: number;
-  /** Algorithm key type. */
-  keyType?: string;
-  /** When DNSSEC was last modified. */
-  modifiedOn?: string;
-  /** Public key for DS record. */
-  publicKey?: string;
-  /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
-  status?: DnssecGetResponseStatus;
-}
-export const DnssecGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    algorithm: S.optional(S.String),
-    digest: S.optional(S.String),
-    digestAlgorithm: S.optional(S.String.pipe(T.Body("digest_algorithm"))),
-    digestType: S.optional(S.String.pipe(T.Body("digest_type"))),
-    dnssecMultiSigner: S.optional(
-      S.Boolean.pipe(T.Body("dnssec_multi_signer")),
-    ),
-    dnssecPresigned: S.optional(S.Boolean.pipe(T.Body("dnssec_presigned"))),
-    dnssecUseNsec3: S.optional(S.Boolean.pipe(T.Body("dnssec_use_nsec3"))),
-    ds: S.optional(S.String),
-    flags: S.optional(S.Number),
-    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
-    keyType: S.optional(S.String.pipe(T.Body("key_type"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
-    status: S.optional(DnssecGetResponseStatus),
+export class ViewNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<ViewNotFound>()("ViewNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "DnssecGetResponse",
-}) as any as S.Schema<DnssecGetResponse>;
+  [{ code: 1015 }, { status: 404 }],
+) {}
 
 export interface RecordsBatchRequestDeletesItem {
   /** Identifier. */
@@ -1285,7 +857,7 @@ export const RecordsBatchRequestPutsList = /*@__PURE__*/ S.Array(
   RecordsBatchRequestPutsItem,
 ) as any as S.Schema<RecordsBatchRequestPutsList>;
 
-export interface RecordsBatchRequest {
+export interface BatchRecordRequest {
   /** Identifier. */
   zoneId: string;
   /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
@@ -1295,7 +867,7 @@ export interface RecordsBatchRequest {
   posts?: RecordsBatchRequestPostsList;
   puts?: RecordsBatchRequestPutsList;
 }
-export const RecordsBatchRequest = /*@__PURE__*/ S.suspend(() =>
+export const BatchRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     includeShadowMetadata: S.optional(
@@ -1313,8 +885,8 @@ export const RecordsBatchRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RecordsBatchRequest",
-}) as any as S.Schema<RecordsBatchRequest>;
+  identifier: "BatchRecordRequest",
+}) as any as S.Schema<BatchRecordRequest>;
 
 export type RecordsBatchResponseDeletesItemARecordMetaShadowedByList = string[];
 export const RecordsBatchResponseDeletesItemARecordMetaShadowedByList =
@@ -2908,13 +2480,13 @@ export const RecordsBatchResponsePutsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RecordsBatchResponsePutsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RecordsBatchResponse {
+export interface BatchRecordResponse {
   deletes?: RecordsBatchResponseDeletesList;
   patches?: RecordsBatchResponsePatchesList;
   posts?: RecordsBatchResponsePostsList;
   puts?: RecordsBatchResponsePutsList;
 }
-export const RecordsBatchResponse = /*@__PURE__*/ S.suspend(() =>
+export const BatchRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     deletes: S.optional(RecordsBatchResponseDeletesList),
     patches: S.optional(RecordsBatchResponsePatchesList),
@@ -2922,8 +2494,8 @@ export const RecordsBatchResponse = /*@__PURE__*/ S.suspend(() =>
     puts: S.optional(RecordsBatchResponsePutsList),
   }),
 ).annotate({
-  identifier: "RecordsBatchResponse",
-}) as any as S.Schema<RecordsBatchResponse>;
+  identifier: "BatchRecordResponse",
+}) as any as S.Schema<BatchRecordResponse>;
 
 export interface RecordsCreateRequestBody {
   ARecordObjectNameTtlType6More__: unknown;
@@ -3018,14 +2590,14 @@ export const RecordsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsCreateRequestBody",
 }) as any as S.Schema<RecordsCreateRequestBody>;
 
-export interface RecordsCreateRequest {
+export interface CreateRecordRequest {
   /** Identifier. */
   zoneId: string;
   /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
   includeShadowMetadata?: boolean;
   body: RecordsCreateRequestBody;
 }
-export const RecordsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     includeShadowMetadata: S.optional(
@@ -3036,8 +2608,8 @@ export const RecordsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     T.Http({ method: "POST", uri: "/zones/{zone_id}/dns_records", code: 200 }),
   ),
 ).annotate({
-  identifier: "RecordsCreateRequest",
-}) as any as S.Schema<RecordsCreateRequest>;
+  identifier: "CreateRecordRequest",
+}) as any as S.Schema<CreateRecordRequest>;
 
 export type RecordsCreateResponseARecordMetaShadowedByList = string[];
 export const RecordsCreateResponseARecordMetaShadowedByList =
@@ -4306,7 +3878,7 @@ export const RecordsCreateResponseURIRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsCreateResponseURIRecord>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RecordsCreateResponse {
+export interface CreateRecordResponse {
   ARecord: RecordsCreateResponseARecord;
   AAAARecord: RecordsCreateResponseAAAARecord;
   CNAMERecord: RecordsCreateResponseCNAMERecord;
@@ -4329,7 +3901,7 @@ export interface RecordsCreateResponse {
   TLSARecord: RecordsCreateResponseTLSARecord;
   URIRecord: RecordsCreateResponseURIRecord;
 }
-export const RecordsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARecord: RecordsCreateResponseARecord,
     AAAARecord: RecordsCreateResponseAAAARecord,
@@ -4356,16 +3928,408 @@ export const RecordsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     URIRecord: RecordsCreateResponseURIRecord,
   }),
 ).annotate({
-  identifier: "RecordsCreateResponse",
-}) as any as S.Schema<RecordsCreateResponse>;
+  identifier: "CreateRecordResponse",
+}) as any as S.Schema<CreateRecordResponse>;
 
-export interface RecordsDeleteRequest {
+export type SettingsAccountViewsCreateRequestZonesList = string[];
+export const SettingsAccountViewsCreateRequestZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SettingsAccountViewsCreateRequestZonesList>;
+
+export interface CreateSettingAccountViewRequest {
+  /** Identifier. */
+  accountId: string;
+  /** The name of the view. */
+  name: string;
+  /** The list of zones linked to this view. */
+  zones: SettingsAccountViewsCreateRequestZonesList;
+}
+export const CreateSettingAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.String,
+    zones: SettingsAccountViewsCreateRequestZonesList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/dns_settings/views",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateSettingAccountViewRequest",
+}) as any as S.Schema<CreateSettingAccountViewRequest>;
+
+export type SettingsAccountViewsCreateResponseZonesList = string[];
+export const SettingsAccountViewsCreateResponseZonesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SettingsAccountViewsCreateResponseZonesList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateSettingAccountViewResponse {
+  /** Identifier. */
+  id: string;
+  /** When the view was created. */
+  createdTime: string;
+  /** When the view was last modified. */
+  modifiedTime: string;
+  /** The name of the view. */
+  name: string;
+  /** The list of zones linked to this view. */
+  zones: SettingsAccountViewsCreateResponseZonesList;
+}
+export const CreateSettingAccountViewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdTime: S.String.pipe(T.Body("created_time")),
+    modifiedTime: S.String.pipe(T.Body("modified_time")),
+    name: S.String,
+    zones: SettingsAccountViewsCreateResponseZonesList,
+  }),
+).annotate({
+  identifier: "CreateSettingAccountViewResponse",
+}) as any as S.Schema<CreateSettingAccountViewResponse>;
+
+export interface CreateZoneTransferAclRequest {
+  accountId: string;
+  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
+  ipRange: string;
+  /** The name of the acl. */
+  name: string;
+}
+export const CreateZoneTransferAclRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    ipRange: S.String.pipe(T.Body("ip_range")),
+    name: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/secondary_dns/acls",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateZoneTransferAclRequest",
+}) as any as S.Schema<CreateZoneTransferAclRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateZoneTransferAclResponse {
+  id: string;
+  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
+  ipRange: string;
+  /** The name of the acl. */
+  name: string;
+}
+export const CreateZoneTransferAclResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    ipRange: S.String.pipe(T.Body("ip_range")),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "CreateZoneTransferAclResponse",
+}) as any as S.Schema<CreateZoneTransferAclResponse>;
+
+export interface CreateZoneTransferForceAxfrRequest {
+  zoneId: string;
+  body: unknown;
+}
+export const CreateZoneTransferForceAxfrRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    body: S.Unknown,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/secondary_dns/force_axfr",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateZoneTransferForceAxfrRequest",
+}) as any as S.Schema<CreateZoneTransferForceAxfrRequest>;
+
+export interface CreateZoneTransferForceAxfrResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const CreateZoneTransferForceAxfrResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "CreateZoneTransferForceAxfrResponse",
+}) as any as S.Schema<CreateZoneTransferForceAxfrResponse>;
+
+export type ZoneTransfersIncomingCreateRequestPeersList = string[];
+export const ZoneTransfersIncomingCreateRequestPeersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ZoneTransfersIncomingCreateRequestPeersList>;
+
+export interface CreateZoneTransferIncomingRequest {
+  zoneId: string;
+  /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
+  autoRefreshSeconds: number;
+  /** Zone name. */
+  name: string;
+  /** A list of peer tags. */
+  peers: ZoneTransfersIncomingCreateRequestPeersList;
+}
+export const CreateZoneTransferIncomingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    autoRefreshSeconds: S.Number.pipe(T.Body("auto_refresh_seconds")),
+    name: S.String,
+    peers: ZoneTransfersIncomingCreateRequestPeersList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/secondary_dns/incoming",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateZoneTransferIncomingRequest",
+}) as any as S.Schema<CreateZoneTransferIncomingRequest>;
+
+export type ZoneTransfersIncomingCreateResponsePeersList = string[];
+export const ZoneTransfersIncomingCreateResponsePeersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ZoneTransfersIncomingCreateResponsePeersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateZoneTransferIncomingResponse {
+  id?: string;
+  /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
+  autoRefreshSeconds?: number;
+  /** The time for a specific event. */
+  checkedTime?: string;
+  /** The time for a specific event. */
+  createdTime?: string;
+  /** The time for a specific event. */
+  modifiedTime?: string;
+  /** Zone name. */
+  name?: string;
+  /** A list of peer tags. */
+  peers?: ZoneTransfersIncomingCreateResponsePeersList;
+  /** The serial number of the SOA for the given zone. */
+  soaSerial?: number;
+}
+export const CreateZoneTransferIncomingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    autoRefreshSeconds: S.optional(
+      S.Number.pipe(T.Body("auto_refresh_seconds")),
+    ),
+    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
+    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
+    modifiedTime: S.optional(S.String.pipe(T.Body("modified_time"))),
+    name: S.optional(S.String),
+    peers: S.optional(ZoneTransfersIncomingCreateResponsePeersList),
+    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
+  }),
+).annotate({
+  identifier: "CreateZoneTransferIncomingResponse",
+}) as any as S.Schema<CreateZoneTransferIncomingResponse>;
+
+export type ZoneTransfersOutgoingCreateRequestPeersList = string[];
+export const ZoneTransfersOutgoingCreateRequestPeersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ZoneTransfersOutgoingCreateRequestPeersList>;
+
+export interface CreateZoneTransferOutgoingRequest {
+  zoneId: string;
+  /** Zone name. */
+  name: string;
+  /** A list of peer tags. */
+  peers: ZoneTransfersOutgoingCreateRequestPeersList;
+}
+export const CreateZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    name: S.String,
+    peers: ZoneTransfersOutgoingCreateRequestPeersList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/secondary_dns/outgoing",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateZoneTransferOutgoingRequest",
+}) as any as S.Schema<CreateZoneTransferOutgoingRequest>;
+
+export type ZoneTransfersOutgoingCreateResponsePeersList = string[];
+export const ZoneTransfersOutgoingCreateResponsePeersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ZoneTransfersOutgoingCreateResponsePeersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateZoneTransferOutgoingResponse {
+  id?: string;
+  /** The time for a specific event. */
+  checkedTime?: string;
+  /** The time for a specific event. */
+  createdTime?: string;
+  /** The time for a specific event. */
+  lastTransferredTime?: string;
+  /** Zone name. */
+  name?: string;
+  /** A list of peer tags. */
+  peers?: ZoneTransfersOutgoingCreateResponsePeersList;
+  /** The serial number of the SOA for the given zone. */
+  soaSerial?: number;
+}
+export const CreateZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
+    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
+    lastTransferredTime: S.optional(
+      S.String.pipe(T.Body("last_transferred_time")),
+    ),
+    name: S.optional(S.String),
+    peers: S.optional(ZoneTransfersOutgoingCreateResponsePeersList),
+    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
+  }),
+).annotate({
+  identifier: "CreateZoneTransferOutgoingResponse",
+}) as any as S.Schema<CreateZoneTransferOutgoingResponse>;
+
+export interface CreateZoneTransferPeerRequest {
+  accountId: string;
+  /** The name of the peer. */
+  name: string;
+}
+export const CreateZoneTransferPeerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/secondary_dns/peers",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateZoneTransferPeerRequest",
+}) as any as S.Schema<CreateZoneTransferPeerRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateZoneTransferPeerResponse {
+  id: string;
+  /** The name of the peer. */
+  name: string;
+  /** IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to. */
+  ip?: string;
+  /** Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones. */
+  ixfrEnable?: boolean;
+  /** DNS port of primary or secondary nameserver, depending on what zone this peer is linked to. */
+  port?: number;
+  /** TSIG authentication will be used for zone transfer if configured. */
+  tsigId?: string;
+}
+export const CreateZoneTransferPeerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    ip: S.optional(S.String),
+    ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
+    port: S.optional(S.Number),
+    tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
+  }),
+).annotate({
+  identifier: "CreateZoneTransferPeerResponse",
+}) as any as S.Schema<CreateZoneTransferPeerResponse>;
+
+export interface CreateZoneTransferTsigRequest {
+  accountId: string;
+  /** TSIG algorithm. */
+  algo: string;
+  /** TSIG key name. */
+  name: string;
+  /** TSIG secret. */
+  secret: string;
+}
+export const CreateZoneTransferTsigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    algo: S.String,
+    name: S.String,
+    secret: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/secondary_dns/tsigs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateZoneTransferTsigRequest",
+}) as any as S.Schema<CreateZoneTransferTsigRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateZoneTransferTsigResponse {
+  id: string;
+  /** TSIG algorithm. */
+  algo: string;
+  /** TSIG key name. */
+  name: string;
+  /** TSIG secret. */
+  secret: string;
+}
+export const CreateZoneTransferTsigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    algo: S.String,
+    name: S.String,
+    secret: S.String,
+  }),
+).annotate({
+  identifier: "CreateZoneTransferTsigResponse",
+}) as any as S.Schema<CreateZoneTransferTsigResponse>;
+
+export interface DeleteDnssecRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const DeleteDnssecRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({ method: "DELETE", uri: "/zones/{zone_id}/dnssec", code: 200 }),
+  ),
+).annotate({
+  identifier: "DeleteDnssecRequest",
+}) as any as S.Schema<DeleteDnssecRequest>;
+
+export interface DeleteDnssecResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: string;
+}
+export const DeleteDnssecResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.String.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "DeleteDnssecResponse",
+}) as any as S.Schema<DeleteDnssecResponse>;
+
+export interface DeleteRecordRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   dnsRecordId: string;
 }
-export const RecordsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dnsRecordId: S.String.pipe(T.Label("dns_record_id")),
@@ -4377,1454 +4341,274 @@ export const RecordsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RecordsDeleteRequest",
-}) as any as S.Schema<RecordsDeleteRequest>;
+  identifier: "DeleteRecordRequest",
+}) as any as S.Schema<DeleteRecordRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RecordsDeleteResponse {
+export interface DeleteRecordResponse {
   /** Identifier. */
   id?: string;
 }
-export const RecordsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RecordsDeleteResponse",
-}) as any as S.Schema<RecordsDeleteResponse>;
+  identifier: "DeleteRecordResponse",
+}) as any as S.Schema<DeleteRecordResponse>;
 
-export interface RecordsEditRequestBody {
-  ARecordObjectNameTtlType6More__: unknown;
-  AAAARecordObjectNameTtlType6More__: unknown;
-  CNAMERecordObjectNameTtlType5More__: unknown;
-  MXRecordObjectNameTtlType6More__: unknown;
-  NSRecordObjectNameTtlType5More__: unknown;
-  DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: unknown;
-  PTRRecordObjectNameTtlType5More__: unknown;
-  TXTRecordObjectNameTtlType5More__: unknown;
-  CAARecordObjectNameTtlType6More__: unknown;
-  CERTRecordObjectNameTtlType6More__: unknown;
-  DNSKEYRecordObjectNameTtlType6More__: unknown;
-  DSRecordObjectNameTtlType6More__: unknown;
-  HTTPSRecordObjectNameTtlType6More__: unknown;
-  LOCRecordObjectNameTtlType6More__: unknown;
-  NAPTRRecordObjectNameTtlType6More__: unknown;
-  SMIMEARecordObjectNameTtlType6More__: unknown;
-  SRVRecordObjectNameTtlType6More__: unknown;
-  SSHFPRecordObjectNameTtlType6More__: unknown;
-  SVCBRecordObjectNameTtlType6More__: unknown;
-  TLSARecordObjectNameTtlType6More__: unknown;
-  URIRecordObjectNameTtlType7More__: unknown;
-}
-export const RecordsEditRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("ARecord object { name, ttl, type, 6 more }"),
-    ),
-    AAAARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("AAAARecord object { name, ttl, type, 6 more }"),
-    ),
-    CNAMERecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("CNAMERecord object { name, ttl, type, 5 more }"),
-    ),
-    MXRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("MXRecord object { name, ttl, type, 6 more }"),
-    ),
-    NSRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("NSRecord object { name, ttl, type, 5 more }"),
-    ),
-    DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"),
-    ),
-    PTRRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("PTRRecord object { name, ttl, type, 5 more }"),
-    ),
-    TXTRecordObjectNameTtlType5More__: S.Unknown.pipe(
-      T.Body("TXTRecord object { name, ttl, type, 5 more }"),
-    ),
-    CAARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("CAARecord object { name, ttl, type, 6 more }"),
-    ),
-    CERTRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("CERTRecord object { name, ttl, type, 6 more }"),
-    ),
-    DNSKEYRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("DNSKEYRecord object { name, ttl, type, 6 more }"),
-    ),
-    DSRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("DSRecord object { name, ttl, type, 6 more }"),
-    ),
-    HTTPSRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("HTTPSRecord object { name, ttl, type, 6 more }"),
-    ),
-    LOCRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("LOCRecord object { name, ttl, type, 6 more }"),
-    ),
-    NAPTRRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("NAPTRRecord object { name, ttl, type, 6 more }"),
-    ),
-    SMIMEARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SMIMEARecord object { name, ttl, type, 6 more }"),
-    ),
-    SRVRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SRVRecord object { name, ttl, type, 6 more }"),
-    ),
-    SSHFPRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SSHFPRecord object { name, ttl, type, 6 more }"),
-    ),
-    SVCBRecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("SVCBRecord object { name, ttl, type, 6 more }"),
-    ),
-    TLSARecordObjectNameTtlType6More__: S.Unknown.pipe(
-      T.Body("TLSARecord object { name, ttl, type, 6 more }"),
-    ),
-    URIRecordObjectNameTtlType7More__: S.Unknown.pipe(
-      T.Body("URIRecord object { name, ttl, type, 7 more }"),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditRequestBody",
-}) as any as S.Schema<RecordsEditRequestBody>;
-
-export interface RecordsEditRequest {
+export interface DeleteSettingAccountViewRequest {
   /** Identifier. */
-  zoneId: string;
+  accountId: string;
   /** Identifier. */
-  dnsRecordId: string;
-  /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  includeShadowMetadata?: boolean;
-  body: RecordsEditRequestBody;
+  viewId: string;
 }
-export const RecordsEditRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSettingAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    dnsRecordId: S.String.pipe(T.Label("dns_record_id")),
-    includeShadowMetadata: S.optional(
-      S.Boolean.pipe(T.Query("include_shadow_metadata")),
-    ),
-    body: RecordsEditRequestBody,
+    accountId: S.String.pipe(T.Label("account_id")),
+    viewId: S.String.pipe(T.Label("view_id")),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/dns_records/{dns_record_id}",
+      method: "DELETE",
+      uri: "/accounts/{account_id}/dns_settings/views/{view_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "RecordsEditRequest",
-}) as any as S.Schema<RecordsEditRequest>;
-
-export type RecordsEditResponseARecordMetaShadowedByList = string[];
-export const RecordsEditResponseARecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseARecordMetaShadowedByList>;
-
-export interface RecordsEditResponseARecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseARecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseARecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseARecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseARecordMeta",
-}) as any as S.Schema<RecordsEditResponseARecordMeta>;
-
-export interface RecordsEditResponseARecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseARecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseARecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseARecord",
-}) as any as S.Schema<RecordsEditResponseARecord>;
-
-export type RecordsEditResponseAAAARecordMetaShadowedByList = string[];
-export const RecordsEditResponseAAAARecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseAAAARecordMetaShadowedByList>;
-
-export interface RecordsEditResponseAAAARecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseAAAARecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseAAAARecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseAAAARecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseAAAARecordMeta",
-}) as any as S.Schema<RecordsEditResponseAAAARecordMeta>;
-
-export interface RecordsEditResponseAAAARecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseAAAARecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseAAAARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseAAAARecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseAAAARecord",
-}) as any as S.Schema<RecordsEditResponseAAAARecord>;
-
-export type RecordsEditResponseCNAMERecordMetaShadowedByList = string[];
-export const RecordsEditResponseCNAMERecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseCNAMERecordMetaShadowedByList>;
-
-export interface RecordsEditResponseCNAMERecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseCNAMERecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseCNAMERecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseCNAMERecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseCNAMERecordMeta",
-}) as any as S.Schema<RecordsEditResponseCNAMERecordMeta>;
-
-export interface RecordsEditResponseCNAMERecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseCNAMERecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseCNAMERecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseCNAMERecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseCNAMERecord",
-}) as any as S.Schema<RecordsEditResponseCNAMERecord>;
-
-export type RecordsEditResponseMXRecordMetaShadowedByList = string[];
-export const RecordsEditResponseMXRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseMXRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseMXRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseMXRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseMXRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseMXRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseMXRecordMeta",
-}) as any as S.Schema<RecordsEditResponseMXRecordMeta>;
-
-export interface RecordsEditResponseMXRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseMXRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseMXRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseMXRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseMXRecord",
-}) as any as S.Schema<RecordsEditResponseMXRecord>;
-
-export type RecordsEditResponseNSRecordMetaShadowedByList = string[];
-export const RecordsEditResponseNSRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseNSRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseNSRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseNSRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseNSRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseNSRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseNSRecordMeta",
-}) as any as S.Schema<RecordsEditResponseNSRecordMeta>;
-
-export interface RecordsEditResponseNSRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseNSRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseNSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseNSRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseNSRecord",
-}) as any as S.Schema<RecordsEditResponseNSRecord>;
-
-export type RecordsEditResponsePTRRecordMetaShadowedByList = string[];
-export const RecordsEditResponsePTRRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponsePTRRecordMetaShadowedByList>;
-
-export interface RecordsEditResponsePTRRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponsePTRRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponsePTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponsePTRRecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponsePTRRecordMeta",
-}) as any as S.Schema<RecordsEditResponsePTRRecordMeta>;
-
-export interface RecordsEditResponsePTRRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponsePTRRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponsePTRRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponsePTRRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponsePTRRecord",
-}) as any as S.Schema<RecordsEditResponsePTRRecord>;
-
-export type RecordsEditResponseTXTRecordMetaShadowedByList = string[];
-export const RecordsEditResponseTXTRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseTXTRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseTXTRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseTXTRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseTXTRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseTXTRecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseTXTRecordMeta",
-}) as any as S.Schema<RecordsEditResponseTXTRecordMeta>;
-
-export interface RecordsEditResponseTXTRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseTXTRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseTXTRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseTXTRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseTXTRecord",
-}) as any as S.Schema<RecordsEditResponseTXTRecord>;
-
-export type RecordsEditResponseCAARecordMetaShadowedByList = string[];
-export const RecordsEditResponseCAARecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseCAARecordMetaShadowedByList>;
-
-export interface RecordsEditResponseCAARecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseCAARecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseCAARecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseCAARecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseCAARecordMeta",
-}) as any as S.Schema<RecordsEditResponseCAARecordMeta>;
-
-export interface RecordsEditResponseCAARecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseCAARecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseCAARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseCAARecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseCAARecord",
-}) as any as S.Schema<RecordsEditResponseCAARecord>;
-
-export type RecordsEditResponseCERTRecordMetaShadowedByList = string[];
-export const RecordsEditResponseCERTRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseCERTRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseCERTRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseCERTRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseCERTRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseCERTRecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseCERTRecordMeta",
-}) as any as S.Schema<RecordsEditResponseCERTRecordMeta>;
-
-export interface RecordsEditResponseCERTRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseCERTRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseCERTRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseCERTRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseCERTRecord",
-}) as any as S.Schema<RecordsEditResponseCERTRecord>;
-
-export type RecordsEditResponseDNSKEYRecordMetaShadowedByList = string[];
-export const RecordsEditResponseDNSKEYRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseDNSKEYRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseDNSKEYRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseDNSKEYRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseDNSKEYRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseDNSKEYRecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseDNSKEYRecordMeta",
-}) as any as S.Schema<RecordsEditResponseDNSKEYRecordMeta>;
-
-export interface RecordsEditResponseDNSKEYRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseDNSKEYRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseDNSKEYRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseDNSKEYRecord",
-}) as any as S.Schema<RecordsEditResponseDNSKEYRecord>;
-
-export type RecordsEditResponseDSRecordMetaShadowedByList = string[];
-export const RecordsEditResponseDSRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseDSRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseDSRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseDSRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseDSRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseDSRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseDSRecordMeta",
-}) as any as S.Schema<RecordsEditResponseDSRecordMeta>;
-
-export interface RecordsEditResponseDSRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseDSRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseDSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseDSRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseDSRecord",
-}) as any as S.Schema<RecordsEditResponseDSRecord>;
-
-export type RecordsEditResponseHTTPSRecordMetaShadowedByList = string[];
-export const RecordsEditResponseHTTPSRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseHTTPSRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseHTTPSRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseHTTPSRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseHTTPSRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseHTTPSRecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseHTTPSRecordMeta",
-}) as any as S.Schema<RecordsEditResponseHTTPSRecordMeta>;
-
-export interface RecordsEditResponseHTTPSRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseHTTPSRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseHTTPSRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseHTTPSRecord",
-}) as any as S.Schema<RecordsEditResponseHTTPSRecord>;
-
-export type RecordsEditResponseLOCRecordMetaShadowedByList = string[];
-export const RecordsEditResponseLOCRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseLOCRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseLOCRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseLOCRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseLOCRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseLOCRecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseLOCRecordMeta",
-}) as any as S.Schema<RecordsEditResponseLOCRecordMeta>;
-
-export interface RecordsEditResponseLOCRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseLOCRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseLOCRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseLOCRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseLOCRecord",
-}) as any as S.Schema<RecordsEditResponseLOCRecord>;
-
-export type RecordsEditResponseNAPTRRecordMetaShadowedByList = string[];
-export const RecordsEditResponseNAPTRRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseNAPTRRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseNAPTRRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseNAPTRRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseNAPTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseNAPTRRecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseNAPTRRecordMeta",
-}) as any as S.Schema<RecordsEditResponseNAPTRRecordMeta>;
-
-export interface RecordsEditResponseNAPTRRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseNAPTRRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseNAPTRRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseNAPTRRecord",
-}) as any as S.Schema<RecordsEditResponseNAPTRRecord>;
-
-export type RecordsEditResponseSMIMEARecordMetaShadowedByList = string[];
-export const RecordsEditResponseSMIMEARecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseSMIMEARecordMetaShadowedByList>;
-
-export interface RecordsEditResponseSMIMEARecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseSMIMEARecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseSMIMEARecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseSMIMEARecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseSMIMEARecordMeta",
-}) as any as S.Schema<RecordsEditResponseSMIMEARecordMeta>;
-
-export interface RecordsEditResponseSMIMEARecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseSMIMEARecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseSMIMEARecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseSMIMEARecord",
-}) as any as S.Schema<RecordsEditResponseSMIMEARecord>;
-
-export type RecordsEditResponseSRVRecordMetaShadowedByList = string[];
-export const RecordsEditResponseSRVRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseSRVRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseSRVRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseSRVRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseSRVRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseSRVRecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseSRVRecordMeta",
-}) as any as S.Schema<RecordsEditResponseSRVRecordMeta>;
-
-export interface RecordsEditResponseSRVRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseSRVRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseSRVRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseSRVRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseSRVRecord",
-}) as any as S.Schema<RecordsEditResponseSRVRecord>;
-
-export type RecordsEditResponseSSHFPRecordMetaShadowedByList = string[];
-export const RecordsEditResponseSSHFPRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseSSHFPRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseSSHFPRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseSSHFPRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseSSHFPRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseSSHFPRecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseSSHFPRecordMeta",
-}) as any as S.Schema<RecordsEditResponseSSHFPRecordMeta>;
-
-export interface RecordsEditResponseSSHFPRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseSSHFPRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseSSHFPRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseSSHFPRecord",
-}) as any as S.Schema<RecordsEditResponseSSHFPRecord>;
-
-export type RecordsEditResponseSVCBRecordMetaShadowedByList = string[];
-export const RecordsEditResponseSVCBRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseSVCBRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseSVCBRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseSVCBRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseSVCBRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseSVCBRecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseSVCBRecordMeta",
-}) as any as S.Schema<RecordsEditResponseSVCBRecordMeta>;
-
-export interface RecordsEditResponseSVCBRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseSVCBRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseSVCBRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseSVCBRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseSVCBRecord",
-}) as any as S.Schema<RecordsEditResponseSVCBRecord>;
-
-export type RecordsEditResponseTLSARecordMetaShadowedByList = string[];
-export const RecordsEditResponseTLSARecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseTLSARecordMetaShadowedByList>;
-
-export interface RecordsEditResponseTLSARecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseTLSARecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseTLSARecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseTLSARecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseTLSARecordMeta",
-}) as any as S.Schema<RecordsEditResponseTLSARecordMeta>;
-
-export interface RecordsEditResponseTLSARecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseTLSARecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseTLSARecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseTLSARecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseTLSARecord",
-}) as any as S.Schema<RecordsEditResponseTLSARecord>;
-
-export type RecordsEditResponseURIRecordMetaShadowedByList = string[];
-export const RecordsEditResponseURIRecordMetaShadowedByList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordsEditResponseURIRecordMetaShadowedByList>;
-
-export interface RecordsEditResponseURIRecordMeta {
-  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
-  deadGlue?: boolean;
-  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
-  isGlue?: boolean;
-  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedBy?: RecordsEditResponseURIRecordMetaShadowedByList;
-  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
-  shadowedRecordsCount?: number;
-}
-export const RecordsEditResponseURIRecordMeta = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
-    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
-    shadowedBy: S.optional(
-      RecordsEditResponseURIRecordMetaShadowedByList.pipe(
-        T.Body("shadowed_by"),
-      ),
-    ),
-    shadowedRecordsCount: S.optional(
-      S.Number.pipe(T.Body("shadowed_records_count")),
-    ),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseURIRecordMeta",
-}) as any as S.Schema<RecordsEditResponseURIRecordMeta>;
-
-export interface RecordsEditResponseURIRecord {
-  /** Identifier. */
-  id: string;
-  /** When the record was created. */
-  createdOn: string;
-  /** Extra Cloudflare-specific metadata about the record. */
-  meta: RecordsEditResponseURIRecordMeta;
-  /** When the record was last modified. */
-  modifiedOn: string;
-  /** Whether the record can be proxied by Cloudflare or not. */
-  proxiable: boolean;
-  /** When the record comment was last modified. Omitted if there is no comment. */
-  commentModifiedOn?: string;
-  /** When the record tags were last modified. Omitted if there are no tags. */
-  tagsModifiedOn?: string;
-}
-export const RecordsEditResponseURIRecord = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    meta: RecordsEditResponseURIRecordMeta,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    proxiable: S.Boolean,
-    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
-    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
-  }),
-).annotate({
-  identifier: "RecordsEditResponseURIRecord",
-}) as any as S.Schema<RecordsEditResponseURIRecord>;
+  identifier: "DeleteSettingAccountViewRequest",
+}) as any as S.Schema<DeleteSettingAccountViewRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RecordsEditResponse {
-  ARecord: RecordsEditResponseARecord;
-  AAAARecord: RecordsEditResponseAAAARecord;
-  CNAMERecord: RecordsEditResponseCNAMERecord;
-  MXRecord: RecordsEditResponseMXRecord;
-  NSRecord: RecordsEditResponseNSRecord;
-  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
-  PTRRecord: RecordsEditResponsePTRRecord;
-  TXTRecord: RecordsEditResponseTXTRecord;
-  CAARecord: RecordsEditResponseCAARecord;
-  CERTRecord: RecordsEditResponseCERTRecord;
-  DNSKEYRecord: RecordsEditResponseDNSKEYRecord;
-  DSRecord: RecordsEditResponseDSRecord;
-  HTTPSRecord: RecordsEditResponseHTTPSRecord;
-  LOCRecord: RecordsEditResponseLOCRecord;
-  NAPTRRecord: RecordsEditResponseNAPTRRecord;
-  SMIMEARecord: RecordsEditResponseSMIMEARecord;
-  SRVRecord: RecordsEditResponseSRVRecord;
-  SSHFPRecord: RecordsEditResponseSSHFPRecord;
-  SVCBRecord: RecordsEditResponseSVCBRecord;
-  TLSARecord: RecordsEditResponseTLSARecord;
-  URIRecord: RecordsEditResponseURIRecord;
+export interface DeleteSettingAccountViewResponse {
+  /** Identifier. */
+  id?: string;
 }
-export const RecordsEditResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSettingAccountViewResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    ARecord: RecordsEditResponseARecord,
-    AAAARecord: RecordsEditResponseAAAARecord,
-    CNAMERecord: RecordsEditResponseCNAMERecord,
-    MXRecord: RecordsEditResponseMXRecord,
-    NSRecord: RecordsEditResponseNSRecord,
-    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
-      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
-    ),
-    PTRRecord: RecordsEditResponsePTRRecord,
-    TXTRecord: RecordsEditResponseTXTRecord,
-    CAARecord: RecordsEditResponseCAARecord,
-    CERTRecord: RecordsEditResponseCERTRecord,
-    DNSKEYRecord: RecordsEditResponseDNSKEYRecord,
-    DSRecord: RecordsEditResponseDSRecord,
-    HTTPSRecord: RecordsEditResponseHTTPSRecord,
-    LOCRecord: RecordsEditResponseLOCRecord,
-    NAPTRRecord: RecordsEditResponseNAPTRRecord,
-    SMIMEARecord: RecordsEditResponseSMIMEARecord,
-    SRVRecord: RecordsEditResponseSRVRecord,
-    SSHFPRecord: RecordsEditResponseSSHFPRecord,
-    SVCBRecord: RecordsEditResponseSVCBRecord,
-    TLSARecord: RecordsEditResponseTLSARecord,
-    URIRecord: RecordsEditResponseURIRecord,
+    id: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "RecordsEditResponse",
-}) as any as S.Schema<RecordsEditResponse>;
+  identifier: "DeleteSettingAccountViewResponse",
+}) as any as S.Schema<DeleteSettingAccountViewResponse>;
 
-export interface RecordsExportRequest {
+export interface DeleteZoneTransferAclRequest {
+  accountId: string;
+  aclId: string;
+}
+export const DeleteZoneTransferAclRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    aclId: S.String.pipe(T.Label("acl_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteZoneTransferAclRequest",
+}) as any as S.Schema<DeleteZoneTransferAclRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteZoneTransferAclResponse {
+  id?: string;
+}
+export const DeleteZoneTransferAclResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteZoneTransferAclResponse",
+}) as any as S.Schema<DeleteZoneTransferAclResponse>;
+
+export interface DeleteZoneTransferIncomingRequest {
+  zoneId: string;
+}
+export const DeleteZoneTransferIncomingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/secondary_dns/incoming",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteZoneTransferIncomingRequest",
+}) as any as S.Schema<DeleteZoneTransferIncomingRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteZoneTransferIncomingResponse {
+  id?: string;
+}
+export const DeleteZoneTransferIncomingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteZoneTransferIncomingResponse",
+}) as any as S.Schema<DeleteZoneTransferIncomingResponse>;
+
+export interface DeleteZoneTransferOutgoingRequest {
+  zoneId: string;
+}
+export const DeleteZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/secondary_dns/outgoing",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteZoneTransferOutgoingRequest",
+}) as any as S.Schema<DeleteZoneTransferOutgoingRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteZoneTransferOutgoingResponse {
+  id?: string;
+}
+export const DeleteZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteZoneTransferOutgoingResponse",
+}) as any as S.Schema<DeleteZoneTransferOutgoingResponse>;
+
+export interface DeleteZoneTransferPeerRequest {
+  accountId: string;
+  peerId: string;
+}
+export const DeleteZoneTransferPeerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    peerId: S.String.pipe(T.Label("peer_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteZoneTransferPeerRequest",
+}) as any as S.Schema<DeleteZoneTransferPeerRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteZoneTransferPeerResponse {
+  id?: string;
+}
+export const DeleteZoneTransferPeerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteZoneTransferPeerResponse",
+}) as any as S.Schema<DeleteZoneTransferPeerResponse>;
+
+export interface DeleteZoneTransferTsigRequest {
+  accountId: string;
+  tsigId: string;
+}
+export const DeleteZoneTransferTsigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    tsigId: S.String.pipe(T.Label("tsig_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteZoneTransferTsigRequest",
+}) as any as S.Schema<DeleteZoneTransferTsigRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteZoneTransferTsigResponse {
+  id?: string;
+}
+export const DeleteZoneTransferTsigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteZoneTransferTsigResponse",
+}) as any as S.Schema<DeleteZoneTransferTsigResponse>;
+
+export interface DisableZoneTransferOutgoingRequest {
+  zoneId: string;
+  body: unknown;
+}
+export const DisableZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    body: S.Unknown,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/secondary_dns/outgoing/disable",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DisableZoneTransferOutgoingRequest",
+}) as any as S.Schema<DisableZoneTransferOutgoingRequest>;
+
+export interface DisableZoneTransferOutgoingResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const DisableZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "DisableZoneTransferOutgoingResponse",
+}) as any as S.Schema<DisableZoneTransferOutgoingResponse>;
+
+export interface EnableZoneTransferOutgoingRequest {
+  zoneId: string;
+  body: unknown;
+}
+export const EnableZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    body: S.Unknown,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/secondary_dns/outgoing/enable",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "EnableZoneTransferOutgoingRequest",
+}) as any as S.Schema<EnableZoneTransferOutgoingRequest>;
+
+export interface EnableZoneTransferOutgoingResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const EnableZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "EnableZoneTransferOutgoingResponse",
+}) as any as S.Schema<EnableZoneTransferOutgoingResponse>;
+
+export interface ExportRecordRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const RecordsExportRequest = /*@__PURE__*/ S.suspend(() =>
+export const ExportRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -5835,17 +4619,461 @@ export const RecordsExportRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RecordsExportRequest",
-}) as any as S.Schema<RecordsExportRequest>;
+  identifier: "ExportRecordRequest",
+}) as any as S.Schema<ExportRecordRequest>;
 
-export interface RecordsExportResponse {}
-export const RecordsExportResponse = /*@__PURE__*/ S.suspend(() =>
+export interface ExportRecordResponse {}
+export const ExportRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "RecordsExportResponse",
-}) as any as S.Schema<RecordsExportResponse>;
+  identifier: "ExportRecordResponse",
+}) as any as S.Schema<ExportRecordResponse>;
 
-export interface RecordsGetRequest {
+export interface ForceNotifyZoneTransferOutgoingRequest {
+  zoneId: string;
+  body: unknown;
+}
+export const ForceNotifyZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      body: S.Unknown,
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/secondary_dns/outgoing/force_notify",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "ForceNotifyZoneTransferOutgoingRequest",
+}) as any as S.Schema<ForceNotifyZoneTransferOutgoingRequest>;
+
+export interface ForceNotifyZoneTransferOutgoingResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: string;
+}
+export const ForceNotifyZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      result: S.optional(S.String.pipe(T.EnvelopePayload())),
+    }),
+).annotate({
+  identifier: "ForceNotifyZoneTransferOutgoingResponse",
+}) as any as S.Schema<ForceNotifyZoneTransferOutgoingResponse>;
+
+export interface GetAnalyticReportRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** A comma-separated list of dimensions to group results by. */
+  dimensions?: string;
+  /** Segmentation filter in 'attribute operator value' format. */
+  filters?: string;
+  /** Limit number of returned metrics. */
+  limit?: number;
+  /** A comma-separated list of metrics to query. */
+  metrics?: string;
+  /** Start date and time of requesting data period in ISO 8601 format. */
+  since?: string;
+  /** A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
+  sort?: string;
+  /** End date and time of requesting data period in ISO 8601 format. */
+  until?: string;
+}
+export const GetAnalyticReportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    dimensions: S.optional(S.String.pipe(T.Query())),
+    filters: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    metrics: S.optional(S.String.pipe(T.Query())),
+    since: S.optional(S.String.pipe(T.Query())),
+    sort: S.optional(S.String.pipe(T.Query())),
+    until: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/dns_analytics/report",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetAnalyticReportRequest",
+}) as any as S.Schema<GetAnalyticReportRequest>;
+
+export type AnalyticsReportsGetResponseDataItemDimensionsList = string[];
+export const AnalyticsReportsGetResponseDataItemDimensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsGetResponseDataItemDimensionsList>;
+
+export type AnalyticsReportsGetResponseDataItemMetricsList = number[];
+export const AnalyticsReportsGetResponseDataItemMetricsList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<AnalyticsReportsGetResponseDataItemMetricsList>;
+
+export interface AnalyticsReportsGetResponseDataItem {
+  /** Array of dimension values, representing the combination of dimension values corresponding to this row. */
+  dimensions: AnalyticsReportsGetResponseDataItemDimensionsList;
+  /** Array with one item per requested metric. Each item is a single value. */
+  metrics: AnalyticsReportsGetResponseDataItemMetricsList;
+}
+export const AnalyticsReportsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dimensions: AnalyticsReportsGetResponseDataItemDimensionsList,
+    metrics: AnalyticsReportsGetResponseDataItemMetricsList,
+  }),
+).annotate({
+  identifier: "AnalyticsReportsGetResponseDataItem",
+}) as any as S.Schema<AnalyticsReportsGetResponseDataItem>;
+
+export type AnalyticsReportsGetResponseDataList =
+  AnalyticsReportsGetResponseDataItem[];
+export const AnalyticsReportsGetResponseDataList = /*@__PURE__*/ S.Array(
+  AnalyticsReportsGetResponseDataItem,
+) as any as S.Schema<AnalyticsReportsGetResponseDataList>;
+
+export type AnalyticsReportsGetResponseQueryDimensionsList = string[];
+export const AnalyticsReportsGetResponseQueryDimensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsGetResponseQueryDimensionsList>;
+
+export type AnalyticsReportsGetResponseQueryMetricsList = string[];
+export const AnalyticsReportsGetResponseQueryMetricsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsGetResponseQueryMetricsList>;
+
+export type AnalyticsReportsGetResponseQuerySortList = string[];
+export const AnalyticsReportsGetResponseQuerySortList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AnalyticsReportsGetResponseQuerySortList>;
+
+export interface AnalyticsReportsGetResponseQuery {
+  /** Array of dimension names. */
+  dimensions: AnalyticsReportsGetResponseQueryDimensionsList;
+  /** Limit number of returned metrics. */
+  limit: number;
+  /** Array of metric names. */
+  metrics: AnalyticsReportsGetResponseQueryMetricsList;
+  /** Start date and time of requesting data period in ISO 8601 format. */
+  since: string;
+  /** End date and time of requesting data period in ISO 8601 format. */
+  until: string;
+  /** Segmentation filter in 'attribute operator value' format. */
+  filters?: string;
+  /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
+  sort?: AnalyticsReportsGetResponseQuerySortList;
+}
+export const AnalyticsReportsGetResponseQuery = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dimensions: AnalyticsReportsGetResponseQueryDimensionsList,
+    limit: S.Number,
+    metrics: AnalyticsReportsGetResponseQueryMetricsList,
+    since: S.String,
+    until: S.String,
+    filters: S.optional(S.String),
+    sort: S.optional(AnalyticsReportsGetResponseQuerySortList),
+  }),
+).annotate({
+  identifier: "AnalyticsReportsGetResponseQuery",
+}) as any as S.Schema<AnalyticsReportsGetResponseQuery>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetAnalyticReportResponse {
+  /** Array with one row per combination of dimension values. */
+  data: AnalyticsReportsGetResponseDataList;
+  /** Number of seconds between current time and last processed event, in another words how many seconds of data could be missing. */
+  dataLag: number;
+  /** Maximum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  max: unknown;
+  /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  min: unknown;
+  query: AnalyticsReportsGetResponseQuery;
+  /** Total number of rows in the result. */
+  rows: number;
+  /** Total results for metrics across all data (object mapping metric names to values). */
+  totals: unknown;
+}
+export const GetAnalyticReportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: AnalyticsReportsGetResponseDataList,
+    dataLag: S.Number.pipe(T.Body("data_lag")),
+    max: S.Unknown,
+    min: S.Unknown,
+    query: AnalyticsReportsGetResponseQuery,
+    rows: S.Number,
+    totals: S.Unknown,
+  }),
+).annotate({
+  identifier: "GetAnalyticReportResponse",
+}) as any as S.Schema<GetAnalyticReportResponse>;
+
+export type AnalyticsReportsBytimesGetRequestTimeDelta =
+  | "all"
+  | "auto"
+  | "year"
+  | (string & {});
+export const AnalyticsReportsBytimesGetRequestTimeDelta =
+  /*@__PURE__*/ S.String;
+
+export interface GetAnalyticReportBytimeRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** A comma-separated list of dimensions to group results by. */
+  dimensions?: string;
+  /** Segmentation filter in 'attribute operator value' format. */
+  filters?: string;
+  /** Limit number of returned metrics. */
+  limit?: number;
+  /** A comma-separated list of metrics to query. */
+  metrics?: string;
+  /** Start date and time of requesting data period in ISO 8601 format. */
+  since?: string;
+  /** A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
+  sort?: string;
+  /** Unit of time to group data by. */
+  timeDelta?: AnalyticsReportsBytimesGetRequestTimeDelta;
+  /** End date and time of requesting data period in ISO 8601 format. */
+  until?: string;
+}
+export const GetAnalyticReportBytimeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    dimensions: S.optional(S.String.pipe(T.Query())),
+    filters: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    metrics: S.optional(S.String.pipe(T.Query())),
+    since: S.optional(S.String.pipe(T.Query())),
+    sort: S.optional(S.String.pipe(T.Query())),
+    timeDelta: S.optional(
+      AnalyticsReportsBytimesGetRequestTimeDelta.pipe(T.Query("time_delta")),
+    ),
+    until: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/dns_analytics/report/bytime",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetAnalyticReportBytimeRequest",
+}) as any as S.Schema<GetAnalyticReportBytimeRequest>;
+
+export type AnalyticsReportsBytimesGetResponseDataItemDimensionsList = string[];
+export const AnalyticsReportsBytimesGetResponseDataItemDimensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemDimensionsList>;
+
+export type AnalyticsReportsBytimesGetResponseDataItemMetricsList = unknown[];
+export const AnalyticsReportsBytimesGetResponseDataItemMetricsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItemMetricsList>;
+
+export interface AnalyticsReportsBytimesGetResponseDataItem {
+  /** Array of dimension values, representing the combination of dimension values corresponding to this row. */
+  dimensions: AnalyticsReportsBytimesGetResponseDataItemDimensionsList;
+  /** Array with one item per requested metric. Each item is an array of values, broken down by time interval. */
+  metrics: AnalyticsReportsBytimesGetResponseDataItemMetricsList;
+}
+export const AnalyticsReportsBytimesGetResponseDataItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dimensions: AnalyticsReportsBytimesGetResponseDataItemDimensionsList,
+      metrics: AnalyticsReportsBytimesGetResponseDataItemMetricsList,
+    }),
+  ).annotate({
+    identifier: "AnalyticsReportsBytimesGetResponseDataItem",
+  }) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataItem>;
+
+export type AnalyticsReportsBytimesGetResponseDataList =
+  AnalyticsReportsBytimesGetResponseDataItem[];
+export const AnalyticsReportsBytimesGetResponseDataList = /*@__PURE__*/ S.Array(
+  AnalyticsReportsBytimesGetResponseDataItem,
+) as any as S.Schema<AnalyticsReportsBytimesGetResponseDataList>;
+
+export type AnalyticsReportsBytimesGetResponseQueryDimensionsList = string[];
+export const AnalyticsReportsBytimesGetResponseQueryDimensionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryDimensionsList>;
+
+export type AnalyticsReportsBytimesGetResponseQueryMetricsList = string[];
+export const AnalyticsReportsBytimesGetResponseQueryMetricsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQueryMetricsList>;
+
+export type AnalyticsReportsBytimesGetResponseQueryTimeDelta =
+  | "all"
+  | "auto"
+  | "year"
+  | (string & {});
+export const AnalyticsReportsBytimesGetResponseQueryTimeDelta =
+  /*@__PURE__*/ S.String;
+
+export type AnalyticsReportsBytimesGetResponseQuerySortList = string[];
+export const AnalyticsReportsBytimesGetResponseQuerySortList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuerySortList>;
+
+export interface AnalyticsReportsBytimesGetResponseQuery {
+  /** Array of dimension names. */
+  dimensions: AnalyticsReportsBytimesGetResponseQueryDimensionsList;
+  /** Limit number of returned metrics. */
+  limit: number;
+  /** Array of metric names. */
+  metrics: AnalyticsReportsBytimesGetResponseQueryMetricsList;
+  /** Start date and time of requesting data period in ISO 8601 format. */
+  since: string;
+  /** Unit of time to group data by. */
+  timeDelta: AnalyticsReportsBytimesGetResponseQueryTimeDelta;
+  /** End date and time of requesting data period in ISO 8601 format. */
+  until: string;
+  /** Segmentation filter in 'attribute operator value' format. */
+  filters?: string;
+  /** Array of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending). */
+  sort?: AnalyticsReportsBytimesGetResponseQuerySortList;
+}
+export const AnalyticsReportsBytimesGetResponseQuery = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      dimensions: AnalyticsReportsBytimesGetResponseQueryDimensionsList,
+      limit: S.Number,
+      metrics: AnalyticsReportsBytimesGetResponseQueryMetricsList,
+      since: S.String,
+      timeDelta: AnalyticsReportsBytimesGetResponseQueryTimeDelta.pipe(
+        T.Body("time_delta"),
+      ),
+      until: S.String,
+      filters: S.optional(S.String),
+      sort: S.optional(AnalyticsReportsBytimesGetResponseQuerySortList),
+    }),
+).annotate({
+  identifier: "AnalyticsReportsBytimesGetResponseQuery",
+}) as any as S.Schema<AnalyticsReportsBytimesGetResponseQuery>;
+
+export type AnalyticsReportsBytimesGetResponseTimeIntervalsList = unknown[];
+export const AnalyticsReportsBytimesGetResponseTimeIntervalsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<AnalyticsReportsBytimesGetResponseTimeIntervalsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetAnalyticReportBytimeResponse {
+  /** Array with one row per combination of dimension values. */
+  data: AnalyticsReportsBytimesGetResponseDataList;
+  /** Number of seconds between current time and last processed event, in another words how many seconds of data could be missing. */
+  dataLag: number;
+  /** Maximum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  max: unknown;
+  /** Minimum results for each metric (object mapping metric names to values). Currently always an empty object. */
+  min: unknown;
+  query: AnalyticsReportsBytimesGetResponseQuery;
+  /** Total number of rows in the result. */
+  rows: number;
+  /** Array of time intervals in the response data. Each interval is represented as an array containing two values: the start time, and the end time. */
+  timeIntervals: AnalyticsReportsBytimesGetResponseTimeIntervalsList;
+  /** Total results for metrics across all data (object mapping metric names to values). */
+  totals: unknown;
+}
+export const GetAnalyticReportBytimeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: AnalyticsReportsBytimesGetResponseDataList,
+    dataLag: S.Number.pipe(T.Body("data_lag")),
+    max: S.Unknown,
+    min: S.Unknown,
+    query: AnalyticsReportsBytimesGetResponseQuery,
+    rows: S.Number,
+    timeIntervals: AnalyticsReportsBytimesGetResponseTimeIntervalsList.pipe(
+      T.Body("time_intervals"),
+    ),
+    totals: S.Unknown,
+  }),
+).annotate({
+  identifier: "GetAnalyticReportBytimeResponse",
+}) as any as S.Schema<GetAnalyticReportBytimeResponse>;
+
+export interface GetDnssecRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const GetDnssecRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/dnssec", code: 200 })),
+).annotate({
+  identifier: "GetDnssecRequest",
+}) as any as S.Schema<GetDnssecRequest>;
+
+export type DnssecGetResponseStatus =
+  | "active"
+  | "pending"
+  | "disabled"
+  | (string & {});
+export const DnssecGetResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetDnssecResponse {
+  /** Algorithm key code. */
+  algorithm?: string;
+  /** Digest hash. */
+  digest?: string;
+  /** Type of digest algorithm. */
+  digestAlgorithm?: string;
+  /** Coded type for digest algorithm. */
+  digestType?: string;
+  /** If true, multi-signer DNSSEC is enabled on the zone, allowing multiple */
+  dnssecMultiSigner?: boolean;
+  /** If true, allows Cloudflare to transfer in a DNSSEC-signed zone */
+  dnssecPresigned?: boolean;
+  /** If true, enables the use of NSEC3 together with DNSSEC on the zone. */
+  dnssecUseNsec3?: boolean;
+  /** Full DS record. */
+  ds?: string;
+  /** Flag for DNSSEC record. */
+  flags?: number;
+  /** Code for key tag. */
+  keyTag?: number;
+  /** Algorithm key type. */
+  keyType?: string;
+  /** When DNSSEC was last modified. */
+  modifiedOn?: string;
+  /** Public key for DS record. */
+  publicKey?: string;
+  /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
+  status?: DnssecGetResponseStatus;
+}
+export const GetDnssecResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    algorithm: S.optional(S.String),
+    digest: S.optional(S.String),
+    digestAlgorithm: S.optional(S.String.pipe(T.Body("digest_algorithm"))),
+    digestType: S.optional(S.String.pipe(T.Body("digest_type"))),
+    dnssecMultiSigner: S.optional(
+      S.Boolean.pipe(T.Body("dnssec_multi_signer")),
+    ),
+    dnssecPresigned: S.optional(S.Boolean.pipe(T.Body("dnssec_presigned"))),
+    dnssecUseNsec3: S.optional(S.Boolean.pipe(T.Body("dnssec_use_nsec3"))),
+    ds: S.optional(S.String),
+    flags: S.optional(S.Number),
+    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
+    keyType: S.optional(S.String.pipe(T.Body("key_type"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
+    status: S.optional(DnssecGetResponseStatus),
+  }),
+).annotate({
+  identifier: "GetDnssecResponse",
+}) as any as S.Schema<GetDnssecResponse>;
+
+export interface GetRecordRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
@@ -5853,7 +5081,7 @@ export interface RecordsGetRequest {
   /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
   includeShadowMetadata?: boolean;
 }
-export const RecordsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dnsRecordId: S.String.pipe(T.Label("dns_record_id")),
@@ -5868,8 +5096,8 @@ export const RecordsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RecordsGetRequest",
-}) as any as S.Schema<RecordsGetRequest>;
+  identifier: "GetRecordRequest",
+}) as any as S.Schema<GetRecordRequest>;
 
 export type RecordsGetResponseARecordMetaShadowedByList = string[];
 export const RecordsGetResponseARecordMetaShadowedByList =
@@ -7112,7 +6340,7 @@ export const RecordsGetResponseURIRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsGetResponseURIRecord>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RecordsGetResponse {
+export interface GetRecordResponse {
   ARecord: RecordsGetResponseARecord;
   AAAARecord: RecordsGetResponseAAAARecord;
   CNAMERecord: RecordsGetResponseCNAMERecord;
@@ -7135,7 +6363,7 @@ export interface RecordsGetResponse {
   TLSARecord: RecordsGetResponseTLSARecord;
   URIRecord: RecordsGetResponseURIRecord;
 }
-export const RecordsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARecord: RecordsGetResponseARecord,
     AAAARecord: RecordsGetResponseAAAARecord,
@@ -7162,14 +6390,683 @@ export const RecordsGetResponse = /*@__PURE__*/ S.suspend(() =>
     URIRecord: RecordsGetResponseURIRecord,
   }),
 ).annotate({
-  identifier: "RecordsGetResponse",
-}) as any as S.Schema<RecordsGetResponse>;
+  identifier: "GetRecordResponse",
+}) as any as S.Schema<GetRecordResponse>;
 
-export interface RecordsImportRequest {
+export interface GetSettingAccountRequest {
+  /** Identifier. */
+  accountId: string;
+}
+export const GetSettingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/dns_settings",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingAccountRequest",
+}) as any as S.Schema<GetSettingAccountRequest>;
+
+export interface SettingsAccountGetResponseZoneDefaultsInternalDns {
+  /** The ID of the zone to fallback to. */
+  referenceZoneId?: string;
+}
+export const SettingsAccountGetResponseZoneDefaultsInternalDns =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
+    }),
+  ).annotate({
+    identifier: "SettingsAccountGetResponseZoneDefaultsInternalDns",
+  }) as any as S.Schema<SettingsAccountGetResponseZoneDefaultsInternalDns>;
+
+export type SettingsAccountGetResponseZoneDefaultsNameserversType =
+  | "cloudflare.standard"
+  | "cloudflare.standard.random"
+  | "custom.account"
+  | "custom.tenant"
+  | (string & {});
+export const SettingsAccountGetResponseZoneDefaultsNameserversType =
+  /*@__PURE__*/ S.String;
+
+export interface SettingsAccountGetResponseZoneDefaultsNameservers {
+  /** Nameserver type */
+  type: SettingsAccountGetResponseZoneDefaultsNameserversType;
+}
+export const SettingsAccountGetResponseZoneDefaultsNameservers =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: SettingsAccountGetResponseZoneDefaultsNameserversType,
+    }),
+  ).annotate({
+    identifier: "SettingsAccountGetResponseZoneDefaultsNameservers",
+  }) as any as S.Schema<SettingsAccountGetResponseZoneDefaultsNameservers>;
+
+export interface SettingsAccountGetResponseZoneDefaultsSoa {
+  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
+  expire?: number;
+  /** The time to live (TTL) for negative caching of records within the zone. */
+  minTtl?: number;
+  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
+  mname?: string;
+  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
+  refresh?: number;
+  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
+  retry?: number;
+  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
+  rname?: string;
+  /** The time to live (TTL) of the SOA record itself. */
+  ttl?: number;
+}
+export const SettingsAccountGetResponseZoneDefaultsSoa =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      expire: S.optional(S.Number),
+      minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
+      mname: S.optional(S.String),
+      refresh: S.optional(S.Number),
+      retry: S.optional(S.Number),
+      rname: S.optional(S.String),
+      ttl: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "SettingsAccountGetResponseZoneDefaultsSoa",
+  }) as any as S.Schema<SettingsAccountGetResponseZoneDefaultsSoa>;
+
+export type SettingsAccountGetResponseZoneDefaultsZoneMode =
+  | "standard"
+  | "cdn_only"
+  | "dns_only"
+  | (string & {});
+export const SettingsAccountGetResponseZoneDefaultsZoneMode =
+  /*@__PURE__*/ S.String;
+
+export interface SettingsAccountGetResponseZoneDefaults {
+  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
+  flattenAllCnames: boolean;
+  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
+  foundationDns: boolean;
+  /** Settings for this internal zone. */
+  internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns;
+  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
+  multiProvider: boolean;
+  /** Settings determining the nameservers through which the zone should be available. */
+  nameservers: SettingsAccountGetResponseZoneDefaultsNameservers;
+  /** The time to live (TTL) of the zone's nameserver (NS) records. */
+  nsTtl: number;
+  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
+  secondaryOverrides: boolean;
+  /** Components of the zone's SOA record. */
+  soa: SettingsAccountGetResponseZoneDefaultsSoa;
+  /** Whether the zone mode is a regular or CDN/DNS only zone. */
+  zoneMode: SettingsAccountGetResponseZoneDefaultsZoneMode;
+}
+export const SettingsAccountGetResponseZoneDefaults = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
+      foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
+      internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns.pipe(
+        T.Body("internal_dns"),
+      ),
+      multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
+      nameservers: SettingsAccountGetResponseZoneDefaultsNameservers,
+      nsTtl: S.Number.pipe(T.Body("ns_ttl")),
+      secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
+      soa: SettingsAccountGetResponseZoneDefaultsSoa,
+      zoneMode: SettingsAccountGetResponseZoneDefaultsZoneMode.pipe(
+        T.Body("zone_mode"),
+      ),
+    }),
+).annotate({
+  identifier: "SettingsAccountGetResponseZoneDefaults",
+}) as any as S.Schema<SettingsAccountGetResponseZoneDefaults>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSettingAccountResponse {
+  zoneDefaults: SettingsAccountGetResponseZoneDefaults;
+  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only). */
+  enforceDnsOnly?: boolean;
+}
+export const GetSettingAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneDefaults: SettingsAccountGetResponseZoneDefaults.pipe(
+      T.Body("zone_defaults"),
+    ),
+    enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
+  }),
+).annotate({
+  identifier: "GetSettingAccountResponse",
+}) as any as S.Schema<GetSettingAccountResponse>;
+
+export interface GetSettingAccountViewRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  viewId: string;
+}
+export const GetSettingAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    viewId: S.String.pipe(T.Label("view_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/dns_settings/views/{view_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingAccountViewRequest",
+}) as any as S.Schema<GetSettingAccountViewRequest>;
+
+export type SettingsAccountViewsGetResponseZonesList = string[];
+export const SettingsAccountViewsGetResponseZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SettingsAccountViewsGetResponseZonesList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSettingAccountViewResponse {
+  /** Identifier. */
+  id: string;
+  /** When the view was created. */
+  createdTime: string;
+  /** When the view was last modified. */
+  modifiedTime: string;
+  /** The name of the view. */
+  name: string;
+  /** The list of zones linked to this view. */
+  zones: SettingsAccountViewsGetResponseZonesList;
+}
+export const GetSettingAccountViewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdTime: S.String.pipe(T.Body("created_time")),
+    modifiedTime: S.String.pipe(T.Body("modified_time")),
+    name: S.String,
+    zones: SettingsAccountViewsGetResponseZonesList,
+  }),
+).annotate({
+  identifier: "GetSettingAccountViewResponse",
+}) as any as S.Schema<GetSettingAccountViewResponse>;
+
+export interface GetSettingZoneRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const RecordsImportRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSettingZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_settings", code: 200 }),
+  ),
+).annotate({
+  identifier: "GetSettingZoneRequest",
+}) as any as S.Schema<GetSettingZoneRequest>;
+
+export interface SettingsZoneGetResponseInternalDns {
+  /** The ID of the zone to fallback to. */
+  referenceZoneId?: string;
+}
+export const SettingsZoneGetResponseInternalDns = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
+  }),
+).annotate({
+  identifier: "SettingsZoneGetResponseInternalDns",
+}) as any as S.Schema<SettingsZoneGetResponseInternalDns>;
+
+export type SettingsZoneGetResponseNameserversType =
+  | "cloudflare.standard"
+  | "custom.account"
+  | "custom.tenant"
+  | "custom.zone"
+  | (string & {});
+export const SettingsZoneGetResponseNameserversType = /*@__PURE__*/ S.String;
+
+export interface SettingsZoneGetResponseNameservers {
+  /** Nameserver type */
+  type: SettingsZoneGetResponseNameserversType;
+  /** Configured nameserver set to be used for this zone */
+  nsSet?: number;
+}
+export const SettingsZoneGetResponseNameservers = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SettingsZoneGetResponseNameserversType,
+    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
+  }),
+).annotate({
+  identifier: "SettingsZoneGetResponseNameservers",
+}) as any as S.Schema<SettingsZoneGetResponseNameservers>;
+
+export interface SettingsZoneGetResponseSoa {
+  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
+  expire?: number;
+  /** The time to live (TTL) for negative caching of records within the zone. */
+  minTtl?: number;
+  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
+  mname?: string;
+  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
+  refresh?: number;
+  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
+  retry?: number;
+  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
+  rname?: string;
+  /** The time to live (TTL) of the SOA record itself. */
+  ttl?: number;
+}
+export const SettingsZoneGetResponseSoa = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    expire: S.optional(S.Number),
+    minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
+    mname: S.optional(S.String),
+    refresh: S.optional(S.Number),
+    retry: S.optional(S.Number),
+    rname: S.optional(S.String),
+    ttl: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SettingsZoneGetResponseSoa",
+}) as any as S.Schema<SettingsZoneGetResponseSoa>;
+
+export type SettingsZoneGetResponseZoneMode =
+  | "standard"
+  | "cdn_only"
+  | "dns_only"
+  | (string & {});
+export const SettingsZoneGetResponseZoneMode = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSettingZoneResponse {
+  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
+  flattenAllCnames: boolean;
+  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
+  foundationDns: boolean;
+  /** Settings for this internal zone. */
+  internalDns: SettingsZoneGetResponseInternalDns;
+  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
+  multiProvider: boolean;
+  /** Settings determining the nameservers through which the zone should be available. */
+  nameservers: SettingsZoneGetResponseNameservers;
+  /** The time to live (TTL) of the zone's nameserver (NS) records. */
+  nsTtl: number;
+  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
+  secondaryOverrides: boolean;
+  /** Components of the zone's SOA record. */
+  soa: SettingsZoneGetResponseSoa;
+  /** Whether the zone mode is a regular or CDN/DNS only zone. */
+  zoneMode: SettingsZoneGetResponseZoneMode;
+}
+export const GetSettingZoneResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
+    foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
+    internalDns: SettingsZoneGetResponseInternalDns.pipe(
+      T.Body("internal_dns"),
+    ),
+    multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
+    nameservers: SettingsZoneGetResponseNameservers,
+    nsTtl: S.Number.pipe(T.Body("ns_ttl")),
+    secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
+    soa: SettingsZoneGetResponseSoa,
+    zoneMode: SettingsZoneGetResponseZoneMode.pipe(T.Body("zone_mode")),
+  }),
+).annotate({
+  identifier: "GetSettingZoneResponse",
+}) as any as S.Schema<GetSettingZoneResponse>;
+
+export interface GetUsageAccountRequest {
+  /** Identifier. */
+  accountId: string;
+}
+export const GetUsageAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/dns_records/usage",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetUsageAccountRequest",
+}) as any as S.Schema<GetUsageAccountRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetUsageAccountResponse {
+  /** Maximum number of DNS records allowed across all public zones in the account. Null if using zone-level quota. */
+  recordQuota: number;
+  /** Current number of DNS records across all public zones in the account. */
+  recordUsage: number;
+  /** Maximum number of DNS records allowed across all internal zones in the account. Only present if internal DNS is enabled. */
+  internalRecordQuota?: number;
+  /** Current number of DNS records across all internal zones in the account. Only present if internal DNS is enabled. */
+  internalRecordUsage?: number;
+}
+export const GetUsageAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recordQuota: S.Number.pipe(T.Body("record_quota")),
+    recordUsage: S.Number.pipe(T.Body("record_usage")),
+    internalRecordQuota: S.optional(
+      S.Number.pipe(T.Body("internal_record_quota")),
+    ),
+    internalRecordUsage: S.optional(
+      S.Number.pipe(T.Body("internal_record_usage")),
+    ),
+  }),
+).annotate({
+  identifier: "GetUsageAccountResponse",
+}) as any as S.Schema<GetUsageAccountResponse>;
+
+export interface GetUsageZoneRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const GetUsageZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/dns_records/usage",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetUsageZoneRequest",
+}) as any as S.Schema<GetUsageZoneRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetUsageZoneResponse {
+  /** Maximum number of DNS records allowed for the zone. Null if using account-level quota. */
+  recordQuota: number;
+  /** Current number of DNS records in the zone. */
+  recordUsage: number;
+}
+export const GetUsageZoneResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recordQuota: S.Number.pipe(T.Body("record_quota")),
+    recordUsage: S.Number.pipe(T.Body("record_usage")),
+  }),
+).annotate({
+  identifier: "GetUsageZoneResponse",
+}) as any as S.Schema<GetUsageZoneResponse>;
+
+export interface GetZoneTransferAclRequest {
+  accountId: string;
+  aclId: string;
+}
+export const GetZoneTransferAclRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    aclId: S.String.pipe(T.Label("acl_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetZoneTransferAclRequest",
+}) as any as S.Schema<GetZoneTransferAclRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetZoneTransferAclResponse {
+  id: string;
+  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
+  ipRange: string;
+  /** The name of the acl. */
+  name: string;
+}
+export const GetZoneTransferAclResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    ipRange: S.String.pipe(T.Body("ip_range")),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "GetZoneTransferAclResponse",
+}) as any as S.Schema<GetZoneTransferAclResponse>;
+
+export interface GetZoneTransferIncomingRequest {
+  zoneId: string;
+}
+export const GetZoneTransferIncomingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/secondary_dns/incoming",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetZoneTransferIncomingRequest",
+}) as any as S.Schema<GetZoneTransferIncomingRequest>;
+
+export type ZoneTransfersIncomingGetResponsePeersList = string[];
+export const ZoneTransfersIncomingGetResponsePeersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ZoneTransfersIncomingGetResponsePeersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetZoneTransferIncomingResponse {
+  id?: string;
+  /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
+  autoRefreshSeconds?: number;
+  /** The time for a specific event. */
+  checkedTime?: string;
+  /** The time for a specific event. */
+  createdTime?: string;
+  /** The time for a specific event. */
+  modifiedTime?: string;
+  /** Zone name. */
+  name?: string;
+  /** A list of peer tags. */
+  peers?: ZoneTransfersIncomingGetResponsePeersList;
+  /** The serial number of the SOA for the given zone. */
+  soaSerial?: number;
+}
+export const GetZoneTransferIncomingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    autoRefreshSeconds: S.optional(
+      S.Number.pipe(T.Body("auto_refresh_seconds")),
+    ),
+    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
+    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
+    modifiedTime: S.optional(S.String.pipe(T.Body("modified_time"))),
+    name: S.optional(S.String),
+    peers: S.optional(ZoneTransfersIncomingGetResponsePeersList),
+    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
+  }),
+).annotate({
+  identifier: "GetZoneTransferIncomingResponse",
+}) as any as S.Schema<GetZoneTransferIncomingResponse>;
+
+export interface GetZoneTransferOutgoingRequest {
+  zoneId: string;
+}
+export const GetZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/secondary_dns/outgoing",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetZoneTransferOutgoingRequest",
+}) as any as S.Schema<GetZoneTransferOutgoingRequest>;
+
+export type ZoneTransfersOutgoingGetResponsePeersList = string[];
+export const ZoneTransfersOutgoingGetResponsePeersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ZoneTransfersOutgoingGetResponsePeersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetZoneTransferOutgoingResponse {
+  id?: string;
+  /** The time for a specific event. */
+  checkedTime?: string;
+  /** The time for a specific event. */
+  createdTime?: string;
+  /** The time for a specific event. */
+  lastTransferredTime?: string;
+  /** Zone name. */
+  name?: string;
+  /** A list of peer tags. */
+  peers?: ZoneTransfersOutgoingGetResponsePeersList;
+  /** The serial number of the SOA for the given zone. */
+  soaSerial?: number;
+}
+export const GetZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
+    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
+    lastTransferredTime: S.optional(
+      S.String.pipe(T.Body("last_transferred_time")),
+    ),
+    name: S.optional(S.String),
+    peers: S.optional(ZoneTransfersOutgoingGetResponsePeersList),
+    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
+  }),
+).annotate({
+  identifier: "GetZoneTransferOutgoingResponse",
+}) as any as S.Schema<GetZoneTransferOutgoingResponse>;
+
+export interface GetZoneTransferOutgoingStatusRequest {
+  zoneId: string;
+}
+export const GetZoneTransferOutgoingStatusRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/secondary_dns/outgoing/status",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "GetZoneTransferOutgoingStatusRequest",
+}) as any as S.Schema<GetZoneTransferOutgoingStatusRequest>;
+
+export interface GetZoneTransferOutgoingStatusResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const GetZoneTransferOutgoingStatusResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+    }),
+).annotate({
+  identifier: "GetZoneTransferOutgoingStatusResponse",
+}) as any as S.Schema<GetZoneTransferOutgoingStatusResponse>;
+
+export interface GetZoneTransferPeerRequest {
+  accountId: string;
+  peerId: string;
+}
+export const GetZoneTransferPeerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    peerId: S.String.pipe(T.Label("peer_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetZoneTransferPeerRequest",
+}) as any as S.Schema<GetZoneTransferPeerRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetZoneTransferPeerResponse {
+  id: string;
+  /** The name of the peer. */
+  name: string;
+  /** IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to. */
+  ip?: string;
+  /** Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones. */
+  ixfrEnable?: boolean;
+  /** DNS port of primary or secondary nameserver, depending on what zone this peer is linked to. */
+  port?: number;
+  /** TSIG authentication will be used for zone transfer if configured. */
+  tsigId?: string;
+}
+export const GetZoneTransferPeerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    ip: S.optional(S.String),
+    ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
+    port: S.optional(S.Number),
+    tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
+  }),
+).annotate({
+  identifier: "GetZoneTransferPeerResponse",
+}) as any as S.Schema<GetZoneTransferPeerResponse>;
+
+export interface GetZoneTransferTsigRequest {
+  accountId: string;
+  tsigId: string;
+}
+export const GetZoneTransferTsigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    tsigId: S.String.pipe(T.Label("tsig_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetZoneTransferTsigRequest",
+}) as any as S.Schema<GetZoneTransferTsigRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetZoneTransferTsigResponse {
+  id: string;
+  /** TSIG algorithm. */
+  algo: string;
+  /** TSIG key name. */
+  name: string;
+  /** TSIG secret. */
+  secret: string;
+}
+export const GetZoneTransferTsigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    algo: S.String,
+    name: S.String,
+    secret: S.String,
+  }),
+).annotate({
+  identifier: "GetZoneTransferTsigResponse",
+}) as any as S.Schema<GetZoneTransferTsigResponse>;
+
+export interface ImportRecordRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const ImportRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -7180,17 +7077,17 @@ export const RecordsImportRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RecordsImportRequest",
-}) as any as S.Schema<RecordsImportRequest>;
+  identifier: "ImportRecordRequest",
+}) as any as S.Schema<ImportRecordRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RecordsImportResponse {
+export interface ImportRecordResponse {
   /** Number of DNS records added. */
   recsAdded?: number;
   /** Total number of DNS records parsed. */
   totalRecordsParsed?: number;
 }
-export const RecordsImportResponse = /*@__PURE__*/ S.suspend(() =>
+export const ImportRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     recsAdded: S.optional(S.Number.pipe(T.Body("recs_added"))),
     totalRecordsParsed: S.optional(
@@ -7198,8 +7095,8 @@ export const RecordsImportResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "RecordsImportResponse",
-}) as any as S.Schema<RecordsImportResponse>;
+  identifier: "ImportRecordResponse",
+}) as any as S.Schema<ImportRecordResponse>;
 
 export type RecordsListRequestMatch = "any" | "all" | (string & {});
 export const RecordsListRequestMatch = /*@__PURE__*/ S.String;
@@ -7217,7 +7114,7 @@ export const RecordsListRequestTagMatch = /*@__PURE__*/ S.String;
 export type RecordsListRequestType = "A" | "AAAA" | "CAA" | (string & {});
 export const RecordsListRequestType = /*@__PURE__*/ S.String;
 
-export interface RecordsListRequest {
+export interface ListRecordsRequest {
   /** Identifier. */
   zoneId: string;
   comment?: string;
@@ -7249,7 +7146,7 @@ export interface RecordsListRequest {
   /** Record type. */
   type?: RecordsListRequestType;
 }
-export const RecordsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListRecordsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     comment: S.optional(S.String.pipe(T.Query())),
@@ -7274,8 +7171,8 @@ export const RecordsListRequest = /*@__PURE__*/ S.suspend(() =>
     T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_records", code: 200 }),
   ),
 ).annotate({
-  identifier: "RecordsListRequest",
-}) as any as S.Schema<RecordsListRequest>;
+  identifier: "ListRecordsRequest",
+}) as any as S.Schema<ListRecordsRequest>;
 
 export type RecordsListResultItemARecordMetaShadowedByList = string[];
 export const RecordsListResultItemARecordMetaShadowedByList =
@@ -8601,61 +8498,2405 @@ export const RecordsListResultList = /*@__PURE__*/ S.Array(
   RecordsListResultItem,
 ) as any as S.Schema<RecordsListResultList>;
 
-export interface RecordsListResponse {
+export interface ListRecordsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RecordsListResultList;
 }
-export const RecordsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RecordsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RecordsListResponse",
-}) as any as S.Schema<RecordsListResponse>;
+  identifier: "ListRecordsResponse",
+}) as any as S.Schema<ListRecordsResponse>;
 
-export interface RecordsScanRequest {
+export type SettingsAccountViewsListRequestDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
+export const SettingsAccountViewsListRequestDirection = /*@__PURE__*/ S.String;
+
+export type SettingsAccountViewsListRequestMatch =
+  | "any"
+  | "all"
+  | (string & {});
+export const SettingsAccountViewsListRequestMatch = /*@__PURE__*/ S.String;
+
+export type SettingsAccountViewsListRequestOrder =
+  | "name"
+  | "created_on"
+  | "modified_on"
+  | (string & {});
+export const SettingsAccountViewsListRequestOrder = /*@__PURE__*/ S.String;
+
+export interface ListSettingAccountViewsRequest {
   /** Identifier. */
-  zoneId: string;
-  body: unknown;
+  accountId: string;
+  /** Direction to order DNS views in. */
+  direction?: SettingsAccountViewsListRequestDirection;
+  /** Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. */
+  match?: SettingsAccountViewsListRequestMatch;
+  name?: string;
+  /** Field to order DNS views by. */
+  order?: SettingsAccountViewsListRequestOrder;
+  /** Page number of paginated results. */
+  page?: number;
+  /** Number of DNS views per page. */
+  perPage?: number;
+  /** A zone ID that exists in the zones list for the view. */
+  zoneId?: string;
+  /** A zone name that exists in the zones list for the view. */
+  zoneName?: string;
 }
-export const RecordsScanRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListSettingAccountViewsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown,
+    accountId: S.String.pipe(T.Label("account_id")),
+    direction: S.optional(
+      SettingsAccountViewsListRequestDirection.pipe(T.Query()),
+    ),
+    match: S.optional(SettingsAccountViewsListRequestMatch.pipe(T.Query())),
+    name: S.optional(S.String.pipe(T.Query())),
+    order: S.optional(SettingsAccountViewsListRequestOrder.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    zoneId: S.optional(S.String.pipe(T.Query("zone_id"))),
+    zoneName: S.optional(S.String.pipe(T.Query("zone_name"))),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/dns_records/scan",
+      method: "GET",
+      uri: "/accounts/{account_id}/dns_settings/views",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "RecordsScanRequest",
-}) as any as S.Schema<RecordsScanRequest>;
+  identifier: "ListSettingAccountViewsRequest",
+}) as any as S.Schema<ListSettingAccountViewsRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RecordsScanResponse {
-  /** Number of DNS records added. */
-  recsAdded?: number;
-  /** Total number of DNS records parsed. */
-  totalRecordsParsed?: number;
+export type SettingsAccountViewsListResultItemZonesList = string[];
+export const SettingsAccountViewsListResultItemZonesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SettingsAccountViewsListResultItemZonesList>;
+
+export interface SettingsAccountViewsListResultItem {
+  /** Identifier. */
+  id: string;
+  /** When the view was created. */
+  createdTime: string;
+  /** When the view was last modified. */
+  modifiedTime: string;
+  /** The name of the view. */
+  name: string;
+  /** The list of zones linked to this view. */
+  zones: SettingsAccountViewsListResultItemZonesList;
 }
-export const RecordsScanResponse = /*@__PURE__*/ S.suspend(() =>
+export const SettingsAccountViewsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    recsAdded: S.optional(S.Number.pipe(T.Body("recs_added"))),
-    totalRecordsParsed: S.optional(
-      S.Number.pipe(T.Body("total_records_parsed")),
+    id: S.String,
+    createdTime: S.String.pipe(T.Body("created_time")),
+    modifiedTime: S.String.pipe(T.Body("modified_time")),
+    name: S.String,
+    zones: SettingsAccountViewsListResultItemZonesList,
+  }),
+).annotate({
+  identifier: "SettingsAccountViewsListResultItem",
+}) as any as S.Schema<SettingsAccountViewsListResultItem>;
+
+export type SettingsAccountViewsListResultList =
+  SettingsAccountViewsListResultItem[];
+export const SettingsAccountViewsListResultList = /*@__PURE__*/ S.Array(
+  SettingsAccountViewsListResultItem,
+) as any as S.Schema<SettingsAccountViewsListResultList>;
+
+export interface ListSettingAccountViewsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: SettingsAccountViewsListResultList;
+}
+export const ListSettingAccountViewsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      SettingsAccountViewsListResultList.pipe(T.EnvelopePayload()),
     ),
   }),
 ).annotate({
-  identifier: "RecordsScanResponse",
-}) as any as S.Schema<RecordsScanResponse>;
+  identifier: "ListSettingAccountViewsResponse",
+}) as any as S.Schema<ListSettingAccountViewsResponse>;
 
-export interface RecordsScanListRequest {
+export interface ListZoneTransferAclsRequest {
+  accountId: string;
+}
+export const ListZoneTransferAclsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/secondary_dns/acls",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListZoneTransferAclsRequest",
+}) as any as S.Schema<ListZoneTransferAclsRequest>;
+
+export interface ZoneTransfersAclsListResultItem {
+  id: string;
+  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
+  ipRange: string;
+  /** The name of the acl. */
+  name: string;
+}
+export const ZoneTransfersAclsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    ipRange: S.String.pipe(T.Body("ip_range")),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "ZoneTransfersAclsListResultItem",
+}) as any as S.Schema<ZoneTransfersAclsListResultItem>;
+
+export type ZoneTransfersAclsListResultList = ZoneTransfersAclsListResultItem[];
+export const ZoneTransfersAclsListResultList = /*@__PURE__*/ S.Array(
+  ZoneTransfersAclsListResultItem,
+) as any as S.Schema<ZoneTransfersAclsListResultList>;
+
+export interface ListZoneTransferAclsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: ZoneTransfersAclsListResultList;
+}
+export const ListZoneTransferAclsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      ZoneTransfersAclsListResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "ListZoneTransferAclsResponse",
+}) as any as S.Schema<ListZoneTransferAclsResponse>;
+
+export interface ListZoneTransferPeersRequest {
+  accountId: string;
+}
+export const ListZoneTransferPeersRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/secondary_dns/peers",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListZoneTransferPeersRequest",
+}) as any as S.Schema<ListZoneTransferPeersRequest>;
+
+export interface ZoneTransfersPeersListResultItem {
+  id: string;
+  /** The name of the peer. */
+  name: string;
+  /** IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to. */
+  ip?: string;
+  /** Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones. */
+  ixfrEnable?: boolean;
+  /** DNS port of primary or secondary nameserver, depending on what zone this peer is linked to. */
+  port?: number;
+  /** TSIG authentication will be used for zone transfer if configured. */
+  tsigId?: string;
+}
+export const ZoneTransfersPeersListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    name: S.String,
+    ip: S.optional(S.String),
+    ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
+    port: S.optional(S.Number),
+    tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
+  }),
+).annotate({
+  identifier: "ZoneTransfersPeersListResultItem",
+}) as any as S.Schema<ZoneTransfersPeersListResultItem>;
+
+export type ZoneTransfersPeersListResultList =
+  ZoneTransfersPeersListResultItem[];
+export const ZoneTransfersPeersListResultList = /*@__PURE__*/ S.Array(
+  ZoneTransfersPeersListResultItem,
+) as any as S.Schema<ZoneTransfersPeersListResultList>;
+
+export interface ListZoneTransferPeersResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: ZoneTransfersPeersListResultList;
+}
+export const ListZoneTransferPeersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      ZoneTransfersPeersListResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "ListZoneTransferPeersResponse",
+}) as any as S.Schema<ListZoneTransferPeersResponse>;
+
+export interface ListZoneTransferTsigsRequest {
+  accountId: string;
+}
+export const ListZoneTransferTsigsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/secondary_dns/tsigs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListZoneTransferTsigsRequest",
+}) as any as S.Schema<ListZoneTransferTsigsRequest>;
+
+export interface ZoneTransfersTsigsListResultItem {
+  id: string;
+  /** TSIG algorithm. */
+  algo: string;
+  /** TSIG key name. */
+  name: string;
+  /** TSIG secret. */
+  secret: string;
+}
+export const ZoneTransfersTsigsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    algo: S.String,
+    name: S.String,
+    secret: S.String,
+  }),
+).annotate({
+  identifier: "ZoneTransfersTsigsListResultItem",
+}) as any as S.Schema<ZoneTransfersTsigsListResultItem>;
+
+export type ZoneTransfersTsigsListResultList =
+  ZoneTransfersTsigsListResultItem[];
+export const ZoneTransfersTsigsListResultList = /*@__PURE__*/ S.Array(
+  ZoneTransfersTsigsListResultItem,
+) as any as S.Schema<ZoneTransfersTsigsListResultList>;
+
+export interface ListZoneTransferTsigsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: ZoneTransfersTsigsListResultList;
+}
+export const ListZoneTransferTsigsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      ZoneTransfersTsigsListResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "ListZoneTransferTsigsResponse",
+}) as any as S.Schema<ListZoneTransferTsigsResponse>;
+
+export type DnssecEditRequestStatus = "active" | "disabled" | (string & {});
+export const DnssecEditRequestStatus = /*@__PURE__*/ S.String;
+
+export interface PatchDnssecRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** If true, multi-signer DNSSEC is enabled on the zone, allowing multiple */
+  dnssecMultiSigner?: boolean;
+  /** If true, allows Cloudflare to transfer in a DNSSEC-signed zone */
+  dnssecPresigned?: boolean;
+  /** If true, enables the use of NSEC3 together with DNSSEC on the zone. */
+  dnssecUseNsec3?: boolean;
+  /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
+  status?: DnssecEditRequestStatus;
+}
+export const PatchDnssecRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    dnssecMultiSigner: S.optional(
+      S.Boolean.pipe(T.Body("dnssec_multi_signer")),
+    ),
+    dnssecPresigned: S.optional(S.Boolean.pipe(T.Body("dnssec_presigned"))),
+    dnssecUseNsec3: S.optional(S.Boolean.pipe(T.Body("dnssec_use_nsec3"))),
+    status: S.optional(DnssecEditRequestStatus),
+  }).pipe(
+    T.Http({ method: "PATCH", uri: "/zones/{zone_id}/dnssec", code: 200 }),
+  ),
+).annotate({
+  identifier: "PatchDnssecRequest",
+}) as any as S.Schema<PatchDnssecRequest>;
+
+export type DnssecEditResponseStatus =
+  | "active"
+  | "pending"
+  | "disabled"
+  | (string & {});
+export const DnssecEditResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchDnssecResponse {
+  /** Algorithm key code. */
+  algorithm?: string;
+  /** Digest hash. */
+  digest?: string;
+  /** Type of digest algorithm. */
+  digestAlgorithm?: string;
+  /** Coded type for digest algorithm. */
+  digestType?: string;
+  /** If true, multi-signer DNSSEC is enabled on the zone, allowing multiple */
+  dnssecMultiSigner?: boolean;
+  /** If true, allows Cloudflare to transfer in a DNSSEC-signed zone */
+  dnssecPresigned?: boolean;
+  /** If true, enables the use of NSEC3 together with DNSSEC on the zone. */
+  dnssecUseNsec3?: boolean;
+  /** Full DS record. */
+  ds?: string;
+  /** Flag for DNSSEC record. */
+  flags?: number;
+  /** Code for key tag. */
+  keyTag?: number;
+  /** Algorithm key type. */
+  keyType?: string;
+  /** When DNSSEC was last modified. */
+  modifiedOn?: string;
+  /** Public key for DS record. */
+  publicKey?: string;
+  /** Status of DNSSEC, based on user-desired state and presence of necessary records. */
+  status?: DnssecEditResponseStatus;
+}
+export const PatchDnssecResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    algorithm: S.optional(S.String),
+    digest: S.optional(S.String),
+    digestAlgorithm: S.optional(S.String.pipe(T.Body("digest_algorithm"))),
+    digestType: S.optional(S.String.pipe(T.Body("digest_type"))),
+    dnssecMultiSigner: S.optional(
+      S.Boolean.pipe(T.Body("dnssec_multi_signer")),
+    ),
+    dnssecPresigned: S.optional(S.Boolean.pipe(T.Body("dnssec_presigned"))),
+    dnssecUseNsec3: S.optional(S.Boolean.pipe(T.Body("dnssec_use_nsec3"))),
+    ds: S.optional(S.String),
+    flags: S.optional(S.Number),
+    keyTag: S.optional(S.Number.pipe(T.Body("key_tag"))),
+    keyType: S.optional(S.String.pipe(T.Body("key_type"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    publicKey: S.optional(S.String.pipe(T.Body("public_key"))),
+    status: S.optional(DnssecEditResponseStatus),
+  }),
+).annotate({
+  identifier: "PatchDnssecResponse",
+}) as any as S.Schema<PatchDnssecResponse>;
+
+export interface RecordsEditRequestBody {
+  ARecordObjectNameTtlType6More__: unknown;
+  AAAARecordObjectNameTtlType6More__: unknown;
+  CNAMERecordObjectNameTtlType5More__: unknown;
+  MXRecordObjectNameTtlType6More__: unknown;
+  NSRecordObjectNameTtlType5More__: unknown;
+  DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: unknown;
+  PTRRecordObjectNameTtlType5More__: unknown;
+  TXTRecordObjectNameTtlType5More__: unknown;
+  CAARecordObjectNameTtlType6More__: unknown;
+  CERTRecordObjectNameTtlType6More__: unknown;
+  DNSKEYRecordObjectNameTtlType6More__: unknown;
+  DSRecordObjectNameTtlType6More__: unknown;
+  HTTPSRecordObjectNameTtlType6More__: unknown;
+  LOCRecordObjectNameTtlType6More__: unknown;
+  NAPTRRecordObjectNameTtlType6More__: unknown;
+  SMIMEARecordObjectNameTtlType6More__: unknown;
+  SRVRecordObjectNameTtlType6More__: unknown;
+  SSHFPRecordObjectNameTtlType6More__: unknown;
+  SVCBRecordObjectNameTtlType6More__: unknown;
+  TLSARecordObjectNameTtlType6More__: unknown;
+  URIRecordObjectNameTtlType7More__: unknown;
+}
+export const RecordsEditRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("ARecord object { name, ttl, type, 6 more }"),
+    ),
+    AAAARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("AAAARecord object { name, ttl, type, 6 more }"),
+    ),
+    CNAMERecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("CNAMERecord object { name, ttl, type, 5 more }"),
+    ),
+    MXRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("MXRecord object { name, ttl, type, 6 more }"),
+    ),
+    NSRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("NSRecord object { name, ttl, type, 5 more }"),
+    ),
+    DNSRecordsOpenpgpkeyRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("DNSRecordsOpenpgpkeyRecord object { name, ttl, type, 5 more }"),
+    ),
+    PTRRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("PTRRecord object { name, ttl, type, 5 more }"),
+    ),
+    TXTRecordObjectNameTtlType5More__: S.Unknown.pipe(
+      T.Body("TXTRecord object { name, ttl, type, 5 more }"),
+    ),
+    CAARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("CAARecord object { name, ttl, type, 6 more }"),
+    ),
+    CERTRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("CERTRecord object { name, ttl, type, 6 more }"),
+    ),
+    DNSKEYRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("DNSKEYRecord object { name, ttl, type, 6 more }"),
+    ),
+    DSRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("DSRecord object { name, ttl, type, 6 more }"),
+    ),
+    HTTPSRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("HTTPSRecord object { name, ttl, type, 6 more }"),
+    ),
+    LOCRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("LOCRecord object { name, ttl, type, 6 more }"),
+    ),
+    NAPTRRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("NAPTRRecord object { name, ttl, type, 6 more }"),
+    ),
+    SMIMEARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SMIMEARecord object { name, ttl, type, 6 more }"),
+    ),
+    SRVRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SRVRecord object { name, ttl, type, 6 more }"),
+    ),
+    SSHFPRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SSHFPRecord object { name, ttl, type, 6 more }"),
+    ),
+    SVCBRecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("SVCBRecord object { name, ttl, type, 6 more }"),
+    ),
+    TLSARecordObjectNameTtlType6More__: S.Unknown.pipe(
+      T.Body("TLSARecord object { name, ttl, type, 6 more }"),
+    ),
+    URIRecordObjectNameTtlType7More__: S.Unknown.pipe(
+      T.Body("URIRecord object { name, ttl, type, 7 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditRequestBody",
+}) as any as S.Schema<RecordsEditRequestBody>;
+
+export interface PatchRecordRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  dnsRecordId: string;
+  /** Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  includeShadowMetadata?: boolean;
+  body: RecordsEditRequestBody;
+}
+export const PatchRecordRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    dnsRecordId: S.String.pipe(T.Label("dns_record_id")),
+    includeShadowMetadata: S.optional(
+      S.Boolean.pipe(T.Query("include_shadow_metadata")),
+    ),
+    body: RecordsEditRequestBody,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/dns_records/{dns_record_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchRecordRequest",
+}) as any as S.Schema<PatchRecordRequest>;
+
+export type RecordsEditResponseARecordMetaShadowedByList = string[];
+export const RecordsEditResponseARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseARecordMetaShadowedByList>;
+
+export interface RecordsEditResponseARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseARecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseARecordMeta",
+}) as any as S.Schema<RecordsEditResponseARecordMeta>;
+
+export interface RecordsEditResponseARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseARecord",
+}) as any as S.Schema<RecordsEditResponseARecord>;
+
+export type RecordsEditResponseAAAARecordMetaShadowedByList = string[];
+export const RecordsEditResponseAAAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseAAAARecordMetaShadowedByList>;
+
+export interface RecordsEditResponseAAAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseAAAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseAAAARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseAAAARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseAAAARecordMeta",
+}) as any as S.Schema<RecordsEditResponseAAAARecordMeta>;
+
+export interface RecordsEditResponseAAAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseAAAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseAAAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseAAAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseAAAARecord",
+}) as any as S.Schema<RecordsEditResponseAAAARecord>;
+
+export type RecordsEditResponseCNAMERecordMetaShadowedByList = string[];
+export const RecordsEditResponseCNAMERecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseCNAMERecordMetaShadowedByList>;
+
+export interface RecordsEditResponseCNAMERecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseCNAMERecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseCNAMERecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseCNAMERecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseCNAMERecordMeta",
+}) as any as S.Schema<RecordsEditResponseCNAMERecordMeta>;
+
+export interface RecordsEditResponseCNAMERecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseCNAMERecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseCNAMERecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseCNAMERecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseCNAMERecord",
+}) as any as S.Schema<RecordsEditResponseCNAMERecord>;
+
+export type RecordsEditResponseMXRecordMetaShadowedByList = string[];
+export const RecordsEditResponseMXRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseMXRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseMXRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseMXRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseMXRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseMXRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseMXRecordMeta",
+}) as any as S.Schema<RecordsEditResponseMXRecordMeta>;
+
+export interface RecordsEditResponseMXRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseMXRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseMXRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseMXRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseMXRecord",
+}) as any as S.Schema<RecordsEditResponseMXRecord>;
+
+export type RecordsEditResponseNSRecordMetaShadowedByList = string[];
+export const RecordsEditResponseNSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseNSRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseNSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseNSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseNSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseNSRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseNSRecordMeta",
+}) as any as S.Schema<RecordsEditResponseNSRecordMeta>;
+
+export interface RecordsEditResponseNSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseNSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseNSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseNSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseNSRecord",
+}) as any as S.Schema<RecordsEditResponseNSRecord>;
+
+export type RecordsEditResponsePTRRecordMetaShadowedByList = string[];
+export const RecordsEditResponsePTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponsePTRRecordMetaShadowedByList>;
+
+export interface RecordsEditResponsePTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponsePTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponsePTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponsePTRRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponsePTRRecordMeta",
+}) as any as S.Schema<RecordsEditResponsePTRRecordMeta>;
+
+export interface RecordsEditResponsePTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponsePTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponsePTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponsePTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponsePTRRecord",
+}) as any as S.Schema<RecordsEditResponsePTRRecord>;
+
+export type RecordsEditResponseTXTRecordMetaShadowedByList = string[];
+export const RecordsEditResponseTXTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseTXTRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseTXTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseTXTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseTXTRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseTXTRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseTXTRecordMeta",
+}) as any as S.Schema<RecordsEditResponseTXTRecordMeta>;
+
+export interface RecordsEditResponseTXTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseTXTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseTXTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseTXTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseTXTRecord",
+}) as any as S.Schema<RecordsEditResponseTXTRecord>;
+
+export type RecordsEditResponseCAARecordMetaShadowedByList = string[];
+export const RecordsEditResponseCAARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseCAARecordMetaShadowedByList>;
+
+export interface RecordsEditResponseCAARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseCAARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseCAARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseCAARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseCAARecordMeta",
+}) as any as S.Schema<RecordsEditResponseCAARecordMeta>;
+
+export interface RecordsEditResponseCAARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseCAARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseCAARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseCAARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseCAARecord",
+}) as any as S.Schema<RecordsEditResponseCAARecord>;
+
+export type RecordsEditResponseCERTRecordMetaShadowedByList = string[];
+export const RecordsEditResponseCERTRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseCERTRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseCERTRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseCERTRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseCERTRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseCERTRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseCERTRecordMeta",
+}) as any as S.Schema<RecordsEditResponseCERTRecordMeta>;
+
+export interface RecordsEditResponseCERTRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseCERTRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseCERTRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseCERTRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseCERTRecord",
+}) as any as S.Schema<RecordsEditResponseCERTRecord>;
+
+export type RecordsEditResponseDNSKEYRecordMetaShadowedByList = string[];
+export const RecordsEditResponseDNSKEYRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseDNSKEYRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseDNSKEYRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseDNSKEYRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseDNSKEYRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseDNSKEYRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseDNSKEYRecordMeta",
+}) as any as S.Schema<RecordsEditResponseDNSKEYRecordMeta>;
+
+export interface RecordsEditResponseDNSKEYRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseDNSKEYRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseDNSKEYRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseDNSKEYRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseDNSKEYRecord",
+}) as any as S.Schema<RecordsEditResponseDNSKEYRecord>;
+
+export type RecordsEditResponseDSRecordMetaShadowedByList = string[];
+export const RecordsEditResponseDSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseDSRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseDSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseDSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseDSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseDSRecordMetaShadowedByList.pipe(T.Body("shadowed_by")),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseDSRecordMeta",
+}) as any as S.Schema<RecordsEditResponseDSRecordMeta>;
+
+export interface RecordsEditResponseDSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseDSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseDSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseDSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseDSRecord",
+}) as any as S.Schema<RecordsEditResponseDSRecord>;
+
+export type RecordsEditResponseHTTPSRecordMetaShadowedByList = string[];
+export const RecordsEditResponseHTTPSRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseHTTPSRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseHTTPSRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseHTTPSRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseHTTPSRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseHTTPSRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseHTTPSRecordMeta",
+}) as any as S.Schema<RecordsEditResponseHTTPSRecordMeta>;
+
+export interface RecordsEditResponseHTTPSRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseHTTPSRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseHTTPSRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseHTTPSRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseHTTPSRecord",
+}) as any as S.Schema<RecordsEditResponseHTTPSRecord>;
+
+export type RecordsEditResponseLOCRecordMetaShadowedByList = string[];
+export const RecordsEditResponseLOCRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseLOCRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseLOCRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseLOCRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseLOCRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseLOCRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseLOCRecordMeta",
+}) as any as S.Schema<RecordsEditResponseLOCRecordMeta>;
+
+export interface RecordsEditResponseLOCRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseLOCRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseLOCRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseLOCRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseLOCRecord",
+}) as any as S.Schema<RecordsEditResponseLOCRecord>;
+
+export type RecordsEditResponseNAPTRRecordMetaShadowedByList = string[];
+export const RecordsEditResponseNAPTRRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseNAPTRRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseNAPTRRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseNAPTRRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseNAPTRRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseNAPTRRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseNAPTRRecordMeta",
+}) as any as S.Schema<RecordsEditResponseNAPTRRecordMeta>;
+
+export interface RecordsEditResponseNAPTRRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseNAPTRRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseNAPTRRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseNAPTRRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseNAPTRRecord",
+}) as any as S.Schema<RecordsEditResponseNAPTRRecord>;
+
+export type RecordsEditResponseSMIMEARecordMetaShadowedByList = string[];
+export const RecordsEditResponseSMIMEARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseSMIMEARecordMetaShadowedByList>;
+
+export interface RecordsEditResponseSMIMEARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseSMIMEARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseSMIMEARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseSMIMEARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSMIMEARecordMeta",
+}) as any as S.Schema<RecordsEditResponseSMIMEARecordMeta>;
+
+export interface RecordsEditResponseSMIMEARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseSMIMEARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseSMIMEARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseSMIMEARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSMIMEARecord",
+}) as any as S.Schema<RecordsEditResponseSMIMEARecord>;
+
+export type RecordsEditResponseSRVRecordMetaShadowedByList = string[];
+export const RecordsEditResponseSRVRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseSRVRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseSRVRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseSRVRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseSRVRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseSRVRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSRVRecordMeta",
+}) as any as S.Schema<RecordsEditResponseSRVRecordMeta>;
+
+export interface RecordsEditResponseSRVRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseSRVRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseSRVRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseSRVRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSRVRecord",
+}) as any as S.Schema<RecordsEditResponseSRVRecord>;
+
+export type RecordsEditResponseSSHFPRecordMetaShadowedByList = string[];
+export const RecordsEditResponseSSHFPRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseSSHFPRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseSSHFPRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseSSHFPRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseSSHFPRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseSSHFPRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSSHFPRecordMeta",
+}) as any as S.Schema<RecordsEditResponseSSHFPRecordMeta>;
+
+export interface RecordsEditResponseSSHFPRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseSSHFPRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseSSHFPRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseSSHFPRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSSHFPRecord",
+}) as any as S.Schema<RecordsEditResponseSSHFPRecord>;
+
+export type RecordsEditResponseSVCBRecordMetaShadowedByList = string[];
+export const RecordsEditResponseSVCBRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseSVCBRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseSVCBRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseSVCBRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseSVCBRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseSVCBRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSVCBRecordMeta",
+}) as any as S.Schema<RecordsEditResponseSVCBRecordMeta>;
+
+export interface RecordsEditResponseSVCBRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseSVCBRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseSVCBRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseSVCBRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseSVCBRecord",
+}) as any as S.Schema<RecordsEditResponseSVCBRecord>;
+
+export type RecordsEditResponseTLSARecordMetaShadowedByList = string[];
+export const RecordsEditResponseTLSARecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseTLSARecordMetaShadowedByList>;
+
+export interface RecordsEditResponseTLSARecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseTLSARecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseTLSARecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseTLSARecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseTLSARecordMeta",
+}) as any as S.Schema<RecordsEditResponseTLSARecordMeta>;
+
+export interface RecordsEditResponseTLSARecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseTLSARecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseTLSARecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseTLSARecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseTLSARecord",
+}) as any as S.Schema<RecordsEditResponseTLSARecord>;
+
+export type RecordsEditResponseURIRecordMetaShadowedByList = string[];
+export const RecordsEditResponseURIRecordMetaShadowedByList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordsEditResponseURIRecordMetaShadowedByList>;
+
+export interface RecordsEditResponseURIRecordMeta {
+  /** Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records). */
+  deadGlue?: boolean;
+  /** Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records). */
+  isGlue?: boolean;
+  /** IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedBy?: RecordsEditResponseURIRecordMetaShadowedByList;
+  /** Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records). */
+  shadowedRecordsCount?: number;
+}
+export const RecordsEditResponseURIRecordMeta = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deadGlue: S.optional(S.Boolean.pipe(T.Body("dead_glue"))),
+    isGlue: S.optional(S.Boolean.pipe(T.Body("is_glue"))),
+    shadowedBy: S.optional(
+      RecordsEditResponseURIRecordMetaShadowedByList.pipe(
+        T.Body("shadowed_by"),
+      ),
+    ),
+    shadowedRecordsCount: S.optional(
+      S.Number.pipe(T.Body("shadowed_records_count")),
+    ),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseURIRecordMeta",
+}) as any as S.Schema<RecordsEditResponseURIRecordMeta>;
+
+export interface RecordsEditResponseURIRecord {
+  /** Identifier. */
+  id: string;
+  /** When the record was created. */
+  createdOn: string;
+  /** Extra Cloudflare-specific metadata about the record. */
+  meta: RecordsEditResponseURIRecordMeta;
+  /** When the record was last modified. */
+  modifiedOn: string;
+  /** Whether the record can be proxied by Cloudflare or not. */
+  proxiable: boolean;
+  /** When the record comment was last modified. Omitted if there is no comment. */
+  commentModifiedOn?: string;
+  /** When the record tags were last modified. Omitted if there are no tags. */
+  tagsModifiedOn?: string;
+}
+export const RecordsEditResponseURIRecord = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    meta: RecordsEditResponseURIRecordMeta,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    proxiable: S.Boolean,
+    commentModifiedOn: S.optional(S.String.pipe(T.Body("comment_modified_on"))),
+    tagsModifiedOn: S.optional(S.String.pipe(T.Body("tags_modified_on"))),
+  }),
+).annotate({
+  identifier: "RecordsEditResponseURIRecord",
+}) as any as S.Schema<RecordsEditResponseURIRecord>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchRecordResponse {
+  ARecord: RecordsEditResponseARecord;
+  AAAARecord: RecordsEditResponseAAAARecord;
+  CNAMERecord: RecordsEditResponseCNAMERecord;
+  MXRecord: RecordsEditResponseMXRecord;
+  NSRecord: RecordsEditResponseNSRecord;
+  OpenpgpkeyRecordObjectIdCommentContent12More__: unknown;
+  PTRRecord: RecordsEditResponsePTRRecord;
+  TXTRecord: RecordsEditResponseTXTRecord;
+  CAARecord: RecordsEditResponseCAARecord;
+  CERTRecord: RecordsEditResponseCERTRecord;
+  DNSKEYRecord: RecordsEditResponseDNSKEYRecord;
+  DSRecord: RecordsEditResponseDSRecord;
+  HTTPSRecord: RecordsEditResponseHTTPSRecord;
+  LOCRecord: RecordsEditResponseLOCRecord;
+  NAPTRRecord: RecordsEditResponseNAPTRRecord;
+  SMIMEARecord: RecordsEditResponseSMIMEARecord;
+  SRVRecord: RecordsEditResponseSRVRecord;
+  SSHFPRecord: RecordsEditResponseSSHFPRecord;
+  SVCBRecord: RecordsEditResponseSVCBRecord;
+  TLSARecord: RecordsEditResponseTLSARecord;
+  URIRecord: RecordsEditResponseURIRecord;
+}
+export const PatchRecordResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ARecord: RecordsEditResponseARecord,
+    AAAARecord: RecordsEditResponseAAAARecord,
+    CNAMERecord: RecordsEditResponseCNAMERecord,
+    MXRecord: RecordsEditResponseMXRecord,
+    NSRecord: RecordsEditResponseNSRecord,
+    OpenpgpkeyRecordObjectIdCommentContent12More__: S.Unknown.pipe(
+      T.Body("OpenpgpkeyRecord object { id, comment, content, 12 more }"),
+    ),
+    PTRRecord: RecordsEditResponsePTRRecord,
+    TXTRecord: RecordsEditResponseTXTRecord,
+    CAARecord: RecordsEditResponseCAARecord,
+    CERTRecord: RecordsEditResponseCERTRecord,
+    DNSKEYRecord: RecordsEditResponseDNSKEYRecord,
+    DSRecord: RecordsEditResponseDSRecord,
+    HTTPSRecord: RecordsEditResponseHTTPSRecord,
+    LOCRecord: RecordsEditResponseLOCRecord,
+    NAPTRRecord: RecordsEditResponseNAPTRRecord,
+    SMIMEARecord: RecordsEditResponseSMIMEARecord,
+    SRVRecord: RecordsEditResponseSRVRecord,
+    SSHFPRecord: RecordsEditResponseSSHFPRecord,
+    SVCBRecord: RecordsEditResponseSVCBRecord,
+    TLSARecord: RecordsEditResponseTLSARecord,
+    URIRecord: RecordsEditResponseURIRecord,
+  }),
+).annotate({
+  identifier: "PatchRecordResponse",
+}) as any as S.Schema<PatchRecordResponse>;
+
+export interface SettingsAccountEditRequestZoneDefaultsInternalDns {
+  /** The ID of the zone to fallback to. */
+  referenceZoneId?: string;
+}
+export const SettingsAccountEditRequestZoneDefaultsInternalDns =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
+    }),
+  ).annotate({
+    identifier: "SettingsAccountEditRequestZoneDefaultsInternalDns",
+  }) as any as S.Schema<SettingsAccountEditRequestZoneDefaultsInternalDns>;
+
+export type SettingsAccountEditRequestZoneDefaultsNameserversType =
+  | "cloudflare.standard"
+  | "cloudflare.standard.random"
+  | "custom.account"
+  | "custom.tenant"
+  | (string & {});
+export const SettingsAccountEditRequestZoneDefaultsNameserversType =
+  /*@__PURE__*/ S.String;
+
+export interface SettingsAccountEditRequestZoneDefaultsNameservers {
+  /** Nameserver type */
+  type?: SettingsAccountEditRequestZoneDefaultsNameserversType;
+}
+export const SettingsAccountEditRequestZoneDefaultsNameservers =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(SettingsAccountEditRequestZoneDefaultsNameserversType),
+    }),
+  ).annotate({
+    identifier: "SettingsAccountEditRequestZoneDefaultsNameservers",
+  }) as any as S.Schema<SettingsAccountEditRequestZoneDefaultsNameservers>;
+
+export interface SettingsAccountEditRequestZoneDefaultsSoa {
+  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
+  expire?: number;
+  /** The time to live (TTL) for negative caching of records within the zone. */
+  minTtl?: number;
+  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
+  mname?: string;
+  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
+  refresh?: number;
+  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
+  retry?: number;
+  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
+  rname?: string;
+  /** The time to live (TTL) of the SOA record itself. */
+  ttl?: number;
+}
+export const SettingsAccountEditRequestZoneDefaultsSoa =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      expire: S.optional(S.Number),
+      minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
+      mname: S.optional(S.String),
+      refresh: S.optional(S.Number),
+      retry: S.optional(S.Number),
+      rname: S.optional(S.String),
+      ttl: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "SettingsAccountEditRequestZoneDefaultsSoa",
+  }) as any as S.Schema<SettingsAccountEditRequestZoneDefaultsSoa>;
+
+export type SettingsAccountEditRequestZoneDefaultsZoneMode =
+  | "standard"
+  | "cdn_only"
+  | "dns_only"
+  | (string & {});
+export const SettingsAccountEditRequestZoneDefaultsZoneMode =
+  /*@__PURE__*/ S.String;
+
+export interface SettingsAccountEditRequestZoneDefaults {
+  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
+  flattenAllCnames?: boolean;
+  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
+  foundationDns?: boolean;
+  /** Settings for this internal zone. */
+  internalDns?: SettingsAccountEditRequestZoneDefaultsInternalDns;
+  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
+  multiProvider?: boolean;
+  /** Settings determining the nameservers through which the zone should be available. */
+  nameservers?: SettingsAccountEditRequestZoneDefaultsNameservers;
+  /** The time to live (TTL) of the zone's nameserver (NS) records. */
+  nsTtl?: number;
+  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
+  secondaryOverrides?: boolean;
+  /** Components of the zone's SOA record. */
+  soa?: SettingsAccountEditRequestZoneDefaultsSoa;
+  /** Whether the zone mode is a regular or CDN/DNS only zone. */
+  zoneMode?: SettingsAccountEditRequestZoneDefaultsZoneMode;
+}
+export const SettingsAccountEditRequestZoneDefaults = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      flattenAllCnames: S.optional(
+        S.Boolean.pipe(T.Body("flatten_all_cnames")),
+      ),
+      foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
+      internalDns: S.optional(
+        SettingsAccountEditRequestZoneDefaultsInternalDns.pipe(
+          T.Body("internal_dns"),
+        ),
+      ),
+      multiProvider: S.optional(S.Boolean.pipe(T.Body("multi_provider"))),
+      nameservers: S.optional(
+        SettingsAccountEditRequestZoneDefaultsNameservers,
+      ),
+      nsTtl: S.optional(S.Number.pipe(T.Body("ns_ttl"))),
+      secondaryOverrides: S.optional(
+        S.Boolean.pipe(T.Body("secondary_overrides")),
+      ),
+      soa: S.optional(SettingsAccountEditRequestZoneDefaultsSoa),
+      zoneMode: S.optional(
+        SettingsAccountEditRequestZoneDefaultsZoneMode.pipe(
+          T.Body("zone_mode"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "SettingsAccountEditRequestZoneDefaults",
+}) as any as S.Schema<SettingsAccountEditRequestZoneDefaults>;
+
+export interface PatchSettingAccountRequest {
+  /** Identifier. */
+  accountId: string;
+  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only). */
+  enforceDnsOnly?: boolean;
+  zoneDefaults?: SettingsAccountEditRequestZoneDefaults;
+}
+export const PatchSettingAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
+    zoneDefaults: S.optional(
+      SettingsAccountEditRequestZoneDefaults.pipe(T.Body("zone_defaults")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/dns_settings",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchSettingAccountRequest",
+}) as any as S.Schema<PatchSettingAccountRequest>;
+
+export interface SettingsAccountEditResponseZoneDefaultsInternalDns {
+  /** The ID of the zone to fallback to. */
+  referenceZoneId?: string;
+}
+export const SettingsAccountEditResponseZoneDefaultsInternalDns =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
+    }),
+  ).annotate({
+    identifier: "SettingsAccountEditResponseZoneDefaultsInternalDns",
+  }) as any as S.Schema<SettingsAccountEditResponseZoneDefaultsInternalDns>;
+
+export type SettingsAccountEditResponseZoneDefaultsNameserversType =
+  | "cloudflare.standard"
+  | "cloudflare.standard.random"
+  | "custom.account"
+  | "custom.tenant"
+  | (string & {});
+export const SettingsAccountEditResponseZoneDefaultsNameserversType =
+  /*@__PURE__*/ S.String;
+
+export interface SettingsAccountEditResponseZoneDefaultsNameservers {
+  /** Nameserver type */
+  type: SettingsAccountEditResponseZoneDefaultsNameserversType;
+}
+export const SettingsAccountEditResponseZoneDefaultsNameservers =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: SettingsAccountEditResponseZoneDefaultsNameserversType,
+    }),
+  ).annotate({
+    identifier: "SettingsAccountEditResponseZoneDefaultsNameservers",
+  }) as any as S.Schema<SettingsAccountEditResponseZoneDefaultsNameservers>;
+
+export interface SettingsAccountEditResponseZoneDefaultsSoa {
+  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
+  expire?: number;
+  /** The time to live (TTL) for negative caching of records within the zone. */
+  minTtl?: number;
+  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
+  mname?: string;
+  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
+  refresh?: number;
+  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
+  retry?: number;
+  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
+  rname?: string;
+  /** The time to live (TTL) of the SOA record itself. */
+  ttl?: number;
+}
+export const SettingsAccountEditResponseZoneDefaultsSoa =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      expire: S.optional(S.Number),
+      minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
+      mname: S.optional(S.String),
+      refresh: S.optional(S.Number),
+      retry: S.optional(S.Number),
+      rname: S.optional(S.String),
+      ttl: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "SettingsAccountEditResponseZoneDefaultsSoa",
+  }) as any as S.Schema<SettingsAccountEditResponseZoneDefaultsSoa>;
+
+export type SettingsAccountEditResponseZoneDefaultsZoneMode =
+  | "standard"
+  | "cdn_only"
+  | "dns_only"
+  | (string & {});
+export const SettingsAccountEditResponseZoneDefaultsZoneMode =
+  /*@__PURE__*/ S.String;
+
+export interface SettingsAccountEditResponseZoneDefaults {
+  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
+  flattenAllCnames: boolean;
+  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
+  foundationDns: boolean;
+  /** Settings for this internal zone. */
+  internalDns: SettingsAccountEditResponseZoneDefaultsInternalDns;
+  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
+  multiProvider: boolean;
+  /** Settings determining the nameservers through which the zone should be available. */
+  nameservers: SettingsAccountEditResponseZoneDefaultsNameservers;
+  /** The time to live (TTL) of the zone's nameserver (NS) records. */
+  nsTtl: number;
+  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
+  secondaryOverrides: boolean;
+  /** Components of the zone's SOA record. */
+  soa: SettingsAccountEditResponseZoneDefaultsSoa;
+  /** Whether the zone mode is a regular or CDN/DNS only zone. */
+  zoneMode: SettingsAccountEditResponseZoneDefaultsZoneMode;
+}
+export const SettingsAccountEditResponseZoneDefaults = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
+      foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
+      internalDns: SettingsAccountEditResponseZoneDefaultsInternalDns.pipe(
+        T.Body("internal_dns"),
+      ),
+      multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
+      nameservers: SettingsAccountEditResponseZoneDefaultsNameservers,
+      nsTtl: S.Number.pipe(T.Body("ns_ttl")),
+      secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
+      soa: SettingsAccountEditResponseZoneDefaultsSoa,
+      zoneMode: SettingsAccountEditResponseZoneDefaultsZoneMode.pipe(
+        T.Body("zone_mode"),
+      ),
+    }),
+).annotate({
+  identifier: "SettingsAccountEditResponseZoneDefaults",
+}) as any as S.Schema<SettingsAccountEditResponseZoneDefaults>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSettingAccountResponse {
+  zoneDefaults: SettingsAccountEditResponseZoneDefaults;
+  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only). */
+  enforceDnsOnly?: boolean;
+}
+export const PatchSettingAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneDefaults: SettingsAccountEditResponseZoneDefaults.pipe(
+      T.Body("zone_defaults"),
+    ),
+    enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
+  }),
+).annotate({
+  identifier: "PatchSettingAccountResponse",
+}) as any as S.Schema<PatchSettingAccountResponse>;
+
+export type SettingsAccountViewsEditRequestZonesList = string[];
+export const SettingsAccountViewsEditRequestZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SettingsAccountViewsEditRequestZonesList>;
+
+export interface PatchSettingAccountViewRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  viewId: string;
+  /** The name of the view. */
+  name?: string;
+  /** The list of zones linked to this view. */
+  zones?: SettingsAccountViewsEditRequestZonesList;
+}
+export const PatchSettingAccountViewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    viewId: S.String.pipe(T.Label("view_id")),
+    name: S.optional(S.String),
+    zones: S.optional(SettingsAccountViewsEditRequestZonesList),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/dns_settings/views/{view_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchSettingAccountViewRequest",
+}) as any as S.Schema<PatchSettingAccountViewRequest>;
+
+export type SettingsAccountViewsEditResponseZonesList = string[];
+export const SettingsAccountViewsEditResponseZonesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SettingsAccountViewsEditResponseZonesList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSettingAccountViewResponse {
+  /** Identifier. */
+  id: string;
+  /** When the view was created. */
+  createdTime: string;
+  /** When the view was last modified. */
+  modifiedTime: string;
+  /** The name of the view. */
+  name: string;
+  /** The list of zones linked to this view. */
+  zones: SettingsAccountViewsEditResponseZonesList;
+}
+export const PatchSettingAccountViewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdTime: S.String.pipe(T.Body("created_time")),
+    modifiedTime: S.String.pipe(T.Body("modified_time")),
+    name: S.String,
+    zones: SettingsAccountViewsEditResponseZonesList,
+  }),
+).annotate({
+  identifier: "PatchSettingAccountViewResponse",
+}) as any as S.Schema<PatchSettingAccountViewResponse>;
+
+export interface SettingsZoneEditRequestInternalDns {
+  /** The ID of the zone to fallback to. */
+  referenceZoneId?: string;
+}
+export const SettingsZoneEditRequestInternalDns = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
+  }),
+).annotate({
+  identifier: "SettingsZoneEditRequestInternalDns",
+}) as any as S.Schema<SettingsZoneEditRequestInternalDns>;
+
+export type SettingsZoneEditRequestNameserversType =
+  | "cloudflare.standard"
+  | "custom.account"
+  | "custom.tenant"
+  | "custom.zone"
+  | (string & {});
+export const SettingsZoneEditRequestNameserversType = /*@__PURE__*/ S.String;
+
+export interface SettingsZoneEditRequestNameservers {
+  /** Configured nameserver set to be used for this zone */
+  nsSet?: number;
+  /** Nameserver type */
+  type?: SettingsZoneEditRequestNameserversType;
+}
+export const SettingsZoneEditRequestNameservers = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
+    type: S.optional(SettingsZoneEditRequestNameserversType),
+  }),
+).annotate({
+  identifier: "SettingsZoneEditRequestNameservers",
+}) as any as S.Schema<SettingsZoneEditRequestNameservers>;
+
+export interface SettingsZoneEditRequestSoa {
+  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
+  expire?: number;
+  /** The time to live (TTL) for negative caching of records within the zone. */
+  minTtl?: number;
+  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
+  mname?: string;
+  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
+  refresh?: number;
+  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
+  retry?: number;
+  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
+  rname?: string;
+  /** The time to live (TTL) of the SOA record itself. */
+  ttl?: number;
+}
+export const SettingsZoneEditRequestSoa = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    expire: S.optional(S.Number),
+    minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
+    mname: S.optional(S.String),
+    refresh: S.optional(S.Number),
+    retry: S.optional(S.Number),
+    rname: S.optional(S.String),
+    ttl: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SettingsZoneEditRequestSoa",
+}) as any as S.Schema<SettingsZoneEditRequestSoa>;
+
+export type SettingsZoneEditRequestZoneMode =
+  | "standard"
+  | "cdn_only"
+  | "dns_only"
+  | (string & {});
+export const SettingsZoneEditRequestZoneMode = /*@__PURE__*/ S.String;
+
+export interface PatchSettingZoneRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
+  flattenAllCnames?: boolean;
+  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
+  foundationDns?: boolean;
+  /** Settings for this internal zone. */
+  internalDns?: SettingsZoneEditRequestInternalDns;
+  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
+  multiProvider?: boolean;
+  /** Settings determining the nameservers through which the zone should be available. */
+  nameservers?: SettingsZoneEditRequestNameservers;
+  /** The time to live (TTL) of the zone's nameserver (NS) records. */
+  nsTtl?: number;
+  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
+  secondaryOverrides?: boolean;
+  /** Components of the zone's SOA record. */
+  soa?: SettingsZoneEditRequestSoa;
+  /** Whether the zone mode is a regular or CDN/DNS only zone. */
+  zoneMode?: SettingsZoneEditRequestZoneMode;
+}
+export const PatchSettingZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    flattenAllCnames: S.optional(S.Boolean.pipe(T.Body("flatten_all_cnames"))),
+    foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
+    internalDns: S.optional(
+      SettingsZoneEditRequestInternalDns.pipe(T.Body("internal_dns")),
+    ),
+    multiProvider: S.optional(S.Boolean.pipe(T.Body("multi_provider"))),
+    nameservers: S.optional(SettingsZoneEditRequestNameservers),
+    nsTtl: S.optional(S.Number.pipe(T.Body("ns_ttl"))),
+    secondaryOverrides: S.optional(
+      S.Boolean.pipe(T.Body("secondary_overrides")),
+    ),
+    soa: S.optional(SettingsZoneEditRequestSoa),
+    zoneMode: S.optional(
+      SettingsZoneEditRequestZoneMode.pipe(T.Body("zone_mode")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/dns_settings",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchSettingZoneRequest",
+}) as any as S.Schema<PatchSettingZoneRequest>;
+
+export interface SettingsZoneEditResponseInternalDns {
+  /** The ID of the zone to fallback to. */
+  referenceZoneId?: string;
+}
+export const SettingsZoneEditResponseInternalDns = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
+  }),
+).annotate({
+  identifier: "SettingsZoneEditResponseInternalDns",
+}) as any as S.Schema<SettingsZoneEditResponseInternalDns>;
+
+export type SettingsZoneEditResponseNameserversType =
+  | "cloudflare.standard"
+  | "custom.account"
+  | "custom.tenant"
+  | "custom.zone"
+  | (string & {});
+export const SettingsZoneEditResponseNameserversType = /*@__PURE__*/ S.String;
+
+export interface SettingsZoneEditResponseNameservers {
+  /** Nameserver type */
+  type: SettingsZoneEditResponseNameserversType;
+  /** Configured nameserver set to be used for this zone */
+  nsSet?: number;
+}
+export const SettingsZoneEditResponseNameservers = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    type: SettingsZoneEditResponseNameserversType,
+    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
+  }),
+).annotate({
+  identifier: "SettingsZoneEditResponseNameservers",
+}) as any as S.Schema<SettingsZoneEditResponseNameservers>;
+
+export interface SettingsZoneEditResponseSoa {
+  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
+  expire?: number;
+  /** The time to live (TTL) for negative caching of records within the zone. */
+  minTtl?: number;
+  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
+  mname?: string;
+  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
+  refresh?: number;
+  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
+  retry?: number;
+  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
+  rname?: string;
+  /** The time to live (TTL) of the SOA record itself. */
+  ttl?: number;
+}
+export const SettingsZoneEditResponseSoa = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    expire: S.optional(S.Number),
+    minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
+    mname: S.optional(S.String),
+    refresh: S.optional(S.Number),
+    retry: S.optional(S.Number),
+    rname: S.optional(S.String),
+    ttl: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "SettingsZoneEditResponseSoa",
+}) as any as S.Schema<SettingsZoneEditResponseSoa>;
+
+export type SettingsZoneEditResponseZoneMode =
+  | "standard"
+  | "cdn_only"
+  | "dns_only"
+  | (string & {});
+export const SettingsZoneEditResponseZoneMode = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSettingZoneResponse {
+  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
+  flattenAllCnames: boolean;
+  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
+  foundationDns: boolean;
+  /** Settings for this internal zone. */
+  internalDns: SettingsZoneEditResponseInternalDns;
+  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
+  multiProvider: boolean;
+  /** Settings determining the nameservers through which the zone should be available. */
+  nameservers: SettingsZoneEditResponseNameservers;
+  /** The time to live (TTL) of the zone's nameserver (NS) records. */
+  nsTtl: number;
+  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
+  secondaryOverrides: boolean;
+  /** Components of the zone's SOA record. */
+  soa: SettingsZoneEditResponseSoa;
+  /** Whether the zone mode is a regular or CDN/DNS only zone. */
+  zoneMode: SettingsZoneEditResponseZoneMode;
+}
+export const PatchSettingZoneResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
+    foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
+    internalDns: SettingsZoneEditResponseInternalDns.pipe(
+      T.Body("internal_dns"),
+    ),
+    multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
+    nameservers: SettingsZoneEditResponseNameservers,
+    nsTtl: S.Number.pipe(T.Body("ns_ttl")),
+    secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
+    soa: SettingsZoneEditResponseSoa,
+    zoneMode: SettingsZoneEditResponseZoneMode.pipe(T.Body("zone_mode")),
+  }),
+).annotate({
+  identifier: "PatchSettingZoneResponse",
+}) as any as S.Schema<PatchSettingZoneResponse>;
+
+export interface ScanListRecordRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const RecordsScanListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ScanListRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -8666,8 +10907,8 @@ export const RecordsScanListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RecordsScanListRequest",
-}) as any as S.Schema<RecordsScanListRequest>;
+  identifier: "ScanListRecordRequest",
+}) as any as S.Schema<ScanListRecordRequest>;
 
 export type RecordsScanListResultItemARecordMetaShadowedByList = string[];
 export const RecordsScanListResultItemARecordMetaShadowedByList =
@@ -10025,17 +12266,55 @@ export const RecordsScanListResultList = /*@__PURE__*/ S.Array(
   RecordsScanListResultItem,
 ) as any as S.Schema<RecordsScanListResultList>;
 
-export interface RecordsScanListResponse {
+export interface ScanListRecordResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RecordsScanListResultList;
 }
-export const RecordsScanListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ScanListRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RecordsScanListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RecordsScanListResponse",
-}) as any as S.Schema<RecordsScanListResponse>;
+  identifier: "ScanListRecordResponse",
+}) as any as S.Schema<ScanListRecordResponse>;
+
+export interface ScanRecordRequest {
+  /** Identifier. */
+  zoneId: string;
+  body: unknown;
+}
+export const ScanRecordRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    body: S.Unknown,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/dns_records/scan",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ScanRecordRequest",
+}) as any as S.Schema<ScanRecordRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface ScanRecordResponse {
+  /** Number of DNS records added. */
+  recsAdded?: number;
+  /** Total number of DNS records parsed. */
+  totalRecordsParsed?: number;
+}
+export const ScanRecordResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    recsAdded: S.optional(S.Number.pipe(T.Body("recs_added"))),
+    totalRecordsParsed: S.optional(
+      S.Number.pipe(T.Body("total_records_parsed")),
+    ),
+  }),
+).annotate({
+  identifier: "ScanRecordResponse",
+}) as any as S.Schema<ScanRecordResponse>;
 
 export interface RecordsScanReviewRequestAcceptsItem {
   ARecordObjectNameTtlType6More__: unknown;
@@ -10154,13 +12433,13 @@ export const RecordsScanReviewRequestRejectsList = /*@__PURE__*/ S.Array(
   RecordsScanReviewRequestRejectsItem,
 ) as any as S.Schema<RecordsScanReviewRequestRejectsList>;
 
-export interface RecordsScanReviewRequest {
+export interface ScanReviewRecordRequest {
   /** Identifier. */
   zoneId: string;
   accepts?: RecordsScanReviewRequestAcceptsList;
   rejects?: RecordsScanReviewRequestRejectsList;
 }
-export const RecordsScanReviewRequest = /*@__PURE__*/ S.suspend(() =>
+export const ScanReviewRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     accepts: S.optional(RecordsScanReviewRequestAcceptsList),
@@ -10173,8 +12452,8 @@ export const RecordsScanReviewRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RecordsScanReviewRequest",
-}) as any as S.Schema<RecordsScanReviewRequest>;
+  identifier: "ScanReviewRecordRequest",
+}) as any as S.Schema<ScanReviewRecordRequest>;
 
 export type RecordsScanReviewResponseAcceptsItemARecordMetaShadowedByList =
   string[];
@@ -11602,24 +13881,24 @@ export const RecordsScanReviewResponseRejectsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RecordsScanReviewResponseRejectsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RecordsScanReviewResponse {
+export interface ScanReviewRecordResponse {
   accepts?: RecordsScanReviewResponseAcceptsList;
   rejects?: RecordsScanReviewResponseRejectsList;
 }
-export const RecordsScanReviewResponse = /*@__PURE__*/ S.suspend(() =>
+export const ScanReviewRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accepts: S.optional(RecordsScanReviewResponseAcceptsList),
     rejects: S.optional(RecordsScanReviewResponseRejectsList),
   }),
 ).annotate({
-  identifier: "RecordsScanReviewResponse",
-}) as any as S.Schema<RecordsScanReviewResponse>;
+  identifier: "ScanReviewRecordResponse",
+}) as any as S.Schema<ScanReviewRecordResponse>;
 
-export interface RecordsScanTriggerRequest {
+export interface ScanTriggerRecordRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const RecordsScanTriggerRequest = /*@__PURE__*/ S.suspend(() =>
+export const ScanTriggerRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -11630,15 +13909,15 @@ export const RecordsScanTriggerRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RecordsScanTriggerRequest",
-}) as any as S.Schema<RecordsScanTriggerRequest>;
+  identifier: "ScanTriggerRecordRequest",
+}) as any as S.Schema<ScanTriggerRecordRequest>;
 
-export interface RecordsScanTriggerResponse {}
-export const RecordsScanTriggerResponse = /*@__PURE__*/ S.suspend(() =>
+export interface ScanTriggerRecordResponse {}
+export const ScanTriggerRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "RecordsScanTriggerResponse",
-}) as any as S.Schema<RecordsScanTriggerResponse>;
+  identifier: "ScanTriggerRecordResponse",
+}) as any as S.Schema<ScanTriggerRecordResponse>;
 
 export interface RecordsUpdateRequestBody {
   ARecordObjectNameTtlType6More__: unknown;
@@ -11733,7 +14012,7 @@ export const RecordsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "RecordsUpdateRequestBody",
 }) as any as S.Schema<RecordsUpdateRequestBody>;
 
-export interface RecordsUpdateRequest {
+export interface UpdateRecordRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
@@ -11742,7 +14021,7 @@ export interface RecordsUpdateRequest {
   includeShadowMetadata?: boolean;
   body: RecordsUpdateRequestBody;
 }
-export const RecordsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateRecordRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dnsRecordId: S.String.pipe(T.Label("dns_record_id")),
@@ -11758,8 +14037,8 @@ export const RecordsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RecordsUpdateRequest",
-}) as any as S.Schema<RecordsUpdateRequest>;
+  identifier: "UpdateRecordRequest",
+}) as any as S.Schema<UpdateRecordRequest>;
 
 export type RecordsUpdateResponseARecordMetaShadowedByList = string[];
 export const RecordsUpdateResponseARecordMetaShadowedByList =
@@ -13028,7 +15307,7 @@ export const RecordsUpdateResponseURIRecord = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<RecordsUpdateResponseURIRecord>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RecordsUpdateResponse {
+export interface UpdateRecordResponse {
   ARecord: RecordsUpdateResponseARecord;
   AAAARecord: RecordsUpdateResponseAAAARecord;
   CNAMERecord: RecordsUpdateResponseCNAMERecord;
@@ -13051,7 +15330,7 @@ export interface RecordsUpdateResponse {
   TLSARecord: RecordsUpdateResponseTLSARecord;
   URIRecord: RecordsUpdateResponseURIRecord;
 }
-export const RecordsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ARecord: RecordsUpdateResponseARecord,
     AAAARecord: RecordsUpdateResponseAAAARecord,
@@ -13078,1360 +15357,10 @@ export const RecordsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     URIRecord: RecordsUpdateResponseURIRecord,
   }),
 ).annotate({
-  identifier: "RecordsUpdateResponse",
-}) as any as S.Schema<RecordsUpdateResponse>;
+  identifier: "UpdateRecordResponse",
+}) as any as S.Schema<UpdateRecordResponse>;
 
-export interface SettingsAccountEditRequestZoneDefaultsInternalDns {
-  /** The ID of the zone to fallback to. */
-  referenceZoneId?: string;
-}
-export const SettingsAccountEditRequestZoneDefaultsInternalDns =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
-    }),
-  ).annotate({
-    identifier: "SettingsAccountEditRequestZoneDefaultsInternalDns",
-  }) as any as S.Schema<SettingsAccountEditRequestZoneDefaultsInternalDns>;
-
-export type SettingsAccountEditRequestZoneDefaultsNameserversType =
-  | "cloudflare.standard"
-  | "cloudflare.standard.random"
-  | "custom.account"
-  | "custom.tenant"
-  | (string & {});
-export const SettingsAccountEditRequestZoneDefaultsNameserversType =
-  /*@__PURE__*/ S.String;
-
-export interface SettingsAccountEditRequestZoneDefaultsNameservers {
-  /** Nameserver type */
-  type?: SettingsAccountEditRequestZoneDefaultsNameserversType;
-}
-export const SettingsAccountEditRequestZoneDefaultsNameservers =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(SettingsAccountEditRequestZoneDefaultsNameserversType),
-    }),
-  ).annotate({
-    identifier: "SettingsAccountEditRequestZoneDefaultsNameservers",
-  }) as any as S.Schema<SettingsAccountEditRequestZoneDefaultsNameservers>;
-
-export interface SettingsAccountEditRequestZoneDefaultsSoa {
-  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
-  expire?: number;
-  /** The time to live (TTL) for negative caching of records within the zone. */
-  minTtl?: number;
-  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
-  mname?: string;
-  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
-  refresh?: number;
-  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
-  retry?: number;
-  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
-  rname?: string;
-  /** The time to live (TTL) of the SOA record itself. */
-  ttl?: number;
-}
-export const SettingsAccountEditRequestZoneDefaultsSoa =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expire: S.optional(S.Number),
-      minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
-      mname: S.optional(S.String),
-      refresh: S.optional(S.Number),
-      retry: S.optional(S.Number),
-      rname: S.optional(S.String),
-      ttl: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SettingsAccountEditRequestZoneDefaultsSoa",
-  }) as any as S.Schema<SettingsAccountEditRequestZoneDefaultsSoa>;
-
-export type SettingsAccountEditRequestZoneDefaultsZoneMode =
-  | "standard"
-  | "cdn_only"
-  | "dns_only"
-  | (string & {});
-export const SettingsAccountEditRequestZoneDefaultsZoneMode =
-  /*@__PURE__*/ S.String;
-
-export interface SettingsAccountEditRequestZoneDefaults {
-  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
-  flattenAllCnames?: boolean;
-  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
-  foundationDns?: boolean;
-  /** Settings for this internal zone. */
-  internalDns?: SettingsAccountEditRequestZoneDefaultsInternalDns;
-  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
-  multiProvider?: boolean;
-  /** Settings determining the nameservers through which the zone should be available. */
-  nameservers?: SettingsAccountEditRequestZoneDefaultsNameservers;
-  /** The time to live (TTL) of the zone's nameserver (NS) records. */
-  nsTtl?: number;
-  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
-  secondaryOverrides?: boolean;
-  /** Components of the zone's SOA record. */
-  soa?: SettingsAccountEditRequestZoneDefaultsSoa;
-  /** Whether the zone mode is a regular or CDN/DNS only zone. */
-  zoneMode?: SettingsAccountEditRequestZoneDefaultsZoneMode;
-}
-export const SettingsAccountEditRequestZoneDefaults = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flattenAllCnames: S.optional(
-        S.Boolean.pipe(T.Body("flatten_all_cnames")),
-      ),
-      foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
-      internalDns: S.optional(
-        SettingsAccountEditRequestZoneDefaultsInternalDns.pipe(
-          T.Body("internal_dns"),
-        ),
-      ),
-      multiProvider: S.optional(S.Boolean.pipe(T.Body("multi_provider"))),
-      nameservers: S.optional(
-        SettingsAccountEditRequestZoneDefaultsNameservers,
-      ),
-      nsTtl: S.optional(S.Number.pipe(T.Body("ns_ttl"))),
-      secondaryOverrides: S.optional(
-        S.Boolean.pipe(T.Body("secondary_overrides")),
-      ),
-      soa: S.optional(SettingsAccountEditRequestZoneDefaultsSoa),
-      zoneMode: S.optional(
-        SettingsAccountEditRequestZoneDefaultsZoneMode.pipe(
-          T.Body("zone_mode"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "SettingsAccountEditRequestZoneDefaults",
-}) as any as S.Schema<SettingsAccountEditRequestZoneDefaults>;
-
-export interface SettingsAccountEditRequest {
-  /** Identifier. */
-  accountId: string;
-  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only). */
-  enforceDnsOnly?: boolean;
-  zoneDefaults?: SettingsAccountEditRequestZoneDefaults;
-}
-export const SettingsAccountEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
-    zoneDefaults: S.optional(
-      SettingsAccountEditRequestZoneDefaults.pipe(T.Body("zone_defaults")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/dns_settings",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsAccountEditRequest",
-}) as any as S.Schema<SettingsAccountEditRequest>;
-
-export interface SettingsAccountEditResponseZoneDefaultsInternalDns {
-  /** The ID of the zone to fallback to. */
-  referenceZoneId?: string;
-}
-export const SettingsAccountEditResponseZoneDefaultsInternalDns =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
-    }),
-  ).annotate({
-    identifier: "SettingsAccountEditResponseZoneDefaultsInternalDns",
-  }) as any as S.Schema<SettingsAccountEditResponseZoneDefaultsInternalDns>;
-
-export type SettingsAccountEditResponseZoneDefaultsNameserversType =
-  | "cloudflare.standard"
-  | "cloudflare.standard.random"
-  | "custom.account"
-  | "custom.tenant"
-  | (string & {});
-export const SettingsAccountEditResponseZoneDefaultsNameserversType =
-  /*@__PURE__*/ S.String;
-
-export interface SettingsAccountEditResponseZoneDefaultsNameservers {
-  /** Nameserver type */
-  type: SettingsAccountEditResponseZoneDefaultsNameserversType;
-}
-export const SettingsAccountEditResponseZoneDefaultsNameservers =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: SettingsAccountEditResponseZoneDefaultsNameserversType,
-    }),
-  ).annotate({
-    identifier: "SettingsAccountEditResponseZoneDefaultsNameservers",
-  }) as any as S.Schema<SettingsAccountEditResponseZoneDefaultsNameservers>;
-
-export interface SettingsAccountEditResponseZoneDefaultsSoa {
-  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
-  expire?: number;
-  /** The time to live (TTL) for negative caching of records within the zone. */
-  minTtl?: number;
-  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
-  mname?: string;
-  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
-  refresh?: number;
-  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
-  retry?: number;
-  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
-  rname?: string;
-  /** The time to live (TTL) of the SOA record itself. */
-  ttl?: number;
-}
-export const SettingsAccountEditResponseZoneDefaultsSoa =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expire: S.optional(S.Number),
-      minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
-      mname: S.optional(S.String),
-      refresh: S.optional(S.Number),
-      retry: S.optional(S.Number),
-      rname: S.optional(S.String),
-      ttl: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SettingsAccountEditResponseZoneDefaultsSoa",
-  }) as any as S.Schema<SettingsAccountEditResponseZoneDefaultsSoa>;
-
-export type SettingsAccountEditResponseZoneDefaultsZoneMode =
-  | "standard"
-  | "cdn_only"
-  | "dns_only"
-  | (string & {});
-export const SettingsAccountEditResponseZoneDefaultsZoneMode =
-  /*@__PURE__*/ S.String;
-
-export interface SettingsAccountEditResponseZoneDefaults {
-  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
-  flattenAllCnames: boolean;
-  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
-  foundationDns: boolean;
-  /** Settings for this internal zone. */
-  internalDns: SettingsAccountEditResponseZoneDefaultsInternalDns;
-  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
-  multiProvider: boolean;
-  /** Settings determining the nameservers through which the zone should be available. */
-  nameservers: SettingsAccountEditResponseZoneDefaultsNameservers;
-  /** The time to live (TTL) of the zone's nameserver (NS) records. */
-  nsTtl: number;
-  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
-  secondaryOverrides: boolean;
-  /** Components of the zone's SOA record. */
-  soa: SettingsAccountEditResponseZoneDefaultsSoa;
-  /** Whether the zone mode is a regular or CDN/DNS only zone. */
-  zoneMode: SettingsAccountEditResponseZoneDefaultsZoneMode;
-}
-export const SettingsAccountEditResponseZoneDefaults = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
-      foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-      internalDns: SettingsAccountEditResponseZoneDefaultsInternalDns.pipe(
-        T.Body("internal_dns"),
-      ),
-      multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
-      nameservers: SettingsAccountEditResponseZoneDefaultsNameservers,
-      nsTtl: S.Number.pipe(T.Body("ns_ttl")),
-      secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-      soa: SettingsAccountEditResponseZoneDefaultsSoa,
-      zoneMode: SettingsAccountEditResponseZoneDefaultsZoneMode.pipe(
-        T.Body("zone_mode"),
-      ),
-    }),
-).annotate({
-  identifier: "SettingsAccountEditResponseZoneDefaults",
-}) as any as S.Schema<SettingsAccountEditResponseZoneDefaults>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsAccountEditResponse {
-  zoneDefaults: SettingsAccountEditResponseZoneDefaults;
-  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only). */
-  enforceDnsOnly?: boolean;
-}
-export const SettingsAccountEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneDefaults: SettingsAccountEditResponseZoneDefaults.pipe(
-      T.Body("zone_defaults"),
-    ),
-    enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
-  }),
-).annotate({
-  identifier: "SettingsAccountEditResponse",
-}) as any as S.Schema<SettingsAccountEditResponse>;
-
-export interface SettingsAccountGetRequest {
-  /** Identifier. */
-  accountId: string;
-}
-export const SettingsAccountGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_settings",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsAccountGetRequest",
-}) as any as S.Schema<SettingsAccountGetRequest>;
-
-export interface SettingsAccountGetResponseZoneDefaultsInternalDns {
-  /** The ID of the zone to fallback to. */
-  referenceZoneId?: string;
-}
-export const SettingsAccountGetResponseZoneDefaultsInternalDns =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
-    }),
-  ).annotate({
-    identifier: "SettingsAccountGetResponseZoneDefaultsInternalDns",
-  }) as any as S.Schema<SettingsAccountGetResponseZoneDefaultsInternalDns>;
-
-export type SettingsAccountGetResponseZoneDefaultsNameserversType =
-  | "cloudflare.standard"
-  | "cloudflare.standard.random"
-  | "custom.account"
-  | "custom.tenant"
-  | (string & {});
-export const SettingsAccountGetResponseZoneDefaultsNameserversType =
-  /*@__PURE__*/ S.String;
-
-export interface SettingsAccountGetResponseZoneDefaultsNameservers {
-  /** Nameserver type */
-  type: SettingsAccountGetResponseZoneDefaultsNameserversType;
-}
-export const SettingsAccountGetResponseZoneDefaultsNameservers =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: SettingsAccountGetResponseZoneDefaultsNameserversType,
-    }),
-  ).annotate({
-    identifier: "SettingsAccountGetResponseZoneDefaultsNameservers",
-  }) as any as S.Schema<SettingsAccountGetResponseZoneDefaultsNameservers>;
-
-export interface SettingsAccountGetResponseZoneDefaultsSoa {
-  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
-  expire?: number;
-  /** The time to live (TTL) for negative caching of records within the zone. */
-  minTtl?: number;
-  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
-  mname?: string;
-  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
-  refresh?: number;
-  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
-  retry?: number;
-  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
-  rname?: string;
-  /** The time to live (TTL) of the SOA record itself. */
-  ttl?: number;
-}
-export const SettingsAccountGetResponseZoneDefaultsSoa =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      expire: S.optional(S.Number),
-      minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
-      mname: S.optional(S.String),
-      refresh: S.optional(S.Number),
-      retry: S.optional(S.Number),
-      rname: S.optional(S.String),
-      ttl: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "SettingsAccountGetResponseZoneDefaultsSoa",
-  }) as any as S.Schema<SettingsAccountGetResponseZoneDefaultsSoa>;
-
-export type SettingsAccountGetResponseZoneDefaultsZoneMode =
-  | "standard"
-  | "cdn_only"
-  | "dns_only"
-  | (string & {});
-export const SettingsAccountGetResponseZoneDefaultsZoneMode =
-  /*@__PURE__*/ S.String;
-
-export interface SettingsAccountGetResponseZoneDefaults {
-  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
-  flattenAllCnames: boolean;
-  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
-  foundationDns: boolean;
-  /** Settings for this internal zone. */
-  internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns;
-  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
-  multiProvider: boolean;
-  /** Settings determining the nameservers through which the zone should be available. */
-  nameservers: SettingsAccountGetResponseZoneDefaultsNameservers;
-  /** The time to live (TTL) of the zone's nameserver (NS) records. */
-  nsTtl: number;
-  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
-  secondaryOverrides: boolean;
-  /** Components of the zone's SOA record. */
-  soa: SettingsAccountGetResponseZoneDefaultsSoa;
-  /** Whether the zone mode is a regular or CDN/DNS only zone. */
-  zoneMode: SettingsAccountGetResponseZoneDefaultsZoneMode;
-}
-export const SettingsAccountGetResponseZoneDefaults = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
-      foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-      internalDns: SettingsAccountGetResponseZoneDefaultsInternalDns.pipe(
-        T.Body("internal_dns"),
-      ),
-      multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
-      nameservers: SettingsAccountGetResponseZoneDefaultsNameservers,
-      nsTtl: S.Number.pipe(T.Body("ns_ttl")),
-      secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-      soa: SettingsAccountGetResponseZoneDefaultsSoa,
-      zoneMode: SettingsAccountGetResponseZoneDefaultsZoneMode.pipe(
-        T.Body("zone_mode"),
-      ),
-    }),
-).annotate({
-  identifier: "SettingsAccountGetResponseZoneDefaults",
-}) as any as S.Schema<SettingsAccountGetResponseZoneDefaults>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsAccountGetResponse {
-  zoneDefaults: SettingsAccountGetResponseZoneDefaults;
-  /** When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only). */
-  enforceDnsOnly?: boolean;
-}
-export const SettingsAccountGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneDefaults: SettingsAccountGetResponseZoneDefaults.pipe(
-      T.Body("zone_defaults"),
-    ),
-    enforceDnsOnly: S.optional(S.Boolean.pipe(T.Body("enforce_dns_only"))),
-  }),
-).annotate({
-  identifier: "SettingsAccountGetResponse",
-}) as any as S.Schema<SettingsAccountGetResponse>;
-
-export type SettingsAccountViewsCreateRequestZonesList = string[];
-export const SettingsAccountViewsCreateRequestZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsAccountViewsCreateRequestZonesList>;
-
-export interface SettingsAccountViewsCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** The name of the view. */
-  name: string;
-  /** The list of zones linked to this view. */
-  zones: SettingsAccountViewsCreateRequestZonesList;
-}
-export const SettingsAccountViewsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    name: S.String,
-    zones: SettingsAccountViewsCreateRequestZonesList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/dns_settings/views",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsAccountViewsCreateRequest",
-}) as any as S.Schema<SettingsAccountViewsCreateRequest>;
-
-export type SettingsAccountViewsCreateResponseZonesList = string[];
-export const SettingsAccountViewsCreateResponseZonesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsAccountViewsCreateResponseZonesList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsAccountViewsCreateResponse {
-  /** Identifier. */
-  id: string;
-  /** When the view was created. */
-  createdTime: string;
-  /** When the view was last modified. */
-  modifiedTime: string;
-  /** The name of the view. */
-  name: string;
-  /** The list of zones linked to this view. */
-  zones: SettingsAccountViewsCreateResponseZonesList;
-}
-export const SettingsAccountViewsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdTime: S.String.pipe(T.Body("created_time")),
-    modifiedTime: S.String.pipe(T.Body("modified_time")),
-    name: S.String,
-    zones: SettingsAccountViewsCreateResponseZonesList,
-  }),
-).annotate({
-  identifier: "SettingsAccountViewsCreateResponse",
-}) as any as S.Schema<SettingsAccountViewsCreateResponse>;
-
-export interface SettingsAccountViewsDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Identifier. */
-  viewId: string;
-}
-export const SettingsAccountViewsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    viewId: S.String.pipe(T.Label("view_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/dns_settings/views/{view_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsAccountViewsDeleteRequest",
-}) as any as S.Schema<SettingsAccountViewsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsAccountViewsDeleteResponse {
-  /** Identifier. */
-  id?: string;
-}
-export const SettingsAccountViewsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SettingsAccountViewsDeleteResponse",
-}) as any as S.Schema<SettingsAccountViewsDeleteResponse>;
-
-export type SettingsAccountViewsEditRequestZonesList = string[];
-export const SettingsAccountViewsEditRequestZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsAccountViewsEditRequestZonesList>;
-
-export interface SettingsAccountViewsEditRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Identifier. */
-  viewId: string;
-  /** The name of the view. */
-  name?: string;
-  /** The list of zones linked to this view. */
-  zones?: SettingsAccountViewsEditRequestZonesList;
-}
-export const SettingsAccountViewsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    viewId: S.String.pipe(T.Label("view_id")),
-    name: S.optional(S.String),
-    zones: S.optional(SettingsAccountViewsEditRequestZonesList),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/dns_settings/views/{view_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsAccountViewsEditRequest",
-}) as any as S.Schema<SettingsAccountViewsEditRequest>;
-
-export type SettingsAccountViewsEditResponseZonesList = string[];
-export const SettingsAccountViewsEditResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsAccountViewsEditResponseZonesList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsAccountViewsEditResponse {
-  /** Identifier. */
-  id: string;
-  /** When the view was created. */
-  createdTime: string;
-  /** When the view was last modified. */
-  modifiedTime: string;
-  /** The name of the view. */
-  name: string;
-  /** The list of zones linked to this view. */
-  zones: SettingsAccountViewsEditResponseZonesList;
-}
-export const SettingsAccountViewsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdTime: S.String.pipe(T.Body("created_time")),
-    modifiedTime: S.String.pipe(T.Body("modified_time")),
-    name: S.String,
-    zones: SettingsAccountViewsEditResponseZonesList,
-  }),
-).annotate({
-  identifier: "SettingsAccountViewsEditResponse",
-}) as any as S.Schema<SettingsAccountViewsEditResponse>;
-
-export interface SettingsAccountViewsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Identifier. */
-  viewId: string;
-}
-export const SettingsAccountViewsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    viewId: S.String.pipe(T.Label("view_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_settings/views/{view_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsAccountViewsGetRequest",
-}) as any as S.Schema<SettingsAccountViewsGetRequest>;
-
-export type SettingsAccountViewsGetResponseZonesList = string[];
-export const SettingsAccountViewsGetResponseZonesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SettingsAccountViewsGetResponseZonesList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsAccountViewsGetResponse {
-  /** Identifier. */
-  id: string;
-  /** When the view was created. */
-  createdTime: string;
-  /** When the view was last modified. */
-  modifiedTime: string;
-  /** The name of the view. */
-  name: string;
-  /** The list of zones linked to this view. */
-  zones: SettingsAccountViewsGetResponseZonesList;
-}
-export const SettingsAccountViewsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdTime: S.String.pipe(T.Body("created_time")),
-    modifiedTime: S.String.pipe(T.Body("modified_time")),
-    name: S.String,
-    zones: SettingsAccountViewsGetResponseZonesList,
-  }),
-).annotate({
-  identifier: "SettingsAccountViewsGetResponse",
-}) as any as S.Schema<SettingsAccountViewsGetResponse>;
-
-export type SettingsAccountViewsListRequestDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
-export const SettingsAccountViewsListRequestDirection = /*@__PURE__*/ S.String;
-
-export type SettingsAccountViewsListRequestMatch =
-  | "any"
-  | "all"
-  | (string & {});
-export const SettingsAccountViewsListRequestMatch = /*@__PURE__*/ S.String;
-
-export type SettingsAccountViewsListRequestOrder =
-  | "name"
-  | "created_on"
-  | "modified_on"
-  | (string & {});
-export const SettingsAccountViewsListRequestOrder = /*@__PURE__*/ S.String;
-
-export interface SettingsAccountViewsListRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Direction to order DNS views in. */
-  direction?: SettingsAccountViewsListRequestDirection;
-  /** Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. */
-  match?: SettingsAccountViewsListRequestMatch;
-  name?: string;
-  /** Field to order DNS views by. */
-  order?: SettingsAccountViewsListRequestOrder;
-  /** Page number of paginated results. */
-  page?: number;
-  /** Number of DNS views per page. */
-  perPage?: number;
-  /** A zone ID that exists in the zones list for the view. */
-  zoneId?: string;
-  /** A zone name that exists in the zones list for the view. */
-  zoneName?: string;
-}
-export const SettingsAccountViewsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    direction: S.optional(
-      SettingsAccountViewsListRequestDirection.pipe(T.Query()),
-    ),
-    match: S.optional(SettingsAccountViewsListRequestMatch.pipe(T.Query())),
-    name: S.optional(S.String.pipe(T.Query())),
-    order: S.optional(SettingsAccountViewsListRequestOrder.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    zoneId: S.optional(S.String.pipe(T.Query("zone_id"))),
-    zoneName: S.optional(S.String.pipe(T.Query("zone_name"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_settings/views",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsAccountViewsListRequest",
-}) as any as S.Schema<SettingsAccountViewsListRequest>;
-
-export type SettingsAccountViewsListResultItemZonesList = string[];
-export const SettingsAccountViewsListResultItemZonesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsAccountViewsListResultItemZonesList>;
-
-export interface SettingsAccountViewsListResultItem {
-  /** Identifier. */
-  id: string;
-  /** When the view was created. */
-  createdTime: string;
-  /** When the view was last modified. */
-  modifiedTime: string;
-  /** The name of the view. */
-  name: string;
-  /** The list of zones linked to this view. */
-  zones: SettingsAccountViewsListResultItemZonesList;
-}
-export const SettingsAccountViewsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdTime: S.String.pipe(T.Body("created_time")),
-    modifiedTime: S.String.pipe(T.Body("modified_time")),
-    name: S.String,
-    zones: SettingsAccountViewsListResultItemZonesList,
-  }),
-).annotate({
-  identifier: "SettingsAccountViewsListResultItem",
-}) as any as S.Schema<SettingsAccountViewsListResultItem>;
-
-export type SettingsAccountViewsListResultList =
-  SettingsAccountViewsListResultItem[];
-export const SettingsAccountViewsListResultList = /*@__PURE__*/ S.Array(
-  SettingsAccountViewsListResultItem,
-) as any as S.Schema<SettingsAccountViewsListResultList>;
-
-export interface SettingsAccountViewsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsAccountViewsListResultList;
-}
-export const SettingsAccountViewsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      SettingsAccountViewsListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "SettingsAccountViewsListResponse",
-}) as any as S.Schema<SettingsAccountViewsListResponse>;
-
-export interface SettingsZoneEditRequestInternalDns {
-  /** The ID of the zone to fallback to. */
-  referenceZoneId?: string;
-}
-export const SettingsZoneEditRequestInternalDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
-  }),
-).annotate({
-  identifier: "SettingsZoneEditRequestInternalDns",
-}) as any as S.Schema<SettingsZoneEditRequestInternalDns>;
-
-export type SettingsZoneEditRequestNameserversType =
-  | "cloudflare.standard"
-  | "custom.account"
-  | "custom.tenant"
-  | "custom.zone"
-  | (string & {});
-export const SettingsZoneEditRequestNameserversType = /*@__PURE__*/ S.String;
-
-export interface SettingsZoneEditRequestNameservers {
-  /** Configured nameserver set to be used for this zone */
-  nsSet?: number;
-  /** Nameserver type */
-  type?: SettingsZoneEditRequestNameserversType;
-}
-export const SettingsZoneEditRequestNameservers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
-    type: S.optional(SettingsZoneEditRequestNameserversType),
-  }),
-).annotate({
-  identifier: "SettingsZoneEditRequestNameservers",
-}) as any as S.Schema<SettingsZoneEditRequestNameservers>;
-
-export interface SettingsZoneEditRequestSoa {
-  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
-  expire?: number;
-  /** The time to live (TTL) for negative caching of records within the zone. */
-  minTtl?: number;
-  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
-  mname?: string;
-  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
-  refresh?: number;
-  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
-  retry?: number;
-  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
-  rname?: string;
-  /** The time to live (TTL) of the SOA record itself. */
-  ttl?: number;
-}
-export const SettingsZoneEditRequestSoa = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expire: S.optional(S.Number),
-    minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
-    mname: S.optional(S.String),
-    refresh: S.optional(S.Number),
-    retry: S.optional(S.Number),
-    rname: S.optional(S.String),
-    ttl: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SettingsZoneEditRequestSoa",
-}) as any as S.Schema<SettingsZoneEditRequestSoa>;
-
-export type SettingsZoneEditRequestZoneMode =
-  | "standard"
-  | "cdn_only"
-  | "dns_only"
-  | (string & {});
-export const SettingsZoneEditRequestZoneMode = /*@__PURE__*/ S.String;
-
-export interface SettingsZoneEditRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
-  flattenAllCnames?: boolean;
-  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
-  foundationDns?: boolean;
-  /** Settings for this internal zone. */
-  internalDns?: SettingsZoneEditRequestInternalDns;
-  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
-  multiProvider?: boolean;
-  /** Settings determining the nameservers through which the zone should be available. */
-  nameservers?: SettingsZoneEditRequestNameservers;
-  /** The time to live (TTL) of the zone's nameserver (NS) records. */
-  nsTtl?: number;
-  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
-  secondaryOverrides?: boolean;
-  /** Components of the zone's SOA record. */
-  soa?: SettingsZoneEditRequestSoa;
-  /** Whether the zone mode is a regular or CDN/DNS only zone. */
-  zoneMode?: SettingsZoneEditRequestZoneMode;
-}
-export const SettingsZoneEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    flattenAllCnames: S.optional(S.Boolean.pipe(T.Body("flatten_all_cnames"))),
-    foundationDns: S.optional(S.Boolean.pipe(T.Body("foundation_dns"))),
-    internalDns: S.optional(
-      SettingsZoneEditRequestInternalDns.pipe(T.Body("internal_dns")),
-    ),
-    multiProvider: S.optional(S.Boolean.pipe(T.Body("multi_provider"))),
-    nameservers: S.optional(SettingsZoneEditRequestNameservers),
-    nsTtl: S.optional(S.Number.pipe(T.Body("ns_ttl"))),
-    secondaryOverrides: S.optional(
-      S.Boolean.pipe(T.Body("secondary_overrides")),
-    ),
-    soa: S.optional(SettingsZoneEditRequestSoa),
-    zoneMode: S.optional(
-      SettingsZoneEditRequestZoneMode.pipe(T.Body("zone_mode")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/dns_settings",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsZoneEditRequest",
-}) as any as S.Schema<SettingsZoneEditRequest>;
-
-export interface SettingsZoneEditResponseInternalDns {
-  /** The ID of the zone to fallback to. */
-  referenceZoneId?: string;
-}
-export const SettingsZoneEditResponseInternalDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
-  }),
-).annotate({
-  identifier: "SettingsZoneEditResponseInternalDns",
-}) as any as S.Schema<SettingsZoneEditResponseInternalDns>;
-
-export type SettingsZoneEditResponseNameserversType =
-  | "cloudflare.standard"
-  | "custom.account"
-  | "custom.tenant"
-  | "custom.zone"
-  | (string & {});
-export const SettingsZoneEditResponseNameserversType = /*@__PURE__*/ S.String;
-
-export interface SettingsZoneEditResponseNameservers {
-  /** Nameserver type */
-  type: SettingsZoneEditResponseNameserversType;
-  /** Configured nameserver set to be used for this zone */
-  nsSet?: number;
-}
-export const SettingsZoneEditResponseNameservers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SettingsZoneEditResponseNameserversType,
-    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
-  }),
-).annotate({
-  identifier: "SettingsZoneEditResponseNameservers",
-}) as any as S.Schema<SettingsZoneEditResponseNameservers>;
-
-export interface SettingsZoneEditResponseSoa {
-  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
-  expire?: number;
-  /** The time to live (TTL) for negative caching of records within the zone. */
-  minTtl?: number;
-  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
-  mname?: string;
-  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
-  refresh?: number;
-  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
-  retry?: number;
-  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
-  rname?: string;
-  /** The time to live (TTL) of the SOA record itself. */
-  ttl?: number;
-}
-export const SettingsZoneEditResponseSoa = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expire: S.optional(S.Number),
-    minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
-    mname: S.optional(S.String),
-    refresh: S.optional(S.Number),
-    retry: S.optional(S.Number),
-    rname: S.optional(S.String),
-    ttl: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SettingsZoneEditResponseSoa",
-}) as any as S.Schema<SettingsZoneEditResponseSoa>;
-
-export type SettingsZoneEditResponseZoneMode =
-  | "standard"
-  | "cdn_only"
-  | "dns_only"
-  | (string & {});
-export const SettingsZoneEditResponseZoneMode = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsZoneEditResponse {
-  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
-  flattenAllCnames: boolean;
-  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
-  foundationDns: boolean;
-  /** Settings for this internal zone. */
-  internalDns: SettingsZoneEditResponseInternalDns;
-  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
-  multiProvider: boolean;
-  /** Settings determining the nameservers through which the zone should be available. */
-  nameservers: SettingsZoneEditResponseNameservers;
-  /** The time to live (TTL) of the zone's nameserver (NS) records. */
-  nsTtl: number;
-  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
-  secondaryOverrides: boolean;
-  /** Components of the zone's SOA record. */
-  soa: SettingsZoneEditResponseSoa;
-  /** Whether the zone mode is a regular or CDN/DNS only zone. */
-  zoneMode: SettingsZoneEditResponseZoneMode;
-}
-export const SettingsZoneEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
-    foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-    internalDns: SettingsZoneEditResponseInternalDns.pipe(
-      T.Body("internal_dns"),
-    ),
-    multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
-    nameservers: SettingsZoneEditResponseNameservers,
-    nsTtl: S.Number.pipe(T.Body("ns_ttl")),
-    secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-    soa: SettingsZoneEditResponseSoa,
-    zoneMode: SettingsZoneEditResponseZoneMode.pipe(T.Body("zone_mode")),
-  }),
-).annotate({
-  identifier: "SettingsZoneEditResponse",
-}) as any as S.Schema<SettingsZoneEditResponse>;
-
-export interface SettingsZoneGetRequest {
-  /** Identifier. */
-  zoneId: string;
-}
-export const SettingsZoneGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({ method: "GET", uri: "/zones/{zone_id}/dns_settings", code: 200 }),
-  ),
-).annotate({
-  identifier: "SettingsZoneGetRequest",
-}) as any as S.Schema<SettingsZoneGetRequest>;
-
-export interface SettingsZoneGetResponseInternalDns {
-  /** The ID of the zone to fallback to. */
-  referenceZoneId?: string;
-}
-export const SettingsZoneGetResponseInternalDns = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceZoneId: S.optional(S.String.pipe(T.Body("reference_zone_id"))),
-  }),
-).annotate({
-  identifier: "SettingsZoneGetResponseInternalDns",
-}) as any as S.Schema<SettingsZoneGetResponseInternalDns>;
-
-export type SettingsZoneGetResponseNameserversType =
-  | "cloudflare.standard"
-  | "custom.account"
-  | "custom.tenant"
-  | "custom.zone"
-  | (string & {});
-export const SettingsZoneGetResponseNameserversType = /*@__PURE__*/ S.String;
-
-export interface SettingsZoneGetResponseNameservers {
-  /** Nameserver type */
-  type: SettingsZoneGetResponseNameserversType;
-  /** Configured nameserver set to be used for this zone */
-  nsSet?: number;
-}
-export const SettingsZoneGetResponseNameservers = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    type: SettingsZoneGetResponseNameserversType,
-    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
-  }),
-).annotate({
-  identifier: "SettingsZoneGetResponseNameservers",
-}) as any as S.Schema<SettingsZoneGetResponseNameservers>;
-
-export interface SettingsZoneGetResponseSoa {
-  /** Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone. */
-  expire?: number;
-  /** The time to live (TTL) for negative caching of records within the zone. */
-  minTtl?: number;
-  /** The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used. */
-  mname?: string;
-  /** Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated. */
-  refresh?: number;
-  /** Time in seconds after which secondary servers should retry queries after the primary server was unresponsive. */
-  retry?: number;
-  /** The email address of the zone administrator, with the first label representing the local part of the email address. */
-  rname?: string;
-  /** The time to live (TTL) of the SOA record itself. */
-  ttl?: number;
-}
-export const SettingsZoneGetResponseSoa = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    expire: S.optional(S.Number),
-    minTtl: S.optional(S.Number.pipe(T.Body("min_ttl"))),
-    mname: S.optional(S.String),
-    refresh: S.optional(S.Number),
-    retry: S.optional(S.Number),
-    rname: S.optional(S.String),
-    ttl: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "SettingsZoneGetResponseSoa",
-}) as any as S.Schema<SettingsZoneGetResponseSoa>;
-
-export type SettingsZoneGetResponseZoneMode =
-  | "standard"
-  | "cdn_only"
-  | "dns_only"
-  | (string & {});
-export const SettingsZoneGetResponseZoneMode = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsZoneGetResponse {
-  /** Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened. */
-  flattenAllCnames: boolean;
-  /** Whether to enable Foundation DNS Advanced Nameservers on the zone. */
-  foundationDns: boolean;
-  /** Settings for this internal zone. */
-  internalDns: SettingsZoneGetResponseInternalDns;
-  /** Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers. */
-  multiProvider: boolean;
-  /** Settings determining the nameservers through which the zone should be available. */
-  nameservers: SettingsZoneGetResponseNameservers;
-  /** The time to live (TTL) of the zone's nameserver (NS) records. */
-  nsTtl: number;
-  /** Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex. */
-  secondaryOverrides: boolean;
-  /** Components of the zone's SOA record. */
-  soa: SettingsZoneGetResponseSoa;
-  /** Whether the zone mode is a regular or CDN/DNS only zone. */
-  zoneMode: SettingsZoneGetResponseZoneMode;
-}
-export const SettingsZoneGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flattenAllCnames: S.Boolean.pipe(T.Body("flatten_all_cnames")),
-    foundationDns: S.Boolean.pipe(T.Body("foundation_dns")),
-    internalDns: SettingsZoneGetResponseInternalDns.pipe(
-      T.Body("internal_dns"),
-    ),
-    multiProvider: S.Boolean.pipe(T.Body("multi_provider")),
-    nameservers: SettingsZoneGetResponseNameservers,
-    nsTtl: S.Number.pipe(T.Body("ns_ttl")),
-    secondaryOverrides: S.Boolean.pipe(T.Body("secondary_overrides")),
-    soa: SettingsZoneGetResponseSoa,
-    zoneMode: SettingsZoneGetResponseZoneMode.pipe(T.Body("zone_mode")),
-  }),
-).annotate({
-  identifier: "SettingsZoneGetResponse",
-}) as any as S.Schema<SettingsZoneGetResponse>;
-
-export interface UsageAccountGetRequest {
-  /** Identifier. */
-  accountId: string;
-}
-export const UsageAccountGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dns_records/usage",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UsageAccountGetRequest",
-}) as any as S.Schema<UsageAccountGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UsageAccountGetResponse {
-  /** Maximum number of DNS records allowed across all public zones in the account. Null if using zone-level quota. */
-  recordQuota: number;
-  /** Current number of DNS records across all public zones in the account. */
-  recordUsage: number;
-  /** Maximum number of DNS records allowed across all internal zones in the account. Only present if internal DNS is enabled. */
-  internalRecordQuota?: number;
-  /** Current number of DNS records across all internal zones in the account. Only present if internal DNS is enabled. */
-  internalRecordUsage?: number;
-}
-export const UsageAccountGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recordQuota: S.Number.pipe(T.Body("record_quota")),
-    recordUsage: S.Number.pipe(T.Body("record_usage")),
-    internalRecordQuota: S.optional(
-      S.Number.pipe(T.Body("internal_record_quota")),
-    ),
-    internalRecordUsage: S.optional(
-      S.Number.pipe(T.Body("internal_record_usage")),
-    ),
-  }),
-).annotate({
-  identifier: "UsageAccountGetResponse",
-}) as any as S.Schema<UsageAccountGetResponse>;
-
-export interface UsageZoneGetRequest {
-  /** Identifier. */
-  zoneId: string;
-}
-export const UsageZoneGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/dns_records/usage",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "UsageZoneGetRequest",
-}) as any as S.Schema<UsageZoneGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UsageZoneGetResponse {
-  /** Maximum number of DNS records allowed for the zone. Null if using account-level quota. */
-  recordQuota: number;
-  /** Current number of DNS records in the zone. */
-  recordUsage: number;
-}
-export const UsageZoneGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    recordQuota: S.Number.pipe(T.Body("record_quota")),
-    recordUsage: S.Number.pipe(T.Body("record_usage")),
-  }),
-).annotate({
-  identifier: "UsageZoneGetResponse",
-}) as any as S.Schema<UsageZoneGetResponse>;
-
-export interface ZoneTransfersAclsCreateRequest {
-  accountId: string;
-  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
-  ipRange: string;
-  /** The name of the acl. */
-  name: string;
-}
-export const ZoneTransfersAclsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    ipRange: S.String.pipe(T.Body("ip_range")),
-    name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/secondary_dns/acls",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersAclsCreateRequest",
-}) as any as S.Schema<ZoneTransfersAclsCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersAclsCreateResponse {
-  id: string;
-  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
-  ipRange: string;
-  /** The name of the acl. */
-  name: string;
-}
-export const ZoneTransfersAclsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    ipRange: S.String.pipe(T.Body("ip_range")),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ZoneTransfersAclsCreateResponse",
-}) as any as S.Schema<ZoneTransfersAclsCreateResponse>;
-
-export interface ZoneTransfersAclsDeleteRequest {
-  accountId: string;
-  aclId: string;
-}
-export const ZoneTransfersAclsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    aclId: S.String.pipe(T.Label("acl_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersAclsDeleteRequest",
-}) as any as S.Schema<ZoneTransfersAclsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersAclsDeleteResponse {
-  id?: string;
-}
-export const ZoneTransfersAclsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ZoneTransfersAclsDeleteResponse",
-}) as any as S.Schema<ZoneTransfersAclsDeleteResponse>;
-
-export interface ZoneTransfersAclsGetRequest {
-  accountId: string;
-  aclId: string;
-}
-export const ZoneTransfersAclsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    aclId: S.String.pipe(T.Label("acl_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersAclsGetRequest",
-}) as any as S.Schema<ZoneTransfersAclsGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersAclsGetResponse {
-  id: string;
-  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
-  ipRange: string;
-  /** The name of the acl. */
-  name: string;
-}
-export const ZoneTransfersAclsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    ipRange: S.String.pipe(T.Body("ip_range")),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ZoneTransfersAclsGetResponse",
-}) as any as S.Schema<ZoneTransfersAclsGetResponse>;
-
-export interface ZoneTransfersAclsListRequest {
-  accountId: string;
-}
-export const ZoneTransfersAclsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secondary_dns/acls",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersAclsListRequest",
-}) as any as S.Schema<ZoneTransfersAclsListRequest>;
-
-export interface ZoneTransfersAclsListResultItem {
-  id: string;
-  /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
-  ipRange: string;
-  /** The name of the acl. */
-  name: string;
-}
-export const ZoneTransfersAclsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    ipRange: S.String.pipe(T.Body("ip_range")),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "ZoneTransfersAclsListResultItem",
-}) as any as S.Schema<ZoneTransfersAclsListResultItem>;
-
-export type ZoneTransfersAclsListResultList = ZoneTransfersAclsListResultItem[];
-export const ZoneTransfersAclsListResultList = /*@__PURE__*/ S.Array(
-  ZoneTransfersAclsListResultItem,
-) as any as S.Schema<ZoneTransfersAclsListResultList>;
-
-export interface ZoneTransfersAclsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ZoneTransfersAclsListResultList;
-}
-export const ZoneTransfersAclsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      ZoneTransfersAclsListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "ZoneTransfersAclsListResponse",
-}) as any as S.Schema<ZoneTransfersAclsListResponse>;
-
-export interface ZoneTransfersAclsUpdateRequest {
+export interface UpdateZoneTransferAclRequest {
   accountId: string;
   aclId: string;
   /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
@@ -14439,7 +15368,7 @@ export interface ZoneTransfersAclsUpdateRequest {
   /** The name of the acl. */
   name: string;
 }
-export const ZoneTransfersAclsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateZoneTransferAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     aclId: S.String.pipe(T.Label("acl_id")),
@@ -14453,217 +15382,26 @@ export const ZoneTransfersAclsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ZoneTransfersAclsUpdateRequest",
-}) as any as S.Schema<ZoneTransfersAclsUpdateRequest>;
+  identifier: "UpdateZoneTransferAclRequest",
+}) as any as S.Schema<UpdateZoneTransferAclRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersAclsUpdateResponse {
+export interface UpdateZoneTransferAclResponse {
   id: string;
   /** Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively. */
   ipRange: string;
   /** The name of the acl. */
   name: string;
 }
-export const ZoneTransfersAclsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateZoneTransferAclResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     ipRange: S.String.pipe(T.Body("ip_range")),
     name: S.String,
   }),
 ).annotate({
-  identifier: "ZoneTransfersAclsUpdateResponse",
-}) as any as S.Schema<ZoneTransfersAclsUpdateResponse>;
-
-export interface ZoneTransfersForceAxfrCreateRequest {
-  zoneId: string;
-  body: unknown;
-}
-export const ZoneTransfersForceAxfrCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/secondary_dns/force_axfr",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersForceAxfrCreateRequest",
-}) as any as S.Schema<ZoneTransfersForceAxfrCreateRequest>;
-
-export interface ZoneTransfersForceAxfrCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const ZoneTransfersForceAxfrCreateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
-).annotate({
-  identifier: "ZoneTransfersForceAxfrCreateResponse",
-}) as any as S.Schema<ZoneTransfersForceAxfrCreateResponse>;
-
-export type ZoneTransfersIncomingCreateRequestPeersList = string[];
-export const ZoneTransfersIncomingCreateRequestPeersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ZoneTransfersIncomingCreateRequestPeersList>;
-
-export interface ZoneTransfersIncomingCreateRequest {
-  zoneId: string;
-  /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
-  autoRefreshSeconds: number;
-  /** Zone name. */
-  name: string;
-  /** A list of peer tags. */
-  peers: ZoneTransfersIncomingCreateRequestPeersList;
-}
-export const ZoneTransfersIncomingCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    autoRefreshSeconds: S.Number.pipe(T.Body("auto_refresh_seconds")),
-    name: S.String,
-    peers: ZoneTransfersIncomingCreateRequestPeersList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/secondary_dns/incoming",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersIncomingCreateRequest",
-}) as any as S.Schema<ZoneTransfersIncomingCreateRequest>;
-
-export type ZoneTransfersIncomingCreateResponsePeersList = string[];
-export const ZoneTransfersIncomingCreateResponsePeersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ZoneTransfersIncomingCreateResponsePeersList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersIncomingCreateResponse {
-  id?: string;
-  /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
-  autoRefreshSeconds?: number;
-  /** The time for a specific event. */
-  checkedTime?: string;
-  /** The time for a specific event. */
-  createdTime?: string;
-  /** The time for a specific event. */
-  modifiedTime?: string;
-  /** Zone name. */
-  name?: string;
-  /** A list of peer tags. */
-  peers?: ZoneTransfersIncomingCreateResponsePeersList;
-  /** The serial number of the SOA for the given zone. */
-  soaSerial?: number;
-}
-export const ZoneTransfersIncomingCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    autoRefreshSeconds: S.optional(
-      S.Number.pipe(T.Body("auto_refresh_seconds")),
-    ),
-    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
-    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
-    modifiedTime: S.optional(S.String.pipe(T.Body("modified_time"))),
-    name: S.optional(S.String),
-    peers: S.optional(ZoneTransfersIncomingCreateResponsePeersList),
-    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
-  }),
-).annotate({
-  identifier: "ZoneTransfersIncomingCreateResponse",
-}) as any as S.Schema<ZoneTransfersIncomingCreateResponse>;
-
-export interface ZoneTransfersIncomingDeleteRequest {
-  zoneId: string;
-}
-export const ZoneTransfersIncomingDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/secondary_dns/incoming",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersIncomingDeleteRequest",
-}) as any as S.Schema<ZoneTransfersIncomingDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersIncomingDeleteResponse {
-  id?: string;
-}
-export const ZoneTransfersIncomingDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ZoneTransfersIncomingDeleteResponse",
-}) as any as S.Schema<ZoneTransfersIncomingDeleteResponse>;
-
-export interface ZoneTransfersIncomingGetRequest {
-  zoneId: string;
-}
-export const ZoneTransfersIncomingGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/secondary_dns/incoming",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersIncomingGetRequest",
-}) as any as S.Schema<ZoneTransfersIncomingGetRequest>;
-
-export type ZoneTransfersIncomingGetResponsePeersList = string[];
-export const ZoneTransfersIncomingGetResponsePeersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ZoneTransfersIncomingGetResponsePeersList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersIncomingGetResponse {
-  id?: string;
-  /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
-  autoRefreshSeconds?: number;
-  /** The time for a specific event. */
-  checkedTime?: string;
-  /** The time for a specific event. */
-  createdTime?: string;
-  /** The time for a specific event. */
-  modifiedTime?: string;
-  /** Zone name. */
-  name?: string;
-  /** A list of peer tags. */
-  peers?: ZoneTransfersIncomingGetResponsePeersList;
-  /** The serial number of the SOA for the given zone. */
-  soaSerial?: number;
-}
-export const ZoneTransfersIncomingGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    autoRefreshSeconds: S.optional(
-      S.Number.pipe(T.Body("auto_refresh_seconds")),
-    ),
-    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
-    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
-    modifiedTime: S.optional(S.String.pipe(T.Body("modified_time"))),
-    name: S.optional(S.String),
-    peers: S.optional(ZoneTransfersIncomingGetResponsePeersList),
-    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
-  }),
-).annotate({
-  identifier: "ZoneTransfersIncomingGetResponse",
-}) as any as S.Schema<ZoneTransfersIncomingGetResponse>;
+  identifier: "UpdateZoneTransferAclResponse",
+}) as any as S.Schema<UpdateZoneTransferAclResponse>;
 
 export type ZoneTransfersIncomingUpdateRequestPeersList = string[];
 export const ZoneTransfersIncomingUpdateRequestPeersList =
@@ -14671,7 +15409,7 @@ export const ZoneTransfersIncomingUpdateRequestPeersList =
     S.String,
   ) as any as S.Schema<ZoneTransfersIncomingUpdateRequestPeersList>;
 
-export interface ZoneTransfersIncomingUpdateRequest {
+export interface UpdateZoneTransferIncomingRequest {
   zoneId: string;
   /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
   autoRefreshSeconds: number;
@@ -14680,7 +15418,7 @@ export interface ZoneTransfersIncomingUpdateRequest {
   /** A list of peer tags. */
   peers: ZoneTransfersIncomingUpdateRequestPeersList;
 }
-export const ZoneTransfersIncomingUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateZoneTransferIncomingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     autoRefreshSeconds: S.Number.pipe(T.Body("auto_refresh_seconds")),
@@ -14694,8 +15432,8 @@ export const ZoneTransfersIncomingUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ZoneTransfersIncomingUpdateRequest",
-}) as any as S.Schema<ZoneTransfersIncomingUpdateRequest>;
+  identifier: "UpdateZoneTransferIncomingRequest",
+}) as any as S.Schema<UpdateZoneTransferIncomingRequest>;
 
 export type ZoneTransfersIncomingUpdateResponsePeersList = string[];
 export const ZoneTransfersIncomingUpdateResponsePeersList =
@@ -14704,7 +15442,7 @@ export const ZoneTransfersIncomingUpdateResponsePeersList =
   ) as any as S.Schema<ZoneTransfersIncomingUpdateResponsePeersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersIncomingUpdateResponse {
+export interface UpdateZoneTransferIncomingResponse {
   id?: string;
   /** How often should a secondary zone auto refresh regardless of DNS NOTIFY. */
   autoRefreshSeconds?: number;
@@ -14721,7 +15459,7 @@ export interface ZoneTransfersIncomingUpdateResponse {
   /** The serial number of the SOA for the given zone. */
   soaSerial?: number;
 }
-export const ZoneTransfersIncomingUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateZoneTransferIncomingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     autoRefreshSeconds: S.optional(
@@ -14735,285 +15473,8 @@ export const ZoneTransfersIncomingUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
   }),
 ).annotate({
-  identifier: "ZoneTransfersIncomingUpdateResponse",
-}) as any as S.Schema<ZoneTransfersIncomingUpdateResponse>;
-
-export type ZoneTransfersOutgoingCreateRequestPeersList = string[];
-export const ZoneTransfersOutgoingCreateRequestPeersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ZoneTransfersOutgoingCreateRequestPeersList>;
-
-export interface ZoneTransfersOutgoingCreateRequest {
-  zoneId: string;
-  /** Zone name. */
-  name: string;
-  /** A list of peer tags. */
-  peers: ZoneTransfersOutgoingCreateRequestPeersList;
-}
-export const ZoneTransfersOutgoingCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    name: S.String,
-    peers: ZoneTransfersOutgoingCreateRequestPeersList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/secondary_dns/outgoing",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersOutgoingCreateRequest",
-}) as any as S.Schema<ZoneTransfersOutgoingCreateRequest>;
-
-export type ZoneTransfersOutgoingCreateResponsePeersList = string[];
-export const ZoneTransfersOutgoingCreateResponsePeersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ZoneTransfersOutgoingCreateResponsePeersList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersOutgoingCreateResponse {
-  id?: string;
-  /** The time for a specific event. */
-  checkedTime?: string;
-  /** The time for a specific event. */
-  createdTime?: string;
-  /** The time for a specific event. */
-  lastTransferredTime?: string;
-  /** Zone name. */
-  name?: string;
-  /** A list of peer tags. */
-  peers?: ZoneTransfersOutgoingCreateResponsePeersList;
-  /** The serial number of the SOA for the given zone. */
-  soaSerial?: number;
-}
-export const ZoneTransfersOutgoingCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
-    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
-    lastTransferredTime: S.optional(
-      S.String.pipe(T.Body("last_transferred_time")),
-    ),
-    name: S.optional(S.String),
-    peers: S.optional(ZoneTransfersOutgoingCreateResponsePeersList),
-    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
-  }),
-).annotate({
-  identifier: "ZoneTransfersOutgoingCreateResponse",
-}) as any as S.Schema<ZoneTransfersOutgoingCreateResponse>;
-
-export interface ZoneTransfersOutgoingDeleteRequest {
-  zoneId: string;
-}
-export const ZoneTransfersOutgoingDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/secondary_dns/outgoing",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersOutgoingDeleteRequest",
-}) as any as S.Schema<ZoneTransfersOutgoingDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersOutgoingDeleteResponse {
-  id?: string;
-}
-export const ZoneTransfersOutgoingDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ZoneTransfersOutgoingDeleteResponse",
-}) as any as S.Schema<ZoneTransfersOutgoingDeleteResponse>;
-
-export interface ZoneTransfersOutgoingDisableRequest {
-  zoneId: string;
-  body: unknown;
-}
-export const ZoneTransfersOutgoingDisableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/secondary_dns/outgoing/disable",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersOutgoingDisableRequest",
-}) as any as S.Schema<ZoneTransfersOutgoingDisableRequest>;
-
-export interface ZoneTransfersOutgoingDisableResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const ZoneTransfersOutgoingDisableResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
-).annotate({
-  identifier: "ZoneTransfersOutgoingDisableResponse",
-}) as any as S.Schema<ZoneTransfersOutgoingDisableResponse>;
-
-export interface ZoneTransfersOutgoingEnableRequest {
-  zoneId: string;
-  body: unknown;
-}
-export const ZoneTransfersOutgoingEnableRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/secondary_dns/outgoing/enable",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersOutgoingEnableRequest",
-}) as any as S.Schema<ZoneTransfersOutgoingEnableRequest>;
-
-export interface ZoneTransfersOutgoingEnableResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const ZoneTransfersOutgoingEnableResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "ZoneTransfersOutgoingEnableResponse",
-}) as any as S.Schema<ZoneTransfersOutgoingEnableResponse>;
-
-export interface ZoneTransfersOutgoingForceNotifyRequest {
-  zoneId: string;
-  body: unknown;
-}
-export const ZoneTransfersOutgoingForceNotifyRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      zoneId: S.String.pipe(T.Label("zone_id")),
-      body: S.Unknown,
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/secondary_dns/outgoing/force_notify",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ZoneTransfersOutgoingForceNotifyRequest",
-}) as any as S.Schema<ZoneTransfersOutgoingForceNotifyRequest>;
-
-export interface ZoneTransfersOutgoingForceNotifyResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
-export const ZoneTransfersOutgoingForceNotifyResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.String.pipe(T.EnvelopePayload())),
-    }),
-).annotate({
-  identifier: "ZoneTransfersOutgoingForceNotifyResponse",
-}) as any as S.Schema<ZoneTransfersOutgoingForceNotifyResponse>;
-
-export interface ZoneTransfersOutgoingGetRequest {
-  zoneId: string;
-}
-export const ZoneTransfersOutgoingGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/secondary_dns/outgoing",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersOutgoingGetRequest",
-}) as any as S.Schema<ZoneTransfersOutgoingGetRequest>;
-
-export type ZoneTransfersOutgoingGetResponsePeersList = string[];
-export const ZoneTransfersOutgoingGetResponsePeersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ZoneTransfersOutgoingGetResponsePeersList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersOutgoingGetResponse {
-  id?: string;
-  /** The time for a specific event. */
-  checkedTime?: string;
-  /** The time for a specific event. */
-  createdTime?: string;
-  /** The time for a specific event. */
-  lastTransferredTime?: string;
-  /** Zone name. */
-  name?: string;
-  /** A list of peer tags. */
-  peers?: ZoneTransfersOutgoingGetResponsePeersList;
-  /** The serial number of the SOA for the given zone. */
-  soaSerial?: number;
-}
-export const ZoneTransfersOutgoingGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
-    createdTime: S.optional(S.String.pipe(T.Body("created_time"))),
-    lastTransferredTime: S.optional(
-      S.String.pipe(T.Body("last_transferred_time")),
-    ),
-    name: S.optional(S.String),
-    peers: S.optional(ZoneTransfersOutgoingGetResponsePeersList),
-    soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
-  }),
-).annotate({
-  identifier: "ZoneTransfersOutgoingGetResponse",
-}) as any as S.Schema<ZoneTransfersOutgoingGetResponse>;
-
-export interface ZoneTransfersOutgoingStatusGetRequest {
-  zoneId: string;
-}
-export const ZoneTransfersOutgoingStatusGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      zoneId: S.String.pipe(T.Label("zone_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/secondary_dns/outgoing/status",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ZoneTransfersOutgoingStatusGetRequest",
-}) as any as S.Schema<ZoneTransfersOutgoingStatusGetRequest>;
-
-export interface ZoneTransfersOutgoingStatusGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const ZoneTransfersOutgoingStatusGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-    }),
-).annotate({
-  identifier: "ZoneTransfersOutgoingStatusGetResponse",
-}) as any as S.Schema<ZoneTransfersOutgoingStatusGetResponse>;
+  identifier: "UpdateZoneTransferIncomingResponse",
+}) as any as S.Schema<UpdateZoneTransferIncomingResponse>;
 
 export type ZoneTransfersOutgoingUpdateRequestPeersList = string[];
 export const ZoneTransfersOutgoingUpdateRequestPeersList =
@@ -15021,14 +15482,14 @@ export const ZoneTransfersOutgoingUpdateRequestPeersList =
     S.String,
   ) as any as S.Schema<ZoneTransfersOutgoingUpdateRequestPeersList>;
 
-export interface ZoneTransfersOutgoingUpdateRequest {
+export interface UpdateZoneTransferOutgoingRequest {
   zoneId: string;
   /** Zone name. */
   name: string;
   /** A list of peer tags. */
   peers: ZoneTransfersOutgoingUpdateRequestPeersList;
 }
-export const ZoneTransfersOutgoingUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateZoneTransferOutgoingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String,
@@ -15041,8 +15502,8 @@ export const ZoneTransfersOutgoingUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ZoneTransfersOutgoingUpdateRequest",
-}) as any as S.Schema<ZoneTransfersOutgoingUpdateRequest>;
+  identifier: "UpdateZoneTransferOutgoingRequest",
+}) as any as S.Schema<UpdateZoneTransferOutgoingRequest>;
 
 export type ZoneTransfersOutgoingUpdateResponsePeersList = string[];
 export const ZoneTransfersOutgoingUpdateResponsePeersList =
@@ -15051,7 +15512,7 @@ export const ZoneTransfersOutgoingUpdateResponsePeersList =
   ) as any as S.Schema<ZoneTransfersOutgoingUpdateResponsePeersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersOutgoingUpdateResponse {
+export interface UpdateZoneTransferOutgoingResponse {
   id?: string;
   /** The time for a specific event. */
   checkedTime?: string;
@@ -15066,7 +15527,7 @@ export interface ZoneTransfersOutgoingUpdateResponse {
   /** The serial number of the SOA for the given zone. */
   soaSerial?: number;
 }
-export const ZoneTransfersOutgoingUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateZoneTransferOutgoingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     checkedTime: S.optional(S.String.pipe(T.Body("checked_time"))),
@@ -15079,197 +15540,10 @@ export const ZoneTransfersOutgoingUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     soaSerial: S.optional(S.Number.pipe(T.Body("soa_serial"))),
   }),
 ).annotate({
-  identifier: "ZoneTransfersOutgoingUpdateResponse",
-}) as any as S.Schema<ZoneTransfersOutgoingUpdateResponse>;
+  identifier: "UpdateZoneTransferOutgoingResponse",
+}) as any as S.Schema<UpdateZoneTransferOutgoingResponse>;
 
-export interface ZoneTransfersPeersCreateRequest {
-  accountId: string;
-  /** The name of the peer. */
-  name: string;
-}
-export const ZoneTransfersPeersCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/secondary_dns/peers",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersPeersCreateRequest",
-}) as any as S.Schema<ZoneTransfersPeersCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersPeersCreateResponse {
-  id: string;
-  /** The name of the peer. */
-  name: string;
-  /** IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to. */
-  ip?: string;
-  /** Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones. */
-  ixfrEnable?: boolean;
-  /** DNS port of primary or secondary nameserver, depending on what zone this peer is linked to. */
-  port?: number;
-  /** TSIG authentication will be used for zone transfer if configured. */
-  tsigId?: string;
-}
-export const ZoneTransfersPeersCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    ip: S.optional(S.String),
-    ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
-    port: S.optional(S.Number),
-    tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
-  }),
-).annotate({
-  identifier: "ZoneTransfersPeersCreateResponse",
-}) as any as S.Schema<ZoneTransfersPeersCreateResponse>;
-
-export interface ZoneTransfersPeersDeleteRequest {
-  accountId: string;
-  peerId: string;
-}
-export const ZoneTransfersPeersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    peerId: S.String.pipe(T.Label("peer_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersPeersDeleteRequest",
-}) as any as S.Schema<ZoneTransfersPeersDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersPeersDeleteResponse {
-  id?: string;
-}
-export const ZoneTransfersPeersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ZoneTransfersPeersDeleteResponse",
-}) as any as S.Schema<ZoneTransfersPeersDeleteResponse>;
-
-export interface ZoneTransfersPeersGetRequest {
-  accountId: string;
-  peerId: string;
-}
-export const ZoneTransfersPeersGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    peerId: S.String.pipe(T.Label("peer_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersPeersGetRequest",
-}) as any as S.Schema<ZoneTransfersPeersGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersPeersGetResponse {
-  id: string;
-  /** The name of the peer. */
-  name: string;
-  /** IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to. */
-  ip?: string;
-  /** Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones. */
-  ixfrEnable?: boolean;
-  /** DNS port of primary or secondary nameserver, depending on what zone this peer is linked to. */
-  port?: number;
-  /** TSIG authentication will be used for zone transfer if configured. */
-  tsigId?: string;
-}
-export const ZoneTransfersPeersGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    ip: S.optional(S.String),
-    ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
-    port: S.optional(S.Number),
-    tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
-  }),
-).annotate({
-  identifier: "ZoneTransfersPeersGetResponse",
-}) as any as S.Schema<ZoneTransfersPeersGetResponse>;
-
-export interface ZoneTransfersPeersListRequest {
-  accountId: string;
-}
-export const ZoneTransfersPeersListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secondary_dns/peers",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersPeersListRequest",
-}) as any as S.Schema<ZoneTransfersPeersListRequest>;
-
-export interface ZoneTransfersPeersListResultItem {
-  id: string;
-  /** The name of the peer. */
-  name: string;
-  /** IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to. */
-  ip?: string;
-  /** Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones. */
-  ixfrEnable?: boolean;
-  /** DNS port of primary or secondary nameserver, depending on what zone this peer is linked to. */
-  port?: number;
-  /** TSIG authentication will be used for zone transfer if configured. */
-  tsigId?: string;
-}
-export const ZoneTransfersPeersListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    name: S.String,
-    ip: S.optional(S.String),
-    ixfrEnable: S.optional(S.Boolean.pipe(T.Body("ixfr_enable"))),
-    port: S.optional(S.Number),
-    tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
-  }),
-).annotate({
-  identifier: "ZoneTransfersPeersListResultItem",
-}) as any as S.Schema<ZoneTransfersPeersListResultItem>;
-
-export type ZoneTransfersPeersListResultList =
-  ZoneTransfersPeersListResultItem[];
-export const ZoneTransfersPeersListResultList = /*@__PURE__*/ S.Array(
-  ZoneTransfersPeersListResultItem,
-) as any as S.Schema<ZoneTransfersPeersListResultList>;
-
-export interface ZoneTransfersPeersListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ZoneTransfersPeersListResultList;
-}
-export const ZoneTransfersPeersListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      ZoneTransfersPeersListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "ZoneTransfersPeersListResponse",
-}) as any as S.Schema<ZoneTransfersPeersListResponse>;
-
-export interface ZoneTransfersPeersUpdateRequest {
+export interface UpdateZoneTransferPeerRequest {
   accountId: string;
   peerId: string;
   /** The name of the peer. */
@@ -15283,7 +15557,7 @@ export interface ZoneTransfersPeersUpdateRequest {
   /** TSIG authentication will be used for zone transfer if configured. */
   tsigId?: string;
 }
-export const ZoneTransfersPeersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateZoneTransferPeerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     peerId: S.String.pipe(T.Label("peer_id")),
@@ -15300,11 +15574,11 @@ export const ZoneTransfersPeersUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ZoneTransfersPeersUpdateRequest",
-}) as any as S.Schema<ZoneTransfersPeersUpdateRequest>;
+  identifier: "UpdateZoneTransferPeerRequest",
+}) as any as S.Schema<UpdateZoneTransferPeerRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersPeersUpdateResponse {
+export interface UpdateZoneTransferPeerResponse {
   id: string;
   /** The name of the peer. */
   name: string;
@@ -15317,7 +15591,7 @@ export interface ZoneTransfersPeersUpdateResponse {
   /** TSIG authentication will be used for zone transfer if configured. */
   tsigId?: string;
 }
-export const ZoneTransfersPeersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateZoneTransferPeerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     name: S.String,
@@ -15327,185 +15601,10 @@ export const ZoneTransfersPeersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     tsigId: S.optional(S.String.pipe(T.Body("tsig_id"))),
   }),
 ).annotate({
-  identifier: "ZoneTransfersPeersUpdateResponse",
-}) as any as S.Schema<ZoneTransfersPeersUpdateResponse>;
+  identifier: "UpdateZoneTransferPeerResponse",
+}) as any as S.Schema<UpdateZoneTransferPeerResponse>;
 
-export interface ZoneTransfersTsigsCreateRequest {
-  accountId: string;
-  /** TSIG algorithm. */
-  algo: string;
-  /** TSIG key name. */
-  name: string;
-  /** TSIG secret. */
-  secret: string;
-}
-export const ZoneTransfersTsigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    algo: S.String,
-    name: S.String,
-    secret: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/secondary_dns/tsigs",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersTsigsCreateRequest",
-}) as any as S.Schema<ZoneTransfersTsigsCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersTsigsCreateResponse {
-  id: string;
-  /** TSIG algorithm. */
-  algo: string;
-  /** TSIG key name. */
-  name: string;
-  /** TSIG secret. */
-  secret: string;
-}
-export const ZoneTransfersTsigsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    algo: S.String,
-    name: S.String,
-    secret: S.String,
-  }),
-).annotate({
-  identifier: "ZoneTransfersTsigsCreateResponse",
-}) as any as S.Schema<ZoneTransfersTsigsCreateResponse>;
-
-export interface ZoneTransfersTsigsDeleteRequest {
-  accountId: string;
-  tsigId: string;
-}
-export const ZoneTransfersTsigsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    tsigId: S.String.pipe(T.Label("tsig_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersTsigsDeleteRequest",
-}) as any as S.Schema<ZoneTransfersTsigsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersTsigsDeleteResponse {
-  id?: string;
-}
-export const ZoneTransfersTsigsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ZoneTransfersTsigsDeleteResponse",
-}) as any as S.Schema<ZoneTransfersTsigsDeleteResponse>;
-
-export interface ZoneTransfersTsigsGetRequest {
-  accountId: string;
-  tsigId: string;
-}
-export const ZoneTransfersTsigsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    tsigId: S.String.pipe(T.Label("tsig_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersTsigsGetRequest",
-}) as any as S.Schema<ZoneTransfersTsigsGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersTsigsGetResponse {
-  id: string;
-  /** TSIG algorithm. */
-  algo: string;
-  /** TSIG key name. */
-  name: string;
-  /** TSIG secret. */
-  secret: string;
-}
-export const ZoneTransfersTsigsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    algo: S.String,
-    name: S.String,
-    secret: S.String,
-  }),
-).annotate({
-  identifier: "ZoneTransfersTsigsGetResponse",
-}) as any as S.Schema<ZoneTransfersTsigsGetResponse>;
-
-export interface ZoneTransfersTsigsListRequest {
-  accountId: string;
-}
-export const ZoneTransfersTsigsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secondary_dns/tsigs",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ZoneTransfersTsigsListRequest",
-}) as any as S.Schema<ZoneTransfersTsigsListRequest>;
-
-export interface ZoneTransfersTsigsListResultItem {
-  id: string;
-  /** TSIG algorithm. */
-  algo: string;
-  /** TSIG key name. */
-  name: string;
-  /** TSIG secret. */
-  secret: string;
-}
-export const ZoneTransfersTsigsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    algo: S.String,
-    name: S.String,
-    secret: S.String,
-  }),
-).annotate({
-  identifier: "ZoneTransfersTsigsListResultItem",
-}) as any as S.Schema<ZoneTransfersTsigsListResultItem>;
-
-export type ZoneTransfersTsigsListResultList =
-  ZoneTransfersTsigsListResultItem[];
-export const ZoneTransfersTsigsListResultList = /*@__PURE__*/ S.Array(
-  ZoneTransfersTsigsListResultItem,
-) as any as S.Schema<ZoneTransfersTsigsListResultList>;
-
-export interface ZoneTransfersTsigsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ZoneTransfersTsigsListResultList;
-}
-export const ZoneTransfersTsigsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      ZoneTransfersTsigsListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "ZoneTransfersTsigsListResponse",
-}) as any as S.Schema<ZoneTransfersTsigsListResponse>;
-
-export interface ZoneTransfersTsigsUpdateRequest {
+export interface UpdateZoneTransferTsigRequest {
   accountId: string;
   tsigId: string;
   /** TSIG algorithm. */
@@ -15515,7 +15614,7 @@ export interface ZoneTransfersTsigsUpdateRequest {
   /** TSIG secret. */
   secret: string;
 }
-export const ZoneTransfersTsigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateZoneTransferTsigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tsigId: S.String.pipe(T.Label("tsig_id")),
@@ -15530,11 +15629,11 @@ export const ZoneTransfersTsigsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ZoneTransfersTsigsUpdateRequest",
-}) as any as S.Schema<ZoneTransfersTsigsUpdateRequest>;
+  identifier: "UpdateZoneTransferTsigRequest",
+}) as any as S.Schema<UpdateZoneTransferTsigRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTransfersTsigsUpdateResponse {
+export interface UpdateZoneTransferTsigResponse {
   id: string;
   /** TSIG algorithm. */
   algo: string;
@@ -15543,7 +15642,7 @@ export interface ZoneTransfersTsigsUpdateResponse {
   /** TSIG secret. */
   secret: string;
 }
-export const ZoneTransfersTsigsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateZoneTransferTsigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     algo: S.String,
@@ -15551,803 +15650,875 @@ export const ZoneTransfersTsigsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     secret: S.String,
   }),
 ).annotate({
-  identifier: "ZoneTransfersTsigsUpdateResponse",
-}) as any as S.Schema<ZoneTransfersTsigsUpdateResponse>;
+  identifier: "UpdateZoneTransferTsigResponse",
+}) as any as S.Schema<UpdateZoneTransferTsigResponse>;
 
-export type AnalyticsReportsBytimesGetError = CloudflareOpError;
-/** Retrieves a list of aggregate metrics grouped by time interval. See [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters. */
-export const analyticsReportsBytimesGet: API.OperationMethod<
-  AnalyticsReportsBytimesGetRequest,
-  AnalyticsReportsBytimesGetResponse,
-  AnalyticsReportsBytimesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AnalyticsReportsBytimesGetRequest,
-  output: AnalyticsReportsBytimesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AnalyticsReportsGetError = CloudflareOpError;
-/** Retrieves a list of summarised aggregate metrics over a given time period. See [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters. */
-export const analyticsReportsGet: API.OperationMethod<
-  AnalyticsReportsGetRequest,
-  AnalyticsReportsGetResponse,
-  AnalyticsReportsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AnalyticsReportsGetRequest,
-  output: AnalyticsReportsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DnssecDeleteError = CloudflareOpError;
-/** Delete DNSSEC. */
-export const dnssecDelete: API.OperationMethod<
-  DnssecDeleteRequest,
-  DnssecDeleteResponse,
-  DnssecDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DnssecDeleteRequest,
-  output: DnssecDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DnssecEditError = CloudflareOpError;
-/** Enable or disable DNSSEC. */
-export const dnssecEdit: API.OperationMethod<
-  DnssecEditRequest,
-  DnssecEditResponse,
-  DnssecEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DnssecEditRequest,
-  output: DnssecEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DnssecGetError = CloudflareOpError;
-/** Details about DNSSEC status and configuration. */
-export const dnssecGet: API.OperationMethod<
-  DnssecGetRequest,
-  DnssecGetResponse,
-  DnssecGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DnssecGetRequest,
-  output: DnssecGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordsBatchError = CloudflareOpError;
+export type BatchRecordError = CloudflareOpError;
 /** Send a Batch of DNS Record API calls to be executed together. Notes: - Although Cloudflare will execute the batched operations in a single database transaction, Cloudflare's distributed KV store must treat each record change as a single key-value pair. This means that the propagation of changes is not atomic. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/ "Batch DNS records") for more information. - The operations you specify within the /batch request body are always executed in the following order: - Deletes - Patches - Puts - Posts */
-export const recordsBatch: API.OperationMethod<
-  RecordsBatchRequest,
-  RecordsBatchResponse,
-  RecordsBatchError,
+export const batchRecord: API.OperationMethod<
+  BatchRecordRequest,
+  BatchRecordResponse,
+  BatchRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RecordsBatchRequest,
-  output: RecordsBatchResponse,
+  input: BatchRecordRequest,
+  output: BatchRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RecordsCreateError = CloudflareOpError;
+export type CreateRecordError =
+  | DnsRecordAlreadyExists
+  | Forbidden
+  | CloudflareOpError;
 /** Create a new DNS record for a zone. Notes: - A/AAAA records cannot exist on the same name as CNAME records. - NS records cannot exist on the same name as any other record type. - Domain names are always represented in Punycode, even if Unicode characters were used when creating the record. */
-export const recordsCreate: API.OperationMethod<
-  RecordsCreateRequest,
-  RecordsCreateResponse,
-  RecordsCreateError,
+export const createRecord: API.OperationMethod<
+  CreateRecordRequest,
+  CreateRecordResponse,
+  CreateRecordError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RecordsCreateRequest,
-  output: RecordsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateRecordRequest,
+  output: CreateRecordResponse,
+  errors: [
+    DnsRecordAlreadyExists,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type RecordsDeleteError = CloudflareOpError;
-/** Permanently removes a DNS record from the zone. */
-export const recordsDelete: API.OperationMethod<
-  RecordsDeleteRequest,
-  RecordsDeleteResponse,
-  RecordsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordsDeleteRequest,
-  output: RecordsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordsEditError = CloudflareOpError;
-/** Update an existing DNS record. Notes: - A/AAAA records cannot exist on the same name as CNAME records. - NS records cannot exist on the same name as any other record type. - Domain names are always represented in Punycode, even if Unicode characters were used when creating the record. */
-export const recordsEdit: API.OperationMethod<
-  RecordsEditRequest,
-  RecordsEditResponse,
-  RecordsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordsEditRequest,
-  output: RecordsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordsExportError = CloudflareOpError;
-/** You can export your [BIND config](https://en.wikipedia.org/wiki/Zone_file "Zone file") through this endpoint. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ "Import and export records") for more information. */
-export const recordsExport: API.OperationMethod<
-  RecordsExportRequest,
-  RecordsExportResponse,
-  RecordsExportError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordsExportRequest,
-  output: RecordsExportResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordsGetError = CloudflareOpError;
-/** Retrieves details for a specific DNS record in the zone. */
-export const recordsGet: API.OperationMethod<
-  RecordsGetRequest,
-  RecordsGetResponse,
-  RecordsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordsGetRequest,
-  output: RecordsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordsImportError = CloudflareOpError;
-/** You can upload your [BIND config](https://en.wikipedia.org/wiki/Zone_file "Zone file") through this endpoint. It assumes that cURL is called from a location with bind_config.txt (valid BIND config) present. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ "Import and export records") for more information. */
-export const recordsImport: API.OperationMethod<
-  RecordsImportRequest,
-  RecordsImportResponse,
-  RecordsImportError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordsImportRequest,
-  output: RecordsImportResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordsListError = CloudflareOpError;
-/** List, search, sort, and filter a zones' DNS records. */
-export const recordsList: API.OperationMethod<
-  RecordsListRequest,
-  RecordsListResponse,
-  RecordsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordsListRequest,
-  output: RecordsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordsScanError = CloudflareOpError;
-/** Scan for common DNS records on your domain and automatically add them to your zone. Useful if you haven't updated your nameservers yet. */
-export const recordsScan: API.OperationMethod<
-  RecordsScanRequest,
-  RecordsScanResponse,
-  RecordsScanError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordsScanRequest,
-  output: RecordsScanResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordsScanListError = CloudflareOpError;
-/** Retrieves the list of DNS records discovered up to this point by the asynchronous scan. These records are temporary until explicitly accepted or rejected via `POST /scan/review`. Additional records may be discovered by the scan later. */
-export const recordsScanList: API.OperationMethod<
-  RecordsScanListRequest,
-  RecordsScanListResponse,
-  RecordsScanListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordsScanListRequest,
-  output: RecordsScanListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordsScanReviewError = CloudflareOpError;
-/** Accept or reject DNS records found by the DNS records scan. Accepted records will be permanently added to the zone, while rejected records will be permanently deleted. */
-export const recordsScanReview: API.OperationMethod<
-  RecordsScanReviewRequest,
-  RecordsScanReviewResponse,
-  RecordsScanReviewError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordsScanReviewRequest,
-  output: RecordsScanReviewResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordsScanTriggerError = CloudflareOpError;
-/** Initiates an asynchronous scan for common DNS records on your domain. Note that this **does not** automatically add records to your zone. The scan runs in the background, and results can be reviewed later using the `/scan/review` endpoints. Useful if you haven't updated your nameservers yet. */
-export const recordsScanTrigger: API.OperationMethod<
-  RecordsScanTriggerRequest,
-  RecordsScanTriggerResponse,
-  RecordsScanTriggerError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordsScanTriggerRequest,
-  output: RecordsScanTriggerResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordsUpdateError = CloudflareOpError;
-/** Overwrite an existing DNS record. Notes: - A/AAAA records cannot exist on the same name as CNAME records. - NS records cannot exist on the same name as any other record type. - Domain names are always represented in Punycode, even if Unicode characters were used when creating the record. */
-export const recordsUpdate: API.OperationMethod<
-  RecordsUpdateRequest,
-  RecordsUpdateResponse,
-  RecordsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordsUpdateRequest,
-  output: RecordsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsAccountEditError = CloudflareOpError;
-/** Update DNS settings for an account */
-export const settingsAccountEdit: API.OperationMethod<
-  SettingsAccountEditRequest,
-  SettingsAccountEditResponse,
-  SettingsAccountEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsAccountEditRequest,
-  output: SettingsAccountEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsAccountGetError = CloudflareOpError;
-/** Show DNS settings for an account */
-export const settingsAccountGet: API.OperationMethod<
-  SettingsAccountGetRequest,
-  SettingsAccountGetResponse,
-  SettingsAccountGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsAccountGetRequest,
-  output: SettingsAccountGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsAccountViewsCreateError = CloudflareOpError;
+export type CreateSettingAccountViewError =
+  | InternalDnsNotAvailable
+  | CloudflareOpError;
 /** Create Internal DNS View for an account */
-export const settingsAccountViewsCreate: API.OperationMethod<
-  SettingsAccountViewsCreateRequest,
-  SettingsAccountViewsCreateResponse,
-  SettingsAccountViewsCreateError,
+export const createSettingAccountView: API.OperationMethod<
+  CreateSettingAccountViewRequest,
+  CreateSettingAccountViewResponse,
+  CreateSettingAccountViewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsAccountViewsCreateRequest,
-  output: SettingsAccountViewsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateSettingAccountViewRequest,
+  output: CreateSettingAccountViewResponse,
+  errors: [InternalDnsNotAvailable, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsAccountViewsDeleteError = CloudflareOpError;
-/** Delete an existing Internal DNS View */
-export const settingsAccountViewsDelete: API.OperationMethod<
-  SettingsAccountViewsDeleteRequest,
-  SettingsAccountViewsDeleteResponse,
-  SettingsAccountViewsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsAccountViewsDeleteRequest,
-  output: SettingsAccountViewsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsAccountViewsEditError = CloudflareOpError;
-/** Update an existing Internal DNS View */
-export const settingsAccountViewsEdit: API.OperationMethod<
-  SettingsAccountViewsEditRequest,
-  SettingsAccountViewsEditResponse,
-  SettingsAccountViewsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsAccountViewsEditRequest,
-  output: SettingsAccountViewsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsAccountViewsGetError = CloudflareOpError;
-/** Get DNS Internal View */
-export const settingsAccountViewsGet: API.OperationMethod<
-  SettingsAccountViewsGetRequest,
-  SettingsAccountViewsGetResponse,
-  SettingsAccountViewsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsAccountViewsGetRequest,
-  output: SettingsAccountViewsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsAccountViewsListError = CloudflareOpError;
-/** List DNS Internal Views for an Account */
-export const settingsAccountViewsList: API.OperationMethod<
-  SettingsAccountViewsListRequest,
-  SettingsAccountViewsListResponse,
-  SettingsAccountViewsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsAccountViewsListRequest,
-  output: SettingsAccountViewsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsZoneEditError = CloudflareOpError;
-/** Update DNS settings for a zone */
-export const settingsZoneEdit: API.OperationMethod<
-  SettingsZoneEditRequest,
-  SettingsZoneEditResponse,
-  SettingsZoneEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsZoneEditRequest,
-  output: SettingsZoneEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsZoneGetError = CloudflareOpError;
-/** Show DNS settings for a zone */
-export const settingsZoneGet: API.OperationMethod<
-  SettingsZoneGetRequest,
-  SettingsZoneGetResponse,
-  SettingsZoneGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsZoneGetRequest,
-  output: SettingsZoneGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type UsageAccountGetError = CloudflareOpError;
-/** Get the current DNS record usage and quota for an account. May include internal DNS usage and quota. */
-export const usageAccountGet: API.OperationMethod<
-  UsageAccountGetRequest,
-  UsageAccountGetResponse,
-  UsageAccountGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UsageAccountGetRequest,
-  output: UsageAccountGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type UsageZoneGetError = CloudflareOpError;
-/** Get the current DNS record usage for a zone, including the number of records and the quota limit. */
-export const usageZoneGet: API.OperationMethod<
-  UsageZoneGetRequest,
-  UsageZoneGetResponse,
-  UsageZoneGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UsageZoneGetRequest,
-  output: UsageZoneGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersAclsCreateError = CloudflareOpError;
+export type CreateZoneTransferAclError = CloudflareOpError;
 /** Create ACL. */
-export const zoneTransfersAclsCreate: API.OperationMethod<
-  ZoneTransfersAclsCreateRequest,
-  ZoneTransfersAclsCreateResponse,
-  ZoneTransfersAclsCreateError,
+export const createZoneTransferAcl: API.OperationMethod<
+  CreateZoneTransferAclRequest,
+  CreateZoneTransferAclResponse,
+  CreateZoneTransferAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersAclsCreateRequest,
-  output: ZoneTransfersAclsCreateResponse,
+  input: CreateZoneTransferAclRequest,
+  output: CreateZoneTransferAclResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ZoneTransfersAclsDeleteError = CloudflareOpError;
-/** Delete ACL. */
-export const zoneTransfersAclsDelete: API.OperationMethod<
-  ZoneTransfersAclsDeleteRequest,
-  ZoneTransfersAclsDeleteResponse,
-  ZoneTransfersAclsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersAclsDeleteRequest,
-  output: ZoneTransfersAclsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersAclsGetError = CloudflareOpError;
-/** Get ACL. */
-export const zoneTransfersAclsGet: API.OperationMethod<
-  ZoneTransfersAclsGetRequest,
-  ZoneTransfersAclsGetResponse,
-  ZoneTransfersAclsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersAclsGetRequest,
-  output: ZoneTransfersAclsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersAclsListError = CloudflareOpError;
-/** List ACLs. */
-export const zoneTransfersAclsList: API.OperationMethod<
-  ZoneTransfersAclsListRequest,
-  ZoneTransfersAclsListResponse,
-  ZoneTransfersAclsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersAclsListRequest,
-  output: ZoneTransfersAclsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersAclsUpdateError = CloudflareOpError;
-/** Modify ACL. */
-export const zoneTransfersAclsUpdate: API.OperationMethod<
-  ZoneTransfersAclsUpdateRequest,
-  ZoneTransfersAclsUpdateResponse,
-  ZoneTransfersAclsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersAclsUpdateRequest,
-  output: ZoneTransfersAclsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersForceAxfrCreateError = CloudflareOpError;
+export type CreateZoneTransferForceAxfrError = CloudflareOpError;
 /** Sends AXFR zone transfer request to primary nameserver(s). */
-export const zoneTransfersForceAxfrCreate: API.OperationMethod<
-  ZoneTransfersForceAxfrCreateRequest,
-  ZoneTransfersForceAxfrCreateResponse,
-  ZoneTransfersForceAxfrCreateError,
+export const createZoneTransferForceAxfr: API.OperationMethod<
+  CreateZoneTransferForceAxfrRequest,
+  CreateZoneTransferForceAxfrResponse,
+  CreateZoneTransferForceAxfrError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersForceAxfrCreateRequest,
-  output: ZoneTransfersForceAxfrCreateResponse,
+  input: CreateZoneTransferForceAxfrRequest,
+  output: CreateZoneTransferForceAxfrResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ZoneTransfersIncomingCreateError = CloudflareOpError;
+export type CreateZoneTransferIncomingError = CloudflareOpError;
 /** Create secondary zone configuration for incoming zone transfers. */
-export const zoneTransfersIncomingCreate: API.OperationMethod<
-  ZoneTransfersIncomingCreateRequest,
-  ZoneTransfersIncomingCreateResponse,
-  ZoneTransfersIncomingCreateError,
+export const createZoneTransferIncoming: API.OperationMethod<
+  CreateZoneTransferIncomingRequest,
+  CreateZoneTransferIncomingResponse,
+  CreateZoneTransferIncomingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersIncomingCreateRequest,
-  output: ZoneTransfersIncomingCreateResponse,
+  input: CreateZoneTransferIncomingRequest,
+  output: CreateZoneTransferIncomingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ZoneTransfersIncomingDeleteError = CloudflareOpError;
-/** Delete secondary zone configuration for incoming zone transfers. */
-export const zoneTransfersIncomingDelete: API.OperationMethod<
-  ZoneTransfersIncomingDeleteRequest,
-  ZoneTransfersIncomingDeleteResponse,
-  ZoneTransfersIncomingDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersIncomingDeleteRequest,
-  output: ZoneTransfersIncomingDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersIncomingGetError = CloudflareOpError;
-/** Get secondary zone configuration for incoming zone transfers. */
-export const zoneTransfersIncomingGet: API.OperationMethod<
-  ZoneTransfersIncomingGetRequest,
-  ZoneTransfersIncomingGetResponse,
-  ZoneTransfersIncomingGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersIncomingGetRequest,
-  output: ZoneTransfersIncomingGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersIncomingUpdateError = CloudflareOpError;
-/** Update secondary zone configuration for incoming zone transfers. */
-export const zoneTransfersIncomingUpdate: API.OperationMethod<
-  ZoneTransfersIncomingUpdateRequest,
-  ZoneTransfersIncomingUpdateResponse,
-  ZoneTransfersIncomingUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersIncomingUpdateRequest,
-  output: ZoneTransfersIncomingUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersOutgoingCreateError = CloudflareOpError;
+export type CreateZoneTransferOutgoingError =
+  | OutgoingZoneTransfersNotAllowed
+  | CloudflareOpError;
 /** Create primary zone configuration for outgoing zone transfers. */
-export const zoneTransfersOutgoingCreate: API.OperationMethod<
-  ZoneTransfersOutgoingCreateRequest,
-  ZoneTransfersOutgoingCreateResponse,
-  ZoneTransfersOutgoingCreateError,
+export const createZoneTransferOutgoing: API.OperationMethod<
+  CreateZoneTransferOutgoingRequest,
+  CreateZoneTransferOutgoingResponse,
+  CreateZoneTransferOutgoingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersOutgoingCreateRequest,
-  output: ZoneTransfersOutgoingCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateZoneTransferOutgoingRequest,
+  output: CreateZoneTransferOutgoingResponse,
+  errors: [
+    OutgoingZoneTransfersNotAllowed,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type ZoneTransfersOutgoingDeleteError = CloudflareOpError;
-/** Delete primary zone configuration for outgoing zone transfers. */
-export const zoneTransfersOutgoingDelete: API.OperationMethod<
-  ZoneTransfersOutgoingDeleteRequest,
-  ZoneTransfersOutgoingDeleteResponse,
-  ZoneTransfersOutgoingDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersOutgoingDeleteRequest,
-  output: ZoneTransfersOutgoingDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersOutgoingDisableError = CloudflareOpError;
-/** Disable outgoing zone transfers for primary zone and clears IXFR backlog of primary zone. */
-export const zoneTransfersOutgoingDisable: API.OperationMethod<
-  ZoneTransfersOutgoingDisableRequest,
-  ZoneTransfersOutgoingDisableResponse,
-  ZoneTransfersOutgoingDisableError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersOutgoingDisableRequest,
-  output: ZoneTransfersOutgoingDisableResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersOutgoingEnableError = CloudflareOpError;
-/** Enable outgoing zone transfers for primary zone. */
-export const zoneTransfersOutgoingEnable: API.OperationMethod<
-  ZoneTransfersOutgoingEnableRequest,
-  ZoneTransfersOutgoingEnableResponse,
-  ZoneTransfersOutgoingEnableError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersOutgoingEnableRequest,
-  output: ZoneTransfersOutgoingEnableResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersOutgoingForceNotifyError = CloudflareOpError;
-/** Notifies the secondary nameserver(s) and clears IXFR backlog of primary zone. */
-export const zoneTransfersOutgoingForceNotify: API.OperationMethod<
-  ZoneTransfersOutgoingForceNotifyRequest,
-  ZoneTransfersOutgoingForceNotifyResponse,
-  ZoneTransfersOutgoingForceNotifyError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersOutgoingForceNotifyRequest,
-  output: ZoneTransfersOutgoingForceNotifyResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersOutgoingGetError = CloudflareOpError;
-/** Get primary zone configuration for outgoing zone transfers. */
-export const zoneTransfersOutgoingGet: API.OperationMethod<
-  ZoneTransfersOutgoingGetRequest,
-  ZoneTransfersOutgoingGetResponse,
-  ZoneTransfersOutgoingGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersOutgoingGetRequest,
-  output: ZoneTransfersOutgoingGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersOutgoingStatusGetError = CloudflareOpError;
-/** Get primary zone transfer status. */
-export const zoneTransfersOutgoingStatusGet: API.OperationMethod<
-  ZoneTransfersOutgoingStatusGetRequest,
-  ZoneTransfersOutgoingStatusGetResponse,
-  ZoneTransfersOutgoingStatusGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersOutgoingStatusGetRequest,
-  output: ZoneTransfersOutgoingStatusGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersOutgoingUpdateError = CloudflareOpError;
-/** Update primary zone configuration for outgoing zone transfers. */
-export const zoneTransfersOutgoingUpdate: API.OperationMethod<
-  ZoneTransfersOutgoingUpdateRequest,
-  ZoneTransfersOutgoingUpdateResponse,
-  ZoneTransfersOutgoingUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersOutgoingUpdateRequest,
-  output: ZoneTransfersOutgoingUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersPeersCreateError = CloudflareOpError;
+export type CreateZoneTransferPeerError = CloudflareOpError;
 /** Create Peer. */
-export const zoneTransfersPeersCreate: API.OperationMethod<
-  ZoneTransfersPeersCreateRequest,
-  ZoneTransfersPeersCreateResponse,
-  ZoneTransfersPeersCreateError,
+export const createZoneTransferPeer: API.OperationMethod<
+  CreateZoneTransferPeerRequest,
+  CreateZoneTransferPeerResponse,
+  CreateZoneTransferPeerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersPeersCreateRequest,
-  output: ZoneTransfersPeersCreateResponse,
+  input: CreateZoneTransferPeerRequest,
+  output: CreateZoneTransferPeerResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ZoneTransfersPeersDeleteError = CloudflareOpError;
-/** Delete Peer. */
-export const zoneTransfersPeersDelete: API.OperationMethod<
-  ZoneTransfersPeersDeleteRequest,
-  ZoneTransfersPeersDeleteResponse,
-  ZoneTransfersPeersDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersPeersDeleteRequest,
-  output: ZoneTransfersPeersDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersPeersGetError = CloudflareOpError;
-/** Get Peer. */
-export const zoneTransfersPeersGet: API.OperationMethod<
-  ZoneTransfersPeersGetRequest,
-  ZoneTransfersPeersGetResponse,
-  ZoneTransfersPeersGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersPeersGetRequest,
-  output: ZoneTransfersPeersGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersPeersListError = CloudflareOpError;
-/** List Peers. */
-export const zoneTransfersPeersList: API.OperationMethod<
-  ZoneTransfersPeersListRequest,
-  ZoneTransfersPeersListResponse,
-  ZoneTransfersPeersListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersPeersListRequest,
-  output: ZoneTransfersPeersListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersPeersUpdateError = CloudflareOpError;
-/** Modify Peer. */
-export const zoneTransfersPeersUpdate: API.OperationMethod<
-  ZoneTransfersPeersUpdateRequest,
-  ZoneTransfersPeersUpdateResponse,
-  ZoneTransfersPeersUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersPeersUpdateRequest,
-  output: ZoneTransfersPeersUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTransfersTsigsCreateError = CloudflareOpError;
+export type CreateZoneTransferTsigError = CloudflareOpError;
 /** Create TSIG. */
-export const zoneTransfersTsigsCreate: API.OperationMethod<
-  ZoneTransfersTsigsCreateRequest,
-  ZoneTransfersTsigsCreateResponse,
-  ZoneTransfersTsigsCreateError,
+export const createZoneTransferTsig: API.OperationMethod<
+  CreateZoneTransferTsigRequest,
+  CreateZoneTransferTsigResponse,
+  CreateZoneTransferTsigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersTsigsCreateRequest,
-  output: ZoneTransfersTsigsCreateResponse,
+  input: CreateZoneTransferTsigRequest,
+  output: CreateZoneTransferTsigResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ZoneTransfersTsigsDeleteError = CloudflareOpError;
+export type DeleteDnssecError = Forbidden | CloudflareOpError;
+/** Delete DNSSEC. */
+export const deleteDnssec: API.OperationMethod<
+  DeleteDnssecRequest,
+  DeleteDnssecResponse,
+  DeleteDnssecError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDnssecRequest,
+  output: DeleteDnssecResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteRecordError = CloudflareOpError;
+/** Permanently removes a DNS record from the zone. */
+export const deleteRecord: API.OperationMethod<
+  DeleteRecordRequest,
+  DeleteRecordResponse,
+  DeleteRecordError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRecordRequest,
+  output: DeleteRecordResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSettingAccountViewError = ViewNotFound | CloudflareOpError;
+/** Delete an existing Internal DNS View */
+export const deleteSettingAccountView: API.OperationMethod<
+  DeleteSettingAccountViewRequest,
+  DeleteSettingAccountViewResponse,
+  DeleteSettingAccountViewError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSettingAccountViewRequest,
+  output: DeleteSettingAccountViewResponse,
+  errors: [ViewNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteZoneTransferAclError = AclNotFound | CloudflareOpError;
+/** Delete ACL. */
+export const deleteZoneTransferAcl: API.OperationMethod<
+  DeleteZoneTransferAclRequest,
+  DeleteZoneTransferAclResponse,
+  DeleteZoneTransferAclError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteZoneTransferAclRequest,
+  output: DeleteZoneTransferAclResponse,
+  errors: [AclNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteZoneTransferIncomingError =
+  | IncomingZoneTransferNotFound
+  | CloudflareOpError;
+/** Delete secondary zone configuration for incoming zone transfers. */
+export const deleteZoneTransferIncoming: API.OperationMethod<
+  DeleteZoneTransferIncomingRequest,
+  DeleteZoneTransferIncomingResponse,
+  DeleteZoneTransferIncomingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteZoneTransferIncomingRequest,
+  output: DeleteZoneTransferIncomingResponse,
+  errors: [
+    IncomingZoneTransferNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteZoneTransferOutgoingError =
+  | OutgoingZoneTransferNotFound
+  | OutgoingZoneTransfersNotAllowed
+  | CloudflareOpError;
+/** Delete primary zone configuration for outgoing zone transfers. */
+export const deleteZoneTransferOutgoing: API.OperationMethod<
+  DeleteZoneTransferOutgoingRequest,
+  DeleteZoneTransferOutgoingResponse,
+  DeleteZoneTransferOutgoingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteZoneTransferOutgoingRequest,
+  output: DeleteZoneTransferOutgoingResponse,
+  errors: [
+    OutgoingZoneTransferNotFound,
+    OutgoingZoneTransfersNotAllowed,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteZoneTransferPeerError = PeerNotFound | CloudflareOpError;
+/** Delete Peer. */
+export const deleteZoneTransferPeer: API.OperationMethod<
+  DeleteZoneTransferPeerRequest,
+  DeleteZoneTransferPeerResponse,
+  DeleteZoneTransferPeerError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteZoneTransferPeerRequest,
+  output: DeleteZoneTransferPeerResponse,
+  errors: [PeerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteZoneTransferTsigError = TsigNotFound | CloudflareOpError;
 /** Delete TSIG. */
-export const zoneTransfersTsigsDelete: API.OperationMethod<
-  ZoneTransfersTsigsDeleteRequest,
-  ZoneTransfersTsigsDeleteResponse,
-  ZoneTransfersTsigsDeleteError,
+export const deleteZoneTransferTsig: API.OperationMethod<
+  DeleteZoneTransferTsigRequest,
+  DeleteZoneTransferTsigResponse,
+  DeleteZoneTransferTsigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersTsigsDeleteRequest,
-  output: ZoneTransfersTsigsDeleteResponse,
+  input: DeleteZoneTransferTsigRequest,
+  output: DeleteZoneTransferTsigResponse,
+  errors: [TsigNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DisableZoneTransferOutgoingError =
+  | OutgoingZoneTransfersNotAllowed
+  | CloudflareOpError;
+/** Disable outgoing zone transfers for primary zone and clears IXFR backlog of primary zone. */
+export const disableZoneTransferOutgoing: API.OperationMethod<
+  DisableZoneTransferOutgoingRequest,
+  DisableZoneTransferOutgoingResponse,
+  DisableZoneTransferOutgoingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DisableZoneTransferOutgoingRequest,
+  output: DisableZoneTransferOutgoingResponse,
+  errors: [
+    OutgoingZoneTransfersNotAllowed,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type EnableZoneTransferOutgoingError =
+  | OutgoingZoneTransfersNotAllowed
+  | CloudflareOpError;
+/** Enable outgoing zone transfers for primary zone. */
+export const enableZoneTransferOutgoing: API.OperationMethod<
+  EnableZoneTransferOutgoingRequest,
+  EnableZoneTransferOutgoingResponse,
+  EnableZoneTransferOutgoingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: EnableZoneTransferOutgoingRequest,
+  output: EnableZoneTransferOutgoingResponse,
+  errors: [
+    OutgoingZoneTransfersNotAllowed,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ExportRecordError = CloudflareOpError;
+/** You can export your [BIND config](https://en.wikipedia.org/wiki/Zone_file "Zone file") through this endpoint. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ "Import and export records") for more information. */
+export const exportRecord: API.OperationMethod<
+  ExportRecordRequest,
+  ExportRecordResponse,
+  ExportRecordError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ExportRecordRequest,
+  output: ExportRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ZoneTransfersTsigsGetError = CloudflareOpError;
+export type ForceNotifyZoneTransferOutgoingError = CloudflareOpError;
+/** Notifies the secondary nameserver(s) and clears IXFR backlog of primary zone. */
+export const forceNotifyZoneTransferOutgoing: API.OperationMethod<
+  ForceNotifyZoneTransferOutgoingRequest,
+  ForceNotifyZoneTransferOutgoingResponse,
+  ForceNotifyZoneTransferOutgoingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ForceNotifyZoneTransferOutgoingRequest,
+  output: ForceNotifyZoneTransferOutgoingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetAnalyticReportError = CloudflareOpError;
+/** Retrieves a list of summarised aggregate metrics over a given time period. See [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters. */
+export const getAnalyticReport: API.OperationMethod<
+  GetAnalyticReportRequest,
+  GetAnalyticReportResponse,
+  GetAnalyticReportError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAnalyticReportRequest,
+  output: GetAnalyticReportResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetAnalyticReportBytimeError = CloudflareOpError;
+/** Retrieves a list of aggregate metrics grouped by time interval. See [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters. */
+export const getAnalyticReportBytime: API.OperationMethod<
+  GetAnalyticReportBytimeRequest,
+  GetAnalyticReportBytimeResponse,
+  GetAnalyticReportBytimeError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAnalyticReportBytimeRequest,
+  output: GetAnalyticReportBytimeResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetDnssecError = Forbidden | CloudflareOpError;
+/** Details about DNSSEC status and configuration. */
+export const getDnssec: API.OperationMethod<
+  GetDnssecRequest,
+  GetDnssecResponse,
+  GetDnssecError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDnssecRequest,
+  output: GetDnssecResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetRecordError = Forbidden | CloudflareOpError;
+/** Retrieves details for a specific DNS record in the zone. */
+export const getRecord: API.OperationMethod<
+  GetRecordRequest,
+  GetRecordResponse,
+  GetRecordError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRecordRequest,
+  output: GetRecordResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSettingAccountError = CloudflareOpError;
+/** Show DNS settings for an account */
+export const getSettingAccount: API.OperationMethod<
+  GetSettingAccountRequest,
+  GetSettingAccountResponse,
+  GetSettingAccountError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSettingAccountRequest,
+  output: GetSettingAccountResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSettingAccountViewError = ViewNotFound | CloudflareOpError;
+/** Get DNS Internal View */
+export const getSettingAccountView: API.OperationMethod<
+  GetSettingAccountViewRequest,
+  GetSettingAccountViewResponse,
+  GetSettingAccountViewError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSettingAccountViewRequest,
+  output: GetSettingAccountViewResponse,
+  errors: [ViewNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSettingZoneError = Forbidden | CloudflareOpError;
+/** Show DNS settings for a zone */
+export const getSettingZone: API.OperationMethod<
+  GetSettingZoneRequest,
+  GetSettingZoneResponse,
+  GetSettingZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSettingZoneRequest,
+  output: GetSettingZoneResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetUsageAccountError = CloudflareOpError;
+/** Get the current DNS record usage and quota for an account. May include internal DNS usage and quota. */
+export const getUsageAccount: API.OperationMethod<
+  GetUsageAccountRequest,
+  GetUsageAccountResponse,
+  GetUsageAccountError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetUsageAccountRequest,
+  output: GetUsageAccountResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetUsageZoneError = CloudflareOpError;
+/** Get the current DNS record usage for a zone, including the number of records and the quota limit. */
+export const getUsageZone: API.OperationMethod<
+  GetUsageZoneRequest,
+  GetUsageZoneResponse,
+  GetUsageZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetUsageZoneRequest,
+  output: GetUsageZoneResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetZoneTransferAclError = AclNotFound | CloudflareOpError;
+/** Get ACL. */
+export const getZoneTransferAcl: API.OperationMethod<
+  GetZoneTransferAclRequest,
+  GetZoneTransferAclResponse,
+  GetZoneTransferAclError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetZoneTransferAclRequest,
+  output: GetZoneTransferAclResponse,
+  errors: [AclNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetZoneTransferIncomingError =
+  | IncomingZoneTransferNotFound
+  | CloudflareOpError;
+/** Get secondary zone configuration for incoming zone transfers. */
+export const getZoneTransferIncoming: API.OperationMethod<
+  GetZoneTransferIncomingRequest,
+  GetZoneTransferIncomingResponse,
+  GetZoneTransferIncomingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetZoneTransferIncomingRequest,
+  output: GetZoneTransferIncomingResponse,
+  errors: [
+    IncomingZoneTransferNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetZoneTransferOutgoingError =
+  | OutgoingZoneTransferNotFound
+  | OutgoingZoneTransfersNotAllowed
+  | CloudflareOpError;
+/** Get primary zone configuration for outgoing zone transfers. */
+export const getZoneTransferOutgoing: API.OperationMethod<
+  GetZoneTransferOutgoingRequest,
+  GetZoneTransferOutgoingResponse,
+  GetZoneTransferOutgoingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetZoneTransferOutgoingRequest,
+  output: GetZoneTransferOutgoingResponse,
+  errors: [
+    OutgoingZoneTransferNotFound,
+    OutgoingZoneTransfersNotAllowed,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetZoneTransferOutgoingStatusError = CloudflareOpError;
+/** Get primary zone transfer status. */
+export const getZoneTransferOutgoingStatus: API.OperationMethod<
+  GetZoneTransferOutgoingStatusRequest,
+  GetZoneTransferOutgoingStatusResponse,
+  GetZoneTransferOutgoingStatusError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetZoneTransferOutgoingStatusRequest,
+  output: GetZoneTransferOutgoingStatusResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetZoneTransferPeerError = PeerNotFound | CloudflareOpError;
+/** Get Peer. */
+export const getZoneTransferPeer: API.OperationMethod<
+  GetZoneTransferPeerRequest,
+  GetZoneTransferPeerResponse,
+  GetZoneTransferPeerError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetZoneTransferPeerRequest,
+  output: GetZoneTransferPeerResponse,
+  errors: [PeerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetZoneTransferTsigError = TsigNotFound | CloudflareOpError;
 /** Get TSIG. */
-export const zoneTransfersTsigsGet: API.OperationMethod<
-  ZoneTransfersTsigsGetRequest,
-  ZoneTransfersTsigsGetResponse,
-  ZoneTransfersTsigsGetError,
+export const getZoneTransferTsig: API.OperationMethod<
+  GetZoneTransferTsigRequest,
+  GetZoneTransferTsigResponse,
+  GetZoneTransferTsigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersTsigsGetRequest,
-  output: ZoneTransfersTsigsGetResponse,
+  input: GetZoneTransferTsigRequest,
+  output: GetZoneTransferTsigResponse,
+  errors: [TsigNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ImportRecordError = CloudflareOpError;
+/** You can upload your [BIND config](https://en.wikipedia.org/wiki/Zone_file "Zone file") through this endpoint. It assumes that cURL is called from a location with bind_config.txt (valid BIND config) present. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ "Import and export records") for more information. */
+export const importRecord: API.OperationMethod<
+  ImportRecordRequest,
+  ImportRecordResponse,
+  ImportRecordError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ImportRecordRequest,
+  output: ImportRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ZoneTransfersTsigsListError = CloudflareOpError;
+export type ListRecordsError = Forbidden | CloudflareOpError;
+/** List, search, sort, and filter a zones' DNS records. */
+export const listRecords: API.OperationMethod<
+  ListRecordsRequest,
+  ListRecordsResponse,
+  ListRecordsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRecordsRequest,
+  output: ListRecordsResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSettingAccountViewsError = CloudflareOpError;
+/** List DNS Internal Views for an Account */
+export const listSettingAccountViews: API.OperationMethod<
+  ListSettingAccountViewsRequest,
+  ListSettingAccountViewsResponse,
+  ListSettingAccountViewsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSettingAccountViewsRequest,
+  output: ListSettingAccountViewsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListZoneTransferAclsError = CloudflareOpError;
+/** List ACLs. */
+export const listZoneTransferAcls: API.OperationMethod<
+  ListZoneTransferAclsRequest,
+  ListZoneTransferAclsResponse,
+  ListZoneTransferAclsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListZoneTransferAclsRequest,
+  output: ListZoneTransferAclsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListZoneTransferPeersError = CloudflareOpError;
+/** List Peers. */
+export const listZoneTransferPeers: API.OperationMethod<
+  ListZoneTransferPeersRequest,
+  ListZoneTransferPeersResponse,
+  ListZoneTransferPeersError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListZoneTransferPeersRequest,
+  output: ListZoneTransferPeersResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListZoneTransferTsigsError = CloudflareOpError;
 /** List TSIGs. */
-export const zoneTransfersTsigsList: API.OperationMethod<
-  ZoneTransfersTsigsListRequest,
-  ZoneTransfersTsigsListResponse,
-  ZoneTransfersTsigsListError,
+export const listZoneTransferTsigs: API.OperationMethod<
+  ListZoneTransferTsigsRequest,
+  ListZoneTransferTsigsResponse,
+  ListZoneTransferTsigsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersTsigsListRequest,
-  output: ZoneTransfersTsigsListResponse,
+  input: ListZoneTransferTsigsRequest,
+  output: ListZoneTransferTsigsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ZoneTransfersTsigsUpdateError = CloudflareOpError;
-/** Modify TSIG. */
-export const zoneTransfersTsigsUpdate: API.OperationMethod<
-  ZoneTransfersTsigsUpdateRequest,
-  ZoneTransfersTsigsUpdateResponse,
-  ZoneTransfersTsigsUpdateError,
+export type PatchDnssecError = Forbidden | CloudflareOpError;
+/** Enable or disable DNSSEC. */
+export const patchDnssec: API.OperationMethod<
+  PatchDnssecRequest,
+  PatchDnssecResponse,
+  PatchDnssecError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTransfersTsigsUpdateRequest,
-  output: ZoneTransfersTsigsUpdateResponse,
+  input: PatchDnssecRequest,
+  output: PatchDnssecResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchRecordError = CloudflareOpError;
+/** Update an existing DNS record. Notes: - A/AAAA records cannot exist on the same name as CNAME records. - NS records cannot exist on the same name as any other record type. - Domain names are always represented in Punycode, even if Unicode characters were used when creating the record. */
+export const patchRecord: API.OperationMethod<
+  PatchRecordRequest,
+  PatchRecordResponse,
+  PatchRecordError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchRecordRequest,
+  output: PatchRecordResponse,
   errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSettingAccountError =
+  | DnsSettingNotAvailable
+  | CloudflareOpError;
+/** Update DNS settings for an account */
+export const patchSettingAccount: API.OperationMethod<
+  PatchSettingAccountRequest,
+  PatchSettingAccountResponse,
+  PatchSettingAccountError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSettingAccountRequest,
+  output: PatchSettingAccountResponse,
+  errors: [DnsSettingNotAvailable, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSettingAccountViewError = ViewNotFound | CloudflareOpError;
+/** Update an existing Internal DNS View */
+export const patchSettingAccountView: API.OperationMethod<
+  PatchSettingAccountViewRequest,
+  PatchSettingAccountViewResponse,
+  PatchSettingAccountViewError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSettingAccountViewRequest,
+  output: PatchSettingAccountViewResponse,
+  errors: [ViewNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSettingZoneError = Forbidden | CloudflareOpError;
+/** Update DNS settings for a zone */
+export const patchSettingZone: API.OperationMethod<
+  PatchSettingZoneRequest,
+  PatchSettingZoneResponse,
+  PatchSettingZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSettingZoneRequest,
+  output: PatchSettingZoneResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ScanListRecordError = CloudflareOpError;
+/** Retrieves the list of DNS records discovered up to this point by the asynchronous scan. These records are temporary until explicitly accepted or rejected via `POST /scan/review`. Additional records may be discovered by the scan later. */
+export const scanListRecord: API.OperationMethod<
+  ScanListRecordRequest,
+  ScanListRecordResponse,
+  ScanListRecordError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ScanListRecordRequest,
+  output: ScanListRecordResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ScanRecordError = CloudflareOpError;
+/** Scan for common DNS records on your domain and automatically add them to your zone. Useful if you haven't updated your nameservers yet. */
+export const scanRecord: API.OperationMethod<
+  ScanRecordRequest,
+  ScanRecordResponse,
+  ScanRecordError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ScanRecordRequest,
+  output: ScanRecordResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ScanReviewRecordError = CloudflareOpError;
+/** Accept or reject DNS records found by the DNS records scan. Accepted records will be permanently added to the zone, while rejected records will be permanently deleted. */
+export const scanReviewRecord: API.OperationMethod<
+  ScanReviewRecordRequest,
+  ScanReviewRecordResponse,
+  ScanReviewRecordError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ScanReviewRecordRequest,
+  output: ScanReviewRecordResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ScanTriggerRecordError = CloudflareOpError;
+/** Initiates an asynchronous scan for common DNS records on your domain. Note that this **does not** automatically add records to your zone. The scan runs in the background, and results can be reviewed later using the `/scan/review` endpoints. Useful if you haven't updated your nameservers yet. */
+export const scanTriggerRecord: API.OperationMethod<
+  ScanTriggerRecordRequest,
+  ScanTriggerRecordResponse,
+  ScanTriggerRecordError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ScanTriggerRecordRequest,
+  output: ScanTriggerRecordResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateRecordError = CloudflareOpError;
+/** Overwrite an existing DNS record. Notes: - A/AAAA records cannot exist on the same name as CNAME records. - NS records cannot exist on the same name as any other record type. - Domain names are always represented in Punycode, even if Unicode characters were used when creating the record. */
+export const updateRecord: API.OperationMethod<
+  UpdateRecordRequest,
+  UpdateRecordResponse,
+  UpdateRecordError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateRecordRequest,
+  output: UpdateRecordResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateZoneTransferAclError = AclNotFound | CloudflareOpError;
+/** Modify ACL. */
+export const updateZoneTransferAcl: API.OperationMethod<
+  UpdateZoneTransferAclRequest,
+  UpdateZoneTransferAclResponse,
+  UpdateZoneTransferAclError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateZoneTransferAclRequest,
+  output: UpdateZoneTransferAclResponse,
+  errors: [AclNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateZoneTransferIncomingError =
+  | IncomingZoneTransferNotFound
+  | CloudflareOpError;
+/** Update secondary zone configuration for incoming zone transfers. */
+export const updateZoneTransferIncoming: API.OperationMethod<
+  UpdateZoneTransferIncomingRequest,
+  UpdateZoneTransferIncomingResponse,
+  UpdateZoneTransferIncomingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateZoneTransferIncomingRequest,
+  output: UpdateZoneTransferIncomingResponse,
+  errors: [
+    IncomingZoneTransferNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateZoneTransferOutgoingError =
+  | OutgoingZoneTransferNotFound
+  | OutgoingZoneTransfersNotAllowed
+  | CloudflareOpError;
+/** Update primary zone configuration for outgoing zone transfers. */
+export const updateZoneTransferOutgoing: API.OperationMethod<
+  UpdateZoneTransferOutgoingRequest,
+  UpdateZoneTransferOutgoingResponse,
+  UpdateZoneTransferOutgoingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateZoneTransferOutgoingRequest,
+  output: UpdateZoneTransferOutgoingResponse,
+  errors: [
+    OutgoingZoneTransferNotFound,
+    OutgoingZoneTransfersNotAllowed,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateZoneTransferPeerError = PeerNotFound | CloudflareOpError;
+/** Modify Peer. */
+export const updateZoneTransferPeer: API.OperationMethod<
+  UpdateZoneTransferPeerRequest,
+  UpdateZoneTransferPeerResponse,
+  UpdateZoneTransferPeerError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateZoneTransferPeerRequest,
+  output: UpdateZoneTransferPeerResponse,
+  errors: [PeerNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateZoneTransferTsigError = TsigNotFound | CloudflareOpError;
+/** Modify TSIG. */
+export const updateZoneTransferTsig: API.OperationMethod<
+  UpdateZoneTransferTsigRequest,
+  UpdateZoneTransferTsigResponse,
+  UpdateZoneTransferTsigError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateZoneTransferTsigRequest,
+  output: UpdateZoneTransferTsigResponse,
+  errors: [TsigNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

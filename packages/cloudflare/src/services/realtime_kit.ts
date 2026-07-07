@@ -9,734 +9,131 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export type ActiveSessionCreatePollRequestOptionsList = string[];
-export const ActiveSessionCreatePollRequestOptionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<ActiveSessionCreatePollRequestOptionsList>;
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
 
-export interface ActiveSessionCreatePollRequest {
+export class RealtimeKitPresetExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<RealtimeKitPresetExists>()("RealtimeKitPresetExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 409 }],
+) {}
+
+export class RealtimeKitPresetNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<RealtimeKitPresetNotFound>()("RealtimeKitPresetNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export class RealtimeKitWebhookExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<RealtimeKitWebhookExists>()("RealtimeKitWebhookExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 409 }],
+) {}
+
+export class RealtimeKitWebhookNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<RealtimeKitWebhookNotFound>()(
+    "RealtimeKitWebhookNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ status: 404 }],
+) {}
+
+export interface AddParticipantMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
   meetingId: string;
-  /** Different options for the question */
-  options: ActiveSessionCreatePollRequestOptionsList;
-  /** Question of the poll */
-  question: string;
-  /** if voters on a poll are anonymous */
-  anonymous?: boolean;
-  /** if votes on an option are visible before a person votes */
-  hideVotes?: boolean;
+  /** A unique participant ID. You must specify a unique ID for the participant, for example, UUID, email address, and so on. */
+  customParticipantId: string;
+  /** Name of the preset to apply to this participant. */
+  presetName: string;
+  /** (Optional) Name of the participant. */
+  name?: string;
+  /** (Optional) A URL to a picture to be used for the participant. */
+  picture?: string;
 }
-export const ActiveSessionCreatePollRequest = /*@__PURE__*/ S.suspend(() =>
+export const AddParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Label("meeting_id")),
-    options: ActiveSessionCreatePollRequestOptionsList,
-    question: S.String,
-    anonymous: S.optional(S.Boolean),
-    hideVotes: S.optional(S.Boolean.pipe(T.Body("hide_votes"))),
+    customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
+    presetName: S.String.pipe(T.Body("preset_name")),
+    name: S.optional(S.String),
+    picture: S.optional(S.String),
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/poll",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "ActiveSessionCreatePollRequest",
-}) as any as S.Schema<ActiveSessionCreatePollRequest>;
+  identifier: "AddParticipantMeetingRequest",
+}) as any as S.Schema<AddParticipantMeetingRequest>;
 
-export interface ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem {
+export interface MeetingsAddParticipantResponseData {
+  /** ID of the participant. */
   id: string;
-  name: string;
-}
-export const ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      name: S.String,
-    }),
-  ).annotate({
-    identifier: "ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem",
-  }) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem>;
-
-export type ActiveSessionCreatePollResponseDataPollOptionsItemVotesList =
-  ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem[];
-export const ActiveSessionCreatePollResponseDataPollOptionsItemVotesList =
-  /*@__PURE__*/ S.Array(
-    ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem,
-  ) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItemVotesList>;
-
-export interface ActiveSessionCreatePollResponseDataPollOptionsItem {
-  count: number;
-  /** Text of the answer option */
-  text: string;
-  votes: ActiveSessionCreatePollResponseDataPollOptionsItemVotesList;
-}
-export const ActiveSessionCreatePollResponseDataPollOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      count: S.Number,
-      text: S.String,
-      votes: ActiveSessionCreatePollResponseDataPollOptionsItemVotesList,
-    }),
-  ).annotate({
-    identifier: "ActiveSessionCreatePollResponseDataPollOptionsItem",
-  }) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItem>;
-
-export type ActiveSessionCreatePollResponseDataPollOptionsList =
-  ActiveSessionCreatePollResponseDataPollOptionsItem[];
-export const ActiveSessionCreatePollResponseDataPollOptionsList =
-  /*@__PURE__*/ S.Array(
-    ActiveSessionCreatePollResponseDataPollOptionsItem,
-  ) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsList>;
-
-export type ActiveSessionCreatePollResponseDataPollVotedList = string[];
-export const ActiveSessionCreatePollResponseDataPollVotedList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ActiveSessionCreatePollResponseDataPollVotedList>;
-
-export interface ActiveSessionCreatePollResponseDataPoll {
-  /** ID of the poll */
-  id: string;
-  /** Answer options */
-  options: ActiveSessionCreatePollResponseDataPollOptionsList;
-  /** Question asked by the poll */
-  question: string;
-  anonymous?: boolean;
-  createdBy?: string;
-  hideVotes?: boolean;
-  voted?: ActiveSessionCreatePollResponseDataPollVotedList;
-}
-export const ActiveSessionCreatePollResponseDataPoll = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      options: ActiveSessionCreatePollResponseDataPollOptionsList,
-      question: S.String,
-      anonymous: S.optional(S.Boolean),
-      createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-      hideVotes: S.optional(S.Boolean.pipe(T.Body("hide_votes"))),
-      voted: S.optional(ActiveSessionCreatePollResponseDataPollVotedList),
-    }),
-).annotate({
-  identifier: "ActiveSessionCreatePollResponseDataPoll",
-}) as any as S.Schema<ActiveSessionCreatePollResponseDataPoll>;
-
-export interface ActiveSessionCreatePollResponseData {
-  action?: string;
-  poll?: ActiveSessionCreatePollResponseDataPoll;
-}
-export const ActiveSessionCreatePollResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(S.String),
-    poll: S.optional(ActiveSessionCreatePollResponseDataPoll),
-  }),
-).annotate({
-  identifier: "ActiveSessionCreatePollResponseData",
-}) as any as S.Schema<ActiveSessionCreatePollResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ActiveSessionCreatePollResponse {
-  data?: ActiveSessionCreatePollResponseData;
-}
-export const ActiveSessionCreatePollResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(ActiveSessionCreatePollResponseData),
-  }),
-).annotate({
-  identifier: "ActiveSessionCreatePollResponse",
-}) as any as S.Schema<ActiveSessionCreatePollResponse>;
-
-export interface ActiveSessionGetActiveSessionRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-}
-export const ActiveSessionGetActiveSessionRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      meetingId: S.String.pipe(T.Label("meeting_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ActiveSessionGetActiveSessionRequest",
-}) as any as S.Schema<ActiveSessionGetActiveSessionRequest>;
-
-export type ActiveSessionGetActiveSessionResponseDataStatus =
-  | "LIVE"
-  | "ENDED"
-  | (string & {});
-export const ActiveSessionGetActiveSessionResponseDataStatus =
-  /*@__PURE__*/ S.String;
-
-export type ActiveSessionGetActiveSessionResponseDataType =
-  | "meeting"
-  | "livestream"
-  | "participant"
-  | (string & {});
-export const ActiveSessionGetActiveSessionResponseDataType =
-  /*@__PURE__*/ S.String;
-
-export type ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList =
-  unknown[];
-export const ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList>;
-
-export interface ActiveSessionGetActiveSessionResponseData {
-  /** ID of the session */
-  id: string;
-  /** ID of the meeting this session is associated with. In the case of V2 meetings, it is always a UUID. In V1 meetings, it is a room name of the form `abcdef-ghijkl` */
-  associatedId: string;
-  /** timestamp when session created */
+  /** The participant's auth token that can be used for joining a meeting from the client side. */
+  token: string;
+  /** When this object was created. The time is returned in ISO format. */
   createdAt: string;
-  /** number of participants currently in the session */
-  liveParticipants: number;
-  /** number of maximum participants that were in the session */
-  maxConcurrentParticipants: number;
-  /** Title of the meeting this session belongs to */
-  meetingDisplayName: string;
-  /** number of minutes consumed since the session started */
-  minutesConsumed: number;
-  /** App id that hosted this session */
-  organizationId: string;
-  /** timestamp when session started */
-  startedAt: string;
-  /** current status of session */
-  status: ActiveSessionGetActiveSessionResponseDataStatus;
-  /** type of session */
-  type: ActiveSessionGetActiveSessionResponseDataType;
-  /** timestamp when session was last updated */
+  /** A unique participant ID generated by the client. */
+  customParticipantId: string;
+  /** Preset applied to the participant. */
+  presetName: string;
+  /** When this object was updated. The time is returned in ISO format. */
   updatedAt: string;
-  breakoutRooms?: ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList;
-  /** timestamp when session ended */
-  endedAt?: string;
-}
-export const ActiveSessionGetActiveSessionResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      associatedId: S.String.pipe(T.Body("associated_id")),
-      createdAt: S.String.pipe(T.Body("created_at")),
-      liveParticipants: S.Number.pipe(T.Body("live_participants")),
-      maxConcurrentParticipants: S.Number.pipe(
-        T.Body("max_concurrent_participants"),
-      ),
-      meetingDisplayName: S.String.pipe(T.Body("meeting_display_name")),
-      minutesConsumed: S.Number.pipe(T.Body("minutes_consumed")),
-      organizationId: S.String.pipe(T.Body("organization_id")),
-      startedAt: S.String.pipe(T.Body("started_at")),
-      status: ActiveSessionGetActiveSessionResponseDataStatus,
-      type: ActiveSessionGetActiveSessionResponseDataType,
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      breakoutRooms: S.optional(
-        ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList.pipe(
-          T.Body("breakout_rooms"),
-        ),
-      ),
-      endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
-    }),
-  ).annotate({
-    identifier: "ActiveSessionGetActiveSessionResponseData",
-  }) as any as S.Schema<ActiveSessionGetActiveSessionResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ActiveSessionGetActiveSessionResponse {
-  data?: ActiveSessionGetActiveSessionResponseData;
-}
-export const ActiveSessionGetActiveSessionResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: S.optional(ActiveSessionGetActiveSessionResponseData),
-    }),
-).annotate({
-  identifier: "ActiveSessionGetActiveSessionResponse",
-}) as any as S.Schema<ActiveSessionGetActiveSessionResponse>;
-
-export interface ActiveSessionKickAllParticipantsRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-}
-export const ActiveSessionKickAllParticipantsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      meetingId: S.String.pipe(T.Label("meeting_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick-all",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ActiveSessionKickAllParticipantsRequest",
-}) as any as S.Schema<ActiveSessionKickAllParticipantsRequest>;
-
-export interface ActiveSessionKickAllParticipantsResponseData {
-  action?: string;
-  kickedParticipantsCount?: number;
-}
-export const ActiveSessionKickAllParticipantsResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(S.String),
-      kickedParticipantsCount: S.optional(
-        S.Number.pipe(T.Body("kicked_participants_count")),
-      ),
-    }),
-  ).annotate({
-    identifier: "ActiveSessionKickAllParticipantsResponseData",
-  }) as any as S.Schema<ActiveSessionKickAllParticipantsResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ActiveSessionKickAllParticipantsResponse {
-  data?: ActiveSessionKickAllParticipantsResponseData;
-}
-export const ActiveSessionKickAllParticipantsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: S.optional(ActiveSessionKickAllParticipantsResponseData),
-    }),
-).annotate({
-  identifier: "ActiveSessionKickAllParticipantsResponse",
-}) as any as S.Schema<ActiveSessionKickAllParticipantsResponse>;
-
-export type ActiveSessionKickParticipantsRequestCustomParticipantIdsList =
-  string[];
-export const ActiveSessionKickParticipantsRequestCustomParticipantIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ActiveSessionKickParticipantsRequestCustomParticipantIdsList>;
-
-export type ActiveSessionKickParticipantsRequestParticipantIdsList = string[];
-export const ActiveSessionKickParticipantsRequestParticipantIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ActiveSessionKickParticipantsRequestParticipantIdsList>;
-
-export interface ActiveSessionKickParticipantsRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-  customParticipantIds: ActiveSessionKickParticipantsRequestCustomParticipantIdsList;
-  participantIds: ActiveSessionKickParticipantsRequestParticipantIdsList;
-}
-export const ActiveSessionKickParticipantsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      meetingId: S.String.pipe(T.Label("meeting_id")),
-      customParticipantIds:
-        ActiveSessionKickParticipantsRequestCustomParticipantIdsList.pipe(
-          T.Body("custom_participant_ids"),
-        ),
-      participantIds:
-        ActiveSessionKickParticipantsRequestParticipantIdsList.pipe(
-          T.Body("participant_ids"),
-        ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "ActiveSessionKickParticipantsRequest",
-}) as any as S.Schema<ActiveSessionKickParticipantsRequest>;
-
-export interface ActiveSessionKickParticipantsResponseDataParticipantsItem {
-  /** ID of the session participant */
-  id: string;
-  createdAt: string;
-  updatedAt: string;
-  /** Email of the session participant. */
-  email?: string;
-  /** Name of the session participant. */
+  /** Name of the participant. */
   name?: string;
-  /** A URL pointing to a picture of the participant. */
+  /** URL to a picture of the participant. */
   picture?: string;
 }
-export const ActiveSessionKickParticipantsResponseDataParticipantsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      email: S.optional(S.String),
-      name: S.optional(S.String),
-      picture: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ActiveSessionKickParticipantsResponseDataParticipantsItem",
-  }) as any as S.Schema<ActiveSessionKickParticipantsResponseDataParticipantsItem>;
-
-export type ActiveSessionKickParticipantsResponseDataParticipantsList =
-  ActiveSessionKickParticipantsResponseDataParticipantsItem[];
-export const ActiveSessionKickParticipantsResponseDataParticipantsList =
-  /*@__PURE__*/ S.Array(
-    ActiveSessionKickParticipantsResponseDataParticipantsItem,
-  ) as any as S.Schema<ActiveSessionKickParticipantsResponseDataParticipantsList>;
-
-export interface ActiveSessionKickParticipantsResponseData {
-  action?: string;
-  participants?: ActiveSessionKickParticipantsResponseDataParticipantsList;
-}
-export const ActiveSessionKickParticipantsResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(S.String),
-      participants: S.optional(
-        ActiveSessionKickParticipantsResponseDataParticipantsList,
-      ),
-    }),
-  ).annotate({
-    identifier: "ActiveSessionKickParticipantsResponseData",
-  }) as any as S.Schema<ActiveSessionKickParticipantsResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ActiveSessionKickParticipantsResponse {
-  data?: ActiveSessionKickParticipantsResponseData;
-}
-export const ActiveSessionKickParticipantsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: S.optional(ActiveSessionKickParticipantsResponseData),
-    }),
-).annotate({
-  identifier: "ActiveSessionKickParticipantsResponse",
-}) as any as S.Schema<ActiveSessionKickParticipantsResponse>;
-
-export interface AnalyticsGetOrgAnalyticsRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  /** end date in YYYY-MM-DD format */
-  endDate?: string;
-  /** start date in YYYY-MM-DD format */
-  startDate?: string;
-}
-export const AnalyticsGetOrgAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
+export const MeetingsAddParticipantResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    endDate: S.optional(S.String.pipe(T.Query("end_date"))),
-    startDate: S.optional(S.String.pipe(T.Query("start_date"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AnalyticsGetOrgAnalyticsRequest",
-}) as any as S.Schema<AnalyticsGetOrgAnalyticsRequest>;
-
-export interface AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem {
-  day?: string;
-  /** Total recording minutes for a specific day */
-  totalRecordingMinutes?: number;
-  /** Total number of recordings for a specific day */
-  totalRecordings?: number;
-}
-export const AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      day: S.optional(S.String),
-      totalRecordingMinutes: S.optional(
-        S.Number.pipe(T.Body("total_recording_minutes")),
-      ),
-      totalRecordings: S.optional(S.Number.pipe(T.Body("total_recordings"))),
-    }),
-  ).annotate({
-    identifier:
-      "AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem",
-  }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
-
-export type AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
-  AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem[];
-export const AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
-  /*@__PURE__*/ S.Array(
-    AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem,
-  ) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList>;
-
-export interface AnalyticsGetOrgAnalyticsResponseDataRecordingStats {
-  /** Day wise recording stats */
-  dayStats?: AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList;
-  /** Total number of recordings during the range specified */
-  recordingCount?: number;
-  /** Total recording minutes during the range specified */
-  recordingMinutesConsumed?: number;
-}
-export const AnalyticsGetOrgAnalyticsResponseDataRecordingStats =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dayStats: S.optional(
-        AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList.pipe(
-          T.Body("day_stats"),
-        ),
-      ),
-      recordingCount: S.optional(S.Number.pipe(T.Body("recording_count"))),
-      recordingMinutesConsumed: S.optional(
-        S.Number.pipe(T.Body("recording_minutes_consumed")),
-      ),
-    }),
-  ).annotate({
-    identifier: "AnalyticsGetOrgAnalyticsResponseDataRecordingStats",
-  }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataRecordingStats>;
-
-export interface AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem {
-  day?: string;
-  /** Total session minutes for a specific day */
-  totalSessionMinutes?: number;
-  /** Total number of sessions for a specific day */
-  totalSessions?: number;
-}
-export const AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      day: S.optional(S.String),
-      totalSessionMinutes: S.optional(
-        S.Number.pipe(T.Body("total_session_minutes")),
-      ),
-      totalSessions: S.optional(S.Number.pipe(T.Body("total_sessions"))),
-    }),
-  ).annotate({
-    identifier: "AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem",
-  }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
-
-export type AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
-  AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem[];
-export const AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
-  /*@__PURE__*/ S.Array(
-    AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem,
-  ) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList>;
-
-export interface AnalyticsGetOrgAnalyticsResponseDataSessionStats {
-  /** Day wise session stats */
-  dayStats?: AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList;
-  /** Total number of sessions during the range specified */
-  sessionsCount?: number;
-  /** Total session minutes during the range specified */
-  sessionsMinutesConsumed?: number;
-}
-export const AnalyticsGetOrgAnalyticsResponseDataSessionStats =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dayStats: S.optional(
-        AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList.pipe(
-          T.Body("day_stats"),
-        ),
-      ),
-      sessionsCount: S.optional(S.Number.pipe(T.Body("sessions_count"))),
-      sessionsMinutesConsumed: S.optional(
-        S.Number.pipe(T.Body("sessions_minutes_consumed")),
-      ),
-    }),
-  ).annotate({
-    identifier: "AnalyticsGetOrgAnalyticsResponseDataSessionStats",
-  }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataSessionStats>;
-
-export interface AnalyticsGetOrgAnalyticsResponseData {
-  /** Recording statistics of an App during the range specified */
-  recordingStats?: AnalyticsGetOrgAnalyticsResponseDataRecordingStats;
-  /** Session statistics of an App during the range specified */
-  sessionStats?: AnalyticsGetOrgAnalyticsResponseDataSessionStats;
-}
-export const AnalyticsGetOrgAnalyticsResponseData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      recordingStats: S.optional(
-        AnalyticsGetOrgAnalyticsResponseDataRecordingStats.pipe(
-          T.Body("recording_stats"),
-        ),
-      ),
-      sessionStats: S.optional(
-        AnalyticsGetOrgAnalyticsResponseDataSessionStats.pipe(
-          T.Body("session_stats"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "AnalyticsGetOrgAnalyticsResponseData",
-}) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface AnalyticsGetOrgAnalyticsResponse {
-  data?: AnalyticsGetOrgAnalyticsResponseData;
-}
-export const AnalyticsGetOrgAnalyticsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(AnalyticsGetOrgAnalyticsResponseData),
-  }),
-).annotate({
-  identifier: "AnalyticsGetOrgAnalyticsResponse",
-}) as any as S.Schema<AnalyticsGetOrgAnalyticsResponse>;
-
-export type AppsGetRequestSortOrder = "ASC" | "DESC" | (string & {});
-export const AppsGetRequestSortOrder = /*@__PURE__*/ S.String;
-
-export interface AppsGetRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The page number from which you want your page search results to be displayed. */
-  pageNo?: number;
-  /** Number of results per page. */
-  perPage?: number;
-  /** Search string that matches apps by name. */
-  search?: string;
-  /** Sort order for apps by creation time. */
-  sortOrder?: AppsGetRequestSortOrder;
-}
-export const AppsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    search: S.optional(S.String.pipe(T.Query())),
-    sortOrder: S.optional(AppsGetRequestSortOrder.pipe(T.Query("sort_order"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/apps",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "AppsGetRequest" }) as any as S.Schema<AppsGetRequest>;
-
-export interface AppsGetResponseDataItem {
-  id?: string;
-  createdAt?: string;
-  name?: string;
-}
-export const AppsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    id: S.String,
+    token: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
+    presetName: S.String.pipe(T.Body("preset_name")),
+    updatedAt: S.String.pipe(T.Body("updated_at")),
     name: S.optional(S.String),
+    picture: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "AppsGetResponseDataItem",
-}) as any as S.Schema<AppsGetResponseDataItem>;
-
-export type AppsGetResponseDataList = AppsGetResponseDataItem[];
-export const AppsGetResponseDataList = /*@__PURE__*/ S.Array(
-  AppsGetResponseDataItem,
-) as any as S.Schema<AppsGetResponseDataList>;
-
-export interface AppsGetResponsePaging {
-  endOffset?: number;
-  startOffset?: number;
-  totalCount?: number;
-}
-export const AppsGetResponsePaging = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endOffset: S.optional(S.Number.pipe(T.Body("end_offset"))),
-    startOffset: S.optional(S.Number.pipe(T.Body("start_offset"))),
-    totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
-  }),
-).annotate({
-  identifier: "AppsGetResponsePaging",
-}) as any as S.Schema<AppsGetResponsePaging>;
+  identifier: "MeetingsAddParticipantResponseData",
+}) as any as S.Schema<MeetingsAddParticipantResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface AppsGetResponse {
-  data?: AppsGetResponseDataList;
-  paging?: AppsGetResponsePaging;
+export interface AddParticipantMeetingResponse {
+  /** Represents a participant. */
+  data?: MeetingsAddParticipantResponseData;
 }
-export const AppsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const AddParticipantMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(AppsGetResponseDataList),
-    paging: S.optional(AppsGetResponsePaging),
+    data: S.optional(MeetingsAddParticipantResponseData),
   }),
 ).annotate({
-  identifier: "AppsGetResponse",
-}) as any as S.Schema<AppsGetResponse>;
+  identifier: "AddParticipantMeetingResponse",
+}) as any as S.Schema<AddParticipantMeetingResponse>;
 
-export interface AppsPostRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  name: string;
-}
-export const AppsPostRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/apps",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsPostRequest",
-}) as any as S.Schema<AppsPostRequest>;
-
-export interface AppsPostResponseDataApp {
-  id?: string;
-  createdAt?: string;
-  name?: string;
-}
-export const AppsPostResponseDataApp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AppsPostResponseDataApp",
-}) as any as S.Schema<AppsPostResponseDataApp>;
-
-export interface AppsPostResponseData {
-  app?: AppsPostResponseDataApp;
-}
-export const AppsPostResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    app: S.optional(AppsPostResponseDataApp),
-  }),
-).annotate({
-  identifier: "AppsPostResponseData",
-}) as any as S.Schema<AppsPostResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface AppsPostResponse {
-  data?: AppsPostResponseData;
-}
-export const AppsPostResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(AppsPostResponseData),
-  }),
-).annotate({
-  identifier: "AppsPostResponse",
-}) as any as S.Schema<AppsPostResponse>;
-
-export interface LivestreamsCreateIndependentLivestreamRequest {
+export interface CreateIndependentLivestreamLivestreamRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
@@ -744,7 +141,7 @@ export interface LivestreamsCreateIndependentLivestreamRequest {
   /** Name of the livestream */
   name?: string;
 }
-export const LivestreamsCreateIndependentLivestreamRequest =
+export const CreateIndependentLivestreamLivestreamRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
@@ -758,8 +155,8 @@ export const LivestreamsCreateIndependentLivestreamRequest =
       }),
     ),
   ).annotate({
-    identifier: "LivestreamsCreateIndependentLivestreamRequest",
-  }) as any as S.Schema<LivestreamsCreateIndependentLivestreamRequest>;
+    identifier: "CreateIndependentLivestreamLivestreamRequest",
+  }) as any as S.Schema<CreateIndependentLivestreamLivestreamRequest>;
 
 export type LivestreamsCreateIndependentLivestreamResponseDataStatus =
   | "LIVE"
@@ -804,1171 +201,17 @@ export const LivestreamsCreateIndependentLivestreamResponseData =
   }) as any as S.Schema<LivestreamsCreateIndependentLivestreamResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LivestreamsCreateIndependentLivestreamResponse {
+export interface CreateIndependentLivestreamLivestreamResponse {
   data?: LivestreamsCreateIndependentLivestreamResponseData;
 }
-export const LivestreamsCreateIndependentLivestreamResponse =
+export const CreateIndependentLivestreamLivestreamResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(LivestreamsCreateIndependentLivestreamResponseData),
     }),
   ).annotate({
-    identifier: "LivestreamsCreateIndependentLivestreamResponse",
-  }) as any as S.Schema<LivestreamsCreateIndependentLivestreamResponse>;
-
-export interface LivestreamsGetActiveLivestreamsForLivestreamIdRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  livestreamId: string;
-}
-export const LivestreamsGetActiveLivestreamsForLivestreamIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      livestreamId: S.String.pipe(T.Label("livestream_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}/active-livestream-session",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "LivestreamsGetActiveLivestreamsForLivestreamIdRequest",
-  }) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdRequest>;
-
-export type LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus =
-  "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {});
-export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus =
-  /*@__PURE__*/ S.String;
-
-export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream {
-  id?: string;
-  /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
-  /** Specifies if the livestream was disabled. */
-  disabled?: string;
-  /** The server URL to which the RTMP encoder sends the video and audio data. */
-  ingestServer?: string;
-  /** ID of the meeting. */
-  meetingId?: string;
-  /** Name of the livestream. */
-  name?: string;
-  /** The web address that viewers can use to watch the livestream. */
-  playbackUrl?: string;
-  status?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus;
-  /** Unique key for accessing each livestream. */
-  streamKey?: string;
-  /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
-}
-export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      disabled: S.optional(S.String),
-      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
-      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
-      name: S.optional(S.String),
-      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
-      status: S.optional(
-        LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus,
-      ),
-      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
-  ).annotate({
-    identifier:
-      "LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream",
-  }) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream>;
-
-export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession {
-  id?: string;
-  /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
-  errMessage?: string;
-  /** The time duration for which the input was given or the meeting was streamed. */
-  ingestSeconds?: string;
-  /** Timestamp the object was invoked. The time is returned in ISO format. */
-  invokedTime?: string;
-  livestreamId?: string;
-  /** Timestamp the object was started. The time is returned in ISO format. */
-  startedTime?: string;
-  /** Timestamp the object was stopped. The time is returned in ISO format. */
-  stoppedTime?: string;
-  /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
-  /** The total view time for which the viewers watched the stream. */
-  viewerSeconds?: string;
-}
-export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      errMessage: S.optional(S.String.pipe(T.Body("err_message"))),
-      ingestSeconds: S.optional(S.String.pipe(T.Body("ingest_seconds"))),
-      invokedTime: S.optional(S.String.pipe(T.Body("invoked_time"))),
-      livestreamId: S.optional(S.String.pipe(T.Body("livestream_id"))),
-      startedTime: S.optional(S.String.pipe(T.Body("started_time"))),
-      stoppedTime: S.optional(S.String.pipe(T.Body("stopped_time"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-      viewerSeconds: S.optional(S.String.pipe(T.Body("viewer_seconds"))),
-    }),
-  ).annotate({
-    identifier:
-      "LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession",
-  }) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession>;
-
-export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseData {
-  livestream?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream;
-  session?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession;
-}
-export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      livestream: S.optional(
-        LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream,
-      ),
-      session: S.optional(
-        LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession,
-      ),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetActiveLivestreamsForLivestreamIdResponseData",
-  }) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponse {
-  data?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseData;
-}
-export const LivestreamsGetActiveLivestreamsForLivestreamIdResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      data: S.optional(
-        LivestreamsGetActiveLivestreamsForLivestreamIdResponseData,
-      ),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetActiveLivestreamsForLivestreamIdResponse",
-  }) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdResponse>;
-
-export type LivestreamsGetAllLivestreamsRequestSortOrder =
-  | "ASC"
-  | "DSC"
-  | (string & {});
-export const LivestreamsGetAllLivestreamsRequestSortOrder =
-  /*@__PURE__*/ S.String;
-
-export type LivestreamsGetAllLivestreamsRequestStatus =
-  | "LIVE"
-  | "IDLE"
-  | "ERRORED"
-  | "INVOKED"
-  | (string & {});
-export const LivestreamsGetAllLivestreamsRequestStatus = /*@__PURE__*/ S.String;
-
-export interface LivestreamsGetAllLivestreamsRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  /** Specify the end time range in ISO format to access the live stream. */
-  endTime?: string;
-  /** Exclude the RealtimeKit meetings that are livestreamed. */
-  excludeMeetings?: boolean;
-  /** The page number from which you want your page search results to be displayed. */
-  pageNo?: number;
-  /** Number of results per page. */
-  perPage?: number;
-  /** Specifies the sorting order for the results. */
-  sortOrder?: LivestreamsGetAllLivestreamsRequestSortOrder;
-  /** Specify the start time range in ISO format to access the live stream. */
-  startTime?: string;
-  /** Specifies the status of the operation. */
-  status?: LivestreamsGetAllLivestreamsRequestStatus;
-}
-export const LivestreamsGetAllLivestreamsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    endTime: S.optional(S.String.pipe(T.Query("end_time"))),
-    excludeMeetings: S.optional(S.Boolean.pipe(T.Query("exclude_meetings"))),
-    pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    sortOrder: S.optional(
-      LivestreamsGetAllLivestreamsRequestSortOrder.pipe(T.Query("sort_order")),
-    ),
-    startTime: S.optional(S.String.pipe(T.Query("start_time"))),
-    status: S.optional(
-      LivestreamsGetAllLivestreamsRequestStatus.pipe(T.Query()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LivestreamsGetAllLivestreamsRequest",
-}) as any as S.Schema<LivestreamsGetAllLivestreamsRequest>;
-
-export interface LivestreamsGetAllLivestreamsResponseDataPaging {
-  endOffset?: number;
-  startOffset?: number;
-  totalCount?: number;
-}
-export const LivestreamsGetAllLivestreamsResponseDataPaging =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endOffset: S.optional(S.Number.pipe(T.Body("end_offset"))),
-      startOffset: S.optional(S.Number.pipe(T.Body("start_offset"))),
-      totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetAllLivestreamsResponseDataPaging",
-  }) as any as S.Schema<LivestreamsGetAllLivestreamsResponseDataPaging>;
-
-export type LivestreamsGetAllLivestreamsResponseDataStatus =
-  | "LIVE"
-  | "IDLE"
-  | "ERRORED"
-  | "INVOKED"
-  | (string & {});
-export const LivestreamsGetAllLivestreamsResponseDataStatus =
-  /*@__PURE__*/ S.String;
-
-export interface LivestreamsGetAllLivestreamsResponseData {
-  /** The ID of the livestream. */
-  id?: string;
-  /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
-  /** Specifies if the livestream was disabled. */
-  disabled?: string;
-  /** The server URL to which the RTMP encoder sends the video and audio data. */
-  ingestServer?: string;
-  /** ID of the meeting. */
-  meetingId?: string;
-  /** Name of the livestream. */
-  name?: string;
-  paging?: LivestreamsGetAllLivestreamsResponseDataPaging;
-  /** The web address that viewers can use to watch the livestream. */
-  playbackUrl?: string;
-  status?: LivestreamsGetAllLivestreamsResponseDataStatus;
-  /** Unique key for accessing each livestream. */
-  streamKey?: string;
-  /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
-}
-export const LivestreamsGetAllLivestreamsResponseData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      disabled: S.optional(S.String),
-      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
-      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
-      name: S.optional(S.String),
-      paging: S.optional(LivestreamsGetAllLivestreamsResponseDataPaging),
-      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
-      status: S.optional(LivestreamsGetAllLivestreamsResponseDataStatus),
-      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
-).annotate({
-  identifier: "LivestreamsGetAllLivestreamsResponseData",
-}) as any as S.Schema<LivestreamsGetAllLivestreamsResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LivestreamsGetAllLivestreamsResponse {
-  data?: LivestreamsGetAllLivestreamsResponseData;
-}
-export const LivestreamsGetAllLivestreamsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: S.optional(LivestreamsGetAllLivestreamsResponseData),
-    }),
-).annotate({
-  identifier: "LivestreamsGetAllLivestreamsResponse",
-}) as any as S.Schema<LivestreamsGetAllLivestreamsResponse>;
-
-export interface LivestreamsGetLivestreamAnalyticsCompleteRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  /** Specify the end time as a Unix timestamp in seconds to access the livestream analytics. */
-  endTime?: number;
-  /** Optional filters for livestream analytics. */
-  filters?: string;
-  /** Specify the start time as a Unix timestamp in seconds to access the livestream analytics. */
-  startTime?: number;
-}
-export const LivestreamsGetLivestreamAnalyticsCompleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      endTime: S.optional(S.Number.pipe(T.Query("end_time"))),
-      filters: S.optional(S.String.pipe(T.Query())),
-      startTime: S.optional(S.Number.pipe(T.Query("start_time"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/overall",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "LivestreamsGetLivestreamAnalyticsCompleteRequest",
-  }) as any as S.Schema<LivestreamsGetLivestreamAnalyticsCompleteRequest>;
-
-export interface LivestreamsGetLivestreamAnalyticsCompleteResponseData {
-  /** Count of total livestreams. */
-  count?: number;
-  /** Total time duration for which the input was given or the meeting was streamed. */
-  totalIngestSeconds?: number;
-  /** Total view time for which the viewers watched the stream. */
-  totalViewerSeconds?: number;
-}
-export const LivestreamsGetLivestreamAnalyticsCompleteResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      count: S.optional(S.Number),
-      totalIngestSeconds: S.optional(
-        S.Number.pipe(T.Body("total_ingest_seconds")),
-      ),
-      totalViewerSeconds: S.optional(
-        S.Number.pipe(T.Body("total_viewer_seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetLivestreamAnalyticsCompleteResponseData",
-  }) as any as S.Schema<LivestreamsGetLivestreamAnalyticsCompleteResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LivestreamsGetLivestreamAnalyticsCompleteResponse {
-  data?: LivestreamsGetLivestreamAnalyticsCompleteResponseData;
-}
-export const LivestreamsGetLivestreamAnalyticsCompleteResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      data: S.optional(LivestreamsGetLivestreamAnalyticsCompleteResponseData),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetLivestreamAnalyticsCompleteResponse",
-  }) as any as S.Schema<LivestreamsGetLivestreamAnalyticsCompleteResponse>;
-
-export interface LivestreamsGetLivestreamAnalyticsDaywiseRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  /** Specify the end time as a Unix timestamp in seconds to access the livestream analytics. */
-  endTime?: number;
-  /** Optional filters for livestream analytics. */
-  filters?: string;
-  /** Specify the start time as a Unix timestamp in seconds to access the livestream analytics. */
-  startTime?: number;
-}
-export const LivestreamsGetLivestreamAnalyticsDaywiseRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      endTime: S.optional(S.Number.pipe(T.Query("end_time"))),
-      filters: S.optional(S.String.pipe(T.Query())),
-      startTime: S.optional(S.Number.pipe(T.Query("start_time"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/daywise",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "LivestreamsGetLivestreamAnalyticsDaywiseRequest",
-  }) as any as S.Schema<LivestreamsGetLivestreamAnalyticsDaywiseRequest>;
-
-export interface LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem {
-  /** Count of total livestream sessions. */
-  count?: number;
-  /** Analytics date. */
-  date?: string;
-  /** Total time duration for which the input was given or the meeting was streamed. */
-  totalIngestSeconds?: number;
-  /** Total view time for which the viewers watched the stream. */
-  totalViewerSeconds?: number;
-}
-export const LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      count: S.optional(S.Number),
-      date: S.optional(S.String),
-      totalIngestSeconds: S.optional(
-        S.Number.pipe(T.Body("total_ingest_seconds")),
-      ),
-      totalViewerSeconds: S.optional(
-        S.Number.pipe(T.Body("total_viewer_seconds")),
-      ),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem",
-  }) as any as S.Schema<LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem>;
-
-export type LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList =
-  LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem[];
-export const LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList =
-  /*@__PURE__*/ S.Array(
-    LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem,
-  ) as any as S.Schema<LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LivestreamsGetLivestreamAnalyticsDaywiseResponse {
-  data?: LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList;
-}
-export const LivestreamsGetLivestreamAnalyticsDaywiseResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      data: S.optional(
-        LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList,
-      ),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetLivestreamAnalyticsDaywiseResponse",
-  }) as any as S.Schema<LivestreamsGetLivestreamAnalyticsDaywiseResponse>;
-
-export interface LivestreamsGetLivestreamSessionDetailsForSessionIdRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  livestreamSessionId: string;
-}
-export const LivestreamsGetLivestreamSessionDetailsForSessionIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      livestreamSessionId: S.String.pipe(T.Label("livestream_session_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams/sessions/{livestream_session_id}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "LivestreamsGetLivestreamSessionDetailsForSessionIdRequest",
-  }) as any as S.Schema<LivestreamsGetLivestreamSessionDetailsForSessionIdRequest>;
-
-export interface LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData {
-  /** The livestream ID. */
-  id?: string;
-  /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
-  /** The server URL to which the RTMP encoder sends the video and audio data. */
-  errMessage?: string;
-  /** Name of the livestream. */
-  ingestSeconds?: number;
-  livestreamId?: string;
-  /** Unique key for accessing each livestream. */
-  startedTime?: string;
-  /** The web address that viewers can use to watch the livestream. */
-  stoppedTime?: string;
-  /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
-  /** Specifies if the livestream was disabled. */
-  viewerSeconds?: number;
-}
-export const LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      errMessage: S.optional(S.String.pipe(T.Body("err_message"))),
-      ingestSeconds: S.optional(S.Number.pipe(T.Body("ingest_seconds"))),
-      livestreamId: S.optional(S.String.pipe(T.Body("livestream_id"))),
-      startedTime: S.optional(S.String.pipe(T.Body("started_time"))),
-      stoppedTime: S.optional(S.String.pipe(T.Body("stopped_time"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-      viewerSeconds: S.optional(S.Number.pipe(T.Body("viewer_seconds"))),
-    }),
-  ).annotate({
-    identifier:
-      "LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData",
-  }) as any as S.Schema<LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LivestreamsGetLivestreamSessionDetailsForSessionIdResponse {
-  data?: LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData;
-}
-export const LivestreamsGetLivestreamSessionDetailsForSessionIdResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      data: S.optional(
-        LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData,
-      ),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetLivestreamSessionDetailsForSessionIdResponse",
-  }) as any as S.Schema<LivestreamsGetLivestreamSessionDetailsForSessionIdResponse>;
-
-export interface LivestreamsGetLivestreamSessionForLivestreamIdRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  livestreamId: string;
-  /** The page number from which you want your page search results to be displayed. */
-  pageNo?: number;
-  /** Number of results per page. */
-  perPage?: number;
-}
-export const LivestreamsGetLivestreamSessionForLivestreamIdRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      livestreamId: S.String.pipe(T.Label("livestream_id")),
-      pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
-      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "LivestreamsGetLivestreamSessionForLivestreamIdRequest",
-  }) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdRequest>;
-
-export type LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus =
-  "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {});
-export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus =
-  /*@__PURE__*/ S.String;
-
-export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream {
-  /** ID of the livestream. */
-  id?: string;
-  /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
-  /** Specifies if the livestream was disabled. */
-  disabled?: string;
-  /** The server URL to which the RTMP encoder sends the video and audio data. */
-  ingestServer?: string;
-  /** The ID of the meeting. */
-  meetingId?: string;
-  /** Name of the livestream. */
-  name?: string;
-  /** The web address that viewers can use to watch the livestream. */
-  playbackUrl?: string;
-  status?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus;
-  /** Unique key for accessing each livestream. */
-  streamKey?: string;
-  /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
-}
-export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      disabled: S.optional(S.String),
-      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
-      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
-      name: S.optional(S.String),
-      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
-      status: S.optional(
-        LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus,
-      ),
-      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
-  ).annotate({
-    identifier:
-      "LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream",
-  }) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream>;
-
-export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging {
-  endOffset?: number;
-  startOffset?: number;
-  totalCount?: number;
-}
-export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      endOffset: S.optional(S.Number.pipe(T.Body("end_offset"))),
-      startOffset: S.optional(S.Number.pipe(T.Body("start_offset"))),
-      totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
-    }),
-  ).annotate({
-    identifier:
-      "LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging",
-  }) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging>;
-
-export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession {
-  /** ID of the session. */
-  id?: string;
-  /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
-  errMessage?: string;
-  /** The time duration for which the input was given or the meeting was streamed. */
-  ingestSeconds?: number;
-  /** Timestamp the object was invoked. The time is returned in ISO format. */
-  invokedTime?: string;
-  livestreamId?: string;
-  /** Timestamp the object was started. The time is returned in ISO format. */
-  startedTime?: string;
-  /** Timestamp the object was stopped. The time is returned in ISO format. */
-  stoppedTime?: string;
-  /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
-  /** The total view time for which the viewers watched the stream. */
-  viewerSeconds?: number;
-}
-export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      errMessage: S.optional(S.String.pipe(T.Body("err_message"))),
-      ingestSeconds: S.optional(S.Number.pipe(T.Body("ingest_seconds"))),
-      invokedTime: S.optional(S.String.pipe(T.Body("invoked_time"))),
-      livestreamId: S.optional(S.String.pipe(T.Body("livestream_id"))),
-      startedTime: S.optional(S.String.pipe(T.Body("started_time"))),
-      stoppedTime: S.optional(S.String.pipe(T.Body("stopped_time"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-      viewerSeconds: S.optional(S.Number.pipe(T.Body("viewer_seconds"))),
-    }),
-  ).annotate({
-    identifier:
-      "LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession",
-  }) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession>;
-
-export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseData {
-  livestream?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream;
-  paging?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging;
-  session?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession;
-}
-export const LivestreamsGetLivestreamSessionForLivestreamIdResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      livestream: S.optional(
-        LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream,
-      ),
-      paging: S.optional(
-        LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging,
-      ),
-      session: S.optional(
-        LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession,
-      ),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetLivestreamSessionForLivestreamIdResponseData",
-  }) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LivestreamsGetLivestreamSessionForLivestreamIdResponse {
-  data?: LivestreamsGetLivestreamSessionForLivestreamIdResponseData;
-}
-export const LivestreamsGetLivestreamSessionForLivestreamIdResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      data: S.optional(
-        LivestreamsGetLivestreamSessionForLivestreamIdResponseData,
-      ),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetLivestreamSessionForLivestreamIdResponse",
-  }) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponse>;
-
-export interface LivestreamsGetMeetingActiveLivestreamsRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-}
-export const LivestreamsGetMeetingActiveLivestreamsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      meetingId: S.String.pipe(T.Label("meeting_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "LivestreamsGetMeetingActiveLivestreamsRequest",
-  }) as any as S.Schema<LivestreamsGetMeetingActiveLivestreamsRequest>;
-
-export type LivestreamsGetMeetingActiveLivestreamsResponseDataStatus =
-  | "LIVE"
-  | "IDLE"
-  | "ERRORED"
-  | "INVOKED"
-  | (string & {});
-export const LivestreamsGetMeetingActiveLivestreamsResponseDataStatus =
-  /*@__PURE__*/ S.String;
-
-export interface LivestreamsGetMeetingActiveLivestreamsResponseData {
-  /** The livestream ID. */
-  id?: string;
-  /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt?: string;
-  /** Specifies if the livestream was disabled. */
-  disabled?: string;
-  /** The server URL to which the RTMP encoder sends the video and audio data. */
-  ingestServer?: string;
-  meetingId?: string;
-  /** Name of the livestream. */
-  name?: string;
-  /** The web address that viewers can use to watch the livestream. */
-  playbackUrl?: string;
-  status?: LivestreamsGetMeetingActiveLivestreamsResponseDataStatus;
-  /** Unique key for accessing each livestream. */
-  streamKey?: string;
-  /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt?: string;
-}
-export const LivestreamsGetMeetingActiveLivestreamsResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      disabled: S.optional(S.String),
-      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
-      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
-      name: S.optional(S.String),
-      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
-      status: S.optional(
-        LivestreamsGetMeetingActiveLivestreamsResponseDataStatus,
-      ),
-      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetMeetingActiveLivestreamsResponseData",
-  }) as any as S.Schema<LivestreamsGetMeetingActiveLivestreamsResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LivestreamsGetMeetingActiveLivestreamsResponse {
-  data?: LivestreamsGetMeetingActiveLivestreamsResponseData;
-}
-export const LivestreamsGetMeetingActiveLivestreamsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      data: S.optional(LivestreamsGetMeetingActiveLivestreamsResponseData),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetMeetingActiveLivestreamsResponse",
-  }) as any as S.Schema<LivestreamsGetMeetingActiveLivestreamsResponse>;
-
-export interface LivestreamsGetOrgAnalyticsRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  /** end date in YYYY-MM-DD format */
-  endDate?: string;
-  /** start date in YYYY-MM-DD format */
-  startDate?: string;
-}
-export const LivestreamsGetOrgAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    endDate: S.optional(S.String.pipe(T.Query("end_date"))),
-    startDate: S.optional(S.String.pipe(T.Query("start_date"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LivestreamsGetOrgAnalyticsRequest",
-}) as any as S.Schema<LivestreamsGetOrgAnalyticsRequest>;
-
-export interface LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem {
-  day?: string;
-  /** Total recording minutes for a specific day */
-  totalRecordingMinutes?: number;
-  /** Total number of recordings for a specific day */
-  totalRecordings?: number;
-}
-export const LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      day: S.optional(S.String),
-      totalRecordingMinutes: S.optional(
-        S.Number.pipe(T.Body("total_recording_minutes")),
-      ),
-      totalRecordings: S.optional(S.Number.pipe(T.Body("total_recordings"))),
-    }),
-  ).annotate({
-    identifier:
-      "LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem",
-  }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
-
-export type LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
-  LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem[];
-export const LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
-  /*@__PURE__*/ S.Array(
-    LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem,
-  ) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList>;
-
-export interface LivestreamsGetOrgAnalyticsResponseDataRecordingStats {
-  /** Day wise recording stats */
-  dayStats?: LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList;
-  /** Total number of recordings during the range specified */
-  recordingCount?: number;
-  /** Total recording minutes during the range specified */
-  recordingMinutesConsumed?: number;
-}
-export const LivestreamsGetOrgAnalyticsResponseDataRecordingStats =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dayStats: S.optional(
-        LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList.pipe(
-          T.Body("day_stats"),
-        ),
-      ),
-      recordingCount: S.optional(S.Number.pipe(T.Body("recording_count"))),
-      recordingMinutesConsumed: S.optional(
-        S.Number.pipe(T.Body("recording_minutes_consumed")),
-      ),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetOrgAnalyticsResponseDataRecordingStats",
-  }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataRecordingStats>;
-
-export interface LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem {
-  day?: string;
-  /** Total session minutes for a specific day */
-  totalSessionMinutes?: number;
-  /** Total number of sessions for a specific day */
-  totalSessions?: number;
-}
-export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      day: S.optional(S.String),
-      totalSessionMinutes: S.optional(
-        S.Number.pipe(T.Body("total_session_minutes")),
-      ),
-      totalSessions: S.optional(S.Number.pipe(T.Body("total_sessions"))),
-    }),
-  ).annotate({
-    identifier:
-      "LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem",
-  }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
-
-export type LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
-  LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem[];
-export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
-  /*@__PURE__*/ S.Array(
-    LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem,
-  ) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList>;
-
-export interface LivestreamsGetOrgAnalyticsResponseDataSessionStats {
-  /** Day wise session stats */
-  dayStats?: LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList;
-  /** Total number of sessions during the range specified */
-  sessionsCount?: number;
-  /** Total session minutes during the range specified */
-  sessionsMinutesConsumed?: number;
-}
-export const LivestreamsGetOrgAnalyticsResponseDataSessionStats =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dayStats: S.optional(
-        LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList.pipe(
-          T.Body("day_stats"),
-        ),
-      ),
-      sessionsCount: S.optional(S.Number.pipe(T.Body("sessions_count"))),
-      sessionsMinutesConsumed: S.optional(
-        S.Number.pipe(T.Body("sessions_minutes_consumed")),
-      ),
-    }),
-  ).annotate({
-    identifier: "LivestreamsGetOrgAnalyticsResponseDataSessionStats",
-  }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStats>;
-
-export interface LivestreamsGetOrgAnalyticsResponseData {
-  /** Recording statistics of an App during the range specified */
-  recordingStats?: LivestreamsGetOrgAnalyticsResponseDataRecordingStats;
-  /** Session statistics of an App during the range specified */
-  sessionStats?: LivestreamsGetOrgAnalyticsResponseDataSessionStats;
-}
-export const LivestreamsGetOrgAnalyticsResponseData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      recordingStats: S.optional(
-        LivestreamsGetOrgAnalyticsResponseDataRecordingStats.pipe(
-          T.Body("recording_stats"),
-        ),
-      ),
-      sessionStats: S.optional(
-        LivestreamsGetOrgAnalyticsResponseDataSessionStats.pipe(
-          T.Body("session_stats"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "LivestreamsGetOrgAnalyticsResponseData",
-}) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LivestreamsGetOrgAnalyticsResponse {
-  data?: LivestreamsGetOrgAnalyticsResponseData;
-}
-export const LivestreamsGetOrgAnalyticsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(LivestreamsGetOrgAnalyticsResponseData),
-  }),
-).annotate({
-  identifier: "LivestreamsGetOrgAnalyticsResponse",
-}) as any as S.Schema<LivestreamsGetOrgAnalyticsResponse>;
-
-export interface LivestreamsStartLivestreamingAMeetingRequestVideoConfig {
-  /** Height of the livestreaming video in pixels */
-  height?: number;
-  /** Width of the livestreaming video in pixels */
-  width?: number;
-}
-export const LivestreamsStartLivestreamingAMeetingRequestVideoConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "LivestreamsStartLivestreamingAMeetingRequestVideoConfig",
-  }) as any as S.Schema<LivestreamsStartLivestreamingAMeetingRequestVideoConfig>;
-
-export interface LivestreamsStartLivestreamingAMeetingRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-  name?: string;
-  videoConfig?: LivestreamsStartLivestreamingAMeetingRequestVideoConfig;
-}
-export const LivestreamsStartLivestreamingAMeetingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      meetingId: S.String.pipe(T.Label("meeting_id")),
-      name: S.optional(S.String),
-      videoConfig: S.optional(
-        LivestreamsStartLivestreamingAMeetingRequestVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestreams",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "LivestreamsStartLivestreamingAMeetingRequest",
-  }) as any as S.Schema<LivestreamsStartLivestreamingAMeetingRequest>;
-
-export type LivestreamsStartLivestreamingAMeetingResponseDataStatus =
-  | "LIVE"
-  | "IDLE"
-  | "ERRORED"
-  | "INVOKED"
-  | (string & {});
-export const LivestreamsStartLivestreamingAMeetingResponseDataStatus =
-  /*@__PURE__*/ S.String;
-
-export interface LivestreamsStartLivestreamingAMeetingResponseData {
-  /** The livestream ID. */
-  id?: string;
-  /** The server URL to which the RTMP encoder sends the video and audio data. */
-  ingestServer?: string;
-  /** The web address that viewers can use to watch the livestream. */
-  playbackUrl?: string;
-  status?: LivestreamsStartLivestreamingAMeetingResponseDataStatus;
-  /** Unique key for accessing each livestream. */
-  streamKey?: string;
-}
-export const LivestreamsStartLivestreamingAMeetingResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
-      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
-      status: S.optional(
-        LivestreamsStartLivestreamingAMeetingResponseDataStatus,
-      ),
-      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
-    }),
-  ).annotate({
-    identifier: "LivestreamsStartLivestreamingAMeetingResponseData",
-  }) as any as S.Schema<LivestreamsStartLivestreamingAMeetingResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LivestreamsStartLivestreamingAMeetingResponse {
-  data?: LivestreamsStartLivestreamingAMeetingResponseData;
-}
-export const LivestreamsStartLivestreamingAMeetingResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      data: S.optional(LivestreamsStartLivestreamingAMeetingResponseData),
-    }),
-  ).annotate({
-    identifier: "LivestreamsStartLivestreamingAMeetingResponse",
-  }) as any as S.Schema<LivestreamsStartLivestreamingAMeetingResponse>;
-
-export interface LivestreamsStopLivestreamingAMeetingRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-}
-export const LivestreamsStopLivestreamingAMeetingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      meetingId: S.String.pipe(T.Label("meeting_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream/stop",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "LivestreamsStopLivestreamingAMeetingRequest",
-  }) as any as S.Schema<LivestreamsStopLivestreamingAMeetingRequest>;
-
-export interface LivestreamsStopLivestreamingAMeetingResponseData {
-  message?: string;
-}
-export const LivestreamsStopLivestreamingAMeetingResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      message: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "LivestreamsStopLivestreamingAMeetingResponseData",
-  }) as any as S.Schema<LivestreamsStopLivestreamingAMeetingResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LivestreamsStopLivestreamingAMeetingResponse {
-  data?: LivestreamsStopLivestreamingAMeetingResponseData;
-}
-export const LivestreamsStopLivestreamingAMeetingResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      data: S.optional(LivestreamsStopLivestreamingAMeetingResponseData),
-    }),
-  ).annotate({
-    identifier: "LivestreamsStopLivestreamingAMeetingResponse",
-  }) as any as S.Schema<LivestreamsStopLivestreamingAMeetingResponse>;
-
-export interface MeetingsAddParticipantRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-  /** A unique participant ID. You must specify a unique ID for the participant, for example, UUID, email address, and so on. */
-  customParticipantId: string;
-  /** Name of the preset to apply to this participant. */
-  presetName: string;
-  /** (Optional) Name of the participant. */
-  name?: string;
-  /** (Optional) A URL to a picture to be used for the participant. */
-  picture?: string;
-}
-export const MeetingsAddParticipantRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    meetingId: S.String.pipe(T.Label("meeting_id")),
-    customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
-    presetName: S.String.pipe(T.Body("preset_name")),
-    name: S.optional(S.String),
-    picture: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MeetingsAddParticipantRequest",
-}) as any as S.Schema<MeetingsAddParticipantRequest>;
-
-export interface MeetingsAddParticipantResponseData {
-  /** ID of the participant. */
-  id: string;
-  /** The participant's auth token that can be used for joining a meeting from the client side. */
-  token: string;
-  /** When this object was created. The time is returned in ISO format. */
-  createdAt: string;
-  /** A unique participant ID generated by the client. */
-  customParticipantId: string;
-  /** Preset applied to the participant. */
-  presetName: string;
-  /** When this object was updated. The time is returned in ISO format. */
-  updatedAt: string;
-  /** Name of the participant. */
-  name?: string;
-  /** URL to a picture of the participant. */
-  picture?: string;
-}
-export const MeetingsAddParticipantResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    token: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
-    presetName: S.String.pipe(T.Body("preset_name")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    name: S.optional(S.String),
-    picture: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MeetingsAddParticipantResponseData",
-}) as any as S.Schema<MeetingsAddParticipantResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MeetingsAddParticipantResponse {
-  /** Represents a participant. */
-  data?: MeetingsAddParticipantResponseData;
-}
-export const MeetingsAddParticipantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(MeetingsAddParticipantResponseData),
-  }),
-).annotate({
-  identifier: "MeetingsAddParticipantResponse",
-}) as any as S.Schema<MeetingsAddParticipantResponse>;
+    identifier: "CreateIndependentLivestreamLivestreamResponse",
+  }) as any as S.Schema<CreateIndependentLivestreamLivestreamResponse>;
 
 export type MeetingsCreateRequestAiConfigSummarizationSummaryType =
   | "general"
@@ -2317,7 +560,7 @@ export const MeetingsCreateRequestRecordingConfig = /*@__PURE__*/ S.suspend(
   identifier: "MeetingsCreateRequestRecordingConfig",
 }) as any as S.Schema<MeetingsCreateRequestRecordingConfig>;
 
-export interface MeetingsCreateRequest {
+export interface CreateMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
@@ -2341,7 +584,7 @@ export interface MeetingsCreateRequest {
   /** Automatically generate transcripts when the meeting ends. */
   transcribeOnEnd?: boolean;
 }
-export const MeetingsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -2370,8 +613,8 @@ export const MeetingsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MeetingsCreateRequest",
-}) as any as S.Schema<MeetingsCreateRequest>;
+  identifier: "CreateMeetingRequest",
+}) as any as S.Schema<CreateMeetingRequest>;
 
 export type MeetingsCreateResponseDataAiConfigSummarizationSummaryType =
   | "general"
@@ -2790,2914 +1033,160 @@ export const MeetingsCreateResponseData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<MeetingsCreateResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MeetingsCreateResponse {
+export interface CreateMeetingResponse {
   /** Data returned by the operation */
   data?: MeetingsCreateResponseData;
 }
-export const MeetingsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(MeetingsCreateResponseData),
   }),
 ).annotate({
-  identifier: "MeetingsCreateResponse",
-}) as any as S.Schema<MeetingsCreateResponse>;
+  identifier: "CreateMeetingResponse",
+}) as any as S.Schema<CreateMeetingResponse>;
 
-export interface MeetingsDeleteMeetingParticipantRequest {
+export type ActiveSessionCreatePollRequestOptionsList = string[];
+export const ActiveSessionCreatePollRequestOptionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<ActiveSessionCreatePollRequestOptionsList>;
+
+export interface CreatePollActiveSessionRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
   meetingId: string;
-  participantId: string;
+  /** Different options for the question */
+  options: ActiveSessionCreatePollRequestOptionsList;
+  /** Question of the poll */
+  question: string;
+  /** if voters on a poll are anonymous */
+  anonymous?: boolean;
+  /** if votes on an option are visible before a person votes */
+  hideVotes?: boolean;
 }
-export const MeetingsDeleteMeetingParticipantRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      meetingId: S.String.pipe(T.Label("meeting_id")),
-      participantId: S.String.pipe(T.Label("participant_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "MeetingsDeleteMeetingParticipantRequest",
-}) as any as S.Schema<MeetingsDeleteMeetingParticipantRequest>;
-
-export interface MeetingsDeleteMeetingParticipantResponseData {
-  /** Timestamp this object was created at. The time is returned in ISO format. */
-  createdAt: string;
-  /** A unique participant ID generated by the client. */
-  customParticipantId: string;
-  /** ID of the preset applied to this participant. */
-  presetId: string;
-  /** Timestamp this object was updated at. The time is returned in ISO format. */
-  updatedAt: string;
-}
-export const MeetingsDeleteMeetingParticipantResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdAt: S.String.pipe(T.Body("created_at")),
-      customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
-      presetId: S.String.pipe(T.Body("preset_id")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-    }),
-  ).annotate({
-    identifier: "MeetingsDeleteMeetingParticipantResponseData",
-  }) as any as S.Schema<MeetingsDeleteMeetingParticipantResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MeetingsDeleteMeetingParticipantResponse {
-  /** Data returned by the operation */
-  data?: MeetingsDeleteMeetingParticipantResponseData;
-}
-export const MeetingsDeleteMeetingParticipantResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: S.optional(MeetingsDeleteMeetingParticipantResponseData),
-    }),
-).annotate({
-  identifier: "MeetingsDeleteMeetingParticipantResponse",
-}) as any as S.Schema<MeetingsDeleteMeetingParticipantResponse>;
-
-export interface MeetingsEditParticipantRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-  participantId: string;
-  /** (Optional) Name of the participant. */
-  name?: string;
-  /** (Optional) A URL to a picture to be used for the participant. */
-  picture?: string;
-  /** (Optional) Name of the preset to apply to this participant. */
-  presetName?: string;
-}
-export const MeetingsEditParticipantRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreatePollActiveSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
     meetingId: S.String.pipe(T.Label("meeting_id")),
-    participantId: S.String.pipe(T.Label("participant_id")),
-    name: S.optional(S.String),
-    picture: S.optional(S.String),
-    presetName: S.optional(S.String.pipe(T.Body("preset_name"))),
+    options: ActiveSessionCreatePollRequestOptionsList,
+    question: S.String,
+    anonymous: S.optional(S.Boolean),
+    hideVotes: S.optional(S.Boolean.pipe(T.Body("hide_votes"))),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}",
+      method: "POST",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/poll",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "MeetingsEditParticipantRequest",
-}) as any as S.Schema<MeetingsEditParticipantRequest>;
+  identifier: "CreatePollActiveSessionRequest",
+}) as any as S.Schema<CreatePollActiveSessionRequest>;
 
-export interface MeetingsEditParticipantResponseData {
-  /** ID of the participant. */
+export interface ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem {
   id: string;
-  /** The participant's auth token that can be used for joining a meeting from the client side. */
-  token: string;
-  /** When this object was created. The time is returned in ISO format. */
-  createdAt: string;
-  /** A unique participant ID generated by the client. */
-  customParticipantId: string;
-  /** Preset applied to the participant. */
-  presetName: string;
-  /** When this object was updated. The time is returned in ISO format. */
-  updatedAt: string;
-  /** Name of the participant. */
-  name?: string;
-  /** URL to a picture of the participant. */
-  picture?: string;
+  name: string;
 }
-export const MeetingsEditParticipantResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    token: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
-    presetName: S.String.pipe(T.Body("preset_name")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    name: S.optional(S.String),
-    picture: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MeetingsEditParticipantResponseData",
-}) as any as S.Schema<MeetingsEditParticipantResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MeetingsEditParticipantResponse {
-  /** Represents a participant. */
-  data?: MeetingsEditParticipantResponseData;
-}
-export const MeetingsEditParticipantResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(MeetingsEditParticipantResponseData),
-  }),
-).annotate({
-  identifier: "MeetingsEditParticipantResponse",
-}) as any as S.Schema<MeetingsEditParticipantResponse>;
-
-export type MeetingsGetRequestStatus = "ACTIVE" | "INACTIVE" | (string & {});
-export const MeetingsGetRequestStatus = /*@__PURE__*/ S.String;
-
-export interface MeetingsGetRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  /** The end time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
-  endTime?: string;
-  /** The page number from which you want your page search results to be displayed. */
-  pageNo?: number;
-  /** Number of results per page */
-  perPage?: number;
-  /** The search query string. You can search using the meeting ID or title. */
-  search?: string;
-  /** The start time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
-  startTime?: string;
-  /** Filter meetings by status. */
-  status?: MeetingsGetRequestStatus;
-}
-export const MeetingsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    endTime: S.optional(S.String.pipe(T.Query("end_time"))),
-    pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    search: S.optional(S.String.pipe(T.Query())),
-    startTime: S.optional(S.String.pipe(T.Query("start_time"))),
-    status: S.optional(MeetingsGetRequestStatus.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MeetingsGetRequest",
-}) as any as S.Schema<MeetingsGetRequest>;
-
-export type MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel =
-  | "mono"
-  | "stereo"
-  | (string & {});
-export const MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec =
-  | "MP3"
-  | "AAC"
-  | (string & {});
-export const MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsGetResponseDataItemRecordingConfigAudioConfig {
-  /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel;
-  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec;
-  /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
-}
-export const MeetingsGetResponseDataItemRecordingConfigAudioConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      channel: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel,
-      ),
-      codec: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsGetResponseDataItemRecordingConfigAudioConfig",
-  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigAudioConfig>;
-
-export interface MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig {
-  /** RTMP URL to stream to */
-  rtmpUrl?: string;
-}
-export const MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig",
-  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig>;
-
-export interface MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig {
-  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
-  enabled: boolean;
-}
-export const MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig",
-  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig>;
-
-export type MeetingsGetResponseDataItemRecordingConfigStorageConfigType =
-  | "aws"
-  | "azure"
-  | "digitalocean"
-  | (string & {});
-export const MeetingsGetResponseDataItemRecordingConfigStorageConfigType =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod =
-  | "KEY"
-  | "PASSWORD"
-  | (string & {});
-export const MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsGetResponseDataItemRecordingConfigStorageConfig {
-  /** Type of storage media. */
-  type: MeetingsGetResponseDataItemRecordingConfigStorageConfigType;
-  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
-  /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod;
-  /** Name of the storage medium's bucket. */
-  bucket?: string;
-  /** SSH destination server host for SFTP type storage medium */
-  host?: string;
-  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
-  /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
-  /** SSH destination server port for SFTP type storage medium */
-  port?: number;
-  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
-  /** Region of the storage medium. */
-  region?: string;
-  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
-  /** SSH destination server username for SFTP type storage medium */
-  username?: string;
-}
-export const MeetingsGetResponseDataItemRecordingConfigStorageConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: MeetingsGetResponseDataItemRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
-      authMethod: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
-      ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "MeetingsGetResponseDataItemRecordingConfigStorageConfig",
-  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigStorageConfig>;
-
-export type MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec =
-  | "H264"
-  | "VP8"
-  | (string & {});
-export const MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
-export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize {
-  /** Height of the watermark in px */
-  height?: number;
-  /** Width of the watermark in px */
-  width?: number;
-}
-export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize",
-  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize>;
-
-export interface MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark {
-  /** Position of the watermark */
-  position?: MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition;
-  /** Size of the watermark */
-  size?: MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize;
-  /** URL of the watermark image */
-  url?: string;
-}
-export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      position: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition,
-      ),
-      size: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize,
-      ),
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark",
-  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark>;
-
-export interface MeetingsGetResponseDataItemRecordingConfigVideoConfig {
-  /** Codec using which the recording will be encoded. */
-  codec?: MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec;
-  /** Controls whether to export video file seperately */
-  exportFile?: boolean;
-  /** Height of the recording video in pixels */
-  height?: number;
-  /** Watermark to be added to the recording */
-  watermark?: MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark;
-  /** Width of the recording video in pixels */
-  width?: number;
-}
-export const MeetingsGetResponseDataItemRecordingConfigVideoConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      codec: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
-      watermark: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark,
-      ),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "MeetingsGetResponseDataItemRecordingConfigVideoConfig",
-  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigVideoConfig>;
-
-export interface MeetingsGetResponseDataItemRecordingConfig {
-  /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsGetResponseDataItemRecordingConfigAudioConfig;
-  /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig;
-  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsGetResponseDataItemRecordingConfigStorageConfig;
-  videoConfig?: MeetingsGetResponseDataItemRecordingConfigVideoConfig;
-}
-export const MeetingsGetResponseDataItemRecordingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      audioConfig: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
-      ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-      liveStreamingConfig: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
-      ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
-      realtimekitBucketConfig: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
-      ),
-      storageConfig: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
-      ),
-      videoConfig: S.optional(
-        MeetingsGetResponseDataItemRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "MeetingsGetResponseDataItemRecordingConfig",
-  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfig>;
-
-export type MeetingsGetResponseDataItemStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
-export const MeetingsGetResponseDataItemStatus = /*@__PURE__*/ S.String;
-
-export interface MeetingsGetResponseDataItem {
-  /** ID of the meeting. */
-  id: string;
-  /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt: string;
-  /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt: string;
-  /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
-  /** Specifies if Chat within a meeting should persist for a week. */
-  persistChat?: boolean;
-  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
-  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsGetResponseDataItemRecordingConfig;
-  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
-  /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsGetResponseDataItemStatus;
-  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
-  /** Title of the meeting. */
-  title?: string;
-  /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
-}
-export const MeetingsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    liveStreamOnStart: S.optional(
-      S.Boolean.pipe(T.Body("live_stream_on_start")),
-    ),
-    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-    recordingConfig: S.optional(
-      MeetingsGetResponseDataItemRecordingConfig.pipe(
-        T.Body("recording_config"),
-      ),
-    ),
-    sessionKeepAliveTimeInSecs: S.optional(
-      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
-    ),
-    status: S.optional(MeetingsGetResponseDataItemStatus),
-    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-    title: S.optional(S.String),
-    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
-  }),
-).annotate({
-  identifier: "MeetingsGetResponseDataItem",
-}) as any as S.Schema<MeetingsGetResponseDataItem>;
-
-export type MeetingsGetResponseDataList = MeetingsGetResponseDataItem[];
-export const MeetingsGetResponseDataList = /*@__PURE__*/ S.Array(
-  MeetingsGetResponseDataItem,
-) as any as S.Schema<MeetingsGetResponseDataList>;
-
-export interface MeetingsGetResponsePaging {
-  endOffset: number;
-  startOffset: number;
-  totalCount: number;
-}
-export const MeetingsGetResponsePaging = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endOffset: S.Number.pipe(T.Body("end_offset")),
-    startOffset: S.Number.pipe(T.Body("start_offset")),
-    totalCount: S.Number.pipe(T.Body("total_count")),
-  }),
-).annotate({
-  identifier: "MeetingsGetResponsePaging",
-}) as any as S.Schema<MeetingsGetResponsePaging>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MeetingsGetResponse {
-  data: MeetingsGetResponseDataList;
-  paging: MeetingsGetResponsePaging;
-}
-export const MeetingsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: MeetingsGetResponseDataList,
-    paging: MeetingsGetResponsePaging,
-  }),
-).annotate({
-  identifier: "MeetingsGetResponse",
-}) as any as S.Schema<MeetingsGetResponse>;
-
-export interface MeetingsGetMeetingByIdRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-  name?: string;
-}
-export const MeetingsGetMeetingByIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    meetingId: S.String.pipe(T.Label("meeting_id")),
-    name: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MeetingsGetMeetingByIdRequest",
-}) as any as S.Schema<MeetingsGetMeetingByIdRequest>;
-
-export type MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType =
-  "general" | "team_meeting" | "sales_call" | (string & {});
-export const MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat =
-  | "plain_text"
-  | "markdown"
-  | (string & {});
-export const MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsGetMeetingByIdResponseDataAiConfigSummarization {
-  /** Defines the style of the summary, such as general, team meeting, or sales call. */
-  summaryType?: MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType;
-  /** Determines the text format of the summary, such as plain text or markdown. */
-  textFormat?: MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat;
-  /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number;
-}
-export const MeetingsGetMeetingByIdResponseDataAiConfigSummarization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      summaryType: S.optional(
-        MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType.pipe(
-          T.Body("summary_type"),
-        ),
-      ),
-      textFormat: S.optional(
-        MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat.pipe(
-          T.Body("text_format"),
-        ),
-      ),
-      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsGetMeetingByIdResponseDataAiConfigSummarization",
-  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfigSummarization>;
-
-export type MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  string[];
-export const MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
-
-export type MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage =
-  | "en-US"
-  | "en-IN"
-  | "de"
-  | (string & {});
-export const MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsGetMeetingByIdResponseDataAiConfigTranscription {
-  /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList;
-  /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage;
-  /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean;
-}
-export const MeetingsGetMeetingByIdResponseDataAiConfigTranscription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keywords: S.optional(
-        MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList,
-      ),
-      language: S.optional(
-        MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage,
-      ),
-      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsGetMeetingByIdResponseDataAiConfigTranscription",
-  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfigTranscription>;
-
-export interface MeetingsGetMeetingByIdResponseDataAiConfig {
-  /** Summary Config */
-  summarization?: MeetingsGetMeetingByIdResponseDataAiConfigSummarization;
-  /** Transcription Configurations */
-  transcription?: MeetingsGetMeetingByIdResponseDataAiConfigTranscription;
-}
-export const MeetingsGetMeetingByIdResponseDataAiConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      summarization: S.optional(
-        MeetingsGetMeetingByIdResponseDataAiConfigSummarization,
-      ),
-      transcription: S.optional(
-        MeetingsGetMeetingByIdResponseDataAiConfigTranscription,
-      ),
-    }),
-  ).annotate({
-    identifier: "MeetingsGetMeetingByIdResponseDataAiConfig",
-  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfig>;
-
-export type MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
-  | "MP3"
-  | "AAC"
-  | (string & {});
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig {
-  /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel;
-  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec;
-  /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
-}
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      channel: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel,
-      ),
-      codec: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig",
-  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig>;
-
-export interface MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig {
-  /** RTMP URL to stream to */
-  rtmpUrl?: string;
-}
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig",
-  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig>;
-
-export interface MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig {
-  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
-  enabled: boolean;
-}
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig",
-  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig>;
-
-export type MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType =
-  "aws" | "azure" | "digitalocean" | (string & {});
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig {
-  /** Type of storage media. */
-  type: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType;
-  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
-  /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod;
-  /** Name of the storage medium's bucket. */
-  bucket?: string;
-  /** SSH destination server host for SFTP type storage medium */
-  host?: string;
-  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
-  /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
-  /** SSH destination server port for SFTP type storage medium */
-  port?: number;
-  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
-  /** Region of the storage medium. */
-  region?: string;
-  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
-  /** SSH destination server username for SFTP type storage medium */
-  username?: string;
-}
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
-      authMethod: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
-      ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig",
-  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig>;
-
-export type MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
-  | "H264"
-  | "VP8"
-  | (string & {});
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize {
-  /** Height of the watermark in px */
-  height?: number;
-  /** Width of the watermark in px */
-  width?: number;
-}
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize",
-  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize>;
-
-export interface MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark {
-  /** Position of the watermark */
-  position?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition;
-  /** Size of the watermark */
-  size?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize;
-  /** URL of the watermark image */
-  url?: string;
-}
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      position: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition,
-      ),
-      size: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize,
-      ),
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark",
-  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark>;
-
-export interface MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig {
-  /** Codec using which the recording will be encoded. */
-  codec?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec;
-  /** Controls whether to export video file seperately */
-  exportFile?: boolean;
-  /** Height of the recording video in pixels */
-  height?: number;
-  /** Watermark to be added to the recording */
-  watermark?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark;
-  /** Width of the recording video in pixels */
-  width?: number;
-}
-export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      codec: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
-      watermark: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark,
-      ),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig",
-  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig>;
-
-export interface MeetingsGetMeetingByIdResponseDataRecordingConfig {
-  /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig;
-  /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig;
-  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig;
-  videoConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig;
-}
-export const MeetingsGetMeetingByIdResponseDataRecordingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      audioConfig: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
-      ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-      liveStreamingConfig: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
-      ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
-      realtimekitBucketConfig: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
-      ),
-      storageConfig: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
-      ),
-      videoConfig: S.optional(
-        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfig",
-  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfig>;
-
-export type MeetingsGetMeetingByIdResponseDataStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
-export const MeetingsGetMeetingByIdResponseDataStatus = /*@__PURE__*/ S.String;
-
-export interface MeetingsGetMeetingByIdResponseData {
-  /** ID of the meeting. */
-  id: string;
-  /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt: string;
-  /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt: string;
-  /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsGetMeetingByIdResponseDataAiConfig;
-  /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
-  /** Specifies if Chat within a meeting should persist for a week. */
-  persistChat?: boolean;
-  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
-  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfig;
-  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
-  /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsGetMeetingByIdResponseDataStatus;
-  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
-  /** Title of the meeting. */
-  title?: string;
-  /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
-}
-export const MeetingsGetMeetingByIdResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    aiConfig: S.optional(
-      MeetingsGetMeetingByIdResponseDataAiConfig.pipe(T.Body("ai_config")),
-    ),
-    liveStreamOnStart: S.optional(
-      S.Boolean.pipe(T.Body("live_stream_on_start")),
-    ),
-    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-    recordingConfig: S.optional(
-      MeetingsGetMeetingByIdResponseDataRecordingConfig.pipe(
-        T.Body("recording_config"),
-      ),
-    ),
-    sessionKeepAliveTimeInSecs: S.optional(
-      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
-    ),
-    status: S.optional(MeetingsGetMeetingByIdResponseDataStatus),
-    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-    title: S.optional(S.String),
-    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
-  }),
-).annotate({
-  identifier: "MeetingsGetMeetingByIdResponseData",
-}) as any as S.Schema<MeetingsGetMeetingByIdResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MeetingsGetMeetingByIdResponse {
-  /** Data returned by the operation */
-  data?: MeetingsGetMeetingByIdResponseData;
-}
-export const MeetingsGetMeetingByIdResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(MeetingsGetMeetingByIdResponseData),
-  }),
-).annotate({
-  identifier: "MeetingsGetMeetingByIdResponse",
-}) as any as S.Schema<MeetingsGetMeetingByIdResponse>;
-
-export interface MeetingsGetMeetingParticipantRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-  participantId: string;
-}
-export const MeetingsGetMeetingParticipantRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      meetingId: S.String.pipe(T.Label("meeting_id")),
-      participantId: S.String.pipe(T.Label("participant_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "MeetingsGetMeetingParticipantRequest",
-}) as any as S.Schema<MeetingsGetMeetingParticipantRequest>;
-
-export interface MeetingsGetMeetingParticipantResponseData {
-  /** ID of the participant. */
-  id: string;
-  /** When this object was created. The time is returned in ISO format. */
-  createdAt: string;
-  /** A unique participant ID generated by the client. */
-  customParticipantId: string;
-  /** Preset applied to the participant. */
-  presetName: string;
-  /** When this object was updated. The time is returned in ISO format. */
-  updatedAt: string;
-  /** Name of the participant. */
-  name?: string;
-  /** URL to a picture of the participant. */
-  picture?: string;
-}
-export const MeetingsGetMeetingParticipantResponseData =
+export const ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
-      presetName: S.String.pipe(T.Body("preset_name")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      name: S.optional(S.String),
-      picture: S.optional(S.String),
+      name: S.String,
     }),
   ).annotate({
-    identifier: "MeetingsGetMeetingParticipantResponseData",
-  }) as any as S.Schema<MeetingsGetMeetingParticipantResponseData>;
+    identifier: "ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem",
+  }) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem>;
 
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MeetingsGetMeetingParticipantResponse {
-  /** Data returned by the operation */
-  data: MeetingsGetMeetingParticipantResponseData;
-}
-export const MeetingsGetMeetingParticipantResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: MeetingsGetMeetingParticipantResponseData,
-    }),
-).annotate({
-  identifier: "MeetingsGetMeetingParticipantResponse",
-}) as any as S.Schema<MeetingsGetMeetingParticipantResponse>;
-
-export interface MeetingsGetMeetingParticipantsRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-  /** The page number from which you want your page search results to be displayed. */
-  pageNo?: number;
-  /** Number of results per page */
-  perPage?: number;
-}
-export const MeetingsGetMeetingParticipantsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      meetingId: S.String.pipe(T.Label("meeting_id")),
-      pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
-      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "MeetingsGetMeetingParticipantsRequest",
-}) as any as S.Schema<MeetingsGetMeetingParticipantsRequest>;
-
-export interface MeetingsGetMeetingParticipantsResponseDataItem {
-  /** ID of the participant. */
-  id: string;
-  /** When this object was created. The time is returned in ISO format. */
-  createdAt: string;
-  /** A unique participant ID generated by the client. */
-  customParticipantId: string;
-  /** Preset applied to the participant. */
-  presetName: string;
-  /** When this object was updated. The time is returned in ISO format. */
-  updatedAt: string;
-  /** Name of the participant. */
-  name?: string;
-  /** URL to a picture of the participant. */
-  picture?: string;
-}
-export const MeetingsGetMeetingParticipantsResponseDataItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
-      presetName: S.String.pipe(T.Body("preset_name")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      name: S.optional(S.String),
-      picture: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "MeetingsGetMeetingParticipantsResponseDataItem",
-  }) as any as S.Schema<MeetingsGetMeetingParticipantsResponseDataItem>;
-
-export type MeetingsGetMeetingParticipantsResponseDataList =
-  MeetingsGetMeetingParticipantsResponseDataItem[];
-export const MeetingsGetMeetingParticipantsResponseDataList =
+export type ActiveSessionCreatePollResponseDataPollOptionsItemVotesList =
+  ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem[];
+export const ActiveSessionCreatePollResponseDataPollOptionsItemVotesList =
   /*@__PURE__*/ S.Array(
-    MeetingsGetMeetingParticipantsResponseDataItem,
-  ) as any as S.Schema<MeetingsGetMeetingParticipantsResponseDataList>;
+    ActiveSessionCreatePollResponseDataPollOptionsItemVotesItem,
+  ) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItemVotesList>;
 
-export interface MeetingsGetMeetingParticipantsResponsePaging {
-  endOffset: number;
-  startOffset: number;
-  totalCount: number;
+export interface ActiveSessionCreatePollResponseDataPollOptionsItem {
+  count: number;
+  /** Text of the answer option */
+  text: string;
+  votes: ActiveSessionCreatePollResponseDataPollOptionsItemVotesList;
 }
-export const MeetingsGetMeetingParticipantsResponsePaging =
+export const ActiveSessionCreatePollResponseDataPollOptionsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      endOffset: S.Number.pipe(T.Body("end_offset")),
-      startOffset: S.Number.pipe(T.Body("start_offset")),
-      totalCount: S.Number.pipe(T.Body("total_count")),
+      count: S.Number,
+      text: S.String,
+      votes: ActiveSessionCreatePollResponseDataPollOptionsItemVotesList,
     }),
   ).annotate({
-    identifier: "MeetingsGetMeetingParticipantsResponsePaging",
-  }) as any as S.Schema<MeetingsGetMeetingParticipantsResponsePaging>;
+    identifier: "ActiveSessionCreatePollResponseDataPollOptionsItem",
+  }) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsItem>;
 
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MeetingsGetMeetingParticipantsResponse {
-  data: MeetingsGetMeetingParticipantsResponseDataList;
-  paging: MeetingsGetMeetingParticipantsResponsePaging;
-}
-export const MeetingsGetMeetingParticipantsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: MeetingsGetMeetingParticipantsResponseDataList,
-      paging: MeetingsGetMeetingParticipantsResponsePaging,
-    }),
-).annotate({
-  identifier: "MeetingsGetMeetingParticipantsResponse",
-}) as any as S.Schema<MeetingsGetMeetingParticipantsResponse>;
+export type ActiveSessionCreatePollResponseDataPollOptionsList =
+  ActiveSessionCreatePollResponseDataPollOptionsItem[];
+export const ActiveSessionCreatePollResponseDataPollOptionsList =
+  /*@__PURE__*/ S.Array(
+    ActiveSessionCreatePollResponseDataPollOptionsItem,
+  ) as any as S.Schema<ActiveSessionCreatePollResponseDataPollOptionsList>;
 
-export interface MeetingsRefreshParticipantTokenRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-  participantId: string;
-}
-export const MeetingsRefreshParticipantTokenRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      meetingId: S.String.pipe(T.Label("meeting_id")),
-      participantId: S.String.pipe(T.Label("participant_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}/token",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "MeetingsRefreshParticipantTokenRequest",
-}) as any as S.Schema<MeetingsRefreshParticipantTokenRequest>;
-
-export interface MeetingsRefreshParticipantTokenResponseData {
-  /** Regenerated participant's authentication token. */
-  token: string;
-}
-export const MeetingsRefreshParticipantTokenResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      token: S.String,
-    }),
-  ).annotate({
-    identifier: "MeetingsRefreshParticipantTokenResponseData",
-  }) as any as S.Schema<MeetingsRefreshParticipantTokenResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MeetingsRefreshParticipantTokenResponse {
-  /** Data returned by the operation */
-  data: MeetingsRefreshParticipantTokenResponseData;
-}
-export const MeetingsRefreshParticipantTokenResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: MeetingsRefreshParticipantTokenResponseData,
-    }),
-).annotate({
-  identifier: "MeetingsRefreshParticipantTokenResponse",
-}) as any as S.Schema<MeetingsRefreshParticipantTokenResponse>;
-
-export type MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType =
-  | "general"
-  | "team_meeting"
-  | "sales_call"
-  | (string & {});
-export const MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat =
-  | "plain_text"
-  | "markdown"
-  | (string & {});
-export const MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsReplaceMeetingByIdRequestAiConfigSummarization {
-  /** Defines the style of the summary, such as general, team meeting, or sales call. */
-  summaryType?: MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType;
-  /** Determines the text format of the summary, such as plain text or markdown. */
-  textFormat?: MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat;
-  /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number;
-}
-export const MeetingsReplaceMeetingByIdRequestAiConfigSummarization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      summaryType: S.optional(
-        MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType.pipe(
-          T.Body("summary_type"),
-        ),
-      ),
-      textFormat: S.optional(
-        MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat.pipe(
-          T.Body("text_format"),
-        ),
-      ),
-      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsReplaceMeetingByIdRequestAiConfigSummarization",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigSummarization>;
-
-export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList =
-  string[];
-export const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList =
+export type ActiveSessionCreatePollResponseDataPollVotedList = string[];
+export const ActiveSessionCreatePollResponseDataPollVotedList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList>;
+  ) as any as S.Schema<ActiveSessionCreatePollResponseDataPollVotedList>;
 
-export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
-  | "en-US"
-  | "en-IN"
-  | "de"
-  | (string & {});
-export const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsReplaceMeetingByIdRequestAiConfigTranscription {
-  /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList;
-  /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage;
-  /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean;
-}
-export const MeetingsReplaceMeetingByIdRequestAiConfigTranscription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keywords: S.optional(
-        MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList,
-      ),
-      language: S.optional(
-        MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage,
-      ),
-      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsReplaceMeetingByIdRequestAiConfigTranscription",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigTranscription>;
-
-export interface MeetingsReplaceMeetingByIdRequestAiConfig {
-  /** Summary Config */
-  summarization?: MeetingsReplaceMeetingByIdRequestAiConfigSummarization;
-  /** Transcription Configurations */
-  transcription?: MeetingsReplaceMeetingByIdRequestAiConfigTranscription;
-}
-export const MeetingsReplaceMeetingByIdRequestAiConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      summarization: S.optional(
-        MeetingsReplaceMeetingByIdRequestAiConfigSummarization,
-      ),
-      transcription: S.optional(
-        MeetingsReplaceMeetingByIdRequestAiConfigTranscription,
-      ),
-    }),
-  ).annotate({
-    identifier: "MeetingsReplaceMeetingByIdRequestAiConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfig>;
-
-export type MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec =
-  | "MP3"
-  | "AAC"
-  | (string & {});
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig {
-  /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel;
-  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec;
-  /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
-}
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      channel: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel,
-      ),
-      codec: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig>;
-
-export interface MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig {
-  /** RTMP URL to stream to */
-  rtmpUrl?: string;
-}
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig>;
-
-export interface MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig {
-  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
-  enabled: boolean;
-}
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig>;
-
-export type MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType =
-  | "aws"
-  | "azure"
-  | "digitalocean"
-  | (string & {});
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig {
-  /** Type of storage media. */
-  type: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType;
-  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
-  /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod;
-  /** Name of the storage medium's bucket. */
-  bucket?: string;
-  /** SSH destination server host for SFTP type storage medium */
-  host?: string;
-  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
-  /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
-  /** SSH destination server port for SFTP type storage medium */
-  port?: number;
-  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
-  /** Region of the storage medium. */
-  region?: string;
-  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
-  /** SSH destination server username for SFTP type storage medium */
-  username?: string;
-}
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
-      authMethod: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
-      ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig>;
-
-export type MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec =
-  | "H264"
-  | "VP8"
-  | (string & {});
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize {
-  /** Height of the watermark in px */
-  height?: number;
-  /** Width of the watermark in px */
-  width?: number;
-}
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize>;
-
-export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark {
-  /** Position of the watermark */
-  position?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition;
-  /** Size of the watermark */
-  size?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize;
-  /** URL of the watermark image */
-  url?: string;
-}
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      position: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
-      ),
-      size: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize,
-      ),
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark>;
-
-export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig {
-  /** Codec using which the recording will be encoded. */
-  codec?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec;
-  /** Controls whether to export video file seperately */
-  exportFile?: boolean;
-  /** Height of the recording video in pixels */
-  height?: number;
-  /** Watermark to be added to the recording */
-  watermark?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark;
-  /** Width of the recording video in pixels */
-  width?: number;
-}
-export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      codec: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
-      watermark: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark,
-      ),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig>;
-
-export interface MeetingsReplaceMeetingByIdRequestRecordingConfig {
-  /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig;
-  /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig;
-  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig;
-  videoConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig;
-}
-export const MeetingsReplaceMeetingByIdRequestRecordingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      audioConfig: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
-      ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-      liveStreamingConfig: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
-      ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
-      realtimekitBucketConfig: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
-      ),
-      storageConfig: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
-      ),
-      videoConfig: S.optional(
-        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfig>;
-
-export interface MeetingsReplaceMeetingByIdRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-  /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsReplaceMeetingByIdRequestAiConfig;
-  /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
-  /** If a meeting is set to persist_chat, meeting chat would remain for a week within the meeting space. */
-  persistChat?: boolean;
-  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
-  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfig;
-  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
-  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
-  /** Title of the meeting */
-  title?: string;
-  /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
-}
-export const MeetingsReplaceMeetingByIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    meetingId: S.String.pipe(T.Label("meeting_id")),
-    aiConfig: S.optional(
-      MeetingsReplaceMeetingByIdRequestAiConfig.pipe(T.Body("ai_config")),
-    ),
-    liveStreamOnStart: S.optional(
-      S.Boolean.pipe(T.Body("live_stream_on_start")),
-    ),
-    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-    recordingConfig: S.optional(
-      MeetingsReplaceMeetingByIdRequestRecordingConfig.pipe(
-        T.Body("recording_config"),
-      ),
-    ),
-    sessionKeepAliveTimeInSecs: S.optional(
-      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
-    ),
-    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-    title: S.optional(S.String),
-    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MeetingsReplaceMeetingByIdRequest",
-}) as any as S.Schema<MeetingsReplaceMeetingByIdRequest>;
-
-export type MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType =
-  "general" | "team_meeting" | "sales_call" | (string & {});
-export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat =
-  "plain_text" | "markdown" | (string & {});
-export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization {
-  /** Defines the style of the summary, such as general, team meeting, or sales call. */
-  summaryType?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType;
-  /** Determines the text format of the summary, such as plain text or markdown. */
-  textFormat?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat;
-  /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number;
-}
-export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      summaryType: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType.pipe(
-          T.Body("summary_type"),
-        ),
-      ),
-      textFormat: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat.pipe(
-          T.Body("text_format"),
-        ),
-      ),
-      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization>;
-
-export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  string[];
-export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
-
-export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage =
-  "en-US" | "en-IN" | "de" | (string & {});
-export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription {
-  /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList;
-  /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage;
-  /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean;
-}
-export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keywords: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList,
-      ),
-      language: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage,
-      ),
-      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription>;
-
-export interface MeetingsReplaceMeetingByIdResponseDataAiConfig {
-  /** Summary Config */
-  summarization?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization;
-  /** Transcription Configurations */
-  transcription?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription;
-}
-export const MeetingsReplaceMeetingByIdResponseDataAiConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      summarization: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization,
-      ),
-      transcription: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription,
-      ),
-    }),
-  ).annotate({
-    identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfig>;
-
-export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
-  "MP3" | "AAC" | (string & {});
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig {
-  /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel;
-  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec;
-  /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
-}
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      channel: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel,
-      ),
-      codec: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig>;
-
-export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig {
-  /** RTMP URL to stream to */
-  rtmpUrl?: string;
-}
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig>;
-
-export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig {
-  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
-  enabled: boolean;
-}
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig>;
-
-export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType =
-  "aws" | "azure" | "digitalocean" | (string & {});
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig {
-  /** Type of storage media. */
-  type: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType;
-  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
-  /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod;
-  /** Name of the storage medium's bucket. */
-  bucket?: string;
-  /** SSH destination server host for SFTP type storage medium */
-  host?: string;
-  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
-  /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
-  /** SSH destination server port for SFTP type storage medium */
-  port?: number;
-  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
-  /** Region of the storage medium. */
-  region?: string;
-  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
-  /** SSH destination server username for SFTP type storage medium */
-  username?: string;
-}
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
-      authMethod: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
-      ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig>;
-
-export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
-  "H264" | "VP8" | (string & {});
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize {
-  /** Height of the watermark in px */
-  height?: number;
-  /** Width of the watermark in px */
-  width?: number;
-}
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize>;
-
-export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark {
-  /** Position of the watermark */
-  position?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition;
-  /** Size of the watermark */
-  size?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize;
-  /** URL of the watermark image */
-  url?: string;
-}
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      position: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition,
-      ),
-      size: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize,
-      ),
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark>;
-
-export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig {
-  /** Codec using which the recording will be encoded. */
-  codec?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec;
-  /** Controls whether to export video file seperately */
-  exportFile?: boolean;
-  /** Height of the recording video in pixels */
-  height?: number;
-  /** Watermark to be added to the recording */
-  watermark?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark;
-  /** Width of the recording video in pixels */
-  width?: number;
-}
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      codec: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
-      watermark: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark,
-      ),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig>;
-
-export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfig {
-  /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig;
-  /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig;
-  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig;
-  videoConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig;
-}
-export const MeetingsReplaceMeetingByIdResponseDataRecordingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      audioConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
-      ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-      liveStreamingConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
-      ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
-      realtimekitBucketConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
-      ),
-      storageConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
-      ),
-      videoConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "MeetingsReplaceMeetingByIdResponseDataRecordingConfig",
-  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfig>;
-
-export type MeetingsReplaceMeetingByIdResponseDataStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
-export const MeetingsReplaceMeetingByIdResponseDataStatus =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsReplaceMeetingByIdResponseData {
-  /** ID of the meeting. */
+export interface ActiveSessionCreatePollResponseDataPoll {
+  /** ID of the poll */
   id: string;
-  /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt: string;
-  /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt: string;
-  /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsReplaceMeetingByIdResponseDataAiConfig;
-  /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
-  /** Specifies if Chat within a meeting should persist for a week. */
-  persistChat?: boolean;
-  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
-  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfig;
-  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
-  /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsReplaceMeetingByIdResponseDataStatus;
-  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
-  /** Title of the meeting. */
-  title?: string;
-  /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
+  /** Answer options */
+  options: ActiveSessionCreatePollResponseDataPollOptionsList;
+  /** Question asked by the poll */
+  question: string;
+  anonymous?: boolean;
+  createdBy?: string;
+  hideVotes?: boolean;
+  voted?: ActiveSessionCreatePollResponseDataPollVotedList;
 }
-export const MeetingsReplaceMeetingByIdResponseData = /*@__PURE__*/ S.suspend(
+export const ActiveSessionCreatePollResponseDataPoll = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.String,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      aiConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataAiConfig.pipe(
-          T.Body("ai_config"),
-        ),
-      ),
-      liveStreamOnStart: S.optional(
-        S.Boolean.pipe(T.Body("live_stream_on_start")),
-      ),
-      persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-      recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-      recordingConfig: S.optional(
-        MeetingsReplaceMeetingByIdResponseDataRecordingConfig.pipe(
-          T.Body("recording_config"),
-        ),
-      ),
-      sessionKeepAliveTimeInSecs: S.optional(
-        S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
-      ),
-      status: S.optional(MeetingsReplaceMeetingByIdResponseDataStatus),
-      summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-      title: S.optional(S.String),
-      transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+      options: ActiveSessionCreatePollResponseDataPollOptionsList,
+      question: S.String,
+      anonymous: S.optional(S.Boolean),
+      createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+      hideVotes: S.optional(S.Boolean.pipe(T.Body("hide_votes"))),
+      voted: S.optional(ActiveSessionCreatePollResponseDataPollVotedList),
     }),
 ).annotate({
-  identifier: "MeetingsReplaceMeetingByIdResponseData",
-}) as any as S.Schema<MeetingsReplaceMeetingByIdResponseData>;
+  identifier: "ActiveSessionCreatePollResponseDataPoll",
+}) as any as S.Schema<ActiveSessionCreatePollResponseDataPoll>;
 
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MeetingsReplaceMeetingByIdResponse {
-  /** Data returned by the operation */
-  data?: MeetingsReplaceMeetingByIdResponseData;
+export interface ActiveSessionCreatePollResponseData {
+  action?: string;
+  poll?: ActiveSessionCreatePollResponseDataPoll;
 }
-export const MeetingsReplaceMeetingByIdResponse = /*@__PURE__*/ S.suspend(() =>
+export const ActiveSessionCreatePollResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(MeetingsReplaceMeetingByIdResponseData),
+    action: S.optional(S.String),
+    poll: S.optional(ActiveSessionCreatePollResponseDataPoll),
   }),
 ).annotate({
-  identifier: "MeetingsReplaceMeetingByIdResponse",
-}) as any as S.Schema<MeetingsReplaceMeetingByIdResponse>;
-
-export type MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType =
-  | "general"
-  | "team_meeting"
-  | "sales_call"
-  | (string & {});
-export const MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat =
-  | "plain_text"
-  | "markdown"
-  | (string & {});
-export const MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsUpdateMeetingByIdRequestAiConfigSummarization {
-  /** Defines the style of the summary, such as general, team meeting, or sales call. */
-  summaryType?: MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType;
-  /** Determines the text format of the summary, such as plain text or markdown. */
-  textFormat?: MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat;
-  /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number;
-}
-export const MeetingsUpdateMeetingByIdRequestAiConfigSummarization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      summaryType: S.optional(
-        MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType.pipe(
-          T.Body("summary_type"),
-        ),
-      ),
-      textFormat: S.optional(
-        MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat.pipe(
-          T.Body("text_format"),
-        ),
-      ),
-      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsUpdateMeetingByIdRequestAiConfigSummarization",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigSummarization>;
-
-export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList =
-  string[];
-export const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList>;
-
-export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
-  | "en-US"
-  | "en-IN"
-  | "de"
-  | (string & {});
-export const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsUpdateMeetingByIdRequestAiConfigTranscription {
-  /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList;
-  /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage;
-  /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean;
-}
-export const MeetingsUpdateMeetingByIdRequestAiConfigTranscription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keywords: S.optional(
-        MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList,
-      ),
-      language: S.optional(
-        MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage,
-      ),
-      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsUpdateMeetingByIdRequestAiConfigTranscription",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigTranscription>;
-
-export interface MeetingsUpdateMeetingByIdRequestAiConfig {
-  /** Summary Config */
-  summarization?: MeetingsUpdateMeetingByIdRequestAiConfigSummarization;
-  /** Transcription Configurations */
-  transcription?: MeetingsUpdateMeetingByIdRequestAiConfigTranscription;
-}
-export const MeetingsUpdateMeetingByIdRequestAiConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      summarization: S.optional(
-        MeetingsUpdateMeetingByIdRequestAiConfigSummarization,
-      ),
-      transcription: S.optional(
-        MeetingsUpdateMeetingByIdRequestAiConfigTranscription,
-      ),
-    }),
-).annotate({
-  identifier: "MeetingsUpdateMeetingByIdRequestAiConfig",
-}) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfig>;
-
-export type MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel =
-  | "mono"
-  | "stereo"
-  | (string & {});
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec =
-  | "MP3"
-  | "AAC"
-  | (string & {});
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig {
-  /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel;
-  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec;
-  /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
-}
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      channel: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel,
-      ),
-      codec: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig>;
-
-export interface MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig {
-  /** RTMP URL to stream to */
-  rtmpUrl?: string;
-}
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig>;
-
-export interface MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig {
-  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
-  enabled: boolean;
-}
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig>;
-
-export type MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType =
-  | "aws"
-  | "azure"
-  | "digitalocean"
-  | (string & {});
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig {
-  /** Type of storage media. */
-  type: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType;
-  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
-  /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod;
-  /** Name of the storage medium's bucket. */
-  bucket?: string;
-  /** SSH destination server host for SFTP type storage medium */
-  host?: string;
-  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
-  /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
-  /** SSH destination server port for SFTP type storage medium */
-  port?: number;
-  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
-  /** Region of the storage medium. */
-  region?: string;
-  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
-  /** SSH destination server username for SFTP type storage medium */
-  username?: string;
-}
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
-      authMethod: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
-      ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig>;
-
-export type MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec =
-  | "H264"
-  | "VP8"
-  | (string & {});
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize {
-  /** Height of the watermark in px */
-  height?: number;
-  /** Width of the watermark in px */
-  width?: number;
-}
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize>;
-
-export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark {
-  /** Position of the watermark */
-  position?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition;
-  /** Size of the watermark */
-  size?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize;
-  /** URL of the watermark image */
-  url?: string;
-}
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      position: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
-      ),
-      size: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize,
-      ),
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark>;
-
-export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig {
-  /** Codec using which the recording will be encoded. */
-  codec?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec;
-  /** Controls whether to export video file seperately */
-  exportFile?: boolean;
-  /** Height of the recording video in pixels */
-  height?: number;
-  /** Watermark to be added to the recording */
-  watermark?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark;
-  /** Width of the recording video in pixels */
-  width?: number;
-}
-export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      codec: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
-      watermark: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark,
-      ),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig>;
-
-export interface MeetingsUpdateMeetingByIdRequestRecordingConfig {
-  /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig;
-  /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig;
-  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig;
-  videoConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig;
-}
-export const MeetingsUpdateMeetingByIdRequestRecordingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      audioConfig: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
-      ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-      liveStreamingConfig: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
-      ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
-      realtimekitBucketConfig: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
-      ),
-      storageConfig: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
-      ),
-      videoConfig: S.optional(
-        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfig>;
-
-export type MeetingsUpdateMeetingByIdRequestStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
-export const MeetingsUpdateMeetingByIdRequestStatus = /*@__PURE__*/ S.String;
-
-export interface MeetingsUpdateMeetingByIdRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  meetingId: string;
-  /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsUpdateMeetingByIdRequestAiConfig;
-  /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
-  /** If a meeting is updated to persist_chat, meeting chat would remain for a week within the meeting space. */
-  persistChat?: boolean;
-  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
-  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfig;
-  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
-  /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsUpdateMeetingByIdRequestStatus;
-  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
-  /** Title of the meeting */
-  title?: string;
-  /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
-}
-export const MeetingsUpdateMeetingByIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    meetingId: S.String.pipe(T.Label("meeting_id")),
-    aiConfig: S.optional(
-      MeetingsUpdateMeetingByIdRequestAiConfig.pipe(T.Body("ai_config")),
-    ),
-    liveStreamOnStart: S.optional(
-      S.Boolean.pipe(T.Body("live_stream_on_start")),
-    ),
-    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-    recordingConfig: S.optional(
-      MeetingsUpdateMeetingByIdRequestRecordingConfig.pipe(
-        T.Body("recording_config"),
-      ),
-    ),
-    sessionKeepAliveTimeInSecs: S.optional(
-      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
-    ),
-    status: S.optional(MeetingsUpdateMeetingByIdRequestStatus),
-    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-    title: S.optional(S.String),
-    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MeetingsUpdateMeetingByIdRequest",
-}) as any as S.Schema<MeetingsUpdateMeetingByIdRequest>;
-
-export type MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType =
-  "general" | "team_meeting" | "sales_call" | (string & {});
-export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat =
-  "plain_text" | "markdown" | (string & {});
-export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization {
-  /** Defines the style of the summary, such as general, team meeting, or sales call. */
-  summaryType?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType;
-  /** Determines the text format of the summary, such as plain text or markdown. */
-  textFormat?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat;
-  /** Sets the maximum number of words in the meeting summary. */
-  wordLimit?: number;
-}
-export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      summaryType: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType.pipe(
-          T.Body("summary_type"),
-        ),
-      ),
-      textFormat: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat.pipe(
-          T.Body("text_format"),
-        ),
-      ),
-      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization>;
-
-export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  string[];
-export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
-
-export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage =
-  "en-US" | "en-IN" | "de" | (string & {});
-export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription {
-  /** Adds specific terms to improve accurate detection during transcription. */
-  keywords?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList;
-  /** Specifies the language code for transcription to ensure accurate results. */
-  language?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage;
-  /** Control the inclusion of offensive language in transcriptions. */
-  profanityFilter?: boolean;
-}
-export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      keywords: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList,
-      ),
-      language: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage,
-      ),
-      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
-    }),
-  ).annotate({
-    identifier: "MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription>;
-
-export interface MeetingsUpdateMeetingByIdResponseDataAiConfig {
-  /** Summary Config */
-  summarization?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization;
-  /** Transcription Configurations */
-  transcription?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription;
-}
-export const MeetingsUpdateMeetingByIdResponseDataAiConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      summarization: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization,
-      ),
-      transcription: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription,
-      ),
-    }),
-  ).annotate({
-    identifier: "MeetingsUpdateMeetingByIdResponseDataAiConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfig>;
-
-export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
-  "MP3" | "AAC" | (string & {});
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig {
-  /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel;
-  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec;
-  /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
-}
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      channel: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel,
-      ),
-      codec: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig>;
-
-export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig {
-  /** RTMP URL to stream to */
-  rtmpUrl?: string;
-}
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig>;
-
-export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig {
-  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
-  enabled: boolean;
-}
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig>;
-
-export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType =
-  "aws" | "azure" | "digitalocean" | (string & {});
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig {
-  /** Type of storage media. */
-  type: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType;
-  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
-  /** Authentication method used for "sftp" type storage medium */
-  authMethod?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod;
-  /** Name of the storage medium's bucket. */
-  bucket?: string;
-  /** SSH destination server host for SFTP type storage medium */
-  host?: string;
-  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
-  /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
-  /** SSH destination server port for SFTP type storage medium */
-  port?: number;
-  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
-  /** Region of the storage medium. */
-  region?: string;
-  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
-  /** SSH destination server username for SFTP type storage medium */
-  username?: string;
-}
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
-      authMethod: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
-      ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig>;
-
-export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
-  "H264" | "VP8" | (string & {});
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize {
-  /** Height of the watermark in px */
-  height?: number;
-  /** Width of the watermark in px */
-  width?: number;
-}
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize>;
-
-export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark {
-  /** Position of the watermark */
-  position?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition;
-  /** Size of the watermark */
-  size?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize;
-  /** URL of the watermark image */
-  url?: string;
-}
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      position: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition,
-      ),
-      size: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize,
-      ),
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark>;
-
-export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig {
-  /** Codec using which the recording will be encoded. */
-  codec?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec;
-  /** Controls whether to export video file seperately */
-  exportFile?: boolean;
-  /** Height of the recording video in pixels */
-  height?: number;
-  /** Watermark to be added to the recording */
-  watermark?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark;
-  /** Width of the recording video in pixels */
-  width?: number;
-}
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      codec: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
-      watermark: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark,
-      ),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig>;
-
-export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfig {
-  /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig;
-  /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig;
-  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig;
-  videoConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig;
-}
-export const MeetingsUpdateMeetingByIdResponseDataRecordingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      audioConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
-      ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-      liveStreamingConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
-      ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
-      realtimekitBucketConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
-      ),
-      storageConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
-      ),
-      videoConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "MeetingsUpdateMeetingByIdResponseDataRecordingConfig",
-  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfig>;
-
-export type MeetingsUpdateMeetingByIdResponseDataStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
-export const MeetingsUpdateMeetingByIdResponseDataStatus =
-  /*@__PURE__*/ S.String;
-
-export interface MeetingsUpdateMeetingByIdResponseData {
-  /** ID of the meeting. */
-  id: string;
-  /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt: string;
-  /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt: string;
-  /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
-  aiConfig?: MeetingsUpdateMeetingByIdResponseDataAiConfig;
-  /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
-  /** Specifies if Chat within a meeting should persist for a week. */
-  persistChat?: boolean;
-  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
-  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfig;
-  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
-  /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: MeetingsUpdateMeetingByIdResponseDataStatus;
-  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
-  /** Title of the meeting. */
-  title?: string;
-  /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
-}
-export const MeetingsUpdateMeetingByIdResponseData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      aiConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataAiConfig.pipe(T.Body("ai_config")),
-      ),
-      liveStreamOnStart: S.optional(
-        S.Boolean.pipe(T.Body("live_stream_on_start")),
-      ),
-      persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-      recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-      recordingConfig: S.optional(
-        MeetingsUpdateMeetingByIdResponseDataRecordingConfig.pipe(
-          T.Body("recording_config"),
-        ),
-      ),
-      sessionKeepAliveTimeInSecs: S.optional(
-        S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
-      ),
-      status: S.optional(MeetingsUpdateMeetingByIdResponseDataStatus),
-      summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-      title: S.optional(S.String),
-      transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
-    }),
-).annotate({
-  identifier: "MeetingsUpdateMeetingByIdResponseData",
-}) as any as S.Schema<MeetingsUpdateMeetingByIdResponseData>;
+  identifier: "ActiveSessionCreatePollResponseData",
+}) as any as S.Schema<ActiveSessionCreatePollResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MeetingsUpdateMeetingByIdResponse {
-  /** Data returned by the operation */
-  data?: MeetingsUpdateMeetingByIdResponseData;
+export interface CreatePollActiveSessionResponse {
+  data?: ActiveSessionCreatePollResponseData;
 }
-export const MeetingsUpdateMeetingByIdResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreatePollActiveSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: S.optional(MeetingsUpdateMeetingByIdResponseData),
+    data: S.optional(ActiveSessionCreatePollResponseData),
   }),
 ).annotate({
-  identifier: "MeetingsUpdateMeetingByIdResponse",
-}) as any as S.Schema<MeetingsUpdateMeetingByIdResponse>;
+  identifier: "CreatePollActiveSessionResponse",
+}) as any as S.Schema<CreatePollActiveSessionResponse>;
 
 export interface PresetsCreateRequestConfigMaxVideoStreams {
   /** Maximum number of video streams visible on desktop devices */
@@ -6303,7 +1792,7 @@ export const PresetsCreateRequestUi = /*@__PURE__*/ S.suspend(() =>
   identifier: "PresetsCreateRequestUi",
 }) as any as S.Schema<PresetsCreateRequestUi>;
 
-export interface PresetsCreateRequest {
+export interface CreatePresetRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
@@ -6314,7 +1803,7 @@ export interface PresetsCreateRequest {
   permissions: PresetsCreateRequestPermissions;
   ui: PresetsCreateRequestUi;
 }
-export const PresetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreatePresetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -6330,8 +1819,8 @@ export const PresetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PresetsCreateRequest",
-}) as any as S.Schema<PresetsCreateRequest>;
+  identifier: "CreatePresetRequest",
+}) as any as S.Schema<CreatePresetRequest>;
 
 export interface PresetsCreateResponseDataConfigMaxVideoStreams {
   /** Maximum number of video streams visible on desktop devices */
@@ -6974,26 +2463,191 @@ export const PresetsCreateResponseData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PresetsCreateResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface PresetsCreateResponse {
+export interface CreatePresetResponse {
   /** Data returned by the operation */
   data: PresetsCreateResponseData;
 }
-export const PresetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreatePresetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PresetsCreateResponseData,
   }),
 ).annotate({
-  identifier: "PresetsCreateResponse",
-}) as any as S.Schema<PresetsCreateResponse>;
+  identifier: "CreatePresetResponse",
+}) as any as S.Schema<CreatePresetResponse>;
 
-export interface PresetsDeleteRequest {
+export type WebhooksCreateWebhookRequestEventsItem =
+  | "meeting.started"
+  | "meeting.ended"
+  | "meeting.participantJoined"
+  | (string & {});
+export const WebhooksCreateWebhookRequestEventsItem = /*@__PURE__*/ S.String;
+
+export type WebhooksCreateWebhookRequestEventsList =
+  WebhooksCreateWebhookRequestEventsItem[];
+export const WebhooksCreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
+  WebhooksCreateWebhookRequestEventsItem,
+) as any as S.Schema<WebhooksCreateWebhookRequestEventsList>;
+
+export interface CreateWebhookWebhookRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  /** Events that this webhook will get triggered by */
+  events: WebhooksCreateWebhookRequestEventsList;
+  /** Name of the webhook */
+  name: string;
+  /** URL this webhook will send events to */
+  url: string;
+  /** Set whether or not the webhook should be active when created */
+  enabled?: boolean;
+}
+export const CreateWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    events: WebhooksCreateWebhookRequestEventsList,
+    name: S.String,
+    url: S.String,
+    enabled: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateWebhookWebhookRequest",
+}) as any as S.Schema<CreateWebhookWebhookRequest>;
+
+export type WebhooksCreateWebhookResponseDataEventsItem =
+  | "meeting.started"
+  | "meeting.ended"
+  | "meeting.participantJoined"
+  | (string & {});
+export const WebhooksCreateWebhookResponseDataEventsItem =
+  /*@__PURE__*/ S.String;
+
+export type WebhooksCreateWebhookResponseDataEventsList =
+  WebhooksCreateWebhookResponseDataEventsItem[];
+export const WebhooksCreateWebhookResponseDataEventsList =
+  /*@__PURE__*/ S.Array(
+    WebhooksCreateWebhookResponseDataEventsItem,
+  ) as any as S.Schema<WebhooksCreateWebhookResponseDataEventsList>;
+
+export interface WebhooksCreateWebhookResponseData {
+  /** ID of the webhook */
+  id: string;
+  /** Timestamp when this webhook was created */
+  createdAt: string;
+  /** Set to true if the webhook is active */
+  enabled: boolean;
+  /** Events this webhook will send updates for */
+  events: WebhooksCreateWebhookResponseDataEventsList;
+  /** Name of the webhook */
+  name: string;
+  /** Timestamp when this webhook was updated */
+  updatedAt: string;
+  /** URL the webhook will send events to */
+  url: string;
+}
+export const WebhooksCreateWebhookResponseData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    enabled: S.Boolean,
+    events: WebhooksCreateWebhookResponseDataEventsList,
+    name: S.String,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    url: S.String,
+  }),
+).annotate({
+  identifier: "WebhooksCreateWebhookResponseData",
+}) as any as S.Schema<WebhooksCreateWebhookResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CreateWebhookWebhookResponse {
+  data: WebhooksCreateWebhookResponseData;
+}
+export const CreateWebhookWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: WebhooksCreateWebhookResponseData,
+  }),
+).annotate({
+  identifier: "CreateWebhookWebhookResponse",
+}) as any as S.Schema<CreateWebhookWebhookResponse>;
+
+export interface DeleteMeetingParticipantMeetingRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+  participantId: string;
+}
+export const DeleteMeetingParticipantMeetingRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      meetingId: S.String.pipe(T.Label("meeting_id")),
+      participantId: S.String.pipe(T.Label("participant_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "DeleteMeetingParticipantMeetingRequest",
+}) as any as S.Schema<DeleteMeetingParticipantMeetingRequest>;
+
+export interface MeetingsDeleteMeetingParticipantResponseData {
+  /** Timestamp this object was created at. The time is returned in ISO format. */
+  createdAt: string;
+  /** A unique participant ID generated by the client. */
+  customParticipantId: string;
+  /** ID of the preset applied to this participant. */
+  presetId: string;
+  /** Timestamp this object was updated at. The time is returned in ISO format. */
+  updatedAt: string;
+}
+export const MeetingsDeleteMeetingParticipantResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
+      presetId: S.String.pipe(T.Body("preset_id")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+    }),
+  ).annotate({
+    identifier: "MeetingsDeleteMeetingParticipantResponseData",
+  }) as any as S.Schema<MeetingsDeleteMeetingParticipantResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface DeleteMeetingParticipantMeetingResponse {
+  /** Data returned by the operation */
+  data?: MeetingsDeleteMeetingParticipantResponseData;
+}
+export const DeleteMeetingParticipantMeetingResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      data: S.optional(MeetingsDeleteMeetingParticipantResponseData),
+    }),
+).annotate({
+  identifier: "DeleteMeetingParticipantMeetingResponse",
+}) as any as S.Schema<DeleteMeetingParticipantMeetingResponse>;
+
+export interface DeletePresetRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
   presetId: string;
 }
-export const PresetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeletePresetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -7006,8 +2660,8 @@ export const PresetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PresetsDeleteRequest",
-}) as any as S.Schema<PresetsDeleteRequest>;
+  identifier: "DeletePresetRequest",
+}) as any as S.Schema<DeletePresetRequest>;
 
 export interface PresetsDeleteResponseDataConfigMaxVideoStreams {
   /** Maximum number of video streams visible on desktop devices */
@@ -7650,2128 +3304,494 @@ export const PresetsDeleteResponseData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PresetsDeleteResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface PresetsDeleteResponse {
+export interface DeletePresetResponse {
   /** Data returned by the operation */
   data: PresetsDeleteResponseData;
 }
-export const PresetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeletePresetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: PresetsDeleteResponseData,
   }),
 ).annotate({
-  identifier: "PresetsDeleteResponse",
-}) as any as S.Schema<PresetsDeleteResponse>;
+  identifier: "DeletePresetResponse",
+}) as any as S.Schema<DeletePresetResponse>;
 
-export interface PresetsGetRequest {
+export interface DeleteWebhookWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
-  /** The page number from which you want your page search results to be displayed. */
-  pageNo?: number;
-  /** Number of results per page */
-  perPage?: number;
-  /** Search presets by name. */
-  search?: string;
+  webhookId: string;
 }
-export const PresetsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
-    pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    search: S.optional(S.String.pipe(T.Query())),
+    webhookId: S.String.pipe(T.Label("webhook_id")),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets",
+      method: "DELETE",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "PresetsGetRequest",
-}) as any as S.Schema<PresetsGetRequest>;
+  identifier: "DeleteWebhookWebhookRequest",
+}) as any as S.Schema<DeleteWebhookWebhookRequest>;
 
-export interface PresetsGetResponseDataItem {
-  /** ID of the preset */
-  id?: string;
-  /** Timestamp this preset was created at */
-  createdAt?: string;
-  /** Name of the preset */
-  name?: string;
-  /** Timestamp this preset was last updated */
-  updatedAt?: string;
-}
-export const PresetsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    name: S.optional(S.String),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
-).annotate({
-  identifier: "PresetsGetResponseDataItem",
-}) as any as S.Schema<PresetsGetResponseDataItem>;
-
-export type PresetsGetResponseDataList = PresetsGetResponseDataItem[];
-export const PresetsGetResponseDataList = /*@__PURE__*/ S.Array(
-  PresetsGetResponseDataItem,
-) as any as S.Schema<PresetsGetResponseDataList>;
-
-export interface PresetsGetResponsePaging {
-  endOffset: number;
-  startOffset: number;
-  totalCount: number;
-}
-export const PresetsGetResponsePaging = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endOffset: S.Number.pipe(T.Body("end_offset")),
-    startOffset: S.Number.pipe(T.Body("start_offset")),
-    totalCount: S.Number.pipe(T.Body("total_count")),
-  }),
-).annotate({
-  identifier: "PresetsGetResponsePaging",
-}) as any as S.Schema<PresetsGetResponsePaging>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface PresetsGetResponse {
-  data: PresetsGetResponseDataList;
-  paging: PresetsGetResponsePaging;
-}
-export const PresetsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: PresetsGetResponseDataList,
-    paging: PresetsGetResponsePaging,
-  }),
-).annotate({
-  identifier: "PresetsGetResponse",
-}) as any as S.Schema<PresetsGetResponse>;
-
-export interface PresetsGetPresetByIdRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  presetId: string;
-}
-export const PresetsGetPresetByIdRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    presetId: S.String.pipe(T.Label("preset_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PresetsGetPresetByIdRequest",
-}) as any as S.Schema<PresetsGetPresetByIdRequest>;
-
-export interface PresetsGetPresetByIdResponseDataConfigMaxVideoStreams {
-  /** Maximum number of video streams visible on desktop devices */
-  desktop: number;
-  /** Maximum number of streams visible on mobile devices */
-  mobile: number;
-}
-export const PresetsGetPresetByIdResponseDataConfigMaxVideoStreams =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      desktop: S.Number,
-      mobile: S.Number,
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataConfigMaxVideoStreams",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigMaxVideoStreams>;
-
-export type PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality =
-  | "hd"
-  | "vga"
-  | "qvga"
+export type WebhooksDeleteWebhookResponseDataEventsItem =
+  | "meeting.started"
+  | "meeting.ended"
+  | "meeting.participantJoined"
   | (string & {});
-export const PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality =
+export const WebhooksDeleteWebhookResponseDataEventsItem =
   /*@__PURE__*/ S.String;
 
-export interface PresetsGetPresetByIdResponseDataConfigMediaScreenshare {
-  /** Frame rate of screen share */
-  frameRate: number;
-  /** Quality of screen share */
-  quality: PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality;
-}
-export const PresetsGetPresetByIdResponseDataConfigMediaScreenshare =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      frameRate: S.Number.pipe(T.Body("frame_rate")),
-      quality: PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality,
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataConfigMediaScreenshare",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigMediaScreenshare>;
-
-export type PresetsGetPresetByIdResponseDataConfigMediaVideoQuality =
-  | "hd"
-  | "vga"
-  | "qvga"
-  | (string & {});
-export const PresetsGetPresetByIdResponseDataConfigMediaVideoQuality =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsGetPresetByIdResponseDataConfigMediaVideo {
-  /** Frame rate of participants' video */
-  frameRate: number;
-  /** Video quality of participants */
-  quality: PresetsGetPresetByIdResponseDataConfigMediaVideoQuality;
-  /** Enable simulcast for participant videos. */
-  simulcast?: boolean;
-}
-export const PresetsGetPresetByIdResponseDataConfigMediaVideo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      frameRate: S.Number.pipe(T.Body("frame_rate")),
-      quality: PresetsGetPresetByIdResponseDataConfigMediaVideoQuality,
-      simulcast: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataConfigMediaVideo",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigMediaVideo>;
-
-export interface PresetsGetPresetByIdResponseDataConfigMediaAudio {
-  /** Enable High Quality Audio for your meetings */
-  enableHighBitrate?: boolean;
-  /** Enable Stereo for your meetings */
-  enableStereo?: boolean;
-}
-export const PresetsGetPresetByIdResponseDataConfigMediaAudio =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enableHighBitrate: S.optional(
-        S.Boolean.pipe(T.Body("enable_high_bitrate")),
-      ),
-      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataConfigMediaAudio",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigMediaAudio>;
-
-export interface PresetsGetPresetByIdResponseDataConfigMedia {
-  /** Configuration options for participant screen shares */
-  screenshare: PresetsGetPresetByIdResponseDataConfigMediaScreenshare;
-  /** Configuration options for participant videos */
-  video: PresetsGetPresetByIdResponseDataConfigMediaVideo;
-  /** Control options for Audio quality. */
-  audio?: PresetsGetPresetByIdResponseDataConfigMediaAudio;
-}
-export const PresetsGetPresetByIdResponseDataConfigMedia =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      screenshare: PresetsGetPresetByIdResponseDataConfigMediaScreenshare,
-      video: PresetsGetPresetByIdResponseDataConfigMediaVideo,
-      audio: S.optional(PresetsGetPresetByIdResponseDataConfigMediaAudio),
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataConfigMedia",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigMedia>;
-
-export type PresetsGetPresetByIdResponseDataConfigViewType =
-  | "GROUP_CALL"
-  | "WEBINAR"
-  | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
-export const PresetsGetPresetByIdResponseDataConfigViewType =
-  /*@__PURE__*/ S.String;
-
-export type PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList =
-  number[];
-export const PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList =
+export type WebhooksDeleteWebhookResponseDataEventsList =
+  WebhooksDeleteWebhookResponseDataEventsItem[];
+export const WebhooksDeleteWebhookResponseDataEventsList =
   /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList>;
+    WebhooksDeleteWebhookResponseDataEventsItem,
+  ) as any as S.Schema<WebhooksDeleteWebhookResponseDataEventsList>;
 
-export interface PresetsGetPresetByIdResponseDataConfig {
-  /** Maximum number of screen shares that can be active at a given time */
-  maxScreenshareCount: number;
-  /** Maximum number of streams that are visible on a device */
-  maxVideoStreams: PresetsGetPresetByIdResponseDataConfigMaxVideoStreams;
-  /** Media configuration options. eg: Video quality */
-  media: PresetsGetPresetByIdResponseDataConfigMedia;
-  /** Type of the meeting */
-  viewType: PresetsGetPresetByIdResponseDataConfigViewType;
-  /** Livestream viewer quality levels. */
-  livestreamViewerQualities?: PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList;
-}
-export const PresetsGetPresetByIdResponseDataConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-      maxVideoStreams:
-        PresetsGetPresetByIdResponseDataConfigMaxVideoStreams.pipe(
-          T.Body("max_video_streams"),
-        ),
-      media: PresetsGetPresetByIdResponseDataConfigMedia,
-      viewType: PresetsGetPresetByIdResponseDataConfigViewType.pipe(
-        T.Body("view_type"),
-      ),
-      livestreamViewerQualities: S.optional(
-        PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList.pipe(
-          T.Body("livestream_viewer_qualities"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "PresetsGetPresetByIdResponseDataConfig",
-}) as any as S.Schema<PresetsGetPresetByIdResponseDataConfig>;
-
-export interface PresetsGetPresetByIdResponseDataPermissionsChatPrivate {
-  canReceive: boolean;
-  canSend: boolean;
-  files: boolean;
-  text: boolean;
-}
-export const PresetsGetPresetByIdResponseDataPermissionsChatPrivate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canReceive: S.Boolean.pipe(T.Body("can_receive")),
-      canSend: S.Boolean.pipe(T.Body("can_send")),
-      files: S.Boolean,
-      text: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataPermissionsChatPrivate",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsChatPrivate>;
-
-export interface PresetsGetPresetByIdResponseDataPermissionsChatPublic {
-  /** Can send messages in general */
-  canSend: boolean;
-  /** Can send file messages */
-  files: boolean;
-  /** Can send text messages */
-  text: boolean;
-}
-export const PresetsGetPresetByIdResponseDataPermissionsChatPublic =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canSend: S.Boolean.pipe(T.Body("can_send")),
-      files: S.Boolean,
-      text: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataPermissionsChatPublic",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsChatPublic>;
-
-export interface PresetsGetPresetByIdResponseDataPermissionsChat {
-  private: PresetsGetPresetByIdResponseDataPermissionsChatPrivate;
-  public: PresetsGetPresetByIdResponseDataPermissionsChatPublic;
-}
-export const PresetsGetPresetByIdResponseDataPermissionsChat =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      private: PresetsGetPresetByIdResponseDataPermissionsChatPrivate,
-      public: PresetsGetPresetByIdResponseDataPermissionsChatPublic,
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataPermissionsChat",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsChat>;
-
-export interface PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings {
-  canAlterConnectedMeetings: boolean;
-  canSwitchConnectedMeetings: boolean;
-  canSwitchToParentMeeting: boolean;
-}
-export const PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canAlterConnectedMeetings: S.Boolean.pipe(
-        T.Body("can_alter_connected_meetings"),
-      ),
-      canSwitchConnectedMeetings: S.Boolean.pipe(
-        T.Body("can_switch_connected_meetings"),
-      ),
-      canSwitchToParentMeeting: S.Boolean.pipe(
-        T.Body("can_switch_to_parent_meeting"),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings>;
-
-export type PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce =
-  | "ALLOWED"
-  | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
-export const PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsGetPresetByIdResponseDataPermissionsMediaAudio {
-  /** Can produce audio */
-  canProduce: PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce;
-}
-export const PresetsGetPresetByIdResponseDataPermissionsMediaAudio =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canProduce:
-        PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce.pipe(
-          T.Body("can_produce"),
-        ),
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataPermissionsMediaAudio",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMediaAudio>;
-
-export type PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce =
-  "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
-export const PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare {
-  /** Can produce screen share video */
-  canProduce: PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce;
-}
-export const PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canProduce:
-        PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce.pipe(
-          T.Body("can_produce"),
-        ),
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare>;
-
-export type PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce =
-  | "ALLOWED"
-  | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
-export const PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsGetPresetByIdResponseDataPermissionsMediaVideo {
-  /** Can produce video */
-  canProduce: PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce;
-}
-export const PresetsGetPresetByIdResponseDataPermissionsMediaVideo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canProduce:
-        PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce.pipe(
-          T.Body("can_produce"),
-        ),
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataPermissionsMediaVideo",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMediaVideo>;
-
-export interface PresetsGetPresetByIdResponseDataPermissionsMedia {
-  /** Audio permissions */
-  audio: PresetsGetPresetByIdResponseDataPermissionsMediaAudio;
-  /** Screenshare permissions */
-  screenshare: PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare;
-  /** Video permissions */
-  video: PresetsGetPresetByIdResponseDataPermissionsMediaVideo;
-}
-export const PresetsGetPresetByIdResponseDataPermissionsMedia =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      audio: PresetsGetPresetByIdResponseDataPermissionsMediaAudio,
-      screenshare: PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare,
-      video: PresetsGetPresetByIdResponseDataPermissionsMediaVideo,
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataPermissionsMedia",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMedia>;
-
-export type PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap>;
-
-export interface PresetsGetPresetByIdResponseDataPermissionsPlugins {
-  /** Can close plugins that are already open */
-  canClose: boolean;
-  /** Can edit plugin config */
-  canEditConfig: boolean;
-  /** Can start plugins */
-  canStart: boolean;
-  /** Plugin configuration keyed by plugin UUID. */
-  config: PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap;
-}
-export const PresetsGetPresetByIdResponseDataPermissionsPlugins =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canClose: S.Boolean.pipe(T.Body("can_close")),
-      canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
-      canStart: S.Boolean.pipe(T.Body("can_start")),
-      config: PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap,
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataPermissionsPlugins",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsPlugins>;
-
-export interface PresetsGetPresetByIdResponseDataPermissionsPolls {
-  /** Can create polls */
-  canCreate: boolean;
-  /** Can view polls */
-  canView: boolean;
-  /** Can vote on polls */
-  canVote: boolean;
-}
-export const PresetsGetPresetByIdResponseDataPermissionsPolls =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canCreate: S.Boolean.pipe(T.Body("can_create")),
-      canView: S.Boolean.pipe(T.Body("can_view")),
-      canVote: S.Boolean.pipe(T.Body("can_vote")),
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataPermissionsPolls",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsPolls>;
-
-export type PresetsGetPresetByIdResponseDataPermissionsRecorderType =
-  | "RECORDER"
-  | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
-export const PresetsGetPresetByIdResponseDataPermissionsRecorderType =
-  /*@__PURE__*/ S.String;
-
-export type PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType =
-  | "SKIP"
-  | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
-export const PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType =
-  /*@__PURE__*/ S.String;
-
-export type PresetsGetPresetByIdResponseDataPermissionsStageAccess =
-  | "ALLOWED"
-  | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
-export const PresetsGetPresetByIdResponseDataPermissionsStageAccess =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsGetPresetByIdResponseDataPermissions {
-  /** Whether this participant can accept waiting requests */
-  acceptWaitingRequests: boolean;
-  canAcceptProductionRequests: boolean;
-  canChangeParticipantPermissions: boolean;
-  canEditDisplayName: boolean;
-  canLivestream: boolean;
-  canRecord: boolean;
-  canSpotlight: boolean;
-  chat: PresetsGetPresetByIdResponseDataPermissionsChat;
-  connectedMeetings: PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings;
-  disableParticipantAudio: boolean;
-  disableParticipantScreensharing: boolean;
-  disableParticipantVideo: boolean;
-  /** Whether this participant is visible to others or not */
-  hiddenParticipant: boolean;
-  kickParticipant: boolean;
-  /** Media permissions */
-  media: PresetsGetPresetByIdResponseDataPermissionsMedia;
-  pinParticipant: boolean;
-  /** Plugin permissions */
-  plugins: PresetsGetPresetByIdResponseDataPermissionsPlugins;
-  /** Poll permissions */
-  polls: PresetsGetPresetByIdResponseDataPermissionsPolls;
-  /** Type of the recording peer */
-  recorderType: PresetsGetPresetByIdResponseDataPermissionsRecorderType;
-  showParticipantList: boolean;
-  /** Waiting room type */
-  waitingRoomType: PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType;
-  acceptStageRequests?: boolean;
-  isRecorder?: boolean;
-  stageAccess?: PresetsGetPresetByIdResponseDataPermissionsStageAccess;
-  stageEnabled?: boolean;
-  transcriptionEnabled?: boolean;
-}
-export const PresetsGetPresetByIdResponseDataPermissions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      acceptWaitingRequests: S.Boolean.pipe(T.Body("accept_waiting_requests")),
-      canAcceptProductionRequests: S.Boolean.pipe(
-        T.Body("can_accept_production_requests"),
-      ),
-      canChangeParticipantPermissions: S.Boolean.pipe(
-        T.Body("can_change_participant_permissions"),
-      ),
-      canEditDisplayName: S.Boolean.pipe(T.Body("can_edit_display_name")),
-      canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
-      canRecord: S.Boolean.pipe(T.Body("can_record")),
-      canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
-      chat: PresetsGetPresetByIdResponseDataPermissionsChat,
-      connectedMeetings:
-        PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings.pipe(
-          T.Body("connected_meetings"),
-        ),
-      disableParticipantAudio: S.Boolean.pipe(
-        T.Body("disable_participant_audio"),
-      ),
-      disableParticipantScreensharing: S.Boolean.pipe(
-        T.Body("disable_participant_screensharing"),
-      ),
-      disableParticipantVideo: S.Boolean.pipe(
-        T.Body("disable_participant_video"),
-      ),
-      hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
-      kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
-      media: PresetsGetPresetByIdResponseDataPermissionsMedia,
-      pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
-      plugins: PresetsGetPresetByIdResponseDataPermissionsPlugins,
-      polls: PresetsGetPresetByIdResponseDataPermissionsPolls,
-      recorderType:
-        PresetsGetPresetByIdResponseDataPermissionsRecorderType.pipe(
-          T.Body("recorder_type"),
-        ),
-      showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
-      waitingRoomType:
-        PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType.pipe(
-          T.Body("waiting_room_type"),
-        ),
-      acceptStageRequests: S.optional(
-        S.Boolean.pipe(T.Body("accept_stage_requests")),
-      ),
-      isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
-      stageAccess: S.optional(
-        PresetsGetPresetByIdResponseDataPermissionsStageAccess.pipe(
-          T.Body("stage_access"),
-        ),
-      ),
-      stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
-      transcriptionEnabled: S.optional(
-        S.Boolean.pipe(T.Body("transcription_enabled")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataPermissions",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissions>;
-
-export type PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius =
-  | "sharp"
-  | "rounded"
-  | "extra-rounded"
-  | "circular"
-  | (string & {});
-export const PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius =
-  /*@__PURE__*/ S.String;
-
-export type PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth =
-  | "none"
-  | "thin"
-  | "fat"
-  | (string & {});
-export const PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground {
-  "1000_": string;
-  "600_": string;
-  "700_": string;
-  "800_": string;
-  "900_": string;
-}
-export const PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "1000_": S.String.pipe(T.Body('"1000"')),
-      "600_": S.String.pipe(T.Body('"600"')),
-      "700_": S.String.pipe(T.Body('"700"')),
-      "800_": S.String.pipe(T.Body('"800"')),
-      "900_": S.String.pipe(T.Body('"900"')),
-    }),
-  ).annotate({
-    identifier:
-      "PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground>;
-
-export interface PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand {
-  "300_": string;
-  "400_": string;
-  "500_": string;
-  "600_": string;
-  "700_": string;
-}
-export const PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "300_": S.String.pipe(T.Body('"300"')),
-      "400_": S.String.pipe(T.Body('"400"')),
-      "500_": S.String.pipe(T.Body('"500"')),
-      "600_": S.String.pipe(T.Body('"600"')),
-      "700_": S.String.pipe(T.Body('"700"')),
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand>;
-
-export interface PresetsGetPresetByIdResponseDataUiDesignTokensColors {
-  background: PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground;
-  brand: PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand;
-  danger: string;
-  success: string;
-  text: string;
-  textOnBrand: string;
-  videoBg: string;
-  warning: string;
-}
-export const PresetsGetPresetByIdResponseDataUiDesignTokensColors =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      background:
-        PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground,
-      brand: PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand,
-      danger: S.String,
-      success: S.String,
-      text: S.String,
-      textOnBrand: S.String.pipe(T.Body("text_on_brand")),
-      videoBg: S.String.pipe(T.Body("video_bg")),
-      warning: S.String,
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataUiDesignTokensColors",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataUiDesignTokensColors>;
-
-export type PresetsGetPresetByIdResponseDataUiDesignTokensTheme =
-  | "darkest"
-  | "dark"
-  | "light"
-  | (string & {});
-export const PresetsGetPresetByIdResponseDataUiDesignTokensTheme =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsGetPresetByIdResponseDataUiDesignTokens {
-  borderRadius: PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius;
-  borderWidth: PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth;
-  colors: PresetsGetPresetByIdResponseDataUiDesignTokensColors;
-  spacingBase: number;
-  theme: PresetsGetPresetByIdResponseDataUiDesignTokensTheme;
-  fontFamily?: string;
-  googleFont?: string;
-  logo?: string;
-}
-export const PresetsGetPresetByIdResponseDataUiDesignTokens =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      borderRadius:
-        PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius.pipe(
-          T.Body("border_radius"),
-        ),
-      borderWidth:
-        PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth.pipe(
-          T.Body("border_width"),
-        ),
-      colors: PresetsGetPresetByIdResponseDataUiDesignTokensColors,
-      spacingBase: S.Number.pipe(T.Body("spacing_base")),
-      theme: PresetsGetPresetByIdResponseDataUiDesignTokensTheme,
-      fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
-      googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
-      logo: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PresetsGetPresetByIdResponseDataUiDesignTokens",
-  }) as any as S.Schema<PresetsGetPresetByIdResponseDataUiDesignTokens>;
-
-export interface PresetsGetPresetByIdResponseDataUi {
-  designTokens: PresetsGetPresetByIdResponseDataUiDesignTokens;
-}
-export const PresetsGetPresetByIdResponseDataUi = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    designTokens: PresetsGetPresetByIdResponseDataUiDesignTokens.pipe(
-      T.Body("design_tokens"),
-    ),
-  }),
-).annotate({
-  identifier: "PresetsGetPresetByIdResponseDataUi",
-}) as any as S.Schema<PresetsGetPresetByIdResponseDataUi>;
-
-export interface PresetsGetPresetByIdResponseData {
-  /** ID of the preset */
+export interface WebhooksDeleteWebhookResponseData {
+  /** ID of the webhook */
   id: string;
-  config: PresetsGetPresetByIdResponseDataConfig;
-  /** Timestamp this preset was created at */
+  /** Timestamp when this webhook was created */
   createdAt: string;
-  /** Name of the preset */
+  /** Set to true if the webhook is active */
+  enabled: boolean;
+  /** Events this webhook will send updates for */
+  events: WebhooksDeleteWebhookResponseDataEventsList;
+  /** Name of the webhook */
   name: string;
-  permissions: PresetsGetPresetByIdResponseDataPermissions;
-  ui: PresetsGetPresetByIdResponseDataUi;
-  /** Timestamp this preset was last updated */
+  /** Timestamp when this webhook was updated */
   updatedAt: string;
+  /** URL the webhook will send events to */
+  url: string;
 }
-export const PresetsGetPresetByIdResponseData = /*@__PURE__*/ S.suspend(() =>
+export const WebhooksDeleteWebhookResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    config: PresetsGetPresetByIdResponseDataConfig,
     createdAt: S.String.pipe(T.Body("created_at")),
+    enabled: S.Boolean,
+    events: WebhooksDeleteWebhookResponseDataEventsList,
     name: S.String,
-    permissions: PresetsGetPresetByIdResponseDataPermissions,
-    ui: PresetsGetPresetByIdResponseDataUi,
     updatedAt: S.String.pipe(T.Body("updated_at")),
+    url: S.String,
   }),
 ).annotate({
-  identifier: "PresetsGetPresetByIdResponseData",
-}) as any as S.Schema<PresetsGetPresetByIdResponseData>;
+  identifier: "WebhooksDeleteWebhookResponseData",
+}) as any as S.Schema<WebhooksDeleteWebhookResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface PresetsGetPresetByIdResponse {
-  /** Data returned by the operation */
-  data: PresetsGetPresetByIdResponseData;
+export interface DeleteWebhookWebhookResponse {
+  data: WebhooksDeleteWebhookResponseData;
 }
-export const PresetsGetPresetByIdResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteWebhookWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: PresetsGetPresetByIdResponseData,
+    data: WebhooksDeleteWebhookResponseData,
   }),
 ).annotate({
-  identifier: "PresetsGetPresetByIdResponse",
-}) as any as S.Schema<PresetsGetPresetByIdResponse>;
+  identifier: "DeleteWebhookWebhookResponse",
+}) as any as S.Schema<DeleteWebhookWebhookResponse>;
 
-export type PresetsUpdateRequestConfigLivestreamViewerQualitiesList = number[];
-export const PresetsUpdateRequestConfigLivestreamViewerQualitiesList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<PresetsUpdateRequestConfigLivestreamViewerQualitiesList>;
-
-export interface PresetsUpdateRequestConfigMaxVideoStreams {
-  /** Maximum number of video streams visible on desktop devices */
-  desktop?: number;
-  /** Maximum number of streams visible on mobile devices */
-  mobile?: number;
-}
-export const PresetsUpdateRequestConfigMaxVideoStreams =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      desktop: S.optional(S.Number),
-      mobile: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateRequestConfigMaxVideoStreams",
-  }) as any as S.Schema<PresetsUpdateRequestConfigMaxVideoStreams>;
-
-export interface PresetsUpdateRequestConfigMediaAudio {
-  /** Enable High Quality Audio for your meetings */
-  enableHighBitrate?: boolean;
-  /** Enable Stereo for your meetings */
-  enableStereo?: boolean;
-}
-export const PresetsUpdateRequestConfigMediaAudio = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enableHighBitrate: S.optional(
-        S.Boolean.pipe(T.Body("enable_high_bitrate")),
-      ),
-      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
-    }),
-).annotate({
-  identifier: "PresetsUpdateRequestConfigMediaAudio",
-}) as any as S.Schema<PresetsUpdateRequestConfigMediaAudio>;
-
-export type PresetsUpdateRequestConfigMediaScreenshareQuality =
-  | "hd"
-  | "vga"
-  | "qvga"
-  | (string & {});
-export const PresetsUpdateRequestConfigMediaScreenshareQuality =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateRequestConfigMediaScreenshare {
-  /** Frame rate of screen share */
-  frameRate?: number;
-  /** Quality of screen share */
-  quality?: PresetsUpdateRequestConfigMediaScreenshareQuality;
-}
-export const PresetsUpdateRequestConfigMediaScreenshare =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      frameRate: S.optional(S.Number.pipe(T.Body("frame_rate"))),
-      quality: S.optional(PresetsUpdateRequestConfigMediaScreenshareQuality),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateRequestConfigMediaScreenshare",
-  }) as any as S.Schema<PresetsUpdateRequestConfigMediaScreenshare>;
-
-export type PresetsUpdateRequestConfigMediaVideoQuality =
-  | "hd"
-  | "vga"
-  | "qvga"
-  | (string & {});
-export const PresetsUpdateRequestConfigMediaVideoQuality =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateRequestConfigMediaVideo {
-  /** Frame rate of participants' video */
-  frameRate?: number;
-  /** Video quality of participants */
-  quality?: PresetsUpdateRequestConfigMediaVideoQuality;
-  /** Enable simulcast for participant videos. */
-  simulcast?: boolean;
-}
-export const PresetsUpdateRequestConfigMediaVideo = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      frameRate: S.optional(S.Number.pipe(T.Body("frame_rate"))),
-      quality: S.optional(PresetsUpdateRequestConfigMediaVideoQuality),
-      simulcast: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "PresetsUpdateRequestConfigMediaVideo",
-}) as any as S.Schema<PresetsUpdateRequestConfigMediaVideo>;
-
-export interface PresetsUpdateRequestConfigMedia {
-  /** Control options for Audio quality. */
-  audio?: PresetsUpdateRequestConfigMediaAudio;
-  /** Configuration options for participant screen shares */
-  screenshare?: PresetsUpdateRequestConfigMediaScreenshare;
-  /** Configuration options for participant videos */
-  video?: PresetsUpdateRequestConfigMediaVideo;
-}
-export const PresetsUpdateRequestConfigMedia = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audio: S.optional(PresetsUpdateRequestConfigMediaAudio),
-    screenshare: S.optional(PresetsUpdateRequestConfigMediaScreenshare),
-    video: S.optional(PresetsUpdateRequestConfigMediaVideo),
-  }),
-).annotate({
-  identifier: "PresetsUpdateRequestConfigMedia",
-}) as any as S.Schema<PresetsUpdateRequestConfigMedia>;
-
-export type PresetsUpdateRequestConfigViewType =
-  | "GROUP_CALL"
-  | "WEBINAR"
-  | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
-export const PresetsUpdateRequestConfigViewType = /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateRequestConfig {
-  /** Livestream viewer quality levels. */
-  livestreamViewerQualities?: PresetsUpdateRequestConfigLivestreamViewerQualitiesList;
-  /** Maximum number of screen shares that can be active at a given time */
-  maxScreenshareCount?: number;
-  /** Maximum number of streams that are visible on a device */
-  maxVideoStreams?: PresetsUpdateRequestConfigMaxVideoStreams;
-  /** Media configuration options. eg: Video quality */
-  media?: PresetsUpdateRequestConfigMedia;
-  /** Type of the meeting */
-  viewType?: PresetsUpdateRequestConfigViewType;
-}
-export const PresetsUpdateRequestConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    livestreamViewerQualities: S.optional(
-      PresetsUpdateRequestConfigLivestreamViewerQualitiesList.pipe(
-        T.Body("livestream_viewer_qualities"),
-      ),
-    ),
-    maxScreenshareCount: S.optional(
-      S.Number.pipe(T.Body("max_screenshare_count")),
-    ),
-    maxVideoStreams: S.optional(
-      PresetsUpdateRequestConfigMaxVideoStreams.pipe(
-        T.Body("max_video_streams"),
-      ),
-    ),
-    media: S.optional(PresetsUpdateRequestConfigMedia),
-    viewType: S.optional(
-      PresetsUpdateRequestConfigViewType.pipe(T.Body("view_type")),
-    ),
-  }),
-).annotate({
-  identifier: "PresetsUpdateRequestConfig",
-}) as any as S.Schema<PresetsUpdateRequestConfig>;
-
-export interface PresetsUpdateRequestPermissionsChatPrivate {
-  canReceive?: boolean;
-  canSend?: boolean;
-  files?: boolean;
-  text?: boolean;
-}
-export const PresetsUpdateRequestPermissionsChatPrivate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canReceive: S.optional(S.Boolean.pipe(T.Body("can_receive"))),
-      canSend: S.optional(S.Boolean.pipe(T.Body("can_send"))),
-      files: S.optional(S.Boolean),
-      text: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateRequestPermissionsChatPrivate",
-  }) as any as S.Schema<PresetsUpdateRequestPermissionsChatPrivate>;
-
-export interface PresetsUpdateRequestPermissionsChatPublic {
-  /** Can send messages in general */
-  canSend?: boolean;
-  /** Can send file messages */
-  files?: boolean;
-  /** Can send text messages */
-  text?: boolean;
-}
-export const PresetsUpdateRequestPermissionsChatPublic =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canSend: S.optional(S.Boolean.pipe(T.Body("can_send"))),
-      files: S.optional(S.Boolean),
-      text: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateRequestPermissionsChatPublic",
-  }) as any as S.Schema<PresetsUpdateRequestPermissionsChatPublic>;
-
-export interface PresetsUpdateRequestPermissionsChat {
-  private?: PresetsUpdateRequestPermissionsChatPrivate;
-  public?: PresetsUpdateRequestPermissionsChatPublic;
-}
-export const PresetsUpdateRequestPermissionsChat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    private: S.optional(PresetsUpdateRequestPermissionsChatPrivate),
-    public: S.optional(PresetsUpdateRequestPermissionsChatPublic),
-  }),
-).annotate({
-  identifier: "PresetsUpdateRequestPermissionsChat",
-}) as any as S.Schema<PresetsUpdateRequestPermissionsChat>;
-
-export interface PresetsUpdateRequestPermissionsConnectedMeetings {
-  canAlterConnectedMeetings?: boolean;
-  canSwitchConnectedMeetings?: boolean;
-  canSwitchToParentMeeting?: boolean;
-}
-export const PresetsUpdateRequestPermissionsConnectedMeetings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canAlterConnectedMeetings: S.optional(
-        S.Boolean.pipe(T.Body("can_alter_connected_meetings")),
-      ),
-      canSwitchConnectedMeetings: S.optional(
-        S.Boolean.pipe(T.Body("can_switch_connected_meetings")),
-      ),
-      canSwitchToParentMeeting: S.optional(
-        S.Boolean.pipe(T.Body("can_switch_to_parent_meeting")),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateRequestPermissionsConnectedMeetings",
-  }) as any as S.Schema<PresetsUpdateRequestPermissionsConnectedMeetings>;
-
-export type PresetsUpdateRequestPermissionsMediaAudioCanProduce =
-  | "ALLOWED"
-  | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
-export const PresetsUpdateRequestPermissionsMediaAudioCanProduce =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateRequestPermissionsMediaAudio {
-  /** Can produce audio */
-  canProduce?: PresetsUpdateRequestPermissionsMediaAudioCanProduce;
-}
-export const PresetsUpdateRequestPermissionsMediaAudio =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canProduce: S.optional(
-        PresetsUpdateRequestPermissionsMediaAudioCanProduce.pipe(
-          T.Body("can_produce"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateRequestPermissionsMediaAudio",
-  }) as any as S.Schema<PresetsUpdateRequestPermissionsMediaAudio>;
-
-export type PresetsUpdateRequestPermissionsMediaScreenshareCanProduce =
-  | "ALLOWED"
-  | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
-export const PresetsUpdateRequestPermissionsMediaScreenshareCanProduce =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateRequestPermissionsMediaScreenshare {
-  /** Can produce screen share video */
-  canProduce?: PresetsUpdateRequestPermissionsMediaScreenshareCanProduce;
-}
-export const PresetsUpdateRequestPermissionsMediaScreenshare =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canProduce: S.optional(
-        PresetsUpdateRequestPermissionsMediaScreenshareCanProduce.pipe(
-          T.Body("can_produce"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateRequestPermissionsMediaScreenshare",
-  }) as any as S.Schema<PresetsUpdateRequestPermissionsMediaScreenshare>;
-
-export type PresetsUpdateRequestPermissionsMediaVideoCanProduce =
-  | "ALLOWED"
-  | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
-export const PresetsUpdateRequestPermissionsMediaVideoCanProduce =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateRequestPermissionsMediaVideo {
-  /** Can produce video */
-  canProduce?: PresetsUpdateRequestPermissionsMediaVideoCanProduce;
-}
-export const PresetsUpdateRequestPermissionsMediaVideo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canProduce: S.optional(
-        PresetsUpdateRequestPermissionsMediaVideoCanProduce.pipe(
-          T.Body("can_produce"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateRequestPermissionsMediaVideo",
-  }) as any as S.Schema<PresetsUpdateRequestPermissionsMediaVideo>;
-
-export interface PresetsUpdateRequestPermissionsMedia {
-  /** Audio permissions */
-  audio?: PresetsUpdateRequestPermissionsMediaAudio;
-  /** Screenshare permissions */
-  screenshare?: PresetsUpdateRequestPermissionsMediaScreenshare;
-  /** Video permissions */
-  video?: PresetsUpdateRequestPermissionsMediaVideo;
-}
-export const PresetsUpdateRequestPermissionsMedia = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      audio: S.optional(PresetsUpdateRequestPermissionsMediaAudio),
-      screenshare: S.optional(PresetsUpdateRequestPermissionsMediaScreenshare),
-      video: S.optional(PresetsUpdateRequestPermissionsMediaVideo),
-    }),
-).annotate({
-  identifier: "PresetsUpdateRequestPermissionsMedia",
-}) as any as S.Schema<PresetsUpdateRequestPermissionsMedia>;
-
-export type PresetsUpdateRequestPermissionsPluginsConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const PresetsUpdateRequestPermissionsPluginsConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PresetsUpdateRequestPermissionsPluginsConfigMap>;
-
-export interface PresetsUpdateRequestPermissionsPlugins {
-  /** Can close plugins that are already open */
-  canClose?: boolean;
-  /** Can edit plugin config */
-  canEditConfig?: boolean;
-  /** Can start plugins */
-  canStart?: boolean;
-  /** Plugin configuration keyed by plugin UUID. */
-  config?: PresetsUpdateRequestPermissionsPluginsConfigMap;
-}
-export const PresetsUpdateRequestPermissionsPlugins = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      canClose: S.optional(S.Boolean.pipe(T.Body("can_close"))),
-      canEditConfig: S.optional(S.Boolean.pipe(T.Body("can_edit_config"))),
-      canStart: S.optional(S.Boolean.pipe(T.Body("can_start"))),
-      config: S.optional(PresetsUpdateRequestPermissionsPluginsConfigMap),
-    }),
-).annotate({
-  identifier: "PresetsUpdateRequestPermissionsPlugins",
-}) as any as S.Schema<PresetsUpdateRequestPermissionsPlugins>;
-
-export interface PresetsUpdateRequestPermissionsPolls {
-  /** Can create polls */
-  canCreate?: boolean;
-  /** Can view polls */
-  canView?: boolean;
-  /** Can vote on polls */
-  canVote?: boolean;
-}
-export const PresetsUpdateRequestPermissionsPolls = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      canCreate: S.optional(S.Boolean.pipe(T.Body("can_create"))),
-      canView: S.optional(S.Boolean.pipe(T.Body("can_view"))),
-      canVote: S.optional(S.Boolean.pipe(T.Body("can_vote"))),
-    }),
-).annotate({
-  identifier: "PresetsUpdateRequestPermissionsPolls",
-}) as any as S.Schema<PresetsUpdateRequestPermissionsPolls>;
-
-export type PresetsUpdateRequestPermissionsRecorderType =
-  | "RECORDER"
-  | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
-export const PresetsUpdateRequestPermissionsRecorderType =
-  /*@__PURE__*/ S.String;
-
-export type PresetsUpdateRequestPermissionsStageAccess =
-  | "ALLOWED"
-  | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
-export const PresetsUpdateRequestPermissionsStageAccess =
-  /*@__PURE__*/ S.String;
-
-export type PresetsUpdateRequestPermissionsWaitingRoomType =
-  | "SKIP"
-  | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
-export const PresetsUpdateRequestPermissionsWaitingRoomType =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateRequestPermissions {
-  acceptStageRequests?: boolean;
-  /** Whether this participant can accept waiting requests */
-  acceptWaitingRequests?: boolean;
-  canAcceptProductionRequests?: boolean;
-  canChangeParticipantPermissions?: boolean;
-  canEditDisplayName?: boolean;
-  canLivestream?: boolean;
-  canRecord?: boolean;
-  canSpotlight?: boolean;
-  chat?: PresetsUpdateRequestPermissionsChat;
-  connectedMeetings?: PresetsUpdateRequestPermissionsConnectedMeetings;
-  disableParticipantAudio?: boolean;
-  disableParticipantScreensharing?: boolean;
-  disableParticipantVideo?: boolean;
-  /** Whether this participant is visible to others or not */
-  hiddenParticipant?: boolean;
-  isRecorder?: boolean;
-  kickParticipant?: boolean;
-  /** Media permissions */
-  media?: PresetsUpdateRequestPermissionsMedia;
-  pinParticipant?: boolean;
-  /** Plugin permissions */
-  plugins?: PresetsUpdateRequestPermissionsPlugins;
-  /** Poll permissions */
-  polls?: PresetsUpdateRequestPermissionsPolls;
-  /** Type of the recording peer */
-  recorderType?: PresetsUpdateRequestPermissionsRecorderType;
-  showParticipantList?: boolean;
-  stageAccess?: PresetsUpdateRequestPermissionsStageAccess;
-  stageEnabled?: boolean;
-  transcriptionEnabled?: boolean;
-  /** Waiting room type */
-  waitingRoomType?: PresetsUpdateRequestPermissionsWaitingRoomType;
-}
-export const PresetsUpdateRequestPermissions = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    acceptStageRequests: S.optional(
-      S.Boolean.pipe(T.Body("accept_stage_requests")),
-    ),
-    acceptWaitingRequests: S.optional(
-      S.Boolean.pipe(T.Body("accept_waiting_requests")),
-    ),
-    canAcceptProductionRequests: S.optional(
-      S.Boolean.pipe(T.Body("can_accept_production_requests")),
-    ),
-    canChangeParticipantPermissions: S.optional(
-      S.Boolean.pipe(T.Body("can_change_participant_permissions")),
-    ),
-    canEditDisplayName: S.optional(
-      S.Boolean.pipe(T.Body("can_edit_display_name")),
-    ),
-    canLivestream: S.optional(S.Boolean.pipe(T.Body("can_livestream"))),
-    canRecord: S.optional(S.Boolean.pipe(T.Body("can_record"))),
-    canSpotlight: S.optional(S.Boolean.pipe(T.Body("can_spotlight"))),
-    chat: S.optional(PresetsUpdateRequestPermissionsChat),
-    connectedMeetings: S.optional(
-      PresetsUpdateRequestPermissionsConnectedMeetings.pipe(
-        T.Body("connected_meetings"),
-      ),
-    ),
-    disableParticipantAudio: S.optional(
-      S.Boolean.pipe(T.Body("disable_participant_audio")),
-    ),
-    disableParticipantScreensharing: S.optional(
-      S.Boolean.pipe(T.Body("disable_participant_screensharing")),
-    ),
-    disableParticipantVideo: S.optional(
-      S.Boolean.pipe(T.Body("disable_participant_video")),
-    ),
-    hiddenParticipant: S.optional(S.Boolean.pipe(T.Body("hidden_participant"))),
-    isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
-    kickParticipant: S.optional(S.Boolean.pipe(T.Body("kick_participant"))),
-    media: S.optional(PresetsUpdateRequestPermissionsMedia),
-    pinParticipant: S.optional(S.Boolean.pipe(T.Body("pin_participant"))),
-    plugins: S.optional(PresetsUpdateRequestPermissionsPlugins),
-    polls: S.optional(PresetsUpdateRequestPermissionsPolls),
-    recorderType: S.optional(
-      PresetsUpdateRequestPermissionsRecorderType.pipe(T.Body("recorder_type")),
-    ),
-    showParticipantList: S.optional(
-      S.Boolean.pipe(T.Body("show_participant_list")),
-    ),
-    stageAccess: S.optional(
-      PresetsUpdateRequestPermissionsStageAccess.pipe(T.Body("stage_access")),
-    ),
-    stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
-    transcriptionEnabled: S.optional(
-      S.Boolean.pipe(T.Body("transcription_enabled")),
-    ),
-    waitingRoomType: S.optional(
-      PresetsUpdateRequestPermissionsWaitingRoomType.pipe(
-        T.Body("waiting_room_type"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "PresetsUpdateRequestPermissions",
-}) as any as S.Schema<PresetsUpdateRequestPermissions>;
-
-export type PresetsUpdateRequestUiDesignTokensBorderRadius =
-  | "sharp"
-  | "rounded"
-  | "extra-rounded"
-  | "circular"
-  | (string & {});
-export const PresetsUpdateRequestUiDesignTokensBorderRadius =
-  /*@__PURE__*/ S.String;
-
-export type PresetsUpdateRequestUiDesignTokensBorderWidth =
-  | "none"
-  | "thin"
-  | "fat"
-  | (string & {});
-export const PresetsUpdateRequestUiDesignTokensBorderWidth =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateRequestUiDesignTokensColorsBackground {
-  "1000_"?: string;
-  "600_"?: string;
-  "700_"?: string;
-  "800_"?: string;
-  "900_"?: string;
-}
-export const PresetsUpdateRequestUiDesignTokensColorsBackground =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "1000_": S.optional(S.String.pipe(T.Body('"1000"'))),
-      "600_": S.optional(S.String.pipe(T.Body('"600"'))),
-      "700_": S.optional(S.String.pipe(T.Body('"700"'))),
-      "800_": S.optional(S.String.pipe(T.Body('"800"'))),
-      "900_": S.optional(S.String.pipe(T.Body('"900"'))),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateRequestUiDesignTokensColorsBackground",
-  }) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColorsBackground>;
-
-export interface PresetsUpdateRequestUiDesignTokensColorsBrand {
-  "300_"?: string;
-  "400_"?: string;
-  "500_"?: string;
-  "600_"?: string;
-  "700_"?: string;
-}
-export const PresetsUpdateRequestUiDesignTokensColorsBrand =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "300_": S.optional(S.String.pipe(T.Body('"300"'))),
-      "400_": S.optional(S.String.pipe(T.Body('"400"'))),
-      "500_": S.optional(S.String.pipe(T.Body('"500"'))),
-      "600_": S.optional(S.String.pipe(T.Body('"600"'))),
-      "700_": S.optional(S.String.pipe(T.Body('"700"'))),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateRequestUiDesignTokensColorsBrand",
-  }) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColorsBrand>;
-
-export interface PresetsUpdateRequestUiDesignTokensColors {
-  background?: PresetsUpdateRequestUiDesignTokensColorsBackground;
-  brand?: PresetsUpdateRequestUiDesignTokensColorsBrand;
-  danger?: string;
-  success?: string;
-  text?: string;
-  textOnBrand?: string;
-  videoBg?: string;
-  warning?: string;
-}
-export const PresetsUpdateRequestUiDesignTokensColors = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      background: S.optional(
-        PresetsUpdateRequestUiDesignTokensColorsBackground,
-      ),
-      brand: S.optional(PresetsUpdateRequestUiDesignTokensColorsBrand),
-      danger: S.optional(S.String),
-      success: S.optional(S.String),
-      text: S.optional(S.String),
-      textOnBrand: S.optional(S.String.pipe(T.Body("text_on_brand"))),
-      videoBg: S.optional(S.String.pipe(T.Body("video_bg"))),
-      warning: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PresetsUpdateRequestUiDesignTokensColors",
-}) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColors>;
-
-export type PresetsUpdateRequestUiDesignTokensTheme =
-  | "darkest"
-  | "dark"
-  | "light"
-  | (string & {});
-export const PresetsUpdateRequestUiDesignTokensTheme = /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateRequestUiDesignTokens {
-  borderRadius?: PresetsUpdateRequestUiDesignTokensBorderRadius;
-  borderWidth?: PresetsUpdateRequestUiDesignTokensBorderWidth;
-  colors?: PresetsUpdateRequestUiDesignTokensColors;
-  fontFamily?: string;
-  googleFont?: string;
-  logo?: string;
-  spacingBase?: number;
-  theme?: PresetsUpdateRequestUiDesignTokensTheme;
-}
-export const PresetsUpdateRequestUiDesignTokens = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    borderRadius: S.optional(
-      PresetsUpdateRequestUiDesignTokensBorderRadius.pipe(
-        T.Body("border_radius"),
-      ),
-    ),
-    borderWidth: S.optional(
-      PresetsUpdateRequestUiDesignTokensBorderWidth.pipe(
-        T.Body("border_width"),
-      ),
-    ),
-    colors: S.optional(PresetsUpdateRequestUiDesignTokensColors),
-    fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
-    googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
-    logo: S.optional(S.String),
-    spacingBase: S.optional(S.Number.pipe(T.Body("spacing_base"))),
-    theme: S.optional(PresetsUpdateRequestUiDesignTokensTheme),
-  }),
-).annotate({
-  identifier: "PresetsUpdateRequestUiDesignTokens",
-}) as any as S.Schema<PresetsUpdateRequestUiDesignTokens>;
-
-export interface PresetsUpdateRequestUi {
-  designTokens?: PresetsUpdateRequestUiDesignTokens;
-}
-export const PresetsUpdateRequestUi = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    designTokens: S.optional(
-      PresetsUpdateRequestUiDesignTokens.pipe(T.Body("design_tokens")),
-    ),
-  }),
-).annotate({
-  identifier: "PresetsUpdateRequestUi",
-}) as any as S.Schema<PresetsUpdateRequestUi>;
-
-export interface PresetsUpdateRequest {
+export interface EditParticipantMeetingRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
-  presetId: string;
-  config?: PresetsUpdateRequestConfig;
-  /** Name of the preset */
+  meetingId: string;
+  participantId: string;
+  /** (Optional) Name of the participant. */
   name?: string;
-  permissions?: PresetsUpdateRequestPermissions;
-  ui?: PresetsUpdateRequestUi;
+  /** (Optional) A URL to a picture to be used for the participant. */
+  picture?: string;
+  /** (Optional) Name of the preset to apply to this participant. */
+  presetName?: string;
 }
-export const PresetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const EditParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
-    presetId: S.String.pipe(T.Label("preset_id")),
-    config: S.optional(PresetsUpdateRequestConfig),
+    meetingId: S.String.pipe(T.Label("meeting_id")),
+    participantId: S.String.pipe(T.Label("participant_id")),
     name: S.optional(S.String),
-    permissions: S.optional(PresetsUpdateRequestPermissions),
-    ui: S.optional(PresetsUpdateRequestUi),
+    picture: S.optional(S.String),
+    presetName: S.optional(S.String.pipe(T.Body("preset_name"))),
   }).pipe(
     T.Http({
       method: "PATCH",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "PresetsUpdateRequest",
-}) as any as S.Schema<PresetsUpdateRequest>;
+  identifier: "EditParticipantMeetingRequest",
+}) as any as S.Schema<EditParticipantMeetingRequest>;
 
-export interface PresetsUpdateResponseDataConfigMaxVideoStreams {
-  /** Maximum number of video streams visible on desktop devices */
-  desktop: number;
-  /** Maximum number of streams visible on mobile devices */
-  mobile: number;
-}
-export const PresetsUpdateResponseDataConfigMaxVideoStreams =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      desktop: S.Number,
-      mobile: S.Number,
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataConfigMaxVideoStreams",
-  }) as any as S.Schema<PresetsUpdateResponseDataConfigMaxVideoStreams>;
-
-export type PresetsUpdateResponseDataConfigMediaScreenshareQuality =
-  | "hd"
-  | "vga"
-  | "qvga"
-  | (string & {});
-export const PresetsUpdateResponseDataConfigMediaScreenshareQuality =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateResponseDataConfigMediaScreenshare {
-  /** Frame rate of screen share */
-  frameRate: number;
-  /** Quality of screen share */
-  quality: PresetsUpdateResponseDataConfigMediaScreenshareQuality;
-}
-export const PresetsUpdateResponseDataConfigMediaScreenshare =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      frameRate: S.Number.pipe(T.Body("frame_rate")),
-      quality: PresetsUpdateResponseDataConfigMediaScreenshareQuality,
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataConfigMediaScreenshare",
-  }) as any as S.Schema<PresetsUpdateResponseDataConfigMediaScreenshare>;
-
-export type PresetsUpdateResponseDataConfigMediaVideoQuality =
-  | "hd"
-  | "vga"
-  | "qvga"
-  | (string & {});
-export const PresetsUpdateResponseDataConfigMediaVideoQuality =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateResponseDataConfigMediaVideo {
-  /** Frame rate of participants' video */
-  frameRate: number;
-  /** Video quality of participants */
-  quality: PresetsUpdateResponseDataConfigMediaVideoQuality;
-  /** Enable simulcast for participant videos. */
-  simulcast?: boolean;
-}
-export const PresetsUpdateResponseDataConfigMediaVideo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      frameRate: S.Number.pipe(T.Body("frame_rate")),
-      quality: PresetsUpdateResponseDataConfigMediaVideoQuality,
-      simulcast: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataConfigMediaVideo",
-  }) as any as S.Schema<PresetsUpdateResponseDataConfigMediaVideo>;
-
-export interface PresetsUpdateResponseDataConfigMediaAudio {
-  /** Enable High Quality Audio for your meetings */
-  enableHighBitrate?: boolean;
-  /** Enable Stereo for your meetings */
-  enableStereo?: boolean;
-}
-export const PresetsUpdateResponseDataConfigMediaAudio =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enableHighBitrate: S.optional(
-        S.Boolean.pipe(T.Body("enable_high_bitrate")),
-      ),
-      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataConfigMediaAudio",
-  }) as any as S.Schema<PresetsUpdateResponseDataConfigMediaAudio>;
-
-export interface PresetsUpdateResponseDataConfigMedia {
-  /** Configuration options for participant screen shares */
-  screenshare: PresetsUpdateResponseDataConfigMediaScreenshare;
-  /** Configuration options for participant videos */
-  video: PresetsUpdateResponseDataConfigMediaVideo;
-  /** Control options for Audio quality. */
-  audio?: PresetsUpdateResponseDataConfigMediaAudio;
-}
-export const PresetsUpdateResponseDataConfigMedia = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      screenshare: PresetsUpdateResponseDataConfigMediaScreenshare,
-      video: PresetsUpdateResponseDataConfigMediaVideo,
-      audio: S.optional(PresetsUpdateResponseDataConfigMediaAudio),
-    }),
-).annotate({
-  identifier: "PresetsUpdateResponseDataConfigMedia",
-}) as any as S.Schema<PresetsUpdateResponseDataConfigMedia>;
-
-export type PresetsUpdateResponseDataConfigViewType =
-  | "GROUP_CALL"
-  | "WEBINAR"
-  | "AUDIO_ROOM"
-  | "LIVESTREAM"
-  | (string & {});
-export const PresetsUpdateResponseDataConfigViewType = /*@__PURE__*/ S.String;
-
-export type PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList =
-  number[];
-export const PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList =
-  /*@__PURE__*/ S.Array(
-    S.Number,
-  ) as any as S.Schema<PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList>;
-
-export interface PresetsUpdateResponseDataConfig {
-  /** Maximum number of screen shares that can be active at a given time */
-  maxScreenshareCount: number;
-  /** Maximum number of streams that are visible on a device */
-  maxVideoStreams: PresetsUpdateResponseDataConfigMaxVideoStreams;
-  /** Media configuration options. eg: Video quality */
-  media: PresetsUpdateResponseDataConfigMedia;
-  /** Type of the meeting */
-  viewType: PresetsUpdateResponseDataConfigViewType;
-  /** Livestream viewer quality levels. */
-  livestreamViewerQualities?: PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList;
-}
-export const PresetsUpdateResponseDataConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
-    maxVideoStreams: PresetsUpdateResponseDataConfigMaxVideoStreams.pipe(
-      T.Body("max_video_streams"),
-    ),
-    media: PresetsUpdateResponseDataConfigMedia,
-    viewType: PresetsUpdateResponseDataConfigViewType.pipe(T.Body("view_type")),
-    livestreamViewerQualities: S.optional(
-      PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList.pipe(
-        T.Body("livestream_viewer_qualities"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "PresetsUpdateResponseDataConfig",
-}) as any as S.Schema<PresetsUpdateResponseDataConfig>;
-
-export interface PresetsUpdateResponseDataPermissionsChatPrivate {
-  canReceive: boolean;
-  canSend: boolean;
-  files: boolean;
-  text: boolean;
-}
-export const PresetsUpdateResponseDataPermissionsChatPrivate =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canReceive: S.Boolean.pipe(T.Body("can_receive")),
-      canSend: S.Boolean.pipe(T.Body("can_send")),
-      files: S.Boolean,
-      text: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataPermissionsChatPrivate",
-  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsChatPrivate>;
-
-export interface PresetsUpdateResponseDataPermissionsChatPublic {
-  /** Can send messages in general */
-  canSend: boolean;
-  /** Can send file messages */
-  files: boolean;
-  /** Can send text messages */
-  text: boolean;
-}
-export const PresetsUpdateResponseDataPermissionsChatPublic =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canSend: S.Boolean.pipe(T.Body("can_send")),
-      files: S.Boolean,
-      text: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataPermissionsChatPublic",
-  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsChatPublic>;
-
-export interface PresetsUpdateResponseDataPermissionsChat {
-  private: PresetsUpdateResponseDataPermissionsChatPrivate;
-  public: PresetsUpdateResponseDataPermissionsChatPublic;
-}
-export const PresetsUpdateResponseDataPermissionsChat = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      private: PresetsUpdateResponseDataPermissionsChatPrivate,
-      public: PresetsUpdateResponseDataPermissionsChatPublic,
-    }),
-).annotate({
-  identifier: "PresetsUpdateResponseDataPermissionsChat",
-}) as any as S.Schema<PresetsUpdateResponseDataPermissionsChat>;
-
-export interface PresetsUpdateResponseDataPermissionsConnectedMeetings {
-  canAlterConnectedMeetings: boolean;
-  canSwitchConnectedMeetings: boolean;
-  canSwitchToParentMeeting: boolean;
-}
-export const PresetsUpdateResponseDataPermissionsConnectedMeetings =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canAlterConnectedMeetings: S.Boolean.pipe(
-        T.Body("can_alter_connected_meetings"),
-      ),
-      canSwitchConnectedMeetings: S.Boolean.pipe(
-        T.Body("can_switch_connected_meetings"),
-      ),
-      canSwitchToParentMeeting: S.Boolean.pipe(
-        T.Body("can_switch_to_parent_meeting"),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataPermissionsConnectedMeetings",
-  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsConnectedMeetings>;
-
-export type PresetsUpdateResponseDataPermissionsMediaAudioCanProduce =
-  | "ALLOWED"
-  | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
-export const PresetsUpdateResponseDataPermissionsMediaAudioCanProduce =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateResponseDataPermissionsMediaAudio {
-  /** Can produce audio */
-  canProduce: PresetsUpdateResponseDataPermissionsMediaAudioCanProduce;
-}
-export const PresetsUpdateResponseDataPermissionsMediaAudio =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canProduce: PresetsUpdateResponseDataPermissionsMediaAudioCanProduce.pipe(
-        T.Body("can_produce"),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataPermissionsMediaAudio",
-  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsMediaAudio>;
-
-export type PresetsUpdateResponseDataPermissionsMediaScreenshareCanProduce =
-  | "ALLOWED"
-  | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
-export const PresetsUpdateResponseDataPermissionsMediaScreenshareCanProduce =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateResponseDataPermissionsMediaScreenshare {
-  /** Can produce screen share video */
-  canProduce: PresetsUpdateResponseDataPermissionsMediaScreenshareCanProduce;
-}
-export const PresetsUpdateResponseDataPermissionsMediaScreenshare =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canProduce:
-        PresetsUpdateResponseDataPermissionsMediaScreenshareCanProduce.pipe(
-          T.Body("can_produce"),
-        ),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataPermissionsMediaScreenshare",
-  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsMediaScreenshare>;
-
-export type PresetsUpdateResponseDataPermissionsMediaVideoCanProduce =
-  | "ALLOWED"
-  | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
-export const PresetsUpdateResponseDataPermissionsMediaVideoCanProduce =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateResponseDataPermissionsMediaVideo {
-  /** Can produce video */
-  canProduce: PresetsUpdateResponseDataPermissionsMediaVideoCanProduce;
-}
-export const PresetsUpdateResponseDataPermissionsMediaVideo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canProduce: PresetsUpdateResponseDataPermissionsMediaVideoCanProduce.pipe(
-        T.Body("can_produce"),
-      ),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataPermissionsMediaVideo",
-  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsMediaVideo>;
-
-export interface PresetsUpdateResponseDataPermissionsMedia {
-  /** Audio permissions */
-  audio: PresetsUpdateResponseDataPermissionsMediaAudio;
-  /** Screenshare permissions */
-  screenshare: PresetsUpdateResponseDataPermissionsMediaScreenshare;
-  /** Video permissions */
-  video: PresetsUpdateResponseDataPermissionsMediaVideo;
-}
-export const PresetsUpdateResponseDataPermissionsMedia =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      audio: PresetsUpdateResponseDataPermissionsMediaAudio,
-      screenshare: PresetsUpdateResponseDataPermissionsMediaScreenshare,
-      video: PresetsUpdateResponseDataPermissionsMediaVideo,
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataPermissionsMedia",
-  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsMedia>;
-
-export type PresetsUpdateResponseDataPermissionsPluginsConfigMap = {
-  [key: string]: unknown | undefined;
-};
-export const PresetsUpdateResponseDataPermissionsPluginsConfigMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<PresetsUpdateResponseDataPermissionsPluginsConfigMap>;
-
-export interface PresetsUpdateResponseDataPermissionsPlugins {
-  /** Can close plugins that are already open */
-  canClose: boolean;
-  /** Can edit plugin config */
-  canEditConfig: boolean;
-  /** Can start plugins */
-  canStart: boolean;
-  /** Plugin configuration keyed by plugin UUID. */
-  config: PresetsUpdateResponseDataPermissionsPluginsConfigMap;
-}
-export const PresetsUpdateResponseDataPermissionsPlugins =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canClose: S.Boolean.pipe(T.Body("can_close")),
-      canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
-      canStart: S.Boolean.pipe(T.Body("can_start")),
-      config: PresetsUpdateResponseDataPermissionsPluginsConfigMap,
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataPermissionsPlugins",
-  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsPlugins>;
-
-export interface PresetsUpdateResponseDataPermissionsPolls {
-  /** Can create polls */
-  canCreate: boolean;
-  /** Can view polls */
-  canView: boolean;
-  /** Can vote on polls */
-  canVote: boolean;
-}
-export const PresetsUpdateResponseDataPermissionsPolls =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      canCreate: S.Boolean.pipe(T.Body("can_create")),
-      canView: S.Boolean.pipe(T.Body("can_view")),
-      canVote: S.Boolean.pipe(T.Body("can_vote")),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataPermissionsPolls",
-  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsPolls>;
-
-export type PresetsUpdateResponseDataPermissionsRecorderType =
-  | "RECORDER"
-  | "LIVESTREAMER"
-  | "NONE"
-  | (string & {});
-export const PresetsUpdateResponseDataPermissionsRecorderType =
-  /*@__PURE__*/ S.String;
-
-export type PresetsUpdateResponseDataPermissionsWaitingRoomType =
-  | "SKIP"
-  | "ON_PRIVILEGED_USER_ENTRY"
-  | "SKIP_ON_ACCEPT"
-  | (string & {});
-export const PresetsUpdateResponseDataPermissionsWaitingRoomType =
-  /*@__PURE__*/ S.String;
-
-export type PresetsUpdateResponseDataPermissionsStageAccess =
-  | "ALLOWED"
-  | "NOT_ALLOWED"
-  | "CAN_REQUEST"
-  | (string & {});
-export const PresetsUpdateResponseDataPermissionsStageAccess =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateResponseDataPermissions {
-  /** Whether this participant can accept waiting requests */
-  acceptWaitingRequests: boolean;
-  canAcceptProductionRequests: boolean;
-  canChangeParticipantPermissions: boolean;
-  canEditDisplayName: boolean;
-  canLivestream: boolean;
-  canRecord: boolean;
-  canSpotlight: boolean;
-  chat: PresetsUpdateResponseDataPermissionsChat;
-  connectedMeetings: PresetsUpdateResponseDataPermissionsConnectedMeetings;
-  disableParticipantAudio: boolean;
-  disableParticipantScreensharing: boolean;
-  disableParticipantVideo: boolean;
-  /** Whether this participant is visible to others or not */
-  hiddenParticipant: boolean;
-  kickParticipant: boolean;
-  /** Media permissions */
-  media: PresetsUpdateResponseDataPermissionsMedia;
-  pinParticipant: boolean;
-  /** Plugin permissions */
-  plugins: PresetsUpdateResponseDataPermissionsPlugins;
-  /** Poll permissions */
-  polls: PresetsUpdateResponseDataPermissionsPolls;
-  /** Type of the recording peer */
-  recorderType: PresetsUpdateResponseDataPermissionsRecorderType;
-  showParticipantList: boolean;
-  /** Waiting room type */
-  waitingRoomType: PresetsUpdateResponseDataPermissionsWaitingRoomType;
-  acceptStageRequests?: boolean;
-  isRecorder?: boolean;
-  stageAccess?: PresetsUpdateResponseDataPermissionsStageAccess;
-  stageEnabled?: boolean;
-  transcriptionEnabled?: boolean;
-}
-export const PresetsUpdateResponseDataPermissions = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      acceptWaitingRequests: S.Boolean.pipe(T.Body("accept_waiting_requests")),
-      canAcceptProductionRequests: S.Boolean.pipe(
-        T.Body("can_accept_production_requests"),
-      ),
-      canChangeParticipantPermissions: S.Boolean.pipe(
-        T.Body("can_change_participant_permissions"),
-      ),
-      canEditDisplayName: S.Boolean.pipe(T.Body("can_edit_display_name")),
-      canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
-      canRecord: S.Boolean.pipe(T.Body("can_record")),
-      canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
-      chat: PresetsUpdateResponseDataPermissionsChat,
-      connectedMeetings:
-        PresetsUpdateResponseDataPermissionsConnectedMeetings.pipe(
-          T.Body("connected_meetings"),
-        ),
-      disableParticipantAudio: S.Boolean.pipe(
-        T.Body("disable_participant_audio"),
-      ),
-      disableParticipantScreensharing: S.Boolean.pipe(
-        T.Body("disable_participant_screensharing"),
-      ),
-      disableParticipantVideo: S.Boolean.pipe(
-        T.Body("disable_participant_video"),
-      ),
-      hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
-      kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
-      media: PresetsUpdateResponseDataPermissionsMedia,
-      pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
-      plugins: PresetsUpdateResponseDataPermissionsPlugins,
-      polls: PresetsUpdateResponseDataPermissionsPolls,
-      recorderType: PresetsUpdateResponseDataPermissionsRecorderType.pipe(
-        T.Body("recorder_type"),
-      ),
-      showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
-      waitingRoomType: PresetsUpdateResponseDataPermissionsWaitingRoomType.pipe(
-        T.Body("waiting_room_type"),
-      ),
-      acceptStageRequests: S.optional(
-        S.Boolean.pipe(T.Body("accept_stage_requests")),
-      ),
-      isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
-      stageAccess: S.optional(
-        PresetsUpdateResponseDataPermissionsStageAccess.pipe(
-          T.Body("stage_access"),
-        ),
-      ),
-      stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
-      transcriptionEnabled: S.optional(
-        S.Boolean.pipe(T.Body("transcription_enabled")),
-      ),
-    }),
-).annotate({
-  identifier: "PresetsUpdateResponseDataPermissions",
-}) as any as S.Schema<PresetsUpdateResponseDataPermissions>;
-
-export type PresetsUpdateResponseDataUiDesignTokensBorderRadius =
-  | "sharp"
-  | "rounded"
-  | "extra-rounded"
-  | "circular"
-  | (string & {});
-export const PresetsUpdateResponseDataUiDesignTokensBorderRadius =
-  /*@__PURE__*/ S.String;
-
-export type PresetsUpdateResponseDataUiDesignTokensBorderWidth =
-  | "none"
-  | "thin"
-  | "fat"
-  | (string & {});
-export const PresetsUpdateResponseDataUiDesignTokensBorderWidth =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateResponseDataUiDesignTokensColorsBackground {
-  "1000_": string;
-  "600_": string;
-  "700_": string;
-  "800_": string;
-  "900_": string;
-}
-export const PresetsUpdateResponseDataUiDesignTokensColorsBackground =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "1000_": S.String.pipe(T.Body('"1000"')),
-      "600_": S.String.pipe(T.Body('"600"')),
-      "700_": S.String.pipe(T.Body('"700"')),
-      "800_": S.String.pipe(T.Body('"800"')),
-      "900_": S.String.pipe(T.Body('"900"')),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataUiDesignTokensColorsBackground",
-  }) as any as S.Schema<PresetsUpdateResponseDataUiDesignTokensColorsBackground>;
-
-export interface PresetsUpdateResponseDataUiDesignTokensColorsBrand {
-  "300_": string;
-  "400_": string;
-  "500_": string;
-  "600_": string;
-  "700_": string;
-}
-export const PresetsUpdateResponseDataUiDesignTokensColorsBrand =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      "300_": S.String.pipe(T.Body('"300"')),
-      "400_": S.String.pipe(T.Body('"400"')),
-      "500_": S.String.pipe(T.Body('"500"')),
-      "600_": S.String.pipe(T.Body('"600"')),
-      "700_": S.String.pipe(T.Body('"700"')),
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataUiDesignTokensColorsBrand",
-  }) as any as S.Schema<PresetsUpdateResponseDataUiDesignTokensColorsBrand>;
-
-export interface PresetsUpdateResponseDataUiDesignTokensColors {
-  background: PresetsUpdateResponseDataUiDesignTokensColorsBackground;
-  brand: PresetsUpdateResponseDataUiDesignTokensColorsBrand;
-  danger: string;
-  success: string;
-  text: string;
-  textOnBrand: string;
-  videoBg: string;
-  warning: string;
-}
-export const PresetsUpdateResponseDataUiDesignTokensColors =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      background: PresetsUpdateResponseDataUiDesignTokensColorsBackground,
-      brand: PresetsUpdateResponseDataUiDesignTokensColorsBrand,
-      danger: S.String,
-      success: S.String,
-      text: S.String,
-      textOnBrand: S.String.pipe(T.Body("text_on_brand")),
-      videoBg: S.String.pipe(T.Body("video_bg")),
-      warning: S.String,
-    }),
-  ).annotate({
-    identifier: "PresetsUpdateResponseDataUiDesignTokensColors",
-  }) as any as S.Schema<PresetsUpdateResponseDataUiDesignTokensColors>;
-
-export type PresetsUpdateResponseDataUiDesignTokensTheme =
-  | "darkest"
-  | "dark"
-  | "light"
-  | (string & {});
-export const PresetsUpdateResponseDataUiDesignTokensTheme =
-  /*@__PURE__*/ S.String;
-
-export interface PresetsUpdateResponseDataUiDesignTokens {
-  borderRadius: PresetsUpdateResponseDataUiDesignTokensBorderRadius;
-  borderWidth: PresetsUpdateResponseDataUiDesignTokensBorderWidth;
-  colors: PresetsUpdateResponseDataUiDesignTokensColors;
-  spacingBase: number;
-  theme: PresetsUpdateResponseDataUiDesignTokensTheme;
-  fontFamily?: string;
-  googleFont?: string;
-  logo?: string;
-}
-export const PresetsUpdateResponseDataUiDesignTokens = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      borderRadius: PresetsUpdateResponseDataUiDesignTokensBorderRadius.pipe(
-        T.Body("border_radius"),
-      ),
-      borderWidth: PresetsUpdateResponseDataUiDesignTokensBorderWidth.pipe(
-        T.Body("border_width"),
-      ),
-      colors: PresetsUpdateResponseDataUiDesignTokensColors,
-      spacingBase: S.Number.pipe(T.Body("spacing_base")),
-      theme: PresetsUpdateResponseDataUiDesignTokensTheme,
-      fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
-      googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
-      logo: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "PresetsUpdateResponseDataUiDesignTokens",
-}) as any as S.Schema<PresetsUpdateResponseDataUiDesignTokens>;
-
-export interface PresetsUpdateResponseDataUi {
-  designTokens: PresetsUpdateResponseDataUiDesignTokens;
-}
-export const PresetsUpdateResponseDataUi = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    designTokens: PresetsUpdateResponseDataUiDesignTokens.pipe(
-      T.Body("design_tokens"),
-    ),
-  }),
-).annotate({
-  identifier: "PresetsUpdateResponseDataUi",
-}) as any as S.Schema<PresetsUpdateResponseDataUi>;
-
-export interface PresetsUpdateResponseData {
-  /** ID of the preset */
+export interface MeetingsEditParticipantResponseData {
+  /** ID of the participant. */
   id: string;
-  config: PresetsUpdateResponseDataConfig;
-  /** Timestamp this preset was created at */
+  /** The participant's auth token that can be used for joining a meeting from the client side. */
+  token: string;
+  /** When this object was created. The time is returned in ISO format. */
   createdAt: string;
-  /** Name of the preset */
-  name: string;
-  permissions: PresetsUpdateResponseDataPermissions;
-  ui: PresetsUpdateResponseDataUi;
-  /** Timestamp this preset was last updated */
+  /** A unique participant ID generated by the client. */
+  customParticipantId: string;
+  /** Preset applied to the participant. */
+  presetName: string;
+  /** When this object was updated. The time is returned in ISO format. */
   updatedAt: string;
+  /** Name of the participant. */
+  name?: string;
+  /** URL to a picture of the participant. */
+  picture?: string;
 }
-export const PresetsUpdateResponseData = /*@__PURE__*/ S.suspend(() =>
+export const MeetingsEditParticipantResponseData = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    config: PresetsUpdateResponseDataConfig,
+    token: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
-    name: S.String,
-    permissions: PresetsUpdateResponseDataPermissions,
-    ui: PresetsUpdateResponseDataUi,
+    customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
+    presetName: S.String.pipe(T.Body("preset_name")),
     updatedAt: S.String.pipe(T.Body("updated_at")),
+    name: S.optional(S.String),
+    picture: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "PresetsUpdateResponseData",
-}) as any as S.Schema<PresetsUpdateResponseData>;
+  identifier: "MeetingsEditParticipantResponseData",
+}) as any as S.Schema<MeetingsEditParticipantResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface PresetsUpdateResponse {
-  /** Data returned by the operation */
-  data: PresetsUpdateResponseData;
+export interface EditParticipantMeetingResponse {
+  /** Represents a participant. */
+  data?: MeetingsEditParticipantResponseData;
 }
-export const PresetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const EditParticipantMeetingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    data: PresetsUpdateResponseData,
+    data: S.optional(MeetingsEditParticipantResponseData),
   }),
 ).annotate({
-  identifier: "PresetsUpdateResponse",
-}) as any as S.Schema<PresetsUpdateResponse>;
+  identifier: "EditParticipantMeetingResponse",
+}) as any as S.Schema<EditParticipantMeetingResponse>;
 
-export interface RecordingsGetActiveRecordingsRequest {
+export type WebhooksEditWebhookRequestEventsItem =
+  | "meeting.started"
+  | "meeting.ended"
+  | "meeting.participantJoined"
+  | (string & {});
+export const WebhooksEditWebhookRequestEventsItem = /*@__PURE__*/ S.String;
+
+export type WebhooksEditWebhookRequestEventsList =
+  WebhooksEditWebhookRequestEventsItem[];
+export const WebhooksEditWebhookRequestEventsList = /*@__PURE__*/ S.Array(
+  WebhooksEditWebhookRequestEventsItem,
+) as any as S.Schema<WebhooksEditWebhookRequestEventsList>;
+
+export interface EditWebhookWebhookRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  webhookId: string;
+  enabled?: boolean;
+  /** Events that the webhook will get triggered by */
+  events?: WebhooksEditWebhookRequestEventsList;
+  /** Name of the webhook */
+  name?: string;
+  /** URL the webhook will send events to */
+  url?: string;
+}
+export const EditWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    webhookId: S.String.pipe(T.Label("webhook_id")),
+    enabled: S.optional(S.Boolean),
+    events: S.optional(WebhooksEditWebhookRequestEventsList),
+    name: S.optional(S.String),
+    url: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "EditWebhookWebhookRequest",
+}) as any as S.Schema<EditWebhookWebhookRequest>;
+
+export type WebhooksEditWebhookResponseDataEventsItem =
+  | "meeting.started"
+  | "meeting.ended"
+  | "meeting.participantJoined"
+  | (string & {});
+export const WebhooksEditWebhookResponseDataEventsItem = /*@__PURE__*/ S.String;
+
+export type WebhooksEditWebhookResponseDataEventsList =
+  WebhooksEditWebhookResponseDataEventsItem[];
+export const WebhooksEditWebhookResponseDataEventsList = /*@__PURE__*/ S.Array(
+  WebhooksEditWebhookResponseDataEventsItem,
+) as any as S.Schema<WebhooksEditWebhookResponseDataEventsList>;
+
+export interface WebhooksEditWebhookResponseData {
+  /** ID of the webhook */
+  id: string;
+  /** Timestamp when this webhook was created */
+  createdAt: string;
+  /** Set to true if the webhook is active */
+  enabled: boolean;
+  /** Events this webhook will send updates for */
+  events: WebhooksEditWebhookResponseDataEventsList;
+  /** Name of the webhook */
+  name: string;
+  /** Timestamp when this webhook was updated */
+  updatedAt: string;
+  /** URL the webhook will send events to */
+  url: string;
+}
+export const WebhooksEditWebhookResponseData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    enabled: S.Boolean,
+    events: WebhooksEditWebhookResponseDataEventsList,
+    name: S.String,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    url: S.String,
+  }),
+).annotate({
+  identifier: "WebhooksEditWebhookResponseData",
+}) as any as S.Schema<WebhooksEditWebhookResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface EditWebhookWebhookResponse {
+  data: WebhooksEditWebhookResponseData;
+}
+export const EditWebhookWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: WebhooksEditWebhookResponseData,
+  }),
+).annotate({
+  identifier: "EditWebhookWebhookResponse",
+}) as any as S.Schema<EditWebhookWebhookResponse>;
+
+export interface GenerateSummaryOfTranscriptsSessionRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  sessionId: string;
+}
+export const GenerateSummaryOfTranscriptsSessionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      sessionId: S.String.pipe(T.Label("session_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "GenerateSummaryOfTranscriptsSessionRequest",
+  }) as any as S.Schema<GenerateSummaryOfTranscriptsSessionRequest>;
+
+export interface SessionsGenerateSummaryOfTranscriptsResponseData {
+  sessionId?: string;
+  status?: string;
+}
+export const SessionsGenerateSummaryOfTranscriptsResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      sessionId: S.optional(S.String.pipe(T.Body("session_id"))),
+      status: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "SessionsGenerateSummaryOfTranscriptsResponseData",
+  }) as any as S.Schema<SessionsGenerateSummaryOfTranscriptsResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GenerateSummaryOfTranscriptsSessionResponse {
+  data?: SessionsGenerateSummaryOfTranscriptsResponseData;
+}
+export const GenerateSummaryOfTranscriptsSessionResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      data: S.optional(SessionsGenerateSummaryOfTranscriptsResponseData),
+    }),
+  ).annotate({
+    identifier: "GenerateSummaryOfTranscriptsSessionResponse",
+  }) as any as S.Schema<GenerateSummaryOfTranscriptsSessionResponse>;
+
+export interface GetActiveLivestreamsForLivestreamIdLivestreamRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  livestreamId: string;
+}
+export const GetActiveLivestreamsForLivestreamIdLivestreamRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      livestreamId: S.String.pipe(T.Label("livestream_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}/active-livestream-session",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "GetActiveLivestreamsForLivestreamIdLivestreamRequest",
+  }) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamRequest>;
+
+export type LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus =
+  "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {});
+export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus =
+  /*@__PURE__*/ S.String;
+
+export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream {
+  id?: string;
+  /** Timestamp the object was created at. The time is returned in ISO format. */
+  createdAt?: string;
+  /** Specifies if the livestream was disabled. */
+  disabled?: string;
+  /** The server URL to which the RTMP encoder sends the video and audio data. */
+  ingestServer?: string;
+  /** ID of the meeting. */
+  meetingId?: string;
+  /** Name of the livestream. */
+  name?: string;
+  /** The web address that viewers can use to watch the livestream. */
+  playbackUrl?: string;
+  status?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus;
+  /** Unique key for accessing each livestream. */
+  streamKey?: string;
+  /** Timestamp the object was updated at. The time is returned in ISO format. */
+  updatedAt?: string;
+}
+export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      disabled: S.optional(S.String),
+      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
+      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
+      name: S.optional(S.String),
+      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
+      status: S.optional(
+        LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestreamStatus,
+      ),
+      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+  ).annotate({
+    identifier:
+      "LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream",
+  }) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream>;
+
+export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession {
+  id?: string;
+  /** Timestamp the object was created at. The time is returned in ISO format. */
+  createdAt?: string;
+  errMessage?: string;
+  /** The time duration for which the input was given or the meeting was streamed. */
+  ingestSeconds?: string;
+  /** Timestamp the object was invoked. The time is returned in ISO format. */
+  invokedTime?: string;
+  livestreamId?: string;
+  /** Timestamp the object was started. The time is returned in ISO format. */
+  startedTime?: string;
+  /** Timestamp the object was stopped. The time is returned in ISO format. */
+  stoppedTime?: string;
+  /** Timestamp the object was updated at. The time is returned in ISO format. */
+  updatedAt?: string;
+  /** The total view time for which the viewers watched the stream. */
+  viewerSeconds?: string;
+}
+export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      errMessage: S.optional(S.String.pipe(T.Body("err_message"))),
+      ingestSeconds: S.optional(S.String.pipe(T.Body("ingest_seconds"))),
+      invokedTime: S.optional(S.String.pipe(T.Body("invoked_time"))),
+      livestreamId: S.optional(S.String.pipe(T.Body("livestream_id"))),
+      startedTime: S.optional(S.String.pipe(T.Body("started_time"))),
+      stoppedTime: S.optional(S.String.pipe(T.Body("stopped_time"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      viewerSeconds: S.optional(S.String.pipe(T.Body("viewer_seconds"))),
+    }),
+  ).annotate({
+    identifier:
+      "LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession",
+  }) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession>;
+
+export interface LivestreamsGetActiveLivestreamsForLivestreamIdResponseData {
+  livestream?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream;
+  session?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession;
+}
+export const LivestreamsGetActiveLivestreamsForLivestreamIdResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      livestream: S.optional(
+        LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataLivestream,
+      ),
+      session: S.optional(
+        LivestreamsGetActiveLivestreamsForLivestreamIdResponseDataSession,
+      ),
+    }),
+  ).annotate({
+    identifier: "LivestreamsGetActiveLivestreamsForLivestreamIdResponseData",
+  }) as any as S.Schema<LivestreamsGetActiveLivestreamsForLivestreamIdResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetActiveLivestreamsForLivestreamIdLivestreamResponse {
+  data?: LivestreamsGetActiveLivestreamsForLivestreamIdResponseData;
+}
+export const GetActiveLivestreamsForLivestreamIdLivestreamResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      data: S.optional(
+        LivestreamsGetActiveLivestreamsForLivestreamIdResponseData,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetActiveLivestreamsForLivestreamIdLivestreamResponse",
+  }) as any as S.Schema<GetActiveLivestreamsForLivestreamIdLivestreamResponse>;
+
+export interface GetActiveRecordingsRecordingRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
   meetingId: string;
 }
-export const RecordingsGetActiveRecordingsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      meetingId: S.String.pipe(T.Label("meeting_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/active-recording/{meeting_id}",
-        code: 200,
-      }),
-    ),
+export const GetActiveRecordingsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    meetingId: S.String.pipe(T.Label("meeting_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/active-recording/{meeting_id}",
+      code: 200,
+    }),
+  ),
 ).annotate({
-  identifier: "RecordingsGetActiveRecordingsRequest",
-}) as any as S.Schema<RecordingsGetActiveRecordingsRequest>;
+  identifier: "GetActiveRecordingsRecordingRequest",
+}) as any as S.Schema<GetActiveRecordingsRecordingRequest>;
 
 export type RecordingsGetActiveRecordingsResponseDataStatus =
   | "INVOKED"
@@ -9830,27 +3850,1852 @@ export const RecordingsGetActiveRecordingsResponseData =
   }) as any as S.Schema<RecordingsGetActiveRecordingsResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface RecordingsGetActiveRecordingsResponse {
+export interface GetActiveRecordingsRecordingResponse {
   /** Data returned by the operation */
   data: RecordingsGetActiveRecordingsResponseData;
 }
-export const RecordingsGetActiveRecordingsResponse = /*@__PURE__*/ S.suspend(
+export const GetActiveRecordingsRecordingResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: RecordingsGetActiveRecordingsResponseData,
     }),
 ).annotate({
-  identifier: "RecordingsGetActiveRecordingsResponse",
-}) as any as S.Schema<RecordingsGetActiveRecordingsResponse>;
+  identifier: "GetActiveRecordingsRecordingResponse",
+}) as any as S.Schema<GetActiveRecordingsRecordingResponse>;
 
-export interface RecordingsGetOneRecordingRequest {
+export interface GetActiveSessionActiveSessionRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+}
+export const GetActiveSessionActiveSessionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      meetingId: S.String.pipe(T.Label("meeting_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "GetActiveSessionActiveSessionRequest",
+}) as any as S.Schema<GetActiveSessionActiveSessionRequest>;
+
+export type ActiveSessionGetActiveSessionResponseDataStatus =
+  | "LIVE"
+  | "ENDED"
+  | (string & {});
+export const ActiveSessionGetActiveSessionResponseDataStatus =
+  /*@__PURE__*/ S.String;
+
+export type ActiveSessionGetActiveSessionResponseDataType =
+  | "meeting"
+  | "livestream"
+  | "participant"
+  | (string & {});
+export const ActiveSessionGetActiveSessionResponseDataType =
+  /*@__PURE__*/ S.String;
+
+export type ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList =
+  unknown[];
+export const ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList>;
+
+export interface ActiveSessionGetActiveSessionResponseData {
+  /** ID of the session */
+  id: string;
+  /** ID of the meeting this session is associated with. In the case of V2 meetings, it is always a UUID. In V1 meetings, it is a room name of the form `abcdef-ghijkl` */
+  associatedId: string;
+  /** timestamp when session created */
+  createdAt: string;
+  /** number of participants currently in the session */
+  liveParticipants: number;
+  /** number of maximum participants that were in the session */
+  maxConcurrentParticipants: number;
+  /** Title of the meeting this session belongs to */
+  meetingDisplayName: string;
+  /** number of minutes consumed since the session started */
+  minutesConsumed: number;
+  /** App id that hosted this session */
+  organizationId: string;
+  /** timestamp when session started */
+  startedAt: string;
+  /** current status of session */
+  status: ActiveSessionGetActiveSessionResponseDataStatus;
+  /** type of session */
+  type: ActiveSessionGetActiveSessionResponseDataType;
+  /** timestamp when session was last updated */
+  updatedAt: string;
+  breakoutRooms?: ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList;
+  /** timestamp when session ended */
+  endedAt?: string;
+}
+export const ActiveSessionGetActiveSessionResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      associatedId: S.String.pipe(T.Body("associated_id")),
+      createdAt: S.String.pipe(T.Body("created_at")),
+      liveParticipants: S.Number.pipe(T.Body("live_participants")),
+      maxConcurrentParticipants: S.Number.pipe(
+        T.Body("max_concurrent_participants"),
+      ),
+      meetingDisplayName: S.String.pipe(T.Body("meeting_display_name")),
+      minutesConsumed: S.Number.pipe(T.Body("minutes_consumed")),
+      organizationId: S.String.pipe(T.Body("organization_id")),
+      startedAt: S.String.pipe(T.Body("started_at")),
+      status: ActiveSessionGetActiveSessionResponseDataStatus,
+      type: ActiveSessionGetActiveSessionResponseDataType,
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      breakoutRooms: S.optional(
+        ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList.pipe(
+          T.Body("breakout_rooms"),
+        ),
+      ),
+      endedAt: S.optional(S.String.pipe(T.Body("ended_at"))),
+    }),
+  ).annotate({
+    identifier: "ActiveSessionGetActiveSessionResponseData",
+  }) as any as S.Schema<ActiveSessionGetActiveSessionResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetActiveSessionActiveSessionResponse {
+  data?: ActiveSessionGetActiveSessionResponseData;
+}
+export const GetActiveSessionActiveSessionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      data: S.optional(ActiveSessionGetActiveSessionResponseData),
+    }),
+).annotate({
+  identifier: "GetActiveSessionActiveSessionResponse",
+}) as any as S.Schema<GetActiveSessionActiveSessionResponse>;
+
+export type LivestreamsGetAllLivestreamsRequestSortOrder =
+  | "ASC"
+  | "DSC"
+  | (string & {});
+export const LivestreamsGetAllLivestreamsRequestSortOrder =
+  /*@__PURE__*/ S.String;
+
+export type LivestreamsGetAllLivestreamsRequestStatus =
+  | "LIVE"
+  | "IDLE"
+  | "ERRORED"
+  | "INVOKED"
+  | (string & {});
+export const LivestreamsGetAllLivestreamsRequestStatus = /*@__PURE__*/ S.String;
+
+export interface GetAllLivestreamsLivestreamRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  /** Specify the end time range in ISO format to access the live stream. */
+  endTime?: string;
+  /** Exclude the RealtimeKit meetings that are livestreamed. */
+  excludeMeetings?: boolean;
+  /** The page number from which you want your page search results to be displayed. */
+  pageNo?: number;
+  /** Number of results per page. */
+  perPage?: number;
+  /** Specifies the sorting order for the results. */
+  sortOrder?: LivestreamsGetAllLivestreamsRequestSortOrder;
+  /** Specify the start time range in ISO format to access the live stream. */
+  startTime?: string;
+  /** Specifies the status of the operation. */
+  status?: LivestreamsGetAllLivestreamsRequestStatus;
+}
+export const GetAllLivestreamsLivestreamRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    endTime: S.optional(S.String.pipe(T.Query("end_time"))),
+    excludeMeetings: S.optional(S.Boolean.pipe(T.Query("exclude_meetings"))),
+    pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    sortOrder: S.optional(
+      LivestreamsGetAllLivestreamsRequestSortOrder.pipe(T.Query("sort_order")),
+    ),
+    startTime: S.optional(S.String.pipe(T.Query("start_time"))),
+    status: S.optional(
+      LivestreamsGetAllLivestreamsRequestStatus.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetAllLivestreamsLivestreamRequest",
+}) as any as S.Schema<GetAllLivestreamsLivestreamRequest>;
+
+export interface LivestreamsGetAllLivestreamsResponseDataPaging {
+  endOffset?: number;
+  startOffset?: number;
+  totalCount?: number;
+}
+export const LivestreamsGetAllLivestreamsResponseDataPaging =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      endOffset: S.optional(S.Number.pipe(T.Body("end_offset"))),
+      startOffset: S.optional(S.Number.pipe(T.Body("start_offset"))),
+      totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
+    }),
+  ).annotate({
+    identifier: "LivestreamsGetAllLivestreamsResponseDataPaging",
+  }) as any as S.Schema<LivestreamsGetAllLivestreamsResponseDataPaging>;
+
+export type LivestreamsGetAllLivestreamsResponseDataStatus =
+  | "LIVE"
+  | "IDLE"
+  | "ERRORED"
+  | "INVOKED"
+  | (string & {});
+export const LivestreamsGetAllLivestreamsResponseDataStatus =
+  /*@__PURE__*/ S.String;
+
+export interface LivestreamsGetAllLivestreamsResponseData {
+  /** The ID of the livestream. */
+  id?: string;
+  /** Timestamp the object was created at. The time is returned in ISO format. */
+  createdAt?: string;
+  /** Specifies if the livestream was disabled. */
+  disabled?: string;
+  /** The server URL to which the RTMP encoder sends the video and audio data. */
+  ingestServer?: string;
+  /** ID of the meeting. */
+  meetingId?: string;
+  /** Name of the livestream. */
+  name?: string;
+  paging?: LivestreamsGetAllLivestreamsResponseDataPaging;
+  /** The web address that viewers can use to watch the livestream. */
+  playbackUrl?: string;
+  status?: LivestreamsGetAllLivestreamsResponseDataStatus;
+  /** Unique key for accessing each livestream. */
+  streamKey?: string;
+  /** Timestamp the object was updated at. The time is returned in ISO format. */
+  updatedAt?: string;
+}
+export const LivestreamsGetAllLivestreamsResponseData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      disabled: S.optional(S.String),
+      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
+      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
+      name: S.optional(S.String),
+      paging: S.optional(LivestreamsGetAllLivestreamsResponseDataPaging),
+      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
+      status: S.optional(LivestreamsGetAllLivestreamsResponseDataStatus),
+      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+).annotate({
+  identifier: "LivestreamsGetAllLivestreamsResponseData",
+}) as any as S.Schema<LivestreamsGetAllLivestreamsResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetAllLivestreamsLivestreamResponse {
+  data?: LivestreamsGetAllLivestreamsResponseData;
+}
+export const GetAllLivestreamsLivestreamResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(LivestreamsGetAllLivestreamsResponseData),
+  }),
+).annotate({
+  identifier: "GetAllLivestreamsLivestreamResponse",
+}) as any as S.Schema<GetAllLivestreamsLivestreamResponse>;
+
+export type AppsGetRequestSortOrder = "ASC" | "DESC" | (string & {});
+export const AppsGetRequestSortOrder = /*@__PURE__*/ S.String;
+
+export interface GetAppRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The page number from which you want your page search results to be displayed. */
+  pageNo?: number;
+  /** Number of results per page. */
+  perPage?: number;
+  /** Search string that matches apps by name. */
+  search?: string;
+  /** Sort order for apps by creation time. */
+  sortOrder?: AppsGetRequestSortOrder;
+}
+export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    search: S.optional(S.String.pipe(T.Query())),
+    sortOrder: S.optional(AppsGetRequestSortOrder.pipe(T.Query("sort_order"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/realtime/kit/apps",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "GetAppRequest" }) as any as S.Schema<GetAppRequest>;
+
+export interface AppsGetResponseDataItem {
+  id?: string;
+  createdAt?: string;
+  name?: string;
+}
+export const AppsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AppsGetResponseDataItem",
+}) as any as S.Schema<AppsGetResponseDataItem>;
+
+export type AppsGetResponseDataList = AppsGetResponseDataItem[];
+export const AppsGetResponseDataList = /*@__PURE__*/ S.Array(
+  AppsGetResponseDataItem,
+) as any as S.Schema<AppsGetResponseDataList>;
+
+export interface AppsGetResponsePaging {
+  endOffset?: number;
+  startOffset?: number;
+  totalCount?: number;
+}
+export const AppsGetResponsePaging = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endOffset: S.optional(S.Number.pipe(T.Body("end_offset"))),
+    startOffset: S.optional(S.Number.pipe(T.Body("start_offset"))),
+    totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
+  }),
+).annotate({
+  identifier: "AppsGetResponsePaging",
+}) as any as S.Schema<AppsGetResponsePaging>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetAppResponse {
+  data?: AppsGetResponseDataList;
+  paging?: AppsGetResponsePaging;
+}
+export const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(AppsGetResponseDataList),
+    paging: S.optional(AppsGetResponsePaging),
+  }),
+).annotate({ identifier: "GetAppResponse" }) as any as S.Schema<GetAppResponse>;
+
+export interface GetLivestreamAnalyticsCompleteLivestreamRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  /** Specify the end time as a Unix timestamp in seconds to access the livestream analytics. */
+  endTime?: number;
+  /** Optional filters for livestream analytics. */
+  filters?: string;
+  /** Specify the start time as a Unix timestamp in seconds to access the livestream analytics. */
+  startTime?: number;
+}
+export const GetLivestreamAnalyticsCompleteLivestreamRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      endTime: S.optional(S.Number.pipe(T.Query("end_time"))),
+      filters: S.optional(S.String.pipe(T.Query())),
+      startTime: S.optional(S.Number.pipe(T.Query("start_time"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/overall",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "GetLivestreamAnalyticsCompleteLivestreamRequest",
+  }) as any as S.Schema<GetLivestreamAnalyticsCompleteLivestreamRequest>;
+
+export interface LivestreamsGetLivestreamAnalyticsCompleteResponseData {
+  /** Count of total livestreams. */
+  count?: number;
+  /** Total time duration for which the input was given or the meeting was streamed. */
+  totalIngestSeconds?: number;
+  /** Total view time for which the viewers watched the stream. */
+  totalViewerSeconds?: number;
+}
+export const LivestreamsGetLivestreamAnalyticsCompleteResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      count: S.optional(S.Number),
+      totalIngestSeconds: S.optional(
+        S.Number.pipe(T.Body("total_ingest_seconds")),
+      ),
+      totalViewerSeconds: S.optional(
+        S.Number.pipe(T.Body("total_viewer_seconds")),
+      ),
+    }),
+  ).annotate({
+    identifier: "LivestreamsGetLivestreamAnalyticsCompleteResponseData",
+  }) as any as S.Schema<LivestreamsGetLivestreamAnalyticsCompleteResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetLivestreamAnalyticsCompleteLivestreamResponse {
+  data?: LivestreamsGetLivestreamAnalyticsCompleteResponseData;
+}
+export const GetLivestreamAnalyticsCompleteLivestreamResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      data: S.optional(LivestreamsGetLivestreamAnalyticsCompleteResponseData),
+    }),
+  ).annotate({
+    identifier: "GetLivestreamAnalyticsCompleteLivestreamResponse",
+  }) as any as S.Schema<GetLivestreamAnalyticsCompleteLivestreamResponse>;
+
+export interface GetLivestreamAnalyticsDaywiseLivestreamRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  /** Specify the end time as a Unix timestamp in seconds to access the livestream analytics. */
+  endTime?: number;
+  /** Optional filters for livestream analytics. */
+  filters?: string;
+  /** Specify the start time as a Unix timestamp in seconds to access the livestream analytics. */
+  startTime?: number;
+}
+export const GetLivestreamAnalyticsDaywiseLivestreamRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      endTime: S.optional(S.Number.pipe(T.Query("end_time"))),
+      filters: S.optional(S.String.pipe(T.Query())),
+      startTime: S.optional(S.Number.pipe(T.Query("start_time"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/livestreams/daywise",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "GetLivestreamAnalyticsDaywiseLivestreamRequest",
+  }) as any as S.Schema<GetLivestreamAnalyticsDaywiseLivestreamRequest>;
+
+export interface LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem {
+  /** Count of total livestream sessions. */
+  count?: number;
+  /** Analytics date. */
+  date?: string;
+  /** Total time duration for which the input was given or the meeting was streamed. */
+  totalIngestSeconds?: number;
+  /** Total view time for which the viewers watched the stream. */
+  totalViewerSeconds?: number;
+}
+export const LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      count: S.optional(S.Number),
+      date: S.optional(S.String),
+      totalIngestSeconds: S.optional(
+        S.Number.pipe(T.Body("total_ingest_seconds")),
+      ),
+      totalViewerSeconds: S.optional(
+        S.Number.pipe(T.Body("total_viewer_seconds")),
+      ),
+    }),
+  ).annotate({
+    identifier: "LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem",
+  }) as any as S.Schema<LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem>;
+
+export type LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList =
+  LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem[];
+export const LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList =
+  /*@__PURE__*/ S.Array(
+    LivestreamsGetLivestreamAnalyticsDaywiseResponseDataItem,
+  ) as any as S.Schema<LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetLivestreamAnalyticsDaywiseLivestreamResponse {
+  data?: LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList;
+}
+export const GetLivestreamAnalyticsDaywiseLivestreamResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      data: S.optional(
+        LivestreamsGetLivestreamAnalyticsDaywiseResponseDataList,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetLivestreamAnalyticsDaywiseLivestreamResponse",
+  }) as any as S.Schema<GetLivestreamAnalyticsDaywiseLivestreamResponse>;
+
+export interface GetLivestreamSessionDetailsForSessionIdLivestreamRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  livestreamSessionId: string;
+}
+export const GetLivestreamSessionDetailsForSessionIdLivestreamRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      livestreamSessionId: S.String.pipe(T.Label("livestream_session_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams/sessions/{livestream_session_id}",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "GetLivestreamSessionDetailsForSessionIdLivestreamRequest",
+  }) as any as S.Schema<GetLivestreamSessionDetailsForSessionIdLivestreamRequest>;
+
+export interface LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData {
+  /** The livestream ID. */
+  id?: string;
+  /** Timestamp the object was created at. The time is returned in ISO format. */
+  createdAt?: string;
+  /** The server URL to which the RTMP encoder sends the video and audio data. */
+  errMessage?: string;
+  /** Name of the livestream. */
+  ingestSeconds?: number;
+  livestreamId?: string;
+  /** Unique key for accessing each livestream. */
+  startedTime?: string;
+  /** The web address that viewers can use to watch the livestream. */
+  stoppedTime?: string;
+  /** Timestamp the object was updated at. The time is returned in ISO format. */
+  updatedAt?: string;
+  /** Specifies if the livestream was disabled. */
+  viewerSeconds?: number;
+}
+export const LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      errMessage: S.optional(S.String.pipe(T.Body("err_message"))),
+      ingestSeconds: S.optional(S.Number.pipe(T.Body("ingest_seconds"))),
+      livestreamId: S.optional(S.String.pipe(T.Body("livestream_id"))),
+      startedTime: S.optional(S.String.pipe(T.Body("started_time"))),
+      stoppedTime: S.optional(S.String.pipe(T.Body("stopped_time"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      viewerSeconds: S.optional(S.Number.pipe(T.Body("viewer_seconds"))),
+    }),
+  ).annotate({
+    identifier:
+      "LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData",
+  }) as any as S.Schema<LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetLivestreamSessionDetailsForSessionIdLivestreamResponse {
+  data?: LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData;
+}
+export const GetLivestreamSessionDetailsForSessionIdLivestreamResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      data: S.optional(
+        LivestreamsGetLivestreamSessionDetailsForSessionIdResponseData,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetLivestreamSessionDetailsForSessionIdLivestreamResponse",
+  }) as any as S.Schema<GetLivestreamSessionDetailsForSessionIdLivestreamResponse>;
+
+export interface GetLivestreamSessionForLivestreamIdLivestreamRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  livestreamId: string;
+  /** The page number from which you want your page search results to be displayed. */
+  pageNo?: number;
+  /** Number of results per page. */
+  perPage?: number;
+}
+export const GetLivestreamSessionForLivestreamIdLivestreamRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      livestreamId: S.String.pipe(T.Label("livestream_id")),
+      pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
+      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/livestreams/{livestream_id}",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "GetLivestreamSessionForLivestreamIdLivestreamRequest",
+  }) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamRequest>;
+
+export type LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus =
+  "LIVE" | "IDLE" | "ERRORED" | "INVOKED" | (string & {});
+export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus =
+  /*@__PURE__*/ S.String;
+
+export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream {
+  /** ID of the livestream. */
+  id?: string;
+  /** Timestamp the object was created at. The time is returned in ISO format. */
+  createdAt?: string;
+  /** Specifies if the livestream was disabled. */
+  disabled?: string;
+  /** The server URL to which the RTMP encoder sends the video and audio data. */
+  ingestServer?: string;
+  /** The ID of the meeting. */
+  meetingId?: string;
+  /** Name of the livestream. */
+  name?: string;
+  /** The web address that viewers can use to watch the livestream. */
+  playbackUrl?: string;
+  status?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus;
+  /** Unique key for accessing each livestream. */
+  streamKey?: string;
+  /** Timestamp the object was updated at. The time is returned in ISO format. */
+  updatedAt?: string;
+}
+export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      disabled: S.optional(S.String),
+      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
+      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
+      name: S.optional(S.String),
+      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
+      status: S.optional(
+        LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestreamStatus,
+      ),
+      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+  ).annotate({
+    identifier:
+      "LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream",
+  }) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream>;
+
+export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging {
+  endOffset?: number;
+  startOffset?: number;
+  totalCount?: number;
+}
+export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      endOffset: S.optional(S.Number.pipe(T.Body("end_offset"))),
+      startOffset: S.optional(S.Number.pipe(T.Body("start_offset"))),
+      totalCount: S.optional(S.Number.pipe(T.Body("total_count"))),
+    }),
+  ).annotate({
+    identifier:
+      "LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging",
+  }) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging>;
+
+export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession {
+  /** ID of the session. */
+  id?: string;
+  /** Timestamp the object was created at. The time is returned in ISO format. */
+  createdAt?: string;
+  errMessage?: string;
+  /** The time duration for which the input was given or the meeting was streamed. */
+  ingestSeconds?: number;
+  /** Timestamp the object was invoked. The time is returned in ISO format. */
+  invokedTime?: string;
+  livestreamId?: string;
+  /** Timestamp the object was started. The time is returned in ISO format. */
+  startedTime?: string;
+  /** Timestamp the object was stopped. The time is returned in ISO format. */
+  stoppedTime?: string;
+  /** Timestamp the object was updated at. The time is returned in ISO format. */
+  updatedAt?: string;
+  /** The total view time for which the viewers watched the stream. */
+  viewerSeconds?: number;
+}
+export const LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      errMessage: S.optional(S.String.pipe(T.Body("err_message"))),
+      ingestSeconds: S.optional(S.Number.pipe(T.Body("ingest_seconds"))),
+      invokedTime: S.optional(S.String.pipe(T.Body("invoked_time"))),
+      livestreamId: S.optional(S.String.pipe(T.Body("livestream_id"))),
+      startedTime: S.optional(S.String.pipe(T.Body("started_time"))),
+      stoppedTime: S.optional(S.String.pipe(T.Body("stopped_time"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+      viewerSeconds: S.optional(S.Number.pipe(T.Body("viewer_seconds"))),
+    }),
+  ).annotate({
+    identifier:
+      "LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession",
+  }) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession>;
+
+export interface LivestreamsGetLivestreamSessionForLivestreamIdResponseData {
+  livestream?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream;
+  paging?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging;
+  session?: LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession;
+}
+export const LivestreamsGetLivestreamSessionForLivestreamIdResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      livestream: S.optional(
+        LivestreamsGetLivestreamSessionForLivestreamIdResponseDataLivestream,
+      ),
+      paging: S.optional(
+        LivestreamsGetLivestreamSessionForLivestreamIdResponseDataPaging,
+      ),
+      session: S.optional(
+        LivestreamsGetLivestreamSessionForLivestreamIdResponseDataSession,
+      ),
+    }),
+  ).annotate({
+    identifier: "LivestreamsGetLivestreamSessionForLivestreamIdResponseData",
+  }) as any as S.Schema<LivestreamsGetLivestreamSessionForLivestreamIdResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetLivestreamSessionForLivestreamIdLivestreamResponse {
+  data?: LivestreamsGetLivestreamSessionForLivestreamIdResponseData;
+}
+export const GetLivestreamSessionForLivestreamIdLivestreamResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      data: S.optional(
+        LivestreamsGetLivestreamSessionForLivestreamIdResponseData,
+      ),
+    }),
+  ).annotate({
+    identifier: "GetLivestreamSessionForLivestreamIdLivestreamResponse",
+  }) as any as S.Schema<GetLivestreamSessionForLivestreamIdLivestreamResponse>;
+
+export type MeetingsGetRequestStatus = "ACTIVE" | "INACTIVE" | (string & {});
+export const MeetingsGetRequestStatus = /*@__PURE__*/ S.String;
+
+export interface GetMeetingRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  /** The end time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
+  endTime?: string;
+  /** The page number from which you want your page search results to be displayed. */
+  pageNo?: number;
+  /** Number of results per page */
+  perPage?: number;
+  /** The search query string. You can search using the meeting ID or title. */
+  search?: string;
+  /** The start time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
+  startTime?: string;
+  /** Filter meetings by status. */
+  status?: MeetingsGetRequestStatus;
+}
+export const GetMeetingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    endTime: S.optional(S.String.pipe(T.Query("end_time"))),
+    pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    search: S.optional(S.String.pipe(T.Query())),
+    startTime: S.optional(S.String.pipe(T.Query("start_time"))),
+    status: S.optional(MeetingsGetRequestStatus.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetMeetingRequest",
+}) as any as S.Schema<GetMeetingRequest>;
+
+export type MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel =
+  | "mono"
+  | "stereo"
+  | (string & {});
+export const MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec =
+  | "MP3"
+  | "AAC"
+  | (string & {});
+export const MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsGetResponseDataItemRecordingConfigAudioConfig {
+  /** Audio signal pathway within an audio file that carries a specific sound source. */
+  channel?: MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel;
+  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
+  codec?: MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec;
+  /** Controls whether to export audio file seperately */
+  exportFile?: boolean;
+}
+export const MeetingsGetResponseDataItemRecordingConfigAudioConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      channel: S.optional(
+        MeetingsGetResponseDataItemRecordingConfigAudioConfigChannel,
+      ),
+      codec: S.optional(
+        MeetingsGetResponseDataItemRecordingConfigAudioConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetResponseDataItemRecordingConfigAudioConfig",
+  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigAudioConfig>;
+
+export interface MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig {
+  /** RTMP URL to stream to */
+  rtmpUrl?: string;
+}
+export const MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig",
+  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig>;
+
+export interface MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig {
+  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
+  enabled: boolean;
+}
+export const MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig",
+  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig>;
+
+export type MeetingsGetResponseDataItemRecordingConfigStorageConfigType =
+  | "aws"
+  | "azure"
+  | "digitalocean"
+  | (string & {});
+export const MeetingsGetResponseDataItemRecordingConfigStorageConfigType =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod =
+  | "KEY"
+  | "PASSWORD"
+  | (string & {});
+export const MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsGetResponseDataItemRecordingConfigStorageConfig {
+  /** Type of storage media. */
+  type: MeetingsGetResponseDataItemRecordingConfigStorageConfigType;
+  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
+  accessKey?: string;
+  /** Authentication method used for "sftp" type storage medium */
+  authMethod?: MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod;
+  /** Name of the storage medium's bucket. */
+  bucket?: string;
+  /** SSH destination server host for SFTP type storage medium */
+  host?: string;
+  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
+  password?: string;
+  /** Path relative to the bucket root at which the recording will be placed. */
+  path?: string;
+  /** SSH destination server port for SFTP type storage medium */
+  port?: number;
+  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
+  privateKey?: string;
+  /** Region of the storage medium. */
+  region?: string;
+  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
+  secret?: string;
+  /** SSH destination server username for SFTP type storage medium */
+  username?: string;
+}
+export const MeetingsGetResponseDataItemRecordingConfigStorageConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: MeetingsGetResponseDataItemRecordingConfigStorageConfigType,
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      authMethod: S.optional(
+        MeetingsGetResponseDataItemRecordingConfigStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetResponseDataItemRecordingConfigStorageConfig",
+  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigStorageConfig>;
+
+export type MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec =
+  | "H264"
+  | "VP8"
+  | (string & {});
+export const MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition =
+  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize {
+  /** Height of the watermark in px */
+  height?: number;
+  /** Width of the watermark in px */
+  width?: number;
+}
+export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize",
+  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize>;
+
+export interface MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark {
+  /** Position of the watermark */
+  position?: MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition;
+  /** Size of the watermark */
+  size?: MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize;
+  /** URL of the watermark image */
+  url?: string;
+}
+export const MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(
+        MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkPosition,
+      ),
+      size: S.optional(
+        MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermarkSize,
+      ),
+      url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark",
+  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark>;
+
+export interface MeetingsGetResponseDataItemRecordingConfigVideoConfig {
+  /** Codec using which the recording will be encoded. */
+  codec?: MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec;
+  /** Controls whether to export video file seperately */
+  exportFile?: boolean;
+  /** Height of the recording video in pixels */
+  height?: number;
+  /** Watermark to be added to the recording */
+  watermark?: MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark;
+  /** Width of the recording video in pixels */
+  width?: number;
+}
+export const MeetingsGetResponseDataItemRecordingConfigVideoConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      codec: S.optional(
+        MeetingsGetResponseDataItemRecordingConfigVideoConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      height: S.optional(S.Number),
+      watermark: S.optional(
+        MeetingsGetResponseDataItemRecordingConfigVideoConfigWatermark,
+      ),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetResponseDataItemRecordingConfigVideoConfig",
+  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfigVideoConfig>;
+
+export interface MeetingsGetResponseDataItemRecordingConfig {
+  /** Object containing configuration regarding the audio that is being recorded. */
+  audioConfig?: MeetingsGetResponseDataItemRecordingConfigAudioConfig;
+  /** Adds a prefix to the beginning of the file name of the recording. */
+  fileNamePrefix?: string;
+  liveStreamingConfig?: MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig;
+  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
+  maxSeconds?: number;
+  realtimekitBucketConfig?: MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig;
+  storageConfig?: MeetingsGetResponseDataItemRecordingConfigStorageConfig;
+  videoConfig?: MeetingsGetResponseDataItemRecordingConfigVideoConfig;
+}
+export const MeetingsGetResponseDataItemRecordingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audioConfig: S.optional(
+        MeetingsGetResponseDataItemRecordingConfigAudioConfig.pipe(
+          T.Body("audio_config"),
+        ),
+      ),
+      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      liveStreamingConfig: S.optional(
+        MeetingsGetResponseDataItemRecordingConfigLiveStreamingConfig.pipe(
+          T.Body("live_streaming_config"),
+        ),
+      ),
+      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      realtimekitBucketConfig: S.optional(
+        MeetingsGetResponseDataItemRecordingConfigRealtimekitBucketConfig.pipe(
+          T.Body("realtimekit_bucket_config"),
+        ),
+      ),
+      storageConfig: S.optional(
+        MeetingsGetResponseDataItemRecordingConfigStorageConfig.pipe(
+          T.Body("storage_config"),
+        ),
+      ),
+      videoConfig: S.optional(
+        MeetingsGetResponseDataItemRecordingConfigVideoConfig.pipe(
+          T.Body("video_config"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetResponseDataItemRecordingConfig",
+  }) as any as S.Schema<MeetingsGetResponseDataItemRecordingConfig>;
+
+export type MeetingsGetResponseDataItemStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | (string & {});
+export const MeetingsGetResponseDataItemStatus = /*@__PURE__*/ S.String;
+
+export interface MeetingsGetResponseDataItem {
+  /** ID of the meeting. */
+  id: string;
+  /** Timestamp the object was created at. The time is returned in ISO format. */
+  createdAt: string;
+  /** Timestamp the object was updated at. The time is returned in ISO format. */
+  updatedAt: string;
+  /** Specifies if the meeting should start getting livestreamed on start. */
+  liveStreamOnStart?: boolean;
+  /** Specifies if Chat within a meeting should persist for a week. */
+  persistChat?: boolean;
+  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
+  recordOnStart?: boolean;
+  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
+  recordingConfig?: MeetingsGetResponseDataItemRecordingConfig;
+  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
+  sessionKeepAliveTimeInSecs?: number;
+  /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
+  status?: MeetingsGetResponseDataItemStatus;
+  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
+  summarizeOnEnd?: boolean;
+  /** Title of the meeting. */
+  title?: string;
+  /** Automatically generate transcripts when the meeting ends. */
+  transcribeOnEnd?: boolean;
+}
+export const MeetingsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    liveStreamOnStart: S.optional(
+      S.Boolean.pipe(T.Body("live_stream_on_start")),
+    ),
+    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+    recordingConfig: S.optional(
+      MeetingsGetResponseDataItemRecordingConfig.pipe(
+        T.Body("recording_config"),
+      ),
+    ),
+    sessionKeepAliveTimeInSecs: S.optional(
+      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+    ),
+    status: S.optional(MeetingsGetResponseDataItemStatus),
+    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
+    title: S.optional(S.String),
+    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+  }),
+).annotate({
+  identifier: "MeetingsGetResponseDataItem",
+}) as any as S.Schema<MeetingsGetResponseDataItem>;
+
+export type MeetingsGetResponseDataList = MeetingsGetResponseDataItem[];
+export const MeetingsGetResponseDataList = /*@__PURE__*/ S.Array(
+  MeetingsGetResponseDataItem,
+) as any as S.Schema<MeetingsGetResponseDataList>;
+
+export interface MeetingsGetResponsePaging {
+  endOffset: number;
+  startOffset: number;
+  totalCount: number;
+}
+export const MeetingsGetResponsePaging = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endOffset: S.Number.pipe(T.Body("end_offset")),
+    startOffset: S.Number.pipe(T.Body("start_offset")),
+    totalCount: S.Number.pipe(T.Body("total_count")),
+  }),
+).annotate({
+  identifier: "MeetingsGetResponsePaging",
+}) as any as S.Schema<MeetingsGetResponsePaging>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetMeetingResponse {
+  data: MeetingsGetResponseDataList;
+  paging: MeetingsGetResponsePaging;
+}
+export const GetMeetingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: MeetingsGetResponseDataList,
+    paging: MeetingsGetResponsePaging,
+  }),
+).annotate({
+  identifier: "GetMeetingResponse",
+}) as any as S.Schema<GetMeetingResponse>;
+
+export interface GetMeetingActiveLivestreamsLivestreamRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+}
+export const GetMeetingActiveLivestreamsLivestreamRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      meetingId: S.String.pipe(T.Label("meeting_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "GetMeetingActiveLivestreamsLivestreamRequest",
+  }) as any as S.Schema<GetMeetingActiveLivestreamsLivestreamRequest>;
+
+export type LivestreamsGetMeetingActiveLivestreamsResponseDataStatus =
+  | "LIVE"
+  | "IDLE"
+  | "ERRORED"
+  | "INVOKED"
+  | (string & {});
+export const LivestreamsGetMeetingActiveLivestreamsResponseDataStatus =
+  /*@__PURE__*/ S.String;
+
+export interface LivestreamsGetMeetingActiveLivestreamsResponseData {
+  /** The livestream ID. */
+  id?: string;
+  /** Timestamp the object was created at. The time is returned in ISO format. */
+  createdAt?: string;
+  /** Specifies if the livestream was disabled. */
+  disabled?: string;
+  /** The server URL to which the RTMP encoder sends the video and audio data. */
+  ingestServer?: string;
+  meetingId?: string;
+  /** Name of the livestream. */
+  name?: string;
+  /** The web address that viewers can use to watch the livestream. */
+  playbackUrl?: string;
+  status?: LivestreamsGetMeetingActiveLivestreamsResponseDataStatus;
+  /** Unique key for accessing each livestream. */
+  streamKey?: string;
+  /** Timestamp the object was updated at. The time is returned in ISO format. */
+  updatedAt?: string;
+}
+export const LivestreamsGetMeetingActiveLivestreamsResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      disabled: S.optional(S.String),
+      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
+      meetingId: S.optional(S.String.pipe(T.Body("meeting_id"))),
+      name: S.optional(S.String),
+      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
+      status: S.optional(
+        LivestreamsGetMeetingActiveLivestreamsResponseDataStatus,
+      ),
+      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+  ).annotate({
+    identifier: "LivestreamsGetMeetingActiveLivestreamsResponseData",
+  }) as any as S.Schema<LivestreamsGetMeetingActiveLivestreamsResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetMeetingActiveLivestreamsLivestreamResponse {
+  data?: LivestreamsGetMeetingActiveLivestreamsResponseData;
+}
+export const GetMeetingActiveLivestreamsLivestreamResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      data: S.optional(LivestreamsGetMeetingActiveLivestreamsResponseData),
+    }),
+  ).annotate({
+    identifier: "GetMeetingActiveLivestreamsLivestreamResponse",
+  }) as any as S.Schema<GetMeetingActiveLivestreamsLivestreamResponse>;
+
+export interface GetMeetingByIdMeetingRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+  name?: string;
+}
+export const GetMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    meetingId: S.String.pipe(T.Label("meeting_id")),
+    name: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetMeetingByIdMeetingRequest",
+}) as any as S.Schema<GetMeetingByIdMeetingRequest>;
+
+export type MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType =
+  "general" | "team_meeting" | "sales_call" | (string & {});
+export const MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat =
+  | "plain_text"
+  | "markdown"
+  | (string & {});
+export const MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsGetMeetingByIdResponseDataAiConfigSummarization {
+  /** Defines the style of the summary, such as general, team meeting, or sales call. */
+  summaryType?: MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType;
+  /** Determines the text format of the summary, such as plain text or markdown. */
+  textFormat?: MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat;
+  /** Sets the maximum number of words in the meeting summary. */
+  wordLimit?: number;
+}
+export const MeetingsGetMeetingByIdResponseDataAiConfigSummarization =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      summaryType: S.optional(
+        MeetingsGetMeetingByIdResponseDataAiConfigSummarizationSummaryType.pipe(
+          T.Body("summary_type"),
+        ),
+      ),
+      textFormat: S.optional(
+        MeetingsGetMeetingByIdResponseDataAiConfigSummarizationTextFormat.pipe(
+          T.Body("text_format"),
+        ),
+      ),
+      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetMeetingByIdResponseDataAiConfigSummarization",
+  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfigSummarization>;
+
+export type MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
+  string[];
+export const MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
+
+export type MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage =
+  | "en-US"
+  | "en-IN"
+  | "de"
+  | (string & {});
+export const MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsGetMeetingByIdResponseDataAiConfigTranscription {
+  /** Adds specific terms to improve accurate detection during transcription. */
+  keywords?: MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList;
+  /** Specifies the language code for transcription to ensure accurate results. */
+  language?: MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage;
+  /** Control the inclusion of offensive language in transcriptions. */
+  profanityFilter?: boolean;
+}
+export const MeetingsGetMeetingByIdResponseDataAiConfigTranscription =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      keywords: S.optional(
+        MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionKeywordsList,
+      ),
+      language: S.optional(
+        MeetingsGetMeetingByIdResponseDataAiConfigTranscriptionLanguage,
+      ),
+      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetMeetingByIdResponseDataAiConfigTranscription",
+  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfigTranscription>;
+
+export interface MeetingsGetMeetingByIdResponseDataAiConfig {
+  /** Summary Config */
+  summarization?: MeetingsGetMeetingByIdResponseDataAiConfigSummarization;
+  /** Transcription Configurations */
+  transcription?: MeetingsGetMeetingByIdResponseDataAiConfigTranscription;
+}
+export const MeetingsGetMeetingByIdResponseDataAiConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      summarization: S.optional(
+        MeetingsGetMeetingByIdResponseDataAiConfigSummarization,
+      ),
+      transcription: S.optional(
+        MeetingsGetMeetingByIdResponseDataAiConfigTranscription,
+      ),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetMeetingByIdResponseDataAiConfig",
+  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataAiConfig>;
+
+export type MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
+  "mono" | "stereo" | (string & {});
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
+  | "MP3"
+  | "AAC"
+  | (string & {});
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig {
+  /** Audio signal pathway within an audio file that carries a specific sound source. */
+  channel?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel;
+  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
+  codec?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec;
+  /** Controls whether to export audio file seperately */
+  exportFile?: boolean;
+}
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      channel: S.optional(
+        MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigChannel,
+      ),
+      codec: S.optional(
+        MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig",
+  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig>;
+
+export interface MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig {
+  /** RTMP URL to stream to */
+  rtmpUrl?: string;
+}
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig",
+  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig>;
+
+export interface MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig {
+  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
+  enabled: boolean;
+}
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig",
+  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig>;
+
+export type MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType =
+  "aws" | "azure" | "digitalocean" | (string & {});
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
+  "KEY" | "PASSWORD" | (string & {});
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig {
+  /** Type of storage media. */
+  type: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType;
+  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
+  accessKey?: string;
+  /** Authentication method used for "sftp" type storage medium */
+  authMethod?: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod;
+  /** Name of the storage medium's bucket. */
+  bucket?: string;
+  /** SSH destination server host for SFTP type storage medium */
+  host?: string;
+  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
+  password?: string;
+  /** Path relative to the bucket root at which the recording will be placed. */
+  path?: string;
+  /** SSH destination server port for SFTP type storage medium */
+  port?: number;
+  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
+  privateKey?: string;
+  /** Region of the storage medium. */
+  region?: string;
+  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
+  secret?: string;
+  /** SSH destination server username for SFTP type storage medium */
+  username?: string;
+}
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigType,
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      authMethod: S.optional(
+        MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig",
+  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig>;
+
+export type MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
+  | "H264"
+  | "VP8"
+  | (string & {});
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
+  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize {
+  /** Height of the watermark in px */
+  height?: number;
+  /** Width of the watermark in px */
+  width?: number;
+}
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize",
+  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize>;
+
+export interface MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark {
+  /** Position of the watermark */
+  position?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition;
+  /** Size of the watermark */
+  size?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize;
+  /** URL of the watermark image */
+  url?: string;
+}
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(
+        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition,
+      ),
+      size: S.optional(
+        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize,
+      ),
+      url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark",
+  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark>;
+
+export interface MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig {
+  /** Codec using which the recording will be encoded. */
+  codec?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec;
+  /** Controls whether to export video file seperately */
+  exportFile?: boolean;
+  /** Height of the recording video in pixels */
+  height?: number;
+  /** Watermark to be added to the recording */
+  watermark?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark;
+  /** Width of the recording video in pixels */
+  width?: number;
+}
+export const MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      codec: S.optional(
+        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      height: S.optional(S.Number),
+      watermark: S.optional(
+        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfigWatermark,
+      ),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig",
+  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig>;
+
+export interface MeetingsGetMeetingByIdResponseDataRecordingConfig {
+  /** Object containing configuration regarding the audio that is being recorded. */
+  audioConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig;
+  /** Adds a prefix to the beginning of the file name of the recording. */
+  fileNamePrefix?: string;
+  liveStreamingConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig;
+  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
+  maxSeconds?: number;
+  realtimekitBucketConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig;
+  storageConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig;
+  videoConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig;
+}
+export const MeetingsGetMeetingByIdResponseDataRecordingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audioConfig: S.optional(
+        MeetingsGetMeetingByIdResponseDataRecordingConfigAudioConfig.pipe(
+          T.Body("audio_config"),
+        ),
+      ),
+      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      liveStreamingConfig: S.optional(
+        MeetingsGetMeetingByIdResponseDataRecordingConfigLiveStreamingConfig.pipe(
+          T.Body("live_streaming_config"),
+        ),
+      ),
+      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      realtimekitBucketConfig: S.optional(
+        MeetingsGetMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig.pipe(
+          T.Body("realtimekit_bucket_config"),
+        ),
+      ),
+      storageConfig: S.optional(
+        MeetingsGetMeetingByIdResponseDataRecordingConfigStorageConfig.pipe(
+          T.Body("storage_config"),
+        ),
+      ),
+      videoConfig: S.optional(
+        MeetingsGetMeetingByIdResponseDataRecordingConfigVideoConfig.pipe(
+          T.Body("video_config"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetMeetingByIdResponseDataRecordingConfig",
+  }) as any as S.Schema<MeetingsGetMeetingByIdResponseDataRecordingConfig>;
+
+export type MeetingsGetMeetingByIdResponseDataStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | (string & {});
+export const MeetingsGetMeetingByIdResponseDataStatus = /*@__PURE__*/ S.String;
+
+export interface MeetingsGetMeetingByIdResponseData {
+  /** ID of the meeting. */
+  id: string;
+  /** Timestamp the object was created at. The time is returned in ISO format. */
+  createdAt: string;
+  /** Timestamp the object was updated at. The time is returned in ISO format. */
+  updatedAt: string;
+  /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
+  aiConfig?: MeetingsGetMeetingByIdResponseDataAiConfig;
+  /** Specifies if the meeting should start getting livestreamed on start. */
+  liveStreamOnStart?: boolean;
+  /** Specifies if Chat within a meeting should persist for a week. */
+  persistChat?: boolean;
+  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
+  recordOnStart?: boolean;
+  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
+  recordingConfig?: MeetingsGetMeetingByIdResponseDataRecordingConfig;
+  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
+  sessionKeepAliveTimeInSecs?: number;
+  /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
+  status?: MeetingsGetMeetingByIdResponseDataStatus;
+  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
+  summarizeOnEnd?: boolean;
+  /** Title of the meeting. */
+  title?: string;
+  /** Automatically generate transcripts when the meeting ends. */
+  transcribeOnEnd?: boolean;
+}
+export const MeetingsGetMeetingByIdResponseData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    aiConfig: S.optional(
+      MeetingsGetMeetingByIdResponseDataAiConfig.pipe(T.Body("ai_config")),
+    ),
+    liveStreamOnStart: S.optional(
+      S.Boolean.pipe(T.Body("live_stream_on_start")),
+    ),
+    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+    recordingConfig: S.optional(
+      MeetingsGetMeetingByIdResponseDataRecordingConfig.pipe(
+        T.Body("recording_config"),
+      ),
+    ),
+    sessionKeepAliveTimeInSecs: S.optional(
+      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+    ),
+    status: S.optional(MeetingsGetMeetingByIdResponseDataStatus),
+    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
+    title: S.optional(S.String),
+    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+  }),
+).annotate({
+  identifier: "MeetingsGetMeetingByIdResponseData",
+}) as any as S.Schema<MeetingsGetMeetingByIdResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetMeetingByIdMeetingResponse {
+  /** Data returned by the operation */
+  data?: MeetingsGetMeetingByIdResponseData;
+}
+export const GetMeetingByIdMeetingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(MeetingsGetMeetingByIdResponseData),
+  }),
+).annotate({
+  identifier: "GetMeetingByIdMeetingResponse",
+}) as any as S.Schema<GetMeetingByIdMeetingResponse>;
+
+export interface GetMeetingParticipantMeetingRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+  participantId: string;
+}
+export const GetMeetingParticipantMeetingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    meetingId: S.String.pipe(T.Label("meeting_id")),
+    participantId: S.String.pipe(T.Label("participant_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetMeetingParticipantMeetingRequest",
+}) as any as S.Schema<GetMeetingParticipantMeetingRequest>;
+
+export interface MeetingsGetMeetingParticipantResponseData {
+  /** ID of the participant. */
+  id: string;
+  /** When this object was created. The time is returned in ISO format. */
+  createdAt: string;
+  /** A unique participant ID generated by the client. */
+  customParticipantId: string;
+  /** Preset applied to the participant. */
+  presetName: string;
+  /** When this object was updated. The time is returned in ISO format. */
+  updatedAt: string;
+  /** Name of the participant. */
+  name?: string;
+  /** URL to a picture of the participant. */
+  picture?: string;
+}
+export const MeetingsGetMeetingParticipantResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
+      presetName: S.String.pipe(T.Body("preset_name")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      name: S.optional(S.String),
+      picture: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetMeetingParticipantResponseData",
+  }) as any as S.Schema<MeetingsGetMeetingParticipantResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetMeetingParticipantMeetingResponse {
+  /** Data returned by the operation */
+  data: MeetingsGetMeetingParticipantResponseData;
+}
+export const GetMeetingParticipantMeetingResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      data: MeetingsGetMeetingParticipantResponseData,
+    }),
+).annotate({
+  identifier: "GetMeetingParticipantMeetingResponse",
+}) as any as S.Schema<GetMeetingParticipantMeetingResponse>;
+
+export interface GetMeetingParticipantsMeetingRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+  /** The page number from which you want your page search results to be displayed. */
+  pageNo?: number;
+  /** Number of results per page */
+  perPage?: number;
+}
+export const GetMeetingParticipantsMeetingRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      meetingId: S.String.pipe(T.Label("meeting_id")),
+      pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
+      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "GetMeetingParticipantsMeetingRequest",
+}) as any as S.Schema<GetMeetingParticipantsMeetingRequest>;
+
+export interface MeetingsGetMeetingParticipantsResponseDataItem {
+  /** ID of the participant. */
+  id: string;
+  /** When this object was created. The time is returned in ISO format. */
+  createdAt: string;
+  /** A unique participant ID generated by the client. */
+  customParticipantId: string;
+  /** Preset applied to the participant. */
+  presetName: string;
+  /** When this object was updated. The time is returned in ISO format. */
+  updatedAt: string;
+  /** Name of the participant. */
+  name?: string;
+  /** URL to a picture of the participant. */
+  picture?: string;
+}
+export const MeetingsGetMeetingParticipantsResponseDataItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      customParticipantId: S.String.pipe(T.Body("custom_participant_id")),
+      presetName: S.String.pipe(T.Body("preset_name")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      name: S.optional(S.String),
+      picture: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetMeetingParticipantsResponseDataItem",
+  }) as any as S.Schema<MeetingsGetMeetingParticipantsResponseDataItem>;
+
+export type MeetingsGetMeetingParticipantsResponseDataList =
+  MeetingsGetMeetingParticipantsResponseDataItem[];
+export const MeetingsGetMeetingParticipantsResponseDataList =
+  /*@__PURE__*/ S.Array(
+    MeetingsGetMeetingParticipantsResponseDataItem,
+  ) as any as S.Schema<MeetingsGetMeetingParticipantsResponseDataList>;
+
+export interface MeetingsGetMeetingParticipantsResponsePaging {
+  endOffset: number;
+  startOffset: number;
+  totalCount: number;
+}
+export const MeetingsGetMeetingParticipantsResponsePaging =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      endOffset: S.Number.pipe(T.Body("end_offset")),
+      startOffset: S.Number.pipe(T.Body("start_offset")),
+      totalCount: S.Number.pipe(T.Body("total_count")),
+    }),
+  ).annotate({
+    identifier: "MeetingsGetMeetingParticipantsResponsePaging",
+  }) as any as S.Schema<MeetingsGetMeetingParticipantsResponsePaging>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetMeetingParticipantsMeetingResponse {
+  data: MeetingsGetMeetingParticipantsResponseDataList;
+  paging: MeetingsGetMeetingParticipantsResponsePaging;
+}
+export const GetMeetingParticipantsMeetingResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      data: MeetingsGetMeetingParticipantsResponseDataList,
+      paging: MeetingsGetMeetingParticipantsResponsePaging,
+    }),
+).annotate({
+  identifier: "GetMeetingParticipantsMeetingResponse",
+}) as any as S.Schema<GetMeetingParticipantsMeetingResponse>;
+
+export interface GetOneRecordingRecordingRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
   recordingId: string;
 }
-export const RecordingsGetOneRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetOneRecordingRecordingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -9863,8 +5708,8 @@ export const RecordingsGetOneRecordingRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RecordingsGetOneRecordingRequest",
-}) as any as S.Schema<RecordingsGetOneRecordingRequest>;
+  identifier: "GetOneRecordingRecordingRequest",
+}) as any as S.Schema<GetOneRecordingRecordingRequest>;
 
 export type RecordingsGetOneRecordingResponseDataStatus =
   | "INVOKED"
@@ -10111,1601 +5956,185 @@ export const RecordingsGetOneRecordingResponseData = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<RecordingsGetOneRecordingResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface RecordingsGetOneRecordingResponse {
+export interface GetOneRecordingRecordingResponse {
   /** Data returned by the operation */
   data?: RecordingsGetOneRecordingResponseData;
 }
-export const RecordingsGetOneRecordingResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetOneRecordingRecordingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(RecordingsGetOneRecordingResponseData),
   }),
 ).annotate({
-  identifier: "RecordingsGetOneRecordingResponse",
-}) as any as S.Schema<RecordingsGetOneRecordingResponse>;
+  identifier: "GetOneRecordingRecordingResponse",
+}) as any as S.Schema<GetOneRecordingRecordingResponse>;
 
-export type RecordingsGetRecordingsRequestSortBy =
-  | "invokedTime"
-  | (string & {});
-export const RecordingsGetRecordingsRequestSortBy = /*@__PURE__*/ S.String;
-
-export type RecordingsGetRecordingsRequestSortOrder =
-  | "ASC"
-  | "DESC"
-  | (string & {});
-export const RecordingsGetRecordingsRequestSortOrder = /*@__PURE__*/ S.String;
-
-export type RecordingsGetRecordingsRequestStatus =
-  | "INVOKED"
-  | "RECORDING"
-  | "UPLOADING"
-  | (string & {});
-export const RecordingsGetRecordingsRequestStatus = /*@__PURE__*/ S.String;
-
-export type RecordingsGetRecordingsRequestStatusList =
-  RecordingsGetRecordingsRequestStatus[];
-export const RecordingsGetRecordingsRequestStatusList = /*@__PURE__*/ S.Array(
-  RecordingsGetRecordingsRequestStatus,
-) as any as S.Schema<RecordingsGetRecordingsRequestStatusList>;
-
-export interface RecordingsGetRecordingsRequest {
+export interface GetOrgAnalyticsAnalyticRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
-  /** The end time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
-  endTime?: string;
-  /** If passed, only shows expired/non-expired recordings on RealtimeKit's bucket */
-  expired?: boolean;
-  /** ID of a meeting. Optional. Will limit results to only this meeting if passed. */
-  meetingId?: string;
-  /** The page number from which you want your page search results to be displayed. */
-  pageNo?: number;
-  /** Number of results per page */
-  perPage?: number;
-  /** The search query string. You can search using the meeting ID or title. */
-  search?: string;
-  sortBy?: RecordingsGetRecordingsRequestSortBy;
-  sortOrder?: RecordingsGetRecordingsRequestSortOrder;
-  /** The start time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
-  startTime?: string;
-  /** Filter by one or more recording status */
-  status?: RecordingsGetRecordingsRequestStatusList;
+  /** end date in YYYY-MM-DD format */
+  endDate?: string;
+  /** start date in YYYY-MM-DD format */
+  startDate?: string;
 }
-export const RecordingsGetRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetOrgAnalyticsAnalyticRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
-    endTime: S.optional(S.String.pipe(T.Query("end_time"))),
-    expired: S.optional(S.Boolean.pipe(T.Query())),
-    meetingId: S.optional(S.String.pipe(T.Query("meeting_id"))),
-    pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    search: S.optional(S.String.pipe(T.Query())),
-    sortBy: S.optional(
-      RecordingsGetRecordingsRequestSortBy.pipe(T.Query("sort_by")),
-    ),
-    sortOrder: S.optional(
-      RecordingsGetRecordingsRequestSortOrder.pipe(T.Query("sort_order")),
-    ),
-    startTime: S.optional(S.String.pipe(T.Query("start_time"))),
-    status: S.optional(
-      RecordingsGetRecordingsRequestStatusList.pipe(T.Query()),
-    ),
+    endDate: S.optional(S.String.pipe(T.Query("end_date"))),
+    startDate: S.optional(S.String.pipe(T.Query("start_date"))),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "RecordingsGetRecordingsRequest",
-}) as any as S.Schema<RecordingsGetRecordingsRequest>;
+  identifier: "GetOrgAnalyticsAnalyticRequest",
+}) as any as S.Schema<GetOrgAnalyticsAnalyticRequest>;
 
-export type RecordingsGetRecordingsResponseDataItemStatus =
-  | "INVOKED"
-  | "RECORDING"
-  | "UPLOADING"
-  | (string & {});
-export const RecordingsGetRecordingsResponseDataItemStatus =
-  /*@__PURE__*/ S.String;
-
-export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel =
-  "mono" | "stereo" | (string & {});
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel =
-  /*@__PURE__*/ S.String;
-
-export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec =
-  "MP3" | "AAC" | (string & {});
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig {
-  /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel;
-  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec;
-  /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
+export interface AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem {
+  day?: string;
+  /** Total recording minutes for a specific day */
+  totalRecordingMinutes?: number;
+  /** Total number of recordings for a specific day */
+  totalRecordings?: number;
 }
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig =
+export const AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      channel: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel,
+      day: S.optional(S.String),
+      totalRecordingMinutes: S.optional(
+        S.Number.pipe(T.Body("total_recording_minutes")),
       ),
-      codec: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      totalRecordings: S.optional(S.Number.pipe(T.Body("total_recordings"))),
     }),
   ).annotate({
     identifier:
-      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig",
-  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig>;
-
-export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig {
-  /** RTMP URL to stream to */
-  rtmpUrl?: string;
-}
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
-    }),
-  ).annotate({
-    identifier:
-      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig",
-  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig>;
-
-export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig {
-  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
-  enabled: boolean;
-}
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-    }),
-  ).annotate({
-    identifier:
-      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig",
-  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig>;
-
-export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType =
-  "aws" | "azure" | "digitalocean" | (string & {});
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType =
-  /*@__PURE__*/ S.String;
-
-export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig {
-  /** Type of storage media. */
-  type: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType;
-  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
-  /** Authentication method used for "sftp" type storage medium */
-  authMethod?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod;
-  /** Name of the storage medium's bucket. */
-  bucket?: string;
-  /** SSH destination server host for SFTP type storage medium */
-  host?: string;
-  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
-  /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
-  /** SSH destination server port for SFTP type storage medium */
-  port?: number;
-  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
-  /** Region of the storage medium. */
-  region?: string;
-  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
-  /** SSH destination server username for SFTP type storage medium */
-  username?: string;
-}
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
-      authMethod: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
-      ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig",
-  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig>;
-
-export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec =
-  "H264" | "VP8" | (string & {});
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition =
-  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize {
-  /** Height of the watermark in px */
-  height?: number;
-  /** Width of the watermark in px */
-  width?: number;
-}
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize",
-  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize>;
-
-export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark {
-  /** Position of the watermark */
-  position?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition;
-  /** Size of the watermark */
-  size?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize;
-  /** URL of the watermark image */
-  url?: string;
-}
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      position: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition,
-      ),
-      size: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize,
-      ),
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark",
-  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark>;
-
-export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig {
-  /** Codec using which the recording will be encoded. */
-  codec?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec;
-  /** Controls whether to export video file seperately */
-  exportFile?: boolean;
-  /** Height of the recording video in pixels */
-  height?: number;
-  /** Watermark to be added to the recording */
-  watermark?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark;
-  /** Width of the recording video in pixels */
-  width?: number;
-}
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      codec: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec,
-      ),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
-      watermark: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark,
-      ),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier:
-      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig",
-  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig>;
-
-export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig {
-  /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig;
-  /** Adds a prefix to the beginning of the file name of the recording. */
-  fileNamePrefix?: string;
-  liveStreamingConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig;
-  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig;
-  storageConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig;
-  videoConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig;
-}
-export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      audioConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig.pipe(
-          T.Body("audio_config"),
-        ),
-      ),
-      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-      liveStreamingConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig.pipe(
-          T.Body("live_streaming_config"),
-        ),
-      ),
-      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
-      realtimekitBucketConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig.pipe(
-          T.Body("realtimekit_bucket_config"),
-        ),
-      ),
-      storageConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
-      ),
-      videoConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig.pipe(
-          T.Body("video_config"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig",
-  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig>;
-
-export type RecordingsGetRecordingsResponseDataItemMeetingStatus =
-  | "ACTIVE"
-  | "INACTIVE"
-  | (string & {});
-export const RecordingsGetRecordingsResponseDataItemMeetingStatus =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsGetRecordingsResponseDataItemMeeting {
-  /** ID of the meeting. */
-  id: string;
-  /** Timestamp the object was created at. The time is returned in ISO format. */
-  createdAt: string;
-  /** Timestamp the object was updated at. The time is returned in ISO format. */
-  updatedAt: string;
-  /** Specifies if the meeting should start getting livestreamed on start. */
-  liveStreamOnStart?: boolean;
-  /** Specifies if Chat within a meeting should persist for a week. */
-  persistChat?: boolean;
-  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
-  recordOnStart?: boolean;
-  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
-  recordingConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig;
-  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
-  sessionKeepAliveTimeInSecs?: number;
-  /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
-  status?: RecordingsGetRecordingsResponseDataItemMeetingStatus;
-  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
-  summarizeOnEnd?: boolean;
-  /** Title of the meeting. */
-  title?: string;
-  /** Automatically generate transcripts when the meeting ends. */
-  transcribeOnEnd?: boolean;
-}
-export const RecordingsGetRecordingsResponseDataItemMeeting =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      liveStreamOnStart: S.optional(
-        S.Boolean.pipe(T.Body("live_stream_on_start")),
-      ),
-      persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
-      recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
-      recordingConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig.pipe(
-          T.Body("recording_config"),
-        ),
-      ),
-      sessionKeepAliveTimeInSecs: S.optional(
-        S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
-      ),
-      status: S.optional(RecordingsGetRecordingsResponseDataItemMeetingStatus),
-      summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
-      title: S.optional(S.String),
-      transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
-    }),
-  ).annotate({
-    identifier: "RecordingsGetRecordingsResponseDataItemMeeting",
-  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeeting>;
-
-export type RecordingsGetRecordingsResponseDataItemStorageConfigType =
-  | "aws"
-  | "azure"
-  | "digitalocean"
-  | (string & {});
-export const RecordingsGetRecordingsResponseDataItemStorageConfigType =
-  /*@__PURE__*/ S.String;
-
-export type RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod =
-  | "KEY"
-  | "PASSWORD"
-  | (string & {});
-export const RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsGetRecordingsResponseDataItemStorageConfig {
-  /** Type of storage media. */
-  type: RecordingsGetRecordingsResponseDataItemStorageConfigType;
-  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
-  /** Authentication method used for "sftp" type storage medium */
-  authMethod?: RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod;
-  /** Name of the storage medium's bucket. */
-  bucket?: string;
-  /** SSH destination server host for SFTP type storage medium */
-  host?: string;
-  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
-  /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
-  /** SSH destination server port for SFTP type storage medium */
-  port?: number;
-  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
-  /** Region of the storage medium. */
-  region?: string;
-  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
-  /** SSH destination server username for SFTP type storage medium */
-  username?: string;
-}
-export const RecordingsGetRecordingsResponseDataItemStorageConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: RecordingsGetRecordingsResponseDataItemStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
-      authMethod: S.optional(
-        RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
-      ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RecordingsGetRecordingsResponseDataItemStorageConfig",
-  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemStorageConfig>;
-
-export interface RecordingsGetRecordingsResponseDataItem {
-  /** ID of the recording */
-  id: string;
-  /** If the audio_config is passed, the URL for downloading the audio recording is returned. */
-  audioDownloadUrl: string;
-  /** URL where the recording can be downloaded. */
-  downloadUrl: string;
-  /** Timestamp when the download URL expires. */
-  downloadUrlExpiry: string;
-  /** File size of the recording, in bytes. */
-  fileSize: number;
-  /** Timestamp when this recording was invoked. */
-  invokedTime: string;
-  /** File name of the recording. */
-  outputFileName: string;
-  /** ID of the meeting session this recording is for. */
-  sessionId: string;
-  /** Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`. */
-  startedTime: string;
-  /** Current status of the recording. */
-  status: RecordingsGetRecordingsResponseDataItemStatus;
-  /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
-  stoppedTime: string;
-  meeting?: RecordingsGetRecordingsResponseDataItemMeeting;
-  /** Total recording time in seconds. */
-  recordingDuration?: number;
-  storageConfig?: RecordingsGetRecordingsResponseDataItemStorageConfig;
-}
-export const RecordingsGetRecordingsResponseDataItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      audioDownloadUrl: S.String.pipe(T.Body("audio_download_url")),
-      downloadUrl: S.String.pipe(T.Body("download_url")),
-      downloadUrlExpiry: S.String.pipe(T.Body("download_url_expiry")),
-      fileSize: S.Number.pipe(T.Body("file_size")),
-      invokedTime: S.String.pipe(T.Body("invoked_time")),
-      outputFileName: S.String.pipe(T.Body("output_file_name")),
-      sessionId: S.String.pipe(T.Body("session_id")),
-      startedTime: S.String.pipe(T.Body("started_time")),
-      status: RecordingsGetRecordingsResponseDataItemStatus,
-      stoppedTime: S.String.pipe(T.Body("stopped_time")),
-      meeting: S.optional(RecordingsGetRecordingsResponseDataItemMeeting),
-      recordingDuration: S.optional(
-        S.Number.pipe(T.Body("recording_duration")),
-      ),
-      storageConfig: S.optional(
-        RecordingsGetRecordingsResponseDataItemStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "RecordingsGetRecordingsResponseDataItem",
-}) as any as S.Schema<RecordingsGetRecordingsResponseDataItem>;
-
-export type RecordingsGetRecordingsResponseDataList =
-  RecordingsGetRecordingsResponseDataItem[];
-export const RecordingsGetRecordingsResponseDataList = /*@__PURE__*/ S.Array(
-  RecordingsGetRecordingsResponseDataItem,
-) as any as S.Schema<RecordingsGetRecordingsResponseDataList>;
-
-export interface RecordingsGetRecordingsResponsePaging {
-  endOffset: number;
-  startOffset: number;
-  totalCount: number;
-}
-export const RecordingsGetRecordingsResponsePaging = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      endOffset: S.Number.pipe(T.Body("end_offset")),
-      startOffset: S.Number.pipe(T.Body("start_offset")),
-      totalCount: S.Number.pipe(T.Body("total_count")),
-    }),
-).annotate({
-  identifier: "RecordingsGetRecordingsResponsePaging",
-}) as any as S.Schema<RecordingsGetRecordingsResponsePaging>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface RecordingsGetRecordingsResponse {
-  data: RecordingsGetRecordingsResponseDataList;
-  paging: RecordingsGetRecordingsResponsePaging;
-}
-export const RecordingsGetRecordingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: RecordingsGetRecordingsResponseDataList,
-    paging: RecordingsGetRecordingsResponsePaging,
-  }),
-).annotate({
-  identifier: "RecordingsGetRecordingsResponse",
-}) as any as S.Schema<RecordingsGetRecordingsResponse>;
-
-export type RecordingsPauseResumeStopRecordingRequestAction =
-  | "stop"
-  | "pause"
-  | "resume"
-  | (string & {});
-export const RecordingsPauseResumeStopRecordingRequestAction =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsPauseResumeStopRecordingRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  appId: string;
-  recordingId: string;
-  action: RecordingsPauseResumeStopRecordingRequestAction;
-}
-export const RecordingsPauseResumeStopRecordingRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      recordingId: S.String.pipe(T.Label("recording_id")),
-      action: RecordingsPauseResumeStopRecordingRequestAction,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "RecordingsPauseResumeStopRecordingRequest",
-  }) as any as S.Schema<RecordingsPauseResumeStopRecordingRequest>;
-
-export type RecordingsPauseResumeStopRecordingResponseDataStatus =
-  | "INVOKED"
-  | "RECORDING"
-  | "UPLOADING"
-  | (string & {});
-export const RecordingsPauseResumeStopRecordingResponseDataStatus =
-  /*@__PURE__*/ S.String;
-
-export type RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType =
-  "ORGANIZATION" | "USER" | (string & {});
-export const RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller {
-  /** Name of the user who started the recording. */
-  name?: string;
-  /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
-  type?: RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType;
-  /** The user ID of the person who started the recording. */
-  userId?: string;
-}
-export const RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType,
-      ),
-      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
-    }),
-  ).annotate({
-    identifier:
-      "RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller",
-  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller>;
-
-export type RecordingsPauseResumeStopRecordingResponseDataStartReasonReason =
-  | "API_CALL"
-  | "RECORD_ON_START"
-  | (string & {});
-export const RecordingsPauseResumeStopRecordingResponseDataStartReasonReason =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsPauseResumeStopRecordingResponseDataStartReason {
-  caller?: RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller;
-  /** Specifies if the recording was started using the "Start a Recording"API or using the parameter RECORD_ON_START in the "Create a meeting" API. */
-  reason?: RecordingsPauseResumeStopRecordingResponseDataStartReasonReason;
-}
-export const RecordingsPauseResumeStopRecordingResponseDataStartReason =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      caller: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller,
-      ),
-      reason: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStartReasonReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "RecordingsPauseResumeStopRecordingResponseDataStartReason",
-  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStartReason>;
-
-export type RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType =
-  "ORGANIZATION" | "USER" | (string & {});
-export const RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller {
-  /** Name of the user who stopped the recording. */
-  name?: string;
-  /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
-  type?: RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType;
-  /** The user ID of the person who stopped the recording. */
-  userId?: string;
-}
-export const RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType,
-      ),
-      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
-    }),
-  ).annotate({
-    identifier:
-      "RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller",
-  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller>;
-
-export type RecordingsPauseResumeStopRecordingResponseDataStopReasonReason =
-  | "API_CALL"
-  | "INTERNAL_ERROR"
-  | "ALL_PEERS_LEFT"
-  | (string & {});
-export const RecordingsPauseResumeStopRecordingResponseDataStopReasonReason =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsPauseResumeStopRecordingResponseDataStopReason {
-  caller?: RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller;
-  /** Specifies the reason why the recording stopped. */
-  reason?: RecordingsPauseResumeStopRecordingResponseDataStopReasonReason;
-}
-export const RecordingsPauseResumeStopRecordingResponseDataStopReason =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      caller: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller,
-      ),
-      reason: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStopReasonReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "RecordingsPauseResumeStopRecordingResponseDataStopReason",
-  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStopReason>;
-
-export type RecordingsPauseResumeStopRecordingResponseDataStorageConfigType =
-  | "aws"
-  | "azure"
-  | "digitalocean"
-  | (string & {});
-export const RecordingsPauseResumeStopRecordingResponseDataStorageConfigType =
-  /*@__PURE__*/ S.String;
-
-export type RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod =
-  "KEY" | "PASSWORD" | (string & {});
-export const RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsPauseResumeStopRecordingResponseDataStorageConfig {
-  /** Type of storage media. */
-  type: RecordingsPauseResumeStopRecordingResponseDataStorageConfigType;
-  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
-  /** Authentication method used for "sftp" type storage medium */
-  authMethod?: RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod;
-  /** Name of the storage medium's bucket. */
-  bucket?: string;
-  /** SSH destination server host for SFTP type storage medium */
-  host?: string;
-  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
-  /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
-  /** SSH destination server port for SFTP type storage medium */
-  port?: number;
-  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
-  /** Region of the storage medium. */
-  region?: string;
-  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
-  /** SSH destination server username for SFTP type storage medium */
-  username?: string;
-}
-export const RecordingsPauseResumeStopRecordingResponseDataStorageConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: RecordingsPauseResumeStopRecordingResponseDataStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
-      authMethod: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
-      ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RecordingsPauseResumeStopRecordingResponseDataStorageConfig",
-  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStorageConfig>;
-
-export interface RecordingsPauseResumeStopRecordingResponseData {
-  /** ID of the recording */
-  id: string;
-  /** If the audio_config is passed, the URL for downloading the audio recording is returned. */
-  audioDownloadUrl: string;
-  /** URL where the recording can be downloaded. */
-  downloadUrl: string;
-  /** Timestamp when the download URL expires. */
-  downloadUrlExpiry: string;
-  /** File size of the recording, in bytes. */
-  fileSize: number;
-  /** Timestamp when this recording was invoked. */
-  invokedTime: string;
-  /** File name of the recording. */
-  outputFileName: string;
-  /** ID of the meeting session this recording is for. */
-  sessionId: string;
-  /** Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`. */
-  startedTime: string;
-  /** Current status of the recording. */
-  status: RecordingsPauseResumeStopRecordingResponseDataStatus;
-  /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
-  stoppedTime: string;
-  /** Total recording time in seconds. */
-  recordingDuration?: number;
-  startReason?: RecordingsPauseResumeStopRecordingResponseDataStartReason;
-  stopReason?: RecordingsPauseResumeStopRecordingResponseDataStopReason;
-  storageConfig?: RecordingsPauseResumeStopRecordingResponseDataStorageConfig;
-}
-export const RecordingsPauseResumeStopRecordingResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      audioDownloadUrl: S.String.pipe(T.Body("audio_download_url")),
-      downloadUrl: S.String.pipe(T.Body("download_url")),
-      downloadUrlExpiry: S.String.pipe(T.Body("download_url_expiry")),
-      fileSize: S.Number.pipe(T.Body("file_size")),
-      invokedTime: S.String.pipe(T.Body("invoked_time")),
-      outputFileName: S.String.pipe(T.Body("output_file_name")),
-      sessionId: S.String.pipe(T.Body("session_id")),
-      startedTime: S.String.pipe(T.Body("started_time")),
-      status: RecordingsPauseResumeStopRecordingResponseDataStatus,
-      stoppedTime: S.String.pipe(T.Body("stopped_time")),
-      recordingDuration: S.optional(
-        S.Number.pipe(T.Body("recording_duration")),
-      ),
-      startReason: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStartReason.pipe(
-          T.Body("start_reason"),
-        ),
-      ),
-      stopReason: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStopReason.pipe(
-          T.Body("stop_reason"),
-        ),
-      ),
-      storageConfig: S.optional(
-        RecordingsPauseResumeStopRecordingResponseDataStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "RecordingsPauseResumeStopRecordingResponseData",
-  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface RecordingsPauseResumeStopRecordingResponse {
-  /** Data returned by the operation */
-  data?: RecordingsPauseResumeStopRecordingResponseData;
-}
-export const RecordingsPauseResumeStopRecordingResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      data: S.optional(RecordingsPauseResumeStopRecordingResponseData),
-    }),
-  ).annotate({
-    identifier: "RecordingsPauseResumeStopRecordingResponse",
-  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponse>;
-
-export type RecordingsStartRecordingsRequestAudioConfigChannel =
-  | "mono"
-  | "stereo"
-  | (string & {});
-export const RecordingsStartRecordingsRequestAudioConfigChannel =
-  /*@__PURE__*/ S.String;
-
-export type RecordingsStartRecordingsRequestAudioConfigCodec =
-  | "MP3"
-  | "AAC"
-  | (string & {});
-export const RecordingsStartRecordingsRequestAudioConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsStartRecordingsRequestAudioConfig {
-  /** Audio signal pathway within an audio file that carries a specific sound source. */
-  channel?: RecordingsStartRecordingsRequestAudioConfigChannel;
-  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
-  codec?: RecordingsStartRecordingsRequestAudioConfigCodec;
-  /** Controls whether to export audio file seperately */
-  exportFile?: boolean;
-}
-export const RecordingsStartRecordingsRequestAudioConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      channel: S.optional(RecordingsStartRecordingsRequestAudioConfigChannel),
-      codec: S.optional(RecordingsStartRecordingsRequestAudioConfigCodec),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsRequestAudioConfig",
-  }) as any as S.Schema<RecordingsStartRecordingsRequestAudioConfig>;
-
-export type RecordingsStartRecordingsRequestInteractiveConfigType =
-  | "ID3"
-  | (string & {});
-export const RecordingsStartRecordingsRequestInteractiveConfigType =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsStartRecordingsRequestInteractiveConfig {
-  /** The metadata is presented in the form of ID3 tags. */
-  type?: RecordingsStartRecordingsRequestInteractiveConfigType;
-}
-export const RecordingsStartRecordingsRequestInteractiveConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: S.optional(RecordingsStartRecordingsRequestInteractiveConfigType),
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsRequestInteractiveConfig",
-  }) as any as S.Schema<RecordingsStartRecordingsRequestInteractiveConfig>;
-
-export interface RecordingsStartRecordingsRequestRealtimekitBucketConfig {
-  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
-  enabled: boolean;
-}
-export const RecordingsStartRecordingsRequestRealtimekitBucketConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.Boolean,
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsRequestRealtimekitBucketConfig",
-  }) as any as S.Schema<RecordingsStartRecordingsRequestRealtimekitBucketConfig>;
-
-export interface RecordingsStartRecordingsRequestRtmpOutConfig {
-  /** RTMP URL to stream to */
-  rtmpUrl?: string;
-}
-export const RecordingsStartRecordingsRequestRtmpOutConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsRequestRtmpOutConfig",
-  }) as any as S.Schema<RecordingsStartRecordingsRequestRtmpOutConfig>;
-
-export type RecordingsStartRecordingsRequestStorageConfigType =
-  | "aws"
-  | "azure"
-  | "digitalocean"
-  | (string & {});
-export const RecordingsStartRecordingsRequestStorageConfigType =
-  /*@__PURE__*/ S.String;
-
-export type RecordingsStartRecordingsRequestStorageConfigAuthMethod =
-  | "KEY"
-  | "PASSWORD"
-  | (string & {});
-export const RecordingsStartRecordingsRequestStorageConfigAuthMethod =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsStartRecordingsRequestStorageConfig {
-  /** Type of storage media. */
-  type: RecordingsStartRecordingsRequestStorageConfigType;
-  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
-  /** Authentication method used for "sftp" type storage medium */
-  authMethod?: RecordingsStartRecordingsRequestStorageConfigAuthMethod;
-  /** Name of the storage medium's bucket. */
-  bucket?: string;
-  /** SSH destination server host for SFTP type storage medium */
-  host?: string;
-  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
-  /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
-  /** SSH destination server port for SFTP type storage medium */
-  port?: number;
-  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
-  /** Region of the storage medium. */
-  region?: string;
-  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
-  /** SSH destination server username for SFTP type storage medium */
-  username?: string;
-}
-export const RecordingsStartRecordingsRequestStorageConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: RecordingsStartRecordingsRequestStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
-      authMethod: S.optional(
-        RecordingsStartRecordingsRequestStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
-      ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsRequestStorageConfig",
-  }) as any as S.Schema<RecordingsStartRecordingsRequestStorageConfig>;
-
-export type RecordingsStartRecordingsRequestVideoConfigCodec =
-  | "H264"
-  | "VP8"
-  | (string & {});
-export const RecordingsStartRecordingsRequestVideoConfigCodec =
-  /*@__PURE__*/ S.String;
-
-export type RecordingsStartRecordingsRequestVideoConfigWatermarkPosition =
-  | "left top"
-  | "right top"
-  | "left bottom"
-  | "right bottom"
-  | (string & {});
-export const RecordingsStartRecordingsRequestVideoConfigWatermarkPosition =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsStartRecordingsRequestVideoConfigWatermarkSize {
-  /** Height of the watermark in px */
-  height?: number;
-  /** Width of the watermark in px */
-  width?: number;
-}
-export const RecordingsStartRecordingsRequestVideoConfigWatermarkSize =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      height: S.optional(S.Number),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsRequestVideoConfigWatermarkSize",
-  }) as any as S.Schema<RecordingsStartRecordingsRequestVideoConfigWatermarkSize>;
-
-export interface RecordingsStartRecordingsRequestVideoConfigWatermark {
-  /** Position of the watermark */
-  position?: RecordingsStartRecordingsRequestVideoConfigWatermarkPosition;
-  /** Size of the watermark */
-  size?: RecordingsStartRecordingsRequestVideoConfigWatermarkSize;
-  /** URL of the watermark image */
-  url?: string;
-}
-export const RecordingsStartRecordingsRequestVideoConfigWatermark =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      position: S.optional(
-        RecordingsStartRecordingsRequestVideoConfigWatermarkPosition,
-      ),
-      size: S.optional(
-        RecordingsStartRecordingsRequestVideoConfigWatermarkSize,
-      ),
-      url: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsRequestVideoConfigWatermark",
-  }) as any as S.Schema<RecordingsStartRecordingsRequestVideoConfigWatermark>;
-
-export interface RecordingsStartRecordingsRequestVideoConfig {
-  /** Codec using which the recording will be encoded. */
-  codec?: RecordingsStartRecordingsRequestVideoConfigCodec;
-  /** Controls whether to export video file seperately */
-  exportFile?: boolean;
-  /** Height of the recording video in pixels */
-  height?: number;
-  /** Watermark to be added to the recording */
-  watermark?: RecordingsStartRecordingsRequestVideoConfigWatermark;
-  /** Width of the recording video in pixels */
-  width?: number;
-}
-export const RecordingsStartRecordingsRequestVideoConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      codec: S.optional(RecordingsStartRecordingsRequestVideoConfigCodec),
-      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
-      height: S.optional(S.Number),
-      watermark: S.optional(
-        RecordingsStartRecordingsRequestVideoConfigWatermark,
-      ),
-      width: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsRequestVideoConfig",
-  }) as any as S.Schema<RecordingsStartRecordingsRequestVideoConfig>;
-
-export interface RecordingsStartRecordingsRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  /** ID of the meeting to record. */
-  meetingId: string;
-  /** By default, a meeting allows only one recording to run at a time. Enabling the `allow_multiple_recordings` parameter to true allows you to initiate multiple recordings concurrently in the same meeting. This allows you to record separate videos of the same meeting with different configurations, such as portrait mode or landscape mode. */
-  allowMultipleRecordings?: boolean;
-  /** Object containing configuration regarding the audio that is being recorded. */
-  audioConfig?: RecordingsStartRecordingsRequestAudioConfig;
-  /** Update the recording file name. */
-  fileNamePrefix?: string;
-  /** Allows you to add timed metadata to your recordings, which are digital markers inserted into a video file to provide contextual information at specific points in the content range. The ID3 tags containing this information are available to clients on the playback timeline in HLS format. The output files are generated in a compressed .tar format. */
-  interactiveConfig?: RecordingsStartRecordingsRequestInteractiveConfig;
-  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
-  maxSeconds?: number;
-  realtimekitBucketConfig?: RecordingsStartRecordingsRequestRealtimekitBucketConfig;
-  rtmpOutConfig?: RecordingsStartRecordingsRequestRtmpOutConfig;
-  storageConfig?: RecordingsStartRecordingsRequestStorageConfig;
-  /** Pass a custom url to record arbitary screen */
-  url?: string;
-  videoConfig?: RecordingsStartRecordingsRequestVideoConfig;
-}
-export const RecordingsStartRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    meetingId: S.String.pipe(T.Body("meeting_id")),
-    allowMultipleRecordings: S.optional(
-      S.Boolean.pipe(T.Body("allow_multiple_recordings")),
-    ),
-    audioConfig: S.optional(
-      RecordingsStartRecordingsRequestAudioConfig.pipe(T.Body("audio_config")),
-    ),
-    fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
-    interactiveConfig: S.optional(
-      RecordingsStartRecordingsRequestInteractiveConfig.pipe(
-        T.Body("interactive_config"),
-      ),
-    ),
-    maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
-    realtimekitBucketConfig: S.optional(
-      RecordingsStartRecordingsRequestRealtimekitBucketConfig.pipe(
-        T.Body("realtimekit_bucket_config"),
-      ),
-    ),
-    rtmpOutConfig: S.optional(
-      RecordingsStartRecordingsRequestRtmpOutConfig.pipe(
-        T.Body("rtmp_out_config"),
-      ),
-    ),
-    storageConfig: S.optional(
-      RecordingsStartRecordingsRequestStorageConfig.pipe(
-        T.Body("storage_config"),
-      ),
-    ),
-    url: S.optional(S.String),
-    videoConfig: S.optional(
-      RecordingsStartRecordingsRequestVideoConfig.pipe(T.Body("video_config")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RecordingsStartRecordingsRequest",
-}) as any as S.Schema<RecordingsStartRecordingsRequest>;
-
-export type RecordingsStartRecordingsResponseDataStatus =
-  | "INVOKED"
-  | "RECORDING"
-  | "UPLOADING"
-  | (string & {});
-export const RecordingsStartRecordingsResponseDataStatus =
-  /*@__PURE__*/ S.String;
-
-export type RecordingsStartRecordingsResponseDataStartReasonCallerType =
-  | "ORGANIZATION"
-  | "USER"
-  | (string & {});
-export const RecordingsStartRecordingsResponseDataStartReasonCallerType =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsStartRecordingsResponseDataStartReasonCaller {
-  /** Name of the user who started the recording. */
-  name?: string;
-  /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
-  type?: RecordingsStartRecordingsResponseDataStartReasonCallerType;
-  /** The user ID of the person who started the recording. */
-  userId?: string;
-}
-export const RecordingsStartRecordingsResponseDataStartReasonCaller =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(
-        RecordingsStartRecordingsResponseDataStartReasonCallerType,
-      ),
-      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsResponseDataStartReasonCaller",
-  }) as any as S.Schema<RecordingsStartRecordingsResponseDataStartReasonCaller>;
-
-export type RecordingsStartRecordingsResponseDataStartReasonReason =
-  | "API_CALL"
-  | "RECORD_ON_START"
-  | (string & {});
-export const RecordingsStartRecordingsResponseDataStartReasonReason =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsStartRecordingsResponseDataStartReason {
-  caller?: RecordingsStartRecordingsResponseDataStartReasonCaller;
-  /** Specifies if the recording was started using the "Start a Recording"API or using the parameter RECORD_ON_START in the "Create a meeting" API. */
-  reason?: RecordingsStartRecordingsResponseDataStartReasonReason;
-}
-export const RecordingsStartRecordingsResponseDataStartReason =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      caller: S.optional(
-        RecordingsStartRecordingsResponseDataStartReasonCaller,
-      ),
-      reason: S.optional(
-        RecordingsStartRecordingsResponseDataStartReasonReason,
-      ),
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsResponseDataStartReason",
-  }) as any as S.Schema<RecordingsStartRecordingsResponseDataStartReason>;
-
-export type RecordingsStartRecordingsResponseDataStopReasonCallerType =
-  | "ORGANIZATION"
-  | "USER"
-  | (string & {});
-export const RecordingsStartRecordingsResponseDataStopReasonCallerType =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsStartRecordingsResponseDataStopReasonCaller {
-  /** Name of the user who stopped the recording. */
-  name?: string;
-  /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
-  type?: RecordingsStartRecordingsResponseDataStopReasonCallerType;
-  /** The user ID of the person who stopped the recording. */
-  userId?: string;
-}
-export const RecordingsStartRecordingsResponseDataStopReasonCaller =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.optional(S.String),
-      type: S.optional(
-        RecordingsStartRecordingsResponseDataStopReasonCallerType,
-      ),
-      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsResponseDataStopReasonCaller",
-  }) as any as S.Schema<RecordingsStartRecordingsResponseDataStopReasonCaller>;
-
-export type RecordingsStartRecordingsResponseDataStopReasonReason =
-  | "API_CALL"
-  | "INTERNAL_ERROR"
-  | "ALL_PEERS_LEFT"
-  | (string & {});
-export const RecordingsStartRecordingsResponseDataStopReasonReason =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsStartRecordingsResponseDataStopReason {
-  caller?: RecordingsStartRecordingsResponseDataStopReasonCaller;
-  /** Specifies the reason why the recording stopped. */
-  reason?: RecordingsStartRecordingsResponseDataStopReasonReason;
-}
-export const RecordingsStartRecordingsResponseDataStopReason =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      caller: S.optional(RecordingsStartRecordingsResponseDataStopReasonCaller),
-      reason: S.optional(RecordingsStartRecordingsResponseDataStopReasonReason),
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsResponseDataStopReason",
-  }) as any as S.Schema<RecordingsStartRecordingsResponseDataStopReason>;
-
-export type RecordingsStartRecordingsResponseDataStorageConfigType =
-  | "aws"
-  | "azure"
-  | "digitalocean"
-  | (string & {});
-export const RecordingsStartRecordingsResponseDataStorageConfigType =
-  /*@__PURE__*/ S.String;
-
-export type RecordingsStartRecordingsResponseDataStorageConfigAuthMethod =
-  | "KEY"
-  | "PASSWORD"
-  | (string & {});
-export const RecordingsStartRecordingsResponseDataStorageConfigAuthMethod =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsStartRecordingsResponseDataStorageConfig {
-  /** Type of storage media. */
-  type: RecordingsStartRecordingsResponseDataStorageConfigType;
-  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
-  accessKey?: string;
-  /** Authentication method used for "sftp" type storage medium */
-  authMethod?: RecordingsStartRecordingsResponseDataStorageConfigAuthMethod;
-  /** Name of the storage medium's bucket. */
-  bucket?: string;
-  /** SSH destination server host for SFTP type storage medium */
-  host?: string;
-  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
-  password?: string;
-  /** Path relative to the bucket root at which the recording will be placed. */
-  path?: string;
-  /** SSH destination server port for SFTP type storage medium */
-  port?: number;
-  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
-  privateKey?: string;
-  /** Region of the storage medium. */
-  region?: string;
-  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
-  secret?: string;
-  /** SSH destination server username for SFTP type storage medium */
-  username?: string;
-}
-export const RecordingsStartRecordingsResponseDataStorageConfig =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      type: RecordingsStartRecordingsResponseDataStorageConfigType,
-      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
-      authMethod: S.optional(
-        RecordingsStartRecordingsResponseDataStorageConfigAuthMethod.pipe(
-          T.Body("auth_method"),
-        ),
-      ),
-      bucket: S.optional(S.String),
-      host: S.optional(S.String),
-      password: S.optional(S.String),
-      path: S.optional(S.String),
-      port: S.optional(S.Number),
-      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
-      region: S.optional(S.String),
-      secret: S.optional(S.String),
-      username: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "RecordingsStartRecordingsResponseDataStorageConfig",
-  }) as any as S.Schema<RecordingsStartRecordingsResponseDataStorageConfig>;
-
-export interface RecordingsStartRecordingsResponseData {
-  /** ID of the recording */
-  id: string;
-  /** If the audio_config is passed, the URL for downloading the audio recording is returned. */
-  audioDownloadUrl: string;
-  /** URL where the recording can be downloaded. */
-  downloadUrl: string;
-  /** Timestamp when the download URL expires. */
-  downloadUrlExpiry: string;
-  /** File size of the recording, in bytes. */
-  fileSize: number;
-  /** Timestamp when this recording was invoked. */
-  invokedTime: string;
-  /** File name of the recording. */
-  outputFileName: string;
-  /** ID of the meeting session this recording is for. */
-  sessionId: string;
-  /** Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`. */
-  startedTime: string;
-  /** Current status of the recording. */
-  status: RecordingsStartRecordingsResponseDataStatus;
-  /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
-  stoppedTime: string;
-  /** Total recording time in seconds. */
-  recordingDuration?: number;
-  startReason?: RecordingsStartRecordingsResponseDataStartReason;
-  stopReason?: RecordingsStartRecordingsResponseDataStopReason;
-  storageConfig?: RecordingsStartRecordingsResponseDataStorageConfig;
-}
-export const RecordingsStartRecordingsResponseData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      audioDownloadUrl: S.String.pipe(T.Body("audio_download_url")),
-      downloadUrl: S.String.pipe(T.Body("download_url")),
-      downloadUrlExpiry: S.String.pipe(T.Body("download_url_expiry")),
-      fileSize: S.Number.pipe(T.Body("file_size")),
-      invokedTime: S.String.pipe(T.Body("invoked_time")),
-      outputFileName: S.String.pipe(T.Body("output_file_name")),
-      sessionId: S.String.pipe(T.Body("session_id")),
-      startedTime: S.String.pipe(T.Body("started_time")),
-      status: RecordingsStartRecordingsResponseDataStatus,
-      stoppedTime: S.String.pipe(T.Body("stopped_time")),
-      recordingDuration: S.optional(
-        S.Number.pipe(T.Body("recording_duration")),
-      ),
-      startReason: S.optional(
-        RecordingsStartRecordingsResponseDataStartReason.pipe(
-          T.Body("start_reason"),
-        ),
-      ),
-      stopReason: S.optional(
-        RecordingsStartRecordingsResponseDataStopReason.pipe(
-          T.Body("stop_reason"),
-        ),
-      ),
-      storageConfig: S.optional(
-        RecordingsStartRecordingsResponseDataStorageConfig.pipe(
-          T.Body("storage_config"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "RecordingsStartRecordingsResponseData",
-}) as any as S.Schema<RecordingsStartRecordingsResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface RecordingsStartRecordingsResponse {
-  /** Data returned by the operation */
-  data?: RecordingsStartRecordingsResponseData;
-}
-export const RecordingsStartRecordingsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: S.optional(RecordingsStartRecordingsResponseData),
-  }),
-).annotate({
-  identifier: "RecordingsStartRecordingsResponse",
-}) as any as S.Schema<RecordingsStartRecordingsResponse>;
-
-export type RecordingsStartTrackRecordingRequestLayersMap = {
-  [key: string]: unknown | undefined;
-};
-export const RecordingsStartTrackRecordingRequestLayersMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<RecordingsStartTrackRecordingRequestLayersMap>;
-
-export type RecordingsStartTrackRecordingRequestUserIdsList = string[];
-export const RecordingsStartTrackRecordingRequestUserIdsList =
+      "AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem",
+  }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
+
+export type AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
+  AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem[];
+export const AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
   /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RecordingsStartTrackRecordingRequestUserIdsList>;
+    AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem,
+  ) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList>;
 
-export interface RecordingsStartTrackRecordingRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  /** ID of the meeting to record. */
-  meetingId: string;
-  /** Optional audio layer configuration. If omitted, RealtimeKit records all participant audio using the default file name prefix. */
-  layers?: RecordingsStartTrackRecordingRequestLayersMap;
-  /** Optional list of participant user IDs to record. Selective track recording (`user_ids`) is in early beta contact support to use this feature. */
-  userIds?: RecordingsStartTrackRecordingRequestUserIdsList;
+export interface AnalyticsGetOrgAnalyticsResponseDataRecordingStats {
+  /** Day wise recording stats */
+  dayStats?: AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList;
+  /** Total number of recordings during the range specified */
+  recordingCount?: number;
+  /** Total recording minutes during the range specified */
+  recordingMinutesConsumed?: number;
 }
-export const RecordingsStartTrackRecordingRequest = /*@__PURE__*/ S.suspend(
-  () =>
+export const AnalyticsGetOrgAnalyticsResponseDataRecordingStats =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      meetingId: S.String.pipe(T.Body("meeting_id")),
-      layers: S.optional(RecordingsStartTrackRecordingRequestLayersMap),
-      userIds: S.optional(
-        RecordingsStartTrackRecordingRequestUserIdsList.pipe(
-          T.Body("user_ids"),
+      dayStats: S.optional(
+        AnalyticsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList.pipe(
+          T.Body("day_stats"),
         ),
       ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/track",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "RecordingsStartTrackRecordingRequest",
-}) as any as S.Schema<RecordingsStartTrackRecordingRequest>;
-
-export type RecordingsStartTrackRecordingResponseDataRecordingStatus =
-  | "INVOKED"
-  | "RECORDING"
-  | "UPLOADING"
-  | (string & {});
-export const RecordingsStartTrackRecordingResponseDataRecordingStatus =
-  /*@__PURE__*/ S.String;
-
-export interface RecordingsStartTrackRecordingResponseDataRecording {
-  /** ID of the recording */
-  id: string;
-  /** If the audio_config is passed, the URL for downloading the audio recording is returned. */
-  audioDownloadUrl: string;
-  /** URL where the recording can be downloaded. */
-  downloadUrl: string;
-  /** Timestamp when the download URL expires. */
-  downloadUrlExpiry: string;
-  /** File size of the recording, in bytes. */
-  fileSize: number;
-  /** Timestamp when this recording was invoked. */
-  invokedTime: string;
-  /** File name of the recording. */
-  outputFileName: string;
-  /** ID of the meeting session this recording is for. */
-  sessionId: string;
-  /** Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`. */
-  startedTime: string;
-  /** Current status of the recording. */
-  status: RecordingsStartTrackRecordingResponseDataRecordingStatus;
-  /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
-  stoppedTime: string;
-  /** Total recording time in seconds. */
-  recordingDuration?: number;
-}
-export const RecordingsStartTrackRecordingResponseDataRecording =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      audioDownloadUrl: S.String.pipe(T.Body("audio_download_url")),
-      downloadUrl: S.String.pipe(T.Body("download_url")),
-      downloadUrlExpiry: S.String.pipe(T.Body("download_url_expiry")),
-      fileSize: S.Number.pipe(T.Body("file_size")),
-      invokedTime: S.String.pipe(T.Body("invoked_time")),
-      outputFileName: S.String.pipe(T.Body("output_file_name")),
-      sessionId: S.String.pipe(T.Body("session_id")),
-      startedTime: S.String.pipe(T.Body("started_time")),
-      status: RecordingsStartTrackRecordingResponseDataRecordingStatus,
-      stoppedTime: S.String.pipe(T.Body("stopped_time")),
-      recordingDuration: S.optional(
-        S.Number.pipe(T.Body("recording_duration")),
+      recordingCount: S.optional(S.Number.pipe(T.Body("recording_count"))),
+      recordingMinutesConsumed: S.optional(
+        S.Number.pipe(T.Body("recording_minutes_consumed")),
       ),
     }),
   ).annotate({
-    identifier: "RecordingsStartTrackRecordingResponseDataRecording",
-  }) as any as S.Schema<RecordingsStartTrackRecordingResponseDataRecording>;
+    identifier: "AnalyticsGetOrgAnalyticsResponseDataRecordingStats",
+  }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataRecordingStats>;
 
-export interface RecordingsStartTrackRecordingResponseData {
-  recording: RecordingsStartTrackRecordingResponseDataRecording;
+export interface AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem {
+  day?: string;
+  /** Total session minutes for a specific day */
+  totalSessionMinutes?: number;
+  /** Total number of sessions for a specific day */
+  totalSessions?: number;
 }
-export const RecordingsStartTrackRecordingResponseData =
+export const AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      recording: RecordingsStartTrackRecordingResponseDataRecording,
+      day: S.optional(S.String),
+      totalSessionMinutes: S.optional(
+        S.Number.pipe(T.Body("total_session_minutes")),
+      ),
+      totalSessions: S.optional(S.Number.pipe(T.Body("total_sessions"))),
     }),
   ).annotate({
-    identifier: "RecordingsStartTrackRecordingResponseData",
-  }) as any as S.Schema<RecordingsStartTrackRecordingResponseData>;
+    identifier: "AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem",
+  }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
 
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface RecordingsStartTrackRecordingResponse {
-  /** Data returned by the operation */
-  data?: RecordingsStartTrackRecordingResponseData;
+export type AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
+  AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem[];
+export const AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
+  /*@__PURE__*/ S.Array(
+    AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem,
+  ) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList>;
+
+export interface AnalyticsGetOrgAnalyticsResponseDataSessionStats {
+  /** Day wise session stats */
+  dayStats?: AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList;
+  /** Total number of sessions during the range specified */
+  sessionsCount?: number;
+  /** Total session minutes during the range specified */
+  sessionsMinutesConsumed?: number;
 }
-export const RecordingsStartTrackRecordingResponse = /*@__PURE__*/ S.suspend(
+export const AnalyticsGetOrgAnalyticsResponseDataSessionStats =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dayStats: S.optional(
+        AnalyticsGetOrgAnalyticsResponseDataSessionStatsDayStatsList.pipe(
+          T.Body("day_stats"),
+        ),
+      ),
+      sessionsCount: S.optional(S.Number.pipe(T.Body("sessions_count"))),
+      sessionsMinutesConsumed: S.optional(
+        S.Number.pipe(T.Body("sessions_minutes_consumed")),
+      ),
+    }),
+  ).annotate({
+    identifier: "AnalyticsGetOrgAnalyticsResponseDataSessionStats",
+  }) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseDataSessionStats>;
+
+export interface AnalyticsGetOrgAnalyticsResponseData {
+  /** Recording statistics of an App during the range specified */
+  recordingStats?: AnalyticsGetOrgAnalyticsResponseDataRecordingStats;
+  /** Session statistics of an App during the range specified */
+  sessionStats?: AnalyticsGetOrgAnalyticsResponseDataSessionStats;
+}
+export const AnalyticsGetOrgAnalyticsResponseData = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      data: S.optional(RecordingsStartTrackRecordingResponseData),
+      recordingStats: S.optional(
+        AnalyticsGetOrgAnalyticsResponseDataRecordingStats.pipe(
+          T.Body("recording_stats"),
+        ),
+      ),
+      sessionStats: S.optional(
+        AnalyticsGetOrgAnalyticsResponseDataSessionStats.pipe(
+          T.Body("session_stats"),
+        ),
+      ),
     }),
 ).annotate({
-  identifier: "RecordingsStartTrackRecordingResponse",
-}) as any as S.Schema<RecordingsStartTrackRecordingResponse>;
-
-export interface SessionsGenerateSummaryOfTranscriptsRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  sessionId: string;
-}
-export const SessionsGenerateSummaryOfTranscriptsRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      sessionId: S.String.pipe(T.Label("session_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/summary",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "SessionsGenerateSummaryOfTranscriptsRequest",
-  }) as any as S.Schema<SessionsGenerateSummaryOfTranscriptsRequest>;
-
-export interface SessionsGenerateSummaryOfTranscriptsResponseData {
-  sessionId?: string;
-  status?: string;
-}
-export const SessionsGenerateSummaryOfTranscriptsResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      sessionId: S.optional(S.String.pipe(T.Body("session_id"))),
-      status: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "SessionsGenerateSummaryOfTranscriptsResponseData",
-  }) as any as S.Schema<SessionsGenerateSummaryOfTranscriptsResponseData>;
+  identifier: "AnalyticsGetOrgAnalyticsResponseData",
+}) as any as S.Schema<AnalyticsGetOrgAnalyticsResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface SessionsGenerateSummaryOfTranscriptsResponse {
-  data?: SessionsGenerateSummaryOfTranscriptsResponseData;
+export interface GetOrgAnalyticsAnalyticResponse {
+  data?: AnalyticsGetOrgAnalyticsResponseData;
 }
-export const SessionsGenerateSummaryOfTranscriptsResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      data: S.optional(SessionsGenerateSummaryOfTranscriptsResponseData),
-    }),
-  ).annotate({
-    identifier: "SessionsGenerateSummaryOfTranscriptsResponse",
-  }) as any as S.Schema<SessionsGenerateSummaryOfTranscriptsResponse>;
+export const GetOrgAnalyticsAnalyticResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(AnalyticsGetOrgAnalyticsResponseData),
+  }),
+).annotate({
+  identifier: "GetOrgAnalyticsAnalyticResponse",
+}) as any as S.Schema<GetOrgAnalyticsAnalyticResponse>;
 
 export type SessionsGetParticipantDataFromPeerIdRequestFilters =
   | "device_info"
@@ -11715,7 +6144,7 @@ export type SessionsGetParticipantDataFromPeerIdRequestFilters =
 export const SessionsGetParticipantDataFromPeerIdRequestFilters =
   /*@__PURE__*/ S.String;
 
-export interface SessionsGetParticipantDataFromPeerIdRequest {
+export interface GetParticipantDataFromPeerIdSessionRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
@@ -11726,7 +6155,7 @@ export interface SessionsGetParticipantDataFromPeerIdRequest {
   /** if true, response includes all the peer events of participant. */
   includePeerEvents?: boolean;
 }
-export const SessionsGetParticipantDataFromPeerIdRequest =
+export const GetParticipantDataFromPeerIdSessionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
@@ -11746,8 +6175,8 @@ export const SessionsGetParticipantDataFromPeerIdRequest =
       }),
     ),
   ).annotate({
-    identifier: "SessionsGetParticipantDataFromPeerIdRequest",
-  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdRequest>;
+    identifier: "GetParticipantDataFromPeerIdSessionRequest",
+  }) as any as S.Schema<GetParticipantDataFromPeerIdSessionRequest>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName =
   "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING" | (string & {});
@@ -14519,26 +8948,1353 @@ export const SessionsGetParticipantDataFromPeerIdResponseData =
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface SessionsGetParticipantDataFromPeerIdResponse {
+export interface GetParticipantDataFromPeerIdSessionResponse {
   data?: SessionsGetParticipantDataFromPeerIdResponseData;
 }
-export const SessionsGetParticipantDataFromPeerIdResponse =
+export const GetParticipantDataFromPeerIdSessionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(SessionsGetParticipantDataFromPeerIdResponseData),
     }),
   ).annotate({
-    identifier: "SessionsGetParticipantDataFromPeerIdResponse",
-  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponse>;
+    identifier: "GetParticipantDataFromPeerIdSessionResponse",
+  }) as any as S.Schema<GetParticipantDataFromPeerIdSessionResponse>;
 
-export interface SessionsGetSessionChatRequest {
+export interface GetPresetRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  /** The page number from which you want your page search results to be displayed. */
+  pageNo?: number;
+  /** Number of results per page */
+  perPage?: number;
+  /** Search presets by name. */
+  search?: string;
+}
+export const GetPresetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    search: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetPresetRequest",
+}) as any as S.Schema<GetPresetRequest>;
+
+export interface PresetsGetResponseDataItem {
+  /** ID of the preset */
+  id?: string;
+  /** Timestamp this preset was created at */
+  createdAt?: string;
+  /** Name of the preset */
+  name?: string;
+  /** Timestamp this preset was last updated */
+  updatedAt?: string;
+}
+export const PresetsGetResponseDataItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    name: S.optional(S.String),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+  }),
+).annotate({
+  identifier: "PresetsGetResponseDataItem",
+}) as any as S.Schema<PresetsGetResponseDataItem>;
+
+export type PresetsGetResponseDataList = PresetsGetResponseDataItem[];
+export const PresetsGetResponseDataList = /*@__PURE__*/ S.Array(
+  PresetsGetResponseDataItem,
+) as any as S.Schema<PresetsGetResponseDataList>;
+
+export interface PresetsGetResponsePaging {
+  endOffset: number;
+  startOffset: number;
+  totalCount: number;
+}
+export const PresetsGetResponsePaging = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endOffset: S.Number.pipe(T.Body("end_offset")),
+    startOffset: S.Number.pipe(T.Body("start_offset")),
+    totalCount: S.Number.pipe(T.Body("total_count")),
+  }),
+).annotate({
+  identifier: "PresetsGetResponsePaging",
+}) as any as S.Schema<PresetsGetResponsePaging>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetPresetResponse {
+  data: PresetsGetResponseDataList;
+  paging: PresetsGetResponsePaging;
+}
+export const GetPresetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: PresetsGetResponseDataList,
+    paging: PresetsGetResponsePaging,
+  }),
+).annotate({
+  identifier: "GetPresetResponse",
+}) as any as S.Schema<GetPresetResponse>;
+
+export interface GetPresetByIdPresetRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  presetId: string;
+}
+export const GetPresetByIdPresetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    presetId: S.String.pipe(T.Label("preset_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetPresetByIdPresetRequest",
+}) as any as S.Schema<GetPresetByIdPresetRequest>;
+
+export interface PresetsGetPresetByIdResponseDataConfigMaxVideoStreams {
+  /** Maximum number of video streams visible on desktop devices */
+  desktop: number;
+  /** Maximum number of streams visible on mobile devices */
+  mobile: number;
+}
+export const PresetsGetPresetByIdResponseDataConfigMaxVideoStreams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      desktop: S.Number,
+      mobile: S.Number,
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataConfigMaxVideoStreams",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigMaxVideoStreams>;
+
+export type PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality =
+  | "hd"
+  | "vga"
+  | "qvga"
+  | (string & {});
+export const PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsGetPresetByIdResponseDataConfigMediaScreenshare {
+  /** Frame rate of screen share */
+  frameRate: number;
+  /** Quality of screen share */
+  quality: PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality;
+}
+export const PresetsGetPresetByIdResponseDataConfigMediaScreenshare =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      frameRate: S.Number.pipe(T.Body("frame_rate")),
+      quality: PresetsGetPresetByIdResponseDataConfigMediaScreenshareQuality,
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataConfigMediaScreenshare",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigMediaScreenshare>;
+
+export type PresetsGetPresetByIdResponseDataConfigMediaVideoQuality =
+  | "hd"
+  | "vga"
+  | "qvga"
+  | (string & {});
+export const PresetsGetPresetByIdResponseDataConfigMediaVideoQuality =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsGetPresetByIdResponseDataConfigMediaVideo {
+  /** Frame rate of participants' video */
+  frameRate: number;
+  /** Video quality of participants */
+  quality: PresetsGetPresetByIdResponseDataConfigMediaVideoQuality;
+  /** Enable simulcast for participant videos. */
+  simulcast?: boolean;
+}
+export const PresetsGetPresetByIdResponseDataConfigMediaVideo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      frameRate: S.Number.pipe(T.Body("frame_rate")),
+      quality: PresetsGetPresetByIdResponseDataConfigMediaVideoQuality,
+      simulcast: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataConfigMediaVideo",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigMediaVideo>;
+
+export interface PresetsGetPresetByIdResponseDataConfigMediaAudio {
+  /** Enable High Quality Audio for your meetings */
+  enableHighBitrate?: boolean;
+  /** Enable Stereo for your meetings */
+  enableStereo?: boolean;
+}
+export const PresetsGetPresetByIdResponseDataConfigMediaAudio =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enableHighBitrate: S.optional(
+        S.Boolean.pipe(T.Body("enable_high_bitrate")),
+      ),
+      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataConfigMediaAudio",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigMediaAudio>;
+
+export interface PresetsGetPresetByIdResponseDataConfigMedia {
+  /** Configuration options for participant screen shares */
+  screenshare: PresetsGetPresetByIdResponseDataConfigMediaScreenshare;
+  /** Configuration options for participant videos */
+  video: PresetsGetPresetByIdResponseDataConfigMediaVideo;
+  /** Control options for Audio quality. */
+  audio?: PresetsGetPresetByIdResponseDataConfigMediaAudio;
+}
+export const PresetsGetPresetByIdResponseDataConfigMedia =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      screenshare: PresetsGetPresetByIdResponseDataConfigMediaScreenshare,
+      video: PresetsGetPresetByIdResponseDataConfigMediaVideo,
+      audio: S.optional(PresetsGetPresetByIdResponseDataConfigMediaAudio),
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataConfigMedia",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigMedia>;
+
+export type PresetsGetPresetByIdResponseDataConfigViewType =
+  | "GROUP_CALL"
+  | "WEBINAR"
+  | "AUDIO_ROOM"
+  | "LIVESTREAM"
+  | (string & {});
+export const PresetsGetPresetByIdResponseDataConfigViewType =
+  /*@__PURE__*/ S.String;
+
+export type PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList =
+  number[];
+export const PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList>;
+
+export interface PresetsGetPresetByIdResponseDataConfig {
+  /** Maximum number of screen shares that can be active at a given time */
+  maxScreenshareCount: number;
+  /** Maximum number of streams that are visible on a device */
+  maxVideoStreams: PresetsGetPresetByIdResponseDataConfigMaxVideoStreams;
+  /** Media configuration options. eg: Video quality */
+  media: PresetsGetPresetByIdResponseDataConfigMedia;
+  /** Type of the meeting */
+  viewType: PresetsGetPresetByIdResponseDataConfigViewType;
+  /** Livestream viewer quality levels. */
+  livestreamViewerQualities?: PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList;
+}
+export const PresetsGetPresetByIdResponseDataConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
+      maxVideoStreams:
+        PresetsGetPresetByIdResponseDataConfigMaxVideoStreams.pipe(
+          T.Body("max_video_streams"),
+        ),
+      media: PresetsGetPresetByIdResponseDataConfigMedia,
+      viewType: PresetsGetPresetByIdResponseDataConfigViewType.pipe(
+        T.Body("view_type"),
+      ),
+      livestreamViewerQualities: S.optional(
+        PresetsGetPresetByIdResponseDataConfigLivestreamViewerQualitiesList.pipe(
+          T.Body("livestream_viewer_qualities"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "PresetsGetPresetByIdResponseDataConfig",
+}) as any as S.Schema<PresetsGetPresetByIdResponseDataConfig>;
+
+export interface PresetsGetPresetByIdResponseDataPermissionsChatPrivate {
+  canReceive: boolean;
+  canSend: boolean;
+  files: boolean;
+  text: boolean;
+}
+export const PresetsGetPresetByIdResponseDataPermissionsChatPrivate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canReceive: S.Boolean.pipe(T.Body("can_receive")),
+      canSend: S.Boolean.pipe(T.Body("can_send")),
+      files: S.Boolean,
+      text: S.Boolean,
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataPermissionsChatPrivate",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsChatPrivate>;
+
+export interface PresetsGetPresetByIdResponseDataPermissionsChatPublic {
+  /** Can send messages in general */
+  canSend: boolean;
+  /** Can send file messages */
+  files: boolean;
+  /** Can send text messages */
+  text: boolean;
+}
+export const PresetsGetPresetByIdResponseDataPermissionsChatPublic =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canSend: S.Boolean.pipe(T.Body("can_send")),
+      files: S.Boolean,
+      text: S.Boolean,
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataPermissionsChatPublic",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsChatPublic>;
+
+export interface PresetsGetPresetByIdResponseDataPermissionsChat {
+  private: PresetsGetPresetByIdResponseDataPermissionsChatPrivate;
+  public: PresetsGetPresetByIdResponseDataPermissionsChatPublic;
+}
+export const PresetsGetPresetByIdResponseDataPermissionsChat =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      private: PresetsGetPresetByIdResponseDataPermissionsChatPrivate,
+      public: PresetsGetPresetByIdResponseDataPermissionsChatPublic,
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataPermissionsChat",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsChat>;
+
+export interface PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings {
+  canAlterConnectedMeetings: boolean;
+  canSwitchConnectedMeetings: boolean;
+  canSwitchToParentMeeting: boolean;
+}
+export const PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canAlterConnectedMeetings: S.Boolean.pipe(
+        T.Body("can_alter_connected_meetings"),
+      ),
+      canSwitchConnectedMeetings: S.Boolean.pipe(
+        T.Body("can_switch_connected_meetings"),
+      ),
+      canSwitchToParentMeeting: S.Boolean.pipe(
+        T.Body("can_switch_to_parent_meeting"),
+      ),
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings>;
+
+export type PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce =
+  | "ALLOWED"
+  | "NOT_ALLOWED"
+  | "CAN_REQUEST"
+  | (string & {});
+export const PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsGetPresetByIdResponseDataPermissionsMediaAudio {
+  /** Can produce audio */
+  canProduce: PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce;
+}
+export const PresetsGetPresetByIdResponseDataPermissionsMediaAudio =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canProduce:
+        PresetsGetPresetByIdResponseDataPermissionsMediaAudioCanProduce.pipe(
+          T.Body("can_produce"),
+        ),
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataPermissionsMediaAudio",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMediaAudio>;
+
+export type PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce =
+  "ALLOWED" | "NOT_ALLOWED" | "CAN_REQUEST" | (string & {});
+export const PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare {
+  /** Can produce screen share video */
+  canProduce: PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce;
+}
+export const PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canProduce:
+        PresetsGetPresetByIdResponseDataPermissionsMediaScreenshareCanProduce.pipe(
+          T.Body("can_produce"),
+        ),
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare>;
+
+export type PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce =
+  | "ALLOWED"
+  | "NOT_ALLOWED"
+  | "CAN_REQUEST"
+  | (string & {});
+export const PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsGetPresetByIdResponseDataPermissionsMediaVideo {
+  /** Can produce video */
+  canProduce: PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce;
+}
+export const PresetsGetPresetByIdResponseDataPermissionsMediaVideo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canProduce:
+        PresetsGetPresetByIdResponseDataPermissionsMediaVideoCanProduce.pipe(
+          T.Body("can_produce"),
+        ),
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataPermissionsMediaVideo",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMediaVideo>;
+
+export interface PresetsGetPresetByIdResponseDataPermissionsMedia {
+  /** Audio permissions */
+  audio: PresetsGetPresetByIdResponseDataPermissionsMediaAudio;
+  /** Screenshare permissions */
+  screenshare: PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare;
+  /** Video permissions */
+  video: PresetsGetPresetByIdResponseDataPermissionsMediaVideo;
+}
+export const PresetsGetPresetByIdResponseDataPermissionsMedia =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audio: PresetsGetPresetByIdResponseDataPermissionsMediaAudio,
+      screenshare: PresetsGetPresetByIdResponseDataPermissionsMediaScreenshare,
+      video: PresetsGetPresetByIdResponseDataPermissionsMediaVideo,
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataPermissionsMedia",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsMedia>;
+
+export type PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap = {
+  [key: string]: unknown | undefined;
+};
+export const PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap>;
+
+export interface PresetsGetPresetByIdResponseDataPermissionsPlugins {
+  /** Can close plugins that are already open */
+  canClose: boolean;
+  /** Can edit plugin config */
+  canEditConfig: boolean;
+  /** Can start plugins */
+  canStart: boolean;
+  /** Plugin configuration keyed by plugin UUID. */
+  config: PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap;
+}
+export const PresetsGetPresetByIdResponseDataPermissionsPlugins =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canClose: S.Boolean.pipe(T.Body("can_close")),
+      canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
+      canStart: S.Boolean.pipe(T.Body("can_start")),
+      config: PresetsGetPresetByIdResponseDataPermissionsPluginsConfigMap,
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataPermissionsPlugins",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsPlugins>;
+
+export interface PresetsGetPresetByIdResponseDataPermissionsPolls {
+  /** Can create polls */
+  canCreate: boolean;
+  /** Can view polls */
+  canView: boolean;
+  /** Can vote on polls */
+  canVote: boolean;
+}
+export const PresetsGetPresetByIdResponseDataPermissionsPolls =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canCreate: S.Boolean.pipe(T.Body("can_create")),
+      canView: S.Boolean.pipe(T.Body("can_view")),
+      canVote: S.Boolean.pipe(T.Body("can_vote")),
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataPermissionsPolls",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissionsPolls>;
+
+export type PresetsGetPresetByIdResponseDataPermissionsRecorderType =
+  | "RECORDER"
+  | "LIVESTREAMER"
+  | "NONE"
+  | (string & {});
+export const PresetsGetPresetByIdResponseDataPermissionsRecorderType =
+  /*@__PURE__*/ S.String;
+
+export type PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType =
+  | "SKIP"
+  | "ON_PRIVILEGED_USER_ENTRY"
+  | "SKIP_ON_ACCEPT"
+  | (string & {});
+export const PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType =
+  /*@__PURE__*/ S.String;
+
+export type PresetsGetPresetByIdResponseDataPermissionsStageAccess =
+  | "ALLOWED"
+  | "NOT_ALLOWED"
+  | "CAN_REQUEST"
+  | (string & {});
+export const PresetsGetPresetByIdResponseDataPermissionsStageAccess =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsGetPresetByIdResponseDataPermissions {
+  /** Whether this participant can accept waiting requests */
+  acceptWaitingRequests: boolean;
+  canAcceptProductionRequests: boolean;
+  canChangeParticipantPermissions: boolean;
+  canEditDisplayName: boolean;
+  canLivestream: boolean;
+  canRecord: boolean;
+  canSpotlight: boolean;
+  chat: PresetsGetPresetByIdResponseDataPermissionsChat;
+  connectedMeetings: PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings;
+  disableParticipantAudio: boolean;
+  disableParticipantScreensharing: boolean;
+  disableParticipantVideo: boolean;
+  /** Whether this participant is visible to others or not */
+  hiddenParticipant: boolean;
+  kickParticipant: boolean;
+  /** Media permissions */
+  media: PresetsGetPresetByIdResponseDataPermissionsMedia;
+  pinParticipant: boolean;
+  /** Plugin permissions */
+  plugins: PresetsGetPresetByIdResponseDataPermissionsPlugins;
+  /** Poll permissions */
+  polls: PresetsGetPresetByIdResponseDataPermissionsPolls;
+  /** Type of the recording peer */
+  recorderType: PresetsGetPresetByIdResponseDataPermissionsRecorderType;
+  showParticipantList: boolean;
+  /** Waiting room type */
+  waitingRoomType: PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType;
+  acceptStageRequests?: boolean;
+  isRecorder?: boolean;
+  stageAccess?: PresetsGetPresetByIdResponseDataPermissionsStageAccess;
+  stageEnabled?: boolean;
+  transcriptionEnabled?: boolean;
+}
+export const PresetsGetPresetByIdResponseDataPermissions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      acceptWaitingRequests: S.Boolean.pipe(T.Body("accept_waiting_requests")),
+      canAcceptProductionRequests: S.Boolean.pipe(
+        T.Body("can_accept_production_requests"),
+      ),
+      canChangeParticipantPermissions: S.Boolean.pipe(
+        T.Body("can_change_participant_permissions"),
+      ),
+      canEditDisplayName: S.Boolean.pipe(T.Body("can_edit_display_name")),
+      canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
+      canRecord: S.Boolean.pipe(T.Body("can_record")),
+      canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
+      chat: PresetsGetPresetByIdResponseDataPermissionsChat,
+      connectedMeetings:
+        PresetsGetPresetByIdResponseDataPermissionsConnectedMeetings.pipe(
+          T.Body("connected_meetings"),
+        ),
+      disableParticipantAudio: S.Boolean.pipe(
+        T.Body("disable_participant_audio"),
+      ),
+      disableParticipantScreensharing: S.Boolean.pipe(
+        T.Body("disable_participant_screensharing"),
+      ),
+      disableParticipantVideo: S.Boolean.pipe(
+        T.Body("disable_participant_video"),
+      ),
+      hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
+      kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
+      media: PresetsGetPresetByIdResponseDataPermissionsMedia,
+      pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
+      plugins: PresetsGetPresetByIdResponseDataPermissionsPlugins,
+      polls: PresetsGetPresetByIdResponseDataPermissionsPolls,
+      recorderType:
+        PresetsGetPresetByIdResponseDataPermissionsRecorderType.pipe(
+          T.Body("recorder_type"),
+        ),
+      showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
+      waitingRoomType:
+        PresetsGetPresetByIdResponseDataPermissionsWaitingRoomType.pipe(
+          T.Body("waiting_room_type"),
+        ),
+      acceptStageRequests: S.optional(
+        S.Boolean.pipe(T.Body("accept_stage_requests")),
+      ),
+      isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
+      stageAccess: S.optional(
+        PresetsGetPresetByIdResponseDataPermissionsStageAccess.pipe(
+          T.Body("stage_access"),
+        ),
+      ),
+      stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
+      transcriptionEnabled: S.optional(
+        S.Boolean.pipe(T.Body("transcription_enabled")),
+      ),
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataPermissions",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataPermissions>;
+
+export type PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius =
+  | "sharp"
+  | "rounded"
+  | "extra-rounded"
+  | "circular"
+  | (string & {});
+export const PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius =
+  /*@__PURE__*/ S.String;
+
+export type PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth =
+  | "none"
+  | "thin"
+  | "fat"
+  | (string & {});
+export const PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground {
+  "1000_": string;
+  "600_": string;
+  "700_": string;
+  "800_": string;
+  "900_": string;
+}
+export const PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "1000_": S.String.pipe(T.Body('"1000"')),
+      "600_": S.String.pipe(T.Body('"600"')),
+      "700_": S.String.pipe(T.Body('"700"')),
+      "800_": S.String.pipe(T.Body('"800"')),
+      "900_": S.String.pipe(T.Body('"900"')),
+    }),
+  ).annotate({
+    identifier:
+      "PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground>;
+
+export interface PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand {
+  "300_": string;
+  "400_": string;
+  "500_": string;
+  "600_": string;
+  "700_": string;
+}
+export const PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "300_": S.String.pipe(T.Body('"300"')),
+      "400_": S.String.pipe(T.Body('"400"')),
+      "500_": S.String.pipe(T.Body('"500"')),
+      "600_": S.String.pipe(T.Body('"600"')),
+      "700_": S.String.pipe(T.Body('"700"')),
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand>;
+
+export interface PresetsGetPresetByIdResponseDataUiDesignTokensColors {
+  background: PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground;
+  brand: PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand;
+  danger: string;
+  success: string;
+  text: string;
+  textOnBrand: string;
+  videoBg: string;
+  warning: string;
+}
+export const PresetsGetPresetByIdResponseDataUiDesignTokensColors =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      background:
+        PresetsGetPresetByIdResponseDataUiDesignTokensColorsBackground,
+      brand: PresetsGetPresetByIdResponseDataUiDesignTokensColorsBrand,
+      danger: S.String,
+      success: S.String,
+      text: S.String,
+      textOnBrand: S.String.pipe(T.Body("text_on_brand")),
+      videoBg: S.String.pipe(T.Body("video_bg")),
+      warning: S.String,
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataUiDesignTokensColors",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataUiDesignTokensColors>;
+
+export type PresetsGetPresetByIdResponseDataUiDesignTokensTheme =
+  | "darkest"
+  | "dark"
+  | "light"
+  | (string & {});
+export const PresetsGetPresetByIdResponseDataUiDesignTokensTheme =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsGetPresetByIdResponseDataUiDesignTokens {
+  borderRadius: PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius;
+  borderWidth: PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth;
+  colors: PresetsGetPresetByIdResponseDataUiDesignTokensColors;
+  spacingBase: number;
+  theme: PresetsGetPresetByIdResponseDataUiDesignTokensTheme;
+  fontFamily?: string;
+  googleFont?: string;
+  logo?: string;
+}
+export const PresetsGetPresetByIdResponseDataUiDesignTokens =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      borderRadius:
+        PresetsGetPresetByIdResponseDataUiDesignTokensBorderRadius.pipe(
+          T.Body("border_radius"),
+        ),
+      borderWidth:
+        PresetsGetPresetByIdResponseDataUiDesignTokensBorderWidth.pipe(
+          T.Body("border_width"),
+        ),
+      colors: PresetsGetPresetByIdResponseDataUiDesignTokensColors,
+      spacingBase: S.Number.pipe(T.Body("spacing_base")),
+      theme: PresetsGetPresetByIdResponseDataUiDesignTokensTheme,
+      fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
+      googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
+      logo: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PresetsGetPresetByIdResponseDataUiDesignTokens",
+  }) as any as S.Schema<PresetsGetPresetByIdResponseDataUiDesignTokens>;
+
+export interface PresetsGetPresetByIdResponseDataUi {
+  designTokens: PresetsGetPresetByIdResponseDataUiDesignTokens;
+}
+export const PresetsGetPresetByIdResponseDataUi = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    designTokens: PresetsGetPresetByIdResponseDataUiDesignTokens.pipe(
+      T.Body("design_tokens"),
+    ),
+  }),
+).annotate({
+  identifier: "PresetsGetPresetByIdResponseDataUi",
+}) as any as S.Schema<PresetsGetPresetByIdResponseDataUi>;
+
+export interface PresetsGetPresetByIdResponseData {
+  /** ID of the preset */
+  id: string;
+  config: PresetsGetPresetByIdResponseDataConfig;
+  /** Timestamp this preset was created at */
+  createdAt: string;
+  /** Name of the preset */
+  name: string;
+  permissions: PresetsGetPresetByIdResponseDataPermissions;
+  ui: PresetsGetPresetByIdResponseDataUi;
+  /** Timestamp this preset was last updated */
+  updatedAt: string;
+}
+export const PresetsGetPresetByIdResponseData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    config: PresetsGetPresetByIdResponseDataConfig,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    name: S.String,
+    permissions: PresetsGetPresetByIdResponseDataPermissions,
+    ui: PresetsGetPresetByIdResponseDataUi,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+  }),
+).annotate({
+  identifier: "PresetsGetPresetByIdResponseData",
+}) as any as S.Schema<PresetsGetPresetByIdResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetPresetByIdPresetResponse {
+  /** Data returned by the operation */
+  data: PresetsGetPresetByIdResponseData;
+}
+export const GetPresetByIdPresetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: PresetsGetPresetByIdResponseData,
+  }),
+).annotate({
+  identifier: "GetPresetByIdPresetResponse",
+}) as any as S.Schema<GetPresetByIdPresetResponse>;
+
+export type RecordingsGetRecordingsRequestSortBy =
+  | "invokedTime"
+  | (string & {});
+export const RecordingsGetRecordingsRequestSortBy = /*@__PURE__*/ S.String;
+
+export type RecordingsGetRecordingsRequestSortOrder =
+  | "ASC"
+  | "DESC"
+  | (string & {});
+export const RecordingsGetRecordingsRequestSortOrder = /*@__PURE__*/ S.String;
+
+export type RecordingsGetRecordingsRequestStatus =
+  | "INVOKED"
+  | "RECORDING"
+  | "UPLOADING"
+  | (string & {});
+export const RecordingsGetRecordingsRequestStatus = /*@__PURE__*/ S.String;
+
+export type RecordingsGetRecordingsRequestStatusList =
+  RecordingsGetRecordingsRequestStatus[];
+export const RecordingsGetRecordingsRequestStatusList = /*@__PURE__*/ S.Array(
+  RecordingsGetRecordingsRequestStatus,
+) as any as S.Schema<RecordingsGetRecordingsRequestStatusList>;
+
+export interface GetRecordingsRecordingRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  /** The end time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
+  endTime?: string;
+  /** If passed, only shows expired/non-expired recordings on RealtimeKit's bucket */
+  expired?: boolean;
+  /** ID of a meeting. Optional. Will limit results to only this meeting if passed. */
+  meetingId?: string;
+  /** The page number from which you want your page search results to be displayed. */
+  pageNo?: number;
+  /** Number of results per page */
+  perPage?: number;
+  /** The search query string. You can search using the meeting ID or title. */
+  search?: string;
+  sortBy?: RecordingsGetRecordingsRequestSortBy;
+  sortOrder?: RecordingsGetRecordingsRequestSortOrder;
+  /** The start time range for which you want to retrieve the meetings. The time must be specified in ISO format. */
+  startTime?: string;
+  /** Filter by one or more recording status */
+  status?: RecordingsGetRecordingsRequestStatusList;
+}
+export const GetRecordingsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    endTime: S.optional(S.String.pipe(T.Query("end_time"))),
+    expired: S.optional(S.Boolean.pipe(T.Query())),
+    meetingId: S.optional(S.String.pipe(T.Query("meeting_id"))),
+    pageNo: S.optional(S.Number.pipe(T.Query("page_no"))),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    search: S.optional(S.String.pipe(T.Query())),
+    sortBy: S.optional(
+      RecordingsGetRecordingsRequestSortBy.pipe(T.Query("sort_by")),
+    ),
+    sortOrder: S.optional(
+      RecordingsGetRecordingsRequestSortOrder.pipe(T.Query("sort_order")),
+    ),
+    startTime: S.optional(S.String.pipe(T.Query("start_time"))),
+    status: S.optional(
+      RecordingsGetRecordingsRequestStatusList.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetRecordingsRecordingRequest",
+}) as any as S.Schema<GetRecordingsRecordingRequest>;
+
+export type RecordingsGetRecordingsResponseDataItemStatus =
+  | "INVOKED"
+  | "RECORDING"
+  | "UPLOADING"
+  | (string & {});
+export const RecordingsGetRecordingsResponseDataItemStatus =
+  /*@__PURE__*/ S.String;
+
+export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel =
+  "mono" | "stereo" | (string & {});
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel =
+  /*@__PURE__*/ S.String;
+
+export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec =
+  "MP3" | "AAC" | (string & {});
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig {
+  /** Audio signal pathway within an audio file that carries a specific sound source. */
+  channel?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel;
+  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
+  codec?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec;
+  /** Controls whether to export audio file seperately */
+  exportFile?: boolean;
+}
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      channel: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigChannel,
+      ),
+      codec: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+    }),
+  ).annotate({
+    identifier:
+      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig",
+  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig>;
+
+export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig {
+  /** RTMP URL to stream to */
+  rtmpUrl?: string;
+}
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+    }),
+  ).annotate({
+    identifier:
+      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig",
+  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig>;
+
+export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig {
+  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
+  enabled: boolean;
+}
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig",
+  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig>;
+
+export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType =
+  "aws" | "azure" | "digitalocean" | (string & {});
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType =
+  /*@__PURE__*/ S.String;
+
+export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod =
+  "KEY" | "PASSWORD" | (string & {});
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig {
+  /** Type of storage media. */
+  type: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType;
+  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
+  accessKey?: string;
+  /** Authentication method used for "sftp" type storage medium */
+  authMethod?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod;
+  /** Name of the storage medium's bucket. */
+  bucket?: string;
+  /** SSH destination server host for SFTP type storage medium */
+  host?: string;
+  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
+  password?: string;
+  /** Path relative to the bucket root at which the recording will be placed. */
+  path?: string;
+  /** SSH destination server port for SFTP type storage medium */
+  port?: number;
+  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
+  privateKey?: string;
+  /** Region of the storage medium. */
+  region?: string;
+  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
+  secret?: string;
+  /** SSH destination server username for SFTP type storage medium */
+  username?: string;
+}
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigType,
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      authMethod: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig",
+  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig>;
+
+export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec =
+  "H264" | "VP8" | (string & {});
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export type RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition =
+  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize {
+  /** Height of the watermark in px */
+  height?: number;
+  /** Width of the watermark in px */
+  width?: number;
+}
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize",
+  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize>;
+
+export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark {
+  /** Position of the watermark */
+  position?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition;
+  /** Size of the watermark */
+  size?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize;
+  /** URL of the watermark image */
+  url?: string;
+}
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkPosition,
+      ),
+      size: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermarkSize,
+      ),
+      url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark",
+  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark>;
+
+export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig {
+  /** Codec using which the recording will be encoded. */
+  codec?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec;
+  /** Controls whether to export video file seperately */
+  exportFile?: boolean;
+  /** Height of the recording video in pixels */
+  height?: number;
+  /** Watermark to be added to the recording */
+  watermark?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark;
+  /** Width of the recording video in pixels */
+  width?: number;
+}
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      codec: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      height: S.optional(S.Number),
+      watermark: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfigWatermark,
+      ),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig",
+  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig>;
+
+export interface RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig {
+  /** Object containing configuration regarding the audio that is being recorded. */
+  audioConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig;
+  /** Adds a prefix to the beginning of the file name of the recording. */
+  fileNamePrefix?: string;
+  liveStreamingConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig;
+  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
+  maxSeconds?: number;
+  realtimekitBucketConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig;
+  storageConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig;
+  videoConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig;
+}
+export const RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audioConfig: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigAudioConfig.pipe(
+          T.Body("audio_config"),
+        ),
+      ),
+      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      liveStreamingConfig: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigLiveStreamingConfig.pipe(
+          T.Body("live_streaming_config"),
+        ),
+      ),
+      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      realtimekitBucketConfig: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigRealtimekitBucketConfig.pipe(
+          T.Body("realtimekit_bucket_config"),
+        ),
+      ),
+      storageConfig: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigStorageConfig.pipe(
+          T.Body("storage_config"),
+        ),
+      ),
+      videoConfig: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfigVideoConfig.pipe(
+          T.Body("video_config"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig",
+  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig>;
+
+export type RecordingsGetRecordingsResponseDataItemMeetingStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | (string & {});
+export const RecordingsGetRecordingsResponseDataItemMeetingStatus =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsGetRecordingsResponseDataItemMeeting {
+  /** ID of the meeting. */
+  id: string;
+  /** Timestamp the object was created at. The time is returned in ISO format. */
+  createdAt: string;
+  /** Timestamp the object was updated at. The time is returned in ISO format. */
+  updatedAt: string;
+  /** Specifies if the meeting should start getting livestreamed on start. */
+  liveStreamOnStart?: boolean;
+  /** Specifies if Chat within a meeting should persist for a week. */
+  persistChat?: boolean;
+  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
+  recordOnStart?: boolean;
+  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
+  recordingConfig?: RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig;
+  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
+  sessionKeepAliveTimeInSecs?: number;
+  /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
+  status?: RecordingsGetRecordingsResponseDataItemMeetingStatus;
+  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
+  summarizeOnEnd?: boolean;
+  /** Title of the meeting. */
+  title?: string;
+  /** Automatically generate transcripts when the meeting ends. */
+  transcribeOnEnd?: boolean;
+}
+export const RecordingsGetRecordingsResponseDataItemMeeting =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      liveStreamOnStart: S.optional(
+        S.Boolean.pipe(T.Body("live_stream_on_start")),
+      ),
+      persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
+      recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+      recordingConfig: S.optional(
+        RecordingsGetRecordingsResponseDataItemMeetingRecordingConfig.pipe(
+          T.Body("recording_config"),
+        ),
+      ),
+      sessionKeepAliveTimeInSecs: S.optional(
+        S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+      ),
+      status: S.optional(RecordingsGetRecordingsResponseDataItemMeetingStatus),
+      summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
+      title: S.optional(S.String),
+      transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+    }),
+  ).annotate({
+    identifier: "RecordingsGetRecordingsResponseDataItemMeeting",
+  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemMeeting>;
+
+export type RecordingsGetRecordingsResponseDataItemStorageConfigType =
+  | "aws"
+  | "azure"
+  | "digitalocean"
+  | (string & {});
+export const RecordingsGetRecordingsResponseDataItemStorageConfigType =
+  /*@__PURE__*/ S.String;
+
+export type RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod =
+  | "KEY"
+  | "PASSWORD"
+  | (string & {});
+export const RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsGetRecordingsResponseDataItemStorageConfig {
+  /** Type of storage media. */
+  type: RecordingsGetRecordingsResponseDataItemStorageConfigType;
+  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
+  accessKey?: string;
+  /** Authentication method used for "sftp" type storage medium */
+  authMethod?: RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod;
+  /** Name of the storage medium's bucket. */
+  bucket?: string;
+  /** SSH destination server host for SFTP type storage medium */
+  host?: string;
+  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
+  password?: string;
+  /** Path relative to the bucket root at which the recording will be placed. */
+  path?: string;
+  /** SSH destination server port for SFTP type storage medium */
+  port?: number;
+  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
+  privateKey?: string;
+  /** Region of the storage medium. */
+  region?: string;
+  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
+  secret?: string;
+  /** SSH destination server username for SFTP type storage medium */
+  username?: string;
+}
+export const RecordingsGetRecordingsResponseDataItemStorageConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: RecordingsGetRecordingsResponseDataItemStorageConfigType,
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      authMethod: S.optional(
+        RecordingsGetRecordingsResponseDataItemStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RecordingsGetRecordingsResponseDataItemStorageConfig",
+  }) as any as S.Schema<RecordingsGetRecordingsResponseDataItemStorageConfig>;
+
+export interface RecordingsGetRecordingsResponseDataItem {
+  /** ID of the recording */
+  id: string;
+  /** If the audio_config is passed, the URL for downloading the audio recording is returned. */
+  audioDownloadUrl: string;
+  /** URL where the recording can be downloaded. */
+  downloadUrl: string;
+  /** Timestamp when the download URL expires. */
+  downloadUrlExpiry: string;
+  /** File size of the recording, in bytes. */
+  fileSize: number;
+  /** Timestamp when this recording was invoked. */
+  invokedTime: string;
+  /** File name of the recording. */
+  outputFileName: string;
+  /** ID of the meeting session this recording is for. */
+  sessionId: string;
+  /** Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`. */
+  startedTime: string;
+  /** Current status of the recording. */
+  status: RecordingsGetRecordingsResponseDataItemStatus;
+  /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
+  stoppedTime: string;
+  meeting?: RecordingsGetRecordingsResponseDataItemMeeting;
+  /** Total recording time in seconds. */
+  recordingDuration?: number;
+  storageConfig?: RecordingsGetRecordingsResponseDataItemStorageConfig;
+}
+export const RecordingsGetRecordingsResponseDataItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      audioDownloadUrl: S.String.pipe(T.Body("audio_download_url")),
+      downloadUrl: S.String.pipe(T.Body("download_url")),
+      downloadUrlExpiry: S.String.pipe(T.Body("download_url_expiry")),
+      fileSize: S.Number.pipe(T.Body("file_size")),
+      invokedTime: S.String.pipe(T.Body("invoked_time")),
+      outputFileName: S.String.pipe(T.Body("output_file_name")),
+      sessionId: S.String.pipe(T.Body("session_id")),
+      startedTime: S.String.pipe(T.Body("started_time")),
+      status: RecordingsGetRecordingsResponseDataItemStatus,
+      stoppedTime: S.String.pipe(T.Body("stopped_time")),
+      meeting: S.optional(RecordingsGetRecordingsResponseDataItemMeeting),
+      recordingDuration: S.optional(
+        S.Number.pipe(T.Body("recording_duration")),
+      ),
+      storageConfig: S.optional(
+        RecordingsGetRecordingsResponseDataItemStorageConfig.pipe(
+          T.Body("storage_config"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "RecordingsGetRecordingsResponseDataItem",
+}) as any as S.Schema<RecordingsGetRecordingsResponseDataItem>;
+
+export type RecordingsGetRecordingsResponseDataList =
+  RecordingsGetRecordingsResponseDataItem[];
+export const RecordingsGetRecordingsResponseDataList = /*@__PURE__*/ S.Array(
+  RecordingsGetRecordingsResponseDataItem,
+) as any as S.Schema<RecordingsGetRecordingsResponseDataList>;
+
+export interface RecordingsGetRecordingsResponsePaging {
+  endOffset: number;
+  startOffset: number;
+  totalCount: number;
+}
+export const RecordingsGetRecordingsResponsePaging = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      endOffset: S.Number.pipe(T.Body("end_offset")),
+      startOffset: S.Number.pipe(T.Body("start_offset")),
+      totalCount: S.Number.pipe(T.Body("total_count")),
+    }),
+).annotate({
+  identifier: "RecordingsGetRecordingsResponsePaging",
+}) as any as S.Schema<RecordingsGetRecordingsResponsePaging>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetRecordingsRecordingResponse {
+  data: RecordingsGetRecordingsResponseDataList;
+  paging: RecordingsGetRecordingsResponsePaging;
+}
+export const GetRecordingsRecordingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: RecordingsGetRecordingsResponseDataList,
+    paging: RecordingsGetRecordingsResponsePaging,
+  }),
+).annotate({
+  identifier: "GetRecordingsRecordingResponse",
+}) as any as S.Schema<GetRecordingsRecordingResponse>;
+
+export interface GetSessionChatSessionRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
   sessionId: string;
 }
-export const SessionsGetSessionChatRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSessionChatSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -14551,8 +10307,8 @@ export const SessionsGetSessionChatRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SessionsGetSessionChatRequest",
-}) as any as S.Schema<SessionsGetSessionChatRequest>;
+  identifier: "GetSessionChatSessionRequest",
+}) as any as S.Schema<GetSessionChatSessionRequest>;
 
 export interface SessionsGetSessionChatResponseData {
   /** URL where the chat logs can be downloaded */
@@ -14570,18 +10326,18 @@ export const SessionsGetSessionChatResponseData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionsGetSessionChatResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface SessionsGetSessionChatResponse {
+export interface GetSessionChatSessionResponse {
   data?: SessionsGetSessionChatResponseData;
 }
-export const SessionsGetSessionChatResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSessionChatSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SessionsGetSessionChatResponseData),
   }),
 ).annotate({
-  identifier: "SessionsGetSessionChatResponse",
-}) as any as S.Schema<SessionsGetSessionChatResponse>;
+  identifier: "GetSessionChatSessionResponse",
+}) as any as S.Schema<GetSessionChatSessionResponse>;
 
-export interface SessionsGetSessionDetailsRequest {
+export interface GetSessionDetailsSessionRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
@@ -14590,7 +10346,7 @@ export interface SessionsGetSessionDetailsRequest {
   /** List all breakout rooms */
   includeBreakoutRooms?: boolean;
 }
-export const SessionsGetSessionDetailsRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSessionDetailsSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -14606,8 +10362,8 @@ export const SessionsGetSessionDetailsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SessionsGetSessionDetailsRequest",
-}) as any as S.Schema<SessionsGetSessionDetailsRequest>;
+  identifier: "GetSessionDetailsSessionRequest",
+}) as any as S.Schema<GetSessionDetailsSessionRequest>;
 
 export type SessionsGetSessionDetailsResponseDataStatus =
   | "LIVE"
@@ -14687,18 +10443,18 @@ export const SessionsGetSessionDetailsResponseData = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SessionsGetSessionDetailsResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface SessionsGetSessionDetailsResponse {
+export interface GetSessionDetailsSessionResponse {
   data?: SessionsGetSessionDetailsResponseData;
 }
-export const SessionsGetSessionDetailsResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSessionDetailsSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SessionsGetSessionDetailsResponseData),
   }),
 ).annotate({
-  identifier: "SessionsGetSessionDetailsResponse",
-}) as any as S.Schema<SessionsGetSessionDetailsResponse>;
+  identifier: "GetSessionDetailsSessionResponse",
+}) as any as S.Schema<GetSessionDetailsSessionResponse>;
 
-export interface SessionsGetSessionParticipantDetailsRequest {
+export interface GetSessionParticipantDetailsSessionRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
@@ -14708,7 +10464,7 @@ export interface SessionsGetSessionParticipantDetailsRequest {
   /** if true, response includes all the peer events of participant. */
   includePeerEvents?: boolean;
 }
-export const SessionsGetSessionParticipantDetailsRequest =
+export const GetSessionParticipantDetailsSessionRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
@@ -14726,8 +10482,8 @@ export const SessionsGetSessionParticipantDetailsRequest =
       }),
     ),
   ).annotate({
-    identifier: "SessionsGetSessionParticipantDetailsRequest",
-  }) as any as S.Schema<SessionsGetSessionParticipantDetailsRequest>;
+    identifier: "GetSessionParticipantDetailsSessionRequest",
+  }) as any as S.Schema<GetSessionParticipantDetailsSessionRequest>;
 
 export type SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName =
   "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING" | (string & {});
@@ -14859,17 +10615,17 @@ export const SessionsGetSessionParticipantDetailsResponseData =
   }) as any as S.Schema<SessionsGetSessionParticipantDetailsResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface SessionsGetSessionParticipantDetailsResponse {
+export interface GetSessionParticipantDetailsSessionResponse {
   data?: SessionsGetSessionParticipantDetailsResponseData;
 }
-export const SessionsGetSessionParticipantDetailsResponse =
+export const GetSessionParticipantDetailsSessionResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       data: S.optional(SessionsGetSessionParticipantDetailsResponseData),
     }),
   ).annotate({
-    identifier: "SessionsGetSessionParticipantDetailsResponse",
-  }) as any as S.Schema<SessionsGetSessionParticipantDetailsResponse>;
+    identifier: "GetSessionParticipantDetailsSessionResponse",
+  }) as any as S.Schema<GetSessionParticipantDetailsSessionResponse>;
 
 export type SessionsGetSessionParticipantsRequestSortBy =
   | "joinedAt"
@@ -14891,7 +10647,7 @@ export type SessionsGetSessionParticipantsRequestView =
   | (string & {});
 export const SessionsGetSessionParticipantsRequestView = /*@__PURE__*/ S.String;
 
-export interface SessionsGetSessionParticipantsRequest {
+export interface GetSessionParticipantsSessionRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
@@ -14910,7 +10666,7 @@ export interface SessionsGetSessionParticipantsRequest {
   /** In breakout room sessions, the view parameter can be set to `raw` for session specific duration for participants or `consolidated` to accumulate breakout room durations. */
   view?: SessionsGetSessionParticipantsRequestView;
 }
-export const SessionsGetSessionParticipantsRequest = /*@__PURE__*/ S.suspend(
+export const GetSessionParticipantsSessionRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
@@ -14941,8 +10697,8 @@ export const SessionsGetSessionParticipantsRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "SessionsGetSessionParticipantsRequest",
-}) as any as S.Schema<SessionsGetSessionParticipantsRequest>;
+  identifier: "GetSessionParticipantsSessionRequest",
+}) as any as S.Schema<GetSessionParticipantsSessionRequest>;
 
 export type SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName =
   "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING" | (string & {});
@@ -15081,17 +10837,17 @@ export const SessionsGetSessionParticipantsResponseData =
   }) as any as S.Schema<SessionsGetSessionParticipantsResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface SessionsGetSessionParticipantsResponse {
+export interface GetSessionParticipantsSessionResponse {
   data?: SessionsGetSessionParticipantsResponseData;
 }
-export const SessionsGetSessionParticipantsResponse = /*@__PURE__*/ S.suspend(
+export const GetSessionParticipantsSessionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: S.optional(SessionsGetSessionParticipantsResponseData),
     }),
 ).annotate({
-  identifier: "SessionsGetSessionParticipantsResponse",
-}) as any as S.Schema<SessionsGetSessionParticipantsResponse>;
+  identifier: "GetSessionParticipantsSessionResponse",
+}) as any as S.Schema<GetSessionParticipantsSessionResponse>;
 
 export type SessionsGetSessionsRequestSortBy =
   | "minutesConsumed"
@@ -15108,7 +10864,7 @@ export const SessionsGetSessionsRequestSortOrder = /*@__PURE__*/ S.String;
 export type SessionsGetSessionsRequestStatus = "LIVE" | "ENDED" | (string & {});
 export const SessionsGetSessionsRequestStatus = /*@__PURE__*/ S.String;
 
-export interface SessionsGetSessionsRequest {
+export interface GetSessionsSessionRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
@@ -15130,7 +10886,7 @@ export interface SessionsGetSessionsRequest {
   startTime?: string;
   status?: SessionsGetSessionsRequestStatus;
 }
-export const SessionsGetSessionsRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSessionsSessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -15156,8 +10912,8 @@ export const SessionsGetSessionsRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SessionsGetSessionsRequest",
-}) as any as S.Schema<SessionsGetSessionsRequest>;
+  identifier: "GetSessionsSessionRequest",
+}) as any as S.Schema<GetSessionsSessionRequest>;
 
 export type SessionsGetSessionsResponseDataSessionsItemStatus =
   | "LIVE"
@@ -15272,27 +11028,27 @@ export const SessionsGetSessionsResponsePaging = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<SessionsGetSessionsResponsePaging>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface SessionsGetSessionsResponse {
+export interface GetSessionsSessionResponse {
   data?: SessionsGetSessionsResponseData;
   paging?: SessionsGetSessionsResponsePaging;
 }
-export const SessionsGetSessionsResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSessionsSessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SessionsGetSessionsResponseData),
     paging: S.optional(SessionsGetSessionsResponsePaging),
   }),
 ).annotate({
-  identifier: "SessionsGetSessionsResponse",
-}) as any as S.Schema<SessionsGetSessionsResponse>;
+  identifier: "GetSessionsSessionResponse",
+}) as any as S.Schema<GetSessionsSessionResponse>;
 
-export interface SessionsGetSessionSummaryRequest {
+export interface GetSessionSummarySessionRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
   sessionId: string;
 }
-export const SessionsGetSessionSummaryRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSessionSummarySessionRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -15305,8 +11061,8 @@ export const SessionsGetSessionSummaryRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SessionsGetSessionSummaryRequest",
-}) as any as S.Schema<SessionsGetSessionSummaryRequest>;
+  identifier: "GetSessionSummarySessionRequest",
+}) as any as S.Schema<GetSessionSummarySessionRequest>;
 
 export interface SessionsGetSessionSummaryResponseData {
   sessionId: string;
@@ -15327,16 +11083,16 @@ export const SessionsGetSessionSummaryResponseData = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SessionsGetSessionSummaryResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface SessionsGetSessionSummaryResponse {
+export interface GetSessionSummarySessionResponse {
   data?: SessionsGetSessionSummaryResponseData;
 }
-export const SessionsGetSessionSummaryResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSessionSummarySessionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: S.optional(SessionsGetSessionSummaryResponseData),
   }),
 ).annotate({
-  identifier: "SessionsGetSessionSummaryResponse",
-}) as any as S.Schema<SessionsGetSessionSummaryResponse>;
+  identifier: "GetSessionSummarySessionResponse",
+}) as any as S.Schema<GetSessionSummarySessionResponse>;
 
 export type SessionsGetSessionTranscriptsRequestFormat =
   | "SRT"
@@ -15347,7 +11103,7 @@ export type SessionsGetSessionTranscriptsRequestFormat =
 export const SessionsGetSessionTranscriptsRequestFormat =
   /*@__PURE__*/ S.String;
 
-export interface SessionsGetSessionTranscriptsRequest {
+export interface GetSessionTranscriptsSessionRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
@@ -15356,25 +11112,24 @@ export interface SessionsGetSessionTranscriptsRequest {
   /** Transcript file format to fetch. */
   format?: SessionsGetSessionTranscriptsRequestFormat;
 }
-export const SessionsGetSessionTranscriptsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      appId: S.String.pipe(T.Label("app_id")),
-      sessionId: S.String.pipe(T.Label("session_id")),
-      format: S.optional(
-        SessionsGetSessionTranscriptsRequestFormat.pipe(T.Query()),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/transcript",
-        code: 200,
-      }),
+export const GetSessionTranscriptsSessionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    sessionId: S.String.pipe(T.Label("session_id")),
+    format: S.optional(
+      SessionsGetSessionTranscriptsRequestFormat.pipe(T.Query()),
     ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/sessions/{session_id}/transcript",
+      code: 200,
+    }),
+  ),
 ).annotate({
-  identifier: "SessionsGetSessionTranscriptsRequest",
-}) as any as S.Schema<SessionsGetSessionTranscriptsRequest>;
+  identifier: "GetSessionTranscriptsSessionRequest",
+}) as any as S.Schema<GetSessionTranscriptsSessionRequest>;
 
 export interface SessionsGetSessionTranscriptsResponseData {
   sessionId: string;
@@ -15397,311 +11152,26 @@ export const SessionsGetSessionTranscriptsResponseData =
   }) as any as S.Schema<SessionsGetSessionTranscriptsResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface SessionsGetSessionTranscriptsResponse {
+export interface GetSessionTranscriptsSessionResponse {
   data?: SessionsGetSessionTranscriptsResponseData;
 }
-export const SessionsGetSessionTranscriptsResponse = /*@__PURE__*/ S.suspend(
+export const GetSessionTranscriptsSessionResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       data: S.optional(SessionsGetSessionTranscriptsResponseData),
     }),
 ).annotate({
-  identifier: "SessionsGetSessionTranscriptsResponse",
-}) as any as S.Schema<SessionsGetSessionTranscriptsResponse>;
+  identifier: "GetSessionTranscriptsSessionResponse",
+}) as any as S.Schema<GetSessionTranscriptsSessionResponse>;
 
-export type WebhooksCreateWebhookRequestEventsItem =
-  | "meeting.started"
-  | "meeting.ended"
-  | "meeting.participantJoined"
-  | (string & {});
-export const WebhooksCreateWebhookRequestEventsItem = /*@__PURE__*/ S.String;
-
-export type WebhooksCreateWebhookRequestEventsList =
-  WebhooksCreateWebhookRequestEventsItem[];
-export const WebhooksCreateWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  WebhooksCreateWebhookRequestEventsItem,
-) as any as S.Schema<WebhooksCreateWebhookRequestEventsList>;
-
-export interface WebhooksCreateWebhookRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  /** Events that this webhook will get triggered by */
-  events: WebhooksCreateWebhookRequestEventsList;
-  /** Name of the webhook */
-  name: string;
-  /** URL this webhook will send events to */
-  url: string;
-  /** Set whether or not the webhook should be active when created */
-  enabled?: boolean;
-}
-export const WebhooksCreateWebhookRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    events: WebhooksCreateWebhookRequestEventsList,
-    name: S.String,
-    url: S.String,
-    enabled: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WebhooksCreateWebhookRequest",
-}) as any as S.Schema<WebhooksCreateWebhookRequest>;
-
-export type WebhooksCreateWebhookResponseDataEventsItem =
-  | "meeting.started"
-  | "meeting.ended"
-  | "meeting.participantJoined"
-  | (string & {});
-export const WebhooksCreateWebhookResponseDataEventsItem =
-  /*@__PURE__*/ S.String;
-
-export type WebhooksCreateWebhookResponseDataEventsList =
-  WebhooksCreateWebhookResponseDataEventsItem[];
-export const WebhooksCreateWebhookResponseDataEventsList =
-  /*@__PURE__*/ S.Array(
-    WebhooksCreateWebhookResponseDataEventsItem,
-  ) as any as S.Schema<WebhooksCreateWebhookResponseDataEventsList>;
-
-export interface WebhooksCreateWebhookResponseData {
-  /** ID of the webhook */
-  id: string;
-  /** Timestamp when this webhook was created */
-  createdAt: string;
-  /** Set to true if the webhook is active */
-  enabled: boolean;
-  /** Events this webhook will send updates for */
-  events: WebhooksCreateWebhookResponseDataEventsList;
-  /** Name of the webhook */
-  name: string;
-  /** Timestamp when this webhook was updated */
-  updatedAt: string;
-  /** URL the webhook will send events to */
-  url: string;
-}
-export const WebhooksCreateWebhookResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    enabled: S.Boolean,
-    events: WebhooksCreateWebhookResponseDataEventsList,
-    name: S.String,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    url: S.String,
-  }),
-).annotate({
-  identifier: "WebhooksCreateWebhookResponseData",
-}) as any as S.Schema<WebhooksCreateWebhookResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface WebhooksCreateWebhookResponse {
-  data: WebhooksCreateWebhookResponseData;
-}
-export const WebhooksCreateWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: WebhooksCreateWebhookResponseData,
-  }),
-).annotate({
-  identifier: "WebhooksCreateWebhookResponse",
-}) as any as S.Schema<WebhooksCreateWebhookResponse>;
-
-export interface WebhooksDeleteWebhookRequest {
+export interface GetWebhookByIdWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
   webhookId: string;
 }
-export const WebhooksDeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    webhookId: S.String.pipe(T.Label("webhook_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WebhooksDeleteWebhookRequest",
-}) as any as S.Schema<WebhooksDeleteWebhookRequest>;
-
-export type WebhooksDeleteWebhookResponseDataEventsItem =
-  | "meeting.started"
-  | "meeting.ended"
-  | "meeting.participantJoined"
-  | (string & {});
-export const WebhooksDeleteWebhookResponseDataEventsItem =
-  /*@__PURE__*/ S.String;
-
-export type WebhooksDeleteWebhookResponseDataEventsList =
-  WebhooksDeleteWebhookResponseDataEventsItem[];
-export const WebhooksDeleteWebhookResponseDataEventsList =
-  /*@__PURE__*/ S.Array(
-    WebhooksDeleteWebhookResponseDataEventsItem,
-  ) as any as S.Schema<WebhooksDeleteWebhookResponseDataEventsList>;
-
-export interface WebhooksDeleteWebhookResponseData {
-  /** ID of the webhook */
-  id: string;
-  /** Timestamp when this webhook was created */
-  createdAt: string;
-  /** Set to true if the webhook is active */
-  enabled: boolean;
-  /** Events this webhook will send updates for */
-  events: WebhooksDeleteWebhookResponseDataEventsList;
-  /** Name of the webhook */
-  name: string;
-  /** Timestamp when this webhook was updated */
-  updatedAt: string;
-  /** URL the webhook will send events to */
-  url: string;
-}
-export const WebhooksDeleteWebhookResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    enabled: S.Boolean,
-    events: WebhooksDeleteWebhookResponseDataEventsList,
-    name: S.String,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    url: S.String,
-  }),
-).annotate({
-  identifier: "WebhooksDeleteWebhookResponseData",
-}) as any as S.Schema<WebhooksDeleteWebhookResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface WebhooksDeleteWebhookResponse {
-  data: WebhooksDeleteWebhookResponseData;
-}
-export const WebhooksDeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: WebhooksDeleteWebhookResponseData,
-  }),
-).annotate({
-  identifier: "WebhooksDeleteWebhookResponse",
-}) as any as S.Schema<WebhooksDeleteWebhookResponse>;
-
-export type WebhooksEditWebhookRequestEventsItem =
-  | "meeting.started"
-  | "meeting.ended"
-  | "meeting.participantJoined"
-  | (string & {});
-export const WebhooksEditWebhookRequestEventsItem = /*@__PURE__*/ S.String;
-
-export type WebhooksEditWebhookRequestEventsList =
-  WebhooksEditWebhookRequestEventsItem[];
-export const WebhooksEditWebhookRequestEventsList = /*@__PURE__*/ S.Array(
-  WebhooksEditWebhookRequestEventsItem,
-) as any as S.Schema<WebhooksEditWebhookRequestEventsList>;
-
-export interface WebhooksEditWebhookRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  webhookId: string;
-  enabled?: boolean;
-  /** Events that the webhook will get triggered by */
-  events?: WebhooksEditWebhookRequestEventsList;
-  /** Name of the webhook */
-  name?: string;
-  /** URL the webhook will send events to */
-  url?: string;
-}
-export const WebhooksEditWebhookRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    webhookId: S.String.pipe(T.Label("webhook_id")),
-    enabled: S.optional(S.Boolean),
-    events: S.optional(WebhooksEditWebhookRequestEventsList),
-    name: S.optional(S.String),
-    url: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/realtime/kit/{app_id}/webhooks/{webhook_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WebhooksEditWebhookRequest",
-}) as any as S.Schema<WebhooksEditWebhookRequest>;
-
-export type WebhooksEditWebhookResponseDataEventsItem =
-  | "meeting.started"
-  | "meeting.ended"
-  | "meeting.participantJoined"
-  | (string & {});
-export const WebhooksEditWebhookResponseDataEventsItem = /*@__PURE__*/ S.String;
-
-export type WebhooksEditWebhookResponseDataEventsList =
-  WebhooksEditWebhookResponseDataEventsItem[];
-export const WebhooksEditWebhookResponseDataEventsList = /*@__PURE__*/ S.Array(
-  WebhooksEditWebhookResponseDataEventsItem,
-) as any as S.Schema<WebhooksEditWebhookResponseDataEventsList>;
-
-export interface WebhooksEditWebhookResponseData {
-  /** ID of the webhook */
-  id: string;
-  /** Timestamp when this webhook was created */
-  createdAt: string;
-  /** Set to true if the webhook is active */
-  enabled: boolean;
-  /** Events this webhook will send updates for */
-  events: WebhooksEditWebhookResponseDataEventsList;
-  /** Name of the webhook */
-  name: string;
-  /** Timestamp when this webhook was updated */
-  updatedAt: string;
-  /** URL the webhook will send events to */
-  url: string;
-}
-export const WebhooksEditWebhookResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    enabled: S.Boolean,
-    events: WebhooksEditWebhookResponseDataEventsList,
-    name: S.String,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    url: S.String,
-  }),
-).annotate({
-  identifier: "WebhooksEditWebhookResponseData",
-}) as any as S.Schema<WebhooksEditWebhookResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface WebhooksEditWebhookResponse {
-  data: WebhooksEditWebhookResponseData;
-}
-export const WebhooksEditWebhookResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: WebhooksEditWebhookResponseData,
-  }),
-).annotate({
-  identifier: "WebhooksEditWebhookResponse",
-}) as any as S.Schema<WebhooksEditWebhookResponse>;
-
-export interface WebhooksGetWebhookByIdRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The app identifier tag. */
-  appId: string;
-  webhookId: string;
-}
-export const WebhooksGetWebhookByIdRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetWebhookByIdWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -15714,8 +11184,8 @@ export const WebhooksGetWebhookByIdRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WebhooksGetWebhookByIdRequest",
-}) as any as S.Schema<WebhooksGetWebhookByIdRequest>;
+  identifier: "GetWebhookByIdWebhookRequest",
+}) as any as S.Schema<GetWebhookByIdWebhookRequest>;
 
 export type WebhooksGetWebhookByIdResponseDataEventsItem =
   | "meeting.started"
@@ -15763,24 +11233,24 @@ export const WebhooksGetWebhookByIdResponseData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebhooksGetWebhookByIdResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface WebhooksGetWebhookByIdResponse {
+export interface GetWebhookByIdWebhookResponse {
   data: WebhooksGetWebhookByIdResponseData;
 }
-export const WebhooksGetWebhookByIdResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetWebhookByIdWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: WebhooksGetWebhookByIdResponseData,
   }),
 ).annotate({
-  identifier: "WebhooksGetWebhookByIdResponse",
-}) as any as S.Schema<WebhooksGetWebhookByIdResponse>;
+  identifier: "GetWebhookByIdWebhookResponse",
+}) as any as S.Schema<GetWebhookByIdWebhookResponse>;
 
-export interface WebhooksGetWebhooksRequest {
+export interface GetWebhooksWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
   appId: string;
 }
-export const WebhooksGetWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetWebhooksWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -15792,8 +11262,8 @@ export const WebhooksGetWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WebhooksGetWebhooksRequest",
-}) as any as S.Schema<WebhooksGetWebhooksRequest>;
+  identifier: "GetWebhooksWebhookRequest",
+}) as any as S.Schema<GetWebhooksWebhookRequest>;
 
 export type WebhooksGetWebhooksResponseDataItemEventsItem =
   | "meeting.started"
@@ -15847,16 +11317,2902 @@ export const WebhooksGetWebhooksResponseDataList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<WebhooksGetWebhooksResponseDataList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface WebhooksGetWebhooksResponse {
+export interface GetWebhooksWebhookResponse {
   data: WebhooksGetWebhooksResponseDataList;
 }
-export const WebhooksGetWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetWebhooksWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: WebhooksGetWebhooksResponseDataList,
   }),
 ).annotate({
-  identifier: "WebhooksGetWebhooksResponse",
-}) as any as S.Schema<WebhooksGetWebhooksResponse>;
+  identifier: "GetWebhooksWebhookResponse",
+}) as any as S.Schema<GetWebhooksWebhookResponse>;
+
+export interface KickAllParticipantsActiveSessionRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+}
+export const KickAllParticipantsActiveSessionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      meetingId: S.String.pipe(T.Label("meeting_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick-all",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "KickAllParticipantsActiveSessionRequest",
+}) as any as S.Schema<KickAllParticipantsActiveSessionRequest>;
+
+export interface ActiveSessionKickAllParticipantsResponseData {
+  action?: string;
+  kickedParticipantsCount?: number;
+}
+export const ActiveSessionKickAllParticipantsResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action: S.optional(S.String),
+      kickedParticipantsCount: S.optional(
+        S.Number.pipe(T.Body("kicked_participants_count")),
+      ),
+    }),
+  ).annotate({
+    identifier: "ActiveSessionKickAllParticipantsResponseData",
+  }) as any as S.Schema<ActiveSessionKickAllParticipantsResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface KickAllParticipantsActiveSessionResponse {
+  data?: ActiveSessionKickAllParticipantsResponseData;
+}
+export const KickAllParticipantsActiveSessionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      data: S.optional(ActiveSessionKickAllParticipantsResponseData),
+    }),
+).annotate({
+  identifier: "KickAllParticipantsActiveSessionResponse",
+}) as any as S.Schema<KickAllParticipantsActiveSessionResponse>;
+
+export type ActiveSessionKickParticipantsRequestCustomParticipantIdsList =
+  string[];
+export const ActiveSessionKickParticipantsRequestCustomParticipantIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ActiveSessionKickParticipantsRequestCustomParticipantIdsList>;
+
+export type ActiveSessionKickParticipantsRequestParticipantIdsList = string[];
+export const ActiveSessionKickParticipantsRequestParticipantIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ActiveSessionKickParticipantsRequestParticipantIdsList>;
+
+export interface KickParticipantsActiveSessionRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+  customParticipantIds: ActiveSessionKickParticipantsRequestCustomParticipantIdsList;
+  participantIds: ActiveSessionKickParticipantsRequestParticipantIdsList;
+}
+export const KickParticipantsActiveSessionRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      meetingId: S.String.pipe(T.Label("meeting_id")),
+      customParticipantIds:
+        ActiveSessionKickParticipantsRequestCustomParticipantIdsList.pipe(
+          T.Body("custom_participant_ids"),
+        ),
+      participantIds:
+        ActiveSessionKickParticipantsRequestParticipantIdsList.pipe(
+          T.Body("participant_ids"),
+        ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-session/kick",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "KickParticipantsActiveSessionRequest",
+}) as any as S.Schema<KickParticipantsActiveSessionRequest>;
+
+export interface ActiveSessionKickParticipantsResponseDataParticipantsItem {
+  /** ID of the session participant */
+  id: string;
+  createdAt: string;
+  updatedAt: string;
+  /** Email of the session participant. */
+  email?: string;
+  /** Name of the session participant. */
+  name?: string;
+  /** A URL pointing to a picture of the participant. */
+  picture?: string;
+}
+export const ActiveSessionKickParticipantsResponseDataParticipantsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      email: S.optional(S.String),
+      name: S.optional(S.String),
+      picture: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ActiveSessionKickParticipantsResponseDataParticipantsItem",
+  }) as any as S.Schema<ActiveSessionKickParticipantsResponseDataParticipantsItem>;
+
+export type ActiveSessionKickParticipantsResponseDataParticipantsList =
+  ActiveSessionKickParticipantsResponseDataParticipantsItem[];
+export const ActiveSessionKickParticipantsResponseDataParticipantsList =
+  /*@__PURE__*/ S.Array(
+    ActiveSessionKickParticipantsResponseDataParticipantsItem,
+  ) as any as S.Schema<ActiveSessionKickParticipantsResponseDataParticipantsList>;
+
+export interface ActiveSessionKickParticipantsResponseData {
+  action?: string;
+  participants?: ActiveSessionKickParticipantsResponseDataParticipantsList;
+}
+export const ActiveSessionKickParticipantsResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action: S.optional(S.String),
+      participants: S.optional(
+        ActiveSessionKickParticipantsResponseDataParticipantsList,
+      ),
+    }),
+  ).annotate({
+    identifier: "ActiveSessionKickParticipantsResponseData",
+  }) as any as S.Schema<ActiveSessionKickParticipantsResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface KickParticipantsActiveSessionResponse {
+  data?: ActiveSessionKickParticipantsResponseData;
+}
+export const KickParticipantsActiveSessionResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      data: S.optional(ActiveSessionKickParticipantsResponseData),
+    }),
+).annotate({
+  identifier: "KickParticipantsActiveSessionResponse",
+}) as any as S.Schema<KickParticipantsActiveSessionResponse>;
+
+export interface LivestreamsGetOrgAnalyticsRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  /** end date in YYYY-MM-DD format */
+  endDate?: string;
+  /** start date in YYYY-MM-DD format */
+  startDate?: string;
+}
+export const LivestreamsGetOrgAnalyticsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    endDate: S.optional(S.String.pipe(T.Query("end_date"))),
+    startDate: S.optional(S.String.pipe(T.Query("start_date"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/analytics/daywise",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "LivestreamsGetOrgAnalyticsRequest",
+}) as any as S.Schema<LivestreamsGetOrgAnalyticsRequest>;
+
+export interface LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem {
+  day?: string;
+  /** Total recording minutes for a specific day */
+  totalRecordingMinutes?: number;
+  /** Total number of recordings for a specific day */
+  totalRecordings?: number;
+}
+export const LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      day: S.optional(S.String),
+      totalRecordingMinutes: S.optional(
+        S.Number.pipe(T.Body("total_recording_minutes")),
+      ),
+      totalRecordings: S.optional(S.Number.pipe(T.Body("total_recordings"))),
+    }),
+  ).annotate({
+    identifier:
+      "LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem",
+  }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem>;
+
+export type LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
+  LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem[];
+export const LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList =
+  /*@__PURE__*/ S.Array(
+    LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsItem,
+  ) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList>;
+
+export interface LivestreamsGetOrgAnalyticsResponseDataRecordingStats {
+  /** Day wise recording stats */
+  dayStats?: LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList;
+  /** Total number of recordings during the range specified */
+  recordingCount?: number;
+  /** Total recording minutes during the range specified */
+  recordingMinutesConsumed?: number;
+}
+export const LivestreamsGetOrgAnalyticsResponseDataRecordingStats =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dayStats: S.optional(
+        LivestreamsGetOrgAnalyticsResponseDataRecordingStatsDayStatsList.pipe(
+          T.Body("day_stats"),
+        ),
+      ),
+      recordingCount: S.optional(S.Number.pipe(T.Body("recording_count"))),
+      recordingMinutesConsumed: S.optional(
+        S.Number.pipe(T.Body("recording_minutes_consumed")),
+      ),
+    }),
+  ).annotate({
+    identifier: "LivestreamsGetOrgAnalyticsResponseDataRecordingStats",
+  }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataRecordingStats>;
+
+export interface LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem {
+  day?: string;
+  /** Total session minutes for a specific day */
+  totalSessionMinutes?: number;
+  /** Total number of sessions for a specific day */
+  totalSessions?: number;
+}
+export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      day: S.optional(S.String),
+      totalSessionMinutes: S.optional(
+        S.Number.pipe(T.Body("total_session_minutes")),
+      ),
+      totalSessions: S.optional(S.Number.pipe(T.Body("total_sessions"))),
+    }),
+  ).annotate({
+    identifier:
+      "LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem",
+  }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem>;
+
+export type LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
+  LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem[];
+export const LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList =
+  /*@__PURE__*/ S.Array(
+    LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsItem,
+  ) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList>;
+
+export interface LivestreamsGetOrgAnalyticsResponseDataSessionStats {
+  /** Day wise session stats */
+  dayStats?: LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList;
+  /** Total number of sessions during the range specified */
+  sessionsCount?: number;
+  /** Total session minutes during the range specified */
+  sessionsMinutesConsumed?: number;
+}
+export const LivestreamsGetOrgAnalyticsResponseDataSessionStats =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dayStats: S.optional(
+        LivestreamsGetOrgAnalyticsResponseDataSessionStatsDayStatsList.pipe(
+          T.Body("day_stats"),
+        ),
+      ),
+      sessionsCount: S.optional(S.Number.pipe(T.Body("sessions_count"))),
+      sessionsMinutesConsumed: S.optional(
+        S.Number.pipe(T.Body("sessions_minutes_consumed")),
+      ),
+    }),
+  ).annotate({
+    identifier: "LivestreamsGetOrgAnalyticsResponseDataSessionStats",
+  }) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseDataSessionStats>;
+
+export interface LivestreamsGetOrgAnalyticsResponseData {
+  /** Recording statistics of an App during the range specified */
+  recordingStats?: LivestreamsGetOrgAnalyticsResponseDataRecordingStats;
+  /** Session statistics of an App during the range specified */
+  sessionStats?: LivestreamsGetOrgAnalyticsResponseDataSessionStats;
+}
+export const LivestreamsGetOrgAnalyticsResponseData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      recordingStats: S.optional(
+        LivestreamsGetOrgAnalyticsResponseDataRecordingStats.pipe(
+          T.Body("recording_stats"),
+        ),
+      ),
+      sessionStats: S.optional(
+        LivestreamsGetOrgAnalyticsResponseDataSessionStats.pipe(
+          T.Body("session_stats"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "LivestreamsGetOrgAnalyticsResponseData",
+}) as any as S.Schema<LivestreamsGetOrgAnalyticsResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface LivestreamsGetOrgAnalyticsResponse {
+  data?: LivestreamsGetOrgAnalyticsResponseData;
+}
+export const LivestreamsGetOrgAnalyticsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(LivestreamsGetOrgAnalyticsResponseData),
+  }),
+).annotate({
+  identifier: "LivestreamsGetOrgAnalyticsResponse",
+}) as any as S.Schema<LivestreamsGetOrgAnalyticsResponse>;
+
+export type PresetsUpdateRequestConfigLivestreamViewerQualitiesList = number[];
+export const PresetsUpdateRequestConfigLivestreamViewerQualitiesList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<PresetsUpdateRequestConfigLivestreamViewerQualitiesList>;
+
+export interface PresetsUpdateRequestConfigMaxVideoStreams {
+  /** Maximum number of video streams visible on desktop devices */
+  desktop?: number;
+  /** Maximum number of streams visible on mobile devices */
+  mobile?: number;
+}
+export const PresetsUpdateRequestConfigMaxVideoStreams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      desktop: S.optional(S.Number),
+      mobile: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateRequestConfigMaxVideoStreams",
+  }) as any as S.Schema<PresetsUpdateRequestConfigMaxVideoStreams>;
+
+export interface PresetsUpdateRequestConfigMediaAudio {
+  /** Enable High Quality Audio for your meetings */
+  enableHighBitrate?: boolean;
+  /** Enable Stereo for your meetings */
+  enableStereo?: boolean;
+}
+export const PresetsUpdateRequestConfigMediaAudio = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enableHighBitrate: S.optional(
+        S.Boolean.pipe(T.Body("enable_high_bitrate")),
+      ),
+      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
+    }),
+).annotate({
+  identifier: "PresetsUpdateRequestConfigMediaAudio",
+}) as any as S.Schema<PresetsUpdateRequestConfigMediaAudio>;
+
+export type PresetsUpdateRequestConfigMediaScreenshareQuality =
+  | "hd"
+  | "vga"
+  | "qvga"
+  | (string & {});
+export const PresetsUpdateRequestConfigMediaScreenshareQuality =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateRequestConfigMediaScreenshare {
+  /** Frame rate of screen share */
+  frameRate?: number;
+  /** Quality of screen share */
+  quality?: PresetsUpdateRequestConfigMediaScreenshareQuality;
+}
+export const PresetsUpdateRequestConfigMediaScreenshare =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      frameRate: S.optional(S.Number.pipe(T.Body("frame_rate"))),
+      quality: S.optional(PresetsUpdateRequestConfigMediaScreenshareQuality),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateRequestConfigMediaScreenshare",
+  }) as any as S.Schema<PresetsUpdateRequestConfigMediaScreenshare>;
+
+export type PresetsUpdateRequestConfigMediaVideoQuality =
+  | "hd"
+  | "vga"
+  | "qvga"
+  | (string & {});
+export const PresetsUpdateRequestConfigMediaVideoQuality =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateRequestConfigMediaVideo {
+  /** Frame rate of participants' video */
+  frameRate?: number;
+  /** Video quality of participants */
+  quality?: PresetsUpdateRequestConfigMediaVideoQuality;
+  /** Enable simulcast for participant videos. */
+  simulcast?: boolean;
+}
+export const PresetsUpdateRequestConfigMediaVideo = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      frameRate: S.optional(S.Number.pipe(T.Body("frame_rate"))),
+      quality: S.optional(PresetsUpdateRequestConfigMediaVideoQuality),
+      simulcast: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "PresetsUpdateRequestConfigMediaVideo",
+}) as any as S.Schema<PresetsUpdateRequestConfigMediaVideo>;
+
+export interface PresetsUpdateRequestConfigMedia {
+  /** Control options for Audio quality. */
+  audio?: PresetsUpdateRequestConfigMediaAudio;
+  /** Configuration options for participant screen shares */
+  screenshare?: PresetsUpdateRequestConfigMediaScreenshare;
+  /** Configuration options for participant videos */
+  video?: PresetsUpdateRequestConfigMediaVideo;
+}
+export const PresetsUpdateRequestConfigMedia = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    audio: S.optional(PresetsUpdateRequestConfigMediaAudio),
+    screenshare: S.optional(PresetsUpdateRequestConfigMediaScreenshare),
+    video: S.optional(PresetsUpdateRequestConfigMediaVideo),
+  }),
+).annotate({
+  identifier: "PresetsUpdateRequestConfigMedia",
+}) as any as S.Schema<PresetsUpdateRequestConfigMedia>;
+
+export type PresetsUpdateRequestConfigViewType =
+  | "GROUP_CALL"
+  | "WEBINAR"
+  | "AUDIO_ROOM"
+  | "LIVESTREAM"
+  | (string & {});
+export const PresetsUpdateRequestConfigViewType = /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateRequestConfig {
+  /** Livestream viewer quality levels. */
+  livestreamViewerQualities?: PresetsUpdateRequestConfigLivestreamViewerQualitiesList;
+  /** Maximum number of screen shares that can be active at a given time */
+  maxScreenshareCount?: number;
+  /** Maximum number of streams that are visible on a device */
+  maxVideoStreams?: PresetsUpdateRequestConfigMaxVideoStreams;
+  /** Media configuration options. eg: Video quality */
+  media?: PresetsUpdateRequestConfigMedia;
+  /** Type of the meeting */
+  viewType?: PresetsUpdateRequestConfigViewType;
+}
+export const PresetsUpdateRequestConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    livestreamViewerQualities: S.optional(
+      PresetsUpdateRequestConfigLivestreamViewerQualitiesList.pipe(
+        T.Body("livestream_viewer_qualities"),
+      ),
+    ),
+    maxScreenshareCount: S.optional(
+      S.Number.pipe(T.Body("max_screenshare_count")),
+    ),
+    maxVideoStreams: S.optional(
+      PresetsUpdateRequestConfigMaxVideoStreams.pipe(
+        T.Body("max_video_streams"),
+      ),
+    ),
+    media: S.optional(PresetsUpdateRequestConfigMedia),
+    viewType: S.optional(
+      PresetsUpdateRequestConfigViewType.pipe(T.Body("view_type")),
+    ),
+  }),
+).annotate({
+  identifier: "PresetsUpdateRequestConfig",
+}) as any as S.Schema<PresetsUpdateRequestConfig>;
+
+export interface PresetsUpdateRequestPermissionsChatPrivate {
+  canReceive?: boolean;
+  canSend?: boolean;
+  files?: boolean;
+  text?: boolean;
+}
+export const PresetsUpdateRequestPermissionsChatPrivate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canReceive: S.optional(S.Boolean.pipe(T.Body("can_receive"))),
+      canSend: S.optional(S.Boolean.pipe(T.Body("can_send"))),
+      files: S.optional(S.Boolean),
+      text: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateRequestPermissionsChatPrivate",
+  }) as any as S.Schema<PresetsUpdateRequestPermissionsChatPrivate>;
+
+export interface PresetsUpdateRequestPermissionsChatPublic {
+  /** Can send messages in general */
+  canSend?: boolean;
+  /** Can send file messages */
+  files?: boolean;
+  /** Can send text messages */
+  text?: boolean;
+}
+export const PresetsUpdateRequestPermissionsChatPublic =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canSend: S.optional(S.Boolean.pipe(T.Body("can_send"))),
+      files: S.optional(S.Boolean),
+      text: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateRequestPermissionsChatPublic",
+  }) as any as S.Schema<PresetsUpdateRequestPermissionsChatPublic>;
+
+export interface PresetsUpdateRequestPermissionsChat {
+  private?: PresetsUpdateRequestPermissionsChatPrivate;
+  public?: PresetsUpdateRequestPermissionsChatPublic;
+}
+export const PresetsUpdateRequestPermissionsChat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    private: S.optional(PresetsUpdateRequestPermissionsChatPrivate),
+    public: S.optional(PresetsUpdateRequestPermissionsChatPublic),
+  }),
+).annotate({
+  identifier: "PresetsUpdateRequestPermissionsChat",
+}) as any as S.Schema<PresetsUpdateRequestPermissionsChat>;
+
+export interface PresetsUpdateRequestPermissionsConnectedMeetings {
+  canAlterConnectedMeetings?: boolean;
+  canSwitchConnectedMeetings?: boolean;
+  canSwitchToParentMeeting?: boolean;
+}
+export const PresetsUpdateRequestPermissionsConnectedMeetings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canAlterConnectedMeetings: S.optional(
+        S.Boolean.pipe(T.Body("can_alter_connected_meetings")),
+      ),
+      canSwitchConnectedMeetings: S.optional(
+        S.Boolean.pipe(T.Body("can_switch_connected_meetings")),
+      ),
+      canSwitchToParentMeeting: S.optional(
+        S.Boolean.pipe(T.Body("can_switch_to_parent_meeting")),
+      ),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateRequestPermissionsConnectedMeetings",
+  }) as any as S.Schema<PresetsUpdateRequestPermissionsConnectedMeetings>;
+
+export type PresetsUpdateRequestPermissionsMediaAudioCanProduce =
+  | "ALLOWED"
+  | "NOT_ALLOWED"
+  | "CAN_REQUEST"
+  | (string & {});
+export const PresetsUpdateRequestPermissionsMediaAudioCanProduce =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateRequestPermissionsMediaAudio {
+  /** Can produce audio */
+  canProduce?: PresetsUpdateRequestPermissionsMediaAudioCanProduce;
+}
+export const PresetsUpdateRequestPermissionsMediaAudio =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canProduce: S.optional(
+        PresetsUpdateRequestPermissionsMediaAudioCanProduce.pipe(
+          T.Body("can_produce"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateRequestPermissionsMediaAudio",
+  }) as any as S.Schema<PresetsUpdateRequestPermissionsMediaAudio>;
+
+export type PresetsUpdateRequestPermissionsMediaScreenshareCanProduce =
+  | "ALLOWED"
+  | "NOT_ALLOWED"
+  | "CAN_REQUEST"
+  | (string & {});
+export const PresetsUpdateRequestPermissionsMediaScreenshareCanProduce =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateRequestPermissionsMediaScreenshare {
+  /** Can produce screen share video */
+  canProduce?: PresetsUpdateRequestPermissionsMediaScreenshareCanProduce;
+}
+export const PresetsUpdateRequestPermissionsMediaScreenshare =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canProduce: S.optional(
+        PresetsUpdateRequestPermissionsMediaScreenshareCanProduce.pipe(
+          T.Body("can_produce"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateRequestPermissionsMediaScreenshare",
+  }) as any as S.Schema<PresetsUpdateRequestPermissionsMediaScreenshare>;
+
+export type PresetsUpdateRequestPermissionsMediaVideoCanProduce =
+  | "ALLOWED"
+  | "NOT_ALLOWED"
+  | "CAN_REQUEST"
+  | (string & {});
+export const PresetsUpdateRequestPermissionsMediaVideoCanProduce =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateRequestPermissionsMediaVideo {
+  /** Can produce video */
+  canProduce?: PresetsUpdateRequestPermissionsMediaVideoCanProduce;
+}
+export const PresetsUpdateRequestPermissionsMediaVideo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canProduce: S.optional(
+        PresetsUpdateRequestPermissionsMediaVideoCanProduce.pipe(
+          T.Body("can_produce"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateRequestPermissionsMediaVideo",
+  }) as any as S.Schema<PresetsUpdateRequestPermissionsMediaVideo>;
+
+export interface PresetsUpdateRequestPermissionsMedia {
+  /** Audio permissions */
+  audio?: PresetsUpdateRequestPermissionsMediaAudio;
+  /** Screenshare permissions */
+  screenshare?: PresetsUpdateRequestPermissionsMediaScreenshare;
+  /** Video permissions */
+  video?: PresetsUpdateRequestPermissionsMediaVideo;
+}
+export const PresetsUpdateRequestPermissionsMedia = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      audio: S.optional(PresetsUpdateRequestPermissionsMediaAudio),
+      screenshare: S.optional(PresetsUpdateRequestPermissionsMediaScreenshare),
+      video: S.optional(PresetsUpdateRequestPermissionsMediaVideo),
+    }),
+).annotate({
+  identifier: "PresetsUpdateRequestPermissionsMedia",
+}) as any as S.Schema<PresetsUpdateRequestPermissionsMedia>;
+
+export type PresetsUpdateRequestPermissionsPluginsConfigMap = {
+  [key: string]: unknown | undefined;
+};
+export const PresetsUpdateRequestPermissionsPluginsConfigMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<PresetsUpdateRequestPermissionsPluginsConfigMap>;
+
+export interface PresetsUpdateRequestPermissionsPlugins {
+  /** Can close plugins that are already open */
+  canClose?: boolean;
+  /** Can edit plugin config */
+  canEditConfig?: boolean;
+  /** Can start plugins */
+  canStart?: boolean;
+  /** Plugin configuration keyed by plugin UUID. */
+  config?: PresetsUpdateRequestPermissionsPluginsConfigMap;
+}
+export const PresetsUpdateRequestPermissionsPlugins = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      canClose: S.optional(S.Boolean.pipe(T.Body("can_close"))),
+      canEditConfig: S.optional(S.Boolean.pipe(T.Body("can_edit_config"))),
+      canStart: S.optional(S.Boolean.pipe(T.Body("can_start"))),
+      config: S.optional(PresetsUpdateRequestPermissionsPluginsConfigMap),
+    }),
+).annotate({
+  identifier: "PresetsUpdateRequestPermissionsPlugins",
+}) as any as S.Schema<PresetsUpdateRequestPermissionsPlugins>;
+
+export interface PresetsUpdateRequestPermissionsPolls {
+  /** Can create polls */
+  canCreate?: boolean;
+  /** Can view polls */
+  canView?: boolean;
+  /** Can vote on polls */
+  canVote?: boolean;
+}
+export const PresetsUpdateRequestPermissionsPolls = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      canCreate: S.optional(S.Boolean.pipe(T.Body("can_create"))),
+      canView: S.optional(S.Boolean.pipe(T.Body("can_view"))),
+      canVote: S.optional(S.Boolean.pipe(T.Body("can_vote"))),
+    }),
+).annotate({
+  identifier: "PresetsUpdateRequestPermissionsPolls",
+}) as any as S.Schema<PresetsUpdateRequestPermissionsPolls>;
+
+export type PresetsUpdateRequestPermissionsRecorderType =
+  | "RECORDER"
+  | "LIVESTREAMER"
+  | "NONE"
+  | (string & {});
+export const PresetsUpdateRequestPermissionsRecorderType =
+  /*@__PURE__*/ S.String;
+
+export type PresetsUpdateRequestPermissionsStageAccess =
+  | "ALLOWED"
+  | "NOT_ALLOWED"
+  | "CAN_REQUEST"
+  | (string & {});
+export const PresetsUpdateRequestPermissionsStageAccess =
+  /*@__PURE__*/ S.String;
+
+export type PresetsUpdateRequestPermissionsWaitingRoomType =
+  | "SKIP"
+  | "ON_PRIVILEGED_USER_ENTRY"
+  | "SKIP_ON_ACCEPT"
+  | (string & {});
+export const PresetsUpdateRequestPermissionsWaitingRoomType =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateRequestPermissions {
+  acceptStageRequests?: boolean;
+  /** Whether this participant can accept waiting requests */
+  acceptWaitingRequests?: boolean;
+  canAcceptProductionRequests?: boolean;
+  canChangeParticipantPermissions?: boolean;
+  canEditDisplayName?: boolean;
+  canLivestream?: boolean;
+  canRecord?: boolean;
+  canSpotlight?: boolean;
+  chat?: PresetsUpdateRequestPermissionsChat;
+  connectedMeetings?: PresetsUpdateRequestPermissionsConnectedMeetings;
+  disableParticipantAudio?: boolean;
+  disableParticipantScreensharing?: boolean;
+  disableParticipantVideo?: boolean;
+  /** Whether this participant is visible to others or not */
+  hiddenParticipant?: boolean;
+  isRecorder?: boolean;
+  kickParticipant?: boolean;
+  /** Media permissions */
+  media?: PresetsUpdateRequestPermissionsMedia;
+  pinParticipant?: boolean;
+  /** Plugin permissions */
+  plugins?: PresetsUpdateRequestPermissionsPlugins;
+  /** Poll permissions */
+  polls?: PresetsUpdateRequestPermissionsPolls;
+  /** Type of the recording peer */
+  recorderType?: PresetsUpdateRequestPermissionsRecorderType;
+  showParticipantList?: boolean;
+  stageAccess?: PresetsUpdateRequestPermissionsStageAccess;
+  stageEnabled?: boolean;
+  transcriptionEnabled?: boolean;
+  /** Waiting room type */
+  waitingRoomType?: PresetsUpdateRequestPermissionsWaitingRoomType;
+}
+export const PresetsUpdateRequestPermissions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    acceptStageRequests: S.optional(
+      S.Boolean.pipe(T.Body("accept_stage_requests")),
+    ),
+    acceptWaitingRequests: S.optional(
+      S.Boolean.pipe(T.Body("accept_waiting_requests")),
+    ),
+    canAcceptProductionRequests: S.optional(
+      S.Boolean.pipe(T.Body("can_accept_production_requests")),
+    ),
+    canChangeParticipantPermissions: S.optional(
+      S.Boolean.pipe(T.Body("can_change_participant_permissions")),
+    ),
+    canEditDisplayName: S.optional(
+      S.Boolean.pipe(T.Body("can_edit_display_name")),
+    ),
+    canLivestream: S.optional(S.Boolean.pipe(T.Body("can_livestream"))),
+    canRecord: S.optional(S.Boolean.pipe(T.Body("can_record"))),
+    canSpotlight: S.optional(S.Boolean.pipe(T.Body("can_spotlight"))),
+    chat: S.optional(PresetsUpdateRequestPermissionsChat),
+    connectedMeetings: S.optional(
+      PresetsUpdateRequestPermissionsConnectedMeetings.pipe(
+        T.Body("connected_meetings"),
+      ),
+    ),
+    disableParticipantAudio: S.optional(
+      S.Boolean.pipe(T.Body("disable_participant_audio")),
+    ),
+    disableParticipantScreensharing: S.optional(
+      S.Boolean.pipe(T.Body("disable_participant_screensharing")),
+    ),
+    disableParticipantVideo: S.optional(
+      S.Boolean.pipe(T.Body("disable_participant_video")),
+    ),
+    hiddenParticipant: S.optional(S.Boolean.pipe(T.Body("hidden_participant"))),
+    isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
+    kickParticipant: S.optional(S.Boolean.pipe(T.Body("kick_participant"))),
+    media: S.optional(PresetsUpdateRequestPermissionsMedia),
+    pinParticipant: S.optional(S.Boolean.pipe(T.Body("pin_participant"))),
+    plugins: S.optional(PresetsUpdateRequestPermissionsPlugins),
+    polls: S.optional(PresetsUpdateRequestPermissionsPolls),
+    recorderType: S.optional(
+      PresetsUpdateRequestPermissionsRecorderType.pipe(T.Body("recorder_type")),
+    ),
+    showParticipantList: S.optional(
+      S.Boolean.pipe(T.Body("show_participant_list")),
+    ),
+    stageAccess: S.optional(
+      PresetsUpdateRequestPermissionsStageAccess.pipe(T.Body("stage_access")),
+    ),
+    stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
+    transcriptionEnabled: S.optional(
+      S.Boolean.pipe(T.Body("transcription_enabled")),
+    ),
+    waitingRoomType: S.optional(
+      PresetsUpdateRequestPermissionsWaitingRoomType.pipe(
+        T.Body("waiting_room_type"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PresetsUpdateRequestPermissions",
+}) as any as S.Schema<PresetsUpdateRequestPermissions>;
+
+export type PresetsUpdateRequestUiDesignTokensBorderRadius =
+  | "sharp"
+  | "rounded"
+  | "extra-rounded"
+  | "circular"
+  | (string & {});
+export const PresetsUpdateRequestUiDesignTokensBorderRadius =
+  /*@__PURE__*/ S.String;
+
+export type PresetsUpdateRequestUiDesignTokensBorderWidth =
+  | "none"
+  | "thin"
+  | "fat"
+  | (string & {});
+export const PresetsUpdateRequestUiDesignTokensBorderWidth =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateRequestUiDesignTokensColorsBackground {
+  "1000_"?: string;
+  "600_"?: string;
+  "700_"?: string;
+  "800_"?: string;
+  "900_"?: string;
+}
+export const PresetsUpdateRequestUiDesignTokensColorsBackground =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "1000_": S.optional(S.String.pipe(T.Body('"1000"'))),
+      "600_": S.optional(S.String.pipe(T.Body('"600"'))),
+      "700_": S.optional(S.String.pipe(T.Body('"700"'))),
+      "800_": S.optional(S.String.pipe(T.Body('"800"'))),
+      "900_": S.optional(S.String.pipe(T.Body('"900"'))),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateRequestUiDesignTokensColorsBackground",
+  }) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColorsBackground>;
+
+export interface PresetsUpdateRequestUiDesignTokensColorsBrand {
+  "300_"?: string;
+  "400_"?: string;
+  "500_"?: string;
+  "600_"?: string;
+  "700_"?: string;
+}
+export const PresetsUpdateRequestUiDesignTokensColorsBrand =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "300_": S.optional(S.String.pipe(T.Body('"300"'))),
+      "400_": S.optional(S.String.pipe(T.Body('"400"'))),
+      "500_": S.optional(S.String.pipe(T.Body('"500"'))),
+      "600_": S.optional(S.String.pipe(T.Body('"600"'))),
+      "700_": S.optional(S.String.pipe(T.Body('"700"'))),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateRequestUiDesignTokensColorsBrand",
+  }) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColorsBrand>;
+
+export interface PresetsUpdateRequestUiDesignTokensColors {
+  background?: PresetsUpdateRequestUiDesignTokensColorsBackground;
+  brand?: PresetsUpdateRequestUiDesignTokensColorsBrand;
+  danger?: string;
+  success?: string;
+  text?: string;
+  textOnBrand?: string;
+  videoBg?: string;
+  warning?: string;
+}
+export const PresetsUpdateRequestUiDesignTokensColors = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      background: S.optional(
+        PresetsUpdateRequestUiDesignTokensColorsBackground,
+      ),
+      brand: S.optional(PresetsUpdateRequestUiDesignTokensColorsBrand),
+      danger: S.optional(S.String),
+      success: S.optional(S.String),
+      text: S.optional(S.String),
+      textOnBrand: S.optional(S.String.pipe(T.Body("text_on_brand"))),
+      videoBg: S.optional(S.String.pipe(T.Body("video_bg"))),
+      warning: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "PresetsUpdateRequestUiDesignTokensColors",
+}) as any as S.Schema<PresetsUpdateRequestUiDesignTokensColors>;
+
+export type PresetsUpdateRequestUiDesignTokensTheme =
+  | "darkest"
+  | "dark"
+  | "light"
+  | (string & {});
+export const PresetsUpdateRequestUiDesignTokensTheme = /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateRequestUiDesignTokens {
+  borderRadius?: PresetsUpdateRequestUiDesignTokensBorderRadius;
+  borderWidth?: PresetsUpdateRequestUiDesignTokensBorderWidth;
+  colors?: PresetsUpdateRequestUiDesignTokensColors;
+  fontFamily?: string;
+  googleFont?: string;
+  logo?: string;
+  spacingBase?: number;
+  theme?: PresetsUpdateRequestUiDesignTokensTheme;
+}
+export const PresetsUpdateRequestUiDesignTokens = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    borderRadius: S.optional(
+      PresetsUpdateRequestUiDesignTokensBorderRadius.pipe(
+        T.Body("border_radius"),
+      ),
+    ),
+    borderWidth: S.optional(
+      PresetsUpdateRequestUiDesignTokensBorderWidth.pipe(
+        T.Body("border_width"),
+      ),
+    ),
+    colors: S.optional(PresetsUpdateRequestUiDesignTokensColors),
+    fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
+    googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
+    logo: S.optional(S.String),
+    spacingBase: S.optional(S.Number.pipe(T.Body("spacing_base"))),
+    theme: S.optional(PresetsUpdateRequestUiDesignTokensTheme),
+  }),
+).annotate({
+  identifier: "PresetsUpdateRequestUiDesignTokens",
+}) as any as S.Schema<PresetsUpdateRequestUiDesignTokens>;
+
+export interface PresetsUpdateRequestUi {
+  designTokens?: PresetsUpdateRequestUiDesignTokens;
+}
+export const PresetsUpdateRequestUi = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    designTokens: S.optional(
+      PresetsUpdateRequestUiDesignTokens.pipe(T.Body("design_tokens")),
+    ),
+  }),
+).annotate({
+  identifier: "PresetsUpdateRequestUi",
+}) as any as S.Schema<PresetsUpdateRequestUi>;
+
+export interface PatchPresetRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  presetId: string;
+  config?: PresetsUpdateRequestConfig;
+  /** Name of the preset */
+  name?: string;
+  permissions?: PresetsUpdateRequestPermissions;
+  ui?: PresetsUpdateRequestUi;
+}
+export const PatchPresetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    presetId: S.String.pipe(T.Label("preset_id")),
+    config: S.optional(PresetsUpdateRequestConfig),
+    name: S.optional(S.String),
+    permissions: S.optional(PresetsUpdateRequestPermissions),
+    ui: S.optional(PresetsUpdateRequestUi),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/presets/{preset_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchPresetRequest",
+}) as any as S.Schema<PatchPresetRequest>;
+
+export interface PresetsUpdateResponseDataConfigMaxVideoStreams {
+  /** Maximum number of video streams visible on desktop devices */
+  desktop: number;
+  /** Maximum number of streams visible on mobile devices */
+  mobile: number;
+}
+export const PresetsUpdateResponseDataConfigMaxVideoStreams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      desktop: S.Number,
+      mobile: S.Number,
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataConfigMaxVideoStreams",
+  }) as any as S.Schema<PresetsUpdateResponseDataConfigMaxVideoStreams>;
+
+export type PresetsUpdateResponseDataConfigMediaScreenshareQuality =
+  | "hd"
+  | "vga"
+  | "qvga"
+  | (string & {});
+export const PresetsUpdateResponseDataConfigMediaScreenshareQuality =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateResponseDataConfigMediaScreenshare {
+  /** Frame rate of screen share */
+  frameRate: number;
+  /** Quality of screen share */
+  quality: PresetsUpdateResponseDataConfigMediaScreenshareQuality;
+}
+export const PresetsUpdateResponseDataConfigMediaScreenshare =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      frameRate: S.Number.pipe(T.Body("frame_rate")),
+      quality: PresetsUpdateResponseDataConfigMediaScreenshareQuality,
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataConfigMediaScreenshare",
+  }) as any as S.Schema<PresetsUpdateResponseDataConfigMediaScreenshare>;
+
+export type PresetsUpdateResponseDataConfigMediaVideoQuality =
+  | "hd"
+  | "vga"
+  | "qvga"
+  | (string & {});
+export const PresetsUpdateResponseDataConfigMediaVideoQuality =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateResponseDataConfigMediaVideo {
+  /** Frame rate of participants' video */
+  frameRate: number;
+  /** Video quality of participants */
+  quality: PresetsUpdateResponseDataConfigMediaVideoQuality;
+  /** Enable simulcast for participant videos. */
+  simulcast?: boolean;
+}
+export const PresetsUpdateResponseDataConfigMediaVideo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      frameRate: S.Number.pipe(T.Body("frame_rate")),
+      quality: PresetsUpdateResponseDataConfigMediaVideoQuality,
+      simulcast: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataConfigMediaVideo",
+  }) as any as S.Schema<PresetsUpdateResponseDataConfigMediaVideo>;
+
+export interface PresetsUpdateResponseDataConfigMediaAudio {
+  /** Enable High Quality Audio for your meetings */
+  enableHighBitrate?: boolean;
+  /** Enable Stereo for your meetings */
+  enableStereo?: boolean;
+}
+export const PresetsUpdateResponseDataConfigMediaAudio =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enableHighBitrate: S.optional(
+        S.Boolean.pipe(T.Body("enable_high_bitrate")),
+      ),
+      enableStereo: S.optional(S.Boolean.pipe(T.Body("enable_stereo"))),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataConfigMediaAudio",
+  }) as any as S.Schema<PresetsUpdateResponseDataConfigMediaAudio>;
+
+export interface PresetsUpdateResponseDataConfigMedia {
+  /** Configuration options for participant screen shares */
+  screenshare: PresetsUpdateResponseDataConfigMediaScreenshare;
+  /** Configuration options for participant videos */
+  video: PresetsUpdateResponseDataConfigMediaVideo;
+  /** Control options for Audio quality. */
+  audio?: PresetsUpdateResponseDataConfigMediaAudio;
+}
+export const PresetsUpdateResponseDataConfigMedia = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      screenshare: PresetsUpdateResponseDataConfigMediaScreenshare,
+      video: PresetsUpdateResponseDataConfigMediaVideo,
+      audio: S.optional(PresetsUpdateResponseDataConfigMediaAudio),
+    }),
+).annotate({
+  identifier: "PresetsUpdateResponseDataConfigMedia",
+}) as any as S.Schema<PresetsUpdateResponseDataConfigMedia>;
+
+export type PresetsUpdateResponseDataConfigViewType =
+  | "GROUP_CALL"
+  | "WEBINAR"
+  | "AUDIO_ROOM"
+  | "LIVESTREAM"
+  | (string & {});
+export const PresetsUpdateResponseDataConfigViewType = /*@__PURE__*/ S.String;
+
+export type PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList =
+  number[];
+export const PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList =
+  /*@__PURE__*/ S.Array(
+    S.Number,
+  ) as any as S.Schema<PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList>;
+
+export interface PresetsUpdateResponseDataConfig {
+  /** Maximum number of screen shares that can be active at a given time */
+  maxScreenshareCount: number;
+  /** Maximum number of streams that are visible on a device */
+  maxVideoStreams: PresetsUpdateResponseDataConfigMaxVideoStreams;
+  /** Media configuration options. eg: Video quality */
+  media: PresetsUpdateResponseDataConfigMedia;
+  /** Type of the meeting */
+  viewType: PresetsUpdateResponseDataConfigViewType;
+  /** Livestream viewer quality levels. */
+  livestreamViewerQualities?: PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList;
+}
+export const PresetsUpdateResponseDataConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    maxScreenshareCount: S.Number.pipe(T.Body("max_screenshare_count")),
+    maxVideoStreams: PresetsUpdateResponseDataConfigMaxVideoStreams.pipe(
+      T.Body("max_video_streams"),
+    ),
+    media: PresetsUpdateResponseDataConfigMedia,
+    viewType: PresetsUpdateResponseDataConfigViewType.pipe(T.Body("view_type")),
+    livestreamViewerQualities: S.optional(
+      PresetsUpdateResponseDataConfigLivestreamViewerQualitiesList.pipe(
+        T.Body("livestream_viewer_qualities"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PresetsUpdateResponseDataConfig",
+}) as any as S.Schema<PresetsUpdateResponseDataConfig>;
+
+export interface PresetsUpdateResponseDataPermissionsChatPrivate {
+  canReceive: boolean;
+  canSend: boolean;
+  files: boolean;
+  text: boolean;
+}
+export const PresetsUpdateResponseDataPermissionsChatPrivate =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canReceive: S.Boolean.pipe(T.Body("can_receive")),
+      canSend: S.Boolean.pipe(T.Body("can_send")),
+      files: S.Boolean,
+      text: S.Boolean,
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataPermissionsChatPrivate",
+  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsChatPrivate>;
+
+export interface PresetsUpdateResponseDataPermissionsChatPublic {
+  /** Can send messages in general */
+  canSend: boolean;
+  /** Can send file messages */
+  files: boolean;
+  /** Can send text messages */
+  text: boolean;
+}
+export const PresetsUpdateResponseDataPermissionsChatPublic =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canSend: S.Boolean.pipe(T.Body("can_send")),
+      files: S.Boolean,
+      text: S.Boolean,
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataPermissionsChatPublic",
+  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsChatPublic>;
+
+export interface PresetsUpdateResponseDataPermissionsChat {
+  private: PresetsUpdateResponseDataPermissionsChatPrivate;
+  public: PresetsUpdateResponseDataPermissionsChatPublic;
+}
+export const PresetsUpdateResponseDataPermissionsChat = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      private: PresetsUpdateResponseDataPermissionsChatPrivate,
+      public: PresetsUpdateResponseDataPermissionsChatPublic,
+    }),
+).annotate({
+  identifier: "PresetsUpdateResponseDataPermissionsChat",
+}) as any as S.Schema<PresetsUpdateResponseDataPermissionsChat>;
+
+export interface PresetsUpdateResponseDataPermissionsConnectedMeetings {
+  canAlterConnectedMeetings: boolean;
+  canSwitchConnectedMeetings: boolean;
+  canSwitchToParentMeeting: boolean;
+}
+export const PresetsUpdateResponseDataPermissionsConnectedMeetings =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canAlterConnectedMeetings: S.Boolean.pipe(
+        T.Body("can_alter_connected_meetings"),
+      ),
+      canSwitchConnectedMeetings: S.Boolean.pipe(
+        T.Body("can_switch_connected_meetings"),
+      ),
+      canSwitchToParentMeeting: S.Boolean.pipe(
+        T.Body("can_switch_to_parent_meeting"),
+      ),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataPermissionsConnectedMeetings",
+  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsConnectedMeetings>;
+
+export type PresetsUpdateResponseDataPermissionsMediaAudioCanProduce =
+  | "ALLOWED"
+  | "NOT_ALLOWED"
+  | "CAN_REQUEST"
+  | (string & {});
+export const PresetsUpdateResponseDataPermissionsMediaAudioCanProduce =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateResponseDataPermissionsMediaAudio {
+  /** Can produce audio */
+  canProduce: PresetsUpdateResponseDataPermissionsMediaAudioCanProduce;
+}
+export const PresetsUpdateResponseDataPermissionsMediaAudio =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canProduce: PresetsUpdateResponseDataPermissionsMediaAudioCanProduce.pipe(
+        T.Body("can_produce"),
+      ),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataPermissionsMediaAudio",
+  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsMediaAudio>;
+
+export type PresetsUpdateResponseDataPermissionsMediaScreenshareCanProduce =
+  | "ALLOWED"
+  | "NOT_ALLOWED"
+  | "CAN_REQUEST"
+  | (string & {});
+export const PresetsUpdateResponseDataPermissionsMediaScreenshareCanProduce =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateResponseDataPermissionsMediaScreenshare {
+  /** Can produce screen share video */
+  canProduce: PresetsUpdateResponseDataPermissionsMediaScreenshareCanProduce;
+}
+export const PresetsUpdateResponseDataPermissionsMediaScreenshare =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canProduce:
+        PresetsUpdateResponseDataPermissionsMediaScreenshareCanProduce.pipe(
+          T.Body("can_produce"),
+        ),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataPermissionsMediaScreenshare",
+  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsMediaScreenshare>;
+
+export type PresetsUpdateResponseDataPermissionsMediaVideoCanProduce =
+  | "ALLOWED"
+  | "NOT_ALLOWED"
+  | "CAN_REQUEST"
+  | (string & {});
+export const PresetsUpdateResponseDataPermissionsMediaVideoCanProduce =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateResponseDataPermissionsMediaVideo {
+  /** Can produce video */
+  canProduce: PresetsUpdateResponseDataPermissionsMediaVideoCanProduce;
+}
+export const PresetsUpdateResponseDataPermissionsMediaVideo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canProduce: PresetsUpdateResponseDataPermissionsMediaVideoCanProduce.pipe(
+        T.Body("can_produce"),
+      ),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataPermissionsMediaVideo",
+  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsMediaVideo>;
+
+export interface PresetsUpdateResponseDataPermissionsMedia {
+  /** Audio permissions */
+  audio: PresetsUpdateResponseDataPermissionsMediaAudio;
+  /** Screenshare permissions */
+  screenshare: PresetsUpdateResponseDataPermissionsMediaScreenshare;
+  /** Video permissions */
+  video: PresetsUpdateResponseDataPermissionsMediaVideo;
+}
+export const PresetsUpdateResponseDataPermissionsMedia =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audio: PresetsUpdateResponseDataPermissionsMediaAudio,
+      screenshare: PresetsUpdateResponseDataPermissionsMediaScreenshare,
+      video: PresetsUpdateResponseDataPermissionsMediaVideo,
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataPermissionsMedia",
+  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsMedia>;
+
+export type PresetsUpdateResponseDataPermissionsPluginsConfigMap = {
+  [key: string]: unknown | undefined;
+};
+export const PresetsUpdateResponseDataPermissionsPluginsConfigMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<PresetsUpdateResponseDataPermissionsPluginsConfigMap>;
+
+export interface PresetsUpdateResponseDataPermissionsPlugins {
+  /** Can close plugins that are already open */
+  canClose: boolean;
+  /** Can edit plugin config */
+  canEditConfig: boolean;
+  /** Can start plugins */
+  canStart: boolean;
+  /** Plugin configuration keyed by plugin UUID. */
+  config: PresetsUpdateResponseDataPermissionsPluginsConfigMap;
+}
+export const PresetsUpdateResponseDataPermissionsPlugins =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canClose: S.Boolean.pipe(T.Body("can_close")),
+      canEditConfig: S.Boolean.pipe(T.Body("can_edit_config")),
+      canStart: S.Boolean.pipe(T.Body("can_start")),
+      config: PresetsUpdateResponseDataPermissionsPluginsConfigMap,
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataPermissionsPlugins",
+  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsPlugins>;
+
+export interface PresetsUpdateResponseDataPermissionsPolls {
+  /** Can create polls */
+  canCreate: boolean;
+  /** Can view polls */
+  canView: boolean;
+  /** Can vote on polls */
+  canVote: boolean;
+}
+export const PresetsUpdateResponseDataPermissionsPolls =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      canCreate: S.Boolean.pipe(T.Body("can_create")),
+      canView: S.Boolean.pipe(T.Body("can_view")),
+      canVote: S.Boolean.pipe(T.Body("can_vote")),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataPermissionsPolls",
+  }) as any as S.Schema<PresetsUpdateResponseDataPermissionsPolls>;
+
+export type PresetsUpdateResponseDataPermissionsRecorderType =
+  | "RECORDER"
+  | "LIVESTREAMER"
+  | "NONE"
+  | (string & {});
+export const PresetsUpdateResponseDataPermissionsRecorderType =
+  /*@__PURE__*/ S.String;
+
+export type PresetsUpdateResponseDataPermissionsWaitingRoomType =
+  | "SKIP"
+  | "ON_PRIVILEGED_USER_ENTRY"
+  | "SKIP_ON_ACCEPT"
+  | (string & {});
+export const PresetsUpdateResponseDataPermissionsWaitingRoomType =
+  /*@__PURE__*/ S.String;
+
+export type PresetsUpdateResponseDataPermissionsStageAccess =
+  | "ALLOWED"
+  | "NOT_ALLOWED"
+  | "CAN_REQUEST"
+  | (string & {});
+export const PresetsUpdateResponseDataPermissionsStageAccess =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateResponseDataPermissions {
+  /** Whether this participant can accept waiting requests */
+  acceptWaitingRequests: boolean;
+  canAcceptProductionRequests: boolean;
+  canChangeParticipantPermissions: boolean;
+  canEditDisplayName: boolean;
+  canLivestream: boolean;
+  canRecord: boolean;
+  canSpotlight: boolean;
+  chat: PresetsUpdateResponseDataPermissionsChat;
+  connectedMeetings: PresetsUpdateResponseDataPermissionsConnectedMeetings;
+  disableParticipantAudio: boolean;
+  disableParticipantScreensharing: boolean;
+  disableParticipantVideo: boolean;
+  /** Whether this participant is visible to others or not */
+  hiddenParticipant: boolean;
+  kickParticipant: boolean;
+  /** Media permissions */
+  media: PresetsUpdateResponseDataPermissionsMedia;
+  pinParticipant: boolean;
+  /** Plugin permissions */
+  plugins: PresetsUpdateResponseDataPermissionsPlugins;
+  /** Poll permissions */
+  polls: PresetsUpdateResponseDataPermissionsPolls;
+  /** Type of the recording peer */
+  recorderType: PresetsUpdateResponseDataPermissionsRecorderType;
+  showParticipantList: boolean;
+  /** Waiting room type */
+  waitingRoomType: PresetsUpdateResponseDataPermissionsWaitingRoomType;
+  acceptStageRequests?: boolean;
+  isRecorder?: boolean;
+  stageAccess?: PresetsUpdateResponseDataPermissionsStageAccess;
+  stageEnabled?: boolean;
+  transcriptionEnabled?: boolean;
+}
+export const PresetsUpdateResponseDataPermissions = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      acceptWaitingRequests: S.Boolean.pipe(T.Body("accept_waiting_requests")),
+      canAcceptProductionRequests: S.Boolean.pipe(
+        T.Body("can_accept_production_requests"),
+      ),
+      canChangeParticipantPermissions: S.Boolean.pipe(
+        T.Body("can_change_participant_permissions"),
+      ),
+      canEditDisplayName: S.Boolean.pipe(T.Body("can_edit_display_name")),
+      canLivestream: S.Boolean.pipe(T.Body("can_livestream")),
+      canRecord: S.Boolean.pipe(T.Body("can_record")),
+      canSpotlight: S.Boolean.pipe(T.Body("can_spotlight")),
+      chat: PresetsUpdateResponseDataPermissionsChat,
+      connectedMeetings:
+        PresetsUpdateResponseDataPermissionsConnectedMeetings.pipe(
+          T.Body("connected_meetings"),
+        ),
+      disableParticipantAudio: S.Boolean.pipe(
+        T.Body("disable_participant_audio"),
+      ),
+      disableParticipantScreensharing: S.Boolean.pipe(
+        T.Body("disable_participant_screensharing"),
+      ),
+      disableParticipantVideo: S.Boolean.pipe(
+        T.Body("disable_participant_video"),
+      ),
+      hiddenParticipant: S.Boolean.pipe(T.Body("hidden_participant")),
+      kickParticipant: S.Boolean.pipe(T.Body("kick_participant")),
+      media: PresetsUpdateResponseDataPermissionsMedia,
+      pinParticipant: S.Boolean.pipe(T.Body("pin_participant")),
+      plugins: PresetsUpdateResponseDataPermissionsPlugins,
+      polls: PresetsUpdateResponseDataPermissionsPolls,
+      recorderType: PresetsUpdateResponseDataPermissionsRecorderType.pipe(
+        T.Body("recorder_type"),
+      ),
+      showParticipantList: S.Boolean.pipe(T.Body("show_participant_list")),
+      waitingRoomType: PresetsUpdateResponseDataPermissionsWaitingRoomType.pipe(
+        T.Body("waiting_room_type"),
+      ),
+      acceptStageRequests: S.optional(
+        S.Boolean.pipe(T.Body("accept_stage_requests")),
+      ),
+      isRecorder: S.optional(S.Boolean.pipe(T.Body("is_recorder"))),
+      stageAccess: S.optional(
+        PresetsUpdateResponseDataPermissionsStageAccess.pipe(
+          T.Body("stage_access"),
+        ),
+      ),
+      stageEnabled: S.optional(S.Boolean.pipe(T.Body("stage_enabled"))),
+      transcriptionEnabled: S.optional(
+        S.Boolean.pipe(T.Body("transcription_enabled")),
+      ),
+    }),
+).annotate({
+  identifier: "PresetsUpdateResponseDataPermissions",
+}) as any as S.Schema<PresetsUpdateResponseDataPermissions>;
+
+export type PresetsUpdateResponseDataUiDesignTokensBorderRadius =
+  | "sharp"
+  | "rounded"
+  | "extra-rounded"
+  | "circular"
+  | (string & {});
+export const PresetsUpdateResponseDataUiDesignTokensBorderRadius =
+  /*@__PURE__*/ S.String;
+
+export type PresetsUpdateResponseDataUiDesignTokensBorderWidth =
+  | "none"
+  | "thin"
+  | "fat"
+  | (string & {});
+export const PresetsUpdateResponseDataUiDesignTokensBorderWidth =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateResponseDataUiDesignTokensColorsBackground {
+  "1000_": string;
+  "600_": string;
+  "700_": string;
+  "800_": string;
+  "900_": string;
+}
+export const PresetsUpdateResponseDataUiDesignTokensColorsBackground =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "1000_": S.String.pipe(T.Body('"1000"')),
+      "600_": S.String.pipe(T.Body('"600"')),
+      "700_": S.String.pipe(T.Body('"700"')),
+      "800_": S.String.pipe(T.Body('"800"')),
+      "900_": S.String.pipe(T.Body('"900"')),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataUiDesignTokensColorsBackground",
+  }) as any as S.Schema<PresetsUpdateResponseDataUiDesignTokensColorsBackground>;
+
+export interface PresetsUpdateResponseDataUiDesignTokensColorsBrand {
+  "300_": string;
+  "400_": string;
+  "500_": string;
+  "600_": string;
+  "700_": string;
+}
+export const PresetsUpdateResponseDataUiDesignTokensColorsBrand =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "300_": S.String.pipe(T.Body('"300"')),
+      "400_": S.String.pipe(T.Body('"400"')),
+      "500_": S.String.pipe(T.Body('"500"')),
+      "600_": S.String.pipe(T.Body('"600"')),
+      "700_": S.String.pipe(T.Body('"700"')),
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataUiDesignTokensColorsBrand",
+  }) as any as S.Schema<PresetsUpdateResponseDataUiDesignTokensColorsBrand>;
+
+export interface PresetsUpdateResponseDataUiDesignTokensColors {
+  background: PresetsUpdateResponseDataUiDesignTokensColorsBackground;
+  brand: PresetsUpdateResponseDataUiDesignTokensColorsBrand;
+  danger: string;
+  success: string;
+  text: string;
+  textOnBrand: string;
+  videoBg: string;
+  warning: string;
+}
+export const PresetsUpdateResponseDataUiDesignTokensColors =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      background: PresetsUpdateResponseDataUiDesignTokensColorsBackground,
+      brand: PresetsUpdateResponseDataUiDesignTokensColorsBrand,
+      danger: S.String,
+      success: S.String,
+      text: S.String,
+      textOnBrand: S.String.pipe(T.Body("text_on_brand")),
+      videoBg: S.String.pipe(T.Body("video_bg")),
+      warning: S.String,
+    }),
+  ).annotate({
+    identifier: "PresetsUpdateResponseDataUiDesignTokensColors",
+  }) as any as S.Schema<PresetsUpdateResponseDataUiDesignTokensColors>;
+
+export type PresetsUpdateResponseDataUiDesignTokensTheme =
+  | "darkest"
+  | "dark"
+  | "light"
+  | (string & {});
+export const PresetsUpdateResponseDataUiDesignTokensTheme =
+  /*@__PURE__*/ S.String;
+
+export interface PresetsUpdateResponseDataUiDesignTokens {
+  borderRadius: PresetsUpdateResponseDataUiDesignTokensBorderRadius;
+  borderWidth: PresetsUpdateResponseDataUiDesignTokensBorderWidth;
+  colors: PresetsUpdateResponseDataUiDesignTokensColors;
+  spacingBase: number;
+  theme: PresetsUpdateResponseDataUiDesignTokensTheme;
+  fontFamily?: string;
+  googleFont?: string;
+  logo?: string;
+}
+export const PresetsUpdateResponseDataUiDesignTokens = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      borderRadius: PresetsUpdateResponseDataUiDesignTokensBorderRadius.pipe(
+        T.Body("border_radius"),
+      ),
+      borderWidth: PresetsUpdateResponseDataUiDesignTokensBorderWidth.pipe(
+        T.Body("border_width"),
+      ),
+      colors: PresetsUpdateResponseDataUiDesignTokensColors,
+      spacingBase: S.Number.pipe(T.Body("spacing_base")),
+      theme: PresetsUpdateResponseDataUiDesignTokensTheme,
+      fontFamily: S.optional(S.String.pipe(T.Body("font_family"))),
+      googleFont: S.optional(S.String.pipe(T.Body("google_font"))),
+      logo: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "PresetsUpdateResponseDataUiDesignTokens",
+}) as any as S.Schema<PresetsUpdateResponseDataUiDesignTokens>;
+
+export interface PresetsUpdateResponseDataUi {
+  designTokens: PresetsUpdateResponseDataUiDesignTokens;
+}
+export const PresetsUpdateResponseDataUi = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    designTokens: PresetsUpdateResponseDataUiDesignTokens.pipe(
+      T.Body("design_tokens"),
+    ),
+  }),
+).annotate({
+  identifier: "PresetsUpdateResponseDataUi",
+}) as any as S.Schema<PresetsUpdateResponseDataUi>;
+
+export interface PresetsUpdateResponseData {
+  /** ID of the preset */
+  id: string;
+  config: PresetsUpdateResponseDataConfig;
+  /** Timestamp this preset was created at */
+  createdAt: string;
+  /** Name of the preset */
+  name: string;
+  permissions: PresetsUpdateResponseDataPermissions;
+  ui: PresetsUpdateResponseDataUi;
+  /** Timestamp this preset was last updated */
+  updatedAt: string;
+}
+export const PresetsUpdateResponseData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    config: PresetsUpdateResponseDataConfig,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    name: S.String,
+    permissions: PresetsUpdateResponseDataPermissions,
+    ui: PresetsUpdateResponseDataUi,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+  }),
+).annotate({
+  identifier: "PresetsUpdateResponseData",
+}) as any as S.Schema<PresetsUpdateResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface PatchPresetResponse {
+  /** Data returned by the operation */
+  data: PresetsUpdateResponseData;
+}
+export const PatchPresetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: PresetsUpdateResponseData,
+  }),
+).annotate({
+  identifier: "PatchPresetResponse",
+}) as any as S.Schema<PatchPresetResponse>;
+
+export type RecordingsPauseResumeStopRecordingRequestAction =
+  | "stop"
+  | "pause"
+  | "resume"
+  | (string & {});
+export const RecordingsPauseResumeStopRecordingRequestAction =
+  /*@__PURE__*/ S.String;
+
+export interface PauseResumeStopRecordingRecordingRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  appId: string;
+  recordingId: string;
+  action: RecordingsPauseResumeStopRecordingRequestAction;
+}
+export const PauseResumeStopRecordingRecordingRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      recordingId: S.String.pipe(T.Label("recording_id")),
+      action: RecordingsPauseResumeStopRecordingRequestAction,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/{recording_id}",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "PauseResumeStopRecordingRecordingRequest",
+}) as any as S.Schema<PauseResumeStopRecordingRecordingRequest>;
+
+export type RecordingsPauseResumeStopRecordingResponseDataStatus =
+  | "INVOKED"
+  | "RECORDING"
+  | "UPLOADING"
+  | (string & {});
+export const RecordingsPauseResumeStopRecordingResponseDataStatus =
+  /*@__PURE__*/ S.String;
+
+export type RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType =
+  "ORGANIZATION" | "USER" | (string & {});
+export const RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller {
+  /** Name of the user who started the recording. */
+  name?: string;
+  /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
+  type?: RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType;
+  /** The user ID of the person who started the recording. */
+  userId?: string;
+}
+export const RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(
+        RecordingsPauseResumeStopRecordingResponseDataStartReasonCallerType,
+      ),
+      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
+    }),
+  ).annotate({
+    identifier:
+      "RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller",
+  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller>;
+
+export type RecordingsPauseResumeStopRecordingResponseDataStartReasonReason =
+  | "API_CALL"
+  | "RECORD_ON_START"
+  | (string & {});
+export const RecordingsPauseResumeStopRecordingResponseDataStartReasonReason =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsPauseResumeStopRecordingResponseDataStartReason {
+  caller?: RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller;
+  /** Specifies if the recording was started using the "Start a Recording"API or using the parameter RECORD_ON_START in the "Create a meeting" API. */
+  reason?: RecordingsPauseResumeStopRecordingResponseDataStartReasonReason;
+}
+export const RecordingsPauseResumeStopRecordingResponseDataStartReason =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      caller: S.optional(
+        RecordingsPauseResumeStopRecordingResponseDataStartReasonCaller,
+      ),
+      reason: S.optional(
+        RecordingsPauseResumeStopRecordingResponseDataStartReasonReason,
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordingsPauseResumeStopRecordingResponseDataStartReason",
+  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStartReason>;
+
+export type RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType =
+  "ORGANIZATION" | "USER" | (string & {});
+export const RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller {
+  /** Name of the user who stopped the recording. */
+  name?: string;
+  /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
+  type?: RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType;
+  /** The user ID of the person who stopped the recording. */
+  userId?: string;
+}
+export const RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(
+        RecordingsPauseResumeStopRecordingResponseDataStopReasonCallerType,
+      ),
+      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
+    }),
+  ).annotate({
+    identifier:
+      "RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller",
+  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller>;
+
+export type RecordingsPauseResumeStopRecordingResponseDataStopReasonReason =
+  | "API_CALL"
+  | "INTERNAL_ERROR"
+  | "ALL_PEERS_LEFT"
+  | (string & {});
+export const RecordingsPauseResumeStopRecordingResponseDataStopReasonReason =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsPauseResumeStopRecordingResponseDataStopReason {
+  caller?: RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller;
+  /** Specifies the reason why the recording stopped. */
+  reason?: RecordingsPauseResumeStopRecordingResponseDataStopReasonReason;
+}
+export const RecordingsPauseResumeStopRecordingResponseDataStopReason =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      caller: S.optional(
+        RecordingsPauseResumeStopRecordingResponseDataStopReasonCaller,
+      ),
+      reason: S.optional(
+        RecordingsPauseResumeStopRecordingResponseDataStopReasonReason,
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordingsPauseResumeStopRecordingResponseDataStopReason",
+  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStopReason>;
+
+export type RecordingsPauseResumeStopRecordingResponseDataStorageConfigType =
+  | "aws"
+  | "azure"
+  | "digitalocean"
+  | (string & {});
+export const RecordingsPauseResumeStopRecordingResponseDataStorageConfigType =
+  /*@__PURE__*/ S.String;
+
+export type RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod =
+  "KEY" | "PASSWORD" | (string & {});
+export const RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsPauseResumeStopRecordingResponseDataStorageConfig {
+  /** Type of storage media. */
+  type: RecordingsPauseResumeStopRecordingResponseDataStorageConfigType;
+  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
+  accessKey?: string;
+  /** Authentication method used for "sftp" type storage medium */
+  authMethod?: RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod;
+  /** Name of the storage medium's bucket. */
+  bucket?: string;
+  /** SSH destination server host for SFTP type storage medium */
+  host?: string;
+  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
+  password?: string;
+  /** Path relative to the bucket root at which the recording will be placed. */
+  path?: string;
+  /** SSH destination server port for SFTP type storage medium */
+  port?: number;
+  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
+  privateKey?: string;
+  /** Region of the storage medium. */
+  region?: string;
+  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
+  secret?: string;
+  /** SSH destination server username for SFTP type storage medium */
+  username?: string;
+}
+export const RecordingsPauseResumeStopRecordingResponseDataStorageConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: RecordingsPauseResumeStopRecordingResponseDataStorageConfigType,
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      authMethod: S.optional(
+        RecordingsPauseResumeStopRecordingResponseDataStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RecordingsPauseResumeStopRecordingResponseDataStorageConfig",
+  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseDataStorageConfig>;
+
+export interface RecordingsPauseResumeStopRecordingResponseData {
+  /** ID of the recording */
+  id: string;
+  /** If the audio_config is passed, the URL for downloading the audio recording is returned. */
+  audioDownloadUrl: string;
+  /** URL where the recording can be downloaded. */
+  downloadUrl: string;
+  /** Timestamp when the download URL expires. */
+  downloadUrlExpiry: string;
+  /** File size of the recording, in bytes. */
+  fileSize: number;
+  /** Timestamp when this recording was invoked. */
+  invokedTime: string;
+  /** File name of the recording. */
+  outputFileName: string;
+  /** ID of the meeting session this recording is for. */
+  sessionId: string;
+  /** Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`. */
+  startedTime: string;
+  /** Current status of the recording. */
+  status: RecordingsPauseResumeStopRecordingResponseDataStatus;
+  /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
+  stoppedTime: string;
+  /** Total recording time in seconds. */
+  recordingDuration?: number;
+  startReason?: RecordingsPauseResumeStopRecordingResponseDataStartReason;
+  stopReason?: RecordingsPauseResumeStopRecordingResponseDataStopReason;
+  storageConfig?: RecordingsPauseResumeStopRecordingResponseDataStorageConfig;
+}
+export const RecordingsPauseResumeStopRecordingResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      audioDownloadUrl: S.String.pipe(T.Body("audio_download_url")),
+      downloadUrl: S.String.pipe(T.Body("download_url")),
+      downloadUrlExpiry: S.String.pipe(T.Body("download_url_expiry")),
+      fileSize: S.Number.pipe(T.Body("file_size")),
+      invokedTime: S.String.pipe(T.Body("invoked_time")),
+      outputFileName: S.String.pipe(T.Body("output_file_name")),
+      sessionId: S.String.pipe(T.Body("session_id")),
+      startedTime: S.String.pipe(T.Body("started_time")),
+      status: RecordingsPauseResumeStopRecordingResponseDataStatus,
+      stoppedTime: S.String.pipe(T.Body("stopped_time")),
+      recordingDuration: S.optional(
+        S.Number.pipe(T.Body("recording_duration")),
+      ),
+      startReason: S.optional(
+        RecordingsPauseResumeStopRecordingResponseDataStartReason.pipe(
+          T.Body("start_reason"),
+        ),
+      ),
+      stopReason: S.optional(
+        RecordingsPauseResumeStopRecordingResponseDataStopReason.pipe(
+          T.Body("stop_reason"),
+        ),
+      ),
+      storageConfig: S.optional(
+        RecordingsPauseResumeStopRecordingResponseDataStorageConfig.pipe(
+          T.Body("storage_config"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordingsPauseResumeStopRecordingResponseData",
+  }) as any as S.Schema<RecordingsPauseResumeStopRecordingResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface PauseResumeStopRecordingRecordingResponse {
+  /** Data returned by the operation */
+  data?: RecordingsPauseResumeStopRecordingResponseData;
+}
+export const PauseResumeStopRecordingRecordingResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      data: S.optional(RecordingsPauseResumeStopRecordingResponseData),
+    }),
+  ).annotate({
+    identifier: "PauseResumeStopRecordingRecordingResponse",
+  }) as any as S.Schema<PauseResumeStopRecordingRecordingResponse>;
+
+export interface PostAppRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  name: string;
+}
+export const PostAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/realtime/kit/apps",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "PostAppRequest" }) as any as S.Schema<PostAppRequest>;
+
+export interface AppsPostResponseDataApp {
+  id?: string;
+  createdAt?: string;
+  name?: string;
+}
+export const AppsPostResponseDataApp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AppsPostResponseDataApp",
+}) as any as S.Schema<AppsPostResponseDataApp>;
+
+export interface AppsPostResponseData {
+  app?: AppsPostResponseDataApp;
+}
+export const AppsPostResponseData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    app: S.optional(AppsPostResponseDataApp),
+  }),
+).annotate({
+  identifier: "AppsPostResponseData",
+}) as any as S.Schema<AppsPostResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface PostAppResponse {
+  data?: AppsPostResponseData;
+}
+export const PostAppResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(AppsPostResponseData),
+  }),
+).annotate({
+  identifier: "PostAppResponse",
+}) as any as S.Schema<PostAppResponse>;
+
+export interface RefreshParticipantTokenMeetingRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+  participantId: string;
+}
+export const RefreshParticipantTokenMeetingRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      meetingId: S.String.pipe(T.Label("meeting_id")),
+      participantId: S.String.pipe(T.Label("participant_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/participants/{participant_id}/token",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "RefreshParticipantTokenMeetingRequest",
+}) as any as S.Schema<RefreshParticipantTokenMeetingRequest>;
+
+export interface MeetingsRefreshParticipantTokenResponseData {
+  /** Regenerated participant's authentication token. */
+  token: string;
+}
+export const MeetingsRefreshParticipantTokenResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      token: S.String,
+    }),
+  ).annotate({
+    identifier: "MeetingsRefreshParticipantTokenResponseData",
+  }) as any as S.Schema<MeetingsRefreshParticipantTokenResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface RefreshParticipantTokenMeetingResponse {
+  /** Data returned by the operation */
+  data: MeetingsRefreshParticipantTokenResponseData;
+}
+export const RefreshParticipantTokenMeetingResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      data: MeetingsRefreshParticipantTokenResponseData,
+    }),
+).annotate({
+  identifier: "RefreshParticipantTokenMeetingResponse",
+}) as any as S.Schema<RefreshParticipantTokenMeetingResponse>;
+
+export type MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType =
+  | "general"
+  | "team_meeting"
+  | "sales_call"
+  | (string & {});
+export const MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat =
+  | "plain_text"
+  | "markdown"
+  | (string & {});
+export const MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsReplaceMeetingByIdRequestAiConfigSummarization {
+  /** Defines the style of the summary, such as general, team meeting, or sales call. */
+  summaryType?: MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType;
+  /** Determines the text format of the summary, such as plain text or markdown. */
+  textFormat?: MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat;
+  /** Sets the maximum number of words in the meeting summary. */
+  wordLimit?: number;
+}
+export const MeetingsReplaceMeetingByIdRequestAiConfigSummarization =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      summaryType: S.optional(
+        MeetingsReplaceMeetingByIdRequestAiConfigSummarizationSummaryType.pipe(
+          T.Body("summary_type"),
+        ),
+      ),
+      textFormat: S.optional(
+        MeetingsReplaceMeetingByIdRequestAiConfigSummarizationTextFormat.pipe(
+          T.Body("text_format"),
+        ),
+      ),
+      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsReplaceMeetingByIdRequestAiConfigSummarization",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigSummarization>;
+
+export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList =
+  string[];
+export const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList>;
+
+export type MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
+  | "en-US"
+  | "en-IN"
+  | "de"
+  | (string & {});
+export const MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsReplaceMeetingByIdRequestAiConfigTranscription {
+  /** Adds specific terms to improve accurate detection during transcription. */
+  keywords?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList;
+  /** Specifies the language code for transcription to ensure accurate results. */
+  language?: MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage;
+  /** Control the inclusion of offensive language in transcriptions. */
+  profanityFilter?: boolean;
+}
+export const MeetingsReplaceMeetingByIdRequestAiConfigTranscription =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      keywords: S.optional(
+        MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionKeywordsList,
+      ),
+      language: S.optional(
+        MeetingsReplaceMeetingByIdRequestAiConfigTranscriptionLanguage,
+      ),
+      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsReplaceMeetingByIdRequestAiConfigTranscription",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfigTranscription>;
+
+export interface MeetingsReplaceMeetingByIdRequestAiConfig {
+  /** Summary Config */
+  summarization?: MeetingsReplaceMeetingByIdRequestAiConfigSummarization;
+  /** Transcription Configurations */
+  transcription?: MeetingsReplaceMeetingByIdRequestAiConfigTranscription;
+}
+export const MeetingsReplaceMeetingByIdRequestAiConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      summarization: S.optional(
+        MeetingsReplaceMeetingByIdRequestAiConfigSummarization,
+      ),
+      transcription: S.optional(
+        MeetingsReplaceMeetingByIdRequestAiConfigTranscription,
+      ),
+    }),
+  ).annotate({
+    identifier: "MeetingsReplaceMeetingByIdRequestAiConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestAiConfig>;
+
+export type MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel =
+  "mono" | "stereo" | (string & {});
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec =
+  | "MP3"
+  | "AAC"
+  | (string & {});
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig {
+  /** Audio signal pathway within an audio file that carries a specific sound source. */
+  channel?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel;
+  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
+  codec?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec;
+  /** Controls whether to export audio file seperately */
+  exportFile?: boolean;
+}
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      channel: S.optional(
+        MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigChannel,
+      ),
+      codec: S.optional(
+        MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig>;
+
+export interface MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig {
+  /** RTMP URL to stream to */
+  rtmpUrl?: string;
+}
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig>;
+
+export interface MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig {
+  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
+  enabled: boolean;
+}
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig>;
+
+export type MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType =
+  | "aws"
+  | "azure"
+  | "digitalocean"
+  | (string & {});
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
+  "KEY" | "PASSWORD" | (string & {});
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig {
+  /** Type of storage media. */
+  type: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType;
+  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
+  accessKey?: string;
+  /** Authentication method used for "sftp" type storage medium */
+  authMethod?: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod;
+  /** Name of the storage medium's bucket. */
+  bucket?: string;
+  /** SSH destination server host for SFTP type storage medium */
+  host?: string;
+  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
+  password?: string;
+  /** Path relative to the bucket root at which the recording will be placed. */
+  path?: string;
+  /** SSH destination server port for SFTP type storage medium */
+  port?: number;
+  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
+  privateKey?: string;
+  /** Region of the storage medium. */
+  region?: string;
+  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
+  secret?: string;
+  /** SSH destination server username for SFTP type storage medium */
+  username?: string;
+}
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigType,
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      authMethod: S.optional(
+        MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig>;
+
+export type MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec =
+  | "H264"
+  | "VP8"
+  | (string & {});
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
+  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize {
+  /** Height of the watermark in px */
+  height?: number;
+  /** Width of the watermark in px */
+  width?: number;
+}
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize>;
+
+export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark {
+  /** Position of the watermark */
+  position?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition;
+  /** Size of the watermark */
+  size?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize;
+  /** URL of the watermark image */
+  url?: string;
+}
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(
+        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
+      ),
+      size: S.optional(
+        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize,
+      ),
+      url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark>;
+
+export interface MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig {
+  /** Codec using which the recording will be encoded. */
+  codec?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec;
+  /** Controls whether to export video file seperately */
+  exportFile?: boolean;
+  /** Height of the recording video in pixels */
+  height?: number;
+  /** Watermark to be added to the recording */
+  watermark?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark;
+  /** Width of the recording video in pixels */
+  width?: number;
+}
+export const MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      codec: S.optional(
+        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      height: S.optional(S.Number),
+      watermark: S.optional(
+        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfigWatermark,
+      ),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig>;
+
+export interface MeetingsReplaceMeetingByIdRequestRecordingConfig {
+  /** Object containing configuration regarding the audio that is being recorded. */
+  audioConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig;
+  /** Adds a prefix to the beginning of the file name of the recording. */
+  fileNamePrefix?: string;
+  liveStreamingConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig;
+  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
+  maxSeconds?: number;
+  realtimekitBucketConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig;
+  storageConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig;
+  videoConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig;
+}
+export const MeetingsReplaceMeetingByIdRequestRecordingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audioConfig: S.optional(
+        MeetingsReplaceMeetingByIdRequestRecordingConfigAudioConfig.pipe(
+          T.Body("audio_config"),
+        ),
+      ),
+      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      liveStreamingConfig: S.optional(
+        MeetingsReplaceMeetingByIdRequestRecordingConfigLiveStreamingConfig.pipe(
+          T.Body("live_streaming_config"),
+        ),
+      ),
+      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      realtimekitBucketConfig: S.optional(
+        MeetingsReplaceMeetingByIdRequestRecordingConfigRealtimekitBucketConfig.pipe(
+          T.Body("realtimekit_bucket_config"),
+        ),
+      ),
+      storageConfig: S.optional(
+        MeetingsReplaceMeetingByIdRequestRecordingConfigStorageConfig.pipe(
+          T.Body("storage_config"),
+        ),
+      ),
+      videoConfig: S.optional(
+        MeetingsReplaceMeetingByIdRequestRecordingConfigVideoConfig.pipe(
+          T.Body("video_config"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "MeetingsReplaceMeetingByIdRequestRecordingConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdRequestRecordingConfig>;
+
+export interface ReplaceMeetingByIdMeetingRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+  /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
+  aiConfig?: MeetingsReplaceMeetingByIdRequestAiConfig;
+  /** Specifies if the meeting should start getting livestreamed on start. */
+  liveStreamOnStart?: boolean;
+  /** If a meeting is set to persist_chat, meeting chat would remain for a week within the meeting space. */
+  persistChat?: boolean;
+  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
+  recordOnStart?: boolean;
+  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
+  recordingConfig?: MeetingsReplaceMeetingByIdRequestRecordingConfig;
+  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
+  sessionKeepAliveTimeInSecs?: number;
+  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
+  summarizeOnEnd?: boolean;
+  /** Title of the meeting */
+  title?: string;
+  /** Automatically generate transcripts when the meeting ends. */
+  transcribeOnEnd?: boolean;
+}
+export const ReplaceMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    meetingId: S.String.pipe(T.Label("meeting_id")),
+    aiConfig: S.optional(
+      MeetingsReplaceMeetingByIdRequestAiConfig.pipe(T.Body("ai_config")),
+    ),
+    liveStreamOnStart: S.optional(
+      S.Boolean.pipe(T.Body("live_stream_on_start")),
+    ),
+    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+    recordingConfig: S.optional(
+      MeetingsReplaceMeetingByIdRequestRecordingConfig.pipe(
+        T.Body("recording_config"),
+      ),
+    ),
+    sessionKeepAliveTimeInSecs: S.optional(
+      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+    ),
+    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
+    title: S.optional(S.String),
+    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ReplaceMeetingByIdMeetingRequest",
+}) as any as S.Schema<ReplaceMeetingByIdMeetingRequest>;
+
+export type MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType =
+  "general" | "team_meeting" | "sales_call" | (string & {});
+export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat =
+  "plain_text" | "markdown" | (string & {});
+export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization {
+  /** Defines the style of the summary, such as general, team meeting, or sales call. */
+  summaryType?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType;
+  /** Determines the text format of the summary, such as plain text or markdown. */
+  textFormat?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat;
+  /** Sets the maximum number of words in the meeting summary. */
+  wordLimit?: number;
+}
+export const MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      summaryType: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationSummaryType.pipe(
+          T.Body("summary_type"),
+        ),
+      ),
+      textFormat: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataAiConfigSummarizationTextFormat.pipe(
+          T.Body("text_format"),
+        ),
+      ),
+      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization>;
+
+export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
+  string[];
+export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
+
+export type MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage =
+  "en-US" | "en-IN" | "de" | (string & {});
+export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription {
+  /** Adds specific terms to improve accurate detection during transcription. */
+  keywords?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList;
+  /** Specifies the language code for transcription to ensure accurate results. */
+  language?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage;
+  /** Control the inclusion of offensive language in transcriptions. */
+  profanityFilter?: boolean;
+}
+export const MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      keywords: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionKeywordsList,
+      ),
+      language: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataAiConfigTranscriptionLanguage,
+      ),
+      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription>;
+
+export interface MeetingsReplaceMeetingByIdResponseDataAiConfig {
+  /** Summary Config */
+  summarization?: MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization;
+  /** Transcription Configurations */
+  transcription?: MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription;
+}
+export const MeetingsReplaceMeetingByIdResponseDataAiConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      summarization: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataAiConfigSummarization,
+      ),
+      transcription: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataAiConfigTranscription,
+      ),
+    }),
+  ).annotate({
+    identifier: "MeetingsReplaceMeetingByIdResponseDataAiConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataAiConfig>;
+
+export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
+  "mono" | "stereo" | (string & {});
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
+  "MP3" | "AAC" | (string & {});
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig {
+  /** Audio signal pathway within an audio file that carries a specific sound source. */
+  channel?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel;
+  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
+  codec?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec;
+  /** Controls whether to export audio file seperately */
+  exportFile?: boolean;
+}
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      channel: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigChannel,
+      ),
+      codec: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig>;
+
+export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig {
+  /** RTMP URL to stream to */
+  rtmpUrl?: string;
+}
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig>;
+
+export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig {
+  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
+  enabled: boolean;
+}
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig>;
+
+export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType =
+  "aws" | "azure" | "digitalocean" | (string & {});
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
+  "KEY" | "PASSWORD" | (string & {});
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig {
+  /** Type of storage media. */
+  type: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType;
+  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
+  accessKey?: string;
+  /** Authentication method used for "sftp" type storage medium */
+  authMethod?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod;
+  /** Name of the storage medium's bucket. */
+  bucket?: string;
+  /** SSH destination server host for SFTP type storage medium */
+  host?: string;
+  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
+  password?: string;
+  /** Path relative to the bucket root at which the recording will be placed. */
+  path?: string;
+  /** SSH destination server port for SFTP type storage medium */
+  port?: number;
+  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
+  privateKey?: string;
+  /** Region of the storage medium. */
+  region?: string;
+  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
+  secret?: string;
+  /** SSH destination server username for SFTP type storage medium */
+  username?: string;
+}
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigType,
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      authMethod: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig>;
+
+export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
+  "H264" | "VP8" | (string & {});
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
+  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize {
+  /** Height of the watermark in px */
+  height?: number;
+  /** Width of the watermark in px */
+  width?: number;
+}
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize>;
+
+export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark {
+  /** Position of the watermark */
+  position?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition;
+  /** Size of the watermark */
+  size?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize;
+  /** URL of the watermark image */
+  url?: string;
+}
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition,
+      ),
+      size: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize,
+      ),
+      url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark>;
+
+export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig {
+  /** Codec using which the recording will be encoded. */
+  codec?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec;
+  /** Controls whether to export video file seperately */
+  exportFile?: boolean;
+  /** Height of the recording video in pixels */
+  height?: number;
+  /** Watermark to be added to the recording */
+  watermark?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark;
+  /** Width of the recording video in pixels */
+  width?: number;
+}
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      codec: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      height: S.optional(S.Number),
+      watermark: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfigWatermark,
+      ),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig>;
+
+export interface MeetingsReplaceMeetingByIdResponseDataRecordingConfig {
+  /** Object containing configuration regarding the audio that is being recorded. */
+  audioConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig;
+  /** Adds a prefix to the beginning of the file name of the recording. */
+  fileNamePrefix?: string;
+  liveStreamingConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig;
+  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
+  maxSeconds?: number;
+  realtimekitBucketConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig;
+  storageConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig;
+  videoConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig;
+}
+export const MeetingsReplaceMeetingByIdResponseDataRecordingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audioConfig: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfigAudioConfig.pipe(
+          T.Body("audio_config"),
+        ),
+      ),
+      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      liveStreamingConfig: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfigLiveStreamingConfig.pipe(
+          T.Body("live_streaming_config"),
+        ),
+      ),
+      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      realtimekitBucketConfig: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig.pipe(
+          T.Body("realtimekit_bucket_config"),
+        ),
+      ),
+      storageConfig: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfigStorageConfig.pipe(
+          T.Body("storage_config"),
+        ),
+      ),
+      videoConfig: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfigVideoConfig.pipe(
+          T.Body("video_config"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "MeetingsReplaceMeetingByIdResponseDataRecordingConfig",
+  }) as any as S.Schema<MeetingsReplaceMeetingByIdResponseDataRecordingConfig>;
+
+export type MeetingsReplaceMeetingByIdResponseDataStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | (string & {});
+export const MeetingsReplaceMeetingByIdResponseDataStatus =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsReplaceMeetingByIdResponseData {
+  /** ID of the meeting. */
+  id: string;
+  /** Timestamp the object was created at. The time is returned in ISO format. */
+  createdAt: string;
+  /** Timestamp the object was updated at. The time is returned in ISO format. */
+  updatedAt: string;
+  /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
+  aiConfig?: MeetingsReplaceMeetingByIdResponseDataAiConfig;
+  /** Specifies if the meeting should start getting livestreamed on start. */
+  liveStreamOnStart?: boolean;
+  /** Specifies if Chat within a meeting should persist for a week. */
+  persistChat?: boolean;
+  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
+  recordOnStart?: boolean;
+  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
+  recordingConfig?: MeetingsReplaceMeetingByIdResponseDataRecordingConfig;
+  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
+  sessionKeepAliveTimeInSecs?: number;
+  /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
+  status?: MeetingsReplaceMeetingByIdResponseDataStatus;
+  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
+  summarizeOnEnd?: boolean;
+  /** Title of the meeting. */
+  title?: string;
+  /** Automatically generate transcripts when the meeting ends. */
+  transcribeOnEnd?: boolean;
+}
+export const MeetingsReplaceMeetingByIdResponseData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      aiConfig: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataAiConfig.pipe(
+          T.Body("ai_config"),
+        ),
+      ),
+      liveStreamOnStart: S.optional(
+        S.Boolean.pipe(T.Body("live_stream_on_start")),
+      ),
+      persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
+      recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+      recordingConfig: S.optional(
+        MeetingsReplaceMeetingByIdResponseDataRecordingConfig.pipe(
+          T.Body("recording_config"),
+        ),
+      ),
+      sessionKeepAliveTimeInSecs: S.optional(
+        S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+      ),
+      status: S.optional(MeetingsReplaceMeetingByIdResponseDataStatus),
+      summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
+      title: S.optional(S.String),
+      transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+    }),
+).annotate({
+  identifier: "MeetingsReplaceMeetingByIdResponseData",
+}) as any as S.Schema<MeetingsReplaceMeetingByIdResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface ReplaceMeetingByIdMeetingResponse {
+  /** Data returned by the operation */
+  data?: MeetingsReplaceMeetingByIdResponseData;
+}
+export const ReplaceMeetingByIdMeetingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(MeetingsReplaceMeetingByIdResponseData),
+  }),
+).annotate({
+  identifier: "ReplaceMeetingByIdMeetingResponse",
+}) as any as S.Schema<ReplaceMeetingByIdMeetingResponse>;
 
 export type WebhooksReplaceWebhookRequestEventsItem =
   | "meeting.started"
@@ -15871,7 +14227,7 @@ export const WebhooksReplaceWebhookRequestEventsList = /*@__PURE__*/ S.Array(
   WebhooksReplaceWebhookRequestEventsItem,
 ) as any as S.Schema<WebhooksReplaceWebhookRequestEventsList>;
 
-export interface WebhooksReplaceWebhookRequest {
+export interface ReplaceWebhookWebhookRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The app identifier tag. */
@@ -15886,7 +14242,7 @@ export interface WebhooksReplaceWebhookRequest {
   /** Set whether or not the webhook should be active when created */
   enabled?: boolean;
 }
-export const WebhooksReplaceWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+export const ReplaceWebhookWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -15903,8 +14259,8 @@ export const WebhooksReplaceWebhookRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "WebhooksReplaceWebhookRequest",
-}) as any as S.Schema<WebhooksReplaceWebhookRequest>;
+  identifier: "ReplaceWebhookWebhookRequest",
+}) as any as S.Schema<ReplaceWebhookWebhookRequest>;
 
 export type WebhooksReplaceWebhookResponseDataEventsItem =
   | "meeting.started"
@@ -15952,226 +14308,2350 @@ export const WebhooksReplaceWebhookResponseData = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<WebhooksReplaceWebhookResponseData>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface WebhooksReplaceWebhookResponse {
+export interface ReplaceWebhookWebhookResponse {
   data: WebhooksReplaceWebhookResponseData;
 }
-export const WebhooksReplaceWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+export const ReplaceWebhookWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: WebhooksReplaceWebhookResponseData,
   }),
 ).annotate({
-  identifier: "WebhooksReplaceWebhookResponse",
-}) as any as S.Schema<WebhooksReplaceWebhookResponse>;
+  identifier: "ReplaceWebhookWebhookResponse",
+}) as any as S.Schema<ReplaceWebhookWebhookResponse>;
 
-export type ActiveSessionCreatePollError = CloudflareOpError;
-/** Creates a new poll in an active session for the given meeting ID. */
-export const activeSessionCreatePoll: API.OperationMethod<
-  ActiveSessionCreatePollRequest,
-  ActiveSessionCreatePollResponse,
-  ActiveSessionCreatePollError,
+export interface LivestreamsStartLivestreamingAMeetingRequestVideoConfig {
+  /** Height of the livestreaming video in pixels */
+  height?: number;
+  /** Width of the livestreaming video in pixels */
+  width?: number;
+}
+export const LivestreamsStartLivestreamingAMeetingRequestVideoConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "LivestreamsStartLivestreamingAMeetingRequestVideoConfig",
+  }) as any as S.Schema<LivestreamsStartLivestreamingAMeetingRequestVideoConfig>;
+
+export interface StartLivestreamingAMeetingLivestreamRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+  name?: string;
+  videoConfig?: LivestreamsStartLivestreamingAMeetingRequestVideoConfig;
+}
+export const StartLivestreamingAMeetingLivestreamRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      meetingId: S.String.pipe(T.Label("meeting_id")),
+      name: S.optional(S.String),
+      videoConfig: S.optional(
+        LivestreamsStartLivestreamingAMeetingRequestVideoConfig.pipe(
+          T.Body("video_config"),
+        ),
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/livestreams",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "StartLivestreamingAMeetingLivestreamRequest",
+  }) as any as S.Schema<StartLivestreamingAMeetingLivestreamRequest>;
+
+export type LivestreamsStartLivestreamingAMeetingResponseDataStatus =
+  | "LIVE"
+  | "IDLE"
+  | "ERRORED"
+  | "INVOKED"
+  | (string & {});
+export const LivestreamsStartLivestreamingAMeetingResponseDataStatus =
+  /*@__PURE__*/ S.String;
+
+export interface LivestreamsStartLivestreamingAMeetingResponseData {
+  /** The livestream ID. */
+  id?: string;
+  /** The server URL to which the RTMP encoder sends the video and audio data. */
+  ingestServer?: string;
+  /** The web address that viewers can use to watch the livestream. */
+  playbackUrl?: string;
+  status?: LivestreamsStartLivestreamingAMeetingResponseDataStatus;
+  /** Unique key for accessing each livestream. */
+  streamKey?: string;
+}
+export const LivestreamsStartLivestreamingAMeetingResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      ingestServer: S.optional(S.String.pipe(T.Body("ingest_server"))),
+      playbackUrl: S.optional(S.String.pipe(T.Body("playback_url"))),
+      status: S.optional(
+        LivestreamsStartLivestreamingAMeetingResponseDataStatus,
+      ),
+      streamKey: S.optional(S.String.pipe(T.Body("stream_key"))),
+    }),
+  ).annotate({
+    identifier: "LivestreamsStartLivestreamingAMeetingResponseData",
+  }) as any as S.Schema<LivestreamsStartLivestreamingAMeetingResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface StartLivestreamingAMeetingLivestreamResponse {
+  data?: LivestreamsStartLivestreamingAMeetingResponseData;
+}
+export const StartLivestreamingAMeetingLivestreamResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      data: S.optional(LivestreamsStartLivestreamingAMeetingResponseData),
+    }),
+  ).annotate({
+    identifier: "StartLivestreamingAMeetingLivestreamResponse",
+  }) as any as S.Schema<StartLivestreamingAMeetingLivestreamResponse>;
+
+export type RecordingsStartRecordingsRequestAudioConfigChannel =
+  | "mono"
+  | "stereo"
+  | (string & {});
+export const RecordingsStartRecordingsRequestAudioConfigChannel =
+  /*@__PURE__*/ S.String;
+
+export type RecordingsStartRecordingsRequestAudioConfigCodec =
+  | "MP3"
+  | "AAC"
+  | (string & {});
+export const RecordingsStartRecordingsRequestAudioConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsStartRecordingsRequestAudioConfig {
+  /** Audio signal pathway within an audio file that carries a specific sound source. */
+  channel?: RecordingsStartRecordingsRequestAudioConfigChannel;
+  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
+  codec?: RecordingsStartRecordingsRequestAudioConfigCodec;
+  /** Controls whether to export audio file seperately */
+  exportFile?: boolean;
+}
+export const RecordingsStartRecordingsRequestAudioConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      channel: S.optional(RecordingsStartRecordingsRequestAudioConfigChannel),
+      codec: S.optional(RecordingsStartRecordingsRequestAudioConfigCodec),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsRequestAudioConfig",
+  }) as any as S.Schema<RecordingsStartRecordingsRequestAudioConfig>;
+
+export type RecordingsStartRecordingsRequestInteractiveConfigType =
+  | "ID3"
+  | (string & {});
+export const RecordingsStartRecordingsRequestInteractiveConfigType =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsStartRecordingsRequestInteractiveConfig {
+  /** The metadata is presented in the form of ID3 tags. */
+  type?: RecordingsStartRecordingsRequestInteractiveConfigType;
+}
+export const RecordingsStartRecordingsRequestInteractiveConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: S.optional(RecordingsStartRecordingsRequestInteractiveConfigType),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsRequestInteractiveConfig",
+  }) as any as S.Schema<RecordingsStartRecordingsRequestInteractiveConfig>;
+
+export interface RecordingsStartRecordingsRequestRealtimekitBucketConfig {
+  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
+  enabled: boolean;
+}
+export const RecordingsStartRecordingsRequestRealtimekitBucketConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsRequestRealtimekitBucketConfig",
+  }) as any as S.Schema<RecordingsStartRecordingsRequestRealtimekitBucketConfig>;
+
+export interface RecordingsStartRecordingsRequestRtmpOutConfig {
+  /** RTMP URL to stream to */
+  rtmpUrl?: string;
+}
+export const RecordingsStartRecordingsRequestRtmpOutConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsRequestRtmpOutConfig",
+  }) as any as S.Schema<RecordingsStartRecordingsRequestRtmpOutConfig>;
+
+export type RecordingsStartRecordingsRequestStorageConfigType =
+  | "aws"
+  | "azure"
+  | "digitalocean"
+  | (string & {});
+export const RecordingsStartRecordingsRequestStorageConfigType =
+  /*@__PURE__*/ S.String;
+
+export type RecordingsStartRecordingsRequestStorageConfigAuthMethod =
+  | "KEY"
+  | "PASSWORD"
+  | (string & {});
+export const RecordingsStartRecordingsRequestStorageConfigAuthMethod =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsStartRecordingsRequestStorageConfig {
+  /** Type of storage media. */
+  type: RecordingsStartRecordingsRequestStorageConfigType;
+  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
+  accessKey?: string;
+  /** Authentication method used for "sftp" type storage medium */
+  authMethod?: RecordingsStartRecordingsRequestStorageConfigAuthMethod;
+  /** Name of the storage medium's bucket. */
+  bucket?: string;
+  /** SSH destination server host for SFTP type storage medium */
+  host?: string;
+  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
+  password?: string;
+  /** Path relative to the bucket root at which the recording will be placed. */
+  path?: string;
+  /** SSH destination server port for SFTP type storage medium */
+  port?: number;
+  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
+  privateKey?: string;
+  /** Region of the storage medium. */
+  region?: string;
+  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
+  secret?: string;
+  /** SSH destination server username for SFTP type storage medium */
+  username?: string;
+}
+export const RecordingsStartRecordingsRequestStorageConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: RecordingsStartRecordingsRequestStorageConfigType,
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      authMethod: S.optional(
+        RecordingsStartRecordingsRequestStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsRequestStorageConfig",
+  }) as any as S.Schema<RecordingsStartRecordingsRequestStorageConfig>;
+
+export type RecordingsStartRecordingsRequestVideoConfigCodec =
+  | "H264"
+  | "VP8"
+  | (string & {});
+export const RecordingsStartRecordingsRequestVideoConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export type RecordingsStartRecordingsRequestVideoConfigWatermarkPosition =
+  | "left top"
+  | "right top"
+  | "left bottom"
+  | "right bottom"
+  | (string & {});
+export const RecordingsStartRecordingsRequestVideoConfigWatermarkPosition =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsStartRecordingsRequestVideoConfigWatermarkSize {
+  /** Height of the watermark in px */
+  height?: number;
+  /** Width of the watermark in px */
+  width?: number;
+}
+export const RecordingsStartRecordingsRequestVideoConfigWatermarkSize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsRequestVideoConfigWatermarkSize",
+  }) as any as S.Schema<RecordingsStartRecordingsRequestVideoConfigWatermarkSize>;
+
+export interface RecordingsStartRecordingsRequestVideoConfigWatermark {
+  /** Position of the watermark */
+  position?: RecordingsStartRecordingsRequestVideoConfigWatermarkPosition;
+  /** Size of the watermark */
+  size?: RecordingsStartRecordingsRequestVideoConfigWatermarkSize;
+  /** URL of the watermark image */
+  url?: string;
+}
+export const RecordingsStartRecordingsRequestVideoConfigWatermark =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(
+        RecordingsStartRecordingsRequestVideoConfigWatermarkPosition,
+      ),
+      size: S.optional(
+        RecordingsStartRecordingsRequestVideoConfigWatermarkSize,
+      ),
+      url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsRequestVideoConfigWatermark",
+  }) as any as S.Schema<RecordingsStartRecordingsRequestVideoConfigWatermark>;
+
+export interface RecordingsStartRecordingsRequestVideoConfig {
+  /** Codec using which the recording will be encoded. */
+  codec?: RecordingsStartRecordingsRequestVideoConfigCodec;
+  /** Controls whether to export video file seperately */
+  exportFile?: boolean;
+  /** Height of the recording video in pixels */
+  height?: number;
+  /** Watermark to be added to the recording */
+  watermark?: RecordingsStartRecordingsRequestVideoConfigWatermark;
+  /** Width of the recording video in pixels */
+  width?: number;
+}
+export const RecordingsStartRecordingsRequestVideoConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      codec: S.optional(RecordingsStartRecordingsRequestVideoConfigCodec),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      height: S.optional(S.Number),
+      watermark: S.optional(
+        RecordingsStartRecordingsRequestVideoConfigWatermark,
+      ),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsRequestVideoConfig",
+  }) as any as S.Schema<RecordingsStartRecordingsRequestVideoConfig>;
+
+export interface StartRecordingsRecordingRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  /** ID of the meeting to record. */
+  meetingId: string;
+  /** By default, a meeting allows only one recording to run at a time. Enabling the `allow_multiple_recordings` parameter to true allows you to initiate multiple recordings concurrently in the same meeting. This allows you to record separate videos of the same meeting with different configurations, such as portrait mode or landscape mode. */
+  allowMultipleRecordings?: boolean;
+  /** Object containing configuration regarding the audio that is being recorded. */
+  audioConfig?: RecordingsStartRecordingsRequestAudioConfig;
+  /** Update the recording file name. */
+  fileNamePrefix?: string;
+  /** Allows you to add timed metadata to your recordings, which are digital markers inserted into a video file to provide contextual information at specific points in the content range. The ID3 tags containing this information are available to clients on the playback timeline in HLS format. The output files are generated in a compressed .tar format. */
+  interactiveConfig?: RecordingsStartRecordingsRequestInteractiveConfig;
+  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
+  maxSeconds?: number;
+  realtimekitBucketConfig?: RecordingsStartRecordingsRequestRealtimekitBucketConfig;
+  rtmpOutConfig?: RecordingsStartRecordingsRequestRtmpOutConfig;
+  storageConfig?: RecordingsStartRecordingsRequestStorageConfig;
+  /** Pass a custom url to record arbitary screen */
+  url?: string;
+  videoConfig?: RecordingsStartRecordingsRequestVideoConfig;
+}
+export const StartRecordingsRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    meetingId: S.String.pipe(T.Body("meeting_id")),
+    allowMultipleRecordings: S.optional(
+      S.Boolean.pipe(T.Body("allow_multiple_recordings")),
+    ),
+    audioConfig: S.optional(
+      RecordingsStartRecordingsRequestAudioConfig.pipe(T.Body("audio_config")),
+    ),
+    fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+    interactiveConfig: S.optional(
+      RecordingsStartRecordingsRequestInteractiveConfig.pipe(
+        T.Body("interactive_config"),
+      ),
+    ),
+    maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+    realtimekitBucketConfig: S.optional(
+      RecordingsStartRecordingsRequestRealtimekitBucketConfig.pipe(
+        T.Body("realtimekit_bucket_config"),
+      ),
+    ),
+    rtmpOutConfig: S.optional(
+      RecordingsStartRecordingsRequestRtmpOutConfig.pipe(
+        T.Body("rtmp_out_config"),
+      ),
+    ),
+    storageConfig: S.optional(
+      RecordingsStartRecordingsRequestStorageConfig.pipe(
+        T.Body("storage_config"),
+      ),
+    ),
+    url: S.optional(S.String),
+    videoConfig: S.optional(
+      RecordingsStartRecordingsRequestVideoConfig.pipe(T.Body("video_config")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "StartRecordingsRecordingRequest",
+}) as any as S.Schema<StartRecordingsRecordingRequest>;
+
+export type RecordingsStartRecordingsResponseDataStatus =
+  | "INVOKED"
+  | "RECORDING"
+  | "UPLOADING"
+  | (string & {});
+export const RecordingsStartRecordingsResponseDataStatus =
+  /*@__PURE__*/ S.String;
+
+export type RecordingsStartRecordingsResponseDataStartReasonCallerType =
+  | "ORGANIZATION"
+  | "USER"
+  | (string & {});
+export const RecordingsStartRecordingsResponseDataStartReasonCallerType =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsStartRecordingsResponseDataStartReasonCaller {
+  /** Name of the user who started the recording. */
+  name?: string;
+  /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
+  type?: RecordingsStartRecordingsResponseDataStartReasonCallerType;
+  /** The user ID of the person who started the recording. */
+  userId?: string;
+}
+export const RecordingsStartRecordingsResponseDataStartReasonCaller =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(
+        RecordingsStartRecordingsResponseDataStartReasonCallerType,
+      ),
+      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsResponseDataStartReasonCaller",
+  }) as any as S.Schema<RecordingsStartRecordingsResponseDataStartReasonCaller>;
+
+export type RecordingsStartRecordingsResponseDataStartReasonReason =
+  | "API_CALL"
+  | "RECORD_ON_START"
+  | (string & {});
+export const RecordingsStartRecordingsResponseDataStartReasonReason =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsStartRecordingsResponseDataStartReason {
+  caller?: RecordingsStartRecordingsResponseDataStartReasonCaller;
+  /** Specifies if the recording was started using the "Start a Recording"API or using the parameter RECORD_ON_START in the "Create a meeting" API. */
+  reason?: RecordingsStartRecordingsResponseDataStartReasonReason;
+}
+export const RecordingsStartRecordingsResponseDataStartReason =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      caller: S.optional(
+        RecordingsStartRecordingsResponseDataStartReasonCaller,
+      ),
+      reason: S.optional(
+        RecordingsStartRecordingsResponseDataStartReasonReason,
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsResponseDataStartReason",
+  }) as any as S.Schema<RecordingsStartRecordingsResponseDataStartReason>;
+
+export type RecordingsStartRecordingsResponseDataStopReasonCallerType =
+  | "ORGANIZATION"
+  | "USER"
+  | (string & {});
+export const RecordingsStartRecordingsResponseDataStopReasonCallerType =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsStartRecordingsResponseDataStopReasonCaller {
+  /** Name of the user who stopped the recording. */
+  name?: string;
+  /** The type can be an App or a user. If the type is `user`, then only the `user_Id` and `name` are returned. */
+  type?: RecordingsStartRecordingsResponseDataStopReasonCallerType;
+  /** The user ID of the person who stopped the recording. */
+  userId?: string;
+}
+export const RecordingsStartRecordingsResponseDataStopReasonCaller =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.optional(S.String),
+      type: S.optional(
+        RecordingsStartRecordingsResponseDataStopReasonCallerType,
+      ),
+      userId: S.optional(S.String.pipe(T.Body("user_Id"))),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsResponseDataStopReasonCaller",
+  }) as any as S.Schema<RecordingsStartRecordingsResponseDataStopReasonCaller>;
+
+export type RecordingsStartRecordingsResponseDataStopReasonReason =
+  | "API_CALL"
+  | "INTERNAL_ERROR"
+  | "ALL_PEERS_LEFT"
+  | (string & {});
+export const RecordingsStartRecordingsResponseDataStopReasonReason =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsStartRecordingsResponseDataStopReason {
+  caller?: RecordingsStartRecordingsResponseDataStopReasonCaller;
+  /** Specifies the reason why the recording stopped. */
+  reason?: RecordingsStartRecordingsResponseDataStopReasonReason;
+}
+export const RecordingsStartRecordingsResponseDataStopReason =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      caller: S.optional(RecordingsStartRecordingsResponseDataStopReasonCaller),
+      reason: S.optional(RecordingsStartRecordingsResponseDataStopReasonReason),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsResponseDataStopReason",
+  }) as any as S.Schema<RecordingsStartRecordingsResponseDataStopReason>;
+
+export type RecordingsStartRecordingsResponseDataStorageConfigType =
+  | "aws"
+  | "azure"
+  | "digitalocean"
+  | (string & {});
+export const RecordingsStartRecordingsResponseDataStorageConfigType =
+  /*@__PURE__*/ S.String;
+
+export type RecordingsStartRecordingsResponseDataStorageConfigAuthMethod =
+  | "KEY"
+  | "PASSWORD"
+  | (string & {});
+export const RecordingsStartRecordingsResponseDataStorageConfigAuthMethod =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsStartRecordingsResponseDataStorageConfig {
+  /** Type of storage media. */
+  type: RecordingsStartRecordingsResponseDataStorageConfigType;
+  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
+  accessKey?: string;
+  /** Authentication method used for "sftp" type storage medium */
+  authMethod?: RecordingsStartRecordingsResponseDataStorageConfigAuthMethod;
+  /** Name of the storage medium's bucket. */
+  bucket?: string;
+  /** SSH destination server host for SFTP type storage medium */
+  host?: string;
+  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
+  password?: string;
+  /** Path relative to the bucket root at which the recording will be placed. */
+  path?: string;
+  /** SSH destination server port for SFTP type storage medium */
+  port?: number;
+  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
+  privateKey?: string;
+  /** Region of the storage medium. */
+  region?: string;
+  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
+  secret?: string;
+  /** SSH destination server username for SFTP type storage medium */
+  username?: string;
+}
+export const RecordingsStartRecordingsResponseDataStorageConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: RecordingsStartRecordingsResponseDataStorageConfigType,
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      authMethod: S.optional(
+        RecordingsStartRecordingsResponseDataStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartRecordingsResponseDataStorageConfig",
+  }) as any as S.Schema<RecordingsStartRecordingsResponseDataStorageConfig>;
+
+export interface RecordingsStartRecordingsResponseData {
+  /** ID of the recording */
+  id: string;
+  /** If the audio_config is passed, the URL for downloading the audio recording is returned. */
+  audioDownloadUrl: string;
+  /** URL where the recording can be downloaded. */
+  downloadUrl: string;
+  /** Timestamp when the download URL expires. */
+  downloadUrlExpiry: string;
+  /** File size of the recording, in bytes. */
+  fileSize: number;
+  /** Timestamp when this recording was invoked. */
+  invokedTime: string;
+  /** File name of the recording. */
+  outputFileName: string;
+  /** ID of the meeting session this recording is for. */
+  sessionId: string;
+  /** Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`. */
+  startedTime: string;
+  /** Current status of the recording. */
+  status: RecordingsStartRecordingsResponseDataStatus;
+  /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
+  stoppedTime: string;
+  /** Total recording time in seconds. */
+  recordingDuration?: number;
+  startReason?: RecordingsStartRecordingsResponseDataStartReason;
+  stopReason?: RecordingsStartRecordingsResponseDataStopReason;
+  storageConfig?: RecordingsStartRecordingsResponseDataStorageConfig;
+}
+export const RecordingsStartRecordingsResponseData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      audioDownloadUrl: S.String.pipe(T.Body("audio_download_url")),
+      downloadUrl: S.String.pipe(T.Body("download_url")),
+      downloadUrlExpiry: S.String.pipe(T.Body("download_url_expiry")),
+      fileSize: S.Number.pipe(T.Body("file_size")),
+      invokedTime: S.String.pipe(T.Body("invoked_time")),
+      outputFileName: S.String.pipe(T.Body("output_file_name")),
+      sessionId: S.String.pipe(T.Body("session_id")),
+      startedTime: S.String.pipe(T.Body("started_time")),
+      status: RecordingsStartRecordingsResponseDataStatus,
+      stoppedTime: S.String.pipe(T.Body("stopped_time")),
+      recordingDuration: S.optional(
+        S.Number.pipe(T.Body("recording_duration")),
+      ),
+      startReason: S.optional(
+        RecordingsStartRecordingsResponseDataStartReason.pipe(
+          T.Body("start_reason"),
+        ),
+      ),
+      stopReason: S.optional(
+        RecordingsStartRecordingsResponseDataStopReason.pipe(
+          T.Body("stop_reason"),
+        ),
+      ),
+      storageConfig: S.optional(
+        RecordingsStartRecordingsResponseDataStorageConfig.pipe(
+          T.Body("storage_config"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "RecordingsStartRecordingsResponseData",
+}) as any as S.Schema<RecordingsStartRecordingsResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface StartRecordingsRecordingResponse {
+  /** Data returned by the operation */
+  data?: RecordingsStartRecordingsResponseData;
+}
+export const StartRecordingsRecordingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(RecordingsStartRecordingsResponseData),
+  }),
+).annotate({
+  identifier: "StartRecordingsRecordingResponse",
+}) as any as S.Schema<StartRecordingsRecordingResponse>;
+
+export type RecordingsStartTrackRecordingRequestLayersMap = {
+  [key: string]: unknown | undefined;
+};
+export const RecordingsStartTrackRecordingRequestLayersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<RecordingsStartTrackRecordingRequestLayersMap>;
+
+export type RecordingsStartTrackRecordingRequestUserIdsList = string[];
+export const RecordingsStartTrackRecordingRequestUserIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RecordingsStartTrackRecordingRequestUserIdsList>;
+
+export interface StartTrackRecordingRecordingRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  /** ID of the meeting to record. */
+  meetingId: string;
+  /** Optional audio layer configuration. If omitted, RealtimeKit records all participant audio using the default file name prefix. */
+  layers?: RecordingsStartTrackRecordingRequestLayersMap;
+  /** Optional list of participant user IDs to record. Selective track recording (`user_ids`) is in early beta contact support to use this feature. */
+  userIds?: RecordingsStartTrackRecordingRequestUserIdsList;
+}
+export const StartTrackRecordingRecordingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    meetingId: S.String.pipe(T.Body("meeting_id")),
+    layers: S.optional(RecordingsStartTrackRecordingRequestLayersMap),
+    userIds: S.optional(
+      RecordingsStartTrackRecordingRequestUserIdsList.pipe(T.Body("user_ids")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/recordings/track",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "StartTrackRecordingRecordingRequest",
+}) as any as S.Schema<StartTrackRecordingRecordingRequest>;
+
+export type RecordingsStartTrackRecordingResponseDataRecordingStatus =
+  | "INVOKED"
+  | "RECORDING"
+  | "UPLOADING"
+  | (string & {});
+export const RecordingsStartTrackRecordingResponseDataRecordingStatus =
+  /*@__PURE__*/ S.String;
+
+export interface RecordingsStartTrackRecordingResponseDataRecording {
+  /** ID of the recording */
+  id: string;
+  /** If the audio_config is passed, the URL for downloading the audio recording is returned. */
+  audioDownloadUrl: string;
+  /** URL where the recording can be downloaded. */
+  downloadUrl: string;
+  /** Timestamp when the download URL expires. */
+  downloadUrlExpiry: string;
+  /** File size of the recording, in bytes. */
+  fileSize: number;
+  /** Timestamp when this recording was invoked. */
+  invokedTime: string;
+  /** File name of the recording. */
+  outputFileName: string;
+  /** ID of the meeting session this recording is for. */
+  sessionId: string;
+  /** Timestamp when this recording actually started after being invoked. Usually a few seconds after `invoked_time`. */
+  startedTime: string;
+  /** Current status of the recording. */
+  status: RecordingsStartTrackRecordingResponseDataRecordingStatus;
+  /** Timestamp when this recording was stopped. Optional; is present only when the recording has actually been stopped. */
+  stoppedTime: string;
+  /** Total recording time in seconds. */
+  recordingDuration?: number;
+}
+export const RecordingsStartTrackRecordingResponseDataRecording =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      audioDownloadUrl: S.String.pipe(T.Body("audio_download_url")),
+      downloadUrl: S.String.pipe(T.Body("download_url")),
+      downloadUrlExpiry: S.String.pipe(T.Body("download_url_expiry")),
+      fileSize: S.Number.pipe(T.Body("file_size")),
+      invokedTime: S.String.pipe(T.Body("invoked_time")),
+      outputFileName: S.String.pipe(T.Body("output_file_name")),
+      sessionId: S.String.pipe(T.Body("session_id")),
+      startedTime: S.String.pipe(T.Body("started_time")),
+      status: RecordingsStartTrackRecordingResponseDataRecordingStatus,
+      stoppedTime: S.String.pipe(T.Body("stopped_time")),
+      recordingDuration: S.optional(
+        S.Number.pipe(T.Body("recording_duration")),
+      ),
+    }),
+  ).annotate({
+    identifier: "RecordingsStartTrackRecordingResponseDataRecording",
+  }) as any as S.Schema<RecordingsStartTrackRecordingResponseDataRecording>;
+
+export interface RecordingsStartTrackRecordingResponseData {
+  recording: RecordingsStartTrackRecordingResponseDataRecording;
+}
+export const RecordingsStartTrackRecordingResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      recording: RecordingsStartTrackRecordingResponseDataRecording,
+    }),
+  ).annotate({
+    identifier: "RecordingsStartTrackRecordingResponseData",
+  }) as any as S.Schema<RecordingsStartTrackRecordingResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface StartTrackRecordingRecordingResponse {
+  /** Data returned by the operation */
+  data?: RecordingsStartTrackRecordingResponseData;
+}
+export const StartTrackRecordingRecordingResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      data: S.optional(RecordingsStartTrackRecordingResponseData),
+    }),
+).annotate({
+  identifier: "StartTrackRecordingRecordingResponse",
+}) as any as S.Schema<StartTrackRecordingRecordingResponse>;
+
+export interface StopLivestreamingAMeetingLivestreamRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+}
+export const StopLivestreamingAMeetingLivestreamRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      appId: S.String.pipe(T.Label("app_id")),
+      meetingId: S.String.pipe(T.Label("meeting_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}/active-livestream/stop",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "StopLivestreamingAMeetingLivestreamRequest",
+  }) as any as S.Schema<StopLivestreamingAMeetingLivestreamRequest>;
+
+export interface LivestreamsStopLivestreamingAMeetingResponseData {
+  message?: string;
+}
+export const LivestreamsStopLivestreamingAMeetingResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      message: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "LivestreamsStopLivestreamingAMeetingResponseData",
+  }) as any as S.Schema<LivestreamsStopLivestreamingAMeetingResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface StopLivestreamingAMeetingLivestreamResponse {
+  data?: LivestreamsStopLivestreamingAMeetingResponseData;
+}
+export const StopLivestreamingAMeetingLivestreamResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      data: S.optional(LivestreamsStopLivestreamingAMeetingResponseData),
+    }),
+  ).annotate({
+    identifier: "StopLivestreamingAMeetingLivestreamResponse",
+  }) as any as S.Schema<StopLivestreamingAMeetingLivestreamResponse>;
+
+export type MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType =
+  | "general"
+  | "team_meeting"
+  | "sales_call"
+  | (string & {});
+export const MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat =
+  | "plain_text"
+  | "markdown"
+  | (string & {});
+export const MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsUpdateMeetingByIdRequestAiConfigSummarization {
+  /** Defines the style of the summary, such as general, team meeting, or sales call. */
+  summaryType?: MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType;
+  /** Determines the text format of the summary, such as plain text or markdown. */
+  textFormat?: MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat;
+  /** Sets the maximum number of words in the meeting summary. */
+  wordLimit?: number;
+}
+export const MeetingsUpdateMeetingByIdRequestAiConfigSummarization =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      summaryType: S.optional(
+        MeetingsUpdateMeetingByIdRequestAiConfigSummarizationSummaryType.pipe(
+          T.Body("summary_type"),
+        ),
+      ),
+      textFormat: S.optional(
+        MeetingsUpdateMeetingByIdRequestAiConfigSummarizationTextFormat.pipe(
+          T.Body("text_format"),
+        ),
+      ),
+      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsUpdateMeetingByIdRequestAiConfigSummarization",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigSummarization>;
+
+export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList =
+  string[];
+export const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList>;
+
+export type MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
+  | "en-US"
+  | "en-IN"
+  | "de"
+  | (string & {});
+export const MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsUpdateMeetingByIdRequestAiConfigTranscription {
+  /** Adds specific terms to improve accurate detection during transcription. */
+  keywords?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList;
+  /** Specifies the language code for transcription to ensure accurate results. */
+  language?: MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage;
+  /** Control the inclusion of offensive language in transcriptions. */
+  profanityFilter?: boolean;
+}
+export const MeetingsUpdateMeetingByIdRequestAiConfigTranscription =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      keywords: S.optional(
+        MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionKeywordsList,
+      ),
+      language: S.optional(
+        MeetingsUpdateMeetingByIdRequestAiConfigTranscriptionLanguage,
+      ),
+      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsUpdateMeetingByIdRequestAiConfigTranscription",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfigTranscription>;
+
+export interface MeetingsUpdateMeetingByIdRequestAiConfig {
+  /** Summary Config */
+  summarization?: MeetingsUpdateMeetingByIdRequestAiConfigSummarization;
+  /** Transcription Configurations */
+  transcription?: MeetingsUpdateMeetingByIdRequestAiConfigTranscription;
+}
+export const MeetingsUpdateMeetingByIdRequestAiConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      summarization: S.optional(
+        MeetingsUpdateMeetingByIdRequestAiConfigSummarization,
+      ),
+      transcription: S.optional(
+        MeetingsUpdateMeetingByIdRequestAiConfigTranscription,
+      ),
+    }),
+).annotate({
+  identifier: "MeetingsUpdateMeetingByIdRequestAiConfig",
+}) as any as S.Schema<MeetingsUpdateMeetingByIdRequestAiConfig>;
+
+export type MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel =
+  | "mono"
+  | "stereo"
+  | (string & {});
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec =
+  | "MP3"
+  | "AAC"
+  | (string & {});
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig {
+  /** Audio signal pathway within an audio file that carries a specific sound source. */
+  channel?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel;
+  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
+  codec?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec;
+  /** Controls whether to export audio file seperately */
+  exportFile?: boolean;
+}
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      channel: S.optional(
+        MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigChannel,
+      ),
+      codec: S.optional(
+        MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig>;
+
+export interface MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig {
+  /** RTMP URL to stream to */
+  rtmpUrl?: string;
+}
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig>;
+
+export interface MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig {
+  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
+  enabled: boolean;
+}
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig>;
+
+export type MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType =
+  | "aws"
+  | "azure"
+  | "digitalocean"
+  | (string & {});
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
+  "KEY" | "PASSWORD" | (string & {});
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig {
+  /** Type of storage media. */
+  type: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType;
+  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
+  accessKey?: string;
+  /** Authentication method used for "sftp" type storage medium */
+  authMethod?: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod;
+  /** Name of the storage medium's bucket. */
+  bucket?: string;
+  /** SSH destination server host for SFTP type storage medium */
+  host?: string;
+  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
+  password?: string;
+  /** Path relative to the bucket root at which the recording will be placed. */
+  path?: string;
+  /** SSH destination server port for SFTP type storage medium */
+  port?: number;
+  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
+  privateKey?: string;
+  /** Region of the storage medium. */
+  region?: string;
+  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
+  secret?: string;
+  /** SSH destination server username for SFTP type storage medium */
+  username?: string;
+}
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigType,
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      authMethod: S.optional(
+        MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig>;
+
+export type MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec =
+  | "H264"
+  | "VP8"
+  | (string & {});
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
+  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize {
+  /** Height of the watermark in px */
+  height?: number;
+  /** Width of the watermark in px */
+  width?: number;
+}
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize>;
+
+export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark {
+  /** Position of the watermark */
+  position?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition;
+  /** Size of the watermark */
+  size?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize;
+  /** URL of the watermark image */
+  url?: string;
+}
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(
+        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkPosition,
+      ),
+      size: S.optional(
+        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermarkSize,
+      ),
+      url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark>;
+
+export interface MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig {
+  /** Codec using which the recording will be encoded. */
+  codec?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec;
+  /** Controls whether to export video file seperately */
+  exportFile?: boolean;
+  /** Height of the recording video in pixels */
+  height?: number;
+  /** Watermark to be added to the recording */
+  watermark?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark;
+  /** Width of the recording video in pixels */
+  width?: number;
+}
+export const MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      codec: S.optional(
+        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      height: S.optional(S.Number),
+      watermark: S.optional(
+        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfigWatermark,
+      ),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig>;
+
+export interface MeetingsUpdateMeetingByIdRequestRecordingConfig {
+  /** Object containing configuration regarding the audio that is being recorded. */
+  audioConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig;
+  /** Adds a prefix to the beginning of the file name of the recording. */
+  fileNamePrefix?: string;
+  liveStreamingConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig;
+  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
+  maxSeconds?: number;
+  realtimekitBucketConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig;
+  storageConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig;
+  videoConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig;
+}
+export const MeetingsUpdateMeetingByIdRequestRecordingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audioConfig: S.optional(
+        MeetingsUpdateMeetingByIdRequestRecordingConfigAudioConfig.pipe(
+          T.Body("audio_config"),
+        ),
+      ),
+      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      liveStreamingConfig: S.optional(
+        MeetingsUpdateMeetingByIdRequestRecordingConfigLiveStreamingConfig.pipe(
+          T.Body("live_streaming_config"),
+        ),
+      ),
+      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      realtimekitBucketConfig: S.optional(
+        MeetingsUpdateMeetingByIdRequestRecordingConfigRealtimekitBucketConfig.pipe(
+          T.Body("realtimekit_bucket_config"),
+        ),
+      ),
+      storageConfig: S.optional(
+        MeetingsUpdateMeetingByIdRequestRecordingConfigStorageConfig.pipe(
+          T.Body("storage_config"),
+        ),
+      ),
+      videoConfig: S.optional(
+        MeetingsUpdateMeetingByIdRequestRecordingConfigVideoConfig.pipe(
+          T.Body("video_config"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "MeetingsUpdateMeetingByIdRequestRecordingConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdRequestRecordingConfig>;
+
+export type MeetingsUpdateMeetingByIdRequestStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | (string & {});
+export const MeetingsUpdateMeetingByIdRequestStatus = /*@__PURE__*/ S.String;
+
+export interface UpdateMeetingByIdMeetingRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The app identifier tag. */
+  appId: string;
+  meetingId: string;
+  /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
+  aiConfig?: MeetingsUpdateMeetingByIdRequestAiConfig;
+  /** Specifies if the meeting should start getting livestreamed on start. */
+  liveStreamOnStart?: boolean;
+  /** If a meeting is updated to persist_chat, meeting chat would remain for a week within the meeting space. */
+  persistChat?: boolean;
+  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
+  recordOnStart?: boolean;
+  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
+  recordingConfig?: MeetingsUpdateMeetingByIdRequestRecordingConfig;
+  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
+  sessionKeepAliveTimeInSecs?: number;
+  /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
+  status?: MeetingsUpdateMeetingByIdRequestStatus;
+  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
+  summarizeOnEnd?: boolean;
+  /** Title of the meeting */
+  title?: string;
+  /** Automatically generate transcripts when the meeting ends. */
+  transcribeOnEnd?: boolean;
+}
+export const UpdateMeetingByIdMeetingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    meetingId: S.String.pipe(T.Label("meeting_id")),
+    aiConfig: S.optional(
+      MeetingsUpdateMeetingByIdRequestAiConfig.pipe(T.Body("ai_config")),
+    ),
+    liveStreamOnStart: S.optional(
+      S.Boolean.pipe(T.Body("live_stream_on_start")),
+    ),
+    persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
+    recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+    recordingConfig: S.optional(
+      MeetingsUpdateMeetingByIdRequestRecordingConfig.pipe(
+        T.Body("recording_config"),
+      ),
+    ),
+    sessionKeepAliveTimeInSecs: S.optional(
+      S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+    ),
+    status: S.optional(MeetingsUpdateMeetingByIdRequestStatus),
+    summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
+    title: S.optional(S.String),
+    transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/realtime/kit/{app_id}/meetings/{meeting_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMeetingByIdMeetingRequest",
+}) as any as S.Schema<UpdateMeetingByIdMeetingRequest>;
+
+export type MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType =
+  "general" | "team_meeting" | "sales_call" | (string & {});
+export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat =
+  "plain_text" | "markdown" | (string & {});
+export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization {
+  /** Defines the style of the summary, such as general, team meeting, or sales call. */
+  summaryType?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType;
+  /** Determines the text format of the summary, such as plain text or markdown. */
+  textFormat?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat;
+  /** Sets the maximum number of words in the meeting summary. */
+  wordLimit?: number;
+}
+export const MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      summaryType: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationSummaryType.pipe(
+          T.Body("summary_type"),
+        ),
+      ),
+      textFormat: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataAiConfigSummarizationTextFormat.pipe(
+          T.Body("text_format"),
+        ),
+      ),
+      wordLimit: S.optional(S.Number.pipe(T.Body("word_limit"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization>;
+
+export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
+  string[];
+export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList>;
+
+export type MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage =
+  "en-US" | "en-IN" | "de" | (string & {});
+export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription {
+  /** Adds specific terms to improve accurate detection during transcription. */
+  keywords?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList;
+  /** Specifies the language code for transcription to ensure accurate results. */
+  language?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage;
+  /** Control the inclusion of offensive language in transcriptions. */
+  profanityFilter?: boolean;
+}
+export const MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      keywords: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionKeywordsList,
+      ),
+      language: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataAiConfigTranscriptionLanguage,
+      ),
+      profanityFilter: S.optional(S.Boolean.pipe(T.Body("profanity_filter"))),
+    }),
+  ).annotate({
+    identifier: "MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription>;
+
+export interface MeetingsUpdateMeetingByIdResponseDataAiConfig {
+  /** Summary Config */
+  summarization?: MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization;
+  /** Transcription Configurations */
+  transcription?: MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription;
+}
+export const MeetingsUpdateMeetingByIdResponseDataAiConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      summarization: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataAiConfigSummarization,
+      ),
+      transcription: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataAiConfigTranscription,
+      ),
+    }),
+  ).annotate({
+    identifier: "MeetingsUpdateMeetingByIdResponseDataAiConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataAiConfig>;
+
+export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
+  "mono" | "stereo" | (string & {});
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
+  "MP3" | "AAC" | (string & {});
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig {
+  /** Audio signal pathway within an audio file that carries a specific sound source. */
+  channel?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel;
+  /** Codec using which the recording will be encoded. If VP8/VP9 is selected for videoConfig, changing audioConfig is not allowed. In this case, the codec in the audioConfig is automatically set to vorbis. */
+  codec?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec;
+  /** Controls whether to export audio file seperately */
+  exportFile?: boolean;
+}
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      channel: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigChannel,
+      ),
+      codec: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig>;
+
+export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig {
+  /** RTMP URL to stream to */
+  rtmpUrl?: string;
+}
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      rtmpUrl: S.optional(S.String.pipe(T.Body("rtmp_url"))),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig>;
+
+export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig {
+  /** Controls whether recordings are uploaded to RealtimeKit's bucket. If set to false, `download_url`, `audio_download_url`, `download_url_expiry` won't be generated for a recording. */
+  enabled: boolean;
+}
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig>;
+
+export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType =
+  "aws" | "azure" | "digitalocean" | (string & {});
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
+  "KEY" | "PASSWORD" | (string & {});
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig {
+  /** Type of storage media. */
+  type: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType;
+  /** Access key of the storage medium. Access key is not required for the `gcs` storage media type. */
+  accessKey?: string;
+  /** Authentication method used for "sftp" type storage medium */
+  authMethod?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod;
+  /** Name of the storage medium's bucket. */
+  bucket?: string;
+  /** SSH destination server host for SFTP type storage medium */
+  host?: string;
+  /** SSH destination server password for SFTP type storage medium when auth_method is "PASSWORD". If auth_method is "KEY", this specifies the password for the ssh private key. */
+  password?: string;
+  /** Path relative to the bucket root at which the recording will be placed. */
+  path?: string;
+  /** SSH destination server port for SFTP type storage medium */
+  port?: number;
+  /** Private key used to login to destination SSH server for SFTP type storage medium, when auth_method used is "KEY" */
+  privateKey?: string;
+  /** Region of the storage medium. */
+  region?: string;
+  /** Secret key of the storage medium. Similar to `access_key`, it is only writeable by clients, not readable. */
+  secret?: string;
+  /** SSH destination server username for SFTP type storage medium */
+  username?: string;
+}
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigType,
+      accessKey: S.optional(S.String.pipe(T.Body("access_key"))),
+      authMethod: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfigAuthMethod.pipe(
+          T.Body("auth_method"),
+        ),
+      ),
+      bucket: S.optional(S.String),
+      host: S.optional(S.String),
+      password: S.optional(S.String),
+      path: S.optional(S.String),
+      port: S.optional(S.Number),
+      privateKey: S.optional(S.String.pipe(T.Body("private_key"))),
+      region: S.optional(S.String),
+      secret: S.optional(S.String),
+      username: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig>;
+
+export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
+  "H264" | "VP8" | (string & {});
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec =
+  /*@__PURE__*/ S.String;
+
+export type MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
+  "left top" | "right top" | "left bottom" | "right bottom" | (string & {});
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize {
+  /** Height of the watermark in px */
+  height?: number;
+  /** Width of the watermark in px */
+  width?: number;
+}
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      height: S.optional(S.Number),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize>;
+
+export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark {
+  /** Position of the watermark */
+  position?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition;
+  /** Size of the watermark */
+  size?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize;
+  /** URL of the watermark image */
+  url?: string;
+}
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      position: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkPosition,
+      ),
+      size: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermarkSize,
+      ),
+      url: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark>;
+
+export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig {
+  /** Codec using which the recording will be encoded. */
+  codec?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec;
+  /** Controls whether to export video file seperately */
+  exportFile?: boolean;
+  /** Height of the recording video in pixels */
+  height?: number;
+  /** Watermark to be added to the recording */
+  watermark?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark;
+  /** Width of the recording video in pixels */
+  width?: number;
+}
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      codec: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigCodec,
+      ),
+      exportFile: S.optional(S.Boolean.pipe(T.Body("export_file"))),
+      height: S.optional(S.Number),
+      watermark: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfigWatermark,
+      ),
+      width: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig>;
+
+export interface MeetingsUpdateMeetingByIdResponseDataRecordingConfig {
+  /** Object containing configuration regarding the audio that is being recorded. */
+  audioConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig;
+  /** Adds a prefix to the beginning of the file name of the recording. */
+  fileNamePrefix?: string;
+  liveStreamingConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig;
+  /** Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours. */
+  maxSeconds?: number;
+  realtimekitBucketConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig;
+  storageConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig;
+  videoConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig;
+}
+export const MeetingsUpdateMeetingByIdResponseDataRecordingConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audioConfig: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfigAudioConfig.pipe(
+          T.Body("audio_config"),
+        ),
+      ),
+      fileNamePrefix: S.optional(S.String.pipe(T.Body("file_name_prefix"))),
+      liveStreamingConfig: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfigLiveStreamingConfig.pipe(
+          T.Body("live_streaming_config"),
+        ),
+      ),
+      maxSeconds: S.optional(S.Number.pipe(T.Body("max_seconds"))),
+      realtimekitBucketConfig: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfigRealtimekitBucketConfig.pipe(
+          T.Body("realtimekit_bucket_config"),
+        ),
+      ),
+      storageConfig: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfigStorageConfig.pipe(
+          T.Body("storage_config"),
+        ),
+      ),
+      videoConfig: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfigVideoConfig.pipe(
+          T.Body("video_config"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "MeetingsUpdateMeetingByIdResponseDataRecordingConfig",
+  }) as any as S.Schema<MeetingsUpdateMeetingByIdResponseDataRecordingConfig>;
+
+export type MeetingsUpdateMeetingByIdResponseDataStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | (string & {});
+export const MeetingsUpdateMeetingByIdResponseDataStatus =
+  /*@__PURE__*/ S.String;
+
+export interface MeetingsUpdateMeetingByIdResponseData {
+  /** ID of the meeting. */
+  id: string;
+  /** Timestamp the object was created at. The time is returned in ISO format. */
+  createdAt: string;
+  /** Timestamp the object was updated at. The time is returned in ISO format. */
+  updatedAt: string;
+  /** The AI Config allows you to customize the behavior of meeting transcriptions and summaries */
+  aiConfig?: MeetingsUpdateMeetingByIdResponseDataAiConfig;
+  /** Specifies if the meeting should start getting livestreamed on start. */
+  liveStreamOnStart?: boolean;
+  /** Specifies if Chat within a meeting should persist for a week. */
+  persistChat?: boolean;
+  /** Specifies if the meeting should start getting recorded as soon as someone joins the meeting. */
+  recordOnStart?: boolean;
+  /** Recording Configurations to be used for this meeting. This level of configs takes higher preference over App level configs on the RealtimeKit developer portal. */
+  recordingConfig?: MeetingsUpdateMeetingByIdResponseDataRecordingConfig;
+  /** Time in seconds, for which a session remains active, after the last participant has left the meeting. */
+  sessionKeepAliveTimeInSecs?: number;
+  /** Whether the meeting is `ACTIVE` or `INACTIVE`. Users will not be able to join an `INACTIVE` meeting. */
+  status?: MeetingsUpdateMeetingByIdResponseDataStatus;
+  /** Automatically generate summary of meetings using transcripts. Requires Transcriptions to be enabled, and can be retrieved via Webhooks or summary API. */
+  summarizeOnEnd?: boolean;
+  /** Title of the meeting. */
+  title?: string;
+  /** Automatically generate transcripts when the meeting ends. */
+  transcribeOnEnd?: boolean;
+}
+export const MeetingsUpdateMeetingByIdResponseData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      aiConfig: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataAiConfig.pipe(T.Body("ai_config")),
+      ),
+      liveStreamOnStart: S.optional(
+        S.Boolean.pipe(T.Body("live_stream_on_start")),
+      ),
+      persistChat: S.optional(S.Boolean.pipe(T.Body("persist_chat"))),
+      recordOnStart: S.optional(S.Boolean.pipe(T.Body("record_on_start"))),
+      recordingConfig: S.optional(
+        MeetingsUpdateMeetingByIdResponseDataRecordingConfig.pipe(
+          T.Body("recording_config"),
+        ),
+      ),
+      sessionKeepAliveTimeInSecs: S.optional(
+        S.Number.pipe(T.Body("session_keep_alive_time_in_secs")),
+      ),
+      status: S.optional(MeetingsUpdateMeetingByIdResponseDataStatus),
+      summarizeOnEnd: S.optional(S.Boolean.pipe(T.Body("summarize_on_end"))),
+      title: S.optional(S.String),
+      transcribeOnEnd: S.optional(S.Boolean.pipe(T.Body("transcribe_on_end"))),
+    }),
+).annotate({
+  identifier: "MeetingsUpdateMeetingByIdResponseData",
+}) as any as S.Schema<MeetingsUpdateMeetingByIdResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface UpdateMeetingByIdMeetingResponse {
+  /** Data returned by the operation */
+  data?: MeetingsUpdateMeetingByIdResponseData;
+}
+export const UpdateMeetingByIdMeetingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: S.optional(MeetingsUpdateMeetingByIdResponseData),
+  }),
+).annotate({
+  identifier: "UpdateMeetingByIdMeetingResponse",
+}) as any as S.Schema<UpdateMeetingByIdMeetingResponse>;
+
+export type AddParticipantMeetingError = CloudflareOpError;
+/** Adds a participant to the given meeting ID. */
+export const addParticipantMeeting: API.OperationMethod<
+  AddParticipantMeetingRequest,
+  AddParticipantMeetingResponse,
+  AddParticipantMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ActiveSessionCreatePollRequest,
-  output: ActiveSessionCreatePollResponse,
+  input: AddParticipantMeetingRequest,
+  output: AddParticipantMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ActiveSessionGetActiveSessionError = CloudflareOpError;
-/** Returns details of an ongoing active session for the given meeting ID. */
-export const activeSessionGetActiveSession: API.OperationMethod<
-  ActiveSessionGetActiveSessionRequest,
-  ActiveSessionGetActiveSessionResponse,
-  ActiveSessionGetActiveSessionError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ActiveSessionGetActiveSessionRequest,
-  output: ActiveSessionGetActiveSessionResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ActiveSessionKickAllParticipantsError = CloudflareOpError;
-/** Kicks all participants from an active session for the given meeting ID. */
-export const activeSessionKickAllParticipants: API.OperationMethod<
-  ActiveSessionKickAllParticipantsRequest,
-  ActiveSessionKickAllParticipantsResponse,
-  ActiveSessionKickAllParticipantsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ActiveSessionKickAllParticipantsRequest,
-  output: ActiveSessionKickAllParticipantsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ActiveSessionKickParticipantsError = CloudflareOpError;
-/** Kicks one or more participants from an active session using user ID or custom participant ID. */
-export const activeSessionKickParticipants: API.OperationMethod<
-  ActiveSessionKickParticipantsRequest,
-  ActiveSessionKickParticipantsResponse,
-  ActiveSessionKickParticipantsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ActiveSessionKickParticipantsRequest,
-  output: ActiveSessionKickParticipantsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AnalyticsGetOrgAnalyticsError = CloudflareOpError;
-/** Returns day-wise session and recording analytics data of an App for the specified time range start_date to end_date. If start_date and end_date are not provided, the default time range is set from 30 days ago to the current date. */
-export const analyticsGetOrgAnalytics: API.OperationMethod<
-  AnalyticsGetOrgAnalyticsRequest,
-  AnalyticsGetOrgAnalyticsResponse,
-  AnalyticsGetOrgAnalyticsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AnalyticsGetOrgAnalyticsRequest,
-  output: AnalyticsGetOrgAnalyticsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AppsGetError = CloudflareOpError;
-/** Fetch all apps for your account */
-export const appsGet: API.OperationMethod<
-  AppsGetRequest,
-  AppsGetResponse,
-  AppsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsGetRequest,
-  output: AppsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AppsPostError = CloudflareOpError;
-/** Create new app for your account */
-export const appsPost: API.OperationMethod<
-  AppsPostRequest,
-  AppsPostResponse,
-  AppsPostError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsPostRequest,
-  output: AppsPostResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LivestreamsCreateIndependentLivestreamError = CloudflareOpError;
+export type CreateIndependentLivestreamLivestreamError = CloudflareOpError;
 /** Creates a livestream for the given App ID and returns ingest server, stream key, and playback URL. You can pass custom input to the ingest server and stream key, and freely distribute the content using the playback URL on any player that supports HLS/LHLS. */
-export const livestreamsCreateIndependentLivestream: API.OperationMethod<
-  LivestreamsCreateIndependentLivestreamRequest,
-  LivestreamsCreateIndependentLivestreamResponse,
-  LivestreamsCreateIndependentLivestreamError,
+export const createIndependentLivestreamLivestream: API.OperationMethod<
+  CreateIndependentLivestreamLivestreamRequest,
+  CreateIndependentLivestreamLivestreamResponse,
+  CreateIndependentLivestreamLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LivestreamsCreateIndependentLivestreamRequest,
-  output: LivestreamsCreateIndependentLivestreamResponse,
+  input: CreateIndependentLivestreamLivestreamRequest,
+  output: CreateIndependentLivestreamLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LivestreamsGetActiveLivestreamsForLivestreamIdError =
+export type CreateMeetingError = CloudflareOpError;
+/** Create a meeting for the given App ID. */
+export const createMeeting: API.OperationMethod<
+  CreateMeetingRequest,
+  CreateMeetingResponse,
+  CreateMeetingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMeetingRequest,
+  output: CreateMeetingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreatePollActiveSessionError = CloudflareOpError;
+/** Creates a new poll in an active session for the given meeting ID. */
+export const createPollActiveSession: API.OperationMethod<
+  CreatePollActiveSessionRequest,
+  CreatePollActiveSessionResponse,
+  CreatePollActiveSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreatePollActiveSessionRequest,
+  output: CreatePollActiveSessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreatePresetError =
+  | RealtimeKitPresetExists
+  | Forbidden
+  | CloudflareOpError;
+/** Creates a preset belonging to the current App */
+export const createPreset: API.OperationMethod<
+  CreatePresetRequest,
+  CreatePresetResponse,
+  CreatePresetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreatePresetRequest,
+  output: CreatePresetResponse,
+  errors: [
+    RealtimeKitPresetExists,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateWebhookWebhookError =
+  | RealtimeKitWebhookExists
+  | Forbidden
+  | CloudflareOpError;
+/** Adds a new webhook to an App. */
+export const createWebhookWebhook: API.OperationMethod<
+  CreateWebhookWebhookRequest,
+  CreateWebhookWebhookResponse,
+  CreateWebhookWebhookError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateWebhookWebhookRequest,
+  output: CreateWebhookWebhookResponse,
+  errors: [
+    RealtimeKitWebhookExists,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteMeetingParticipantMeetingError = CloudflareOpError;
+/** Deletes a participant for the given meeting and participant ID. */
+export const deleteMeetingParticipantMeeting: API.OperationMethod<
+  DeleteMeetingParticipantMeetingRequest,
+  DeleteMeetingParticipantMeetingResponse,
+  DeleteMeetingParticipantMeetingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteMeetingParticipantMeetingRequest,
+  output: DeleteMeetingParticipantMeetingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeletePresetError =
+  | RealtimeKitPresetNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Deletes a preset using the provided preset ID */
+export const deletePreset: API.OperationMethod<
+  DeletePresetRequest,
+  DeletePresetResponse,
+  DeletePresetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePresetRequest,
+  output: DeletePresetResponse,
+  errors: [
+    RealtimeKitPresetNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteWebhookWebhookError =
+  | RealtimeKitWebhookNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Removes a webhook for the given webhook ID. */
+export const deleteWebhookWebhook: API.OperationMethod<
+  DeleteWebhookWebhookRequest,
+  DeleteWebhookWebhookResponse,
+  DeleteWebhookWebhookError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteWebhookWebhookRequest,
+  output: DeleteWebhookWebhookResponse,
+  errors: [
+    RealtimeKitWebhookNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type EditParticipantMeetingError = CloudflareOpError;
+/** Updates a participant's details for the given meeting and participant ID. */
+export const editParticipantMeeting: API.OperationMethod<
+  EditParticipantMeetingRequest,
+  EditParticipantMeetingResponse,
+  EditParticipantMeetingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: EditParticipantMeetingRequest,
+  output: EditParticipantMeetingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type EditWebhookWebhookError = CloudflareOpError;
+/** Edits the webhook details for the given webhook ID. */
+export const editWebhookWebhook: API.OperationMethod<
+  EditWebhookWebhookRequest,
+  EditWebhookWebhookResponse,
+  EditWebhookWebhookError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: EditWebhookWebhookRequest,
+  output: EditWebhookWebhookResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GenerateSummaryOfTranscriptsSessionError = CloudflareOpError;
+/** Trigger Summary generation of Transcripts for the session ID. */
+export const generateSummaryOfTranscriptsSession: API.OperationMethod<
+  GenerateSummaryOfTranscriptsSessionRequest,
+  GenerateSummaryOfTranscriptsSessionResponse,
+  GenerateSummaryOfTranscriptsSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GenerateSummaryOfTranscriptsSessionRequest,
+  output: GenerateSummaryOfTranscriptsSessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetActiveLivestreamsForLivestreamIdLivestreamError =
   CloudflareOpError;
 /** Returns details of all active livestreams for the given livestream ID. Retreive the livestream ID using the `Start livestreaming a meeting` API. */
-export const livestreamsGetActiveLivestreamsForLivestreamId: API.OperationMethod<
-  LivestreamsGetActiveLivestreamsForLivestreamIdRequest,
-  LivestreamsGetActiveLivestreamsForLivestreamIdResponse,
-  LivestreamsGetActiveLivestreamsForLivestreamIdError,
+export const getActiveLivestreamsForLivestreamIdLivestream: API.OperationMethod<
+  GetActiveLivestreamsForLivestreamIdLivestreamRequest,
+  GetActiveLivestreamsForLivestreamIdLivestreamResponse,
+  GetActiveLivestreamsForLivestreamIdLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LivestreamsGetActiveLivestreamsForLivestreamIdRequest,
-  output: LivestreamsGetActiveLivestreamsForLivestreamIdResponse,
+  input: GetActiveLivestreamsForLivestreamIdLivestreamRequest,
+  output: GetActiveLivestreamsForLivestreamIdLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LivestreamsGetAllLivestreamsError = CloudflareOpError;
+export type GetActiveRecordingsRecordingError = CloudflareOpError;
+/** Returns the active recording details for the given meeting ID. */
+export const getActiveRecordingsRecording: API.OperationMethod<
+  GetActiveRecordingsRecordingRequest,
+  GetActiveRecordingsRecordingResponse,
+  GetActiveRecordingsRecordingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetActiveRecordingsRecordingRequest,
+  output: GetActiveRecordingsRecordingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetActiveSessionActiveSessionError = CloudflareOpError;
+/** Returns details of an ongoing active session for the given meeting ID. */
+export const getActiveSessionActiveSession: API.OperationMethod<
+  GetActiveSessionActiveSessionRequest,
+  GetActiveSessionActiveSessionResponse,
+  GetActiveSessionActiveSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetActiveSessionActiveSessionRequest,
+  output: GetActiveSessionActiveSessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetAllLivestreamsLivestreamError = CloudflareOpError;
 /** Returns details of livestreams associated with the given App ID. It includes livestreams created by your App and RealtimeKit meetings that are livestreamed by your App. If you only want details of livestreams created by your App and not RealtimeKit meetings, you can use the `exclude_meetings` query parameter. */
-export const livestreamsGetAllLivestreams: API.OperationMethod<
-  LivestreamsGetAllLivestreamsRequest,
-  LivestreamsGetAllLivestreamsResponse,
-  LivestreamsGetAllLivestreamsError,
+export const getAllLivestreamsLivestream: API.OperationMethod<
+  GetAllLivestreamsLivestreamRequest,
+  GetAllLivestreamsLivestreamResponse,
+  GetAllLivestreamsLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LivestreamsGetAllLivestreamsRequest,
-  output: LivestreamsGetAllLivestreamsResponse,
+  input: GetAllLivestreamsLivestreamRequest,
+  output: GetAllLivestreamsLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LivestreamsGetLivestreamAnalyticsCompleteError = CloudflareOpError;
+export type GetAppError = Forbidden | CloudflareOpError;
+/** Fetch all apps for your account */
+export const getApp: API.OperationMethod<
+  GetAppRequest,
+  GetAppResponse,
+  GetAppError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAppRequest,
+  output: GetAppResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetLivestreamAnalyticsCompleteLivestreamError = CloudflareOpError;
 /** Returns livestream analytics for the specified time range. */
-export const livestreamsGetLivestreamAnalyticsComplete: API.OperationMethod<
-  LivestreamsGetLivestreamAnalyticsCompleteRequest,
-  LivestreamsGetLivestreamAnalyticsCompleteResponse,
-  LivestreamsGetLivestreamAnalyticsCompleteError,
+export const getLivestreamAnalyticsCompleteLivestream: API.OperationMethod<
+  GetLivestreamAnalyticsCompleteLivestreamRequest,
+  GetLivestreamAnalyticsCompleteLivestreamResponse,
+  GetLivestreamAnalyticsCompleteLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LivestreamsGetLivestreamAnalyticsCompleteRequest,
-  output: LivestreamsGetLivestreamAnalyticsCompleteResponse,
+  input: GetLivestreamAnalyticsCompleteLivestreamRequest,
+  output: GetLivestreamAnalyticsCompleteLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LivestreamsGetLivestreamAnalyticsDaywiseError = CloudflareOpError;
+export type GetLivestreamAnalyticsDaywiseLivestreamError = CloudflareOpError;
 /** Returns day-wise livestream analytics for the specified time range. */
-export const livestreamsGetLivestreamAnalyticsDaywise: API.OperationMethod<
-  LivestreamsGetLivestreamAnalyticsDaywiseRequest,
-  LivestreamsGetLivestreamAnalyticsDaywiseResponse,
-  LivestreamsGetLivestreamAnalyticsDaywiseError,
+export const getLivestreamAnalyticsDaywiseLivestream: API.OperationMethod<
+  GetLivestreamAnalyticsDaywiseLivestreamRequest,
+  GetLivestreamAnalyticsDaywiseLivestreamResponse,
+  GetLivestreamAnalyticsDaywiseLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LivestreamsGetLivestreamAnalyticsDaywiseRequest,
-  output: LivestreamsGetLivestreamAnalyticsDaywiseResponse,
+  input: GetLivestreamAnalyticsDaywiseLivestreamRequest,
+  output: GetLivestreamAnalyticsDaywiseLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LivestreamsGetLivestreamSessionDetailsForSessionIdError =
+export type GetLivestreamSessionDetailsForSessionIdLivestreamError =
   CloudflareOpError;
 /** Returns livestream session details for the given livestream session ID. Retrieve the `livestream_session_id`using the `Fetch livestream session details using a session ID` API. */
-export const livestreamsGetLivestreamSessionDetailsForSessionId: API.OperationMethod<
-  LivestreamsGetLivestreamSessionDetailsForSessionIdRequest,
-  LivestreamsGetLivestreamSessionDetailsForSessionIdResponse,
-  LivestreamsGetLivestreamSessionDetailsForSessionIdError,
+export const getLivestreamSessionDetailsForSessionIdLivestream: API.OperationMethod<
+  GetLivestreamSessionDetailsForSessionIdLivestreamRequest,
+  GetLivestreamSessionDetailsForSessionIdLivestreamResponse,
+  GetLivestreamSessionDetailsForSessionIdLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LivestreamsGetLivestreamSessionDetailsForSessionIdRequest,
-  output: LivestreamsGetLivestreamSessionDetailsForSessionIdResponse,
+  input: GetLivestreamSessionDetailsForSessionIdLivestreamRequest,
+  output: GetLivestreamSessionDetailsForSessionIdLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LivestreamsGetLivestreamSessionForLivestreamIdError =
+export type GetLivestreamSessionForLivestreamIdLivestreamError =
   CloudflareOpError;
 /** Returns details of a livestream with sessions for the given livestream ID. Retreive the livestream ID using the `Start livestreaming a meeting` API. */
-export const livestreamsGetLivestreamSessionForLivestreamId: API.OperationMethod<
-  LivestreamsGetLivestreamSessionForLivestreamIdRequest,
-  LivestreamsGetLivestreamSessionForLivestreamIdResponse,
-  LivestreamsGetLivestreamSessionForLivestreamIdError,
+export const getLivestreamSessionForLivestreamIdLivestream: API.OperationMethod<
+  GetLivestreamSessionForLivestreamIdLivestreamRequest,
+  GetLivestreamSessionForLivestreamIdLivestreamResponse,
+  GetLivestreamSessionForLivestreamIdLivestreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LivestreamsGetLivestreamSessionForLivestreamIdRequest,
-  output: LivestreamsGetLivestreamSessionForLivestreamIdResponse,
+  input: GetLivestreamSessionForLivestreamIdLivestreamRequest,
+  output: GetLivestreamSessionForLivestreamIdLivestreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LivestreamsGetMeetingActiveLivestreamsError = CloudflareOpError;
-/** Returns details of all active livestreams for the given meeting ID. */
-export const livestreamsGetMeetingActiveLivestreams: API.OperationMethod<
-  LivestreamsGetMeetingActiveLivestreamsRequest,
-  LivestreamsGetMeetingActiveLivestreamsResponse,
-  LivestreamsGetMeetingActiveLivestreamsError,
+export type GetMeetingError = CloudflareOpError;
+/** Returns all meetings for the given App ID. */
+export const getMeeting: API.OperationMethod<
+  GetMeetingRequest,
+  GetMeetingResponse,
+  GetMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LivestreamsGetMeetingActiveLivestreamsRequest,
-  output: LivestreamsGetMeetingActiveLivestreamsResponse,
+  input: GetMeetingRequest,
+  output: GetMeetingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetMeetingActiveLivestreamsLivestreamError = CloudflareOpError;
+/** Returns details of all active livestreams for the given meeting ID. */
+export const getMeetingActiveLivestreamsLivestream: API.OperationMethod<
+  GetMeetingActiveLivestreamsLivestreamRequest,
+  GetMeetingActiveLivestreamsLivestreamResponse,
+  GetMeetingActiveLivestreamsLivestreamError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMeetingActiveLivestreamsLivestreamRequest,
+  output: GetMeetingActiveLivestreamsLivestreamResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetMeetingByIdMeetingError = CloudflareOpError;
+/** Returns a meeting details in an App for the given meeting ID. */
+export const getMeetingByIdMeeting: API.OperationMethod<
+  GetMeetingByIdMeetingRequest,
+  GetMeetingByIdMeetingResponse,
+  GetMeetingByIdMeetingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMeetingByIdMeetingRequest,
+  output: GetMeetingByIdMeetingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetMeetingParticipantMeetingError = CloudflareOpError;
+/** Returns a participant details for the given meeting and participant ID. */
+export const getMeetingParticipantMeeting: API.OperationMethod<
+  GetMeetingParticipantMeetingRequest,
+  GetMeetingParticipantMeetingResponse,
+  GetMeetingParticipantMeetingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMeetingParticipantMeetingRequest,
+  output: GetMeetingParticipantMeetingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetMeetingParticipantsMeetingError = CloudflareOpError;
+/** Returns all participants detail for the given meeting ID. */
+export const getMeetingParticipantsMeeting: API.OperationMethod<
+  GetMeetingParticipantsMeetingRequest,
+  GetMeetingParticipantsMeetingResponse,
+  GetMeetingParticipantsMeetingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMeetingParticipantsMeetingRequest,
+  output: GetMeetingParticipantsMeetingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetOneRecordingRecordingError = CloudflareOpError;
+/** Returns details of a recording for the given recording ID. */
+export const getOneRecordingRecording: API.OperationMethod<
+  GetOneRecordingRecordingRequest,
+  GetOneRecordingRecordingResponse,
+  GetOneRecordingRecordingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOneRecordingRecordingRequest,
+  output: GetOneRecordingRecordingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetOrgAnalyticsAnalyticError = CloudflareOpError;
+/** Returns day-wise session and recording analytics data of an App for the specified time range start_date to end_date. If start_date and end_date are not provided, the default time range is set from 30 days ago to the current date. */
+export const getOrgAnalyticsAnalytic: API.OperationMethod<
+  GetOrgAnalyticsAnalyticRequest,
+  GetOrgAnalyticsAnalyticResponse,
+  GetOrgAnalyticsAnalyticError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetOrgAnalyticsAnalyticRequest,
+  output: GetOrgAnalyticsAnalyticResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetParticipantDataFromPeerIdSessionError = CloudflareOpError;
+/** Returns participant details for the given peer ID along with call statistics. */
+export const getParticipantDataFromPeerIdSession: API.OperationMethod<
+  GetParticipantDataFromPeerIdSessionRequest,
+  GetParticipantDataFromPeerIdSessionResponse,
+  GetParticipantDataFromPeerIdSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetParticipantDataFromPeerIdSessionRequest,
+  output: GetParticipantDataFromPeerIdSessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetPresetError = Forbidden | CloudflareOpError;
+/** Fetches all the presets belonging to an App. */
+export const getPreset: API.OperationMethod<
+  GetPresetRequest,
+  GetPresetResponse,
+  GetPresetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPresetRequest,
+  output: GetPresetResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetPresetByIdPresetError =
+  | RealtimeKitPresetNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Fetches details of a preset using the provided preset ID */
+export const getPresetByIdPreset: API.OperationMethod<
+  GetPresetByIdPresetRequest,
+  GetPresetByIdPresetResponse,
+  GetPresetByIdPresetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPresetByIdPresetRequest,
+  output: GetPresetByIdPresetResponse,
+  errors: [
+    RealtimeKitPresetNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetRecordingsRecordingError = CloudflareOpError;
+/** Returns all recordings for an App. If the `meeting_id` parameter is passed, returns all recordings for the given meeting ID. */
+export const getRecordingsRecording: API.OperationMethod<
+  GetRecordingsRecordingRequest,
+  GetRecordingsRecordingResponse,
+  GetRecordingsRecordingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRecordingsRecordingRequest,
+  output: GetRecordingsRecordingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSessionChatSessionError = CloudflareOpError;
+/** Returns a URL to download all chat messages of the session ID in CSV format. */
+export const getSessionChatSession: API.OperationMethod<
+  GetSessionChatSessionRequest,
+  GetSessionChatSessionResponse,
+  GetSessionChatSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSessionChatSessionRequest,
+  output: GetSessionChatSessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSessionDetailsSessionError = CloudflareOpError;
+/** Returns data of the given session ID including recording details. */
+export const getSessionDetailsSession: API.OperationMethod<
+  GetSessionDetailsSessionRequest,
+  GetSessionDetailsSessionResponse,
+  GetSessionDetailsSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSessionDetailsSessionRequest,
+  output: GetSessionDetailsSessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSessionParticipantDetailsSessionError = CloudflareOpError;
+/** Returns details of the given participant ID along with call statistics for the given session ID. */
+export const getSessionParticipantDetailsSession: API.OperationMethod<
+  GetSessionParticipantDetailsSessionRequest,
+  GetSessionParticipantDetailsSessionResponse,
+  GetSessionParticipantDetailsSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSessionParticipantDetailsSessionRequest,
+  output: GetSessionParticipantDetailsSessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSessionParticipantsSessionError = CloudflareOpError;
+/** Returns a list of participants for the given session ID. */
+export const getSessionParticipantsSession: API.OperationMethod<
+  GetSessionParticipantsSessionRequest,
+  GetSessionParticipantsSessionResponse,
+  GetSessionParticipantsSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSessionParticipantsSessionRequest,
+  output: GetSessionParticipantsSessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSessionsSessionError = CloudflareOpError;
+/** Returns details of all sessions of an App. */
+export const getSessionsSession: API.OperationMethod<
+  GetSessionsSessionRequest,
+  GetSessionsSessionResponse,
+  GetSessionsSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSessionsSessionRequest,
+  output: GetSessionsSessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSessionSummarySessionError = CloudflareOpError;
+/** Returns a Summary URL to download the Summary of Transcripts for the session ID as plain text. */
+export const getSessionSummarySession: API.OperationMethod<
+  GetSessionSummarySessionRequest,
+  GetSessionSummarySessionResponse,
+  GetSessionSummarySessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSessionSummarySessionRequest,
+  output: GetSessionSummarySessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSessionTranscriptsSessionError = CloudflareOpError;
+/** Returns a URL to download the transcript for the session ID in CSV format. */
+export const getSessionTranscriptsSession: API.OperationMethod<
+  GetSessionTranscriptsSessionRequest,
+  GetSessionTranscriptsSessionResponse,
+  GetSessionTranscriptsSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSessionTranscriptsSessionRequest,
+  output: GetSessionTranscriptsSessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetWebhookByIdWebhookError =
+  | RealtimeKitWebhookNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Returns webhook details for the given webhook ID. */
+export const getWebhookByIdWebhook: API.OperationMethod<
+  GetWebhookByIdWebhookRequest,
+  GetWebhookByIdWebhookResponse,
+  GetWebhookByIdWebhookError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetWebhookByIdWebhookRequest,
+  output: GetWebhookByIdWebhookResponse,
+  errors: [
+    RealtimeKitWebhookNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetWebhooksWebhookError =
+  | RealtimeKitWebhookNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Returns details of all webhooks for an App. */
+export const getWebhooksWebhook: API.OperationMethod<
+  GetWebhooksWebhookRequest,
+  GetWebhooksWebhookResponse,
+  GetWebhooksWebhookError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetWebhooksWebhookRequest,
+  output: GetWebhooksWebhookResponse,
+  errors: [
+    RealtimeKitWebhookNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type KickAllParticipantsActiveSessionError = CloudflareOpError;
+/** Kicks all participants from an active session for the given meeting ID. */
+export const kickAllParticipantsActiveSession: API.OperationMethod<
+  KickAllParticipantsActiveSessionRequest,
+  KickAllParticipantsActiveSessionResponse,
+  KickAllParticipantsActiveSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: KickAllParticipantsActiveSessionRequest,
+  output: KickAllParticipantsActiveSessionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type KickParticipantsActiveSessionError = CloudflareOpError;
+/** Kicks one or more participants from an active session using user ID or custom participant ID. */
+export const kickParticipantsActiveSession: API.OperationMethod<
+  KickParticipantsActiveSessionRequest,
+  KickParticipantsActiveSessionResponse,
+  KickParticipantsActiveSessionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: KickParticipantsActiveSessionRequest,
+  output: KickParticipantsActiveSessionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
@@ -16190,548 +16670,172 @@ export const livestreamsGetOrgAnalytics: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-export type LivestreamsStartLivestreamingAMeetingError = CloudflareOpError;
-/** Starts livestream of a meeting associated with the given meeting ID. Retreive the meeting ID using the `Create a meeting` API. */
-export const livestreamsStartLivestreamingAMeeting: API.OperationMethod<
-  LivestreamsStartLivestreamingAMeetingRequest,
-  LivestreamsStartLivestreamingAMeetingResponse,
-  LivestreamsStartLivestreamingAMeetingError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LivestreamsStartLivestreamingAMeetingRequest,
-  output: LivestreamsStartLivestreamingAMeetingResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LivestreamsStopLivestreamingAMeetingError = CloudflareOpError;
-/** Stops the active livestream of a meeting associated with the given meeting ID. Retreive the meeting ID using the `Create a meeting` API. */
-export const livestreamsStopLivestreamingAMeeting: API.OperationMethod<
-  LivestreamsStopLivestreamingAMeetingRequest,
-  LivestreamsStopLivestreamingAMeetingResponse,
-  LivestreamsStopLivestreamingAMeetingError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LivestreamsStopLivestreamingAMeetingRequest,
-  output: LivestreamsStopLivestreamingAMeetingResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type MeetingsAddParticipantError = CloudflareOpError;
-/** Adds a participant to the given meeting ID. */
-export const meetingsAddParticipant: API.OperationMethod<
-  MeetingsAddParticipantRequest,
-  MeetingsAddParticipantResponse,
-  MeetingsAddParticipantError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MeetingsAddParticipantRequest,
-  output: MeetingsAddParticipantResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type MeetingsCreateError = CloudflareOpError;
-/** Create a meeting for the given App ID. */
-export const meetingsCreate: API.OperationMethod<
-  MeetingsCreateRequest,
-  MeetingsCreateResponse,
-  MeetingsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MeetingsCreateRequest,
-  output: MeetingsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type MeetingsDeleteMeetingParticipantError = CloudflareOpError;
-/** Deletes a participant for the given meeting and participant ID. */
-export const meetingsDeleteMeetingParticipant: API.OperationMethod<
-  MeetingsDeleteMeetingParticipantRequest,
-  MeetingsDeleteMeetingParticipantResponse,
-  MeetingsDeleteMeetingParticipantError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MeetingsDeleteMeetingParticipantRequest,
-  output: MeetingsDeleteMeetingParticipantResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type MeetingsEditParticipantError = CloudflareOpError;
-/** Updates a participant's details for the given meeting and participant ID. */
-export const meetingsEditParticipant: API.OperationMethod<
-  MeetingsEditParticipantRequest,
-  MeetingsEditParticipantResponse,
-  MeetingsEditParticipantError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MeetingsEditParticipantRequest,
-  output: MeetingsEditParticipantResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type MeetingsGetError = CloudflareOpError;
-/** Returns all meetings for the given App ID. */
-export const meetingsGet: API.OperationMethod<
-  MeetingsGetRequest,
-  MeetingsGetResponse,
-  MeetingsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MeetingsGetRequest,
-  output: MeetingsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type MeetingsGetMeetingByIdError = CloudflareOpError;
-/** Returns a meeting details in an App for the given meeting ID. */
-export const meetingsGetMeetingById: API.OperationMethod<
-  MeetingsGetMeetingByIdRequest,
-  MeetingsGetMeetingByIdResponse,
-  MeetingsGetMeetingByIdError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MeetingsGetMeetingByIdRequest,
-  output: MeetingsGetMeetingByIdResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type MeetingsGetMeetingParticipantError = CloudflareOpError;
-/** Returns a participant details for the given meeting and participant ID. */
-export const meetingsGetMeetingParticipant: API.OperationMethod<
-  MeetingsGetMeetingParticipantRequest,
-  MeetingsGetMeetingParticipantResponse,
-  MeetingsGetMeetingParticipantError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MeetingsGetMeetingParticipantRequest,
-  output: MeetingsGetMeetingParticipantResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type MeetingsGetMeetingParticipantsError = CloudflareOpError;
-/** Returns all participants detail for the given meeting ID. */
-export const meetingsGetMeetingParticipants: API.OperationMethod<
-  MeetingsGetMeetingParticipantsRequest,
-  MeetingsGetMeetingParticipantsResponse,
-  MeetingsGetMeetingParticipantsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MeetingsGetMeetingParticipantsRequest,
-  output: MeetingsGetMeetingParticipantsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type MeetingsRefreshParticipantTokenError = CloudflareOpError;
-/** Regenerates participant's authentication token for the given meeting and participant ID. */
-export const meetingsRefreshParticipantToken: API.OperationMethod<
-  MeetingsRefreshParticipantTokenRequest,
-  MeetingsRefreshParticipantTokenResponse,
-  MeetingsRefreshParticipantTokenError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MeetingsRefreshParticipantTokenRequest,
-  output: MeetingsRefreshParticipantTokenResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type MeetingsReplaceMeetingByIdError = CloudflareOpError;
-/** Replaces all the details for the given meeting ID. */
-export const meetingsReplaceMeetingById: API.OperationMethod<
-  MeetingsReplaceMeetingByIdRequest,
-  MeetingsReplaceMeetingByIdResponse,
-  MeetingsReplaceMeetingByIdError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MeetingsReplaceMeetingByIdRequest,
-  output: MeetingsReplaceMeetingByIdResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type MeetingsUpdateMeetingByIdError = CloudflareOpError;
-/** Updates a meeting in an App for the given meeting ID. */
-export const meetingsUpdateMeetingById: API.OperationMethod<
-  MeetingsUpdateMeetingByIdRequest,
-  MeetingsUpdateMeetingByIdResponse,
-  MeetingsUpdateMeetingByIdError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MeetingsUpdateMeetingByIdRequest,
-  output: MeetingsUpdateMeetingByIdResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PresetsCreateError = CloudflareOpError;
-/** Creates a preset belonging to the current App */
-export const presetsCreate: API.OperationMethod<
-  PresetsCreateRequest,
-  PresetsCreateResponse,
-  PresetsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PresetsCreateRequest,
-  output: PresetsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PresetsDeleteError = CloudflareOpError;
-/** Deletes a preset using the provided preset ID */
-export const presetsDelete: API.OperationMethod<
-  PresetsDeleteRequest,
-  PresetsDeleteResponse,
-  PresetsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PresetsDeleteRequest,
-  output: PresetsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PresetsGetError = CloudflareOpError;
-/** Fetches all the presets belonging to an App. */
-export const presetsGet: API.OperationMethod<
-  PresetsGetRequest,
-  PresetsGetResponse,
-  PresetsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PresetsGetRequest,
-  output: PresetsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PresetsGetPresetByIdError = CloudflareOpError;
-/** Fetches details of a preset using the provided preset ID */
-export const presetsGetPresetById: API.OperationMethod<
-  PresetsGetPresetByIdRequest,
-  PresetsGetPresetByIdResponse,
-  PresetsGetPresetByIdError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PresetsGetPresetByIdRequest,
-  output: PresetsGetPresetByIdResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PresetsUpdateError = CloudflareOpError;
+export type PatchPresetError =
+  | RealtimeKitPresetNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Update a preset by the provided preset ID */
-export const presetsUpdate: API.OperationMethod<
-  PresetsUpdateRequest,
-  PresetsUpdateResponse,
-  PresetsUpdateError,
+export const patchPreset: API.OperationMethod<
+  PatchPresetRequest,
+  PatchPresetResponse,
+  PatchPresetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PresetsUpdateRequest,
-  output: PresetsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PatchPresetRequest,
+  output: PatchPresetResponse,
+  errors: [
+    RealtimeKitPresetNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type RecordingsGetActiveRecordingsError = CloudflareOpError;
-/** Returns the active recording details for the given meeting ID. */
-export const recordingsGetActiveRecordings: API.OperationMethod<
-  RecordingsGetActiveRecordingsRequest,
-  RecordingsGetActiveRecordingsResponse,
-  RecordingsGetActiveRecordingsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordingsGetActiveRecordingsRequest,
-  output: RecordingsGetActiveRecordingsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordingsGetOneRecordingError = CloudflareOpError;
-/** Returns details of a recording for the given recording ID. */
-export const recordingsGetOneRecording: API.OperationMethod<
-  RecordingsGetOneRecordingRequest,
-  RecordingsGetOneRecordingResponse,
-  RecordingsGetOneRecordingError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordingsGetOneRecordingRequest,
-  output: RecordingsGetOneRecordingResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordingsGetRecordingsError = CloudflareOpError;
-/** Returns all recordings for an App. If the `meeting_id` parameter is passed, returns all recordings for the given meeting ID. */
-export const recordingsGetRecordings: API.OperationMethod<
-  RecordingsGetRecordingsRequest,
-  RecordingsGetRecordingsResponse,
-  RecordingsGetRecordingsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecordingsGetRecordingsRequest,
-  output: RecordingsGetRecordingsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RecordingsPauseResumeStopRecordingError = CloudflareOpError;
+export type PauseResumeStopRecordingRecordingError = CloudflareOpError;
 /** Pause/Resume/Stop a given recording ID. */
-export const recordingsPauseResumeStopRecording: API.OperationMethod<
-  RecordingsPauseResumeStopRecordingRequest,
-  RecordingsPauseResumeStopRecordingResponse,
-  RecordingsPauseResumeStopRecordingError,
+export const pauseResumeStopRecordingRecording: API.OperationMethod<
+  PauseResumeStopRecordingRecordingRequest,
+  PauseResumeStopRecordingRecordingResponse,
+  PauseResumeStopRecordingRecordingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RecordingsPauseResumeStopRecordingRequest,
-  output: RecordingsPauseResumeStopRecordingResponse,
+  input: PauseResumeStopRecordingRecordingRequest,
+  output: PauseResumeStopRecordingRecordingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RecordingsStartRecordingsError = CloudflareOpError;
-/** Starts recording a meeting. The meeting can be started by an App admin directly, or a participant with permissions to start a recording, based on the type of authorization used. */
-export const recordingsStartRecordings: API.OperationMethod<
-  RecordingsStartRecordingsRequest,
-  RecordingsStartRecordingsResponse,
-  RecordingsStartRecordingsError,
+export type PostAppError = Forbidden | CloudflareOpError;
+/** Create new app for your account */
+export const postApp: API.OperationMethod<
+  PostAppRequest,
+  PostAppResponse,
+  PostAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RecordingsStartRecordingsRequest,
-  output: RecordingsStartRecordingsResponse,
+  input: PostAppRequest,
+  output: PostAppResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type RefreshParticipantTokenMeetingError = CloudflareOpError;
+/** Regenerates participant's authentication token for the given meeting and participant ID. */
+export const refreshParticipantTokenMeeting: API.OperationMethod<
+  RefreshParticipantTokenMeetingRequest,
+  RefreshParticipantTokenMeetingResponse,
+  RefreshParticipantTokenMeetingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RefreshParticipantTokenMeetingRequest,
+  output: RefreshParticipantTokenMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RecordingsStartTrackRecordingError = CloudflareOpError;
-/** Starts track recording for a meeting. Track recording currently records separate participant audio tracks as WebM files in the RealtimeKit bucket. Video track recording is in development. For more information, refer to [Track recording](/realtime/realtimekit/recording-guide/track-recording/). */
-export const recordingsStartTrackRecording: API.OperationMethod<
-  RecordingsStartTrackRecordingRequest,
-  RecordingsStartTrackRecordingResponse,
-  RecordingsStartTrackRecordingError,
+export type ReplaceMeetingByIdMeetingError = CloudflareOpError;
+/** Replaces all the details for the given meeting ID. */
+export const replaceMeetingByIdMeeting: API.OperationMethod<
+  ReplaceMeetingByIdMeetingRequest,
+  ReplaceMeetingByIdMeetingResponse,
+  ReplaceMeetingByIdMeetingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RecordingsStartTrackRecordingRequest,
-  output: RecordingsStartTrackRecordingResponse,
+  input: ReplaceMeetingByIdMeetingRequest,
+  output: ReplaceMeetingByIdMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SessionsGenerateSummaryOfTranscriptsError = CloudflareOpError;
-/** Trigger Summary generation of Transcripts for the session ID. */
-export const sessionsGenerateSummaryOfTranscripts: API.OperationMethod<
-  SessionsGenerateSummaryOfTranscriptsRequest,
-  SessionsGenerateSummaryOfTranscriptsResponse,
-  SessionsGenerateSummaryOfTranscriptsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SessionsGenerateSummaryOfTranscriptsRequest,
-  output: SessionsGenerateSummaryOfTranscriptsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SessionsGetParticipantDataFromPeerIdError = CloudflareOpError;
-/** Returns participant details for the given peer ID along with call statistics. */
-export const sessionsGetParticipantDataFromPeerId: API.OperationMethod<
-  SessionsGetParticipantDataFromPeerIdRequest,
-  SessionsGetParticipantDataFromPeerIdResponse,
-  SessionsGetParticipantDataFromPeerIdError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SessionsGetParticipantDataFromPeerIdRequest,
-  output: SessionsGetParticipantDataFromPeerIdResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SessionsGetSessionChatError = CloudflareOpError;
-/** Returns a URL to download all chat messages of the session ID in CSV format. */
-export const sessionsGetSessionChat: API.OperationMethod<
-  SessionsGetSessionChatRequest,
-  SessionsGetSessionChatResponse,
-  SessionsGetSessionChatError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SessionsGetSessionChatRequest,
-  output: SessionsGetSessionChatResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SessionsGetSessionDetailsError = CloudflareOpError;
-/** Returns data of the given session ID including recording details. */
-export const sessionsGetSessionDetails: API.OperationMethod<
-  SessionsGetSessionDetailsRequest,
-  SessionsGetSessionDetailsResponse,
-  SessionsGetSessionDetailsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SessionsGetSessionDetailsRequest,
-  output: SessionsGetSessionDetailsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SessionsGetSessionParticipantDetailsError = CloudflareOpError;
-/** Returns details of the given participant ID along with call statistics for the given session ID. */
-export const sessionsGetSessionParticipantDetails: API.OperationMethod<
-  SessionsGetSessionParticipantDetailsRequest,
-  SessionsGetSessionParticipantDetailsResponse,
-  SessionsGetSessionParticipantDetailsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SessionsGetSessionParticipantDetailsRequest,
-  output: SessionsGetSessionParticipantDetailsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SessionsGetSessionParticipantsError = CloudflareOpError;
-/** Returns a list of participants for the given session ID. */
-export const sessionsGetSessionParticipants: API.OperationMethod<
-  SessionsGetSessionParticipantsRequest,
-  SessionsGetSessionParticipantsResponse,
-  SessionsGetSessionParticipantsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SessionsGetSessionParticipantsRequest,
-  output: SessionsGetSessionParticipantsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SessionsGetSessionsError = CloudflareOpError;
-/** Returns details of all sessions of an App. */
-export const sessionsGetSessions: API.OperationMethod<
-  SessionsGetSessionsRequest,
-  SessionsGetSessionsResponse,
-  SessionsGetSessionsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SessionsGetSessionsRequest,
-  output: SessionsGetSessionsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SessionsGetSessionSummaryError = CloudflareOpError;
-/** Returns a Summary URL to download the Summary of Transcripts for the session ID as plain text. */
-export const sessionsGetSessionSummary: API.OperationMethod<
-  SessionsGetSessionSummaryRequest,
-  SessionsGetSessionSummaryResponse,
-  SessionsGetSessionSummaryError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SessionsGetSessionSummaryRequest,
-  output: SessionsGetSessionSummaryResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SessionsGetSessionTranscriptsError = CloudflareOpError;
-/** Returns a URL to download the transcript for the session ID in CSV format. */
-export const sessionsGetSessionTranscripts: API.OperationMethod<
-  SessionsGetSessionTranscriptsRequest,
-  SessionsGetSessionTranscriptsResponse,
-  SessionsGetSessionTranscriptsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SessionsGetSessionTranscriptsRequest,
-  output: SessionsGetSessionTranscriptsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WebhooksCreateWebhookError = CloudflareOpError;
-/** Adds a new webhook to an App. */
-export const webhooksCreateWebhook: API.OperationMethod<
-  WebhooksCreateWebhookRequest,
-  WebhooksCreateWebhookResponse,
-  WebhooksCreateWebhookError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksCreateWebhookRequest,
-  output: WebhooksCreateWebhookResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WebhooksDeleteWebhookError = CloudflareOpError;
-/** Removes a webhook for the given webhook ID. */
-export const webhooksDeleteWebhook: API.OperationMethod<
-  WebhooksDeleteWebhookRequest,
-  WebhooksDeleteWebhookResponse,
-  WebhooksDeleteWebhookError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksDeleteWebhookRequest,
-  output: WebhooksDeleteWebhookResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WebhooksEditWebhookError = CloudflareOpError;
-/** Edits the webhook details for the given webhook ID. */
-export const webhooksEditWebhook: API.OperationMethod<
-  WebhooksEditWebhookRequest,
-  WebhooksEditWebhookResponse,
-  WebhooksEditWebhookError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksEditWebhookRequest,
-  output: WebhooksEditWebhookResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WebhooksGetWebhookByIdError = CloudflareOpError;
-/** Returns webhook details for the given webhook ID. */
-export const webhooksGetWebhookById: API.OperationMethod<
-  WebhooksGetWebhookByIdRequest,
-  WebhooksGetWebhookByIdResponse,
-  WebhooksGetWebhookByIdError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksGetWebhookByIdRequest,
-  output: WebhooksGetWebhookByIdResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WebhooksGetWebhooksError = CloudflareOpError;
-/** Returns details of all webhooks for an App. */
-export const webhooksGetWebhooks: API.OperationMethod<
-  WebhooksGetWebhooksRequest,
-  WebhooksGetWebhooksResponse,
-  WebhooksGetWebhooksError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksGetWebhooksRequest,
-  output: WebhooksGetWebhooksResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WebhooksReplaceWebhookError = CloudflareOpError;
+export type ReplaceWebhookWebhookError =
+  | RealtimeKitWebhookNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Replace all details for the given webhook ID. */
-export const webhooksReplaceWebhook: API.OperationMethod<
-  WebhooksReplaceWebhookRequest,
-  WebhooksReplaceWebhookResponse,
-  WebhooksReplaceWebhookError,
+export const replaceWebhookWebhook: API.OperationMethod<
+  ReplaceWebhookWebhookRequest,
+  ReplaceWebhookWebhookResponse,
+  ReplaceWebhookWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksReplaceWebhookRequest,
-  output: WebhooksReplaceWebhookResponse,
+  input: ReplaceWebhookWebhookRequest,
+  output: ReplaceWebhookWebhookResponse,
+  errors: [
+    RealtimeKitWebhookNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type StartLivestreamingAMeetingLivestreamError = CloudflareOpError;
+/** Starts livestream of a meeting associated with the given meeting ID. Retreive the meeting ID using the `Create a meeting` API. */
+export const startLivestreamingAMeetingLivestream: API.OperationMethod<
+  StartLivestreamingAMeetingLivestreamRequest,
+  StartLivestreamingAMeetingLivestreamResponse,
+  StartLivestreamingAMeetingLivestreamError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartLivestreamingAMeetingLivestreamRequest,
+  output: StartLivestreamingAMeetingLivestreamResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type StartRecordingsRecordingError = CloudflareOpError;
+/** Starts recording a meeting. The meeting can be started by an App admin directly, or a participant with permissions to start a recording, based on the type of authorization used. */
+export const startRecordingsRecording: API.OperationMethod<
+  StartRecordingsRecordingRequest,
+  StartRecordingsRecordingResponse,
+  StartRecordingsRecordingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartRecordingsRecordingRequest,
+  output: StartRecordingsRecordingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type StartTrackRecordingRecordingError = CloudflareOpError;
+/** Starts track recording for a meeting. Track recording currently records separate participant audio tracks as WebM files in the RealtimeKit bucket. Video track recording is in development. For more information, refer to [Track recording](/realtime/realtimekit/recording-guide/track-recording/). */
+export const startTrackRecordingRecording: API.OperationMethod<
+  StartTrackRecordingRecordingRequest,
+  StartTrackRecordingRecordingResponse,
+  StartTrackRecordingRecordingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StartTrackRecordingRecordingRequest,
+  output: StartTrackRecordingRecordingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type StopLivestreamingAMeetingLivestreamError = CloudflareOpError;
+/** Stops the active livestream of a meeting associated with the given meeting ID. Retreive the meeting ID using the `Create a meeting` API. */
+export const stopLivestreamingAMeetingLivestream: API.OperationMethod<
+  StopLivestreamingAMeetingLivestreamRequest,
+  StopLivestreamingAMeetingLivestreamResponse,
+  StopLivestreamingAMeetingLivestreamError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StopLivestreamingAMeetingLivestreamRequest,
+  output: StopLivestreamingAMeetingLivestreamResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateMeetingByIdMeetingError = CloudflareOpError;
+/** Updates a meeting in an App for the given meeting ID. */
+export const updateMeetingByIdMeeting: API.OperationMethod<
+  UpdateMeetingByIdMeetingRequest,
+  UpdateMeetingByIdMeetingResponse,
+  UpdateMeetingByIdMeetingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMeetingByIdMeetingRequest,
+  output: UpdateMeetingByIdMeetingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

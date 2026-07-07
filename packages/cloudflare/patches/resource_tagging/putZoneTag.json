@@ -1,0 +1,114 @@
+{
+  "description": "Align resource_tagging#ZoneTagsUpdate with distilled cloudflare/resource-tagging putZoneTag",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.resource_tagging#ZoneTagsUpdate",
+      "path": "/shapes/com.cloudflare.resource_tagging#PutZoneTag"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.resource_tagging#ZoneTagsUpdateRequest",
+      "path": "/shapes/com.cloudflare.resource_tagging#PutZoneTagRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.resource_tagging#PutZoneTag/input/target",
+      "value": "com.cloudflare.resource_tagging#PutZoneTagRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.resource_tagging#ZoneTagsUpdateResponse",
+      "path": "/shapes/com.cloudflare.resource_tagging#PutZoneTagResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.resource_tagging#PutZoneTag/output/target",
+      "value": "com.cloudflare.resource_tagging#PutZoneTagResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#ZoneTagResourceNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#TagPreconditionFailed",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 412
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#PutZoneTag/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.resource_tagging#ZoneTagResourceNotFound"
+        },
+        {
+          "target": "com.cloudflare.resource_tagging#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.resource_tagging#TagPreconditionFailed"
+        }
+      ]
+    }
+  ]
+}

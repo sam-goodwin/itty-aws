@@ -1,0 +1,62 @@
+{
+  "description": "Align zero_trust#DevicesPostureList with distilled cloudflare/zero-trust listDevicePostures",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#DevicesPostureList",
+      "path": "/shapes/com.cloudflare.zero_trust#ListDevicePostures"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#DevicesPostureListRequest",
+      "path": "/shapes/com.cloudflare.zero_trust#ListDevicePosturesRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#ListDevicePostures/input/target",
+      "value": "com.cloudflare.zero_trust#ListDevicePosturesRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#DevicesPostureListResponse",
+      "path": "/shapes/com.cloudflare.zero_trust#ListDevicePosturesResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#ListDevicePostures/output/target",
+      "value": "com.cloudflare.zero_trust#ListDevicePosturesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#ListDevicePostures/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#Forbidden"
+        }
+      ]
+    }
+  ]
+}

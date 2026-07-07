@@ -9,12 +9,572 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface InvestigateBulkCancelCreateRequest {
+export class AllowPolicyNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AllowPolicyNotFound>()("AllowPolicyNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export class BlockSenderNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<BlockSenderNotFound>()("BlockSenderNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export class EmailSecurityDomainNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<EmailSecurityDomainNotFound>()(
+    "EmailSecurityDomainNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ status: 404 }],
+) {}
+
+export class EmailSecurityNotEntitled extends T.applyErrorMatchers(
+  S.TaggedErrorClass<EmailSecurityNotEntitled>()("EmailSecurityNotEntitled", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [
+    {
+      status: 403,
+      message: { includes: "not available in the current subscription" },
+    },
+  ],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class ImpersonationRegistryEntryNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<ImpersonationRegistryEntryNotFound>()(
+    "ImpersonationRegistryEntryNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ status: 404 }],
+) {}
+
+export class TrustedDomainNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<TrustedDomainNotFound>()("TrustedDomainNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export type InvestigateMoveBulkRequestDestination =
+  | "Inbox"
+  | "JunkEmail"
+  | "DeletedItems"
+  | (string & {});
+export const InvestigateMoveBulkRequestDestination = /*@__PURE__*/ S.String;
+
+export type InvestigateMoveBulkRequestExpectedDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateMoveBulkRequestExpectedDisposition =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateMoveBulkRequestIdsList = string[];
+export const InvestigateMoveBulkRequestIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InvestigateMoveBulkRequestIdsList>;
+
+export type InvestigateMoveBulkRequestPostfixIdsList = string[];
+export const InvestigateMoveBulkRequestPostfixIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InvestigateMoveBulkRequestPostfixIdsList>;
+
+export interface BulkInvestigateMoveRequest {
+  /** Identifier. */
+  accountId: string;
+  destination: InvestigateMoveBulkRequestDestination;
+  expectedDisposition?: InvestigateMoveBulkRequestExpectedDisposition;
+  /** List of message IDs to move */
+  ids?: InvestigateMoveBulkRequestIdsList;
+  /** Deprecated, use `ids` instead. End of life: November 1, 2026. List of message IDs to move. */
+  postfixIds?: InvestigateMoveBulkRequestPostfixIdsList;
+}
+export const BulkInvestigateMoveRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    destination: InvestigateMoveBulkRequestDestination,
+    expectedDisposition: S.optional(
+      InvestigateMoveBulkRequestExpectedDisposition.pipe(
+        T.Body("expected_disposition"),
+      ),
+    ),
+    ids: S.optional(InvestigateMoveBulkRequestIdsList),
+    postfixIds: S.optional(
+      InvestigateMoveBulkRequestPostfixIdsList.pipe(T.Body("postfix_ids")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/email-security/investigate/move",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "BulkInvestigateMoveRequest",
+}) as any as S.Schema<BulkInvestigateMoveRequest>;
+
+export interface InvestigateMoveBulkResultItem {
+  /** Whether the operation succeeded */
+  success: boolean;
+  /** When the move operation completed (UTC) */
+  completedAt?: string;
+  /** Deprecated, use `completed_at` instead. End of life: November 1, 2026. */
+  completedTimestamp?: string;
+  /** Destination folder for the message */
+  destination?: string;
+  /** Number of items moved. End of life: November 1, 2026. */
+  itemCount?: number;
+  /** Message identifier */
+  messageId?: string;
+  /** Type of operation performed */
+  operation?: string;
+  /** Recipient email address */
+  recipient?: string;
+  /** Operation status */
+  status?: string;
+}
+export const InvestigateMoveBulkResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    success: S.Boolean,
+    completedAt: S.optional(S.String.pipe(T.Body("completed_at"))),
+    completedTimestamp: S.optional(
+      S.String.pipe(T.Body("completed_timestamp")),
+    ),
+    destination: S.optional(S.String),
+    itemCount: S.optional(S.Number.pipe(T.Body("item_count"))),
+    messageId: S.optional(S.String.pipe(T.Body("message_id"))),
+    operation: S.optional(S.String),
+    recipient: S.optional(S.String),
+    status: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InvestigateMoveBulkResultItem",
+}) as any as S.Schema<InvestigateMoveBulkResultItem>;
+
+export type InvestigateMoveBulkResultList = InvestigateMoveBulkResultItem[];
+export const InvestigateMoveBulkResultList = /*@__PURE__*/ S.Array(
+  InvestigateMoveBulkResultItem,
+) as any as S.Schema<InvestigateMoveBulkResultList>;
+
+export interface BulkInvestigateMoveResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: InvestigateMoveBulkResultList;
+}
+export const BulkInvestigateMoveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(InvestigateMoveBulkResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "BulkInvestigateMoveResponse",
+}) as any as S.Schema<BulkInvestigateMoveResponse>;
+
+export type InvestigateReleaseBulkRequestBodyList = string[];
+export const InvestigateReleaseBulkRequestBodyList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InvestigateReleaseBulkRequestBodyList>;
+
+export interface BulkInvestigateReleaseRequest {
+  /** Identifier. */
+  accountId: string;
+  body: InvestigateReleaseBulkRequestBodyList;
+}
+export const BulkInvestigateReleaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    body: InvestigateReleaseBulkRequestBodyList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/email-security/investigate/release",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "BulkInvestigateReleaseRequest",
+}) as any as S.Schema<BulkInvestigateReleaseRequest>;
+
+export type InvestigateReleaseBulkResultItemDeliveredList = string[];
+export const InvestigateReleaseBulkResultItemDeliveredList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InvestigateReleaseBulkResultItemDeliveredList>;
+
+export type InvestigateReleaseBulkResultItemFailedList = string[];
+export const InvestigateReleaseBulkResultItemFailedList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<InvestigateReleaseBulkResultItemFailedList>;
+
+export type InvestigateReleaseBulkResultItemUndeliveredList = string[];
+export const InvestigateReleaseBulkResultItemUndeliveredList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InvestigateReleaseBulkResultItemUndeliveredList>;
+
+export interface InvestigateReleaseBulkResultItem {
+  /** Unique identifier for a message retrieved from investigation */
+  id: string;
+  delivered?: InvestigateReleaseBulkResultItemDeliveredList;
+  failed?: InvestigateReleaseBulkResultItemFailedList;
+  /** Deprecated, use `id` instead. End of life: November 1, 2026. */
+  postfixId?: string;
+  undelivered?: InvestigateReleaseBulkResultItemUndeliveredList;
+}
+export const InvestigateReleaseBulkResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    delivered: S.optional(InvestigateReleaseBulkResultItemDeliveredList),
+    failed: S.optional(InvestigateReleaseBulkResultItemFailedList),
+    postfixId: S.optional(S.String.pipe(T.Body("postfix_id"))),
+    undelivered: S.optional(InvestigateReleaseBulkResultItemUndeliveredList),
+  }),
+).annotate({
+  identifier: "InvestigateReleaseBulkResultItem",
+}) as any as S.Schema<InvestigateReleaseBulkResultItem>;
+
+export type InvestigateReleaseBulkResultList =
+  InvestigateReleaseBulkResultItem[];
+export const InvestigateReleaseBulkResultList = /*@__PURE__*/ S.Array(
+  InvestigateReleaseBulkResultItem,
+) as any as S.Schema<InvestigateReleaseBulkResultList>;
+
+export interface BulkInvestigateReleaseResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: InvestigateReleaseBulkResultList;
+}
+export const BulkInvestigateReleaseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      InvestigateReleaseBulkResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "BulkInvestigateReleaseResponse",
+}) as any as S.Schema<BulkInvestigateReleaseResponse>;
+
+export type InvestigateBulkCreateRequestAction =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkCreateRequestAction = /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateRequestSearchParamsDeliveryStatus =
+  | "delivered"
+  | "moved"
+  | "quarantined"
+  | (string & {});
+export const InvestigateBulkCreateRequestSearchParamsDeliveryStatus =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateRequestSearchParamsFinalDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateBulkCreateRequestSearchParamsFinalDisposition =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateRequestSearchParamsMessageAction =
+  | "PREVIEW"
+  | "QUARANTINE_RELEASED"
+  | "MOVED"
+  | (string & {});
+export const InvestigateBulkCreateRequestSearchParamsMessageAction =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkCreateRequestSearchParams {
+  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
+  actionLog?: boolean;
+  alertId?: string;
+  /** Delivery status of the message. */
+  deliveryStatus?: InvestigateBulkCreateRequestSearchParamsDeliveryStatus;
+  detectionsOnly?: boolean;
+  domain?: string;
+  /** End of search date range */
+  end?: string;
+  exactSubject?: string;
+  finalDisposition?: InvestigateBulkCreateRequestSearchParamsFinalDisposition;
+  messageAction?: InvestigateBulkCreateRequestSearchParamsMessageAction;
+  messageId?: string;
+  metric?: string;
+  query?: string;
+  recipient?: string;
+  sender?: string;
+  /** Beginning of search date range */
+  start?: string;
+  subject?: string;
+  submissions?: boolean;
+}
+export const InvestigateBulkCreateRequestSearchParams = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      actionLog: S.optional(S.Boolean.pipe(T.Body("action_log"))),
+      alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
+      deliveryStatus: S.optional(
+        InvestigateBulkCreateRequestSearchParamsDeliveryStatus.pipe(
+          T.Body("delivery_status"),
+        ),
+      ),
+      detectionsOnly: S.optional(S.Boolean.pipe(T.Body("detections_only"))),
+      domain: S.optional(S.String),
+      end: S.optional(S.String),
+      exactSubject: S.optional(S.String.pipe(T.Body("exact_subject"))),
+      finalDisposition: S.optional(
+        InvestigateBulkCreateRequestSearchParamsFinalDisposition.pipe(
+          T.Body("final_disposition"),
+        ),
+      ),
+      messageAction: S.optional(
+        InvestigateBulkCreateRequestSearchParamsMessageAction.pipe(
+          T.Body("message_action"),
+        ),
+      ),
+      messageId: S.optional(S.String.pipe(T.Body("message_id"))),
+      metric: S.optional(S.String),
+      query: S.optional(S.String),
+      recipient: S.optional(S.String),
+      sender: S.optional(S.String),
+      start: S.optional(S.String),
+      subject: S.optional(S.String),
+      submissions: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "InvestigateBulkCreateRequestSearchParams",
+}) as any as S.Schema<InvestigateBulkCreateRequestSearchParams>;
+
+export type InvestigateBulkCreateRequestDestination =
+  | "Inbox"
+  | "JunkEmail"
+  | "DeletedItems"
+  | (string & {});
+export const InvestigateBulkCreateRequestDestination = /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateRequestExpectedDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateBulkCreateRequestExpectedDisposition =
+  /*@__PURE__*/ S.String;
+
+export interface CreateInvestigateBulkRequest {
+  /** Identifier. */
+  accountId: string;
+  action: InvestigateBulkCreateRequestAction;
+  searchParams: InvestigateBulkCreateRequestSearchParams;
+  comment?: string;
+  destination?: InvestigateBulkCreateRequestDestination;
+  expectedDisposition?: InvestigateBulkCreateRequestExpectedDisposition;
+}
+export const CreateInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    action: InvestigateBulkCreateRequestAction,
+    searchParams: InvestigateBulkCreateRequestSearchParams.pipe(
+      T.Body("search_params"),
+    ),
+    comment: S.optional(S.String),
+    destination: S.optional(InvestigateBulkCreateRequestDestination),
+    expectedDisposition: S.optional(
+      InvestigateBulkCreateRequestExpectedDisposition.pipe(
+        T.Body("expected_disposition"),
+      ),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/email-security/investigate/bulk",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateInvestigateBulkRequest",
+}) as any as S.Schema<CreateInvestigateBulkRequest>;
+
+export interface InvestigateBulkCreateResponseActionParams {
+  MoveObjectDestinationTypeExpectedDisposition__: unknown;
+  ReleaseObjectType__: unknown;
+}
+export const InvestigateBulkCreateResponseActionParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MoveObjectDestinationTypeExpectedDisposition__: S.Unknown.pipe(
+        T.Body("Move object { destination, type, expected_disposition }"),
+      ),
+      ReleaseObjectType__: S.Unknown.pipe(T.Body("Release object { type }")),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkCreateResponseActionParams",
+  }) as any as S.Schema<InvestigateBulkCreateResponseActionParams>;
+
+export type InvestigateBulkCreateResponseActionType =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkCreateResponseActionType = /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateResponseSearchParamsDeliveryStatus =
+  | "delivered"
+  | "moved"
+  | "quarantined"
+  | (string & {});
+export const InvestigateBulkCreateResponseSearchParamsDeliveryStatus =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateResponseSearchParamsFinalDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateBulkCreateResponseSearchParamsFinalDisposition =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateResponseSearchParamsMessageAction =
+  | "PREVIEW"
+  | "QUARANTINE_RELEASED"
+  | "MOVED"
+  | (string & {});
+export const InvestigateBulkCreateResponseSearchParamsMessageAction =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkCreateResponseSearchParams {
+  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
+  actionLog?: boolean;
+  alertId?: string;
+  /** Delivery status of the message. */
+  deliveryStatus?: InvestigateBulkCreateResponseSearchParamsDeliveryStatus;
+  detectionsOnly?: boolean;
+  domain?: string;
+  /** End of search date range */
+  end?: string;
+  exactSubject?: string;
+  finalDisposition?: InvestigateBulkCreateResponseSearchParamsFinalDisposition;
+  messageAction?: InvestigateBulkCreateResponseSearchParamsMessageAction;
+  messageId?: string;
+  metric?: string;
+  query?: string;
+  recipient?: string;
+  sender?: string;
+  /** Beginning of search date range */
+  start?: string;
+  subject?: string;
+  submissions?: boolean;
+}
+export const InvestigateBulkCreateResponseSearchParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      actionLog: S.optional(S.Boolean.pipe(T.Body("action_log"))),
+      alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
+      deliveryStatus: S.optional(
+        InvestigateBulkCreateResponseSearchParamsDeliveryStatus.pipe(
+          T.Body("delivery_status"),
+        ),
+      ),
+      detectionsOnly: S.optional(S.Boolean.pipe(T.Body("detections_only"))),
+      domain: S.optional(S.String),
+      end: S.optional(S.String),
+      exactSubject: S.optional(S.String.pipe(T.Body("exact_subject"))),
+      finalDisposition: S.optional(
+        InvestigateBulkCreateResponseSearchParamsFinalDisposition.pipe(
+          T.Body("final_disposition"),
+        ),
+      ),
+      messageAction: S.optional(
+        InvestigateBulkCreateResponseSearchParamsMessageAction.pipe(
+          T.Body("message_action"),
+        ),
+      ),
+      messageId: S.optional(S.String.pipe(T.Body("message_id"))),
+      metric: S.optional(S.String),
+      query: S.optional(S.String),
+      recipient: S.optional(S.String),
+      sender: S.optional(S.String),
+      start: S.optional(S.String),
+      subject: S.optional(S.String),
+      submissions: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkCreateResponseSearchParams",
+  }) as any as S.Schema<InvestigateBulkCreateResponseSearchParams>;
+
+export type InvestigateBulkCreateResponseStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkCreateResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateInvestigateBulkResponse {
+  actionParams: InvestigateBulkCreateResponseActionParams;
+  actionType: InvestigateBulkCreateResponseActionType;
+  createdAt: string;
+  jobId: string;
+  messagesFailed: number;
+  messagesPending: number;
+  messagesSuccessful: number;
+  searchParams: InvestigateBulkCreateResponseSearchParams;
+  status: InvestigateBulkCreateResponseStatus;
+  totalMessagesDiscovered: number;
+  comment?: string;
+  completedAt?: string;
+  startedAt?: string;
+  statusMessage?: string;
+}
+export const CreateInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actionParams: InvestigateBulkCreateResponseActionParams.pipe(
+      T.Body("action_params"),
+    ),
+    actionType: InvestigateBulkCreateResponseActionType.pipe(
+      T.Body("action_type"),
+    ),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    jobId: S.String.pipe(T.Body("job_id")),
+    messagesFailed: S.Number.pipe(T.Body("messages_failed")),
+    messagesPending: S.Number.pipe(T.Body("messages_pending")),
+    messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
+    searchParams: InvestigateBulkCreateResponseSearchParams.pipe(
+      T.Body("search_params"),
+    ),
+    status: InvestigateBulkCreateResponseStatus,
+    totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
+    comment: S.optional(S.String),
+    completedAt: S.optional(S.String.pipe(T.Body("completed_at"))),
+    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+    statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
+  }),
+).annotate({
+  identifier: "CreateInvestigateBulkResponse",
+}) as any as S.Schema<CreateInvestigateBulkResponse>;
+
+export interface CreateInvestigateBulkCancelRequest {
   /** Identifier. */
   accountId: string;
   jobId: string;
 }
-export const InvestigateBulkCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateInvestigateBulkCancelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
@@ -26,8 +586,8 @@ export const InvestigateBulkCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "InvestigateBulkCancelCreateRequest",
-}) as any as S.Schema<InvestigateBulkCancelCreateRequest>;
+  identifier: "CreateInvestigateBulkCancelRequest",
+}) as any as S.Schema<CreateInvestigateBulkCancelRequest>;
 
 export interface InvestigateBulkCancelCreateResponseActionParams {
   MoveObjectDestinationTypeExpectedDisposition__: unknown;
@@ -144,7 +704,7 @@ export type InvestigateBulkCancelCreateResponseStatus =
 export const InvestigateBulkCancelCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InvestigateBulkCancelCreateResponse {
+export interface CreateInvestigateBulkCancelResponse {
   actionParams: InvestigateBulkCancelCreateResponseActionParams;
   actionType: InvestigateBulkCancelCreateResponseActionType;
   createdAt: string;
@@ -160,7 +720,7 @@ export interface InvestigateBulkCancelCreateResponse {
   startedAt?: string;
   statusMessage?: string;
 }
-export const InvestigateBulkCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateInvestigateBulkCancelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     actionParams: InvestigateBulkCancelCreateResponseActionParams.pipe(
       T.Body("action_params"),
@@ -184,311 +744,693 @@ export const InvestigateBulkCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
     statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
   }),
 ).annotate({
-  identifier: "InvestigateBulkCancelCreateResponse",
-}) as any as S.Schema<InvestigateBulkCancelCreateResponse>;
+  identifier: "CreateInvestigateBulkCancelResponse",
+}) as any as S.Schema<CreateInvestigateBulkCancelResponse>;
 
-export type InvestigateBulkCreateRequestAction =
-  | "MOVE"
-  | "RELEASE"
-  | (string & {});
-export const InvestigateBulkCreateRequestAction = /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateRequestSearchParamsDeliveryStatus =
-  | "delivered"
-  | "moved"
-  | "quarantined"
-  | (string & {});
-export const InvestigateBulkCreateRequestSearchParamsDeliveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateRequestSearchParamsFinalDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | (string & {});
-export const InvestigateBulkCreateRequestSearchParamsFinalDisposition =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateRequestSearchParamsMessageAction =
-  | "PREVIEW"
-  | "QUARANTINE_RELEASED"
-  | "MOVED"
-  | (string & {});
-export const InvestigateBulkCreateRequestSearchParamsMessageAction =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkCreateRequestSearchParams {
-  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
-  actionLog?: boolean;
-  alertId?: string;
-  /** Delivery status of the message. */
-  deliveryStatus?: InvestigateBulkCreateRequestSearchParamsDeliveryStatus;
-  detectionsOnly?: boolean;
-  domain?: string;
-  /** End of search date range */
-  end?: string;
-  exactSubject?: string;
-  finalDisposition?: InvestigateBulkCreateRequestSearchParamsFinalDisposition;
-  messageAction?: InvestigateBulkCreateRequestSearchParamsMessageAction;
-  messageId?: string;
-  metric?: string;
-  query?: string;
-  recipient?: string;
-  sender?: string;
-  /** Beginning of search date range */
-  start?: string;
-  subject?: string;
-  submissions?: boolean;
-}
-export const InvestigateBulkCreateRequestSearchParams = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      actionLog: S.optional(S.Boolean.pipe(T.Body("action_log"))),
-      alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
-      deliveryStatus: S.optional(
-        InvestigateBulkCreateRequestSearchParamsDeliveryStatus.pipe(
-          T.Body("delivery_status"),
-        ),
-      ),
-      detectionsOnly: S.optional(S.Boolean.pipe(T.Body("detections_only"))),
-      domain: S.optional(S.String),
-      end: S.optional(S.String),
-      exactSubject: S.optional(S.String.pipe(T.Body("exact_subject"))),
-      finalDisposition: S.optional(
-        InvestigateBulkCreateRequestSearchParamsFinalDisposition.pipe(
-          T.Body("final_disposition"),
-        ),
-      ),
-      messageAction: S.optional(
-        InvestigateBulkCreateRequestSearchParamsMessageAction.pipe(
-          T.Body("message_action"),
-        ),
-      ),
-      messageId: S.optional(S.String.pipe(T.Body("message_id"))),
-      metric: S.optional(S.String),
-      query: S.optional(S.String),
-      recipient: S.optional(S.String),
-      sender: S.optional(S.String),
-      start: S.optional(S.String),
-      subject: S.optional(S.String),
-      submissions: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "InvestigateBulkCreateRequestSearchParams",
-}) as any as S.Schema<InvestigateBulkCreateRequestSearchParams>;
-
-export type InvestigateBulkCreateRequestDestination =
+export type InvestigateMoveCreateRequestDestination =
   | "Inbox"
   | "JunkEmail"
   | "DeletedItems"
   | (string & {});
-export const InvestigateBulkCreateRequestDestination = /*@__PURE__*/ S.String;
+export const InvestigateMoveCreateRequestDestination = /*@__PURE__*/ S.String;
 
-export type InvestigateBulkCreateRequestExpectedDisposition =
+export type InvestigateMoveCreateRequestExpectedDisposition =
   | "MALICIOUS"
   | "MALICIOUS-BEC"
   | "SUSPICIOUS"
   | (string & {});
-export const InvestigateBulkCreateRequestExpectedDisposition =
+export const InvestigateMoveCreateRequestExpectedDisposition =
   /*@__PURE__*/ S.String;
 
-export interface InvestigateBulkCreateRequest {
+export interface CreateInvestigateMoveRequest {
   /** Identifier. */
   accountId: string;
-  action: InvestigateBulkCreateRequestAction;
-  searchParams: InvestigateBulkCreateRequestSearchParams;
-  comment?: string;
-  destination?: InvestigateBulkCreateRequestDestination;
-  expectedDisposition?: InvestigateBulkCreateRequestExpectedDisposition;
+  /** Unique identifier for a message retrieved from investigation */
+  investigateId: string;
+  destination: InvestigateMoveCreateRequestDestination;
+  expectedDisposition?: InvestigateMoveCreateRequestExpectedDisposition;
 }
-export const InvestigateBulkCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateInvestigateMoveRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    action: InvestigateBulkCreateRequestAction,
-    searchParams: InvestigateBulkCreateRequestSearchParams.pipe(
-      T.Body("search_params"),
-    ),
-    comment: S.optional(S.String),
-    destination: S.optional(InvestigateBulkCreateRequestDestination),
+    investigateId: S.String.pipe(T.Label("investigate_id")),
+    destination: InvestigateMoveCreateRequestDestination,
     expectedDisposition: S.optional(
-      InvestigateBulkCreateRequestExpectedDisposition.pipe(
+      InvestigateMoveCreateRequestExpectedDisposition.pipe(
         T.Body("expected_disposition"),
       ),
     ),
   }).pipe(
     T.Http({
       method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/bulk",
+      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/move",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "InvestigateBulkCreateRequest",
-}) as any as S.Schema<InvestigateBulkCreateRequest>;
+  identifier: "CreateInvestigateMoveRequest",
+}) as any as S.Schema<CreateInvestigateMoveRequest>;
 
-export interface InvestigateBulkCreateResponseActionParams {
-  MoveObjectDestinationTypeExpectedDisposition__: unknown;
-  ReleaseObjectType__: unknown;
-}
-export const InvestigateBulkCreateResponseActionParams =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MoveObjectDestinationTypeExpectedDisposition__: S.Unknown.pipe(
-        T.Body("Move object { destination, type, expected_disposition }"),
-      ),
-      ReleaseObjectType__: S.Unknown.pipe(T.Body("Release object { type }")),
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkCreateResponseActionParams",
-  }) as any as S.Schema<InvestigateBulkCreateResponseActionParams>;
-
-export type InvestigateBulkCreateResponseActionType =
-  | "MOVE"
-  | "RELEASE"
-  | (string & {});
-export const InvestigateBulkCreateResponseActionType = /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateResponseSearchParamsDeliveryStatus =
-  | "delivered"
-  | "moved"
-  | "quarantined"
-  | (string & {});
-export const InvestigateBulkCreateResponseSearchParamsDeliveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateResponseSearchParamsFinalDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | (string & {});
-export const InvestigateBulkCreateResponseSearchParamsFinalDisposition =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkCreateResponseSearchParamsMessageAction =
-  | "PREVIEW"
-  | "QUARANTINE_RELEASED"
-  | "MOVED"
-  | (string & {});
-export const InvestigateBulkCreateResponseSearchParamsMessageAction =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkCreateResponseSearchParams {
-  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
-  actionLog?: boolean;
-  alertId?: string;
-  /** Delivery status of the message. */
-  deliveryStatus?: InvestigateBulkCreateResponseSearchParamsDeliveryStatus;
-  detectionsOnly?: boolean;
-  domain?: string;
-  /** End of search date range */
-  end?: string;
-  exactSubject?: string;
-  finalDisposition?: InvestigateBulkCreateResponseSearchParamsFinalDisposition;
-  messageAction?: InvestigateBulkCreateResponseSearchParamsMessageAction;
-  messageId?: string;
-  metric?: string;
-  query?: string;
-  recipient?: string;
-  sender?: string;
-  /** Beginning of search date range */
-  start?: string;
-  subject?: string;
-  submissions?: boolean;
-}
-export const InvestigateBulkCreateResponseSearchParams =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      actionLog: S.optional(S.Boolean.pipe(T.Body("action_log"))),
-      alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
-      deliveryStatus: S.optional(
-        InvestigateBulkCreateResponseSearchParamsDeliveryStatus.pipe(
-          T.Body("delivery_status"),
-        ),
-      ),
-      detectionsOnly: S.optional(S.Boolean.pipe(T.Body("detections_only"))),
-      domain: S.optional(S.String),
-      end: S.optional(S.String),
-      exactSubject: S.optional(S.String.pipe(T.Body("exact_subject"))),
-      finalDisposition: S.optional(
-        InvestigateBulkCreateResponseSearchParamsFinalDisposition.pipe(
-          T.Body("final_disposition"),
-        ),
-      ),
-      messageAction: S.optional(
-        InvestigateBulkCreateResponseSearchParamsMessageAction.pipe(
-          T.Body("message_action"),
-        ),
-      ),
-      messageId: S.optional(S.String.pipe(T.Body("message_id"))),
-      metric: S.optional(S.String),
-      query: S.optional(S.String),
-      recipient: S.optional(S.String),
-      sender: S.optional(S.String),
-      start: S.optional(S.String),
-      subject: S.optional(S.String),
-      submissions: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkCreateResponseSearchParams",
-  }) as any as S.Schema<InvestigateBulkCreateResponseSearchParams>;
-
-export type InvestigateBulkCreateResponseStatus =
-  | "PENDING"
-  | "DISCOVERING"
-  | "PROCESSING"
-  | (string & {});
-export const InvestigateBulkCreateResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InvestigateBulkCreateResponse {
-  actionParams: InvestigateBulkCreateResponseActionParams;
-  actionType: InvestigateBulkCreateResponseActionType;
-  createdAt: string;
-  jobId: string;
-  messagesFailed: number;
-  messagesPending: number;
-  messagesSuccessful: number;
-  searchParams: InvestigateBulkCreateResponseSearchParams;
-  status: InvestigateBulkCreateResponseStatus;
-  totalMessagesDiscovered: number;
-  comment?: string;
+export interface InvestigateMoveCreateResultItem {
+  /** Whether the operation succeeded */
+  success: boolean;
+  /** When the move operation completed (UTC) */
   completedAt?: string;
-  startedAt?: string;
-  statusMessage?: string;
+  /** Deprecated, use `completed_at` instead. End of life: November 1, 2026. */
+  completedTimestamp?: string;
+  /** Destination folder for the message */
+  destination?: string;
+  /** Number of items moved. End of life: November 1, 2026. */
+  itemCount?: number;
+  /** Message identifier */
+  messageId?: string;
+  /** Type of operation performed */
+  operation?: string;
+  /** Recipient email address */
+  recipient?: string;
+  /** Operation status */
+  status?: string;
 }
-export const InvestigateBulkCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const InvestigateMoveCreateResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    actionParams: InvestigateBulkCreateResponseActionParams.pipe(
-      T.Body("action_params"),
-    ),
-    actionType: InvestigateBulkCreateResponseActionType.pipe(
-      T.Body("action_type"),
-    ),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    jobId: S.String.pipe(T.Body("job_id")),
-    messagesFailed: S.Number.pipe(T.Body("messages_failed")),
-    messagesPending: S.Number.pipe(T.Body("messages_pending")),
-    messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
-    searchParams: InvestigateBulkCreateResponseSearchParams.pipe(
-      T.Body("search_params"),
-    ),
-    status: InvestigateBulkCreateResponseStatus,
-    totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
-    comment: S.optional(S.String),
+    success: S.Boolean,
     completedAt: S.optional(S.String.pipe(T.Body("completed_at"))),
-    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
-    statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
+    completedTimestamp: S.optional(
+      S.String.pipe(T.Body("completed_timestamp")),
+    ),
+    destination: S.optional(S.String),
+    itemCount: S.optional(S.Number.pipe(T.Body("item_count"))),
+    messageId: S.optional(S.String.pipe(T.Body("message_id"))),
+    operation: S.optional(S.String),
+    recipient: S.optional(S.String),
+    status: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "InvestigateBulkCreateResponse",
-}) as any as S.Schema<InvestigateBulkCreateResponse>;
+  identifier: "InvestigateMoveCreateResultItem",
+}) as any as S.Schema<InvestigateMoveCreateResultItem>;
 
-export interface InvestigateBulkDeleteRequest {
+export type InvestigateMoveCreateResultList = InvestigateMoveCreateResultItem[];
+export const InvestigateMoveCreateResultList = /*@__PURE__*/ S.Array(
+  InvestigateMoveCreateResultItem,
+) as any as S.Schema<InvestigateMoveCreateResultList>;
+
+export interface CreateInvestigateMoveResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: InvestigateMoveCreateResultList;
+}
+export const CreateInvestigateMoveResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      InvestigateMoveCreateResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "CreateInvestigateMoveResponse",
+}) as any as S.Schema<CreateInvestigateMoveResponse>;
+
+export interface CreateInvestigatePreviewRequest {
+  /** Identifier. */
+  accountId: string;
+  /** The identifier of the message */
+  postfixId: string;
+}
+export const CreateInvestigatePreviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    postfixId: S.String.pipe(T.Body("postfix_id")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/email-security/investigate/preview",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateInvestigatePreviewRequest",
+}) as any as S.Schema<CreateInvestigatePreviewRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateInvestigatePreviewResponse {
+  /** A base64 encoded PNG image of the email. */
+  screenshot: string;
+}
+export const CreateInvestigatePreviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    screenshot: S.String,
+  }),
+).annotate({
+  identifier: "CreateInvestigatePreviewResponse",
+}) as any as S.Schema<CreateInvestigatePreviewResponse>;
+
+export type InvestigateReclassifyCreateRequestExpectedDisposition =
+  | "NONE"
+  | "BULK"
+  | "MALICIOUS"
+  | (string & {});
+export const InvestigateReclassifyCreateRequestExpectedDisposition =
+  /*@__PURE__*/ S.String;
+
+export interface CreateInvestigateReclassifyRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Unique identifier for a message retrieved from investigation */
+  investigateId: string;
+  expectedDisposition: InvestigateReclassifyCreateRequestExpectedDisposition;
+  /** Base64 encoded content of the EML file. */
+  emlContent?: string;
+  escalatedSubmissionId?: string;
+}
+export const CreateInvestigateReclassifyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    investigateId: S.String.pipe(T.Label("investigate_id")),
+    expectedDisposition:
+      InvestigateReclassifyCreateRequestExpectedDisposition.pipe(
+        T.Body("expected_disposition"),
+      ),
+    emlContent: S.optional(S.String.pipe(T.Body("eml_content"))),
+    escalatedSubmissionId: S.optional(
+      S.String.pipe(T.Body("escalated_submission_id")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/reclassify",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateInvestigateReclassifyRequest",
+}) as any as S.Schema<CreateInvestigateReclassifyRequest>;
+
+export interface CreateInvestigateReclassifyResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const CreateInvestigateReclassifyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "CreateInvestigateReclassifyResponse",
+}) as any as S.Schema<CreateInvestigateReclassifyResponse>;
+
+export type SettingsAllowPoliciesCreateRequestPatternType =
+  | "EMAIL"
+  | "DOMAIN"
+  | "IP"
+  | "UNKNOWN"
+  | (string & {});
+export const SettingsAllowPoliciesCreateRequestPatternType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateSettingAllowPolicyRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
+  isAcceptableSender: boolean;
+  /** Messages to this recipient will bypass all detections */
+  isExemptRecipient: boolean;
+  isRegex: boolean;
+  /** Messages from this sender will bypass all detections and link following */
+  isTrustedSender: boolean;
+  pattern: string;
+  /** Type of pattern matching. */
+  patternType: SettingsAllowPoliciesCreateRequestPatternType;
+  /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
+  verifySender: boolean;
+  comments?: string;
+  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
+  isRecipient?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
+  isSender?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
+  isSpoof?: boolean;
+}
+export const CreateSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    isAcceptableSender: S.Boolean.pipe(T.Body("is_acceptable_sender")),
+    isExemptRecipient: S.Boolean.pipe(T.Body("is_exempt_recipient")),
+    isRegex: S.Boolean.pipe(T.Body("is_regex")),
+    isTrustedSender: S.Boolean.pipe(T.Body("is_trusted_sender")),
+    pattern: S.String,
+    patternType: SettingsAllowPoliciesCreateRequestPatternType.pipe(
+      T.Body("pattern_type"),
+    ),
+    verifySender: S.Boolean.pipe(T.Body("verify_sender")),
+    comments: S.optional(S.String),
+    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
+    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
+    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/email-security/settings/allow_policies",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateSettingAllowPolicyRequest",
+}) as any as S.Schema<CreateSettingAllowPolicyRequest>;
+
+export type SettingsAllowPoliciesCreateResponsePatternType =
+  | "EMAIL"
+  | "DOMAIN"
+  | "IP"
+  | "UNKNOWN"
+  | (string & {});
+export const SettingsAllowPoliciesCreateResponsePatternType =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateSettingAllowPolicyResponse {
+  /** Allow policy identifier */
+  id: string;
+  createdAt: string;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified: string;
+  comments?: string;
+  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
+  isAcceptableSender?: boolean;
+  /** Messages to this recipient will bypass all detections */
+  isExemptRecipient?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
+  isRecipient?: boolean;
+  isRegex?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
+  isSender?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
+  isSpoof?: boolean;
+  /** Messages from this sender will bypass all detections and link following */
+  isTrustedSender?: boolean;
+  modifiedAt?: string;
+  pattern?: string;
+  /** Type of pattern matching. */
+  patternType?: SettingsAllowPoliciesCreateResponsePatternType;
+  /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
+  verifySender?: boolean;
+}
+export const CreateSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    lastModified: S.String.pipe(T.Body("last_modified")),
+    comments: S.optional(S.String),
+    isAcceptableSender: S.optional(
+      S.Boolean.pipe(T.Body("is_acceptable_sender")),
+    ),
+    isExemptRecipient: S.optional(
+      S.Boolean.pipe(T.Body("is_exempt_recipient")),
+    ),
+    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
+    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
+    isTrustedSender: S.optional(S.Boolean.pipe(T.Body("is_trusted_sender"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    pattern: S.optional(S.String),
+    patternType: S.optional(
+      SettingsAllowPoliciesCreateResponsePatternType.pipe(
+        T.Body("pattern_type"),
+      ),
+    ),
+    verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
+  }),
+).annotate({
+  identifier: "CreateSettingAllowPolicyResponse",
+}) as any as S.Schema<CreateSettingAllowPolicyResponse>;
+
+export type SettingsBlockSendersCreateRequestPatternType =
+  | "EMAIL"
+  | "DOMAIN"
+  | "IP"
+  | "UNKNOWN"
+  | (string & {});
+export const SettingsBlockSendersCreateRequestPatternType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateSettingBlockSenderRequest {
+  /** Identifier. */
+  accountId: string;
+  isRegex: boolean;
+  pattern: string;
+  /** Type of pattern matching. */
+  patternType: SettingsBlockSendersCreateRequestPatternType;
+  comments?: string;
+}
+export const CreateSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    isRegex: S.Boolean.pipe(T.Body("is_regex")),
+    pattern: S.String,
+    patternType: SettingsBlockSendersCreateRequestPatternType.pipe(
+      T.Body("pattern_type"),
+    ),
+    comments: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/email-security/settings/block_senders",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateSettingBlockSenderRequest",
+}) as any as S.Schema<CreateSettingBlockSenderRequest>;
+
+export type SettingsBlockSendersCreateResponsePatternType =
+  | "EMAIL"
+  | "DOMAIN"
+  | "IP"
+  | "UNKNOWN"
+  | (string & {});
+export const SettingsBlockSendersCreateResponsePatternType =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateSettingBlockSenderResponse {
+  /** Blocked sender pattern identifier */
+  id?: string;
+  comments?: string;
+  createdAt?: string;
+  isRegex?: boolean;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+  pattern?: string;
+  /** Type of pattern matching. */
+  patternType?: SettingsBlockSendersCreateResponsePatternType;
+}
+export const CreateSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    comments: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    pattern: S.optional(S.String),
+    patternType: S.optional(
+      SettingsBlockSendersCreateResponsePatternType.pipe(
+        T.Body("pattern_type"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "CreateSettingBlockSenderResponse",
+}) as any as S.Schema<CreateSettingBlockSenderResponse>;
+
+export type SettingsImpersonationRegistryCreateRequestProvenance =
+  | "A1S_INTERNAL"
+  | "SNOOPY-CASB_OFFICE_365"
+  | "SNOOPY-OFFICE_365"
+  | "SNOOPY-GOOGLE_DIRECTORY"
+  | (string & {});
+export const SettingsImpersonationRegistryCreateRequestProvenance =
+  /*@__PURE__*/ S.String;
+
+export interface CreateSettingImpersonationRegistryRequest {
+  /** Identifier. */
+  accountId: string;
+  email: string;
+  isEmailRegex: boolean;
+  name: string;
+  comments?: string;
+  directoryId?: number;
+  directoryNodeId?: number;
+  externalDirectoryNodeId?: string;
+  provenance?: SettingsImpersonationRegistryCreateRequestProvenance;
+}
+export const CreateSettingImpersonationRegistryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      email: S.String,
+      isEmailRegex: S.Boolean.pipe(T.Body("is_email_regex")),
+      name: S.String,
+      comments: S.optional(S.String),
+      directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
+      directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
+      externalDirectoryNodeId: S.optional(
+        S.String.pipe(T.Body("external_directory_node_id")),
+      ),
+      provenance: S.optional(
+        SettingsImpersonationRegistryCreateRequestProvenance,
+      ),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateSettingImpersonationRegistryRequest",
+  }) as any as S.Schema<CreateSettingImpersonationRegistryRequest>;
+
+export type SettingsImpersonationRegistryCreateResponseProvenance =
+  | "A1S_INTERNAL"
+  | "SNOOPY-CASB_OFFICE_365"
+  | "SNOOPY-OFFICE_365"
+  | "SNOOPY-GOOGLE_DIRECTORY"
+  | (string & {});
+export const SettingsImpersonationRegistryCreateResponseProvenance =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateSettingImpersonationRegistryResponse {
+  /** Impersonation registry entry identifier */
+  id?: string;
+  comments?: string;
+  createdAt?: string;
+  directoryId?: number;
+  directoryNodeId?: number;
+  email?: string;
+  externalDirectoryNodeId?: string;
+  isEmailRegex?: boolean;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+  name?: string;
+  provenance?: SettingsImpersonationRegistryCreateResponseProvenance;
+}
+export const CreateSettingImpersonationRegistryResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      comments: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
+      directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
+      email: S.optional(S.String),
+      externalDirectoryNodeId: S.optional(
+        S.String.pipe(T.Body("external_directory_node_id")),
+      ),
+      isEmailRegex: S.optional(S.Boolean.pipe(T.Body("is_email_regex"))),
+      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+      name: S.optional(S.String),
+      provenance: S.optional(
+        SettingsImpersonationRegistryCreateResponseProvenance,
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateSettingImpersonationRegistryResponse",
+  }) as any as S.Schema<CreateSettingImpersonationRegistryResponse>;
+
+export type SettingsSendingDomainRestrictionsCreateRequestExcludeList =
+  string[];
+export const SettingsSendingDomainRestrictionsCreateRequestExcludeList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SettingsSendingDomainRestrictionsCreateRequestExcludeList>;
+
+export interface CreateSettingSendingDomainRestrictionRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Domain that requires TLS enforcement. */
+  domain: string;
+  /** Excluded subdomains that are exempt from TLS requirements. */
+  exclude: SettingsSendingDomainRestrictionsCreateRequestExcludeList;
+  comments?: string;
+}
+export const CreateSettingSendingDomainRestrictionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      domain: S.String,
+      exclude: SettingsSendingDomainRestrictionsCreateRequestExcludeList,
+      comments: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateSettingSendingDomainRestrictionRequest",
+  }) as any as S.Schema<CreateSettingSendingDomainRestrictionRequest>;
+
+export type SettingsSendingDomainRestrictionsCreateResponseExcludeList =
+  string[];
+export const SettingsSendingDomainRestrictionsCreateResponseExcludeList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SettingsSendingDomainRestrictionsCreateResponseExcludeList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateSettingSendingDomainRestrictionResponse {
+  /** Sending domain restriction identifier. */
+  id?: string;
+  comments?: string;
+  createdAt?: string;
+  /** Domain that requires TLS enforcement. */
+  domain?: string;
+  /** Excluded subdomains that are exempt from TLS requirements. */
+  exclude?: SettingsSendingDomainRestrictionsCreateResponseExcludeList;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+}
+export const CreateSettingSendingDomainRestrictionResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      comments: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      domain: S.optional(S.String),
+      exclude: S.optional(
+        SettingsSendingDomainRestrictionsCreateResponseExcludeList,
+      ),
+      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    }),
+  ).annotate({
+    identifier: "CreateSettingSendingDomainRestrictionResponse",
+  }) as any as S.Schema<CreateSettingSendingDomainRestrictionResponse>;
+
+export interface CreateSettingTrustedDomainRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
+  isRecent: boolean;
+  isRegex: boolean;
+  /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
+  isSimilarity: boolean;
+  pattern: string;
+  comments?: string;
+}
+export const CreateSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    isRecent: S.Boolean.pipe(T.Body("is_recent")),
+    isRegex: S.Boolean.pipe(T.Body("is_regex")),
+    isSimilarity: S.Boolean.pipe(T.Body("is_similarity")),
+    pattern: S.String,
+    comments: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/email-security/settings/trusted_domains",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateSettingTrustedDomainRequest",
+}) as any as S.Schema<CreateSettingTrustedDomainRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateSettingTrustedDomainResponse {
+  /** Trusted domain identifier */
+  id?: string;
+  comments?: string;
+  createdAt?: string;
+  /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
+  isRecent?: boolean;
+  isRegex?: boolean;
+  /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
+  isSimilarity?: boolean;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+  pattern?: string;
+}
+export const CreateSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    comments: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    isRecent: S.optional(S.Boolean.pipe(T.Body("is_recent"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    isSimilarity: S.optional(S.Boolean.pipe(T.Body("is_similarity"))),
+    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    pattern: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateSettingTrustedDomainResponse",
+}) as any as S.Schema<CreateSettingTrustedDomainResponse>;
+
+export interface CreateSettingUrlIgnorePatternRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Regular expression matching URLs that should not be rewritten. */
+  pattern: string;
+  /** Optional note describing the reason for the ignore pattern. */
+  comments?: string;
+}
+export const CreateSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      pattern: S.String,
+      comments: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateSettingUrlIgnorePatternRequest",
+}) as any as S.Schema<CreateSettingUrlIgnorePatternRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateSettingUrlIgnorePatternResponse {
+  /** URL ignore pattern identifier */
+  id: string;
+  createdAt: string;
+  /** Regular expression matching URLs that should not be rewritten. */
+  pattern: string;
+  /** Optional note describing the reason for the ignore pattern. */
+  comments?: string;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+}
+export const CreateSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      pattern: S.String,
+      comments: S.optional(S.String),
+      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    }),
+).annotate({
+  identifier: "CreateSettingUrlIgnorePatternResponse",
+}) as any as S.Schema<CreateSettingUrlIgnorePatternResponse>;
+
+export interface DeleteInvestigateBulkRequest {
   /** Identifier. */
   accountId: string;
   jobId: string;
 }
-export const InvestigateBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     jobId: S.String.pipe(T.Label("job_id")),
@@ -500,839 +1442,270 @@ export const InvestigateBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "InvestigateBulkDeleteRequest",
-}) as any as S.Schema<InvestigateBulkDeleteRequest>;
+  identifier: "DeleteInvestigateBulkRequest",
+}) as any as S.Schema<DeleteInvestigateBulkRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InvestigateBulkDeleteResponse {
+export interface DeleteInvestigateBulkResponse {
   id: string;
 }
-export const InvestigateBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
 ).annotate({
-  identifier: "InvestigateBulkDeleteResponse",
-}) as any as S.Schema<InvestigateBulkDeleteResponse>;
+  identifier: "DeleteInvestigateBulkResponse",
+}) as any as S.Schema<DeleteInvestigateBulkResponse>;
 
-export interface InvestigateBulkGetRequest {
+export interface DeleteSettingAllowPolicyRequest {
   /** Identifier. */
   accountId: string;
-  jobId: string;
+  /** Allow policy identifier */
+  policyId: string;
 }
-export const InvestigateBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    jobId: S.String.pipe(T.Label("job_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}",
+      method: "DELETE",
+      uri: "/accounts/{account_id}/email-security/settings/allow_policies/{policy_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "InvestigateBulkGetRequest",
-}) as any as S.Schema<InvestigateBulkGetRequest>;
-
-export interface InvestigateBulkGetResponseActionParams {
-  MoveObjectDestinationTypeExpectedDisposition__: unknown;
-  ReleaseObjectType__: unknown;
-}
-export const InvestigateBulkGetResponseActionParams = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MoveObjectDestinationTypeExpectedDisposition__: S.Unknown.pipe(
-        T.Body("Move object { destination, type, expected_disposition }"),
-      ),
-      ReleaseObjectType__: S.Unknown.pipe(T.Body("Release object { type }")),
-    }),
-).annotate({
-  identifier: "InvestigateBulkGetResponseActionParams",
-}) as any as S.Schema<InvestigateBulkGetResponseActionParams>;
-
-export type InvestigateBulkGetResponseActionType =
-  | "MOVE"
-  | "RELEASE"
-  | (string & {});
-export const InvestigateBulkGetResponseActionType = /*@__PURE__*/ S.String;
-
-export type InvestigateBulkGetResponseSearchParamsDeliveryStatus =
-  | "delivered"
-  | "moved"
-  | "quarantined"
-  | (string & {});
-export const InvestigateBulkGetResponseSearchParamsDeliveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkGetResponseSearchParamsFinalDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | (string & {});
-export const InvestigateBulkGetResponseSearchParamsFinalDisposition =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkGetResponseSearchParamsMessageAction =
-  | "PREVIEW"
-  | "QUARANTINE_RELEASED"
-  | "MOVED"
-  | (string & {});
-export const InvestigateBulkGetResponseSearchParamsMessageAction =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkGetResponseSearchParams {
-  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
-  actionLog?: boolean;
-  alertId?: string;
-  /** Delivery status of the message. */
-  deliveryStatus?: InvestigateBulkGetResponseSearchParamsDeliveryStatus;
-  detectionsOnly?: boolean;
-  domain?: string;
-  /** End of search date range */
-  end?: string;
-  exactSubject?: string;
-  finalDisposition?: InvestigateBulkGetResponseSearchParamsFinalDisposition;
-  messageAction?: InvestigateBulkGetResponseSearchParamsMessageAction;
-  messageId?: string;
-  metric?: string;
-  query?: string;
-  recipient?: string;
-  sender?: string;
-  /** Beginning of search date range */
-  start?: string;
-  subject?: string;
-  submissions?: boolean;
-}
-export const InvestigateBulkGetResponseSearchParams = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      actionLog: S.optional(S.Boolean.pipe(T.Body("action_log"))),
-      alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
-      deliveryStatus: S.optional(
-        InvestigateBulkGetResponseSearchParamsDeliveryStatus.pipe(
-          T.Body("delivery_status"),
-        ),
-      ),
-      detectionsOnly: S.optional(S.Boolean.pipe(T.Body("detections_only"))),
-      domain: S.optional(S.String),
-      end: S.optional(S.String),
-      exactSubject: S.optional(S.String.pipe(T.Body("exact_subject"))),
-      finalDisposition: S.optional(
-        InvestigateBulkGetResponseSearchParamsFinalDisposition.pipe(
-          T.Body("final_disposition"),
-        ),
-      ),
-      messageAction: S.optional(
-        InvestigateBulkGetResponseSearchParamsMessageAction.pipe(
-          T.Body("message_action"),
-        ),
-      ),
-      messageId: S.optional(S.String.pipe(T.Body("message_id"))),
-      metric: S.optional(S.String),
-      query: S.optional(S.String),
-      recipient: S.optional(S.String),
-      sender: S.optional(S.String),
-      start: S.optional(S.String),
-      subject: S.optional(S.String),
-      submissions: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "InvestigateBulkGetResponseSearchParams",
-}) as any as S.Schema<InvestigateBulkGetResponseSearchParams>;
-
-export type InvestigateBulkGetResponseStatus =
-  | "PENDING"
-  | "DISCOVERING"
-  | "PROCESSING"
-  | (string & {});
-export const InvestigateBulkGetResponseStatus = /*@__PURE__*/ S.String;
+  identifier: "DeleteSettingAllowPolicyRequest",
+}) as any as S.Schema<DeleteSettingAllowPolicyRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InvestigateBulkGetResponse {
-  actionParams: InvestigateBulkGetResponseActionParams;
-  actionType: InvestigateBulkGetResponseActionType;
-  createdAt: string;
-  jobId: string;
-  messagesFailed: number;
-  messagesPending: number;
-  messagesSuccessful: number;
-  searchParams: InvestigateBulkGetResponseSearchParams;
-  status: InvestigateBulkGetResponseStatus;
-  totalMessagesDiscovered: number;
-  comment?: string;
-  completedAt?: string;
-  startedAt?: string;
-  statusMessage?: string;
+export interface DeleteSettingAllowPolicyResponse {
+  /** Allow policy identifier */
+  id: string;
 }
-export const InvestigateBulkGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    actionParams: InvestigateBulkGetResponseActionParams.pipe(
-      T.Body("action_params"),
-    ),
-    actionType: InvestigateBulkGetResponseActionType.pipe(
-      T.Body("action_type"),
-    ),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    jobId: S.String.pipe(T.Body("job_id")),
-    messagesFailed: S.Number.pipe(T.Body("messages_failed")),
-    messagesPending: S.Number.pipe(T.Body("messages_pending")),
-    messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
-    searchParams: InvestigateBulkGetResponseSearchParams.pipe(
-      T.Body("search_params"),
-    ),
-    status: InvestigateBulkGetResponseStatus,
-    totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
-    comment: S.optional(S.String),
-    completedAt: S.optional(S.String.pipe(T.Body("completed_at"))),
-    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
-    statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
+    id: S.String,
   }),
 ).annotate({
-  identifier: "InvestigateBulkGetResponse",
-}) as any as S.Schema<InvestigateBulkGetResponse>;
+  identifier: "DeleteSettingAllowPolicyResponse",
+}) as any as S.Schema<DeleteSettingAllowPolicyResponse>;
 
-export type InvestigateBulkListRequestActionType =
-  | "MOVE"
-  | "RELEASE"
-  | (string & {});
-export const InvestigateBulkListRequestActionType = /*@__PURE__*/ S.String;
-
-export type InvestigateBulkListRequestStatus =
-  | "PENDING"
-  | "DISCOVERING"
-  | "PROCESSING"
-  | (string & {});
-export const InvestigateBulkListRequestStatus = /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkListRequest {
+export interface DeleteSettingBlockSenderRequest {
   /** Identifier. */
   accountId: string;
-  actionType?: InvestigateBulkListRequestActionType;
-  /** Current page within paginated list of results. */
-  page?: number;
-  /** The number of results per page. Maximum value is 1000. */
-  perPage?: number;
-  status?: InvestigateBulkListRequestStatus;
+  /** Blocked sender pattern identifier */
+  patternId: string;
 }
-export const InvestigateBulkListRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    actionType: S.optional(
-      InvestigateBulkListRequestActionType.pipe(T.Query("action_type")),
-    ),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    status: S.optional(InvestigateBulkListRequestStatus.pipe(T.Query())),
+    patternId: S.String.pipe(T.Label("pattern_id")),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/bulk",
+      method: "DELETE",
+      uri: "/accounts/{account_id}/email-security/settings/block_senders/{pattern_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "InvestigateBulkListRequest",
-}) as any as S.Schema<InvestigateBulkListRequest>;
-
-export interface InvestigateBulkListResultItemActionParams {
-  MoveObjectDestinationTypeExpectedDisposition__: unknown;
-  ReleaseObjectType__: unknown;
-}
-export const InvestigateBulkListResultItemActionParams =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MoveObjectDestinationTypeExpectedDisposition__: S.Unknown.pipe(
-        T.Body("Move object { destination, type, expected_disposition }"),
-      ),
-      ReleaseObjectType__: S.Unknown.pipe(T.Body("Release object { type }")),
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkListResultItemActionParams",
-  }) as any as S.Schema<InvestigateBulkListResultItemActionParams>;
-
-export type InvestigateBulkListResultItemActionType =
-  | "MOVE"
-  | "RELEASE"
-  | (string & {});
-export const InvestigateBulkListResultItemActionType = /*@__PURE__*/ S.String;
-
-export type InvestigateBulkListResultItemSearchParamsDeliveryStatus =
-  | "delivered"
-  | "moved"
-  | "quarantined"
-  | (string & {});
-export const InvestigateBulkListResultItemSearchParamsDeliveryStatus =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkListResultItemSearchParamsFinalDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | (string & {});
-export const InvestigateBulkListResultItemSearchParamsFinalDisposition =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkListResultItemSearchParamsMessageAction =
-  | "PREVIEW"
-  | "QUARANTINE_RELEASED"
-  | "MOVED"
-  | (string & {});
-export const InvestigateBulkListResultItemSearchParamsMessageAction =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkListResultItemSearchParams {
-  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
-  actionLog?: boolean;
-  alertId?: string;
-  /** Delivery status of the message. */
-  deliveryStatus?: InvestigateBulkListResultItemSearchParamsDeliveryStatus;
-  detectionsOnly?: boolean;
-  domain?: string;
-  /** End of search date range */
-  end?: string;
-  exactSubject?: string;
-  finalDisposition?: InvestigateBulkListResultItemSearchParamsFinalDisposition;
-  messageAction?: InvestigateBulkListResultItemSearchParamsMessageAction;
-  messageId?: string;
-  metric?: string;
-  query?: string;
-  recipient?: string;
-  sender?: string;
-  /** Beginning of search date range */
-  start?: string;
-  subject?: string;
-  submissions?: boolean;
-}
-export const InvestigateBulkListResultItemSearchParams =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      actionLog: S.optional(S.Boolean.pipe(T.Body("action_log"))),
-      alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
-      deliveryStatus: S.optional(
-        InvestigateBulkListResultItemSearchParamsDeliveryStatus.pipe(
-          T.Body("delivery_status"),
-        ),
-      ),
-      detectionsOnly: S.optional(S.Boolean.pipe(T.Body("detections_only"))),
-      domain: S.optional(S.String),
-      end: S.optional(S.String),
-      exactSubject: S.optional(S.String.pipe(T.Body("exact_subject"))),
-      finalDisposition: S.optional(
-        InvestigateBulkListResultItemSearchParamsFinalDisposition.pipe(
-          T.Body("final_disposition"),
-        ),
-      ),
-      messageAction: S.optional(
-        InvestigateBulkListResultItemSearchParamsMessageAction.pipe(
-          T.Body("message_action"),
-        ),
-      ),
-      messageId: S.optional(S.String.pipe(T.Body("message_id"))),
-      metric: S.optional(S.String),
-      query: S.optional(S.String),
-      recipient: S.optional(S.String),
-      sender: S.optional(S.String),
-      start: S.optional(S.String),
-      subject: S.optional(S.String),
-      submissions: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkListResultItemSearchParams",
-  }) as any as S.Schema<InvestigateBulkListResultItemSearchParams>;
-
-export type InvestigateBulkListResultItemStatus =
-  | "PENDING"
-  | "DISCOVERING"
-  | "PROCESSING"
-  | (string & {});
-export const InvestigateBulkListResultItemStatus = /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkListResultItem {
-  actionParams: InvestigateBulkListResultItemActionParams;
-  actionType: InvestigateBulkListResultItemActionType;
-  createdAt: string;
-  jobId: string;
-  messagesFailed: number;
-  messagesPending: number;
-  messagesSuccessful: number;
-  searchParams: InvestigateBulkListResultItemSearchParams;
-  status: InvestigateBulkListResultItemStatus;
-  totalMessagesDiscovered: number;
-  comment?: string;
-  completedAt?: string;
-  startedAt?: string;
-  statusMessage?: string;
-}
-export const InvestigateBulkListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    actionParams: InvestigateBulkListResultItemActionParams.pipe(
-      T.Body("action_params"),
-    ),
-    actionType: InvestigateBulkListResultItemActionType.pipe(
-      T.Body("action_type"),
-    ),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    jobId: S.String.pipe(T.Body("job_id")),
-    messagesFailed: S.Number.pipe(T.Body("messages_failed")),
-    messagesPending: S.Number.pipe(T.Body("messages_pending")),
-    messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
-    searchParams: InvestigateBulkListResultItemSearchParams.pipe(
-      T.Body("search_params"),
-    ),
-    status: InvestigateBulkListResultItemStatus,
-    totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
-    comment: S.optional(S.String),
-    completedAt: S.optional(S.String.pipe(T.Body("completed_at"))),
-    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
-    statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
-  }),
-).annotate({
-  identifier: "InvestigateBulkListResultItem",
-}) as any as S.Schema<InvestigateBulkListResultItem>;
-
-export type InvestigateBulkListResultList = InvestigateBulkListResultItem[];
-export const InvestigateBulkListResultList = /*@__PURE__*/ S.Array(
-  InvestigateBulkListResultItem,
-) as any as S.Schema<InvestigateBulkListResultList>;
-
-export interface InvestigateBulkListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvestigateBulkListResultList;
-}
-export const InvestigateBulkListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(InvestigateBulkListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "InvestigateBulkListResponse",
-}) as any as S.Schema<InvestigateBulkListResponse>;
-
-export type InvestigateBulkMessagesListRequestStatus =
-  | "PENDING"
-  | "DISCOVERING"
-  | "PROCESSING"
-  | (string & {});
-export const InvestigateBulkMessagesListRequestStatus = /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkMessagesListRequest {
-  /** Identifier. */
-  accountId: string;
-  jobId: string;
-  /** Current page within paginated list of results. */
-  page?: number;
-  /** The number of results per page. Maximum value is 1000. */
-  perPage?: number;
-  status?: InvestigateBulkMessagesListRequestStatus;
-}
-export const InvestigateBulkMessagesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    jobId: S.String.pipe(T.Label("job_id")),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    status: S.optional(
-      InvestigateBulkMessagesListRequestStatus.pipe(T.Query()),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InvestigateBulkMessagesListRequest",
-}) as any as S.Schema<InvestigateBulkMessagesListRequest>;
-
-export interface InvestigateBulkMessagesListResultItemActionParams {
-  MoveObjectClientRecipientDestinationTypeExpectedDisposition__: unknown;
-  ReleaseObjectClientRecipientType__: unknown;
-}
-export const InvestigateBulkMessagesListResultItemActionParams =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MoveObjectClientRecipientDestinationTypeExpectedDisposition__:
-        S.Unknown.pipe(
-          T.Body(
-            "Move object { client_recipient, destination, type, expected_disposition }",
-          ),
-        ),
-      ReleaseObjectClientRecipientType__: S.Unknown.pipe(
-        T.Body("Release object { client_recipient, type }"),
-      ),
-    }),
-  ).annotate({
-    identifier: "InvestigateBulkMessagesListResultItemActionParams",
-  }) as any as S.Schema<InvestigateBulkMessagesListResultItemActionParams>;
-
-export type InvestigateBulkMessagesListResultItemActionType =
-  | "MOVE"
-  | "RELEASE"
-  | (string & {});
-export const InvestigateBulkMessagesListResultItemActionType =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateBulkMessagesListResultItemStatus =
-  | "PENDING"
-  | "DISCOVERING"
-  | "PROCESSING"
-  | (string & {});
-export const InvestigateBulkMessagesListResultItemStatus =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateBulkMessagesListResultItem {
-  actionParams: InvestigateBulkMessagesListResultItemActionParams;
-  actionType: InvestigateBulkMessagesListResultItemActionType;
-  createdAt: string;
-  messageId: string;
-  postfixId: string;
-  retryCount: number;
-  status: InvestigateBulkMessagesListResultItemStatus;
-  alertId?: string;
-  emailMessageId?: string;
-  processedAt?: string;
-  /** When to retry the action if it failed */
-  retryAfter?: string;
-  statusMessage?: string;
-}
-export const InvestigateBulkMessagesListResultItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      actionParams: InvestigateBulkMessagesListResultItemActionParams.pipe(
-        T.Body("action_params"),
-      ),
-      actionType: InvestigateBulkMessagesListResultItemActionType.pipe(
-        T.Body("action_type"),
-      ),
-      createdAt: S.String.pipe(T.Body("created_at")),
-      messageId: S.String.pipe(T.Body("message_id")),
-      postfixId: S.String.pipe(T.Body("postfix_id")),
-      retryCount: S.Number.pipe(T.Body("retry_count")),
-      status: InvestigateBulkMessagesListResultItemStatus,
-      alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
-      emailMessageId: S.optional(S.String.pipe(T.Body("email_message_id"))),
-      processedAt: S.optional(S.String.pipe(T.Body("processed_at"))),
-      retryAfter: S.optional(S.String.pipe(T.Body("retry_after"))),
-      statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
-    }),
-).annotate({
-  identifier: "InvestigateBulkMessagesListResultItem",
-}) as any as S.Schema<InvestigateBulkMessagesListResultItem>;
-
-export type InvestigateBulkMessagesListResultList =
-  InvestigateBulkMessagesListResultItem[];
-export const InvestigateBulkMessagesListResultList = /*@__PURE__*/ S.Array(
-  InvestigateBulkMessagesListResultItem,
-) as any as S.Schema<InvestigateBulkMessagesListResultList>;
-
-export interface InvestigateBulkMessagesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvestigateBulkMessagesListResultList;
-}
-export const InvestigateBulkMessagesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      InvestigateBulkMessagesListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "InvestigateBulkMessagesListResponse",
-}) as any as S.Schema<InvestigateBulkMessagesListResponse>;
-
-export interface InvestigateDetectionsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
-  investigateId: string;
-}
-export const InvestigateDetectionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    investigateId: S.String.pipe(T.Label("investigate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/detections",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InvestigateDetectionsGetRequest",
-}) as any as S.Schema<InvestigateDetectionsGetRequest>;
-
-export type InvestigateDetectionsGetResponseAttachmentsItemDetection =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | (string & {});
-export const InvestigateDetectionsGetResponseAttachmentsItemDetection =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateDetectionsGetResponseAttachmentsItem {
-  /** Size of the attachment in bytes */
-  size: number;
-  /** MIME type of the attachment */
-  contentType?: string;
-  /** Detection result for this attachment */
-  detection?: InvestigateDetectionsGetResponseAttachmentsItemDetection;
-  /** Whether the attachment is encrypted */
-  encrypted?: boolean;
-  /** Name of the attached file */
-  filename?: string;
-  /** MD5 hash of the attachment */
-  md5?: string;
-  /** Attachment name (alternative to filename) */
-  name?: string;
-  /** SHA1 hash of the attachment */
-  sha1?: string;
-  /** SHA256 hash of the attachment */
-  sha256?: string;
-}
-export const InvestigateDetectionsGetResponseAttachmentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      size: S.Number,
-      contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-      detection: S.optional(
-        InvestigateDetectionsGetResponseAttachmentsItemDetection,
-      ),
-      encrypted: S.optional(S.Boolean),
-      filename: S.optional(S.String),
-      md5: S.optional(S.String),
-      name: S.optional(S.String),
-      sha1: S.optional(S.String),
-      sha256: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseAttachmentsItem",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItem>;
-
-export type InvestigateDetectionsGetResponseAttachmentsList =
-  InvestigateDetectionsGetResponseAttachmentsItem[];
-export const InvestigateDetectionsGetResponseAttachmentsList =
-  /*@__PURE__*/ S.Array(
-    InvestigateDetectionsGetResponseAttachmentsItem,
-  ) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsList>;
-
-export type InvestigateDetectionsGetResponseFindingsItemDetection =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | (string & {});
-export const InvestigateDetectionsGetResponseFindingsItemDetection =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateDetectionsGetResponseFindingsItem {
-  attachment?: string;
-  detail?: string;
-  detection?: InvestigateDetectionsGetResponseFindingsItemDetection;
-  field?: string;
-  name?: string;
-  portion?: string;
-  reason?: string;
-  score?: number;
-  value?: string;
-}
-export const InvestigateDetectionsGetResponseFindingsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      attachment: S.optional(S.String),
-      detail: S.optional(S.String),
-      detection: S.optional(
-        InvestigateDetectionsGetResponseFindingsItemDetection,
-      ),
-      field: S.optional(S.String),
-      name: S.optional(S.String),
-      portion: S.optional(S.String),
-      reason: S.optional(S.String),
-      score: S.optional(S.Number),
-      value: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseFindingsItem",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseFindingsItem>;
-
-export type InvestigateDetectionsGetResponseFindingsList =
-  InvestigateDetectionsGetResponseFindingsItem[];
-export const InvestigateDetectionsGetResponseFindingsList =
-  /*@__PURE__*/ S.Array(
-    InvestigateDetectionsGetResponseFindingsItem,
-  ) as any as S.Schema<InvestigateDetectionsGetResponseFindingsList>;
-
-export interface InvestigateDetectionsGetResponseHeadersItem {
-  name: string;
-  value: string;
-}
-export const InvestigateDetectionsGetResponseHeadersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      name: S.String,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseHeadersItem",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseHeadersItem>;
-
-export type InvestigateDetectionsGetResponseHeadersList =
-  InvestigateDetectionsGetResponseHeadersItem[];
-export const InvestigateDetectionsGetResponseHeadersList =
-  /*@__PURE__*/ S.Array(
-    InvestigateDetectionsGetResponseHeadersItem,
-  ) as any as S.Schema<InvestigateDetectionsGetResponseHeadersList>;
-
-export interface InvestigateDetectionsGetResponseLinksItem {
-  href: string;
-  text?: string;
-}
-export const InvestigateDetectionsGetResponseLinksItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      href: S.String,
-      text: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseLinksItem",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseLinksItem>;
-
-export type InvestigateDetectionsGetResponseLinksList =
-  InvestigateDetectionsGetResponseLinksItem[];
-export const InvestigateDetectionsGetResponseLinksList = /*@__PURE__*/ S.Array(
-  InvestigateDetectionsGetResponseLinksItem,
-) as any as S.Schema<InvestigateDetectionsGetResponseLinksList>;
-
-export interface InvestigateDetectionsGetResponseSenderInfo {
-  /** The name of the autonomous system. */
-  asName?: string;
-  /** The number of the autonomous system. */
-  asNumber?: number;
-  geo?: string;
-  ip?: string;
-  pld?: string;
-}
-export const InvestigateDetectionsGetResponseSenderInfo =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      asName: S.optional(S.String.pipe(T.Body("as_name"))),
-      asNumber: S.optional(S.Number.pipe(T.Body("as_number"))),
-      geo: S.optional(S.String),
-      ip: S.optional(S.String),
-      pld: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseSenderInfo",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseSenderInfo>;
-
-export interface InvestigateDetectionsGetResponseThreatCategoriesItem {
-  id?: number;
-  description?: string;
-  name?: string;
-}
-export const InvestigateDetectionsGetResponseThreatCategoriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.Number),
-      description: S.optional(S.String),
-      name: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseThreatCategoriesItem",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseThreatCategoriesItem>;
-
-export type InvestigateDetectionsGetResponseThreatCategoriesList =
-  InvestigateDetectionsGetResponseThreatCategoriesItem[];
-export const InvestigateDetectionsGetResponseThreatCategoriesList =
-  /*@__PURE__*/ S.Array(
-    InvestigateDetectionsGetResponseThreatCategoriesItem,
-  ) as any as S.Schema<InvestigateDetectionsGetResponseThreatCategoriesList>;
-
-export type InvestigateDetectionsGetResponseValidationDkim =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | (string & {});
-export const InvestigateDetectionsGetResponseValidationDkim =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateDetectionsGetResponseValidationDmarc =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | (string & {});
-export const InvestigateDetectionsGetResponseValidationDmarc =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateDetectionsGetResponseValidationSpf =
-  | "pass"
-  | "neutral"
-  | "fail"
-  | (string & {});
-export const InvestigateDetectionsGetResponseValidationSpf =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateDetectionsGetResponseValidation {
-  comment?: string;
-  dkim?: InvestigateDetectionsGetResponseValidationDkim;
-  dmarc?: InvestigateDetectionsGetResponseValidationDmarc;
-  spf?: InvestigateDetectionsGetResponseValidationSpf;
-}
-export const InvestigateDetectionsGetResponseValidation =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      comment: S.optional(S.String),
-      dkim: S.optional(InvestigateDetectionsGetResponseValidationDkim),
-      dmarc: S.optional(InvestigateDetectionsGetResponseValidationDmarc),
-      spf: S.optional(InvestigateDetectionsGetResponseValidationSpf),
-    }),
-  ).annotate({
-    identifier: "InvestigateDetectionsGetResponseValidation",
-  }) as any as S.Schema<InvestigateDetectionsGetResponseValidation>;
-
-export type InvestigateDetectionsGetResponseFinalDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | (string & {});
-export const InvestigateDetectionsGetResponseFinalDisposition =
-  /*@__PURE__*/ S.String;
+  identifier: "DeleteSettingBlockSenderRequest",
+}) as any as S.Schema<DeleteSettingBlockSenderRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InvestigateDetectionsGetResponse {
-  action: string;
-  attachments: InvestigateDetectionsGetResponseAttachmentsList;
-  findings: InvestigateDetectionsGetResponseFindingsList;
-  headers: InvestigateDetectionsGetResponseHeadersList;
-  links: InvestigateDetectionsGetResponseLinksList;
-  senderInfo: InvestigateDetectionsGetResponseSenderInfo;
-  threatCategories: InvestigateDetectionsGetResponseThreatCategoriesList;
-  validation: InvestigateDetectionsGetResponseValidation;
-  finalDisposition?: InvestigateDetectionsGetResponseFinalDisposition;
+export interface DeleteSettingBlockSenderResponse {
+  /** Blocked sender pattern identifier */
+  id: string;
 }
-export const InvestigateDetectionsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    action: S.String,
-    attachments: InvestigateDetectionsGetResponseAttachmentsList,
-    findings: InvestigateDetectionsGetResponseFindingsList,
-    headers: InvestigateDetectionsGetResponseHeadersList,
-    links: InvestigateDetectionsGetResponseLinksList,
-    senderInfo: InvestigateDetectionsGetResponseSenderInfo.pipe(
-      T.Body("sender_info"),
-    ),
-    threatCategories: InvestigateDetectionsGetResponseThreatCategoriesList.pipe(
-      T.Body("threat_categories"),
-    ),
-    validation: InvestigateDetectionsGetResponseValidation,
-    finalDisposition: S.optional(
-      InvestigateDetectionsGetResponseFinalDisposition.pipe(
-        T.Body("final_disposition"),
-      ),
-    ),
+    id: S.String,
   }),
 ).annotate({
-  identifier: "InvestigateDetectionsGetResponse",
-}) as any as S.Schema<InvestigateDetectionsGetResponse>;
+  identifier: "DeleteSettingBlockSenderResponse",
+}) as any as S.Schema<DeleteSettingBlockSenderResponse>;
 
-export interface InvestigateGetRequest {
+export interface DeleteSettingDomainRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Domain identifier */
+  domainId: string;
+}
+export const DeleteSettingDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    domainId: S.String.pipe(T.Label("domain_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/email-security/settings/domains/{domain_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSettingDomainRequest",
+}) as any as S.Schema<DeleteSettingDomainRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteSettingDomainResponse {
+  /** Domain identifier */
+  id: string;
+}
+export const DeleteSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "DeleteSettingDomainResponse",
+}) as any as S.Schema<DeleteSettingDomainResponse>;
+
+export interface DeleteSettingImpersonationRegistryRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Impersonation registry entry identifier */
+  impersonationRegistryId: string;
+}
+export const DeleteSettingImpersonationRegistryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      impersonationRegistryId: S.String.pipe(
+        T.Label("impersonation_registry_id"),
+      ),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteSettingImpersonationRegistryRequest",
+  }) as any as S.Schema<DeleteSettingImpersonationRegistryRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteSettingImpersonationRegistryResponse {
+  /** Impersonation registry entry identifier */
+  id: string;
+}
+export const DeleteSettingImpersonationRegistryResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "DeleteSettingImpersonationRegistryResponse",
+  }) as any as S.Schema<DeleteSettingImpersonationRegistryResponse>;
+
+export interface DeleteSettingSendingDomainRestrictionRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Sending domain restriction identifier. */
+  sendingDomainRestrictionId: string;
+}
+export const DeleteSettingSendingDomainRestrictionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      sendingDomainRestrictionId: S.String.pipe(
+        T.Label("sending_domain_restriction_id"),
+      ),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteSettingSendingDomainRestrictionRequest",
+  }) as any as S.Schema<DeleteSettingSendingDomainRestrictionRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteSettingSendingDomainRestrictionResponse {
+  /** Sending domain restriction identifier. */
+  id: string;
+}
+export const DeleteSettingSendingDomainRestrictionResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "DeleteSettingSendingDomainRestrictionResponse",
+  }) as any as S.Schema<DeleteSettingSendingDomainRestrictionResponse>;
+
+export interface DeleteSettingTrustedDomainRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Trusted domain identifier */
+  trustedDomainId: string;
+}
+export const DeleteSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    trustedDomainId: S.String.pipe(T.Label("trusted_domain_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSettingTrustedDomainRequest",
+}) as any as S.Schema<DeleteSettingTrustedDomainRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteSettingTrustedDomainResponse {
+  /** Trusted domain identifier */
+  id: string;
+}
+export const DeleteSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "DeleteSettingTrustedDomainResponse",
+}) as any as S.Schema<DeleteSettingTrustedDomainResponse>;
+
+export interface DeleteSettingUrlIgnorePatternRequest {
+  /** Identifier. */
+  accountId: string;
+  /** URL ignore pattern identifier */
+  patternId: string;
+}
+export const DeleteSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      patternId: S.String.pipe(T.Label("pattern_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "DeleteSettingUrlIgnorePatternRequest",
+}) as any as S.Schema<DeleteSettingUrlIgnorePatternRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteSettingUrlIgnorePatternResponse {
+  /** URL ignore pattern identifier */
+  id: string;
+}
+export const DeleteSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+    }),
+).annotate({
+  identifier: "DeleteSettingUrlIgnorePatternResponse",
+}) as any as S.Schema<DeleteSettingUrlIgnorePatternResponse>;
+
+export interface GetInvestigateRequest {
   /** Identifier. */
   accountId: string;
   /** Unique identifier for a message retrieved from investigation */
@@ -1340,7 +1713,7 @@ export interface InvestigateGetRequest {
   /** When true, search the submissions datastore only. When false or omitted, search the */
   submission?: boolean;
 }
-export const InvestigateGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetInvestigateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     investigateId: S.String.pipe(T.Label("investigate_id")),
@@ -1353,8 +1726,8 @@ export const InvestigateGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "InvestigateGetRequest",
-}) as any as S.Schema<InvestigateGetRequest>;
+  identifier: "GetInvestigateRequest",
+}) as any as S.Schema<GetInvestigateRequest>;
 
 export type InvestigateGetResponseActionLogItemOperation =
   | "MOVE"
@@ -1619,7 +1992,7 @@ export const InvestigateGetResponseValidation = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<InvestigateGetResponseValidation>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InvestigateGetResponse {
+export interface GetInvestigateResponse {
   /** Unique identifier for a message retrieved from investigation */
   id: string;
   /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
@@ -1665,7 +2038,7 @@ export interface InvestigateGetResponse {
   validation?: InvestigateGetResponseValidation;
   xOriginatingIp?: string;
 }
-export const InvestigateGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetInvestigateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     actionLog: InvestigateGetResponseActionLogList.pipe(T.Body("action_log")),
@@ -1730,8 +2103,1610 @@ export const InvestigateGetResponse = /*@__PURE__*/ S.suspend(() =>
     xOriginatingIp: S.optional(S.String.pipe(T.Body("x_originating_ip"))),
   }),
 ).annotate({
-  identifier: "InvestigateGetResponse",
-}) as any as S.Schema<InvestigateGetResponse>;
+  identifier: "GetInvestigateResponse",
+}) as any as S.Schema<GetInvestigateResponse>;
+
+export interface GetInvestigateBulkRequest {
+  /** Identifier. */
+  accountId: string;
+  jobId: string;
+}
+export const GetInvestigateBulkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    jobId: S.String.pipe(T.Label("job_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetInvestigateBulkRequest",
+}) as any as S.Schema<GetInvestigateBulkRequest>;
+
+export interface InvestigateBulkGetResponseActionParams {
+  MoveObjectDestinationTypeExpectedDisposition__: unknown;
+  ReleaseObjectType__: unknown;
+}
+export const InvestigateBulkGetResponseActionParams = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      MoveObjectDestinationTypeExpectedDisposition__: S.Unknown.pipe(
+        T.Body("Move object { destination, type, expected_disposition }"),
+      ),
+      ReleaseObjectType__: S.Unknown.pipe(T.Body("Release object { type }")),
+    }),
+).annotate({
+  identifier: "InvestigateBulkGetResponseActionParams",
+}) as any as S.Schema<InvestigateBulkGetResponseActionParams>;
+
+export type InvestigateBulkGetResponseActionType =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkGetResponseActionType = /*@__PURE__*/ S.String;
+
+export type InvestigateBulkGetResponseSearchParamsDeliveryStatus =
+  | "delivered"
+  | "moved"
+  | "quarantined"
+  | (string & {});
+export const InvestigateBulkGetResponseSearchParamsDeliveryStatus =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkGetResponseSearchParamsFinalDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateBulkGetResponseSearchParamsFinalDisposition =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkGetResponseSearchParamsMessageAction =
+  | "PREVIEW"
+  | "QUARANTINE_RELEASED"
+  | "MOVED"
+  | (string & {});
+export const InvestigateBulkGetResponseSearchParamsMessageAction =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkGetResponseSearchParams {
+  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
+  actionLog?: boolean;
+  alertId?: string;
+  /** Delivery status of the message. */
+  deliveryStatus?: InvestigateBulkGetResponseSearchParamsDeliveryStatus;
+  detectionsOnly?: boolean;
+  domain?: string;
+  /** End of search date range */
+  end?: string;
+  exactSubject?: string;
+  finalDisposition?: InvestigateBulkGetResponseSearchParamsFinalDisposition;
+  messageAction?: InvestigateBulkGetResponseSearchParamsMessageAction;
+  messageId?: string;
+  metric?: string;
+  query?: string;
+  recipient?: string;
+  sender?: string;
+  /** Beginning of search date range */
+  start?: string;
+  subject?: string;
+  submissions?: boolean;
+}
+export const InvestigateBulkGetResponseSearchParams = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      actionLog: S.optional(S.Boolean.pipe(T.Body("action_log"))),
+      alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
+      deliveryStatus: S.optional(
+        InvestigateBulkGetResponseSearchParamsDeliveryStatus.pipe(
+          T.Body("delivery_status"),
+        ),
+      ),
+      detectionsOnly: S.optional(S.Boolean.pipe(T.Body("detections_only"))),
+      domain: S.optional(S.String),
+      end: S.optional(S.String),
+      exactSubject: S.optional(S.String.pipe(T.Body("exact_subject"))),
+      finalDisposition: S.optional(
+        InvestigateBulkGetResponseSearchParamsFinalDisposition.pipe(
+          T.Body("final_disposition"),
+        ),
+      ),
+      messageAction: S.optional(
+        InvestigateBulkGetResponseSearchParamsMessageAction.pipe(
+          T.Body("message_action"),
+        ),
+      ),
+      messageId: S.optional(S.String.pipe(T.Body("message_id"))),
+      metric: S.optional(S.String),
+      query: S.optional(S.String),
+      recipient: S.optional(S.String),
+      sender: S.optional(S.String),
+      start: S.optional(S.String),
+      subject: S.optional(S.String),
+      submissions: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "InvestigateBulkGetResponseSearchParams",
+}) as any as S.Schema<InvestigateBulkGetResponseSearchParams>;
+
+export type InvestigateBulkGetResponseStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkGetResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetInvestigateBulkResponse {
+  actionParams: InvestigateBulkGetResponseActionParams;
+  actionType: InvestigateBulkGetResponseActionType;
+  createdAt: string;
+  jobId: string;
+  messagesFailed: number;
+  messagesPending: number;
+  messagesSuccessful: number;
+  searchParams: InvestigateBulkGetResponseSearchParams;
+  status: InvestigateBulkGetResponseStatus;
+  totalMessagesDiscovered: number;
+  comment?: string;
+  completedAt?: string;
+  startedAt?: string;
+  statusMessage?: string;
+}
+export const GetInvestigateBulkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actionParams: InvestigateBulkGetResponseActionParams.pipe(
+      T.Body("action_params"),
+    ),
+    actionType: InvestigateBulkGetResponseActionType.pipe(
+      T.Body("action_type"),
+    ),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    jobId: S.String.pipe(T.Body("job_id")),
+    messagesFailed: S.Number.pipe(T.Body("messages_failed")),
+    messagesPending: S.Number.pipe(T.Body("messages_pending")),
+    messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
+    searchParams: InvestigateBulkGetResponseSearchParams.pipe(
+      T.Body("search_params"),
+    ),
+    status: InvestigateBulkGetResponseStatus,
+    totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
+    comment: S.optional(S.String),
+    completedAt: S.optional(S.String.pipe(T.Body("completed_at"))),
+    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+    statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
+  }),
+).annotate({
+  identifier: "GetInvestigateBulkResponse",
+}) as any as S.Schema<GetInvestigateBulkResponse>;
+
+export interface GetInvestigateDetectionRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Unique identifier for a message retrieved from investigation */
+  investigateId: string;
+}
+export const GetInvestigateDetectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    investigateId: S.String.pipe(T.Label("investigate_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/detections",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetInvestigateDetectionRequest",
+}) as any as S.Schema<GetInvestigateDetectionRequest>;
+
+export type InvestigateDetectionsGetResponseAttachmentsItemDetection =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateDetectionsGetResponseAttachmentsItemDetection =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateDetectionsGetResponseAttachmentsItem {
+  /** Size of the attachment in bytes */
+  size: number;
+  /** MIME type of the attachment */
+  contentType?: string;
+  /** Detection result for this attachment */
+  detection?: InvestigateDetectionsGetResponseAttachmentsItemDetection;
+  /** Whether the attachment is encrypted */
+  encrypted?: boolean;
+  /** Name of the attached file */
+  filename?: string;
+  /** MD5 hash of the attachment */
+  md5?: string;
+  /** Attachment name (alternative to filename) */
+  name?: string;
+  /** SHA1 hash of the attachment */
+  sha1?: string;
+  /** SHA256 hash of the attachment */
+  sha256?: string;
+}
+export const InvestigateDetectionsGetResponseAttachmentsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      size: S.Number,
+      contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+      detection: S.optional(
+        InvestigateDetectionsGetResponseAttachmentsItemDetection,
+      ),
+      encrypted: S.optional(S.Boolean),
+      filename: S.optional(S.String),
+      md5: S.optional(S.String),
+      name: S.optional(S.String),
+      sha1: S.optional(S.String),
+      sha256: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "InvestigateDetectionsGetResponseAttachmentsItem",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsItem>;
+
+export type InvestigateDetectionsGetResponseAttachmentsList =
+  InvestigateDetectionsGetResponseAttachmentsItem[];
+export const InvestigateDetectionsGetResponseAttachmentsList =
+  /*@__PURE__*/ S.Array(
+    InvestigateDetectionsGetResponseAttachmentsItem,
+  ) as any as S.Schema<InvestigateDetectionsGetResponseAttachmentsList>;
+
+export type InvestigateDetectionsGetResponseFindingsItemDetection =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateDetectionsGetResponseFindingsItemDetection =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateDetectionsGetResponseFindingsItem {
+  attachment?: string;
+  detail?: string;
+  detection?: InvestigateDetectionsGetResponseFindingsItemDetection;
+  field?: string;
+  name?: string;
+  portion?: string;
+  reason?: string;
+  score?: number;
+  value?: string;
+}
+export const InvestigateDetectionsGetResponseFindingsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      attachment: S.optional(S.String),
+      detail: S.optional(S.String),
+      detection: S.optional(
+        InvestigateDetectionsGetResponseFindingsItemDetection,
+      ),
+      field: S.optional(S.String),
+      name: S.optional(S.String),
+      portion: S.optional(S.String),
+      reason: S.optional(S.String),
+      score: S.optional(S.Number),
+      value: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "InvestigateDetectionsGetResponseFindingsItem",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseFindingsItem>;
+
+export type InvestigateDetectionsGetResponseFindingsList =
+  InvestigateDetectionsGetResponseFindingsItem[];
+export const InvestigateDetectionsGetResponseFindingsList =
+  /*@__PURE__*/ S.Array(
+    InvestigateDetectionsGetResponseFindingsItem,
+  ) as any as S.Schema<InvestigateDetectionsGetResponseFindingsList>;
+
+export interface InvestigateDetectionsGetResponseHeadersItem {
+  name: string;
+  value: string;
+}
+export const InvestigateDetectionsGetResponseHeadersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      name: S.String,
+      value: S.String,
+    }),
+  ).annotate({
+    identifier: "InvestigateDetectionsGetResponseHeadersItem",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseHeadersItem>;
+
+export type InvestigateDetectionsGetResponseHeadersList =
+  InvestigateDetectionsGetResponseHeadersItem[];
+export const InvestigateDetectionsGetResponseHeadersList =
+  /*@__PURE__*/ S.Array(
+    InvestigateDetectionsGetResponseHeadersItem,
+  ) as any as S.Schema<InvestigateDetectionsGetResponseHeadersList>;
+
+export interface InvestigateDetectionsGetResponseLinksItem {
+  href: string;
+  text?: string;
+}
+export const InvestigateDetectionsGetResponseLinksItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      href: S.String,
+      text: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "InvestigateDetectionsGetResponseLinksItem",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseLinksItem>;
+
+export type InvestigateDetectionsGetResponseLinksList =
+  InvestigateDetectionsGetResponseLinksItem[];
+export const InvestigateDetectionsGetResponseLinksList = /*@__PURE__*/ S.Array(
+  InvestigateDetectionsGetResponseLinksItem,
+) as any as S.Schema<InvestigateDetectionsGetResponseLinksList>;
+
+export interface InvestigateDetectionsGetResponseSenderInfo {
+  /** The name of the autonomous system. */
+  asName?: string;
+  /** The number of the autonomous system. */
+  asNumber?: number;
+  geo?: string;
+  ip?: string;
+  pld?: string;
+}
+export const InvestigateDetectionsGetResponseSenderInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      asName: S.optional(S.String.pipe(T.Body("as_name"))),
+      asNumber: S.optional(S.Number.pipe(T.Body("as_number"))),
+      geo: S.optional(S.String),
+      ip: S.optional(S.String),
+      pld: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "InvestigateDetectionsGetResponseSenderInfo",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseSenderInfo>;
+
+export interface InvestigateDetectionsGetResponseThreatCategoriesItem {
+  id?: number;
+  description?: string;
+  name?: string;
+}
+export const InvestigateDetectionsGetResponseThreatCategoriesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.Number),
+      description: S.optional(S.String),
+      name: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "InvestigateDetectionsGetResponseThreatCategoriesItem",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseThreatCategoriesItem>;
+
+export type InvestigateDetectionsGetResponseThreatCategoriesList =
+  InvestigateDetectionsGetResponseThreatCategoriesItem[];
+export const InvestigateDetectionsGetResponseThreatCategoriesList =
+  /*@__PURE__*/ S.Array(
+    InvestigateDetectionsGetResponseThreatCategoriesItem,
+  ) as any as S.Schema<InvestigateDetectionsGetResponseThreatCategoriesList>;
+
+export type InvestigateDetectionsGetResponseValidationDkim =
+  | "pass"
+  | "neutral"
+  | "fail"
+  | (string & {});
+export const InvestigateDetectionsGetResponseValidationDkim =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateDetectionsGetResponseValidationDmarc =
+  | "pass"
+  | "neutral"
+  | "fail"
+  | (string & {});
+export const InvestigateDetectionsGetResponseValidationDmarc =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateDetectionsGetResponseValidationSpf =
+  | "pass"
+  | "neutral"
+  | "fail"
+  | (string & {});
+export const InvestigateDetectionsGetResponseValidationSpf =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateDetectionsGetResponseValidation {
+  comment?: string;
+  dkim?: InvestigateDetectionsGetResponseValidationDkim;
+  dmarc?: InvestigateDetectionsGetResponseValidationDmarc;
+  spf?: InvestigateDetectionsGetResponseValidationSpf;
+}
+export const InvestigateDetectionsGetResponseValidation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      comment: S.optional(S.String),
+      dkim: S.optional(InvestigateDetectionsGetResponseValidationDkim),
+      dmarc: S.optional(InvestigateDetectionsGetResponseValidationDmarc),
+      spf: S.optional(InvestigateDetectionsGetResponseValidationSpf),
+    }),
+  ).annotate({
+    identifier: "InvestigateDetectionsGetResponseValidation",
+  }) as any as S.Schema<InvestigateDetectionsGetResponseValidation>;
+
+export type InvestigateDetectionsGetResponseFinalDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateDetectionsGetResponseFinalDisposition =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetInvestigateDetectionResponse {
+  action: string;
+  attachments: InvestigateDetectionsGetResponseAttachmentsList;
+  findings: InvestigateDetectionsGetResponseFindingsList;
+  headers: InvestigateDetectionsGetResponseHeadersList;
+  links: InvestigateDetectionsGetResponseLinksList;
+  senderInfo: InvestigateDetectionsGetResponseSenderInfo;
+  threatCategories: InvestigateDetectionsGetResponseThreatCategoriesList;
+  validation: InvestigateDetectionsGetResponseValidation;
+  finalDisposition?: InvestigateDetectionsGetResponseFinalDisposition;
+}
+export const GetInvestigateDetectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.String,
+    attachments: InvestigateDetectionsGetResponseAttachmentsList,
+    findings: InvestigateDetectionsGetResponseFindingsList,
+    headers: InvestigateDetectionsGetResponseHeadersList,
+    links: InvestigateDetectionsGetResponseLinksList,
+    senderInfo: InvestigateDetectionsGetResponseSenderInfo.pipe(
+      T.Body("sender_info"),
+    ),
+    threatCategories: InvestigateDetectionsGetResponseThreatCategoriesList.pipe(
+      T.Body("threat_categories"),
+    ),
+    validation: InvestigateDetectionsGetResponseValidation,
+    finalDisposition: S.optional(
+      InvestigateDetectionsGetResponseFinalDisposition.pipe(
+        T.Body("final_disposition"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "GetInvestigateDetectionResponse",
+}) as any as S.Schema<GetInvestigateDetectionResponse>;
+
+export interface GetInvestigatePreviewRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Unique identifier for a message retrieved from investigation */
+  investigateId: string;
+}
+export const GetInvestigatePreviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    investigateId: S.String.pipe(T.Label("investigate_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/preview",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetInvestigatePreviewRequest",
+}) as any as S.Schema<GetInvestigatePreviewRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetInvestigatePreviewResponse {
+  /** A base64 encoded PNG image of the email. */
+  screenshot: string;
+}
+export const GetInvestigatePreviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    screenshot: S.String,
+  }),
+).annotate({
+  identifier: "GetInvestigatePreviewResponse",
+}) as any as S.Schema<GetInvestigatePreviewResponse>;
+
+export interface GetInvestigateRawRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Unique identifier for a message retrieved from investigation */
+  investigateId: string;
+}
+export const GetInvestigateRawRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    investigateId: S.String.pipe(T.Label("investigate_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/raw",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetInvestigateRawRequest",
+}) as any as S.Schema<GetInvestigateRawRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetInvestigateRawResponse {
+  /** A UTF-8 encoded eml file of the email. */
+  raw: string;
+}
+export const GetInvestigateRawResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    raw: S.String,
+  }),
+).annotate({
+  identifier: "GetInvestigateRawResponse",
+}) as any as S.Schema<GetInvestigateRawResponse>;
+
+export interface GetInvestigateTraceRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Unique identifier for a message retrieved from investigation */
+  investigateId: string;
+}
+export const GetInvestigateTraceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    investigateId: S.String.pipe(T.Label("investigate_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/trace",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetInvestigateTraceRequest",
+}) as any as S.Schema<GetInvestigateTraceRequest>;
+
+export interface InvestigateTraceGetResponseInboundLinesItem {
+  /** Line number in the trace log */
+  lineno?: number;
+  loggedAt?: string;
+  message?: string;
+  /** Deprecated, use `logged_at` instead. End of life: November 1, 2026. */
+  ts?: string;
+}
+export const InvestigateTraceGetResponseInboundLinesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lineno: S.optional(S.Number),
+      loggedAt: S.optional(S.String.pipe(T.Body("logged_at"))),
+      message: S.optional(S.String),
+      ts: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "InvestigateTraceGetResponseInboundLinesItem",
+  }) as any as S.Schema<InvestigateTraceGetResponseInboundLinesItem>;
+
+export type InvestigateTraceGetResponseInboundLinesList =
+  InvestigateTraceGetResponseInboundLinesItem[];
+export const InvestigateTraceGetResponseInboundLinesList =
+  /*@__PURE__*/ S.Array(
+    InvestigateTraceGetResponseInboundLinesItem,
+  ) as any as S.Schema<InvestigateTraceGetResponseInboundLinesList>;
+
+export interface InvestigateTraceGetResponseInbound {
+  lines?: InvestigateTraceGetResponseInboundLinesList;
+  pending?: boolean;
+}
+export const InvestigateTraceGetResponseInbound = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lines: S.optional(InvestigateTraceGetResponseInboundLinesList),
+    pending: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "InvestigateTraceGetResponseInbound",
+}) as any as S.Schema<InvestigateTraceGetResponseInbound>;
+
+export interface InvestigateTraceGetResponseOutboundLinesItem {
+  /** Line number in the trace log */
+  lineno?: number;
+  loggedAt?: string;
+  message?: string;
+  /** Deprecated, use `logged_at` instead. End of life: November 1, 2026. */
+  ts?: string;
+}
+export const InvestigateTraceGetResponseOutboundLinesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lineno: S.optional(S.Number),
+      loggedAt: S.optional(S.String.pipe(T.Body("logged_at"))),
+      message: S.optional(S.String),
+      ts: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "InvestigateTraceGetResponseOutboundLinesItem",
+  }) as any as S.Schema<InvestigateTraceGetResponseOutboundLinesItem>;
+
+export type InvestigateTraceGetResponseOutboundLinesList =
+  InvestigateTraceGetResponseOutboundLinesItem[];
+export const InvestigateTraceGetResponseOutboundLinesList =
+  /*@__PURE__*/ S.Array(
+    InvestigateTraceGetResponseOutboundLinesItem,
+  ) as any as S.Schema<InvestigateTraceGetResponseOutboundLinesList>;
+
+export interface InvestigateTraceGetResponseOutbound {
+  lines?: InvestigateTraceGetResponseOutboundLinesList;
+  pending?: boolean;
+}
+export const InvestigateTraceGetResponseOutbound = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lines: S.optional(InvestigateTraceGetResponseOutboundLinesList),
+    pending: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "InvestigateTraceGetResponseOutbound",
+}) as any as S.Schema<InvestigateTraceGetResponseOutbound>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetInvestigateTraceResponse {
+  inbound: InvestigateTraceGetResponseInbound;
+  outbound: InvestigateTraceGetResponseOutbound;
+}
+export const GetInvestigateTraceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    inbound: InvestigateTraceGetResponseInbound,
+    outbound: InvestigateTraceGetResponseOutbound,
+  }),
+).annotate({
+  identifier: "GetInvestigateTraceResponse",
+}) as any as S.Schema<GetInvestigateTraceResponse>;
+
+export interface GetSettingAllowPolicyRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Allow policy identifier */
+  policyId: string;
+}
+export const GetSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/settings/allow_policies/{policy_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingAllowPolicyRequest",
+}) as any as S.Schema<GetSettingAllowPolicyRequest>;
+
+export type SettingsAllowPoliciesGetResponsePatternType =
+  | "EMAIL"
+  | "DOMAIN"
+  | "IP"
+  | "UNKNOWN"
+  | (string & {});
+export const SettingsAllowPoliciesGetResponsePatternType =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSettingAllowPolicyResponse {
+  /** Allow policy identifier */
+  id: string;
+  createdAt: string;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified: string;
+  comments?: string;
+  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
+  isAcceptableSender?: boolean;
+  /** Messages to this recipient will bypass all detections */
+  isExemptRecipient?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
+  isRecipient?: boolean;
+  isRegex?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
+  isSender?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
+  isSpoof?: boolean;
+  /** Messages from this sender will bypass all detections and link following */
+  isTrustedSender?: boolean;
+  modifiedAt?: string;
+  pattern?: string;
+  /** Type of pattern matching. */
+  patternType?: SettingsAllowPoliciesGetResponsePatternType;
+  /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
+  verifySender?: boolean;
+}
+export const GetSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    lastModified: S.String.pipe(T.Body("last_modified")),
+    comments: S.optional(S.String),
+    isAcceptableSender: S.optional(
+      S.Boolean.pipe(T.Body("is_acceptable_sender")),
+    ),
+    isExemptRecipient: S.optional(
+      S.Boolean.pipe(T.Body("is_exempt_recipient")),
+    ),
+    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
+    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
+    isTrustedSender: S.optional(S.Boolean.pipe(T.Body("is_trusted_sender"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    pattern: S.optional(S.String),
+    patternType: S.optional(
+      SettingsAllowPoliciesGetResponsePatternType.pipe(T.Body("pattern_type")),
+    ),
+    verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
+  }),
+).annotate({
+  identifier: "GetSettingAllowPolicyResponse",
+}) as any as S.Schema<GetSettingAllowPolicyResponse>;
+
+export interface GetSettingBlockSenderRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Blocked sender pattern identifier */
+  patternId: string;
+}
+export const GetSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    patternId: S.String.pipe(T.Label("pattern_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/settings/block_senders/{pattern_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingBlockSenderRequest",
+}) as any as S.Schema<GetSettingBlockSenderRequest>;
+
+export type SettingsBlockSendersGetResponsePatternType =
+  | "EMAIL"
+  | "DOMAIN"
+  | "IP"
+  | "UNKNOWN"
+  | (string & {});
+export const SettingsBlockSendersGetResponsePatternType =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSettingBlockSenderResponse {
+  /** Blocked sender pattern identifier */
+  id?: string;
+  comments?: string;
+  createdAt?: string;
+  isRegex?: boolean;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+  pattern?: string;
+  /** Type of pattern matching. */
+  patternType?: SettingsBlockSendersGetResponsePatternType;
+}
+export const GetSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    comments: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    pattern: S.optional(S.String),
+    patternType: S.optional(
+      SettingsBlockSendersGetResponsePatternType.pipe(T.Body("pattern_type")),
+    ),
+  }),
+).annotate({
+  identifier: "GetSettingBlockSenderResponse",
+}) as any as S.Schema<GetSettingBlockSenderResponse>;
+
+export interface GetSettingDomainRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Domain identifier */
+  domainId: string;
+}
+export const GetSettingDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    domainId: S.String.pipe(T.Label("domain_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/settings/domains/{domain_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingDomainRequest",
+}) as any as S.Schema<GetSettingDomainRequest>;
+
+export type SettingsDomainsGetResponseAllowedDeliveryModesItem =
+  | "DIRECT"
+  | "BCC"
+  | "JOURNAL"
+  | (string & {});
+export const SettingsDomainsGetResponseAllowedDeliveryModesItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsDomainsGetResponseAllowedDeliveryModesList =
+  SettingsDomainsGetResponseAllowedDeliveryModesItem[];
+export const SettingsDomainsGetResponseAllowedDeliveryModesList =
+  /*@__PURE__*/ S.Array(
+    SettingsDomainsGetResponseAllowedDeliveryModesItem,
+  ) as any as S.Schema<SettingsDomainsGetResponseAllowedDeliveryModesList>;
+
+export interface SettingsDomainsGetResponseAuthorization {
+  authorized: boolean;
+  timestamp: string;
+  statusMessage?: string;
+}
+export const SettingsDomainsGetResponseAuthorization = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      authorized: S.Boolean,
+      timestamp: S.String,
+      statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
+    }),
+).annotate({
+  identifier: "SettingsDomainsGetResponseAuthorization",
+}) as any as S.Schema<SettingsDomainsGetResponseAuthorization>;
+
+export type SettingsDomainsGetResponseDmarcStatus =
+  | "none"
+  | "good"
+  | "invalid"
+  | (string & {});
+export const SettingsDomainsGetResponseDmarcStatus = /*@__PURE__*/ S.String;
+
+export type SettingsDomainsGetResponseDropDispositionsItem =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const SettingsDomainsGetResponseDropDispositionsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsDomainsGetResponseDropDispositionsList =
+  SettingsDomainsGetResponseDropDispositionsItem[];
+export const SettingsDomainsGetResponseDropDispositionsList =
+  /*@__PURE__*/ S.Array(
+    SettingsDomainsGetResponseDropDispositionsItem,
+  ) as any as S.Schema<SettingsDomainsGetResponseDropDispositionsList>;
+
+export interface SettingsDomainsGetResponseEmailsProcessed {
+  timestamp: string;
+  totalEmailsProcessed: number;
+  totalEmailsProcessedPrevious: number;
+}
+export const SettingsDomainsGetResponseEmailsProcessed =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      timestamp: S.String,
+      totalEmailsProcessed: S.Number.pipe(T.Body("total_emails_processed")),
+      totalEmailsProcessedPrevious: S.Number.pipe(
+        T.Body("total_emails_processed_previous"),
+      ),
+    }),
+  ).annotate({
+    identifier: "SettingsDomainsGetResponseEmailsProcessed",
+  }) as any as S.Schema<SettingsDomainsGetResponseEmailsProcessed>;
+
+export type SettingsDomainsGetResponseFolder =
+  | "AllItems"
+  | "Inbox"
+  | (string & {});
+export const SettingsDomainsGetResponseFolder = /*@__PURE__*/ S.String;
+
+export type SettingsDomainsGetResponseInboxProvider =
+  | "Microsoft"
+  | "Google"
+  | (string & {});
+export const SettingsDomainsGetResponseInboxProvider = /*@__PURE__*/ S.String;
+
+export type SettingsDomainsGetResponseIpRestrictionsList = string[];
+export const SettingsDomainsGetResponseIpRestrictionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SettingsDomainsGetResponseIpRestrictionsList>;
+
+export type SettingsDomainsGetResponseRegionsItem =
+  | "GLOBAL"
+  | "AU"
+  | "DE"
+  | (string & {});
+export const SettingsDomainsGetResponseRegionsItem = /*@__PURE__*/ S.String;
+
+export type SettingsDomainsGetResponseRegionsList =
+  SettingsDomainsGetResponseRegionsItem[];
+export const SettingsDomainsGetResponseRegionsList = /*@__PURE__*/ S.Array(
+  SettingsDomainsGetResponseRegionsItem,
+) as any as S.Schema<SettingsDomainsGetResponseRegionsList>;
+
+export type SettingsDomainsGetResponseSpfStatus =
+  | "none"
+  | "good"
+  | "neutral"
+  | (string & {});
+export const SettingsDomainsGetResponseSpfStatus = /*@__PURE__*/ S.String;
+
+export type SettingsDomainsGetResponseStatus =
+  | "pending"
+  | "active"
+  | "failed"
+  | "timeout"
+  | (string & {});
+export const SettingsDomainsGetResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSettingDomainResponse {
+  /** Domain identifier */
+  id?: string;
+  allowedDeliveryModes?: SettingsDomainsGetResponseAllowedDeliveryModesList;
+  authorization?: SettingsDomainsGetResponseAuthorization;
+  createdAt?: string;
+  dmarcStatus?: SettingsDomainsGetResponseDmarcStatus;
+  domain?: string;
+  dropDispositions?: SettingsDomainsGetResponseDropDispositionsList;
+  emailsProcessed?: SettingsDomainsGetResponseEmailsProcessed;
+  folder?: SettingsDomainsGetResponseFolder;
+  inboxProvider?: SettingsDomainsGetResponseInboxProvider;
+  integrationId?: string;
+  ipRestrictions?: SettingsDomainsGetResponseIpRestrictionsList;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  lookbackHops?: number;
+  modifiedAt?: string;
+  o365TenantId?: string;
+  regions?: SettingsDomainsGetResponseRegionsList;
+  requireTlsInbound?: boolean;
+  requireTlsOutbound?: boolean;
+  spfStatus?: SettingsDomainsGetResponseSpfStatus;
+  status?: SettingsDomainsGetResponseStatus;
+  transport?: string;
+}
+export const GetSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    allowedDeliveryModes: S.optional(
+      SettingsDomainsGetResponseAllowedDeliveryModesList.pipe(
+        T.Body("allowed_delivery_modes"),
+      ),
+    ),
+    authorization: S.optional(SettingsDomainsGetResponseAuthorization),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    dmarcStatus: S.optional(
+      SettingsDomainsGetResponseDmarcStatus.pipe(T.Body("dmarc_status")),
+    ),
+    domain: S.optional(S.String),
+    dropDispositions: S.optional(
+      SettingsDomainsGetResponseDropDispositionsList.pipe(
+        T.Body("drop_dispositions"),
+      ),
+    ),
+    emailsProcessed: S.optional(
+      SettingsDomainsGetResponseEmailsProcessed.pipe(
+        T.Body("emails_processed"),
+      ),
+    ),
+    folder: S.optional(SettingsDomainsGetResponseFolder),
+    inboxProvider: S.optional(
+      SettingsDomainsGetResponseInboxProvider.pipe(T.Body("inbox_provider")),
+    ),
+    integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
+    ipRestrictions: S.optional(
+      SettingsDomainsGetResponseIpRestrictionsList.pipe(
+        T.Body("ip_restrictions"),
+      ),
+    ),
+    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+    lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    o365TenantId: S.optional(S.String.pipe(T.Body("o365_tenant_id"))),
+    regions: S.optional(SettingsDomainsGetResponseRegionsList),
+    requireTlsInbound: S.optional(
+      S.Boolean.pipe(T.Body("require_tls_inbound")),
+    ),
+    requireTlsOutbound: S.optional(
+      S.Boolean.pipe(T.Body("require_tls_outbound")),
+    ),
+    spfStatus: S.optional(
+      SettingsDomainsGetResponseSpfStatus.pipe(T.Body("spf_status")),
+    ),
+    status: S.optional(SettingsDomainsGetResponseStatus),
+    transport: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetSettingDomainResponse",
+}) as any as S.Schema<GetSettingDomainResponse>;
+
+export interface GetSettingImpersonationRegistryRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Impersonation registry entry identifier */
+  impersonationRegistryId: string;
+}
+export const GetSettingImpersonationRegistryRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      impersonationRegistryId: S.String.pipe(
+        T.Label("impersonation_registry_id"),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "GetSettingImpersonationRegistryRequest",
+}) as any as S.Schema<GetSettingImpersonationRegistryRequest>;
+
+export type SettingsImpersonationRegistryGetResponseProvenance =
+  | "A1S_INTERNAL"
+  | "SNOOPY-CASB_OFFICE_365"
+  | "SNOOPY-OFFICE_365"
+  | "SNOOPY-GOOGLE_DIRECTORY"
+  | (string & {});
+export const SettingsImpersonationRegistryGetResponseProvenance =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSettingImpersonationRegistryResponse {
+  /** Impersonation registry entry identifier */
+  id?: string;
+  comments?: string;
+  createdAt?: string;
+  directoryId?: number;
+  directoryNodeId?: number;
+  email?: string;
+  externalDirectoryNodeId?: string;
+  isEmailRegex?: boolean;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+  name?: string;
+  provenance?: SettingsImpersonationRegistryGetResponseProvenance;
+}
+export const GetSettingImpersonationRegistryResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.optional(S.String),
+      comments: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
+      directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
+      email: S.optional(S.String),
+      externalDirectoryNodeId: S.optional(
+        S.String.pipe(T.Body("external_directory_node_id")),
+      ),
+      isEmailRegex: S.optional(S.Boolean.pipe(T.Body("is_email_regex"))),
+      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+      name: S.optional(S.String),
+      provenance: S.optional(
+        SettingsImpersonationRegistryGetResponseProvenance,
+      ),
+    }),
+).annotate({
+  identifier: "GetSettingImpersonationRegistryResponse",
+}) as any as S.Schema<GetSettingImpersonationRegistryResponse>;
+
+export interface GetSettingSendingDomainRestrictionRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Sending domain restriction identifier. */
+  sendingDomainRestrictionId: string;
+}
+export const GetSettingSendingDomainRestrictionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      sendingDomainRestrictionId: S.String.pipe(
+        T.Label("sending_domain_restriction_id"),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "GetSettingSendingDomainRestrictionRequest",
+  }) as any as S.Schema<GetSettingSendingDomainRestrictionRequest>;
+
+export type SettingsSendingDomainRestrictionsGetResponseExcludeList = string[];
+export const SettingsSendingDomainRestrictionsGetResponseExcludeList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SettingsSendingDomainRestrictionsGetResponseExcludeList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSettingSendingDomainRestrictionResponse {
+  /** Sending domain restriction identifier. */
+  id?: string;
+  comments?: string;
+  createdAt?: string;
+  /** Domain that requires TLS enforcement. */
+  domain?: string;
+  /** Excluded subdomains that are exempt from TLS requirements. */
+  exclude?: SettingsSendingDomainRestrictionsGetResponseExcludeList;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+}
+export const GetSettingSendingDomainRestrictionResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      comments: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      domain: S.optional(S.String),
+      exclude: S.optional(
+        SettingsSendingDomainRestrictionsGetResponseExcludeList,
+      ),
+      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    }),
+  ).annotate({
+    identifier: "GetSettingSendingDomainRestrictionResponse",
+  }) as any as S.Schema<GetSettingSendingDomainRestrictionResponse>;
+
+export interface GetSettingTrustedDomainRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Trusted domain identifier */
+  trustedDomainId: string;
+}
+export const GetSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    trustedDomainId: S.String.pipe(T.Label("trusted_domain_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingTrustedDomainRequest",
+}) as any as S.Schema<GetSettingTrustedDomainRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSettingTrustedDomainResponse {
+  /** Trusted domain identifier */
+  id?: string;
+  comments?: string;
+  createdAt?: string;
+  /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
+  isRecent?: boolean;
+  isRegex?: boolean;
+  /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
+  isSimilarity?: boolean;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+  pattern?: string;
+}
+export const GetSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    comments: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    isRecent: S.optional(S.Boolean.pipe(T.Body("is_recent"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    isSimilarity: S.optional(S.Boolean.pipe(T.Body("is_similarity"))),
+    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    pattern: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetSettingTrustedDomainResponse",
+}) as any as S.Schema<GetSettingTrustedDomainResponse>;
+
+export interface GetSettingUrlIgnorePatternRequest {
+  /** Identifier. */
+  accountId: string;
+  /** URL ignore pattern identifier */
+  patternId: string;
+}
+export const GetSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    patternId: S.String.pipe(T.Label("pattern_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSettingUrlIgnorePatternRequest",
+}) as any as S.Schema<GetSettingUrlIgnorePatternRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSettingUrlIgnorePatternResponse {
+  /** URL ignore pattern identifier */
+  id: string;
+  createdAt: string;
+  /** Regular expression matching URLs that should not be rewritten. */
+  pattern: string;
+  /** Optional note describing the reason for the ignore pattern. */
+  comments?: string;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+}
+export const GetSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    pattern: S.String,
+    comments: S.optional(S.String),
+    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+  }),
+).annotate({
+  identifier: "GetSettingUrlIgnorePatternResponse",
+}) as any as S.Schema<GetSettingUrlIgnorePatternResponse>;
+
+export type InvestigateBulkMessagesListRequestStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkMessagesListRequestStatus = /*@__PURE__*/ S.String;
+
+export interface ListInvestigateBulkMessagesRequest {
+  /** Identifier. */
+  accountId: string;
+  jobId: string;
+  /** Current page within paginated list of results. */
+  page?: number;
+  /** The number of results per page. Maximum value is 1000. */
+  perPage?: number;
+  status?: InvestigateBulkMessagesListRequestStatus;
+}
+export const ListInvestigateBulkMessagesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    jobId: S.String.pipe(T.Label("job_id")),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    status: S.optional(
+      InvestigateBulkMessagesListRequestStatus.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListInvestigateBulkMessagesRequest",
+}) as any as S.Schema<ListInvestigateBulkMessagesRequest>;
+
+export interface InvestigateBulkMessagesListResultItemActionParams {
+  MoveObjectClientRecipientDestinationTypeExpectedDisposition__: unknown;
+  ReleaseObjectClientRecipientType__: unknown;
+}
+export const InvestigateBulkMessagesListResultItemActionParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MoveObjectClientRecipientDestinationTypeExpectedDisposition__:
+        S.Unknown.pipe(
+          T.Body(
+            "Move object { client_recipient, destination, type, expected_disposition }",
+          ),
+        ),
+      ReleaseObjectClientRecipientType__: S.Unknown.pipe(
+        T.Body("Release object { client_recipient, type }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkMessagesListResultItemActionParams",
+  }) as any as S.Schema<InvestigateBulkMessagesListResultItemActionParams>;
+
+export type InvestigateBulkMessagesListResultItemActionType =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkMessagesListResultItemActionType =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkMessagesListResultItemStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkMessagesListResultItemStatus =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkMessagesListResultItem {
+  actionParams: InvestigateBulkMessagesListResultItemActionParams;
+  actionType: InvestigateBulkMessagesListResultItemActionType;
+  createdAt: string;
+  messageId: string;
+  postfixId: string;
+  retryCount: number;
+  status: InvestigateBulkMessagesListResultItemStatus;
+  alertId?: string;
+  emailMessageId?: string;
+  processedAt?: string;
+  /** When to retry the action if it failed */
+  retryAfter?: string;
+  statusMessage?: string;
+}
+export const InvestigateBulkMessagesListResultItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      actionParams: InvestigateBulkMessagesListResultItemActionParams.pipe(
+        T.Body("action_params"),
+      ),
+      actionType: InvestigateBulkMessagesListResultItemActionType.pipe(
+        T.Body("action_type"),
+      ),
+      createdAt: S.String.pipe(T.Body("created_at")),
+      messageId: S.String.pipe(T.Body("message_id")),
+      postfixId: S.String.pipe(T.Body("postfix_id")),
+      retryCount: S.Number.pipe(T.Body("retry_count")),
+      status: InvestigateBulkMessagesListResultItemStatus,
+      alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
+      emailMessageId: S.optional(S.String.pipe(T.Body("email_message_id"))),
+      processedAt: S.optional(S.String.pipe(T.Body("processed_at"))),
+      retryAfter: S.optional(S.String.pipe(T.Body("retry_after"))),
+      statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
+    }),
+).annotate({
+  identifier: "InvestigateBulkMessagesListResultItem",
+}) as any as S.Schema<InvestigateBulkMessagesListResultItem>;
+
+export type InvestigateBulkMessagesListResultList =
+  InvestigateBulkMessagesListResultItem[];
+export const InvestigateBulkMessagesListResultList = /*@__PURE__*/ S.Array(
+  InvestigateBulkMessagesListResultItem,
+) as any as S.Schema<InvestigateBulkMessagesListResultList>;
+
+export interface ListInvestigateBulkMessagesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: InvestigateBulkMessagesListResultList;
+}
+export const ListInvestigateBulkMessagesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      InvestigateBulkMessagesListResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "ListInvestigateBulkMessagesResponse",
+}) as any as S.Schema<ListInvestigateBulkMessagesResponse>;
+
+export type InvestigateBulkListRequestActionType =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkListRequestActionType = /*@__PURE__*/ S.String;
+
+export type InvestigateBulkListRequestStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkListRequestStatus = /*@__PURE__*/ S.String;
+
+export interface ListInvestigateBulksRequest {
+  /** Identifier. */
+  accountId: string;
+  actionType?: InvestigateBulkListRequestActionType;
+  /** Current page within paginated list of results. */
+  page?: number;
+  /** The number of results per page. Maximum value is 1000. */
+  perPage?: number;
+  status?: InvestigateBulkListRequestStatus;
+}
+export const ListInvestigateBulksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    actionType: S.optional(
+      InvestigateBulkListRequestActionType.pipe(T.Query("action_type")),
+    ),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    status: S.optional(InvestigateBulkListRequestStatus.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/investigate/bulk",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListInvestigateBulksRequest",
+}) as any as S.Schema<ListInvestigateBulksRequest>;
+
+export interface InvestigateBulkListResultItemActionParams {
+  MoveObjectDestinationTypeExpectedDisposition__: unknown;
+  ReleaseObjectType__: unknown;
+}
+export const InvestigateBulkListResultItemActionParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MoveObjectDestinationTypeExpectedDisposition__: S.Unknown.pipe(
+        T.Body("Move object { destination, type, expected_disposition }"),
+      ),
+      ReleaseObjectType__: S.Unknown.pipe(T.Body("Release object { type }")),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkListResultItemActionParams",
+  }) as any as S.Schema<InvestigateBulkListResultItemActionParams>;
+
+export type InvestigateBulkListResultItemActionType =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkListResultItemActionType = /*@__PURE__*/ S.String;
+
+export type InvestigateBulkListResultItemSearchParamsDeliveryStatus =
+  | "delivered"
+  | "moved"
+  | "quarantined"
+  | (string & {});
+export const InvestigateBulkListResultItemSearchParamsDeliveryStatus =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkListResultItemSearchParamsFinalDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateBulkListResultItemSearchParamsFinalDisposition =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkListResultItemSearchParamsMessageAction =
+  | "PREVIEW"
+  | "QUARANTINE_RELEASED"
+  | "MOVED"
+  | (string & {});
+export const InvestigateBulkListResultItemSearchParamsMessageAction =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkListResultItemSearchParams {
+  /** Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026. */
+  actionLog?: boolean;
+  alertId?: string;
+  /** Delivery status of the message. */
+  deliveryStatus?: InvestigateBulkListResultItemSearchParamsDeliveryStatus;
+  detectionsOnly?: boolean;
+  domain?: string;
+  /** End of search date range */
+  end?: string;
+  exactSubject?: string;
+  finalDisposition?: InvestigateBulkListResultItemSearchParamsFinalDisposition;
+  messageAction?: InvestigateBulkListResultItemSearchParamsMessageAction;
+  messageId?: string;
+  metric?: string;
+  query?: string;
+  recipient?: string;
+  sender?: string;
+  /** Beginning of search date range */
+  start?: string;
+  subject?: string;
+  submissions?: boolean;
+}
+export const InvestigateBulkListResultItemSearchParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      actionLog: S.optional(S.Boolean.pipe(T.Body("action_log"))),
+      alertId: S.optional(S.String.pipe(T.Body("alert_id"))),
+      deliveryStatus: S.optional(
+        InvestigateBulkListResultItemSearchParamsDeliveryStatus.pipe(
+          T.Body("delivery_status"),
+        ),
+      ),
+      detectionsOnly: S.optional(S.Boolean.pipe(T.Body("detections_only"))),
+      domain: S.optional(S.String),
+      end: S.optional(S.String),
+      exactSubject: S.optional(S.String.pipe(T.Body("exact_subject"))),
+      finalDisposition: S.optional(
+        InvestigateBulkListResultItemSearchParamsFinalDisposition.pipe(
+          T.Body("final_disposition"),
+        ),
+      ),
+      messageAction: S.optional(
+        InvestigateBulkListResultItemSearchParamsMessageAction.pipe(
+          T.Body("message_action"),
+        ),
+      ),
+      messageId: S.optional(S.String.pipe(T.Body("message_id"))),
+      metric: S.optional(S.String),
+      query: S.optional(S.String),
+      recipient: S.optional(S.String),
+      sender: S.optional(S.String),
+      start: S.optional(S.String),
+      subject: S.optional(S.String),
+      submissions: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkListResultItemSearchParams",
+  }) as any as S.Schema<InvestigateBulkListResultItemSearchParams>;
+
+export type InvestigateBulkListResultItemStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkListResultItemStatus = /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkListResultItem {
+  actionParams: InvestigateBulkListResultItemActionParams;
+  actionType: InvestigateBulkListResultItemActionType;
+  createdAt: string;
+  jobId: string;
+  messagesFailed: number;
+  messagesPending: number;
+  messagesSuccessful: number;
+  searchParams: InvestigateBulkListResultItemSearchParams;
+  status: InvestigateBulkListResultItemStatus;
+  totalMessagesDiscovered: number;
+  comment?: string;
+  completedAt?: string;
+  startedAt?: string;
+  statusMessage?: string;
+}
+export const InvestigateBulkListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    actionParams: InvestigateBulkListResultItemActionParams.pipe(
+      T.Body("action_params"),
+    ),
+    actionType: InvestigateBulkListResultItemActionType.pipe(
+      T.Body("action_type"),
+    ),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    jobId: S.String.pipe(T.Body("job_id")),
+    messagesFailed: S.Number.pipe(T.Body("messages_failed")),
+    messagesPending: S.Number.pipe(T.Body("messages_pending")),
+    messagesSuccessful: S.Number.pipe(T.Body("messages_successful")),
+    searchParams: InvestigateBulkListResultItemSearchParams.pipe(
+      T.Body("search_params"),
+    ),
+    status: InvestigateBulkListResultItemStatus,
+    totalMessagesDiscovered: S.Number.pipe(T.Body("total_messages_discovered")),
+    comment: S.optional(S.String),
+    completedAt: S.optional(S.String.pipe(T.Body("completed_at"))),
+    startedAt: S.optional(S.String.pipe(T.Body("started_at"))),
+    statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
+  }),
+).annotate({
+  identifier: "InvestigateBulkListResultItem",
+}) as any as S.Schema<InvestigateBulkListResultItem>;
+
+export type InvestigateBulkListResultList = InvestigateBulkListResultItem[];
+export const InvestigateBulkListResultList = /*@__PURE__*/ S.Array(
+  InvestigateBulkListResultItem,
+) as any as S.Schema<InvestigateBulkListResultList>;
+
+export interface ListInvestigateBulksResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: InvestigateBulkListResultList;
+}
+export const ListInvestigateBulksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(InvestigateBulkListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListInvestigateBulksResponse",
+}) as any as S.Schema<ListInvestigateBulksResponse>;
 
 export type InvestigateListRequestDeliveryStatus =
   | "delivered"
@@ -1754,7 +3729,7 @@ export type InvestigateListRequestMessageAction =
   | (string & {});
 export const InvestigateListRequestMessageAction = /*@__PURE__*/ S.String;
 
-export interface InvestigateListRequest {
+export interface ListInvestigatesRequest {
   /** Identifier. */
   accountId: string;
   alertId?: string;
@@ -1785,7 +3760,7 @@ export interface InvestigateListRequest {
   start?: string;
   subject?: string;
 }
-export const InvestigateListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListInvestigatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     alertId: S.optional(S.String.pipe(T.Query("alert_id"))),
@@ -1819,8 +3794,8 @@ export const InvestigateListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "InvestigateListRequest",
-}) as any as S.Schema<InvestigateListRequest>;
+  identifier: "ListInvestigatesRequest",
+}) as any as S.Schema<ListInvestigatesRequest>;
 
 export type InvestigateListResultItemActionLogItemOperation =
   | "MOVE"
@@ -2216,587 +4191,19 @@ export const InvestigateListResultList = /*@__PURE__*/ S.Array(
   InvestigateListResultItem,
 ) as any as S.Schema<InvestigateListResultList>;
 
-export interface InvestigateListResponse {
+export interface ListInvestigatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: InvestigateListResultList;
 }
-export const InvestigateListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListInvestigatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(InvestigateListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "InvestigateListResponse",
-}) as any as S.Schema<InvestigateListResponse>;
+  identifier: "ListInvestigatesResponse",
+}) as any as S.Schema<ListInvestigatesResponse>;
 
-export type InvestigateMoveBulkRequestDestination =
-  | "Inbox"
-  | "JunkEmail"
-  | "DeletedItems"
-  | (string & {});
-export const InvestigateMoveBulkRequestDestination = /*@__PURE__*/ S.String;
-
-export type InvestigateMoveBulkRequestExpectedDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | (string & {});
-export const InvestigateMoveBulkRequestExpectedDisposition =
-  /*@__PURE__*/ S.String;
-
-export type InvestigateMoveBulkRequestIdsList = string[];
-export const InvestigateMoveBulkRequestIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvestigateMoveBulkRequestIdsList>;
-
-export type InvestigateMoveBulkRequestPostfixIdsList = string[];
-export const InvestigateMoveBulkRequestPostfixIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvestigateMoveBulkRequestPostfixIdsList>;
-
-export interface InvestigateMoveBulkRequest {
-  /** Identifier. */
-  accountId: string;
-  destination: InvestigateMoveBulkRequestDestination;
-  expectedDisposition?: InvestigateMoveBulkRequestExpectedDisposition;
-  /** List of message IDs to move */
-  ids?: InvestigateMoveBulkRequestIdsList;
-  /** Deprecated, use `ids` instead. End of life: November 1, 2026. List of message IDs to move. */
-  postfixIds?: InvestigateMoveBulkRequestPostfixIdsList;
-}
-export const InvestigateMoveBulkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    destination: InvestigateMoveBulkRequestDestination,
-    expectedDisposition: S.optional(
-      InvestigateMoveBulkRequestExpectedDisposition.pipe(
-        T.Body("expected_disposition"),
-      ),
-    ),
-    ids: S.optional(InvestigateMoveBulkRequestIdsList),
-    postfixIds: S.optional(
-      InvestigateMoveBulkRequestPostfixIdsList.pipe(T.Body("postfix_ids")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/move",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InvestigateMoveBulkRequest",
-}) as any as S.Schema<InvestigateMoveBulkRequest>;
-
-export interface InvestigateMoveBulkResultItem {
-  /** Whether the operation succeeded */
-  success: boolean;
-  /** When the move operation completed (UTC) */
-  completedAt?: string;
-  /** Deprecated, use `completed_at` instead. End of life: November 1, 2026. */
-  completedTimestamp?: string;
-  /** Destination folder for the message */
-  destination?: string;
-  /** Number of items moved. End of life: November 1, 2026. */
-  itemCount?: number;
-  /** Message identifier */
-  messageId?: string;
-  /** Type of operation performed */
-  operation?: string;
-  /** Recipient email address */
-  recipient?: string;
-  /** Operation status */
-  status?: string;
-}
-export const InvestigateMoveBulkResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.Boolean,
-    completedAt: S.optional(S.String.pipe(T.Body("completed_at"))),
-    completedTimestamp: S.optional(
-      S.String.pipe(T.Body("completed_timestamp")),
-    ),
-    destination: S.optional(S.String),
-    itemCount: S.optional(S.Number.pipe(T.Body("item_count"))),
-    messageId: S.optional(S.String.pipe(T.Body("message_id"))),
-    operation: S.optional(S.String),
-    recipient: S.optional(S.String),
-    status: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InvestigateMoveBulkResultItem",
-}) as any as S.Schema<InvestigateMoveBulkResultItem>;
-
-export type InvestigateMoveBulkResultList = InvestigateMoveBulkResultItem[];
-export const InvestigateMoveBulkResultList = /*@__PURE__*/ S.Array(
-  InvestigateMoveBulkResultItem,
-) as any as S.Schema<InvestigateMoveBulkResultList>;
-
-export interface InvestigateMoveBulkResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvestigateMoveBulkResultList;
-}
-export const InvestigateMoveBulkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(InvestigateMoveBulkResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "InvestigateMoveBulkResponse",
-}) as any as S.Schema<InvestigateMoveBulkResponse>;
-
-export type InvestigateMoveCreateRequestDestination =
-  | "Inbox"
-  | "JunkEmail"
-  | "DeletedItems"
-  | (string & {});
-export const InvestigateMoveCreateRequestDestination = /*@__PURE__*/ S.String;
-
-export type InvestigateMoveCreateRequestExpectedDisposition =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | (string & {});
-export const InvestigateMoveCreateRequestExpectedDisposition =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateMoveCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
-  investigateId: string;
-  destination: InvestigateMoveCreateRequestDestination;
-  expectedDisposition?: InvestigateMoveCreateRequestExpectedDisposition;
-}
-export const InvestigateMoveCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    investigateId: S.String.pipe(T.Label("investigate_id")),
-    destination: InvestigateMoveCreateRequestDestination,
-    expectedDisposition: S.optional(
-      InvestigateMoveCreateRequestExpectedDisposition.pipe(
-        T.Body("expected_disposition"),
-      ),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/move",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InvestigateMoveCreateRequest",
-}) as any as S.Schema<InvestigateMoveCreateRequest>;
-
-export interface InvestigateMoveCreateResultItem {
-  /** Whether the operation succeeded */
-  success: boolean;
-  /** When the move operation completed (UTC) */
-  completedAt?: string;
-  /** Deprecated, use `completed_at` instead. End of life: November 1, 2026. */
-  completedTimestamp?: string;
-  /** Destination folder for the message */
-  destination?: string;
-  /** Number of items moved. End of life: November 1, 2026. */
-  itemCount?: number;
-  /** Message identifier */
-  messageId?: string;
-  /** Type of operation performed */
-  operation?: string;
-  /** Recipient email address */
-  recipient?: string;
-  /** Operation status */
-  status?: string;
-}
-export const InvestigateMoveCreateResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    success: S.Boolean,
-    completedAt: S.optional(S.String.pipe(T.Body("completed_at"))),
-    completedTimestamp: S.optional(
-      S.String.pipe(T.Body("completed_timestamp")),
-    ),
-    destination: S.optional(S.String),
-    itemCount: S.optional(S.Number.pipe(T.Body("item_count"))),
-    messageId: S.optional(S.String.pipe(T.Body("message_id"))),
-    operation: S.optional(S.String),
-    recipient: S.optional(S.String),
-    status: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "InvestigateMoveCreateResultItem",
-}) as any as S.Schema<InvestigateMoveCreateResultItem>;
-
-export type InvestigateMoveCreateResultList = InvestigateMoveCreateResultItem[];
-export const InvestigateMoveCreateResultList = /*@__PURE__*/ S.Array(
-  InvestigateMoveCreateResultItem,
-) as any as S.Schema<InvestigateMoveCreateResultList>;
-
-export interface InvestigateMoveCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvestigateMoveCreateResultList;
-}
-export const InvestigateMoveCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      InvestigateMoveCreateResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "InvestigateMoveCreateResponse",
-}) as any as S.Schema<InvestigateMoveCreateResponse>;
-
-export interface InvestigatePreviewCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** The identifier of the message */
-  postfixId: string;
-}
-export const InvestigatePreviewCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    postfixId: S.String.pipe(T.Body("postfix_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/preview",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InvestigatePreviewCreateRequest",
-}) as any as S.Schema<InvestigatePreviewCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InvestigatePreviewCreateResponse {
-  /** A base64 encoded PNG image of the email. */
-  screenshot: string;
-}
-export const InvestigatePreviewCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    screenshot: S.String,
-  }),
-).annotate({
-  identifier: "InvestigatePreviewCreateResponse",
-}) as any as S.Schema<InvestigatePreviewCreateResponse>;
-
-export interface InvestigatePreviewGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
-  investigateId: string;
-}
-export const InvestigatePreviewGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    investigateId: S.String.pipe(T.Label("investigate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/preview",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InvestigatePreviewGetRequest",
-}) as any as S.Schema<InvestigatePreviewGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InvestigatePreviewGetResponse {
-  /** A base64 encoded PNG image of the email. */
-  screenshot: string;
-}
-export const InvestigatePreviewGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    screenshot: S.String,
-  }),
-).annotate({
-  identifier: "InvestigatePreviewGetResponse",
-}) as any as S.Schema<InvestigatePreviewGetResponse>;
-
-export interface InvestigateRawGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
-  investigateId: string;
-}
-export const InvestigateRawGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    investigateId: S.String.pipe(T.Label("investigate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/raw",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InvestigateRawGetRequest",
-}) as any as S.Schema<InvestigateRawGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InvestigateRawGetResponse {
-  /** A UTF-8 encoded eml file of the email. */
-  raw: string;
-}
-export const InvestigateRawGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    raw: S.String,
-  }),
-).annotate({
-  identifier: "InvestigateRawGetResponse",
-}) as any as S.Schema<InvestigateRawGetResponse>;
-
-export type InvestigateReclassifyCreateRequestExpectedDisposition =
-  | "NONE"
-  | "BULK"
-  | "MALICIOUS"
-  | (string & {});
-export const InvestigateReclassifyCreateRequestExpectedDisposition =
-  /*@__PURE__*/ S.String;
-
-export interface InvestigateReclassifyCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
-  investigateId: string;
-  expectedDisposition: InvestigateReclassifyCreateRequestExpectedDisposition;
-  /** Base64 encoded content of the EML file. */
-  emlContent?: string;
-  escalatedSubmissionId?: string;
-}
-export const InvestigateReclassifyCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    investigateId: S.String.pipe(T.Label("investigate_id")),
-    expectedDisposition:
-      InvestigateReclassifyCreateRequestExpectedDisposition.pipe(
-        T.Body("expected_disposition"),
-      ),
-    emlContent: S.optional(S.String.pipe(T.Body("eml_content"))),
-    escalatedSubmissionId: S.optional(
-      S.String.pipe(T.Body("escalated_submission_id")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/reclassify",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InvestigateReclassifyCreateRequest",
-}) as any as S.Schema<InvestigateReclassifyCreateRequest>;
-
-export interface InvestigateReclassifyCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const InvestigateReclassifyCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "InvestigateReclassifyCreateResponse",
-}) as any as S.Schema<InvestigateReclassifyCreateResponse>;
-
-export type InvestigateReleaseBulkRequestBodyList = string[];
-export const InvestigateReleaseBulkRequestBodyList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvestigateReleaseBulkRequestBodyList>;
-
-export interface InvestigateReleaseBulkRequest {
-  /** Identifier. */
-  accountId: string;
-  body: InvestigateReleaseBulkRequestBodyList;
-}
-export const InvestigateReleaseBulkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    body: InvestigateReleaseBulkRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/investigate/release",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InvestigateReleaseBulkRequest",
-}) as any as S.Schema<InvestigateReleaseBulkRequest>;
-
-export type InvestigateReleaseBulkResultItemDeliveredList = string[];
-export const InvestigateReleaseBulkResultItemDeliveredList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InvestigateReleaseBulkResultItemDeliveredList>;
-
-export type InvestigateReleaseBulkResultItemFailedList = string[];
-export const InvestigateReleaseBulkResultItemFailedList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<InvestigateReleaseBulkResultItemFailedList>;
-
-export type InvestigateReleaseBulkResultItemUndeliveredList = string[];
-export const InvestigateReleaseBulkResultItemUndeliveredList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<InvestigateReleaseBulkResultItemUndeliveredList>;
-
-export interface InvestigateReleaseBulkResultItem {
-  /** Unique identifier for a message retrieved from investigation */
-  id: string;
-  delivered?: InvestigateReleaseBulkResultItemDeliveredList;
-  failed?: InvestigateReleaseBulkResultItemFailedList;
-  /** Deprecated, use `id` instead. End of life: November 1, 2026. */
-  postfixId?: string;
-  undelivered?: InvestigateReleaseBulkResultItemUndeliveredList;
-}
-export const InvestigateReleaseBulkResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    delivered: S.optional(InvestigateReleaseBulkResultItemDeliveredList),
-    failed: S.optional(InvestigateReleaseBulkResultItemFailedList),
-    postfixId: S.optional(S.String.pipe(T.Body("postfix_id"))),
-    undelivered: S.optional(InvestigateReleaseBulkResultItemUndeliveredList),
-  }),
-).annotate({
-  identifier: "InvestigateReleaseBulkResultItem",
-}) as any as S.Schema<InvestigateReleaseBulkResultItem>;
-
-export type InvestigateReleaseBulkResultList =
-  InvestigateReleaseBulkResultItem[];
-export const InvestigateReleaseBulkResultList = /*@__PURE__*/ S.Array(
-  InvestigateReleaseBulkResultItem,
-) as any as S.Schema<InvestigateReleaseBulkResultList>;
-
-export interface InvestigateReleaseBulkResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvestigateReleaseBulkResultList;
-}
-export const InvestigateReleaseBulkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      InvestigateReleaseBulkResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "InvestigateReleaseBulkResponse",
-}) as any as S.Schema<InvestigateReleaseBulkResponse>;
-
-export interface InvestigateTraceGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Unique identifier for a message retrieved from investigation */
-  investigateId: string;
-}
-export const InvestigateTraceGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    investigateId: S.String.pipe(T.Label("investigate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/investigate/{investigate_id}/trace",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InvestigateTraceGetRequest",
-}) as any as S.Schema<InvestigateTraceGetRequest>;
-
-export interface InvestigateTraceGetResponseInboundLinesItem {
-  /** Line number in the trace log */
-  lineno?: number;
-  loggedAt?: string;
-  message?: string;
-  /** Deprecated, use `logged_at` instead. End of life: November 1, 2026. */
-  ts?: string;
-}
-export const InvestigateTraceGetResponseInboundLinesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lineno: S.optional(S.Number),
-      loggedAt: S.optional(S.String.pipe(T.Body("logged_at"))),
-      message: S.optional(S.String),
-      ts: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InvestigateTraceGetResponseInboundLinesItem",
-  }) as any as S.Schema<InvestigateTraceGetResponseInboundLinesItem>;
-
-export type InvestigateTraceGetResponseInboundLinesList =
-  InvestigateTraceGetResponseInboundLinesItem[];
-export const InvestigateTraceGetResponseInboundLinesList =
-  /*@__PURE__*/ S.Array(
-    InvestigateTraceGetResponseInboundLinesItem,
-  ) as any as S.Schema<InvestigateTraceGetResponseInboundLinesList>;
-
-export interface InvestigateTraceGetResponseInbound {
-  lines?: InvestigateTraceGetResponseInboundLinesList;
-  pending?: boolean;
-}
-export const InvestigateTraceGetResponseInbound = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lines: S.optional(InvestigateTraceGetResponseInboundLinesList),
-    pending: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "InvestigateTraceGetResponseInbound",
-}) as any as S.Schema<InvestigateTraceGetResponseInbound>;
-
-export interface InvestigateTraceGetResponseOutboundLinesItem {
-  /** Line number in the trace log */
-  lineno?: number;
-  loggedAt?: string;
-  message?: string;
-  /** Deprecated, use `logged_at` instead. End of life: November 1, 2026. */
-  ts?: string;
-}
-export const InvestigateTraceGetResponseOutboundLinesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lineno: S.optional(S.Number),
-      loggedAt: S.optional(S.String.pipe(T.Body("logged_at"))),
-      message: S.optional(S.String),
-      ts: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "InvestigateTraceGetResponseOutboundLinesItem",
-  }) as any as S.Schema<InvestigateTraceGetResponseOutboundLinesItem>;
-
-export type InvestigateTraceGetResponseOutboundLinesList =
-  InvestigateTraceGetResponseOutboundLinesItem[];
-export const InvestigateTraceGetResponseOutboundLinesList =
-  /*@__PURE__*/ S.Array(
-    InvestigateTraceGetResponseOutboundLinesItem,
-  ) as any as S.Schema<InvestigateTraceGetResponseOutboundLinesList>;
-
-export interface InvestigateTraceGetResponseOutbound {
-  lines?: InvestigateTraceGetResponseOutboundLinesList;
-  pending?: boolean;
-}
-export const InvestigateTraceGetResponseOutbound = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lines: S.optional(InvestigateTraceGetResponseOutboundLinesList),
-    pending: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "InvestigateTraceGetResponseOutbound",
-}) as any as S.Schema<InvestigateTraceGetResponseOutbound>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface InvestigateTraceGetResponse {
-  inbound: InvestigateTraceGetResponseInbound;
-  outbound: InvestigateTraceGetResponseOutbound;
-}
-export const InvestigateTraceGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    inbound: InvestigateTraceGetResponseInbound,
-    outbound: InvestigateTraceGetResponseOutbound,
-  }),
-).annotate({
-  identifier: "InvestigateTraceGetResponse",
-}) as any as S.Schema<InvestigateTraceGetResponse>;
-
-export interface PhishguardReportsListRequest {
+export interface ListPhishguardReportsRequest {
   /** Identifier. */
   accountId: string;
   /** End of the time range (RFC3339). Takes precedence over to_date. */
@@ -2808,7 +4215,7 @@ export interface PhishguardReportsListRequest {
   /** Deprecated, use `end` instead. End date in YYYY-MM-DD format. */
   toDate?: string;
 }
-export const PhishguardReportsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListPhishguardReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     end: S.optional(S.String.pipe(T.Query())),
@@ -2823,8 +4230,8 @@ export const PhishguardReportsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PhishguardReportsListRequest",
-}) as any as S.Schema<PhishguardReportsListRequest>;
+  identifier: "ListPhishguardReportsRequest",
+}) as any as S.Schema<ListPhishguardReportsRequest>;
 
 export type PhishguardReportsListResultItemDisposition =
   | "MALICIOUS"
@@ -2916,396 +4323,19 @@ export const PhishguardReportsListResultList = /*@__PURE__*/ S.Array(
   PhishguardReportsListResultItem,
 ) as any as S.Schema<PhishguardReportsListResultList>;
 
-export interface PhishguardReportsListResponse {
+export interface ListPhishguardReportsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PhishguardReportsListResultList;
 }
-export const PhishguardReportsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListPhishguardReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       PhishguardReportsListResultList.pipe(T.EnvelopePayload()),
     ),
   }),
 ).annotate({
-  identifier: "PhishguardReportsListResponse",
-}) as any as S.Schema<PhishguardReportsListResponse>;
-
-export type SettingsAllowPoliciesCreateRequestPatternType =
-  | "EMAIL"
-  | "DOMAIN"
-  | "IP"
-  | "UNKNOWN"
-  | (string & {});
-export const SettingsAllowPoliciesCreateRequestPatternType =
-  /*@__PURE__*/ S.String;
-
-export interface SettingsAllowPoliciesCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
-  isAcceptableSender: boolean;
-  /** Messages to this recipient will bypass all detections */
-  isExemptRecipient: boolean;
-  isRegex: boolean;
-  /** Messages from this sender will bypass all detections and link following */
-  isTrustedSender: boolean;
-  pattern: string;
-  /** Type of pattern matching. */
-  patternType: SettingsAllowPoliciesCreateRequestPatternType;
-  /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
-  verifySender: boolean;
-  comments?: string;
-  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean;
-}
-export const SettingsAllowPoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    isAcceptableSender: S.Boolean.pipe(T.Body("is_acceptable_sender")),
-    isExemptRecipient: S.Boolean.pipe(T.Body("is_exempt_recipient")),
-    isRegex: S.Boolean.pipe(T.Body("is_regex")),
-    isTrustedSender: S.Boolean.pipe(T.Body("is_trusted_sender")),
-    pattern: S.String,
-    patternType: SettingsAllowPoliciesCreateRequestPatternType.pipe(
-      T.Body("pattern_type"),
-    ),
-    verifySender: S.Boolean.pipe(T.Body("verify_sender")),
-    comments: S.optional(S.String),
-    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
-    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/settings/allow_policies",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsAllowPoliciesCreateRequest",
-}) as any as S.Schema<SettingsAllowPoliciesCreateRequest>;
-
-export type SettingsAllowPoliciesCreateResponsePatternType =
-  | "EMAIL"
-  | "DOMAIN"
-  | "IP"
-  | "UNKNOWN"
-  | (string & {});
-export const SettingsAllowPoliciesCreateResponsePatternType =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsAllowPoliciesCreateResponse {
-  /** Allow policy identifier */
-  id: string;
-  createdAt: string;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified: string;
-  comments?: string;
-  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
-  isAcceptableSender?: boolean;
-  /** Messages to this recipient will bypass all detections */
-  isExemptRecipient?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean;
-  isRegex?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean;
-  /** Messages from this sender will bypass all detections and link following */
-  isTrustedSender?: boolean;
-  modifiedAt?: string;
-  pattern?: string;
-  /** Type of pattern matching. */
-  patternType?: SettingsAllowPoliciesCreateResponsePatternType;
-  /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
-  verifySender?: boolean;
-}
-export const SettingsAllowPoliciesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    lastModified: S.String.pipe(T.Body("last_modified")),
-    comments: S.optional(S.String),
-    isAcceptableSender: S.optional(
-      S.Boolean.pipe(T.Body("is_acceptable_sender")),
-    ),
-    isExemptRecipient: S.optional(
-      S.Boolean.pipe(T.Body("is_exempt_recipient")),
-    ),
-    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
-    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
-    isTrustedSender: S.optional(S.Boolean.pipe(T.Body("is_trusted_sender"))),
-    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.String),
-    patternType: S.optional(
-      SettingsAllowPoliciesCreateResponsePatternType.pipe(
-        T.Body("pattern_type"),
-      ),
-    ),
-    verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
-  }),
-).annotate({
-  identifier: "SettingsAllowPoliciesCreateResponse",
-}) as any as S.Schema<SettingsAllowPoliciesCreateResponse>;
-
-export interface SettingsAllowPoliciesDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Allow policy identifier */
-  policyId: string;
-}
-export const SettingsAllowPoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/email-security/settings/allow_policies/{policy_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsAllowPoliciesDeleteRequest",
-}) as any as S.Schema<SettingsAllowPoliciesDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsAllowPoliciesDeleteResponse {
-  /** Allow policy identifier */
-  id: string;
-}
-export const SettingsAllowPoliciesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "SettingsAllowPoliciesDeleteResponse",
-}) as any as S.Schema<SettingsAllowPoliciesDeleteResponse>;
-
-export type SettingsAllowPoliciesEditRequestPatternType =
-  | "EMAIL"
-  | "DOMAIN"
-  | "IP"
-  | "UNKNOWN"
-  | (string & {});
-export const SettingsAllowPoliciesEditRequestPatternType =
-  /*@__PURE__*/ S.String;
-
-export interface SettingsAllowPoliciesEditRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Allow policy identifier */
-  policyId: string;
-  comments?: string;
-  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
-  isAcceptableSender?: boolean;
-  /** Messages to this recipient will bypass all detections */
-  isExemptRecipient?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean;
-  isRegex?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean;
-  /** Messages from this sender will bypass all detections and link following */
-  isTrustedSender?: boolean;
-  pattern?: string;
-  /** Type of pattern matching. */
-  patternType?: SettingsAllowPoliciesEditRequestPatternType;
-  /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
-  verifySender?: boolean;
-}
-export const SettingsAllowPoliciesEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    policyId: S.String.pipe(T.Label("policy_id")),
-    comments: S.optional(S.String),
-    isAcceptableSender: S.optional(
-      S.Boolean.pipe(T.Body("is_acceptable_sender")),
-    ),
-    isExemptRecipient: S.optional(
-      S.Boolean.pipe(T.Body("is_exempt_recipient")),
-    ),
-    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
-    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
-    isTrustedSender: S.optional(S.Boolean.pipe(T.Body("is_trusted_sender"))),
-    pattern: S.optional(S.String),
-    patternType: S.optional(
-      SettingsAllowPoliciesEditRequestPatternType.pipe(T.Body("pattern_type")),
-    ),
-    verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/email-security/settings/allow_policies/{policy_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsAllowPoliciesEditRequest",
-}) as any as S.Schema<SettingsAllowPoliciesEditRequest>;
-
-export type SettingsAllowPoliciesEditResponsePatternType =
-  | "EMAIL"
-  | "DOMAIN"
-  | "IP"
-  | "UNKNOWN"
-  | (string & {});
-export const SettingsAllowPoliciesEditResponsePatternType =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsAllowPoliciesEditResponse {
-  /** Allow policy identifier */
-  id: string;
-  createdAt: string;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified: string;
-  comments?: string;
-  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
-  isAcceptableSender?: boolean;
-  /** Messages to this recipient will bypass all detections */
-  isExemptRecipient?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean;
-  isRegex?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean;
-  /** Messages from this sender will bypass all detections and link following */
-  isTrustedSender?: boolean;
-  modifiedAt?: string;
-  pattern?: string;
-  /** Type of pattern matching. */
-  patternType?: SettingsAllowPoliciesEditResponsePatternType;
-  /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
-  verifySender?: boolean;
-}
-export const SettingsAllowPoliciesEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    lastModified: S.String.pipe(T.Body("last_modified")),
-    comments: S.optional(S.String),
-    isAcceptableSender: S.optional(
-      S.Boolean.pipe(T.Body("is_acceptable_sender")),
-    ),
-    isExemptRecipient: S.optional(
-      S.Boolean.pipe(T.Body("is_exempt_recipient")),
-    ),
-    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
-    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
-    isTrustedSender: S.optional(S.Boolean.pipe(T.Body("is_trusted_sender"))),
-    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.String),
-    patternType: S.optional(
-      SettingsAllowPoliciesEditResponsePatternType.pipe(T.Body("pattern_type")),
-    ),
-    verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
-  }),
-).annotate({
-  identifier: "SettingsAllowPoliciesEditResponse",
-}) as any as S.Schema<SettingsAllowPoliciesEditResponse>;
-
-export interface SettingsAllowPoliciesGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Allow policy identifier */
-  policyId: string;
-}
-export const SettingsAllowPoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    policyId: S.String.pipe(T.Label("policy_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/allow_policies/{policy_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsAllowPoliciesGetRequest",
-}) as any as S.Schema<SettingsAllowPoliciesGetRequest>;
-
-export type SettingsAllowPoliciesGetResponsePatternType =
-  | "EMAIL"
-  | "DOMAIN"
-  | "IP"
-  | "UNKNOWN"
-  | (string & {});
-export const SettingsAllowPoliciesGetResponsePatternType =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsAllowPoliciesGetResponse {
-  /** Allow policy identifier */
-  id: string;
-  createdAt: string;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified: string;
-  comments?: string;
-  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
-  isAcceptableSender?: boolean;
-  /** Messages to this recipient will bypass all detections */
-  isExemptRecipient?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
-  isRecipient?: boolean;
-  isRegex?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
-  isSender?: boolean;
-  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
-  isSpoof?: boolean;
-  /** Messages from this sender will bypass all detections and link following */
-  isTrustedSender?: boolean;
-  modifiedAt?: string;
-  pattern?: string;
-  /** Type of pattern matching. */
-  patternType?: SettingsAllowPoliciesGetResponsePatternType;
-  /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
-  verifySender?: boolean;
-}
-export const SettingsAllowPoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    lastModified: S.String.pipe(T.Body("last_modified")),
-    comments: S.optional(S.String),
-    isAcceptableSender: S.optional(
-      S.Boolean.pipe(T.Body("is_acceptable_sender")),
-    ),
-    isExemptRecipient: S.optional(
-      S.Boolean.pipe(T.Body("is_exempt_recipient")),
-    ),
-    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
-    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
-    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
-    isTrustedSender: S.optional(S.Boolean.pipe(T.Body("is_trusted_sender"))),
-    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.String),
-    patternType: S.optional(
-      SettingsAllowPoliciesGetResponsePatternType.pipe(T.Body("pattern_type")),
-    ),
-    verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
-  }),
-).annotate({
-  identifier: "SettingsAllowPoliciesGetResponse",
-}) as any as S.Schema<SettingsAllowPoliciesGetResponse>;
+  identifier: "ListPhishguardReportsResponse",
+}) as any as S.Schema<ListPhishguardReportsResponse>;
 
 export type SettingsAllowPoliciesListRequestDirection =
   | "asc"
@@ -3328,7 +4358,7 @@ export type SettingsAllowPoliciesListRequestPatternType =
 export const SettingsAllowPoliciesListRequestPatternType =
   /*@__PURE__*/ S.String;
 
-export interface SettingsAllowPoliciesListRequest {
+export interface ListSettingAllowPoliciesRequest {
   /** Identifier. */
   accountId: string;
   /** The sorting direction. */
@@ -3353,7 +4383,7 @@ export interface SettingsAllowPoliciesListRequest {
   /** Filter to show only policies that enforce DMARC, SPF, or DKIM authentication. */
   verifySender?: boolean;
 }
-export const SettingsAllowPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListSettingAllowPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(
@@ -3383,8 +4413,8 @@ export const SettingsAllowPoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SettingsAllowPoliciesListRequest",
-}) as any as S.Schema<SettingsAllowPoliciesListRequest>;
+  identifier: "ListSettingAllowPoliciesRequest",
+}) as any as S.Schema<ListSettingAllowPoliciesRequest>;
 
 export type SettingsAllowPoliciesListResultItemPatternType =
   | "EMAIL"
@@ -3458,275 +4488,19 @@ export const SettingsAllowPoliciesListResultList = /*@__PURE__*/ S.Array(
   SettingsAllowPoliciesListResultItem,
 ) as any as S.Schema<SettingsAllowPoliciesListResultList>;
 
-export interface SettingsAllowPoliciesListResponse {
+export interface ListSettingAllowPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsAllowPoliciesListResultList;
 }
-export const SettingsAllowPoliciesListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListSettingAllowPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       SettingsAllowPoliciesListResultList.pipe(T.EnvelopePayload()),
     ),
   }),
 ).annotate({
-  identifier: "SettingsAllowPoliciesListResponse",
-}) as any as S.Schema<SettingsAllowPoliciesListResponse>;
-
-export type SettingsBlockSendersCreateRequestPatternType =
-  | "EMAIL"
-  | "DOMAIN"
-  | "IP"
-  | "UNKNOWN"
-  | (string & {});
-export const SettingsBlockSendersCreateRequestPatternType =
-  /*@__PURE__*/ S.String;
-
-export interface SettingsBlockSendersCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  isRegex: boolean;
-  pattern: string;
-  /** Type of pattern matching. */
-  patternType: SettingsBlockSendersCreateRequestPatternType;
-  comments?: string;
-}
-export const SettingsBlockSendersCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    isRegex: S.Boolean.pipe(T.Body("is_regex")),
-    pattern: S.String,
-    patternType: SettingsBlockSendersCreateRequestPatternType.pipe(
-      T.Body("pattern_type"),
-    ),
-    comments: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/settings/block_senders",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsBlockSendersCreateRequest",
-}) as any as S.Schema<SettingsBlockSendersCreateRequest>;
-
-export type SettingsBlockSendersCreateResponsePatternType =
-  | "EMAIL"
-  | "DOMAIN"
-  | "IP"
-  | "UNKNOWN"
-  | (string & {});
-export const SettingsBlockSendersCreateResponsePatternType =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsBlockSendersCreateResponse {
-  /** Blocked sender pattern identifier */
-  id?: string;
-  comments?: string;
-  createdAt?: string;
-  isRegex?: boolean;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-  pattern?: string;
-  /** Type of pattern matching. */
-  patternType?: SettingsBlockSendersCreateResponsePatternType;
-}
-export const SettingsBlockSendersCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    comments: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.String),
-    patternType: S.optional(
-      SettingsBlockSendersCreateResponsePatternType.pipe(
-        T.Body("pattern_type"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "SettingsBlockSendersCreateResponse",
-}) as any as S.Schema<SettingsBlockSendersCreateResponse>;
-
-export interface SettingsBlockSendersDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Blocked sender pattern identifier */
-  patternId: string;
-}
-export const SettingsBlockSendersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    patternId: S.String.pipe(T.Label("pattern_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/email-security/settings/block_senders/{pattern_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsBlockSendersDeleteRequest",
-}) as any as S.Schema<SettingsBlockSendersDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsBlockSendersDeleteResponse {
-  /** Blocked sender pattern identifier */
-  id: string;
-}
-export const SettingsBlockSendersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "SettingsBlockSendersDeleteResponse",
-}) as any as S.Schema<SettingsBlockSendersDeleteResponse>;
-
-export type SettingsBlockSendersEditRequestPatternType =
-  | "EMAIL"
-  | "DOMAIN"
-  | "IP"
-  | "UNKNOWN"
-  | (string & {});
-export const SettingsBlockSendersEditRequestPatternType =
-  /*@__PURE__*/ S.String;
-
-export interface SettingsBlockSendersEditRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Blocked sender pattern identifier */
-  patternId: string;
-  comments?: string;
-  isRegex?: boolean;
-  pattern?: string;
-  /** Type of pattern matching. */
-  patternType?: SettingsBlockSendersEditRequestPatternType;
-}
-export const SettingsBlockSendersEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    patternId: S.String.pipe(T.Label("pattern_id")),
-    comments: S.optional(S.String),
-    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    pattern: S.optional(S.String),
-    patternType: S.optional(
-      SettingsBlockSendersEditRequestPatternType.pipe(T.Body("pattern_type")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/email-security/settings/block_senders/{pattern_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsBlockSendersEditRequest",
-}) as any as S.Schema<SettingsBlockSendersEditRequest>;
-
-export type SettingsBlockSendersEditResponsePatternType =
-  | "EMAIL"
-  | "DOMAIN"
-  | "IP"
-  | "UNKNOWN"
-  | (string & {});
-export const SettingsBlockSendersEditResponsePatternType =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsBlockSendersEditResponse {
-  /** Blocked sender pattern identifier */
-  id?: string;
-  comments?: string;
-  createdAt?: string;
-  isRegex?: boolean;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-  pattern?: string;
-  /** Type of pattern matching. */
-  patternType?: SettingsBlockSendersEditResponsePatternType;
-}
-export const SettingsBlockSendersEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    comments: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.String),
-    patternType: S.optional(
-      SettingsBlockSendersEditResponsePatternType.pipe(T.Body("pattern_type")),
-    ),
-  }),
-).annotate({
-  identifier: "SettingsBlockSendersEditResponse",
-}) as any as S.Schema<SettingsBlockSendersEditResponse>;
-
-export interface SettingsBlockSendersGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Blocked sender pattern identifier */
-  patternId: string;
-}
-export const SettingsBlockSendersGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    patternId: S.String.pipe(T.Label("pattern_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/block_senders/{pattern_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsBlockSendersGetRequest",
-}) as any as S.Schema<SettingsBlockSendersGetRequest>;
-
-export type SettingsBlockSendersGetResponsePatternType =
-  | "EMAIL"
-  | "DOMAIN"
-  | "IP"
-  | "UNKNOWN"
-  | (string & {});
-export const SettingsBlockSendersGetResponsePatternType =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsBlockSendersGetResponse {
-  /** Blocked sender pattern identifier */
-  id?: string;
-  comments?: string;
-  createdAt?: string;
-  isRegex?: boolean;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-  pattern?: string;
-  /** Type of pattern matching. */
-  patternType?: SettingsBlockSendersGetResponsePatternType;
-}
-export const SettingsBlockSendersGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    comments: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.String),
-    patternType: S.optional(
-      SettingsBlockSendersGetResponsePatternType.pipe(T.Body("pattern_type")),
-    ),
-  }),
-).annotate({
-  identifier: "SettingsBlockSendersGetResponse",
-}) as any as S.Schema<SettingsBlockSendersGetResponse>;
+  identifier: "ListSettingAllowPoliciesResponse",
+}) as any as S.Schema<ListSettingAllowPoliciesResponse>;
 
 export type SettingsBlockSendersListRequestDirection =
   | "asc"
@@ -3749,7 +4523,7 @@ export type SettingsBlockSendersListRequestPatternType =
 export const SettingsBlockSendersListRequestPatternType =
   /*@__PURE__*/ S.String;
 
-export interface SettingsBlockSendersListRequest {
+export interface ListSettingBlockSendersRequest {
   /** Identifier. */
   accountId: string;
   /** The sorting direction. */
@@ -3767,7 +4541,7 @@ export interface SettingsBlockSendersListRequest {
   /** Search term for filtering records. Behavior may change. */
   search?: string;
 }
-export const SettingsBlockSendersListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListSettingBlockSendersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(
@@ -3789,8 +4563,8 @@ export const SettingsBlockSendersListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SettingsBlockSendersListRequest",
-}) as any as S.Schema<SettingsBlockSendersListRequest>;
+  identifier: "ListSettingBlockSendersRequest",
+}) as any as S.Schema<ListSettingBlockSendersRequest>;
 
 export type SettingsBlockSendersListResultItemPatternType =
   | "EMAIL"
@@ -3839,586 +4613,19 @@ export const SettingsBlockSendersListResultList = /*@__PURE__*/ S.Array(
   SettingsBlockSendersListResultItem,
 ) as any as S.Schema<SettingsBlockSendersListResultList>;
 
-export interface SettingsBlockSendersListResponse {
+export interface ListSettingBlockSendersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsBlockSendersListResultList;
 }
-export const SettingsBlockSendersListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListSettingBlockSendersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       SettingsBlockSendersListResultList.pipe(T.EnvelopePayload()),
     ),
   }),
 ).annotate({
-  identifier: "SettingsBlockSendersListResponse",
-}) as any as S.Schema<SettingsBlockSendersListResponse>;
-
-export interface SettingsDomainsDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Domain identifier */
-  domainId: string;
-}
-export const SettingsDomainsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    domainId: S.String.pipe(T.Label("domain_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/email-security/settings/domains/{domain_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsDomainsDeleteRequest",
-}) as any as S.Schema<SettingsDomainsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsDomainsDeleteResponse {
-  /** Domain identifier */
-  id: string;
-}
-export const SettingsDomainsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "SettingsDomainsDeleteResponse",
-}) as any as S.Schema<SettingsDomainsDeleteResponse>;
-
-export type SettingsDomainsEditRequestAllowedDeliveryModesItem =
-  | "DIRECT"
-  | "BCC"
-  | "JOURNAL"
-  | (string & {});
-export const SettingsDomainsEditRequestAllowedDeliveryModesItem =
-  /*@__PURE__*/ S.String;
-
-export type SettingsDomainsEditRequestAllowedDeliveryModesList =
-  SettingsDomainsEditRequestAllowedDeliveryModesItem[];
-export const SettingsDomainsEditRequestAllowedDeliveryModesList =
-  /*@__PURE__*/ S.Array(
-    SettingsDomainsEditRequestAllowedDeliveryModesItem,
-  ) as any as S.Schema<SettingsDomainsEditRequestAllowedDeliveryModesList>;
-
-export type SettingsDomainsEditRequestDropDispositionsItem =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | (string & {});
-export const SettingsDomainsEditRequestDropDispositionsItem =
-  /*@__PURE__*/ S.String;
-
-export type SettingsDomainsEditRequestDropDispositionsList =
-  SettingsDomainsEditRequestDropDispositionsItem[];
-export const SettingsDomainsEditRequestDropDispositionsList =
-  /*@__PURE__*/ S.Array(
-    SettingsDomainsEditRequestDropDispositionsItem,
-  ) as any as S.Schema<SettingsDomainsEditRequestDropDispositionsList>;
-
-export type SettingsDomainsEditRequestFolder =
-  | "AllItems"
-  | "Inbox"
-  | (string & {});
-export const SettingsDomainsEditRequestFolder = /*@__PURE__*/ S.String;
-
-export type SettingsDomainsEditRequestIpRestrictionsList = string[];
-export const SettingsDomainsEditRequestIpRestrictionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsDomainsEditRequestIpRestrictionsList>;
-
-export type SettingsDomainsEditRequestRegionsItem =
-  | "GLOBAL"
-  | "AU"
-  | "DE"
-  | (string & {});
-export const SettingsDomainsEditRequestRegionsItem = /*@__PURE__*/ S.String;
-
-export type SettingsDomainsEditRequestRegionsList =
-  SettingsDomainsEditRequestRegionsItem[];
-export const SettingsDomainsEditRequestRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsEditRequestRegionsItem,
-) as any as S.Schema<SettingsDomainsEditRequestRegionsList>;
-
-export interface SettingsDomainsEditRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Domain identifier */
-  domainId: string;
-  allowedDeliveryModes?: SettingsDomainsEditRequestAllowedDeliveryModesList;
-  domain?: string;
-  dropDispositions?: SettingsDomainsEditRequestDropDispositionsList;
-  folder?: SettingsDomainsEditRequestFolder;
-  integrationId?: string;
-  ipRestrictions?: SettingsDomainsEditRequestIpRestrictionsList;
-  lookbackHops?: number;
-  regions?: SettingsDomainsEditRequestRegionsList;
-  requireTlsInbound?: boolean;
-  requireTlsOutbound?: boolean;
-  transport?: string;
-}
-export const SettingsDomainsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    domainId: S.String.pipe(T.Label("domain_id")),
-    allowedDeliveryModes: S.optional(
-      SettingsDomainsEditRequestAllowedDeliveryModesList.pipe(
-        T.Body("allowed_delivery_modes"),
-      ),
-    ),
-    domain: S.optional(S.String),
-    dropDispositions: S.optional(
-      SettingsDomainsEditRequestDropDispositionsList.pipe(
-        T.Body("drop_dispositions"),
-      ),
-    ),
-    folder: S.optional(SettingsDomainsEditRequestFolder),
-    integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
-    ipRestrictions: S.optional(
-      SettingsDomainsEditRequestIpRestrictionsList.pipe(
-        T.Body("ip_restrictions"),
-      ),
-    ),
-    lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
-    regions: S.optional(SettingsDomainsEditRequestRegionsList),
-    requireTlsInbound: S.optional(
-      S.Boolean.pipe(T.Body("require_tls_inbound")),
-    ),
-    requireTlsOutbound: S.optional(
-      S.Boolean.pipe(T.Body("require_tls_outbound")),
-    ),
-    transport: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/email-security/settings/domains/{domain_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsDomainsEditRequest",
-}) as any as S.Schema<SettingsDomainsEditRequest>;
-
-export type SettingsDomainsEditResponseAllowedDeliveryModesItem =
-  | "DIRECT"
-  | "BCC"
-  | "JOURNAL"
-  | (string & {});
-export const SettingsDomainsEditResponseAllowedDeliveryModesItem =
-  /*@__PURE__*/ S.String;
-
-export type SettingsDomainsEditResponseAllowedDeliveryModesList =
-  SettingsDomainsEditResponseAllowedDeliveryModesItem[];
-export const SettingsDomainsEditResponseAllowedDeliveryModesList =
-  /*@__PURE__*/ S.Array(
-    SettingsDomainsEditResponseAllowedDeliveryModesItem,
-  ) as any as S.Schema<SettingsDomainsEditResponseAllowedDeliveryModesList>;
-
-export interface SettingsDomainsEditResponseAuthorization {
-  authorized: boolean;
-  timestamp: string;
-  statusMessage?: string;
-}
-export const SettingsDomainsEditResponseAuthorization = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      authorized: S.Boolean,
-      timestamp: S.String,
-      statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
-    }),
-).annotate({
-  identifier: "SettingsDomainsEditResponseAuthorization",
-}) as any as S.Schema<SettingsDomainsEditResponseAuthorization>;
-
-export type SettingsDomainsEditResponseDmarcStatus =
-  | "none"
-  | "good"
-  | "invalid"
-  | (string & {});
-export const SettingsDomainsEditResponseDmarcStatus = /*@__PURE__*/ S.String;
-
-export type SettingsDomainsEditResponseDropDispositionsItem =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | (string & {});
-export const SettingsDomainsEditResponseDropDispositionsItem =
-  /*@__PURE__*/ S.String;
-
-export type SettingsDomainsEditResponseDropDispositionsList =
-  SettingsDomainsEditResponseDropDispositionsItem[];
-export const SettingsDomainsEditResponseDropDispositionsList =
-  /*@__PURE__*/ S.Array(
-    SettingsDomainsEditResponseDropDispositionsItem,
-  ) as any as S.Schema<SettingsDomainsEditResponseDropDispositionsList>;
-
-export interface SettingsDomainsEditResponseEmailsProcessed {
-  timestamp: string;
-  totalEmailsProcessed: number;
-  totalEmailsProcessedPrevious: number;
-}
-export const SettingsDomainsEditResponseEmailsProcessed =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      timestamp: S.String,
-      totalEmailsProcessed: S.Number.pipe(T.Body("total_emails_processed")),
-      totalEmailsProcessedPrevious: S.Number.pipe(
-        T.Body("total_emails_processed_previous"),
-      ),
-    }),
-  ).annotate({
-    identifier: "SettingsDomainsEditResponseEmailsProcessed",
-  }) as any as S.Schema<SettingsDomainsEditResponseEmailsProcessed>;
-
-export type SettingsDomainsEditResponseFolder =
-  | "AllItems"
-  | "Inbox"
-  | (string & {});
-export const SettingsDomainsEditResponseFolder = /*@__PURE__*/ S.String;
-
-export type SettingsDomainsEditResponseInboxProvider =
-  | "Microsoft"
-  | "Google"
-  | (string & {});
-export const SettingsDomainsEditResponseInboxProvider = /*@__PURE__*/ S.String;
-
-export type SettingsDomainsEditResponseIpRestrictionsList = string[];
-export const SettingsDomainsEditResponseIpRestrictionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsDomainsEditResponseIpRestrictionsList>;
-
-export type SettingsDomainsEditResponseRegionsItem =
-  | "GLOBAL"
-  | "AU"
-  | "DE"
-  | (string & {});
-export const SettingsDomainsEditResponseRegionsItem = /*@__PURE__*/ S.String;
-
-export type SettingsDomainsEditResponseRegionsList =
-  SettingsDomainsEditResponseRegionsItem[];
-export const SettingsDomainsEditResponseRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsEditResponseRegionsItem,
-) as any as S.Schema<SettingsDomainsEditResponseRegionsList>;
-
-export type SettingsDomainsEditResponseSpfStatus =
-  | "none"
-  | "good"
-  | "neutral"
-  | (string & {});
-export const SettingsDomainsEditResponseSpfStatus = /*@__PURE__*/ S.String;
-
-export type SettingsDomainsEditResponseStatus =
-  | "pending"
-  | "active"
-  | "failed"
-  | "timeout"
-  | (string & {});
-export const SettingsDomainsEditResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsDomainsEditResponse {
-  /** Domain identifier */
-  id?: string;
-  allowedDeliveryModes?: SettingsDomainsEditResponseAllowedDeliveryModesList;
-  authorization?: SettingsDomainsEditResponseAuthorization;
-  createdAt?: string;
-  dmarcStatus?: SettingsDomainsEditResponseDmarcStatus;
-  domain?: string;
-  dropDispositions?: SettingsDomainsEditResponseDropDispositionsList;
-  emailsProcessed?: SettingsDomainsEditResponseEmailsProcessed;
-  folder?: SettingsDomainsEditResponseFolder;
-  inboxProvider?: SettingsDomainsEditResponseInboxProvider;
-  integrationId?: string;
-  ipRestrictions?: SettingsDomainsEditResponseIpRestrictionsList;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  lookbackHops?: number;
-  modifiedAt?: string;
-  o365TenantId?: string;
-  regions?: SettingsDomainsEditResponseRegionsList;
-  requireTlsInbound?: boolean;
-  requireTlsOutbound?: boolean;
-  spfStatus?: SettingsDomainsEditResponseSpfStatus;
-  status?: SettingsDomainsEditResponseStatus;
-  transport?: string;
-}
-export const SettingsDomainsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    allowedDeliveryModes: S.optional(
-      SettingsDomainsEditResponseAllowedDeliveryModesList.pipe(
-        T.Body("allowed_delivery_modes"),
-      ),
-    ),
-    authorization: S.optional(SettingsDomainsEditResponseAuthorization),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    dmarcStatus: S.optional(
-      SettingsDomainsEditResponseDmarcStatus.pipe(T.Body("dmarc_status")),
-    ),
-    domain: S.optional(S.String),
-    dropDispositions: S.optional(
-      SettingsDomainsEditResponseDropDispositionsList.pipe(
-        T.Body("drop_dispositions"),
-      ),
-    ),
-    emailsProcessed: S.optional(
-      SettingsDomainsEditResponseEmailsProcessed.pipe(
-        T.Body("emails_processed"),
-      ),
-    ),
-    folder: S.optional(SettingsDomainsEditResponseFolder),
-    inboxProvider: S.optional(
-      SettingsDomainsEditResponseInboxProvider.pipe(T.Body("inbox_provider")),
-    ),
-    integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
-    ipRestrictions: S.optional(
-      SettingsDomainsEditResponseIpRestrictionsList.pipe(
-        T.Body("ip_restrictions"),
-      ),
-    ),
-    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-    lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
-    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    o365TenantId: S.optional(S.String.pipe(T.Body("o365_tenant_id"))),
-    regions: S.optional(SettingsDomainsEditResponseRegionsList),
-    requireTlsInbound: S.optional(
-      S.Boolean.pipe(T.Body("require_tls_inbound")),
-    ),
-    requireTlsOutbound: S.optional(
-      S.Boolean.pipe(T.Body("require_tls_outbound")),
-    ),
-    spfStatus: S.optional(
-      SettingsDomainsEditResponseSpfStatus.pipe(T.Body("spf_status")),
-    ),
-    status: S.optional(SettingsDomainsEditResponseStatus),
-    transport: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SettingsDomainsEditResponse",
-}) as any as S.Schema<SettingsDomainsEditResponse>;
-
-export interface SettingsDomainsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Domain identifier */
-  domainId: string;
-}
-export const SettingsDomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    domainId: S.String.pipe(T.Label("domain_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/domains/{domain_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsDomainsGetRequest",
-}) as any as S.Schema<SettingsDomainsGetRequest>;
-
-export type SettingsDomainsGetResponseAllowedDeliveryModesItem =
-  | "DIRECT"
-  | "BCC"
-  | "JOURNAL"
-  | (string & {});
-export const SettingsDomainsGetResponseAllowedDeliveryModesItem =
-  /*@__PURE__*/ S.String;
-
-export type SettingsDomainsGetResponseAllowedDeliveryModesList =
-  SettingsDomainsGetResponseAllowedDeliveryModesItem[];
-export const SettingsDomainsGetResponseAllowedDeliveryModesList =
-  /*@__PURE__*/ S.Array(
-    SettingsDomainsGetResponseAllowedDeliveryModesItem,
-  ) as any as S.Schema<SettingsDomainsGetResponseAllowedDeliveryModesList>;
-
-export interface SettingsDomainsGetResponseAuthorization {
-  authorized: boolean;
-  timestamp: string;
-  statusMessage?: string;
-}
-export const SettingsDomainsGetResponseAuthorization = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      authorized: S.Boolean,
-      timestamp: S.String,
-      statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
-    }),
-).annotate({
-  identifier: "SettingsDomainsGetResponseAuthorization",
-}) as any as S.Schema<SettingsDomainsGetResponseAuthorization>;
-
-export type SettingsDomainsGetResponseDmarcStatus =
-  | "none"
-  | "good"
-  | "invalid"
-  | (string & {});
-export const SettingsDomainsGetResponseDmarcStatus = /*@__PURE__*/ S.String;
-
-export type SettingsDomainsGetResponseDropDispositionsItem =
-  | "MALICIOUS"
-  | "MALICIOUS-BEC"
-  | "SUSPICIOUS"
-  | (string & {});
-export const SettingsDomainsGetResponseDropDispositionsItem =
-  /*@__PURE__*/ S.String;
-
-export type SettingsDomainsGetResponseDropDispositionsList =
-  SettingsDomainsGetResponseDropDispositionsItem[];
-export const SettingsDomainsGetResponseDropDispositionsList =
-  /*@__PURE__*/ S.Array(
-    SettingsDomainsGetResponseDropDispositionsItem,
-  ) as any as S.Schema<SettingsDomainsGetResponseDropDispositionsList>;
-
-export interface SettingsDomainsGetResponseEmailsProcessed {
-  timestamp: string;
-  totalEmailsProcessed: number;
-  totalEmailsProcessedPrevious: number;
-}
-export const SettingsDomainsGetResponseEmailsProcessed =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      timestamp: S.String,
-      totalEmailsProcessed: S.Number.pipe(T.Body("total_emails_processed")),
-      totalEmailsProcessedPrevious: S.Number.pipe(
-        T.Body("total_emails_processed_previous"),
-      ),
-    }),
-  ).annotate({
-    identifier: "SettingsDomainsGetResponseEmailsProcessed",
-  }) as any as S.Schema<SettingsDomainsGetResponseEmailsProcessed>;
-
-export type SettingsDomainsGetResponseFolder =
-  | "AllItems"
-  | "Inbox"
-  | (string & {});
-export const SettingsDomainsGetResponseFolder = /*@__PURE__*/ S.String;
-
-export type SettingsDomainsGetResponseInboxProvider =
-  | "Microsoft"
-  | "Google"
-  | (string & {});
-export const SettingsDomainsGetResponseInboxProvider = /*@__PURE__*/ S.String;
-
-export type SettingsDomainsGetResponseIpRestrictionsList = string[];
-export const SettingsDomainsGetResponseIpRestrictionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsDomainsGetResponseIpRestrictionsList>;
-
-export type SettingsDomainsGetResponseRegionsItem =
-  | "GLOBAL"
-  | "AU"
-  | "DE"
-  | (string & {});
-export const SettingsDomainsGetResponseRegionsItem = /*@__PURE__*/ S.String;
-
-export type SettingsDomainsGetResponseRegionsList =
-  SettingsDomainsGetResponseRegionsItem[];
-export const SettingsDomainsGetResponseRegionsList = /*@__PURE__*/ S.Array(
-  SettingsDomainsGetResponseRegionsItem,
-) as any as S.Schema<SettingsDomainsGetResponseRegionsList>;
-
-export type SettingsDomainsGetResponseSpfStatus =
-  | "none"
-  | "good"
-  | "neutral"
-  | (string & {});
-export const SettingsDomainsGetResponseSpfStatus = /*@__PURE__*/ S.String;
-
-export type SettingsDomainsGetResponseStatus =
-  | "pending"
-  | "active"
-  | "failed"
-  | "timeout"
-  | (string & {});
-export const SettingsDomainsGetResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsDomainsGetResponse {
-  /** Domain identifier */
-  id?: string;
-  allowedDeliveryModes?: SettingsDomainsGetResponseAllowedDeliveryModesList;
-  authorization?: SettingsDomainsGetResponseAuthorization;
-  createdAt?: string;
-  dmarcStatus?: SettingsDomainsGetResponseDmarcStatus;
-  domain?: string;
-  dropDispositions?: SettingsDomainsGetResponseDropDispositionsList;
-  emailsProcessed?: SettingsDomainsGetResponseEmailsProcessed;
-  folder?: SettingsDomainsGetResponseFolder;
-  inboxProvider?: SettingsDomainsGetResponseInboxProvider;
-  integrationId?: string;
-  ipRestrictions?: SettingsDomainsGetResponseIpRestrictionsList;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  lookbackHops?: number;
-  modifiedAt?: string;
-  o365TenantId?: string;
-  regions?: SettingsDomainsGetResponseRegionsList;
-  requireTlsInbound?: boolean;
-  requireTlsOutbound?: boolean;
-  spfStatus?: SettingsDomainsGetResponseSpfStatus;
-  status?: SettingsDomainsGetResponseStatus;
-  transport?: string;
-}
-export const SettingsDomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    allowedDeliveryModes: S.optional(
-      SettingsDomainsGetResponseAllowedDeliveryModesList.pipe(
-        T.Body("allowed_delivery_modes"),
-      ),
-    ),
-    authorization: S.optional(SettingsDomainsGetResponseAuthorization),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    dmarcStatus: S.optional(
-      SettingsDomainsGetResponseDmarcStatus.pipe(T.Body("dmarc_status")),
-    ),
-    domain: S.optional(S.String),
-    dropDispositions: S.optional(
-      SettingsDomainsGetResponseDropDispositionsList.pipe(
-        T.Body("drop_dispositions"),
-      ),
-    ),
-    emailsProcessed: S.optional(
-      SettingsDomainsGetResponseEmailsProcessed.pipe(
-        T.Body("emails_processed"),
-      ),
-    ),
-    folder: S.optional(SettingsDomainsGetResponseFolder),
-    inboxProvider: S.optional(
-      SettingsDomainsGetResponseInboxProvider.pipe(T.Body("inbox_provider")),
-    ),
-    integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
-    ipRestrictions: S.optional(
-      SettingsDomainsGetResponseIpRestrictionsList.pipe(
-        T.Body("ip_restrictions"),
-      ),
-    ),
-    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-    lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
-    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    o365TenantId: S.optional(S.String.pipe(T.Body("o365_tenant_id"))),
-    regions: S.optional(SettingsDomainsGetResponseRegionsList),
-    requireTlsInbound: S.optional(
-      S.Boolean.pipe(T.Body("require_tls_inbound")),
-    ),
-    requireTlsOutbound: S.optional(
-      S.Boolean.pipe(T.Body("require_tls_outbound")),
-    ),
-    spfStatus: S.optional(
-      SettingsDomainsGetResponseSpfStatus.pipe(T.Body("spf_status")),
-    ),
-    status: S.optional(SettingsDomainsGetResponseStatus),
-    transport: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SettingsDomainsGetResponse",
-}) as any as S.Schema<SettingsDomainsGetResponse>;
+  identifier: "ListSettingBlockSendersResponse",
+}) as any as S.Schema<ListSettingBlockSendersResponse>;
 
 export type SettingsDomainsListRequestActiveDeliveryMode =
   | "DIRECT"
@@ -4461,7 +4668,7 @@ export type SettingsDomainsListRequestStatus =
   | (string & {});
 export const SettingsDomainsListRequestStatus = /*@__PURE__*/ S.String;
 
-export interface SettingsDomainsListRequest {
+export interface ListSettingDomainsRequest {
   /** Identifier. */
   accountId: string;
   /** Currently active delivery mode to filter by. */
@@ -4485,7 +4692,7 @@ export interface SettingsDomainsListRequest {
   /** Filters response to domains with the provided status. */
   status?: SettingsDomainsListRequestStatus;
 }
-export const SettingsDomainsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListSettingDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     activeDeliveryMode: S.optional(
@@ -4514,8 +4721,8 @@ export const SettingsDomainsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SettingsDomainsListRequest",
-}) as any as S.Schema<SettingsDomainsListRequest>;
+  identifier: "ListSettingDomainsRequest",
+}) as any as S.Schema<ListSettingDomainsRequest>;
 
 export type SettingsDomainsListResultItemAllowedDeliveryModesItem =
   | "DIRECT"
@@ -4721,330 +4928,17 @@ export const SettingsDomainsListResultList = /*@__PURE__*/ S.Array(
   SettingsDomainsListResultItem,
 ) as any as S.Schema<SettingsDomainsListResultList>;
 
-export interface SettingsDomainsListResponse {
+export interface ListSettingDomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsDomainsListResultList;
 }
-export const SettingsDomainsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListSettingDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SettingsDomainsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "SettingsDomainsListResponse",
-}) as any as S.Schema<SettingsDomainsListResponse>;
-
-export type SettingsImpersonationRegistryCreateRequestProvenance =
-  | "A1S_INTERNAL"
-  | "SNOOPY-CASB_OFFICE_365"
-  | "SNOOPY-OFFICE_365"
-  | "SNOOPY-GOOGLE_DIRECTORY"
-  | (string & {});
-export const SettingsImpersonationRegistryCreateRequestProvenance =
-  /*@__PURE__*/ S.String;
-
-export interface SettingsImpersonationRegistryCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  email: string;
-  isEmailRegex: boolean;
-  name: string;
-  comments?: string;
-  directoryId?: number;
-  directoryNodeId?: number;
-  externalDirectoryNodeId?: string;
-  provenance?: SettingsImpersonationRegistryCreateRequestProvenance;
-}
-export const SettingsImpersonationRegistryCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      email: S.String,
-      isEmailRegex: S.Boolean.pipe(T.Body("is_email_regex")),
-      name: S.String,
-      comments: S.optional(S.String),
-      directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
-      directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
-      externalDirectoryNodeId: S.optional(
-        S.String.pipe(T.Body("external_directory_node_id")),
-      ),
-      provenance: S.optional(
-        SettingsImpersonationRegistryCreateRequestProvenance,
-      ),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "SettingsImpersonationRegistryCreateRequest",
-  }) as any as S.Schema<SettingsImpersonationRegistryCreateRequest>;
-
-export type SettingsImpersonationRegistryCreateResponseProvenance =
-  | "A1S_INTERNAL"
-  | "SNOOPY-CASB_OFFICE_365"
-  | "SNOOPY-OFFICE_365"
-  | "SNOOPY-GOOGLE_DIRECTORY"
-  | (string & {});
-export const SettingsImpersonationRegistryCreateResponseProvenance =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsImpersonationRegistryCreateResponse {
-  /** Impersonation registry entry identifier */
-  id?: string;
-  comments?: string;
-  createdAt?: string;
-  directoryId?: number;
-  directoryNodeId?: number;
-  email?: string;
-  externalDirectoryNodeId?: string;
-  isEmailRegex?: boolean;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-  name?: string;
-  provenance?: SettingsImpersonationRegistryCreateResponseProvenance;
-}
-export const SettingsImpersonationRegistryCreateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      comments: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
-      directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
-      email: S.optional(S.String),
-      externalDirectoryNodeId: S.optional(
-        S.String.pipe(T.Body("external_directory_node_id")),
-      ),
-      isEmailRegex: S.optional(S.Boolean.pipe(T.Body("is_email_regex"))),
-      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-      name: S.optional(S.String),
-      provenance: S.optional(
-        SettingsImpersonationRegistryCreateResponseProvenance,
-      ),
-    }),
-  ).annotate({
-    identifier: "SettingsImpersonationRegistryCreateResponse",
-  }) as any as S.Schema<SettingsImpersonationRegistryCreateResponse>;
-
-export interface SettingsImpersonationRegistryDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Impersonation registry entry identifier */
-  impersonationRegistryId: string;
-}
-export const SettingsImpersonationRegistryDeleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      impersonationRegistryId: S.String.pipe(
-        T.Label("impersonation_registry_id"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "SettingsImpersonationRegistryDeleteRequest",
-  }) as any as S.Schema<SettingsImpersonationRegistryDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsImpersonationRegistryDeleteResponse {
-  /** Impersonation registry entry identifier */
-  id: string;
-}
-export const SettingsImpersonationRegistryDeleteResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "SettingsImpersonationRegistryDeleteResponse",
-  }) as any as S.Schema<SettingsImpersonationRegistryDeleteResponse>;
-
-export type SettingsImpersonationRegistryEditRequestProvenance =
-  | "A1S_INTERNAL"
-  | "SNOOPY-CASB_OFFICE_365"
-  | "SNOOPY-OFFICE_365"
-  | "SNOOPY-GOOGLE_DIRECTORY"
-  | (string & {});
-export const SettingsImpersonationRegistryEditRequestProvenance =
-  /*@__PURE__*/ S.String;
-
-export interface SettingsImpersonationRegistryEditRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Impersonation registry entry identifier */
-  impersonationRegistryId: string;
-  comments?: string;
-  directoryId?: number;
-  directoryNodeId?: number;
-  email?: string;
-  externalDirectoryNodeId?: string;
-  isEmailRegex?: boolean;
-  name?: string;
-  provenance?: SettingsImpersonationRegistryEditRequestProvenance;
-}
-export const SettingsImpersonationRegistryEditRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      impersonationRegistryId: S.String.pipe(
-        T.Label("impersonation_registry_id"),
-      ),
-      comments: S.optional(S.String),
-      directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
-      directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
-      email: S.optional(S.String),
-      externalDirectoryNodeId: S.optional(
-        S.String.pipe(T.Body("external_directory_node_id")),
-      ),
-      isEmailRegex: S.optional(S.Boolean.pipe(T.Body("is_email_regex"))),
-      name: S.optional(S.String),
-      provenance: S.optional(
-        SettingsImpersonationRegistryEditRequestProvenance,
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "SettingsImpersonationRegistryEditRequest",
-}) as any as S.Schema<SettingsImpersonationRegistryEditRequest>;
-
-export type SettingsImpersonationRegistryEditResponseProvenance =
-  | "A1S_INTERNAL"
-  | "SNOOPY-CASB_OFFICE_365"
-  | "SNOOPY-OFFICE_365"
-  | "SNOOPY-GOOGLE_DIRECTORY"
-  | (string & {});
-export const SettingsImpersonationRegistryEditResponseProvenance =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsImpersonationRegistryEditResponse {
-  /** Impersonation registry entry identifier */
-  id?: string;
-  comments?: string;
-  createdAt?: string;
-  directoryId?: number;
-  directoryNodeId?: number;
-  email?: string;
-  externalDirectoryNodeId?: string;
-  isEmailRegex?: boolean;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-  name?: string;
-  provenance?: SettingsImpersonationRegistryEditResponseProvenance;
-}
-export const SettingsImpersonationRegistryEditResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      comments: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
-      directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
-      email: S.optional(S.String),
-      externalDirectoryNodeId: S.optional(
-        S.String.pipe(T.Body("external_directory_node_id")),
-      ),
-      isEmailRegex: S.optional(S.Boolean.pipe(T.Body("is_email_regex"))),
-      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-      name: S.optional(S.String),
-      provenance: S.optional(
-        SettingsImpersonationRegistryEditResponseProvenance,
-      ),
-    }),
-  ).annotate({
-    identifier: "SettingsImpersonationRegistryEditResponse",
-  }) as any as S.Schema<SettingsImpersonationRegistryEditResponse>;
-
-export interface SettingsImpersonationRegistryGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Impersonation registry entry identifier */
-  impersonationRegistryId: string;
-}
-export const SettingsImpersonationRegistryGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      impersonationRegistryId: S.String.pipe(
-        T.Label("impersonation_registry_id"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "SettingsImpersonationRegistryGetRequest",
-}) as any as S.Schema<SettingsImpersonationRegistryGetRequest>;
-
-export type SettingsImpersonationRegistryGetResponseProvenance =
-  | "A1S_INTERNAL"
-  | "SNOOPY-CASB_OFFICE_365"
-  | "SNOOPY-OFFICE_365"
-  | "SNOOPY-GOOGLE_DIRECTORY"
-  | (string & {});
-export const SettingsImpersonationRegistryGetResponseProvenance =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsImpersonationRegistryGetResponse {
-  /** Impersonation registry entry identifier */
-  id?: string;
-  comments?: string;
-  createdAt?: string;
-  directoryId?: number;
-  directoryNodeId?: number;
-  email?: string;
-  externalDirectoryNodeId?: string;
-  isEmailRegex?: boolean;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-  name?: string;
-  provenance?: SettingsImpersonationRegistryGetResponseProvenance;
-}
-export const SettingsImpersonationRegistryGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      comments: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
-      directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
-      email: S.optional(S.String),
-      externalDirectoryNodeId: S.optional(
-        S.String.pipe(T.Body("external_directory_node_id")),
-      ),
-      isEmailRegex: S.optional(S.Boolean.pipe(T.Body("is_email_regex"))),
-      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-      name: S.optional(S.String),
-      provenance: S.optional(
-        SettingsImpersonationRegistryGetResponseProvenance,
-      ),
-    }),
-).annotate({
-  identifier: "SettingsImpersonationRegistryGetResponse",
-}) as any as S.Schema<SettingsImpersonationRegistryGetResponse>;
+  identifier: "ListSettingDomainsResponse",
+}) as any as S.Schema<ListSettingDomainsResponse>;
 
 export type SettingsImpersonationRegistryListRequestDirection =
   | "asc"
@@ -5070,7 +4964,7 @@ export type SettingsImpersonationRegistryListRequestProvenance =
 export const SettingsImpersonationRegistryListRequestProvenance =
   /*@__PURE__*/ S.String;
 
-export interface SettingsImpersonationRegistryListRequest {
+export interface ListSettingImpersonationRegistriesRequest {
   /** Identifier. */
   accountId: string;
   /** The sorting direction. */
@@ -5085,8 +4979,8 @@ export interface SettingsImpersonationRegistryListRequest {
   /** Search term for filtering records. Behavior may change. */
   search?: string;
 }
-export const SettingsImpersonationRegistryListRequest = /*@__PURE__*/ S.suspend(
-  () =>
+export const ListSettingImpersonationRegistriesRequest =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       direction: S.optional(
@@ -5108,9 +5002,9 @@ export const SettingsImpersonationRegistryListRequest = /*@__PURE__*/ S.suspend(
         code: 200,
       }),
     ),
-).annotate({
-  identifier: "SettingsImpersonationRegistryListRequest",
-}) as any as S.Schema<SettingsImpersonationRegistryListRequest>;
+  ).annotate({
+    identifier: "ListSettingImpersonationRegistriesRequest",
+  }) as any as S.Schema<ListSettingImpersonationRegistriesRequest>;
 
 export type SettingsImpersonationRegistryListResultItemProvenance =
   | "A1S_INTERNAL"
@@ -5168,11 +5062,11 @@ export const SettingsImpersonationRegistryListResultList =
     SettingsImpersonationRegistryListResultItem,
   ) as any as S.Schema<SettingsImpersonationRegistryListResultList>;
 
-export interface SettingsImpersonationRegistryListResponse {
+export interface ListSettingImpersonationRegistriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsImpersonationRegistryListResultList;
 }
-export const SettingsImpersonationRegistryListResponse =
+export const ListSettingImpersonationRegistriesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(
@@ -5180,256 +5074,8 @@ export const SettingsImpersonationRegistryListResponse =
       ),
     }),
   ).annotate({
-    identifier: "SettingsImpersonationRegistryListResponse",
-  }) as any as S.Schema<SettingsImpersonationRegistryListResponse>;
-
-export type SettingsSendingDomainRestrictionsCreateRequestExcludeList =
-  string[];
-export const SettingsSendingDomainRestrictionsCreateRequestExcludeList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsSendingDomainRestrictionsCreateRequestExcludeList>;
-
-export interface SettingsSendingDomainRestrictionsCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Domain that requires TLS enforcement. */
-  domain: string;
-  /** Excluded subdomains that are exempt from TLS requirements. */
-  exclude: SettingsSendingDomainRestrictionsCreateRequestExcludeList;
-  comments?: string;
-}
-export const SettingsSendingDomainRestrictionsCreateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      domain: S.String,
-      exclude: SettingsSendingDomainRestrictionsCreateRequestExcludeList,
-      comments: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "SettingsSendingDomainRestrictionsCreateRequest",
-  }) as any as S.Schema<SettingsSendingDomainRestrictionsCreateRequest>;
-
-export type SettingsSendingDomainRestrictionsCreateResponseExcludeList =
-  string[];
-export const SettingsSendingDomainRestrictionsCreateResponseExcludeList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsSendingDomainRestrictionsCreateResponseExcludeList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsSendingDomainRestrictionsCreateResponse {
-  /** Sending domain restriction identifier. */
-  id?: string;
-  comments?: string;
-  createdAt?: string;
-  /** Domain that requires TLS enforcement. */
-  domain?: string;
-  /** Excluded subdomains that are exempt from TLS requirements. */
-  exclude?: SettingsSendingDomainRestrictionsCreateResponseExcludeList;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-}
-export const SettingsSendingDomainRestrictionsCreateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      comments: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      domain: S.optional(S.String),
-      exclude: S.optional(
-        SettingsSendingDomainRestrictionsCreateResponseExcludeList,
-      ),
-      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    }),
-  ).annotate({
-    identifier: "SettingsSendingDomainRestrictionsCreateResponse",
-  }) as any as S.Schema<SettingsSendingDomainRestrictionsCreateResponse>;
-
-export interface SettingsSendingDomainRestrictionsDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Sending domain restriction identifier. */
-  sendingDomainRestrictionId: string;
-}
-export const SettingsSendingDomainRestrictionsDeleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      sendingDomainRestrictionId: S.String.pipe(
-        T.Label("sending_domain_restriction_id"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "SettingsSendingDomainRestrictionsDeleteRequest",
-  }) as any as S.Schema<SettingsSendingDomainRestrictionsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsSendingDomainRestrictionsDeleteResponse {
-  /** Sending domain restriction identifier. */
-  id: string;
-}
-export const SettingsSendingDomainRestrictionsDeleteResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "SettingsSendingDomainRestrictionsDeleteResponse",
-  }) as any as S.Schema<SettingsSendingDomainRestrictionsDeleteResponse>;
-
-export type SettingsSendingDomainRestrictionsEditRequestExcludeList = string[];
-export const SettingsSendingDomainRestrictionsEditRequestExcludeList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsSendingDomainRestrictionsEditRequestExcludeList>;
-
-export interface SettingsSendingDomainRestrictionsEditRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Sending domain restriction identifier. */
-  sendingDomainRestrictionId: string;
-  comments?: string;
-  /** Domain that requires TLS enforcement. */
-  domain?: string;
-  /** Excluded subdomains that are exempt from TLS requirements. */
-  exclude?: SettingsSendingDomainRestrictionsEditRequestExcludeList;
-}
-export const SettingsSendingDomainRestrictionsEditRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      sendingDomainRestrictionId: S.String.pipe(
-        T.Label("sending_domain_restriction_id"),
-      ),
-      comments: S.optional(S.String),
-      domain: S.optional(S.String),
-      exclude: S.optional(
-        SettingsSendingDomainRestrictionsEditRequestExcludeList,
-      ),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "SettingsSendingDomainRestrictionsEditRequest",
-  }) as any as S.Schema<SettingsSendingDomainRestrictionsEditRequest>;
-
-export type SettingsSendingDomainRestrictionsEditResponseExcludeList = string[];
-export const SettingsSendingDomainRestrictionsEditResponseExcludeList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsSendingDomainRestrictionsEditResponseExcludeList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsSendingDomainRestrictionsEditResponse {
-  /** Sending domain restriction identifier. */
-  id?: string;
-  comments?: string;
-  createdAt?: string;
-  /** Domain that requires TLS enforcement. */
-  domain?: string;
-  /** Excluded subdomains that are exempt from TLS requirements. */
-  exclude?: SettingsSendingDomainRestrictionsEditResponseExcludeList;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-}
-export const SettingsSendingDomainRestrictionsEditResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      comments: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      domain: S.optional(S.String),
-      exclude: S.optional(
-        SettingsSendingDomainRestrictionsEditResponseExcludeList,
-      ),
-      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    }),
-  ).annotate({
-    identifier: "SettingsSendingDomainRestrictionsEditResponse",
-  }) as any as S.Schema<SettingsSendingDomainRestrictionsEditResponse>;
-
-export interface SettingsSendingDomainRestrictionsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Sending domain restriction identifier. */
-  sendingDomainRestrictionId: string;
-}
-export const SettingsSendingDomainRestrictionsGetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      sendingDomainRestrictionId: S.String.pipe(
-        T.Label("sending_domain_restriction_id"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "SettingsSendingDomainRestrictionsGetRequest",
-  }) as any as S.Schema<SettingsSendingDomainRestrictionsGetRequest>;
-
-export type SettingsSendingDomainRestrictionsGetResponseExcludeList = string[];
-export const SettingsSendingDomainRestrictionsGetResponseExcludeList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SettingsSendingDomainRestrictionsGetResponseExcludeList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsSendingDomainRestrictionsGetResponse {
-  /** Sending domain restriction identifier. */
-  id?: string;
-  comments?: string;
-  createdAt?: string;
-  /** Domain that requires TLS enforcement. */
-  domain?: string;
-  /** Excluded subdomains that are exempt from TLS requirements. */
-  exclude?: SettingsSendingDomainRestrictionsGetResponseExcludeList;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-}
-export const SettingsSendingDomainRestrictionsGetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      comments: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      domain: S.optional(S.String),
-      exclude: S.optional(
-        SettingsSendingDomainRestrictionsGetResponseExcludeList,
-      ),
-      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    }),
-  ).annotate({
-    identifier: "SettingsSendingDomainRestrictionsGetResponse",
-  }) as any as S.Schema<SettingsSendingDomainRestrictionsGetResponse>;
+    identifier: "ListSettingImpersonationRegistriesResponse",
+  }) as any as S.Schema<ListSettingImpersonationRegistriesResponse>;
 
 export type SettingsSendingDomainRestrictionsListRequestDirection =
   | "asc"
@@ -5445,7 +5091,7 @@ export type SettingsSendingDomainRestrictionsListRequestOrder =
 export const SettingsSendingDomainRestrictionsListRequestOrder =
   /*@__PURE__*/ S.String;
 
-export interface SettingsSendingDomainRestrictionsListRequest {
+export interface ListSettingSendingDomainRestrictionsRequest {
   /** Identifier. */
   accountId: string;
   /** The sorting direction. */
@@ -5459,7 +5105,7 @@ export interface SettingsSendingDomainRestrictionsListRequest {
   /** Search term for filtering records. Behavior may change. */
   search?: string;
 }
-export const SettingsSendingDomainRestrictionsListRequest =
+export const ListSettingSendingDomainRestrictionsRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
@@ -5480,8 +5126,8 @@ export const SettingsSendingDomainRestrictionsListRequest =
       }),
     ),
   ).annotate({
-    identifier: "SettingsSendingDomainRestrictionsListRequest",
-  }) as any as S.Schema<SettingsSendingDomainRestrictionsListRequest>;
+    identifier: "ListSettingSendingDomainRestrictionsRequest",
+  }) as any as S.Schema<ListSettingSendingDomainRestrictionsRequest>;
 
 export type SettingsSendingDomainRestrictionsListResultItemExcludeList =
   string[];
@@ -5527,11 +5173,11 @@ export const SettingsSendingDomainRestrictionsListResultList =
     SettingsSendingDomainRestrictionsListResultItem,
   ) as any as S.Schema<SettingsSendingDomainRestrictionsListResultList>;
 
-export interface SettingsSendingDomainRestrictionsListResponse {
+export interface ListSettingSendingDomainRestrictionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsSendingDomainRestrictionsListResultList;
 }
-export const SettingsSendingDomainRestrictionsListResponse =
+export const ListSettingSendingDomainRestrictionsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(
@@ -5541,224 +5187,8 @@ export const SettingsSendingDomainRestrictionsListResponse =
       ),
     }),
   ).annotate({
-    identifier: "SettingsSendingDomainRestrictionsListResponse",
-  }) as any as S.Schema<SettingsSendingDomainRestrictionsListResponse>;
-
-export interface SettingsTrustedDomainsCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
-  isRecent: boolean;
-  isRegex: boolean;
-  /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
-  isSimilarity: boolean;
-  pattern: string;
-  comments?: string;
-}
-export const SettingsTrustedDomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    isRecent: S.Boolean.pipe(T.Body("is_recent")),
-    isRegex: S.Boolean.pipe(T.Body("is_regex")),
-    isSimilarity: S.Boolean.pipe(T.Body("is_similarity")),
-    pattern: S.String,
-    comments: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/email-security/settings/trusted_domains",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsTrustedDomainsCreateRequest",
-}) as any as S.Schema<SettingsTrustedDomainsCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsTrustedDomainsCreateResponse {
-  /** Trusted domain identifier */
-  id?: string;
-  comments?: string;
-  createdAt?: string;
-  /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
-  isRecent?: boolean;
-  isRegex?: boolean;
-  /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
-  isSimilarity?: boolean;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-  pattern?: string;
-}
-export const SettingsTrustedDomainsCreateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.optional(S.String),
-      comments: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      isRecent: S.optional(S.Boolean.pipe(T.Body("is_recent"))),
-      isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-      isSimilarity: S.optional(S.Boolean.pipe(T.Body("is_similarity"))),
-      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-      pattern: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "SettingsTrustedDomainsCreateResponse",
-}) as any as S.Schema<SettingsTrustedDomainsCreateResponse>;
-
-export interface SettingsTrustedDomainsDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Trusted domain identifier */
-  trustedDomainId: string;
-}
-export const SettingsTrustedDomainsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    trustedDomainId: S.String.pipe(T.Label("trusted_domain_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsTrustedDomainsDeleteRequest",
-}) as any as S.Schema<SettingsTrustedDomainsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsTrustedDomainsDeleteResponse {
-  /** Trusted domain identifier */
-  id: string;
-}
-export const SettingsTrustedDomainsDeleteResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "SettingsTrustedDomainsDeleteResponse",
-}) as any as S.Schema<SettingsTrustedDomainsDeleteResponse>;
-
-export interface SettingsTrustedDomainsEditRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Trusted domain identifier */
-  trustedDomainId: string;
-  comments?: string;
-  /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
-  isRecent?: boolean;
-  isRegex?: boolean;
-  /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
-  isSimilarity?: boolean;
-  pattern?: string;
-}
-export const SettingsTrustedDomainsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    trustedDomainId: S.String.pipe(T.Label("trusted_domain_id")),
-    comments: S.optional(S.String),
-    isRecent: S.optional(S.Boolean.pipe(T.Body("is_recent"))),
-    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    isSimilarity: S.optional(S.Boolean.pipe(T.Body("is_similarity"))),
-    pattern: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsTrustedDomainsEditRequest",
-}) as any as S.Schema<SettingsTrustedDomainsEditRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsTrustedDomainsEditResponse {
-  /** Trusted domain identifier */
-  id?: string;
-  comments?: string;
-  createdAt?: string;
-  /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
-  isRecent?: boolean;
-  isRegex?: boolean;
-  /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
-  isSimilarity?: boolean;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-  pattern?: string;
-}
-export const SettingsTrustedDomainsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    comments: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    isRecent: S.optional(S.Boolean.pipe(T.Body("is_recent"))),
-    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    isSimilarity: S.optional(S.Boolean.pipe(T.Body("is_similarity"))),
-    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SettingsTrustedDomainsEditResponse",
-}) as any as S.Schema<SettingsTrustedDomainsEditResponse>;
-
-export interface SettingsTrustedDomainsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Trusted domain identifier */
-  trustedDomainId: string;
-}
-export const SettingsTrustedDomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    trustedDomainId: S.String.pipe(T.Label("trusted_domain_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsTrustedDomainsGetRequest",
-}) as any as S.Schema<SettingsTrustedDomainsGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsTrustedDomainsGetResponse {
-  /** Trusted domain identifier */
-  id?: string;
-  comments?: string;
-  createdAt?: string;
-  /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
-  isRecent?: boolean;
-  isRegex?: boolean;
-  /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
-  isSimilarity?: boolean;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-  pattern?: string;
-}
-export const SettingsTrustedDomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    comments: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    isRecent: S.optional(S.Boolean.pipe(T.Body("is_recent"))),
-    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
-    isSimilarity: S.optional(S.Boolean.pipe(T.Body("is_similarity"))),
-    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    pattern: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SettingsTrustedDomainsGetResponse",
-}) as any as S.Schema<SettingsTrustedDomainsGetResponse>;
+    identifier: "ListSettingSendingDomainRestrictionsResponse",
+  }) as any as S.Schema<ListSettingSendingDomainRestrictionsResponse>;
 
 export type SettingsTrustedDomainsListRequestDirection =
   | "asc"
@@ -5773,7 +5203,7 @@ export type SettingsTrustedDomainsListRequestOrder =
   | (string & {});
 export const SettingsTrustedDomainsListRequestOrder = /*@__PURE__*/ S.String;
 
-export interface SettingsTrustedDomainsListRequest {
+export interface ListSettingTrustedDomainsRequest {
   /** Identifier. */
   accountId: string;
   /** The sorting direction. */
@@ -5792,7 +5222,7 @@ export interface SettingsTrustedDomainsListRequest {
   /** Search term for filtering records. Behavior may change. */
   search?: string;
 }
-export const SettingsTrustedDomainsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListSettingTrustedDomainsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     direction: S.optional(
@@ -5813,8 +5243,8 @@ export const SettingsTrustedDomainsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SettingsTrustedDomainsListRequest",
-}) as any as S.Schema<SettingsTrustedDomainsListRequest>;
+  identifier: "ListSettingTrustedDomainsRequest",
+}) as any as S.Schema<ListSettingTrustedDomainsRequest>;
 
 export interface SettingsTrustedDomainsListResultItem {
   /** Trusted domain identifier */
@@ -5854,212 +5284,21 @@ export const SettingsTrustedDomainsListResultList = /*@__PURE__*/ S.Array(
   SettingsTrustedDomainsListResultItem,
 ) as any as S.Schema<SettingsTrustedDomainsListResultList>;
 
-export interface SettingsTrustedDomainsListResponse {
+export interface ListSettingTrustedDomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsTrustedDomainsListResultList;
 }
-export const SettingsTrustedDomainsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListSettingTrustedDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(
       SettingsTrustedDomainsListResultList.pipe(T.EnvelopePayload()),
     ),
   }),
 ).annotate({
-  identifier: "SettingsTrustedDomainsListResponse",
-}) as any as S.Schema<SettingsTrustedDomainsListResponse>;
+  identifier: "ListSettingTrustedDomainsResponse",
+}) as any as S.Schema<ListSettingTrustedDomainsResponse>;
 
-export interface SettingsUrlIgnorePatternsCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Regular expression matching URLs that should not be rewritten. */
-  pattern: string;
-  /** Optional note describing the reason for the ignore pattern. */
-  comments?: string;
-}
-export const SettingsUrlIgnorePatternsCreateRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      pattern: S.String,
-      comments: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "SettingsUrlIgnorePatternsCreateRequest",
-}) as any as S.Schema<SettingsUrlIgnorePatternsCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsUrlIgnorePatternsCreateResponse {
-  /** URL ignore pattern identifier */
-  id: string;
-  createdAt: string;
-  /** Regular expression matching URLs that should not be rewritten. */
-  pattern: string;
-  /** Optional note describing the reason for the ignore pattern. */
-  comments?: string;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-}
-export const SettingsUrlIgnorePatternsCreateResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      pattern: S.String,
-      comments: S.optional(S.String),
-      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    }),
-).annotate({
-  identifier: "SettingsUrlIgnorePatternsCreateResponse",
-}) as any as S.Schema<SettingsUrlIgnorePatternsCreateResponse>;
-
-export interface SettingsUrlIgnorePatternsDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  /** URL ignore pattern identifier */
-  patternId: string;
-}
-export const SettingsUrlIgnorePatternsDeleteRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      patternId: S.String.pipe(T.Label("pattern_id")),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "SettingsUrlIgnorePatternsDeleteRequest",
-}) as any as S.Schema<SettingsUrlIgnorePatternsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsUrlIgnorePatternsDeleteResponse {
-  /** URL ignore pattern identifier */
-  id: string;
-}
-export const SettingsUrlIgnorePatternsDeleteResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-    }),
-).annotate({
-  identifier: "SettingsUrlIgnorePatternsDeleteResponse",
-}) as any as S.Schema<SettingsUrlIgnorePatternsDeleteResponse>;
-
-export interface SettingsUrlIgnorePatternsEditRequest {
-  /** Identifier. */
-  accountId: string;
-  /** URL ignore pattern identifier */
-  patternId: string;
-  /** Optional note describing the reason for the ignore pattern. */
-  comments?: string;
-  /** Regular expression matching URLs that should not be rewritten. */
-  pattern?: string;
-}
-export const SettingsUrlIgnorePatternsEditRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      patternId: S.String.pipe(T.Label("pattern_id")),
-      comments: S.optional(S.String),
-      pattern: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "SettingsUrlIgnorePatternsEditRequest",
-}) as any as S.Schema<SettingsUrlIgnorePatternsEditRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsUrlIgnorePatternsEditResponse {
-  /** URL ignore pattern identifier */
-  id: string;
-  createdAt: string;
-  /** Regular expression matching URLs that should not be rewritten. */
-  pattern: string;
-  /** Optional note describing the reason for the ignore pattern. */
-  comments?: string;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-}
-export const SettingsUrlIgnorePatternsEditResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      pattern: S.String,
-      comments: S.optional(S.String),
-      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    }),
-).annotate({
-  identifier: "SettingsUrlIgnorePatternsEditResponse",
-}) as any as S.Schema<SettingsUrlIgnorePatternsEditResponse>;
-
-export interface SettingsUrlIgnorePatternsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** URL ignore pattern identifier */
-  patternId: string;
-}
-export const SettingsUrlIgnorePatternsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    patternId: S.String.pipe(T.Label("pattern_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SettingsUrlIgnorePatternsGetRequest",
-}) as any as S.Schema<SettingsUrlIgnorePatternsGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SettingsUrlIgnorePatternsGetResponse {
-  /** URL ignore pattern identifier */
-  id: string;
-  createdAt: string;
-  /** Regular expression matching URLs that should not be rewritten. */
-  pattern: string;
-  /** Optional note describing the reason for the ignore pattern. */
-  comments?: string;
-  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
-  lastModified?: string;
-  modifiedAt?: string;
-}
-export const SettingsUrlIgnorePatternsGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      pattern: S.String,
-      comments: S.optional(S.String),
-      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    }),
-).annotate({
-  identifier: "SettingsUrlIgnorePatternsGetResponse",
-}) as any as S.Schema<SettingsUrlIgnorePatternsGetResponse>;
-
-export interface SettingsUrlIgnorePatternsListRequest {
+export interface ListSettingUrlIgnorePatternsRequest {
   /** Identifier. */
   accountId: string;
   /** Current page within paginated list of results. */
@@ -6067,22 +5306,21 @@ export interface SettingsUrlIgnorePatternsListRequest {
   /** The number of results per page. Maximum value is 1000. */
   perPage?: number;
 }
-export const SettingsUrlIgnorePatternsListRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      page: S.optional(S.Number.pipe(T.Query())),
-      perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns",
-        code: 200,
-      }),
-    ),
+export const ListSettingUrlIgnorePatternsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns",
+      code: 200,
+    }),
+  ),
 ).annotate({
-  identifier: "SettingsUrlIgnorePatternsListRequest",
-}) as any as S.Schema<SettingsUrlIgnorePatternsListRequest>;
+  identifier: "ListSettingUrlIgnorePatternsRequest",
+}) as any as S.Schema<ListSettingUrlIgnorePatternsRequest>;
 
 export interface SettingsUrlIgnorePatternsListResultItem {
   /** URL ignore pattern identifier */
@@ -6116,11 +5354,11 @@ export const SettingsUrlIgnorePatternsListResultList = /*@__PURE__*/ S.Array(
   SettingsUrlIgnorePatternsListResultItem,
 ) as any as S.Schema<SettingsUrlIgnorePatternsListResultList>;
 
-export interface SettingsUrlIgnorePatternsListResponse {
+export interface ListSettingUrlIgnorePatternsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SettingsUrlIgnorePatternsListResultList;
 }
-export const SettingsUrlIgnorePatternsListResponse = /*@__PURE__*/ S.suspend(
+export const ListSettingUrlIgnorePatternsResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       result: S.optional(
@@ -6128,8 +5366,8 @@ export const SettingsUrlIgnorePatternsListResponse = /*@__PURE__*/ S.suspend(
       ),
     }),
 ).annotate({
-  identifier: "SettingsUrlIgnorePatternsListResponse",
-}) as any as S.Schema<SettingsUrlIgnorePatternsListResponse>;
+  identifier: "ListSettingUrlIgnorePatternsResponse",
+}) as any as S.Schema<ListSettingUrlIgnorePatternsResponse>;
 
 export type SubmissionsListRequestOriginalDisposition =
   | "MALICIOUS"
@@ -6156,7 +5394,7 @@ export const SubmissionsListRequestRequestedDisposition =
 export type SubmissionsListRequestType = "TEAM" | "USER" | (string & {});
 export const SubmissionsListRequestType = /*@__PURE__*/ S.String;
 
-export interface SubmissionsListRequest {
+export interface ListSubmissionsRequest {
   /** Identifier. */
   accountId: string;
   /** The end of the search date range. Defaults to `now`. */
@@ -6177,7 +5415,7 @@ export interface SubmissionsListRequest {
   submissionId?: string;
   type?: SubmissionsListRequestType;
 }
-export const SubmissionsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListSubmissionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     end: S.optional(S.String.pipe(T.Query())),
@@ -6214,8 +5452,8 @@ export const SubmissionsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SubmissionsListRequest",
-}) as any as S.Schema<SubmissionsListRequest>;
+  identifier: "ListSubmissionsRequest",
+}) as any as S.Schema<ListSubmissionsRequest>;
 
 export type SubmissionsListResultItemCustomerStatus =
   | "escalated"
@@ -6330,756 +5568,1802 @@ export const SubmissionsListResultList = /*@__PURE__*/ S.Array(
   SubmissionsListResultItem,
 ) as any as S.Schema<SubmissionsListResultList>;
 
-export interface SubmissionsListResponse {
+export interface ListSubmissionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SubmissionsListResultList;
 }
-export const SubmissionsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListSubmissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SubmissionsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "SubmissionsListResponse",
-}) as any as S.Schema<SubmissionsListResponse>;
+  identifier: "ListSubmissionsResponse",
+}) as any as S.Schema<ListSubmissionsResponse>;
 
-export type InvestigateBulkCancelCreateError = CloudflareOpError;
-/** Marks the job as cancelled and stops any pending message processing. The job record remains visible in list and detail endpoints. */
-export const investigateBulkCancelCreate: API.OperationMethod<
-  InvestigateBulkCancelCreateRequest,
-  InvestigateBulkCancelCreateResponse,
-  InvestigateBulkCancelCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateBulkCancelCreateRequest,
-  output: InvestigateBulkCancelCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type SettingsAllowPoliciesEditRequestPatternType =
+  | "EMAIL"
+  | "DOMAIN"
+  | "IP"
+  | "UNKNOWN"
+  | (string & {});
+export const SettingsAllowPoliciesEditRequestPatternType =
+  /*@__PURE__*/ S.String;
 
-export type InvestigateBulkCreateError = CloudflareOpError;
-/** Create a bulk action job */
-export const investigateBulkCreate: API.OperationMethod<
-  InvestigateBulkCreateRequest,
-  InvestigateBulkCreateResponse,
-  InvestigateBulkCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateBulkCreateRequest,
-  output: InvestigateBulkCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface PatchSettingAllowPolicyRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Allow policy identifier */
+  policyId: string;
+  comments?: string;
+  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
+  isAcceptableSender?: boolean;
+  /** Messages to this recipient will bypass all detections */
+  isExemptRecipient?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
+  isRecipient?: boolean;
+  isRegex?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
+  isSender?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
+  isSpoof?: boolean;
+  /** Messages from this sender will bypass all detections and link following */
+  isTrustedSender?: boolean;
+  pattern?: string;
+  /** Type of pattern matching. */
+  patternType?: SettingsAllowPoliciesEditRequestPatternType;
+  /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
+  verifySender?: boolean;
+}
+export const PatchSettingAllowPolicyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    policyId: S.String.pipe(T.Label("policy_id")),
+    comments: S.optional(S.String),
+    isAcceptableSender: S.optional(
+      S.Boolean.pipe(T.Body("is_acceptable_sender")),
+    ),
+    isExemptRecipient: S.optional(
+      S.Boolean.pipe(T.Body("is_exempt_recipient")),
+    ),
+    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
+    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
+    isTrustedSender: S.optional(S.Boolean.pipe(T.Body("is_trusted_sender"))),
+    pattern: S.optional(S.String),
+    patternType: S.optional(
+      SettingsAllowPoliciesEditRequestPatternType.pipe(T.Body("pattern_type")),
+    ),
+    verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/email-security/settings/allow_policies/{policy_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchSettingAllowPolicyRequest",
+}) as any as S.Schema<PatchSettingAllowPolicyRequest>;
 
-export type InvestigateBulkDeleteError = CloudflareOpError;
-/** Deletes the job, removing it from all list and detail endpoints. Only jobs in a terminal state (`COMPLETED`, `CANCELLED`, `FAILED`, or `SKIPPED`) can be deleted. To stop an in-progress job without removing it, use the cancel endpoint instead. */
-export const investigateBulkDelete: API.OperationMethod<
-  InvestigateBulkDeleteRequest,
-  InvestigateBulkDeleteResponse,
-  InvestigateBulkDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateBulkDeleteRequest,
-  output: InvestigateBulkDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type SettingsAllowPoliciesEditResponsePatternType =
+  | "EMAIL"
+  | "DOMAIN"
+  | "IP"
+  | "UNKNOWN"
+  | (string & {});
+export const SettingsAllowPoliciesEditResponsePatternType =
+  /*@__PURE__*/ S.String;
 
-export type InvestigateBulkGetError = CloudflareOpError;
-/** Get bulk action job details */
-export const investigateBulkGet: API.OperationMethod<
-  InvestigateBulkGetRequest,
-  InvestigateBulkGetResponse,
-  InvestigateBulkGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateBulkGetRequest,
-  output: InvestigateBulkGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSettingAllowPolicyResponse {
+  /** Allow policy identifier */
+  id: string;
+  createdAt: string;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified: string;
+  comments?: string;
+  /** Messages from this sender will be exempted from Spam, Spoof and Bulk dispositions. Note - This will not exempt messages with Malicious or Suspicious dispositions. */
+  isAcceptableSender?: boolean;
+  /** Messages to this recipient will bypass all detections */
+  isExemptRecipient?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_exempt_recipient` instead. End of life: July 1, 2026. */
+  isRecipient?: boolean;
+  isRegex?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_trusted_sender` instead. End of life: July 1, 2026. */
+  isSender?: boolean;
+  /** Deprecated as of July 1, 2025. Use `is_acceptable_sender` instead. End of life: July 1, 2026. */
+  isSpoof?: boolean;
+  /** Messages from this sender will bypass all detections and link following */
+  isTrustedSender?: boolean;
+  modifiedAt?: string;
+  pattern?: string;
+  /** Type of pattern matching. */
+  patternType?: SettingsAllowPoliciesEditResponsePatternType;
+  /** Enforce DMARC, SPF or DKIM authentication. When on, Email Security only honors policies that pass authentication. */
+  verifySender?: boolean;
+}
+export const PatchSettingAllowPolicyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    lastModified: S.String.pipe(T.Body("last_modified")),
+    comments: S.optional(S.String),
+    isAcceptableSender: S.optional(
+      S.Boolean.pipe(T.Body("is_acceptable_sender")),
+    ),
+    isExemptRecipient: S.optional(
+      S.Boolean.pipe(T.Body("is_exempt_recipient")),
+    ),
+    isRecipient: S.optional(S.Boolean.pipe(T.Body("is_recipient"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    isSender: S.optional(S.Boolean.pipe(T.Body("is_sender"))),
+    isSpoof: S.optional(S.Boolean.pipe(T.Body("is_spoof"))),
+    isTrustedSender: S.optional(S.Boolean.pipe(T.Body("is_trusted_sender"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    pattern: S.optional(S.String),
+    patternType: S.optional(
+      SettingsAllowPoliciesEditResponsePatternType.pipe(T.Body("pattern_type")),
+    ),
+    verifySender: S.optional(S.Boolean.pipe(T.Body("verify_sender"))),
+  }),
+).annotate({
+  identifier: "PatchSettingAllowPolicyResponse",
+}) as any as S.Schema<PatchSettingAllowPolicyResponse>;
 
-export type InvestigateBulkListError = CloudflareOpError;
-/** List bulk action jobs */
-export const investigateBulkList: API.OperationMethod<
-  InvestigateBulkListRequest,
-  InvestigateBulkListResponse,
-  InvestigateBulkListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateBulkListRequest,
-  output: InvestigateBulkListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type SettingsBlockSendersEditRequestPatternType =
+  | "EMAIL"
+  | "DOMAIN"
+  | "IP"
+  | "UNKNOWN"
+  | (string & {});
+export const SettingsBlockSendersEditRequestPatternType =
+  /*@__PURE__*/ S.String;
 
-export type InvestigateBulkMessagesListError = CloudflareOpError;
-/** List messages for a bulk action job */
-export const investigateBulkMessagesList: API.OperationMethod<
-  InvestigateBulkMessagesListRequest,
-  InvestigateBulkMessagesListResponse,
-  InvestigateBulkMessagesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateBulkMessagesListRequest,
-  output: InvestigateBulkMessagesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface PatchSettingBlockSenderRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Blocked sender pattern identifier */
+  patternId: string;
+  comments?: string;
+  isRegex?: boolean;
+  pattern?: string;
+  /** Type of pattern matching. */
+  patternType?: SettingsBlockSendersEditRequestPatternType;
+}
+export const PatchSettingBlockSenderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    patternId: S.String.pipe(T.Label("pattern_id")),
+    comments: S.optional(S.String),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    pattern: S.optional(S.String),
+    patternType: S.optional(
+      SettingsBlockSendersEditRequestPatternType.pipe(T.Body("pattern_type")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/email-security/settings/block_senders/{pattern_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchSettingBlockSenderRequest",
+}) as any as S.Schema<PatchSettingBlockSenderRequest>;
 
-export type InvestigateDetectionsGetError = CloudflareOpError;
-/** Returns detection details such as threat categories and sender information for non-benign messages. */
-export const investigateDetectionsGet: API.OperationMethod<
-  InvestigateDetectionsGetRequest,
-  InvestigateDetectionsGetResponse,
-  InvestigateDetectionsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateDetectionsGetRequest,
-  output: InvestigateDetectionsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type SettingsBlockSendersEditResponsePatternType =
+  | "EMAIL"
+  | "DOMAIN"
+  | "IP"
+  | "UNKNOWN"
+  | (string & {});
+export const SettingsBlockSendersEditResponsePatternType =
+  /*@__PURE__*/ S.String;
 
-export type InvestigateGetError = CloudflareOpError;
-/** Retrieves comprehensive details for a specific email message including headers, recipients, sender information, and current quarantine status. Use the investigate_id from search results to fetch detailed information. */
-export const investigateGet: API.OperationMethod<
-  InvestigateGetRequest,
-  InvestigateGetResponse,
-  InvestigateGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateGetRequest,
-  output: InvestigateGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSettingBlockSenderResponse {
+  /** Blocked sender pattern identifier */
+  id?: string;
+  comments?: string;
+  createdAt?: string;
+  isRegex?: boolean;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+  pattern?: string;
+  /** Type of pattern matching. */
+  patternType?: SettingsBlockSendersEditResponsePatternType;
+}
+export const PatchSettingBlockSenderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    comments: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    pattern: S.optional(S.String),
+    patternType: S.optional(
+      SettingsBlockSendersEditResponsePatternType.pipe(T.Body("pattern_type")),
+    ),
+  }),
+).annotate({
+  identifier: "PatchSettingBlockSenderResponse",
+}) as any as S.Schema<PatchSettingBlockSenderResponse>;
 
-export type InvestigateListError = CloudflareOpError;
-/** Returns information for each email that matches the search parameter(s). */
-export const investigateList: API.OperationMethod<
-  InvestigateListRequest,
-  InvestigateListResponse,
-  InvestigateListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateListRequest,
-  output: InvestigateListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type SettingsDomainsEditRequestAllowedDeliveryModesItem =
+  | "DIRECT"
+  | "BCC"
+  | "JOURNAL"
+  | (string & {});
+export const SettingsDomainsEditRequestAllowedDeliveryModesItem =
+  /*@__PURE__*/ S.String;
 
-export type InvestigateMoveBulkError = CloudflareOpError;
+export type SettingsDomainsEditRequestAllowedDeliveryModesList =
+  SettingsDomainsEditRequestAllowedDeliveryModesItem[];
+export const SettingsDomainsEditRequestAllowedDeliveryModesList =
+  /*@__PURE__*/ S.Array(
+    SettingsDomainsEditRequestAllowedDeliveryModesItem,
+  ) as any as S.Schema<SettingsDomainsEditRequestAllowedDeliveryModesList>;
+
+export type SettingsDomainsEditRequestDropDispositionsItem =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const SettingsDomainsEditRequestDropDispositionsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsDomainsEditRequestDropDispositionsList =
+  SettingsDomainsEditRequestDropDispositionsItem[];
+export const SettingsDomainsEditRequestDropDispositionsList =
+  /*@__PURE__*/ S.Array(
+    SettingsDomainsEditRequestDropDispositionsItem,
+  ) as any as S.Schema<SettingsDomainsEditRequestDropDispositionsList>;
+
+export type SettingsDomainsEditRequestFolder =
+  | "AllItems"
+  | "Inbox"
+  | (string & {});
+export const SettingsDomainsEditRequestFolder = /*@__PURE__*/ S.String;
+
+export type SettingsDomainsEditRequestIpRestrictionsList = string[];
+export const SettingsDomainsEditRequestIpRestrictionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SettingsDomainsEditRequestIpRestrictionsList>;
+
+export type SettingsDomainsEditRequestRegionsItem =
+  | "GLOBAL"
+  | "AU"
+  | "DE"
+  | (string & {});
+export const SettingsDomainsEditRequestRegionsItem = /*@__PURE__*/ S.String;
+
+export type SettingsDomainsEditRequestRegionsList =
+  SettingsDomainsEditRequestRegionsItem[];
+export const SettingsDomainsEditRequestRegionsList = /*@__PURE__*/ S.Array(
+  SettingsDomainsEditRequestRegionsItem,
+) as any as S.Schema<SettingsDomainsEditRequestRegionsList>;
+
+export interface PatchSettingDomainRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Domain identifier */
+  domainId: string;
+  allowedDeliveryModes?: SettingsDomainsEditRequestAllowedDeliveryModesList;
+  domain?: string;
+  dropDispositions?: SettingsDomainsEditRequestDropDispositionsList;
+  folder?: SettingsDomainsEditRequestFolder;
+  integrationId?: string;
+  ipRestrictions?: SettingsDomainsEditRequestIpRestrictionsList;
+  lookbackHops?: number;
+  regions?: SettingsDomainsEditRequestRegionsList;
+  requireTlsInbound?: boolean;
+  requireTlsOutbound?: boolean;
+  transport?: string;
+}
+export const PatchSettingDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    domainId: S.String.pipe(T.Label("domain_id")),
+    allowedDeliveryModes: S.optional(
+      SettingsDomainsEditRequestAllowedDeliveryModesList.pipe(
+        T.Body("allowed_delivery_modes"),
+      ),
+    ),
+    domain: S.optional(S.String),
+    dropDispositions: S.optional(
+      SettingsDomainsEditRequestDropDispositionsList.pipe(
+        T.Body("drop_dispositions"),
+      ),
+    ),
+    folder: S.optional(SettingsDomainsEditRequestFolder),
+    integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
+    ipRestrictions: S.optional(
+      SettingsDomainsEditRequestIpRestrictionsList.pipe(
+        T.Body("ip_restrictions"),
+      ),
+    ),
+    lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
+    regions: S.optional(SettingsDomainsEditRequestRegionsList),
+    requireTlsInbound: S.optional(
+      S.Boolean.pipe(T.Body("require_tls_inbound")),
+    ),
+    requireTlsOutbound: S.optional(
+      S.Boolean.pipe(T.Body("require_tls_outbound")),
+    ),
+    transport: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/email-security/settings/domains/{domain_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchSettingDomainRequest",
+}) as any as S.Schema<PatchSettingDomainRequest>;
+
+export type SettingsDomainsEditResponseAllowedDeliveryModesItem =
+  | "DIRECT"
+  | "BCC"
+  | "JOURNAL"
+  | (string & {});
+export const SettingsDomainsEditResponseAllowedDeliveryModesItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsDomainsEditResponseAllowedDeliveryModesList =
+  SettingsDomainsEditResponseAllowedDeliveryModesItem[];
+export const SettingsDomainsEditResponseAllowedDeliveryModesList =
+  /*@__PURE__*/ S.Array(
+    SettingsDomainsEditResponseAllowedDeliveryModesItem,
+  ) as any as S.Schema<SettingsDomainsEditResponseAllowedDeliveryModesList>;
+
+export interface SettingsDomainsEditResponseAuthorization {
+  authorized: boolean;
+  timestamp: string;
+  statusMessage?: string;
+}
+export const SettingsDomainsEditResponseAuthorization = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      authorized: S.Boolean,
+      timestamp: S.String,
+      statusMessage: S.optional(S.String.pipe(T.Body("status_message"))),
+    }),
+).annotate({
+  identifier: "SettingsDomainsEditResponseAuthorization",
+}) as any as S.Schema<SettingsDomainsEditResponseAuthorization>;
+
+export type SettingsDomainsEditResponseDmarcStatus =
+  | "none"
+  | "good"
+  | "invalid"
+  | (string & {});
+export const SettingsDomainsEditResponseDmarcStatus = /*@__PURE__*/ S.String;
+
+export type SettingsDomainsEditResponseDropDispositionsItem =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const SettingsDomainsEditResponseDropDispositionsItem =
+  /*@__PURE__*/ S.String;
+
+export type SettingsDomainsEditResponseDropDispositionsList =
+  SettingsDomainsEditResponseDropDispositionsItem[];
+export const SettingsDomainsEditResponseDropDispositionsList =
+  /*@__PURE__*/ S.Array(
+    SettingsDomainsEditResponseDropDispositionsItem,
+  ) as any as S.Schema<SettingsDomainsEditResponseDropDispositionsList>;
+
+export interface SettingsDomainsEditResponseEmailsProcessed {
+  timestamp: string;
+  totalEmailsProcessed: number;
+  totalEmailsProcessedPrevious: number;
+}
+export const SettingsDomainsEditResponseEmailsProcessed =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      timestamp: S.String,
+      totalEmailsProcessed: S.Number.pipe(T.Body("total_emails_processed")),
+      totalEmailsProcessedPrevious: S.Number.pipe(
+        T.Body("total_emails_processed_previous"),
+      ),
+    }),
+  ).annotate({
+    identifier: "SettingsDomainsEditResponseEmailsProcessed",
+  }) as any as S.Schema<SettingsDomainsEditResponseEmailsProcessed>;
+
+export type SettingsDomainsEditResponseFolder =
+  | "AllItems"
+  | "Inbox"
+  | (string & {});
+export const SettingsDomainsEditResponseFolder = /*@__PURE__*/ S.String;
+
+export type SettingsDomainsEditResponseInboxProvider =
+  | "Microsoft"
+  | "Google"
+  | (string & {});
+export const SettingsDomainsEditResponseInboxProvider = /*@__PURE__*/ S.String;
+
+export type SettingsDomainsEditResponseIpRestrictionsList = string[];
+export const SettingsDomainsEditResponseIpRestrictionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SettingsDomainsEditResponseIpRestrictionsList>;
+
+export type SettingsDomainsEditResponseRegionsItem =
+  | "GLOBAL"
+  | "AU"
+  | "DE"
+  | (string & {});
+export const SettingsDomainsEditResponseRegionsItem = /*@__PURE__*/ S.String;
+
+export type SettingsDomainsEditResponseRegionsList =
+  SettingsDomainsEditResponseRegionsItem[];
+export const SettingsDomainsEditResponseRegionsList = /*@__PURE__*/ S.Array(
+  SettingsDomainsEditResponseRegionsItem,
+) as any as S.Schema<SettingsDomainsEditResponseRegionsList>;
+
+export type SettingsDomainsEditResponseSpfStatus =
+  | "none"
+  | "good"
+  | "neutral"
+  | (string & {});
+export const SettingsDomainsEditResponseSpfStatus = /*@__PURE__*/ S.String;
+
+export type SettingsDomainsEditResponseStatus =
+  | "pending"
+  | "active"
+  | "failed"
+  | "timeout"
+  | (string & {});
+export const SettingsDomainsEditResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSettingDomainResponse {
+  /** Domain identifier */
+  id?: string;
+  allowedDeliveryModes?: SettingsDomainsEditResponseAllowedDeliveryModesList;
+  authorization?: SettingsDomainsEditResponseAuthorization;
+  createdAt?: string;
+  dmarcStatus?: SettingsDomainsEditResponseDmarcStatus;
+  domain?: string;
+  dropDispositions?: SettingsDomainsEditResponseDropDispositionsList;
+  emailsProcessed?: SettingsDomainsEditResponseEmailsProcessed;
+  folder?: SettingsDomainsEditResponseFolder;
+  inboxProvider?: SettingsDomainsEditResponseInboxProvider;
+  integrationId?: string;
+  ipRestrictions?: SettingsDomainsEditResponseIpRestrictionsList;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  lookbackHops?: number;
+  modifiedAt?: string;
+  o365TenantId?: string;
+  regions?: SettingsDomainsEditResponseRegionsList;
+  requireTlsInbound?: boolean;
+  requireTlsOutbound?: boolean;
+  spfStatus?: SettingsDomainsEditResponseSpfStatus;
+  status?: SettingsDomainsEditResponseStatus;
+  transport?: string;
+}
+export const PatchSettingDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    allowedDeliveryModes: S.optional(
+      SettingsDomainsEditResponseAllowedDeliveryModesList.pipe(
+        T.Body("allowed_delivery_modes"),
+      ),
+    ),
+    authorization: S.optional(SettingsDomainsEditResponseAuthorization),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    dmarcStatus: S.optional(
+      SettingsDomainsEditResponseDmarcStatus.pipe(T.Body("dmarc_status")),
+    ),
+    domain: S.optional(S.String),
+    dropDispositions: S.optional(
+      SettingsDomainsEditResponseDropDispositionsList.pipe(
+        T.Body("drop_dispositions"),
+      ),
+    ),
+    emailsProcessed: S.optional(
+      SettingsDomainsEditResponseEmailsProcessed.pipe(
+        T.Body("emails_processed"),
+      ),
+    ),
+    folder: S.optional(SettingsDomainsEditResponseFolder),
+    inboxProvider: S.optional(
+      SettingsDomainsEditResponseInboxProvider.pipe(T.Body("inbox_provider")),
+    ),
+    integrationId: S.optional(S.String.pipe(T.Body("integration_id"))),
+    ipRestrictions: S.optional(
+      SettingsDomainsEditResponseIpRestrictionsList.pipe(
+        T.Body("ip_restrictions"),
+      ),
+    ),
+    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+    lookbackHops: S.optional(S.Number.pipe(T.Body("lookback_hops"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    o365TenantId: S.optional(S.String.pipe(T.Body("o365_tenant_id"))),
+    regions: S.optional(SettingsDomainsEditResponseRegionsList),
+    requireTlsInbound: S.optional(
+      S.Boolean.pipe(T.Body("require_tls_inbound")),
+    ),
+    requireTlsOutbound: S.optional(
+      S.Boolean.pipe(T.Body("require_tls_outbound")),
+    ),
+    spfStatus: S.optional(
+      SettingsDomainsEditResponseSpfStatus.pipe(T.Body("spf_status")),
+    ),
+    status: S.optional(SettingsDomainsEditResponseStatus),
+    transport: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PatchSettingDomainResponse",
+}) as any as S.Schema<PatchSettingDomainResponse>;
+
+export type SettingsImpersonationRegistryEditRequestProvenance =
+  | "A1S_INTERNAL"
+  | "SNOOPY-CASB_OFFICE_365"
+  | "SNOOPY-OFFICE_365"
+  | "SNOOPY-GOOGLE_DIRECTORY"
+  | (string & {});
+export const SettingsImpersonationRegistryEditRequestProvenance =
+  /*@__PURE__*/ S.String;
+
+export interface PatchSettingImpersonationRegistryRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Impersonation registry entry identifier */
+  impersonationRegistryId: string;
+  comments?: string;
+  directoryId?: number;
+  directoryNodeId?: number;
+  email?: string;
+  externalDirectoryNodeId?: string;
+  isEmailRegex?: boolean;
+  name?: string;
+  provenance?: SettingsImpersonationRegistryEditRequestProvenance;
+}
+export const PatchSettingImpersonationRegistryRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      impersonationRegistryId: S.String.pipe(
+        T.Label("impersonation_registry_id"),
+      ),
+      comments: S.optional(S.String),
+      directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
+      directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
+      email: S.optional(S.String),
+      externalDirectoryNodeId: S.optional(
+        S.String.pipe(T.Body("external_directory_node_id")),
+      ),
+      isEmailRegex: S.optional(S.Boolean.pipe(T.Body("is_email_regex"))),
+      name: S.optional(S.String),
+      provenance: S.optional(
+        SettingsImpersonationRegistryEditRequestProvenance,
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/email-security/settings/impersonation_registry/{impersonation_registry_id}",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "PatchSettingImpersonationRegistryRequest",
+}) as any as S.Schema<PatchSettingImpersonationRegistryRequest>;
+
+export type SettingsImpersonationRegistryEditResponseProvenance =
+  | "A1S_INTERNAL"
+  | "SNOOPY-CASB_OFFICE_365"
+  | "SNOOPY-OFFICE_365"
+  | "SNOOPY-GOOGLE_DIRECTORY"
+  | (string & {});
+export const SettingsImpersonationRegistryEditResponseProvenance =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSettingImpersonationRegistryResponse {
+  /** Impersonation registry entry identifier */
+  id?: string;
+  comments?: string;
+  createdAt?: string;
+  directoryId?: number;
+  directoryNodeId?: number;
+  email?: string;
+  externalDirectoryNodeId?: string;
+  isEmailRegex?: boolean;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+  name?: string;
+  provenance?: SettingsImpersonationRegistryEditResponseProvenance;
+}
+export const PatchSettingImpersonationRegistryResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      comments: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      directoryId: S.optional(S.Number.pipe(T.Body("directory_id"))),
+      directoryNodeId: S.optional(S.Number.pipe(T.Body("directory_node_id"))),
+      email: S.optional(S.String),
+      externalDirectoryNodeId: S.optional(
+        S.String.pipe(T.Body("external_directory_node_id")),
+      ),
+      isEmailRegex: S.optional(S.Boolean.pipe(T.Body("is_email_regex"))),
+      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+      name: S.optional(S.String),
+      provenance: S.optional(
+        SettingsImpersonationRegistryEditResponseProvenance,
+      ),
+    }),
+  ).annotate({
+    identifier: "PatchSettingImpersonationRegistryResponse",
+  }) as any as S.Schema<PatchSettingImpersonationRegistryResponse>;
+
+export type SettingsSendingDomainRestrictionsEditRequestExcludeList = string[];
+export const SettingsSendingDomainRestrictionsEditRequestExcludeList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SettingsSendingDomainRestrictionsEditRequestExcludeList>;
+
+export interface PatchSettingSendingDomainRestrictionRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Sending domain restriction identifier. */
+  sendingDomainRestrictionId: string;
+  comments?: string;
+  /** Domain that requires TLS enforcement. */
+  domain?: string;
+  /** Excluded subdomains that are exempt from TLS requirements. */
+  exclude?: SettingsSendingDomainRestrictionsEditRequestExcludeList;
+}
+export const PatchSettingSendingDomainRestrictionRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      sendingDomainRestrictionId: S.String.pipe(
+        T.Label("sending_domain_restriction_id"),
+      ),
+      comments: S.optional(S.String),
+      domain: S.optional(S.String),
+      exclude: S.optional(
+        SettingsSendingDomainRestrictionsEditRequestExcludeList,
+      ),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/email-security/settings/sending_domain_restrictions/{sending_domain_restriction_id}",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "PatchSettingSendingDomainRestrictionRequest",
+  }) as any as S.Schema<PatchSettingSendingDomainRestrictionRequest>;
+
+export type SettingsSendingDomainRestrictionsEditResponseExcludeList = string[];
+export const SettingsSendingDomainRestrictionsEditResponseExcludeList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SettingsSendingDomainRestrictionsEditResponseExcludeList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSettingSendingDomainRestrictionResponse {
+  /** Sending domain restriction identifier. */
+  id?: string;
+  comments?: string;
+  createdAt?: string;
+  /** Domain that requires TLS enforcement. */
+  domain?: string;
+  /** Excluded subdomains that are exempt from TLS requirements. */
+  exclude?: SettingsSendingDomainRestrictionsEditResponseExcludeList;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+}
+export const PatchSettingSendingDomainRestrictionResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      comments: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      domain: S.optional(S.String),
+      exclude: S.optional(
+        SettingsSendingDomainRestrictionsEditResponseExcludeList,
+      ),
+      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    }),
+  ).annotate({
+    identifier: "PatchSettingSendingDomainRestrictionResponse",
+  }) as any as S.Schema<PatchSettingSendingDomainRestrictionResponse>;
+
+export interface PatchSettingTrustedDomainRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Trusted domain identifier */
+  trustedDomainId: string;
+  comments?: string;
+  /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
+  isRecent?: boolean;
+  isRegex?: boolean;
+  /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
+  isSimilarity?: boolean;
+  pattern?: string;
+}
+export const PatchSettingTrustedDomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    trustedDomainId: S.String.pipe(T.Label("trusted_domain_id")),
+    comments: S.optional(S.String),
+    isRecent: S.optional(S.Boolean.pipe(T.Body("is_recent"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    isSimilarity: S.optional(S.Boolean.pipe(T.Body("is_similarity"))),
+    pattern: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/email-security/settings/trusted_domains/{trusted_domain_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchSettingTrustedDomainRequest",
+}) as any as S.Schema<PatchSettingTrustedDomainRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSettingTrustedDomainResponse {
+  /** Trusted domain identifier */
+  id?: string;
+  comments?: string;
+  createdAt?: string;
+  /** Select to prevent recently registered domains from triggering a Suspicious or Malicious disposition. */
+  isRecent?: boolean;
+  isRegex?: boolean;
+  /** Select for partner or other approved domains that have similar spelling to your connected domains. Prevents listed domains from triggering a Spoof disposition. */
+  isSimilarity?: boolean;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+  pattern?: string;
+}
+export const PatchSettingTrustedDomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    comments: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    isRecent: S.optional(S.Boolean.pipe(T.Body("is_recent"))),
+    isRegex: S.optional(S.Boolean.pipe(T.Body("is_regex"))),
+    isSimilarity: S.optional(S.Boolean.pipe(T.Body("is_similarity"))),
+    lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    pattern: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PatchSettingTrustedDomainResponse",
+}) as any as S.Schema<PatchSettingTrustedDomainResponse>;
+
+export interface PatchSettingUrlIgnorePatternRequest {
+  /** Identifier. */
+  accountId: string;
+  /** URL ignore pattern identifier */
+  patternId: string;
+  /** Optional note describing the reason for the ignore pattern. */
+  comments?: string;
+  /** Regular expression matching URLs that should not be rewritten. */
+  pattern?: string;
+}
+export const PatchSettingUrlIgnorePatternRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    patternId: S.String.pipe(T.Label("pattern_id")),
+    comments: S.optional(S.String),
+    pattern: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/email-security/settings/url_ignore_patterns/{pattern_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchSettingUrlIgnorePatternRequest",
+}) as any as S.Schema<PatchSettingUrlIgnorePatternRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSettingUrlIgnorePatternResponse {
+  /** URL ignore pattern identifier */
+  id: string;
+  createdAt: string;
+  /** Regular expression matching URLs that should not be rewritten. */
+  pattern: string;
+  /** Optional note describing the reason for the ignore pattern. */
+  comments?: string;
+  /** Deprecated, use `modified_at` instead. End of life: November 1, 2026. */
+  lastModified?: string;
+  modifiedAt?: string;
+}
+export const PatchSettingUrlIgnorePatternResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      pattern: S.String,
+      comments: S.optional(S.String),
+      lastModified: S.optional(S.String.pipe(T.Body("last_modified"))),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    }),
+).annotate({
+  identifier: "PatchSettingUrlIgnorePatternResponse",
+}) as any as S.Schema<PatchSettingUrlIgnorePatternResponse>;
+
+export type BulkInvestigateMoveError = CloudflareOpError;
 /** Moves multiple messages to a specified mailbox folder (Inbox, JunkEmail, DeletedItems, RecoverableItemsDeletions, or RecoverableItemsPurges). Requires active integration. */
-export const investigateMoveBulk: API.OperationMethod<
-  InvestigateMoveBulkRequest,
-  InvestigateMoveBulkResponse,
-  InvestigateMoveBulkError,
+export const bulkInvestigateMove: API.OperationMethod<
+  BulkInvestigateMoveRequest,
+  BulkInvestigateMoveResponse,
+  BulkInvestigateMoveError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateMoveBulkRequest,
-  output: InvestigateMoveBulkResponse,
+  input: BulkInvestigateMoveRequest,
+  output: BulkInvestigateMoveResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type InvestigateMoveCreateError = CloudflareOpError;
-/** Moves a single message to a specified mailbox folder (Inbox, JunkEmail, DeletedItems, RecoverableItemsDeletions, or RecoverableItemsPurges). Requires active integration. */
-export const investigateMoveCreate: API.OperationMethod<
-  InvestigateMoveCreateRequest,
-  InvestigateMoveCreateResponse,
-  InvestigateMoveCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateMoveCreateRequest,
-  output: InvestigateMoveCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type InvestigatePreviewCreateError = CloudflareOpError;
-/** Generates a preview image for a message that was not flagged as a detection. Useful for investigating benign messages. Returns a base64-encoded PNG screenshot of the email body. */
-export const investigatePreviewCreate: API.OperationMethod<
-  InvestigatePreviewCreateRequest,
-  InvestigatePreviewCreateResponse,
-  InvestigatePreviewCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigatePreviewCreateRequest,
-  output: InvestigatePreviewCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type InvestigatePreviewGetError = CloudflareOpError;
-/** Returns a preview of the message body as a base64 encoded PNG image for non-benign messages. */
-export const investigatePreviewGet: API.OperationMethod<
-  InvestigatePreviewGetRequest,
-  InvestigatePreviewGetResponse,
-  InvestigatePreviewGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigatePreviewGetRequest,
-  output: InvestigatePreviewGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type InvestigateRawGetError = CloudflareOpError;
-/** Returns the raw eml of any non-benign message. */
-export const investigateRawGet: API.OperationMethod<
-  InvestigateRawGetRequest,
-  InvestigateRawGetResponse,
-  InvestigateRawGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateRawGetRequest,
-  output: InvestigateRawGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type InvestigateReclassifyCreateError = CloudflareOpError;
-/** Submits a request to reclassify an email's disposition. Use for reporting false positives or false negatives. Optionally provide the raw EML content for reanalysis. The reclassification is processed asynchronously. */
-export const investigateReclassifyCreate: API.OperationMethod<
-  InvestigateReclassifyCreateRequest,
-  InvestigateReclassifyCreateResponse,
-  InvestigateReclassifyCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateReclassifyCreateRequest,
-  output: InvestigateReclassifyCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type InvestigateReleaseBulkError = CloudflareOpError;
+export type BulkInvestigateReleaseError = CloudflareOpError;
 /** Releases one or more quarantined messages, delivering them to the intended recipients. Use when a message was incorrectly quarantined. Returns delivery status for each recipient. */
-export const investigateReleaseBulk: API.OperationMethod<
-  InvestigateReleaseBulkRequest,
-  InvestigateReleaseBulkResponse,
-  InvestigateReleaseBulkError,
+export const bulkInvestigateRelease: API.OperationMethod<
+  BulkInvestigateReleaseRequest,
+  BulkInvestigateReleaseResponse,
+  BulkInvestigateReleaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateReleaseBulkRequest,
-  output: InvestigateReleaseBulkResponse,
+  input: BulkInvestigateReleaseRequest,
+  output: BulkInvestigateReleaseResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type InvestigateTraceGetError = CloudflareOpError;
-/** Retrieves delivery and processing trace information for an email message. Shows the delivery path, retraction history, and move operations performed on the message. Useful for debugging delivery issues. */
-export const investigateTraceGet: API.OperationMethod<
-  InvestigateTraceGetRequest,
-  InvestigateTraceGetResponse,
-  InvestigateTraceGetError,
+export type CreateInvestigateBulkError = CloudflareOpError;
+/** Create a bulk action job */
+export const createInvestigateBulk: API.OperationMethod<
+  CreateInvestigateBulkRequest,
+  CreateInvestigateBulkResponse,
+  CreateInvestigateBulkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: InvestigateTraceGetRequest,
-  output: InvestigateTraceGetResponse,
+  input: CreateInvestigateBulkRequest,
+  output: CreateInvestigateBulkResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type PhishguardReportsListError = CloudflareOpError;
-/** Retrieves PhishGuard security alert reports for a specified date range. Reports include detected threats, dispositions, and contextual information. Use for security monitoring and threat analysis. */
-export const phishguardReportsList: API.OperationMethod<
-  PhishguardReportsListRequest,
-  PhishguardReportsListResponse,
-  PhishguardReportsListError,
+export type CreateInvestigateBulkCancelError = CloudflareOpError;
+/** Marks the job as cancelled and stops any pending message processing. The job record remains visible in list and detail endpoints. */
+export const createInvestigateBulkCancel: API.OperationMethod<
+  CreateInvestigateBulkCancelRequest,
+  CreateInvestigateBulkCancelResponse,
+  CreateInvestigateBulkCancelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PhishguardReportsListRequest,
-  output: PhishguardReportsListResponse,
+  input: CreateInvestigateBulkCancelRequest,
+  output: CreateInvestigateBulkCancelResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsAllowPoliciesCreateError = CloudflareOpError;
+export type CreateInvestigateMoveError = CloudflareOpError;
+/** Moves a single message to a specified mailbox folder (Inbox, JunkEmail, DeletedItems, RecoverableItemsDeletions, or RecoverableItemsPurges). Requires active integration. */
+export const createInvestigateMove: API.OperationMethod<
+  CreateInvestigateMoveRequest,
+  CreateInvestigateMoveResponse,
+  CreateInvestigateMoveError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateInvestigateMoveRequest,
+  output: CreateInvestigateMoveResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateInvestigatePreviewError = CloudflareOpError;
+/** Generates a preview image for a message that was not flagged as a detection. Useful for investigating benign messages. Returns a base64-encoded PNG screenshot of the email body. */
+export const createInvestigatePreview: API.OperationMethod<
+  CreateInvestigatePreviewRequest,
+  CreateInvestigatePreviewResponse,
+  CreateInvestigatePreviewError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateInvestigatePreviewRequest,
+  output: CreateInvestigatePreviewResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateInvestigateReclassifyError = CloudflareOpError;
+/** Submits a request to reclassify an email's disposition. Use for reporting false positives or false negatives. Optionally provide the raw EML content for reanalysis. The reclassification is processed asynchronously. */
+export const createInvestigateReclassify: API.OperationMethod<
+  CreateInvestigateReclassifyRequest,
+  CreateInvestigateReclassifyResponse,
+  CreateInvestigateReclassifyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateInvestigateReclassifyRequest,
+  output: CreateInvestigateReclassifyResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateSettingAllowPolicyError =
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a new allow policy that exempts matching emails from security detections. Use with caution as this bypasses email security scanning. Policies can match on sender patterns and apply to specific detections or all detections. */
-export const settingsAllowPoliciesCreate: API.OperationMethod<
-  SettingsAllowPoliciesCreateRequest,
-  SettingsAllowPoliciesCreateResponse,
-  SettingsAllowPoliciesCreateError,
+export const createSettingAllowPolicy: API.OperationMethod<
+  CreateSettingAllowPolicyRequest,
+  CreateSettingAllowPolicyResponse,
+  CreateSettingAllowPolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsAllowPoliciesCreateRequest,
-  output: SettingsAllowPoliciesCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateSettingAllowPolicyRequest,
+  output: CreateSettingAllowPolicyResponse,
+  errors: [
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsAllowPoliciesDeleteError = CloudflareOpError;
-/** Removes an allow policy. After deletion, emails matching this pattern will be subject to normal security scanning and disposition actions. */
-export const settingsAllowPoliciesDelete: API.OperationMethod<
-  SettingsAllowPoliciesDeleteRequest,
-  SettingsAllowPoliciesDeleteResponse,
-  SettingsAllowPoliciesDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsAllowPoliciesDeleteRequest,
-  output: SettingsAllowPoliciesDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsAllowPoliciesEditError = CloudflareOpError;
-/** Updates an existing allow policy. Only provided fields will be modified. Changes take effect for new emails matching the pattern. */
-export const settingsAllowPoliciesEdit: API.OperationMethod<
-  SettingsAllowPoliciesEditRequest,
-  SettingsAllowPoliciesEditResponse,
-  SettingsAllowPoliciesEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsAllowPoliciesEditRequest,
-  output: SettingsAllowPoliciesEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsAllowPoliciesGetError = CloudflareOpError;
-/** Retrieves details for a specific allow policy including its pattern, dispositions that are exempted, and whether it applies to all detections. */
-export const settingsAllowPoliciesGet: API.OperationMethod<
-  SettingsAllowPoliciesGetRequest,
-  SettingsAllowPoliciesGetResponse,
-  SettingsAllowPoliciesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsAllowPoliciesGetRequest,
-  output: SettingsAllowPoliciesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsAllowPoliciesListError = CloudflareOpError;
-/** Returns a paginated list of email allow policies. These policies exempt matching emails from security detection, allowing them to bypass disposition actions. Supports filtering by pattern type and policy attributes. */
-export const settingsAllowPoliciesList: API.OperationMethod<
-  SettingsAllowPoliciesListRequest,
-  SettingsAllowPoliciesListResponse,
-  SettingsAllowPoliciesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsAllowPoliciesListRequest,
-  output: SettingsAllowPoliciesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsBlockSendersCreateError = CloudflareOpError;
+export type CreateSettingBlockSenderError =
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a new blocked sender pattern. Emails matching this pattern will be blocked from delivery. Patterns can be email addresses, domains, or IP addresses, and support regular expressions. */
-export const settingsBlockSendersCreate: API.OperationMethod<
-  SettingsBlockSendersCreateRequest,
-  SettingsBlockSendersCreateResponse,
-  SettingsBlockSendersCreateError,
+export const createSettingBlockSender: API.OperationMethod<
+  CreateSettingBlockSenderRequest,
+  CreateSettingBlockSenderResponse,
+  CreateSettingBlockSenderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsBlockSendersCreateRequest,
-  output: SettingsBlockSendersCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateSettingBlockSenderRequest,
+  output: CreateSettingBlockSenderResponse,
+  errors: [
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsBlockSendersDeleteError = CloudflareOpError;
-/** Removes a blocked sender pattern. After deletion, emails from this sender will no longer be automatically blocked based on this rule. */
-export const settingsBlockSendersDelete: API.OperationMethod<
-  SettingsBlockSendersDeleteRequest,
-  SettingsBlockSendersDeleteResponse,
-  SettingsBlockSendersDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsBlockSendersDeleteRequest,
-  output: SettingsBlockSendersDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsBlockSendersEditError = CloudflareOpError;
-/** Updates an existing blocked sender pattern. Only provided fields will be modified. The pattern will continue blocking emails until deleted. */
-export const settingsBlockSendersEdit: API.OperationMethod<
-  SettingsBlockSendersEditRequest,
-  SettingsBlockSendersEditResponse,
-  SettingsBlockSendersEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsBlockSendersEditRequest,
-  output: SettingsBlockSendersEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsBlockSendersGetError = CloudflareOpError;
-/** Retrieves details for a specific blocked sender pattern including its pattern type, value, and metadata. */
-export const settingsBlockSendersGet: API.OperationMethod<
-  SettingsBlockSendersGetRequest,
-  SettingsBlockSendersGetResponse,
-  SettingsBlockSendersGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsBlockSendersGetRequest,
-  output: SettingsBlockSendersGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsBlockSendersListError = CloudflareOpError;
-/** Returns a paginated list of blocked email sender patterns. These patterns prevent emails from matching senders from being delivered. Supports filtering by pattern type and searching across patterns. */
-export const settingsBlockSendersList: API.OperationMethod<
-  SettingsBlockSendersListRequest,
-  SettingsBlockSendersListResponse,
-  SettingsBlockSendersListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsBlockSendersListRequest,
-  output: SettingsBlockSendersListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsDomainsDeleteError = CloudflareOpError;
-/** Removes email security protection from a domain. After deletion, emails for this domain will no longer be processed by Email Security. This action cannot be undone. */
-export const settingsDomainsDelete: API.OperationMethod<
-  SettingsDomainsDeleteRequest,
-  SettingsDomainsDeleteResponse,
-  SettingsDomainsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsDomainsDeleteRequest,
-  output: SettingsDomainsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsDomainsEditError = CloudflareOpError;
-/** Updates configuration for a protected email domain. Only provided fields will be modified. Changes affect delivery mode, security settings, and regional processing. */
-export const settingsDomainsEdit: API.OperationMethod<
-  SettingsDomainsEditRequest,
-  SettingsDomainsEditResponse,
-  SettingsDomainsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsDomainsEditRequest,
-  output: SettingsDomainsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsDomainsGetError = CloudflareOpError;
-/** Retrieves detailed information for a specific protected email domain including its delivery configuration, SPF/DMARC status, and authorization state. */
-export const settingsDomainsGet: API.OperationMethod<
-  SettingsDomainsGetRequest,
-  SettingsDomainsGetResponse,
-  SettingsDomainsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsDomainsGetRequest,
-  output: SettingsDomainsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsDomainsListError = CloudflareOpError;
-/** Returns a paginated list of email domains protected by Email Security. Includes domain configuration, delivery modes, and authorization status. Supports filtering by delivery mode and integration ID. */
-export const settingsDomainsList: API.OperationMethod<
-  SettingsDomainsListRequest,
-  SettingsDomainsListResponse,
-  SettingsDomainsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsDomainsListRequest,
-  output: SettingsDomainsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsImpersonationRegistryCreateError = CloudflareOpError;
+export type CreateSettingImpersonationRegistryError =
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a new entry in the impersonation registry to protect against impersonation. Emails attempting to impersonate this identity will be flagged. Supports regex patterns for flexible email matching. */
-export const settingsImpersonationRegistryCreate: API.OperationMethod<
-  SettingsImpersonationRegistryCreateRequest,
-  SettingsImpersonationRegistryCreateResponse,
-  SettingsImpersonationRegistryCreateError,
+export const createSettingImpersonationRegistry: API.OperationMethod<
+  CreateSettingImpersonationRegistryRequest,
+  CreateSettingImpersonationRegistryResponse,
+  CreateSettingImpersonationRegistryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsImpersonationRegistryCreateRequest,
-  output: SettingsImpersonationRegistryCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateSettingImpersonationRegistryRequest,
+  output: CreateSettingImpersonationRegistryResponse,
+  errors: [
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsImpersonationRegistryDeleteError = CloudflareOpError;
-/** Removes an entry from the impersonation registry. After deletion, this identity will no longer be protected from impersonation. */
-export const settingsImpersonationRegistryDelete: API.OperationMethod<
-  SettingsImpersonationRegistryDeleteRequest,
-  SettingsImpersonationRegistryDeleteResponse,
-  SettingsImpersonationRegistryDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsImpersonationRegistryDeleteRequest,
-  output: SettingsImpersonationRegistryDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsImpersonationRegistryEditError = CloudflareOpError;
-/** Updates an existing impersonation registry entry. Only provided fields will be modified. Directory-synced entries can't be updated. */
-export const settingsImpersonationRegistryEdit: API.OperationMethod<
-  SettingsImpersonationRegistryEditRequest,
-  SettingsImpersonationRegistryEditResponse,
-  SettingsImpersonationRegistryEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsImpersonationRegistryEditRequest,
-  output: SettingsImpersonationRegistryEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsImpersonationRegistryGetError = CloudflareOpError;
-/** Retrieves details for a specific impersonation registry entry including the protected identity, email pattern, and synchronization source if directory-synced. */
-export const settingsImpersonationRegistryGet: API.OperationMethod<
-  SettingsImpersonationRegistryGetRequest,
-  SettingsImpersonationRegistryGetResponse,
-  SettingsImpersonationRegistryGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsImpersonationRegistryGetRequest,
-  output: SettingsImpersonationRegistryGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsImpersonationRegistryListError = CloudflareOpError;
-/** Returns a paginated list of protected identities in the impersonation registry. These entries define identities and email addresses to protect from impersonation attacks. Can be manually added or automatically synced from directory integrations. */
-export const settingsImpersonationRegistryList: API.OperationMethod<
-  SettingsImpersonationRegistryListRequest,
-  SettingsImpersonationRegistryListResponse,
-  SettingsImpersonationRegistryListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsImpersonationRegistryListRequest,
-  output: SettingsImpersonationRegistryListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsSendingDomainRestrictionsCreateError = CloudflareOpError;
+export type CreateSettingSendingDomainRestrictionError = CloudflareOpError;
 /** Creates a new sending domain restriction to enforce TLS requirements for a domain. Emails without TLS from this domain will be dropped unless the subdomain is in the exclude list. */
-export const settingsSendingDomainRestrictionsCreate: API.OperationMethod<
-  SettingsSendingDomainRestrictionsCreateRequest,
-  SettingsSendingDomainRestrictionsCreateResponse,
-  SettingsSendingDomainRestrictionsCreateError,
+export const createSettingSendingDomainRestriction: API.OperationMethod<
+  CreateSettingSendingDomainRestrictionRequest,
+  CreateSettingSendingDomainRestrictionResponse,
+  CreateSettingSendingDomainRestrictionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsSendingDomainRestrictionsCreateRequest,
-  output: SettingsSendingDomainRestrictionsCreateResponse,
+  input: CreateSettingSendingDomainRestrictionRequest,
+  output: CreateSettingSendingDomainRestrictionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsSendingDomainRestrictionsDeleteError = CloudflareOpError;
-/** Removes a sending domain restriction. After deletion, TLS will no longer be enforced for emails from this domain. */
-export const settingsSendingDomainRestrictionsDelete: API.OperationMethod<
-  SettingsSendingDomainRestrictionsDeleteRequest,
-  SettingsSendingDomainRestrictionsDeleteResponse,
-  SettingsSendingDomainRestrictionsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsSendingDomainRestrictionsDeleteRequest,
-  output: SettingsSendingDomainRestrictionsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsSendingDomainRestrictionsEditError = CloudflareOpError;
-/** Updates an existing sending domain restriction. Only provided fields will be modified. Changes affect which domains require TLS and which subdomains are excluded. */
-export const settingsSendingDomainRestrictionsEdit: API.OperationMethod<
-  SettingsSendingDomainRestrictionsEditRequest,
-  SettingsSendingDomainRestrictionsEditResponse,
-  SettingsSendingDomainRestrictionsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsSendingDomainRestrictionsEditRequest,
-  output: SettingsSendingDomainRestrictionsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsSendingDomainRestrictionsGetError = CloudflareOpError;
-/** Retrieves details for a specific sending domain restriction including the domain requiring TLS and any excluded subdomains exempt from the TLS requirement. */
-export const settingsSendingDomainRestrictionsGet: API.OperationMethod<
-  SettingsSendingDomainRestrictionsGetRequest,
-  SettingsSendingDomainRestrictionsGetResponse,
-  SettingsSendingDomainRestrictionsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsSendingDomainRestrictionsGetRequest,
-  output: SettingsSendingDomainRestrictionsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsSendingDomainRestrictionsListError = CloudflareOpError;
-/** Returns a paginated list of sending domain restrictions. These restrictions enforce TLS requirements for emails from specific domains. Mail without TLS from restricted domains will be dropped unless the subdomain is in the exclude list. Supports sorting and searching. */
-export const settingsSendingDomainRestrictionsList: API.OperationMethod<
-  SettingsSendingDomainRestrictionsListRequest,
-  SettingsSendingDomainRestrictionsListResponse,
-  SettingsSendingDomainRestrictionsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsSendingDomainRestrictionsListRequest,
-  output: SettingsSendingDomainRestrictionsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsTrustedDomainsCreateError = CloudflareOpError;
+export type CreateSettingTrustedDomainError =
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a new trusted domain pattern. Use for partner domains or approved senders that should bypass recent domain registration and similarity checks. Configure whether it prevents recent domain or spoof dispositions. */
-export const settingsTrustedDomainsCreate: API.OperationMethod<
-  SettingsTrustedDomainsCreateRequest,
-  SettingsTrustedDomainsCreateResponse,
-  SettingsTrustedDomainsCreateError,
+export const createSettingTrustedDomain: API.OperationMethod<
+  CreateSettingTrustedDomainRequest,
+  CreateSettingTrustedDomainResponse,
+  CreateSettingTrustedDomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsTrustedDomainsCreateRequest,
-  output: SettingsTrustedDomainsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateSettingTrustedDomainRequest,
+  output: CreateSettingTrustedDomainResponse,
+  errors: [
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsTrustedDomainsDeleteError = CloudflareOpError;
-/** Removes a trusted domain pattern. After deletion, emails from this domain will be subject to normal recent domain and similarity checks. */
-export const settingsTrustedDomainsDelete: API.OperationMethod<
-  SettingsTrustedDomainsDeleteRequest,
-  SettingsTrustedDomainsDeleteResponse,
-  SettingsTrustedDomainsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsTrustedDomainsDeleteRequest,
-  output: SettingsTrustedDomainsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsTrustedDomainsEditError = CloudflareOpError;
-/** Updates an existing trusted domain pattern. Only provided fields will be modified. Changes take effect for new emails matching the pattern. */
-export const settingsTrustedDomainsEdit: API.OperationMethod<
-  SettingsTrustedDomainsEditRequest,
-  SettingsTrustedDomainsEditResponse,
-  SettingsTrustedDomainsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsTrustedDomainsEditRequest,
-  output: SettingsTrustedDomainsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsTrustedDomainsGetError = CloudflareOpError;
-/** Retrieves details for a specific trusted domain pattern including its pattern value, whether it uses regex matching, and which detection types it affects. */
-export const settingsTrustedDomainsGet: API.OperationMethod<
-  SettingsTrustedDomainsGetRequest,
-  SettingsTrustedDomainsGetResponse,
-  SettingsTrustedDomainsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsTrustedDomainsGetRequest,
-  output: SettingsTrustedDomainsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsTrustedDomainsListError = CloudflareOpError;
-/** Returns a paginated list of trusted domain patterns. Trusted domains prevent false positives for recently registered domains and lookalike domain detections. Patterns can use regular expressions for flexible matching. */
-export const settingsTrustedDomainsList: API.OperationMethod<
-  SettingsTrustedDomainsListRequest,
-  SettingsTrustedDomainsListResponse,
-  SettingsTrustedDomainsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SettingsTrustedDomainsListRequest,
-  output: SettingsTrustedDomainsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SettingsUrlIgnorePatternsCreateError = CloudflareOpError;
+export type CreateSettingUrlIgnorePatternError = CloudflareOpError;
 /** Creates a new URL rewrite ignore pattern. URLs matching this pattern will not be rewritten. */
-export const settingsUrlIgnorePatternsCreate: API.OperationMethod<
-  SettingsUrlIgnorePatternsCreateRequest,
-  SettingsUrlIgnorePatternsCreateResponse,
-  SettingsUrlIgnorePatternsCreateError,
+export const createSettingUrlIgnorePattern: API.OperationMethod<
+  CreateSettingUrlIgnorePatternRequest,
+  CreateSettingUrlIgnorePatternResponse,
+  CreateSettingUrlIgnorePatternError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsUrlIgnorePatternsCreateRequest,
-  output: SettingsUrlIgnorePatternsCreateResponse,
+  input: CreateSettingUrlIgnorePatternRequest,
+  output: CreateSettingUrlIgnorePatternResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsUrlIgnorePatternsDeleteError = CloudflareOpError;
+export type DeleteInvestigateBulkError = CloudflareOpError;
+/** Deletes the job, removing it from all list and detail endpoints. Only jobs in a terminal state (`COMPLETED`, `CANCELLED`, `FAILED`, or `SKIPPED`) can be deleted. To stop an in-progress job without removing it, use the cancel endpoint instead. */
+export const deleteInvestigateBulk: API.OperationMethod<
+  DeleteInvestigateBulkRequest,
+  DeleteInvestigateBulkResponse,
+  DeleteInvestigateBulkError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteInvestigateBulkRequest,
+  output: DeleteInvestigateBulkResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSettingAllowPolicyError =
+  | AllowPolicyNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Removes an allow policy. After deletion, emails matching this pattern will be subject to normal security scanning and disposition actions. */
+export const deleteSettingAllowPolicy: API.OperationMethod<
+  DeleteSettingAllowPolicyRequest,
+  DeleteSettingAllowPolicyResponse,
+  DeleteSettingAllowPolicyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSettingAllowPolicyRequest,
+  output: DeleteSettingAllowPolicyResponse,
+  errors: [
+    AllowPolicyNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSettingBlockSenderError =
+  | BlockSenderNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Removes a blocked sender pattern. After deletion, emails from this sender will no longer be automatically blocked based on this rule. */
+export const deleteSettingBlockSender: API.OperationMethod<
+  DeleteSettingBlockSenderRequest,
+  DeleteSettingBlockSenderResponse,
+  DeleteSettingBlockSenderError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSettingBlockSenderRequest,
+  output: DeleteSettingBlockSenderResponse,
+  errors: [
+    BlockSenderNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSettingDomainError =
+  | EmailSecurityDomainNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Removes email security protection from a domain. After deletion, emails for this domain will no longer be processed by Email Security. This action cannot be undone. */
+export const deleteSettingDomain: API.OperationMethod<
+  DeleteSettingDomainRequest,
+  DeleteSettingDomainResponse,
+  DeleteSettingDomainError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSettingDomainRequest,
+  output: DeleteSettingDomainResponse,
+  errors: [
+    EmailSecurityDomainNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSettingImpersonationRegistryError =
+  | ImpersonationRegistryEntryNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Removes an entry from the impersonation registry. After deletion, this identity will no longer be protected from impersonation. */
+export const deleteSettingImpersonationRegistry: API.OperationMethod<
+  DeleteSettingImpersonationRegistryRequest,
+  DeleteSettingImpersonationRegistryResponse,
+  DeleteSettingImpersonationRegistryError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSettingImpersonationRegistryRequest,
+  output: DeleteSettingImpersonationRegistryResponse,
+  errors: [
+    ImpersonationRegistryEntryNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSettingSendingDomainRestrictionError = CloudflareOpError;
+/** Removes a sending domain restriction. After deletion, TLS will no longer be enforced for emails from this domain. */
+export const deleteSettingSendingDomainRestriction: API.OperationMethod<
+  DeleteSettingSendingDomainRestrictionRequest,
+  DeleteSettingSendingDomainRestrictionResponse,
+  DeleteSettingSendingDomainRestrictionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSettingSendingDomainRestrictionRequest,
+  output: DeleteSettingSendingDomainRestrictionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSettingTrustedDomainError =
+  | TrustedDomainNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Removes a trusted domain pattern. After deletion, emails from this domain will be subject to normal recent domain and similarity checks. */
+export const deleteSettingTrustedDomain: API.OperationMethod<
+  DeleteSettingTrustedDomainRequest,
+  DeleteSettingTrustedDomainResponse,
+  DeleteSettingTrustedDomainError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSettingTrustedDomainRequest,
+  output: DeleteSettingTrustedDomainResponse,
+  errors: [
+    TrustedDomainNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSettingUrlIgnorePatternError = CloudflareOpError;
 /** Removes a URL rewrite ignore pattern. After deletion, URLs matching this pattern will be rewritten again. */
-export const settingsUrlIgnorePatternsDelete: API.OperationMethod<
-  SettingsUrlIgnorePatternsDeleteRequest,
-  SettingsUrlIgnorePatternsDeleteResponse,
-  SettingsUrlIgnorePatternsDeleteError,
+export const deleteSettingUrlIgnorePattern: API.OperationMethod<
+  DeleteSettingUrlIgnorePatternRequest,
+  DeleteSettingUrlIgnorePatternResponse,
+  DeleteSettingUrlIgnorePatternError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsUrlIgnorePatternsDeleteRequest,
-  output: SettingsUrlIgnorePatternsDeleteResponse,
+  input: DeleteSettingUrlIgnorePatternRequest,
+  output: DeleteSettingUrlIgnorePatternResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsUrlIgnorePatternsEditError = CloudflareOpError;
-/** Updates an existing URL rewrite ignore pattern. Only provided fields will be modified. */
-export const settingsUrlIgnorePatternsEdit: API.OperationMethod<
-  SettingsUrlIgnorePatternsEditRequest,
-  SettingsUrlIgnorePatternsEditResponse,
-  SettingsUrlIgnorePatternsEditError,
+export type GetInvestigateError = CloudflareOpError;
+/** Retrieves comprehensive details for a specific email message including headers, recipients, sender information, and current quarantine status. Use the investigate_id from search results to fetch detailed information. */
+export const getInvestigate: API.OperationMethod<
+  GetInvestigateRequest,
+  GetInvestigateResponse,
+  GetInvestigateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsUrlIgnorePatternsEditRequest,
-  output: SettingsUrlIgnorePatternsEditResponse,
+  input: GetInvestigateRequest,
+  output: GetInvestigateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsUrlIgnorePatternsGetError = CloudflareOpError;
+export type GetInvestigateBulkError = CloudflareOpError;
+/** Get bulk action job details */
+export const getInvestigateBulk: API.OperationMethod<
+  GetInvestigateBulkRequest,
+  GetInvestigateBulkResponse,
+  GetInvestigateBulkError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetInvestigateBulkRequest,
+  output: GetInvestigateBulkResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetInvestigateDetectionError = CloudflareOpError;
+/** Returns detection details such as threat categories and sender information for non-benign messages. */
+export const getInvestigateDetection: API.OperationMethod<
+  GetInvestigateDetectionRequest,
+  GetInvestigateDetectionResponse,
+  GetInvestigateDetectionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetInvestigateDetectionRequest,
+  output: GetInvestigateDetectionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetInvestigatePreviewError = CloudflareOpError;
+/** Returns a preview of the message body as a base64 encoded PNG image for non-benign messages. */
+export const getInvestigatePreview: API.OperationMethod<
+  GetInvestigatePreviewRequest,
+  GetInvestigatePreviewResponse,
+  GetInvestigatePreviewError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetInvestigatePreviewRequest,
+  output: GetInvestigatePreviewResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetInvestigateRawError = CloudflareOpError;
+/** Returns the raw eml of any non-benign message. */
+export const getInvestigateRaw: API.OperationMethod<
+  GetInvestigateRawRequest,
+  GetInvestigateRawResponse,
+  GetInvestigateRawError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetInvestigateRawRequest,
+  output: GetInvestigateRawResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetInvestigateTraceError = CloudflareOpError;
+/** Retrieves delivery and processing trace information for an email message. Shows the delivery path, retraction history, and move operations performed on the message. Useful for debugging delivery issues. */
+export const getInvestigateTrace: API.OperationMethod<
+  GetInvestigateTraceRequest,
+  GetInvestigateTraceResponse,
+  GetInvestigateTraceError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetInvestigateTraceRequest,
+  output: GetInvestigateTraceResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSettingAllowPolicyError =
+  | AllowPolicyNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Retrieves details for a specific allow policy including its pattern, dispositions that are exempted, and whether it applies to all detections. */
+export const getSettingAllowPolicy: API.OperationMethod<
+  GetSettingAllowPolicyRequest,
+  GetSettingAllowPolicyResponse,
+  GetSettingAllowPolicyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSettingAllowPolicyRequest,
+  output: GetSettingAllowPolicyResponse,
+  errors: [
+    AllowPolicyNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSettingBlockSenderError =
+  | BlockSenderNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Retrieves details for a specific blocked sender pattern including its pattern type, value, and metadata. */
+export const getSettingBlockSender: API.OperationMethod<
+  GetSettingBlockSenderRequest,
+  GetSettingBlockSenderResponse,
+  GetSettingBlockSenderError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSettingBlockSenderRequest,
+  output: GetSettingBlockSenderResponse,
+  errors: [
+    BlockSenderNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSettingDomainError =
+  | EmailSecurityDomainNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Retrieves detailed information for a specific protected email domain including its delivery configuration, SPF/DMARC status, and authorization state. */
+export const getSettingDomain: API.OperationMethod<
+  GetSettingDomainRequest,
+  GetSettingDomainResponse,
+  GetSettingDomainError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSettingDomainRequest,
+  output: GetSettingDomainResponse,
+  errors: [
+    EmailSecurityDomainNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSettingImpersonationRegistryError =
+  | ImpersonationRegistryEntryNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Retrieves details for a specific impersonation registry entry including the protected identity, email pattern, and synchronization source if directory-synced. */
+export const getSettingImpersonationRegistry: API.OperationMethod<
+  GetSettingImpersonationRegistryRequest,
+  GetSettingImpersonationRegistryResponse,
+  GetSettingImpersonationRegistryError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSettingImpersonationRegistryRequest,
+  output: GetSettingImpersonationRegistryResponse,
+  errors: [
+    ImpersonationRegistryEntryNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSettingSendingDomainRestrictionError = CloudflareOpError;
+/** Retrieves details for a specific sending domain restriction including the domain requiring TLS and any excluded subdomains exempt from the TLS requirement. */
+export const getSettingSendingDomainRestriction: API.OperationMethod<
+  GetSettingSendingDomainRestrictionRequest,
+  GetSettingSendingDomainRestrictionResponse,
+  GetSettingSendingDomainRestrictionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSettingSendingDomainRestrictionRequest,
+  output: GetSettingSendingDomainRestrictionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSettingTrustedDomainError =
+  | TrustedDomainNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Retrieves details for a specific trusted domain pattern including its pattern value, whether it uses regex matching, and which detection types it affects. */
+export const getSettingTrustedDomain: API.OperationMethod<
+  GetSettingTrustedDomainRequest,
+  GetSettingTrustedDomainResponse,
+  GetSettingTrustedDomainError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSettingTrustedDomainRequest,
+  output: GetSettingTrustedDomainResponse,
+  errors: [
+    TrustedDomainNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSettingUrlIgnorePatternError = CloudflareOpError;
 /** Returns a single URL rewrite ignore pattern by its identifier. */
-export const settingsUrlIgnorePatternsGet: API.OperationMethod<
-  SettingsUrlIgnorePatternsGetRequest,
-  SettingsUrlIgnorePatternsGetResponse,
-  SettingsUrlIgnorePatternsGetError,
+export const getSettingUrlIgnorePattern: API.OperationMethod<
+  GetSettingUrlIgnorePatternRequest,
+  GetSettingUrlIgnorePatternResponse,
+  GetSettingUrlIgnorePatternError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsUrlIgnorePatternsGetRequest,
-  output: SettingsUrlIgnorePatternsGetResponse,
+  input: GetSettingUrlIgnorePatternRequest,
+  output: GetSettingUrlIgnorePatternResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SettingsUrlIgnorePatternsListError = CloudflareOpError;
+export type ListInvestigateBulkMessagesError = CloudflareOpError;
+/** List messages for a bulk action job */
+export const listInvestigateBulkMessages: API.OperationMethod<
+  ListInvestigateBulkMessagesRequest,
+  ListInvestigateBulkMessagesResponse,
+  ListInvestigateBulkMessagesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListInvestigateBulkMessagesRequest,
+  output: ListInvestigateBulkMessagesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListInvestigateBulksError = CloudflareOpError;
+/** List bulk action jobs */
+export const listInvestigateBulks: API.OperationMethod<
+  ListInvestigateBulksRequest,
+  ListInvestigateBulksResponse,
+  ListInvestigateBulksError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListInvestigateBulksRequest,
+  output: ListInvestigateBulksResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListInvestigatesError = CloudflareOpError;
+/** Returns information for each email that matches the search parameter(s). */
+export const listInvestigates: API.OperationMethod<
+  ListInvestigatesRequest,
+  ListInvestigatesResponse,
+  ListInvestigatesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListInvestigatesRequest,
+  output: ListInvestigatesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListPhishguardReportsError = CloudflareOpError;
+/** Retrieves PhishGuard security alert reports for a specified date range. Reports include detected threats, dispositions, and contextual information. Use for security monitoring and threat analysis. */
+export const listPhishguardReports: API.OperationMethod<
+  ListPhishguardReportsRequest,
+  ListPhishguardReportsResponse,
+  ListPhishguardReportsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPhishguardReportsRequest,
+  output: ListPhishguardReportsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSettingAllowPoliciesError =
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Returns a paginated list of email allow policies. These policies exempt matching emails from security detection, allowing them to bypass disposition actions. Supports filtering by pattern type and policy attributes. */
+export const listSettingAllowPolicies: API.OperationMethod<
+  ListSettingAllowPoliciesRequest,
+  ListSettingAllowPoliciesResponse,
+  ListSettingAllowPoliciesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSettingAllowPoliciesRequest,
+  output: ListSettingAllowPoliciesResponse,
+  errors: [
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSettingBlockSendersError =
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Returns a paginated list of blocked email sender patterns. These patterns prevent emails from matching senders from being delivered. Supports filtering by pattern type and searching across patterns. */
+export const listSettingBlockSenders: API.OperationMethod<
+  ListSettingBlockSendersRequest,
+  ListSettingBlockSendersResponse,
+  ListSettingBlockSendersError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSettingBlockSendersRequest,
+  output: ListSettingBlockSendersResponse,
+  errors: [
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSettingDomainsError =
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Returns a paginated list of email domains protected by Email Security. Includes domain configuration, delivery modes, and authorization status. Supports filtering by delivery mode and integration ID. */
+export const listSettingDomains: API.OperationMethod<
+  ListSettingDomainsRequest,
+  ListSettingDomainsResponse,
+  ListSettingDomainsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSettingDomainsRequest,
+  output: ListSettingDomainsResponse,
+  errors: [
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSettingImpersonationRegistriesError =
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Returns a paginated list of protected identities in the impersonation registry. These entries define identities and email addresses to protect from impersonation attacks. Can be manually added or automatically synced from directory integrations. */
+export const listSettingImpersonationRegistries: API.OperationMethod<
+  ListSettingImpersonationRegistriesRequest,
+  ListSettingImpersonationRegistriesResponse,
+  ListSettingImpersonationRegistriesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSettingImpersonationRegistriesRequest,
+  output: ListSettingImpersonationRegistriesResponse,
+  errors: [
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSettingSendingDomainRestrictionsError = CloudflareOpError;
+/** Returns a paginated list of sending domain restrictions. These restrictions enforce TLS requirements for emails from specific domains. Mail without TLS from restricted domains will be dropped unless the subdomain is in the exclude list. Supports sorting and searching. */
+export const listSettingSendingDomainRestrictions: API.OperationMethod<
+  ListSettingSendingDomainRestrictionsRequest,
+  ListSettingSendingDomainRestrictionsResponse,
+  ListSettingSendingDomainRestrictionsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSettingSendingDomainRestrictionsRequest,
+  output: ListSettingSendingDomainRestrictionsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSettingTrustedDomainsError =
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Returns a paginated list of trusted domain patterns. Trusted domains prevent false positives for recently registered domains and lookalike domain detections. Patterns can use regular expressions for flexible matching. */
+export const listSettingTrustedDomains: API.OperationMethod<
+  ListSettingTrustedDomainsRequest,
+  ListSettingTrustedDomainsResponse,
+  ListSettingTrustedDomainsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSettingTrustedDomainsRequest,
+  output: ListSettingTrustedDomainsResponse,
+  errors: [
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSettingUrlIgnorePatternsError = CloudflareOpError;
 /** Returns a paginated list of URL rewrite ignore patterns for the account. URLs matching these patterns will not be rewritten. */
-export const settingsUrlIgnorePatternsList: API.OperationMethod<
-  SettingsUrlIgnorePatternsListRequest,
-  SettingsUrlIgnorePatternsListResponse,
-  SettingsUrlIgnorePatternsListError,
+export const listSettingUrlIgnorePatterns: API.OperationMethod<
+  ListSettingUrlIgnorePatternsRequest,
+  ListSettingUrlIgnorePatternsResponse,
+  ListSettingUrlIgnorePatternsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SettingsUrlIgnorePatternsListRequest,
-  output: SettingsUrlIgnorePatternsListResponse,
+  input: ListSettingUrlIgnorePatternsRequest,
+  output: ListSettingUrlIgnorePatternsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SubmissionsListError = CloudflareOpError;
+export type ListSubmissionsError = CloudflareOpError;
 /** Returns information for submissions made to reclassify emails. Shows the status, outcome, and disposition changes for reclassification requests made by users or the security team. Useful for tracking false positive/negative reports. */
-export const submissionsList: API.OperationMethod<
-  SubmissionsListRequest,
-  SubmissionsListResponse,
-  SubmissionsListError,
+export const listSubmissions: API.OperationMethod<
+  ListSubmissionsRequest,
+  ListSubmissionsResponse,
+  ListSubmissionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubmissionsListRequest,
-  output: SubmissionsListResponse,
+  input: ListSubmissionsRequest,
+  output: ListSubmissionsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSettingAllowPolicyError =
+  | AllowPolicyNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Updates an existing allow policy. Only provided fields will be modified. Changes take effect for new emails matching the pattern. */
+export const patchSettingAllowPolicy: API.OperationMethod<
+  PatchSettingAllowPolicyRequest,
+  PatchSettingAllowPolicyResponse,
+  PatchSettingAllowPolicyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSettingAllowPolicyRequest,
+  output: PatchSettingAllowPolicyResponse,
+  errors: [
+    AllowPolicyNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSettingBlockSenderError =
+  | BlockSenderNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Updates an existing blocked sender pattern. Only provided fields will be modified. The pattern will continue blocking emails until deleted. */
+export const patchSettingBlockSender: API.OperationMethod<
+  PatchSettingBlockSenderRequest,
+  PatchSettingBlockSenderResponse,
+  PatchSettingBlockSenderError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSettingBlockSenderRequest,
+  output: PatchSettingBlockSenderResponse,
+  errors: [
+    BlockSenderNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSettingDomainError =
+  | EmailSecurityDomainNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Updates configuration for a protected email domain. Only provided fields will be modified. Changes affect delivery mode, security settings, and regional processing. */
+export const patchSettingDomain: API.OperationMethod<
+  PatchSettingDomainRequest,
+  PatchSettingDomainResponse,
+  PatchSettingDomainError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSettingDomainRequest,
+  output: PatchSettingDomainResponse,
+  errors: [
+    EmailSecurityDomainNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSettingImpersonationRegistryError =
+  | ImpersonationRegistryEntryNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Updates an existing impersonation registry entry. Only provided fields will be modified. Directory-synced entries can't be updated. */
+export const patchSettingImpersonationRegistry: API.OperationMethod<
+  PatchSettingImpersonationRegistryRequest,
+  PatchSettingImpersonationRegistryResponse,
+  PatchSettingImpersonationRegistryError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSettingImpersonationRegistryRequest,
+  output: PatchSettingImpersonationRegistryResponse,
+  errors: [
+    ImpersonationRegistryEntryNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSettingSendingDomainRestrictionError = CloudflareOpError;
+/** Updates an existing sending domain restriction. Only provided fields will be modified. Changes affect which domains require TLS and which subdomains are excluded. */
+export const patchSettingSendingDomainRestriction: API.OperationMethod<
+  PatchSettingSendingDomainRestrictionRequest,
+  PatchSettingSendingDomainRestrictionResponse,
+  PatchSettingSendingDomainRestrictionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSettingSendingDomainRestrictionRequest,
+  output: PatchSettingSendingDomainRestrictionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSettingTrustedDomainError =
+  | TrustedDomainNotFound
+  | EmailSecurityNotEntitled
+  | Forbidden
+  | CloudflareOpError;
+/** Updates an existing trusted domain pattern. Only provided fields will be modified. Changes take effect for new emails matching the pattern. */
+export const patchSettingTrustedDomain: API.OperationMethod<
+  PatchSettingTrustedDomainRequest,
+  PatchSettingTrustedDomainResponse,
+  PatchSettingTrustedDomainError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSettingTrustedDomainRequest,
+  output: PatchSettingTrustedDomainResponse,
+  errors: [
+    TrustedDomainNotFound,
+    EmailSecurityNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSettingUrlIgnorePatternError = CloudflareOpError;
+/** Updates an existing URL rewrite ignore pattern. Only provided fields will be modified. */
+export const patchSettingUrlIgnorePattern: API.OperationMethod<
+  PatchSettingUrlIgnorePatternRequest,
+  PatchSettingUrlIgnorePatternResponse,
+  PatchSettingUrlIgnorePatternError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSettingUrlIgnorePatternRequest,
+  output: PatchSettingUrlIgnorePatternResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

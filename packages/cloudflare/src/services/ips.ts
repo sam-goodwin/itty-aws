@@ -9,22 +9,22 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface ListRequest {
+export interface ListIpsRequest {
   /** Specified as `jdcloud` to list IPs used by JD Cloud data centers. */
   networks?: string;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListIpsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     networks: S.optional(S.String.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/ips", code: 200 })),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({ identifier: "ListIpsRequest" }) as any as S.Schema<ListIpsRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ListResponse {
+export interface ListIpsResponse {
   PublicIPIPsObjectEtagIpv4CidrsIpv6Cidrs__: unknown;
   PublicIPIPsJDCloudObjectEtagIpv4CidrsIpv6CidrsJdcloudCidrs__: unknown;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListIpsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     PublicIPIPsObjectEtagIpv4CidrsIpv6Cidrs__: S.Unknown.pipe(
       T.Body("PublicIPIPs object { etag, ipv4_cidrs, ipv6_cidrs }"),
@@ -36,18 +36,20 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
         ),
       ),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListIpsResponse",
+}) as any as S.Schema<ListIpsResponse>;
 
-export type ListError = CloudflareOpError;
+export type ListIpsError = CloudflareOpError;
 /** Get IPs used on the Cloudflare/JD Cloud network, see https://www.cloudflare.com/ips for Cloudflare IPs or https://developers.cloudflare.com/china-network/reference/infrastructure/ for JD Cloud IPs. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
+export const listIps: API.OperationMethod<
+  ListIpsRequest,
+  ListIpsResponse,
+  ListIpsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
+  input: ListIpsRequest,
+  output: ListIpsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

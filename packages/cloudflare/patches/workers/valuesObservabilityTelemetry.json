@@ -1,0 +1,62 @@
+{
+  "description": "Align workers#ObservabilityTelemetryValues with distilled cloudflare/workers valuesObservabilityTelemetry",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ObservabilityTelemetryValues",
+      "path": "/shapes/com.cloudflare.workers#ValuesObservabilityTelemetry"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ObservabilityTelemetryValuesRequest",
+      "path": "/shapes/com.cloudflare.workers#ValuesObservabilityTelemetryRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#ValuesObservabilityTelemetry/input/target",
+      "value": "com.cloudflare.workers#ValuesObservabilityTelemetryRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.workers#ObservabilityTelemetryValuesResponse",
+      "path": "/shapes/com.cloudflare.workers#ValuesObservabilityTelemetryResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.workers#ValuesObservabilityTelemetry/output/target",
+      "value": "com.cloudflare.workers#ValuesObservabilityTelemetryResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#InvalidRoute",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.workers#ValuesObservabilityTelemetry/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.workers#InvalidRoute"
+        }
+      ]
+    }
+  ]
+}

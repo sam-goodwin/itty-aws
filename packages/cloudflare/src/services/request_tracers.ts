@@ -95,7 +95,7 @@ export const TracesCreateRequestHeadersMap = /*@__PURE__*/ S.Record(
   S.Unknown,
 ) as any as S.Schema<TracesCreateRequestHeadersMap>;
 
-export interface TracesCreateRequest {
+export interface CreateTraceRequest {
   /** Identifier. */
   accountId: string;
   /** HTTP Method of tracing request */
@@ -114,7 +114,7 @@ export interface TracesCreateRequest {
   /** Skip sending the request to the Origin server after all rules evaluation */
   skipResponse?: boolean;
 }
-export const TracesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateTraceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     method: S.String,
@@ -133,34 +133,34 @@ export const TracesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "TracesCreateRequest",
-}) as any as S.Schema<TracesCreateRequest>;
+  identifier: "CreateTraceRequest",
+}) as any as S.Schema<CreateTraceRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TracesCreateResponse {
+export interface CreateTraceResponse {
   /** HTTP Status code of zone response */
   statusCode?: number;
   trace?: unknown;
 }
-export const TracesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateTraceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
     trace: S.optional(S.Unknown),
   }),
 ).annotate({
-  identifier: "TracesCreateResponse",
-}) as any as S.Schema<TracesCreateResponse>;
+  identifier: "CreateTraceResponse",
+}) as any as S.Schema<CreateTraceResponse>;
 
-export type TracesCreateError = CloudflareOpError;
+export type CreateTraceError = CloudflareOpError;
 /** Request Trace */
-export const tracesCreate: API.OperationMethod<
-  TracesCreateRequest,
-  TracesCreateResponse,
-  TracesCreateError,
+export const createTrace: API.OperationMethod<
+  CreateTraceRequest,
+  CreateTraceResponse,
+  CreateTraceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TracesCreateRequest,
-  output: TracesCreateResponse,
+  input: CreateTraceRequest,
+  output: CreateTraceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

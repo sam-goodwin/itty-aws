@@ -9,716 +9,113 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface BillingCreditBalanceRequest {
-  accountId: string;
-}
-export const BillingCreditBalanceRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/billing/credit-balance",
-      code: 200,
-    }),
+export class AiGatewaySpendingLimitDeprecated extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AiGatewaySpendingLimitDeprecated>()(
+    "AiGatewaySpendingLimitDeprecated",
+    {
+      code: S.Number,
+      message: S.String,
+    },
   ),
-).annotate({
-  identifier: "BillingCreditBalanceRequest",
-}) as any as S.Schema<BillingCreditBalanceRequest>;
+  [{ message: { includes: "spending limits are deprecated" } }],
+) {}
 
-export interface BillingCreditBalanceResponsePaymentMethod {
-  brand?: string;
-  last4?: string;
-}
-export const BillingCreditBalanceResponsePaymentMethod =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      brand: S.optional(S.String),
-      last4: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BillingCreditBalanceResponsePaymentMethod",
-  }) as any as S.Schema<BillingCreditBalanceResponsePaymentMethod>;
-
-export interface BillingCreditBalanceResponseTopupConfig {
-  amount: number;
-  disabledReason: string;
-  error: string;
-  lastFailedAt: number;
-  threshold: number;
-}
-export const BillingCreditBalanceResponseTopupConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      amount: S.Number,
-      disabledReason: S.String,
-      error: S.String,
-      lastFailedAt: S.Number,
-      threshold: S.Number,
-    }),
-).annotate({
-  identifier: "BillingCreditBalanceResponseTopupConfig",
-}) as any as S.Schema<BillingCreditBalanceResponseTopupConfig>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BillingCreditBalanceResponse {
-  balance: number;
-  hasDefaultPaymentMethod: boolean;
-  paymentMethod: BillingCreditBalanceResponsePaymentMethod;
-  topupConfig: BillingCreditBalanceResponseTopupConfig;
-  firstTopupSuccess?: boolean;
-}
-export const BillingCreditBalanceResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    balance: S.Number,
-    hasDefaultPaymentMethod: S.Boolean.pipe(
-      T.Body("has_default_payment_method"),
-    ),
-    paymentMethod: BillingCreditBalanceResponsePaymentMethod.pipe(
-      T.Body("payment_method"),
-    ),
-    topupConfig: BillingCreditBalanceResponseTopupConfig.pipe(
-      T.Body("topup_config"),
-    ),
-    firstTopupSuccess: S.optional(
-      S.Boolean.pipe(T.Body("first_topup_success")),
-    ),
+export class DatasetNameAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<DatasetNameAlreadyExists>()("DatasetNameAlreadyExists", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "BillingCreditBalanceResponse",
-}) as any as S.Schema<BillingCreditBalanceResponse>;
+  [{ status: 400, message: { includes: "already exists" } }],
+) {}
 
-export type BillingInvoiceHistoryRequestType =
-  | "auto"
-  | "all"
-  | "manual"
-  | (string & {});
-export const BillingInvoiceHistoryRequestType = /*@__PURE__*/ S.String;
+export class DatasetNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<DatasetNotFound>()("DatasetNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7002 }],
+) {}
 
-export interface BillingInvoiceHistoryRequest {
-  accountId: string;
-  /** Filter invoice type: auto, manual, or all. */
-  type?: BillingInvoiceHistoryRequestType;
-}
-export const BillingInvoiceHistoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    type: S.optional(BillingInvoiceHistoryRequestType.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/billing/invoice-history",
-      code: 200,
-    }),
+export class EvaluationNameAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<EvaluationNameAlreadyExists>()(
+    "EvaluationNameAlreadyExists",
+    {
+      code: S.Number,
+      message: S.String,
+    },
   ),
-).annotate({
-  identifier: "BillingInvoiceHistoryRequest",
-}) as any as S.Schema<BillingInvoiceHistoryRequest>;
+  [{ status: 400, message: { includes: "already exists" } }],
+) {}
 
-export interface BillingInvoiceHistoryResponseInvoicesItem {
-  amountDue: number;
-  amountPaid: number;
-  amountRemaining: number;
-  currency: string;
-  id?: string;
-  attemptCount?: number;
-  attempted?: boolean;
-  autoAdvance?: boolean;
-  created?: number;
-  createdBy?: string;
-  description?: string;
-  invoiceOrigin?: string;
-  invoicePdf?: string;
-  status?: string;
-}
-export const BillingInvoiceHistoryResponseInvoicesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      amountDue: S.Number.pipe(T.Body("amount_due")),
-      amountPaid: S.Number.pipe(T.Body("amount_paid")),
-      amountRemaining: S.Number.pipe(T.Body("amount_remaining")),
-      currency: S.String,
-      id: S.optional(S.String),
-      attemptCount: S.optional(S.Number.pipe(T.Body("attempt_count"))),
-      attempted: S.optional(S.Boolean),
-      autoAdvance: S.optional(S.Boolean.pipe(T.Body("auto_advance"))),
-      created: S.optional(S.Number),
-      createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
-      description: S.optional(S.String),
-      invoiceOrigin: S.optional(S.String.pipe(T.Body("invoice_origin"))),
-      invoicePdf: S.optional(S.String.pipe(T.Body("invoice_pdf"))),
-      status: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "BillingInvoiceHistoryResponseInvoicesItem",
-  }) as any as S.Schema<BillingInvoiceHistoryResponseInvoicesItem>;
-
-export type BillingInvoiceHistoryResponseInvoicesList =
-  BillingInvoiceHistoryResponseInvoicesItem[];
-export const BillingInvoiceHistoryResponseInvoicesList = /*@__PURE__*/ S.Array(
-  BillingInvoiceHistoryResponseInvoicesItem,
-) as any as S.Schema<BillingInvoiceHistoryResponseInvoicesList>;
-
-export interface BillingInvoiceHistoryResponsePagination {
-  hasMore: boolean;
-  page: number;
-  perPage: number;
-  totalCount: number;
-}
-export const BillingInvoiceHistoryResponsePagination = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      hasMore: S.Boolean.pipe(T.Body("has_more")),
-      page: S.Number,
-      perPage: S.Number.pipe(T.Body("per_page")),
-      totalCount: S.Number.pipe(T.Body("total_count")),
-    }),
-).annotate({
-  identifier: "BillingInvoiceHistoryResponsePagination",
-}) as any as S.Schema<BillingInvoiceHistoryResponsePagination>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BillingInvoiceHistoryResponse {
-  invoices: BillingInvoiceHistoryResponseInvoicesList;
-  pagination: BillingInvoiceHistoryResponsePagination;
-}
-export const BillingInvoiceHistoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    invoices: BillingInvoiceHistoryResponseInvoicesList,
-    pagination: BillingInvoiceHistoryResponsePagination,
+export class EvaluationNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<EvaluationNotFound>()("EvaluationNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "BillingInvoiceHistoryResponse",
-}) as any as S.Schema<BillingInvoiceHistoryResponse>;
+  [{ code: 7002 }],
+) {}
 
-export interface BillingInvoicePreviewRequest {
-  accountId: string;
-}
-export const BillingInvoicePreviewRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/billing/invoice-preview",
-      code: 200,
-    }),
+export class GatewayAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<GatewayAlreadyExists>()("GatewayAlreadyExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7001 }, { status: 504 }],
+) {}
+
+export class GatewayNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<GatewayNotFound>()("GatewayNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7002 }],
+) {}
+
+export class NoManualTopup extends T.applyErrorMatchers(
+  S.TaggedErrorClass<NoManualTopup>()("NoManualTopup", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1000, message: { includes: "NO_MANUAL_TOPUP" } }],
+) {}
+
+export class ProviderConfigAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<ProviderConfigAlreadyExists>()(
+    "ProviderConfigAlreadyExists",
+    {
+      code: S.Number,
+      message: S.String,
+    },
   ),
-).annotate({
-  identifier: "BillingInvoicePreviewRequest",
-}) as any as S.Schema<BillingInvoicePreviewRequest>;
+  [{ code: 7001, message: { includes: "already exists" } }],
+) {}
 
-export interface BillingInvoicePreviewResponseInvoiceLinesItemPeriod {
-  end: number;
-  start: number;
-}
-export const BillingInvoicePreviewResponseInvoiceLinesItemPeriod =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      end: S.Number,
-      start: S.Number,
-    }),
-  ).annotate({
-    identifier: "BillingInvoicePreviewResponseInvoiceLinesItemPeriod",
-  }) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPeriod>;
-
-export interface BillingInvoicePreviewResponseInvoiceLinesItemPricing {
-  unitAmountDecimal: string;
-}
-export const BillingInvoicePreviewResponseInvoiceLinesItemPricing =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      unitAmountDecimal: S.String.pipe(T.Body("unit_amount_decimal")),
-    }),
-  ).annotate({
-    identifier: "BillingInvoicePreviewResponseInvoiceLinesItemPricing",
-  }) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPricing>;
-
-export interface BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem {
-  amount: number;
-  type: string;
-  creditBalanceTransaction?: string;
-  discount?: string;
-}
-export const BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      amount: S.Number,
-      type: S.String,
-      creditBalanceTransaction: S.optional(
-        S.String.pipe(T.Body("credit_balance_transaction")),
-      ),
-      discount: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier:
-      "BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem",
-  }) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem>;
-
-export type BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList =
-  BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem[];
-export const BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList =
-  /*@__PURE__*/ S.Array(
-    BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem,
-  ) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList>;
-
-export interface BillingInvoicePreviewResponseInvoiceLinesItem {
-  amount: number;
-  currency: string;
-  description: string;
-  period: BillingInvoicePreviewResponseInvoiceLinesItemPeriod;
-  pricing: BillingInvoicePreviewResponseInvoiceLinesItemPricing;
-  quantity: number;
-  pretaxCreditAmounts?: BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList;
-}
-export const BillingInvoicePreviewResponseInvoiceLinesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      amount: S.Number,
-      currency: S.String,
-      description: S.String,
-      period: BillingInvoicePreviewResponseInvoiceLinesItemPeriod,
-      pricing: BillingInvoicePreviewResponseInvoiceLinesItemPricing,
-      quantity: S.Number,
-      pretaxCreditAmounts: S.optional(
-        BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList.pipe(
-          T.Body("pretax_credit_amounts"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "BillingInvoicePreviewResponseInvoiceLinesItem",
-  }) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItem>;
-
-export type BillingInvoicePreviewResponseInvoiceLinesList =
-  BillingInvoicePreviewResponseInvoiceLinesItem[];
-export const BillingInvoicePreviewResponseInvoiceLinesList =
-  /*@__PURE__*/ S.Array(
-    BillingInvoicePreviewResponseInvoiceLinesItem,
-  ) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesList>;
-
-export type BillingInvoicePreviewResponseStatus =
-  | "draft"
-  | "open"
-  | "paid"
-  | (string & {});
-export const BillingInvoicePreviewResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BillingInvoicePreviewResponse {
-  id: string;
-  amountDue: number;
-  amountPaid: number;
-  amountRemaining: number;
-  currency: string;
-  invoiceLines: BillingInvoicePreviewResponseInvoiceLinesList;
-  periodEnd: number;
-  periodStart: number;
-  status: BillingInvoicePreviewResponseStatus;
-}
-export const BillingInvoicePreviewResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    amountDue: S.Number.pipe(T.Body("amount_due")),
-    amountPaid: S.Number.pipe(T.Body("amount_paid")),
-    amountRemaining: S.Number.pipe(T.Body("amount_remaining")),
-    currency: S.String,
-    invoiceLines: BillingInvoicePreviewResponseInvoiceLinesList.pipe(
-      T.Body("invoice_lines"),
-    ),
-    periodEnd: S.Number.pipe(T.Body("period_end")),
-    periodStart: S.Number.pipe(T.Body("period_start")),
-    status: BillingInvoicePreviewResponseStatus,
-  }),
-).annotate({
-  identifier: "BillingInvoicePreviewResponse",
-}) as any as S.Schema<BillingInvoicePreviewResponse>;
-
-export type BillingSpendingLimitCreateRequestDuration =
-  | "daily"
-  | "weekly"
-  | "monthly"
-  | (string & {});
-export const BillingSpendingLimitCreateRequestDuration = /*@__PURE__*/ S.String;
-
-export type BillingSpendingLimitCreateRequestStrategy =
-  | "fixed"
-  | "sliding"
-  | (string & {});
-export const BillingSpendingLimitCreateRequestStrategy = /*@__PURE__*/ S.String;
-
-export interface BillingSpendingLimitCreateRequest {
-  accountId: string;
-  /** Spending limit amount in cents (min 100). */
-  amount: number;
-  /** Spending limit duration. */
-  duration: BillingSpendingLimitCreateRequestDuration;
-  /** Spending limit strategy. */
-  strategy: BillingSpendingLimitCreateRequestStrategy;
-}
-export const BillingSpendingLimitCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    amount: S.Number,
-    duration: BillingSpendingLimitCreateRequestDuration,
-    strategy: BillingSpendingLimitCreateRequestStrategy,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
-      code: 200,
-    }),
+export class ProviderConfigSecretNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<ProviderConfigSecretNotFound>()(
+    "ProviderConfigSecretNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
   ),
-).annotate({
-  identifier: "BillingSpendingLimitCreateRequest",
-}) as any as S.Schema<BillingSpendingLimitCreateRequest>;
+  [{ code: 7001, message: { includes: "was not found" } }],
+) {}
 
-export interface BillingSpendingLimitCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const BillingSpendingLimitCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+export class RouteAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<RouteAlreadyExists>()("RouteAlreadyExists", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "BillingSpendingLimitCreateResponse",
-}) as any as S.Schema<BillingSpendingLimitCreateResponse>;
+  [{ code: 7005, message: { includes: "already exists" } }],
+) {}
 
-export interface BillingSpendingLimitDeleteRequest {
-  accountId: string;
-}
-export const BillingSpendingLimitDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "BillingSpendingLimitDeleteRequest",
-}) as any as S.Schema<BillingSpendingLimitDeleteRequest>;
-
-export interface BillingSpendingLimitDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const BillingSpendingLimitDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+export class RouteNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "BillingSpendingLimitDeleteResponse",
-}) as any as S.Schema<BillingSpendingLimitDeleteResponse>;
-
-export interface BillingSpendingLimitGetRequest {
-  accountId: string;
-}
-export const BillingSpendingLimitGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "BillingSpendingLimitGetRequest",
-}) as any as S.Schema<BillingSpendingLimitGetRequest>;
-
-export interface BillingSpendingLimitGetResponseConfig {
-  amount: number;
-  duration: string;
-  strategy: string;
-}
-export const BillingSpendingLimitGetResponseConfig = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      amount: S.Number,
-      duration: S.String,
-      strategy: S.String,
-    }),
-).annotate({
-  identifier: "BillingSpendingLimitGetResponseConfig",
-}) as any as S.Schema<BillingSpendingLimitGetResponseConfig>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BillingSpendingLimitGetResponse {
-  config: BillingSpendingLimitGetResponseConfig;
-  enabled: boolean;
-}
-export const BillingSpendingLimitGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    config: BillingSpendingLimitGetResponseConfig,
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "BillingSpendingLimitGetResponse",
-}) as any as S.Schema<BillingSpendingLimitGetResponse>;
-
-export interface BillingTopupConfigCreateRequest {
-  accountId: string;
-  /** Auto top-up amount in cents (min 1000). */
-  amount: number;
-  /** Balance threshold in cents that triggers auto top-up (min 500). */
-  threshold: number;
-}
-export const BillingTopupConfigCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    amount: S.Number,
-    threshold: S.Number,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/billing/topup/config",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "BillingTopupConfigCreateRequest",
-}) as any as S.Schema<BillingTopupConfigCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BillingTopupConfigCreateResponse {
-  amount: number;
-  threshold: number;
-}
-export const BillingTopupConfigCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.Number,
-    threshold: S.Number,
-  }),
-).annotate({
-  identifier: "BillingTopupConfigCreateResponse",
-}) as any as S.Schema<BillingTopupConfigCreateResponse>;
-
-export interface BillingTopupConfigDeleteRequest {
-  accountId: string;
-}
-export const BillingTopupConfigDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/billing/topup/config",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "BillingTopupConfigDeleteRequest",
-}) as any as S.Schema<BillingTopupConfigDeleteRequest>;
-
-export interface BillingTopupConfigDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const BillingTopupConfigDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "BillingTopupConfigDeleteResponse",
-}) as any as S.Schema<BillingTopupConfigDeleteResponse>;
-
-export interface BillingTopupConfigGetRequest {
-  accountId: string;
-}
-export const BillingTopupConfigGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/billing/topup/config",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "BillingTopupConfigGetRequest",
-}) as any as S.Schema<BillingTopupConfigGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BillingTopupConfigGetResponse {
-  amount: number;
-  disabledReason: string;
-  error: string;
-  lastFailedAt: number;
-  threshold: number;
-}
-export const BillingTopupConfigGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    amount: S.Number,
-    disabledReason: S.String,
-    error: S.String,
-    lastFailedAt: S.Number,
-    threshold: S.Number,
-  }),
-).annotate({
-  identifier: "BillingTopupConfigGetResponse",
-}) as any as S.Schema<BillingTopupConfigGetResponse>;
-
-export interface BillingTopupCreateRequest {
-  accountId: string;
-  /** Top-up amount in cents (min 1000). */
-  amount: number;
-}
-export const BillingTopupCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    amount: S.Number,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/billing/topup",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "BillingTopupCreateRequest",
-}) as any as S.Schema<BillingTopupCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BillingTopupCreateResponse {
-  /** Stripe PaymentIntent client secret. */
-  clientSecret: string;
-  /** Whether the user was already onboarded. */
-  onboarding: boolean;
-  /** Stripe invoice ID. */
-  paymentIntentId: string;
-  /** Card brand (visa, mastercard, etc.). */
-  brand?: string;
-  /** Last 4 digits of card. */
-  last4?: string;
-}
-export const BillingTopupCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    clientSecret: S.String.pipe(T.Body("client_secret")),
-    onboarding: S.Boolean,
-    paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
-    brand: S.optional(S.String),
-    last4: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "BillingTopupCreateResponse",
-}) as any as S.Schema<BillingTopupCreateResponse>;
-
-export interface BillingTopupStatusRequest {
-  accountId: string;
-  /** Stripe invoice ID to check status for. */
-  paymentIntentId: string;
-}
-export const BillingTopupStatusRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/billing/topup/status",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "BillingTopupStatusRequest",
-}) as any as S.Schema<BillingTopupStatusRequest>;
-
-export type BillingTopupStatusResponseStatus =
-  | "completed"
-  | "pending"
-  | (string & {});
-export const BillingTopupStatusResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BillingTopupStatusResponse {
-  paymentIntentId: string;
-  status: BillingTopupStatusResponseStatus;
-}
-export const BillingTopupStatusResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
-    status: BillingTopupStatusResponseStatus,
-  }),
-).annotate({
-  identifier: "BillingTopupStatusResponse",
-}) as any as S.Schema<BillingTopupStatusResponse>;
-
-export type BillingUsageHistoryRequestValueGroupingWindow =
-  | "day"
-  | "hour"
-  | (string & {});
-export const BillingUsageHistoryRequestValueGroupingWindow =
-  /*@__PURE__*/ S.String;
-
-export interface BillingUsageHistoryRequest {
-  accountId: string;
-  /** Grouping window for usage data. */
-  valueGroupingWindow: BillingUsageHistoryRequestValueGroupingWindow;
-  /** End time as Unix timestamp in milliseconds. */
-  endTime?: number;
-  /** Start time as Unix timestamp in milliseconds. */
-  startTime?: number;
-}
-export const BillingUsageHistoryRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    valueGroupingWindow: BillingUsageHistoryRequestValueGroupingWindow.pipe(
-      T.Query("value_grouping_window"),
-    ),
-    endTime: S.optional(S.Number.pipe(T.Query("end_time"))),
-    startTime: S.optional(S.Number.pipe(T.Query("start_time"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/billing/usage-history",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "BillingUsageHistoryRequest",
-}) as any as S.Schema<BillingUsageHistoryRequest>;
-
-export interface BillingUsageHistoryResponseHistoryItem {
-  id: string;
-  aggregatedValue: number;
-  endTime: number;
-  startTime: number;
-}
-export const BillingUsageHistoryResponseHistoryItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      aggregatedValue: S.Number.pipe(T.Body("aggregated_value")),
-      endTime: S.Number.pipe(T.Body("end_time")),
-      startTime: S.Number.pipe(T.Body("start_time")),
-    }),
-).annotate({
-  identifier: "BillingUsageHistoryResponseHistoryItem",
-}) as any as S.Schema<BillingUsageHistoryResponseHistoryItem>;
-
-export type BillingUsageHistoryResponseHistoryList =
-  BillingUsageHistoryResponseHistoryItem[];
-export const BillingUsageHistoryResponseHistoryList = /*@__PURE__*/ S.Array(
-  BillingUsageHistoryResponseHistoryItem,
-) as any as S.Schema<BillingUsageHistoryResponseHistoryList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface BillingUsageHistoryResponse {
-  history: BillingUsageHistoryResponseHistoryList;
-}
-export const BillingUsageHistoryResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    history: BillingUsageHistoryResponseHistoryList,
-  }),
-).annotate({
-  identifier: "BillingUsageHistoryResponse",
-}) as any as S.Schema<BillingUsageHistoryResponse>;
+  [{ code: 7005, message: { includes: "not found" } }],
+) {}
 
 export type CreateRequestLogManagementStrategy =
   | "STOP_INSERTING"
@@ -742,7 +139,7 @@ export const CreateRequestRetryBackoff = /*@__PURE__*/ S.String;
 export type CreateRequestWorkersAiBillingMode = "postpaid" | (string & {});
 export const CreateRequestWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
-export interface CreateRequest {
+export interface CreateAiGatewayRequest {
   accountId: string;
   /** gateway id */
   id: string;
@@ -767,7 +164,7 @@ export interface CreateRequest {
   workersAiBillingMode?: CreateRequestWorkersAiBillingMode;
   zdr?: boolean;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String,
@@ -808,7 +205,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreateAiGatewayRequest",
+}) as any as S.Schema<CreateAiGatewayRequest>;
 
 export interface CreateResponseDlp {
   objectActionEnabledProfiles__: unknown;
@@ -1265,7 +664,7 @@ export type CreateResponseWorkersAiBillingMode = "postpaid" | (string & {});
 export const CreateResponseWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
+export interface CreateAiGatewayResponse {
   /** gateway id */
   id: string;
   cacheInvalidateOnUpdate: boolean;
@@ -1298,7 +697,7 @@ export interface CreateResponse {
   workersAiBillingMode?: CreateResponseWorkersAiBillingMode;
   zdr?: boolean;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cacheInvalidateOnUpdate: S.Boolean.pipe(
@@ -1345,9 +744,144 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     zdr: S.optional(S.Boolean),
   }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+).annotate({
+  identifier: "CreateAiGatewayResponse",
+}) as any as S.Schema<CreateAiGatewayResponse>;
 
-export interface CustomProvidersCreateRequest {
+export type BillingSpendingLimitCreateRequestDuration =
+  | "daily"
+  | "weekly"
+  | "monthly"
+  | (string & {});
+export const BillingSpendingLimitCreateRequestDuration = /*@__PURE__*/ S.String;
+
+export type BillingSpendingLimitCreateRequestStrategy =
+  | "fixed"
+  | "sliding"
+  | (string & {});
+export const BillingSpendingLimitCreateRequestStrategy = /*@__PURE__*/ S.String;
+
+export interface CreateBillingSpendingLimitRequest {
+  accountId: string;
+  /** Spending limit amount in cents (min 100). */
+  amount: number;
+  /** Spending limit duration. */
+  duration: BillingSpendingLimitCreateRequestDuration;
+  /** Spending limit strategy. */
+  strategy: BillingSpendingLimitCreateRequestStrategy;
+}
+export const CreateBillingSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    amount: S.Number,
+    duration: BillingSpendingLimitCreateRequestDuration,
+    strategy: BillingSpendingLimitCreateRequestStrategy,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateBillingSpendingLimitRequest",
+}) as any as S.Schema<CreateBillingSpendingLimitRequest>;
+
+export interface CreateBillingSpendingLimitResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const CreateBillingSpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "CreateBillingSpendingLimitResponse",
+}) as any as S.Schema<CreateBillingSpendingLimitResponse>;
+
+export interface CreateBillingTopupRequest {
+  accountId: string;
+  /** Top-up amount in cents (min 1000). */
+  amount: number;
+}
+export const CreateBillingTopupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    amount: S.Number,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/ai-gateway/billing/topup",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateBillingTopupRequest",
+}) as any as S.Schema<CreateBillingTopupRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateBillingTopupResponse {
+  /** Stripe PaymentIntent client secret. */
+  clientSecret: string;
+  /** Whether the user was already onboarded. */
+  onboarding: boolean;
+  /** Stripe invoice ID. */
+  paymentIntentId: string;
+  /** Card brand (visa, mastercard, etc.). */
+  brand?: string;
+  /** Last 4 digits of card. */
+  last4?: string;
+}
+export const CreateBillingTopupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    clientSecret: S.String.pipe(T.Body("client_secret")),
+    onboarding: S.Boolean,
+    paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
+    brand: S.optional(S.String),
+    last4: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateBillingTopupResponse",
+}) as any as S.Schema<CreateBillingTopupResponse>;
+
+export interface CreateBillingTopupConfigRequest {
+  accountId: string;
+  /** Auto top-up amount in cents (min 1000). */
+  amount: number;
+  /** Balance threshold in cents that triggers auto top-up (min 500). */
+  threshold: number;
+}
+export const CreateBillingTopupConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    amount: S.Number,
+    threshold: S.Number,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/ai-gateway/billing/topup/config",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateBillingTopupConfigRequest",
+}) as any as S.Schema<CreateBillingTopupConfigRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateBillingTopupConfigResponse {
+  amount: number;
+  threshold: number;
+}
+export const CreateBillingTopupConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    amount: S.Number,
+    threshold: S.Number,
+  }),
+).annotate({
+  identifier: "CreateBillingTopupConfigResponse",
+}) as any as S.Schema<CreateBillingTopupConfigResponse>;
+
+export interface CreateCustomProviderRequest {
   accountId: string;
   baseUrl: string;
   name: string;
@@ -1361,7 +895,7 @@ export interface CustomProvidersCreateRequest {
   link?: string;
   position?: number;
 }
-export const CustomProvidersCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCustomProviderRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     baseUrl: S.String.pipe(T.Body("base_url")),
@@ -1383,11 +917,11 @@ export const CustomProvidersCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CustomProvidersCreateRequest",
-}) as any as S.Schema<CustomProvidersCreateRequest>;
+  identifier: "CreateCustomProviderRequest",
+}) as any as S.Schema<CreateCustomProviderRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CustomProvidersCreateResponse {
+export interface CreateCustomProviderResponse {
   id: string;
   baseUrl: string;
   createdAt: string;
@@ -1404,7 +938,7 @@ export interface CustomProvidersCreateResponse {
   logo?: string;
   position?: number;
 }
-export const CustomProvidersCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     baseUrl: S.String.pipe(T.Body("base_url")),
@@ -1423,210 +957,8 @@ export const CustomProvidersCreateResponse = /*@__PURE__*/ S.suspend(() =>
     position: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "CustomProvidersCreateResponse",
-}) as any as S.Schema<CustomProvidersCreateResponse>;
-
-export interface CustomProvidersDeleteRequest {
-  accountId: string;
-  id: string;
-}
-export const CustomProvidersDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/custom-providers/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CustomProvidersDeleteRequest",
-}) as any as S.Schema<CustomProvidersDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CustomProvidersDeleteResponse {
-  id: string;
-  baseUrl: string;
-  createdAt: string;
-  modifiedAt: string;
-  name: string;
-  slug: string;
-  beta?: boolean;
-  curlExample?: string;
-  description?: string;
-  enable?: boolean;
-  headers?: string;
-  jsExample?: string;
-  link?: string;
-  logo?: string;
-  position?: number;
-}
-export const CustomProvidersDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    baseUrl: S.String.pipe(T.Body("base_url")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    slug: S.String,
-    beta: S.optional(S.Boolean),
-    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
-    description: S.optional(S.String),
-    enable: S.optional(S.Boolean),
-    headers: S.optional(S.String),
-    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
-    link: S.optional(S.String),
-    logo: S.optional(S.String),
-    position: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CustomProvidersDeleteResponse",
-}) as any as S.Schema<CustomProvidersDeleteResponse>;
-
-export interface CustomProvidersGetRequest {
-  accountId: string;
-  id: string;
-}
-export const CustomProvidersGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/custom-providers/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CustomProvidersGetRequest",
-}) as any as S.Schema<CustomProvidersGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CustomProvidersGetResponse {
-  id: string;
-  baseUrl: string;
-  createdAt: string;
-  modifiedAt: string;
-  name: string;
-  slug: string;
-  beta?: boolean;
-  curlExample?: string;
-  description?: string;
-  enable?: boolean;
-  headers?: string;
-  jsExample?: string;
-  link?: string;
-  logo?: string;
-  position?: number;
-}
-export const CustomProvidersGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    baseUrl: S.String.pipe(T.Body("base_url")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    slug: S.String,
-    beta: S.optional(S.Boolean),
-    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
-    description: S.optional(S.String),
-    enable: S.optional(S.Boolean),
-    headers: S.optional(S.String),
-    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
-    link: S.optional(S.String),
-    logo: S.optional(S.String),
-    position: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CustomProvidersGetResponse",
-}) as any as S.Schema<CustomProvidersGetResponse>;
-
-export interface CustomProvidersListRequest {
-  accountId: string;
-  beta?: boolean;
-  enable?: boolean;
-  page?: number;
-  perPage?: number;
-  /** Search by id, name, slug */
-  search?: string;
-}
-export const CustomProvidersListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    beta: S.optional(S.Boolean.pipe(T.Query())),
-    enable: S.optional(S.Boolean.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/custom-providers",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CustomProvidersListRequest",
-}) as any as S.Schema<CustomProvidersListRequest>;
-
-export interface CustomProvidersListResultItem {
-  id: string;
-  baseUrl: string;
-  createdAt: string;
-  modifiedAt: string;
-  name: string;
-  slug: string;
-  beta?: boolean;
-  curlExample?: string;
-  description?: string;
-  enable?: boolean;
-  headers?: string;
-  jsExample?: string;
-  link?: string;
-  logo?: string;
-  position?: number;
-}
-export const CustomProvidersListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    baseUrl: S.String.pipe(T.Body("base_url")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    slug: S.String,
-    beta: S.optional(S.Boolean),
-    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
-    description: S.optional(S.String),
-    enable: S.optional(S.Boolean),
-    headers: S.optional(S.String),
-    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
-    link: S.optional(S.String),
-    logo: S.optional(S.String),
-    position: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "CustomProvidersListResultItem",
-}) as any as S.Schema<CustomProvidersListResultItem>;
-
-export type CustomProvidersListResultList = CustomProvidersListResultItem[];
-export const CustomProvidersListResultList = /*@__PURE__*/ S.Array(
-  CustomProvidersListResultItem,
-) as any as S.Schema<CustomProvidersListResultList>;
-
-export interface CustomProvidersListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CustomProvidersListResultList;
-}
-export const CustomProvidersListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(CustomProvidersListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "CustomProvidersListResponse",
-}) as any as S.Schema<CustomProvidersListResponse>;
+  identifier: "CreateCustomProviderResponse",
+}) as any as S.Schema<CreateCustomProviderResponse>;
 
 export type DatasetsCreateRequestFiltersItemKey =
   | "created_at"
@@ -1686,7 +1018,7 @@ export const DatasetsCreateRequestFiltersList = /*@__PURE__*/ S.Array(
   DatasetsCreateRequestFiltersItem,
 ) as any as S.Schema<DatasetsCreateRequestFiltersList>;
 
-export interface DatasetsCreateRequest {
+export interface CreateDatasetRequest {
   accountId: string;
   /** gateway id */
   gatewayId: string;
@@ -1694,7 +1026,7 @@ export interface DatasetsCreateRequest {
   filters: DatasetsCreateRequestFiltersList;
   name: string;
 }
-export const DatasetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
@@ -1709,8 +1041,8 @@ export const DatasetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DatasetsCreateRequest",
-}) as any as S.Schema<DatasetsCreateRequest>;
+  identifier: "CreateDatasetRequest",
+}) as any as S.Schema<CreateDatasetRequest>;
 
 export type DatasetsCreateResponseFiltersItemKey =
   | "created_at"
@@ -1771,7 +1103,7 @@ export const DatasetsCreateResponseFiltersList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DatasetsCreateResponseFiltersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DatasetsCreateResponse {
+export interface CreateDatasetResponse {
   id: string;
   createdAt: string;
   enable: boolean;
@@ -1781,7 +1113,7 @@ export interface DatasetsCreateResponse {
   modifiedAt: string;
   name: string;
 }
-export const DatasetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -1792,270 +1124,331 @@ export const DatasetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
   }),
 ).annotate({
-  identifier: "DatasetsCreateResponse",
-}) as any as S.Schema<DatasetsCreateResponse>;
+  identifier: "CreateDatasetResponse",
+}) as any as S.Schema<CreateDatasetResponse>;
 
-export interface DatasetsDeleteRequest {
+export interface CreateDeploymentDynamicRoutingRequest {
   accountId: string;
-  /** gateway id */
   gatewayId: string;
   id: string;
+  versionId: string;
 }
-export const DatasetsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DatasetsDeleteRequest",
-}) as any as S.Schema<DatasetsDeleteRequest>;
-
-export type DatasetsDeleteResponseFiltersItemKey =
-  | "created_at"
-  | "request_content_type"
-  | "response_content_type"
-  | (string & {});
-export const DatasetsDeleteResponseFiltersItemKey = /*@__PURE__*/ S.String;
-
-export type DatasetsDeleteResponseFiltersItemOperator =
-  | "eq"
-  | "contains"
-  | "lt"
-  | "gt"
-  | (string & {});
-export const DatasetsDeleteResponseFiltersItemOperator = /*@__PURE__*/ S.String;
-
-export interface DatasetsDeleteResponseFiltersItemValueItem {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-}
-export const DatasetsDeleteResponseFiltersItemValueItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "DatasetsDeleteResponseFiltersItemValueItem",
-  }) as any as S.Schema<DatasetsDeleteResponseFiltersItemValueItem>;
-
-export type DatasetsDeleteResponseFiltersItemValueList =
-  DatasetsDeleteResponseFiltersItemValueItem[];
-export const DatasetsDeleteResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
-  DatasetsDeleteResponseFiltersItemValueItem,
-) as any as S.Schema<DatasetsDeleteResponseFiltersItemValueList>;
-
-export interface DatasetsDeleteResponseFiltersItem {
-  key: DatasetsDeleteResponseFiltersItemKey;
-  operator: DatasetsDeleteResponseFiltersItemOperator;
-  value: DatasetsDeleteResponseFiltersItemValueList;
-}
-export const DatasetsDeleteResponseFiltersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: DatasetsDeleteResponseFiltersItemKey,
-    operator: DatasetsDeleteResponseFiltersItemOperator,
-    value: DatasetsDeleteResponseFiltersItemValueList,
-  }),
-).annotate({
-  identifier: "DatasetsDeleteResponseFiltersItem",
-}) as any as S.Schema<DatasetsDeleteResponseFiltersItem>;
-
-export type DatasetsDeleteResponseFiltersList =
-  DatasetsDeleteResponseFiltersItem[];
-export const DatasetsDeleteResponseFiltersList = /*@__PURE__*/ S.Array(
-  DatasetsDeleteResponseFiltersItem,
-) as any as S.Schema<DatasetsDeleteResponseFiltersList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DatasetsDeleteResponse {
-  id: string;
-  createdAt: string;
-  enable: boolean;
-  filters: DatasetsDeleteResponseFiltersList;
-  /** gateway id */
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-}
-export const DatasetsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    enable: S.Boolean,
-    filters: DatasetsDeleteResponseFiltersList,
-    gatewayId: S.String.pipe(T.Body("gateway_id")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "DatasetsDeleteResponse",
-}) as any as S.Schema<DatasetsDeleteResponse>;
-
-export interface DatasetsGetRequest {
-  accountId: string;
-  /** gateway id */
-  gatewayId: string;
-  id: string;
-}
-export const DatasetsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DatasetsGetRequest",
-}) as any as S.Schema<DatasetsGetRequest>;
-
-export type DatasetsGetResponseFiltersItemKey =
-  | "created_at"
-  | "request_content_type"
-  | "response_content_type"
-  | (string & {});
-export const DatasetsGetResponseFiltersItemKey = /*@__PURE__*/ S.String;
-
-export type DatasetsGetResponseFiltersItemOperator =
-  | "eq"
-  | "contains"
-  | "lt"
-  | "gt"
-  | (string & {});
-export const DatasetsGetResponseFiltersItemOperator = /*@__PURE__*/ S.String;
-
-export interface DatasetsGetResponseFiltersItemValueItem {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-}
-export const DatasetsGetResponseFiltersItemValueItem = /*@__PURE__*/ S.suspend(
+export const CreateDeploymentDynamicRoutingRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
-    }),
+      accountId: S.String.pipe(T.Label("account_id")),
+      gatewayId: S.String.pipe(T.Label("gateway_id")),
+      id: S.String.pipe(T.Label()),
+      versionId: S.String.pipe(T.Body("version_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments",
+        code: 200,
+      }),
+    ),
 ).annotate({
-  identifier: "DatasetsGetResponseFiltersItemValueItem",
-}) as any as S.Schema<DatasetsGetResponseFiltersItemValueItem>;
+  identifier: "CreateDeploymentDynamicRoutingRequest",
+}) as any as S.Schema<CreateDeploymentDynamicRoutingRequest>;
 
-export type DatasetsGetResponseFiltersItemValueList =
-  DatasetsGetResponseFiltersItemValueItem[];
-export const DatasetsGetResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
-  DatasetsGetResponseFiltersItemValueItem,
-) as any as S.Schema<DatasetsGetResponseFiltersItemValueList>;
-
-export interface DatasetsGetResponseFiltersItem {
-  key: DatasetsGetResponseFiltersItemKey;
-  operator: DatasetsGetResponseFiltersItemOperator;
-  value: DatasetsGetResponseFiltersItemValueList;
+export interface DynamicRoutingCreateDeploymentResponseElementsItem {
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
-export const DatasetsGetResponseFiltersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: DatasetsGetResponseFiltersItemKey,
-    operator: DatasetsGetResponseFiltersItemOperator,
-    value: DatasetsGetResponseFiltersItemValueList,
-  }),
-).annotate({
-  identifier: "DatasetsGetResponseFiltersItem",
-}) as any as S.Schema<DatasetsGetResponseFiltersItem>;
+export const DynamicRoutingCreateDeploymentResponseElementsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      objectIdOutputsType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateDeploymentResponseElementsItem",
+  }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItem>;
 
-export type DatasetsGetResponseFiltersList = DatasetsGetResponseFiltersItem[];
-export const DatasetsGetResponseFiltersList = /*@__PURE__*/ S.Array(
-  DatasetsGetResponseFiltersItem,
-) as any as S.Schema<DatasetsGetResponseFiltersList>;
+export type DynamicRoutingCreateDeploymentResponseElementsList =
+  DynamicRoutingCreateDeploymentResponseElementsItem[];
+export const DynamicRoutingCreateDeploymentResponseElementsList =
+  /*@__PURE__*/ S.Array(
+    DynamicRoutingCreateDeploymentResponseElementsItem,
+  ) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DatasetsGetResponse {
+export interface CreateDeploymentDynamicRoutingResponse {
   id: string;
   createdAt: string;
-  enable: boolean;
-  filters: DatasetsGetResponseFiltersList;
-  /** gateway id */
+  elements: DynamicRoutingCreateDeploymentResponseElementsList;
   gatewayId: string;
   modifiedAt: string;
   name: string;
 }
-export const DatasetsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    enable: S.Boolean,
-    filters: DatasetsGetResponseFiltersList,
-    gatewayId: S.String.pipe(T.Body("gateway_id")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-  }),
+export const CreateDeploymentDynamicRoutingResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      elements: DynamicRoutingCreateDeploymentResponseElementsList,
+      gatewayId: S.String.pipe(T.Body("gateway_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
+      name: S.String,
+    }),
 ).annotate({
-  identifier: "DatasetsGetResponse",
-}) as any as S.Schema<DatasetsGetResponse>;
+  identifier: "CreateDeploymentDynamicRoutingResponse",
+}) as any as S.Schema<CreateDeploymentDynamicRoutingResponse>;
 
-export interface DatasetsListRequest {
-  accountId: string;
-  /** gateway id */
-  gatewayId: string;
-  enable?: boolean;
-  name?: string;
-  page?: number;
-  perPage?: number;
-  /** Search by id, name, filters */
-  search?: string;
+export interface DynamicRoutingCreateRequestElementsItem {
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
-export const DatasetsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const DynamicRoutingCreateRequestElementsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      objectIdOutputsType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+    }),
+).annotate({
+  identifier: "DynamicRoutingCreateRequestElementsItem",
+}) as any as S.Schema<DynamicRoutingCreateRequestElementsItem>;
+
+export type DynamicRoutingCreateRequestElementsList =
+  DynamicRoutingCreateRequestElementsItem[];
+export const DynamicRoutingCreateRequestElementsList = /*@__PURE__*/ S.Array(
+  DynamicRoutingCreateRequestElementsItem,
+) as any as S.Schema<DynamicRoutingCreateRequestElementsList>;
+
+export interface CreateDynamicRoutingRequest {
+  accountId: string;
+  gatewayId: string;
+  elements: DynamicRoutingCreateRequestElementsList;
+  name: string;
+}
+export const CreateDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
-    enable: S.optional(S.Boolean.pipe(T.Query())),
-    name: S.optional(S.String.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    search: S.optional(S.String.pipe(T.Query())),
+    elements: DynamicRoutingCreateRequestElementsList,
+    name: S.String,
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets",
+      method: "POST",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "DatasetsListRequest",
-}) as any as S.Schema<DatasetsListRequest>;
+  identifier: "CreateDynamicRoutingRequest",
+}) as any as S.Schema<CreateDynamicRoutingRequest>;
 
-export type DatasetsListResultItemFiltersItemKey =
+export interface DynamicRoutingCreateResponseDeployment {
+  createdAt: string;
+  deploymentId: string;
+  versionId: string;
+}
+export const DynamicRoutingCreateResponseDeployment = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      deploymentId: S.String.pipe(T.Body("deployment_id")),
+      versionId: S.String.pipe(T.Body("version_id")),
+    }),
+).annotate({
+  identifier: "DynamicRoutingCreateResponseDeployment",
+}) as any as S.Schema<DynamicRoutingCreateResponseDeployment>;
+
+export interface DynamicRoutingCreateResponseElementsItem {
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
+}
+export const DynamicRoutingCreateResponseElementsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      objectIdOutputsType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+    }),
+).annotate({
+  identifier: "DynamicRoutingCreateResponseElementsItem",
+}) as any as S.Schema<DynamicRoutingCreateResponseElementsItem>;
+
+export type DynamicRoutingCreateResponseElementsList =
+  DynamicRoutingCreateResponseElementsItem[];
+export const DynamicRoutingCreateResponseElementsList = /*@__PURE__*/ S.Array(
+  DynamicRoutingCreateResponseElementsItem,
+) as any as S.Schema<DynamicRoutingCreateResponseElementsList>;
+
+export type DynamicRoutingCreateResponseVersionActive =
+  | "true"
+  | "false"
+  | (string & {});
+export const DynamicRoutingCreateResponseVersionActive = /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingCreateResponseVersion {
+  active: DynamicRoutingCreateResponseVersionActive;
+  createdAt: string;
+  data: string;
+  versionId: string;
+  isValid?: boolean;
+}
+export const DynamicRoutingCreateResponseVersion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    active: DynamicRoutingCreateResponseVersionActive,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    data: S.String,
+    versionId: S.String.pipe(T.Body("version_id")),
+    isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+  }),
+).annotate({
+  identifier: "DynamicRoutingCreateResponseVersion",
+}) as any as S.Schema<DynamicRoutingCreateResponseVersion>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateDynamicRoutingResponse {
+  id: string;
+  createdAt: string;
+  deployment: DynamicRoutingCreateResponseDeployment;
+  elements: DynamicRoutingCreateResponseElementsList;
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+  version: DynamicRoutingCreateResponseVersion;
+}
+export const CreateDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    deployment: DynamicRoutingCreateResponseDeployment,
+    elements: DynamicRoutingCreateResponseElementsList,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    version: DynamicRoutingCreateResponseVersion,
+  }),
+).annotate({
+  identifier: "CreateDynamicRoutingResponse",
+}) as any as S.Schema<CreateDynamicRoutingResponse>;
+
+export type EvaluationsCreateRequestDatasetIdsList = string[];
+export const EvaluationsCreateRequestDatasetIdsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EvaluationsCreateRequestDatasetIdsList>;
+
+export type EvaluationsCreateRequestEvaluationTypeIdsList = string[];
+export const EvaluationsCreateRequestEvaluationTypeIdsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EvaluationsCreateRequestEvaluationTypeIdsList>;
+
+export interface CreateEvaluationRequest {
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
+  datasetIds: EvaluationsCreateRequestDatasetIdsList;
+  evaluationTypeIds: EvaluationsCreateRequestEvaluationTypeIdsList;
+  name: string;
+}
+export const CreateEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    datasetIds: EvaluationsCreateRequestDatasetIdsList.pipe(
+      T.Body("dataset_ids"),
+    ),
+    evaluationTypeIds: EvaluationsCreateRequestEvaluationTypeIdsList.pipe(
+      T.Body("evaluation_type_ids"),
+    ),
+    name: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateEvaluationRequest",
+}) as any as S.Schema<CreateEvaluationRequest>;
+
+export type EvaluationsCreateResponseDatasetsItemFiltersItemKey =
   | "created_at"
   | "request_content_type"
   | "response_content_type"
   | (string & {});
-export const DatasetsListResultItemFiltersItemKey = /*@__PURE__*/ S.String;
+export const EvaluationsCreateResponseDatasetsItemFiltersItemKey =
+  /*@__PURE__*/ S.String;
 
-export type DatasetsListResultItemFiltersItemOperator =
+export type EvaluationsCreateResponseDatasetsItemFiltersItemOperator =
   | "eq"
   | "contains"
   | "lt"
   | "gt"
   | (string & {});
-export const DatasetsListResultItemFiltersItemOperator = /*@__PURE__*/ S.String;
+export const EvaluationsCreateResponseDatasetsItemFiltersItemOperator =
+  /*@__PURE__*/ S.String;
 
-export interface DatasetsListResultItemFiltersItemValueItem {
+export interface EvaluationsCreateResponseDatasetsItemFiltersItemValueItem {
   string: unknown;
   number: unknown;
   boolean: unknown;
 }
-export const DatasetsListResultItemFiltersItemValueItem =
+export const EvaluationsCreateResponseDatasetsItemFiltersItemValueItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       string: S.Unknown,
@@ -2063,252 +1456,414 @@ export const DatasetsListResultItemFiltersItemValueItem =
       boolean: S.Unknown,
     }),
   ).annotate({
-    identifier: "DatasetsListResultItemFiltersItemValueItem",
-  }) as any as S.Schema<DatasetsListResultItemFiltersItemValueItem>;
+    identifier: "EvaluationsCreateResponseDatasetsItemFiltersItemValueItem",
+  }) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersItemValueItem>;
 
-export type DatasetsListResultItemFiltersItemValueList =
-  DatasetsListResultItemFiltersItemValueItem[];
-export const DatasetsListResultItemFiltersItemValueList = /*@__PURE__*/ S.Array(
-  DatasetsListResultItemFiltersItemValueItem,
-) as any as S.Schema<DatasetsListResultItemFiltersItemValueList>;
+export type EvaluationsCreateResponseDatasetsItemFiltersItemValueList =
+  EvaluationsCreateResponseDatasetsItemFiltersItemValueItem[];
+export const EvaluationsCreateResponseDatasetsItemFiltersItemValueList =
+  /*@__PURE__*/ S.Array(
+    EvaluationsCreateResponseDatasetsItemFiltersItemValueItem,
+  ) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersItemValueList>;
 
-export interface DatasetsListResultItemFiltersItem {
-  key: DatasetsListResultItemFiltersItemKey;
-  operator: DatasetsListResultItemFiltersItemOperator;
-  value: DatasetsListResultItemFiltersItemValueList;
+export interface EvaluationsCreateResponseDatasetsItemFiltersItem {
+  key: EvaluationsCreateResponseDatasetsItemFiltersItemKey;
+  operator: EvaluationsCreateResponseDatasetsItemFiltersItemOperator;
+  value: EvaluationsCreateResponseDatasetsItemFiltersItemValueList;
 }
-export const DatasetsListResultItemFiltersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: DatasetsListResultItemFiltersItemKey,
-    operator: DatasetsListResultItemFiltersItemOperator,
-    value: DatasetsListResultItemFiltersItemValueList,
-  }),
-).annotate({
-  identifier: "DatasetsListResultItemFiltersItem",
-}) as any as S.Schema<DatasetsListResultItemFiltersItem>;
+export const EvaluationsCreateResponseDatasetsItemFiltersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      key: EvaluationsCreateResponseDatasetsItemFiltersItemKey,
+      operator: EvaluationsCreateResponseDatasetsItemFiltersItemOperator,
+      value: EvaluationsCreateResponseDatasetsItemFiltersItemValueList,
+    }),
+  ).annotate({
+    identifier: "EvaluationsCreateResponseDatasetsItemFiltersItem",
+  }) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersItem>;
 
-export type DatasetsListResultItemFiltersList =
-  DatasetsListResultItemFiltersItem[];
-export const DatasetsListResultItemFiltersList = /*@__PURE__*/ S.Array(
-  DatasetsListResultItemFiltersItem,
-) as any as S.Schema<DatasetsListResultItemFiltersList>;
+export type EvaluationsCreateResponseDatasetsItemFiltersList =
+  EvaluationsCreateResponseDatasetsItemFiltersItem[];
+export const EvaluationsCreateResponseDatasetsItemFiltersList =
+  /*@__PURE__*/ S.Array(
+    EvaluationsCreateResponseDatasetsItemFiltersItem,
+  ) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersList>;
 
-export interface DatasetsListResultItem {
+export interface EvaluationsCreateResponseDatasetsItem {
   id: string;
+  accountId: string;
+  accountTag: string;
   createdAt: string;
   enable: boolean;
-  filters: DatasetsListResultItemFiltersList;
+  filters: EvaluationsCreateResponseDatasetsItemFiltersList;
   /** gateway id */
   gatewayId: string;
   modifiedAt: string;
   name: string;
 }
-export const DatasetsListResultItem = /*@__PURE__*/ S.suspend(() =>
+export const EvaluationsCreateResponseDatasetsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      accountId: S.String.pipe(T.Body("account_id")),
+      accountTag: S.String.pipe(T.Body("account_tag")),
+      createdAt: S.String.pipe(T.Body("created_at")),
+      enable: S.Boolean,
+      filters: EvaluationsCreateResponseDatasetsItemFiltersList,
+      gatewayId: S.String.pipe(T.Body("gateway_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
+      name: S.String,
+    }),
+).annotate({
+  identifier: "EvaluationsCreateResponseDatasetsItem",
+}) as any as S.Schema<EvaluationsCreateResponseDatasetsItem>;
+
+export type EvaluationsCreateResponseDatasetsList =
+  EvaluationsCreateResponseDatasetsItem[];
+export const EvaluationsCreateResponseDatasetsList = /*@__PURE__*/ S.Array(
+  EvaluationsCreateResponseDatasetsItem,
+) as any as S.Schema<EvaluationsCreateResponseDatasetsList>;
+
+export interface EvaluationsCreateResponseResultsItem {
+  id: string;
+  createdAt: string;
+  evaluationId: string;
+  evaluationTypeId: string;
+  modifiedAt: string;
+  result: string;
+  status: number;
+  statusDescription: string;
+  totalLogs: number;
+}
+export const EvaluationsCreateResponseResultsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      evaluationId: S.String.pipe(T.Body("evaluation_id")),
+      evaluationTypeId: S.String.pipe(T.Body("evaluation_type_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
+      result: S.String,
+      status: S.Number,
+      statusDescription: S.String.pipe(T.Body("status_description")),
+      totalLogs: S.Number.pipe(T.Body("total_logs")),
+    }),
+).annotate({
+  identifier: "EvaluationsCreateResponseResultsItem",
+}) as any as S.Schema<EvaluationsCreateResponseResultsItem>;
+
+export type EvaluationsCreateResponseResultsList =
+  EvaluationsCreateResponseResultsItem[];
+export const EvaluationsCreateResponseResultsList = /*@__PURE__*/ S.Array(
+  EvaluationsCreateResponseResultsItem,
+) as any as S.Schema<EvaluationsCreateResponseResultsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateEvaluationResponse {
+  id: string;
+  createdAt: string;
+  datasets: EvaluationsCreateResponseDatasetsList;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+  processed: boolean;
+  results: EvaluationsCreateResponseResultsList;
+  totalLogs: number;
+}
+export const CreateEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
-    enable: S.Boolean,
-    filters: DatasetsListResultItemFiltersList,
+    datasets: EvaluationsCreateResponseDatasetsList,
     gatewayId: S.String.pipe(T.Body("gateway_id")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
+    processed: S.Boolean,
+    results: EvaluationsCreateResponseResultsList,
+    totalLogs: S.Number.pipe(T.Body("total_logs")),
   }),
 ).annotate({
-  identifier: "DatasetsListResultItem",
-}) as any as S.Schema<DatasetsListResultItem>;
+  identifier: "CreateEvaluationResponse",
+}) as any as S.Schema<CreateEvaluationResponse>;
 
-export type DatasetsListResultList = DatasetsListResultItem[];
-export const DatasetsListResultList = /*@__PURE__*/ S.Array(
-  DatasetsListResultItem,
-) as any as S.Schema<DatasetsListResultList>;
-
-export interface DatasetsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DatasetsListResultList;
-}
-export const DatasetsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(DatasetsListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "DatasetsListResponse",
-}) as any as S.Schema<DatasetsListResponse>;
-
-export type DatasetsUpdateRequestFiltersItemKey =
-  | "created_at"
-  | "request_content_type"
-  | "response_content_type"
-  | (string & {});
-export const DatasetsUpdateRequestFiltersItemKey = /*@__PURE__*/ S.String;
-
-export type DatasetsUpdateRequestFiltersItemOperator =
-  | "eq"
-  | "contains"
-  | "lt"
-  | "gt"
-  | (string & {});
-export const DatasetsUpdateRequestFiltersItemOperator = /*@__PURE__*/ S.String;
-
-export interface DatasetsUpdateRequestFiltersItemValueItem {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-}
-export const DatasetsUpdateRequestFiltersItemValueItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "DatasetsUpdateRequestFiltersItemValueItem",
-  }) as any as S.Schema<DatasetsUpdateRequestFiltersItemValueItem>;
-
-export type DatasetsUpdateRequestFiltersItemValueList =
-  DatasetsUpdateRequestFiltersItemValueItem[];
-export const DatasetsUpdateRequestFiltersItemValueList = /*@__PURE__*/ S.Array(
-  DatasetsUpdateRequestFiltersItemValueItem,
-) as any as S.Schema<DatasetsUpdateRequestFiltersItemValueList>;
-
-export interface DatasetsUpdateRequestFiltersItem {
-  key: DatasetsUpdateRequestFiltersItemKey;
-  operator: DatasetsUpdateRequestFiltersItemOperator;
-  value: DatasetsUpdateRequestFiltersItemValueList;
-}
-export const DatasetsUpdateRequestFiltersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: DatasetsUpdateRequestFiltersItemKey,
-    operator: DatasetsUpdateRequestFiltersItemOperator,
-    value: DatasetsUpdateRequestFiltersItemValueList,
-  }),
-).annotate({
-  identifier: "DatasetsUpdateRequestFiltersItem",
-}) as any as S.Schema<DatasetsUpdateRequestFiltersItem>;
-
-export type DatasetsUpdateRequestFiltersList =
-  DatasetsUpdateRequestFiltersItem[];
-export const DatasetsUpdateRequestFiltersList = /*@__PURE__*/ S.Array(
-  DatasetsUpdateRequestFiltersItem,
-) as any as S.Schema<DatasetsUpdateRequestFiltersList>;
-
-export interface DatasetsUpdateRequest {
+export interface CreateProviderConfigRequest {
   accountId: string;
   /** gateway id */
   gatewayId: string;
-  id: string;
-  enable: boolean;
-  filters: DatasetsUpdateRequestFiltersList;
-  name: string;
+  alias: string;
+  defaultConfig: boolean;
+  providerSlug: string;
+  rateLimit?: number;
+  rateLimitPeriod?: number;
+  secret?: string;
+  secretId?: string;
 }
-export const DatasetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateProviderConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    alias: S.String,
+    defaultConfig: S.Boolean.pipe(T.Body("default_config")),
+    providerSlug: S.String.pipe(T.Body("provider_slug")),
+    rateLimit: S.optional(S.Number.pipe(T.Body("rate_limit"))),
+    rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
+    secret: S.optional(S.String),
+    secretId: S.optional(S.String.pipe(T.Body("secret_id"))),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateProviderConfigRequest",
+}) as any as S.Schema<CreateProviderConfigRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateProviderConfigResponse {
+  id: string;
+  alias: string;
+  defaultConfig: boolean;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  providerSlug: string;
+  secretId: string;
+  secretPreview: string;
+  rateLimit?: number;
+  rateLimitPeriod?: number;
+}
+export const CreateProviderConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    alias: S.String,
+    defaultConfig: S.Boolean.pipe(T.Body("default_config")),
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    providerSlug: S.String.pipe(T.Body("provider_slug")),
+    secretId: S.String.pipe(T.Body("secret_id")),
+    secretPreview: S.String.pipe(T.Body("secret_preview")),
+    rateLimit: S.optional(S.Number.pipe(T.Body("rate_limit"))),
+    rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
+  }),
+).annotate({
+  identifier: "CreateProviderConfigResponse",
+}) as any as S.Schema<CreateProviderConfigResponse>;
+
+export interface DynamicRoutingCreateVersionRequestElementsItem {
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
+}
+export const DynamicRoutingCreateVersionRequestElementsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      objectIdOutputsType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingCreateVersionRequestElementsItem",
+  }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItem>;
+
+export type DynamicRoutingCreateVersionRequestElementsList =
+  DynamicRoutingCreateVersionRequestElementsItem[];
+export const DynamicRoutingCreateVersionRequestElementsList =
+  /*@__PURE__*/ S.Array(
+    DynamicRoutingCreateVersionRequestElementsItem,
+  ) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsList>;
+
+export interface CreateVersionDynamicRoutingRequest {
+  accountId: string;
+  gatewayId: string;
+  id: string;
+  elements: DynamicRoutingCreateVersionRequestElementsList;
+}
+export const CreateVersionDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-    enable: S.Boolean,
-    filters: DatasetsUpdateRequestFiltersList,
-    name: S.String,
+    elements: DynamicRoutingCreateVersionRequestElementsList,
   }).pipe(
     T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}",
+      method: "POST",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "DatasetsUpdateRequest",
-}) as any as S.Schema<DatasetsUpdateRequest>;
+  identifier: "CreateVersionDynamicRoutingRequest",
+}) as any as S.Schema<CreateVersionDynamicRoutingRequest>;
 
-export type DatasetsUpdateResponseFiltersItemKey =
-  | "created_at"
-  | "request_content_type"
-  | "response_content_type"
-  | (string & {});
-export const DatasetsUpdateResponseFiltersItemKey = /*@__PURE__*/ S.String;
-
-export type DatasetsUpdateResponseFiltersItemOperator =
-  | "eq"
-  | "contains"
-  | "lt"
-  | "gt"
-  | (string & {});
-export const DatasetsUpdateResponseFiltersItemOperator = /*@__PURE__*/ S.String;
-
-export interface DatasetsUpdateResponseFiltersItemValueItem {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
+export interface DynamicRoutingCreateVersionResponseElementsItem {
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
 }
-export const DatasetsUpdateResponseFiltersItemValueItem =
+export const DynamicRoutingCreateVersionResponseElementsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
+      objectIdOutputsType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
     }),
   ).annotate({
-    identifier: "DatasetsUpdateResponseFiltersItemValueItem",
-  }) as any as S.Schema<DatasetsUpdateResponseFiltersItemValueItem>;
+    identifier: "DynamicRoutingCreateVersionResponseElementsItem",
+  }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItem>;
 
-export type DatasetsUpdateResponseFiltersItemValueList =
-  DatasetsUpdateResponseFiltersItemValueItem[];
-export const DatasetsUpdateResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
-  DatasetsUpdateResponseFiltersItemValueItem,
-) as any as S.Schema<DatasetsUpdateResponseFiltersItemValueList>;
-
-export interface DatasetsUpdateResponseFiltersItem {
-  key: DatasetsUpdateResponseFiltersItemKey;
-  operator: DatasetsUpdateResponseFiltersItemOperator;
-  value: DatasetsUpdateResponseFiltersItemValueList;
-}
-export const DatasetsUpdateResponseFiltersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    key: DatasetsUpdateResponseFiltersItemKey,
-    operator: DatasetsUpdateResponseFiltersItemOperator,
-    value: DatasetsUpdateResponseFiltersItemValueList,
-  }),
-).annotate({
-  identifier: "DatasetsUpdateResponseFiltersItem",
-}) as any as S.Schema<DatasetsUpdateResponseFiltersItem>;
-
-export type DatasetsUpdateResponseFiltersList =
-  DatasetsUpdateResponseFiltersItem[];
-export const DatasetsUpdateResponseFiltersList = /*@__PURE__*/ S.Array(
-  DatasetsUpdateResponseFiltersItem,
-) as any as S.Schema<DatasetsUpdateResponseFiltersList>;
+export type DynamicRoutingCreateVersionResponseElementsList =
+  DynamicRoutingCreateVersionResponseElementsItem[];
+export const DynamicRoutingCreateVersionResponseElementsList =
+  /*@__PURE__*/ S.Array(
+    DynamicRoutingCreateVersionResponseElementsItem,
+  ) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DatasetsUpdateResponse {
+export interface CreateVersionDynamicRoutingResponse {
   id: string;
   createdAt: string;
-  enable: boolean;
-  filters: DatasetsUpdateResponseFiltersList;
-  /** gateway id */
+  elements: DynamicRoutingCreateVersionResponseElementsList;
   gatewayId: string;
   modifiedAt: string;
   name: string;
 }
-export const DatasetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateVersionDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
-    enable: S.Boolean,
-    filters: DatasetsUpdateResponseFiltersList,
+    elements: DynamicRoutingCreateVersionResponseElementsList,
     gatewayId: S.String.pipe(T.Body("gateway_id")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
   }),
 ).annotate({
-  identifier: "DatasetsUpdateResponse",
-}) as any as S.Schema<DatasetsUpdateResponse>;
+  identifier: "CreateVersionDynamicRoutingResponse",
+}) as any as S.Schema<CreateVersionDynamicRoutingResponse>;
 
-export interface DeleteRequest {
+export interface CreditBalanceBillingRequest {
+  accountId: string;
+}
+export const CreditBalanceBillingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/billing/credit-balance",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreditBalanceBillingRequest",
+}) as any as S.Schema<CreditBalanceBillingRequest>;
+
+export interface BillingCreditBalanceResponsePaymentMethod {
+  brand?: string;
+  last4?: string;
+}
+export const BillingCreditBalanceResponsePaymentMethod =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      brand: S.optional(S.String),
+      last4: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BillingCreditBalanceResponsePaymentMethod",
+  }) as any as S.Schema<BillingCreditBalanceResponsePaymentMethod>;
+
+export interface BillingCreditBalanceResponseTopupConfig {
+  amount: number;
+  disabledReason: string;
+  error: string;
+  lastFailedAt: number;
+  threshold: number;
+}
+export const BillingCreditBalanceResponseTopupConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      amount: S.Number,
+      disabledReason: S.String,
+      error: S.String,
+      lastFailedAt: S.Number,
+      threshold: S.Number,
+    }),
+).annotate({
+  identifier: "BillingCreditBalanceResponseTopupConfig",
+}) as any as S.Schema<BillingCreditBalanceResponseTopupConfig>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreditBalanceBillingResponse {
+  balance: number;
+  hasDefaultPaymentMethod: boolean;
+  paymentMethod: BillingCreditBalanceResponsePaymentMethod;
+  topupConfig: BillingCreditBalanceResponseTopupConfig;
+  firstTopupSuccess?: boolean;
+}
+export const CreditBalanceBillingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    balance: S.Number,
+    hasDefaultPaymentMethod: S.Boolean.pipe(
+      T.Body("has_default_payment_method"),
+    ),
+    paymentMethod: BillingCreditBalanceResponsePaymentMethod.pipe(
+      T.Body("payment_method"),
+    ),
+    topupConfig: BillingCreditBalanceResponseTopupConfig.pipe(
+      T.Body("topup_config"),
+    ),
+    firstTopupSuccess: S.optional(
+      S.Boolean.pipe(T.Body("first_topup_success")),
+    ),
+  }),
+).annotate({
+  identifier: "CreditBalanceBillingResponse",
+}) as any as S.Schema<CreditBalanceBillingResponse>;
+
+export interface DeleteAiGatewayRequest {
   accountId: string;
   /** gateway id */
   id: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
@@ -2319,7 +1874,9 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeleteAiGatewayRequest",
+}) as any as S.Schema<DeleteAiGatewayRequest>;
 
 export interface DeleteResponseDlp {
   objectActionEnabledProfiles__: unknown;
@@ -2776,7 +2333,7 @@ export type DeleteResponseWorkersAiBillingMode = "postpaid" | (string & {});
 export const DeleteResponseWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
+export interface DeleteAiGatewayResponse {
   /** gateway id */
   id: string;
   cacheInvalidateOnUpdate: boolean;
@@ -2809,7 +2366,7 @@ export interface DeleteResponse {
   workersAiBillingMode?: DeleteResponseWorkersAiBillingMode;
   zdr?: boolean;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cacheInvalidateOnUpdate: S.Boolean.pipe(
@@ -2856,399 +2413,238 @@ export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     zdr: S.optional(S.Boolean),
   }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
-
-export interface DynamicRoutingCreateRequestElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
-}
-export const DynamicRoutingCreateRequestElementsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-    }),
 ).annotate({
-  identifier: "DynamicRoutingCreateRequestElementsItem",
-}) as any as S.Schema<DynamicRoutingCreateRequestElementsItem>;
+  identifier: "DeleteAiGatewayResponse",
+}) as any as S.Schema<DeleteAiGatewayResponse>;
 
-export type DynamicRoutingCreateRequestElementsList =
-  DynamicRoutingCreateRequestElementsItem[];
-export const DynamicRoutingCreateRequestElementsList = /*@__PURE__*/ S.Array(
-  DynamicRoutingCreateRequestElementsItem,
-) as any as S.Schema<DynamicRoutingCreateRequestElementsList>;
-
-export interface DynamicRoutingCreateRequest {
+export interface DeleteBillingSpendingLimitRequest {
   accountId: string;
-  gatewayId: string;
-  elements: DynamicRoutingCreateRequestElementsList;
-  name: string;
 }
-export const DynamicRoutingCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteBillingSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    elements: DynamicRoutingCreateRequestElementsList,
-    name: S.String,
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes",
+      method: "DELETE",
+      uri: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "DynamicRoutingCreateRequest",
-}) as any as S.Schema<DynamicRoutingCreateRequest>;
+  identifier: "DeleteBillingSpendingLimitRequest",
+}) as any as S.Schema<DeleteBillingSpendingLimitRequest>;
 
-export interface DynamicRoutingCreateResponseDeployment {
-  createdAt: string;
-  deploymentId: string;
-  versionId: string;
+export interface DeleteBillingSpendingLimitResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
 }
-export const DynamicRoutingCreateResponseDeployment = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      createdAt: S.String.pipe(T.Body("created_at")),
-      deploymentId: S.String.pipe(T.Body("deployment_id")),
-      versionId: S.String.pipe(T.Body("version_id")),
-    }),
-).annotate({
-  identifier: "DynamicRoutingCreateResponseDeployment",
-}) as any as S.Schema<DynamicRoutingCreateResponseDeployment>;
-
-export interface DynamicRoutingCreateResponseElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
-}
-export const DynamicRoutingCreateResponseElementsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-    }),
-).annotate({
-  identifier: "DynamicRoutingCreateResponseElementsItem",
-}) as any as S.Schema<DynamicRoutingCreateResponseElementsItem>;
-
-export type DynamicRoutingCreateResponseElementsList =
-  DynamicRoutingCreateResponseElementsItem[];
-export const DynamicRoutingCreateResponseElementsList = /*@__PURE__*/ S.Array(
-  DynamicRoutingCreateResponseElementsItem,
-) as any as S.Schema<DynamicRoutingCreateResponseElementsList>;
-
-export type DynamicRoutingCreateResponseVersionActive =
-  | "true"
-  | "false"
-  | (string & {});
-export const DynamicRoutingCreateResponseVersionActive = /*@__PURE__*/ S.String;
-
-export interface DynamicRoutingCreateResponseVersion {
-  active: DynamicRoutingCreateResponseVersionActive;
-  createdAt: string;
-  data: string;
-  versionId: string;
-  isValid?: boolean;
-}
-export const DynamicRoutingCreateResponseVersion = /*@__PURE__*/ S.suspend(() =>
+export const DeleteBillingSpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    active: DynamicRoutingCreateResponseVersionActive,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    data: S.String,
-    versionId: S.String.pipe(T.Body("version_id")),
-    isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DynamicRoutingCreateResponseVersion",
-}) as any as S.Schema<DynamicRoutingCreateResponseVersion>;
+  identifier: "DeleteBillingSpendingLimitResponse",
+}) as any as S.Schema<DeleteBillingSpendingLimitResponse>;
+
+export interface DeleteBillingTopupConfigRequest {
+  accountId: string;
+}
+export const DeleteBillingTopupConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/ai-gateway/billing/topup/config",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteBillingTopupConfigRequest",
+}) as any as S.Schema<DeleteBillingTopupConfigRequest>;
+
+export interface DeleteBillingTopupConfigResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const DeleteBillingTopupConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "DeleteBillingTopupConfigResponse",
+}) as any as S.Schema<DeleteBillingTopupConfigResponse>;
+
+export interface DeleteCustomProviderRequest {
+  accountId: string;
+  id: string;
+}
+export const DeleteCustomProviderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/ai-gateway/custom-providers/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCustomProviderRequest",
+}) as any as S.Schema<DeleteCustomProviderRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DynamicRoutingCreateResponse {
+export interface DeleteCustomProviderResponse {
   id: string;
+  baseUrl: string;
   createdAt: string;
-  deployment: DynamicRoutingCreateResponseDeployment;
-  elements: DynamicRoutingCreateResponseElementsList;
-  gatewayId: string;
   modifiedAt: string;
   name: string;
-  version: DynamicRoutingCreateResponseVersion;
+  slug: string;
+  beta?: boolean;
+  curlExample?: string;
+  description?: string;
+  enable?: boolean;
+  headers?: string;
+  jsExample?: string;
+  link?: string;
+  logo?: string;
+  position?: number;
 }
-export const DynamicRoutingCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
+    baseUrl: S.String.pipe(T.Body("base_url")),
     createdAt: S.String.pipe(T.Body("created_at")),
-    deployment: DynamicRoutingCreateResponseDeployment,
-    elements: DynamicRoutingCreateResponseElementsList,
-    gatewayId: S.String.pipe(T.Body("gateway_id")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
-    version: DynamicRoutingCreateResponseVersion,
+    slug: S.String,
+    beta: S.optional(S.Boolean),
+    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
+    description: S.optional(S.String),
+    enable: S.optional(S.Boolean),
+    headers: S.optional(S.String),
+    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
+    link: S.optional(S.String),
+    logo: S.optional(S.String),
+    position: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "DynamicRoutingCreateResponse",
-}) as any as S.Schema<DynamicRoutingCreateResponse>;
+  identifier: "DeleteCustomProviderResponse",
+}) as any as S.Schema<DeleteCustomProviderResponse>;
 
-export interface DynamicRoutingCreateDeploymentRequest {
+export interface DeleteDatasetRequest {
   accountId: string;
+  /** gateway id */
   gatewayId: string;
   id: string;
-  versionId: string;
 }
-export const DynamicRoutingCreateDeploymentRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      gatewayId: S.String.pipe(T.Label("gateway_id")),
-      id: S.String.pipe(T.Label()),
-      versionId: S.String.pipe(T.Body("version_id")),
-    }).pipe(
-      T.Http({
-        method: "POST",
-        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "DynamicRoutingCreateDeploymentRequest",
-}) as any as S.Schema<DynamicRoutingCreateDeploymentRequest>;
-
-export interface DynamicRoutingCreateDeploymentResponseElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
-}
-export const DynamicRoutingCreateDeploymentResponseElementsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingCreateDeploymentResponseElementsItem",
-  }) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsItem>;
-
-export type DynamicRoutingCreateDeploymentResponseElementsList =
-  DynamicRoutingCreateDeploymentResponseElementsItem[];
-export const DynamicRoutingCreateDeploymentResponseElementsList =
-  /*@__PURE__*/ S.Array(
-    DynamicRoutingCreateDeploymentResponseElementsItem,
-  ) as any as S.Schema<DynamicRoutingCreateDeploymentResponseElementsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DynamicRoutingCreateDeploymentResponse {
-  id: string;
-  createdAt: string;
-  elements: DynamicRoutingCreateDeploymentResponseElementsList;
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-}
-export const DynamicRoutingCreateDeploymentResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      elements: DynamicRoutingCreateDeploymentResponseElementsList,
-      gatewayId: S.String.pipe(T.Body("gateway_id")),
-      modifiedAt: S.String.pipe(T.Body("modified_at")),
-      name: S.String,
-    }),
-).annotate({
-  identifier: "DynamicRoutingCreateDeploymentResponse",
-}) as any as S.Schema<DynamicRoutingCreateDeploymentResponse>;
-
-export interface DynamicRoutingCreateVersionRequestElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
-}
-export const DynamicRoutingCreateVersionRequestElementsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingCreateVersionRequestElementsItem",
-  }) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsItem>;
-
-export type DynamicRoutingCreateVersionRequestElementsList =
-  DynamicRoutingCreateVersionRequestElementsItem[];
-export const DynamicRoutingCreateVersionRequestElementsList =
-  /*@__PURE__*/ S.Array(
-    DynamicRoutingCreateVersionRequestElementsItem,
-  ) as any as S.Schema<DynamicRoutingCreateVersionRequestElementsList>;
-
-export interface DynamicRoutingCreateVersionRequest {
-  accountId: string;
-  gatewayId: string;
-  id: string;
-  elements: DynamicRoutingCreateVersionRequestElementsList;
-}
-export const DynamicRoutingCreateVersionRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
     id: S.String.pipe(T.Label()),
-    elements: DynamicRoutingCreateVersionRequestElementsList,
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions",
+      method: "DELETE",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "DynamicRoutingCreateVersionRequest",
-}) as any as S.Schema<DynamicRoutingCreateVersionRequest>;
+  identifier: "DeleteDatasetRequest",
+}) as any as S.Schema<DeleteDatasetRequest>;
 
-export interface DynamicRoutingCreateVersionResponseElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
+export type DatasetsDeleteResponseFiltersItemKey =
+  | "created_at"
+  | "request_content_type"
+  | "response_content_type"
+  | (string & {});
+export const DatasetsDeleteResponseFiltersItemKey = /*@__PURE__*/ S.String;
+
+export type DatasetsDeleteResponseFiltersItemOperator =
+  | "eq"
+  | "contains"
+  | "lt"
+  | "gt"
+  | (string & {});
+export const DatasetsDeleteResponseFiltersItemOperator = /*@__PURE__*/ S.String;
+
+export interface DatasetsDeleteResponseFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
 }
-export const DynamicRoutingCreateVersionResponseElementsItem =
+export const DatasetsDeleteResponseFiltersItemValueItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
     }),
   ).annotate({
-    identifier: "DynamicRoutingCreateVersionResponseElementsItem",
-  }) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsItem>;
+    identifier: "DatasetsDeleteResponseFiltersItemValueItem",
+  }) as any as S.Schema<DatasetsDeleteResponseFiltersItemValueItem>;
 
-export type DynamicRoutingCreateVersionResponseElementsList =
-  DynamicRoutingCreateVersionResponseElementsItem[];
-export const DynamicRoutingCreateVersionResponseElementsList =
-  /*@__PURE__*/ S.Array(
-    DynamicRoutingCreateVersionResponseElementsItem,
-  ) as any as S.Schema<DynamicRoutingCreateVersionResponseElementsList>;
+export type DatasetsDeleteResponseFiltersItemValueList =
+  DatasetsDeleteResponseFiltersItemValueItem[];
+export const DatasetsDeleteResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
+  DatasetsDeleteResponseFiltersItemValueItem,
+) as any as S.Schema<DatasetsDeleteResponseFiltersItemValueList>;
+
+export interface DatasetsDeleteResponseFiltersItem {
+  key: DatasetsDeleteResponseFiltersItemKey;
+  operator: DatasetsDeleteResponseFiltersItemOperator;
+  value: DatasetsDeleteResponseFiltersItemValueList;
+}
+export const DatasetsDeleteResponseFiltersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: DatasetsDeleteResponseFiltersItemKey,
+    operator: DatasetsDeleteResponseFiltersItemOperator,
+    value: DatasetsDeleteResponseFiltersItemValueList,
+  }),
+).annotate({
+  identifier: "DatasetsDeleteResponseFiltersItem",
+}) as any as S.Schema<DatasetsDeleteResponseFiltersItem>;
+
+export type DatasetsDeleteResponseFiltersList =
+  DatasetsDeleteResponseFiltersItem[];
+export const DatasetsDeleteResponseFiltersList = /*@__PURE__*/ S.Array(
+  DatasetsDeleteResponseFiltersItem,
+) as any as S.Schema<DatasetsDeleteResponseFiltersList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DynamicRoutingCreateVersionResponse {
+export interface DeleteDatasetResponse {
   id: string;
   createdAt: string;
-  elements: DynamicRoutingCreateVersionResponseElementsList;
+  enable: boolean;
+  filters: DatasetsDeleteResponseFiltersList;
+  /** gateway id */
   gatewayId: string;
   modifiedAt: string;
   name: string;
 }
-export const DynamicRoutingCreateVersionResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteDatasetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
-    elements: DynamicRoutingCreateVersionResponseElementsList,
+    enable: S.Boolean,
+    filters: DatasetsDeleteResponseFiltersList,
     gatewayId: S.String.pipe(T.Body("gateway_id")),
     modifiedAt: S.String.pipe(T.Body("modified_at")),
     name: S.String,
   }),
 ).annotate({
-  identifier: "DynamicRoutingCreateVersionResponse",
-}) as any as S.Schema<DynamicRoutingCreateVersionResponse>;
+  identifier: "DeleteDatasetResponse",
+}) as any as S.Schema<DeleteDatasetResponse>;
 
-export interface DynamicRoutingDeleteRequest {
+export interface DeleteDynamicRoutingRequest {
   accountId: string;
   gatewayId: string;
   id: string;
 }
-export const DynamicRoutingDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
@@ -3261,8 +2657,8 @@ export const DynamicRoutingDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DynamicRoutingDeleteRequest",
-}) as any as S.Schema<DynamicRoutingDeleteRequest>;
+  identifier: "DeleteDynamicRoutingRequest",
+}) as any as S.Schema<DeleteDynamicRoutingRequest>;
 
 export interface DynamicRoutingDeleteResponseElementsItem {
   objectIdOutputsType__: unknown;
@@ -3305,7 +2701,7 @@ export const DynamicRoutingDeleteResponseElementsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<DynamicRoutingDeleteResponseElementsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DynamicRoutingDeleteResponse {
+export interface DeleteDynamicRoutingResponse {
   id: string;
   createdAt: string;
   elements: DynamicRoutingDeleteResponseElementsList;
@@ -3313,7 +2709,7 @@ export interface DynamicRoutingDeleteResponse {
   modifiedAt: string;
   name: string;
 }
-export const DynamicRoutingDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -3323,930 +2719,16 @@ export const DynamicRoutingDeleteResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.String,
   }),
 ).annotate({
-  identifier: "DynamicRoutingDeleteResponse",
-}) as any as S.Schema<DynamicRoutingDeleteResponse>;
+  identifier: "DeleteDynamicRoutingResponse",
+}) as any as S.Schema<DeleteDynamicRoutingResponse>;
 
-export interface DynamicRoutingGetRequest {
-  accountId: string;
-  gatewayId: string;
-  id: string;
-}
-export const DynamicRoutingGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DynamicRoutingGetRequest",
-}) as any as S.Schema<DynamicRoutingGetRequest>;
-
-export interface DynamicRoutingGetResponseDeployment {
-  createdAt: string;
-  deploymentId: string;
-  versionId: string;
-}
-export const DynamicRoutingGetResponseDeployment = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String.pipe(T.Body("created_at")),
-    deploymentId: S.String.pipe(T.Body("deployment_id")),
-    versionId: S.String.pipe(T.Body("version_id")),
-  }),
-).annotate({
-  identifier: "DynamicRoutingGetResponseDeployment",
-}) as any as S.Schema<DynamicRoutingGetResponseDeployment>;
-
-export interface DynamicRoutingGetResponseElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
-}
-export const DynamicRoutingGetResponseElementsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-    }),
-).annotate({
-  identifier: "DynamicRoutingGetResponseElementsItem",
-}) as any as S.Schema<DynamicRoutingGetResponseElementsItem>;
-
-export type DynamicRoutingGetResponseElementsList =
-  DynamicRoutingGetResponseElementsItem[];
-export const DynamicRoutingGetResponseElementsList = /*@__PURE__*/ S.Array(
-  DynamicRoutingGetResponseElementsItem,
-) as any as S.Schema<DynamicRoutingGetResponseElementsList>;
-
-export type DynamicRoutingGetResponseVersionActive =
-  | "true"
-  | "false"
-  | (string & {});
-export const DynamicRoutingGetResponseVersionActive = /*@__PURE__*/ S.String;
-
-export interface DynamicRoutingGetResponseVersion {
-  active: DynamicRoutingGetResponseVersionActive;
-  createdAt: string;
-  data: string;
-  versionId: string;
-  isValid?: boolean;
-}
-export const DynamicRoutingGetResponseVersion = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    active: DynamicRoutingGetResponseVersionActive,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    data: S.String,
-    versionId: S.String.pipe(T.Body("version_id")),
-    isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
-  }),
-).annotate({
-  identifier: "DynamicRoutingGetResponseVersion",
-}) as any as S.Schema<DynamicRoutingGetResponseVersion>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DynamicRoutingGetResponse {
-  id: string;
-  createdAt: string;
-  deployment: DynamicRoutingGetResponseDeployment;
-  elements: DynamicRoutingGetResponseElementsList;
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-  version: DynamicRoutingGetResponseVersion;
-}
-export const DynamicRoutingGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    deployment: DynamicRoutingGetResponseDeployment,
-    elements: DynamicRoutingGetResponseElementsList,
-    gatewayId: S.String.pipe(T.Body("gateway_id")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    version: DynamicRoutingGetResponseVersion,
-  }),
-).annotate({
-  identifier: "DynamicRoutingGetResponse",
-}) as any as S.Schema<DynamicRoutingGetResponse>;
-
-export interface DynamicRoutingGetVersionRequest {
-  accountId: string;
-  gatewayId: string;
-  id: string;
-  versionId: string;
-}
-export const DynamicRoutingGetVersionRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    id: S.String.pipe(T.Label()),
-    versionId: S.String.pipe(T.Label("version_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions/{version_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DynamicRoutingGetVersionRequest",
-}) as any as S.Schema<DynamicRoutingGetVersionRequest>;
-
-export type DynamicRoutingGetVersionResponseActive =
-  | "true"
-  | "false"
-  | (string & {});
-export const DynamicRoutingGetVersionResponseActive = /*@__PURE__*/ S.String;
-
-export interface DynamicRoutingGetVersionResponseElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
-}
-export const DynamicRoutingGetVersionResponseElementsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingGetVersionResponseElementsItem",
-  }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItem>;
-
-export type DynamicRoutingGetVersionResponseElementsList =
-  DynamicRoutingGetVersionResponseElementsItem[];
-export const DynamicRoutingGetVersionResponseElementsList =
-  /*@__PURE__*/ S.Array(
-    DynamicRoutingGetVersionResponseElementsItem,
-  ) as any as S.Schema<DynamicRoutingGetVersionResponseElementsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DynamicRoutingGetVersionResponse {
-  id: string;
-  active: DynamicRoutingGetVersionResponseActive;
-  createdAt: string;
-  data: string;
-  elements: DynamicRoutingGetVersionResponseElementsList;
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-  versionId: string;
-  isValid?: boolean;
-}
-export const DynamicRoutingGetVersionResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    active: DynamicRoutingGetVersionResponseActive,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    data: S.String,
-    elements: DynamicRoutingGetVersionResponseElementsList,
-    gatewayId: S.String.pipe(T.Body("gateway_id")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    versionId: S.String.pipe(T.Body("version_id")),
-    isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
-  }),
-).annotate({
-  identifier: "DynamicRoutingGetVersionResponse",
-}) as any as S.Schema<DynamicRoutingGetVersionResponse>;
-
-export interface DynamicRoutingListRequest {
-  accountId: string;
-  gatewayId: string;
-  /** Page number */
-  page?: number;
-  /** Number of routes per page */
-  perPage?: number;
-}
-export const DynamicRoutingListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DynamicRoutingListRequest",
-}) as any as S.Schema<DynamicRoutingListRequest>;
-
-export interface DynamicRoutingListResponseDataRoutesItemDeployment {
-  createdAt: string;
-  deploymentId: string;
-  versionId: string;
-}
-export const DynamicRoutingListResponseDataRoutesItemDeployment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdAt: S.String.pipe(T.Body("created_at")),
-      deploymentId: S.String.pipe(T.Body("deployment_id")),
-      versionId: S.String.pipe(T.Body("version_id")),
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingListResponseDataRoutesItemDeployment",
-  }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemDeployment>;
-
-export interface DynamicRoutingListResponseDataRoutesItemElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
-}
-export const DynamicRoutingListResponseDataRoutesItemElementsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingListResponseDataRoutesItemElementsItem",
-  }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItem>;
-
-export type DynamicRoutingListResponseDataRoutesItemElementsList =
-  DynamicRoutingListResponseDataRoutesItemElementsItem[];
-export const DynamicRoutingListResponseDataRoutesItemElementsList =
-  /*@__PURE__*/ S.Array(
-    DynamicRoutingListResponseDataRoutesItemElementsItem,
-  ) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsList>;
-
-export type DynamicRoutingListResponseDataRoutesItemVersionActive =
-  | "true"
-  | "false"
-  | (string & {});
-export const DynamicRoutingListResponseDataRoutesItemVersionActive =
-  /*@__PURE__*/ S.String;
-
-export interface DynamicRoutingListResponseDataRoutesItemVersion {
-  active: DynamicRoutingListResponseDataRoutesItemVersionActive;
-  createdAt: string;
-  data: string;
-  versionId: string;
-  isValid?: boolean;
-}
-export const DynamicRoutingListResponseDataRoutesItemVersion =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      active: DynamicRoutingListResponseDataRoutesItemVersionActive,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      data: S.String,
-      versionId: S.String.pipe(T.Body("version_id")),
-      isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingListResponseDataRoutesItemVersion",
-  }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemVersion>;
-
-export interface DynamicRoutingListResponseDataRoutesItem {
-  id: string;
-  accountTag: string;
-  createdAt: string;
-  deployment: DynamicRoutingListResponseDataRoutesItemDeployment;
-  elements: DynamicRoutingListResponseDataRoutesItemElementsList;
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-  version: DynamicRoutingListResponseDataRoutesItemVersion;
-}
-export const DynamicRoutingListResponseDataRoutesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      accountTag: S.String.pipe(T.Body("account_tag")),
-      createdAt: S.String.pipe(T.Body("created_at")),
-      deployment: DynamicRoutingListResponseDataRoutesItemDeployment,
-      elements: DynamicRoutingListResponseDataRoutesItemElementsList,
-      gatewayId: S.String.pipe(T.Body("gateway_id")),
-      modifiedAt: S.String.pipe(T.Body("modified_at")),
-      name: S.String,
-      version: DynamicRoutingListResponseDataRoutesItemVersion,
-    }),
-).annotate({
-  identifier: "DynamicRoutingListResponseDataRoutesItem",
-}) as any as S.Schema<DynamicRoutingListResponseDataRoutesItem>;
-
-export type DynamicRoutingListResponseDataRoutesList =
-  DynamicRoutingListResponseDataRoutesItem[];
-export const DynamicRoutingListResponseDataRoutesList = /*@__PURE__*/ S.Array(
-  DynamicRoutingListResponseDataRoutesItem,
-) as any as S.Schema<DynamicRoutingListResponseDataRoutesList>;
-
-export interface DynamicRoutingListResponseData {
-  orderBy: string;
-  orderByDirection: string;
-  page: number;
-  perPage: number;
-  routes: DynamicRoutingListResponseDataRoutesList;
-}
-export const DynamicRoutingListResponseData = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    orderBy: S.String.pipe(T.Body("order_by")),
-    orderByDirection: S.String.pipe(T.Body("order_by_direction")),
-    page: S.Number,
-    perPage: S.Number.pipe(T.Body("per_page")),
-    routes: DynamicRoutingListResponseDataRoutesList,
-  }),
-).annotate({
-  identifier: "DynamicRoutingListResponseData",
-}) as any as S.Schema<DynamicRoutingListResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DynamicRoutingListResponse {
-  data: DynamicRoutingListResponseData;
-}
-export const DynamicRoutingListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: DynamicRoutingListResponseData,
-  }),
-).annotate({
-  identifier: "DynamicRoutingListResponse",
-}) as any as S.Schema<DynamicRoutingListResponse>;
-
-export interface DynamicRoutingListDeploymentsRequest {
-  accountId: string;
-  gatewayId: string;
-  id: string;
-}
-export const DynamicRoutingListDeploymentsRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      gatewayId: S.String.pipe(T.Label("gateway_id")),
-      id: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "DynamicRoutingListDeploymentsRequest",
-}) as any as S.Schema<DynamicRoutingListDeploymentsRequest>;
-
-export interface DynamicRoutingListDeploymentsResponseDataDeploymentsItem {
-  createdAt: string;
-  deploymentId: string;
-  versionId: string;
-}
-export const DynamicRoutingListDeploymentsResponseDataDeploymentsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdAt: S.String.pipe(T.Body("created_at")),
-      deploymentId: S.String.pipe(T.Body("deployment_id")),
-      versionId: S.String.pipe(T.Body("version_id")),
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingListDeploymentsResponseDataDeploymentsItem",
-  }) as any as S.Schema<DynamicRoutingListDeploymentsResponseDataDeploymentsItem>;
-
-export type DynamicRoutingListDeploymentsResponseDataDeploymentsList =
-  DynamicRoutingListDeploymentsResponseDataDeploymentsItem[];
-export const DynamicRoutingListDeploymentsResponseDataDeploymentsList =
-  /*@__PURE__*/ S.Array(
-    DynamicRoutingListDeploymentsResponseDataDeploymentsItem,
-  ) as any as S.Schema<DynamicRoutingListDeploymentsResponseDataDeploymentsList>;
-
-export interface DynamicRoutingListDeploymentsResponseData {
-  deployments: DynamicRoutingListDeploymentsResponseDataDeploymentsList;
-  orderBy: string;
-  orderByDirection: string;
-  page: number;
-  perPage: number;
-}
-export const DynamicRoutingListDeploymentsResponseData =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      deployments: DynamicRoutingListDeploymentsResponseDataDeploymentsList,
-      orderBy: S.String.pipe(T.Body("order_by")),
-      orderByDirection: S.String.pipe(T.Body("order_by_direction")),
-      page: S.Number,
-      perPage: S.Number.pipe(T.Body("per_page")),
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingListDeploymentsResponseData",
-  }) as any as S.Schema<DynamicRoutingListDeploymentsResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DynamicRoutingListDeploymentsResponse {
-  data: DynamicRoutingListDeploymentsResponseData;
-}
-export const DynamicRoutingListDeploymentsResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      data: DynamicRoutingListDeploymentsResponseData,
-    }),
-).annotate({
-  identifier: "DynamicRoutingListDeploymentsResponse",
-}) as any as S.Schema<DynamicRoutingListDeploymentsResponse>;
-
-export interface DynamicRoutingListVersionsRequest {
-  accountId: string;
-  gatewayId: string;
-  id: string;
-}
-export const DynamicRoutingListVersionsRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DynamicRoutingListVersionsRequest",
-}) as any as S.Schema<DynamicRoutingListVersionsRequest>;
-
-export type DynamicRoutingListVersionsResponseDataVersionsItemActive =
-  | "true"
-  | "false"
-  | (string & {});
-export const DynamicRoutingListVersionsResponseDataVersionsItemActive =
-  /*@__PURE__*/ S.String;
-
-export interface DynamicRoutingListVersionsResponseDataVersionsItem {
-  active: DynamicRoutingListVersionsResponseDataVersionsItemActive;
-  createdAt: string;
-  data: string;
-  versionId: string;
-  isValid?: boolean;
-}
-export const DynamicRoutingListVersionsResponseDataVersionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      active: DynamicRoutingListVersionsResponseDataVersionsItemActive,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      data: S.String,
-      versionId: S.String.pipe(T.Body("version_id")),
-      isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingListVersionsResponseDataVersionsItem",
-  }) as any as S.Schema<DynamicRoutingListVersionsResponseDataVersionsItem>;
-
-export type DynamicRoutingListVersionsResponseDataVersionsList =
-  DynamicRoutingListVersionsResponseDataVersionsItem[];
-export const DynamicRoutingListVersionsResponseDataVersionsList =
-  /*@__PURE__*/ S.Array(
-    DynamicRoutingListVersionsResponseDataVersionsItem,
-  ) as any as S.Schema<DynamicRoutingListVersionsResponseDataVersionsList>;
-
-export interface DynamicRoutingListVersionsResponseData {
-  orderBy: string;
-  orderByDirection: string;
-  page: number;
-  perPage: number;
-  versions: DynamicRoutingListVersionsResponseDataVersionsList;
-}
-export const DynamicRoutingListVersionsResponseData = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      orderBy: S.String.pipe(T.Body("order_by")),
-      orderByDirection: S.String.pipe(T.Body("order_by_direction")),
-      page: S.Number,
-      perPage: S.Number.pipe(T.Body("per_page")),
-      versions: DynamicRoutingListVersionsResponseDataVersionsList,
-    }),
-).annotate({
-  identifier: "DynamicRoutingListVersionsResponseData",
-}) as any as S.Schema<DynamicRoutingListVersionsResponseData>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DynamicRoutingListVersionsResponse {
-  data: DynamicRoutingListVersionsResponseData;
-}
-export const DynamicRoutingListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    data: DynamicRoutingListVersionsResponseData,
-  }),
-).annotate({
-  identifier: "DynamicRoutingListVersionsResponse",
-}) as any as S.Schema<DynamicRoutingListVersionsResponse>;
-
-export interface DynamicRoutingUpdateRequest {
-  accountId: string;
-  gatewayId: string;
-  id: string;
-  name: string;
-}
-export const DynamicRoutingUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    id: S.String.pipe(T.Label()),
-    name: S.String,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DynamicRoutingUpdateRequest",
-}) as any as S.Schema<DynamicRoutingUpdateRequest>;
-
-export interface DynamicRoutingUpdateResponseRouteDeployment {
-  createdAt: string;
-  deploymentId: string;
-  versionId: string;
-}
-export const DynamicRoutingUpdateResponseRouteDeployment =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      createdAt: S.String.pipe(T.Body("created_at")),
-      deploymentId: S.String.pipe(T.Body("deployment_id")),
-      versionId: S.String.pipe(T.Body("version_id")),
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingUpdateResponseRouteDeployment",
-  }) as any as S.Schema<DynamicRoutingUpdateResponseRouteDeployment>;
-
-export interface DynamicRoutingUpdateResponseRouteElementsItem {
-  objectIdOutputsType__: unknown;
-  objectIdOutputsPropertiesType__: unknown;
-  objectIdOutputsType2: unknown;
-  objectIdOutputsPropertiesType2: unknown;
-  objectIdOutputsPropertiesType3: unknown;
-  objectIdOutputsType3: unknown;
-}
-export const DynamicRoutingUpdateResponseRouteElementsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      objectIdOutputsType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType__: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-      objectIdOutputsPropertiesType2: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsPropertiesType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, properties, type }"),
-      ),
-      objectIdOutputsType3: S.Unknown.pipe(
-        T.Body("object { id, outputs, type }"),
-      ),
-    }),
-  ).annotate({
-    identifier: "DynamicRoutingUpdateResponseRouteElementsItem",
-  }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItem>;
-
-export type DynamicRoutingUpdateResponseRouteElementsList =
-  DynamicRoutingUpdateResponseRouteElementsItem[];
-export const DynamicRoutingUpdateResponseRouteElementsList =
-  /*@__PURE__*/ S.Array(
-    DynamicRoutingUpdateResponseRouteElementsItem,
-  ) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsList>;
-
-export type DynamicRoutingUpdateResponseRouteVersionActive =
-  | "true"
-  | "false"
-  | (string & {});
-export const DynamicRoutingUpdateResponseRouteVersionActive =
-  /*@__PURE__*/ S.String;
-
-export interface DynamicRoutingUpdateResponseRouteVersion {
-  active: DynamicRoutingUpdateResponseRouteVersionActive;
-  createdAt: string;
-  data: string;
-  versionId: string;
-  isValid?: boolean;
-}
-export const DynamicRoutingUpdateResponseRouteVersion = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      active: DynamicRoutingUpdateResponseRouteVersionActive,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      data: S.String,
-      versionId: S.String.pipe(T.Body("version_id")),
-      isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
-    }),
-).annotate({
-  identifier: "DynamicRoutingUpdateResponseRouteVersion",
-}) as any as S.Schema<DynamicRoutingUpdateResponseRouteVersion>;
-
-export interface DynamicRoutingUpdateResponseRoute {
-  id: string;
-  accountTag: string;
-  createdAt: string;
-  deployment: DynamicRoutingUpdateResponseRouteDeployment;
-  elements: DynamicRoutingUpdateResponseRouteElementsList;
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-  version: DynamicRoutingUpdateResponseRouteVersion;
-}
-export const DynamicRoutingUpdateResponseRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    accountTag: S.String.pipe(T.Body("account_tag")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    deployment: DynamicRoutingUpdateResponseRouteDeployment,
-    elements: DynamicRoutingUpdateResponseRouteElementsList,
-    gatewayId: S.String.pipe(T.Body("gateway_id")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    version: DynamicRoutingUpdateResponseRouteVersion,
-  }),
-).annotate({
-  identifier: "DynamicRoutingUpdateResponseRoute",
-}) as any as S.Schema<DynamicRoutingUpdateResponseRoute>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface DynamicRoutingUpdateResponse {
-  route: DynamicRoutingUpdateResponseRoute;
-}
-export const DynamicRoutingUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    route: DynamicRoutingUpdateResponseRoute,
-  }),
-).annotate({
-  identifier: "DynamicRoutingUpdateResponse",
-}) as any as S.Schema<DynamicRoutingUpdateResponse>;
-
-export type EvaluationsCreateRequestDatasetIdsList = string[];
-export const EvaluationsCreateRequestDatasetIdsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EvaluationsCreateRequestDatasetIdsList>;
-
-export type EvaluationsCreateRequestEvaluationTypeIdsList = string[];
-export const EvaluationsCreateRequestEvaluationTypeIdsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EvaluationsCreateRequestEvaluationTypeIdsList>;
-
-export interface EvaluationsCreateRequest {
-  accountId: string;
-  /** gateway id */
-  gatewayId: string;
-  datasetIds: EvaluationsCreateRequestDatasetIdsList;
-  evaluationTypeIds: EvaluationsCreateRequestEvaluationTypeIdsList;
-  name: string;
-}
-export const EvaluationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    datasetIds: EvaluationsCreateRequestDatasetIdsList.pipe(
-      T.Body("dataset_ids"),
-    ),
-    evaluationTypeIds: EvaluationsCreateRequestEvaluationTypeIdsList.pipe(
-      T.Body("evaluation_type_ids"),
-    ),
-    name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EvaluationsCreateRequest",
-}) as any as S.Schema<EvaluationsCreateRequest>;
-
-export type EvaluationsCreateResponseDatasetsItemFiltersItemKey =
-  | "created_at"
-  | "request_content_type"
-  | "response_content_type"
-  | (string & {});
-export const EvaluationsCreateResponseDatasetsItemFiltersItemKey =
-  /*@__PURE__*/ S.String;
-
-export type EvaluationsCreateResponseDatasetsItemFiltersItemOperator =
-  | "eq"
-  | "contains"
-  | "lt"
-  | "gt"
-  | (string & {});
-export const EvaluationsCreateResponseDatasetsItemFiltersItemOperator =
-  /*@__PURE__*/ S.String;
-
-export interface EvaluationsCreateResponseDatasetsItemFiltersItemValueItem {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-}
-export const EvaluationsCreateResponseDatasetsItemFiltersItemValueItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "EvaluationsCreateResponseDatasetsItemFiltersItemValueItem",
-  }) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersItemValueItem>;
-
-export type EvaluationsCreateResponseDatasetsItemFiltersItemValueList =
-  EvaluationsCreateResponseDatasetsItemFiltersItemValueItem[];
-export const EvaluationsCreateResponseDatasetsItemFiltersItemValueList =
-  /*@__PURE__*/ S.Array(
-    EvaluationsCreateResponseDatasetsItemFiltersItemValueItem,
-  ) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersItemValueList>;
-
-export interface EvaluationsCreateResponseDatasetsItemFiltersItem {
-  key: EvaluationsCreateResponseDatasetsItemFiltersItemKey;
-  operator: EvaluationsCreateResponseDatasetsItemFiltersItemOperator;
-  value: EvaluationsCreateResponseDatasetsItemFiltersItemValueList;
-}
-export const EvaluationsCreateResponseDatasetsItemFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: EvaluationsCreateResponseDatasetsItemFiltersItemKey,
-      operator: EvaluationsCreateResponseDatasetsItemFiltersItemOperator,
-      value: EvaluationsCreateResponseDatasetsItemFiltersItemValueList,
-    }),
-  ).annotate({
-    identifier: "EvaluationsCreateResponseDatasetsItemFiltersItem",
-  }) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersItem>;
-
-export type EvaluationsCreateResponseDatasetsItemFiltersList =
-  EvaluationsCreateResponseDatasetsItemFiltersItem[];
-export const EvaluationsCreateResponseDatasetsItemFiltersList =
-  /*@__PURE__*/ S.Array(
-    EvaluationsCreateResponseDatasetsItemFiltersItem,
-  ) as any as S.Schema<EvaluationsCreateResponseDatasetsItemFiltersList>;
-
-export interface EvaluationsCreateResponseDatasetsItem {
-  id: string;
-  accountId: string;
-  accountTag: string;
-  createdAt: string;
-  enable: boolean;
-  filters: EvaluationsCreateResponseDatasetsItemFiltersList;
-  /** gateway id */
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-}
-export const EvaluationsCreateResponseDatasetsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      accountId: S.String.pipe(T.Body("account_id")),
-      accountTag: S.String.pipe(T.Body("account_tag")),
-      createdAt: S.String.pipe(T.Body("created_at")),
-      enable: S.Boolean,
-      filters: EvaluationsCreateResponseDatasetsItemFiltersList,
-      gatewayId: S.String.pipe(T.Body("gateway_id")),
-      modifiedAt: S.String.pipe(T.Body("modified_at")),
-      name: S.String,
-    }),
-).annotate({
-  identifier: "EvaluationsCreateResponseDatasetsItem",
-}) as any as S.Schema<EvaluationsCreateResponseDatasetsItem>;
-
-export type EvaluationsCreateResponseDatasetsList =
-  EvaluationsCreateResponseDatasetsItem[];
-export const EvaluationsCreateResponseDatasetsList = /*@__PURE__*/ S.Array(
-  EvaluationsCreateResponseDatasetsItem,
-) as any as S.Schema<EvaluationsCreateResponseDatasetsList>;
-
-export interface EvaluationsCreateResponseResultsItem {
-  id: string;
-  createdAt: string;
-  evaluationId: string;
-  evaluationTypeId: string;
-  modifiedAt: string;
-  result: string;
-  status: number;
-  statusDescription: string;
-  totalLogs: number;
-}
-export const EvaluationsCreateResponseResultsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      evaluationId: S.String.pipe(T.Body("evaluation_id")),
-      evaluationTypeId: S.String.pipe(T.Body("evaluation_type_id")),
-      modifiedAt: S.String.pipe(T.Body("modified_at")),
-      result: S.String,
-      status: S.Number,
-      statusDescription: S.String.pipe(T.Body("status_description")),
-      totalLogs: S.Number.pipe(T.Body("total_logs")),
-    }),
-).annotate({
-  identifier: "EvaluationsCreateResponseResultsItem",
-}) as any as S.Schema<EvaluationsCreateResponseResultsItem>;
-
-export type EvaluationsCreateResponseResultsList =
-  EvaluationsCreateResponseResultsItem[];
-export const EvaluationsCreateResponseResultsList = /*@__PURE__*/ S.Array(
-  EvaluationsCreateResponseResultsItem,
-) as any as S.Schema<EvaluationsCreateResponseResultsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EvaluationsCreateResponse {
-  id: string;
-  createdAt: string;
-  datasets: EvaluationsCreateResponseDatasetsList;
-  /** gateway id */
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-  processed: boolean;
-  results: EvaluationsCreateResponseResultsList;
-  totalLogs: number;
-}
-export const EvaluationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    datasets: EvaluationsCreateResponseDatasetsList,
-    gatewayId: S.String.pipe(T.Body("gateway_id")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    processed: S.Boolean,
-    results: EvaluationsCreateResponseResultsList,
-    totalLogs: S.Number.pipe(T.Body("total_logs")),
-  }),
-).annotate({
-  identifier: "EvaluationsCreateResponse",
-}) as any as S.Schema<EvaluationsCreateResponse>;
-
-export interface EvaluationsDeleteRequest {
+export interface DeleteEvaluationRequest {
   accountId: string;
   /** gateway id */
   gatewayId: string;
   id: string;
 }
-export const EvaluationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
@@ -4259,8 +2741,8 @@ export const EvaluationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EvaluationsDeleteRequest",
-}) as any as S.Schema<EvaluationsDeleteRequest>;
+  identifier: "DeleteEvaluationRequest",
+}) as any as S.Schema<DeleteEvaluationRequest>;
 
 export type EvaluationsDeleteResponseDatasetsItemFiltersItemKey =
   | "created_at"
@@ -4395,7 +2877,7 @@ export const EvaluationsDeleteResponseResultsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<EvaluationsDeleteResponseResultsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EvaluationsDeleteResponse {
+export interface DeleteEvaluationResponse {
   id: string;
   createdAt: string;
   datasets: EvaluationsDeleteResponseDatasetsList;
@@ -4407,7 +2889,7 @@ export interface EvaluationsDeleteResponse {
   results: EvaluationsDeleteResponseResultsList;
   totalLogs: number;
 }
-export const EvaluationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -4420,482 +2902,67 @@ export const EvaluationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
     totalLogs: S.Number.pipe(T.Body("total_logs")),
   }),
 ).annotate({
-  identifier: "EvaluationsDeleteResponse",
-}) as any as S.Schema<EvaluationsDeleteResponse>;
+  identifier: "DeleteEvaluationResponse",
+}) as any as S.Schema<DeleteEvaluationResponse>;
 
-export interface EvaluationsGetRequest {
+export type LogsDeleteRequestFiltersList = string[];
+export const LogsDeleteRequestFiltersList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<LogsDeleteRequestFiltersList>;
+
+export type LogsDeleteRequestOrderBy =
+  | "created_at"
+  | "provider"
+  | "model"
+  | (string & {});
+export const LogsDeleteRequestOrderBy = /*@__PURE__*/ S.String;
+
+export type LogsDeleteRequestOrderByDirection = "asc" | "desc" | (string & {});
+export const LogsDeleteRequestOrderByDirection = /*@__PURE__*/ S.String;
+
+export interface DeleteLogRequest {
   accountId: string;
   /** gateway id */
   gatewayId: string;
-  id: string;
+  filters?: LogsDeleteRequestFiltersList;
+  limit?: number;
+  orderBy?: LogsDeleteRequestOrderBy;
+  orderByDirection?: LogsDeleteRequestOrderByDirection;
 }
-export const EvaluationsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteLogRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EvaluationsGetRequest",
-}) as any as S.Schema<EvaluationsGetRequest>;
-
-export type EvaluationsGetResponseDatasetsItemFiltersItemKey =
-  | "created_at"
-  | "request_content_type"
-  | "response_content_type"
-  | (string & {});
-export const EvaluationsGetResponseDatasetsItemFiltersItemKey =
-  /*@__PURE__*/ S.String;
-
-export type EvaluationsGetResponseDatasetsItemFiltersItemOperator =
-  | "eq"
-  | "contains"
-  | "lt"
-  | "gt"
-  | (string & {});
-export const EvaluationsGetResponseDatasetsItemFiltersItemOperator =
-  /*@__PURE__*/ S.String;
-
-export interface EvaluationsGetResponseDatasetsItemFiltersItemValueItem {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-}
-export const EvaluationsGetResponseDatasetsItemFiltersItemValueItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "EvaluationsGetResponseDatasetsItemFiltersItemValueItem",
-  }) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersItemValueItem>;
-
-export type EvaluationsGetResponseDatasetsItemFiltersItemValueList =
-  EvaluationsGetResponseDatasetsItemFiltersItemValueItem[];
-export const EvaluationsGetResponseDatasetsItemFiltersItemValueList =
-  /*@__PURE__*/ S.Array(
-    EvaluationsGetResponseDatasetsItemFiltersItemValueItem,
-  ) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersItemValueList>;
-
-export interface EvaluationsGetResponseDatasetsItemFiltersItem {
-  key: EvaluationsGetResponseDatasetsItemFiltersItemKey;
-  operator: EvaluationsGetResponseDatasetsItemFiltersItemOperator;
-  value: EvaluationsGetResponseDatasetsItemFiltersItemValueList;
-}
-export const EvaluationsGetResponseDatasetsItemFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: EvaluationsGetResponseDatasetsItemFiltersItemKey,
-      operator: EvaluationsGetResponseDatasetsItemFiltersItemOperator,
-      value: EvaluationsGetResponseDatasetsItemFiltersItemValueList,
-    }),
-  ).annotate({
-    identifier: "EvaluationsGetResponseDatasetsItemFiltersItem",
-  }) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersItem>;
-
-export type EvaluationsGetResponseDatasetsItemFiltersList =
-  EvaluationsGetResponseDatasetsItemFiltersItem[];
-export const EvaluationsGetResponseDatasetsItemFiltersList =
-  /*@__PURE__*/ S.Array(
-    EvaluationsGetResponseDatasetsItemFiltersItem,
-  ) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersList>;
-
-export interface EvaluationsGetResponseDatasetsItem {
-  id: string;
-  accountId: string;
-  accountTag: string;
-  createdAt: string;
-  enable: boolean;
-  filters: EvaluationsGetResponseDatasetsItemFiltersList;
-  /** gateway id */
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-}
-export const EvaluationsGetResponseDatasetsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    accountId: S.String.pipe(T.Body("account_id")),
-    accountTag: S.String.pipe(T.Body("account_tag")),
-    createdAt: S.String.pipe(T.Body("created_at")),
-    enable: S.Boolean,
-    filters: EvaluationsGetResponseDatasetsItemFiltersList,
-    gatewayId: S.String.pipe(T.Body("gateway_id")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-  }),
-).annotate({
-  identifier: "EvaluationsGetResponseDatasetsItem",
-}) as any as S.Schema<EvaluationsGetResponseDatasetsItem>;
-
-export type EvaluationsGetResponseDatasetsList =
-  EvaluationsGetResponseDatasetsItem[];
-export const EvaluationsGetResponseDatasetsList = /*@__PURE__*/ S.Array(
-  EvaluationsGetResponseDatasetsItem,
-) as any as S.Schema<EvaluationsGetResponseDatasetsList>;
-
-export interface EvaluationsGetResponseResultsItem {
-  id: string;
-  createdAt: string;
-  evaluationId: string;
-  evaluationTypeId: string;
-  modifiedAt: string;
-  result: string;
-  status: number;
-  statusDescription: string;
-  totalLogs: number;
-}
-export const EvaluationsGetResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    evaluationId: S.String.pipe(T.Body("evaluation_id")),
-    evaluationTypeId: S.String.pipe(T.Body("evaluation_type_id")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    result: S.String,
-    status: S.Number,
-    statusDescription: S.String.pipe(T.Body("status_description")),
-    totalLogs: S.Number.pipe(T.Body("total_logs")),
-  }),
-).annotate({
-  identifier: "EvaluationsGetResponseResultsItem",
-}) as any as S.Schema<EvaluationsGetResponseResultsItem>;
-
-export type EvaluationsGetResponseResultsList =
-  EvaluationsGetResponseResultsItem[];
-export const EvaluationsGetResponseResultsList = /*@__PURE__*/ S.Array(
-  EvaluationsGetResponseResultsItem,
-) as any as S.Schema<EvaluationsGetResponseResultsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EvaluationsGetResponse {
-  id: string;
-  createdAt: string;
-  datasets: EvaluationsGetResponseDatasetsList;
-  /** gateway id */
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-  processed: boolean;
-  results: EvaluationsGetResponseResultsList;
-  totalLogs: number;
-}
-export const EvaluationsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    datasets: EvaluationsGetResponseDatasetsList,
-    gatewayId: S.String.pipe(T.Body("gateway_id")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    processed: S.Boolean,
-    results: EvaluationsGetResponseResultsList,
-    totalLogs: S.Number.pipe(T.Body("total_logs")),
-  }),
-).annotate({
-  identifier: "EvaluationsGetResponse",
-}) as any as S.Schema<EvaluationsGetResponse>;
-
-export interface EvaluationsListRequest {
-  accountId: string;
-  /** gateway id */
-  gatewayId: string;
-  name?: string;
-  page?: number;
-  perPage?: number;
-  processed?: boolean;
-  /** Search by id, name */
-  search?: string;
-}
-export const EvaluationsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    name: S.optional(S.String.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    processed: S.optional(S.Boolean.pipe(T.Query())),
-    search: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EvaluationsListRequest",
-}) as any as S.Schema<EvaluationsListRequest>;
-
-export type EvaluationsListResultItemDatasetsItemFiltersItemKey =
-  | "created_at"
-  | "request_content_type"
-  | "response_content_type"
-  | (string & {});
-export const EvaluationsListResultItemDatasetsItemFiltersItemKey =
-  /*@__PURE__*/ S.String;
-
-export type EvaluationsListResultItemDatasetsItemFiltersItemOperator =
-  | "eq"
-  | "contains"
-  | "lt"
-  | "gt"
-  | (string & {});
-export const EvaluationsListResultItemDatasetsItemFiltersItemOperator =
-  /*@__PURE__*/ S.String;
-
-export interface EvaluationsListResultItemDatasetsItemFiltersItemValueItem {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-}
-export const EvaluationsListResultItemDatasetsItemFiltersItemValueItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      string: S.Unknown,
-      number: S.Unknown,
-      boolean: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "EvaluationsListResultItemDatasetsItemFiltersItemValueItem",
-  }) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersItemValueItem>;
-
-export type EvaluationsListResultItemDatasetsItemFiltersItemValueList =
-  EvaluationsListResultItemDatasetsItemFiltersItemValueItem[];
-export const EvaluationsListResultItemDatasetsItemFiltersItemValueList =
-  /*@__PURE__*/ S.Array(
-    EvaluationsListResultItemDatasetsItemFiltersItemValueItem,
-  ) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersItemValueList>;
-
-export interface EvaluationsListResultItemDatasetsItemFiltersItem {
-  key: EvaluationsListResultItemDatasetsItemFiltersItemKey;
-  operator: EvaluationsListResultItemDatasetsItemFiltersItemOperator;
-  value: EvaluationsListResultItemDatasetsItemFiltersItemValueList;
-}
-export const EvaluationsListResultItemDatasetsItemFiltersItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      key: EvaluationsListResultItemDatasetsItemFiltersItemKey,
-      operator: EvaluationsListResultItemDatasetsItemFiltersItemOperator,
-      value: EvaluationsListResultItemDatasetsItemFiltersItemValueList,
-    }),
-  ).annotate({
-    identifier: "EvaluationsListResultItemDatasetsItemFiltersItem",
-  }) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersItem>;
-
-export type EvaluationsListResultItemDatasetsItemFiltersList =
-  EvaluationsListResultItemDatasetsItemFiltersItem[];
-export const EvaluationsListResultItemDatasetsItemFiltersList =
-  /*@__PURE__*/ S.Array(
-    EvaluationsListResultItemDatasetsItemFiltersItem,
-  ) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersList>;
-
-export interface EvaluationsListResultItemDatasetsItem {
-  id: string;
-  accountId: string;
-  accountTag: string;
-  createdAt: string;
-  enable: boolean;
-  filters: EvaluationsListResultItemDatasetsItemFiltersList;
-  /** gateway id */
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-}
-export const EvaluationsListResultItemDatasetsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      accountId: S.String.pipe(T.Body("account_id")),
-      accountTag: S.String.pipe(T.Body("account_tag")),
-      createdAt: S.String.pipe(T.Body("created_at")),
-      enable: S.Boolean,
-      filters: EvaluationsListResultItemDatasetsItemFiltersList,
-      gatewayId: S.String.pipe(T.Body("gateway_id")),
-      modifiedAt: S.String.pipe(T.Body("modified_at")),
-      name: S.String,
-    }),
-).annotate({
-  identifier: "EvaluationsListResultItemDatasetsItem",
-}) as any as S.Schema<EvaluationsListResultItemDatasetsItem>;
-
-export type EvaluationsListResultItemDatasetsList =
-  EvaluationsListResultItemDatasetsItem[];
-export const EvaluationsListResultItemDatasetsList = /*@__PURE__*/ S.Array(
-  EvaluationsListResultItemDatasetsItem,
-) as any as S.Schema<EvaluationsListResultItemDatasetsList>;
-
-export interface EvaluationsListResultItemResultsItem {
-  id: string;
-  createdAt: string;
-  evaluationId: string;
-  evaluationTypeId: string;
-  modifiedAt: string;
-  result: string;
-  status: number;
-  statusDescription: string;
-  totalLogs: number;
-}
-export const EvaluationsListResultItemResultsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      createdAt: S.String.pipe(T.Body("created_at")),
-      evaluationId: S.String.pipe(T.Body("evaluation_id")),
-      evaluationTypeId: S.String.pipe(T.Body("evaluation_type_id")),
-      modifiedAt: S.String.pipe(T.Body("modified_at")),
-      result: S.String,
-      status: S.Number,
-      statusDescription: S.String.pipe(T.Body("status_description")),
-      totalLogs: S.Number.pipe(T.Body("total_logs")),
-    }),
-).annotate({
-  identifier: "EvaluationsListResultItemResultsItem",
-}) as any as S.Schema<EvaluationsListResultItemResultsItem>;
-
-export type EvaluationsListResultItemResultsList =
-  EvaluationsListResultItemResultsItem[];
-export const EvaluationsListResultItemResultsList = /*@__PURE__*/ S.Array(
-  EvaluationsListResultItemResultsItem,
-) as any as S.Schema<EvaluationsListResultItemResultsList>;
-
-export interface EvaluationsListResultItem {
-  id: string;
-  createdAt: string;
-  datasets: EvaluationsListResultItemDatasetsList;
-  /** gateway id */
-  gatewayId: string;
-  modifiedAt: string;
-  name: string;
-  processed: boolean;
-  results: EvaluationsListResultItemResultsList;
-  totalLogs: number;
-}
-export const EvaluationsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    datasets: EvaluationsListResultItemDatasetsList,
-    gatewayId: S.String.pipe(T.Body("gateway_id")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    processed: S.Boolean,
-    results: EvaluationsListResultItemResultsList,
-    totalLogs: S.Number.pipe(T.Body("total_logs")),
-  }),
-).annotate({
-  identifier: "EvaluationsListResultItem",
-}) as any as S.Schema<EvaluationsListResultItem>;
-
-export type EvaluationsListResultList = EvaluationsListResultItem[];
-export const EvaluationsListResultList = /*@__PURE__*/ S.Array(
-  EvaluationsListResultItem,
-) as any as S.Schema<EvaluationsListResultList>;
-
-export interface EvaluationsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: EvaluationsListResultList;
-}
-export const EvaluationsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(EvaluationsListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "EvaluationsListResponse",
-}) as any as S.Schema<EvaluationsListResponse>;
-
-export type EvaluationTypesListRequestOrderByDirection =
-  | "asc"
-  | "desc"
-  | (string & {});
-export const EvaluationTypesListRequestOrderByDirection =
-  /*@__PURE__*/ S.String;
-
-export interface EvaluationTypesListRequest {
-  accountId: string;
-  orderBy?: string;
-  orderByDirection?: EvaluationTypesListRequestOrderByDirection;
-  page?: number;
-  perPage?: number;
-}
-export const EvaluationTypesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+    filters: S.optional(LogsDeleteRequestFiltersList.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(LogsDeleteRequestOrderBy.pipe(T.Query("order_by"))),
     orderByDirection: S.optional(
-      EvaluationTypesListRequestOrderByDirection.pipe(
-        T.Query("order_by_direction"),
-      ),
+      LogsDeleteRequestOrderByDirection.pipe(T.Query("order_by_direction")),
     ),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/evaluation-types",
+      method: "DELETE",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "EvaluationTypesListRequest",
-}) as any as S.Schema<EvaluationTypesListRequest>;
+  identifier: "DeleteLogRequest",
+}) as any as S.Schema<DeleteLogRequest>;
 
-export interface EvaluationTypesListResultItem {
-  id: string;
-  createdAt: string;
-  description: string;
-  enable: boolean;
-  mandatory: boolean;
-  modifiedAt: string;
-  name: string;
-  type: string;
-}
-export const EvaluationTypesListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    description: S.String,
-    enable: S.Boolean,
-    mandatory: S.Boolean,
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    type: S.String,
-  }),
+export interface DeleteLogResponse {}
+export const DeleteLogResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "EvaluationTypesListResultItem",
-}) as any as S.Schema<EvaluationTypesListResultItem>;
+  identifier: "DeleteLogResponse",
+}) as any as S.Schema<DeleteLogResponse>;
 
-export type EvaluationTypesListResultList = EvaluationTypesListResultItem[];
-export const EvaluationTypesListResultList = /*@__PURE__*/ S.Array(
-  EvaluationTypesListResultItem,
-) as any as S.Schema<EvaluationTypesListResultList>;
-
-export interface EvaluationTypesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: EvaluationTypesListResultList;
-}
-export const EvaluationTypesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(EvaluationTypesListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "EvaluationTypesListResponse",
-}) as any as S.Schema<EvaluationTypesListResponse>;
-
-export interface GetRequest {
+export interface GetAiGatewayRequest {
   accountId: string;
   /** gateway id */
   id: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
@@ -4906,7 +2973,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetAiGatewayRequest",
+}) as any as S.Schema<GetAiGatewayRequest>;
 
 export interface GetResponseDlp {
   objectActionEnabledProfiles__: unknown;
@@ -5297,7 +3366,7 @@ export type GetResponseWorkersAiBillingMode = "postpaid" | (string & {});
 export const GetResponseWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetAiGatewayResponse {
   /** gateway id */
   id: string;
   cacheInvalidateOnUpdate: boolean;
@@ -5330,7 +3399,7 @@ export interface GetResponse {
   workersAiBillingMode?: GetResponseWorkersAiBillingMode;
   zdr?: boolean;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cacheInvalidateOnUpdate: S.Boolean.pipe(
@@ -5371,16 +3440,1035 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     zdr: S.optional(S.Boolean),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetAiGatewayResponse",
+}) as any as S.Schema<GetAiGatewayResponse>;
 
-export interface ListRequest {
+export interface GetBillingSpendingLimitRequest {
+  accountId: string;
+}
+export const GetBillingSpendingLimitRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/billing/spending-limit",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetBillingSpendingLimitRequest",
+}) as any as S.Schema<GetBillingSpendingLimitRequest>;
+
+export interface BillingSpendingLimitGetResponseConfig {
+  amount: number;
+  duration: string;
+  strategy: string;
+}
+export const BillingSpendingLimitGetResponseConfig = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      amount: S.Number,
+      duration: S.String,
+      strategy: S.String,
+    }),
+).annotate({
+  identifier: "BillingSpendingLimitGetResponseConfig",
+}) as any as S.Schema<BillingSpendingLimitGetResponseConfig>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetBillingSpendingLimitResponse {
+  config: BillingSpendingLimitGetResponseConfig;
+  enabled: boolean;
+}
+export const GetBillingSpendingLimitResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    config: BillingSpendingLimitGetResponseConfig,
+    enabled: S.Boolean,
+  }),
+).annotate({
+  identifier: "GetBillingSpendingLimitResponse",
+}) as any as S.Schema<GetBillingSpendingLimitResponse>;
+
+export interface GetBillingTopupConfigRequest {
+  accountId: string;
+}
+export const GetBillingTopupConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/billing/topup/config",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetBillingTopupConfigRequest",
+}) as any as S.Schema<GetBillingTopupConfigRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetBillingTopupConfigResponse {
+  amount: number;
+  disabledReason: string;
+  error: string;
+  lastFailedAt: number;
+  threshold: number;
+}
+export const GetBillingTopupConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    amount: S.Number,
+    disabledReason: S.String,
+    error: S.String,
+    lastFailedAt: S.Number,
+    threshold: S.Number,
+  }),
+).annotate({
+  identifier: "GetBillingTopupConfigResponse",
+}) as any as S.Schema<GetBillingTopupConfigResponse>;
+
+export interface GetCustomProviderRequest {
+  accountId: string;
+  id: string;
+}
+export const GetCustomProviderRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/custom-providers/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetCustomProviderRequest",
+}) as any as S.Schema<GetCustomProviderRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetCustomProviderResponse {
+  id: string;
+  baseUrl: string;
+  createdAt: string;
+  modifiedAt: string;
+  name: string;
+  slug: string;
+  beta?: boolean;
+  curlExample?: string;
+  description?: string;
+  enable?: boolean;
+  headers?: string;
+  jsExample?: string;
+  link?: string;
+  logo?: string;
+  position?: number;
+}
+export const GetCustomProviderResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    baseUrl: S.String.pipe(T.Body("base_url")),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    slug: S.String,
+    beta: S.optional(S.Boolean),
+    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
+    description: S.optional(S.String),
+    enable: S.optional(S.Boolean),
+    headers: S.optional(S.String),
+    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
+    link: S.optional(S.String),
+    logo: S.optional(S.String),
+    position: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GetCustomProviderResponse",
+}) as any as S.Schema<GetCustomProviderResponse>;
+
+export interface GetDatasetRequest {
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
+  id: string;
+}
+export const GetDatasetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetDatasetRequest",
+}) as any as S.Schema<GetDatasetRequest>;
+
+export type DatasetsGetResponseFiltersItemKey =
+  | "created_at"
+  | "request_content_type"
+  | "response_content_type"
+  | (string & {});
+export const DatasetsGetResponseFiltersItemKey = /*@__PURE__*/ S.String;
+
+export type DatasetsGetResponseFiltersItemOperator =
+  | "eq"
+  | "contains"
+  | "lt"
+  | "gt"
+  | (string & {});
+export const DatasetsGetResponseFiltersItemOperator = /*@__PURE__*/ S.String;
+
+export interface DatasetsGetResponseFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const DatasetsGetResponseFiltersItemValueItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+).annotate({
+  identifier: "DatasetsGetResponseFiltersItemValueItem",
+}) as any as S.Schema<DatasetsGetResponseFiltersItemValueItem>;
+
+export type DatasetsGetResponseFiltersItemValueList =
+  DatasetsGetResponseFiltersItemValueItem[];
+export const DatasetsGetResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
+  DatasetsGetResponseFiltersItemValueItem,
+) as any as S.Schema<DatasetsGetResponseFiltersItemValueList>;
+
+export interface DatasetsGetResponseFiltersItem {
+  key: DatasetsGetResponseFiltersItemKey;
+  operator: DatasetsGetResponseFiltersItemOperator;
+  value: DatasetsGetResponseFiltersItemValueList;
+}
+export const DatasetsGetResponseFiltersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: DatasetsGetResponseFiltersItemKey,
+    operator: DatasetsGetResponseFiltersItemOperator,
+    value: DatasetsGetResponseFiltersItemValueList,
+  }),
+).annotate({
+  identifier: "DatasetsGetResponseFiltersItem",
+}) as any as S.Schema<DatasetsGetResponseFiltersItem>;
+
+export type DatasetsGetResponseFiltersList = DatasetsGetResponseFiltersItem[];
+export const DatasetsGetResponseFiltersList = /*@__PURE__*/ S.Array(
+  DatasetsGetResponseFiltersItem,
+) as any as S.Schema<DatasetsGetResponseFiltersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetDatasetResponse {
+  id: string;
+  createdAt: string;
+  enable: boolean;
+  filters: DatasetsGetResponseFiltersList;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+}
+export const GetDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    enable: S.Boolean,
+    filters: DatasetsGetResponseFiltersList,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "GetDatasetResponse",
+}) as any as S.Schema<GetDatasetResponse>;
+
+export interface GetDynamicRoutingRequest {
+  accountId: string;
+  gatewayId: string;
+  id: string;
+}
+export const GetDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetDynamicRoutingRequest",
+}) as any as S.Schema<GetDynamicRoutingRequest>;
+
+export interface DynamicRoutingGetResponseDeployment {
+  createdAt: string;
+  deploymentId: string;
+  versionId: string;
+}
+export const DynamicRoutingGetResponseDeployment = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.String.pipe(T.Body("created_at")),
+    deploymentId: S.String.pipe(T.Body("deployment_id")),
+    versionId: S.String.pipe(T.Body("version_id")),
+  }),
+).annotate({
+  identifier: "DynamicRoutingGetResponseDeployment",
+}) as any as S.Schema<DynamicRoutingGetResponseDeployment>;
+
+export interface DynamicRoutingGetResponseElementsItem {
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
+}
+export const DynamicRoutingGetResponseElementsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      objectIdOutputsType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+    }),
+).annotate({
+  identifier: "DynamicRoutingGetResponseElementsItem",
+}) as any as S.Schema<DynamicRoutingGetResponseElementsItem>;
+
+export type DynamicRoutingGetResponseElementsList =
+  DynamicRoutingGetResponseElementsItem[];
+export const DynamicRoutingGetResponseElementsList = /*@__PURE__*/ S.Array(
+  DynamicRoutingGetResponseElementsItem,
+) as any as S.Schema<DynamicRoutingGetResponseElementsList>;
+
+export type DynamicRoutingGetResponseVersionActive =
+  | "true"
+  | "false"
+  | (string & {});
+export const DynamicRoutingGetResponseVersionActive = /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingGetResponseVersion {
+  active: DynamicRoutingGetResponseVersionActive;
+  createdAt: string;
+  data: string;
+  versionId: string;
+  isValid?: boolean;
+}
+export const DynamicRoutingGetResponseVersion = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    active: DynamicRoutingGetResponseVersionActive,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    data: S.String,
+    versionId: S.String.pipe(T.Body("version_id")),
+    isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+  }),
+).annotate({
+  identifier: "DynamicRoutingGetResponseVersion",
+}) as any as S.Schema<DynamicRoutingGetResponseVersion>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetDynamicRoutingResponse {
+  id: string;
+  createdAt: string;
+  deployment: DynamicRoutingGetResponseDeployment;
+  elements: DynamicRoutingGetResponseElementsList;
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+  version: DynamicRoutingGetResponseVersion;
+}
+export const GetDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    deployment: DynamicRoutingGetResponseDeployment,
+    elements: DynamicRoutingGetResponseElementsList,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    version: DynamicRoutingGetResponseVersion,
+  }),
+).annotate({
+  identifier: "GetDynamicRoutingResponse",
+}) as any as S.Schema<GetDynamicRoutingResponse>;
+
+export interface GetEvaluationRequest {
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
+  id: string;
+}
+export const GetEvaluationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetEvaluationRequest",
+}) as any as S.Schema<GetEvaluationRequest>;
+
+export type EvaluationsGetResponseDatasetsItemFiltersItemKey =
+  | "created_at"
+  | "request_content_type"
+  | "response_content_type"
+  | (string & {});
+export const EvaluationsGetResponseDatasetsItemFiltersItemKey =
+  /*@__PURE__*/ S.String;
+
+export type EvaluationsGetResponseDatasetsItemFiltersItemOperator =
+  | "eq"
+  | "contains"
+  | "lt"
+  | "gt"
+  | (string & {});
+export const EvaluationsGetResponseDatasetsItemFiltersItemOperator =
+  /*@__PURE__*/ S.String;
+
+export interface EvaluationsGetResponseDatasetsItemFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const EvaluationsGetResponseDatasetsItemFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "EvaluationsGetResponseDatasetsItemFiltersItemValueItem",
+  }) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersItemValueItem>;
+
+export type EvaluationsGetResponseDatasetsItemFiltersItemValueList =
+  EvaluationsGetResponseDatasetsItemFiltersItemValueItem[];
+export const EvaluationsGetResponseDatasetsItemFiltersItemValueList =
+  /*@__PURE__*/ S.Array(
+    EvaluationsGetResponseDatasetsItemFiltersItemValueItem,
+  ) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersItemValueList>;
+
+export interface EvaluationsGetResponseDatasetsItemFiltersItem {
+  key: EvaluationsGetResponseDatasetsItemFiltersItemKey;
+  operator: EvaluationsGetResponseDatasetsItemFiltersItemOperator;
+  value: EvaluationsGetResponseDatasetsItemFiltersItemValueList;
+}
+export const EvaluationsGetResponseDatasetsItemFiltersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      key: EvaluationsGetResponseDatasetsItemFiltersItemKey,
+      operator: EvaluationsGetResponseDatasetsItemFiltersItemOperator,
+      value: EvaluationsGetResponseDatasetsItemFiltersItemValueList,
+    }),
+  ).annotate({
+    identifier: "EvaluationsGetResponseDatasetsItemFiltersItem",
+  }) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersItem>;
+
+export type EvaluationsGetResponseDatasetsItemFiltersList =
+  EvaluationsGetResponseDatasetsItemFiltersItem[];
+export const EvaluationsGetResponseDatasetsItemFiltersList =
+  /*@__PURE__*/ S.Array(
+    EvaluationsGetResponseDatasetsItemFiltersItem,
+  ) as any as S.Schema<EvaluationsGetResponseDatasetsItemFiltersList>;
+
+export interface EvaluationsGetResponseDatasetsItem {
+  id: string;
+  accountId: string;
+  accountTag: string;
+  createdAt: string;
+  enable: boolean;
+  filters: EvaluationsGetResponseDatasetsItemFiltersList;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+}
+export const EvaluationsGetResponseDatasetsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    accountId: S.String.pipe(T.Body("account_id")),
+    accountTag: S.String.pipe(T.Body("account_tag")),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    enable: S.Boolean,
+    filters: EvaluationsGetResponseDatasetsItemFiltersList,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "EvaluationsGetResponseDatasetsItem",
+}) as any as S.Schema<EvaluationsGetResponseDatasetsItem>;
+
+export type EvaluationsGetResponseDatasetsList =
+  EvaluationsGetResponseDatasetsItem[];
+export const EvaluationsGetResponseDatasetsList = /*@__PURE__*/ S.Array(
+  EvaluationsGetResponseDatasetsItem,
+) as any as S.Schema<EvaluationsGetResponseDatasetsList>;
+
+export interface EvaluationsGetResponseResultsItem {
+  id: string;
+  createdAt: string;
+  evaluationId: string;
+  evaluationTypeId: string;
+  modifiedAt: string;
+  result: string;
+  status: number;
+  statusDescription: string;
+  totalLogs: number;
+}
+export const EvaluationsGetResponseResultsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    evaluationId: S.String.pipe(T.Body("evaluation_id")),
+    evaluationTypeId: S.String.pipe(T.Body("evaluation_type_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    result: S.String,
+    status: S.Number,
+    statusDescription: S.String.pipe(T.Body("status_description")),
+    totalLogs: S.Number.pipe(T.Body("total_logs")),
+  }),
+).annotate({
+  identifier: "EvaluationsGetResponseResultsItem",
+}) as any as S.Schema<EvaluationsGetResponseResultsItem>;
+
+export type EvaluationsGetResponseResultsList =
+  EvaluationsGetResponseResultsItem[];
+export const EvaluationsGetResponseResultsList = /*@__PURE__*/ S.Array(
+  EvaluationsGetResponseResultsItem,
+) as any as S.Schema<EvaluationsGetResponseResultsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetEvaluationResponse {
+  id: string;
+  createdAt: string;
+  datasets: EvaluationsGetResponseDatasetsList;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+  processed: boolean;
+  results: EvaluationsGetResponseResultsList;
+  totalLogs: number;
+}
+export const GetEvaluationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    datasets: EvaluationsGetResponseDatasetsList,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    processed: S.Boolean,
+    results: EvaluationsGetResponseResultsList,
+    totalLogs: S.Number.pipe(T.Body("total_logs")),
+  }),
+).annotate({
+  identifier: "GetEvaluationResponse",
+}) as any as S.Schema<GetEvaluationResponse>;
+
+export interface GetLogRequest {
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
+  id: string;
+}
+export const GetLogRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "GetLogRequest" }) as any as S.Schema<GetLogRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetLogResponse {
+  id: string;
+  cached: boolean;
+  createdAt: string;
+  duration: number;
+  model: string;
+  path: string;
+  provider: string;
+  success: boolean;
+  tokensIn: number;
+  tokensOut: number;
+  cost?: number;
+  customCost?: boolean;
+  metadata?: string;
+  modelType?: string;
+  requestContentType?: string;
+  requestHead?: string;
+  requestHeadComplete?: boolean;
+  requestSize?: number;
+  requestType?: string;
+  responseContentType?: string;
+  responseHead?: string;
+  responseHeadComplete?: boolean;
+  responseSize?: number;
+  statusCode?: number;
+  step?: number;
+}
+export const GetLogResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    cached: S.Boolean,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    duration: S.Number,
+    model: S.String,
+    path: S.String,
+    provider: S.String,
+    success: S.Boolean,
+    tokensIn: S.Number.pipe(T.Body("tokens_in")),
+    tokensOut: S.Number.pipe(T.Body("tokens_out")),
+    cost: S.optional(S.Number),
+    customCost: S.optional(S.Boolean.pipe(T.Body("custom_cost"))),
+    metadata: S.optional(S.String),
+    modelType: S.optional(S.String.pipe(T.Body("model_type"))),
+    requestContentType: S.optional(
+      S.String.pipe(T.Body("request_content_type")),
+    ),
+    requestHead: S.optional(S.String.pipe(T.Body("request_head"))),
+    requestHeadComplete: S.optional(
+      S.Boolean.pipe(T.Body("request_head_complete")),
+    ),
+    requestSize: S.optional(S.Number.pipe(T.Body("request_size"))),
+    requestType: S.optional(S.String.pipe(T.Body("request_type"))),
+    responseContentType: S.optional(
+      S.String.pipe(T.Body("response_content_type")),
+    ),
+    responseHead: S.optional(S.String.pipe(T.Body("response_head"))),
+    responseHeadComplete: S.optional(
+      S.Boolean.pipe(T.Body("response_head_complete")),
+    ),
+    responseSize: S.optional(S.Number.pipe(T.Body("response_size"))),
+    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+    step: S.optional(S.Number),
+  }),
+).annotate({ identifier: "GetLogResponse" }) as any as S.Schema<GetLogResponse>;
+
+export interface GetUrlRequest {
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
+  provider: string;
+}
+export const GetUrlRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    provider: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/url/{provider}",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "GetUrlRequest" }) as any as S.Schema<GetUrlRequest>;
+
+export interface GetUrlResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: string;
+}
+export const GetUrlResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.String.pipe(T.EnvelopePayload())),
+  }),
+).annotate({ identifier: "GetUrlResponse" }) as any as S.Schema<GetUrlResponse>;
+
+export interface GetVersionDynamicRoutingRequest {
+  accountId: string;
+  gatewayId: string;
+  id: string;
+  versionId: string;
+}
+export const GetVersionDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    id: S.String.pipe(T.Label()),
+    versionId: S.String.pipe(T.Label("version_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions/{version_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetVersionDynamicRoutingRequest",
+}) as any as S.Schema<GetVersionDynamicRoutingRequest>;
+
+export type DynamicRoutingGetVersionResponseActive =
+  | "true"
+  | "false"
+  | (string & {});
+export const DynamicRoutingGetVersionResponseActive = /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingGetVersionResponseElementsItem {
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
+}
+export const DynamicRoutingGetVersionResponseElementsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      objectIdOutputsType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingGetVersionResponseElementsItem",
+  }) as any as S.Schema<DynamicRoutingGetVersionResponseElementsItem>;
+
+export type DynamicRoutingGetVersionResponseElementsList =
+  DynamicRoutingGetVersionResponseElementsItem[];
+export const DynamicRoutingGetVersionResponseElementsList =
+  /*@__PURE__*/ S.Array(
+    DynamicRoutingGetVersionResponseElementsItem,
+  ) as any as S.Schema<DynamicRoutingGetVersionResponseElementsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetVersionDynamicRoutingResponse {
+  id: string;
+  active: DynamicRoutingGetVersionResponseActive;
+  createdAt: string;
+  data: string;
+  elements: DynamicRoutingGetVersionResponseElementsList;
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+  versionId: string;
+  isValid?: boolean;
+}
+export const GetVersionDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    active: DynamicRoutingGetVersionResponseActive,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    data: S.String,
+    elements: DynamicRoutingGetVersionResponseElementsList,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    versionId: S.String.pipe(T.Body("version_id")),
+    isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+  }),
+).annotate({
+  identifier: "GetVersionDynamicRoutingResponse",
+}) as any as S.Schema<GetVersionDynamicRoutingResponse>;
+
+export type BillingInvoiceHistoryRequestType =
+  | "auto"
+  | "all"
+  | "manual"
+  | (string & {});
+export const BillingInvoiceHistoryRequestType = /*@__PURE__*/ S.String;
+
+export interface InvoiceHistoryBillingRequest {
+  accountId: string;
+  /** Filter invoice type: auto, manual, or all. */
+  type?: BillingInvoiceHistoryRequestType;
+}
+export const InvoiceHistoryBillingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    type: S.optional(BillingInvoiceHistoryRequestType.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/billing/invoice-history",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InvoiceHistoryBillingRequest",
+}) as any as S.Schema<InvoiceHistoryBillingRequest>;
+
+export interface BillingInvoiceHistoryResponseInvoicesItem {
+  amountDue: number;
+  amountPaid: number;
+  amountRemaining: number;
+  currency: string;
+  id?: string;
+  attemptCount?: number;
+  attempted?: boolean;
+  autoAdvance?: boolean;
+  created?: number;
+  createdBy?: string;
+  description?: string;
+  invoiceOrigin?: string;
+  invoicePdf?: string;
+  status?: string;
+}
+export const BillingInvoiceHistoryResponseInvoicesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      amountDue: S.Number.pipe(T.Body("amount_due")),
+      amountPaid: S.Number.pipe(T.Body("amount_paid")),
+      amountRemaining: S.Number.pipe(T.Body("amount_remaining")),
+      currency: S.String,
+      id: S.optional(S.String),
+      attemptCount: S.optional(S.Number.pipe(T.Body("attempt_count"))),
+      attempted: S.optional(S.Boolean),
+      autoAdvance: S.optional(S.Boolean.pipe(T.Body("auto_advance"))),
+      created: S.optional(S.Number),
+      createdBy: S.optional(S.String.pipe(T.Body("created_by"))),
+      description: S.optional(S.String),
+      invoiceOrigin: S.optional(S.String.pipe(T.Body("invoice_origin"))),
+      invoicePdf: S.optional(S.String.pipe(T.Body("invoice_pdf"))),
+      status: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "BillingInvoiceHistoryResponseInvoicesItem",
+  }) as any as S.Schema<BillingInvoiceHistoryResponseInvoicesItem>;
+
+export type BillingInvoiceHistoryResponseInvoicesList =
+  BillingInvoiceHistoryResponseInvoicesItem[];
+export const BillingInvoiceHistoryResponseInvoicesList = /*@__PURE__*/ S.Array(
+  BillingInvoiceHistoryResponseInvoicesItem,
+) as any as S.Schema<BillingInvoiceHistoryResponseInvoicesList>;
+
+export interface BillingInvoiceHistoryResponsePagination {
+  hasMore: boolean;
+  page: number;
+  perPage: number;
+  totalCount: number;
+}
+export const BillingInvoiceHistoryResponsePagination = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      hasMore: S.Boolean.pipe(T.Body("has_more")),
+      page: S.Number,
+      perPage: S.Number.pipe(T.Body("per_page")),
+      totalCount: S.Number.pipe(T.Body("total_count")),
+    }),
+).annotate({
+  identifier: "BillingInvoiceHistoryResponsePagination",
+}) as any as S.Schema<BillingInvoiceHistoryResponsePagination>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface InvoiceHistoryBillingResponse {
+  invoices: BillingInvoiceHistoryResponseInvoicesList;
+  pagination: BillingInvoiceHistoryResponsePagination;
+}
+export const InvoiceHistoryBillingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    invoices: BillingInvoiceHistoryResponseInvoicesList,
+    pagination: BillingInvoiceHistoryResponsePagination,
+  }),
+).annotate({
+  identifier: "InvoiceHistoryBillingResponse",
+}) as any as S.Schema<InvoiceHistoryBillingResponse>;
+
+export interface InvoicePreviewBillingRequest {
+  accountId: string;
+}
+export const InvoicePreviewBillingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/billing/invoice-preview",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InvoicePreviewBillingRequest",
+}) as any as S.Schema<InvoicePreviewBillingRequest>;
+
+export interface BillingInvoicePreviewResponseInvoiceLinesItemPeriod {
+  end: number;
+  start: number;
+}
+export const BillingInvoicePreviewResponseInvoiceLinesItemPeriod =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      end: S.Number,
+      start: S.Number,
+    }),
+  ).annotate({
+    identifier: "BillingInvoicePreviewResponseInvoiceLinesItemPeriod",
+  }) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPeriod>;
+
+export interface BillingInvoicePreviewResponseInvoiceLinesItemPricing {
+  unitAmountDecimal: string;
+}
+export const BillingInvoicePreviewResponseInvoiceLinesItemPricing =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      unitAmountDecimal: S.String.pipe(T.Body("unit_amount_decimal")),
+    }),
+  ).annotate({
+    identifier: "BillingInvoicePreviewResponseInvoiceLinesItemPricing",
+  }) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPricing>;
+
+export interface BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem {
+  amount: number;
+  type: string;
+  creditBalanceTransaction?: string;
+  discount?: string;
+}
+export const BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      amount: S.Number,
+      type: S.String,
+      creditBalanceTransaction: S.optional(
+        S.String.pipe(T.Body("credit_balance_transaction")),
+      ),
+      discount: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem",
+  }) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem>;
+
+export type BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList =
+  BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem[];
+export const BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList =
+  /*@__PURE__*/ S.Array(
+    BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsItem,
+  ) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList>;
+
+export interface BillingInvoicePreviewResponseInvoiceLinesItem {
+  amount: number;
+  currency: string;
+  description: string;
+  period: BillingInvoicePreviewResponseInvoiceLinesItemPeriod;
+  pricing: BillingInvoicePreviewResponseInvoiceLinesItemPricing;
+  quantity: number;
+  pretaxCreditAmounts?: BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList;
+}
+export const BillingInvoicePreviewResponseInvoiceLinesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      amount: S.Number,
+      currency: S.String,
+      description: S.String,
+      period: BillingInvoicePreviewResponseInvoiceLinesItemPeriod,
+      pricing: BillingInvoicePreviewResponseInvoiceLinesItemPricing,
+      quantity: S.Number,
+      pretaxCreditAmounts: S.optional(
+        BillingInvoicePreviewResponseInvoiceLinesItemPretaxCreditAmountsList.pipe(
+          T.Body("pretax_credit_amounts"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "BillingInvoicePreviewResponseInvoiceLinesItem",
+  }) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesItem>;
+
+export type BillingInvoicePreviewResponseInvoiceLinesList =
+  BillingInvoicePreviewResponseInvoiceLinesItem[];
+export const BillingInvoicePreviewResponseInvoiceLinesList =
+  /*@__PURE__*/ S.Array(
+    BillingInvoicePreviewResponseInvoiceLinesItem,
+  ) as any as S.Schema<BillingInvoicePreviewResponseInvoiceLinesList>;
+
+export type BillingInvoicePreviewResponseStatus =
+  | "draft"
+  | "open"
+  | "paid"
+  | (string & {});
+export const BillingInvoicePreviewResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface InvoicePreviewBillingResponse {
+  id: string;
+  amountDue: number;
+  amountPaid: number;
+  amountRemaining: number;
+  currency: string;
+  invoiceLines: BillingInvoicePreviewResponseInvoiceLinesList;
+  periodEnd: number;
+  periodStart: number;
+  status: BillingInvoicePreviewResponseStatus;
+}
+export const InvoicePreviewBillingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    amountDue: S.Number.pipe(T.Body("amount_due")),
+    amountPaid: S.Number.pipe(T.Body("amount_paid")),
+    amountRemaining: S.Number.pipe(T.Body("amount_remaining")),
+    currency: S.String,
+    invoiceLines: BillingInvoicePreviewResponseInvoiceLinesList.pipe(
+      T.Body("invoice_lines"),
+    ),
+    periodEnd: S.Number.pipe(T.Body("period_end")),
+    periodStart: S.Number.pipe(T.Body("period_start")),
+    status: BillingInvoicePreviewResponseStatus,
+  }),
+).annotate({
+  identifier: "InvoicePreviewBillingResponse",
+}) as any as S.Schema<InvoicePreviewBillingResponse>;
+
+export interface ListAiGatewaysRequest {
   accountId: string;
   page?: number;
   perPage?: number;
   /** Search by id */
   search?: string;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAiGatewaysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -5393,7 +4481,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListAiGatewaysRequest",
+}) as any as S.Schema<ListAiGatewaysRequest>;
 
 export interface ListResultItemDlp {
   objectActionEnabledProfiles__: unknown;
@@ -5936,201 +5026,769 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListAiGatewaysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListAiGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListAiGatewaysResponse",
+}) as any as S.Schema<ListAiGatewaysResponse>;
 
-export type LogsDeleteRequestFiltersList = string[];
-export const LogsDeleteRequestFiltersList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogsDeleteRequestFiltersList>;
-
-export type LogsDeleteRequestOrderBy =
-  | "created_at"
-  | "provider"
-  | "model"
-  | (string & {});
-export const LogsDeleteRequestOrderBy = /*@__PURE__*/ S.String;
-
-export type LogsDeleteRequestOrderByDirection = "asc" | "desc" | (string & {});
-export const LogsDeleteRequestOrderByDirection = /*@__PURE__*/ S.String;
-
-export interface LogsDeleteRequest {
+export interface ListCustomProvidersRequest {
   accountId: string;
-  /** gateway id */
-  gatewayId: string;
-  filters?: LogsDeleteRequestFiltersList;
-  limit?: number;
-  orderBy?: LogsDeleteRequestOrderBy;
-  orderByDirection?: LogsDeleteRequestOrderByDirection;
+  beta?: boolean;
+  enable?: boolean;
+  page?: number;
+  perPage?: number;
+  /** Search by id, name, slug */
+  search?: string;
 }
-export const LogsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListCustomProvidersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    filters: S.optional(LogsDeleteRequestFiltersList.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    orderBy: S.optional(LogsDeleteRequestOrderBy.pipe(T.Query("order_by"))),
-    orderByDirection: S.optional(
-      LogsDeleteRequestOrderByDirection.pipe(T.Query("order_by_direction")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LogsDeleteRequest",
-}) as any as S.Schema<LogsDeleteRequest>;
-
-export interface LogsDeleteResponse {}
-export const LogsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LogsDeleteResponse",
-}) as any as S.Schema<LogsDeleteResponse>;
-
-export type LogsEditRequestMetadataMap = { [key: string]: unknown | undefined };
-export const LogsEditRequestMetadataMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogsEditRequestMetadataMap>;
-
-export interface LogsEditRequest {
-  accountId: string;
-  /** gateway id */
-  gatewayId: string;
-  id: string;
-  feedback?: number;
-  metadata?: LogsEditRequestMetadataMap;
-  score?: number;
-}
-export const LogsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    id: S.String.pipe(T.Label()),
-    feedback: S.optional(S.Number),
-    metadata: S.optional(LogsEditRequestMetadataMap),
-    score: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LogsEditRequest",
-}) as any as S.Schema<LogsEditRequest>;
-
-export interface LogsEditResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const LogsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "LogsEditResponse",
-}) as any as S.Schema<LogsEditResponse>;
-
-export interface LogsGetRequest {
-  accountId: string;
-  /** gateway id */
-  gatewayId: string;
-  id: string;
-}
-export const LogsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    id: S.String.pipe(T.Label()),
+    beta: S.optional(S.Boolean.pipe(T.Query())),
+    enable: S.optional(S.Boolean.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    search: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}",
+      uri: "/accounts/{account_id}/ai-gateway/custom-providers",
       code: 200,
     }),
   ),
-).annotate({ identifier: "LogsGetRequest" }) as any as S.Schema<LogsGetRequest>;
+).annotate({
+  identifier: "ListCustomProvidersRequest",
+}) as any as S.Schema<ListCustomProvidersRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LogsGetResponse {
+export interface CustomProvidersListResultItem {
   id: string;
-  cached: boolean;
+  baseUrl: string;
   createdAt: string;
-  duration: number;
-  model: string;
-  path: string;
-  provider: string;
-  success: boolean;
-  tokensIn: number;
-  tokensOut: number;
-  cost?: number;
-  customCost?: boolean;
-  metadata?: string;
-  modelType?: string;
-  requestContentType?: string;
-  requestHead?: string;
-  requestHeadComplete?: boolean;
-  requestSize?: number;
-  requestType?: string;
-  responseContentType?: string;
-  responseHead?: string;
-  responseHeadComplete?: boolean;
-  responseSize?: number;
-  statusCode?: number;
-  step?: number;
+  modifiedAt: string;
+  name: string;
+  slug: string;
+  beta?: boolean;
+  curlExample?: string;
+  description?: string;
+  enable?: boolean;
+  headers?: string;
+  jsExample?: string;
+  link?: string;
+  logo?: string;
+  position?: number;
 }
-export const LogsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const CustomProvidersListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
-    cached: S.Boolean,
+    baseUrl: S.String.pipe(T.Body("base_url")),
     createdAt: S.String.pipe(T.Body("created_at")),
-    duration: S.Number,
-    model: S.String,
-    path: S.String,
-    provider: S.String,
-    success: S.Boolean,
-    tokensIn: S.Number.pipe(T.Body("tokens_in")),
-    tokensOut: S.Number.pipe(T.Body("tokens_out")),
-    cost: S.optional(S.Number),
-    customCost: S.optional(S.Boolean.pipe(T.Body("custom_cost"))),
-    metadata: S.optional(S.String),
-    modelType: S.optional(S.String.pipe(T.Body("model_type"))),
-    requestContentType: S.optional(
-      S.String.pipe(T.Body("request_content_type")),
-    ),
-    requestHead: S.optional(S.String.pipe(T.Body("request_head"))),
-    requestHeadComplete: S.optional(
-      S.Boolean.pipe(T.Body("request_head_complete")),
-    ),
-    requestSize: S.optional(S.Number.pipe(T.Body("request_size"))),
-    requestType: S.optional(S.String.pipe(T.Body("request_type"))),
-    responseContentType: S.optional(
-      S.String.pipe(T.Body("response_content_type")),
-    ),
-    responseHead: S.optional(S.String.pipe(T.Body("response_head"))),
-    responseHeadComplete: S.optional(
-      S.Boolean.pipe(T.Body("response_head_complete")),
-    ),
-    responseSize: S.optional(S.Number.pipe(T.Body("response_size"))),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-    step: S.optional(S.Number),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    slug: S.String,
+    beta: S.optional(S.Boolean),
+    curlExample: S.optional(S.String.pipe(T.Body("curl_example"))),
+    description: S.optional(S.String),
+    enable: S.optional(S.Boolean),
+    headers: S.optional(S.String),
+    jsExample: S.optional(S.String.pipe(T.Body("js_example"))),
+    link: S.optional(S.String),
+    logo: S.optional(S.String),
+    position: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "LogsGetResponse",
-}) as any as S.Schema<LogsGetResponse>;
+  identifier: "CustomProvidersListResultItem",
+}) as any as S.Schema<CustomProvidersListResultItem>;
+
+export type CustomProvidersListResultList = CustomProvidersListResultItem[];
+export const CustomProvidersListResultList = /*@__PURE__*/ S.Array(
+  CustomProvidersListResultItem,
+) as any as S.Schema<CustomProvidersListResultList>;
+
+export interface ListCustomProvidersResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: CustomProvidersListResultList;
+}
+export const ListCustomProvidersResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(CustomProvidersListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListCustomProvidersResponse",
+}) as any as S.Schema<ListCustomProvidersResponse>;
+
+export interface ListDatasetsRequest {
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
+  enable?: boolean;
+  name?: string;
+  page?: number;
+  perPage?: number;
+  /** Search by id, name, filters */
+  search?: string;
+}
+export const ListDatasetsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    enable: S.optional(S.Boolean.pipe(T.Query())),
+    name: S.optional(S.String.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    search: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListDatasetsRequest",
+}) as any as S.Schema<ListDatasetsRequest>;
+
+export type DatasetsListResultItemFiltersItemKey =
+  | "created_at"
+  | "request_content_type"
+  | "response_content_type"
+  | (string & {});
+export const DatasetsListResultItemFiltersItemKey = /*@__PURE__*/ S.String;
+
+export type DatasetsListResultItemFiltersItemOperator =
+  | "eq"
+  | "contains"
+  | "lt"
+  | "gt"
+  | (string & {});
+export const DatasetsListResultItemFiltersItemOperator = /*@__PURE__*/ S.String;
+
+export interface DatasetsListResultItemFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const DatasetsListResultItemFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "DatasetsListResultItemFiltersItemValueItem",
+  }) as any as S.Schema<DatasetsListResultItemFiltersItemValueItem>;
+
+export type DatasetsListResultItemFiltersItemValueList =
+  DatasetsListResultItemFiltersItemValueItem[];
+export const DatasetsListResultItemFiltersItemValueList = /*@__PURE__*/ S.Array(
+  DatasetsListResultItemFiltersItemValueItem,
+) as any as S.Schema<DatasetsListResultItemFiltersItemValueList>;
+
+export interface DatasetsListResultItemFiltersItem {
+  key: DatasetsListResultItemFiltersItemKey;
+  operator: DatasetsListResultItemFiltersItemOperator;
+  value: DatasetsListResultItemFiltersItemValueList;
+}
+export const DatasetsListResultItemFiltersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: DatasetsListResultItemFiltersItemKey,
+    operator: DatasetsListResultItemFiltersItemOperator,
+    value: DatasetsListResultItemFiltersItemValueList,
+  }),
+).annotate({
+  identifier: "DatasetsListResultItemFiltersItem",
+}) as any as S.Schema<DatasetsListResultItemFiltersItem>;
+
+export type DatasetsListResultItemFiltersList =
+  DatasetsListResultItemFiltersItem[];
+export const DatasetsListResultItemFiltersList = /*@__PURE__*/ S.Array(
+  DatasetsListResultItemFiltersItem,
+) as any as S.Schema<DatasetsListResultItemFiltersList>;
+
+export interface DatasetsListResultItem {
+  id: string;
+  createdAt: string;
+  enable: boolean;
+  filters: DatasetsListResultItemFiltersList;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+}
+export const DatasetsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    enable: S.Boolean,
+    filters: DatasetsListResultItemFiltersList,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "DatasetsListResultItem",
+}) as any as S.Schema<DatasetsListResultItem>;
+
+export type DatasetsListResultList = DatasetsListResultItem[];
+export const DatasetsListResultList = /*@__PURE__*/ S.Array(
+  DatasetsListResultItem,
+) as any as S.Schema<DatasetsListResultList>;
+
+export interface ListDatasetsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: DatasetsListResultList;
+}
+export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(DatasetsListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListDatasetsResponse",
+}) as any as S.Schema<ListDatasetsResponse>;
+
+export interface ListDeploymentsDynamicRoutingRequest {
+  accountId: string;
+  gatewayId: string;
+  id: string;
+}
+export const ListDeploymentsDynamicRoutingRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      gatewayId: S.String.pipe(T.Label("gateway_id")),
+      id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/deployments",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "ListDeploymentsDynamicRoutingRequest",
+}) as any as S.Schema<ListDeploymentsDynamicRoutingRequest>;
+
+export interface DynamicRoutingListDeploymentsResponseDataDeploymentsItem {
+  createdAt: string;
+  deploymentId: string;
+  versionId: string;
+}
+export const DynamicRoutingListDeploymentsResponseDataDeploymentsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      deploymentId: S.String.pipe(T.Body("deployment_id")),
+      versionId: S.String.pipe(T.Body("version_id")),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingListDeploymentsResponseDataDeploymentsItem",
+  }) as any as S.Schema<DynamicRoutingListDeploymentsResponseDataDeploymentsItem>;
+
+export type DynamicRoutingListDeploymentsResponseDataDeploymentsList =
+  DynamicRoutingListDeploymentsResponseDataDeploymentsItem[];
+export const DynamicRoutingListDeploymentsResponseDataDeploymentsList =
+  /*@__PURE__*/ S.Array(
+    DynamicRoutingListDeploymentsResponseDataDeploymentsItem,
+  ) as any as S.Schema<DynamicRoutingListDeploymentsResponseDataDeploymentsList>;
+
+export interface DynamicRoutingListDeploymentsResponseData {
+  deployments: DynamicRoutingListDeploymentsResponseDataDeploymentsList;
+  orderBy: string;
+  orderByDirection: string;
+  page: number;
+  perPage: number;
+}
+export const DynamicRoutingListDeploymentsResponseData =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      deployments: DynamicRoutingListDeploymentsResponseDataDeploymentsList,
+      orderBy: S.String.pipe(T.Body("order_by")),
+      orderByDirection: S.String.pipe(T.Body("order_by_direction")),
+      page: S.Number,
+      perPage: S.Number.pipe(T.Body("per_page")),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingListDeploymentsResponseData",
+  }) as any as S.Schema<DynamicRoutingListDeploymentsResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface ListDeploymentsDynamicRoutingResponse {
+  data: DynamicRoutingListDeploymentsResponseData;
+}
+export const ListDeploymentsDynamicRoutingResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      data: DynamicRoutingListDeploymentsResponseData,
+    }),
+).annotate({
+  identifier: "ListDeploymentsDynamicRoutingResponse",
+}) as any as S.Schema<ListDeploymentsDynamicRoutingResponse>;
+
+export interface ListDynamicRoutingsRequest {
+  accountId: string;
+  gatewayId: string;
+  /** Page number */
+  page?: number;
+  /** Number of routes per page */
+  perPage?: number;
+}
+export const ListDynamicRoutingsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListDynamicRoutingsRequest",
+}) as any as S.Schema<ListDynamicRoutingsRequest>;
+
+export interface DynamicRoutingListResponseDataRoutesItemDeployment {
+  createdAt: string;
+  deploymentId: string;
+  versionId: string;
+}
+export const DynamicRoutingListResponseDataRoutesItemDeployment =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      deploymentId: S.String.pipe(T.Body("deployment_id")),
+      versionId: S.String.pipe(T.Body("version_id")),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingListResponseDataRoutesItemDeployment",
+  }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemDeployment>;
+
+export interface DynamicRoutingListResponseDataRoutesItemElementsItem {
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
+}
+export const DynamicRoutingListResponseDataRoutesItemElementsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      objectIdOutputsType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingListResponseDataRoutesItemElementsItem",
+  }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsItem>;
+
+export type DynamicRoutingListResponseDataRoutesItemElementsList =
+  DynamicRoutingListResponseDataRoutesItemElementsItem[];
+export const DynamicRoutingListResponseDataRoutesItemElementsList =
+  /*@__PURE__*/ S.Array(
+    DynamicRoutingListResponseDataRoutesItemElementsItem,
+  ) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemElementsList>;
+
+export type DynamicRoutingListResponseDataRoutesItemVersionActive =
+  | "true"
+  | "false"
+  | (string & {});
+export const DynamicRoutingListResponseDataRoutesItemVersionActive =
+  /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingListResponseDataRoutesItemVersion {
+  active: DynamicRoutingListResponseDataRoutesItemVersionActive;
+  createdAt: string;
+  data: string;
+  versionId: string;
+  isValid?: boolean;
+}
+export const DynamicRoutingListResponseDataRoutesItemVersion =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      active: DynamicRoutingListResponseDataRoutesItemVersionActive,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      data: S.String,
+      versionId: S.String.pipe(T.Body("version_id")),
+      isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingListResponseDataRoutesItemVersion",
+  }) as any as S.Schema<DynamicRoutingListResponseDataRoutesItemVersion>;
+
+export interface DynamicRoutingListResponseDataRoutesItem {
+  id: string;
+  accountTag: string;
+  createdAt: string;
+  deployment: DynamicRoutingListResponseDataRoutesItemDeployment;
+  elements: DynamicRoutingListResponseDataRoutesItemElementsList;
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+  version: DynamicRoutingListResponseDataRoutesItemVersion;
+}
+export const DynamicRoutingListResponseDataRoutesItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      accountTag: S.String.pipe(T.Body("account_tag")),
+      createdAt: S.String.pipe(T.Body("created_at")),
+      deployment: DynamicRoutingListResponseDataRoutesItemDeployment,
+      elements: DynamicRoutingListResponseDataRoutesItemElementsList,
+      gatewayId: S.String.pipe(T.Body("gateway_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
+      name: S.String,
+      version: DynamicRoutingListResponseDataRoutesItemVersion,
+    }),
+).annotate({
+  identifier: "DynamicRoutingListResponseDataRoutesItem",
+}) as any as S.Schema<DynamicRoutingListResponseDataRoutesItem>;
+
+export type DynamicRoutingListResponseDataRoutesList =
+  DynamicRoutingListResponseDataRoutesItem[];
+export const DynamicRoutingListResponseDataRoutesList = /*@__PURE__*/ S.Array(
+  DynamicRoutingListResponseDataRoutesItem,
+) as any as S.Schema<DynamicRoutingListResponseDataRoutesList>;
+
+export interface DynamicRoutingListResponseData {
+  orderBy: string;
+  orderByDirection: string;
+  page: number;
+  perPage: number;
+  routes: DynamicRoutingListResponseDataRoutesList;
+}
+export const DynamicRoutingListResponseData = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    orderBy: S.String.pipe(T.Body("order_by")),
+    orderByDirection: S.String.pipe(T.Body("order_by_direction")),
+    page: S.Number,
+    perPage: S.Number.pipe(T.Body("per_page")),
+    routes: DynamicRoutingListResponseDataRoutesList,
+  }),
+).annotate({
+  identifier: "DynamicRoutingListResponseData",
+}) as any as S.Schema<DynamicRoutingListResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface ListDynamicRoutingsResponse {
+  data: DynamicRoutingListResponseData;
+}
+export const ListDynamicRoutingsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: DynamicRoutingListResponseData,
+  }),
+).annotate({
+  identifier: "ListDynamicRoutingsResponse",
+}) as any as S.Schema<ListDynamicRoutingsResponse>;
+
+export interface ListEvaluationsRequest {
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
+  name?: string;
+  page?: number;
+  perPage?: number;
+  processed?: boolean;
+  /** Search by id, name */
+  search?: string;
+}
+export const ListEvaluationsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    name: S.optional(S.String.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    processed: S.optional(S.Boolean.pipe(T.Query())),
+    search: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/evaluations",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListEvaluationsRequest",
+}) as any as S.Schema<ListEvaluationsRequest>;
+
+export type EvaluationsListResultItemDatasetsItemFiltersItemKey =
+  | "created_at"
+  | "request_content_type"
+  | "response_content_type"
+  | (string & {});
+export const EvaluationsListResultItemDatasetsItemFiltersItemKey =
+  /*@__PURE__*/ S.String;
+
+export type EvaluationsListResultItemDatasetsItemFiltersItemOperator =
+  | "eq"
+  | "contains"
+  | "lt"
+  | "gt"
+  | (string & {});
+export const EvaluationsListResultItemDatasetsItemFiltersItemOperator =
+  /*@__PURE__*/ S.String;
+
+export interface EvaluationsListResultItemDatasetsItemFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const EvaluationsListResultItemDatasetsItemFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "EvaluationsListResultItemDatasetsItemFiltersItemValueItem",
+  }) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersItemValueItem>;
+
+export type EvaluationsListResultItemDatasetsItemFiltersItemValueList =
+  EvaluationsListResultItemDatasetsItemFiltersItemValueItem[];
+export const EvaluationsListResultItemDatasetsItemFiltersItemValueList =
+  /*@__PURE__*/ S.Array(
+    EvaluationsListResultItemDatasetsItemFiltersItemValueItem,
+  ) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersItemValueList>;
+
+export interface EvaluationsListResultItemDatasetsItemFiltersItem {
+  key: EvaluationsListResultItemDatasetsItemFiltersItemKey;
+  operator: EvaluationsListResultItemDatasetsItemFiltersItemOperator;
+  value: EvaluationsListResultItemDatasetsItemFiltersItemValueList;
+}
+export const EvaluationsListResultItemDatasetsItemFiltersItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      key: EvaluationsListResultItemDatasetsItemFiltersItemKey,
+      operator: EvaluationsListResultItemDatasetsItemFiltersItemOperator,
+      value: EvaluationsListResultItemDatasetsItemFiltersItemValueList,
+    }),
+  ).annotate({
+    identifier: "EvaluationsListResultItemDatasetsItemFiltersItem",
+  }) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersItem>;
+
+export type EvaluationsListResultItemDatasetsItemFiltersList =
+  EvaluationsListResultItemDatasetsItemFiltersItem[];
+export const EvaluationsListResultItemDatasetsItemFiltersList =
+  /*@__PURE__*/ S.Array(
+    EvaluationsListResultItemDatasetsItemFiltersItem,
+  ) as any as S.Schema<EvaluationsListResultItemDatasetsItemFiltersList>;
+
+export interface EvaluationsListResultItemDatasetsItem {
+  id: string;
+  accountId: string;
+  accountTag: string;
+  createdAt: string;
+  enable: boolean;
+  filters: EvaluationsListResultItemDatasetsItemFiltersList;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+}
+export const EvaluationsListResultItemDatasetsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      accountId: S.String.pipe(T.Body("account_id")),
+      accountTag: S.String.pipe(T.Body("account_tag")),
+      createdAt: S.String.pipe(T.Body("created_at")),
+      enable: S.Boolean,
+      filters: EvaluationsListResultItemDatasetsItemFiltersList,
+      gatewayId: S.String.pipe(T.Body("gateway_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
+      name: S.String,
+    }),
+).annotate({
+  identifier: "EvaluationsListResultItemDatasetsItem",
+}) as any as S.Schema<EvaluationsListResultItemDatasetsItem>;
+
+export type EvaluationsListResultItemDatasetsList =
+  EvaluationsListResultItemDatasetsItem[];
+export const EvaluationsListResultItemDatasetsList = /*@__PURE__*/ S.Array(
+  EvaluationsListResultItemDatasetsItem,
+) as any as S.Schema<EvaluationsListResultItemDatasetsList>;
+
+export interface EvaluationsListResultItemResultsItem {
+  id: string;
+  createdAt: string;
+  evaluationId: string;
+  evaluationTypeId: string;
+  modifiedAt: string;
+  result: string;
+  status: number;
+  statusDescription: string;
+  totalLogs: number;
+}
+export const EvaluationsListResultItemResultsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      evaluationId: S.String.pipe(T.Body("evaluation_id")),
+      evaluationTypeId: S.String.pipe(T.Body("evaluation_type_id")),
+      modifiedAt: S.String.pipe(T.Body("modified_at")),
+      result: S.String,
+      status: S.Number,
+      statusDescription: S.String.pipe(T.Body("status_description")),
+      totalLogs: S.Number.pipe(T.Body("total_logs")),
+    }),
+).annotate({
+  identifier: "EvaluationsListResultItemResultsItem",
+}) as any as S.Schema<EvaluationsListResultItemResultsItem>;
+
+export type EvaluationsListResultItemResultsList =
+  EvaluationsListResultItemResultsItem[];
+export const EvaluationsListResultItemResultsList = /*@__PURE__*/ S.Array(
+  EvaluationsListResultItemResultsItem,
+) as any as S.Schema<EvaluationsListResultItemResultsList>;
+
+export interface EvaluationsListResultItem {
+  id: string;
+  createdAt: string;
+  datasets: EvaluationsListResultItemDatasetsList;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+  processed: boolean;
+  results: EvaluationsListResultItemResultsList;
+  totalLogs: number;
+}
+export const EvaluationsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    datasets: EvaluationsListResultItemDatasetsList,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    processed: S.Boolean,
+    results: EvaluationsListResultItemResultsList,
+    totalLogs: S.Number.pipe(T.Body("total_logs")),
+  }),
+).annotate({
+  identifier: "EvaluationsListResultItem",
+}) as any as S.Schema<EvaluationsListResultItem>;
+
+export type EvaluationsListResultList = EvaluationsListResultItem[];
+export const EvaluationsListResultList = /*@__PURE__*/ S.Array(
+  EvaluationsListResultItem,
+) as any as S.Schema<EvaluationsListResultList>;
+
+export interface ListEvaluationsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: EvaluationsListResultList;
+}
+export const ListEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(EvaluationsListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListEvaluationsResponse",
+}) as any as S.Schema<ListEvaluationsResponse>;
+
+export type EvaluationTypesListRequestOrderByDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
+export const EvaluationTypesListRequestOrderByDirection =
+  /*@__PURE__*/ S.String;
+
+export interface ListEvaluationTypesRequest {
+  accountId: string;
+  orderBy?: string;
+  orderByDirection?: EvaluationTypesListRequestOrderByDirection;
+  page?: number;
+  perPage?: number;
+}
+export const ListEvaluationTypesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    orderBy: S.optional(S.String.pipe(T.Query("order_by"))),
+    orderByDirection: S.optional(
+      EvaluationTypesListRequestOrderByDirection.pipe(
+        T.Query("order_by_direction"),
+      ),
+    ),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/evaluation-types",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListEvaluationTypesRequest",
+}) as any as S.Schema<ListEvaluationTypesRequest>;
+
+export interface EvaluationTypesListResultItem {
+  id: string;
+  createdAt: string;
+  description: string;
+  enable: boolean;
+  mandatory: boolean;
+  modifiedAt: string;
+  name: string;
+  type: string;
+}
+export const EvaluationTypesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    description: S.String,
+    enable: S.Boolean,
+    mandatory: S.Boolean,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    type: S.String,
+  }),
+).annotate({
+  identifier: "EvaluationTypesListResultItem",
+}) as any as S.Schema<EvaluationTypesListResultItem>;
+
+export type EvaluationTypesListResultList = EvaluationTypesListResultItem[];
+export const EvaluationTypesListResultList = /*@__PURE__*/ S.Array(
+  EvaluationTypesListResultItem,
+) as any as S.Schema<EvaluationTypesListResultList>;
+
+export interface ListEvaluationTypesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: EvaluationTypesListResultList;
+}
+export const ListEvaluationTypesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(EvaluationTypesListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListEvaluationTypesResponse",
+}) as any as S.Schema<ListEvaluationTypesResponse>;
 
 export type LogsListRequestDirection = "asc" | "desc" | (string & {});
 export const LogsListRequestDirection = /*@__PURE__*/ S.String;
@@ -6150,7 +5808,7 @@ export const LogsListRequestOrderBy = /*@__PURE__*/ S.String;
 export type LogsListRequestOrderByDirection = "asc" | "desc" | (string & {});
 export const LogsListRequestOrderByDirection = /*@__PURE__*/ S.String;
 
-export interface LogsListRequest {
+export interface ListLogsRequest {
   accountId: string;
   /** gateway id */
   gatewayId: string;
@@ -6183,7 +5841,7 @@ export interface LogsListRequest {
   startDate?: string;
   success?: boolean;
 }
-export const LogsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
@@ -6229,8 +5887,8 @@ export const LogsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "LogsListRequest",
-}) as any as S.Schema<LogsListRequest>;
+  identifier: "ListLogsRequest",
+}) as any as S.Schema<ListLogsRequest>;
 
 export interface LogsListResultItem {
   id: string;
@@ -6288,149 +5946,26 @@ export const LogsListResultList = /*@__PURE__*/ S.Array(
   LogsListResultItem,
 ) as any as S.Schema<LogsListResultList>;
 
-export interface LogsListResponse {
+export interface ListLogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: LogsListResultList;
 }
-export const LogsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(LogsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "LogsListResponse",
-}) as any as S.Schema<LogsListResponse>;
+  identifier: "ListLogsResponse",
+}) as any as S.Schema<ListLogsResponse>;
 
-export interface LogsRequestRequest {
-  accountId: string;
-  /** gateway id */
-  gatewayId: string;
-  id: string;
-}
-export const LogsRequestRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/request",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LogsRequestRequest",
-}) as any as S.Schema<LogsRequestRequest>;
-
-export interface LogsRequestResponse {}
-export const LogsRequestResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LogsRequestResponse",
-}) as any as S.Schema<LogsRequestResponse>;
-
-export interface LogsResponseRequest {
-  accountId: string;
-  /** gateway id */
-  gatewayId: string;
-  id: string;
-}
-export const LogsResponseRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/response",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LogsResponseRequest",
-}) as any as S.Schema<LogsResponseRequest>;
-
-export interface LogsResponseResponse {}
-export const LogsResponseResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LogsResponseResponse",
-}) as any as S.Schema<LogsResponseResponse>;
-
-export interface ProviderConfigsCreateRequest {
-  accountId: string;
-  /** gateway id */
-  gatewayId: string;
-  alias: string;
-  defaultConfig: boolean;
-  providerSlug: string;
-  rateLimit?: number;
-  rateLimitPeriod?: number;
-  secret?: string;
-  secretId?: string;
-}
-export const ProviderConfigsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    gatewayId: S.String.pipe(T.Label("gateway_id")),
-    alias: S.String,
-    defaultConfig: S.Boolean.pipe(T.Body("default_config")),
-    providerSlug: S.String.pipe(T.Body("provider_slug")),
-    rateLimit: S.optional(S.Number.pipe(T.Body("rate_limit"))),
-    rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
-    secret: S.optional(S.String),
-    secretId: S.optional(S.String.pipe(T.Body("secret_id"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/provider_configs",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ProviderConfigsCreateRequest",
-}) as any as S.Schema<ProviderConfigsCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ProviderConfigsCreateResponse {
-  id: string;
-  alias: string;
-  defaultConfig: boolean;
-  /** gateway id */
-  gatewayId: string;
-  modifiedAt: string;
-  providerSlug: string;
-  secretId: string;
-  secretPreview: string;
-  rateLimit?: number;
-  rateLimitPeriod?: number;
-}
-export const ProviderConfigsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    alias: S.String,
-    defaultConfig: S.Boolean.pipe(T.Body("default_config")),
-    gatewayId: S.String.pipe(T.Body("gateway_id")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    providerSlug: S.String.pipe(T.Body("provider_slug")),
-    secretId: S.String.pipe(T.Body("secret_id")),
-    secretPreview: S.String.pipe(T.Body("secret_preview")),
-    rateLimit: S.optional(S.Number.pipe(T.Body("rate_limit"))),
-    rateLimitPeriod: S.optional(S.Number.pipe(T.Body("rate_limit_period"))),
-  }),
-).annotate({
-  identifier: "ProviderConfigsCreateResponse",
-}) as any as S.Schema<ProviderConfigsCreateResponse>;
-
-export interface ProviderConfigsListRequest {
+export interface ListProviderConfigsRequest {
   accountId: string;
   /** gateway id */
   gatewayId: string;
   page?: number;
   perPage?: number;
 }
-export const ProviderConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListProviderConfigsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
@@ -6444,8 +5979,8 @@ export const ProviderConfigsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ProviderConfigsListRequest",
-}) as any as S.Schema<ProviderConfigsListRequest>;
+  identifier: "ListProviderConfigsRequest",
+}) as any as S.Schema<ListProviderConfigsRequest>;
 
 export interface ProviderConfigsListResultItem {
   id: string;
@@ -6482,17 +6017,394 @@ export const ProviderConfigsListResultList = /*@__PURE__*/ S.Array(
   ProviderConfigsListResultItem,
 ) as any as S.Schema<ProviderConfigsListResultList>;
 
-export interface ProviderConfigsListResponse {
+export interface ListProviderConfigsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ProviderConfigsListResultList;
 }
-export const ProviderConfigsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListProviderConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ProviderConfigsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "ProviderConfigsListResponse",
-}) as any as S.Schema<ProviderConfigsListResponse>;
+  identifier: "ListProviderConfigsResponse",
+}) as any as S.Schema<ListProviderConfigsResponse>;
+
+export interface ListVersionsDynamicRoutingRequest {
+  accountId: string;
+  gatewayId: string;
+  id: string;
+}
+export const ListVersionsDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}/versions",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListVersionsDynamicRoutingRequest",
+}) as any as S.Schema<ListVersionsDynamicRoutingRequest>;
+
+export type DynamicRoutingListVersionsResponseDataVersionsItemActive =
+  | "true"
+  | "false"
+  | (string & {});
+export const DynamicRoutingListVersionsResponseDataVersionsItemActive =
+  /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingListVersionsResponseDataVersionsItem {
+  active: DynamicRoutingListVersionsResponseDataVersionsItemActive;
+  createdAt: string;
+  data: string;
+  versionId: string;
+  isValid?: boolean;
+}
+export const DynamicRoutingListVersionsResponseDataVersionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      active: DynamicRoutingListVersionsResponseDataVersionsItemActive,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      data: S.String,
+      versionId: S.String.pipe(T.Body("version_id")),
+      isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingListVersionsResponseDataVersionsItem",
+  }) as any as S.Schema<DynamicRoutingListVersionsResponseDataVersionsItem>;
+
+export type DynamicRoutingListVersionsResponseDataVersionsList =
+  DynamicRoutingListVersionsResponseDataVersionsItem[];
+export const DynamicRoutingListVersionsResponseDataVersionsList =
+  /*@__PURE__*/ S.Array(
+    DynamicRoutingListVersionsResponseDataVersionsItem,
+  ) as any as S.Schema<DynamicRoutingListVersionsResponseDataVersionsList>;
+
+export interface DynamicRoutingListVersionsResponseData {
+  orderBy: string;
+  orderByDirection: string;
+  page: number;
+  perPage: number;
+  versions: DynamicRoutingListVersionsResponseDataVersionsList;
+}
+export const DynamicRoutingListVersionsResponseData = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      orderBy: S.String.pipe(T.Body("order_by")),
+      orderByDirection: S.String.pipe(T.Body("order_by_direction")),
+      page: S.Number,
+      perPage: S.Number.pipe(T.Body("per_page")),
+      versions: DynamicRoutingListVersionsResponseDataVersionsList,
+    }),
+).annotate({
+  identifier: "DynamicRoutingListVersionsResponseData",
+}) as any as S.Schema<DynamicRoutingListVersionsResponseData>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface ListVersionsDynamicRoutingResponse {
+  data: DynamicRoutingListVersionsResponseData;
+}
+export const ListVersionsDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    data: DynamicRoutingListVersionsResponseData,
+  }),
+).annotate({
+  identifier: "ListVersionsDynamicRoutingResponse",
+}) as any as S.Schema<ListVersionsDynamicRoutingResponse>;
+
+export interface PatchDynamicRoutingRequest {
+  accountId: string;
+  gatewayId: string;
+  id: string;
+  name: string;
+}
+export const PatchDynamicRoutingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    id: S.String.pipe(T.Label()),
+    name: S.String,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/routes/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchDynamicRoutingRequest",
+}) as any as S.Schema<PatchDynamicRoutingRequest>;
+
+export interface DynamicRoutingUpdateResponseRouteDeployment {
+  createdAt: string;
+  deploymentId: string;
+  versionId: string;
+}
+export const DynamicRoutingUpdateResponseRouteDeployment =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      deploymentId: S.String.pipe(T.Body("deployment_id")),
+      versionId: S.String.pipe(T.Body("version_id")),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingUpdateResponseRouteDeployment",
+  }) as any as S.Schema<DynamicRoutingUpdateResponseRouteDeployment>;
+
+export interface DynamicRoutingUpdateResponseRouteElementsItem {
+  objectIdOutputsType__: unknown;
+  objectIdOutputsPropertiesType__: unknown;
+  objectIdOutputsType2: unknown;
+  objectIdOutputsPropertiesType2: unknown;
+  objectIdOutputsPropertiesType3: unknown;
+  objectIdOutputsType3: unknown;
+}
+export const DynamicRoutingUpdateResponseRouteElementsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      objectIdOutputsType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType__: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+      objectIdOutputsPropertiesType2: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsPropertiesType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, properties, type }"),
+      ),
+      objectIdOutputsType3: S.Unknown.pipe(
+        T.Body("object { id, outputs, type }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "DynamicRoutingUpdateResponseRouteElementsItem",
+  }) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsItem>;
+
+export type DynamicRoutingUpdateResponseRouteElementsList =
+  DynamicRoutingUpdateResponseRouteElementsItem[];
+export const DynamicRoutingUpdateResponseRouteElementsList =
+  /*@__PURE__*/ S.Array(
+    DynamicRoutingUpdateResponseRouteElementsItem,
+  ) as any as S.Schema<DynamicRoutingUpdateResponseRouteElementsList>;
+
+export type DynamicRoutingUpdateResponseRouteVersionActive =
+  | "true"
+  | "false"
+  | (string & {});
+export const DynamicRoutingUpdateResponseRouteVersionActive =
+  /*@__PURE__*/ S.String;
+
+export interface DynamicRoutingUpdateResponseRouteVersion {
+  active: DynamicRoutingUpdateResponseRouteVersionActive;
+  createdAt: string;
+  data: string;
+  versionId: string;
+  isValid?: boolean;
+}
+export const DynamicRoutingUpdateResponseRouteVersion = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      active: DynamicRoutingUpdateResponseRouteVersionActive,
+      createdAt: S.String.pipe(T.Body("created_at")),
+      data: S.String,
+      versionId: S.String.pipe(T.Body("version_id")),
+      isValid: S.optional(S.Boolean.pipe(T.Body("is_valid"))),
+    }),
+).annotate({
+  identifier: "DynamicRoutingUpdateResponseRouteVersion",
+}) as any as S.Schema<DynamicRoutingUpdateResponseRouteVersion>;
+
+export interface DynamicRoutingUpdateResponseRoute {
+  id: string;
+  accountTag: string;
+  createdAt: string;
+  deployment: DynamicRoutingUpdateResponseRouteDeployment;
+  elements: DynamicRoutingUpdateResponseRouteElementsList;
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+  version: DynamicRoutingUpdateResponseRouteVersion;
+}
+export const DynamicRoutingUpdateResponseRoute = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    accountTag: S.String.pipe(T.Body("account_tag")),
+    createdAt: S.String.pipe(T.Body("created_at")),
+    deployment: DynamicRoutingUpdateResponseRouteDeployment,
+    elements: DynamicRoutingUpdateResponseRouteElementsList,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    version: DynamicRoutingUpdateResponseRouteVersion,
+  }),
+).annotate({
+  identifier: "DynamicRoutingUpdateResponseRoute",
+}) as any as S.Schema<DynamicRoutingUpdateResponseRoute>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface PatchDynamicRoutingResponse {
+  route: DynamicRoutingUpdateResponseRoute;
+}
+export const PatchDynamicRoutingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    route: DynamicRoutingUpdateResponseRoute,
+  }),
+).annotate({
+  identifier: "PatchDynamicRoutingResponse",
+}) as any as S.Schema<PatchDynamicRoutingResponse>;
+
+export type LogsEditRequestMetadataMap = { [key: string]: unknown | undefined };
+export const LogsEditRequestMetadataMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<LogsEditRequestMetadataMap>;
+
+export interface PatchLogRequest {
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
+  id: string;
+  feedback?: number;
+  metadata?: LogsEditRequestMetadataMap;
+  score?: number;
+}
+export const PatchLogRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    id: S.String.pipe(T.Label()),
+    feedback: S.optional(S.Number),
+    metadata: S.optional(LogsEditRequestMetadataMap),
+    score: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchLogRequest",
+}) as any as S.Schema<PatchLogRequest>;
+
+export interface PatchLogResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const PatchLogResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "PatchLogResponse",
+}) as any as S.Schema<PatchLogResponse>;
+
+export interface RequestLogRequest {
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
+  id: string;
+}
+export const RequestLogRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/request",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RequestLogRequest",
+}) as any as S.Schema<RequestLogRequest>;
+
+export interface RequestLogResponse {}
+export const RequestLogResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "RequestLogResponse",
+}) as any as S.Schema<RequestLogResponse>;
+
+export interface ResponseLogRequest {
+  accountId: string;
+  /** gateway id */
+  gatewayId: string;
+  id: string;
+}
+export const ResponseLogRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    gatewayId: S.String.pipe(T.Label("gateway_id")),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/logs/{id}/response",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ResponseLogRequest",
+}) as any as S.Schema<ResponseLogRequest>;
+
+export interface ResponseLogResponse {}
+export const ResponseLogResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "ResponseLogResponse",
+}) as any as S.Schema<ResponseLogResponse>;
+
+export interface StatusBillingTopupRequest {
+  accountId: string;
+  /** Stripe invoice ID to check status for. */
+  paymentIntentId: string;
+}
+export const StatusBillingTopupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/ai-gateway/billing/topup/status",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "StatusBillingTopupRequest",
+}) as any as S.Schema<StatusBillingTopupRequest>;
+
+export type BillingTopupStatusResponseStatus =
+  | "completed"
+  | "pending"
+  | (string & {});
+export const BillingTopupStatusResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface StatusBillingTopupResponse {
+  paymentIntentId: string;
+  status: BillingTopupStatusResponseStatus;
+}
+export const StatusBillingTopupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    paymentIntentId: S.String.pipe(T.Body("payment_intent_id")),
+    status: BillingTopupStatusResponseStatus,
+  }),
+).annotate({
+  identifier: "StatusBillingTopupResponse",
+}) as any as S.Schema<StatusBillingTopupResponse>;
 
 export interface UpdateRequestDlp {
   objectActionEnabledProfiles__: unknown;
@@ -6934,7 +6846,7 @@ export const UpdateRequestStripe = /*@__PURE__*/ S.suspend(() =>
 export type UpdateRequestWorkersAiBillingMode = "postpaid" | (string & {});
 export const UpdateRequestWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
-export interface UpdateRequest {
+export interface UpdateAiGatewayRequest {
   accountId: string;
   /** gateway id */
   id: string;
@@ -6965,7 +6877,7 @@ export interface UpdateRequest {
   workersAiBillingMode?: UpdateRequestWorkersAiBillingMode;
   zdr?: boolean;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateAiGatewayRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.String.pipe(T.Label()),
@@ -7014,7 +6926,9 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "UpdateAiGatewayRequest",
+}) as any as S.Schema<UpdateAiGatewayRequest>;
 
 export interface UpdateResponseDlp {
   objectActionEnabledProfiles__: unknown;
@@ -7471,7 +7385,7 @@ export type UpdateResponseWorkersAiBillingMode = "postpaid" | (string & {});
 export const UpdateResponseWorkersAiBillingMode = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface UpdateAiGatewayResponse {
   /** gateway id */
   id: string;
   cacheInvalidateOnUpdate: boolean;
@@ -7504,7 +7418,7 @@ export interface UpdateResponse {
   workersAiBillingMode?: UpdateResponseWorkersAiBillingMode;
   zdr?: boolean;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateAiGatewayResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     cacheInvalidateOnUpdate: S.Boolean.pipe(
@@ -7551,736 +7465,1016 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     zdr: S.optional(S.Boolean),
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "UpdateAiGatewayResponse",
+}) as any as S.Schema<UpdateAiGatewayResponse>;
 
-export interface UrlsGetRequest {
+export type DatasetsUpdateRequestFiltersItemKey =
+  | "created_at"
+  | "request_content_type"
+  | "response_content_type"
+  | (string & {});
+export const DatasetsUpdateRequestFiltersItemKey = /*@__PURE__*/ S.String;
+
+export type DatasetsUpdateRequestFiltersItemOperator =
+  | "eq"
+  | "contains"
+  | "lt"
+  | "gt"
+  | (string & {});
+export const DatasetsUpdateRequestFiltersItemOperator = /*@__PURE__*/ S.String;
+
+export interface DatasetsUpdateRequestFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+}
+export const DatasetsUpdateRequestFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "DatasetsUpdateRequestFiltersItemValueItem",
+  }) as any as S.Schema<DatasetsUpdateRequestFiltersItemValueItem>;
+
+export type DatasetsUpdateRequestFiltersItemValueList =
+  DatasetsUpdateRequestFiltersItemValueItem[];
+export const DatasetsUpdateRequestFiltersItemValueList = /*@__PURE__*/ S.Array(
+  DatasetsUpdateRequestFiltersItemValueItem,
+) as any as S.Schema<DatasetsUpdateRequestFiltersItemValueList>;
+
+export interface DatasetsUpdateRequestFiltersItem {
+  key: DatasetsUpdateRequestFiltersItemKey;
+  operator: DatasetsUpdateRequestFiltersItemOperator;
+  value: DatasetsUpdateRequestFiltersItemValueList;
+}
+export const DatasetsUpdateRequestFiltersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    key: DatasetsUpdateRequestFiltersItemKey,
+    operator: DatasetsUpdateRequestFiltersItemOperator,
+    value: DatasetsUpdateRequestFiltersItemValueList,
+  }),
+).annotate({
+  identifier: "DatasetsUpdateRequestFiltersItem",
+}) as any as S.Schema<DatasetsUpdateRequestFiltersItem>;
+
+export type DatasetsUpdateRequestFiltersList =
+  DatasetsUpdateRequestFiltersItem[];
+export const DatasetsUpdateRequestFiltersList = /*@__PURE__*/ S.Array(
+  DatasetsUpdateRequestFiltersItem,
+) as any as S.Schema<DatasetsUpdateRequestFiltersList>;
+
+export interface UpdateDatasetRequest {
   accountId: string;
   /** gateway id */
   gatewayId: string;
-  provider: string;
+  id: string;
+  enable: boolean;
+  filters: DatasetsUpdateRequestFiltersList;
+  name: string;
 }
-export const UrlsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateDatasetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     gatewayId: S.String.pipe(T.Label("gateway_id")),
-    provider: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    enable: S.Boolean,
+    filters: DatasetsUpdateRequestFiltersList,
+    name: S.String,
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/url/{provider}",
+      method: "PUT",
+      uri: "/accounts/{account_id}/ai-gateway/gateways/{gateway_id}/datasets/{id}",
       code: 200,
     }),
   ),
-).annotate({ identifier: "UrlsGetRequest" }) as any as S.Schema<UrlsGetRequest>;
+).annotate({
+  identifier: "UpdateDatasetRequest",
+}) as any as S.Schema<UpdateDatasetRequest>;
 
-export interface UrlsGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
+export type DatasetsUpdateResponseFiltersItemKey =
+  | "created_at"
+  | "request_content_type"
+  | "response_content_type"
+  | (string & {});
+export const DatasetsUpdateResponseFiltersItemKey = /*@__PURE__*/ S.String;
+
+export type DatasetsUpdateResponseFiltersItemOperator =
+  | "eq"
+  | "contains"
+  | "lt"
+  | "gt"
+  | (string & {});
+export const DatasetsUpdateResponseFiltersItemOperator = /*@__PURE__*/ S.String;
+
+export interface DatasetsUpdateResponseFiltersItemValueItem {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
 }
-export const UrlsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const DatasetsUpdateResponseFiltersItemValueItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      string: S.Unknown,
+      number: S.Unknown,
+      boolean: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "DatasetsUpdateResponseFiltersItemValueItem",
+  }) as any as S.Schema<DatasetsUpdateResponseFiltersItemValueItem>;
+
+export type DatasetsUpdateResponseFiltersItemValueList =
+  DatasetsUpdateResponseFiltersItemValueItem[];
+export const DatasetsUpdateResponseFiltersItemValueList = /*@__PURE__*/ S.Array(
+  DatasetsUpdateResponseFiltersItemValueItem,
+) as any as S.Schema<DatasetsUpdateResponseFiltersItemValueList>;
+
+export interface DatasetsUpdateResponseFiltersItem {
+  key: DatasetsUpdateResponseFiltersItemKey;
+  operator: DatasetsUpdateResponseFiltersItemOperator;
+  value: DatasetsUpdateResponseFiltersItemValueList;
+}
+export const DatasetsUpdateResponseFiltersItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
+    key: DatasetsUpdateResponseFiltersItemKey,
+    operator: DatasetsUpdateResponseFiltersItemOperator,
+    value: DatasetsUpdateResponseFiltersItemValueList,
   }),
 ).annotate({
-  identifier: "UrlsGetResponse",
-}) as any as S.Schema<UrlsGetResponse>;
+  identifier: "DatasetsUpdateResponseFiltersItem",
+}) as any as S.Schema<DatasetsUpdateResponseFiltersItem>;
 
-export type BillingCreditBalanceError = CloudflareOpError;
-/** Retrieve the current credit balance, payment method info, and top-up configuration. */
-export const billingCreditBalance: API.OperationMethod<
-  BillingCreditBalanceRequest,
-  BillingCreditBalanceResponse,
-  BillingCreditBalanceError,
+export type DatasetsUpdateResponseFiltersList =
+  DatasetsUpdateResponseFiltersItem[];
+export const DatasetsUpdateResponseFiltersList = /*@__PURE__*/ S.Array(
+  DatasetsUpdateResponseFiltersItem,
+) as any as S.Schema<DatasetsUpdateResponseFiltersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateDatasetResponse {
+  id: string;
+  createdAt: string;
+  enable: boolean;
+  filters: DatasetsUpdateResponseFiltersList;
+  /** gateway id */
+  gatewayId: string;
+  modifiedAt: string;
+  name: string;
+}
+export const UpdateDatasetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    enable: S.Boolean,
+    filters: DatasetsUpdateResponseFiltersList,
+    gatewayId: S.String.pipe(T.Body("gateway_id")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+  }),
+).annotate({
+  identifier: "UpdateDatasetResponse",
+}) as any as S.Schema<UpdateDatasetResponse>;
+
+export type BillingUsageHistoryRequestValueGroupingWindow =
+  | "day"
+  | "hour"
+  | (string & {});
+export const BillingUsageHistoryRequestValueGroupingWindow =
+  /*@__PURE__*/ S.String;
+
+export interface UsageHistoryBillingRequest {
+  accountId: string;
+  /** Grouping window for usage data. */
+  valueGroupingWindow: BillingUsageHistoryRequestValueGroupingWindow;
+  /** End time as Unix timestamp in milliseconds. */
+  endTime?: number;
+  /** Start time as Unix timestamp in milliseconds. */
+  startTime?: number;
+}
+export const UsageHistoryBillingRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    valueGroupingWindow: BillingUsageHistoryRequestValueGroupingWindow.pipe(
+      T.Query("value_grouping_window"),
+    ),
+    endTime: S.optional(S.Number.pipe(T.Query("end_time"))),
+    startTime: S.optional(S.Number.pipe(T.Query("start_time"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai-gateway/billing/usage-history",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UsageHistoryBillingRequest",
+}) as any as S.Schema<UsageHistoryBillingRequest>;
+
+export interface BillingUsageHistoryResponseHistoryItem {
+  id: string;
+  aggregatedValue: number;
+  endTime: number;
+  startTime: number;
+}
+export const BillingUsageHistoryResponseHistoryItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      aggregatedValue: S.Number.pipe(T.Body("aggregated_value")),
+      endTime: S.Number.pipe(T.Body("end_time")),
+      startTime: S.Number.pipe(T.Body("start_time")),
+    }),
+).annotate({
+  identifier: "BillingUsageHistoryResponseHistoryItem",
+}) as any as S.Schema<BillingUsageHistoryResponseHistoryItem>;
+
+export type BillingUsageHistoryResponseHistoryList =
+  BillingUsageHistoryResponseHistoryItem[];
+export const BillingUsageHistoryResponseHistoryList = /*@__PURE__*/ S.Array(
+  BillingUsageHistoryResponseHistoryItem,
+) as any as S.Schema<BillingUsageHistoryResponseHistoryList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UsageHistoryBillingResponse {
+  history: BillingUsageHistoryResponseHistoryList;
+}
+export const UsageHistoryBillingResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    history: BillingUsageHistoryResponseHistoryList,
+  }),
+).annotate({
+  identifier: "UsageHistoryBillingResponse",
+}) as any as S.Schema<UsageHistoryBillingResponse>;
+
+export type CreateAiGatewayError = GatewayAlreadyExists | CloudflareOpError;
+/** Creates a new AI Gateway. */
+export const createAiGateway: API.OperationMethod<
+  CreateAiGatewayRequest,
+  CreateAiGatewayResponse,
+  CreateAiGatewayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingCreditBalanceRequest,
-  output: BillingCreditBalanceResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateAiGatewayRequest,
+  output: CreateAiGatewayResponse,
+  errors: [GatewayAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type BillingInvoiceHistoryError = CloudflareOpError;
-/** Retrieve a list of past invoices with pagination, optionally filtered by type. */
-export const billingInvoiceHistory: API.OperationMethod<
-  BillingInvoiceHistoryRequest,
-  BillingInvoiceHistoryResponse,
-  BillingInvoiceHistoryError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingInvoiceHistoryRequest,
-  output: BillingInvoiceHistoryResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type BillingInvoicePreviewError = CloudflareOpError;
-/** Retrieve a preview of the upcoming invoice including line items and tax. */
-export const billingInvoicePreview: API.OperationMethod<
-  BillingInvoicePreviewRequest,
-  BillingInvoicePreviewResponse,
-  BillingInvoicePreviewError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingInvoicePreviewRequest,
-  output: BillingInvoicePreviewResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type BillingSpendingLimitCreateError = CloudflareOpError;
+export type CreateBillingSpendingLimitError =
+  | NoManualTopup
+  | AiGatewaySpendingLimitDeprecated
+  | CloudflareOpError;
 /** Deprecated: spending limits can no longer be created, enabled, or modified and this endpoint always responds 403. Use the new AI Gateway spend limits instead: https://developers.cloudflare.com/ai-gateway/features/spend-limits/. Existing limits can be removed via DELETE /spending-limit. */
-export const billingSpendingLimitCreate: API.OperationMethod<
-  BillingSpendingLimitCreateRequest,
-  BillingSpendingLimitCreateResponse,
-  BillingSpendingLimitCreateError,
+export const createBillingSpendingLimit: API.OperationMethod<
+  CreateBillingSpendingLimitRequest,
+  CreateBillingSpendingLimitResponse,
+  CreateBillingSpendingLimitError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingSpendingLimitCreateRequest,
-  output: BillingSpendingLimitCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateBillingSpendingLimitRequest,
+  output: CreateBillingSpendingLimitResponse,
+  errors: [
+    NoManualTopup,
+    AiGatewaySpendingLimitDeprecated,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type BillingSpendingLimitDeleteError = CloudflareOpError;
-/** Remove the spending limit for the account. */
-export const billingSpendingLimitDelete: API.OperationMethod<
-  BillingSpendingLimitDeleteRequest,
-  BillingSpendingLimitDeleteResponse,
-  BillingSpendingLimitDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingSpendingLimitDeleteRequest,
-  output: BillingSpendingLimitDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type BillingSpendingLimitGetError = CloudflareOpError;
-/** Retrieve the current spending limit configuration for the account. */
-export const billingSpendingLimitGet: API.OperationMethod<
-  BillingSpendingLimitGetRequest,
-  BillingSpendingLimitGetResponse,
-  BillingSpendingLimitGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingSpendingLimitGetRequest,
-  output: BillingSpendingLimitGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type BillingTopupConfigCreateError = CloudflareOpError;
-/** Configure auto top-up with a balance threshold and top-up amount. */
-export const billingTopupConfigCreate: API.OperationMethod<
-  BillingTopupConfigCreateRequest,
-  BillingTopupConfigCreateResponse,
-  BillingTopupConfigCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingTopupConfigCreateRequest,
-  output: BillingTopupConfigCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type BillingTopupConfigDeleteError = CloudflareOpError;
-/** Remove the auto top-up configuration for the account. */
-export const billingTopupConfigDelete: API.OperationMethod<
-  BillingTopupConfigDeleteRequest,
-  BillingTopupConfigDeleteResponse,
-  BillingTopupConfigDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingTopupConfigDeleteRequest,
-  output: BillingTopupConfigDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type BillingTopupConfigGetError = CloudflareOpError;
-/** Retrieve the current auto top-up threshold, amount, and any error state. */
-export const billingTopupConfigGet: API.OperationMethod<
-  BillingTopupConfigGetRequest,
-  BillingTopupConfigGetResponse,
-  BillingTopupConfigGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingTopupConfigGetRequest,
-  output: BillingTopupConfigGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type BillingTopupCreateError = CloudflareOpError;
+export type CreateBillingTopupError = CloudflareOpError;
 /** Create a credit top-up via Stripe PaymentIntent for the given account. */
-export const billingTopupCreate: API.OperationMethod<
-  BillingTopupCreateRequest,
-  BillingTopupCreateResponse,
-  BillingTopupCreateError,
+export const createBillingTopup: API.OperationMethod<
+  CreateBillingTopupRequest,
+  CreateBillingTopupResponse,
+  CreateBillingTopupError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingTopupCreateRequest,
-  output: BillingTopupCreateResponse,
+  input: CreateBillingTopupRequest,
+  output: CreateBillingTopupResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type BillingTopupStatusError = CloudflareOpError;
-/** Get the payment processing status of a top-up by its invoice ID. */
-export const billingTopupStatus: API.OperationMethod<
-  BillingTopupStatusRequest,
-  BillingTopupStatusResponse,
-  BillingTopupStatusError,
+export type CreateBillingTopupConfigError = CloudflareOpError;
+/** Configure auto top-up with a balance threshold and top-up amount. */
+export const createBillingTopupConfig: API.OperationMethod<
+  CreateBillingTopupConfigRequest,
+  CreateBillingTopupConfigResponse,
+  CreateBillingTopupConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: BillingTopupStatusRequest,
-  output: BillingTopupStatusResponse,
+  input: CreateBillingTopupConfigRequest,
+  output: CreateBillingTopupConfigResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type BillingUsageHistoryError = CloudflareOpError;
-/** Retrieve aggregated usage meter event summaries for the given time range. */
-export const billingUsageHistory: API.OperationMethod<
-  BillingUsageHistoryRequest,
-  BillingUsageHistoryResponse,
-  BillingUsageHistoryError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: BillingUsageHistoryRequest,
-  output: BillingUsageHistoryResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CreateError = CloudflareOpError;
+export type CreateCustomProviderError = CloudflareOpError;
 /** Creates a new AI Gateway. */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createCustomProvider: API.OperationMethod<
+  CreateCustomProviderRequest,
+  CreateCustomProviderResponse,
+  CreateCustomProviderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
+  input: CreateCustomProviderRequest,
+  output: CreateCustomProviderResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type CustomProvidersCreateError = CloudflareOpError;
+export type CreateDatasetError =
+  | GatewayNotFound
+  | DatasetNameAlreadyExists
+  | CloudflareOpError;
 /** Creates a new AI Gateway. */
-export const customProvidersCreate: API.OperationMethod<
-  CustomProvidersCreateRequest,
-  CustomProvidersCreateResponse,
-  CustomProvidersCreateError,
+export const createDataset: API.OperationMethod<
+  CreateDatasetRequest,
+  CreateDatasetResponse,
+  CreateDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CustomProvidersCreateRequest,
-  output: CustomProvidersCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateDatasetRequest,
+  output: CreateDatasetResponse,
+  errors: [
+    GatewayNotFound,
+    DatasetNameAlreadyExists,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type CustomProvidersDeleteError = CloudflareOpError;
-/** Deletes an AI Gateway dataset. */
-export const customProvidersDelete: API.OperationMethod<
-  CustomProvidersDeleteRequest,
-  CustomProvidersDeleteResponse,
-  CustomProvidersDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomProvidersDeleteRequest,
-  output: CustomProvidersDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CustomProvidersGetError = CloudflareOpError;
-/** Retrieves details for a specific AI Gateway dataset. */
-export const customProvidersGet: API.OperationMethod<
-  CustomProvidersGetRequest,
-  CustomProvidersGetResponse,
-  CustomProvidersGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomProvidersGetRequest,
-  output: CustomProvidersGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CustomProvidersListError = CloudflareOpError;
-/** Lists all AI Gateway evaluator types configured for the account. */
-export const customProvidersList: API.OperationMethod<
-  CustomProvidersListRequest,
-  CustomProvidersListResponse,
-  CustomProvidersListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CustomProvidersListRequest,
-  output: CustomProvidersListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DatasetsCreateError = CloudflareOpError;
-/** Creates a new AI Gateway. */
-export const datasetsCreate: API.OperationMethod<
-  DatasetsCreateRequest,
-  DatasetsCreateResponse,
-  DatasetsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatasetsCreateRequest,
-  output: DatasetsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DatasetsDeleteError = CloudflareOpError;
-/** Deletes an AI Gateway dataset. */
-export const datasetsDelete: API.OperationMethod<
-  DatasetsDeleteRequest,
-  DatasetsDeleteResponse,
-  DatasetsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatasetsDeleteRequest,
-  output: DatasetsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DatasetsGetError = CloudflareOpError;
-/** Retrieves details for a specific AI Gateway dataset. */
-export const datasetsGet: API.OperationMethod<
-  DatasetsGetRequest,
-  DatasetsGetResponse,
-  DatasetsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatasetsGetRequest,
-  output: DatasetsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DatasetsListError = CloudflareOpError;
-/** Lists all AI Gateway evaluator types configured for the account. */
-export const datasetsList: API.OperationMethod<
-  DatasetsListRequest,
-  DatasetsListResponse,
-  DatasetsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatasetsListRequest,
-  output: DatasetsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DatasetsUpdateError = CloudflareOpError;
-/** Updates an existing AI Gateway dataset. */
-export const datasetsUpdate: API.OperationMethod<
-  DatasetsUpdateRequest,
-  DatasetsUpdateResponse,
-  DatasetsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatasetsUpdateRequest,
-  output: DatasetsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DeleteError = CloudflareOpError;
-/** Deletes an AI Gateway dataset. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DynamicRoutingCreateError = CloudflareOpError;
-/** Create a new AI Gateway Dynamic Route. */
-export const dynamicRoutingCreate: API.OperationMethod<
-  DynamicRoutingCreateRequest,
-  DynamicRoutingCreateResponse,
-  DynamicRoutingCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DynamicRoutingCreateRequest,
-  output: DynamicRoutingCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DynamicRoutingCreateDeploymentError = CloudflareOpError;
+export type CreateDeploymentDynamicRoutingError =
+  | RouteNotFound
+  | CloudflareOpError;
 /** Create a new AI Gateway Dynamic Route Deployment. */
-export const dynamicRoutingCreateDeployment: API.OperationMethod<
-  DynamicRoutingCreateDeploymentRequest,
-  DynamicRoutingCreateDeploymentResponse,
-  DynamicRoutingCreateDeploymentError,
+export const createDeploymentDynamicRouting: API.OperationMethod<
+  CreateDeploymentDynamicRoutingRequest,
+  CreateDeploymentDynamicRoutingResponse,
+  CreateDeploymentDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DynamicRoutingCreateDeploymentRequest,
-  output: DynamicRoutingCreateDeploymentResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateDeploymentDynamicRoutingRequest,
+  output: CreateDeploymentDynamicRoutingResponse,
+  errors: [RouteNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DynamicRoutingCreateVersionError = CloudflareOpError;
+export type CreateDynamicRoutingError =
+  | RouteAlreadyExists
+  | GatewayNotFound
+  | CloudflareOpError;
+/** Create a new AI Gateway Dynamic Route. */
+export const createDynamicRouting: API.OperationMethod<
+  CreateDynamicRoutingRequest,
+  CreateDynamicRoutingResponse,
+  CreateDynamicRoutingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateDynamicRoutingRequest,
+  output: CreateDynamicRoutingResponse,
+  errors: [
+    RouteAlreadyExists,
+    GatewayNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateEvaluationError =
+  | GatewayNotFound
+  | EvaluationNameAlreadyExists
+  | CloudflareOpError;
+/** Creates a new AI Gateway. */
+export const createEvaluation: API.OperationMethod<
+  CreateEvaluationRequest,
+  CreateEvaluationResponse,
+  CreateEvaluationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateEvaluationRequest,
+  output: CreateEvaluationResponse,
+  errors: [
+    GatewayNotFound,
+    EvaluationNameAlreadyExists,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateProviderConfigError =
+  | ProviderConfigSecretNotFound
+  | ProviderConfigAlreadyExists
+  | GatewayNotFound
+  | CloudflareOpError;
+/** Creates a new AI Gateway. */
+export const createProviderConfig: API.OperationMethod<
+  CreateProviderConfigRequest,
+  CreateProviderConfigResponse,
+  CreateProviderConfigError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateProviderConfigRequest,
+  output: CreateProviderConfigResponse,
+  errors: [
+    ProviderConfigSecretNotFound,
+    ProviderConfigAlreadyExists,
+    GatewayNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateVersionDynamicRoutingError =
+  | RouteNotFound
+  | CloudflareOpError;
 /** Create a new AI Gateway Dynamic Route Version. */
-export const dynamicRoutingCreateVersion: API.OperationMethod<
-  DynamicRoutingCreateVersionRequest,
-  DynamicRoutingCreateVersionResponse,
-  DynamicRoutingCreateVersionError,
+export const createVersionDynamicRouting: API.OperationMethod<
+  CreateVersionDynamicRoutingRequest,
+  CreateVersionDynamicRoutingResponse,
+  CreateVersionDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DynamicRoutingCreateVersionRequest,
-  output: DynamicRoutingCreateVersionResponse,
+  input: CreateVersionDynamicRoutingRequest,
+  output: CreateVersionDynamicRoutingResponse,
+  errors: [RouteNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreditBalanceBillingError = CloudflareOpError;
+/** Retrieve the current credit balance, payment method info, and top-up configuration. */
+export const creditBalanceBilling: API.OperationMethod<
+  CreditBalanceBillingRequest,
+  CreditBalanceBillingResponse,
+  CreditBalanceBillingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreditBalanceBillingRequest,
+  output: CreditBalanceBillingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DynamicRoutingDeleteError = CloudflareOpError;
-/** Delete an AI Gateway Dynamic Route. */
-export const dynamicRoutingDelete: API.OperationMethod<
-  DynamicRoutingDeleteRequest,
-  DynamicRoutingDeleteResponse,
-  DynamicRoutingDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DynamicRoutingDeleteRequest,
-  output: DynamicRoutingDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DynamicRoutingGetError = CloudflareOpError;
-/** Get an AI Gateway Dynamic Route. */
-export const dynamicRoutingGet: API.OperationMethod<
-  DynamicRoutingGetRequest,
-  DynamicRoutingGetResponse,
-  DynamicRoutingGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DynamicRoutingGetRequest,
-  output: DynamicRoutingGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DynamicRoutingGetVersionError = CloudflareOpError;
-/** Get an AI Gateway Dynamic Route Version. */
-export const dynamicRoutingGetVersion: API.OperationMethod<
-  DynamicRoutingGetVersionRequest,
-  DynamicRoutingGetVersionResponse,
-  DynamicRoutingGetVersionError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DynamicRoutingGetVersionRequest,
-  output: DynamicRoutingGetVersionResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DynamicRoutingListError = CloudflareOpError;
-/** List all AI Gateway Dynamic Routes. */
-export const dynamicRoutingList: API.OperationMethod<
-  DynamicRoutingListRequest,
-  DynamicRoutingListResponse,
-  DynamicRoutingListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DynamicRoutingListRequest,
-  output: DynamicRoutingListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DynamicRoutingListDeploymentsError = CloudflareOpError;
-/** List all AI Gateway Dynamic Route Deployments. */
-export const dynamicRoutingListDeployments: API.OperationMethod<
-  DynamicRoutingListDeploymentsRequest,
-  DynamicRoutingListDeploymentsResponse,
-  DynamicRoutingListDeploymentsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DynamicRoutingListDeploymentsRequest,
-  output: DynamicRoutingListDeploymentsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DynamicRoutingListVersionsError = CloudflareOpError;
-/** List all AI Gateway Dynamic Route Versions. */
-export const dynamicRoutingListVersions: API.OperationMethod<
-  DynamicRoutingListVersionsRequest,
-  DynamicRoutingListVersionsResponse,
-  DynamicRoutingListVersionsError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DynamicRoutingListVersionsRequest,
-  output: DynamicRoutingListVersionsResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DynamicRoutingUpdateError = CloudflareOpError;
-/** Update an AI Gateway Dynamic Route. */
-export const dynamicRoutingUpdate: API.OperationMethod<
-  DynamicRoutingUpdateRequest,
-  DynamicRoutingUpdateResponse,
-  DynamicRoutingUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DynamicRoutingUpdateRequest,
-  output: DynamicRoutingUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type EvaluationsCreateError = CloudflareOpError;
-/** Creates a new AI Gateway. */
-export const evaluationsCreate: API.OperationMethod<
-  EvaluationsCreateRequest,
-  EvaluationsCreateResponse,
-  EvaluationsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EvaluationsCreateRequest,
-  output: EvaluationsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type EvaluationsDeleteError = CloudflareOpError;
+export type DeleteAiGatewayError = GatewayNotFound | CloudflareOpError;
 /** Deletes an AI Gateway dataset. */
-export const evaluationsDelete: API.OperationMethod<
-  EvaluationsDeleteRequest,
-  EvaluationsDeleteResponse,
-  EvaluationsDeleteError,
+export const deleteAiGateway: API.OperationMethod<
+  DeleteAiGatewayRequest,
+  DeleteAiGatewayResponse,
+  DeleteAiGatewayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EvaluationsDeleteRequest,
-  output: EvaluationsDeleteResponse,
+  input: DeleteAiGatewayRequest,
+  output: DeleteAiGatewayResponse,
+  errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteBillingSpendingLimitError = CloudflareOpError;
+/** Remove the spending limit for the account. */
+export const deleteBillingSpendingLimit: API.OperationMethod<
+  DeleteBillingSpendingLimitRequest,
+  DeleteBillingSpendingLimitResponse,
+  DeleteBillingSpendingLimitError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteBillingSpendingLimitRequest,
+  output: DeleteBillingSpendingLimitResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type EvaluationsGetError = CloudflareOpError;
-/** Retrieves details for a specific AI Gateway dataset. */
-export const evaluationsGet: API.OperationMethod<
-  EvaluationsGetRequest,
-  EvaluationsGetResponse,
-  EvaluationsGetError,
+export type DeleteBillingTopupConfigError = CloudflareOpError;
+/** Remove the auto top-up configuration for the account. */
+export const deleteBillingTopupConfig: API.OperationMethod<
+  DeleteBillingTopupConfigRequest,
+  DeleteBillingTopupConfigResponse,
+  DeleteBillingTopupConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EvaluationsGetRequest,
-  output: EvaluationsGetResponse,
+  input: DeleteBillingTopupConfigRequest,
+  output: DeleteBillingTopupConfigResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type EvaluationsListError = CloudflareOpError;
-/** Lists all AI Gateway evaluator types configured for the account. */
-export const evaluationsList: API.OperationMethod<
-  EvaluationsListRequest,
-  EvaluationsListResponse,
-  EvaluationsListError,
+export type DeleteCustomProviderError = CloudflareOpError;
+/** Deletes an AI Gateway dataset. */
+export const deleteCustomProvider: API.OperationMethod<
+  DeleteCustomProviderRequest,
+  DeleteCustomProviderResponse,
+  DeleteCustomProviderError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EvaluationsListRequest,
-  output: EvaluationsListResponse,
+  input: DeleteCustomProviderRequest,
+  output: DeleteCustomProviderResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type EvaluationTypesListError = CloudflareOpError;
-/** List Evaluators */
-export const evaluationTypesList: API.OperationMethod<
-  EvaluationTypesListRequest,
-  EvaluationTypesListResponse,
-  EvaluationTypesListError,
+export type DeleteDatasetError = DatasetNotFound | CloudflareOpError;
+/** Deletes an AI Gateway dataset. */
+export const deleteDataset: API.OperationMethod<
+  DeleteDatasetRequest,
+  DeleteDatasetResponse,
+  DeleteDatasetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EvaluationTypesListRequest,
-  output: EvaluationTypesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteDatasetRequest,
+  output: DeleteDatasetResponse,
+  errors: [DatasetNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
-/** Retrieves details for a specific AI Gateway dataset. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export type DeleteDynamicRoutingError =
+  | RouteNotFound
+  | GatewayNotFound
+  | CloudflareOpError;
+/** Delete an AI Gateway Dynamic Route. */
+export const deleteDynamicRouting: API.OperationMethod<
+  DeleteDynamicRoutingRequest,
+  DeleteDynamicRoutingResponse,
+  DeleteDynamicRoutingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteDynamicRoutingRequest,
+  output: DeleteDynamicRoutingResponse,
+  errors: [
+    RouteNotFound,
+    GatewayNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type ListError = CloudflareOpError;
-/** Lists all AI Gateway evaluator types configured for the account. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
+export type DeleteEvaluationError = EvaluationNotFound | CloudflareOpError;
+/** Deletes an AI Gateway dataset. */
+export const deleteEvaluation: API.OperationMethod<
+  DeleteEvaluationRequest,
+  DeleteEvaluationResponse,
+  DeleteEvaluationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteEvaluationRequest,
+  output: DeleteEvaluationResponse,
+  errors: [EvaluationNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LogsDeleteError = CloudflareOpError;
+export type DeleteLogError = CloudflareOpError;
 /** Delete Gateway Logs */
-export const logsDelete: API.OperationMethod<
-  LogsDeleteRequest,
-  LogsDeleteResponse,
-  LogsDeleteError,
+export const deleteLog: API.OperationMethod<
+  DeleteLogRequest,
+  DeleteLogResponse,
+  DeleteLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogsDeleteRequest,
-  output: LogsDeleteResponse,
+  input: DeleteLogRequest,
+  output: DeleteLogResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LogsEditError = CloudflareOpError;
-/** Updates metadata for an AI Gateway log entry. */
-export const logsEdit: API.OperationMethod<
-  LogsEditRequest,
-  LogsEditResponse,
-  LogsEditError,
+export type GetAiGatewayError = GatewayNotFound | CloudflareOpError;
+/** Retrieves details for a specific AI Gateway dataset. */
+export const getAiGateway: API.OperationMethod<
+  GetAiGatewayRequest,
+  GetAiGatewayResponse,
+  GetAiGatewayError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogsEditRequest,
-  output: LogsEditResponse,
+  input: GetAiGatewayRequest,
+  output: GetAiGatewayResponse,
+  errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetBillingSpendingLimitError = CloudflareOpError;
+/** Retrieve the current spending limit configuration for the account. */
+export const getBillingSpendingLimit: API.OperationMethod<
+  GetBillingSpendingLimitRequest,
+  GetBillingSpendingLimitResponse,
+  GetBillingSpendingLimitError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBillingSpendingLimitRequest,
+  output: GetBillingSpendingLimitResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LogsGetError = CloudflareOpError;
+export type GetBillingTopupConfigError = CloudflareOpError;
+/** Retrieve the current auto top-up threshold, amount, and any error state. */
+export const getBillingTopupConfig: API.OperationMethod<
+  GetBillingTopupConfigRequest,
+  GetBillingTopupConfigResponse,
+  GetBillingTopupConfigError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetBillingTopupConfigRequest,
+  output: GetBillingTopupConfigResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetCustomProviderError = CloudflareOpError;
+/** Retrieves details for a specific AI Gateway dataset. */
+export const getCustomProvider: API.OperationMethod<
+  GetCustomProviderRequest,
+  GetCustomProviderResponse,
+  GetCustomProviderError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCustomProviderRequest,
+  output: GetCustomProviderResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetDatasetError = DatasetNotFound | CloudflareOpError;
+/** Retrieves details for a specific AI Gateway dataset. */
+export const getDataset: API.OperationMethod<
+  GetDatasetRequest,
+  GetDatasetResponse,
+  GetDatasetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDatasetRequest,
+  output: GetDatasetResponse,
+  errors: [DatasetNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetDynamicRoutingError =
+  | RouteNotFound
+  | GatewayNotFound
+  | CloudflareOpError;
+/** Get an AI Gateway Dynamic Route. */
+export const getDynamicRouting: API.OperationMethod<
+  GetDynamicRoutingRequest,
+  GetDynamicRoutingResponse,
+  GetDynamicRoutingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDynamicRoutingRequest,
+  output: GetDynamicRoutingResponse,
+  errors: [
+    RouteNotFound,
+    GatewayNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetEvaluationError = EvaluationNotFound | CloudflareOpError;
+/** Retrieves details for a specific AI Gateway dataset. */
+export const getEvaluation: API.OperationMethod<
+  GetEvaluationRequest,
+  GetEvaluationResponse,
+  GetEvaluationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEvaluationRequest,
+  output: GetEvaluationResponse,
+  errors: [EvaluationNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetLogError = CloudflareOpError;
 /** Retrieves detailed information for a specific AI Gateway log entry. */
-export const logsGet: API.OperationMethod<
-  LogsGetRequest,
-  LogsGetResponse,
-  LogsGetError,
+export const getLog: API.OperationMethod<
+  GetLogRequest,
+  GetLogResponse,
+  GetLogError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogsGetRequest,
-  output: LogsGetResponse,
+  input: GetLogRequest,
+  output: GetLogResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LogsListError = CloudflareOpError;
-/** List Gateway Logs */
-export const logsList: API.OperationMethod<
-  LogsListRequest,
-  LogsListResponse,
-  LogsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LogsListRequest,
-  output: LogsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LogsRequestError = CloudflareOpError;
-/** Retrieves the original request payload for an AI Gateway log entry. */
-export const logsRequest: API.OperationMethod<
-  LogsRequestRequest,
-  LogsRequestResponse,
-  LogsRequestError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LogsRequestRequest,
-  output: LogsRequestResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LogsResponseError = CloudflareOpError;
-/** Retrieves the response payload for an AI Gateway log entry. */
-export const logsResponse: API.OperationMethod<
-  LogsResponseRequest,
-  LogsResponseResponse,
-  LogsResponseError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LogsResponseRequest,
-  output: LogsResponseResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ProviderConfigsCreateError = CloudflareOpError;
-/** Creates a new AI Gateway. */
-export const providerConfigsCreate: API.OperationMethod<
-  ProviderConfigsCreateRequest,
-  ProviderConfigsCreateResponse,
-  ProviderConfigsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProviderConfigsCreateRequest,
-  output: ProviderConfigsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ProviderConfigsListError = CloudflareOpError;
-/** Lists all AI Gateway evaluator types configured for the account. */
-export const providerConfigsList: API.OperationMethod<
-  ProviderConfigsListRequest,
-  ProviderConfigsListResponse,
-  ProviderConfigsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ProviderConfigsListRequest,
-  output: ProviderConfigsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type UpdateError = CloudflareOpError;
-/** Updates an existing AI Gateway dataset. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type UrlsGetError = CloudflareOpError;
+export type GetUrlError = CloudflareOpError;
 /** Retrieves the endpoint URL for an AI Gateway. */
-export const urlsGet: API.OperationMethod<
-  UrlsGetRequest,
-  UrlsGetResponse,
-  UrlsGetError,
+export const getUrl: API.OperationMethod<
+  GetUrlRequest,
+  GetUrlResponse,
+  GetUrlError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UrlsGetRequest,
-  output: UrlsGetResponse,
+  input: GetUrlRequest,
+  output: GetUrlResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetVersionDynamicRoutingError = CloudflareOpError;
+/** Get an AI Gateway Dynamic Route Version. */
+export const getVersionDynamicRouting: API.OperationMethod<
+  GetVersionDynamicRoutingRequest,
+  GetVersionDynamicRoutingResponse,
+  GetVersionDynamicRoutingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetVersionDynamicRoutingRequest,
+  output: GetVersionDynamicRoutingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type InvoiceHistoryBillingError = CloudflareOpError;
+/** Retrieve a list of past invoices with pagination, optionally filtered by type. */
+export const invoiceHistoryBilling: API.OperationMethod<
+  InvoiceHistoryBillingRequest,
+  InvoiceHistoryBillingResponse,
+  InvoiceHistoryBillingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: InvoiceHistoryBillingRequest,
+  output: InvoiceHistoryBillingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type InvoicePreviewBillingError = CloudflareOpError;
+/** Retrieve a preview of the upcoming invoice including line items and tax. */
+export const invoicePreviewBilling: API.OperationMethod<
+  InvoicePreviewBillingRequest,
+  InvoicePreviewBillingResponse,
+  InvoicePreviewBillingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: InvoicePreviewBillingRequest,
+  output: InvoicePreviewBillingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListAiGatewaysError = CloudflareOpError;
+/** Lists all AI Gateway evaluator types configured for the account. */
+export const listAiGateways: API.OperationMethod<
+  ListAiGatewaysRequest,
+  ListAiGatewaysResponse,
+  ListAiGatewaysError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAiGatewaysRequest,
+  output: ListAiGatewaysResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListCustomProvidersError = CloudflareOpError;
+/** Lists all AI Gateway evaluator types configured for the account. */
+export const listCustomProviders: API.OperationMethod<
+  ListCustomProvidersRequest,
+  ListCustomProvidersResponse,
+  ListCustomProvidersError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCustomProvidersRequest,
+  output: ListCustomProvidersResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListDatasetsError = GatewayNotFound | CloudflareOpError;
+/** Lists all AI Gateway evaluator types configured for the account. */
+export const listDatasets: API.OperationMethod<
+  ListDatasetsRequest,
+  ListDatasetsResponse,
+  ListDatasetsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDatasetsRequest,
+  output: ListDatasetsResponse,
+  errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListDeploymentsDynamicRoutingError = CloudflareOpError;
+/** List all AI Gateway Dynamic Route Deployments. */
+export const listDeploymentsDynamicRouting: API.OperationMethod<
+  ListDeploymentsDynamicRoutingRequest,
+  ListDeploymentsDynamicRoutingResponse,
+  ListDeploymentsDynamicRoutingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDeploymentsDynamicRoutingRequest,
+  output: ListDeploymentsDynamicRoutingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListDynamicRoutingsError = GatewayNotFound | CloudflareOpError;
+/** List all AI Gateway Dynamic Routes. */
+export const listDynamicRoutings: API.OperationMethod<
+  ListDynamicRoutingsRequest,
+  ListDynamicRoutingsResponse,
+  ListDynamicRoutingsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDynamicRoutingsRequest,
+  output: ListDynamicRoutingsResponse,
+  errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListEvaluationsError = CloudflareOpError;
+/** Lists all AI Gateway evaluator types configured for the account. */
+export const listEvaluations: API.OperationMethod<
+  ListEvaluationsRequest,
+  ListEvaluationsResponse,
+  ListEvaluationsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEvaluationsRequest,
+  output: ListEvaluationsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListEvaluationTypesError = CloudflareOpError;
+/** List Evaluators */
+export const listEvaluationTypes: API.OperationMethod<
+  ListEvaluationTypesRequest,
+  ListEvaluationTypesResponse,
+  ListEvaluationTypesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListEvaluationTypesRequest,
+  output: ListEvaluationTypesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListLogsError = CloudflareOpError;
+/** List Gateway Logs */
+export const listLogs: API.OperationMethod<
+  ListLogsRequest,
+  ListLogsResponse,
+  ListLogsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListLogsRequest,
+  output: ListLogsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListProviderConfigsError = CloudflareOpError;
+/** Lists all AI Gateway evaluator types configured for the account. */
+export const listProviderConfigs: API.OperationMethod<
+  ListProviderConfigsRequest,
+  ListProviderConfigsResponse,
+  ListProviderConfigsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListProviderConfigsRequest,
+  output: ListProviderConfigsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListVersionsDynamicRoutingError = CloudflareOpError;
+/** List all AI Gateway Dynamic Route Versions. */
+export const listVersionsDynamicRouting: API.OperationMethod<
+  ListVersionsDynamicRoutingRequest,
+  ListVersionsDynamicRoutingResponse,
+  ListVersionsDynamicRoutingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListVersionsDynamicRoutingRequest,
+  output: ListVersionsDynamicRoutingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchDynamicRoutingError =
+  | RouteNotFound
+  | RouteAlreadyExists
+  | CloudflareOpError;
+/** Update an AI Gateway Dynamic Route. */
+export const patchDynamicRouting: API.OperationMethod<
+  PatchDynamicRoutingRequest,
+  PatchDynamicRoutingResponse,
+  PatchDynamicRoutingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchDynamicRoutingRequest,
+  output: PatchDynamicRoutingResponse,
+  errors: [
+    RouteNotFound,
+    RouteAlreadyExists,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchLogError = CloudflareOpError;
+/** Updates metadata for an AI Gateway log entry. */
+export const patchLog: API.OperationMethod<
+  PatchLogRequest,
+  PatchLogResponse,
+  PatchLogError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchLogRequest,
+  output: PatchLogResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type RequestLogError = CloudflareOpError;
+/** Retrieves the original request payload for an AI Gateway log entry. */
+export const requestLog: API.OperationMethod<
+  RequestLogRequest,
+  RequestLogResponse,
+  RequestLogError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RequestLogRequest,
+  output: RequestLogResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ResponseLogError = CloudflareOpError;
+/** Retrieves the response payload for an AI Gateway log entry. */
+export const responseLog: API.OperationMethod<
+  ResponseLogRequest,
+  ResponseLogResponse,
+  ResponseLogError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ResponseLogRequest,
+  output: ResponseLogResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type StatusBillingTopupError = CloudflareOpError;
+/** Get the payment processing status of a top-up by its invoice ID. */
+export const statusBillingTopup: API.OperationMethod<
+  StatusBillingTopupRequest,
+  StatusBillingTopupResponse,
+  StatusBillingTopupError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StatusBillingTopupRequest,
+  output: StatusBillingTopupResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateAiGatewayError = GatewayNotFound | CloudflareOpError;
+/** Updates an existing AI Gateway dataset. */
+export const updateAiGateway: API.OperationMethod<
+  UpdateAiGatewayRequest,
+  UpdateAiGatewayResponse,
+  UpdateAiGatewayError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAiGatewayRequest,
+  output: UpdateAiGatewayResponse,
+  errors: [GatewayNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateDatasetError = DatasetNotFound | CloudflareOpError;
+/** Updates an existing AI Gateway dataset. */
+export const updateDataset: API.OperationMethod<
+  UpdateDatasetRequest,
+  UpdateDatasetResponse,
+  UpdateDatasetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateDatasetRequest,
+  output: UpdateDatasetResponse,
+  errors: [DatasetNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UsageHistoryBillingError = CloudflareOpError;
+/** Retrieve aggregated usage meter event summaries for the given time range. */
+export const usageHistoryBilling: API.OperationMethod<
+  UsageHistoryBillingRequest,
+  UsageHistoryBillingResponse,
+  UsageHistoryBillingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UsageHistoryBillingRequest,
+  output: UsageHistoryBillingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

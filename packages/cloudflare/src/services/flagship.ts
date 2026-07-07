@@ -9,12 +9,36 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface AppsCreateRequest {
+export class FlagshipAppNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<FlagshipAppNotFound>()("FlagshipAppNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404, message: { includes: "App not found" } }],
+) {}
+
+export class FlagshipFlagAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<FlagshipFlagAlreadyExists>()("FlagshipFlagAlreadyExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 409, message: { includes: "Flag already exists" } }],
+) {}
+
+export class FlagshipFlagNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<FlagshipFlagNotFound>()("FlagshipFlagNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404, message: { includes: "Flag not found" } }],
+) {}
+
+export interface CreateAppRequest {
   /** Cloudflare account ID. */
   accountId: string;
   name: string;
 }
-export const AppsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -26,11 +50,11 @@ export const AppsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppsCreateRequest",
-}) as any as S.Schema<AppsCreateRequest>;
+  identifier: "CreateAppRequest",
+}) as any as S.Schema<CreateAppRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsCreateResponse {
+export interface CreateAppResponse {
   id: string;
   createdAt: string;
   name: string;
@@ -38,7 +62,7 @@ export interface AppsCreateResponse {
   /** Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes. */
   updatedBy: string;
 }
-export const AppsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -47,184 +71,8 @@ export const AppsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     updatedBy: S.String.pipe(T.Body("updated_by")),
   }),
 ).annotate({
-  identifier: "AppsCreateResponse",
-}) as any as S.Schema<AppsCreateResponse>;
-
-export interface AppsDeleteRequest {
-  /** Cloudflare account ID. */
-  accountId: string;
-  /** App identifier. */
-  appId: string;
-}
-export const AppsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsDeleteRequest",
-}) as any as S.Schema<AppsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsDeleteResponse {
-  id: string;
-}
-export const AppsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "AppsDeleteResponse",
-}) as any as S.Schema<AppsDeleteResponse>;
-
-export interface AppsEvaluateGetRequest {
-  /** Cloudflare account ID. */
-  accountId: string;
-  /** App identifier. */
-  appId: string;
-  /** The flag key to evaluate. */
-  flagKey: string;
-  /** Context targeting key (per OpenFeature spec); used for percentage rollout bucketing. */
-  targetingKey?: string;
-}
-export const AppsEvaluateGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    flagKey: S.String.pipe(T.Query()),
-    targetingKey: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}/evaluate",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsEvaluateGetRequest",
-}) as any as S.Schema<AppsEvaluateGetRequest>;
-
-export type AppsEvaluateGetResponseReason =
-  | "TARGETING_MATCH"
-  | "DEFAULT"
-  | "DISABLED"
-  | "SPLIT"
-  | (string & {});
-export const AppsEvaluateGetResponseReason = /*@__PURE__*/ S.String;
-
-export interface AppsEvaluateGetResponseValue {
-  string: unknown;
-  number: unknown;
-  boolean: unknown;
-  mapUnknown_: unknown;
-  arrayOfUnknown: unknown;
-}
-export const AppsEvaluateGetResponseValue = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    string: S.Unknown,
-    number: S.Unknown,
-    boolean: S.Unknown,
-    mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
-    arrayOfUnknown: S.Unknown.pipe(T.Body("array of unknown")),
-  }),
-).annotate({
-  identifier: "AppsEvaluateGetResponseValue",
-}) as any as S.Schema<AppsEvaluateGetResponseValue>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface AppsEvaluateGetResponse {
-  flagKey: string;
-  reason: AppsEvaluateGetResponseReason;
-  variant: string;
-  value?: AppsEvaluateGetResponseValue;
-}
-export const AppsEvaluateGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    flagKey: S.String,
-    reason: AppsEvaluateGetResponseReason,
-    variant: S.String,
-    value: S.optional(AppsEvaluateGetResponseValue),
-  }),
-).annotate({
-  identifier: "AppsEvaluateGetResponse",
-}) as any as S.Schema<AppsEvaluateGetResponse>;
-
-export interface AppsFlagsChangelogListRequest {
-  /** Cloudflare account ID. */
-  accountId: string;
-  /** App identifier. */
-  appId: string;
-  /** Flag key (slug). */
-  flagKey: string;
-  /** Pagination cursor from a previous response. */
-  cursor?: string;
-  /** Max items to return (1–200). */
-  limit?: string;
-}
-export const AppsFlagsChangelogListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    flagKey: S.String.pipe(T.Label("flag_key")),
-    cursor: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}/changelog",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsFlagsChangelogListRequest",
-}) as any as S.Schema<AppsFlagsChangelogListRequest>;
-
-export interface AppsFlagsChangelogListResultItem {
-  objectAfterEventFlagKey__: unknown;
-  objectAfterEventFlagKey2: unknown;
-  objectAfterDiffEventFlagKey__: unknown;
-}
-export const AppsFlagsChangelogListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectAfterEventFlagKey__: S.Unknown.pipe(
-      T.Body("object { after, event, flag_key }"),
-    ),
-    objectAfterEventFlagKey2: S.Unknown.pipe(
-      T.Body("object { after, event, flag_key }"),
-    ),
-    objectAfterDiffEventFlagKey__: S.Unknown.pipe(
-      T.Body("object { after, diff, event, flag_key }"),
-    ),
-  }),
-).annotate({
-  identifier: "AppsFlagsChangelogListResultItem",
-}) as any as S.Schema<AppsFlagsChangelogListResultItem>;
-
-export type AppsFlagsChangelogListResultList =
-  AppsFlagsChangelogListResultItem[];
-export const AppsFlagsChangelogListResultList = /*@__PURE__*/ S.Array(
-  AppsFlagsChangelogListResultItem,
-) as any as S.Schema<AppsFlagsChangelogListResultList>;
-
-export interface AppsFlagsChangelogListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AppsFlagsChangelogListResultList;
-}
-export const AppsFlagsChangelogListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      AppsFlagsChangelogListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "AppsFlagsChangelogListResponse",
-}) as any as S.Schema<AppsFlagsChangelogListResponse>;
+  identifier: "CreateAppResponse",
+}) as any as S.Schema<CreateAppResponse>;
 
 export interface AppsFlagsCreateRequestRulesItemConditionsItem {
   objectAttributeOperatorValue__: unknown;
@@ -308,7 +156,7 @@ export type AppsFlagsCreateRequestType =
   | (string & {});
 export const AppsFlagsCreateRequestType = /*@__PURE__*/ S.String;
 
-export interface AppsFlagsCreateRequest {
+export interface CreateAppFlagRequest {
   /** Cloudflare account ID. */
   accountId: string;
   /** App identifier. */
@@ -327,7 +175,7 @@ export interface AppsFlagsCreateRequest {
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsCreateRequestType;
 }
-export const AppsFlagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -346,8 +194,8 @@ export const AppsFlagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppsFlagsCreateRequest",
-}) as any as S.Schema<AppsFlagsCreateRequest>;
+  identifier: "CreateAppFlagRequest",
+}) as any as S.Schema<CreateAppFlagRequest>;
 
 export interface AppsFlagsCreateResponseRulesItemConditionsItem {
   objectAttributeOperatorValue__: unknown;
@@ -433,7 +281,7 @@ export type AppsFlagsCreateResponseType =
 export const AppsFlagsCreateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsFlagsCreateResponse {
+export interface CreateAppFlagResponse {
   /** Variation served when no rule matches or the flag is disabled. Must be a key in `variations`. */
   defaultVariation: string;
   /** When false, the flag bypasses all rules and always serves `default_variation`. */
@@ -450,7 +298,7 @@ export interface AppsFlagsCreateResponse {
   updatedAt?: string;
   updatedBy?: string;
 }
-export const AppsFlagsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultVariation: S.String.pipe(T.Body("default_variation")),
     enabled: S.Boolean,
@@ -463,10 +311,43 @@ export const AppsFlagsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
   }),
 ).annotate({
-  identifier: "AppsFlagsCreateResponse",
-}) as any as S.Schema<AppsFlagsCreateResponse>;
+  identifier: "CreateAppFlagResponse",
+}) as any as S.Schema<CreateAppFlagResponse>;
 
-export interface AppsFlagsDeleteRequest {
+export interface DeleteAppRequest {
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
+}
+export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/flagship/apps/{app_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAppRequest",
+}) as any as S.Schema<DeleteAppRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteAppResponse {
+  id: string;
+}
+export const DeleteAppResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "DeleteAppResponse",
+}) as any as S.Schema<DeleteAppResponse>;
+
+export interface DeleteAppFlagRequest {
   /** Cloudflare account ID. */
   accountId: string;
   /** App identifier. */
@@ -474,7 +355,7 @@ export interface AppsFlagsDeleteRequest {
   /** Flag key (slug). */
   flagKey: string;
 }
-export const AppsFlagsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -487,22 +368,132 @@ export const AppsFlagsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppsFlagsDeleteRequest",
-}) as any as S.Schema<AppsFlagsDeleteRequest>;
+  identifier: "DeleteAppFlagRequest",
+}) as any as S.Schema<DeleteAppFlagRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsFlagsDeleteResponse {
+export interface DeleteAppFlagResponse {
   key: string;
 }
-export const AppsFlagsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     key: S.String,
   }),
 ).annotate({
-  identifier: "AppsFlagsDeleteResponse",
-}) as any as S.Schema<AppsFlagsDeleteResponse>;
+  identifier: "DeleteAppFlagResponse",
+}) as any as S.Schema<DeleteAppFlagResponse>;
 
-export interface AppsFlagsGetRequest {
+export interface GetAppRequest {
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
+}
+export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/flagship/apps/{app_id}",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "GetAppRequest" }) as any as S.Schema<GetAppRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetAppResponse {
+  id: string;
+  createdAt: string;
+  name: string;
+  updatedAt: string;
+  /** Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes. */
+  updatedBy: string;
+}
+export const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    name: S.String,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    updatedBy: S.String.pipe(T.Body("updated_by")),
+  }),
+).annotate({ identifier: "GetAppResponse" }) as any as S.Schema<GetAppResponse>;
+
+export interface GetAppEvaluateRequest {
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
+  /** The flag key to evaluate. */
+  flagKey: string;
+  /** Context targeting key (per OpenFeature spec); used for percentage rollout bucketing. */
+  targetingKey?: string;
+}
+export const GetAppEvaluateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    flagKey: S.String.pipe(T.Query()),
+    targetingKey: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/flagship/apps/{app_id}/evaluate",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetAppEvaluateRequest",
+}) as any as S.Schema<GetAppEvaluateRequest>;
+
+export type AppsEvaluateGetResponseReason =
+  | "TARGETING_MATCH"
+  | "DEFAULT"
+  | "DISABLED"
+  | "SPLIT"
+  | (string & {});
+export const AppsEvaluateGetResponseReason = /*@__PURE__*/ S.String;
+
+export interface AppsEvaluateGetResponseValue {
+  string: unknown;
+  number: unknown;
+  boolean: unknown;
+  mapUnknown_: unknown;
+  arrayOfUnknown: unknown;
+}
+export const AppsEvaluateGetResponseValue = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    string: S.Unknown,
+    number: S.Unknown,
+    boolean: S.Unknown,
+    mapUnknown_: S.Unknown.pipe(T.Body("map[unknown]")),
+    arrayOfUnknown: S.Unknown.pipe(T.Body("array of unknown")),
+  }),
+).annotate({
+  identifier: "AppsEvaluateGetResponseValue",
+}) as any as S.Schema<AppsEvaluateGetResponseValue>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetAppEvaluateResponse {
+  flagKey: string;
+  reason: AppsEvaluateGetResponseReason;
+  variant: string;
+  value?: AppsEvaluateGetResponseValue;
+}
+export const GetAppEvaluateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    flagKey: S.String,
+    reason: AppsEvaluateGetResponseReason,
+    variant: S.String,
+    value: S.optional(AppsEvaluateGetResponseValue),
+  }),
+).annotate({
+  identifier: "GetAppEvaluateResponse",
+}) as any as S.Schema<GetAppEvaluateResponse>;
+
+export interface GetAppFlagRequest {
   /** Cloudflare account ID. */
   accountId: string;
   /** App identifier. */
@@ -510,7 +501,7 @@ export interface AppsFlagsGetRequest {
   /** Flag key (slug). */
   flagKey: string;
 }
-export const AppsFlagsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -523,8 +514,8 @@ export const AppsFlagsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppsFlagsGetRequest",
-}) as any as S.Schema<AppsFlagsGetRequest>;
+  identifier: "GetAppFlagRequest",
+}) as any as S.Schema<GetAppFlagRequest>;
 
 export interface AppsFlagsGetResponseRulesItemConditionsItem {
   objectAttributeOperatorValue__: unknown;
@@ -609,7 +600,7 @@ export type AppsFlagsGetResponseType =
 export const AppsFlagsGetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsFlagsGetResponse {
+export interface GetAppFlagResponse {
   /** Variation served when no rule matches or the flag is disabled. Must be a key in `variations`. */
   defaultVariation: string;
   /** When false, the flag bypasses all rules and always serves `default_variation`. */
@@ -626,7 +617,7 @@ export interface AppsFlagsGetResponse {
   updatedAt?: string;
   updatedBy?: string;
 }
-export const AppsFlagsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultVariation: S.String.pipe(T.Body("default_variation")),
     enabled: S.Boolean,
@@ -639,10 +630,81 @@ export const AppsFlagsGetResponse = /*@__PURE__*/ S.suspend(() =>
     updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
   }),
 ).annotate({
-  identifier: "AppsFlagsGetResponse",
-}) as any as S.Schema<AppsFlagsGetResponse>;
+  identifier: "GetAppFlagResponse",
+}) as any as S.Schema<GetAppFlagResponse>;
 
-export interface AppsFlagsListRequest {
+export interface ListAppFlagChangelogsRequest {
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
+  /** Flag key (slug). */
+  flagKey: string;
+  /** Pagination cursor from a previous response. */
+  cursor?: string;
+  /** Max items to return (1–200). */
+  limit?: string;
+}
+export const ListAppFlagChangelogsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    flagKey: S.String.pipe(T.Label("flag_key")),
+    cursor: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}/changelog",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListAppFlagChangelogsRequest",
+}) as any as S.Schema<ListAppFlagChangelogsRequest>;
+
+export interface AppsFlagsChangelogListResultItem {
+  objectAfterEventFlagKey__: unknown;
+  objectAfterEventFlagKey2: unknown;
+  objectAfterDiffEventFlagKey__: unknown;
+}
+export const AppsFlagsChangelogListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectAfterEventFlagKey__: S.Unknown.pipe(
+      T.Body("object { after, event, flag_key }"),
+    ),
+    objectAfterEventFlagKey2: S.Unknown.pipe(
+      T.Body("object { after, event, flag_key }"),
+    ),
+    objectAfterDiffEventFlagKey__: S.Unknown.pipe(
+      T.Body("object { after, diff, event, flag_key }"),
+    ),
+  }),
+).annotate({
+  identifier: "AppsFlagsChangelogListResultItem",
+}) as any as S.Schema<AppsFlagsChangelogListResultItem>;
+
+export type AppsFlagsChangelogListResultList =
+  AppsFlagsChangelogListResultItem[];
+export const AppsFlagsChangelogListResultList = /*@__PURE__*/ S.Array(
+  AppsFlagsChangelogListResultItem,
+) as any as S.Schema<AppsFlagsChangelogListResultList>;
+
+export interface ListAppFlagChangelogsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: AppsFlagsChangelogListResultList;
+}
+export const ListAppFlagChangelogsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      AppsFlagsChangelogListResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "ListAppFlagChangelogsResponse",
+}) as any as S.Schema<ListAppFlagChangelogsResponse>;
+
+export interface ListAppFlagsRequest {
   /** Cloudflare account ID. */
   accountId: string;
   /** App identifier. */
@@ -652,7 +714,7 @@ export interface AppsFlagsListRequest {
   /** Max items to return (1–200). */
   limit?: string;
 }
-export const AppsFlagsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAppFlagsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -666,8 +728,8 @@ export const AppsFlagsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppsFlagsListRequest",
-}) as any as S.Schema<AppsFlagsListRequest>;
+  identifier: "ListAppFlagsRequest",
+}) as any as S.Schema<ListAppFlagsRequest>;
 
 export interface AppsFlagsListResultItemRulesItemConditionsItem {
   objectAttributeOperatorValue__: unknown;
@@ -790,17 +852,116 @@ export const AppsFlagsListResultList = /*@__PURE__*/ S.Array(
   AppsFlagsListResultItem,
 ) as any as S.Schema<AppsFlagsListResultList>;
 
-export interface AppsFlagsListResponse {
+export interface ListAppFlagsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AppsFlagsListResultList;
 }
-export const AppsFlagsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListAppFlagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AppsFlagsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "AppsFlagsListResponse",
-}) as any as S.Schema<AppsFlagsListResponse>;
+  identifier: "ListAppFlagsResponse",
+}) as any as S.Schema<ListAppFlagsResponse>;
+
+export interface ListAppsRequest {
+  /** Cloudflare account ID. */
+  accountId: string;
+}
+export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/flagship/apps",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsRequest",
+}) as any as S.Schema<ListAppsRequest>;
+
+export interface AppsListResultItem {
+  id: string;
+  createdAt: string;
+  name: string;
+  updatedAt: string;
+  /** Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes. */
+  updatedBy: string;
+}
+export const AppsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    name: S.String,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    updatedBy: S.String.pipe(T.Body("updated_by")),
+  }),
+).annotate({
+  identifier: "AppsListResultItem",
+}) as any as S.Schema<AppsListResultItem>;
+
+export type AppsListResultList = AppsListResultItem[];
+export const AppsListResultList = /*@__PURE__*/ S.Array(
+  AppsListResultItem,
+) as any as S.Schema<AppsListResultList>;
+
+export interface ListAppsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: AppsListResultList;
+}
+export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(AppsListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListAppsResponse",
+}) as any as S.Schema<ListAppsResponse>;
+
+export interface UpdateAppRequest {
+  /** Cloudflare account ID. */
+  accountId: string;
+  /** App identifier. */
+  appId: string;
+  name?: string;
+}
+export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    name: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/flagship/apps/{app_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateAppRequest",
+}) as any as S.Schema<UpdateAppRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateAppResponse {
+  id: string;
+  createdAt: string;
+  name: string;
+  updatedAt: string;
+  /** Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes. */
+  updatedBy: string;
+}
+export const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    name: S.String,
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    updatedBy: S.String.pipe(T.Body("updated_by")),
+  }),
+).annotate({
+  identifier: "UpdateAppResponse",
+}) as any as S.Schema<UpdateAppResponse>;
 
 export interface AppsFlagsUpdateRequestRulesItemConditionsItem {
   objectAttributeOperatorValue__: unknown;
@@ -884,7 +1045,7 @@ export type AppsFlagsUpdateRequestType =
   | (string & {});
 export const AppsFlagsUpdateRequestType = /*@__PURE__*/ S.String;
 
-export interface AppsFlagsUpdateRequest {
+export interface UpdateAppFlagRequest {
   /** Cloudflare account ID. */
   accountId: string;
   /** App identifier. */
@@ -905,7 +1066,7 @@ export interface AppsFlagsUpdateRequest {
   /** Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests. */
   type?: AppsFlagsUpdateRequestType;
 }
-export const AppsFlagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateAppFlagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -925,8 +1086,8 @@ export const AppsFlagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppsFlagsUpdateRequest",
-}) as any as S.Schema<AppsFlagsUpdateRequest>;
+  identifier: "UpdateAppFlagRequest",
+}) as any as S.Schema<UpdateAppFlagRequest>;
 
 export interface AppsFlagsUpdateResponseRulesItemConditionsItem {
   objectAttributeOperatorValue__: unknown;
@@ -1012,7 +1173,7 @@ export type AppsFlagsUpdateResponseType =
 export const AppsFlagsUpdateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsFlagsUpdateResponse {
+export interface UpdateAppFlagResponse {
   /** Variation served when no rule matches or the flag is disabled. Must be a key in `variations`. */
   defaultVariation: string;
   /** When false, the flag bypasses all rules and always serves `default_variation`. */
@@ -1029,7 +1190,7 @@ export interface AppsFlagsUpdateResponse {
   updatedAt?: string;
   updatedBy?: string;
 }
-export const AppsFlagsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateAppFlagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     defaultVariation: S.String.pipe(T.Body("default_variation")),
     enabled: S.Boolean,
@@ -1042,312 +1203,205 @@ export const AppsFlagsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     updatedBy: S.optional(S.String.pipe(T.Body("updated_by"))),
   }),
 ).annotate({
-  identifier: "AppsFlagsUpdateResponse",
-}) as any as S.Schema<AppsFlagsUpdateResponse>;
+  identifier: "UpdateAppFlagResponse",
+}) as any as S.Schema<UpdateAppFlagResponse>;
 
-export interface AppsGetRequest {
-  /** Cloudflare account ID. */
-  accountId: string;
-  /** App identifier. */
-  appId: string;
-}
-export const AppsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "AppsGetRequest" }) as any as S.Schema<AppsGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsGetResponse {
-  id: string;
-  createdAt: string;
-  name: string;
-  updatedAt: string;
-  /** Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes. */
-  updatedBy: string;
-}
-export const AppsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    name: S.String,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    updatedBy: S.String.pipe(T.Body("updated_by")),
-  }),
-).annotate({
-  identifier: "AppsGetResponse",
-}) as any as S.Schema<AppsGetResponse>;
-
-export interface AppsListRequest {
-  /** Cloudflare account ID. */
-  accountId: string;
-}
-export const AppsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/flagship/apps",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsListRequest",
-}) as any as S.Schema<AppsListRequest>;
-
-export interface AppsListResultItem {
-  id: string;
-  createdAt: string;
-  name: string;
-  updatedAt: string;
-  /** Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes. */
-  updatedBy: string;
-}
-export const AppsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    name: S.String,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    updatedBy: S.String.pipe(T.Body("updated_by")),
-  }),
-).annotate({
-  identifier: "AppsListResultItem",
-}) as any as S.Schema<AppsListResultItem>;
-
-export type AppsListResultList = AppsListResultItem[];
-export const AppsListResultList = /*@__PURE__*/ S.Array(
-  AppsListResultItem,
-) as any as S.Schema<AppsListResultList>;
-
-export interface AppsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AppsListResultList;
-}
-export const AppsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(AppsListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "AppsListResponse",
-}) as any as S.Schema<AppsListResponse>;
-
-export interface AppsUpdateRequest {
-  /** Cloudflare account ID. */
-  accountId: string;
-  /** App identifier. */
-  appId: string;
-  name?: string;
-}
-export const AppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/flagship/apps/{app_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsUpdateRequest",
-}) as any as S.Schema<AppsUpdateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsUpdateResponse {
-  id: string;
-  createdAt: string;
-  name: string;
-  updatedAt: string;
-  /** Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes. */
-  updatedBy: string;
-}
-export const AppsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    name: S.String,
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    updatedBy: S.String.pipe(T.Body("updated_by")),
-  }),
-).annotate({
-  identifier: "AppsUpdateResponse",
-}) as any as S.Schema<AppsUpdateResponse>;
-
-export type AppsCreateError = CloudflareOpError;
+export type CreateAppError = CloudflareOpError;
 /** Creates an app. The returned `id` is used in all subsequent flag, changelog, and evaluation requests. */
-export const appsCreate: API.OperationMethod<
-  AppsCreateRequest,
-  AppsCreateResponse,
-  AppsCreateError,
+export const createApp: API.OperationMethod<
+  CreateAppRequest,
+  CreateAppResponse,
+  CreateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppsCreateRequest,
-  output: AppsCreateResponse,
+  input: CreateAppRequest,
+  output: CreateAppResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type AppsDeleteError = CloudflareOpError;
-/** Deletes an app and all its flags and changelog history. Returns 409 if any Worker still references this app via a Flagship binding. */
-export const appsDelete: API.OperationMethod<
-  AppsDeleteRequest,
-  AppsDeleteResponse,
-  AppsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsDeleteRequest,
-  output: AppsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AppsEvaluateGetError = CloudflareOpError;
-/** Evaluates a flag against the provided context. Pass context attributes as query parameters; boolean and numeric strings are coerced automatically. For low-latency in-Worker evaluation, prefer the Flagship binding over this endpoint. */
-export const appsEvaluateGet: API.OperationMethod<
-  AppsEvaluateGetRequest,
-  AppsEvaluateGetResponse,
-  AppsEvaluateGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsEvaluateGetRequest,
-  output: AppsEvaluateGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AppsFlagsChangelogListError = CloudflareOpError;
-/** Returns the audit history for a flag, newest first. Each entry includes the event type and full flag state after the change; `update` entries include a field-level diff. Capped at 200 entries per flag. */
-export const appsFlagsChangelogList: API.OperationMethod<
-  AppsFlagsChangelogListRequest,
-  AppsFlagsChangelogListResponse,
-  AppsFlagsChangelogListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsFlagsChangelogListRequest,
-  output: AppsFlagsChangelogListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AppsFlagsCreateError = CloudflareOpError;
+export type CreateAppFlagError =
+  | FlagshipFlagAlreadyExists
+  | FlagshipAppNotFound
+  | CloudflareOpError;
 /** Creates a flag. Returns 409 if the key already exists. `type` is inferred from variation values and may be omitted. */
-export const appsFlagsCreate: API.OperationMethod<
-  AppsFlagsCreateRequest,
-  AppsFlagsCreateResponse,
-  AppsFlagsCreateError,
+export const createAppFlag: API.OperationMethod<
+  CreateAppFlagRequest,
+  CreateAppFlagResponse,
+  CreateAppFlagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppsFlagsCreateRequest,
-  output: AppsFlagsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateAppFlagRequest,
+  output: CreateAppFlagResponse,
+  errors: [
+    FlagshipFlagAlreadyExists,
+    FlagshipAppNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type AppsFlagsDeleteError = CloudflareOpError;
+export type DeleteAppError = FlagshipAppNotFound | CloudflareOpError;
+/** Deletes an app and all its flags and changelog history. Returns 409 if any Worker still references this app via a Flagship binding. */
+export const deleteApp: API.OperationMethod<
+  DeleteAppRequest,
+  DeleteAppResponse,
+  DeleteAppError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAppRequest,
+  output: DeleteAppResponse,
+  errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteAppFlagError =
+  | FlagshipFlagNotFound
+  | FlagshipAppNotFound
+  | CloudflareOpError;
 /** Permanently deletes a flag. Subsequent evaluations fall back to the caller-supplied default. Cannot be undone. */
-export const appsFlagsDelete: API.OperationMethod<
-  AppsFlagsDeleteRequest,
-  AppsFlagsDeleteResponse,
-  AppsFlagsDeleteError,
+export const deleteAppFlag: API.OperationMethod<
+  DeleteAppFlagRequest,
+  DeleteAppFlagResponse,
+  DeleteAppFlagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppsFlagsDeleteRequest,
-  output: AppsFlagsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteAppFlagRequest,
+  output: DeleteAppFlagResponse,
+  errors: [
+    FlagshipFlagNotFound,
+    FlagshipAppNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type AppsFlagsGetError = CloudflareOpError;
-/** Returns the full flag definition including rules, variations, and audit fields. */
-export const appsFlagsGet: API.OperationMethod<
-  AppsFlagsGetRequest,
-  AppsFlagsGetResponse,
-  AppsFlagsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsFlagsGetRequest,
-  output: AppsFlagsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AppsFlagsListError = CloudflareOpError;
-/** Lists an app's flags ordered by key. Pass `cursor` from `result_info` to page forward; a null cursor indicates the last page. */
-export const appsFlagsList: API.OperationMethod<
-  AppsFlagsListRequest,
-  AppsFlagsListResponse,
-  AppsFlagsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsFlagsListRequest,
-  output: AppsFlagsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AppsFlagsUpdateError = CloudflareOpError;
-/** Replaces the entire flag definition. Omitted fields are dropped, not preserved — read before writing. Each update appends a changelog entry. */
-export const appsFlagsUpdate: API.OperationMethod<
-  AppsFlagsUpdateRequest,
-  AppsFlagsUpdateResponse,
-  AppsFlagsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsFlagsUpdateRequest,
-  output: AppsFlagsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AppsGetError = CloudflareOpError;
+export type GetAppError = FlagshipAppNotFound | CloudflareOpError;
 /** Returns an app's name and audit fields. Flag definitions are not included. */
-export const appsGet: API.OperationMethod<
-  AppsGetRequest,
-  AppsGetResponse,
-  AppsGetError,
+export const getApp: API.OperationMethod<
+  GetAppRequest,
+  GetAppResponse,
+  GetAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppsGetRequest,
-  output: AppsGetResponse,
+  input: GetAppRequest,
+  output: GetAppResponse,
+  errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetAppEvaluateError = CloudflareOpError;
+/** Evaluates a flag against the provided context. Pass context attributes as query parameters; boolean and numeric strings are coerced automatically. For low-latency in-Worker evaluation, prefer the Flagship binding over this endpoint. */
+export const getAppEvaluate: API.OperationMethod<
+  GetAppEvaluateRequest,
+  GetAppEvaluateResponse,
+  GetAppEvaluateError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAppEvaluateRequest,
+  output: GetAppEvaluateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type AppsListError = CloudflareOpError;
+export type GetAppFlagError =
+  | FlagshipFlagNotFound
+  | FlagshipAppNotFound
+  | CloudflareOpError;
+/** Returns the full flag definition including rules, variations, and audit fields. */
+export const getAppFlag: API.OperationMethod<
+  GetAppFlagRequest,
+  GetAppFlagResponse,
+  GetAppFlagError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAppFlagRequest,
+  output: GetAppFlagResponse,
+  errors: [
+    FlagshipFlagNotFound,
+    FlagshipAppNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListAppFlagChangelogsError = CloudflareOpError;
+/** Returns the audit history for a flag, newest first. Each entry includes the event type and full flag state after the change; `update` entries include a field-level diff. Capped at 200 entries per flag. */
+export const listAppFlagChangelogs: API.OperationMethod<
+  ListAppFlagChangelogsRequest,
+  ListAppFlagChangelogsResponse,
+  ListAppFlagChangelogsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAppFlagChangelogsRequest,
+  output: ListAppFlagChangelogsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListAppFlagsError = FlagshipAppNotFound | CloudflareOpError;
+/** Lists an app's flags ordered by key. Pass `cursor` from `result_info` to page forward; a null cursor indicates the last page. */
+export const listAppFlags: API.OperationMethod<
+  ListAppFlagsRequest,
+  ListAppFlagsResponse,
+  ListAppFlagsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAppFlagsRequest,
+  output: ListAppFlagsResponse,
+  errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListAppsError = CloudflareOpError;
 /** Lists all apps in the account. Returns identity and audit fields only — flag definitions are not included. */
-export const appsList: API.OperationMethod<
-  AppsListRequest,
-  AppsListResponse,
-  AppsListError,
+export const listApps: API.OperationMethod<
+  ListAppsRequest,
+  ListAppsResponse,
+  ListAppsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppsListRequest,
-  output: AppsListResponse,
+  input: ListAppsRequest,
+  output: ListAppsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type AppsUpdateError = CloudflareOpError;
+export type UpdateAppError = FlagshipAppNotFound | CloudflareOpError;
 /** Updates an app. Only `name` is mutable. */
-export const appsUpdate: API.OperationMethod<
-  AppsUpdateRequest,
-  AppsUpdateResponse,
-  AppsUpdateError,
+export const updateApp: API.OperationMethod<
+  UpdateAppRequest,
+  UpdateAppResponse,
+  UpdateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppsUpdateRequest,
-  output: AppsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateAppRequest,
+  output: UpdateAppResponse,
+  errors: [FlagshipAppNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateAppFlagError =
+  | FlagshipFlagNotFound
+  | FlagshipAppNotFound
+  | CloudflareOpError;
+/** Replaces the entire flag definition. Omitted fields are dropped, not preserved — read before writing. Each update appends a changelog entry. */
+export const updateAppFlag: API.OperationMethod<
+  UpdateAppFlagRequest,
+  UpdateAppFlagResponse,
+  UpdateAppFlagError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateAppFlagRequest,
+  output: UpdateAppFlagResponse,
+  errors: [
+    FlagshipFlagNotFound,
+    FlagshipAppNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

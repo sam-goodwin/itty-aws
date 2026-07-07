@@ -1,0 +1,62 @@
+{
+  "description": "Align zero_trust#NetworksHostnameRoutesList with distilled cloudflare/zero-trust listNetworkHostnameRoutes",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#NetworksHostnameRoutesList",
+      "path": "/shapes/com.cloudflare.zero_trust#ListNetworkHostnameRoutes"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#NetworksHostnameRoutesListRequest",
+      "path": "/shapes/com.cloudflare.zero_trust#ListNetworkHostnameRoutesRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#ListNetworkHostnameRoutes/input/target",
+      "value": "com.cloudflare.zero_trust#ListNetworkHostnameRoutesRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#NetworksHostnameRoutesListResponse",
+      "path": "/shapes/com.cloudflare.zero_trust#ListNetworkHostnameRoutesResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#ListNetworkHostnameRoutes/output/target",
+      "value": "com.cloudflare.zero_trust#ListNetworkHostnameRoutesResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#ListNetworkHostnameRoutes/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#Forbidden"
+        }
+      ]
+    }
+  ]
+}

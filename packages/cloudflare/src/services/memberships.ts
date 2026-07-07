@@ -9,11 +9,11 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface DeleteRequest {
+export interface DeleteMembershipRequest {
   /** Membership identifier tag. */
   membershipId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipId: S.String.pipe(T.Label("membership_id")),
   }).pipe(
@@ -23,30 +23,36 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeleteMembershipRequest",
+}) as any as S.Schema<DeleteMembershipRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
+export interface DeleteMembershipResponse {
   /** Membership identifier tag. */
   id?: string;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteMembershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+).annotate({
+  identifier: "DeleteMembershipResponse",
+}) as any as S.Schema<DeleteMembershipResponse>;
 
-export interface GetRequest {
+export interface GetMembershipRequest {
   /** Membership identifier tag. */
   membershipId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipId: S.String.pipe(T.Label("membership_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/memberships/{membership_id}", code: 200 }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetMembershipRequest",
+}) as any as S.Schema<GetMembershipRequest>;
 
 export type GetResponseAccountType = "standard" | "enterprise" | (string & {});
 export const GetResponseAccountType = /*@__PURE__*/ S.String;
@@ -328,7 +334,7 @@ export type GetResponseStatus =
 export const GetResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetMembershipResponse {
   /** Membership identifier tag. */
   id?: string;
   account?: GetResponseAccount;
@@ -343,7 +349,7 @@ export interface GetResponse {
   /** Status of this membership. */
   status?: GetResponseStatus;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetMembershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     account: S.optional(GetResponseAccount),
@@ -353,7 +359,9 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     roles: S.optional(GetResponseRolesList),
     status: S.optional(GetResponseStatus),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetMembershipResponse",
+}) as any as S.Schema<GetMembershipResponse>;
 
 export type ListRequestDirection = "asc" | "desc" | (string & {});
 export const ListRequestDirection = /*@__PURE__*/ S.String;
@@ -368,7 +376,7 @@ export type ListRequestStatus =
   | (string & {});
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
-export interface ListRequest {
+export interface ListMembershipsRequest {
   account?: string;
   /** Direction to order memberships. */
   direction?: ListRequestDirection;
@@ -383,7 +391,7 @@ export interface ListRequest {
   /** Status of this membership. */
   status?: ListRequestStatus;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListMembershipsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account: S.optional(S.String.pipe(T.Query())),
     direction: S.optional(ListRequestDirection.pipe(T.Query())),
@@ -393,14 +401,16 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
     perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
     status: S.optional(ListRequestStatus.pipe(T.Query())),
   }).pipe(T.Http({ method: "GET", uri: "/memberships", code: 200 })),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListMembershipsRequest",
+}) as any as S.Schema<ListMembershipsRequest>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ListResponse {
+export interface ListMembershipsResponse {
   IAMCollectionMembershipResponseObjectErrorsMessagesSuccess2More__: unknown;
   IAMCollectionMembershipResponseWithPoliciesObjectErrorsMessagesSuccess2More__: unknown;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     IAMCollectionMembershipResponseObjectErrorsMessagesSuccess2More__:
       S.Unknown.pipe(
@@ -415,25 +425,29 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
         ),
       ),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListMembershipsResponse",
+}) as any as S.Schema<ListMembershipsResponse>;
 
 export type UpdateRequestStatus = "accepted" | "rejected" | (string & {});
 export const UpdateRequestStatus = /*@__PURE__*/ S.String;
 
-export interface UpdateRequest {
+export interface PutMembershipRequest {
   /** Membership identifier tag. */
   membershipId: string;
   /** Whether to accept or reject this account invitation. */
   status: UpdateRequestStatus;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutMembershipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     membershipId: S.String.pipe(T.Label("membership_id")),
     status: UpdateRequestStatus,
   }).pipe(
     T.Http({ method: "PUT", uri: "/memberships/{membership_id}", code: 200 }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "PutMembershipRequest",
+}) as any as S.Schema<PutMembershipRequest>;
 
 export type UpdateResponseAccountType =
   | "standard"
@@ -722,7 +736,7 @@ export type UpdateResponseStatus =
 export const UpdateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface PutMembershipResponse {
   /** Membership identifier tag. */
   id?: string;
   account?: UpdateResponseAccount;
@@ -737,7 +751,7 @@ export interface UpdateResponse {
   /** Status of this membership. */
   status?: UpdateResponseStatus;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutMembershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     account: S.optional(UpdateResponseAccount),
@@ -747,60 +761,62 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
     roles: S.optional(UpdateResponseRolesList),
     status: S.optional(UpdateResponseStatus),
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "PutMembershipResponse",
+}) as any as S.Schema<PutMembershipResponse>;
 
-export type DeleteError = CloudflareOpError;
+export type DeleteMembershipError = CloudflareOpError;
 /** Remove the associated member from an account. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteMembership: API.OperationMethod<
+  DeleteMembershipRequest,
+  DeleteMembershipResponse,
+  DeleteMembershipError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
+  input: DeleteMembershipRequest,
+  output: DeleteMembershipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
+export type GetMembershipError = CloudflareOpError;
 /** Get a specific membership. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getMembership: API.OperationMethod<
+  GetMembershipRequest,
+  GetMembershipResponse,
+  GetMembershipError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
+  input: GetMembershipRequest,
+  output: GetMembershipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ListError = CloudflareOpError;
+export type ListMembershipsError = CloudflareOpError;
 /** List memberships of accounts the user can access. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
+export const listMemberships: API.OperationMethod<
+  ListMembershipsRequest,
+  ListMembershipsResponse,
+  ListMembershipsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
+  input: ListMembershipsRequest,
+  output: ListMembershipsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
+export type PutMembershipError = CloudflareOpError;
 /** Accept or reject this account invitation. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export const putMembership: API.OperationMethod<
+  PutMembershipRequest,
+  PutMembershipResponse,
+  PutMembershipError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
+  input: PutMembershipRequest,
+  output: PutMembershipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

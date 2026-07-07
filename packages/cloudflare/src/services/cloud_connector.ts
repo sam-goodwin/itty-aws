@@ -9,11 +9,30 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface RulesListRequest {
+export class CloudConnectorRulesNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CloudConnectorRulesNotFound>()(
+    "CloudConnectorRulesNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 10003, message: { includes: "could not find entrypoint ruleset" } }],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export interface ListRulesRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -24,8 +43,8 @@ export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RulesListRequest",
-}) as any as S.Schema<RulesListRequest>;
+  identifier: "ListRulesRequest",
+}) as any as S.Schema<ListRulesRequest>;
 
 export interface RulesListResultItemParameters {
   /** Host to perform Cloud Connection to */
@@ -75,17 +94,17 @@ export const RulesListResultList = /*@__PURE__*/ S.Array(
   RulesListResultItem,
 ) as any as S.Schema<RulesListResultList>;
 
-export interface RulesListResponse {
+export interface ListRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesListResultList;
 }
-export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RulesListResponse",
-}) as any as S.Schema<RulesListResponse>;
+  identifier: "ListRulesResponse",
+}) as any as S.Schema<ListRulesResponse>;
 
 export interface RulesUpdateRequestRulesItemParameters {
   /** Host to perform Cloud Connection to */
@@ -136,12 +155,12 @@ export const RulesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestRulesItem,
 ) as any as S.Schema<RulesUpdateRequestRulesList>;
 
-export interface RulesUpdateRequest {
+export interface PutRuleRequest {
   /** Identifier. */
   zoneId: string;
   rules?: RulesUpdateRequestRulesList;
 }
-export const RulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rules: S.optional(RulesUpdateRequestRulesList),
@@ -152,9 +171,7 @@ export const RulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({
-  identifier: "RulesUpdateRequest",
-}) as any as S.Schema<RulesUpdateRequest>;
+).annotate({ identifier: "PutRuleRequest" }) as any as S.Schema<PutRuleRequest>;
 
 export interface RulesUpdateResultItemParameters {
   /** Host to perform Cloud Connection to */
@@ -204,42 +221,50 @@ export const RulesUpdateResultList = /*@__PURE__*/ S.Array(
   RulesUpdateResultItem,
 ) as any as S.Schema<RulesUpdateResultList>;
 
-export interface RulesUpdateResponse {
+export interface PutRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RulesUpdateResultList;
 }
-export const RulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RulesUpdateResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RulesUpdateResponse",
-}) as any as S.Schema<RulesUpdateResponse>;
+  identifier: "PutRuleResponse",
+}) as any as S.Schema<PutRuleResponse>;
 
-export type RulesListError = CloudflareOpError;
+export type ListRulesError =
+  | Forbidden
+  | CloudConnectorRulesNotFound
+  | CloudflareOpError;
 /** Retrieves the Cloud Connector rules configured for a zone. Rules define how traffic is routed to cloud services. */
-export const rulesList: API.OperationMethod<
-  RulesListRequest,
-  RulesListResponse,
-  RulesListError,
+export const listRules: API.OperationMethod<
+  ListRulesRequest,
+  ListRulesResponse,
+  ListRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesListRequest,
-  output: RulesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ListRulesRequest,
+  output: ListRulesResponse,
+  errors: [
+    Forbidden,
+    CloudConnectorRulesNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type RulesUpdateError = CloudflareOpError;
+export type PutRuleError = Forbidden | CloudflareOpError;
 /** Updates Cloud Connector rules for a zone, replacing the existing rule configuration. */
-export const rulesUpdate: API.OperationMethod<
-  RulesUpdateRequest,
-  RulesUpdateResponse,
-  RulesUpdateError,
+export const putRule: API.OperationMethod<
+  PutRuleRequest,
+  PutRuleResponse,
+  PutRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesUpdateRequest,
-  output: RulesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PutRuleRequest,
+  output: PutRuleResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

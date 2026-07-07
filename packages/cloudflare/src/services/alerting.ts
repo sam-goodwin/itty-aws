@@ -9,89 +9,110 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface AvailableAlertsListRequest {
-  /** The account id */
-  accountId: string;
-}
-export const AvailableAlertsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/available_alerts",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AvailableAlertsListRequest",
-}) as any as S.Schema<AvailableAlertsListRequest>;
-
-export type AvailableAlertsListResultMap = {
-  [key: string]: unknown | undefined;
-};
-export const AvailableAlertsListResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<AvailableAlertsListResultMap>;
-
-export interface AvailableAlertsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AvailableAlertsListResultMap;
-}
-export const AvailableAlertsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(AvailableAlertsListResultMap.pipe(T.EnvelopePayload())),
+export class FiltersRequired extends T.applyErrorMatchers(
+  S.TaggedErrorClass<FiltersRequired>()("FiltersRequired", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "AvailableAlertsListResponse",
-}) as any as S.Schema<AvailableAlertsListResponse>;
+  [{ code: 17103 }],
+) {}
 
-export interface DestinationsEligibleGetRequest {
-  /** The account id */
-  accountId: string;
-}
-export const DestinationsEligibleGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/eligible",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DestinationsEligibleGetRequest",
-}) as any as S.Schema<DestinationsEligibleGetRequest>;
-
-export type DestinationsEligibleGetResultMap = {
-  [key: string]: unknown | undefined;
-};
-export const DestinationsEligibleGetResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DestinationsEligibleGetResultMap>;
-
-export interface DestinationsEligibleGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DestinationsEligibleGetResultMap;
-}
-export const DestinationsEligibleGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      DestinationsEligibleGetResultMap.pipe(T.EnvelopePayload()),
-    ),
+export class InternalServerError extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InternalServerError>()("InternalServerError", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "DestinationsEligibleGetResponse",
-}) as any as S.Schema<DestinationsEligibleGetResponse>;
+  [{ code: 15000 }],
+) {}
 
-export interface DestinationsPagerdutyCreateRequest {
+export class InvalidAlertType extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidAlertType>()("InvalidAlertType", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 17004 }],
+) {}
+
+export class InvalidRoute extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidRoute>()("InvalidRoute", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7003 }],
+) {}
+
+export class InvalidSilence extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidSilence>()("InvalidSilence", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 0, message: { includes: "invalid silence" } }],
+) {}
+
+export class InvalidWebhookId extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidWebhookId>()("InvalidWebhookId", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 0, message: { includes: "invalid Webhook ID" } }],
+) {}
+
+export class MechanismRequired extends T.applyErrorMatchers(
+  S.TaggedErrorClass<MechanismRequired>()("MechanismRequired", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 17102 }],
+) {}
+
+export class PolicyNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PolicyNotFound>()("PolicyNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 0, message: { includes: "Policy not found" } }],
+) {}
+
+export class SilenceAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SilenceAlreadyExists>()("SilenceAlreadyExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 15000 }],
+) {}
+
+export class SilenceNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SilenceNotFound>()("SilenceNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 0, message: { includes: "silence not found" } }],
+) {}
+
+export class WebhookNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<WebhookNotFound>()("WebhookNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 0, message: { includes: "Webhook not found" } }],
+) {}
+
+export class WebhookTestFailed extends T.applyErrorMatchers(
+  S.TaggedErrorClass<WebhookTestFailed>()("WebhookTestFailed", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [
+    { code: 0, message: { includes: "Webhook test failed" } },
+    { status: 422, message: { includes: "Webhook test request failed" } },
+  ],
+) {}
+
+export interface CreateDestinationPagerdutyRequest {
   /** The account id */
   accountId: string;
 }
-export const DestinationsPagerdutyCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -102,135 +123,23 @@ export const DestinationsPagerdutyCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DestinationsPagerdutyCreateRequest",
-}) as any as S.Schema<DestinationsPagerdutyCreateRequest>;
+  identifier: "CreateDestinationPagerdutyRequest",
+}) as any as S.Schema<CreateDestinationPagerdutyRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DestinationsPagerdutyCreateResponse {
+export interface CreateDestinationPagerdutyResponse {
   /** token in form of UUID */
   id?: string;
 }
-export const DestinationsPagerdutyCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "DestinationsPagerdutyCreateResponse",
-}) as any as S.Schema<DestinationsPagerdutyCreateResponse>;
+  identifier: "CreateDestinationPagerdutyResponse",
+}) as any as S.Schema<CreateDestinationPagerdutyResponse>;
 
-export interface DestinationsPagerdutyDeleteRequest {
-  /** The account id */
-  accountId: string;
-}
-export const DestinationsPagerdutyDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DestinationsPagerdutyDeleteRequest",
-}) as any as S.Schema<DestinationsPagerdutyDeleteRequest>;
-
-export interface DestinationsPagerdutyDeleteResponse {}
-export const DestinationsPagerdutyDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DestinationsPagerdutyDeleteResponse",
-}) as any as S.Schema<DestinationsPagerdutyDeleteResponse>;
-
-export interface DestinationsPagerdutyGetRequest {
-  /** The account id */
-  accountId: string;
-}
-export const DestinationsPagerdutyGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DestinationsPagerdutyGetRequest",
-}) as any as S.Schema<DestinationsPagerdutyGetRequest>;
-
-export interface DestinationsPagerdutyGetResultItem {
-  /** UUID */
-  id?: string;
-  /** The name of the pagerduty service. */
-  name?: string;
-}
-export const DestinationsPagerdutyGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DestinationsPagerdutyGetResultItem",
-}) as any as S.Schema<DestinationsPagerdutyGetResultItem>;
-
-export type DestinationsPagerdutyGetResultList =
-  DestinationsPagerdutyGetResultItem[];
-export const DestinationsPagerdutyGetResultList = /*@__PURE__*/ S.Array(
-  DestinationsPagerdutyGetResultItem,
-) as any as S.Schema<DestinationsPagerdutyGetResultList>;
-
-export interface DestinationsPagerdutyGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DestinationsPagerdutyGetResultList;
-}
-export const DestinationsPagerdutyGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      DestinationsPagerdutyGetResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "DestinationsPagerdutyGetResponse",
-}) as any as S.Schema<DestinationsPagerdutyGetResponse>;
-
-export interface DestinationsPagerdutyLinkRequest {
-  /** The account id */
-  accountId: string;
-  /** The token integration key */
-  tokenId: string;
-}
-export const DestinationsPagerdutyLinkRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    tokenId: S.String.pipe(T.Label("token_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty/connect/{token_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DestinationsPagerdutyLinkRequest",
-}) as any as S.Schema<DestinationsPagerdutyLinkRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DestinationsPagerdutyLinkResponse {
-  /** UUID */
-  id?: string;
-}
-export const DestinationsPagerdutyLinkResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DestinationsPagerdutyLinkResponse",
-}) as any as S.Schema<DestinationsPagerdutyLinkResponse>;
-
-export interface DestinationsWebhooksCreateRequest {
+export interface CreateDestinationWebhookRequest {
   /** The account id */
   accountId: string;
   /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
@@ -240,7 +149,7 @@ export interface DestinationsWebhooksCreateRequest {
   /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
   secret?: string;
 }
-export const DestinationsWebhooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -254,324 +163,21 @@ export const DestinationsWebhooksCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DestinationsWebhooksCreateRequest",
-}) as any as S.Schema<DestinationsWebhooksCreateRequest>;
+  identifier: "CreateDestinationWebhookRequest",
+}) as any as S.Schema<CreateDestinationWebhookRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DestinationsWebhooksCreateResponse {
+export interface CreateDestinationWebhookResponse {
   /** UUID */
   id?: string;
 }
-export const DestinationsWebhooksCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "DestinationsWebhooksCreateResponse",
-}) as any as S.Schema<DestinationsWebhooksCreateResponse>;
-
-export interface DestinationsWebhooksDeleteRequest {
-  /** The account id */
-  accountId: string;
-  /** The unique identifier of a webhook */
-  webhookId: string;
-}
-export const DestinationsWebhooksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    webhookId: S.String.pipe(T.Label("webhook_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DestinationsWebhooksDeleteRequest",
-}) as any as S.Schema<DestinationsWebhooksDeleteRequest>;
-
-export interface DestinationsWebhooksDeleteResponse {}
-export const DestinationsWebhooksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "DestinationsWebhooksDeleteResponse",
-}) as any as S.Schema<DestinationsWebhooksDeleteResponse>;
-
-export interface DestinationsWebhooksGetRequest {
-  /** The account id */
-  accountId: string;
-  /** The unique identifier of a webhook */
-  webhookId: string;
-}
-export const DestinationsWebhooksGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    webhookId: S.String.pipe(T.Label("webhook_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DestinationsWebhooksGetRequest",
-}) as any as S.Schema<DestinationsWebhooksGetRequest>;
-
-export type DestinationsWebhooksGetResponseType =
-  | "datadog"
-  | "discord"
-  | "feishu"
-  | (string & {});
-export const DestinationsWebhooksGetResponseType = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DestinationsWebhooksGetResponse {
-  /** The unique identifier of a webhook */
-  id?: string;
-  /** Timestamp of when the webhook destination was created. */
-  createdAt?: string;
-  /** Timestamp of the last time an attempt to dispatch a notification to this webhook failed. */
-  lastFailure?: string;
-  /** Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook. */
-  lastSuccess?: string;
-  /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
-  name?: string;
-  /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
-  secret?: string;
-  /** Type of webhook endpoint. */
-  type?: DestinationsWebhooksGetResponseType;
-  /** The POST endpoint to call when dispatching a notification. */
-  url?: string;
-}
-export const DestinationsWebhooksGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    lastFailure: S.optional(S.String.pipe(T.Body("last_failure"))),
-    lastSuccess: S.optional(S.String.pipe(T.Body("last_success"))),
-    name: S.optional(S.String),
-    secret: S.optional(S.String),
-    type: S.optional(DestinationsWebhooksGetResponseType),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DestinationsWebhooksGetResponse",
-}) as any as S.Schema<DestinationsWebhooksGetResponse>;
-
-export interface DestinationsWebhooksListRequest {
-  /** The account id */
-  accountId: string;
-}
-export const DestinationsWebhooksListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DestinationsWebhooksListRequest",
-}) as any as S.Schema<DestinationsWebhooksListRequest>;
-
-export type DestinationsWebhooksListResultItemType =
-  | "datadog"
-  | "discord"
-  | "feishu"
-  | (string & {});
-export const DestinationsWebhooksListResultItemType = /*@__PURE__*/ S.String;
-
-export interface DestinationsWebhooksListResultItem {
-  /** The unique identifier of a webhook */
-  id?: string;
-  /** Timestamp of when the webhook destination was created. */
-  createdAt?: string;
-  /** Timestamp of the last time an attempt to dispatch a notification to this webhook failed. */
-  lastFailure?: string;
-  /** Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook. */
-  lastSuccess?: string;
-  /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
-  name?: string;
-  /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
-  secret?: string;
-  /** Type of webhook endpoint. */
-  type?: DestinationsWebhooksListResultItemType;
-  /** The POST endpoint to call when dispatching a notification. */
-  url?: string;
-}
-export const DestinationsWebhooksListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    lastFailure: S.optional(S.String.pipe(T.Body("last_failure"))),
-    lastSuccess: S.optional(S.String.pipe(T.Body("last_success"))),
-    name: S.optional(S.String),
-    secret: S.optional(S.String),
-    type: S.optional(DestinationsWebhooksListResultItemType),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DestinationsWebhooksListResultItem",
-}) as any as S.Schema<DestinationsWebhooksListResultItem>;
-
-export type DestinationsWebhooksListResultList =
-  DestinationsWebhooksListResultItem[];
-export const DestinationsWebhooksListResultList = /*@__PURE__*/ S.Array(
-  DestinationsWebhooksListResultItem,
-) as any as S.Schema<DestinationsWebhooksListResultList>;
-
-export interface DestinationsWebhooksListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DestinationsWebhooksListResultList;
-}
-export const DestinationsWebhooksListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      DestinationsWebhooksListResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "DestinationsWebhooksListResponse",
-}) as any as S.Schema<DestinationsWebhooksListResponse>;
-
-export interface DestinationsWebhooksUpdateRequest {
-  /** The account id */
-  accountId: string;
-  /** The unique identifier of a webhook */
-  webhookId: string;
-  /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
-  name: string;
-  /** The POST endpoint to call when dispatching a notification. */
-  url: string;
-  /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
-  secret?: string;
-}
-export const DestinationsWebhooksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    webhookId: S.String.pipe(T.Label("webhook_id")),
-    name: S.String,
-    url: S.String,
-    secret: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DestinationsWebhooksUpdateRequest",
-}) as any as S.Schema<DestinationsWebhooksUpdateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DestinationsWebhooksUpdateResponse {
-  /** UUID */
-  id?: string;
-}
-export const DestinationsWebhooksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DestinationsWebhooksUpdateResponse",
-}) as any as S.Schema<DestinationsWebhooksUpdateResponse>;
-
-export interface HistoryListRequest {
-  /** The account id */
-  accountId: string;
-  /** Limit the returned results to history records older than the specified date. This must be a timestamp that conforms to RFC3339. */
-  before?: string;
-  /** Page number of paginated results. */
-  page?: number;
-  /** Number of items per page. */
-  perPage?: number;
-  /** Limit the returned results to history records newer than the specified date. This must be a timestamp that conforms to RFC3339. */
-  since?: string;
-}
-export const HistoryListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    before: S.optional(S.String.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    since: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/history",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HistoryListRequest",
-}) as any as S.Schema<HistoryListRequest>;
-
-export type HistoryListResultItemMechanismType =
-  | "email"
-  | "pagerduty"
-  | "webhook"
-  | (string & {});
-export const HistoryListResultItemMechanismType = /*@__PURE__*/ S.String;
-
-export interface HistoryListResultItem {
-  /** UUID */
-  id?: string;
-  /** Message body included in the notification sent. */
-  alertBody?: string;
-  /** Type of notification that has been dispatched. */
-  alertType?: string;
-  /** Description of the notification policy (if present). */
-  description?: string;
-  /** The mechanism to which the notification has been dispatched. */
-  mechanism?: string;
-  /** The type of mechanism to which the notification has been dispatched. This can be email/pagerduty/webhook based on the mechanism configured. */
-  mechanismType?: HistoryListResultItemMechanismType;
-  /** Name of the policy. */
-  name?: string;
-  /** The unique identifier of a notification policy */
-  policyId?: string;
-  /** Timestamp of when the notification was dispatched in ISO 8601 format. */
-  sent?: string;
-}
-export const HistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    alertBody: S.optional(S.String.pipe(T.Body("alert_body"))),
-    alertType: S.optional(S.String.pipe(T.Body("alert_type"))),
-    description: S.optional(S.String),
-    mechanism: S.optional(S.String),
-    mechanismType: S.optional(
-      HistoryListResultItemMechanismType.pipe(T.Body("mechanism_type")),
-    ),
-    name: S.optional(S.String),
-    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
-    sent: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "HistoryListResultItem",
-}) as any as S.Schema<HistoryListResultItem>;
-
-export type HistoryListResultList = HistoryListResultItem[];
-export const HistoryListResultList = /*@__PURE__*/ S.Array(
-  HistoryListResultItem,
-) as any as S.Schema<HistoryListResultList>;
-
-export interface HistoryListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: HistoryListResultList;
-}
-export const HistoryListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(HistoryListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "HistoryListResponse",
-}) as any as S.Schema<HistoryListResponse>;
+  identifier: "CreateDestinationWebhookResponse",
+}) as any as S.Schema<CreateDestinationWebhookResponse>;
 
 export type PoliciesCreateRequestAlertType =
   | "abuse_report_alert"
@@ -1128,7 +734,7 @@ export const PoliciesCreateRequestFilters = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoliciesCreateRequestFilters",
 }) as any as S.Schema<PoliciesCreateRequestFilters>;
 
-export interface PoliciesCreateRequest {
+export interface CreatePolicyRequest {
   /** The account id */
   accountId: string;
   /** Refers to which event will trigger a Notification dispatch. You can use the endpoint to get available alert types which then will give you a list of possible values. */
@@ -1146,7 +752,7 @@ export interface PoliciesCreateRequest {
   /** Optional filters that allow you to be alerted only on a subset of events for that alert type based on some criteria. This is only available for select alert types. See alert type documentation for more details. */
   filters?: PoliciesCreateRequestFilters;
 }
-export const PoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     alertType: PoliciesCreateRequestAlertType.pipe(T.Body("alert_type")),
@@ -1164,29 +770,132 @@ export const PoliciesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PoliciesCreateRequest",
-}) as any as S.Schema<PoliciesCreateRequest>;
+  identifier: "CreatePolicyRequest",
+}) as any as S.Schema<CreatePolicyRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoliciesCreateResponse {
+export interface CreatePolicyResponse {
   /** UUID */
   id?: string;
 }
-export const PoliciesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "PoliciesCreateResponse",
-}) as any as S.Schema<PoliciesCreateResponse>;
+  identifier: "CreatePolicyResponse",
+}) as any as S.Schema<CreatePolicyResponse>;
 
-export interface PoliciesDeleteRequest {
+export interface SilencesCreateRequestBodyItem {
+  /** When the silence ends. */
+  endTime?: string;
+  /** The unique identifier of a notification policy */
+  policyId?: string;
+  /** When the silence starts. */
+  startTime?: string;
+}
+export const SilencesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
+    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
+    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
+  }),
+).annotate({
+  identifier: "SilencesCreateRequestBodyItem",
+}) as any as S.Schema<SilencesCreateRequestBodyItem>;
+
+export type SilencesCreateRequestBodyList = SilencesCreateRequestBodyItem[];
+export const SilencesCreateRequestBodyList = /*@__PURE__*/ S.Array(
+  SilencesCreateRequestBodyItem,
+) as any as S.Schema<SilencesCreateRequestBodyList>;
+
+export interface CreateSilenceRequest {
+  /** The account id */
+  accountId: string;
+  body: SilencesCreateRequestBodyList;
+}
+export const CreateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    body: SilencesCreateRequestBodyList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/alerting/v3/silences",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateSilenceRequest",
+}) as any as S.Schema<CreateSilenceRequest>;
+
+export interface CreateSilenceResponse {}
+export const CreateSilenceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateSilenceResponse",
+}) as any as S.Schema<CreateSilenceResponse>;
+
+export interface DeleteDestinationPagerdutyRequest {
+  /** The account id */
+  accountId: string;
+}
+export const DeleteDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDestinationPagerdutyRequest",
+}) as any as S.Schema<DeleteDestinationPagerdutyRequest>;
+
+export interface DeleteDestinationPagerdutyResponse {}
+export const DeleteDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDestinationPagerdutyResponse",
+}) as any as S.Schema<DeleteDestinationPagerdutyResponse>;
+
+export interface DeleteDestinationWebhookRequest {
+  /** The account id */
+  accountId: string;
+  /** The unique identifier of a webhook */
+  webhookId: string;
+}
+export const DeleteDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    webhookId: S.String.pipe(T.Label("webhook_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteDestinationWebhookRequest",
+}) as any as S.Schema<DeleteDestinationWebhookRequest>;
+
+export interface DeleteDestinationWebhookResponse {}
+export const DeleteDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteDestinationWebhookResponse",
+}) as any as S.Schema<DeleteDestinationWebhookResponse>;
+
+export interface DeletePolicyRequest {
   /** The account id */
   accountId: string;
   /** The unique identifier of a notification policy */
   policyId: string;
 }
-export const PoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeletePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
@@ -1198,23 +907,206 @@ export const PoliciesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PoliciesDeleteRequest",
-}) as any as S.Schema<PoliciesDeleteRequest>;
+  identifier: "DeletePolicyRequest",
+}) as any as S.Schema<DeletePolicyRequest>;
 
-export interface PoliciesDeleteResponse {}
-export const PoliciesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeletePolicyResponse {}
+export const DeletePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "PoliciesDeleteResponse",
-}) as any as S.Schema<PoliciesDeleteResponse>;
+  identifier: "DeletePolicyResponse",
+}) as any as S.Schema<DeletePolicyResponse>;
 
-export interface PoliciesGetRequest {
+export interface DeleteSilenceRequest {
+  /** The account id */
+  accountId: string;
+  /** Silence ID */
+  silenceId: string;
+}
+export const DeleteSilenceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    silenceId: S.String.pipe(T.Label("silence_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/alerting/v3/silences/{silence_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSilenceRequest",
+}) as any as S.Schema<DeleteSilenceRequest>;
+
+export interface DeleteSilenceResponse {}
+export const DeleteSilenceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSilenceResponse",
+}) as any as S.Schema<DeleteSilenceResponse>;
+
+export interface GetDestinationEligibleRequest {
+  /** The account id */
+  accountId: string;
+}
+export const GetDestinationEligibleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/alerting/v3/destinations/eligible",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetDestinationEligibleRequest",
+}) as any as S.Schema<GetDestinationEligibleRequest>;
+
+export type DestinationsEligibleGetResultMap = {
+  [key: string]: unknown | undefined;
+};
+export const DestinationsEligibleGetResultMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DestinationsEligibleGetResultMap>;
+
+export interface GetDestinationEligibleResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: DestinationsEligibleGetResultMap;
+}
+export const GetDestinationEligibleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      DestinationsEligibleGetResultMap.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "GetDestinationEligibleResponse",
+}) as any as S.Schema<GetDestinationEligibleResponse>;
+
+export interface GetDestinationPagerdutyRequest {
+  /** The account id */
+  accountId: string;
+}
+export const GetDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetDestinationPagerdutyRequest",
+}) as any as S.Schema<GetDestinationPagerdutyRequest>;
+
+export interface DestinationsPagerdutyGetResultItem {
+  /** UUID */
+  id?: string;
+  /** The name of the pagerduty service. */
+  name?: string;
+}
+export const DestinationsPagerdutyGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DestinationsPagerdutyGetResultItem",
+}) as any as S.Schema<DestinationsPagerdutyGetResultItem>;
+
+export type DestinationsPagerdutyGetResultList =
+  DestinationsPagerdutyGetResultItem[];
+export const DestinationsPagerdutyGetResultList = /*@__PURE__*/ S.Array(
+  DestinationsPagerdutyGetResultItem,
+) as any as S.Schema<DestinationsPagerdutyGetResultList>;
+
+export interface GetDestinationPagerdutyResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: DestinationsPagerdutyGetResultList;
+}
+export const GetDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      DestinationsPagerdutyGetResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "GetDestinationPagerdutyResponse",
+}) as any as S.Schema<GetDestinationPagerdutyResponse>;
+
+export interface GetDestinationWebhookRequest {
+  /** The account id */
+  accountId: string;
+  /** The unique identifier of a webhook */
+  webhookId: string;
+}
+export const GetDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    webhookId: S.String.pipe(T.Label("webhook_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetDestinationWebhookRequest",
+}) as any as S.Schema<GetDestinationWebhookRequest>;
+
+export type DestinationsWebhooksGetResponseType =
+  | "datadog"
+  | "discord"
+  | "feishu"
+  | (string & {});
+export const DestinationsWebhooksGetResponseType = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetDestinationWebhookResponse {
+  /** The unique identifier of a webhook */
+  id?: string;
+  /** Timestamp of when the webhook destination was created. */
+  createdAt?: string;
+  /** Timestamp of the last time an attempt to dispatch a notification to this webhook failed. */
+  lastFailure?: string;
+  /** Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook. */
+  lastSuccess?: string;
+  /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
+  name?: string;
+  /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
+  secret?: string;
+  /** Type of webhook endpoint. */
+  type?: DestinationsWebhooksGetResponseType;
+  /** The POST endpoint to call when dispatching a notification. */
+  url?: string;
+}
+export const GetDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    lastFailure: S.optional(S.String.pipe(T.Body("last_failure"))),
+    lastSuccess: S.optional(S.String.pipe(T.Body("last_success"))),
+    name: S.optional(S.String),
+    secret: S.optional(S.String),
+    type: S.optional(DestinationsWebhooksGetResponseType),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetDestinationWebhookResponse",
+}) as any as S.Schema<GetDestinationWebhookResponse>;
+
+export interface GetPolicyRequest {
   /** The account id */
   accountId: string;
   /** The unique identifier of a notification policy */
   policyId: string;
 }
-export const PoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetPolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
@@ -1226,8 +1118,8 @@ export const PoliciesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PoliciesGetRequest",
-}) as any as S.Schema<PoliciesGetRequest>;
+  identifier: "GetPolicyRequest",
+}) as any as S.Schema<GetPolicyRequest>;
 
 export type PoliciesGetResponseAlertType =
   | "abuse_report_alert"
@@ -1774,7 +1666,7 @@ export const PoliciesGetResponseMechanisms = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<PoliciesGetResponseMechanisms>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoliciesGetResponse {
+export interface GetPolicyResponse {
   /** The unique identifier of a notification policy */
   id?: string;
   /** Optional specification of how often to re-alert from the same incident, not support on all alert types. */
@@ -1794,7 +1686,7 @@ export interface PoliciesGetResponse {
   /** Name of the policy. */
   name?: string;
 }
-export const PoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetPolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     alertInterval: S.optional(S.String.pipe(T.Body("alert_interval"))),
@@ -1810,14 +1702,305 @@ export const PoliciesGetResponse = /*@__PURE__*/ S.suspend(() =>
     name: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "PoliciesGetResponse",
-}) as any as S.Schema<PoliciesGetResponse>;
+  identifier: "GetPolicyResponse",
+}) as any as S.Schema<GetPolicyResponse>;
 
-export interface PoliciesListRequest {
+export interface GetSilenceRequest {
+  /** The account id */
+  accountId: string;
+  /** Silence ID */
+  silenceId: string;
+}
+export const GetSilenceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    silenceId: S.String.pipe(T.Label("silence_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/alerting/v3/silences/{silence_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSilenceRequest",
+}) as any as S.Schema<GetSilenceRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSilenceResponse {
+  /** Silence ID */
+  id?: string;
+  /** When the silence was created. */
+  createdAt?: string;
+  /** When the silence ends. */
+  endTime?: string;
+  /** The unique identifier of a notification policy */
+  policyId?: string;
+  /** When the silence starts. */
+  startTime?: string;
+  /** When the silence was modified. */
+  updatedAt?: string;
+}
+export const GetSilenceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
+    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
+    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+  }),
+).annotate({
+  identifier: "GetSilenceResponse",
+}) as any as S.Schema<GetSilenceResponse>;
+
+export interface LinkDestinationPagerdutyRequest {
+  /** The account id */
+  accountId: string;
+  /** The token integration key */
+  tokenId: string;
+}
+export const LinkDestinationPagerdutyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    tokenId: S.String.pipe(T.Label("token_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/alerting/v3/destinations/pagerduty/connect/{token_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "LinkDestinationPagerdutyRequest",
+}) as any as S.Schema<LinkDestinationPagerdutyRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface LinkDestinationPagerdutyResponse {
+  /** UUID */
+  id?: string;
+}
+export const LinkDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LinkDestinationPagerdutyResponse",
+}) as any as S.Schema<LinkDestinationPagerdutyResponse>;
+
+export interface ListAvailableAlertsRequest {
   /** The account id */
   accountId: string;
 }
-export const PoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAvailableAlertsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/alerting/v3/available_alerts",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListAvailableAlertsRequest",
+}) as any as S.Schema<ListAvailableAlertsRequest>;
+
+export type AvailableAlertsListResultMap = {
+  [key: string]: unknown | undefined;
+};
+export const AvailableAlertsListResultMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<AvailableAlertsListResultMap>;
+
+export interface ListAvailableAlertsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: AvailableAlertsListResultMap;
+}
+export const ListAvailableAlertsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(AvailableAlertsListResultMap.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListAvailableAlertsResponse",
+}) as any as S.Schema<ListAvailableAlertsResponse>;
+
+export interface ListDestinationWebhooksRequest {
+  /** The account id */
+  accountId: string;
+}
+export const ListDestinationWebhooksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListDestinationWebhooksRequest",
+}) as any as S.Schema<ListDestinationWebhooksRequest>;
+
+export type DestinationsWebhooksListResultItemType =
+  | "datadog"
+  | "discord"
+  | "feishu"
+  | (string & {});
+export const DestinationsWebhooksListResultItemType = /*@__PURE__*/ S.String;
+
+export interface DestinationsWebhooksListResultItem {
+  /** The unique identifier of a webhook */
+  id?: string;
+  /** Timestamp of when the webhook destination was created. */
+  createdAt?: string;
+  /** Timestamp of the last time an attempt to dispatch a notification to this webhook failed. */
+  lastFailure?: string;
+  /** Timestamp of the last time Cloudflare was able to successfully dispatch a notification using this webhook. */
+  lastSuccess?: string;
+  /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
+  name?: string;
+  /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
+  secret?: string;
+  /** Type of webhook endpoint. */
+  type?: DestinationsWebhooksListResultItemType;
+  /** The POST endpoint to call when dispatching a notification. */
+  url?: string;
+}
+export const DestinationsWebhooksListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    lastFailure: S.optional(S.String.pipe(T.Body("last_failure"))),
+    lastSuccess: S.optional(S.String.pipe(T.Body("last_success"))),
+    name: S.optional(S.String),
+    secret: S.optional(S.String),
+    type: S.optional(DestinationsWebhooksListResultItemType),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DestinationsWebhooksListResultItem",
+}) as any as S.Schema<DestinationsWebhooksListResultItem>;
+
+export type DestinationsWebhooksListResultList =
+  DestinationsWebhooksListResultItem[];
+export const DestinationsWebhooksListResultList = /*@__PURE__*/ S.Array(
+  DestinationsWebhooksListResultItem,
+) as any as S.Schema<DestinationsWebhooksListResultList>;
+
+export interface ListDestinationWebhooksResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: DestinationsWebhooksListResultList;
+}
+export const ListDestinationWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      DestinationsWebhooksListResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "ListDestinationWebhooksResponse",
+}) as any as S.Schema<ListDestinationWebhooksResponse>;
+
+export interface ListHistoriesRequest {
+  /** The account id */
+  accountId: string;
+  /** Limit the returned results to history records older than the specified date. This must be a timestamp that conforms to RFC3339. */
+  before?: string;
+  /** Page number of paginated results. */
+  page?: number;
+  /** Number of items per page. */
+  perPage?: number;
+  /** Limit the returned results to history records newer than the specified date. This must be a timestamp that conforms to RFC3339. */
+  since?: string;
+}
+export const ListHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    before: S.optional(S.String.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    since: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/alerting/v3/history",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListHistoriesRequest",
+}) as any as S.Schema<ListHistoriesRequest>;
+
+export type HistoryListResultItemMechanismType =
+  | "email"
+  | "pagerduty"
+  | "webhook"
+  | (string & {});
+export const HistoryListResultItemMechanismType = /*@__PURE__*/ S.String;
+
+export interface HistoryListResultItem {
+  /** UUID */
+  id?: string;
+  /** Message body included in the notification sent. */
+  alertBody?: string;
+  /** Type of notification that has been dispatched. */
+  alertType?: string;
+  /** Description of the notification policy (if present). */
+  description?: string;
+  /** The mechanism to which the notification has been dispatched. */
+  mechanism?: string;
+  /** The type of mechanism to which the notification has been dispatched. This can be email/pagerduty/webhook based on the mechanism configured. */
+  mechanismType?: HistoryListResultItemMechanismType;
+  /** Name of the policy. */
+  name?: string;
+  /** The unique identifier of a notification policy */
+  policyId?: string;
+  /** Timestamp of when the notification was dispatched in ISO 8601 format. */
+  sent?: string;
+}
+export const HistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    alertBody: S.optional(S.String.pipe(T.Body("alert_body"))),
+    alertType: S.optional(S.String.pipe(T.Body("alert_type"))),
+    description: S.optional(S.String),
+    mechanism: S.optional(S.String),
+    mechanismType: S.optional(
+      HistoryListResultItemMechanismType.pipe(T.Body("mechanism_type")),
+    ),
+    name: S.optional(S.String),
+    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
+    sent: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "HistoryListResultItem",
+}) as any as S.Schema<HistoryListResultItem>;
+
+export type HistoryListResultList = HistoryListResultItem[];
+export const HistoryListResultList = /*@__PURE__*/ S.Array(
+  HistoryListResultItem,
+) as any as S.Schema<HistoryListResultList>;
+
+export interface ListHistoriesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: HistoryListResultList;
+}
+export const ListHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(HistoryListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListHistoriesResponse",
+}) as any as S.Schema<ListHistoriesResponse>;
+
+export interface ListPoliciesRequest {
+  /** The account id */
+  accountId: string;
+}
+export const ListPoliciesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -1828,8 +2011,8 @@ export const PoliciesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PoliciesListRequest",
-}) as any as S.Schema<PoliciesListRequest>;
+  identifier: "ListPoliciesRequest",
+}) as any as S.Schema<ListPoliciesRequest>;
 
 export type PoliciesListResultItemAlertType =
   | "abuse_report_alert"
@@ -2431,17 +2614,122 @@ export const PoliciesListResultList = /*@__PURE__*/ S.Array(
   PoliciesListResultItem,
 ) as any as S.Schema<PoliciesListResultList>;
 
-export interface PoliciesListResponse {
+export interface ListPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PoliciesListResultList;
 }
-export const PoliciesListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PoliciesListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "PoliciesListResponse",
-}) as any as S.Schema<PoliciesListResponse>;
+  identifier: "ListPoliciesResponse",
+}) as any as S.Schema<ListPoliciesResponse>;
+
+export interface ListSilencesRequest {
+  /** The account id */
+  accountId: string;
+}
+export const ListSilencesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/alerting/v3/silences",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListSilencesRequest",
+}) as any as S.Schema<ListSilencesRequest>;
+
+export interface SilencesListResultItem {
+  /** Silence ID */
+  id?: string;
+  /** When the silence was created. */
+  createdAt?: string;
+  /** When the silence ends. */
+  endTime?: string;
+  /** The unique identifier of a notification policy */
+  policyId?: string;
+  /** When the silence starts. */
+  startTime?: string;
+  /** When the silence was modified. */
+  updatedAt?: string;
+}
+export const SilencesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
+    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
+    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+  }),
+).annotate({
+  identifier: "SilencesListResultItem",
+}) as any as S.Schema<SilencesListResultItem>;
+
+export type SilencesListResultList = SilencesListResultItem[];
+export const SilencesListResultList = /*@__PURE__*/ S.Array(
+  SilencesListResultItem,
+) as any as S.Schema<SilencesListResultList>;
+
+export interface ListSilencesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: SilencesListResultList;
+}
+export const ListSilencesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(SilencesListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListSilencesResponse",
+}) as any as S.Schema<ListSilencesResponse>;
+
+export interface UpdateDestinationWebhookRequest {
+  /** The account id */
+  accountId: string;
+  /** The unique identifier of a webhook */
+  webhookId: string;
+  /** The name of the webhook destination. This will be included in the request body when you receive a webhook notification. */
+  name: string;
+  /** The POST endpoint to call when dispatching a notification. */
+  url: string;
+  /** Optional secret that will be passed in the `cf-webhook-auth` header when dispatching generic webhook notifications or formatted for supported destinations. Secrets are not returned in any API response body. */
+  secret?: string;
+}
+export const UpdateDestinationWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    webhookId: S.String.pipe(T.Label("webhook_id")),
+    name: S.String,
+    url: S.String,
+    secret: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/alerting/v3/destinations/webhooks/{webhook_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateDestinationWebhookRequest",
+}) as any as S.Schema<UpdateDestinationWebhookRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateDestinationWebhookResponse {
+  /** UUID */
+  id?: string;
+}
+export const UpdateDestinationWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateDestinationWebhookResponse",
+}) as any as S.Schema<UpdateDestinationWebhookResponse>;
 
 export type PoliciesUpdateRequestAlertType =
   | "abuse_report_alert"
@@ -2998,7 +3286,7 @@ export const PoliciesUpdateRequestMechanisms = /*@__PURE__*/ S.suspend(() =>
   identifier: "PoliciesUpdateRequestMechanisms",
 }) as any as S.Schema<PoliciesUpdateRequestMechanisms>;
 
-export interface PoliciesUpdateRequest {
+export interface UpdatePolicyRequest {
   /** The account id */
   accountId: string;
   /** The unique identifier of a notification policy */
@@ -3018,7 +3306,7 @@ export interface PoliciesUpdateRequest {
   /** Name of the policy. */
   name?: string;
 }
-export const PoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdatePolicyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     policyId: S.String.pipe(T.Label("policy_id")),
@@ -3039,210 +3327,21 @@ export const PoliciesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PoliciesUpdateRequest",
-}) as any as S.Schema<PoliciesUpdateRequest>;
+  identifier: "UpdatePolicyRequest",
+}) as any as S.Schema<UpdatePolicyRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoliciesUpdateResponse {
+export interface UpdatePolicyResponse {
   /** UUID */
   id?: string;
 }
-export const PoliciesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdatePolicyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "PoliciesUpdateResponse",
-}) as any as S.Schema<PoliciesUpdateResponse>;
-
-export interface SilencesCreateRequestBodyItem {
-  /** When the silence ends. */
-  endTime?: string;
-  /** The unique identifier of a notification policy */
-  policyId?: string;
-  /** When the silence starts. */
-  startTime?: string;
-}
-export const SilencesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
-    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
-    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
-  }),
-).annotate({
-  identifier: "SilencesCreateRequestBodyItem",
-}) as any as S.Schema<SilencesCreateRequestBodyItem>;
-
-export type SilencesCreateRequestBodyList = SilencesCreateRequestBodyItem[];
-export const SilencesCreateRequestBodyList = /*@__PURE__*/ S.Array(
-  SilencesCreateRequestBodyItem,
-) as any as S.Schema<SilencesCreateRequestBodyList>;
-
-export interface SilencesCreateRequest {
-  /** The account id */
-  accountId: string;
-  body: SilencesCreateRequestBodyList;
-}
-export const SilencesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    body: SilencesCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/alerting/v3/silences",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SilencesCreateRequest",
-}) as any as S.Schema<SilencesCreateRequest>;
-
-export interface SilencesCreateResponse {}
-export const SilencesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SilencesCreateResponse",
-}) as any as S.Schema<SilencesCreateResponse>;
-
-export interface SilencesDeleteRequest {
-  /** The account id */
-  accountId: string;
-  /** Silence ID */
-  silenceId: string;
-}
-export const SilencesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    silenceId: S.String.pipe(T.Label("silence_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/alerting/v3/silences/{silence_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SilencesDeleteRequest",
-}) as any as S.Schema<SilencesDeleteRequest>;
-
-export interface SilencesDeleteResponse {}
-export const SilencesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SilencesDeleteResponse",
-}) as any as S.Schema<SilencesDeleteResponse>;
-
-export interface SilencesGetRequest {
-  /** The account id */
-  accountId: string;
-  /** Silence ID */
-  silenceId: string;
-}
-export const SilencesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    silenceId: S.String.pipe(T.Label("silence_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/silences/{silence_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SilencesGetRequest",
-}) as any as S.Schema<SilencesGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SilencesGetResponse {
-  /** Silence ID */
-  id?: string;
-  /** When the silence was created. */
-  createdAt?: string;
-  /** When the silence ends. */
-  endTime?: string;
-  /** The unique identifier of a notification policy */
-  policyId?: string;
-  /** When the silence starts. */
-  startTime?: string;
-  /** When the silence was modified. */
-  updatedAt?: string;
-}
-export const SilencesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
-    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
-    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
-).annotate({
-  identifier: "SilencesGetResponse",
-}) as any as S.Schema<SilencesGetResponse>;
-
-export interface SilencesListRequest {
-  /** The account id */
-  accountId: string;
-}
-export const SilencesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/alerting/v3/silences",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SilencesListRequest",
-}) as any as S.Schema<SilencesListRequest>;
-
-export interface SilencesListResultItem {
-  /** Silence ID */
-  id?: string;
-  /** When the silence was created. */
-  createdAt?: string;
-  /** When the silence ends. */
-  endTime?: string;
-  /** The unique identifier of a notification policy */
-  policyId?: string;
-  /** When the silence starts. */
-  startTime?: string;
-  /** When the silence was modified. */
-  updatedAt?: string;
-}
-export const SilencesListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    endTime: S.optional(S.String.pipe(T.Body("end_time"))),
-    policyId: S.optional(S.String.pipe(T.Body("policy_id"))),
-    startTime: S.optional(S.String.pipe(T.Body("start_time"))),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
-).annotate({
-  identifier: "SilencesListResultItem",
-}) as any as S.Schema<SilencesListResultItem>;
-
-export type SilencesListResultList = SilencesListResultItem[];
-export const SilencesListResultList = /*@__PURE__*/ S.Array(
-  SilencesListResultItem,
-) as any as S.Schema<SilencesListResultList>;
-
-export interface SilencesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SilencesListResultList;
-}
-export const SilencesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SilencesListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "SilencesListResponse",
-}) as any as S.Schema<SilencesListResponse>;
+  identifier: "UpdatePolicyResponse",
+}) as any as S.Schema<UpdatePolicyResponse>;
 
 export interface SilencesUpdateRequestBodyItem {
   /** Silence ID */
@@ -3267,12 +3366,12 @@ export const SilencesUpdateRequestBodyList = /*@__PURE__*/ S.Array(
   SilencesUpdateRequestBodyItem,
 ) as any as S.Schema<SilencesUpdateRequestBodyList>;
 
-export interface SilencesUpdateRequest {
+export interface UpdateSilenceRequest {
   /** The account id */
   accountId: string;
   body: SilencesUpdateRequestBodyList;
 }
-export const SilencesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSilenceRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     body: SilencesUpdateRequestBodyList,
@@ -3284,8 +3383,8 @@ export const SilencesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SilencesUpdateRequest",
-}) as any as S.Schema<SilencesUpdateRequest>;
+  identifier: "UpdateSilenceRequest",
+}) as any as S.Schema<UpdateSilenceRequest>;
 
 export interface SilencesUpdateResultItem {
   /** Silence ID */
@@ -3319,322 +3418,427 @@ export const SilencesUpdateResultList = /*@__PURE__*/ S.Array(
   SilencesUpdateResultItem,
 ) as any as S.Schema<SilencesUpdateResultList>;
 
-export interface SilencesUpdateResponse {
+export interface UpdateSilenceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SilencesUpdateResultList;
 }
-export const SilencesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSilenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SilencesUpdateResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "SilencesUpdateResponse",
-}) as any as S.Schema<SilencesUpdateResponse>;
+  identifier: "UpdateSilenceResponse",
+}) as any as S.Schema<UpdateSilenceResponse>;
 
-export type AvailableAlertsListError = CloudflareOpError;
-/** Gets a list of all alert types for which an account is eligible. */
-export const availableAlertsList: API.OperationMethod<
-  AvailableAlertsListRequest,
-  AvailableAlertsListResponse,
-  AvailableAlertsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AvailableAlertsListRequest,
-  output: AvailableAlertsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DestinationsEligibleGetError = CloudflareOpError;
-/** Get a list of all delivery mechanism types for which an account is eligible. */
-export const destinationsEligibleGet: API.OperationMethod<
-  DestinationsEligibleGetRequest,
-  DestinationsEligibleGetResponse,
-  DestinationsEligibleGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DestinationsEligibleGetRequest,
-  output: DestinationsEligibleGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DestinationsPagerdutyCreateError = CloudflareOpError;
+export type CreateDestinationPagerdutyError = InvalidRoute | CloudflareOpError;
 /** Creates a new token for integrating with PagerDuty. */
-export const destinationsPagerdutyCreate: API.OperationMethod<
-  DestinationsPagerdutyCreateRequest,
-  DestinationsPagerdutyCreateResponse,
-  DestinationsPagerdutyCreateError,
+export const createDestinationPagerduty: API.OperationMethod<
+  CreateDestinationPagerdutyRequest,
+  CreateDestinationPagerdutyResponse,
+  CreateDestinationPagerdutyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DestinationsPagerdutyCreateRequest,
-  output: DestinationsPagerdutyCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateDestinationPagerdutyRequest,
+  output: CreateDestinationPagerdutyResponse,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DestinationsPagerdutyDeleteError = CloudflareOpError;
-/** Deletes all the PagerDuty Services connected to the account. */
-export const destinationsPagerdutyDelete: API.OperationMethod<
-  DestinationsPagerdutyDeleteRequest,
-  DestinationsPagerdutyDeleteResponse,
-  DestinationsPagerdutyDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DestinationsPagerdutyDeleteRequest,
-  output: DestinationsPagerdutyDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DestinationsPagerdutyGetError = CloudflareOpError;
-/** Get a list of all configured PagerDuty services. */
-export const destinationsPagerdutyGet: API.OperationMethod<
-  DestinationsPagerdutyGetRequest,
-  DestinationsPagerdutyGetResponse,
-  DestinationsPagerdutyGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DestinationsPagerdutyGetRequest,
-  output: DestinationsPagerdutyGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DestinationsPagerdutyLinkError = CloudflareOpError;
-/** Links PagerDuty with the account using the integration token. */
-export const destinationsPagerdutyLink: API.OperationMethod<
-  DestinationsPagerdutyLinkRequest,
-  DestinationsPagerdutyLinkResponse,
-  DestinationsPagerdutyLinkError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DestinationsPagerdutyLinkRequest,
-  output: DestinationsPagerdutyLinkResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DestinationsWebhooksCreateError = CloudflareOpError;
+export type CreateDestinationWebhookError =
+  | InvalidRoute
+  | WebhookTestFailed
+  | CloudflareOpError;
 /** Creates a new webhook destination. */
-export const destinationsWebhooksCreate: API.OperationMethod<
-  DestinationsWebhooksCreateRequest,
-  DestinationsWebhooksCreateResponse,
-  DestinationsWebhooksCreateError,
+export const createDestinationWebhook: API.OperationMethod<
+  CreateDestinationWebhookRequest,
+  CreateDestinationWebhookResponse,
+  CreateDestinationWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DestinationsWebhooksCreateRequest,
-  output: DestinationsWebhooksCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateDestinationWebhookRequest,
+  output: CreateDestinationWebhookResponse,
+  errors: [
+    InvalidRoute,
+    WebhookTestFailed,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type DestinationsWebhooksDeleteError = CloudflareOpError;
-/** Delete a configured webhook destination. */
-export const destinationsWebhooksDelete: API.OperationMethod<
-  DestinationsWebhooksDeleteRequest,
-  DestinationsWebhooksDeleteResponse,
-  DestinationsWebhooksDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DestinationsWebhooksDeleteRequest,
-  output: DestinationsWebhooksDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DestinationsWebhooksGetError = CloudflareOpError;
-/** Get details for a single webhooks destination. */
-export const destinationsWebhooksGet: API.OperationMethod<
-  DestinationsWebhooksGetRequest,
-  DestinationsWebhooksGetResponse,
-  DestinationsWebhooksGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DestinationsWebhooksGetRequest,
-  output: DestinationsWebhooksGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DestinationsWebhooksListError = CloudflareOpError;
-/** Gets a list of all configured webhook destinations. */
-export const destinationsWebhooksList: API.OperationMethod<
-  DestinationsWebhooksListRequest,
-  DestinationsWebhooksListResponse,
-  DestinationsWebhooksListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DestinationsWebhooksListRequest,
-  output: DestinationsWebhooksListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DestinationsWebhooksUpdateError = CloudflareOpError;
-/** Update a webhook destination. */
-export const destinationsWebhooksUpdate: API.OperationMethod<
-  DestinationsWebhooksUpdateRequest,
-  DestinationsWebhooksUpdateResponse,
-  DestinationsWebhooksUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DestinationsWebhooksUpdateRequest,
-  output: DestinationsWebhooksUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type HistoryListError = CloudflareOpError;
-/** Gets a list of history records for notifications sent to an account. The records are displayed for last `x` number of days based on the zone plan (free = 30, pro = 30, biz = 30, ent = 90). */
-export const historyList: API.OperationMethod<
-  HistoryListRequest,
-  HistoryListResponse,
-  HistoryListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HistoryListRequest,
-  output: HistoryListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PoliciesCreateError = CloudflareOpError;
+export type CreatePolicyError =
+  | InvalidRoute
+  | FiltersRequired
+  | MechanismRequired
+  | CloudflareOpError;
 /** Creates a new Notification policy. */
-export const policiesCreate: API.OperationMethod<
-  PoliciesCreateRequest,
-  PoliciesCreateResponse,
-  PoliciesCreateError,
+export const createPolicy: API.OperationMethod<
+  CreatePolicyRequest,
+  CreatePolicyResponse,
+  CreatePolicyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesCreateRequest,
-  output: PoliciesCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreatePolicyRequest,
+  output: CreatePolicyResponse,
+  errors: [
+    InvalidRoute,
+    FiltersRequired,
+    MechanismRequired,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type PoliciesDeleteError = CloudflareOpError;
-/** Delete a Notification policy. */
-export const policiesDelete: API.OperationMethod<
-  PoliciesDeleteRequest,
-  PoliciesDeleteResponse,
-  PoliciesDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesDeleteRequest,
-  output: PoliciesDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PoliciesGetError = CloudflareOpError;
-/** Get details for a single policy. */
-export const policiesGet: API.OperationMethod<
-  PoliciesGetRequest,
-  PoliciesGetResponse,
-  PoliciesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesGetRequest,
-  output: PoliciesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PoliciesListError = CloudflareOpError;
-/** Get a list of all Notification policies. */
-export const policiesList: API.OperationMethod<
-  PoliciesListRequest,
-  PoliciesListResponse,
-  PoliciesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesListRequest,
-  output: PoliciesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PoliciesUpdateError = CloudflareOpError;
-/** Update a Notification policy. */
-export const policiesUpdate: API.OperationMethod<
-  PoliciesUpdateRequest,
-  PoliciesUpdateResponse,
-  PoliciesUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoliciesUpdateRequest,
-  output: PoliciesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SilencesCreateError = CloudflareOpError;
+export type CreateSilenceError =
+  | InvalidRoute
+  | InvalidSilence
+  | SilenceAlreadyExists
+  | CloudflareOpError;
 /** Creates a new silence for an account. */
-export const silencesCreate: API.OperationMethod<
-  SilencesCreateRequest,
-  SilencesCreateResponse,
-  SilencesCreateError,
+export const createSilence: API.OperationMethod<
+  CreateSilenceRequest,
+  CreateSilenceResponse,
+  CreateSilenceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SilencesCreateRequest,
-  output: SilencesCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateSilenceRequest,
+  output: CreateSilenceResponse,
+  errors: [
+    InvalidRoute,
+    InvalidSilence,
+    SilenceAlreadyExists,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SilencesDeleteError = CloudflareOpError;
+export type DeleteDestinationPagerdutyError = InvalidRoute | CloudflareOpError;
+/** Deletes all the PagerDuty Services connected to the account. */
+export const deleteDestinationPagerduty: API.OperationMethod<
+  DeleteDestinationPagerdutyRequest,
+  DeleteDestinationPagerdutyResponse,
+  DeleteDestinationPagerdutyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDestinationPagerdutyRequest,
+  output: DeleteDestinationPagerdutyResponse,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteDestinationWebhookError =
+  | InvalidRoute
+  | InternalServerError
+  | CloudflareOpError;
+/** Delete a configured webhook destination. */
+export const deleteDestinationWebhook: API.OperationMethod<
+  DeleteDestinationWebhookRequest,
+  DeleteDestinationWebhookResponse,
+  DeleteDestinationWebhookError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDestinationWebhookRequest,
+  output: DeleteDestinationWebhookResponse,
+  errors: [
+    InvalidRoute,
+    InternalServerError,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeletePolicyError =
+  | InvalidRoute
+  | PolicyNotFound
+  | CloudflareOpError;
+/** Delete a Notification policy. */
+export const deletePolicy: API.OperationMethod<
+  DeletePolicyRequest,
+  DeletePolicyResponse,
+  DeletePolicyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePolicyRequest,
+  output: DeletePolicyResponse,
+  errors: [
+    InvalidRoute,
+    PolicyNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSilenceError =
+  | InvalidRoute
+  | SilenceNotFound
+  | CloudflareOpError;
 /** Deletes an existing silence for an account. */
-export const silencesDelete: API.OperationMethod<
-  SilencesDeleteRequest,
-  SilencesDeleteResponse,
-  SilencesDeleteError,
+export const deleteSilence: API.OperationMethod<
+  DeleteSilenceRequest,
+  DeleteSilenceResponse,
+  DeleteSilenceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SilencesDeleteRequest,
-  output: SilencesDeleteResponse,
+  input: DeleteSilenceRequest,
+  output: DeleteSilenceResponse,
+  errors: [
+    InvalidRoute,
+    SilenceNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetDestinationEligibleError = InvalidRoute | CloudflareOpError;
+/** Get a list of all delivery mechanism types for which an account is eligible. */
+export const getDestinationEligible: API.OperationMethod<
+  GetDestinationEligibleRequest,
+  GetDestinationEligibleResponse,
+  GetDestinationEligibleError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDestinationEligibleRequest,
+  output: GetDestinationEligibleResponse,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetDestinationPagerdutyError = CloudflareOpError;
+/** Get a list of all configured PagerDuty services. */
+export const getDestinationPagerduty: API.OperationMethod<
+  GetDestinationPagerdutyRequest,
+  GetDestinationPagerdutyResponse,
+  GetDestinationPagerdutyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDestinationPagerdutyRequest,
+  output: GetDestinationPagerdutyResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SilencesGetError = CloudflareOpError;
+export type GetDestinationWebhookError =
+  | InvalidRoute
+  | WebhookNotFound
+  | CloudflareOpError;
+/** Get details for a single webhooks destination. */
+export const getDestinationWebhook: API.OperationMethod<
+  GetDestinationWebhookRequest,
+  GetDestinationWebhookResponse,
+  GetDestinationWebhookError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDestinationWebhookRequest,
+  output: GetDestinationWebhookResponse,
+  errors: [
+    InvalidRoute,
+    WebhookNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetPolicyError = InvalidRoute | PolicyNotFound | CloudflareOpError;
+/** Get details for a single policy. */
+export const getPolicy: API.OperationMethod<
+  GetPolicyRequest,
+  GetPolicyResponse,
+  GetPolicyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPolicyRequest,
+  output: GetPolicyResponse,
+  errors: [
+    InvalidRoute,
+    PolicyNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSilenceError =
+  | InvalidRoute
+  | InternalServerError
+  | SilenceNotFound
+  | CloudflareOpError;
 /** Gets a specific silence for an account. */
-export const silencesGet: API.OperationMethod<
-  SilencesGetRequest,
-  SilencesGetResponse,
-  SilencesGetError,
+export const getSilence: API.OperationMethod<
+  GetSilenceRequest,
+  GetSilenceResponse,
+  GetSilenceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SilencesGetRequest,
-  output: SilencesGetResponse,
+  input: GetSilenceRequest,
+  output: GetSilenceResponse,
+  errors: [
+    InvalidRoute,
+    InternalServerError,
+    SilenceNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type LinkDestinationPagerdutyError = InvalidRoute | CloudflareOpError;
+/** Links PagerDuty with the account using the integration token. */
+export const linkDestinationPagerduty: API.OperationMethod<
+  LinkDestinationPagerdutyRequest,
+  LinkDestinationPagerdutyResponse,
+  LinkDestinationPagerdutyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: LinkDestinationPagerdutyRequest,
+  output: LinkDestinationPagerdutyResponse,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListAvailableAlertsError = InvalidRoute | CloudflareOpError;
+/** Gets a list of all alert types for which an account is eligible. */
+export const listAvailableAlerts: API.OperationMethod<
+  ListAvailableAlertsRequest,
+  ListAvailableAlertsResponse,
+  ListAvailableAlertsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAvailableAlertsRequest,
+  output: ListAvailableAlertsResponse,
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListDestinationWebhooksError = CloudflareOpError;
+/** Gets a list of all configured webhook destinations. */
+export const listDestinationWebhooks: API.OperationMethod<
+  ListDestinationWebhooksRequest,
+  ListDestinationWebhooksResponse,
+  ListDestinationWebhooksError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDestinationWebhooksRequest,
+  output: ListDestinationWebhooksResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SilencesListError = CloudflareOpError;
+export type ListHistoriesError = CloudflareOpError;
+/** Gets a list of history records for notifications sent to an account. The records are displayed for last `x` number of days based on the zone plan (free = 30, pro = 30, biz = 30, ent = 90). */
+export const listHistories: API.OperationMethod<
+  ListHistoriesRequest,
+  ListHistoriesResponse,
+  ListHistoriesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListHistoriesRequest,
+  output: ListHistoriesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListPoliciesError = CloudflareOpError;
+/** Get a list of all Notification policies. */
+export const listPolicies: API.OperationMethod<
+  ListPoliciesRequest,
+  ListPoliciesResponse,
+  ListPoliciesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPoliciesRequest,
+  output: ListPoliciesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSilencesError = CloudflareOpError;
 /** Gets a list of silences for an account. */
-export const silencesList: API.OperationMethod<
-  SilencesListRequest,
-  SilencesListResponse,
-  SilencesListError,
+export const listSilences: API.OperationMethod<
+  ListSilencesRequest,
+  ListSilencesResponse,
+  ListSilencesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SilencesListRequest,
-  output: SilencesListResponse,
+  input: ListSilencesRequest,
+  output: ListSilencesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SilencesUpdateError = CloudflareOpError;
-/** Updates existing silences for an account. */
-export const silencesUpdate: API.OperationMethod<
-  SilencesUpdateRequest,
-  SilencesUpdateResponse,
-  SilencesUpdateError,
+export type UpdateDestinationWebhookError =
+  | InvalidRoute
+  | InvalidWebhookId
+  | WebhookTestFailed
+  | CloudflareOpError;
+/** Update a webhook destination. */
+export const updateDestinationWebhook: API.OperationMethod<
+  UpdateDestinationWebhookRequest,
+  UpdateDestinationWebhookResponse,
+  UpdateDestinationWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SilencesUpdateRequest,
-  output: SilencesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateDestinationWebhookRequest,
+  output: UpdateDestinationWebhookResponse,
+  errors: [
+    InvalidRoute,
+    InvalidWebhookId,
+    WebhookTestFailed,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdatePolicyError =
+  | InvalidRoute
+  | PolicyNotFound
+  | InvalidAlertType
+  | MechanismRequired
+  | CloudflareOpError;
+/** Update a Notification policy. */
+export const updatePolicy: API.OperationMethod<
+  UpdatePolicyRequest,
+  UpdatePolicyResponse,
+  UpdatePolicyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePolicyRequest,
+  output: UpdatePolicyResponse,
+  errors: [
+    InvalidRoute,
+    PolicyNotFound,
+    InvalidAlertType,
+    MechanismRequired,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateSilenceError =
+  | SilenceNotFound
+  | InvalidSilence
+  | CloudflareOpError;
+/** Updates existing silences for an account. */
+export const updateSilence: API.OperationMethod<
+  UpdateSilenceRequest,
+  UpdateSilenceResponse,
+  UpdateSilenceError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateSilenceRequest,
+  output: UpdateSilenceResponse,
+  errors: [
+    SilenceNotFound,
+    InvalidSilence,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

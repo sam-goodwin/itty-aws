@@ -9,7 +9,7 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface RegionalServicesPrefixBindingsCreateRequest {
+export interface CreateRegionalServicePrefixBindingRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
   /** IP prefix in CIDR notation to bind. */
@@ -19,7 +19,7 @@ export interface RegionalServicesPrefixBindingsCreateRequest {
   /** Region key from managed regions (e.g., "us", "eu"). */
   regionKey: string;
 }
-export const RegionalServicesPrefixBindingsCreateRequest =
+export const CreateRegionalServicePrefixBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
@@ -34,11 +34,11 @@ export const RegionalServicesPrefixBindingsCreateRequest =
       }),
     ),
   ).annotate({
-    identifier: "RegionalServicesPrefixBindingsCreateRequest",
-  }) as any as S.Schema<RegionalServicesPrefixBindingsCreateRequest>;
+    identifier: "CreateRegionalServicePrefixBindingRequest",
+  }) as any as S.Schema<CreateRegionalServicePrefixBindingRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RegionalServicesPrefixBindingsCreateResponse {
+export interface CreateRegionalServicePrefixBindingResponse {
   /** The ID of the binding. */
   id: string;
   /** The CIDR that is bound. */
@@ -48,7 +48,7 @@ export interface RegionalServicesPrefixBindingsCreateResponse {
   /** The region key used for the binding. */
   regionKey: string;
 }
-export const RegionalServicesPrefixBindingsCreateResponse =
+export const CreateRegionalServicePrefixBindingResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.String,
@@ -57,16 +57,16 @@ export const RegionalServicesPrefixBindingsCreateResponse =
       regionKey: S.String.pipe(T.Body("region_key")),
     }),
   ).annotate({
-    identifier: "RegionalServicesPrefixBindingsCreateResponse",
-  }) as any as S.Schema<RegionalServicesPrefixBindingsCreateResponse>;
+    identifier: "CreateRegionalServicePrefixBindingResponse",
+  }) as any as S.Schema<CreateRegionalServicePrefixBindingResponse>;
 
-export interface RegionalServicesPrefixBindingsDeleteRequest {
+export interface DeleteRegionalServicePrefixBindingRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
   /** Unique identifier for the prefix binding. */
   bindingId: string;
 }
-export const RegionalServicesPrefixBindingsDeleteRequest =
+export const DeleteRegionalServicePrefixBindingRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
@@ -79,70 +79,67 @@ export const RegionalServicesPrefixBindingsDeleteRequest =
       }),
     ),
   ).annotate({
-    identifier: "RegionalServicesPrefixBindingsDeleteRequest",
-  }) as any as S.Schema<RegionalServicesPrefixBindingsDeleteRequest>;
+    identifier: "DeleteRegionalServicePrefixBindingRequest",
+  }) as any as S.Schema<DeleteRegionalServicePrefixBindingRequest>;
 
-export interface RegionalServicesPrefixBindingsDeleteResponse {}
-export const RegionalServicesPrefixBindingsDeleteResponse =
+export interface DeleteRegionalServicePrefixBindingResponse {}
+export const DeleteRegionalServicePrefixBindingResponse =
   /*@__PURE__*/ S.suspend(() => S.Struct({})).annotate({
-    identifier: "RegionalServicesPrefixBindingsDeleteResponse",
-  }) as any as S.Schema<RegionalServicesPrefixBindingsDeleteResponse>;
+    identifier: "DeleteRegionalServicePrefixBindingResponse",
+  }) as any as S.Schema<DeleteRegionalServicePrefixBindingResponse>;
 
-export interface RegionalServicesPrefixBindingsEditRequest {
+export interface GetRegionRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
-  /** Unique identifier for the prefix binding. */
-  bindingId: string;
-  /** New region key to assign (e.g., "us", "eu", "cfcanary"). */
-  regionKey: string;
+  /** UUID of the region (custom or managed) or region_key of a managed region. */
+  regionId: string;
 }
-export const RegionalServicesPrefixBindingsEditRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      bindingId: S.String.pipe(T.Label("binding_id")),
-      regionKey: S.String.pipe(T.Body("region_key")),
-    }).pipe(
-      T.Http({
-        method: "PATCH",
-        uri: "/accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "RegionalServicesPrefixBindingsEditRequest",
-  }) as any as S.Schema<RegionalServicesPrefixBindingsEditRequest>;
+export const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    regionId: S.String.pipe(T.Label("region_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/dls/regions/{region_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetRegionRequest",
+}) as any as S.Schema<GetRegionRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RegionalServicesPrefixBindingsEditResponse {
-  /** The ID of the binding. */
+export interface GetRegionResponse {
   id: string;
-  /** The CIDR that is bound. */
-  cidr: string;
-  /** The ID of the parent prefix. */
-  prefixId: string;
-  /** The region key used for the binding. */
+  createdOn: string;
+  modifiedOn: string;
+  name: string;
   regionKey: string;
+  version: number;
+  versionCreatedOn: string;
 }
-export const RegionalServicesPrefixBindingsEditResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cidr: S.String,
-      prefixId: S.String.pipe(T.Body("prefix_id")),
-      regionKey: S.String.pipe(T.Body("region_key")),
-    }),
-  ).annotate({
-    identifier: "RegionalServicesPrefixBindingsEditResponse",
-  }) as any as S.Schema<RegionalServicesPrefixBindingsEditResponse>;
+export const GetRegionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    regionKey: S.String.pipe(T.Body("region_key")),
+    version: S.Number,
+    versionCreatedOn: S.String.pipe(T.Body("version_created_on")),
+  }),
+).annotate({
+  identifier: "GetRegionResponse",
+}) as any as S.Schema<GetRegionResponse>;
 
-export interface RegionalServicesPrefixBindingsGetRequest {
+export interface GetRegionalServicePrefixBindingRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
   /** Unique identifier for the prefix binding. */
   bindingId: string;
 }
-export const RegionalServicesPrefixBindingsGetRequest = /*@__PURE__*/ S.suspend(
+export const GetRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
@@ -155,11 +152,11 @@ export const RegionalServicesPrefixBindingsGetRequest = /*@__PURE__*/ S.suspend(
       }),
     ),
 ).annotate({
-  identifier: "RegionalServicesPrefixBindingsGetRequest",
-}) as any as S.Schema<RegionalServicesPrefixBindingsGetRequest>;
+  identifier: "GetRegionalServicePrefixBindingRequest",
+}) as any as S.Schema<GetRegionalServicePrefixBindingRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RegionalServicesPrefixBindingsGetResponse {
+export interface GetRegionalServicePrefixBindingResponse {
   /** The ID of the binding. */
   id: string;
   /** The CIDR that is bound. */
@@ -169,27 +166,27 @@ export interface RegionalServicesPrefixBindingsGetResponse {
   /** The region key used for the binding. */
   regionKey: string;
 }
-export const RegionalServicesPrefixBindingsGetResponse =
-  /*@__PURE__*/ S.suspend(() =>
+export const GetRegionalServicePrefixBindingResponse = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       id: S.String,
       cidr: S.String,
       prefixId: S.String.pipe(T.Body("prefix_id")),
       regionKey: S.String.pipe(T.Body("region_key")),
     }),
-  ).annotate({
-    identifier: "RegionalServicesPrefixBindingsGetResponse",
-  }) as any as S.Schema<RegionalServicesPrefixBindingsGetResponse>;
+).annotate({
+  identifier: "GetRegionalServicePrefixBindingResponse",
+}) as any as S.Schema<GetRegionalServicePrefixBindingResponse>;
 
-export interface RegionalServicesPrefixBindingsListRequest {
+export interface ListRegionalServicePrefixBindingsRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
   /** Opaque token for cursor-based pagination. Omit for the first page. Pass the value from a previous response to fetch the next page. */
   cursor?: string;
   perPage?: number;
 }
-export const RegionalServicesPrefixBindingsListRequest =
-  /*@__PURE__*/ S.suspend(() =>
+export const ListRegionalServicePrefixBindingsRequest = /*@__PURE__*/ S.suspend(
+  () =>
     S.Struct({
       accountId: S.String.pipe(T.Label("account_id")),
       cursor: S.optional(S.String.pipe(T.Query())),
@@ -201,9 +198,9 @@ export const RegionalServicesPrefixBindingsListRequest =
         code: 200,
       }),
     ),
-  ).annotate({
-    identifier: "RegionalServicesPrefixBindingsListRequest",
-  }) as any as S.Schema<RegionalServicesPrefixBindingsListRequest>;
+).annotate({
+  identifier: "ListRegionalServicePrefixBindingsRequest",
+}) as any as S.Schema<ListRegionalServicePrefixBindingsRequest>;
 
 export interface RegionalServicesPrefixBindingsListResultItem {
   /** The ID of the binding. */
@@ -234,11 +231,11 @@ export const RegionalServicesPrefixBindingsListResultList =
     RegionalServicesPrefixBindingsListResultItem,
   ) as any as S.Schema<RegionalServicesPrefixBindingsListResultList>;
 
-export interface RegionalServicesPrefixBindingsListResponse {
+export interface ListRegionalServicePrefixBindingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RegionalServicesPrefixBindingsListResultList;
 }
-export const RegionalServicesPrefixBindingsListResponse =
+export const ListRegionalServicePrefixBindingsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       result: S.optional(
@@ -246,58 +243,13 @@ export const RegionalServicesPrefixBindingsListResponse =
       ),
     }),
   ).annotate({
-    identifier: "RegionalServicesPrefixBindingsListResponse",
-  }) as any as S.Schema<RegionalServicesPrefixBindingsListResponse>;
-
-export interface RegionsGetRequest {
-  /** Identifier of a Cloudflare account. */
-  accountId: string;
-  /** UUID of the region (custom or managed) or region_key of a managed region. */
-  regionId: string;
-}
-export const RegionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    regionId: S.String.pipe(T.Label("region_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/dls/regions/{region_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RegionsGetRequest",
-}) as any as S.Schema<RegionsGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RegionsGetResponse {
-  id: string;
-  createdOn: string;
-  modifiedOn: string;
-  name: string;
-  regionKey: string;
-  version: number;
-  versionCreatedOn: string;
-}
-export const RegionsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    regionKey: S.String.pipe(T.Body("region_key")),
-    version: S.Number,
-    versionCreatedOn: S.String.pipe(T.Body("version_created_on")),
-  }),
-).annotate({
-  identifier: "RegionsGetResponse",
-}) as any as S.Schema<RegionsGetResponse>;
+    identifier: "ListRegionalServicePrefixBindingsResponse",
+  }) as any as S.Schema<ListRegionalServicePrefixBindingsResponse>;
 
 export type RegionsListRequestType = "managed" | "custom" | (string & {});
 export const RegionsListRequestType = /*@__PURE__*/ S.String;
 
-export interface RegionsListRequest {
+export interface ListRegionsRequest {
   /** Identifier of a Cloudflare account. */
   accountId: string;
   /** Opaque token for cursor-based pagination. Omit for the first page. Pass the value from a previous response to fetch the next page. */
@@ -306,7 +258,7 @@ export interface RegionsListRequest {
   /** Filter regions by type. Omit to return all regions. */
   type?: RegionsListRequestType;
 }
-export const RegionsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -320,8 +272,8 @@ export const RegionsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RegionsListRequest",
-}) as any as S.Schema<RegionsListRequest>;
+  identifier: "ListRegionsRequest",
+}) as any as S.Schema<ListRegionsRequest>;
 
 export interface RegionsListResultItem {
   id: string;
@@ -351,112 +303,160 @@ export const RegionsListResultList = /*@__PURE__*/ S.Array(
   RegionsListResultItem,
 ) as any as S.Schema<RegionsListResultList>;
 
-export interface RegionsListResponse {
+export interface ListRegionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RegionsListResultList;
 }
-export const RegionsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RegionsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RegionsListResponse",
-}) as any as S.Schema<RegionsListResponse>;
+  identifier: "ListRegionsResponse",
+}) as any as S.Schema<ListRegionsResponse>;
 
-export type RegionalServicesPrefixBindingsCreateError = CloudflareOpError;
+export interface PatchRegionalServicePrefixBindingRequest {
+  /** Identifier of a Cloudflare account. */
+  accountId: string;
+  /** Unique identifier for the prefix binding. */
+  bindingId: string;
+  /** New region key to assign (e.g., "us", "eu", "cfcanary"). */
+  regionKey: string;
+}
+export const PatchRegionalServicePrefixBindingRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      bindingId: S.String.pipe(T.Label("binding_id")),
+      regionKey: S.String.pipe(T.Body("region_key")),
+    }).pipe(
+      T.Http({
+        method: "PATCH",
+        uri: "/accounts/{account_id}/dls/regional_services/prefix_bindings/{binding_id}",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "PatchRegionalServicePrefixBindingRequest",
+}) as any as S.Schema<PatchRegionalServicePrefixBindingRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchRegionalServicePrefixBindingResponse {
+  /** The ID of the binding. */
+  id: string;
+  /** The CIDR that is bound. */
+  cidr: string;
+  /** The ID of the parent prefix. */
+  prefixId: string;
+  /** The region key used for the binding. */
+  regionKey: string;
+}
+export const PatchRegionalServicePrefixBindingResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cidr: S.String,
+      prefixId: S.String.pipe(T.Body("prefix_id")),
+      regionKey: S.String.pipe(T.Body("region_key")),
+    }),
+  ).annotate({
+    identifier: "PatchRegionalServicePrefixBindingResponse",
+  }) as any as S.Schema<PatchRegionalServicePrefixBindingResponse>;
+
+export type CreateRegionalServicePrefixBindingError = CloudflareOpError;
 /** Create a DLS prefix binding */
-export const regionalServicesPrefixBindingsCreate: API.OperationMethod<
-  RegionalServicesPrefixBindingsCreateRequest,
-  RegionalServicesPrefixBindingsCreateResponse,
-  RegionalServicesPrefixBindingsCreateError,
+export const createRegionalServicePrefixBinding: API.OperationMethod<
+  CreateRegionalServicePrefixBindingRequest,
+  CreateRegionalServicePrefixBindingResponse,
+  CreateRegionalServicePrefixBindingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegionalServicesPrefixBindingsCreateRequest,
-  output: RegionalServicesPrefixBindingsCreateResponse,
+  input: CreateRegionalServicePrefixBindingRequest,
+  output: CreateRegionalServicePrefixBindingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RegionalServicesPrefixBindingsDeleteError = CloudflareOpError;
+export type DeleteRegionalServicePrefixBindingError = CloudflareOpError;
 /** Delete a DLS prefix binding */
-export const regionalServicesPrefixBindingsDelete: API.OperationMethod<
-  RegionalServicesPrefixBindingsDeleteRequest,
-  RegionalServicesPrefixBindingsDeleteResponse,
-  RegionalServicesPrefixBindingsDeleteError,
+export const deleteRegionalServicePrefixBinding: API.OperationMethod<
+  DeleteRegionalServicePrefixBindingRequest,
+  DeleteRegionalServicePrefixBindingResponse,
+  DeleteRegionalServicePrefixBindingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegionalServicesPrefixBindingsDeleteRequest,
-  output: RegionalServicesPrefixBindingsDeleteResponse,
+  input: DeleteRegionalServicePrefixBindingRequest,
+  output: DeleteRegionalServicePrefixBindingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RegionalServicesPrefixBindingsEditError = CloudflareOpError;
-/** Update a DLS prefix binding */
-export const regionalServicesPrefixBindingsEdit: API.OperationMethod<
-  RegionalServicesPrefixBindingsEditRequest,
-  RegionalServicesPrefixBindingsEditResponse,
-  RegionalServicesPrefixBindingsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RegionalServicesPrefixBindingsEditRequest,
-  output: RegionalServicesPrefixBindingsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RegionalServicesPrefixBindingsGetError = CloudflareOpError;
-/** Get a DLS prefix binding */
-export const regionalServicesPrefixBindingsGet: API.OperationMethod<
-  RegionalServicesPrefixBindingsGetRequest,
-  RegionalServicesPrefixBindingsGetResponse,
-  RegionalServicesPrefixBindingsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RegionalServicesPrefixBindingsGetRequest,
-  output: RegionalServicesPrefixBindingsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RegionalServicesPrefixBindingsListError = CloudflareOpError;
-/** List DLS prefix bindings for an account */
-export const regionalServicesPrefixBindingsList: API.OperationMethod<
-  RegionalServicesPrefixBindingsListRequest,
-  RegionalServicesPrefixBindingsListResponse,
-  RegionalServicesPrefixBindingsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RegionalServicesPrefixBindingsListRequest,
-  output: RegionalServicesPrefixBindingsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RegionsGetError = CloudflareOpError;
+export type GetRegionError = CloudflareOpError;
 /** Get a DLS region */
-export const regionsGet: API.OperationMethod<
-  RegionsGetRequest,
-  RegionsGetResponse,
-  RegionsGetError,
+export const getRegion: API.OperationMethod<
+  GetRegionRequest,
+  GetRegionResponse,
+  GetRegionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegionsGetRequest,
-  output: RegionsGetResponse,
+  input: GetRegionRequest,
+  output: GetRegionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RegionsListError = CloudflareOpError;
-/** List DLS regions for an account */
-export const regionsList: API.OperationMethod<
-  RegionsListRequest,
-  RegionsListResponse,
-  RegionsListError,
+export type GetRegionalServicePrefixBindingError = CloudflareOpError;
+/** Get a DLS prefix binding */
+export const getRegionalServicePrefixBinding: API.OperationMethod<
+  GetRegionalServicePrefixBindingRequest,
+  GetRegionalServicePrefixBindingResponse,
+  GetRegionalServicePrefixBindingError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegionsListRequest,
-  output: RegionsListResponse,
+  input: GetRegionalServicePrefixBindingRequest,
+  output: GetRegionalServicePrefixBindingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListRegionalServicePrefixBindingsError = CloudflareOpError;
+/** List DLS prefix bindings for an account */
+export const listRegionalServicePrefixBindings: API.OperationMethod<
+  ListRegionalServicePrefixBindingsRequest,
+  ListRegionalServicePrefixBindingsResponse,
+  ListRegionalServicePrefixBindingsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRegionalServicePrefixBindingsRequest,
+  output: ListRegionalServicePrefixBindingsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListRegionsError = CloudflareOpError;
+/** List DLS regions for an account */
+export const listRegions: API.OperationMethod<
+  ListRegionsRequest,
+  ListRegionsResponse,
+  ListRegionsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRegionsRequest,
+  output: ListRegionsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchRegionalServicePrefixBindingError = CloudflareOpError;
+/** Update a DLS prefix binding */
+export const patchRegionalServicePrefixBinding: API.OperationMethod<
+  PatchRegionalServicePrefixBindingRequest,
+  PatchRegionalServicePrefixBindingResponse,
+  PatchRegionalServicePrefixBindingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchRegionalServicePrefixBindingRequest,
+  output: PatchRegionalServicePrefixBindingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

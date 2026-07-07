@@ -9,11 +9,19 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface ConfigGetRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export interface GetConfigRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const ConfigGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -24,11 +32,11 @@ export const ConfigGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConfigGetRequest",
-}) as any as S.Schema<ConfigGetRequest>;
+  identifier: "GetConfigRequest",
+}) as any as S.Schema<GetConfigRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConfigGetResponse {
+export interface GetConfigResponse {
   /** Enables or disables Google Tag Gateway for this zone. */
   enabled: boolean;
   /** Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics). */
@@ -40,7 +48,7 @@ export interface ConfigGetResponse {
   /** Set up the associated Google Tag on the zone automatically when enabled. */
   setUpTag?: boolean;
 }
-export const ConfigGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     endpoint: S.String,
@@ -49,10 +57,10 @@ export const ConfigGetResponse = /*@__PURE__*/ S.suspend(() =>
     setUpTag: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "ConfigGetResponse",
-}) as any as S.Schema<ConfigGetResponse>;
+  identifier: "GetConfigResponse",
+}) as any as S.Schema<GetConfigResponse>;
 
-export interface ConfigUpdateRequest {
+export interface PutConfigRequest {
   /** Identifier. */
   zoneId: string;
   /** Enables or disables Google Tag Gateway for this zone. */
@@ -66,7 +74,7 @@ export interface ConfigUpdateRequest {
   /** Set up the associated Google Tag on the zone automatically when enabled. */
   setUpTag?: boolean;
 }
-export const ConfigUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.Boolean,
@@ -82,11 +90,11 @@ export const ConfigUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConfigUpdateRequest",
-}) as any as S.Schema<ConfigUpdateRequest>;
+  identifier: "PutConfigRequest",
+}) as any as S.Schema<PutConfigRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConfigUpdateResponse {
+export interface PutConfigResponse {
   /** Enables or disables Google Tag Gateway for this zone. */
   enabled: boolean;
   /** Specifies the endpoint path for proxying Google Tag Manager requests. Use an absolute path starting with '/', with no nested paths and alphanumeric characters only (e.g. /metrics). */
@@ -98,7 +106,7 @@ export interface ConfigUpdateResponse {
   /** Set up the associated Google Tag on the zone automatically when enabled. */
   setUpTag?: boolean;
 }
-export const ConfigUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     enabled: S.Boolean,
     endpoint: S.String,
@@ -107,33 +115,33 @@ export const ConfigUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     setUpTag: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "ConfigUpdateResponse",
-}) as any as S.Schema<ConfigUpdateResponse>;
+  identifier: "PutConfigResponse",
+}) as any as S.Schema<PutConfigResponse>;
 
-export type ConfigGetError = CloudflareOpError;
+export type GetConfigError = Forbidden | CloudflareOpError;
 /** Gets the Google Tag Gateway configuration for a zone. */
-export const configGet: API.OperationMethod<
-  ConfigGetRequest,
-  ConfigGetResponse,
-  ConfigGetError,
+export const getConfig: API.OperationMethod<
+  GetConfigRequest,
+  GetConfigResponse,
+  GetConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigGetRequest,
-  output: ConfigGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetConfigRequest,
+  output: GetConfigResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ConfigUpdateError = CloudflareOpError;
+export type PutConfigError = Forbidden | CloudflareOpError;
 /** Updates the Google Tag Gateway configuration for a zone. */
-export const configUpdate: API.OperationMethod<
-  ConfigUpdateRequest,
-  ConfigUpdateResponse,
-  ConfigUpdateError,
+export const putConfig: API.OperationMethod<
+  PutConfigRequest,
+  PutConfigResponse,
+  PutConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ConfigUpdateRequest,
-  output: ConfigUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PutConfigRequest,
+  output: PutConfigResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

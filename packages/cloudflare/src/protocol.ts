@@ -169,38 +169,70 @@ const encode = ({
   });
 
 /**
- * Pick the operation's typed error class for a failed response, if any of the
- * declared classes carries a matcher that matches the envelope failure. First
- * matching class wins, in declaration order.
+ * Whether one matcher matches one envelope error. Semantics mirror the
+ * distilled cloudflare SDK: every present field must match; a matcher (or a
+ * message object) with no constraints matches nothing.
+ */
+const matchesExpression = (
+  m: import("./traits.ts").ErrorMatcher,
+  code: number | undefined,
+  status: number,
+  message: string,
+): boolean => {
+  if (m.code === undefined && m.status === undefined && m.message === undefined)
+    return false;
+  if (m.code !== undefined && m.code !== code) return false;
+  if (m.status !== undefined && m.status !== status) return false;
+  if (m.message !== undefined) {
+    if (typeof m.message === "string") {
+      if (m.message !== message) return false;
+    } else {
+      const { includes, matches } = m.message;
+      if (includes === undefined && matches === undefined) return false;
+      if (includes !== undefined && !message.includes(includes)) return false;
+      if (matches !== undefined && !new RegExp(matches).test(message))
+        return false;
+    }
+  }
+  return true;
+};
+
+const matcherSpecificity = (m: import("./traits.ts").ErrorMatcher): number =>
+  (m.code !== undefined ? 1 : 0) +
+  (m.status !== undefined ? 1 : 0) +
+  (m.message !== undefined ? 1 : 0);
+
+/**
+ * Pick the operation's typed error class for a failed response: among all
+ * declared classes whose matchers match the envelope failure, the most
+ * specific matcher wins (ties break by declaration order).
  */
 const matchTypedError = (
   errorClasses: ReadonlyArray<unknown>,
   status: number,
   errors: ReadonlyArray<{ code?: number; message: string }>,
 ): unknown | undefined => {
+  let best:
+    | { cls: unknown; specificity: number; code?: number; message: string }
+    | undefined;
   for (const cls of errorClasses) {
     const matchers = getErrorMatchers(cls);
     if (!matchers) continue;
     for (const m of matchers) {
-      const matched = errors.some(
-        (e) =>
-          (m.code === undefined || e.code === m.code) &&
-          (m.status === undefined || status === m.status) &&
-          (m.message === undefined ||
-            e.message.toLowerCase().includes(m.message.includes.toLowerCase())),
-      );
-      if (matched) {
-        const src = errors.find(
-          (e) => m.code === undefined || e.code === m.code,
-        );
-        return new (cls as new (args: any) => unknown)({
-          code: src?.code ?? 0,
-          message: src?.message ?? `HTTP ${status}`,
-        });
+      for (const e of errors) {
+        if (!matchesExpression(m, e.code, status, e.message)) continue;
+        const specificity = matcherSpecificity(m);
+        if (!best || specificity > best.specificity) {
+          best = { cls, specificity, code: e.code, message: e.message };
+        }
       }
     }
   }
-  return undefined;
+  if (!best) return undefined;
+  return new (best.cls as new (args: any) => unknown)({
+    code: best.code ?? 0,
+    message: best.message,
+  });
 };
 
 const decode = ({

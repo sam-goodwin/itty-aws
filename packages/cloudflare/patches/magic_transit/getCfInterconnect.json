@@ -1,0 +1,30 @@
+{
+  "description": "Align magic_transit#CfInterconnectsGet with distilled cloudflare/magic-transit getCfInterconnect",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.magic_transit#CfInterconnectsGet",
+      "path": "/shapes/com.cloudflare.magic_transit#GetCfInterconnect"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.magic_transit#CfInterconnectsGetRequest",
+      "path": "/shapes/com.cloudflare.magic_transit#GetCfInterconnectRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.magic_transit#GetCfInterconnect/input/target",
+      "value": "com.cloudflare.magic_transit#GetCfInterconnectRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.magic_transit#CfInterconnectsGetResponse",
+      "path": "/shapes/com.cloudflare.magic_transit#GetCfInterconnectResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.magic_transit#GetCfInterconnect/output/target",
+      "value": "com.cloudflare.magic_transit#GetCfInterconnectResponse"
+    }
+  ]
+}

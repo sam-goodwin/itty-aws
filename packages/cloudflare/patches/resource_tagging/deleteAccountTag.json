@@ -1,0 +1,52 @@
+{
+  "description": "Align resource_tagging#AccountTagsDelete with distilled cloudflare/resource-tagging deleteAccountTag",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.resource_tagging#AccountTagsDelete",
+      "path": "/shapes/com.cloudflare.resource_tagging#DeleteAccountTag"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.resource_tagging#AccountTagsDeleteRequest",
+      "path": "/shapes/com.cloudflare.resource_tagging#DeleteAccountTagRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.resource_tagging#DeleteAccountTag/input/target",
+      "value": "com.cloudflare.resource_tagging#DeleteAccountTagRequest"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.resource_tagging#DeleteAccountTag/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.resource_tagging#Forbidden"
+        }
+      ]
+    }
+  ]
+}

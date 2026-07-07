@@ -9,7 +9,7 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface CreateRequest {
+export interface CreateTenantCustomNameserverRequest {
   /** Tenant identifier tag. */
   tenantTag: string;
   /** The FQDN of the name server. */
@@ -17,7 +17,7 @@ export interface CreateRequest {
   /** The number of the set that this name server belongs to. */
   nsSet?: number;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantTag: S.String.pipe(T.Label("tenant_tag")),
     nsName: S.String.pipe(T.Body("ns_name")),
@@ -29,7 +29,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreateTenantCustomNameserverRequest",
+}) as any as S.Schema<CreateTenantCustomNameserverRequest>;
 
 export type CreateResponseDnsRecordsItemType = "A" | "AAAA" | (string & {});
 export const CreateResponseDnsRecordsItemType = /*@__PURE__*/ S.String;
@@ -62,7 +64,7 @@ export type CreateResponseStatus =
 export const CreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
+export interface CreateTenantCustomNameserverResponse {
   /** A and AAAA records associated with the nameserver. */
   dnsRecords: CreateResponseDnsRecordsList;
   /** The FQDN of the name server. */
@@ -74,23 +76,26 @@ export interface CreateResponse {
   /** The number of the set that this name server belongs to. */
   nsSet?: number;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dnsRecords: CreateResponseDnsRecordsList.pipe(T.Body("dns_records")),
-    nsName: S.String.pipe(T.Body("ns_name")),
-    status: CreateResponseStatus,
-    zoneTag: S.String.pipe(T.Body("zone_tag")),
-    nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
-  }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+export const CreateTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      dnsRecords: CreateResponseDnsRecordsList.pipe(T.Body("dns_records")),
+      nsName: S.String.pipe(T.Body("ns_name")),
+      status: CreateResponseStatus,
+      zoneTag: S.String.pipe(T.Body("zone_tag")),
+      nsSet: S.optional(S.Number.pipe(T.Body("ns_set"))),
+    }),
+).annotate({
+  identifier: "CreateTenantCustomNameserverResponse",
+}) as any as S.Schema<CreateTenantCustomNameserverResponse>;
 
-export interface DeleteRequest {
+export interface DeleteTenantCustomNameserverRequest {
   /** Tenant identifier tag. */
   tenantTag: string;
   /** The FQDN of the name server. */
   customNsId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantTag: S.String.pipe(T.Label("tenant_tag")),
     customNsId: S.String.pipe(T.Label("custom_ns_id")),
@@ -101,28 +106,33 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeleteTenantCustomNameserverRequest",
+}) as any as S.Schema<DeleteTenantCustomNameserverRequest>;
 
 export type DeleteResultList = string[];
 export const DeleteResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<DeleteResultList>;
 
-export interface DeleteResponse {
+export interface DeleteTenantCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DeleteResultList;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(DeleteResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+export const DeleteTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      result: S.optional(DeleteResultList.pipe(T.EnvelopePayload())),
+    }),
+).annotate({
+  identifier: "DeleteTenantCustomNameserverResponse",
+}) as any as S.Schema<DeleteTenantCustomNameserverResponse>;
 
-export interface GetRequest {
+export interface GetTenantCustomNameserverRequest {
   /** Tenant identifier tag. */
   tenantTag: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetTenantCustomNameserverRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tenantTag: S.String.pipe(T.Label("tenant_tag")),
   }).pipe(
@@ -132,7 +142,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetTenantCustomNameserverRequest",
+}) as any as S.Schema<GetTenantCustomNameserverRequest>;
 
 export type GetResultItemDnsRecordsItemType = "A" | "AAAA" | (string & {});
 export const GetResultItemDnsRecordsItemType = /*@__PURE__*/ S.String;
@@ -191,54 +203,56 @@ export const GetResultList = /*@__PURE__*/ S.Array(
   GetResultItem,
 ) as any as S.Schema<GetResultList>;
 
-export interface GetResponse {
+export interface GetTenantCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: GetResultList;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetTenantCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(GetResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetTenantCustomNameserverResponse",
+}) as any as S.Schema<GetTenantCustomNameserverResponse>;
 
-export type CreateError = CloudflareOpError;
+export type CreateTenantCustomNameserverError = CloudflareOpError;
 /** Add Tenant Custom Nameserver */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createTenantCustomNameserver: API.OperationMethod<
+  CreateTenantCustomNameserverRequest,
+  CreateTenantCustomNameserverResponse,
+  CreateTenantCustomNameserverError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
+  input: CreateTenantCustomNameserverRequest,
+  output: CreateTenantCustomNameserverResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DeleteError = CloudflareOpError;
+export type DeleteTenantCustomNameserverError = CloudflareOpError;
 /** Delete Tenant Custom Nameserver */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteTenantCustomNameserver: API.OperationMethod<
+  DeleteTenantCustomNameserverRequest,
+  DeleteTenantCustomNameserverResponse,
+  DeleteTenantCustomNameserverError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
+  input: DeleteTenantCustomNameserverRequest,
+  output: DeleteTenantCustomNameserverResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
+export type GetTenantCustomNameserverError = CloudflareOpError;
 /** List a tenant's custom nameservers. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getTenantCustomNameserver: API.OperationMethod<
+  GetTenantCustomNameserverRequest,
+  GetTenantCustomNameserverResponse,
+  GetTenantCustomNameserverError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
+  input: GetTenantCustomNameserverRequest,
+  output: GetTenantCustomNameserverResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

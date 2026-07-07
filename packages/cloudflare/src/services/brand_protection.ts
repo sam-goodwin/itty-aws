@@ -9,292 +9,6 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export type LogoMatchesDownloadRequestLogoIdList = string[];
-export const LogoMatchesDownloadRequestLogoIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogoMatchesDownloadRequestLogoIdList>;
-
-export interface LogoMatchesDownloadRequest {
-  accountId: string;
-  limit?: string;
-  logoId?: LogoMatchesDownloadRequestLogoIdList;
-  offset?: string;
-}
-export const LogoMatchesDownloadRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    limit: S.optional(S.String.pipe(T.Query())),
-    logoId: S.optional(
-      LogoMatchesDownloadRequestLogoIdList.pipe(T.Query("logo_id")),
-    ),
-    offset: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/brand-protection/logo-matches/download",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LogoMatchesDownloadRequest",
-}) as any as S.Schema<LogoMatchesDownloadRequest>;
-
-export type LogoMatchesDownloadResponseMatchesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const LogoMatchesDownloadResponseMatchesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogoMatchesDownloadResponseMatchesItemMap>;
-
-export type LogoMatchesDownloadResponseMatchesList =
-  LogoMatchesDownloadResponseMatchesItemMap[];
-export const LogoMatchesDownloadResponseMatchesList = /*@__PURE__*/ S.Array(
-  LogoMatchesDownloadResponseMatchesItemMap,
-) as any as S.Schema<LogoMatchesDownloadResponseMatchesList>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LogoMatchesDownloadResponse {
-  matches?: LogoMatchesDownloadResponseMatchesList;
-  total?: number;
-}
-export const LogoMatchesDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matches: S.optional(LogoMatchesDownloadResponseMatchesList),
-    total: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "LogoMatchesDownloadResponse",
-}) as any as S.Schema<LogoMatchesDownloadResponse>;
-
-export type LogoMatchesGetRequestLogoIdList = string[];
-export const LogoMatchesGetRequestLogoIdList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<LogoMatchesGetRequestLogoIdList>;
-
-export interface LogoMatchesGetRequest {
-  accountId: string;
-  limit?: string;
-  logoId?: LogoMatchesGetRequestLogoIdList;
-  offset?: string;
-}
-export const LogoMatchesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    limit: S.optional(S.String.pipe(T.Query())),
-    logoId: S.optional(
-      LogoMatchesGetRequestLogoIdList.pipe(T.Query("logo_id")),
-    ),
-    offset: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/brand-protection/logo-matches",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LogoMatchesGetRequest",
-}) as any as S.Schema<LogoMatchesGetRequest>;
-
-export type LogoMatchesGetResponseMatchesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const LogoMatchesGetResponseMatchesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogoMatchesGetResponseMatchesItemMap>;
-
-export type LogoMatchesGetResponseMatchesList =
-  LogoMatchesGetResponseMatchesItemMap[];
-export const LogoMatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
-  LogoMatchesGetResponseMatchesItemMap,
-) as any as S.Schema<LogoMatchesGetResponseMatchesList>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LogoMatchesGetResponse {
-  matches?: LogoMatchesGetResponseMatchesList;
-  total?: number;
-}
-export const LogoMatchesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matches: S.optional(LogoMatchesGetResponseMatchesList),
-    total: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "LogoMatchesGetResponse",
-}) as any as S.Schema<LogoMatchesGetResponse>;
-
-export interface LogosCreateRequest {
-  accountId: string;
-  matchType?: string;
-  tag?: string;
-  threshold?: number;
-}
-export const LogosCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    matchType: S.optional(S.String.pipe(T.Query("match_type"))),
-    tag: S.optional(S.String.pipe(T.Query())),
-    threshold: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/brand-protection/logos",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LogosCreateRequest",
-}) as any as S.Schema<LogosCreateRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LogosCreateResponse {
-  id?: number;
-  tag?: string;
-  uploadPath?: string;
-}
-export const LogosCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.Number),
-    tag: S.optional(S.String),
-    uploadPath: S.optional(S.String.pipe(T.Body("upload_path"))),
-  }),
-).annotate({
-  identifier: "LogosCreateResponse",
-}) as any as S.Schema<LogosCreateResponse>;
-
-export interface LogosDeleteRequest {
-  accountId: string;
-  logoId: string;
-}
-export const LogosDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    logoId: S.String.pipe(T.Label("logo_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/brand-protection/logos/{logo_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LogosDeleteRequest",
-}) as any as S.Schema<LogosDeleteRequest>;
-
-export interface LogosDeleteResponse {}
-export const LogosDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LogosDeleteResponse",
-}) as any as S.Schema<LogosDeleteResponse>;
-
-export interface MatchesDownloadRequest {
-  accountId: string;
-  id?: string;
-  includeDomainId?: boolean;
-  limit?: number;
-  offset?: number;
-}
-export const MatchesDownloadRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    id: S.optional(S.String.pipe(T.Query())),
-    includeDomainId: S.optional(S.Boolean.pipe(T.Query("include_domain_id"))),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/brand-protection/matches/download",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MatchesDownloadRequest",
-}) as any as S.Schema<MatchesDownloadRequest>;
-
-export type MatchesDownloadResponseMatchesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const MatchesDownloadResponseMatchesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MatchesDownloadResponseMatchesItemMap>;
-
-export type MatchesDownloadResponseMatchesList =
-  MatchesDownloadResponseMatchesItemMap[];
-export const MatchesDownloadResponseMatchesList = /*@__PURE__*/ S.Array(
-  MatchesDownloadResponseMatchesItemMap,
-) as any as S.Schema<MatchesDownloadResponseMatchesList>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MatchesDownloadResponse {
-  matches?: MatchesDownloadResponseMatchesList;
-  total?: number;
-}
-export const MatchesDownloadResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matches: S.optional(MatchesDownloadResponseMatchesList),
-    total: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MatchesDownloadResponse",
-}) as any as S.Schema<MatchesDownloadResponse>;
-
-export interface MatchesGetRequest {
-  accountId: string;
-  id?: string;
-  includeDomainId?: boolean;
-  limit?: number;
-  offset?: number;
-}
-export const MatchesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    id: S.optional(S.String.pipe(T.Query())),
-    includeDomainId: S.optional(S.Boolean.pipe(T.Query("include_domain_id"))),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/brand-protection/matches",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MatchesGetRequest",
-}) as any as S.Schema<MatchesGetRequest>;
-
-export type MatchesGetResponseMatchesItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const MatchesGetResponseMatchesItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MatchesGetResponseMatchesItemMap>;
-
-export type MatchesGetResponseMatchesList = MatchesGetResponseMatchesItemMap[];
-export const MatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
-  MatchesGetResponseMatchesItemMap,
-) as any as S.Schema<MatchesGetResponseMatchesList>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface MatchesGetResponse {
-  matches?: MatchesGetResponseMatchesList;
-  total?: number;
-}
-export const MatchesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    matches: S.optional(MatchesGetResponseMatchesList),
-    total: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "MatchesGetResponse",
-}) as any as S.Schema<MatchesGetResponse>;
-
 export type QueriesBulkRequestQueriesItemMap = {
   [key: string]: unknown | undefined;
 };
@@ -308,11 +22,11 @@ export const QueriesBulkRequestQueriesList = /*@__PURE__*/ S.Array(
   QueriesBulkRequestQueriesItemMap,
 ) as any as S.Schema<QueriesBulkRequestQueriesList>;
 
-export interface QueriesBulkRequest {
+export interface BulkQueryRequest {
   accountId: string;
   queries?: QueriesBulkRequestQueriesList;
 }
-export const QueriesBulkRequest = /*@__PURE__*/ S.suspend(() =>
+export const BulkQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queries: S.optional(QueriesBulkRequestQueriesList),
@@ -324,17 +38,56 @@ export const QueriesBulkRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "QueriesBulkRequest",
-}) as any as S.Schema<QueriesBulkRequest>;
+  identifier: "BulkQueryRequest",
+}) as any as S.Schema<BulkQueryRequest>;
 
-export interface QueriesBulkResponse {}
-export const QueriesBulkResponse = /*@__PURE__*/ S.suspend(() =>
+export interface BulkQueryResponse {}
+export const BulkQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "QueriesBulkResponse",
-}) as any as S.Schema<QueriesBulkResponse>;
+  identifier: "BulkQueryResponse",
+}) as any as S.Schema<BulkQueryResponse>;
 
-export interface QueriesCreateRequest {
+export interface CreateLogoRequest {
+  accountId: string;
+  matchType?: string;
+  tag?: string;
+  threshold?: number;
+}
+export const CreateLogoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    matchType: S.optional(S.String.pipe(T.Query("match_type"))),
+    tag: S.optional(S.String.pipe(T.Query())),
+    threshold: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/brand-protection/logos",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateLogoRequest",
+}) as any as S.Schema<CreateLogoRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CreateLogoResponse {
+  id?: number;
+  tag?: string;
+  uploadPath?: string;
+}
+export const CreateLogoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.Number),
+    tag: S.optional(S.String),
+    uploadPath: S.optional(S.String.pipe(T.Body("upload_path"))),
+  }),
+).annotate({
+  identifier: "CreateLogoResponse",
+}) as any as S.Schema<CreateLogoResponse>;
+
+export interface CreateQueryRequest {
   accountId: string;
   id?: string;
   scan?: boolean;
@@ -345,7 +98,7 @@ export interface QueriesCreateRequest {
   stringMatches?: unknown;
   tag2?: string;
 }
-export const QueriesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -364,23 +117,92 @@ export const QueriesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "QueriesCreateRequest",
-}) as any as S.Schema<QueriesCreateRequest>;
+  identifier: "CreateQueryRequest",
+}) as any as S.Schema<CreateQueryRequest>;
 
-export interface QueriesCreateResponse {}
-export const QueriesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export interface CreateQueryResponse {}
+export const CreateQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "QueriesCreateResponse",
-}) as any as S.Schema<QueriesCreateResponse>;
+  identifier: "CreateQueryResponse",
+}) as any as S.Schema<CreateQueryResponse>;
 
-export interface QueriesDeleteRequest {
+export interface CreateV2LogoRequest {
+  accountId: string;
+  /** Base64 encoded image data. Can include data URI prefix (e.g., 'data:image/png;base64,...') or just the base64 string. */
+  imageData: string;
+  /** Minimum similarity score (0-1) required for visual matches */
+  similarityThreshold: number;
+  /** Unique identifier for the logo query */
+  tag: string;
+  /** If true, search historic scanned images for matches above the similarity threshold */
+  searchLookback?: boolean;
+}
+export const CreateV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    imageData: S.String.pipe(T.Body("image_data")),
+    similarityThreshold: S.Number.pipe(T.Body("similarity_threshold")),
+    tag: S.String,
+    searchLookback: S.optional(S.Boolean.pipe(T.Body("search_lookback"))),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateV2LogoRequest",
+}) as any as S.Schema<CreateV2LogoRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CreateV2LogoResponse {
+  message: string;
+  queryId?: number;
+}
+export const CreateV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    message: S.String,
+    queryId: S.optional(S.Number.pipe(T.Body("query_id"))),
+  }),
+).annotate({
+  identifier: "CreateV2LogoResponse",
+}) as any as S.Schema<CreateV2LogoResponse>;
+
+export interface DeleteLogoRequest {
+  accountId: string;
+  logoId: string;
+}
+export const DeleteLogoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    logoId: S.String.pipe(T.Label("logo_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/brand-protection/logos/{logo_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteLogoRequest",
+}) as any as S.Schema<DeleteLogoRequest>;
+
+export interface DeleteLogoResponse {}
+export const DeleteLogoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteLogoResponse",
+}) as any as S.Schema<DeleteLogoResponse>;
+
+export interface DeleteQueryRequest {
   accountId: string;
   id?: string;
   scan?: boolean;
   tag?: string;
 }
-export const QueriesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteQueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -394,111 +216,316 @@ export const QueriesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "QueriesDeleteRequest",
-}) as any as S.Schema<QueriesDeleteRequest>;
+  identifier: "DeleteQueryRequest",
+}) as any as S.Schema<DeleteQueryRequest>;
 
-export interface QueriesDeleteResponse {}
-export const QueriesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteQueryResponse {}
+export const DeleteQueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "QueriesDeleteResponse",
-}) as any as S.Schema<QueriesDeleteResponse>;
+  identifier: "DeleteQueryResponse",
+}) as any as S.Schema<DeleteQueryResponse>;
 
-export interface SubmitRequest {
+export interface DeleteV2LogoRequest {
   accountId: string;
+  queryId: string;
 }
-export const SubmitRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
+    queryId: S.String.pipe(T.Label("query_id")),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/brand-protection/submit",
+      method: "DELETE",
+      uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries/{query_id}",
       code: 200,
     }),
   ),
-).annotate({ identifier: "SubmitRequest" }) as any as S.Schema<SubmitRequest>;
-
-export type SubmitResponseSkippedUrlsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const SubmitResponseSkippedUrlsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SubmitResponseSkippedUrlsItemMap>;
-
-export type SubmitResponseSkippedUrlsList = SubmitResponseSkippedUrlsItemMap[];
-export const SubmitResponseSkippedUrlsList = /*@__PURE__*/ S.Array(
-  SubmitResponseSkippedUrlsItemMap,
-) as any as S.Schema<SubmitResponseSkippedUrlsList>;
-
-export type SubmitResponseSubmittedUrlsItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const SubmitResponseSubmittedUrlsItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<SubmitResponseSubmittedUrlsItemMap>;
-
-export type SubmitResponseSubmittedUrlsList =
-  SubmitResponseSubmittedUrlsItemMap[];
-export const SubmitResponseSubmittedUrlsList = /*@__PURE__*/ S.Array(
-  SubmitResponseSubmittedUrlsItemMap,
-) as any as S.Schema<SubmitResponseSubmittedUrlsList>;
+).annotate({
+  identifier: "DeleteV2LogoRequest",
+}) as any as S.Schema<DeleteV2LogoRequest>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface SubmitResponse {
-  skippedUrls?: SubmitResponseSkippedUrlsList;
-  submittedUrls?: SubmitResponseSubmittedUrlsList;
+export interface DeleteV2LogoResponse {
+  message: string;
 }
-export const SubmitResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    skippedUrls: S.optional(
-      SubmitResponseSkippedUrlsList.pipe(T.Body("skipped_urls")),
-    ),
-    submittedUrls: S.optional(
-      SubmitResponseSubmittedUrlsList.pipe(T.Body("submitted_urls")),
-    ),
+    message: S.String,
   }),
-).annotate({ identifier: "SubmitResponse" }) as any as S.Schema<SubmitResponse>;
+).annotate({
+  identifier: "DeleteV2LogoResponse",
+}) as any as S.Schema<DeleteV2LogoResponse>;
 
-export interface UrlInfoRequest {
+export type LogoMatchesDownloadRequestLogoIdList = string[];
+export const LogoMatchesDownloadRequestLogoIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<LogoMatchesDownloadRequestLogoIdList>;
+
+export interface DownloadLogoMatchRequest {
   accountId: string;
+  limit?: string;
+  logoId?: LogoMatchesDownloadRequestLogoIdList;
+  offset?: string;
 }
-export const UrlInfoRequest = /*@__PURE__*/ S.suspend(() =>
+export const DownloadLogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
+    limit: S.optional(S.String.pipe(T.Query())),
+    logoId: S.optional(
+      LogoMatchesDownloadRequestLogoIdList.pipe(T.Query("logo_id")),
+    ),
+    offset: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/accounts/{account_id}/brand-protection/url-info",
+      uri: "/accounts/{account_id}/brand-protection/logo-matches/download",
       code: 200,
     }),
   ),
-).annotate({ identifier: "UrlInfoRequest" }) as any as S.Schema<UrlInfoRequest>;
+).annotate({
+  identifier: "DownloadLogoMatchRequest",
+}) as any as S.Schema<DownloadLogoMatchRequest>;
 
-export type UrlInfoResultItemMap = { [key: string]: unknown | undefined };
-export const UrlInfoResultItemMap = /*@__PURE__*/ S.Record(
+export type LogoMatchesDownloadResponseMatchesItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const LogoMatchesDownloadResponseMatchesItemMap = /*@__PURE__*/ S.Record(
   S.String,
   S.Unknown,
-) as any as S.Schema<UrlInfoResultItemMap>;
+) as any as S.Schema<LogoMatchesDownloadResponseMatchesItemMap>;
 
-export type UrlInfoResultList = UrlInfoResultItemMap[];
-export const UrlInfoResultList = /*@__PURE__*/ S.Array(
-  UrlInfoResultItemMap,
-) as any as S.Schema<UrlInfoResultList>;
+export type LogoMatchesDownloadResponseMatchesList =
+  LogoMatchesDownloadResponseMatchesItemMap[];
+export const LogoMatchesDownloadResponseMatchesList = /*@__PURE__*/ S.Array(
+  LogoMatchesDownloadResponseMatchesItemMap,
+) as any as S.Schema<LogoMatchesDownloadResponseMatchesList>;
 
-export interface UrlInfoResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: UrlInfoResultList;
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface DownloadLogoMatchResponse {
+  matches?: LogoMatchesDownloadResponseMatchesList;
+  total?: number;
 }
-export const UrlInfoResponse = /*@__PURE__*/ S.suspend(() =>
+export const DownloadLogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(UrlInfoResultList.pipe(T.EnvelopePayload())),
+    matches: S.optional(LogoMatchesDownloadResponseMatchesList),
+    total: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "UrlInfoResponse",
-}) as any as S.Schema<UrlInfoResponse>;
+  identifier: "DownloadLogoMatchResponse",
+}) as any as S.Schema<DownloadLogoMatchResponse>;
+
+export interface DownloadMatchRequest {
+  accountId: string;
+  id?: string;
+  includeDomainId?: boolean;
+  limit?: number;
+  offset?: number;
+}
+export const DownloadMatchRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    id: S.optional(S.String.pipe(T.Query())),
+    includeDomainId: S.optional(S.Boolean.pipe(T.Query("include_domain_id"))),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/brand-protection/matches/download",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DownloadMatchRequest",
+}) as any as S.Schema<DownloadMatchRequest>;
+
+export type MatchesDownloadResponseMatchesItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const MatchesDownloadResponseMatchesItemMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MatchesDownloadResponseMatchesItemMap>;
+
+export type MatchesDownloadResponseMatchesList =
+  MatchesDownloadResponseMatchesItemMap[];
+export const MatchesDownloadResponseMatchesList = /*@__PURE__*/ S.Array(
+  MatchesDownloadResponseMatchesItemMap,
+) as any as S.Schema<MatchesDownloadResponseMatchesList>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface DownloadMatchResponse {
+  matches?: MatchesDownloadResponseMatchesList;
+  total?: number;
+}
+export const DownloadMatchResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    matches: S.optional(MatchesDownloadResponseMatchesList),
+    total: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DownloadMatchResponse",
+}) as any as S.Schema<DownloadMatchResponse>;
+
+export type LogoMatchesGetRequestLogoIdList = string[];
+export const LogoMatchesGetRequestLogoIdList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<LogoMatchesGetRequestLogoIdList>;
+
+export interface GetLogoMatchRequest {
+  accountId: string;
+  limit?: string;
+  logoId?: LogoMatchesGetRequestLogoIdList;
+  offset?: string;
+}
+export const GetLogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    limit: S.optional(S.String.pipe(T.Query())),
+    logoId: S.optional(
+      LogoMatchesGetRequestLogoIdList.pipe(T.Query("logo_id")),
+    ),
+    offset: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/brand-protection/logo-matches",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetLogoMatchRequest",
+}) as any as S.Schema<GetLogoMatchRequest>;
+
+export type LogoMatchesGetResponseMatchesItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const LogoMatchesGetResponseMatchesItemMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<LogoMatchesGetResponseMatchesItemMap>;
+
+export type LogoMatchesGetResponseMatchesList =
+  LogoMatchesGetResponseMatchesItemMap[];
+export const LogoMatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
+  LogoMatchesGetResponseMatchesItemMap,
+) as any as S.Schema<LogoMatchesGetResponseMatchesList>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetLogoMatchResponse {
+  matches?: LogoMatchesGetResponseMatchesList;
+  total?: number;
+}
+export const GetLogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    matches: S.optional(LogoMatchesGetResponseMatchesList),
+    total: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GetLogoMatchResponse",
+}) as any as S.Schema<GetLogoMatchResponse>;
+
+export interface GetMatchRequest {
+  accountId: string;
+  id?: string;
+  includeDomainId?: boolean;
+  limit?: number;
+  offset?: number;
+}
+export const GetMatchRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    id: S.optional(S.String.pipe(T.Query())),
+    includeDomainId: S.optional(S.Boolean.pipe(T.Query("include_domain_id"))),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/brand-protection/matches",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetMatchRequest",
+}) as any as S.Schema<GetMatchRequest>;
+
+export type MatchesGetResponseMatchesItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const MatchesGetResponseMatchesItemMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MatchesGetResponseMatchesItemMap>;
+
+export type MatchesGetResponseMatchesList = MatchesGetResponseMatchesItemMap[];
+export const MatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
+  MatchesGetResponseMatchesItemMap,
+) as any as S.Schema<MatchesGetResponseMatchesList>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetMatchResponse {
+  matches?: MatchesGetResponseMatchesList;
+  total?: number;
+}
+export const GetMatchResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    matches: S.optional(MatchesGetResponseMatchesList),
+    total: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GetMatchResponse",
+}) as any as S.Schema<GetMatchResponse>;
+
+export interface GetV2LogoRequest {
+  accountId: string;
+  /** Optional query ID to retrieve a specific logo query */
+  id?: string;
+  /** If true, include base64-encoded image data in the response */
+  download?: string;
+}
+export const GetV2LogoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    id: S.optional(S.String.pipe(T.Query())),
+    download: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetV2LogoRequest",
+}) as any as S.Schema<GetV2LogoRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetV2LogoResponse {
+  id: number;
+  r2Path: string;
+  similarityThreshold: number;
+  tag: string;
+  uploadedAt: string;
+  /** MIME type of the image (only present when download=true) */
+  contentType?: string;
+  /** Base64-encoded image data (only present when download=true) */
+  imageData?: string;
+}
+export const GetV2LogoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    r2Path: S.String.pipe(T.Body("r2_path")),
+    similarityThreshold: S.Number.pipe(T.Body("similarity_threshold")),
+    tag: S.String,
+    uploadedAt: S.String.pipe(T.Body("uploaded_at")),
+    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+    imageData: S.optional(S.String.pipe(T.Body("image_data"))),
+  }),
+).annotate({
+  identifier: "GetV2LogoResponse",
+}) as any as S.Schema<GetV2LogoResponse>;
 
 export type V2LogoMatchesGetRequestOrder = "asc" | "desc" | (string & {});
 export const V2LogoMatchesGetRequestOrder = /*@__PURE__*/ S.String;
@@ -511,7 +538,7 @@ export type V2LogoMatchesGetRequestOrderBy =
   | (string & {});
 export const V2LogoMatchesGetRequestOrderBy = /*@__PURE__*/ S.String;
 
-export interface V2LogoMatchesGetRequest {
+export interface GetV2LogoMatchRequest {
   accountId: string;
   queryId: string;
   download?: string;
@@ -522,7 +549,7 @@ export interface V2LogoMatchesGetRequest {
   /** Column to sort by. Options: 'matchedAt', 'domain', 'similarityScore', or 'registrar' */
   orderBy?: V2LogoMatchesGetRequestOrderBy;
 }
-export const V2LogoMatchesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetV2LogoMatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queryId: S.String.pipe(T.Query("query_id")),
@@ -539,8 +566,8 @@ export const V2LogoMatchesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "V2LogoMatchesGetRequest",
-}) as any as S.Schema<V2LogoMatchesGetRequest>;
+  identifier: "GetV2LogoMatchRequest",
+}) as any as S.Schema<GetV2LogoMatchRequest>;
 
 export interface V2LogoMatchesGetResponseMatchesItem {
   id: number;
@@ -576,141 +603,18 @@ export const V2LogoMatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<V2LogoMatchesGetResponseMatchesList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface V2LogoMatchesGetResponse {
+export interface GetV2LogoMatchResponse {
   matches: V2LogoMatchesGetResponseMatchesList;
   total: number;
 }
-export const V2LogoMatchesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetV2LogoMatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matches: V2LogoMatchesGetResponseMatchesList,
     total: S.Number,
   }),
 ).annotate({
-  identifier: "V2LogoMatchesGetResponse",
-}) as any as S.Schema<V2LogoMatchesGetResponse>;
-
-export interface V2LogosCreateRequest {
-  accountId: string;
-  /** Base64 encoded image data. Can include data URI prefix (e.g., 'data:image/png;base64,...') or just the base64 string. */
-  imageData: string;
-  /** Minimum similarity score (0-1) required for visual matches */
-  similarityThreshold: number;
-  /** Unique identifier for the logo query */
-  tag: string;
-  /** If true, search historic scanned images for matches above the similarity threshold */
-  searchLookback?: boolean;
-}
-export const V2LogosCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    imageData: S.String.pipe(T.Body("image_data")),
-    similarityThreshold: S.Number.pipe(T.Body("similarity_threshold")),
-    tag: S.String,
-    searchLookback: S.optional(S.Boolean.pipe(T.Body("search_lookback"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "V2LogosCreateRequest",
-}) as any as S.Schema<V2LogosCreateRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface V2LogosCreateResponse {
-  message: string;
-  queryId?: number;
-}
-export const V2LogosCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-    queryId: S.optional(S.Number.pipe(T.Body("query_id"))),
-  }),
-).annotate({
-  identifier: "V2LogosCreateResponse",
-}) as any as S.Schema<V2LogosCreateResponse>;
-
-export interface V2LogosDeleteRequest {
-  accountId: string;
-  queryId: string;
-}
-export const V2LogosDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    queryId: S.String.pipe(T.Label("query_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries/{query_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "V2LogosDeleteRequest",
-}) as any as S.Schema<V2LogosDeleteRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface V2LogosDeleteResponse {
-  message: string;
-}
-export const V2LogosDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    message: S.String,
-  }),
-).annotate({
-  identifier: "V2LogosDeleteResponse",
-}) as any as S.Schema<V2LogosDeleteResponse>;
-
-export interface V2LogosGetRequest {
-  accountId: string;
-  /** Optional query ID to retrieve a specific logo query */
-  id?: string;
-  /** If true, include base64-encoded image data in the response */
-  download?: string;
-}
-export const V2LogosGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    id: S.optional(S.String.pipe(T.Query())),
-    download: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/cloudforce-one/v2/brand-protection/logo/queries",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "V2LogosGetRequest",
-}) as any as S.Schema<V2LogosGetRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface V2LogosGetResponse {
-  id: number;
-  r2Path: string;
-  similarityThreshold: number;
-  tag: string;
-  uploadedAt: string;
-  /** MIME type of the image (only present when download=true) */
-  contentType?: string;
-  /** Base64-encoded image data (only present when download=true) */
-  imageData?: string;
-}
-export const V2LogosGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    r2Path: S.String.pipe(T.Body("r2_path")),
-    similarityThreshold: S.Number.pipe(T.Body("similarity_threshold")),
-    tag: S.String,
-    uploadedAt: S.String.pipe(T.Body("uploaded_at")),
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    imageData: S.optional(S.String.pipe(T.Body("image_data"))),
-  }),
-).annotate({
-  identifier: "V2LogosGetResponse",
-}) as any as S.Schema<V2LogosGetResponse>;
+  identifier: "GetV2LogoMatchResponse",
+}) as any as S.Schema<GetV2LogoMatchResponse>;
 
 export type V2MatchesGetRequestQueryIdList = string[];
 export const V2MatchesGetRequestQueryIdList = /*@__PURE__*/ S.Array(
@@ -727,7 +631,7 @@ export type V2MatchesGetRequestOrderBy =
   | (string & {});
 export const V2MatchesGetRequestOrderBy = /*@__PURE__*/ S.String;
 
-export interface V2MatchesGetRequest {
+export interface GetV2MatchRequest {
   accountId: string;
   /** Query ID or comma-separated list of Query IDs. When multiple IDs are provided, matches are deduplicated across queries and each match includes a match_details array with per-match query metadata and dismissed state. */
   queryId: V2MatchesGetRequestQueryIdList;
@@ -742,7 +646,7 @@ export interface V2MatchesGetRequest {
   /** Column to sort by. Options: 'domain', 'first_seen', or 'registrar' */
   orderBy?: V2MatchesGetRequestOrderBy;
 }
-export const V2MatchesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetV2MatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     queryId: V2MatchesGetRequestQueryIdList.pipe(T.Query("query_id")),
@@ -761,8 +665,8 @@ export const V2MatchesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "V2MatchesGetRequest",
-}) as any as S.Schema<V2MatchesGetRequest>;
+  identifier: "GetV2MatchRequest",
+}) as any as S.Schema<GetV2MatchRequest>;
 
 export interface V2MatchesGetResponseMatchesItemPublicScans {
   submissionId: string;
@@ -844,24 +748,24 @@ export const V2MatchesGetResponseMatchesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<V2MatchesGetResponseMatchesList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface V2MatchesGetResponse {
+export interface GetV2MatchResponse {
   matches: V2MatchesGetResponseMatchesList;
   total: number;
 }
-export const V2MatchesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetV2MatchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     matches: V2MatchesGetResponseMatchesList,
     total: S.Number,
   }),
 ).annotate({
-  identifier: "V2MatchesGetResponse",
-}) as any as S.Schema<V2MatchesGetResponse>;
+  identifier: "GetV2MatchResponse",
+}) as any as S.Schema<GetV2MatchResponse>;
 
-export interface V2QueriesGetRequest {
+export interface GetV2QueryRequest {
   accountId: string;
   id?: string;
 }
-export const V2QueriesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetV2QueryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -873,8 +777,8 @@ export const V2QueriesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "V2QueriesGetRequest",
-}) as any as S.Schema<V2QueriesGetRequest>;
+  identifier: "GetV2QueryRequest",
+}) as any as S.Schema<GetV2QueryRequest>;
 
 export interface V2QueriesGetResponseParametersStringMatchesItem {
   pattern: string;
@@ -913,7 +817,7 @@ export const V2QueriesGetResponseParameters = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2QueriesGetResponseParameters>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface V2QueriesGetResponse {
+export interface GetV2QueryResponse {
   created: string;
   parameters: V2QueriesGetResponseParameters;
   queryId: number;
@@ -921,7 +825,7 @@ export interface V2QueriesGetResponse {
   scan: boolean;
   updated: string;
 }
-export const V2QueriesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetV2QueryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.String,
     parameters: V2QueriesGetResponseParameters,
@@ -931,243 +835,345 @@ export const V2QueriesGetResponse = /*@__PURE__*/ S.suspend(() =>
     updated: S.String,
   }),
 ).annotate({
-  identifier: "V2QueriesGetResponse",
-}) as any as S.Schema<V2QueriesGetResponse>;
+  identifier: "GetV2QueryResponse",
+}) as any as S.Schema<GetV2QueryResponse>;
 
-export type LogoMatchesDownloadError = CloudflareOpError;
-/** Return matches as CSV for logo queries based on ID */
-export const logoMatchesDownload: API.OperationMethod<
-  LogoMatchesDownloadRequest,
-  LogoMatchesDownloadResponse,
-  LogoMatchesDownloadError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LogoMatchesDownloadRequest,
-  output: LogoMatchesDownloadResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface SubmitBrandProtectionRequest {
+  accountId: string;
+}
+export const SubmitBrandProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/brand-protection/submit",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SubmitBrandProtectionRequest",
+}) as any as S.Schema<SubmitBrandProtectionRequest>;
 
-export type LogoMatchesGetError = CloudflareOpError;
-/** Return matches for logo queries based on ID */
-export const logoMatchesGet: API.OperationMethod<
-  LogoMatchesGetRequest,
-  LogoMatchesGetResponse,
-  LogoMatchesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LogoMatchesGetRequest,
-  output: LogoMatchesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type SubmitResponseSkippedUrlsItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const SubmitResponseSkippedUrlsItemMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<SubmitResponseSkippedUrlsItemMap>;
 
-export type LogosCreateError = CloudflareOpError;
-/** Return new saved logo queries created from image files */
-export const logosCreate: API.OperationMethod<
-  LogosCreateRequest,
-  LogosCreateResponse,
-  LogosCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LogosCreateRequest,
-  output: LogosCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type SubmitResponseSkippedUrlsList = SubmitResponseSkippedUrlsItemMap[];
+export const SubmitResponseSkippedUrlsList = /*@__PURE__*/ S.Array(
+  SubmitResponseSkippedUrlsItemMap,
+) as any as S.Schema<SubmitResponseSkippedUrlsList>;
 
-export type LogosDeleteError = CloudflareOpError;
-/** Return a success message after deleting saved logo queries by ID */
-export const logosDelete: API.OperationMethod<
-  LogosDeleteRequest,
-  LogosDeleteResponse,
-  LogosDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LogosDeleteRequest,
-  output: LogosDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type SubmitResponseSubmittedUrlsItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const SubmitResponseSubmittedUrlsItemMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<SubmitResponseSubmittedUrlsItemMap>;
 
-export type MatchesDownloadError = CloudflareOpError;
-/** Return matches as CSV for string queries based on ID */
-export const matchesDownload: API.OperationMethod<
-  MatchesDownloadRequest,
-  MatchesDownloadResponse,
-  MatchesDownloadError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MatchesDownloadRequest,
-  output: MatchesDownloadResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type SubmitResponseSubmittedUrlsList =
+  SubmitResponseSubmittedUrlsItemMap[];
+export const SubmitResponseSubmittedUrlsList = /*@__PURE__*/ S.Array(
+  SubmitResponseSubmittedUrlsItemMap,
+) as any as S.Schema<SubmitResponseSubmittedUrlsList>;
 
-export type MatchesGetError = CloudflareOpError;
-/** Return matches for string queries based on ID */
-export const matchesGet: API.OperationMethod<
-  MatchesGetRequest,
-  MatchesGetResponse,
-  MatchesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MatchesGetRequest,
-  output: MatchesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface SubmitBrandProtectionResponse {
+  skippedUrls?: SubmitResponseSkippedUrlsList;
+  submittedUrls?: SubmitResponseSubmittedUrlsList;
+}
+export const SubmitBrandProtectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    skippedUrls: S.optional(
+      SubmitResponseSkippedUrlsList.pipe(T.Body("skipped_urls")),
+    ),
+    submittedUrls: S.optional(
+      SubmitResponseSubmittedUrlsList.pipe(T.Body("submitted_urls")),
+    ),
+  }),
+).annotate({
+  identifier: "SubmitBrandProtectionResponse",
+}) as any as S.Schema<SubmitBrandProtectionResponse>;
 
-export type QueriesBulkError = CloudflareOpError;
+export interface UrlInfoBrandProtectionRequest {
+  accountId: string;
+}
+export const UrlInfoBrandProtectionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/brand-protection/url-info",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UrlInfoBrandProtectionRequest",
+}) as any as S.Schema<UrlInfoBrandProtectionRequest>;
+
+export type UrlInfoResultItemMap = { [key: string]: unknown | undefined };
+export const UrlInfoResultItemMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<UrlInfoResultItemMap>;
+
+export type UrlInfoResultList = UrlInfoResultItemMap[];
+export const UrlInfoResultList = /*@__PURE__*/ S.Array(
+  UrlInfoResultItemMap,
+) as any as S.Schema<UrlInfoResultList>;
+
+export interface UrlInfoBrandProtectionResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: UrlInfoResultList;
+}
+export const UrlInfoBrandProtectionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(UrlInfoResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "UrlInfoBrandProtectionResponse",
+}) as any as S.Schema<UrlInfoBrandProtectionResponse>;
+
+export type BulkQueryError = CloudflareOpError;
 /** Return a success message after creating new saved string queries in bulk */
-export const queriesBulk: API.OperationMethod<
-  QueriesBulkRequest,
-  QueriesBulkResponse,
-  QueriesBulkError,
+export const bulkQuery: API.OperationMethod<
+  BulkQueryRequest,
+  BulkQueryResponse,
+  BulkQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueriesBulkRequest,
-  output: QueriesBulkResponse,
+  input: BulkQueryRequest,
+  output: BulkQueryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type QueriesCreateError = CloudflareOpError;
+export type CreateLogoError = CloudflareOpError;
+/** Return new saved logo queries created from image files */
+export const createLogo: API.OperationMethod<
+  CreateLogoRequest,
+  CreateLogoResponse,
+  CreateLogoError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateLogoRequest,
+  output: CreateLogoResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateQueryError = CloudflareOpError;
 /** Return a success message after creating new saved string queries */
-export const queriesCreate: API.OperationMethod<
-  QueriesCreateRequest,
-  QueriesCreateResponse,
-  QueriesCreateError,
+export const createQuery: API.OperationMethod<
+  CreateQueryRequest,
+  CreateQueryResponse,
+  CreateQueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: QueriesCreateRequest,
-  output: QueriesCreateResponse,
+  input: CreateQueryRequest,
+  output: CreateQueryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type QueriesDeleteError = CloudflareOpError;
-/** Return a success message after deleting saved string queries by ID */
-export const queriesDelete: API.OperationMethod<
-  QueriesDeleteRequest,
-  QueriesDeleteResponse,
-  QueriesDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: QueriesDeleteRequest,
-  output: QueriesDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SubmitError = CloudflareOpError;
-/** Return new URL submissions */
-export const submit: API.OperationMethod<
-  SubmitRequest,
-  SubmitResponse,
-  SubmitError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubmitRequest,
-  output: SubmitResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type UrlInfoError = CloudflareOpError;
-/** Return submitted URLs based on ID */
-export const urlInfo: API.OperationMethod<
-  UrlInfoRequest,
-  UrlInfoResponse,
-  UrlInfoError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UrlInfoRequest,
-  output: UrlInfoResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type V2LogoMatchesGetError = CloudflareOpError;
-/** Get paginated list of logo matches for a specific brand protection logo query */
-export const v2LogoMatchesGet: API.OperationMethod<
-  V2LogoMatchesGetRequest,
-  V2LogoMatchesGetResponse,
-  V2LogoMatchesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: V2LogoMatchesGetRequest,
-  output: V2LogoMatchesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type V2LogosCreateError = CloudflareOpError;
+export type CreateV2LogoError = CloudflareOpError;
 /** Create a new saved brand protection logo query for visual similarity matching */
-export const v2LogosCreate: API.OperationMethod<
-  V2LogosCreateRequest,
-  V2LogosCreateResponse,
-  V2LogosCreateError,
+export const createV2Logo: API.OperationMethod<
+  CreateV2LogoRequest,
+  CreateV2LogoResponse,
+  CreateV2LogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V2LogosCreateRequest,
-  output: V2LogosCreateResponse,
+  input: CreateV2LogoRequest,
+  output: CreateV2LogoResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type V2LogosDeleteError = CloudflareOpError;
+export type DeleteLogoError = CloudflareOpError;
+/** Return a success message after deleting saved logo queries by ID */
+export const deleteLogo: API.OperationMethod<
+  DeleteLogoRequest,
+  DeleteLogoResponse,
+  DeleteLogoError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteLogoRequest,
+  output: DeleteLogoResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteQueryError = CloudflareOpError;
+/** Return a success message after deleting saved string queries by ID */
+export const deleteQuery: API.OperationMethod<
+  DeleteQueryRequest,
+  DeleteQueryResponse,
+  DeleteQueryError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteQueryRequest,
+  output: DeleteQueryResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteV2LogoError = CloudflareOpError;
 /** Delete a saved brand protection logo query. Returns 404 if the query ID doesn't exist. */
-export const v2LogosDelete: API.OperationMethod<
-  V2LogosDeleteRequest,
-  V2LogosDeleteResponse,
-  V2LogosDeleteError,
+export const deleteV2Logo: API.OperationMethod<
+  DeleteV2LogoRequest,
+  DeleteV2LogoResponse,
+  DeleteV2LogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V2LogosDeleteRequest,
-  output: V2LogosDeleteResponse,
+  input: DeleteV2LogoRequest,
+  output: DeleteV2LogoResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type V2LogosGetError = CloudflareOpError;
+export type DownloadLogoMatchError = CloudflareOpError;
+/** Return matches as CSV for logo queries based on ID */
+export const downloadLogoMatch: API.OperationMethod<
+  DownloadLogoMatchRequest,
+  DownloadLogoMatchResponse,
+  DownloadLogoMatchError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DownloadLogoMatchRequest,
+  output: DownloadLogoMatchResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DownloadMatchError = CloudflareOpError;
+/** Return matches as CSV for string queries based on ID */
+export const downloadMatch: API.OperationMethod<
+  DownloadMatchRequest,
+  DownloadMatchResponse,
+  DownloadMatchError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DownloadMatchRequest,
+  output: DownloadMatchResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetLogoMatchError = CloudflareOpError;
+/** Return matches for logo queries based on ID */
+export const getLogoMatch: API.OperationMethod<
+  GetLogoMatchRequest,
+  GetLogoMatchResponse,
+  GetLogoMatchError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLogoMatchRequest,
+  output: GetLogoMatchResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetMatchError = CloudflareOpError;
+/** Return matches for string queries based on ID */
+export const getMatch: API.OperationMethod<
+  GetMatchRequest,
+  GetMatchResponse,
+  GetMatchError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMatchRequest,
+  output: GetMatchResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetV2LogoError = CloudflareOpError;
 /** Get all saved brand protection logo queries for an account. Optionally specify id to get a single query. Set download=true to include base64-encoded image data. */
-export const v2LogosGet: API.OperationMethod<
-  V2LogosGetRequest,
-  V2LogosGetResponse,
-  V2LogosGetError,
+export const getV2Logo: API.OperationMethod<
+  GetV2LogoRequest,
+  GetV2LogoResponse,
+  GetV2LogoError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V2LogosGetRequest,
-  output: V2LogosGetResponse,
+  input: GetV2LogoRequest,
+  output: GetV2LogoResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type V2MatchesGetError = CloudflareOpError;
+export type GetV2LogoMatchError = CloudflareOpError;
+/** Get paginated list of logo matches for a specific brand protection logo query */
+export const getV2LogoMatch: API.OperationMethod<
+  GetV2LogoMatchRequest,
+  GetV2LogoMatchResponse,
+  GetV2LogoMatchError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetV2LogoMatchRequest,
+  output: GetV2LogoMatchResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetV2MatchError = CloudflareOpError;
 /** Get paginated list of domain matches for one or more brand protection queries. When multiple query_ids are provided (comma-separated), matches are deduplicated across queries and each match includes a match_details array with per-match query metadata and individual dismissed state. */
-export const v2MatchesGet: API.OperationMethod<
-  V2MatchesGetRequest,
-  V2MatchesGetResponse,
-  V2MatchesGetError,
+export const getV2Match: API.OperationMethod<
+  GetV2MatchRequest,
+  GetV2MatchResponse,
+  GetV2MatchError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V2MatchesGetRequest,
-  output: V2MatchesGetResponse,
+  input: GetV2MatchRequest,
+  output: GetV2MatchResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type V2QueriesGetError = CloudflareOpError;
+export type GetV2QueryError = CloudflareOpError;
 /** Get all saved brand protection queries for an account */
-export const v2QueriesGet: API.OperationMethod<
-  V2QueriesGetRequest,
-  V2QueriesGetResponse,
-  V2QueriesGetError,
+export const getV2Query: API.OperationMethod<
+  GetV2QueryRequest,
+  GetV2QueryResponse,
+  GetV2QueryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: V2QueriesGetRequest,
-  output: V2QueriesGetResponse,
+  input: GetV2QueryRequest,
+  output: GetV2QueryResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type SubmitBrandProtectionError = CloudflareOpError;
+/** Return new URL submissions */
+export const submitBrandProtection: API.OperationMethod<
+  SubmitBrandProtectionRequest,
+  SubmitBrandProtectionResponse,
+  SubmitBrandProtectionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SubmitBrandProtectionRequest,
+  output: SubmitBrandProtectionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UrlInfoBrandProtectionError = CloudflareOpError;
+/** Return submitted URLs based on ID */
+export const urlInfoBrandProtection: API.OperationMethod<
+  UrlInfoBrandProtectionRequest,
+  UrlInfoBrandProtectionResponse,
+  UrlInfoBrandProtectionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UrlInfoBrandProtectionRequest,
+  output: UrlInfoBrandProtectionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

@@ -9,6 +9,388 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class LoadBalancerNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<LoadBalancerNotFound>()("LoadBalancerNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1001 }],
+) {}
+
+export class LoadBalancingNotEnabledForZone extends T.applyErrorMatchers(
+  S.TaggedErrorClass<LoadBalancingNotEnabledForZone>()(
+    "LoadBalancingNotEnabledForZone",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 1002, message: { includes: "load balancing not enabled" } }],
+) {}
+
+export class MonitorGroupInUse extends T.applyErrorMatchers(
+  S.TaggedErrorClass<MonitorGroupInUse>()("MonitorGroupInUse", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1002, message: { includes: "still referenced" } }],
+) {}
+
+export class MonitorGroupNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<MonitorGroupNotFound>()("MonitorGroupNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1001 }],
+) {}
+
+export class MonitorGroupsNotEnabled extends T.applyErrorMatchers(
+  S.TaggedErrorClass<MonitorGroupsNotEnabled>()("MonitorGroupsNotEnabled", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1002, message: { includes: "monitor groups not enabled" } }],
+) {}
+
+export class MonitorIntervalOutOfRange extends T.applyErrorMatchers(
+  S.TaggedErrorClass<MonitorIntervalOutOfRange>()("MonitorIntervalOutOfRange", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1002, message: { includes: "interval is not in range" } }],
+) {}
+
+export class MonitorInUse extends T.applyErrorMatchers(
+  S.TaggedErrorClass<MonitorInUse>()("MonitorInUse", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1002, message: { includes: "still referenced" } }],
+) {}
+
+export class MonitorNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<MonitorNotFound>()("MonitorNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1001 }],
+) {}
+
+export class PoolAccessFailed extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PoolAccessFailed>()("PoolAccessFailed", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1002, message: { includes: "Access Failed" } }],
+) {}
+
+export class PoolInUse extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PoolInUse>()("PoolInUse", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1002, message: { includes: "still referenced" } }],
+) {}
+
+export class PoolNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PoolNotFound>()("PoolNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1001 }],
+) {}
+
+export type PoolsBulkEditRequestNotificationEmail = "" | (string & {});
+export const PoolsBulkEditRequestNotificationEmail = /*@__PURE__*/ S.String;
+
+export interface BulkPatchPoolsRequest {
+  /** Identifier. */
+  accountId: string;
+  /** The email address to send health status notifications to. This field is now deprecated in favor of Cloudflare Notifications for Load Balancing, so only resetting this field with an empty string `""` is accepted. */
+  notificationEmail?: PoolsBulkEditRequestNotificationEmail;
+}
+export const BulkPatchPoolsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    notificationEmail: S.optional(
+      PoolsBulkEditRequestNotificationEmail.pipe(T.Body("notification_email")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/load_balancers/pools",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "BulkPatchPoolsRequest",
+}) as any as S.Schema<BulkPatchPoolsRequest>;
+
+export type PoolsBulkEditResultItemCheckRegionsList = unknown[];
+export const PoolsBulkEditResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<PoolsBulkEditResultItemCheckRegionsList>;
+
+export type PoolsBulkEditResultItemLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
+export const PoolsBulkEditResultItemLoadSheddingDefaultPolicy =
+  /*@__PURE__*/ S.String;
+
+export type PoolsBulkEditResultItemLoadSheddingSessionPolicy =
+  | "hash"
+  | (string & {});
+export const PoolsBulkEditResultItemLoadSheddingSessionPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface PoolsBulkEditResultItemLoadShedding {
+  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
+  defaultPercent?: number;
+  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
+  defaultPolicy?: PoolsBulkEditResultItemLoadSheddingDefaultPolicy;
+  /** The percent of existing sessions to shed from the pool, according to the session policy. */
+  sessionPercent?: number;
+  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
+  sessionPolicy?: PoolsBulkEditResultItemLoadSheddingSessionPolicy;
+}
+export const PoolsBulkEditResultItemLoadShedding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPolicy: S.optional(
+      PoolsBulkEditResultItemLoadSheddingDefaultPolicy.pipe(
+        T.Body("default_policy"),
+      ),
+    ),
+    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPolicy: S.optional(
+      PoolsBulkEditResultItemLoadSheddingSessionPolicy.pipe(
+        T.Body("session_policy"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PoolsBulkEditResultItemLoadShedding",
+}) as any as S.Schema<PoolsBulkEditResultItemLoadShedding>;
+
+export type PoolsBulkEditResultItemNetworksList = string[];
+export const PoolsBulkEditResultItemNetworksList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoolsBulkEditResultItemNetworksList>;
+
+export interface PoolsBulkEditResultItemNotificationFilterOrigin {
+  /** If set true, disable notifications for this type of resource (pool or origin). */
+  disable?: boolean;
+  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
+  healthy?: boolean;
+}
+export const PoolsBulkEditResultItemNotificationFilterOrigin =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      disable: S.optional(S.Boolean),
+      healthy: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PoolsBulkEditResultItemNotificationFilterOrigin",
+  }) as any as S.Schema<PoolsBulkEditResultItemNotificationFilterOrigin>;
+
+export interface PoolsBulkEditResultItemNotificationFilter {
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  origin?: PoolsBulkEditResultItemNotificationFilterOrigin;
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  pool?: unknown;
+}
+export const PoolsBulkEditResultItemNotificationFilter =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      origin: S.optional(PoolsBulkEditResultItemNotificationFilterOrigin),
+      pool: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "PoolsBulkEditResultItemNotificationFilter",
+  }) as any as S.Schema<PoolsBulkEditResultItemNotificationFilter>;
+
+export type PoolsBulkEditResultItemOriginSteeringPolicy =
+  | "random"
+  | "hash"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | (string & {});
+export const PoolsBulkEditResultItemOriginSteeringPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface PoolsBulkEditResultItemOriginSteering {
+  /** The type of origin steering policy to use. */
+  policy?: PoolsBulkEditResultItemOriginSteeringPolicy;
+}
+export const PoolsBulkEditResultItemOriginSteering = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      policy: S.optional(PoolsBulkEditResultItemOriginSteeringPolicy),
+    }),
+).annotate({
+  identifier: "PoolsBulkEditResultItemOriginSteering",
+}) as any as S.Schema<PoolsBulkEditResultItemOriginSteering>;
+
+export type PoolsBulkEditResultItemOriginsItemHeaderHostList = unknown[];
+export const PoolsBulkEditResultItemOriginsItemHeaderHostList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<PoolsBulkEditResultItemOriginsItemHeaderHostList>;
+
+export interface PoolsBulkEditResultItemOriginsItemHeader {
+  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  Host?: PoolsBulkEditResultItemOriginsItemHeaderHostList;
+}
+export const PoolsBulkEditResultItemOriginsItemHeader = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Host: S.optional(PoolsBulkEditResultItemOriginsItemHeaderHostList),
+    }),
+).annotate({
+  identifier: "PoolsBulkEditResultItemOriginsItemHeader",
+}) as any as S.Schema<PoolsBulkEditResultItemOriginsItemHeader>;
+
+export interface PoolsBulkEditResultItemOriginsItem {
+  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
+  address?: string;
+  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
+  disabledAt?: string;
+  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
+  enabled?: boolean;
+  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
+  flattenCname?: boolean;
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  header?: PoolsBulkEditResultItemOriginsItemHeader;
+  /** A human-identifiable name for the origin. */
+  name?: string;
+  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
+  port?: number;
+  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
+  virtualNetworkId?: string;
+  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
+  weight?: number;
+}
+export const PoolsBulkEditResultItemOriginsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
+    header: S.optional(PoolsBulkEditResultItemOriginsItemHeader),
+    name: S.optional(S.String),
+    port: S.optional(S.Number),
+    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PoolsBulkEditResultItemOriginsItem",
+}) as any as S.Schema<PoolsBulkEditResultItemOriginsItem>;
+
+export type PoolsBulkEditResultItemOriginsList =
+  PoolsBulkEditResultItemOriginsItem[];
+export const PoolsBulkEditResultItemOriginsList = /*@__PURE__*/ S.Array(
+  PoolsBulkEditResultItemOriginsItem,
+) as any as S.Schema<PoolsBulkEditResultItemOriginsList>;
+
+export interface PoolsBulkEditResultItem {
+  id?: string;
+  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
+  checkRegions?: PoolsBulkEditResultItemCheckRegionsList;
+  createdOn?: string;
+  /** A human-readable description of the pool. */
+  description?: string;
+  /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
+  disabledAt?: string;
+  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
+  enabled?: boolean;
+  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
+  latitude?: number;
+  /** Configures load shedding policies and percentages for the pool. */
+  loadShedding?: PoolsBulkEditResultItemLoadShedding;
+  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
+  longitude?: number;
+  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
+  minimumOrigins?: number;
+  modifiedOn?: string;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitor?: string;
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  monitorGroup?: string;
+  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
+  name?: string;
+  /** List of networks where Load Balancer or Pool is enabled. */
+  networks?: PoolsBulkEditResultItemNetworksList;
+  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  notificationEmail?: string;
+  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
+  notificationFilter?: PoolsBulkEditResultItemNotificationFilter;
+  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
+  originSteering?: PoolsBulkEditResultItemOriginSteering;
+  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
+  origins?: PoolsBulkEditResultItemOriginsList;
+}
+export const PoolsBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    checkRegions: S.optional(
+      PoolsBulkEditResultItemCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    latitude: S.optional(S.Number),
+    loadShedding: S.optional(
+      PoolsBulkEditResultItemLoadShedding.pipe(T.Body("load_shedding")),
+    ),
+    longitude: S.optional(S.Number),
+    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    monitor: S.optional(S.String),
+    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
+    name: S.optional(S.String),
+    networks: S.optional(PoolsBulkEditResultItemNetworksList),
+    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    notificationFilter: S.optional(
+      PoolsBulkEditResultItemNotificationFilter.pipe(
+        T.Body("notification_filter"),
+      ),
+    ),
+    originSteering: S.optional(
+      PoolsBulkEditResultItemOriginSteering.pipe(T.Body("origin_steering")),
+    ),
+    origins: S.optional(PoolsBulkEditResultItemOriginsList),
+  }),
+).annotate({
+  identifier: "PoolsBulkEditResultItem",
+}) as any as S.Schema<PoolsBulkEditResultItem>;
+
+export type PoolsBulkEditResultList = PoolsBulkEditResultItem[];
+export const PoolsBulkEditResultList = /*@__PURE__*/ S.Array(
+  PoolsBulkEditResultItem,
+) as any as S.Schema<PoolsBulkEditResultList>;
+
+export interface BulkPatchPoolsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: PoolsBulkEditResultList;
+}
+export const BulkPatchPoolsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(PoolsBulkEditResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "BulkPatchPoolsResponse",
+}) as any as S.Schema<BulkPatchPoolsResponse>;
+
 export type CreateRequestDefaultPoolsList = unknown[];
 export const CreateRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
   S.Unknown,
@@ -339,7 +721,7 @@ export const CreateRequestRulesList = /*@__PURE__*/ S.Array(
   CreateRequestRulesItem,
 ) as any as S.Schema<CreateRequestRulesList>;
 
-export interface CreateRequest {
+export interface CreateLoadBalancerRequest {
   zoneId: string;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
   defaultPools: CreateRequestDefaultPoolsList;
@@ -378,7 +760,7 @@ export interface CreateRequest {
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     defaultPools: CreateRequestDefaultPoolsList.pipe(T.Body("default_pools")),
@@ -420,7 +802,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreateLoadBalancerRequest",
+}) as any as S.Schema<CreateLoadBalancerRequest>;
 
 export interface CreateResponseAdaptiveRouting {
   /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
@@ -755,7 +1139,7 @@ export const CreateResponseRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
+export interface CreateLoadBalancerResponse {
   id?: string;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
   adaptiveRouting?: CreateResponseAdaptiveRouting;
@@ -799,7 +1183,7 @@ export interface CreateResponse {
   ttl?: number;
   zoneName?: string;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     adaptiveRouting: S.optional(
@@ -841,13 +1225,956 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
     ttl: S.optional(S.Number),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
   }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+).annotate({
+  identifier: "CreateLoadBalancerResponse",
+}) as any as S.Schema<CreateLoadBalancerResponse>;
 
-export interface DeleteRequest {
+export type MonitorsCreateRequestHeaderMap = {
+  [key: string]: unknown | undefined;
+};
+export const MonitorsCreateRequestHeaderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MonitorsCreateRequestHeaderMap>;
+
+export type MonitorsCreateRequestType =
+  | "http"
+  | "https"
+  | "tcp"
+  | (string & {});
+export const MonitorsCreateRequestType = /*@__PURE__*/ S.String;
+
+export interface CreateMonitorRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
+  allowInsecure?: boolean;
+  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
+  consecutiveDown?: number;
+  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
+  consecutiveUp?: number;
+  /** Object description. */
+  description?: string;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedBody?: string;
+  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedCodes?: string;
+  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
+  header?: MonitorsCreateRequestHeaderMap;
+  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
+  interval?: number;
+  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  method?: string;
+  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
+  path?: string;
+  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
+  port?: number;
+  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
+  probeZone?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  type?: MonitorsCreateRequestType;
+}
+export const CreateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
+    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
+    description: S.optional(S.String),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
+    header: S.optional(MonitorsCreateRequestHeaderMap),
+    interval: S.optional(S.Number),
+    method: S.optional(S.String),
+    path: S.optional(S.String),
+    port: S.optional(S.Number),
+    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.Number),
+    timeout: S.optional(S.Number),
+    type: S.optional(MonitorsCreateRequestType),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/load_balancers/monitors",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateMonitorRequest",
+}) as any as S.Schema<CreateMonitorRequest>;
+
+export type MonitorsCreateResponseHeaderMap = {
+  [key: string]: unknown | undefined;
+};
+export const MonitorsCreateResponseHeaderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MonitorsCreateResponseHeaderMap>;
+
+export type MonitorsCreateResponseType =
+  | "http"
+  | "https"
+  | "tcp"
+  | (string & {});
+export const MonitorsCreateResponseType = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateMonitorResponse {
+  id?: string;
+  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
+  allowInsecure?: boolean;
+  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
+  consecutiveDown?: number;
+  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
+  consecutiveUp?: number;
+  createdOn?: string;
+  /** Object description. */
+  description?: string;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedBody?: string;
+  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedCodes?: string;
+  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
+  header?: MonitorsCreateResponseHeaderMap;
+  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
+  interval?: number;
+  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  method?: string;
+  modifiedOn?: string;
+  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
+  path?: string;
+  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
+  port?: number;
+  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
+  probeZone?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  type?: MonitorsCreateResponseType;
+}
+export const CreateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
+    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
+    header: S.optional(MonitorsCreateResponseHeaderMap),
+    interval: S.optional(S.Number),
+    method: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    path: S.optional(S.String),
+    port: S.optional(S.Number),
+    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.Number),
+    timeout: S.optional(S.Number),
+    type: S.optional(MonitorsCreateResponseType),
+  }),
+).annotate({
+  identifier: "CreateMonitorResponse",
+}) as any as S.Schema<CreateMonitorResponse>;
+
+export interface MonitorGroupsCreateRequestMembersItem {
+  /** Whether this monitor is enabled in the group */
+  enabled: boolean;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitorId: string;
+  /** Whether this monitor is used for monitoring only (does not affect pool health) */
+  monitoringOnly: boolean;
+  /** Whether this monitor must be healthy for the pool to be considered healthy */
+  mustBeHealthy: boolean;
+  /** The timestamp of when the monitor was added to the group */
+  createdAt?: string;
+  /** The timestamp of when the monitor group member was last updated */
+  updatedAt?: string;
+}
+export const MonitorGroupsCreateRequestMembersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      monitorId: S.String.pipe(T.Body("monitor_id")),
+      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
+      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+).annotate({
+  identifier: "MonitorGroupsCreateRequestMembersItem",
+}) as any as S.Schema<MonitorGroupsCreateRequestMembersItem>;
+
+export type MonitorGroupsCreateRequestMembersList =
+  MonitorGroupsCreateRequestMembersItem[];
+export const MonitorGroupsCreateRequestMembersList = /*@__PURE__*/ S.Array(
+  MonitorGroupsCreateRequestMembersItem,
+) as any as S.Schema<MonitorGroupsCreateRequestMembersList>;
+
+export interface CreateMonitorGroupRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A short description of the monitor group */
+  description: string;
+  /** List of monitors in this group */
+  members: MonitorGroupsCreateRequestMembersList;
+}
+export const CreateMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    description: S.String,
+    members: MonitorGroupsCreateRequestMembersList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/load_balancers/monitor_groups",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateMonitorGroupRequest",
+}) as any as S.Schema<CreateMonitorGroupRequest>;
+
+export interface MonitorGroupsCreateResponseMembersItem {
+  /** Whether this monitor is enabled in the group */
+  enabled: boolean;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitorId: string;
+  /** Whether this monitor is used for monitoring only (does not affect pool health) */
+  monitoringOnly: boolean;
+  /** Whether this monitor must be healthy for the pool to be considered healthy */
+  mustBeHealthy: boolean;
+  /** The timestamp of when the monitor was added to the group */
+  createdAt?: string;
+  /** The timestamp of when the monitor group member was last updated */
+  updatedAt?: string;
+}
+export const MonitorGroupsCreateResponseMembersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      monitorId: S.String.pipe(T.Body("monitor_id")),
+      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
+      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+).annotate({
+  identifier: "MonitorGroupsCreateResponseMembersItem",
+}) as any as S.Schema<MonitorGroupsCreateResponseMembersItem>;
+
+export type MonitorGroupsCreateResponseMembersList =
+  MonitorGroupsCreateResponseMembersItem[];
+export const MonitorGroupsCreateResponseMembersList = /*@__PURE__*/ S.Array(
+  MonitorGroupsCreateResponseMembersItem,
+) as any as S.Schema<MonitorGroupsCreateResponseMembersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateMonitorGroupResponse {
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  id: string;
+  /** A short description of the monitor group */
+  description: string;
+  /** List of monitors in this group */
+  members: MonitorGroupsCreateResponseMembersList;
+  /** The timestamp of when the monitor group was created */
+  createdOn?: string;
+  /** The timestamp of when the monitor group was last updated */
+  modifiedOn?: string;
+}
+export const CreateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    description: S.String,
+    members: MonitorGroupsCreateResponseMembersList,
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "CreateMonitorGroupResponse",
+}) as any as S.Schema<CreateMonitorGroupResponse>;
+
+export type MonitorsPreviewsCreateRequestHeaderMap = {
+  [key: string]: unknown | undefined;
+};
+export const MonitorsPreviewsCreateRequestHeaderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MonitorsPreviewsCreateRequestHeaderMap>;
+
+export type MonitorsPreviewsCreateRequestType =
+  | "http"
+  | "https"
+  | "tcp"
+  | (string & {});
+export const MonitorsPreviewsCreateRequestType = /*@__PURE__*/ S.String;
+
+export interface CreateMonitorPreviewRequest {
+  /** Identifier. */
+  accountId: string;
+  monitorId: string;
+  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
+  allowInsecure?: boolean;
+  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
+  consecutiveDown?: number;
+  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
+  consecutiveUp?: number;
+  /** Object description. */
+  description?: string;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedBody?: string;
+  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedCodes?: string;
+  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
+  header?: MonitorsPreviewsCreateRequestHeaderMap;
+  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
+  interval?: number;
+  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  method?: string;
+  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
+  path?: string;
+  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
+  port?: number;
+  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
+  probeZone?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  type?: MonitorsPreviewsCreateRequestType;
+}
+export const CreateMonitorPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    monitorId: S.String.pipe(T.Label("monitor_id")),
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
+    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
+    description: S.optional(S.String),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
+    header: S.optional(MonitorsPreviewsCreateRequestHeaderMap),
+    interval: S.optional(S.Number),
+    method: S.optional(S.String),
+    path: S.optional(S.String),
+    port: S.optional(S.Number),
+    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.Number),
+    timeout: S.optional(S.Number),
+    type: S.optional(MonitorsPreviewsCreateRequestType),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}/preview",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateMonitorPreviewRequest",
+}) as any as S.Schema<CreateMonitorPreviewRequest>;
+
+export type MonitorsPreviewsCreateResponsePoolsMap = {
+  [key: string]: unknown | undefined;
+};
+export const MonitorsPreviewsCreateResponsePoolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MonitorsPreviewsCreateResponsePoolsMap>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateMonitorPreviewResponse {
+  /** Monitored pool IDs mapped to their respective names. */
+  pools?: MonitorsPreviewsCreateResponsePoolsMap;
+  previewId?: string;
+}
+export const CreateMonitorPreviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pools: S.optional(MonitorsPreviewsCreateResponsePoolsMap),
+    previewId: S.optional(S.String.pipe(T.Body("preview_id"))),
+  }),
+).annotate({
+  identifier: "CreateMonitorPreviewResponse",
+}) as any as S.Schema<CreateMonitorPreviewResponse>;
+
+export type PoolsCreateRequestOriginsItemHeaderHostList = unknown[];
+export const PoolsCreateRequestOriginsItemHeaderHostList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<PoolsCreateRequestOriginsItemHeaderHostList>;
+
+export interface PoolsCreateRequestOriginsItemHeader {
+  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  Host?: PoolsCreateRequestOriginsItemHeaderHostList;
+}
+export const PoolsCreateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Host: S.optional(PoolsCreateRequestOriginsItemHeaderHostList),
+  }),
+).annotate({
+  identifier: "PoolsCreateRequestOriginsItemHeader",
+}) as any as S.Schema<PoolsCreateRequestOriginsItemHeader>;
+
+export interface PoolsCreateRequestOriginsItem {
+  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
+  address?: string;
+  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
+  disabledAt?: string;
+  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
+  enabled?: boolean;
+  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
+  flattenCname?: boolean;
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  header?: PoolsCreateRequestOriginsItemHeader;
+  /** A human-identifiable name for the origin. */
+  name?: string;
+  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
+  port?: number;
+  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
+  virtualNetworkId?: string;
+  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
+  weight?: number;
+}
+export const PoolsCreateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
+    header: S.optional(PoolsCreateRequestOriginsItemHeader),
+    name: S.optional(S.String),
+    port: S.optional(S.Number),
+    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PoolsCreateRequestOriginsItem",
+}) as any as S.Schema<PoolsCreateRequestOriginsItem>;
+
+export type PoolsCreateRequestOriginsList = PoolsCreateRequestOriginsItem[];
+export const PoolsCreateRequestOriginsList = /*@__PURE__*/ S.Array(
+  PoolsCreateRequestOriginsItem,
+) as any as S.Schema<PoolsCreateRequestOriginsList>;
+
+export type PoolsCreateRequestLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
+export const PoolsCreateRequestLoadSheddingDefaultPolicy =
+  /*@__PURE__*/ S.String;
+
+export type PoolsCreateRequestLoadSheddingSessionPolicy =
+  | "hash"
+  | (string & {});
+export const PoolsCreateRequestLoadSheddingSessionPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface PoolsCreateRequestLoadShedding {
+  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
+  defaultPercent?: number;
+  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
+  defaultPolicy?: PoolsCreateRequestLoadSheddingDefaultPolicy;
+  /** The percent of existing sessions to shed from the pool, according to the session policy. */
+  sessionPercent?: number;
+  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
+  sessionPolicy?: PoolsCreateRequestLoadSheddingSessionPolicy;
+}
+export const PoolsCreateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPolicy: S.optional(
+      PoolsCreateRequestLoadSheddingDefaultPolicy.pipe(
+        T.Body("default_policy"),
+      ),
+    ),
+    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPolicy: S.optional(
+      PoolsCreateRequestLoadSheddingSessionPolicy.pipe(
+        T.Body("session_policy"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PoolsCreateRequestLoadShedding",
+}) as any as S.Schema<PoolsCreateRequestLoadShedding>;
+
+export interface PoolsCreateRequestNotificationFilterOrigin {
+  /** If set true, disable notifications for this type of resource (pool or origin). */
+  disable?: boolean;
+  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
+  healthy?: boolean;
+}
+export const PoolsCreateRequestNotificationFilterOrigin =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      disable: S.optional(S.Boolean),
+      healthy: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PoolsCreateRequestNotificationFilterOrigin",
+  }) as any as S.Schema<PoolsCreateRequestNotificationFilterOrigin>;
+
+export interface PoolsCreateRequestNotificationFilter {
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  origin?: PoolsCreateRequestNotificationFilterOrigin;
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  pool?: unknown;
+}
+export const PoolsCreateRequestNotificationFilter = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      origin: S.optional(PoolsCreateRequestNotificationFilterOrigin),
+      pool: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "PoolsCreateRequestNotificationFilter",
+}) as any as S.Schema<PoolsCreateRequestNotificationFilter>;
+
+export type PoolsCreateRequestOriginSteeringPolicy =
+  | "random"
+  | "hash"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | (string & {});
+export const PoolsCreateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
+
+export interface PoolsCreateRequestOriginSteering {
+  /** The type of origin steering policy to use. */
+  policy?: PoolsCreateRequestOriginSteeringPolicy;
+}
+export const PoolsCreateRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policy: S.optional(PoolsCreateRequestOriginSteeringPolicy),
+  }),
+).annotate({
+  identifier: "PoolsCreateRequestOriginSteering",
+}) as any as S.Schema<PoolsCreateRequestOriginSteering>;
+
+export interface CreatePoolRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
+  name: string;
+  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
+  origins: PoolsCreateRequestOriginsList;
+  /** A human-readable description of the pool. */
+  description?: string;
+  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
+  enabled?: boolean;
+  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
+  latitude?: number;
+  /** Configures load shedding policies and percentages for the pool. */
+  loadShedding?: PoolsCreateRequestLoadShedding;
+  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
+  longitude?: number;
+  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
+  minimumOrigins?: number;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitor?: string;
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  monitorGroup?: string;
+  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  notificationEmail?: string;
+  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
+  notificationFilter?: PoolsCreateRequestNotificationFilter;
+  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
+  originSteering?: PoolsCreateRequestOriginSteering;
+}
+export const CreatePoolRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.String,
+    origins: PoolsCreateRequestOriginsList,
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    latitude: S.optional(S.Number),
+    loadShedding: S.optional(
+      PoolsCreateRequestLoadShedding.pipe(T.Body("load_shedding")),
+    ),
+    longitude: S.optional(S.Number),
+    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
+    monitor: S.optional(S.String),
+    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
+    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    notificationFilter: S.optional(
+      PoolsCreateRequestNotificationFilter.pipe(T.Body("notification_filter")),
+    ),
+    originSteering: S.optional(
+      PoolsCreateRequestOriginSteering.pipe(T.Body("origin_steering")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/load_balancers/pools",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreatePoolRequest",
+}) as any as S.Schema<CreatePoolRequest>;
+
+export type PoolsCreateResponseCheckRegionsList = unknown[];
+export const PoolsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<PoolsCreateResponseCheckRegionsList>;
+
+export type PoolsCreateResponseLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
+export const PoolsCreateResponseLoadSheddingDefaultPolicy =
+  /*@__PURE__*/ S.String;
+
+export type PoolsCreateResponseLoadSheddingSessionPolicy =
+  | "hash"
+  | (string & {});
+export const PoolsCreateResponseLoadSheddingSessionPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface PoolsCreateResponseLoadShedding {
+  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
+  defaultPercent?: number;
+  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
+  defaultPolicy?: PoolsCreateResponseLoadSheddingDefaultPolicy;
+  /** The percent of existing sessions to shed from the pool, according to the session policy. */
+  sessionPercent?: number;
+  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
+  sessionPolicy?: PoolsCreateResponseLoadSheddingSessionPolicy;
+}
+export const PoolsCreateResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPolicy: S.optional(
+      PoolsCreateResponseLoadSheddingDefaultPolicy.pipe(
+        T.Body("default_policy"),
+      ),
+    ),
+    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPolicy: S.optional(
+      PoolsCreateResponseLoadSheddingSessionPolicy.pipe(
+        T.Body("session_policy"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PoolsCreateResponseLoadShedding",
+}) as any as S.Schema<PoolsCreateResponseLoadShedding>;
+
+export type PoolsCreateResponseNetworksList = string[];
+export const PoolsCreateResponseNetworksList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoolsCreateResponseNetworksList>;
+
+export interface PoolsCreateResponseNotificationFilterOrigin {
+  /** If set true, disable notifications for this type of resource (pool or origin). */
+  disable?: boolean;
+  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
+  healthy?: boolean;
+}
+export const PoolsCreateResponseNotificationFilterOrigin =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      disable: S.optional(S.Boolean),
+      healthy: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PoolsCreateResponseNotificationFilterOrigin",
+  }) as any as S.Schema<PoolsCreateResponseNotificationFilterOrigin>;
+
+export interface PoolsCreateResponseNotificationFilter {
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  origin?: PoolsCreateResponseNotificationFilterOrigin;
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  pool?: unknown;
+}
+export const PoolsCreateResponseNotificationFilter = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      origin: S.optional(PoolsCreateResponseNotificationFilterOrigin),
+      pool: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "PoolsCreateResponseNotificationFilter",
+}) as any as S.Schema<PoolsCreateResponseNotificationFilter>;
+
+export type PoolsCreateResponseOriginSteeringPolicy =
+  | "random"
+  | "hash"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | (string & {});
+export const PoolsCreateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
+
+export interface PoolsCreateResponseOriginSteering {
+  /** The type of origin steering policy to use. */
+  policy?: PoolsCreateResponseOriginSteeringPolicy;
+}
+export const PoolsCreateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policy: S.optional(PoolsCreateResponseOriginSteeringPolicy),
+  }),
+).annotate({
+  identifier: "PoolsCreateResponseOriginSteering",
+}) as any as S.Schema<PoolsCreateResponseOriginSteering>;
+
+export type PoolsCreateResponseOriginsItemHeaderHostList = unknown[];
+export const PoolsCreateResponseOriginsItemHeaderHostList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<PoolsCreateResponseOriginsItemHeaderHostList>;
+
+export interface PoolsCreateResponseOriginsItemHeader {
+  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  Host?: PoolsCreateResponseOriginsItemHeaderHostList;
+}
+export const PoolsCreateResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Host: S.optional(PoolsCreateResponseOriginsItemHeaderHostList),
+    }),
+).annotate({
+  identifier: "PoolsCreateResponseOriginsItemHeader",
+}) as any as S.Schema<PoolsCreateResponseOriginsItemHeader>;
+
+export interface PoolsCreateResponseOriginsItem {
+  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
+  address?: string;
+  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
+  disabledAt?: string;
+  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
+  enabled?: boolean;
+  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
+  flattenCname?: boolean;
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  header?: PoolsCreateResponseOriginsItemHeader;
+  /** A human-identifiable name for the origin. */
+  name?: string;
+  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
+  port?: number;
+  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
+  virtualNetworkId?: string;
+  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
+  weight?: number;
+}
+export const PoolsCreateResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
+    header: S.optional(PoolsCreateResponseOriginsItemHeader),
+    name: S.optional(S.String),
+    port: S.optional(S.Number),
+    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PoolsCreateResponseOriginsItem",
+}) as any as S.Schema<PoolsCreateResponseOriginsItem>;
+
+export type PoolsCreateResponseOriginsList = PoolsCreateResponseOriginsItem[];
+export const PoolsCreateResponseOriginsList = /*@__PURE__*/ S.Array(
+  PoolsCreateResponseOriginsItem,
+) as any as S.Schema<PoolsCreateResponseOriginsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreatePoolResponse {
+  id?: string;
+  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
+  checkRegions?: PoolsCreateResponseCheckRegionsList;
+  createdOn?: string;
+  /** A human-readable description of the pool. */
+  description?: string;
+  /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
+  disabledAt?: string;
+  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
+  enabled?: boolean;
+  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
+  latitude?: number;
+  /** Configures load shedding policies and percentages for the pool. */
+  loadShedding?: PoolsCreateResponseLoadShedding;
+  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
+  longitude?: number;
+  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
+  minimumOrigins?: number;
+  modifiedOn?: string;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitor?: string;
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  monitorGroup?: string;
+  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
+  name?: string;
+  /** List of networks where Load Balancer or Pool is enabled. */
+  networks?: PoolsCreateResponseNetworksList;
+  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  notificationEmail?: string;
+  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
+  notificationFilter?: PoolsCreateResponseNotificationFilter;
+  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
+  originSteering?: PoolsCreateResponseOriginSteering;
+  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
+  origins?: PoolsCreateResponseOriginsList;
+}
+export const CreatePoolResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    checkRegions: S.optional(
+      PoolsCreateResponseCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    latitude: S.optional(S.Number),
+    loadShedding: S.optional(
+      PoolsCreateResponseLoadShedding.pipe(T.Body("load_shedding")),
+    ),
+    longitude: S.optional(S.Number),
+    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    monitor: S.optional(S.String),
+    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
+    name: S.optional(S.String),
+    networks: S.optional(PoolsCreateResponseNetworksList),
+    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    notificationFilter: S.optional(
+      PoolsCreateResponseNotificationFilter.pipe(T.Body("notification_filter")),
+    ),
+    originSteering: S.optional(
+      PoolsCreateResponseOriginSteering.pipe(T.Body("origin_steering")),
+    ),
+    origins: S.optional(PoolsCreateResponseOriginsList),
+  }),
+).annotate({
+  identifier: "CreatePoolResponse",
+}) as any as S.Schema<CreatePoolResponse>;
+
+export type PoolsHealthCreateRequestHeaderMap = {
+  [key: string]: unknown | undefined;
+};
+export const PoolsHealthCreateRequestHeaderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<PoolsHealthCreateRequestHeaderMap>;
+
+export type PoolsHealthCreateRequestType =
+  | "http"
+  | "https"
+  | "tcp"
+  | (string & {});
+export const PoolsHealthCreateRequestType = /*@__PURE__*/ S.String;
+
+export interface CreatePoolHealthRequest {
+  /** Identifier. */
+  accountId: string;
+  poolId: string;
+  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
+  allowInsecure?: boolean;
+  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
+  consecutiveDown?: number;
+  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
+  consecutiveUp?: number;
+  /** Object description. */
+  description?: string;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedBody?: string;
+  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedCodes?: string;
+  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
+  header?: PoolsHealthCreateRequestHeaderMap;
+  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
+  interval?: number;
+  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  method?: string;
+  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
+  path?: string;
+  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
+  port?: number;
+  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
+  probeZone?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  type?: PoolsHealthCreateRequestType;
+}
+export const CreatePoolHealthRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    poolId: S.String.pipe(T.Label("pool_id")),
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
+    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
+    description: S.optional(S.String),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
+    header: S.optional(PoolsHealthCreateRequestHeaderMap),
+    interval: S.optional(S.Number),
+    method: S.optional(S.String),
+    path: S.optional(S.String),
+    port: S.optional(S.Number),
+    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.Number),
+    timeout: S.optional(S.Number),
+    type: S.optional(PoolsHealthCreateRequestType),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}/preview",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreatePoolHealthRequest",
+}) as any as S.Schema<CreatePoolHealthRequest>;
+
+export type PoolsHealthCreateResponsePoolsMap = {
+  [key: string]: unknown | undefined;
+};
+export const PoolsHealthCreateResponsePoolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<PoolsHealthCreateResponsePoolsMap>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreatePoolHealthResponse {
+  /** Monitored pool IDs mapped to their respective names. */
+  pools?: PoolsHealthCreateResponsePoolsMap;
+  previewId?: string;
+}
+export const CreatePoolHealthResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    pools: S.optional(PoolsHealthCreateResponsePoolsMap),
+    previewId: S.optional(S.String.pipe(T.Body("preview_id"))),
+  }),
+).annotate({
+  identifier: "CreatePoolHealthResponse",
+}) as any as S.Schema<CreatePoolHealthResponse>;
+
+export interface DeleteLoadBalancerRequest {
   zoneId: string;
   loadBalancerId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
@@ -858,842 +2185,170 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeleteLoadBalancerRequest",
+}) as any as S.Schema<DeleteLoadBalancerRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
+export interface DeleteLoadBalancerResponse {
   id?: string;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
-
-export interface EditRequestAdaptiveRouting {
-  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
-}
-export const EditRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
-    ),
-  }),
 ).annotate({
-  identifier: "EditRequestAdaptiveRouting",
-}) as any as S.Schema<EditRequestAdaptiveRouting>;
+  identifier: "DeleteLoadBalancerResponse",
+}) as any as S.Schema<DeleteLoadBalancerResponse>;
 
-export type EditRequestCountryPoolsMap = { [key: string]: unknown | undefined };
-export const EditRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditRequestCountryPoolsMap>;
-
-export type EditRequestDefaultPoolsList = unknown[];
-export const EditRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<EditRequestDefaultPoolsList>;
-
-export type EditRequestLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
-export const EditRequestLocationStrategyMode = /*@__PURE__*/ S.String;
-
-export type EditRequestLocationStrategyPreferEcs =
-  | "always"
-  | "never"
-  | "proximity"
-  | "geo"
-  | (string & {});
-export const EditRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
-
-export interface EditRequestLocationStrategy {
-  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: EditRequestLocationStrategyMode;
-  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: EditRequestLocationStrategyPreferEcs;
+export interface DeleteMonitorRequest {
+  /** Identifier. */
+  accountId: string;
+  monitorId: string;
 }
-export const EditRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
+export const DeleteMonitorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    mode: S.optional(EditRequestLocationStrategyMode),
-    preferEcs: S.optional(
-      EditRequestLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "EditRequestLocationStrategy",
-}) as any as S.Schema<EditRequestLocationStrategy>;
-
-export type EditRequestPopPoolsMap = { [key: string]: unknown | undefined };
-export const EditRequestPopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditRequestPopPoolsMap>;
-
-export type EditRequestRandomSteeringPoolWeightsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditRequestRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditRequestRandomSteeringPoolWeightsMap>;
-
-export interface EditRequestRandomSteering {
-  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
-  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: EditRequestRandomSteeringPoolWeightsMap;
-}
-export const EditRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
-    poolWeights: S.optional(
-      EditRequestRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
-    ),
-  }),
-).annotate({
-  identifier: "EditRequestRandomSteering",
-}) as any as S.Schema<EditRequestRandomSteering>;
-
-export type EditRequestRegionPoolsMap = { [key: string]: unknown | undefined };
-export const EditRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditRequestRegionPoolsMap>;
-
-export interface EditRequestRulesItemFixedResponse {
-  /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
-  /** The http 'Location' header to include in the response. */
-  location?: string;
-  /** Text to include as the http body. */
-  messageBody?: string;
-  /** The http status code to respond with. */
-  statusCode?: number;
-}
-export const EditRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    location: S.optional(S.String),
-    messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-  }),
-).annotate({
-  identifier: "EditRequestRulesItemFixedResponse",
-}) as any as S.Schema<EditRequestRulesItemFixedResponse>;
-
-export type EditRequestRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditRequestRulesItemOverridesCountryPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<EditRequestRulesItemOverridesCountryPoolsMap>;
-
-export type EditRequestRulesItemOverridesDefaultPoolsList = unknown[];
-export const EditRequestRulesItemOverridesDefaultPoolsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<EditRequestRulesItemOverridesDefaultPoolsList>;
-
-export type EditRequestRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditRequestRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditRequestRulesItemOverridesPopPoolsMap>;
-
-export type EditRequestRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditRequestRulesItemOverridesRegionPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<EditRequestRulesItemOverridesRegionPoolsMap>;
-
-export type EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  string[];
-export const EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList>;
-
-export type EditRequestRulesItemOverridesSessionAffinityAttributesSamesite =
-  | "Auto"
-  | "Lax"
-  | "None"
-  | "Strict"
-  | (string & {});
-export const EditRequestRulesItemOverridesSessionAffinityAttributesSamesite =
-  /*@__PURE__*/ S.String;
-
-export type EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
-  | "Auto"
-  | "Always"
-  | "Never"
-  | (string & {});
-export const EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
-  /*@__PURE__*/ S.String;
-
-export type EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
-export const EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  /*@__PURE__*/ S.String;
-
-export interface EditRequestRulesItemOverridesSessionAffinityAttributes {
-  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
-  /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList;
-  /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
-  /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?: EditRequestRulesItemOverridesSessionAffinityAttributesSamesite;
-  /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?: EditRequestRulesItemOverridesSessionAffinityAttributesSecure;
-  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?: EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover;
-}
-export const EditRequestRulesItemOverridesSessionAffinityAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
-      headers: S.optional(
-        EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList,
-      ),
-      requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
-      ),
-      samesite: S.optional(
-        EditRequestRulesItemOverridesSessionAffinityAttributesSamesite,
-      ),
-      secure: S.optional(
-        EditRequestRulesItemOverridesSessionAffinityAttributesSecure,
-      ),
-      zeroDowntimeFailover: S.optional(
-        EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "EditRequestRulesItemOverridesSessionAffinityAttributes",
-  }) as any as S.Schema<EditRequestRulesItemOverridesSessionAffinityAttributes>;
-
-export interface EditRequestRulesItemOverrides {
-  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: unknown;
-  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: EditRequestRulesItemOverridesCountryPoolsMap;
-  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: EditRequestRulesItemOverridesDefaultPoolsList;
-  /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: unknown;
-  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: EditRequestRulesItemOverridesPopPoolsMap;
-  /** Configures pool weights. */
-  randomSteering?: unknown;
-  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: EditRequestRulesItemOverridesRegionPoolsMap;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
-  /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: EditRequestRulesItemOverridesSessionAffinityAttributes;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
-  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-}
-export const EditRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adaptiveRouting: S.optional(S.Unknown.pipe(T.Body("adaptive_routing"))),
-    countryPools: S.optional(
-      EditRequestRulesItemOverridesCountryPoolsMap.pipe(
-        T.Body("country_pools"),
-      ),
-    ),
-    defaultPools: S.optional(
-      EditRequestRulesItemOverridesDefaultPoolsList.pipe(
-        T.Body("default_pools"),
-      ),
-    ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(S.Unknown.pipe(T.Body("location_strategy"))),
-    popPools: S.optional(
-      EditRequestRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
-    ),
-    randomSteering: S.optional(S.Unknown.pipe(T.Body("random_steering"))),
-    regionPools: S.optional(
-      EditRequestRulesItemOverridesRegionPoolsMap.pipe(T.Body("region_pools")),
-    ),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
-    sessionAffinityAttributes: S.optional(
-      EditRequestRulesItemOverridesSessionAffinityAttributes.pipe(
-        T.Body("session_affinity_attributes"),
-      ),
-    ),
-    sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
-    ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
-    ttl: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EditRequestRulesItemOverrides",
-}) as any as S.Schema<EditRequestRulesItemOverrides>;
-
-export interface EditRequestRulesItem {
-  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
-  /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
-  /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: EditRequestRulesItemFixedResponse;
-  /** Name of this rule. Only used for human readability. */
-  name?: string;
-  /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: EditRequestRulesItemOverrides;
-  /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
-  /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
-}
-export const EditRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    fixedResponse: S.optional(
-      EditRequestRulesItemFixedResponse.pipe(T.Body("fixed_response")),
-    ),
-    name: S.optional(S.String),
-    overrides: S.optional(EditRequestRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EditRequestRulesItem",
-}) as any as S.Schema<EditRequestRulesItem>;
-
-export type EditRequestRulesList = EditRequestRulesItem[];
-export const EditRequestRulesList = /*@__PURE__*/ S.Array(
-  EditRequestRulesItem,
-) as any as S.Schema<EditRequestRulesList>;
-
-export interface EditRequest {
-  zoneId: string;
-  loadBalancerId: string;
-  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: EditRequestAdaptiveRouting;
-  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: EditRequestCountryPoolsMap;
-  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: EditRequestDefaultPoolsList;
-  /** Object description. */
-  description?: string;
-  /** Whether to enable (the default) this load balancer. */
-  enabled?: boolean;
-  /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: EditRequestLocationStrategy;
-  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
-  name?: string;
-  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: EditRequestPopPoolsMap;
-  /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
-  /** Configures pool weights. */
-  randomSteering?: EditRequestRandomSteering;
-  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: EditRequestRegionPoolsMap;
-  /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: EditRequestRulesList;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
-  /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: unknown;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
-  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-}
-export const EditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
-    adaptiveRouting: S.optional(
-      EditRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
-    ),
-    countryPools: S.optional(
-      EditRequestCountryPoolsMap.pipe(T.Body("country_pools")),
-    ),
-    defaultPools: S.optional(
-      EditRequestDefaultPoolsList.pipe(T.Body("default_pools")),
-    ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(
-      EditRequestLocationStrategy.pipe(T.Body("location_strategy")),
-    ),
-    name: S.optional(S.String),
-    popPools: S.optional(EditRequestPopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
-    randomSteering: S.optional(
-      EditRequestRandomSteering.pipe(T.Body("random_steering")),
-    ),
-    regionPools: S.optional(
-      EditRequestRegionPoolsMap.pipe(T.Body("region_pools")),
-    ),
-    rules: S.optional(EditRequestRulesList),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
-    sessionAffinityAttributes: S.optional(
-      S.Unknown.pipe(T.Body("session_affinity_attributes")),
-    ),
-    sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
-    ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
-    ttl: S.optional(S.Number),
+    accountId: S.String.pipe(T.Label("account_id")),
+    monitorId: S.String.pipe(T.Label("monitor_id")),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+      method: "DELETE",
+      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
       code: 200,
     }),
   ),
-).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
-
-export interface EditResponseAdaptiveRouting {
-  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
-  failoverAcrossPools?: boolean;
-}
-export const EditResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    failoverAcrossPools: S.optional(
-      S.Boolean.pipe(T.Body("failover_across_pools")),
-    ),
-  }),
 ).annotate({
-  identifier: "EditResponseAdaptiveRouting",
-}) as any as S.Schema<EditResponseAdaptiveRouting>;
-
-export type EditResponseCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditResponseCountryPoolsMap>;
-
-export type EditResponseDefaultPoolsList = unknown[];
-export const EditResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<EditResponseDefaultPoolsList>;
-
-export type EditResponseLocationStrategyMode =
-  | "pop"
-  | "resolver_ip"
-  | (string & {});
-export const EditResponseLocationStrategyMode = /*@__PURE__*/ S.String;
-
-export type EditResponseLocationStrategyPreferEcs =
-  | "always"
-  | "never"
-  | "proximity"
-  | "geo"
-  | (string & {});
-export const EditResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
-
-export interface EditResponseLocationStrategy {
-  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
-  mode?: EditResponseLocationStrategyMode;
-  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
-  preferEcs?: EditResponseLocationStrategyPreferEcs;
-}
-export const EditResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: S.optional(EditResponseLocationStrategyMode),
-    preferEcs: S.optional(
-      EditResponseLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
-    ),
-  }),
-).annotate({
-  identifier: "EditResponseLocationStrategy",
-}) as any as S.Schema<EditResponseLocationStrategy>;
-
-export type EditResponseNetworksList = string[];
-export const EditResponseNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseNetworksList>;
-
-export type EditResponsePopPoolsMap = { [key: string]: unknown | undefined };
-export const EditResponsePopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditResponsePopPoolsMap>;
-
-export type EditResponseRandomSteeringPoolWeightsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditResponseRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditResponseRandomSteeringPoolWeightsMap>;
-
-export interface EditResponseRandomSteering {
-  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
-  defaultWeight?: number;
-  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
-  poolWeights?: EditResponseRandomSteeringPoolWeightsMap;
-}
-export const EditResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
-    poolWeights: S.optional(
-      EditResponseRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
-    ),
-  }),
-).annotate({
-  identifier: "EditResponseRandomSteering",
-}) as any as S.Schema<EditResponseRandomSteering>;
-
-export type EditResponseRegionPoolsMap = { [key: string]: unknown | undefined };
-export const EditResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditResponseRegionPoolsMap>;
-
-export interface EditResponseRulesItemFixedResponse {
-  /** The http 'Content-Type' header to include in the response. */
-  contentType?: string;
-  /** The http 'Location' header to include in the response. */
-  location?: string;
-  /** Text to include as the http body. */
-  messageBody?: string;
-  /** The http status code to respond with. */
-  statusCode?: number;
-}
-export const EditResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
-    location: S.optional(S.String),
-    messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
-    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
-  }),
-).annotate({
-  identifier: "EditResponseRulesItemFixedResponse",
-}) as any as S.Schema<EditResponseRulesItemFixedResponse>;
-
-export type EditResponseRulesItemOverridesCountryPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditResponseRulesItemOverridesCountryPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<EditResponseRulesItemOverridesCountryPoolsMap>;
-
-export type EditResponseRulesItemOverridesDefaultPoolsList = unknown[];
-export const EditResponseRulesItemOverridesDefaultPoolsList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<EditResponseRulesItemOverridesDefaultPoolsList>;
-
-export type EditResponseRulesItemOverridesPopPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditResponseRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<EditResponseRulesItemOverridesPopPoolsMap>;
-
-export type EditResponseRulesItemOverridesRegionPoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const EditResponseRulesItemOverridesRegionPoolsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<EditResponseRulesItemOverridesRegionPoolsMap>;
-
-export type EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
-  string[];
-export const EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList>;
-
-export type EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
-  | "Auto"
-  | "Lax"
-  | "None"
-  | "Strict"
-  | (string & {});
-export const EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
-  /*@__PURE__*/ S.String;
-
-export type EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
-  | "Auto"
-  | "Always"
-  | "Never"
-  | (string & {});
-export const EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
-  /*@__PURE__*/ S.String;
-
-export type EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  "none" | "temporary" | "sticky" | (string & {});
-export const EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
-  /*@__PURE__*/ S.String;
-
-export interface EditResponseRulesItemOverridesSessionAffinityAttributes {
-  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
-  drainDuration?: number;
-  /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
-  headers?: EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList;
-  /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
-  requireAllHeaders?: boolean;
-  /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
-  samesite?: EditResponseRulesItemOverridesSessionAffinityAttributesSamesite;
-  /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
-  secure?: EditResponseRulesItemOverridesSessionAffinityAttributesSecure;
-  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
-  zeroDowntimeFailover?: EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover;
-}
-export const EditResponseRulesItemOverridesSessionAffinityAttributes =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
-      headers: S.optional(
-        EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList,
-      ),
-      requireAllHeaders: S.optional(
-        S.Boolean.pipe(T.Body("require_all_headers")),
-      ),
-      samesite: S.optional(
-        EditResponseRulesItemOverridesSessionAffinityAttributesSamesite,
-      ),
-      secure: S.optional(
-        EditResponseRulesItemOverridesSessionAffinityAttributesSecure,
-      ),
-      zeroDowntimeFailover: S.optional(
-        EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
-          T.Body("zero_downtime_failover"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "EditResponseRulesItemOverridesSessionAffinityAttributes",
-  }) as any as S.Schema<EditResponseRulesItemOverridesSessionAffinityAttributes>;
-
-export interface EditResponseRulesItemOverrides {
-  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: unknown;
-  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: EditResponseRulesItemOverridesCountryPoolsMap;
-  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: EditResponseRulesItemOverridesDefaultPoolsList;
-  /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: unknown;
-  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: EditResponseRulesItemOverridesPopPoolsMap;
-  /** Configures pool weights. */
-  randomSteering?: unknown;
-  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: EditResponseRulesItemOverridesRegionPoolsMap;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
-  /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: EditResponseRulesItemOverridesSessionAffinityAttributes;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
-  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-}
-export const EditResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    adaptiveRouting: S.optional(S.Unknown.pipe(T.Body("adaptive_routing"))),
-    countryPools: S.optional(
-      EditResponseRulesItemOverridesCountryPoolsMap.pipe(
-        T.Body("country_pools"),
-      ),
-    ),
-    defaultPools: S.optional(
-      EditResponseRulesItemOverridesDefaultPoolsList.pipe(
-        T.Body("default_pools"),
-      ),
-    ),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(S.Unknown.pipe(T.Body("location_strategy"))),
-    popPools: S.optional(
-      EditResponseRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
-    ),
-    randomSteering: S.optional(S.Unknown.pipe(T.Body("random_steering"))),
-    regionPools: S.optional(
-      EditResponseRulesItemOverridesRegionPoolsMap.pipe(T.Body("region_pools")),
-    ),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
-    sessionAffinityAttributes: S.optional(
-      EditResponseRulesItemOverridesSessionAffinityAttributes.pipe(
-        T.Body("session_affinity_attributes"),
-      ),
-    ),
-    sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
-    ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
-    ttl: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "EditResponseRulesItemOverrides",
-}) as any as S.Schema<EditResponseRulesItemOverrides>;
-
-export interface EditResponseRulesItem {
-  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
-  condition?: string;
-  /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
-  disabled?: boolean;
-  /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
-  fixedResponse?: EditResponseRulesItemFixedResponse;
-  /** Name of this rule. Only used for human readability. */
-  name?: string;
-  /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
-  overrides?: EditResponseRulesItemOverrides;
-  /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
-  priority?: number;
-  /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
-  terminates?: boolean;
-}
-export const EditResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    condition: S.optional(S.String),
-    disabled: S.optional(S.Boolean),
-    fixedResponse: S.optional(
-      EditResponseRulesItemFixedResponse.pipe(T.Body("fixed_response")),
-    ),
-    name: S.optional(S.String),
-    overrides: S.optional(EditResponseRulesItemOverrides),
-    priority: S.optional(S.Number),
-    terminates: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "EditResponseRulesItem",
-}) as any as S.Schema<EditResponseRulesItem>;
-
-export type EditResponseRulesList = EditResponseRulesItem[];
-export const EditResponseRulesList = /*@__PURE__*/ S.Array(
-  EditResponseRulesItem,
-) as any as S.Schema<EditResponseRulesList>;
+  identifier: "DeleteMonitorRequest",
+}) as any as S.Schema<DeleteMonitorRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EditResponse {
+export interface DeleteMonitorResponse {
   id?: string;
-  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
-  adaptiveRouting?: EditResponseAdaptiveRouting;
-  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
-  countryPools?: EditResponseCountryPoolsMap;
-  createdOn?: string;
-  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
-  defaultPools?: EditResponseDefaultPoolsList;
-  /** Object description. */
-  description?: string;
-  /** Whether to enable (the default) this load balancer. */
-  enabled?: boolean;
-  /** The pool ID to use when all other pools are detected as unhealthy. */
-  fallbackPool?: string;
-  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
-  locationStrategy?: EditResponseLocationStrategy;
-  modifiedOn?: string;
-  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
-  name?: string;
-  /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: EditResponseNetworksList;
-  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
-  popPools?: EditResponsePopPoolsMap;
-  /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
-  proxied?: boolean;
-  /** Configures pool weights. */
-  randomSteering?: EditResponseRandomSteering;
-  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
-  regionPools?: EditResponseRegionPoolsMap;
-  /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
-  rules?: EditResponseRulesList;
-  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
-  sessionAffinity?: unknown;
-  /** Configures attributes for session affinity. */
-  sessionAffinityAttributes?: unknown;
-  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
-  sessionAffinityTtl?: number;
-  /** Steering Policy for this load balancer. */
-  steeringPolicy?: unknown;
-  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
-  ttl?: number;
-  zoneName?: string;
 }
-export const EditResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteMonitorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    adaptiveRouting: S.optional(
-      EditResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
-    ),
-    countryPools: S.optional(
-      EditResponseCountryPoolsMap.pipe(T.Body("country_pools")),
-    ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    defaultPools: S.optional(
-      EditResponseDefaultPoolsList.pipe(T.Body("default_pools")),
-    ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
-    locationStrategy: S.optional(
-      EditResponseLocationStrategy.pipe(T.Body("location_strategy")),
-    ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    networks: S.optional(EditResponseNetworksList),
-    popPools: S.optional(EditResponsePopPoolsMap.pipe(T.Body("pop_pools"))),
-    proxied: S.optional(S.Boolean),
-    randomSteering: S.optional(
-      EditResponseRandomSteering.pipe(T.Body("random_steering")),
-    ),
-    regionPools: S.optional(
-      EditResponseRegionPoolsMap.pipe(T.Body("region_pools")),
-    ),
-    rules: S.optional(EditResponseRulesList),
-    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
-    sessionAffinityAttributes: S.optional(
-      S.Unknown.pipe(T.Body("session_affinity_attributes")),
-    ),
-    sessionAffinityTtl: S.optional(
-      S.Number.pipe(T.Body("session_affinity_ttl")),
-    ),
-    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
-    ttl: S.optional(S.Number),
-    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
   }),
-).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
+).annotate({
+  identifier: "DeleteMonitorResponse",
+}) as any as S.Schema<DeleteMonitorResponse>;
 
-export interface GetRequest {
+export interface DeleteMonitorGroupRequest {
+  /** Identifier. */
+  accountId: string;
+  monitorGroupId: string;
+}
+export const DeleteMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteMonitorGroupRequest",
+}) as any as S.Schema<DeleteMonitorGroupRequest>;
+
+export interface MonitorGroupsDeleteResponseMembersItem {
+  /** Whether this monitor is enabled in the group */
+  enabled: boolean;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitorId: string;
+  /** Whether this monitor is used for monitoring only (does not affect pool health) */
+  monitoringOnly: boolean;
+  /** Whether this monitor must be healthy for the pool to be considered healthy */
+  mustBeHealthy: boolean;
+  /** The timestamp of when the monitor was added to the group */
+  createdAt?: string;
+  /** The timestamp of when the monitor group member was last updated */
+  updatedAt?: string;
+}
+export const MonitorGroupsDeleteResponseMembersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      monitorId: S.String.pipe(T.Body("monitor_id")),
+      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
+      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+).annotate({
+  identifier: "MonitorGroupsDeleteResponseMembersItem",
+}) as any as S.Schema<MonitorGroupsDeleteResponseMembersItem>;
+
+export type MonitorGroupsDeleteResponseMembersList =
+  MonitorGroupsDeleteResponseMembersItem[];
+export const MonitorGroupsDeleteResponseMembersList = /*@__PURE__*/ S.Array(
+  MonitorGroupsDeleteResponseMembersItem,
+) as any as S.Schema<MonitorGroupsDeleteResponseMembersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteMonitorGroupResponse {
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  id: string;
+  /** A short description of the monitor group */
+  description: string;
+  /** List of monitors in this group */
+  members: MonitorGroupsDeleteResponseMembersList;
+  /** The timestamp of when the monitor group was created */
+  createdOn?: string;
+  /** The timestamp of when the monitor group was last updated */
+  modifiedOn?: string;
+}
+export const DeleteMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    description: S.String,
+    members: MonitorGroupsDeleteResponseMembersList,
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "DeleteMonitorGroupResponse",
+}) as any as S.Schema<DeleteMonitorGroupResponse>;
+
+export interface DeletePoolRequest {
+  /** Identifier. */
+  accountId: string;
+  poolId: string;
+}
+export const DeletePoolRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    poolId: S.String.pipe(T.Label("pool_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeletePoolRequest",
+}) as any as S.Schema<DeletePoolRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeletePoolResponse {
+  id?: string;
+}
+export const DeletePoolResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeletePoolResponse",
+}) as any as S.Schema<DeletePoolResponse>;
+
+export interface GetLoadBalancerRequest {
   zoneId: string;
   loadBalancerId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
@@ -1704,7 +2359,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetLoadBalancerRequest",
+}) as any as S.Schema<GetLoadBalancerRequest>;
 
 export interface GetResponseAdaptiveRouting {
   /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
@@ -2030,7 +2687,7 @@ export const GetResponseRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetLoadBalancerResponse {
   id?: string;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
   adaptiveRouting?: GetResponseAdaptiveRouting;
@@ -2074,7 +2731,7 @@ export interface GetResponse {
   ttl?: number;
   zoneName?: string;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     adaptiveRouting: S.optional(
@@ -2116,12 +2773,799 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     ttl: S.optional(S.Number),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetLoadBalancerResponse",
+}) as any as S.Schema<GetLoadBalancerResponse>;
 
-export interface ListRequest {
+export interface GetMonitorRequest {
+  /** Identifier. */
+  accountId: string;
+  monitorId: string;
+}
+export const GetMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    monitorId: S.String.pipe(T.Label("monitor_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetMonitorRequest",
+}) as any as S.Schema<GetMonitorRequest>;
+
+export type MonitorsGetResponseHeaderMap = {
+  [key: string]: unknown | undefined;
+};
+export const MonitorsGetResponseHeaderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MonitorsGetResponseHeaderMap>;
+
+export type MonitorsGetResponseType = "http" | "https" | "tcp" | (string & {});
+export const MonitorsGetResponseType = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetMonitorResponse {
+  id?: string;
+  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
+  allowInsecure?: boolean;
+  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
+  consecutiveDown?: number;
+  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
+  consecutiveUp?: number;
+  createdOn?: string;
+  /** Object description. */
+  description?: string;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedBody?: string;
+  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedCodes?: string;
+  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
+  header?: MonitorsGetResponseHeaderMap;
+  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
+  interval?: number;
+  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  method?: string;
+  modifiedOn?: string;
+  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
+  path?: string;
+  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
+  port?: number;
+  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
+  probeZone?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  type?: MonitorsGetResponseType;
+}
+export const GetMonitorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
+    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
+    header: S.optional(MonitorsGetResponseHeaderMap),
+    interval: S.optional(S.Number),
+    method: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    path: S.optional(S.String),
+    port: S.optional(S.Number),
+    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.Number),
+    timeout: S.optional(S.Number),
+    type: S.optional(MonitorsGetResponseType),
+  }),
+).annotate({
+  identifier: "GetMonitorResponse",
+}) as any as S.Schema<GetMonitorResponse>;
+
+export interface GetMonitorGroupRequest {
+  /** Identifier. */
+  accountId: string;
+  monitorGroupId: string;
+}
+export const GetMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetMonitorGroupRequest",
+}) as any as S.Schema<GetMonitorGroupRequest>;
+
+export interface MonitorGroupsGetResponseMembersItem {
+  /** Whether this monitor is enabled in the group */
+  enabled: boolean;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitorId: string;
+  /** Whether this monitor is used for monitoring only (does not affect pool health) */
+  monitoringOnly: boolean;
+  /** Whether this monitor must be healthy for the pool to be considered healthy */
+  mustBeHealthy: boolean;
+  /** The timestamp of when the monitor was added to the group */
+  createdAt?: string;
+  /** The timestamp of when the monitor group member was last updated */
+  updatedAt?: string;
+}
+export const MonitorGroupsGetResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    monitorId: S.String.pipe(T.Body("monitor_id")),
+    monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
+    mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+  }),
+).annotate({
+  identifier: "MonitorGroupsGetResponseMembersItem",
+}) as any as S.Schema<MonitorGroupsGetResponseMembersItem>;
+
+export type MonitorGroupsGetResponseMembersList =
+  MonitorGroupsGetResponseMembersItem[];
+export const MonitorGroupsGetResponseMembersList = /*@__PURE__*/ S.Array(
+  MonitorGroupsGetResponseMembersItem,
+) as any as S.Schema<MonitorGroupsGetResponseMembersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetMonitorGroupResponse {
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  id: string;
+  /** A short description of the monitor group */
+  description: string;
+  /** List of monitors in this group */
+  members: MonitorGroupsGetResponseMembersList;
+  /** The timestamp of when the monitor group was created */
+  createdOn?: string;
+  /** The timestamp of when the monitor group was last updated */
+  modifiedOn?: string;
+}
+export const GetMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    description: S.String,
+    members: MonitorGroupsGetResponseMembersList,
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "GetMonitorGroupResponse",
+}) as any as S.Schema<GetMonitorGroupResponse>;
+
+export interface GetMonitorGroupReferenceRequest {
+  /** Identifier. */
+  accountId: string;
+  monitorGroupId: string;
+}
+export const GetMonitorGroupReferenceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}/references",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetMonitorGroupReferenceRequest",
+}) as any as S.Schema<GetMonitorGroupReferenceRequest>;
+
+export type MonitorGroupsReferencesGetResultItemReferenceType =
+  | "*"
+  | "referral"
+  | "referrer"
+  | (string & {});
+export const MonitorGroupsReferencesGetResultItemReferenceType =
+  /*@__PURE__*/ S.String;
+
+export interface MonitorGroupsReferencesGetResultItem {
+  referenceType?: MonitorGroupsReferencesGetResultItemReferenceType;
+  resourceId?: string;
+  resourceName?: string;
+  resourceType?: string;
+}
+export const MonitorGroupsReferencesGetResultItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      referenceType: S.optional(
+        MonitorGroupsReferencesGetResultItemReferenceType.pipe(
+          T.Body("reference_type"),
+        ),
+      ),
+      resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
+      resourceName: S.optional(S.String.pipe(T.Body("resource_name"))),
+      resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
+    }),
+).annotate({
+  identifier: "MonitorGroupsReferencesGetResultItem",
+}) as any as S.Schema<MonitorGroupsReferencesGetResultItem>;
+
+export type MonitorGroupsReferencesGetResultList =
+  MonitorGroupsReferencesGetResultItem[];
+export const MonitorGroupsReferencesGetResultList = /*@__PURE__*/ S.Array(
+  MonitorGroupsReferencesGetResultItem,
+) as any as S.Schema<MonitorGroupsReferencesGetResultList>;
+
+export interface GetMonitorGroupReferenceResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: MonitorGroupsReferencesGetResultList;
+}
+export const GetMonitorGroupReferenceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      MonitorGroupsReferencesGetResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "GetMonitorGroupReferenceResponse",
+}) as any as S.Schema<GetMonitorGroupReferenceResponse>;
+
+export interface GetMonitorReferenceRequest {
+  /** Identifier. */
+  accountId: string;
+  monitorId: string;
+}
+export const GetMonitorReferenceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    monitorId: S.String.pipe(T.Label("monitor_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}/references",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetMonitorReferenceRequest",
+}) as any as S.Schema<GetMonitorReferenceRequest>;
+
+export type MonitorsReferencesGetResultItemReferenceType =
+  | "*"
+  | "referral"
+  | "referrer"
+  | (string & {});
+export const MonitorsReferencesGetResultItemReferenceType =
+  /*@__PURE__*/ S.String;
+
+export interface MonitorsReferencesGetResultItem {
+  referenceType?: MonitorsReferencesGetResultItemReferenceType;
+  resourceId?: string;
+  resourceName?: string;
+  resourceType?: string;
+}
+export const MonitorsReferencesGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    referenceType: S.optional(
+      MonitorsReferencesGetResultItemReferenceType.pipe(
+        T.Body("reference_type"),
+      ),
+    ),
+    resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
+    resourceName: S.optional(S.String.pipe(T.Body("resource_name"))),
+    resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
+  }),
+).annotate({
+  identifier: "MonitorsReferencesGetResultItem",
+}) as any as S.Schema<MonitorsReferencesGetResultItem>;
+
+export type MonitorsReferencesGetResultList = MonitorsReferencesGetResultItem[];
+export const MonitorsReferencesGetResultList = /*@__PURE__*/ S.Array(
+  MonitorsReferencesGetResultItem,
+) as any as S.Schema<MonitorsReferencesGetResultList>;
+
+export interface GetMonitorReferenceResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: MonitorsReferencesGetResultList;
+}
+export const GetMonitorReferenceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      MonitorsReferencesGetResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "GetMonitorReferenceResponse",
+}) as any as S.Schema<GetMonitorReferenceResponse>;
+
+export interface GetPoolRequest {
+  /** Identifier. */
+  accountId: string;
+  poolId: string;
+}
+export const GetPoolRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    poolId: S.String.pipe(T.Label("pool_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "GetPoolRequest" }) as any as S.Schema<GetPoolRequest>;
+
+export type PoolsGetResponseCheckRegionsList = unknown[];
+export const PoolsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<PoolsGetResponseCheckRegionsList>;
+
+export type PoolsGetResponseLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
+export const PoolsGetResponseLoadSheddingDefaultPolicy = /*@__PURE__*/ S.String;
+
+export type PoolsGetResponseLoadSheddingSessionPolicy = "hash" | (string & {});
+export const PoolsGetResponseLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
+
+export interface PoolsGetResponseLoadShedding {
+  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
+  defaultPercent?: number;
+  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
+  defaultPolicy?: PoolsGetResponseLoadSheddingDefaultPolicy;
+  /** The percent of existing sessions to shed from the pool, according to the session policy. */
+  sessionPercent?: number;
+  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
+  sessionPolicy?: PoolsGetResponseLoadSheddingSessionPolicy;
+}
+export const PoolsGetResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPolicy: S.optional(
+      PoolsGetResponseLoadSheddingDefaultPolicy.pipe(T.Body("default_policy")),
+    ),
+    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPolicy: S.optional(
+      PoolsGetResponseLoadSheddingSessionPolicy.pipe(T.Body("session_policy")),
+    ),
+  }),
+).annotate({
+  identifier: "PoolsGetResponseLoadShedding",
+}) as any as S.Schema<PoolsGetResponseLoadShedding>;
+
+export type PoolsGetResponseNetworksList = string[];
+export const PoolsGetResponseNetworksList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoolsGetResponseNetworksList>;
+
+export interface PoolsGetResponseNotificationFilterOrigin {
+  /** If set true, disable notifications for this type of resource (pool or origin). */
+  disable?: boolean;
+  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
+  healthy?: boolean;
+}
+export const PoolsGetResponseNotificationFilterOrigin = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      disable: S.optional(S.Boolean),
+      healthy: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "PoolsGetResponseNotificationFilterOrigin",
+}) as any as S.Schema<PoolsGetResponseNotificationFilterOrigin>;
+
+export interface PoolsGetResponseNotificationFilter {
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  origin?: PoolsGetResponseNotificationFilterOrigin;
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  pool?: unknown;
+}
+export const PoolsGetResponseNotificationFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    origin: S.optional(PoolsGetResponseNotificationFilterOrigin),
+    pool: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "PoolsGetResponseNotificationFilter",
+}) as any as S.Schema<PoolsGetResponseNotificationFilter>;
+
+export type PoolsGetResponseOriginSteeringPolicy =
+  | "random"
+  | "hash"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | (string & {});
+export const PoolsGetResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
+
+export interface PoolsGetResponseOriginSteering {
+  /** The type of origin steering policy to use. */
+  policy?: PoolsGetResponseOriginSteeringPolicy;
+}
+export const PoolsGetResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policy: S.optional(PoolsGetResponseOriginSteeringPolicy),
+  }),
+).annotate({
+  identifier: "PoolsGetResponseOriginSteering",
+}) as any as S.Schema<PoolsGetResponseOriginSteering>;
+
+export type PoolsGetResponseOriginsItemHeaderHostList = unknown[];
+export const PoolsGetResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<PoolsGetResponseOriginsItemHeaderHostList>;
+
+export interface PoolsGetResponseOriginsItemHeader {
+  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  Host?: PoolsGetResponseOriginsItemHeaderHostList;
+}
+export const PoolsGetResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Host: S.optional(PoolsGetResponseOriginsItemHeaderHostList),
+  }),
+).annotate({
+  identifier: "PoolsGetResponseOriginsItemHeader",
+}) as any as S.Schema<PoolsGetResponseOriginsItemHeader>;
+
+export interface PoolsGetResponseOriginsItem {
+  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
+  address?: string;
+  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
+  disabledAt?: string;
+  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
+  enabled?: boolean;
+  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
+  flattenCname?: boolean;
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  header?: PoolsGetResponseOriginsItemHeader;
+  /** A human-identifiable name for the origin. */
+  name?: string;
+  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
+  port?: number;
+  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
+  virtualNetworkId?: string;
+  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
+  weight?: number;
+}
+export const PoolsGetResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
+    header: S.optional(PoolsGetResponseOriginsItemHeader),
+    name: S.optional(S.String),
+    port: S.optional(S.Number),
+    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PoolsGetResponseOriginsItem",
+}) as any as S.Schema<PoolsGetResponseOriginsItem>;
+
+export type PoolsGetResponseOriginsList = PoolsGetResponseOriginsItem[];
+export const PoolsGetResponseOriginsList = /*@__PURE__*/ S.Array(
+  PoolsGetResponseOriginsItem,
+) as any as S.Schema<PoolsGetResponseOriginsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetPoolResponse {
+  id?: string;
+  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
+  checkRegions?: PoolsGetResponseCheckRegionsList;
+  createdOn?: string;
+  /** A human-readable description of the pool. */
+  description?: string;
+  /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
+  disabledAt?: string;
+  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
+  enabled?: boolean;
+  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
+  latitude?: number;
+  /** Configures load shedding policies and percentages for the pool. */
+  loadShedding?: PoolsGetResponseLoadShedding;
+  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
+  longitude?: number;
+  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
+  minimumOrigins?: number;
+  modifiedOn?: string;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitor?: string;
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  monitorGroup?: string;
+  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
+  name?: string;
+  /** List of networks where Load Balancer or Pool is enabled. */
+  networks?: PoolsGetResponseNetworksList;
+  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  notificationEmail?: string;
+  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
+  notificationFilter?: PoolsGetResponseNotificationFilter;
+  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
+  originSteering?: PoolsGetResponseOriginSteering;
+  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
+  origins?: PoolsGetResponseOriginsList;
+}
+export const GetPoolResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    checkRegions: S.optional(
+      PoolsGetResponseCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    latitude: S.optional(S.Number),
+    loadShedding: S.optional(
+      PoolsGetResponseLoadShedding.pipe(T.Body("load_shedding")),
+    ),
+    longitude: S.optional(S.Number),
+    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    monitor: S.optional(S.String),
+    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
+    name: S.optional(S.String),
+    networks: S.optional(PoolsGetResponseNetworksList),
+    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    notificationFilter: S.optional(
+      PoolsGetResponseNotificationFilter.pipe(T.Body("notification_filter")),
+    ),
+    originSteering: S.optional(
+      PoolsGetResponseOriginSteering.pipe(T.Body("origin_steering")),
+    ),
+    origins: S.optional(PoolsGetResponseOriginsList),
+  }),
+).annotate({
+  identifier: "GetPoolResponse",
+}) as any as S.Schema<GetPoolResponse>;
+
+export interface GetPoolHealthRequest {
+  /** Identifier. */
+  accountId: string;
+  poolId: string;
+}
+export const GetPoolHealthRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    poolId: S.String.pipe(T.Label("pool_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}/health",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetPoolHealthRequest",
+}) as any as S.Schema<GetPoolHealthRequest>;
+
+export interface PoolsHealthGetResponsePopHealthOriginsItemIp {
+  /** Failure reason. */
+  failureReason?: string;
+  /** Origin health status. */
+  healthy?: boolean;
+  /** Response code from origin health check. */
+  responseCode?: number;
+  /** Origin RTT (Round Trip Time) response. */
+  rtt?: string;
+}
+export const PoolsHealthGetResponsePopHealthOriginsItemIp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
+      healthy: S.optional(S.Boolean),
+      responseCode: S.optional(S.Number.pipe(T.Body("response_code"))),
+      rtt: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "PoolsHealthGetResponsePopHealthOriginsItemIp",
+  }) as any as S.Schema<PoolsHealthGetResponsePopHealthOriginsItemIp>;
+
+export interface PoolsHealthGetResponsePopHealthOriginsItem {
+  ip?: PoolsHealthGetResponsePopHealthOriginsItemIp;
+}
+export const PoolsHealthGetResponsePopHealthOriginsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      ip: S.optional(PoolsHealthGetResponsePopHealthOriginsItemIp),
+    }),
+  ).annotate({
+    identifier: "PoolsHealthGetResponsePopHealthOriginsItem",
+  }) as any as S.Schema<PoolsHealthGetResponsePopHealthOriginsItem>;
+
+export type PoolsHealthGetResponsePopHealthOriginsList =
+  PoolsHealthGetResponsePopHealthOriginsItem[];
+export const PoolsHealthGetResponsePopHealthOriginsList = /*@__PURE__*/ S.Array(
+  PoolsHealthGetResponsePopHealthOriginsItem,
+) as any as S.Schema<PoolsHealthGetResponsePopHealthOriginsList>;
+
+export interface PoolsHealthGetResponsePopHealth {
+  /** Whether health check in region is healthy. */
+  healthy?: boolean;
+  origins?: PoolsHealthGetResponsePopHealthOriginsList;
+}
+export const PoolsHealthGetResponsePopHealth = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    healthy: S.optional(S.Boolean),
+    origins: S.optional(PoolsHealthGetResponsePopHealthOriginsList),
+  }),
+).annotate({
+  identifier: "PoolsHealthGetResponsePopHealth",
+}) as any as S.Schema<PoolsHealthGetResponsePopHealth>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetPoolHealthResponse {
+  /** Pool ID. */
+  poolId?: string;
+  /** List of regions and associated health status. */
+  popHealth?: PoolsHealthGetResponsePopHealth;
+}
+export const GetPoolHealthResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    poolId: S.optional(S.String.pipe(T.Body("pool_id"))),
+    popHealth: S.optional(
+      PoolsHealthGetResponsePopHealth.pipe(T.Body("pop_health")),
+    ),
+  }),
+).annotate({
+  identifier: "GetPoolHealthResponse",
+}) as any as S.Schema<GetPoolHealthResponse>;
+
+export interface GetPoolReferenceRequest {
+  /** Identifier. */
+  accountId: string;
+  poolId: string;
+}
+export const GetPoolReferenceRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    poolId: S.String.pipe(T.Label("pool_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}/references",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetPoolReferenceRequest",
+}) as any as S.Schema<GetPoolReferenceRequest>;
+
+export type PoolsReferencesGetResultItemReferenceType =
+  | "*"
+  | "referral"
+  | "referrer"
+  | (string & {});
+export const PoolsReferencesGetResultItemReferenceType = /*@__PURE__*/ S.String;
+
+export interface PoolsReferencesGetResultItem {
+  referenceType?: PoolsReferencesGetResultItemReferenceType;
+  resourceId?: string;
+  resourceName?: string;
+  resourceType?: string;
+}
+export const PoolsReferencesGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    referenceType: S.optional(
+      PoolsReferencesGetResultItemReferenceType.pipe(T.Body("reference_type")),
+    ),
+    resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
+    resourceName: S.optional(S.String.pipe(T.Body("resource_name"))),
+    resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
+  }),
+).annotate({
+  identifier: "PoolsReferencesGetResultItem",
+}) as any as S.Schema<PoolsReferencesGetResultItem>;
+
+export type PoolsReferencesGetResultList = PoolsReferencesGetResultItem[];
+export const PoolsReferencesGetResultList = /*@__PURE__*/ S.Array(
+  PoolsReferencesGetResultItem,
+) as any as S.Schema<PoolsReferencesGetResultList>;
+
+export interface GetPoolReferenceResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: PoolsReferencesGetResultList;
+}
+export const GetPoolReferenceResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(PoolsReferencesGetResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "GetPoolReferenceResponse",
+}) as any as S.Schema<GetPoolReferenceResponse>;
+
+export interface GetPreviewRequest {
+  /** Identifier. */
+  accountId: string;
+  previewId: string;
+}
+export const GetPreviewRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    previewId: S.String.pipe(T.Label("preview_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/load_balancers/preview/{preview_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetPreviewRequest",
+}) as any as S.Schema<GetPreviewRequest>;
+
+export type PreviewsGetResultMap = { [key: string]: unknown | undefined };
+export const PreviewsGetResultMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<PreviewsGetResultMap>;
+
+export interface GetPreviewResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: PreviewsGetResultMap;
+}
+export const GetPreviewResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(PreviewsGetResultMap.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "GetPreviewResponse",
+}) as any as S.Schema<GetPreviewResponse>;
+
+export type RegionsGetRequestRegionId = "WNAM" | "ENAM" | "WEU" | (string & {});
+export const RegionsGetRequestRegionId = /*@__PURE__*/ S.String;
+
+export interface GetRegionRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A list of Cloudflare regions. WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia). */
+  regionId: RegionsGetRequestRegionId;
+}
+export const GetRegionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    regionId: RegionsGetRequestRegionId.pipe(T.Label("region_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/load_balancers/regions/{region_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetRegionRequest",
+}) as any as S.Schema<GetRegionRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetRegionResponse {
+  unknown: unknown;
+  string: unknown;
+}
+export const GetRegionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    unknown: S.Unknown,
+    string: S.Unknown,
+  }),
+).annotate({
+  identifier: "GetRegionResponse",
+}) as any as S.Schema<GetRegionResponse>;
+
+export interface ListLoadBalancersRequest {
   zoneId: string;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListLoadBalancersRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -2131,7 +3575,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListLoadBalancersRequest",
+}) as any as S.Schema<ListLoadBalancersRequest>;
 
 export interface ListResultItemAdaptiveRouting {
   /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
@@ -2558,413 +4004,23 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListLoadBalancersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
-
-export interface MonitorGroupsCreateRequestMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
-}
-export const MonitorGroupsCreateRequestMembersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      monitorId: S.String.pipe(T.Body("monitor_id")),
-      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
 ).annotate({
-  identifier: "MonitorGroupsCreateRequestMembersItem",
-}) as any as S.Schema<MonitorGroupsCreateRequestMembersItem>;
+  identifier: "ListLoadBalancersResponse",
+}) as any as S.Schema<ListLoadBalancersResponse>;
 
-export type MonitorGroupsCreateRequestMembersList =
-  MonitorGroupsCreateRequestMembersItem[];
-export const MonitorGroupsCreateRequestMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsCreateRequestMembersItem,
-) as any as S.Schema<MonitorGroupsCreateRequestMembersList>;
-
-export interface MonitorGroupsCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A short description of the monitor group */
-  description: string;
-  /** List of monitors in this group */
-  members: MonitorGroupsCreateRequestMembersList;
-}
-export const MonitorGroupsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    description: S.String,
-    members: MonitorGroupsCreateRequestMembersList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorGroupsCreateRequest",
-}) as any as S.Schema<MonitorGroupsCreateRequest>;
-
-export interface MonitorGroupsCreateResponseMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
-}
-export const MonitorGroupsCreateResponseMembersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      monitorId: S.String.pipe(T.Body("monitor_id")),
-      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
-).annotate({
-  identifier: "MonitorGroupsCreateResponseMembersItem",
-}) as any as S.Schema<MonitorGroupsCreateResponseMembersItem>;
-
-export type MonitorGroupsCreateResponseMembersList =
-  MonitorGroupsCreateResponseMembersItem[];
-export const MonitorGroupsCreateResponseMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsCreateResponseMembersItem,
-) as any as S.Schema<MonitorGroupsCreateResponseMembersList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MonitorGroupsCreateResponse {
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  id: string;
-  /** A short description of the monitor group */
-  description: string;
-  /** List of monitors in this group */
-  members: MonitorGroupsCreateResponseMembersList;
-  /** The timestamp of when the monitor group was created */
-  createdOn?: string;
-  /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string;
-}
-export const MonitorGroupsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.String,
-    members: MonitorGroupsCreateResponseMembersList,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "MonitorGroupsCreateResponse",
-}) as any as S.Schema<MonitorGroupsCreateResponse>;
-
-export interface MonitorGroupsDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  monitorGroupId: string;
-}
-export const MonitorGroupsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorGroupsDeleteRequest",
-}) as any as S.Schema<MonitorGroupsDeleteRequest>;
-
-export interface MonitorGroupsDeleteResponseMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
-}
-export const MonitorGroupsDeleteResponseMembersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      monitorId: S.String.pipe(T.Body("monitor_id")),
-      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
-).annotate({
-  identifier: "MonitorGroupsDeleteResponseMembersItem",
-}) as any as S.Schema<MonitorGroupsDeleteResponseMembersItem>;
-
-export type MonitorGroupsDeleteResponseMembersList =
-  MonitorGroupsDeleteResponseMembersItem[];
-export const MonitorGroupsDeleteResponseMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsDeleteResponseMembersItem,
-) as any as S.Schema<MonitorGroupsDeleteResponseMembersList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MonitorGroupsDeleteResponse {
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  id: string;
-  /** A short description of the monitor group */
-  description: string;
-  /** List of monitors in this group */
-  members: MonitorGroupsDeleteResponseMembersList;
-  /** The timestamp of when the monitor group was created */
-  createdOn?: string;
-  /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string;
-}
-export const MonitorGroupsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.String,
-    members: MonitorGroupsDeleteResponseMembersList,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "MonitorGroupsDeleteResponse",
-}) as any as S.Schema<MonitorGroupsDeleteResponse>;
-
-export interface MonitorGroupsEditRequestMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
-}
-export const MonitorGroupsEditRequestMembersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    monitorId: S.String.pipe(T.Body("monitor_id")),
-    monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-    mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
-).annotate({
-  identifier: "MonitorGroupsEditRequestMembersItem",
-}) as any as S.Schema<MonitorGroupsEditRequestMembersItem>;
-
-export type MonitorGroupsEditRequestMembersList =
-  MonitorGroupsEditRequestMembersItem[];
-export const MonitorGroupsEditRequestMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsEditRequestMembersItem,
-) as any as S.Schema<MonitorGroupsEditRequestMembersList>;
-
-export interface MonitorGroupsEditRequest {
-  /** Identifier. */
-  accountId: string;
-  monitorGroupId: string;
-  /** A short description of the monitor group */
-  description: string;
-  /** List of monitors in this group */
-  members: MonitorGroupsEditRequestMembersList;
-}
-export const MonitorGroupsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
-    description: S.String,
-    members: MonitorGroupsEditRequestMembersList,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorGroupsEditRequest",
-}) as any as S.Schema<MonitorGroupsEditRequest>;
-
-export interface MonitorGroupsEditResponseMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
-}
-export const MonitorGroupsEditResponseMembersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      monitorId: S.String.pipe(T.Body("monitor_id")),
-      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
-).annotate({
-  identifier: "MonitorGroupsEditResponseMembersItem",
-}) as any as S.Schema<MonitorGroupsEditResponseMembersItem>;
-
-export type MonitorGroupsEditResponseMembersList =
-  MonitorGroupsEditResponseMembersItem[];
-export const MonitorGroupsEditResponseMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsEditResponseMembersItem,
-) as any as S.Schema<MonitorGroupsEditResponseMembersList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MonitorGroupsEditResponse {
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  id: string;
-  /** A short description of the monitor group */
-  description: string;
-  /** List of monitors in this group */
-  members: MonitorGroupsEditResponseMembersList;
-  /** The timestamp of when the monitor group was created */
-  createdOn?: string;
-  /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string;
-}
-export const MonitorGroupsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.String,
-    members: MonitorGroupsEditResponseMembersList,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "MonitorGroupsEditResponse",
-}) as any as S.Schema<MonitorGroupsEditResponse>;
-
-export interface MonitorGroupsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  monitorGroupId: string;
-}
-export const MonitorGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorGroupsGetRequest",
-}) as any as S.Schema<MonitorGroupsGetRequest>;
-
-export interface MonitorGroupsGetResponseMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
-}
-export const MonitorGroupsGetResponseMembersItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    monitorId: S.String.pipe(T.Body("monitor_id")),
-    monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-    mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-  }),
-).annotate({
-  identifier: "MonitorGroupsGetResponseMembersItem",
-}) as any as S.Schema<MonitorGroupsGetResponseMembersItem>;
-
-export type MonitorGroupsGetResponseMembersList =
-  MonitorGroupsGetResponseMembersItem[];
-export const MonitorGroupsGetResponseMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsGetResponseMembersItem,
-) as any as S.Schema<MonitorGroupsGetResponseMembersList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MonitorGroupsGetResponse {
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  id: string;
-  /** A short description of the monitor group */
-  description: string;
-  /** List of monitors in this group */
-  members: MonitorGroupsGetResponseMembersList;
-  /** The timestamp of when the monitor group was created */
-  createdOn?: string;
-  /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string;
-}
-export const MonitorGroupsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.String,
-    members: MonitorGroupsGetResponseMembersList,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "MonitorGroupsGetResponse",
-}) as any as S.Schema<MonitorGroupsGetResponse>;
-
-export interface MonitorGroupsListRequest {
+export interface ListMonitorGroupsRequest {
   /** Identifier. */
   accountId: string;
 }
-export const MonitorGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListMonitorGroupsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -2975,8 +4031,8 @@ export const MonitorGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MonitorGroupsListRequest",
-}) as any as S.Schema<MonitorGroupsListRequest>;
+  identifier: "ListMonitorGroupsRequest",
+}) as any as S.Schema<ListMonitorGroupsRequest>;
 
 export interface MonitorGroupsListResultItemMembersItem {
   /** Whether this monitor is enabled in the group */
@@ -3041,653 +4097,23 @@ export const MonitorGroupsListResultList = /*@__PURE__*/ S.Array(
   MonitorGroupsListResultItem,
 ) as any as S.Schema<MonitorGroupsListResultList>;
 
-export interface MonitorGroupsListResponse {
+export interface ListMonitorGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: MonitorGroupsListResultList;
 }
-export const MonitorGroupsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListMonitorGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(MonitorGroupsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "MonitorGroupsListResponse",
-}) as any as S.Schema<MonitorGroupsListResponse>;
+  identifier: "ListMonitorGroupsResponse",
+}) as any as S.Schema<ListMonitorGroupsResponse>;
 
-export interface MonitorGroupsReferencesGetRequest {
-  /** Identifier. */
-  accountId: string;
-  monitorGroupId: string;
-}
-export const MonitorGroupsReferencesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}/references",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorGroupsReferencesGetRequest",
-}) as any as S.Schema<MonitorGroupsReferencesGetRequest>;
-
-export type MonitorGroupsReferencesGetResultItemReferenceType =
-  | "*"
-  | "referral"
-  | "referrer"
-  | (string & {});
-export const MonitorGroupsReferencesGetResultItemReferenceType =
-  /*@__PURE__*/ S.String;
-
-export interface MonitorGroupsReferencesGetResultItem {
-  referenceType?: MonitorGroupsReferencesGetResultItemReferenceType;
-  resourceId?: string;
-  resourceName?: string;
-  resourceType?: string;
-}
-export const MonitorGroupsReferencesGetResultItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      referenceType: S.optional(
-        MonitorGroupsReferencesGetResultItemReferenceType.pipe(
-          T.Body("reference_type"),
-        ),
-      ),
-      resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
-      resourceName: S.optional(S.String.pipe(T.Body("resource_name"))),
-      resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
-    }),
-).annotate({
-  identifier: "MonitorGroupsReferencesGetResultItem",
-}) as any as S.Schema<MonitorGroupsReferencesGetResultItem>;
-
-export type MonitorGroupsReferencesGetResultList =
-  MonitorGroupsReferencesGetResultItem[];
-export const MonitorGroupsReferencesGetResultList = /*@__PURE__*/ S.Array(
-  MonitorGroupsReferencesGetResultItem,
-) as any as S.Schema<MonitorGroupsReferencesGetResultList>;
-
-export interface MonitorGroupsReferencesGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: MonitorGroupsReferencesGetResultList;
-}
-export const MonitorGroupsReferencesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      MonitorGroupsReferencesGetResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "MonitorGroupsReferencesGetResponse",
-}) as any as S.Schema<MonitorGroupsReferencesGetResponse>;
-
-export interface MonitorGroupsUpdateRequestMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
-}
-export const MonitorGroupsUpdateRequestMembersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      monitorId: S.String.pipe(T.Body("monitor_id")),
-      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
-).annotate({
-  identifier: "MonitorGroupsUpdateRequestMembersItem",
-}) as any as S.Schema<MonitorGroupsUpdateRequestMembersItem>;
-
-export type MonitorGroupsUpdateRequestMembersList =
-  MonitorGroupsUpdateRequestMembersItem[];
-export const MonitorGroupsUpdateRequestMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsUpdateRequestMembersItem,
-) as any as S.Schema<MonitorGroupsUpdateRequestMembersList>;
-
-export interface MonitorGroupsUpdateRequest {
-  /** Identifier. */
-  accountId: string;
-  monitorGroupId: string;
-  /** A short description of the monitor group */
-  description: string;
-  /** List of monitors in this group */
-  members: MonitorGroupsUpdateRequestMembersList;
-}
-export const MonitorGroupsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
-    description: S.String,
-    members: MonitorGroupsUpdateRequestMembersList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorGroupsUpdateRequest",
-}) as any as S.Schema<MonitorGroupsUpdateRequest>;
-
-export interface MonitorGroupsUpdateResponseMembersItem {
-  /** Whether this monitor is enabled in the group */
-  enabled: boolean;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitorId: string;
-  /** Whether this monitor is used for monitoring only (does not affect pool health) */
-  monitoringOnly: boolean;
-  /** Whether this monitor must be healthy for the pool to be considered healthy */
-  mustBeHealthy: boolean;
-  /** The timestamp of when the monitor was added to the group */
-  createdAt?: string;
-  /** The timestamp of when the monitor group member was last updated */
-  updatedAt?: string;
-}
-export const MonitorGroupsUpdateResponseMembersItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      monitorId: S.String.pipe(T.Body("monitor_id")),
-      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
-      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
-    }),
-).annotate({
-  identifier: "MonitorGroupsUpdateResponseMembersItem",
-}) as any as S.Schema<MonitorGroupsUpdateResponseMembersItem>;
-
-export type MonitorGroupsUpdateResponseMembersList =
-  MonitorGroupsUpdateResponseMembersItem[];
-export const MonitorGroupsUpdateResponseMembersList = /*@__PURE__*/ S.Array(
-  MonitorGroupsUpdateResponseMembersItem,
-) as any as S.Schema<MonitorGroupsUpdateResponseMembersList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MonitorGroupsUpdateResponse {
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  id: string;
-  /** A short description of the monitor group */
-  description: string;
-  /** List of monitors in this group */
-  members: MonitorGroupsUpdateResponseMembersList;
-  /** The timestamp of when the monitor group was created */
-  createdOn?: string;
-  /** The timestamp of when the monitor group was last updated */
-  modifiedOn?: string;
-}
-export const MonitorGroupsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    description: S.String,
-    members: MonitorGroupsUpdateResponseMembersList,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "MonitorGroupsUpdateResponse",
-}) as any as S.Schema<MonitorGroupsUpdateResponse>;
-
-export type MonitorsCreateRequestHeaderMap = {
-  [key: string]: unknown | undefined;
-};
-export const MonitorsCreateRequestHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MonitorsCreateRequestHeaderMap>;
-
-export type MonitorsCreateRequestType =
-  | "http"
-  | "https"
-  | "tcp"
-  | (string & {});
-export const MonitorsCreateRequestType = /*@__PURE__*/ S.String;
-
-export interface MonitorsCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
-  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
-  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  /** Object description. */
-  description?: string;
-  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
-  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
-  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
-  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsCreateRequestHeaderMap;
-  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
-  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
-  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsCreateRequestType;
-}
-export const MonitorsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsCreateRequestHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsCreateRequestType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/load_balancers/monitors",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorsCreateRequest",
-}) as any as S.Schema<MonitorsCreateRequest>;
-
-export type MonitorsCreateResponseHeaderMap = {
-  [key: string]: unknown | undefined;
-};
-export const MonitorsCreateResponseHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MonitorsCreateResponseHeaderMap>;
-
-export type MonitorsCreateResponseType =
-  | "http"
-  | "https"
-  | "tcp"
-  | (string & {});
-export const MonitorsCreateResponseType = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MonitorsCreateResponse {
-  id?: string;
-  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
-  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
-  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  createdOn?: string;
-  /** Object description. */
-  description?: string;
-  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
-  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
-  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
-  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsCreateResponseHeaderMap;
-  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  modifiedOn?: string;
-  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
-  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
-  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsCreateResponseType;
-}
-export const MonitorsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsCreateResponseHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsCreateResponseType),
-  }),
-).annotate({
-  identifier: "MonitorsCreateResponse",
-}) as any as S.Schema<MonitorsCreateResponse>;
-
-export interface MonitorsDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  monitorId: string;
-}
-export const MonitorsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    monitorId: S.String.pipe(T.Label("monitor_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorsDeleteRequest",
-}) as any as S.Schema<MonitorsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MonitorsDeleteResponse {
-  id?: string;
-}
-export const MonitorsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "MonitorsDeleteResponse",
-}) as any as S.Schema<MonitorsDeleteResponse>;
-
-export type MonitorsEditRequestHeaderMap = {
-  [key: string]: unknown | undefined;
-};
-export const MonitorsEditRequestHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MonitorsEditRequestHeaderMap>;
-
-export type MonitorsEditRequestType = "http" | "https" | "tcp" | (string & {});
-export const MonitorsEditRequestType = /*@__PURE__*/ S.String;
-
-export interface MonitorsEditRequest {
-  /** Identifier. */
-  accountId: string;
-  monitorId: string;
-  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
-  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
-  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  /** Object description. */
-  description?: string;
-  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
-  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
-  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
-  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsEditRequestHeaderMap;
-  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
-  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
-  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsEditRequestType;
-}
-export const MonitorsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    monitorId: S.String.pipe(T.Label("monitor_id")),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsEditRequestHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsEditRequestType),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorsEditRequest",
-}) as any as S.Schema<MonitorsEditRequest>;
-
-export type MonitorsEditResponseHeaderMap = {
-  [key: string]: unknown | undefined;
-};
-export const MonitorsEditResponseHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MonitorsEditResponseHeaderMap>;
-
-export type MonitorsEditResponseType = "http" | "https" | "tcp" | (string & {});
-export const MonitorsEditResponseType = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MonitorsEditResponse {
-  id?: string;
-  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
-  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
-  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  createdOn?: string;
-  /** Object description. */
-  description?: string;
-  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
-  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
-  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
-  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsEditResponseHeaderMap;
-  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  modifiedOn?: string;
-  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
-  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
-  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsEditResponseType;
-}
-export const MonitorsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsEditResponseHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsEditResponseType),
-  }),
-).annotate({
-  identifier: "MonitorsEditResponse",
-}) as any as S.Schema<MonitorsEditResponse>;
-
-export interface MonitorsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  monitorId: string;
-}
-export const MonitorsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    monitorId: S.String.pipe(T.Label("monitor_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorsGetRequest",
-}) as any as S.Schema<MonitorsGetRequest>;
-
-export type MonitorsGetResponseHeaderMap = {
-  [key: string]: unknown | undefined;
-};
-export const MonitorsGetResponseHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MonitorsGetResponseHeaderMap>;
-
-export type MonitorsGetResponseType = "http" | "https" | "tcp" | (string & {});
-export const MonitorsGetResponseType = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MonitorsGetResponse {
-  id?: string;
-  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
-  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
-  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  createdOn?: string;
-  /** Object description. */
-  description?: string;
-  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
-  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
-  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
-  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsGetResponseHeaderMap;
-  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  modifiedOn?: string;
-  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
-  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
-  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsGetResponseType;
-}
-export const MonitorsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsGetResponseHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsGetResponseType),
-  }),
-).annotate({
-  identifier: "MonitorsGetResponse",
-}) as any as S.Schema<MonitorsGetResponse>;
-
-export interface MonitorsListRequest {
+export interface ListMonitorsRequest {
   /** Identifier. */
   accountId: string;
 }
-export const MonitorsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListMonitorsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -3698,8 +4124,8 @@ export const MonitorsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MonitorsListRequest",
-}) as any as S.Schema<MonitorsListRequest>;
+  identifier: "ListMonitorsRequest",
+}) as any as S.Schema<ListMonitorsRequest>;
 
 export type MonitorsListResultItemHeaderMap = {
   [key: string]: unknown | undefined;
@@ -3784,2016 +4210,25 @@ export const MonitorsListResultList = /*@__PURE__*/ S.Array(
   MonitorsListResultItem,
 ) as any as S.Schema<MonitorsListResultList>;
 
-export interface MonitorsListResponse {
+export interface ListMonitorsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: MonitorsListResultList;
 }
-export const MonitorsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListMonitorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(MonitorsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "MonitorsListResponse",
-}) as any as S.Schema<MonitorsListResponse>;
+  identifier: "ListMonitorsResponse",
+}) as any as S.Schema<ListMonitorsResponse>;
 
-export type MonitorsPreviewsCreateRequestHeaderMap = {
-  [key: string]: unknown | undefined;
-};
-export const MonitorsPreviewsCreateRequestHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MonitorsPreviewsCreateRequestHeaderMap>;
-
-export type MonitorsPreviewsCreateRequestType =
-  | "http"
-  | "https"
-  | "tcp"
-  | (string & {});
-export const MonitorsPreviewsCreateRequestType = /*@__PURE__*/ S.String;
-
-export interface MonitorsPreviewsCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  monitorId: string;
-  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
-  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
-  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  /** Object description. */
-  description?: string;
-  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
-  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
-  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
-  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsPreviewsCreateRequestHeaderMap;
-  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
-  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
-  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsPreviewsCreateRequestType;
-}
-export const MonitorsPreviewsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    monitorId: S.String.pipe(T.Label("monitor_id")),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsPreviewsCreateRequestHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsPreviewsCreateRequestType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}/preview",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorsPreviewsCreateRequest",
-}) as any as S.Schema<MonitorsPreviewsCreateRequest>;
-
-export type MonitorsPreviewsCreateResponsePoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const MonitorsPreviewsCreateResponsePoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MonitorsPreviewsCreateResponsePoolsMap>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MonitorsPreviewsCreateResponse {
-  /** Monitored pool IDs mapped to their respective names. */
-  pools?: MonitorsPreviewsCreateResponsePoolsMap;
-  previewId?: string;
-}
-export const MonitorsPreviewsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pools: S.optional(MonitorsPreviewsCreateResponsePoolsMap),
-    previewId: S.optional(S.String.pipe(T.Body("preview_id"))),
-  }),
-).annotate({
-  identifier: "MonitorsPreviewsCreateResponse",
-}) as any as S.Schema<MonitorsPreviewsCreateResponse>;
-
-export interface MonitorsReferencesGetRequest {
-  /** Identifier. */
-  accountId: string;
-  monitorId: string;
-}
-export const MonitorsReferencesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    monitorId: S.String.pipe(T.Label("monitor_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}/references",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorsReferencesGetRequest",
-}) as any as S.Schema<MonitorsReferencesGetRequest>;
-
-export type MonitorsReferencesGetResultItemReferenceType =
-  | "*"
-  | "referral"
-  | "referrer"
-  | (string & {});
-export const MonitorsReferencesGetResultItemReferenceType =
-  /*@__PURE__*/ S.String;
-
-export interface MonitorsReferencesGetResultItem {
-  referenceType?: MonitorsReferencesGetResultItemReferenceType;
-  resourceId?: string;
-  resourceName?: string;
-  resourceType?: string;
-}
-export const MonitorsReferencesGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceType: S.optional(
-      MonitorsReferencesGetResultItemReferenceType.pipe(
-        T.Body("reference_type"),
-      ),
-    ),
-    resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
-    resourceName: S.optional(S.String.pipe(T.Body("resource_name"))),
-    resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
-  }),
-).annotate({
-  identifier: "MonitorsReferencesGetResultItem",
-}) as any as S.Schema<MonitorsReferencesGetResultItem>;
-
-export type MonitorsReferencesGetResultList = MonitorsReferencesGetResultItem[];
-export const MonitorsReferencesGetResultList = /*@__PURE__*/ S.Array(
-  MonitorsReferencesGetResultItem,
-) as any as S.Schema<MonitorsReferencesGetResultList>;
-
-export interface MonitorsReferencesGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: MonitorsReferencesGetResultList;
-}
-export const MonitorsReferencesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      MonitorsReferencesGetResultList.pipe(T.EnvelopePayload()),
-    ),
-  }),
-).annotate({
-  identifier: "MonitorsReferencesGetResponse",
-}) as any as S.Schema<MonitorsReferencesGetResponse>;
-
-export type MonitorsUpdateRequestHeaderMap = {
-  [key: string]: unknown | undefined;
-};
-export const MonitorsUpdateRequestHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MonitorsUpdateRequestHeaderMap>;
-
-export type MonitorsUpdateRequestType =
-  | "http"
-  | "https"
-  | "tcp"
-  | (string & {});
-export const MonitorsUpdateRequestType = /*@__PURE__*/ S.String;
-
-export interface MonitorsUpdateRequest {
-  /** Identifier. */
-  accountId: string;
-  monitorId: string;
-  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
-  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
-  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  /** Object description. */
-  description?: string;
-  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
-  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
-  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
-  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsUpdateRequestHeaderMap;
-  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
-  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
-  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsUpdateRequestType;
-}
-export const MonitorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    monitorId: S.String.pipe(T.Label("monitor_id")),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsUpdateRequestHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsUpdateRequestType),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "MonitorsUpdateRequest",
-}) as any as S.Schema<MonitorsUpdateRequest>;
-
-export type MonitorsUpdateResponseHeaderMap = {
-  [key: string]: unknown | undefined;
-};
-export const MonitorsUpdateResponseHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<MonitorsUpdateResponseHeaderMap>;
-
-export type MonitorsUpdateResponseType =
-  | "http"
-  | "https"
-  | "tcp"
-  | (string & {});
-export const MonitorsUpdateResponseType = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MonitorsUpdateResponse {
-  id?: string;
-  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
-  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
-  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  createdOn?: string;
-  /** Object description. */
-  description?: string;
-  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
-  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
-  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
-  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: MonitorsUpdateResponseHeaderMap;
-  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  modifiedOn?: string;
-  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
-  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
-  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: MonitorsUpdateResponseType;
-}
-export const MonitorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(MonitorsUpdateResponseHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(MonitorsUpdateResponseType),
-  }),
-).annotate({
-  identifier: "MonitorsUpdateResponse",
-}) as any as S.Schema<MonitorsUpdateResponse>;
-
-export type PoolsBulkEditRequestNotificationEmail = "" | (string & {});
-export const PoolsBulkEditRequestNotificationEmail = /*@__PURE__*/ S.String;
-
-export interface PoolsBulkEditRequest {
-  /** Identifier. */
-  accountId: string;
-  /** The email address to send health status notifications to. This field is now deprecated in favor of Cloudflare Notifications for Load Balancing, so only resetting this field with an empty string `""` is accepted. */
-  notificationEmail?: PoolsBulkEditRequestNotificationEmail;
-}
-export const PoolsBulkEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    notificationEmail: S.optional(
-      PoolsBulkEditRequestNotificationEmail.pipe(T.Body("notification_email")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/load_balancers/pools",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoolsBulkEditRequest",
-}) as any as S.Schema<PoolsBulkEditRequest>;
-
-export type PoolsBulkEditResultItemCheckRegionsList = unknown[];
-export const PoolsBulkEditResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PoolsBulkEditResultItemCheckRegionsList>;
-
-export type PoolsBulkEditResultItemLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
-export const PoolsBulkEditResultItemLoadSheddingDefaultPolicy =
-  /*@__PURE__*/ S.String;
-
-export type PoolsBulkEditResultItemLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
-export const PoolsBulkEditResultItemLoadSheddingSessionPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface PoolsBulkEditResultItemLoadShedding {
-  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
-  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsBulkEditResultItemLoadSheddingDefaultPolicy;
-  /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
-  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsBulkEditResultItemLoadSheddingSessionPolicy;
-}
-export const PoolsBulkEditResultItemLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsBulkEditResultItemLoadSheddingDefaultPolicy.pipe(
-        T.Body("default_policy"),
-      ),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsBulkEditResultItemLoadSheddingSessionPolicy.pipe(
-        T.Body("session_policy"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsBulkEditResultItemLoadShedding",
-}) as any as S.Schema<PoolsBulkEditResultItemLoadShedding>;
-
-export type PoolsBulkEditResultItemNetworksList = string[];
-export const PoolsBulkEditResultItemNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PoolsBulkEditResultItemNetworksList>;
-
-export interface PoolsBulkEditResultItemNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
-}
-export const PoolsBulkEditResultItemNotificationFilterOrigin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PoolsBulkEditResultItemNotificationFilterOrigin",
-  }) as any as S.Schema<PoolsBulkEditResultItemNotificationFilterOrigin>;
-
-export interface PoolsBulkEditResultItemNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsBulkEditResultItemNotificationFilterOrigin;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
-}
-export const PoolsBulkEditResultItemNotificationFilter =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      origin: S.optional(PoolsBulkEditResultItemNotificationFilterOrigin),
-      pool: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "PoolsBulkEditResultItemNotificationFilter",
-  }) as any as S.Schema<PoolsBulkEditResultItemNotificationFilter>;
-
-export type PoolsBulkEditResultItemOriginSteeringPolicy =
-  | "random"
-  | "hash"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
-export const PoolsBulkEditResultItemOriginSteeringPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface PoolsBulkEditResultItemOriginSteering {
-  /** The type of origin steering policy to use. */
-  policy?: PoolsBulkEditResultItemOriginSteeringPolicy;
-}
-export const PoolsBulkEditResultItemOriginSteering = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      policy: S.optional(PoolsBulkEditResultItemOriginSteeringPolicy),
-    }),
-).annotate({
-  identifier: "PoolsBulkEditResultItemOriginSteering",
-}) as any as S.Schema<PoolsBulkEditResultItemOriginSteering>;
-
-export type PoolsBulkEditResultItemOriginsItemHeaderHostList = unknown[];
-export const PoolsBulkEditResultItemOriginsItemHeaderHostList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<PoolsBulkEditResultItemOriginsItemHeaderHostList>;
-
-export interface PoolsBulkEditResultItemOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsBulkEditResultItemOriginsItemHeaderHostList;
-}
-export const PoolsBulkEditResultItemOriginsItemHeader = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Host: S.optional(PoolsBulkEditResultItemOriginsItemHeaderHostList),
-    }),
-).annotate({
-  identifier: "PoolsBulkEditResultItemOriginsItemHeader",
-}) as any as S.Schema<PoolsBulkEditResultItemOriginsItemHeader>;
-
-export interface PoolsBulkEditResultItemOriginsItem {
-  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
-  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
-  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
-  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsBulkEditResultItemOriginsItemHeader;
-  /** A human-identifiable name for the origin. */
-  name?: string;
-  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
-  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
-  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
-}
-export const PoolsBulkEditResultItemOriginsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsBulkEditResultItemOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PoolsBulkEditResultItemOriginsItem",
-}) as any as S.Schema<PoolsBulkEditResultItemOriginsItem>;
-
-export type PoolsBulkEditResultItemOriginsList =
-  PoolsBulkEditResultItemOriginsItem[];
-export const PoolsBulkEditResultItemOriginsList = /*@__PURE__*/ S.Array(
-  PoolsBulkEditResultItemOriginsItem,
-) as any as S.Schema<PoolsBulkEditResultItemOriginsList>;
-
-export interface PoolsBulkEditResultItem {
-  id?: string;
-  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsBulkEditResultItemCheckRegionsList;
-  createdOn?: string;
-  /** A human-readable description of the pool. */
-  description?: string;
-  /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
-  disabledAt?: string;
-  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
-  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
-  /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsBulkEditResultItemLoadShedding;
-  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
-  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  modifiedOn?: string;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
-  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
-  /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: PoolsBulkEditResultItemNetworksList;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
-  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsBulkEditResultItemNotificationFilter;
-  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsBulkEditResultItemOriginSteering;
-  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsBulkEditResultItemOriginsList;
-}
-export const PoolsBulkEditResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    checkRegions: S.optional(
-      PoolsBulkEditResultItemCheckRegionsList.pipe(T.Body("check_regions")),
-    ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
-    loadShedding: S.optional(
-      PoolsBulkEditResultItemLoadShedding.pipe(T.Body("load_shedding")),
-    ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    networks: S.optional(PoolsBulkEditResultItemNetworksList),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-    notificationFilter: S.optional(
-      PoolsBulkEditResultItemNotificationFilter.pipe(
-        T.Body("notification_filter"),
-      ),
-    ),
-    originSteering: S.optional(
-      PoolsBulkEditResultItemOriginSteering.pipe(T.Body("origin_steering")),
-    ),
-    origins: S.optional(PoolsBulkEditResultItemOriginsList),
-  }),
-).annotate({
-  identifier: "PoolsBulkEditResultItem",
-}) as any as S.Schema<PoolsBulkEditResultItem>;
-
-export type PoolsBulkEditResultList = PoolsBulkEditResultItem[];
-export const PoolsBulkEditResultList = /*@__PURE__*/ S.Array(
-  PoolsBulkEditResultItem,
-) as any as S.Schema<PoolsBulkEditResultList>;
-
-export interface PoolsBulkEditResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PoolsBulkEditResultList;
-}
-export const PoolsBulkEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(PoolsBulkEditResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "PoolsBulkEditResponse",
-}) as any as S.Schema<PoolsBulkEditResponse>;
-
-export type PoolsCreateRequestOriginsItemHeaderHostList = unknown[];
-export const PoolsCreateRequestOriginsItemHeaderHostList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<PoolsCreateRequestOriginsItemHeaderHostList>;
-
-export interface PoolsCreateRequestOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsCreateRequestOriginsItemHeaderHostList;
-}
-export const PoolsCreateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Host: S.optional(PoolsCreateRequestOriginsItemHeaderHostList),
-  }),
-).annotate({
-  identifier: "PoolsCreateRequestOriginsItemHeader",
-}) as any as S.Schema<PoolsCreateRequestOriginsItemHeader>;
-
-export interface PoolsCreateRequestOriginsItem {
-  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
-  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
-  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
-  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsCreateRequestOriginsItemHeader;
-  /** A human-identifiable name for the origin. */
-  name?: string;
-  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
-  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
-  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
-}
-export const PoolsCreateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsCreateRequestOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PoolsCreateRequestOriginsItem",
-}) as any as S.Schema<PoolsCreateRequestOriginsItem>;
-
-export type PoolsCreateRequestOriginsList = PoolsCreateRequestOriginsItem[];
-export const PoolsCreateRequestOriginsList = /*@__PURE__*/ S.Array(
-  PoolsCreateRequestOriginsItem,
-) as any as S.Schema<PoolsCreateRequestOriginsList>;
-
-export type PoolsCreateRequestLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
-export const PoolsCreateRequestLoadSheddingDefaultPolicy =
-  /*@__PURE__*/ S.String;
-
-export type PoolsCreateRequestLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
-export const PoolsCreateRequestLoadSheddingSessionPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface PoolsCreateRequestLoadShedding {
-  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
-  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsCreateRequestLoadSheddingDefaultPolicy;
-  /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
-  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsCreateRequestLoadSheddingSessionPolicy;
-}
-export const PoolsCreateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsCreateRequestLoadSheddingDefaultPolicy.pipe(
-        T.Body("default_policy"),
-      ),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsCreateRequestLoadSheddingSessionPolicy.pipe(
-        T.Body("session_policy"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsCreateRequestLoadShedding",
-}) as any as S.Schema<PoolsCreateRequestLoadShedding>;
-
-export interface PoolsCreateRequestNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
-}
-export const PoolsCreateRequestNotificationFilterOrigin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PoolsCreateRequestNotificationFilterOrigin",
-  }) as any as S.Schema<PoolsCreateRequestNotificationFilterOrigin>;
-
-export interface PoolsCreateRequestNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsCreateRequestNotificationFilterOrigin;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
-}
-export const PoolsCreateRequestNotificationFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      origin: S.optional(PoolsCreateRequestNotificationFilterOrigin),
-      pool: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "PoolsCreateRequestNotificationFilter",
-}) as any as S.Schema<PoolsCreateRequestNotificationFilter>;
-
-export type PoolsCreateRequestOriginSteeringPolicy =
-  | "random"
-  | "hash"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
-export const PoolsCreateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsCreateRequestOriginSteering {
-  /** The type of origin steering policy to use. */
-  policy?: PoolsCreateRequestOriginSteeringPolicy;
-}
-export const PoolsCreateRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(PoolsCreateRequestOriginSteeringPolicy),
-  }),
-).annotate({
-  identifier: "PoolsCreateRequestOriginSteering",
-}) as any as S.Schema<PoolsCreateRequestOriginSteering>;
-
-export interface PoolsCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name: string;
-  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins: PoolsCreateRequestOriginsList;
-  /** A human-readable description of the pool. */
-  description?: string;
-  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
-  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
-  /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsCreateRequestLoadShedding;
-  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
-  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
-  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsCreateRequestNotificationFilter;
-  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsCreateRequestOriginSteering;
-}
-export const PoolsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    name: S.String,
-    origins: PoolsCreateRequestOriginsList,
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
-    loadShedding: S.optional(
-      PoolsCreateRequestLoadShedding.pipe(T.Body("load_shedding")),
-    ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-    notificationFilter: S.optional(
-      PoolsCreateRequestNotificationFilter.pipe(T.Body("notification_filter")),
-    ),
-    originSteering: S.optional(
-      PoolsCreateRequestOriginSteering.pipe(T.Body("origin_steering")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/load_balancers/pools",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoolsCreateRequest",
-}) as any as S.Schema<PoolsCreateRequest>;
-
-export type PoolsCreateResponseCheckRegionsList = unknown[];
-export const PoolsCreateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PoolsCreateResponseCheckRegionsList>;
-
-export type PoolsCreateResponseLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
-export const PoolsCreateResponseLoadSheddingDefaultPolicy =
-  /*@__PURE__*/ S.String;
-
-export type PoolsCreateResponseLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
-export const PoolsCreateResponseLoadSheddingSessionPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface PoolsCreateResponseLoadShedding {
-  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
-  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsCreateResponseLoadSheddingDefaultPolicy;
-  /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
-  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsCreateResponseLoadSheddingSessionPolicy;
-}
-export const PoolsCreateResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsCreateResponseLoadSheddingDefaultPolicy.pipe(
-        T.Body("default_policy"),
-      ),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsCreateResponseLoadSheddingSessionPolicy.pipe(
-        T.Body("session_policy"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsCreateResponseLoadShedding",
-}) as any as S.Schema<PoolsCreateResponseLoadShedding>;
-
-export type PoolsCreateResponseNetworksList = string[];
-export const PoolsCreateResponseNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PoolsCreateResponseNetworksList>;
-
-export interface PoolsCreateResponseNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
-}
-export const PoolsCreateResponseNotificationFilterOrigin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PoolsCreateResponseNotificationFilterOrigin",
-  }) as any as S.Schema<PoolsCreateResponseNotificationFilterOrigin>;
-
-export interface PoolsCreateResponseNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsCreateResponseNotificationFilterOrigin;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
-}
-export const PoolsCreateResponseNotificationFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      origin: S.optional(PoolsCreateResponseNotificationFilterOrigin),
-      pool: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "PoolsCreateResponseNotificationFilter",
-}) as any as S.Schema<PoolsCreateResponseNotificationFilter>;
-
-export type PoolsCreateResponseOriginSteeringPolicy =
-  | "random"
-  | "hash"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
-export const PoolsCreateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsCreateResponseOriginSteering {
-  /** The type of origin steering policy to use. */
-  policy?: PoolsCreateResponseOriginSteeringPolicy;
-}
-export const PoolsCreateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(PoolsCreateResponseOriginSteeringPolicy),
-  }),
-).annotate({
-  identifier: "PoolsCreateResponseOriginSteering",
-}) as any as S.Schema<PoolsCreateResponseOriginSteering>;
-
-export type PoolsCreateResponseOriginsItemHeaderHostList = unknown[];
-export const PoolsCreateResponseOriginsItemHeaderHostList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<PoolsCreateResponseOriginsItemHeaderHostList>;
-
-export interface PoolsCreateResponseOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsCreateResponseOriginsItemHeaderHostList;
-}
-export const PoolsCreateResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Host: S.optional(PoolsCreateResponseOriginsItemHeaderHostList),
-    }),
-).annotate({
-  identifier: "PoolsCreateResponseOriginsItemHeader",
-}) as any as S.Schema<PoolsCreateResponseOriginsItemHeader>;
-
-export interface PoolsCreateResponseOriginsItem {
-  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
-  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
-  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
-  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsCreateResponseOriginsItemHeader;
-  /** A human-identifiable name for the origin. */
-  name?: string;
-  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
-  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
-  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
-}
-export const PoolsCreateResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsCreateResponseOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PoolsCreateResponseOriginsItem",
-}) as any as S.Schema<PoolsCreateResponseOriginsItem>;
-
-export type PoolsCreateResponseOriginsList = PoolsCreateResponseOriginsItem[];
-export const PoolsCreateResponseOriginsList = /*@__PURE__*/ S.Array(
-  PoolsCreateResponseOriginsItem,
-) as any as S.Schema<PoolsCreateResponseOriginsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoolsCreateResponse {
-  id?: string;
-  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsCreateResponseCheckRegionsList;
-  createdOn?: string;
-  /** A human-readable description of the pool. */
-  description?: string;
-  /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
-  disabledAt?: string;
-  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
-  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
-  /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsCreateResponseLoadShedding;
-  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
-  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  modifiedOn?: string;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
-  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
-  /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: PoolsCreateResponseNetworksList;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
-  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsCreateResponseNotificationFilter;
-  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsCreateResponseOriginSteering;
-  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsCreateResponseOriginsList;
-}
-export const PoolsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    checkRegions: S.optional(
-      PoolsCreateResponseCheckRegionsList.pipe(T.Body("check_regions")),
-    ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
-    loadShedding: S.optional(
-      PoolsCreateResponseLoadShedding.pipe(T.Body("load_shedding")),
-    ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    networks: S.optional(PoolsCreateResponseNetworksList),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-    notificationFilter: S.optional(
-      PoolsCreateResponseNotificationFilter.pipe(T.Body("notification_filter")),
-    ),
-    originSteering: S.optional(
-      PoolsCreateResponseOriginSteering.pipe(T.Body("origin_steering")),
-    ),
-    origins: S.optional(PoolsCreateResponseOriginsList),
-  }),
-).annotate({
-  identifier: "PoolsCreateResponse",
-}) as any as S.Schema<PoolsCreateResponse>;
-
-export interface PoolsDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  poolId: string;
-}
-export const PoolsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    poolId: S.String.pipe(T.Label("pool_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoolsDeleteRequest",
-}) as any as S.Schema<PoolsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoolsDeleteResponse {
-  id?: string;
-}
-export const PoolsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PoolsDeleteResponse",
-}) as any as S.Schema<PoolsDeleteResponse>;
-
-export type PoolsEditRequestCheckRegionsList = unknown[];
-export const PoolsEditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PoolsEditRequestCheckRegionsList>;
-
-export type PoolsEditRequestLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
-export const PoolsEditRequestLoadSheddingDefaultPolicy = /*@__PURE__*/ S.String;
-
-export type PoolsEditRequestLoadSheddingSessionPolicy = "hash" | (string & {});
-export const PoolsEditRequestLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsEditRequestLoadShedding {
-  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
-  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsEditRequestLoadSheddingDefaultPolicy;
-  /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
-  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsEditRequestLoadSheddingSessionPolicy;
-}
-export const PoolsEditRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsEditRequestLoadSheddingDefaultPolicy.pipe(T.Body("default_policy")),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsEditRequestLoadSheddingSessionPolicy.pipe(T.Body("session_policy")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsEditRequestLoadShedding",
-}) as any as S.Schema<PoolsEditRequestLoadShedding>;
-
-export interface PoolsEditRequestNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
-}
-export const PoolsEditRequestNotificationFilterOrigin = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "PoolsEditRequestNotificationFilterOrigin",
-}) as any as S.Schema<PoolsEditRequestNotificationFilterOrigin>;
-
-export interface PoolsEditRequestNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsEditRequestNotificationFilterOrigin;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
-}
-export const PoolsEditRequestNotificationFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: S.optional(PoolsEditRequestNotificationFilterOrigin),
-    pool: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "PoolsEditRequestNotificationFilter",
-}) as any as S.Schema<PoolsEditRequestNotificationFilter>;
-
-export type PoolsEditRequestOriginSteeringPolicy =
-  | "random"
-  | "hash"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
-export const PoolsEditRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsEditRequestOriginSteering {
-  /** The type of origin steering policy to use. */
-  policy?: PoolsEditRequestOriginSteeringPolicy;
-}
-export const PoolsEditRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(PoolsEditRequestOriginSteeringPolicy),
-  }),
-).annotate({
-  identifier: "PoolsEditRequestOriginSteering",
-}) as any as S.Schema<PoolsEditRequestOriginSteering>;
-
-export type PoolsEditRequestOriginsItemHeaderHostList = unknown[];
-export const PoolsEditRequestOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PoolsEditRequestOriginsItemHeaderHostList>;
-
-export interface PoolsEditRequestOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsEditRequestOriginsItemHeaderHostList;
-}
-export const PoolsEditRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Host: S.optional(PoolsEditRequestOriginsItemHeaderHostList),
-  }),
-).annotate({
-  identifier: "PoolsEditRequestOriginsItemHeader",
-}) as any as S.Schema<PoolsEditRequestOriginsItemHeader>;
-
-export interface PoolsEditRequestOriginsItem {
-  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
-  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
-  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
-  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsEditRequestOriginsItemHeader;
-  /** A human-identifiable name for the origin. */
-  name?: string;
-  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
-  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
-  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
-}
-export const PoolsEditRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsEditRequestOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PoolsEditRequestOriginsItem",
-}) as any as S.Schema<PoolsEditRequestOriginsItem>;
-
-export type PoolsEditRequestOriginsList = PoolsEditRequestOriginsItem[];
-export const PoolsEditRequestOriginsList = /*@__PURE__*/ S.Array(
-  PoolsEditRequestOriginsItem,
-) as any as S.Schema<PoolsEditRequestOriginsList>;
-
-export interface PoolsEditRequest {
-  /** Identifier. */
-  accountId: string;
-  poolId: string;
-  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsEditRequestCheckRegionsList;
-  /** A human-readable description of the pool. */
-  description?: string;
-  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
-  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
-  /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsEditRequestLoadShedding;
-  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
-  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
-  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
-  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsEditRequestNotificationFilter;
-  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsEditRequestOriginSteering;
-  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsEditRequestOriginsList;
-}
-export const PoolsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    poolId: S.String.pipe(T.Label("pool_id")),
-    checkRegions: S.optional(
-      PoolsEditRequestCheckRegionsList.pipe(T.Body("check_regions")),
-    ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
-    loadShedding: S.optional(
-      PoolsEditRequestLoadShedding.pipe(T.Body("load_shedding")),
-    ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-    notificationFilter: S.optional(
-      PoolsEditRequestNotificationFilter.pipe(T.Body("notification_filter")),
-    ),
-    originSteering: S.optional(
-      PoolsEditRequestOriginSteering.pipe(T.Body("origin_steering")),
-    ),
-    origins: S.optional(PoolsEditRequestOriginsList),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoolsEditRequest",
-}) as any as S.Schema<PoolsEditRequest>;
-
-export type PoolsEditResponseCheckRegionsList = unknown[];
-export const PoolsEditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PoolsEditResponseCheckRegionsList>;
-
-export type PoolsEditResponseLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
-export const PoolsEditResponseLoadSheddingDefaultPolicy =
-  /*@__PURE__*/ S.String;
-
-export type PoolsEditResponseLoadSheddingSessionPolicy = "hash" | (string & {});
-export const PoolsEditResponseLoadSheddingSessionPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface PoolsEditResponseLoadShedding {
-  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
-  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsEditResponseLoadSheddingDefaultPolicy;
-  /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
-  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsEditResponseLoadSheddingSessionPolicy;
-}
-export const PoolsEditResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsEditResponseLoadSheddingDefaultPolicy.pipe(T.Body("default_policy")),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsEditResponseLoadSheddingSessionPolicy.pipe(T.Body("session_policy")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsEditResponseLoadShedding",
-}) as any as S.Schema<PoolsEditResponseLoadShedding>;
-
-export type PoolsEditResponseNetworksList = string[];
-export const PoolsEditResponseNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PoolsEditResponseNetworksList>;
-
-export interface PoolsEditResponseNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
-}
-export const PoolsEditResponseNotificationFilterOrigin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PoolsEditResponseNotificationFilterOrigin",
-  }) as any as S.Schema<PoolsEditResponseNotificationFilterOrigin>;
-
-export interface PoolsEditResponseNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsEditResponseNotificationFilterOrigin;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
-}
-export const PoolsEditResponseNotificationFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: S.optional(PoolsEditResponseNotificationFilterOrigin),
-    pool: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "PoolsEditResponseNotificationFilter",
-}) as any as S.Schema<PoolsEditResponseNotificationFilter>;
-
-export type PoolsEditResponseOriginSteeringPolicy =
-  | "random"
-  | "hash"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
-export const PoolsEditResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsEditResponseOriginSteering {
-  /** The type of origin steering policy to use. */
-  policy?: PoolsEditResponseOriginSteeringPolicy;
-}
-export const PoolsEditResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(PoolsEditResponseOriginSteeringPolicy),
-  }),
-).annotate({
-  identifier: "PoolsEditResponseOriginSteering",
-}) as any as S.Schema<PoolsEditResponseOriginSteering>;
-
-export type PoolsEditResponseOriginsItemHeaderHostList = unknown[];
-export const PoolsEditResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PoolsEditResponseOriginsItemHeaderHostList>;
-
-export interface PoolsEditResponseOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsEditResponseOriginsItemHeaderHostList;
-}
-export const PoolsEditResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Host: S.optional(PoolsEditResponseOriginsItemHeaderHostList),
-  }),
-).annotate({
-  identifier: "PoolsEditResponseOriginsItemHeader",
-}) as any as S.Schema<PoolsEditResponseOriginsItemHeader>;
-
-export interface PoolsEditResponseOriginsItem {
-  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
-  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
-  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
-  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsEditResponseOriginsItemHeader;
-  /** A human-identifiable name for the origin. */
-  name?: string;
-  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
-  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
-  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
-}
-export const PoolsEditResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsEditResponseOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PoolsEditResponseOriginsItem",
-}) as any as S.Schema<PoolsEditResponseOriginsItem>;
-
-export type PoolsEditResponseOriginsList = PoolsEditResponseOriginsItem[];
-export const PoolsEditResponseOriginsList = /*@__PURE__*/ S.Array(
-  PoolsEditResponseOriginsItem,
-) as any as S.Schema<PoolsEditResponseOriginsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoolsEditResponse {
-  id?: string;
-  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsEditResponseCheckRegionsList;
-  createdOn?: string;
-  /** A human-readable description of the pool. */
-  description?: string;
-  /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
-  disabledAt?: string;
-  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
-  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
-  /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsEditResponseLoadShedding;
-  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
-  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  modifiedOn?: string;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
-  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
-  /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: PoolsEditResponseNetworksList;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
-  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsEditResponseNotificationFilter;
-  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsEditResponseOriginSteering;
-  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsEditResponseOriginsList;
-}
-export const PoolsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    checkRegions: S.optional(
-      PoolsEditResponseCheckRegionsList.pipe(T.Body("check_regions")),
-    ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
-    loadShedding: S.optional(
-      PoolsEditResponseLoadShedding.pipe(T.Body("load_shedding")),
-    ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    networks: S.optional(PoolsEditResponseNetworksList),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-    notificationFilter: S.optional(
-      PoolsEditResponseNotificationFilter.pipe(T.Body("notification_filter")),
-    ),
-    originSteering: S.optional(
-      PoolsEditResponseOriginSteering.pipe(T.Body("origin_steering")),
-    ),
-    origins: S.optional(PoolsEditResponseOriginsList),
-  }),
-).annotate({
-  identifier: "PoolsEditResponse",
-}) as any as S.Schema<PoolsEditResponse>;
-
-export interface PoolsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  poolId: string;
-}
-export const PoolsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    poolId: S.String.pipe(T.Label("pool_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoolsGetRequest",
-}) as any as S.Schema<PoolsGetRequest>;
-
-export type PoolsGetResponseCheckRegionsList = unknown[];
-export const PoolsGetResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PoolsGetResponseCheckRegionsList>;
-
-export type PoolsGetResponseLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
-export const PoolsGetResponseLoadSheddingDefaultPolicy = /*@__PURE__*/ S.String;
-
-export type PoolsGetResponseLoadSheddingSessionPolicy = "hash" | (string & {});
-export const PoolsGetResponseLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsGetResponseLoadShedding {
-  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
-  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsGetResponseLoadSheddingDefaultPolicy;
-  /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
-  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsGetResponseLoadSheddingSessionPolicy;
-}
-export const PoolsGetResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsGetResponseLoadSheddingDefaultPolicy.pipe(T.Body("default_policy")),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsGetResponseLoadSheddingSessionPolicy.pipe(T.Body("session_policy")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsGetResponseLoadShedding",
-}) as any as S.Schema<PoolsGetResponseLoadShedding>;
-
-export type PoolsGetResponseNetworksList = string[];
-export const PoolsGetResponseNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PoolsGetResponseNetworksList>;
-
-export interface PoolsGetResponseNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
-}
-export const PoolsGetResponseNotificationFilterOrigin = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
-    }),
-).annotate({
-  identifier: "PoolsGetResponseNotificationFilterOrigin",
-}) as any as S.Schema<PoolsGetResponseNotificationFilterOrigin>;
-
-export interface PoolsGetResponseNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsGetResponseNotificationFilterOrigin;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
-}
-export const PoolsGetResponseNotificationFilter = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origin: S.optional(PoolsGetResponseNotificationFilterOrigin),
-    pool: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "PoolsGetResponseNotificationFilter",
-}) as any as S.Schema<PoolsGetResponseNotificationFilter>;
-
-export type PoolsGetResponseOriginSteeringPolicy =
-  | "random"
-  | "hash"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
-export const PoolsGetResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsGetResponseOriginSteering {
-  /** The type of origin steering policy to use. */
-  policy?: PoolsGetResponseOriginSteeringPolicy;
-}
-export const PoolsGetResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(PoolsGetResponseOriginSteeringPolicy),
-  }),
-).annotate({
-  identifier: "PoolsGetResponseOriginSteering",
-}) as any as S.Schema<PoolsGetResponseOriginSteering>;
-
-export type PoolsGetResponseOriginsItemHeaderHostList = unknown[];
-export const PoolsGetResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PoolsGetResponseOriginsItemHeaderHostList>;
-
-export interface PoolsGetResponseOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsGetResponseOriginsItemHeaderHostList;
-}
-export const PoolsGetResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Host: S.optional(PoolsGetResponseOriginsItemHeaderHostList),
-  }),
-).annotate({
-  identifier: "PoolsGetResponseOriginsItemHeader",
-}) as any as S.Schema<PoolsGetResponseOriginsItemHeader>;
-
-export interface PoolsGetResponseOriginsItem {
-  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
-  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
-  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
-  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsGetResponseOriginsItemHeader;
-  /** A human-identifiable name for the origin. */
-  name?: string;
-  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
-  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
-  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
-}
-export const PoolsGetResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsGetResponseOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PoolsGetResponseOriginsItem",
-}) as any as S.Schema<PoolsGetResponseOriginsItem>;
-
-export type PoolsGetResponseOriginsList = PoolsGetResponseOriginsItem[];
-export const PoolsGetResponseOriginsList = /*@__PURE__*/ S.Array(
-  PoolsGetResponseOriginsItem,
-) as any as S.Schema<PoolsGetResponseOriginsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoolsGetResponse {
-  id?: string;
-  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsGetResponseCheckRegionsList;
-  createdOn?: string;
-  /** A human-readable description of the pool. */
-  description?: string;
-  /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
-  disabledAt?: string;
-  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
-  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
-  /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsGetResponseLoadShedding;
-  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
-  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  modifiedOn?: string;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
-  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
-  /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: PoolsGetResponseNetworksList;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
-  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsGetResponseNotificationFilter;
-  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsGetResponseOriginSteering;
-  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsGetResponseOriginsList;
-}
-export const PoolsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    checkRegions: S.optional(
-      PoolsGetResponseCheckRegionsList.pipe(T.Body("check_regions")),
-    ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
-    loadShedding: S.optional(
-      PoolsGetResponseLoadShedding.pipe(T.Body("load_shedding")),
-    ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    networks: S.optional(PoolsGetResponseNetworksList),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-    notificationFilter: S.optional(
-      PoolsGetResponseNotificationFilter.pipe(T.Body("notification_filter")),
-    ),
-    originSteering: S.optional(
-      PoolsGetResponseOriginSteering.pipe(T.Body("origin_steering")),
-    ),
-    origins: S.optional(PoolsGetResponseOriginsList),
-  }),
-).annotate({
-  identifier: "PoolsGetResponse",
-}) as any as S.Schema<PoolsGetResponse>;
-
-export type PoolsHealthCreateRequestHeaderMap = {
-  [key: string]: unknown | undefined;
-};
-export const PoolsHealthCreateRequestHeaderMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PoolsHealthCreateRequestHeaderMap>;
-
-export type PoolsHealthCreateRequestType =
-  | "http"
-  | "https"
-  | "tcp"
-  | (string & {});
-export const PoolsHealthCreateRequestType = /*@__PURE__*/ S.String;
-
-export interface PoolsHealthCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  poolId: string;
-  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
-  allowInsecure?: boolean;
-  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
-  consecutiveDown?: number;
-  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
-  consecutiveUp?: number;
-  /** Object description. */
-  description?: string;
-  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedBody?: string;
-  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
-  expectedCodes?: string;
-  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
-  followRedirects?: boolean;
-  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
-  header?: PoolsHealthCreateRequestHeaderMap;
-  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
-  interval?: number;
-  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
-  method?: string;
-  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
-  path?: string;
-  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
-  port?: number;
-  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
-  probeZone?: string;
-  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
-  retries?: number;
-  /** The timeout (in seconds) before marking the health check as failed. */
-  timeout?: number;
-  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
-  type?: PoolsHealthCreateRequestType;
-}
-export const PoolsHealthCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    poolId: S.String.pipe(T.Label("pool_id")),
-    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
-    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
-    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
-    description: S.optional(S.String),
-    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
-    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
-    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
-    header: S.optional(PoolsHealthCreateRequestHeaderMap),
-    interval: S.optional(S.Number),
-    method: S.optional(S.String),
-    path: S.optional(S.String),
-    port: S.optional(S.Number),
-    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
-    retries: S.optional(S.Number),
-    timeout: S.optional(S.Number),
-    type: S.optional(PoolsHealthCreateRequestType),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}/preview",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoolsHealthCreateRequest",
-}) as any as S.Schema<PoolsHealthCreateRequest>;
-
-export type PoolsHealthCreateResponsePoolsMap = {
-  [key: string]: unknown | undefined;
-};
-export const PoolsHealthCreateResponsePoolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PoolsHealthCreateResponsePoolsMap>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoolsHealthCreateResponse {
-  /** Monitored pool IDs mapped to their respective names. */
-  pools?: PoolsHealthCreateResponsePoolsMap;
-  previewId?: string;
-}
-export const PoolsHealthCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    pools: S.optional(PoolsHealthCreateResponsePoolsMap),
-    previewId: S.optional(S.String.pipe(T.Body("preview_id"))),
-  }),
-).annotate({
-  identifier: "PoolsHealthCreateResponse",
-}) as any as S.Schema<PoolsHealthCreateResponse>;
-
-export interface PoolsHealthGetRequest {
-  /** Identifier. */
-  accountId: string;
-  poolId: string;
-}
-export const PoolsHealthGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    poolId: S.String.pipe(T.Label("pool_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}/health",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoolsHealthGetRequest",
-}) as any as S.Schema<PoolsHealthGetRequest>;
-
-export interface PoolsHealthGetResponsePopHealthOriginsItemIp {
-  /** Failure reason. */
-  failureReason?: string;
-  /** Origin health status. */
-  healthy?: boolean;
-  /** Response code from origin health check. */
-  responseCode?: number;
-  /** Origin RTT (Round Trip Time) response. */
-  rtt?: string;
-}
-export const PoolsHealthGetResponsePopHealthOriginsItemIp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
-      healthy: S.optional(S.Boolean),
-      responseCode: S.optional(S.Number.pipe(T.Body("response_code"))),
-      rtt: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "PoolsHealthGetResponsePopHealthOriginsItemIp",
-  }) as any as S.Schema<PoolsHealthGetResponsePopHealthOriginsItemIp>;
-
-export interface PoolsHealthGetResponsePopHealthOriginsItem {
-  ip?: PoolsHealthGetResponsePopHealthOriginsItemIp;
-}
-export const PoolsHealthGetResponsePopHealthOriginsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      ip: S.optional(PoolsHealthGetResponsePopHealthOriginsItemIp),
-    }),
-  ).annotate({
-    identifier: "PoolsHealthGetResponsePopHealthOriginsItem",
-  }) as any as S.Schema<PoolsHealthGetResponsePopHealthOriginsItem>;
-
-export type PoolsHealthGetResponsePopHealthOriginsList =
-  PoolsHealthGetResponsePopHealthOriginsItem[];
-export const PoolsHealthGetResponsePopHealthOriginsList = /*@__PURE__*/ S.Array(
-  PoolsHealthGetResponsePopHealthOriginsItem,
-) as any as S.Schema<PoolsHealthGetResponsePopHealthOriginsList>;
-
-export interface PoolsHealthGetResponsePopHealth {
-  /** Whether health check in region is healthy. */
-  healthy?: boolean;
-  origins?: PoolsHealthGetResponsePopHealthOriginsList;
-}
-export const PoolsHealthGetResponsePopHealth = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    healthy: S.optional(S.Boolean),
-    origins: S.optional(PoolsHealthGetResponsePopHealthOriginsList),
-  }),
-).annotate({
-  identifier: "PoolsHealthGetResponsePopHealth",
-}) as any as S.Schema<PoolsHealthGetResponsePopHealth>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoolsHealthGetResponse {
-  /** Pool ID. */
-  poolId?: string;
-  /** List of regions and associated health status. */
-  popHealth?: PoolsHealthGetResponsePopHealth;
-}
-export const PoolsHealthGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    poolId: S.optional(S.String.pipe(T.Body("pool_id"))),
-    popHealth: S.optional(
-      PoolsHealthGetResponsePopHealth.pipe(T.Body("pop_health")),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsHealthGetResponse",
-}) as any as S.Schema<PoolsHealthGetResponse>;
-
-export interface PoolsListRequest {
+export interface ListPoolsRequest {
   /** Identifier. */
   accountId: string;
   /** The ID of the Monitor to use for checking the health of origins within this pool. */
   monitor?: string;
 }
-export const PoolsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListPoolsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     monitor: S.optional(S.String.pipe(T.Query())),
@@ -5805,8 +4240,8 @@ export const PoolsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "PoolsListRequest",
-}) as any as S.Schema<PoolsListRequest>;
+  identifier: "ListPoolsRequest",
+}) as any as S.Schema<ListPoolsRequest>;
 
 export type PoolsListResultItemCheckRegionsList = unknown[];
 export const PoolsListResultItemCheckRegionsList = /*@__PURE__*/ S.Array(
@@ -6048,622 +4483,19 @@ export const PoolsListResultList = /*@__PURE__*/ S.Array(
   PoolsListResultItem,
 ) as any as S.Schema<PoolsListResultList>;
 
-export interface PoolsListResponse {
+export interface ListPoolsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PoolsListResultList;
 }
-export const PoolsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PoolsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "PoolsListResponse",
-}) as any as S.Schema<PoolsListResponse>;
+  identifier: "ListPoolsResponse",
+}) as any as S.Schema<ListPoolsResponse>;
 
-export interface PoolsReferencesGetRequest {
-  /** Identifier. */
-  accountId: string;
-  poolId: string;
-}
-export const PoolsReferencesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    poolId: S.String.pipe(T.Label("pool_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}/references",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoolsReferencesGetRequest",
-}) as any as S.Schema<PoolsReferencesGetRequest>;
-
-export type PoolsReferencesGetResultItemReferenceType =
-  | "*"
-  | "referral"
-  | "referrer"
-  | (string & {});
-export const PoolsReferencesGetResultItemReferenceType = /*@__PURE__*/ S.String;
-
-export interface PoolsReferencesGetResultItem {
-  referenceType?: PoolsReferencesGetResultItemReferenceType;
-  resourceId?: string;
-  resourceName?: string;
-  resourceType?: string;
-}
-export const PoolsReferencesGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    referenceType: S.optional(
-      PoolsReferencesGetResultItemReferenceType.pipe(T.Body("reference_type")),
-    ),
-    resourceId: S.optional(S.String.pipe(T.Body("resource_id"))),
-    resourceName: S.optional(S.String.pipe(T.Body("resource_name"))),
-    resourceType: S.optional(S.String.pipe(T.Body("resource_type"))),
-  }),
-).annotate({
-  identifier: "PoolsReferencesGetResultItem",
-}) as any as S.Schema<PoolsReferencesGetResultItem>;
-
-export type PoolsReferencesGetResultList = PoolsReferencesGetResultItem[];
-export const PoolsReferencesGetResultList = /*@__PURE__*/ S.Array(
-  PoolsReferencesGetResultItem,
-) as any as S.Schema<PoolsReferencesGetResultList>;
-
-export interface PoolsReferencesGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PoolsReferencesGetResultList;
-}
-export const PoolsReferencesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(PoolsReferencesGetResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "PoolsReferencesGetResponse",
-}) as any as S.Schema<PoolsReferencesGetResponse>;
-
-export type PoolsUpdateRequestOriginsItemHeaderHostList = unknown[];
-export const PoolsUpdateRequestOriginsItemHeaderHostList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<PoolsUpdateRequestOriginsItemHeaderHostList>;
-
-export interface PoolsUpdateRequestOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsUpdateRequestOriginsItemHeaderHostList;
-}
-export const PoolsUpdateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Host: S.optional(PoolsUpdateRequestOriginsItemHeaderHostList),
-  }),
-).annotate({
-  identifier: "PoolsUpdateRequestOriginsItemHeader",
-}) as any as S.Schema<PoolsUpdateRequestOriginsItemHeader>;
-
-export interface PoolsUpdateRequestOriginsItem {
-  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
-  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
-  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
-  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsUpdateRequestOriginsItemHeader;
-  /** A human-identifiable name for the origin. */
-  name?: string;
-  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
-  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
-  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
-}
-export const PoolsUpdateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsUpdateRequestOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PoolsUpdateRequestOriginsItem",
-}) as any as S.Schema<PoolsUpdateRequestOriginsItem>;
-
-export type PoolsUpdateRequestOriginsList = PoolsUpdateRequestOriginsItem[];
-export const PoolsUpdateRequestOriginsList = /*@__PURE__*/ S.Array(
-  PoolsUpdateRequestOriginsItem,
-) as any as S.Schema<PoolsUpdateRequestOriginsList>;
-
-export type PoolsUpdateRequestCheckRegionsList = unknown[];
-export const PoolsUpdateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PoolsUpdateRequestCheckRegionsList>;
-
-export type PoolsUpdateRequestLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
-export const PoolsUpdateRequestLoadSheddingDefaultPolicy =
-  /*@__PURE__*/ S.String;
-
-export type PoolsUpdateRequestLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
-export const PoolsUpdateRequestLoadSheddingSessionPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface PoolsUpdateRequestLoadShedding {
-  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
-  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsUpdateRequestLoadSheddingDefaultPolicy;
-  /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
-  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsUpdateRequestLoadSheddingSessionPolicy;
-}
-export const PoolsUpdateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsUpdateRequestLoadSheddingDefaultPolicy.pipe(
-        T.Body("default_policy"),
-      ),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsUpdateRequestLoadSheddingSessionPolicy.pipe(
-        T.Body("session_policy"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsUpdateRequestLoadShedding",
-}) as any as S.Schema<PoolsUpdateRequestLoadShedding>;
-
-export interface PoolsUpdateRequestNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
-}
-export const PoolsUpdateRequestNotificationFilterOrigin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PoolsUpdateRequestNotificationFilterOrigin",
-  }) as any as S.Schema<PoolsUpdateRequestNotificationFilterOrigin>;
-
-export interface PoolsUpdateRequestNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsUpdateRequestNotificationFilterOrigin;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
-}
-export const PoolsUpdateRequestNotificationFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      origin: S.optional(PoolsUpdateRequestNotificationFilterOrigin),
-      pool: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "PoolsUpdateRequestNotificationFilter",
-}) as any as S.Schema<PoolsUpdateRequestNotificationFilter>;
-
-export type PoolsUpdateRequestOriginSteeringPolicy =
-  | "random"
-  | "hash"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
-export const PoolsUpdateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsUpdateRequestOriginSteering {
-  /** The type of origin steering policy to use. */
-  policy?: PoolsUpdateRequestOriginSteeringPolicy;
-}
-export const PoolsUpdateRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(PoolsUpdateRequestOriginSteeringPolicy),
-  }),
-).annotate({
-  identifier: "PoolsUpdateRequestOriginSteering",
-}) as any as S.Schema<PoolsUpdateRequestOriginSteering>;
-
-export interface PoolsUpdateRequest {
-  /** Identifier. */
-  accountId: string;
-  poolId: string;
-  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name: string;
-  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins: PoolsUpdateRequestOriginsList;
-  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsUpdateRequestCheckRegionsList;
-  /** A human-readable description of the pool. */
-  description?: string;
-  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
-  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
-  /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsUpdateRequestLoadShedding;
-  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
-  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
-  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsUpdateRequestNotificationFilter;
-  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsUpdateRequestOriginSteering;
-}
-export const PoolsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    poolId: S.String.pipe(T.Label("pool_id")),
-    name: S.String,
-    origins: PoolsUpdateRequestOriginsList,
-    checkRegions: S.optional(
-      PoolsUpdateRequestCheckRegionsList.pipe(T.Body("check_regions")),
-    ),
-    description: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
-    loadShedding: S.optional(
-      PoolsUpdateRequestLoadShedding.pipe(T.Body("load_shedding")),
-    ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-    notificationFilter: S.optional(
-      PoolsUpdateRequestNotificationFilter.pipe(T.Body("notification_filter")),
-    ),
-    originSteering: S.optional(
-      PoolsUpdateRequestOriginSteering.pipe(T.Body("origin_steering")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PoolsUpdateRequest",
-}) as any as S.Schema<PoolsUpdateRequest>;
-
-export type PoolsUpdateResponseCheckRegionsList = unknown[];
-export const PoolsUpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<PoolsUpdateResponseCheckRegionsList>;
-
-export type PoolsUpdateResponseLoadSheddingDefaultPolicy =
-  | "random"
-  | "hash"
-  | (string & {});
-export const PoolsUpdateResponseLoadSheddingDefaultPolicy =
-  /*@__PURE__*/ S.String;
-
-export type PoolsUpdateResponseLoadSheddingSessionPolicy =
-  | "hash"
-  | (string & {});
-export const PoolsUpdateResponseLoadSheddingSessionPolicy =
-  /*@__PURE__*/ S.String;
-
-export interface PoolsUpdateResponseLoadShedding {
-  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
-  defaultPercent?: number;
-  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
-  defaultPolicy?: PoolsUpdateResponseLoadSheddingDefaultPolicy;
-  /** The percent of existing sessions to shed from the pool, according to the session policy. */
-  sessionPercent?: number;
-  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
-  sessionPolicy?: PoolsUpdateResponseLoadSheddingSessionPolicy;
-}
-export const PoolsUpdateResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
-    defaultPolicy: S.optional(
-      PoolsUpdateResponseLoadSheddingDefaultPolicy.pipe(
-        T.Body("default_policy"),
-      ),
-    ),
-    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
-    sessionPolicy: S.optional(
-      PoolsUpdateResponseLoadSheddingSessionPolicy.pipe(
-        T.Body("session_policy"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "PoolsUpdateResponseLoadShedding",
-}) as any as S.Schema<PoolsUpdateResponseLoadShedding>;
-
-export type PoolsUpdateResponseNetworksList = string[];
-export const PoolsUpdateResponseNetworksList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<PoolsUpdateResponseNetworksList>;
-
-export interface PoolsUpdateResponseNotificationFilterOrigin {
-  /** If set true, disable notifications for this type of resource (pool or origin). */
-  disable?: boolean;
-  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
-  healthy?: boolean;
-}
-export const PoolsUpdateResponseNotificationFilterOrigin =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      disable: S.optional(S.Boolean),
-      healthy: S.optional(S.Boolean),
-    }),
-  ).annotate({
-    identifier: "PoolsUpdateResponseNotificationFilterOrigin",
-  }) as any as S.Schema<PoolsUpdateResponseNotificationFilterOrigin>;
-
-export interface PoolsUpdateResponseNotificationFilter {
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  origin?: PoolsUpdateResponseNotificationFilterOrigin;
-  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
-  pool?: unknown;
-}
-export const PoolsUpdateResponseNotificationFilter = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      origin: S.optional(PoolsUpdateResponseNotificationFilterOrigin),
-      pool: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "PoolsUpdateResponseNotificationFilter",
-}) as any as S.Schema<PoolsUpdateResponseNotificationFilter>;
-
-export type PoolsUpdateResponseOriginSteeringPolicy =
-  | "random"
-  | "hash"
-  | "least_outstanding_requests"
-  | "least_connections"
-  | (string & {});
-export const PoolsUpdateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
-
-export interface PoolsUpdateResponseOriginSteering {
-  /** The type of origin steering policy to use. */
-  policy?: PoolsUpdateResponseOriginSteeringPolicy;
-}
-export const PoolsUpdateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    policy: S.optional(PoolsUpdateResponseOriginSteeringPolicy),
-  }),
-).annotate({
-  identifier: "PoolsUpdateResponseOriginSteering",
-}) as any as S.Schema<PoolsUpdateResponseOriginSteering>;
-
-export type PoolsUpdateResponseOriginsItemHeaderHostList = unknown[];
-export const PoolsUpdateResponseOriginsItemHeaderHostList =
-  /*@__PURE__*/ S.Array(
-    S.Unknown,
-  ) as any as S.Schema<PoolsUpdateResponseOriginsItemHeaderHostList>;
-
-export interface PoolsUpdateResponseOriginsItemHeader {
-  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
-  Host?: PoolsUpdateResponseOriginsItemHeaderHostList;
-}
-export const PoolsUpdateResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Host: S.optional(PoolsUpdateResponseOriginsItemHeaderHostList),
-    }),
-).annotate({
-  identifier: "PoolsUpdateResponseOriginsItemHeader",
-}) as any as S.Schema<PoolsUpdateResponseOriginsItemHeader>;
-
-export interface PoolsUpdateResponseOriginsItem {
-  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
-  address?: string;
-  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
-  disabledAt?: string;
-  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
-  enabled?: boolean;
-  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
-  flattenCname?: boolean;
-  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
-  header?: PoolsUpdateResponseOriginsItemHeader;
-  /** A human-identifiable name for the origin. */
-  name?: string;
-  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
-  port?: number;
-  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
-  virtualNetworkId?: string;
-  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
-  weight?: number;
-}
-export const PoolsUpdateResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    address: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
-    header: S.optional(PoolsUpdateResponseOriginsItemHeader),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "PoolsUpdateResponseOriginsItem",
-}) as any as S.Schema<PoolsUpdateResponseOriginsItem>;
-
-export type PoolsUpdateResponseOriginsList = PoolsUpdateResponseOriginsItem[];
-export const PoolsUpdateResponseOriginsList = /*@__PURE__*/ S.Array(
-  PoolsUpdateResponseOriginsItem,
-) as any as S.Schema<PoolsUpdateResponseOriginsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PoolsUpdateResponse {
-  id?: string;
-  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
-  checkRegions?: PoolsUpdateResponseCheckRegionsList;
-  createdOn?: string;
-  /** A human-readable description of the pool. */
-  description?: string;
-  /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
-  disabledAt?: string;
-  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
-  enabled?: boolean;
-  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
-  latitude?: number;
-  /** Configures load shedding policies and percentages for the pool. */
-  loadShedding?: PoolsUpdateResponseLoadShedding;
-  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
-  longitude?: number;
-  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
-  minimumOrigins?: number;
-  modifiedOn?: string;
-  /** The ID of the Monitor to use for checking the health of origins within this pool. */
-  monitor?: string;
-  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
-  monitorGroup?: string;
-  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
-  name?: string;
-  /** List of networks where Load Balancer or Pool is enabled. */
-  networks?: PoolsUpdateResponseNetworksList;
-  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
-  notificationEmail?: string;
-  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
-  notificationFilter?: PoolsUpdateResponseNotificationFilter;
-  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
-  originSteering?: PoolsUpdateResponseOriginSteering;
-  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
-  origins?: PoolsUpdateResponseOriginsList;
-}
-export const PoolsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    checkRegions: S.optional(
-      PoolsUpdateResponseCheckRegionsList.pipe(T.Body("check_regions")),
-    ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
-    enabled: S.optional(S.Boolean),
-    latitude: S.optional(S.Number),
-    loadShedding: S.optional(
-      PoolsUpdateResponseLoadShedding.pipe(T.Body("load_shedding")),
-    ),
-    longitude: S.optional(S.Number),
-    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    monitor: S.optional(S.String),
-    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
-    name: S.optional(S.String),
-    networks: S.optional(PoolsUpdateResponseNetworksList),
-    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
-    notificationFilter: S.optional(
-      PoolsUpdateResponseNotificationFilter.pipe(T.Body("notification_filter")),
-    ),
-    originSteering: S.optional(
-      PoolsUpdateResponseOriginSteering.pipe(T.Body("origin_steering")),
-    ),
-    origins: S.optional(PoolsUpdateResponseOriginsList),
-  }),
-).annotate({
-  identifier: "PoolsUpdateResponse",
-}) as any as S.Schema<PoolsUpdateResponse>;
-
-export interface PreviewsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  previewId: string;
-}
-export const PreviewsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    previewId: S.String.pipe(T.Label("preview_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/preview/{preview_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PreviewsGetRequest",
-}) as any as S.Schema<PreviewsGetRequest>;
-
-export type PreviewsGetResultMap = { [key: string]: unknown | undefined };
-export const PreviewsGetResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<PreviewsGetResultMap>;
-
-export interface PreviewsGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PreviewsGetResultMap;
-}
-export const PreviewsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(PreviewsGetResultMap.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "PreviewsGetResponse",
-}) as any as S.Schema<PreviewsGetResponse>;
-
-export type RegionsGetRequestRegionId = "WNAM" | "ENAM" | "WEU" | (string & {});
-export const RegionsGetRequestRegionId = /*@__PURE__*/ S.String;
-
-export interface RegionsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A list of Cloudflare regions. WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia). */
-  regionId: RegionsGetRequestRegionId;
-}
-export const RegionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    regionId: RegionsGetRequestRegionId.pipe(T.Label("region_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/load_balancers/regions/{region_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RegionsGetRequest",
-}) as any as S.Schema<RegionsGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RegionsGetResponse {
-  unknown: unknown;
-  string: unknown;
-}
-export const RegionsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    unknown: S.Unknown,
-    string: S.Unknown,
-  }),
-).annotate({
-  identifier: "RegionsGetResponse",
-}) as any as S.Schema<RegionsGetResponse>;
-
-export interface RegionsListRequest {
+export interface ListRegionsRequest {
   /** Identifier. */
   accountId: string;
   /** Two-letter alpha-2 country code followed in ISO 3166-1. */
@@ -6673,7 +4505,7 @@ export interface RegionsListRequest {
   /** Two-letter subdivision code followed in ISO 3166-2. */
   subdivisionCodeA2?: string;
 }
-export const RegionsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListRegionsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     countryCodeA2: S.optional(S.String.pipe(T.Query("country_code_a2"))),
@@ -6689,22 +4521,22 @@ export const RegionsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RegionsListRequest",
-}) as any as S.Schema<RegionsListRequest>;
+  identifier: "ListRegionsRequest",
+}) as any as S.Schema<ListRegionsRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RegionsListResponse {
+export interface ListRegionsResponse {
   unknown: unknown;
   string: unknown;
 }
-export const RegionsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     unknown: S.Unknown,
     string: S.Unknown,
   }),
 ).annotate({
-  identifier: "RegionsListResponse",
-}) as any as S.Schema<RegionsListResponse>;
+  identifier: "ListRegionsResponse",
+}) as any as S.Schema<ListRegionsResponse>;
 
 export type SearchesListRequestReferences =
   | ""
@@ -6714,7 +4546,7 @@ export type SearchesListRequestReferences =
   | (string & {});
 export const SearchesListRequestReferences = /*@__PURE__*/ S.String;
 
-export interface SearchesListRequest {
+export interface ListSearchesRequest {
   /** Identifier. */
   accountId: string;
   page?: number;
@@ -6724,7 +4556,7 @@ export interface SearchesListRequest {
   /** The type of references to include. "*" to include both referral and referrer references. "" to not include any reference information. */
   references?: SearchesListRequestReferences;
 }
-export const SearchesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListSearchesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -6739,8 +4571,8 @@ export const SearchesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SearchesListRequest",
-}) as any as S.Schema<SearchesListRequest>;
+  identifier: "ListSearchesRequest",
+}) as any as S.Schema<ListSearchesRequest>;
 
 export type SearchesListResponseResourcesItemReferenceType =
   | "referral"
@@ -6801,17 +4633,1557 @@ export const SearchesListResponseResourcesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SearchesListResponseResourcesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SearchesListResponse {
+export interface ListSearchesResponse {
   /** A list of resources matching the search query. */
   resources?: SearchesListResponseResourcesList;
 }
-export const SearchesListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListSearchesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     resources: S.optional(SearchesListResponseResourcesList),
   }),
 ).annotate({
-  identifier: "SearchesListResponse",
-}) as any as S.Schema<SearchesListResponse>;
+  identifier: "ListSearchesResponse",
+}) as any as S.Schema<ListSearchesResponse>;
+
+export interface EditRequestAdaptiveRouting {
+  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
+  failoverAcrossPools?: boolean;
+}
+export const EditRequestAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    failoverAcrossPools: S.optional(
+      S.Boolean.pipe(T.Body("failover_across_pools")),
+    ),
+  }),
+).annotate({
+  identifier: "EditRequestAdaptiveRouting",
+}) as any as S.Schema<EditRequestAdaptiveRouting>;
+
+export type EditRequestCountryPoolsMap = { [key: string]: unknown | undefined };
+export const EditRequestCountryPoolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EditRequestCountryPoolsMap>;
+
+export type EditRequestDefaultPoolsList = unknown[];
+export const EditRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<EditRequestDefaultPoolsList>;
+
+export type EditRequestLocationStrategyMode =
+  | "pop"
+  | "resolver_ip"
+  | (string & {});
+export const EditRequestLocationStrategyMode = /*@__PURE__*/ S.String;
+
+export type EditRequestLocationStrategyPreferEcs =
+  | "always"
+  | "never"
+  | "proximity"
+  | "geo"
+  | (string & {});
+export const EditRequestLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
+
+export interface EditRequestLocationStrategy {
+  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
+  mode?: EditRequestLocationStrategyMode;
+  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
+  preferEcs?: EditRequestLocationStrategyPreferEcs;
+}
+export const EditRequestLocationStrategy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: S.optional(EditRequestLocationStrategyMode),
+    preferEcs: S.optional(
+      EditRequestLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
+    ),
+  }),
+).annotate({
+  identifier: "EditRequestLocationStrategy",
+}) as any as S.Schema<EditRequestLocationStrategy>;
+
+export type EditRequestPopPoolsMap = { [key: string]: unknown | undefined };
+export const EditRequestPopPoolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EditRequestPopPoolsMap>;
+
+export type EditRequestRandomSteeringPoolWeightsMap = {
+  [key: string]: unknown | undefined;
+};
+export const EditRequestRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EditRequestRandomSteeringPoolWeightsMap>;
+
+export interface EditRequestRandomSteering {
+  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
+  defaultWeight?: number;
+  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
+  poolWeights?: EditRequestRandomSteeringPoolWeightsMap;
+}
+export const EditRequestRandomSteering = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
+    poolWeights: S.optional(
+      EditRequestRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
+    ),
+  }),
+).annotate({
+  identifier: "EditRequestRandomSteering",
+}) as any as S.Schema<EditRequestRandomSteering>;
+
+export type EditRequestRegionPoolsMap = { [key: string]: unknown | undefined };
+export const EditRequestRegionPoolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EditRequestRegionPoolsMap>;
+
+export interface EditRequestRulesItemFixedResponse {
+  /** The http 'Content-Type' header to include in the response. */
+  contentType?: string;
+  /** The http 'Location' header to include in the response. */
+  location?: string;
+  /** Text to include as the http body. */
+  messageBody?: string;
+  /** The http status code to respond with. */
+  statusCode?: number;
+}
+export const EditRequestRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+    location: S.optional(S.String),
+    messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
+    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+  }),
+).annotate({
+  identifier: "EditRequestRulesItemFixedResponse",
+}) as any as S.Schema<EditRequestRulesItemFixedResponse>;
+
+export type EditRequestRulesItemOverridesCountryPoolsMap = {
+  [key: string]: unknown | undefined;
+};
+export const EditRequestRulesItemOverridesCountryPoolsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<EditRequestRulesItemOverridesCountryPoolsMap>;
+
+export type EditRequestRulesItemOverridesDefaultPoolsList = unknown[];
+export const EditRequestRulesItemOverridesDefaultPoolsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<EditRequestRulesItemOverridesDefaultPoolsList>;
+
+export type EditRequestRulesItemOverridesPopPoolsMap = {
+  [key: string]: unknown | undefined;
+};
+export const EditRequestRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EditRequestRulesItemOverridesPopPoolsMap>;
+
+export type EditRequestRulesItemOverridesRegionPoolsMap = {
+  [key: string]: unknown | undefined;
+};
+export const EditRequestRulesItemOverridesRegionPoolsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<EditRequestRulesItemOverridesRegionPoolsMap>;
+
+export type EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
+  string[];
+export const EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList>;
+
+export type EditRequestRulesItemOverridesSessionAffinityAttributesSamesite =
+  | "Auto"
+  | "Lax"
+  | "None"
+  | "Strict"
+  | (string & {});
+export const EditRequestRulesItemOverridesSessionAffinityAttributesSamesite =
+  /*@__PURE__*/ S.String;
+
+export type EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
+  | "Auto"
+  | "Always"
+  | "Never"
+  | (string & {});
+export const EditRequestRulesItemOverridesSessionAffinityAttributesSecure =
+  /*@__PURE__*/ S.String;
+
+export type EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
+  "none" | "temporary" | "sticky" | (string & {});
+export const EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
+  /*@__PURE__*/ S.String;
+
+export interface EditRequestRulesItemOverridesSessionAffinityAttributes {
+  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
+  drainDuration?: number;
+  /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
+  headers?: EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList;
+  /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
+  requireAllHeaders?: boolean;
+  /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
+  samesite?: EditRequestRulesItemOverridesSessionAffinityAttributesSamesite;
+  /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
+  secure?: EditRequestRulesItemOverridesSessionAffinityAttributesSecure;
+  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
+  zeroDowntimeFailover?: EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover;
+}
+export const EditRequestRulesItemOverridesSessionAffinityAttributes =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
+      headers: S.optional(
+        EditRequestRulesItemOverridesSessionAffinityAttributesHeadersList,
+      ),
+      requireAllHeaders: S.optional(
+        S.Boolean.pipe(T.Body("require_all_headers")),
+      ),
+      samesite: S.optional(
+        EditRequestRulesItemOverridesSessionAffinityAttributesSamesite,
+      ),
+      secure: S.optional(
+        EditRequestRulesItemOverridesSessionAffinityAttributesSecure,
+      ),
+      zeroDowntimeFailover: S.optional(
+        EditRequestRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
+          T.Body("zero_downtime_failover"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "EditRequestRulesItemOverridesSessionAffinityAttributes",
+  }) as any as S.Schema<EditRequestRulesItemOverridesSessionAffinityAttributes>;
+
+export interface EditRequestRulesItemOverrides {
+  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
+  adaptiveRouting?: unknown;
+  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
+  countryPools?: EditRequestRulesItemOverridesCountryPoolsMap;
+  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
+  defaultPools?: EditRequestRulesItemOverridesDefaultPoolsList;
+  /** The pool ID to use when all other pools are detected as unhealthy. */
+  fallbackPool?: string;
+  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
+  locationStrategy?: unknown;
+  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
+  popPools?: EditRequestRulesItemOverridesPopPoolsMap;
+  /** Configures pool weights. */
+  randomSteering?: unknown;
+  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
+  regionPools?: EditRequestRulesItemOverridesRegionPoolsMap;
+  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
+  sessionAffinity?: unknown;
+  /** Configures attributes for session affinity. */
+  sessionAffinityAttributes?: EditRequestRulesItemOverridesSessionAffinityAttributes;
+  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
+  sessionAffinityTtl?: number;
+  /** Steering Policy for this load balancer. */
+  steeringPolicy?: unknown;
+  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
+  ttl?: number;
+}
+export const EditRequestRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adaptiveRouting: S.optional(S.Unknown.pipe(T.Body("adaptive_routing"))),
+    countryPools: S.optional(
+      EditRequestRulesItemOverridesCountryPoolsMap.pipe(
+        T.Body("country_pools"),
+      ),
+    ),
+    defaultPools: S.optional(
+      EditRequestRulesItemOverridesDefaultPoolsList.pipe(
+        T.Body("default_pools"),
+      ),
+    ),
+    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    locationStrategy: S.optional(S.Unknown.pipe(T.Body("location_strategy"))),
+    popPools: S.optional(
+      EditRequestRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
+    ),
+    randomSteering: S.optional(S.Unknown.pipe(T.Body("random_steering"))),
+    regionPools: S.optional(
+      EditRequestRulesItemOverridesRegionPoolsMap.pipe(T.Body("region_pools")),
+    ),
+    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinityAttributes: S.optional(
+      EditRequestRulesItemOverridesSessionAffinityAttributes.pipe(
+        T.Body("session_affinity_attributes"),
+      ),
+    ),
+    sessionAffinityTtl: S.optional(
+      S.Number.pipe(T.Body("session_affinity_ttl")),
+    ),
+    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    ttl: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "EditRequestRulesItemOverrides",
+}) as any as S.Schema<EditRequestRulesItemOverrides>;
+
+export interface EditRequestRulesItem {
+  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
+  condition?: string;
+  /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
+  disabled?: boolean;
+  /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
+  fixedResponse?: EditRequestRulesItemFixedResponse;
+  /** Name of this rule. Only used for human readability. */
+  name?: string;
+  /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
+  overrides?: EditRequestRulesItemOverrides;
+  /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
+  priority?: number;
+  /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
+  terminates?: boolean;
+}
+export const EditRequestRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    condition: S.optional(S.String),
+    disabled: S.optional(S.Boolean),
+    fixedResponse: S.optional(
+      EditRequestRulesItemFixedResponse.pipe(T.Body("fixed_response")),
+    ),
+    name: S.optional(S.String),
+    overrides: S.optional(EditRequestRulesItemOverrides),
+    priority: S.optional(S.Number),
+    terminates: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "EditRequestRulesItem",
+}) as any as S.Schema<EditRequestRulesItem>;
+
+export type EditRequestRulesList = EditRequestRulesItem[];
+export const EditRequestRulesList = /*@__PURE__*/ S.Array(
+  EditRequestRulesItem,
+) as any as S.Schema<EditRequestRulesList>;
+
+export interface PatchLoadBalancerRequest {
+  zoneId: string;
+  loadBalancerId: string;
+  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
+  adaptiveRouting?: EditRequestAdaptiveRouting;
+  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
+  countryPools?: EditRequestCountryPoolsMap;
+  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
+  defaultPools?: EditRequestDefaultPoolsList;
+  /** Object description. */
+  description?: string;
+  /** Whether to enable (the default) this load balancer. */
+  enabled?: boolean;
+  /** The pool ID to use when all other pools are detected as unhealthy. */
+  fallbackPool?: string;
+  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
+  locationStrategy?: EditRequestLocationStrategy;
+  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
+  name?: string;
+  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
+  popPools?: EditRequestPopPoolsMap;
+  /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
+  proxied?: boolean;
+  /** Configures pool weights. */
+  randomSteering?: EditRequestRandomSteering;
+  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
+  regionPools?: EditRequestRegionPoolsMap;
+  /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
+  rules?: EditRequestRulesList;
+  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
+  sessionAffinity?: unknown;
+  /** Configures attributes for session affinity. */
+  sessionAffinityAttributes?: unknown;
+  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
+  sessionAffinityTtl?: number;
+  /** Steering Policy for this load balancer. */
+  steeringPolicy?: unknown;
+  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
+  ttl?: number;
+}
+export const PatchLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
+    adaptiveRouting: S.optional(
+      EditRequestAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+    ),
+    countryPools: S.optional(
+      EditRequestCountryPoolsMap.pipe(T.Body("country_pools")),
+    ),
+    defaultPools: S.optional(
+      EditRequestDefaultPoolsList.pipe(T.Body("default_pools")),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    locationStrategy: S.optional(
+      EditRequestLocationStrategy.pipe(T.Body("location_strategy")),
+    ),
+    name: S.optional(S.String),
+    popPools: S.optional(EditRequestPopPoolsMap.pipe(T.Body("pop_pools"))),
+    proxied: S.optional(S.Boolean),
+    randomSteering: S.optional(
+      EditRequestRandomSteering.pipe(T.Body("random_steering")),
+    ),
+    regionPools: S.optional(
+      EditRequestRegionPoolsMap.pipe(T.Body("region_pools")),
+    ),
+    rules: S.optional(EditRequestRulesList),
+    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinityAttributes: S.optional(
+      S.Unknown.pipe(T.Body("session_affinity_attributes")),
+    ),
+    sessionAffinityTtl: S.optional(
+      S.Number.pipe(T.Body("session_affinity_ttl")),
+    ),
+    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    ttl: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchLoadBalancerRequest",
+}) as any as S.Schema<PatchLoadBalancerRequest>;
+
+export interface EditResponseAdaptiveRouting {
+  /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
+  failoverAcrossPools?: boolean;
+}
+export const EditResponseAdaptiveRouting = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    failoverAcrossPools: S.optional(
+      S.Boolean.pipe(T.Body("failover_across_pools")),
+    ),
+  }),
+).annotate({
+  identifier: "EditResponseAdaptiveRouting",
+}) as any as S.Schema<EditResponseAdaptiveRouting>;
+
+export type EditResponseCountryPoolsMap = {
+  [key: string]: unknown | undefined;
+};
+export const EditResponseCountryPoolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EditResponseCountryPoolsMap>;
+
+export type EditResponseDefaultPoolsList = unknown[];
+export const EditResponseDefaultPoolsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<EditResponseDefaultPoolsList>;
+
+export type EditResponseLocationStrategyMode =
+  | "pop"
+  | "resolver_ip"
+  | (string & {});
+export const EditResponseLocationStrategyMode = /*@__PURE__*/ S.String;
+
+export type EditResponseLocationStrategyPreferEcs =
+  | "always"
+  | "never"
+  | "proximity"
+  | "geo"
+  | (string & {});
+export const EditResponseLocationStrategyPreferEcs = /*@__PURE__*/ S.String;
+
+export interface EditResponseLocationStrategy {
+  /** Determines the authoritative location when ECS is not preferred, does not exist in the request, or its GeoIP lookup is unsuccessful. */
+  mode?: EditResponseLocationStrategyMode;
+  /** Whether the EDNS Client Subnet (ECS) GeoIP should be preferred as the authoritative location. */
+  preferEcs?: EditResponseLocationStrategyPreferEcs;
+}
+export const EditResponseLocationStrategy = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: S.optional(EditResponseLocationStrategyMode),
+    preferEcs: S.optional(
+      EditResponseLocationStrategyPreferEcs.pipe(T.Body("prefer_ecs")),
+    ),
+  }),
+).annotate({
+  identifier: "EditResponseLocationStrategy",
+}) as any as S.Schema<EditResponseLocationStrategy>;
+
+export type EditResponseNetworksList = string[];
+export const EditResponseNetworksList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseNetworksList>;
+
+export type EditResponsePopPoolsMap = { [key: string]: unknown | undefined };
+export const EditResponsePopPoolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EditResponsePopPoolsMap>;
+
+export type EditResponseRandomSteeringPoolWeightsMap = {
+  [key: string]: unknown | undefined;
+};
+export const EditResponseRandomSteeringPoolWeightsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EditResponseRandomSteeringPoolWeightsMap>;
+
+export interface EditResponseRandomSteering {
+  /** The default weight for pools in the load balancer that are not specified in the pool_weights map. */
+  defaultWeight?: number;
+  /** A mapping of pool IDs to custom weights. The weight is relative to other pools in the load balancer. */
+  poolWeights?: EditResponseRandomSteeringPoolWeightsMap;
+}
+export const EditResponseRandomSteering = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultWeight: S.optional(S.Number.pipe(T.Body("default_weight"))),
+    poolWeights: S.optional(
+      EditResponseRandomSteeringPoolWeightsMap.pipe(T.Body("pool_weights")),
+    ),
+  }),
+).annotate({
+  identifier: "EditResponseRandomSteering",
+}) as any as S.Schema<EditResponseRandomSteering>;
+
+export type EditResponseRegionPoolsMap = { [key: string]: unknown | undefined };
+export const EditResponseRegionPoolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EditResponseRegionPoolsMap>;
+
+export interface EditResponseRulesItemFixedResponse {
+  /** The http 'Content-Type' header to include in the response. */
+  contentType?: string;
+  /** The http 'Location' header to include in the response. */
+  location?: string;
+  /** Text to include as the http body. */
+  messageBody?: string;
+  /** The http status code to respond with. */
+  statusCode?: number;
+}
+export const EditResponseRulesItemFixedResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    contentType: S.optional(S.String.pipe(T.Body("content_type"))),
+    location: S.optional(S.String),
+    messageBody: S.optional(S.String.pipe(T.Body("message_body"))),
+    statusCode: S.optional(S.Number.pipe(T.Body("status_code"))),
+  }),
+).annotate({
+  identifier: "EditResponseRulesItemFixedResponse",
+}) as any as S.Schema<EditResponseRulesItemFixedResponse>;
+
+export type EditResponseRulesItemOverridesCountryPoolsMap = {
+  [key: string]: unknown | undefined;
+};
+export const EditResponseRulesItemOverridesCountryPoolsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<EditResponseRulesItemOverridesCountryPoolsMap>;
+
+export type EditResponseRulesItemOverridesDefaultPoolsList = unknown[];
+export const EditResponseRulesItemOverridesDefaultPoolsList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<EditResponseRulesItemOverridesDefaultPoolsList>;
+
+export type EditResponseRulesItemOverridesPopPoolsMap = {
+  [key: string]: unknown | undefined;
+};
+export const EditResponseRulesItemOverridesPopPoolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<EditResponseRulesItemOverridesPopPoolsMap>;
+
+export type EditResponseRulesItemOverridesRegionPoolsMap = {
+  [key: string]: unknown | undefined;
+};
+export const EditResponseRulesItemOverridesRegionPoolsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<EditResponseRulesItemOverridesRegionPoolsMap>;
+
+export type EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
+  string[];
+export const EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList>;
+
+export type EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
+  | "Auto"
+  | "Lax"
+  | "None"
+  | "Strict"
+  | (string & {});
+export const EditResponseRulesItemOverridesSessionAffinityAttributesSamesite =
+  /*@__PURE__*/ S.String;
+
+export type EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
+  | "Auto"
+  | "Always"
+  | "Never"
+  | (string & {});
+export const EditResponseRulesItemOverridesSessionAffinityAttributesSecure =
+  /*@__PURE__*/ S.String;
+
+export type EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
+  "none" | "temporary" | "sticky" | (string & {});
+export const EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover =
+  /*@__PURE__*/ S.String;
+
+export interface EditResponseRulesItemOverridesSessionAffinityAttributes {
+  /** Configures the drain duration in seconds. This field is only used when session affinity is enabled on the load balancer. */
+  drainDuration?: number;
+  /** Configures the names of HTTP headers to base session affinity on when header `session_affinity` is enabled. At least one HTTP header name must be provided. To specify the exact cookies to be used, include an item in the following format: `"cookie:<cookie-name-1>,<cookie-name-2>"` (example) where everything after the colon is a comma-separated list of cookie names. Providing only `"cookie"` will result in all cookies being used. The default max number of HTTP header names that can be provided depends on your plan: 5 for Enterprise, 1 for all other plans. */
+  headers?: EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList;
+  /** When header `session_affinity` is enabled, this option can be used to specify how HTTP headers on load balancing requests will be used. The supported values are: - `"true"`: Load balancing requests must contain *all* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. - `"false"`: Load balancing requests must contain *at least one* of the HTTP headers specified by the `headers` session affinity attribute, otherwise sessions aren't created. */
+  requireAllHeaders?: boolean;
+  /** Configures the SameSite attribute on session affinity cookie. Value "Auto" will be translated to "Lax" or "None" depending if Always Use HTTPS is enabled. Note: when using value "None", the secure attribute can not be set to "Never". */
+  samesite?: EditResponseRulesItemOverridesSessionAffinityAttributesSamesite;
+  /** Configures the Secure attribute on session affinity cookie. Value "Always" indicates the Secure attribute will be set in the Set-Cookie header, "Never" indicates the Secure attribute will not be set, and "Auto" will set the Secure attribute depending if Always Use HTTPS is enabled. */
+  secure?: EditResponseRulesItemOverridesSessionAffinityAttributesSecure;
+  /** Configures the zero-downtime failover between origins within a pool when session affinity is enabled. This feature is currently incompatible with Argo, Tiered Cache, and Bandwidth Alliance. The supported values are: - `"none"`: No failover takes place for sessions pinned to the origin (default). - `"temporary"`: Traffic will be sent to another other healthy origin until the originally pinned origin is available; note that this can potentially result in heavy origin flapping. - `"sticky"`: The session affinity cookie is updated and subsequent requests are sent to the new origin. Note: Zero-downtime failover with sticky sessions is currently not supported for session affinity by header. */
+  zeroDowntimeFailover?: EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover;
+}
+export const EditResponseRulesItemOverridesSessionAffinityAttributes =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      drainDuration: S.optional(S.Number.pipe(T.Body("drain_duration"))),
+      headers: S.optional(
+        EditResponseRulesItemOverridesSessionAffinityAttributesHeadersList,
+      ),
+      requireAllHeaders: S.optional(
+        S.Boolean.pipe(T.Body("require_all_headers")),
+      ),
+      samesite: S.optional(
+        EditResponseRulesItemOverridesSessionAffinityAttributesSamesite,
+      ),
+      secure: S.optional(
+        EditResponseRulesItemOverridesSessionAffinityAttributesSecure,
+      ),
+      zeroDowntimeFailover: S.optional(
+        EditResponseRulesItemOverridesSessionAffinityAttributesZeroDowntimeFailover.pipe(
+          T.Body("zero_downtime_failover"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "EditResponseRulesItemOverridesSessionAffinityAttributes",
+  }) as any as S.Schema<EditResponseRulesItemOverridesSessionAffinityAttributes>;
+
+export interface EditResponseRulesItemOverrides {
+  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
+  adaptiveRouting?: unknown;
+  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
+  countryPools?: EditResponseRulesItemOverridesCountryPoolsMap;
+  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
+  defaultPools?: EditResponseRulesItemOverridesDefaultPoolsList;
+  /** The pool ID to use when all other pools are detected as unhealthy. */
+  fallbackPool?: string;
+  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
+  locationStrategy?: unknown;
+  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
+  popPools?: EditResponseRulesItemOverridesPopPoolsMap;
+  /** Configures pool weights. */
+  randomSteering?: unknown;
+  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
+  regionPools?: EditResponseRulesItemOverridesRegionPoolsMap;
+  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
+  sessionAffinity?: unknown;
+  /** Configures attributes for session affinity. */
+  sessionAffinityAttributes?: EditResponseRulesItemOverridesSessionAffinityAttributes;
+  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
+  sessionAffinityTtl?: number;
+  /** Steering Policy for this load balancer. */
+  steeringPolicy?: unknown;
+  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
+  ttl?: number;
+}
+export const EditResponseRulesItemOverrides = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    adaptiveRouting: S.optional(S.Unknown.pipe(T.Body("adaptive_routing"))),
+    countryPools: S.optional(
+      EditResponseRulesItemOverridesCountryPoolsMap.pipe(
+        T.Body("country_pools"),
+      ),
+    ),
+    defaultPools: S.optional(
+      EditResponseRulesItemOverridesDefaultPoolsList.pipe(
+        T.Body("default_pools"),
+      ),
+    ),
+    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    locationStrategy: S.optional(S.Unknown.pipe(T.Body("location_strategy"))),
+    popPools: S.optional(
+      EditResponseRulesItemOverridesPopPoolsMap.pipe(T.Body("pop_pools")),
+    ),
+    randomSteering: S.optional(S.Unknown.pipe(T.Body("random_steering"))),
+    regionPools: S.optional(
+      EditResponseRulesItemOverridesRegionPoolsMap.pipe(T.Body("region_pools")),
+    ),
+    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinityAttributes: S.optional(
+      EditResponseRulesItemOverridesSessionAffinityAttributes.pipe(
+        T.Body("session_affinity_attributes"),
+      ),
+    ),
+    sessionAffinityTtl: S.optional(
+      S.Number.pipe(T.Body("session_affinity_ttl")),
+    ),
+    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    ttl: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "EditResponseRulesItemOverrides",
+}) as any as S.Schema<EditResponseRulesItemOverrides>;
+
+export interface EditResponseRulesItem {
+  /** The condition expressions to evaluate. If the condition evaluates to true, the overrides or fixed_response in this rule will be applied. An empty condition is always true. For more details on condition expressions, please see https://developers.cloudflare.com/load-balancing/understand-basics/load-balancing-rules/expressions. */
+  condition?: string;
+  /** Disable this specific rule. It will no longer be evaluated by this load balancer. */
+  disabled?: boolean;
+  /** A collection of fields used to directly respond to the eyeball instead of routing to a pool. If a fixed_response is supplied the rule will be marked as terminates. */
+  fixedResponse?: EditResponseRulesItemFixedResponse;
+  /** Name of this rule. Only used for human readability. */
+  name?: string;
+  /** A collection of overrides to apply to the load balancer when this rule's condition is true. All fields are optional. */
+  overrides?: EditResponseRulesItemOverrides;
+  /** The order in which rules should be executed in relation to each other. Lower values are executed first. Values do not need to be sequential. If no value is provided for any rule the array order of the rules field will be used to assign a priority. */
+  priority?: number;
+  /** If this rule's condition is true, this causes rule evaluation to stop after processing this rule. */
+  terminates?: boolean;
+}
+export const EditResponseRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    condition: S.optional(S.String),
+    disabled: S.optional(S.Boolean),
+    fixedResponse: S.optional(
+      EditResponseRulesItemFixedResponse.pipe(T.Body("fixed_response")),
+    ),
+    name: S.optional(S.String),
+    overrides: S.optional(EditResponseRulesItemOverrides),
+    priority: S.optional(S.Number),
+    terminates: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "EditResponseRulesItem",
+}) as any as S.Schema<EditResponseRulesItem>;
+
+export type EditResponseRulesList = EditResponseRulesItem[];
+export const EditResponseRulesList = /*@__PURE__*/ S.Array(
+  EditResponseRulesItem,
+) as any as S.Schema<EditResponseRulesList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchLoadBalancerResponse {
+  id?: string;
+  /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
+  adaptiveRouting?: EditResponseAdaptiveRouting;
+  /** A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools. */
+  countryPools?: EditResponseCountryPoolsMap;
+  createdOn?: string;
+  /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
+  defaultPools?: EditResponseDefaultPoolsList;
+  /** Object description. */
+  description?: string;
+  /** Whether to enable (the default) this load balancer. */
+  enabled?: boolean;
+  /** The pool ID to use when all other pools are detected as unhealthy. */
+  fallbackPool?: string;
+  /** Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected. */
+  locationStrategy?: EditResponseLocationStrategy;
+  modifiedOn?: string;
+  /** The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used. */
+  name?: string;
+  /** List of networks where Load Balancer or Pool is enabled. */
+  networks?: EditResponseNetworksList;
+  /** Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools. */
+  popPools?: EditResponsePopPoolsMap;
+  /** Whether the hostname should be gray clouded (false) or orange clouded (true). */
+  proxied?: boolean;
+  /** Configures pool weights. */
+  randomSteering?: EditResponseRandomSteering;
+  /** A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools. */
+  regionPools?: EditResponseRegionPoolsMap;
+  /** BETA Field Not General Access: A list of rules for this load balancer to execute. */
+  rules?: EditResponseRulesList;
+  /** Specifies the type of session affinity the load balancer should use unless specified as `"none"`. The supported types are: - `"cookie"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `"ip_cookie"`: Behaves the same as `"cookie"` except the initial origin selection is stable and based on the client's ip address. - `"header"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration. */
+  sessionAffinity?: unknown;
+  /** Configures attributes for session affinity. */
+  sessionAffinityAttributes?: unknown;
+  /** Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `"cookie"` / `"ip_cookie"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `"header"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified. */
+  sessionAffinityTtl?: number;
+  /** Steering Policy for this load balancer. */
+  steeringPolicy?: unknown;
+  /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
+  ttl?: number;
+  zoneName?: string;
+}
+export const PatchLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    adaptiveRouting: S.optional(
+      EditResponseAdaptiveRouting.pipe(T.Body("adaptive_routing")),
+    ),
+    countryPools: S.optional(
+      EditResponseCountryPoolsMap.pipe(T.Body("country_pools")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    defaultPools: S.optional(
+      EditResponseDefaultPoolsList.pipe(T.Body("default_pools")),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    fallbackPool: S.optional(S.String.pipe(T.Body("fallback_pool"))),
+    locationStrategy: S.optional(
+      EditResponseLocationStrategy.pipe(T.Body("location_strategy")),
+    ),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+    networks: S.optional(EditResponseNetworksList),
+    popPools: S.optional(EditResponsePopPoolsMap.pipe(T.Body("pop_pools"))),
+    proxied: S.optional(S.Boolean),
+    randomSteering: S.optional(
+      EditResponseRandomSteering.pipe(T.Body("random_steering")),
+    ),
+    regionPools: S.optional(
+      EditResponseRegionPoolsMap.pipe(T.Body("region_pools")),
+    ),
+    rules: S.optional(EditResponseRulesList),
+    sessionAffinity: S.optional(S.Unknown.pipe(T.Body("session_affinity"))),
+    sessionAffinityAttributes: S.optional(
+      S.Unknown.pipe(T.Body("session_affinity_attributes")),
+    ),
+    sessionAffinityTtl: S.optional(
+      S.Number.pipe(T.Body("session_affinity_ttl")),
+    ),
+    steeringPolicy: S.optional(S.Unknown.pipe(T.Body("steering_policy"))),
+    ttl: S.optional(S.Number),
+    zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
+  }),
+).annotate({
+  identifier: "PatchLoadBalancerResponse",
+}) as any as S.Schema<PatchLoadBalancerResponse>;
+
+export type MonitorsEditRequestHeaderMap = {
+  [key: string]: unknown | undefined;
+};
+export const MonitorsEditRequestHeaderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MonitorsEditRequestHeaderMap>;
+
+export type MonitorsEditRequestType = "http" | "https" | "tcp" | (string & {});
+export const MonitorsEditRequestType = /*@__PURE__*/ S.String;
+
+export interface PatchMonitorRequest {
+  /** Identifier. */
+  accountId: string;
+  monitorId: string;
+  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
+  allowInsecure?: boolean;
+  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
+  consecutiveDown?: number;
+  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
+  consecutiveUp?: number;
+  /** Object description. */
+  description?: string;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedBody?: string;
+  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedCodes?: string;
+  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
+  header?: MonitorsEditRequestHeaderMap;
+  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
+  interval?: number;
+  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  method?: string;
+  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
+  path?: string;
+  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
+  port?: number;
+  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
+  probeZone?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  type?: MonitorsEditRequestType;
+}
+export const PatchMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    monitorId: S.String.pipe(T.Label("monitor_id")),
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
+    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
+    description: S.optional(S.String),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
+    header: S.optional(MonitorsEditRequestHeaderMap),
+    interval: S.optional(S.Number),
+    method: S.optional(S.String),
+    path: S.optional(S.String),
+    port: S.optional(S.Number),
+    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.Number),
+    timeout: S.optional(S.Number),
+    type: S.optional(MonitorsEditRequestType),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchMonitorRequest",
+}) as any as S.Schema<PatchMonitorRequest>;
+
+export type MonitorsEditResponseHeaderMap = {
+  [key: string]: unknown | undefined;
+};
+export const MonitorsEditResponseHeaderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MonitorsEditResponseHeaderMap>;
+
+export type MonitorsEditResponseType = "http" | "https" | "tcp" | (string & {});
+export const MonitorsEditResponseType = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchMonitorResponse {
+  id?: string;
+  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
+  allowInsecure?: boolean;
+  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
+  consecutiveDown?: number;
+  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
+  consecutiveUp?: number;
+  createdOn?: string;
+  /** Object description. */
+  description?: string;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedBody?: string;
+  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedCodes?: string;
+  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
+  header?: MonitorsEditResponseHeaderMap;
+  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
+  interval?: number;
+  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  method?: string;
+  modifiedOn?: string;
+  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
+  path?: string;
+  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
+  port?: number;
+  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
+  probeZone?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  type?: MonitorsEditResponseType;
+}
+export const PatchMonitorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
+    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
+    header: S.optional(MonitorsEditResponseHeaderMap),
+    interval: S.optional(S.Number),
+    method: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    path: S.optional(S.String),
+    port: S.optional(S.Number),
+    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.Number),
+    timeout: S.optional(S.Number),
+    type: S.optional(MonitorsEditResponseType),
+  }),
+).annotate({
+  identifier: "PatchMonitorResponse",
+}) as any as S.Schema<PatchMonitorResponse>;
+
+export interface MonitorGroupsEditRequestMembersItem {
+  /** Whether this monitor is enabled in the group */
+  enabled: boolean;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitorId: string;
+  /** Whether this monitor is used for monitoring only (does not affect pool health) */
+  monitoringOnly: boolean;
+  /** Whether this monitor must be healthy for the pool to be considered healthy */
+  mustBeHealthy: boolean;
+  /** The timestamp of when the monitor was added to the group */
+  createdAt?: string;
+  /** The timestamp of when the monitor group member was last updated */
+  updatedAt?: string;
+}
+export const MonitorGroupsEditRequestMembersItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    monitorId: S.String.pipe(T.Body("monitor_id")),
+    monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
+    mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+  }),
+).annotate({
+  identifier: "MonitorGroupsEditRequestMembersItem",
+}) as any as S.Schema<MonitorGroupsEditRequestMembersItem>;
+
+export type MonitorGroupsEditRequestMembersList =
+  MonitorGroupsEditRequestMembersItem[];
+export const MonitorGroupsEditRequestMembersList = /*@__PURE__*/ S.Array(
+  MonitorGroupsEditRequestMembersItem,
+) as any as S.Schema<MonitorGroupsEditRequestMembersList>;
+
+export interface PatchMonitorGroupRequest {
+  /** Identifier. */
+  accountId: string;
+  monitorGroupId: string;
+  /** A short description of the monitor group */
+  description: string;
+  /** List of monitors in this group */
+  members: MonitorGroupsEditRequestMembersList;
+}
+export const PatchMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
+    description: S.String,
+    members: MonitorGroupsEditRequestMembersList,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchMonitorGroupRequest",
+}) as any as S.Schema<PatchMonitorGroupRequest>;
+
+export interface MonitorGroupsEditResponseMembersItem {
+  /** Whether this monitor is enabled in the group */
+  enabled: boolean;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitorId: string;
+  /** Whether this monitor is used for monitoring only (does not affect pool health) */
+  monitoringOnly: boolean;
+  /** Whether this monitor must be healthy for the pool to be considered healthy */
+  mustBeHealthy: boolean;
+  /** The timestamp of when the monitor was added to the group */
+  createdAt?: string;
+  /** The timestamp of when the monitor group member was last updated */
+  updatedAt?: string;
+}
+export const MonitorGroupsEditResponseMembersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      monitorId: S.String.pipe(T.Body("monitor_id")),
+      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
+      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+).annotate({
+  identifier: "MonitorGroupsEditResponseMembersItem",
+}) as any as S.Schema<MonitorGroupsEditResponseMembersItem>;
+
+export type MonitorGroupsEditResponseMembersList =
+  MonitorGroupsEditResponseMembersItem[];
+export const MonitorGroupsEditResponseMembersList = /*@__PURE__*/ S.Array(
+  MonitorGroupsEditResponseMembersItem,
+) as any as S.Schema<MonitorGroupsEditResponseMembersList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchMonitorGroupResponse {
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  id: string;
+  /** A short description of the monitor group */
+  description: string;
+  /** List of monitors in this group */
+  members: MonitorGroupsEditResponseMembersList;
+  /** The timestamp of when the monitor group was created */
+  createdOn?: string;
+  /** The timestamp of when the monitor group was last updated */
+  modifiedOn?: string;
+}
+export const PatchMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    description: S.String,
+    members: MonitorGroupsEditResponseMembersList,
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "PatchMonitorGroupResponse",
+}) as any as S.Schema<PatchMonitorGroupResponse>;
+
+export type PoolsEditRequestCheckRegionsList = unknown[];
+export const PoolsEditRequestCheckRegionsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<PoolsEditRequestCheckRegionsList>;
+
+export type PoolsEditRequestLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
+export const PoolsEditRequestLoadSheddingDefaultPolicy = /*@__PURE__*/ S.String;
+
+export type PoolsEditRequestLoadSheddingSessionPolicy = "hash" | (string & {});
+export const PoolsEditRequestLoadSheddingSessionPolicy = /*@__PURE__*/ S.String;
+
+export interface PoolsEditRequestLoadShedding {
+  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
+  defaultPercent?: number;
+  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
+  defaultPolicy?: PoolsEditRequestLoadSheddingDefaultPolicy;
+  /** The percent of existing sessions to shed from the pool, according to the session policy. */
+  sessionPercent?: number;
+  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
+  sessionPolicy?: PoolsEditRequestLoadSheddingSessionPolicy;
+}
+export const PoolsEditRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPolicy: S.optional(
+      PoolsEditRequestLoadSheddingDefaultPolicy.pipe(T.Body("default_policy")),
+    ),
+    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPolicy: S.optional(
+      PoolsEditRequestLoadSheddingSessionPolicy.pipe(T.Body("session_policy")),
+    ),
+  }),
+).annotate({
+  identifier: "PoolsEditRequestLoadShedding",
+}) as any as S.Schema<PoolsEditRequestLoadShedding>;
+
+export interface PoolsEditRequestNotificationFilterOrigin {
+  /** If set true, disable notifications for this type of resource (pool or origin). */
+  disable?: boolean;
+  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
+  healthy?: boolean;
+}
+export const PoolsEditRequestNotificationFilterOrigin = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      disable: S.optional(S.Boolean),
+      healthy: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "PoolsEditRequestNotificationFilterOrigin",
+}) as any as S.Schema<PoolsEditRequestNotificationFilterOrigin>;
+
+export interface PoolsEditRequestNotificationFilter {
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  origin?: PoolsEditRequestNotificationFilterOrigin;
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  pool?: unknown;
+}
+export const PoolsEditRequestNotificationFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    origin: S.optional(PoolsEditRequestNotificationFilterOrigin),
+    pool: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "PoolsEditRequestNotificationFilter",
+}) as any as S.Schema<PoolsEditRequestNotificationFilter>;
+
+export type PoolsEditRequestOriginSteeringPolicy =
+  | "random"
+  | "hash"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | (string & {});
+export const PoolsEditRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
+
+export interface PoolsEditRequestOriginSteering {
+  /** The type of origin steering policy to use. */
+  policy?: PoolsEditRequestOriginSteeringPolicy;
+}
+export const PoolsEditRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policy: S.optional(PoolsEditRequestOriginSteeringPolicy),
+  }),
+).annotate({
+  identifier: "PoolsEditRequestOriginSteering",
+}) as any as S.Schema<PoolsEditRequestOriginSteering>;
+
+export type PoolsEditRequestOriginsItemHeaderHostList = unknown[];
+export const PoolsEditRequestOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<PoolsEditRequestOriginsItemHeaderHostList>;
+
+export interface PoolsEditRequestOriginsItemHeader {
+  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  Host?: PoolsEditRequestOriginsItemHeaderHostList;
+}
+export const PoolsEditRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Host: S.optional(PoolsEditRequestOriginsItemHeaderHostList),
+  }),
+).annotate({
+  identifier: "PoolsEditRequestOriginsItemHeader",
+}) as any as S.Schema<PoolsEditRequestOriginsItemHeader>;
+
+export interface PoolsEditRequestOriginsItem {
+  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
+  address?: string;
+  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
+  disabledAt?: string;
+  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
+  enabled?: boolean;
+  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
+  flattenCname?: boolean;
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  header?: PoolsEditRequestOriginsItemHeader;
+  /** A human-identifiable name for the origin. */
+  name?: string;
+  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
+  port?: number;
+  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
+  virtualNetworkId?: string;
+  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
+  weight?: number;
+}
+export const PoolsEditRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
+    header: S.optional(PoolsEditRequestOriginsItemHeader),
+    name: S.optional(S.String),
+    port: S.optional(S.Number),
+    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PoolsEditRequestOriginsItem",
+}) as any as S.Schema<PoolsEditRequestOriginsItem>;
+
+export type PoolsEditRequestOriginsList = PoolsEditRequestOriginsItem[];
+export const PoolsEditRequestOriginsList = /*@__PURE__*/ S.Array(
+  PoolsEditRequestOriginsItem,
+) as any as S.Schema<PoolsEditRequestOriginsList>;
+
+export interface PatchPoolRequest {
+  /** Identifier. */
+  accountId: string;
+  poolId: string;
+  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
+  checkRegions?: PoolsEditRequestCheckRegionsList;
+  /** A human-readable description of the pool. */
+  description?: string;
+  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
+  enabled?: boolean;
+  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
+  latitude?: number;
+  /** Configures load shedding policies and percentages for the pool. */
+  loadShedding?: PoolsEditRequestLoadShedding;
+  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
+  longitude?: number;
+  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
+  minimumOrigins?: number;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitor?: string;
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  monitorGroup?: string;
+  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
+  name?: string;
+  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  notificationEmail?: string;
+  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
+  notificationFilter?: PoolsEditRequestNotificationFilter;
+  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
+  originSteering?: PoolsEditRequestOriginSteering;
+  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
+  origins?: PoolsEditRequestOriginsList;
+}
+export const PatchPoolRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    poolId: S.String.pipe(T.Label("pool_id")),
+    checkRegions: S.optional(
+      PoolsEditRequestCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    latitude: S.optional(S.Number),
+    loadShedding: S.optional(
+      PoolsEditRequestLoadShedding.pipe(T.Body("load_shedding")),
+    ),
+    longitude: S.optional(S.Number),
+    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
+    monitor: S.optional(S.String),
+    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
+    name: S.optional(S.String),
+    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    notificationFilter: S.optional(
+      PoolsEditRequestNotificationFilter.pipe(T.Body("notification_filter")),
+    ),
+    originSteering: S.optional(
+      PoolsEditRequestOriginSteering.pipe(T.Body("origin_steering")),
+    ),
+    origins: S.optional(PoolsEditRequestOriginsList),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchPoolRequest",
+}) as any as S.Schema<PatchPoolRequest>;
+
+export type PoolsEditResponseCheckRegionsList = unknown[];
+export const PoolsEditResponseCheckRegionsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<PoolsEditResponseCheckRegionsList>;
+
+export type PoolsEditResponseLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
+export const PoolsEditResponseLoadSheddingDefaultPolicy =
+  /*@__PURE__*/ S.String;
+
+export type PoolsEditResponseLoadSheddingSessionPolicy = "hash" | (string & {});
+export const PoolsEditResponseLoadSheddingSessionPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface PoolsEditResponseLoadShedding {
+  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
+  defaultPercent?: number;
+  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
+  defaultPolicy?: PoolsEditResponseLoadSheddingDefaultPolicy;
+  /** The percent of existing sessions to shed from the pool, according to the session policy. */
+  sessionPercent?: number;
+  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
+  sessionPolicy?: PoolsEditResponseLoadSheddingSessionPolicy;
+}
+export const PoolsEditResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPolicy: S.optional(
+      PoolsEditResponseLoadSheddingDefaultPolicy.pipe(T.Body("default_policy")),
+    ),
+    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPolicy: S.optional(
+      PoolsEditResponseLoadSheddingSessionPolicy.pipe(T.Body("session_policy")),
+    ),
+  }),
+).annotate({
+  identifier: "PoolsEditResponseLoadShedding",
+}) as any as S.Schema<PoolsEditResponseLoadShedding>;
+
+export type PoolsEditResponseNetworksList = string[];
+export const PoolsEditResponseNetworksList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoolsEditResponseNetworksList>;
+
+export interface PoolsEditResponseNotificationFilterOrigin {
+  /** If set true, disable notifications for this type of resource (pool or origin). */
+  disable?: boolean;
+  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
+  healthy?: boolean;
+}
+export const PoolsEditResponseNotificationFilterOrigin =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      disable: S.optional(S.Boolean),
+      healthy: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PoolsEditResponseNotificationFilterOrigin",
+  }) as any as S.Schema<PoolsEditResponseNotificationFilterOrigin>;
+
+export interface PoolsEditResponseNotificationFilter {
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  origin?: PoolsEditResponseNotificationFilterOrigin;
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  pool?: unknown;
+}
+export const PoolsEditResponseNotificationFilter = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    origin: S.optional(PoolsEditResponseNotificationFilterOrigin),
+    pool: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "PoolsEditResponseNotificationFilter",
+}) as any as S.Schema<PoolsEditResponseNotificationFilter>;
+
+export type PoolsEditResponseOriginSteeringPolicy =
+  | "random"
+  | "hash"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | (string & {});
+export const PoolsEditResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
+
+export interface PoolsEditResponseOriginSteering {
+  /** The type of origin steering policy to use. */
+  policy?: PoolsEditResponseOriginSteeringPolicy;
+}
+export const PoolsEditResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policy: S.optional(PoolsEditResponseOriginSteeringPolicy),
+  }),
+).annotate({
+  identifier: "PoolsEditResponseOriginSteering",
+}) as any as S.Schema<PoolsEditResponseOriginSteering>;
+
+export type PoolsEditResponseOriginsItemHeaderHostList = unknown[];
+export const PoolsEditResponseOriginsItemHeaderHostList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<PoolsEditResponseOriginsItemHeaderHostList>;
+
+export interface PoolsEditResponseOriginsItemHeader {
+  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  Host?: PoolsEditResponseOriginsItemHeaderHostList;
+}
+export const PoolsEditResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Host: S.optional(PoolsEditResponseOriginsItemHeaderHostList),
+  }),
+).annotate({
+  identifier: "PoolsEditResponseOriginsItemHeader",
+}) as any as S.Schema<PoolsEditResponseOriginsItemHeader>;
+
+export interface PoolsEditResponseOriginsItem {
+  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
+  address?: string;
+  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
+  disabledAt?: string;
+  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
+  enabled?: boolean;
+  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
+  flattenCname?: boolean;
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  header?: PoolsEditResponseOriginsItemHeader;
+  /** A human-identifiable name for the origin. */
+  name?: string;
+  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
+  port?: number;
+  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
+  virtualNetworkId?: string;
+  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
+  weight?: number;
+}
+export const PoolsEditResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
+    header: S.optional(PoolsEditResponseOriginsItemHeader),
+    name: S.optional(S.String),
+    port: S.optional(S.Number),
+    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PoolsEditResponseOriginsItem",
+}) as any as S.Schema<PoolsEditResponseOriginsItem>;
+
+export type PoolsEditResponseOriginsList = PoolsEditResponseOriginsItem[];
+export const PoolsEditResponseOriginsList = /*@__PURE__*/ S.Array(
+  PoolsEditResponseOriginsItem,
+) as any as S.Schema<PoolsEditResponseOriginsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchPoolResponse {
+  id?: string;
+  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
+  checkRegions?: PoolsEditResponseCheckRegionsList;
+  createdOn?: string;
+  /** A human-readable description of the pool. */
+  description?: string;
+  /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
+  disabledAt?: string;
+  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
+  enabled?: boolean;
+  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
+  latitude?: number;
+  /** Configures load shedding policies and percentages for the pool. */
+  loadShedding?: PoolsEditResponseLoadShedding;
+  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
+  longitude?: number;
+  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
+  minimumOrigins?: number;
+  modifiedOn?: string;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitor?: string;
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  monitorGroup?: string;
+  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
+  name?: string;
+  /** List of networks where Load Balancer or Pool is enabled. */
+  networks?: PoolsEditResponseNetworksList;
+  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  notificationEmail?: string;
+  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
+  notificationFilter?: PoolsEditResponseNotificationFilter;
+  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
+  originSteering?: PoolsEditResponseOriginSteering;
+  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
+  origins?: PoolsEditResponseOriginsList;
+}
+export const PatchPoolResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    checkRegions: S.optional(
+      PoolsEditResponseCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    latitude: S.optional(S.Number),
+    loadShedding: S.optional(
+      PoolsEditResponseLoadShedding.pipe(T.Body("load_shedding")),
+    ),
+    longitude: S.optional(S.Number),
+    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    monitor: S.optional(S.String),
+    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
+    name: S.optional(S.String),
+    networks: S.optional(PoolsEditResponseNetworksList),
+    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    notificationFilter: S.optional(
+      PoolsEditResponseNotificationFilter.pipe(T.Body("notification_filter")),
+    ),
+    originSteering: S.optional(
+      PoolsEditResponseOriginSteering.pipe(T.Body("origin_steering")),
+    ),
+    origins: S.optional(PoolsEditResponseOriginsList),
+  }),
+).annotate({
+  identifier: "PatchPoolResponse",
+}) as any as S.Schema<PatchPoolResponse>;
 
 export type UpdateRequestDefaultPoolsList = unknown[];
 export const UpdateRequestDefaultPoolsList = /*@__PURE__*/ S.Array(
@@ -7143,7 +6515,7 @@ export const UpdateRequestRulesList = /*@__PURE__*/ S.Array(
   UpdateRequestRulesItem,
 ) as any as S.Schema<UpdateRequestRulesList>;
 
-export interface UpdateRequest {
+export interface UpdateLoadBalancerRequest {
   zoneId: string;
   loadBalancerId: string;
   /** A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region. */
@@ -7185,7 +6557,7 @@ export interface UpdateRequest {
   /** Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers. */
   ttl?: number;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateLoadBalancerRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     loadBalancerId: S.String.pipe(T.Label("load_balancer_id")),
@@ -7229,7 +6601,9 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "UpdateLoadBalancerRequest",
+}) as any as S.Schema<UpdateLoadBalancerRequest>;
 
 export interface UpdateResponseAdaptiveRouting {
   /** Extends zero-downtime failover of requests to healthy origins from alternate pools, when no healthy alternate exists in the same pool, according to the failover order defined by traffic and origin steering. When set false (the default) zero-downtime failover will only occur between origins within the same pool. See `session_affinity_attributes` for control over when sessions are broken or reassigned. */
@@ -7564,7 +6938,7 @@ export const UpdateResponseRulesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateResponseRulesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface UpdateLoadBalancerResponse {
   id?: string;
   /** Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin. */
   adaptiveRouting?: UpdateResponseAdaptiveRouting;
@@ -7608,7 +6982,7 @@ export interface UpdateResponse {
   ttl?: number;
   zoneName?: string;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateLoadBalancerResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     adaptiveRouting: S.optional(
@@ -7650,494 +7024,1359 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
     ttl: S.optional(S.Number),
     zoneName: S.optional(S.String.pipe(T.Body("zone_name"))),
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "UpdateLoadBalancerResponse",
+}) as any as S.Schema<UpdateLoadBalancerResponse>;
 
-export type CreateError = CloudflareOpError;
-/** Create a new load balancer. */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type MonitorsUpdateRequestHeaderMap = {
+  [key: string]: unknown | undefined;
+};
+export const MonitorsUpdateRequestHeaderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MonitorsUpdateRequestHeaderMap>;
 
-export type DeleteError = CloudflareOpError;
-/** Delete a configured load balancer. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type MonitorsUpdateRequestType =
+  | "http"
+  | "https"
+  | "tcp"
+  | (string & {});
+export const MonitorsUpdateRequestType = /*@__PURE__*/ S.String;
 
-export type EditError = CloudflareOpError;
-/** Apply changes to an existing load balancer, overwriting the supplied properties. */
-export const edit: API.OperationMethod<
-  EditRequest,
-  EditResponse,
-  EditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EditRequest,
-  output: EditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface UpdateMonitorRequest {
+  /** Identifier. */
+  accountId: string;
+  monitorId: string;
+  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
+  allowInsecure?: boolean;
+  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
+  consecutiveDown?: number;
+  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
+  consecutiveUp?: number;
+  /** Object description. */
+  description?: string;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedBody?: string;
+  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedCodes?: string;
+  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
+  header?: MonitorsUpdateRequestHeaderMap;
+  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
+  interval?: number;
+  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  method?: string;
+  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
+  path?: string;
+  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
+  port?: number;
+  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
+  probeZone?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  type?: MonitorsUpdateRequestType;
+}
+export const UpdateMonitorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    monitorId: S.String.pipe(T.Label("monitor_id")),
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
+    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
+    description: S.optional(S.String),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
+    header: S.optional(MonitorsUpdateRequestHeaderMap),
+    interval: S.optional(S.Number),
+    method: S.optional(S.String),
+    path: S.optional(S.String),
+    port: S.optional(S.Number),
+    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.Number),
+    timeout: S.optional(S.Number),
+    type: S.optional(MonitorsUpdateRequestType),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMonitorRequest",
+}) as any as S.Schema<UpdateMonitorRequest>;
 
-export type GetError = CloudflareOpError;
-/** Fetch a single configured load balancer. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type MonitorsUpdateResponseHeaderMap = {
+  [key: string]: unknown | undefined;
+};
+export const MonitorsUpdateResponseHeaderMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<MonitorsUpdateResponseHeaderMap>;
 
-export type ListError = CloudflareOpError;
-/** List configured load balancers. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type MonitorsUpdateResponseType =
+  | "http"
+  | "https"
+  | "tcp"
+  | (string & {});
+export const MonitorsUpdateResponseType = /*@__PURE__*/ S.String;
 
-export type MonitorGroupsCreateError = CloudflareOpError;
-/** Create a new monitor group. */
-export const monitorGroupsCreate: API.OperationMethod<
-  MonitorGroupsCreateRequest,
-  MonitorGroupsCreateResponse,
-  MonitorGroupsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorGroupsCreateRequest,
-  output: MonitorGroupsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateMonitorResponse {
+  id?: string;
+  /** Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors. */
+  allowInsecure?: boolean;
+  /** To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times. */
+  consecutiveDown?: number;
+  /** To be marked healthy the monitored origin must pass this healthcheck N consecutive times. */
+  consecutiveUp?: number;
+  createdOn?: string;
+  /** Object description. */
+  description?: string;
+  /** A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedBody?: string;
+  /** The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors. */
+  expectedCodes?: string;
+  /** Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors. */
+  followRedirects?: boolean;
+  /** The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors. */
+  header?: MonitorsUpdateResponseHeaderMap;
+  /** The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations. */
+  interval?: number;
+  /** The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks. */
+  method?: string;
+  modifiedOn?: string;
+  /** The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors. */
+  path?: string;
+  /** The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443). */
+  port?: number;
+  /** Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors. */
+  probeZone?: string;
+  /** The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately. */
+  retries?: number;
+  /** The timeout (in seconds) before marking the health check as failed. */
+  timeout?: number;
+  /** The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'. */
+  type?: MonitorsUpdateResponseType;
+}
+export const UpdateMonitorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    allowInsecure: S.optional(S.Boolean.pipe(T.Body("allow_insecure"))),
+    consecutiveDown: S.optional(S.Number.pipe(T.Body("consecutive_down"))),
+    consecutiveUp: S.optional(S.Number.pipe(T.Body("consecutive_up"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    expectedBody: S.optional(S.String.pipe(T.Body("expected_body"))),
+    expectedCodes: S.optional(S.String.pipe(T.Body("expected_codes"))),
+    followRedirects: S.optional(S.Boolean.pipe(T.Body("follow_redirects"))),
+    header: S.optional(MonitorsUpdateResponseHeaderMap),
+    interval: S.optional(S.Number),
+    method: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    path: S.optional(S.String),
+    port: S.optional(S.Number),
+    probeZone: S.optional(S.String.pipe(T.Body("probe_zone"))),
+    retries: S.optional(S.Number),
+    timeout: S.optional(S.Number),
+    type: S.optional(MonitorsUpdateResponseType),
+  }),
+).annotate({
+  identifier: "UpdateMonitorResponse",
+}) as any as S.Schema<UpdateMonitorResponse>;
 
-export type MonitorGroupsDeleteError = CloudflareOpError;
-/** Delete a configured monitor group. */
-export const monitorGroupsDelete: API.OperationMethod<
-  MonitorGroupsDeleteRequest,
-  MonitorGroupsDeleteResponse,
-  MonitorGroupsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorGroupsDeleteRequest,
-  output: MonitorGroupsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface MonitorGroupsUpdateRequestMembersItem {
+  /** Whether this monitor is enabled in the group */
+  enabled: boolean;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitorId: string;
+  /** Whether this monitor is used for monitoring only (does not affect pool health) */
+  monitoringOnly: boolean;
+  /** Whether this monitor must be healthy for the pool to be considered healthy */
+  mustBeHealthy: boolean;
+  /** The timestamp of when the monitor was added to the group */
+  createdAt?: string;
+  /** The timestamp of when the monitor group member was last updated */
+  updatedAt?: string;
+}
+export const MonitorGroupsUpdateRequestMembersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      monitorId: S.String.pipe(T.Body("monitor_id")),
+      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
+      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+).annotate({
+  identifier: "MonitorGroupsUpdateRequestMembersItem",
+}) as any as S.Schema<MonitorGroupsUpdateRequestMembersItem>;
 
-export type MonitorGroupsEditError = CloudflareOpError;
-/** Apply changes to an existing monitor group, overwriting the supplied properties. */
-export const monitorGroupsEdit: API.OperationMethod<
-  MonitorGroupsEditRequest,
-  MonitorGroupsEditResponse,
-  MonitorGroupsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorGroupsEditRequest,
-  output: MonitorGroupsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type MonitorGroupsUpdateRequestMembersList =
+  MonitorGroupsUpdateRequestMembersItem[];
+export const MonitorGroupsUpdateRequestMembersList = /*@__PURE__*/ S.Array(
+  MonitorGroupsUpdateRequestMembersItem,
+) as any as S.Schema<MonitorGroupsUpdateRequestMembersList>;
 
-export type MonitorGroupsGetError = CloudflareOpError;
-/** Fetch a single configured monitor group. */
-export const monitorGroupsGet: API.OperationMethod<
-  MonitorGroupsGetRequest,
-  MonitorGroupsGetResponse,
-  MonitorGroupsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorGroupsGetRequest,
-  output: MonitorGroupsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface UpdateMonitorGroupRequest {
+  /** Identifier. */
+  accountId: string;
+  monitorGroupId: string;
+  /** A short description of the monitor group */
+  description: string;
+  /** List of monitors in this group */
+  members: MonitorGroupsUpdateRequestMembersList;
+}
+export const UpdateMonitorGroupRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    monitorGroupId: S.String.pipe(T.Label("monitor_group_id")),
+    description: S.String,
+    members: MonitorGroupsUpdateRequestMembersList,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateMonitorGroupRequest",
+}) as any as S.Schema<UpdateMonitorGroupRequest>;
 
-export type MonitorGroupsListError = CloudflareOpError;
-/** List configured monitor groups. */
-export const monitorGroupsList: API.OperationMethod<
-  MonitorGroupsListRequest,
-  MonitorGroupsListResponse,
-  MonitorGroupsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorGroupsListRequest,
-  output: MonitorGroupsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface MonitorGroupsUpdateResponseMembersItem {
+  /** Whether this monitor is enabled in the group */
+  enabled: boolean;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitorId: string;
+  /** Whether this monitor is used for monitoring only (does not affect pool health) */
+  monitoringOnly: boolean;
+  /** Whether this monitor must be healthy for the pool to be considered healthy */
+  mustBeHealthy: boolean;
+  /** The timestamp of when the monitor was added to the group */
+  createdAt?: string;
+  /** The timestamp of when the monitor group member was last updated */
+  updatedAt?: string;
+}
+export const MonitorGroupsUpdateResponseMembersItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.Boolean,
+      monitorId: S.String.pipe(T.Body("monitor_id")),
+      monitoringOnly: S.Boolean.pipe(T.Body("monitoring_only")),
+      mustBeHealthy: S.Boolean.pipe(T.Body("must_be_healthy")),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
+    }),
+).annotate({
+  identifier: "MonitorGroupsUpdateResponseMembersItem",
+}) as any as S.Schema<MonitorGroupsUpdateResponseMembersItem>;
 
-export type MonitorGroupsReferencesGetError = CloudflareOpError;
-/** Get the list of resources that reference the provided monitor group. */
-export const monitorGroupsReferencesGet: API.OperationMethod<
-  MonitorGroupsReferencesGetRequest,
-  MonitorGroupsReferencesGetResponse,
-  MonitorGroupsReferencesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorGroupsReferencesGetRequest,
-  output: MonitorGroupsReferencesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type MonitorGroupsUpdateResponseMembersList =
+  MonitorGroupsUpdateResponseMembersItem[];
+export const MonitorGroupsUpdateResponseMembersList = /*@__PURE__*/ S.Array(
+  MonitorGroupsUpdateResponseMembersItem,
+) as any as S.Schema<MonitorGroupsUpdateResponseMembersList>;
 
-export type MonitorGroupsUpdateError = CloudflareOpError;
-/** Modify a configured monitor group. */
-export const monitorGroupsUpdate: API.OperationMethod<
-  MonitorGroupsUpdateRequest,
-  MonitorGroupsUpdateResponse,
-  MonitorGroupsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorGroupsUpdateRequest,
-  output: MonitorGroupsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateMonitorGroupResponse {
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  id: string;
+  /** A short description of the monitor group */
+  description: string;
+  /** List of monitors in this group */
+  members: MonitorGroupsUpdateResponseMembersList;
+  /** The timestamp of when the monitor group was created */
+  createdOn?: string;
+  /** The timestamp of when the monitor group was last updated */
+  modifiedOn?: string;
+}
+export const UpdateMonitorGroupResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    description: S.String,
+    members: MonitorGroupsUpdateResponseMembersList,
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "UpdateMonitorGroupResponse",
+}) as any as S.Schema<UpdateMonitorGroupResponse>;
 
-export type MonitorsCreateError = CloudflareOpError;
-/** Create a configured monitor. */
-export const monitorsCreate: API.OperationMethod<
-  MonitorsCreateRequest,
-  MonitorsCreateResponse,
-  MonitorsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorsCreateRequest,
-  output: MonitorsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type PoolsUpdateRequestOriginsItemHeaderHostList = unknown[];
+export const PoolsUpdateRequestOriginsItemHeaderHostList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<PoolsUpdateRequestOriginsItemHeaderHostList>;
 
-export type MonitorsDeleteError = CloudflareOpError;
-/** Delete a configured monitor. */
-export const monitorsDelete: API.OperationMethod<
-  MonitorsDeleteRequest,
-  MonitorsDeleteResponse,
-  MonitorsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorsDeleteRequest,
-  output: MonitorsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface PoolsUpdateRequestOriginsItemHeader {
+  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  Host?: PoolsUpdateRequestOriginsItemHeaderHostList;
+}
+export const PoolsUpdateRequestOriginsItemHeader = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Host: S.optional(PoolsUpdateRequestOriginsItemHeaderHostList),
+  }),
+).annotate({
+  identifier: "PoolsUpdateRequestOriginsItemHeader",
+}) as any as S.Schema<PoolsUpdateRequestOriginsItemHeader>;
 
-export type MonitorsEditError = CloudflareOpError;
-/** Apply changes to an existing monitor, overwriting the supplied properties. */
-export const monitorsEdit: API.OperationMethod<
-  MonitorsEditRequest,
-  MonitorsEditResponse,
-  MonitorsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorsEditRequest,
-  output: MonitorsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface PoolsUpdateRequestOriginsItem {
+  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
+  address?: string;
+  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
+  disabledAt?: string;
+  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
+  enabled?: boolean;
+  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
+  flattenCname?: boolean;
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  header?: PoolsUpdateRequestOriginsItemHeader;
+  /** A human-identifiable name for the origin. */
+  name?: string;
+  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
+  port?: number;
+  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
+  virtualNetworkId?: string;
+  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
+  weight?: number;
+}
+export const PoolsUpdateRequestOriginsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
+    header: S.optional(PoolsUpdateRequestOriginsItemHeader),
+    name: S.optional(S.String),
+    port: S.optional(S.Number),
+    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PoolsUpdateRequestOriginsItem",
+}) as any as S.Schema<PoolsUpdateRequestOriginsItem>;
 
-export type MonitorsGetError = CloudflareOpError;
-/** List a single configured monitor for an account. */
-export const monitorsGet: API.OperationMethod<
-  MonitorsGetRequest,
-  MonitorsGetResponse,
-  MonitorsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorsGetRequest,
-  output: MonitorsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type PoolsUpdateRequestOriginsList = PoolsUpdateRequestOriginsItem[];
+export const PoolsUpdateRequestOriginsList = /*@__PURE__*/ S.Array(
+  PoolsUpdateRequestOriginsItem,
+) as any as S.Schema<PoolsUpdateRequestOriginsList>;
 
-export type MonitorsListError = CloudflareOpError;
-/** List configured monitors for an account. */
-export const monitorsList: API.OperationMethod<
-  MonitorsListRequest,
-  MonitorsListResponse,
-  MonitorsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorsListRequest,
-  output: MonitorsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type PoolsUpdateRequestCheckRegionsList = unknown[];
+export const PoolsUpdateRequestCheckRegionsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<PoolsUpdateRequestCheckRegionsList>;
 
-export type MonitorsPreviewsCreateError = CloudflareOpError;
-/** Preview pools using the specified monitor with provided monitor details. The returned preview_id can be used in the preview endpoint to retrieve the results. */
-export const monitorsPreviewsCreate: API.OperationMethod<
-  MonitorsPreviewsCreateRequest,
-  MonitorsPreviewsCreateResponse,
-  MonitorsPreviewsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorsPreviewsCreateRequest,
-  output: MonitorsPreviewsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type PoolsUpdateRequestLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
+export const PoolsUpdateRequestLoadSheddingDefaultPolicy =
+  /*@__PURE__*/ S.String;
 
-export type MonitorsReferencesGetError = CloudflareOpError;
-/** Get the list of resources that reference the provided monitor. */
-export const monitorsReferencesGet: API.OperationMethod<
-  MonitorsReferencesGetRequest,
-  MonitorsReferencesGetResponse,
-  MonitorsReferencesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorsReferencesGetRequest,
-  output: MonitorsReferencesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type PoolsUpdateRequestLoadSheddingSessionPolicy =
+  | "hash"
+  | (string & {});
+export const PoolsUpdateRequestLoadSheddingSessionPolicy =
+  /*@__PURE__*/ S.String;
 
-export type MonitorsUpdateError = CloudflareOpError;
-/** Modify a configured monitor. */
-export const monitorsUpdate: API.OperationMethod<
-  MonitorsUpdateRequest,
-  MonitorsUpdateResponse,
-  MonitorsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: MonitorsUpdateRequest,
-  output: MonitorsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface PoolsUpdateRequestLoadShedding {
+  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
+  defaultPercent?: number;
+  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
+  defaultPolicy?: PoolsUpdateRequestLoadSheddingDefaultPolicy;
+  /** The percent of existing sessions to shed from the pool, according to the session policy. */
+  sessionPercent?: number;
+  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
+  sessionPolicy?: PoolsUpdateRequestLoadSheddingSessionPolicy;
+}
+export const PoolsUpdateRequestLoadShedding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPolicy: S.optional(
+      PoolsUpdateRequestLoadSheddingDefaultPolicy.pipe(
+        T.Body("default_policy"),
+      ),
+    ),
+    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPolicy: S.optional(
+      PoolsUpdateRequestLoadSheddingSessionPolicy.pipe(
+        T.Body("session_policy"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PoolsUpdateRequestLoadShedding",
+}) as any as S.Schema<PoolsUpdateRequestLoadShedding>;
 
-export type PoolsBulkEditError = CloudflareOpError;
+export interface PoolsUpdateRequestNotificationFilterOrigin {
+  /** If set true, disable notifications for this type of resource (pool or origin). */
+  disable?: boolean;
+  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
+  healthy?: boolean;
+}
+export const PoolsUpdateRequestNotificationFilterOrigin =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      disable: S.optional(S.Boolean),
+      healthy: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PoolsUpdateRequestNotificationFilterOrigin",
+  }) as any as S.Schema<PoolsUpdateRequestNotificationFilterOrigin>;
+
+export interface PoolsUpdateRequestNotificationFilter {
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  origin?: PoolsUpdateRequestNotificationFilterOrigin;
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  pool?: unknown;
+}
+export const PoolsUpdateRequestNotificationFilter = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      origin: S.optional(PoolsUpdateRequestNotificationFilterOrigin),
+      pool: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "PoolsUpdateRequestNotificationFilter",
+}) as any as S.Schema<PoolsUpdateRequestNotificationFilter>;
+
+export type PoolsUpdateRequestOriginSteeringPolicy =
+  | "random"
+  | "hash"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | (string & {});
+export const PoolsUpdateRequestOriginSteeringPolicy = /*@__PURE__*/ S.String;
+
+export interface PoolsUpdateRequestOriginSteering {
+  /** The type of origin steering policy to use. */
+  policy?: PoolsUpdateRequestOriginSteeringPolicy;
+}
+export const PoolsUpdateRequestOriginSteering = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policy: S.optional(PoolsUpdateRequestOriginSteeringPolicy),
+  }),
+).annotate({
+  identifier: "PoolsUpdateRequestOriginSteering",
+}) as any as S.Schema<PoolsUpdateRequestOriginSteering>;
+
+export interface UpdatePoolRequest {
+  /** Identifier. */
+  accountId: string;
+  poolId: string;
+  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
+  name: string;
+  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
+  origins: PoolsUpdateRequestOriginsList;
+  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
+  checkRegions?: PoolsUpdateRequestCheckRegionsList;
+  /** A human-readable description of the pool. */
+  description?: string;
+  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
+  enabled?: boolean;
+  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
+  latitude?: number;
+  /** Configures load shedding policies and percentages for the pool. */
+  loadShedding?: PoolsUpdateRequestLoadShedding;
+  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
+  longitude?: number;
+  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
+  minimumOrigins?: number;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitor?: string;
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  monitorGroup?: string;
+  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  notificationEmail?: string;
+  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
+  notificationFilter?: PoolsUpdateRequestNotificationFilter;
+  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
+  originSteering?: PoolsUpdateRequestOriginSteering;
+}
+export const UpdatePoolRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    poolId: S.String.pipe(T.Label("pool_id")),
+    name: S.String,
+    origins: PoolsUpdateRequestOriginsList,
+    checkRegions: S.optional(
+      PoolsUpdateRequestCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    description: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    latitude: S.optional(S.Number),
+    loadShedding: S.optional(
+      PoolsUpdateRequestLoadShedding.pipe(T.Body("load_shedding")),
+    ),
+    longitude: S.optional(S.Number),
+    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
+    monitor: S.optional(S.String),
+    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
+    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    notificationFilter: S.optional(
+      PoolsUpdateRequestNotificationFilter.pipe(T.Body("notification_filter")),
+    ),
+    originSteering: S.optional(
+      PoolsUpdateRequestOriginSteering.pipe(T.Body("origin_steering")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/load_balancers/pools/{pool_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdatePoolRequest",
+}) as any as S.Schema<UpdatePoolRequest>;
+
+export type PoolsUpdateResponseCheckRegionsList = unknown[];
+export const PoolsUpdateResponseCheckRegionsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<PoolsUpdateResponseCheckRegionsList>;
+
+export type PoolsUpdateResponseLoadSheddingDefaultPolicy =
+  | "random"
+  | "hash"
+  | (string & {});
+export const PoolsUpdateResponseLoadSheddingDefaultPolicy =
+  /*@__PURE__*/ S.String;
+
+export type PoolsUpdateResponseLoadSheddingSessionPolicy =
+  | "hash"
+  | (string & {});
+export const PoolsUpdateResponseLoadSheddingSessionPolicy =
+  /*@__PURE__*/ S.String;
+
+export interface PoolsUpdateResponseLoadShedding {
+  /** The percent of traffic to shed from the pool, according to the default policy. Applies to new sessions and traffic without session affinity. */
+  defaultPercent?: number;
+  /** The default policy to use when load shedding. A random policy randomly sheds a given percent of requests. A hash policy computes a hash over the CF-Connecting-IP address and sheds all requests originating from a percent of IPs. */
+  defaultPolicy?: PoolsUpdateResponseLoadSheddingDefaultPolicy;
+  /** The percent of existing sessions to shed from the pool, according to the session policy. */
+  sessionPercent?: number;
+  /** Only the hash policy is supported for existing sessions (to avoid exponential decay). */
+  sessionPolicy?: PoolsUpdateResponseLoadSheddingSessionPolicy;
+}
+export const PoolsUpdateResponseLoadShedding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPercent: S.optional(S.Number.pipe(T.Body("default_percent"))),
+    defaultPolicy: S.optional(
+      PoolsUpdateResponseLoadSheddingDefaultPolicy.pipe(
+        T.Body("default_policy"),
+      ),
+    ),
+    sessionPercent: S.optional(S.Number.pipe(T.Body("session_percent"))),
+    sessionPolicy: S.optional(
+      PoolsUpdateResponseLoadSheddingSessionPolicy.pipe(
+        T.Body("session_policy"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PoolsUpdateResponseLoadShedding",
+}) as any as S.Schema<PoolsUpdateResponseLoadShedding>;
+
+export type PoolsUpdateResponseNetworksList = string[];
+export const PoolsUpdateResponseNetworksList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<PoolsUpdateResponseNetworksList>;
+
+export interface PoolsUpdateResponseNotificationFilterOrigin {
+  /** If set true, disable notifications for this type of resource (pool or origin). */
+  disable?: boolean;
+  /** If present, send notifications only for this health status (e.g. false for only DOWN events). Use null to reset (all events). */
+  healthy?: boolean;
+}
+export const PoolsUpdateResponseNotificationFilterOrigin =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      disable: S.optional(S.Boolean),
+      healthy: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "PoolsUpdateResponseNotificationFilterOrigin",
+  }) as any as S.Schema<PoolsUpdateResponseNotificationFilterOrigin>;
+
+export interface PoolsUpdateResponseNotificationFilter {
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  origin?: PoolsUpdateResponseNotificationFilterOrigin;
+  /** Filter options for a particular resource type (pool or origin). Use null to reset. */
+  pool?: unknown;
+}
+export const PoolsUpdateResponseNotificationFilter = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      origin: S.optional(PoolsUpdateResponseNotificationFilterOrigin),
+      pool: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "PoolsUpdateResponseNotificationFilter",
+}) as any as S.Schema<PoolsUpdateResponseNotificationFilter>;
+
+export type PoolsUpdateResponseOriginSteeringPolicy =
+  | "random"
+  | "hash"
+  | "least_outstanding_requests"
+  | "least_connections"
+  | (string & {});
+export const PoolsUpdateResponseOriginSteeringPolicy = /*@__PURE__*/ S.String;
+
+export interface PoolsUpdateResponseOriginSteering {
+  /** The type of origin steering policy to use. */
+  policy?: PoolsUpdateResponseOriginSteeringPolicy;
+}
+export const PoolsUpdateResponseOriginSteering = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    policy: S.optional(PoolsUpdateResponseOriginSteeringPolicy),
+  }),
+).annotate({
+  identifier: "PoolsUpdateResponseOriginSteering",
+}) as any as S.Schema<PoolsUpdateResponseOriginSteering>;
+
+export type PoolsUpdateResponseOriginsItemHeaderHostList = unknown[];
+export const PoolsUpdateResponseOriginsItemHeaderHostList =
+  /*@__PURE__*/ S.Array(
+    S.Unknown,
+  ) as any as S.Schema<PoolsUpdateResponseOriginsItemHeaderHostList>;
+
+export interface PoolsUpdateResponseOriginsItemHeader {
+  /** The 'Host' header allows to override the hostname set in the HTTP request. Current support is 1 'Host' header override per origin. */
+  Host?: PoolsUpdateResponseOriginsItemHeaderHostList;
+}
+export const PoolsUpdateResponseOriginsItemHeader = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Host: S.optional(PoolsUpdateResponseOriginsItemHeaderHostList),
+    }),
+).annotate({
+  identifier: "PoolsUpdateResponseOriginsItemHeader",
+}) as any as S.Schema<PoolsUpdateResponseOriginsItemHeader>;
+
+export interface PoolsUpdateResponseOriginsItem {
+  /** The IP address (IPv4 or IPv6) of the origin, or its publicly addressable hostname. Hostnames entered here should resolve directly to the origin, and not be a hostname proxied by Cloudflare. To set an internal/reserved address, virtual_network_id must also be set. */
+  address?: string;
+  /** This field shows up only if the origin is disabled. This field is set with the time the origin was disabled. */
+  disabledAt?: string;
+  /** Whether to enable (the default) this origin within the pool. Disabled origins will not receive traffic and are excluded from health checks. The origin will only be disabled for the current pool. */
+  enabled?: boolean;
+  /** Whether to flatten CNAME records for this origin, resolving them to A/AAAA records before returning to the client. When true (the default), the director resolves CNAME addresses to their underlying A/AAAA records. When false, the origin address is returned as a raw CNAME record without resolution. This setting mirrors the DNS API record flatten_cname setting. */
+  flattenCname?: boolean;
+  /** The request header is used to pass additional information with an HTTP request. Currently supported header is 'Host'. */
+  header?: PoolsUpdateResponseOriginsItemHeader;
+  /** A human-identifiable name for the origin. */
+  name?: string;
+  /** The port for upstream connections. A value of 0 means the default port for the protocol will be used. */
+  port?: number;
+  /** The virtual network subnet ID the origin belongs in. Virtual network must also belong to the account. */
+  virtualNetworkId?: string;
+  /** The weight of this origin relative to other origins in the pool. Based on the configured weight the total traffic is distributed among origins within the pool. */
+  weight?: number;
+}
+export const PoolsUpdateResponseOriginsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    address: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    flattenCname: S.optional(S.Boolean.pipe(T.Body("flatten_cname"))),
+    header: S.optional(PoolsUpdateResponseOriginsItemHeader),
+    name: S.optional(S.String),
+    port: S.optional(S.Number),
+    virtualNetworkId: S.optional(S.String.pipe(T.Body("virtual_network_id"))),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "PoolsUpdateResponseOriginsItem",
+}) as any as S.Schema<PoolsUpdateResponseOriginsItem>;
+
+export type PoolsUpdateResponseOriginsList = PoolsUpdateResponseOriginsItem[];
+export const PoolsUpdateResponseOriginsList = /*@__PURE__*/ S.Array(
+  PoolsUpdateResponseOriginsItem,
+) as any as S.Schema<PoolsUpdateResponseOriginsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdatePoolResponse {
+  id?: string;
+  /** A list of regions from which to run health checks. Null means every Cloudflare data center. */
+  checkRegions?: PoolsUpdateResponseCheckRegionsList;
+  createdOn?: string;
+  /** A human-readable description of the pool. */
+  description?: string;
+  /** This field shows up only if the pool is disabled. This field is set with the time the pool was disabled at. */
+  disabledAt?: string;
+  /** Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any). */
+  enabled?: boolean;
+  /** The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set. */
+  latitude?: number;
+  /** Configures load shedding policies and percentages for the pool. */
+  loadShedding?: PoolsUpdateResponseLoadShedding;
+  /** The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set. */
+  longitude?: number;
+  /** The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool. */
+  minimumOrigins?: number;
+  modifiedOn?: string;
+  /** The ID of the Monitor to use for checking the health of origins within this pool. */
+  monitor?: string;
+  /** The ID of the Monitor Group to use for checking the health of origins within this pool. */
+  monitorGroup?: string;
+  /** A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed. */
+  name?: string;
+  /** List of networks where Load Balancer or Pool is enabled. */
+  networks?: PoolsUpdateResponseNetworksList;
+  /** This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list. */
+  notificationEmail?: string;
+  /** Filter pool and origin health notifications by resource type or health status. Use null to reset. */
+  notificationFilter?: PoolsUpdateResponseNotificationFilter;
+  /** Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity. */
+  originSteering?: PoolsUpdateResponseOriginSteering;
+  /** The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy. */
+  origins?: PoolsUpdateResponseOriginsList;
+}
+export const UpdatePoolResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    checkRegions: S.optional(
+      PoolsUpdateResponseCheckRegionsList.pipe(T.Body("check_regions")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    disabledAt: S.optional(S.String.pipe(T.Body("disabled_at"))),
+    enabled: S.optional(S.Boolean),
+    latitude: S.optional(S.Number),
+    loadShedding: S.optional(
+      PoolsUpdateResponseLoadShedding.pipe(T.Body("load_shedding")),
+    ),
+    longitude: S.optional(S.Number),
+    minimumOrigins: S.optional(S.Number.pipe(T.Body("minimum_origins"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    monitor: S.optional(S.String),
+    monitorGroup: S.optional(S.String.pipe(T.Body("monitor_group"))),
+    name: S.optional(S.String),
+    networks: S.optional(PoolsUpdateResponseNetworksList),
+    notificationEmail: S.optional(S.String.pipe(T.Body("notification_email"))),
+    notificationFilter: S.optional(
+      PoolsUpdateResponseNotificationFilter.pipe(T.Body("notification_filter")),
+    ),
+    originSteering: S.optional(
+      PoolsUpdateResponseOriginSteering.pipe(T.Body("origin_steering")),
+    ),
+    origins: S.optional(PoolsUpdateResponseOriginsList),
+  }),
+).annotate({
+  identifier: "UpdatePoolResponse",
+}) as any as S.Schema<UpdatePoolResponse>;
+
+export type BulkPatchPoolsError = CloudflareOpError;
 /** Apply changes to a number of existing pools, overwriting the supplied properties. Pools are ordered by ascending `name`. Returns the list of affected pools. Supports the standard pagination query parameters, either `limit`/`offset` or `per_page`/`page`. */
-export const poolsBulkEdit: API.OperationMethod<
-  PoolsBulkEditRequest,
-  PoolsBulkEditResponse,
-  PoolsBulkEditError,
+export const bulkPatchPools: API.OperationMethod<
+  BulkPatchPoolsRequest,
+  BulkPatchPoolsResponse,
+  BulkPatchPoolsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PoolsBulkEditRequest,
-  output: PoolsBulkEditResponse,
+  input: BulkPatchPoolsRequest,
+  output: BulkPatchPoolsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type PoolsCreateError = CloudflareOpError;
+export type CreateLoadBalancerError =
+  | LoadBalancingNotEnabledForZone
+  | Forbidden
+  | CloudflareOpError;
+/** Create a new load balancer. */
+export const createLoadBalancer: API.OperationMethod<
+  CreateLoadBalancerRequest,
+  CreateLoadBalancerResponse,
+  CreateLoadBalancerError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateLoadBalancerRequest,
+  output: CreateLoadBalancerResponse,
+  errors: [
+    LoadBalancingNotEnabledForZone,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateMonitorError =
+  | MonitorIntervalOutOfRange
+  | Forbidden
+  | CloudflareOpError;
+/** Create a configured monitor. */
+export const createMonitor: API.OperationMethod<
+  CreateMonitorRequest,
+  CreateMonitorResponse,
+  CreateMonitorError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMonitorRequest,
+  output: CreateMonitorResponse,
+  errors: [
+    MonitorIntervalOutOfRange,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateMonitorGroupError =
+  | MonitorGroupsNotEnabled
+  | Forbidden
+  | CloudflareOpError;
+/** Create a new monitor group. */
+export const createMonitorGroup: API.OperationMethod<
+  CreateMonitorGroupRequest,
+  CreateMonitorGroupResponse,
+  CreateMonitorGroupError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMonitorGroupRequest,
+  output: CreateMonitorGroupResponse,
+  errors: [
+    MonitorGroupsNotEnabled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateMonitorPreviewError = CloudflareOpError;
+/** Preview pools using the specified monitor with provided monitor details. The returned preview_id can be used in the preview endpoint to retrieve the results. */
+export const createMonitorPreview: API.OperationMethod<
+  CreateMonitorPreviewRequest,
+  CreateMonitorPreviewResponse,
+  CreateMonitorPreviewError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateMonitorPreviewRequest,
+  output: CreateMonitorPreviewResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreatePoolError = PoolAccessFailed | Forbidden | CloudflareOpError;
 /** Create a new pool. */
-export const poolsCreate: API.OperationMethod<
-  PoolsCreateRequest,
-  PoolsCreateResponse,
-  PoolsCreateError,
+export const createPool: API.OperationMethod<
+  CreatePoolRequest,
+  CreatePoolResponse,
+  CreatePoolError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PoolsCreateRequest,
-  output: PoolsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreatePoolRequest,
+  output: CreatePoolResponse,
+  errors: [PoolAccessFailed, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type PoolsDeleteError = CloudflareOpError;
-/** Delete a configured pool. */
-export const poolsDelete: API.OperationMethod<
-  PoolsDeleteRequest,
-  PoolsDeleteResponse,
-  PoolsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoolsDeleteRequest,
-  output: PoolsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PoolsEditError = CloudflareOpError;
-/** Apply changes to an existing pool, overwriting the supplied properties. */
-export const poolsEdit: API.OperationMethod<
-  PoolsEditRequest,
-  PoolsEditResponse,
-  PoolsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoolsEditRequest,
-  output: PoolsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PoolsGetError = CloudflareOpError;
-/** Fetch a single configured pool. */
-export const poolsGet: API.OperationMethod<
-  PoolsGetRequest,
-  PoolsGetResponse,
-  PoolsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoolsGetRequest,
-  output: PoolsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PoolsHealthCreateError = CloudflareOpError;
+export type CreatePoolHealthError = CloudflareOpError;
 /** Preview pool health using provided monitor details. The returned preview_id can be used in the preview endpoint to retrieve the results. */
-export const poolsHealthCreate: API.OperationMethod<
-  PoolsHealthCreateRequest,
-  PoolsHealthCreateResponse,
-  PoolsHealthCreateError,
+export const createPoolHealth: API.OperationMethod<
+  CreatePoolHealthRequest,
+  CreatePoolHealthResponse,
+  CreatePoolHealthError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PoolsHealthCreateRequest,
-  output: PoolsHealthCreateResponse,
+  input: CreatePoolHealthRequest,
+  output: CreatePoolHealthResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type PoolsHealthGetError = CloudflareOpError;
+export type DeleteLoadBalancerError =
+  | LoadBalancerNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Delete a configured load balancer. */
+export const deleteLoadBalancer: API.OperationMethod<
+  DeleteLoadBalancerRequest,
+  DeleteLoadBalancerResponse,
+  DeleteLoadBalancerError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteLoadBalancerRequest,
+  output: DeleteLoadBalancerResponse,
+  errors: [
+    LoadBalancerNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteMonitorError =
+  | MonitorNotFound
+  | MonitorInUse
+  | Forbidden
+  | CloudflareOpError;
+/** Delete a configured monitor. */
+export const deleteMonitor: API.OperationMethod<
+  DeleteMonitorRequest,
+  DeleteMonitorResponse,
+  DeleteMonitorError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteMonitorRequest,
+  output: DeleteMonitorResponse,
+  errors: [
+    MonitorNotFound,
+    MonitorInUse,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteMonitorGroupError =
+  | MonitorGroupNotFound
+  | MonitorGroupInUse
+  | Forbidden
+  | CloudflareOpError;
+/** Delete a configured monitor group. */
+export const deleteMonitorGroup: API.OperationMethod<
+  DeleteMonitorGroupRequest,
+  DeleteMonitorGroupResponse,
+  DeleteMonitorGroupError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteMonitorGroupRequest,
+  output: DeleteMonitorGroupResponse,
+  errors: [
+    MonitorGroupNotFound,
+    MonitorGroupInUse,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeletePoolError =
+  | PoolNotFound
+  | PoolInUse
+  | Forbidden
+  | CloudflareOpError;
+/** Delete a configured pool. */
+export const deletePool: API.OperationMethod<
+  DeletePoolRequest,
+  DeletePoolResponse,
+  DeletePoolError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePoolRequest,
+  output: DeletePoolResponse,
+  errors: [
+    PoolNotFound,
+    PoolInUse,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetLoadBalancerError =
+  | LoadBalancerNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Fetch a single configured load balancer. */
+export const getLoadBalancer: API.OperationMethod<
+  GetLoadBalancerRequest,
+  GetLoadBalancerResponse,
+  GetLoadBalancerError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLoadBalancerRequest,
+  output: GetLoadBalancerResponse,
+  errors: [
+    LoadBalancerNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetMonitorError = MonitorNotFound | Forbidden | CloudflareOpError;
+/** List a single configured monitor for an account. */
+export const getMonitor: API.OperationMethod<
+  GetMonitorRequest,
+  GetMonitorResponse,
+  GetMonitorError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMonitorRequest,
+  output: GetMonitorResponse,
+  errors: [MonitorNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetMonitorGroupError =
+  | MonitorGroupNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Fetch a single configured monitor group. */
+export const getMonitorGroup: API.OperationMethod<
+  GetMonitorGroupRequest,
+  GetMonitorGroupResponse,
+  GetMonitorGroupError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMonitorGroupRequest,
+  output: GetMonitorGroupResponse,
+  errors: [
+    MonitorGroupNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetMonitorGroupReferenceError = CloudflareOpError;
+/** Get the list of resources that reference the provided monitor group. */
+export const getMonitorGroupReference: API.OperationMethod<
+  GetMonitorGroupReferenceRequest,
+  GetMonitorGroupReferenceResponse,
+  GetMonitorGroupReferenceError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMonitorGroupReferenceRequest,
+  output: GetMonitorGroupReferenceResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetMonitorReferenceError = CloudflareOpError;
+/** Get the list of resources that reference the provided monitor. */
+export const getMonitorReference: API.OperationMethod<
+  GetMonitorReferenceRequest,
+  GetMonitorReferenceResponse,
+  GetMonitorReferenceError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetMonitorReferenceRequest,
+  output: GetMonitorReferenceResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetPoolError = PoolNotFound | Forbidden | CloudflareOpError;
+/** Fetch a single configured pool. */
+export const getPool: API.OperationMethod<
+  GetPoolRequest,
+  GetPoolResponse,
+  GetPoolError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPoolRequest,
+  output: GetPoolResponse,
+  errors: [PoolNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetPoolHealthError = CloudflareOpError;
 /** Fetch the latest pool health status for a single pool. */
-export const poolsHealthGet: API.OperationMethod<
-  PoolsHealthGetRequest,
-  PoolsHealthGetResponse,
-  PoolsHealthGetError,
+export const getPoolHealth: API.OperationMethod<
+  GetPoolHealthRequest,
+  GetPoolHealthResponse,
+  GetPoolHealthError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PoolsHealthGetRequest,
-  output: PoolsHealthGetResponse,
+  input: GetPoolHealthRequest,
+  output: GetPoolHealthResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type PoolsListError = CloudflareOpError;
-/** List configured pools. */
-export const poolsList: API.OperationMethod<
-  PoolsListRequest,
-  PoolsListResponse,
-  PoolsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoolsListRequest,
-  output: PoolsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PoolsReferencesGetError = CloudflareOpError;
+export type GetPoolReferenceError = CloudflareOpError;
 /** Get the list of resources that reference the provided pool. */
-export const poolsReferencesGet: API.OperationMethod<
-  PoolsReferencesGetRequest,
-  PoolsReferencesGetResponse,
-  PoolsReferencesGetError,
+export const getPoolReference: API.OperationMethod<
+  GetPoolReferenceRequest,
+  GetPoolReferenceResponse,
+  GetPoolReferenceError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PoolsReferencesGetRequest,
-  output: PoolsReferencesGetResponse,
+  input: GetPoolReferenceRequest,
+  output: GetPoolReferenceResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type PoolsUpdateError = CloudflareOpError;
-/** Modify a configured pool. */
-export const poolsUpdate: API.OperationMethod<
-  PoolsUpdateRequest,
-  PoolsUpdateResponse,
-  PoolsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PoolsUpdateRequest,
-  output: PoolsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PreviewsGetError = CloudflareOpError;
+export type GetPreviewError = CloudflareOpError;
 /** Get the result of a previous preview operation using the provided preview_id. */
-export const previewsGet: API.OperationMethod<
-  PreviewsGetRequest,
-  PreviewsGetResponse,
-  PreviewsGetError,
+export const getPreview: API.OperationMethod<
+  GetPreviewRequest,
+  GetPreviewResponse,
+  GetPreviewError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PreviewsGetRequest,
-  output: PreviewsGetResponse,
+  input: GetPreviewRequest,
+  output: GetPreviewResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RegionsGetError = CloudflareOpError;
+export type GetRegionError = CloudflareOpError;
 /** Get a single region mapping. */
-export const regionsGet: API.OperationMethod<
-  RegionsGetRequest,
-  RegionsGetResponse,
-  RegionsGetError,
+export const getRegion: API.OperationMethod<
+  GetRegionRequest,
+  GetRegionResponse,
+  GetRegionError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegionsGetRequest,
-  output: RegionsGetResponse,
+  input: GetRegionRequest,
+  output: GetRegionResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RegionsListError = CloudflareOpError;
+export type ListLoadBalancersError = CloudflareOpError;
+/** List configured load balancers. */
+export const listLoadBalancers: API.OperationMethod<
+  ListLoadBalancersRequest,
+  ListLoadBalancersResponse,
+  ListLoadBalancersError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListLoadBalancersRequest,
+  output: ListLoadBalancersResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListMonitorGroupsError = CloudflareOpError;
+/** List configured monitor groups. */
+export const listMonitorGroups: API.OperationMethod<
+  ListMonitorGroupsRequest,
+  ListMonitorGroupsResponse,
+  ListMonitorGroupsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMonitorGroupsRequest,
+  output: ListMonitorGroupsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListMonitorsError = CloudflareOpError;
+/** List configured monitors for an account. */
+export const listMonitors: API.OperationMethod<
+  ListMonitorsRequest,
+  ListMonitorsResponse,
+  ListMonitorsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListMonitorsRequest,
+  output: ListMonitorsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListPoolsError = CloudflareOpError;
+/** List configured pools. */
+export const listPools: API.OperationMethod<
+  ListPoolsRequest,
+  ListPoolsResponse,
+  ListPoolsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPoolsRequest,
+  output: ListPoolsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListRegionsError = CloudflareOpError;
 /** List all region mappings. */
-export const regionsList: API.OperationMethod<
-  RegionsListRequest,
-  RegionsListResponse,
-  RegionsListError,
+export const listRegions: API.OperationMethod<
+  ListRegionsRequest,
+  ListRegionsResponse,
+  ListRegionsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RegionsListRequest,
-  output: RegionsListResponse,
+  input: ListRegionsRequest,
+  output: ListRegionsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SearchesListError = CloudflareOpError;
+export type ListSearchesError = CloudflareOpError;
 /** Search for Load Balancing resources. */
-export const searchesList: API.OperationMethod<
-  SearchesListRequest,
-  SearchesListResponse,
-  SearchesListError,
+export const listSearches: API.OperationMethod<
+  ListSearchesRequest,
+  ListSearchesResponse,
+  ListSearchesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SearchesListRequest,
-  output: SearchesListResponse,
+  input: ListSearchesRequest,
+  output: ListSearchesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
-/** Update a configured load balancer. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export type PatchLoadBalancerError = CloudflareOpError;
+/** Apply changes to an existing load balancer, overwriting the supplied properties. */
+export const patchLoadBalancer: API.OperationMethod<
+  PatchLoadBalancerRequest,
+  PatchLoadBalancerResponse,
+  PatchLoadBalancerError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
+  input: PatchLoadBalancerRequest,
+  output: PatchLoadBalancerResponse,
   errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchMonitorError = CloudflareOpError;
+/** Apply changes to an existing monitor, overwriting the supplied properties. */
+export const patchMonitor: API.OperationMethod<
+  PatchMonitorRequest,
+  PatchMonitorResponse,
+  PatchMonitorError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchMonitorRequest,
+  output: PatchMonitorResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchMonitorGroupError = CloudflareOpError;
+/** Apply changes to an existing monitor group, overwriting the supplied properties. */
+export const patchMonitorGroup: API.OperationMethod<
+  PatchMonitorGroupRequest,
+  PatchMonitorGroupResponse,
+  PatchMonitorGroupError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchMonitorGroupRequest,
+  output: PatchMonitorGroupResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchPoolError = CloudflareOpError;
+/** Apply changes to an existing pool, overwriting the supplied properties. */
+export const patchPool: API.OperationMethod<
+  PatchPoolRequest,
+  PatchPoolResponse,
+  PatchPoolError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchPoolRequest,
+  output: PatchPoolResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateLoadBalancerError =
+  | LoadBalancerNotFound
+  | LoadBalancingNotEnabledForZone
+  | Forbidden
+  | CloudflareOpError;
+/** Update a configured load balancer. */
+export const updateLoadBalancer: API.OperationMethod<
+  UpdateLoadBalancerRequest,
+  UpdateLoadBalancerResponse,
+  UpdateLoadBalancerError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateLoadBalancerRequest,
+  output: UpdateLoadBalancerResponse,
+  errors: [
+    LoadBalancerNotFound,
+    LoadBalancingNotEnabledForZone,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateMonitorError =
+  | MonitorNotFound
+  | MonitorIntervalOutOfRange
+  | Forbidden
+  | CloudflareOpError;
+/** Modify a configured monitor. */
+export const updateMonitor: API.OperationMethod<
+  UpdateMonitorRequest,
+  UpdateMonitorResponse,
+  UpdateMonitorError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMonitorRequest,
+  output: UpdateMonitorResponse,
+  errors: [
+    MonitorNotFound,
+    MonitorIntervalOutOfRange,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateMonitorGroupError =
+  | MonitorGroupNotFound
+  | MonitorGroupsNotEnabled
+  | Forbidden
+  | CloudflareOpError;
+/** Modify a configured monitor group. */
+export const updateMonitorGroup: API.OperationMethod<
+  UpdateMonitorGroupRequest,
+  UpdateMonitorGroupResponse,
+  UpdateMonitorGroupError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateMonitorGroupRequest,
+  output: UpdateMonitorGroupResponse,
+  errors: [
+    MonitorGroupNotFound,
+    MonitorGroupsNotEnabled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdatePoolError =
+  | PoolNotFound
+  | PoolAccessFailed
+  | Forbidden
+  | CloudflareOpError;
+/** Modify a configured pool. */
+export const updatePool: API.OperationMethod<
+  UpdatePoolRequest,
+  UpdatePoolResponse,
+  UpdatePoolError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePoolRequest,
+  output: UpdatePoolResponse,
+  errors: [
+    PoolNotFound,
+    PoolAccessFailed,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

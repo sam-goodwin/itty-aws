@@ -1,0 +1,30 @@
+{
+  "description": "Align r2#BucketsObjectsDelete with distilled cloudflare/r2 deleteBucketObject",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsObjectsDelete",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketObject"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsObjectsDeleteRequest",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketObjectRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketObject/input/target",
+      "value": "com.cloudflare.r2#DeleteBucketObjectRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.r2#BucketsObjectsDeleteResponse",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketObjectResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.r2#DeleteBucketObject/output/target",
+      "value": "com.cloudflare.r2#DeleteBucketObjectResponse"
+    }
+  ]
+}

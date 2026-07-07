@@ -9,11 +9,19 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface DeleteRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export interface DeleteUrlNormalizationRequest {
   /** The unique ID of the zone. */
   zoneId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -23,18 +31,22 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeleteUrlNormalizationRequest",
+}) as any as S.Schema<DeleteUrlNormalizationRequest>;
 
-export interface DeleteResponse {}
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteUrlNormalizationResponse {}
+export const DeleteUrlNormalizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+).annotate({
+  identifier: "DeleteUrlNormalizationResponse",
+}) as any as S.Schema<DeleteUrlNormalizationResponse>;
 
-export interface GetRequest {
+export interface GetUrlNormalizationRequest {
   /** The unique ID of the zone. */
   zoneId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -44,7 +56,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetUrlNormalizationRequest",
+}) as any as S.Schema<GetUrlNormalizationRequest>;
 
 export type GetResponseScope = "incoming" | "both" | "none" | (string & {});
 export const GetResponseScope = /*@__PURE__*/ S.String;
@@ -53,18 +67,20 @@ export type GetResponseType = "cloudflare" | "rfc3986" | (string & {});
 export const GetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetUrlNormalizationResponse {
   /** The scope of the URL normalization. */
   scope: GetResponseScope;
   /** The type of URL normalization performed by Cloudflare. */
   type: GetResponseType;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetUrlNormalizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: GetResponseScope,
     type: GetResponseType,
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetUrlNormalizationResponse",
+}) as any as S.Schema<GetUrlNormalizationResponse>;
 
 export type UpdateRequestScope = "incoming" | "both" | "none" | (string & {});
 export const UpdateRequestScope = /*@__PURE__*/ S.String;
@@ -72,7 +88,7 @@ export const UpdateRequestScope = /*@__PURE__*/ S.String;
 export type UpdateRequestType = "cloudflare" | "rfc3986" | (string & {});
 export const UpdateRequestType = /*@__PURE__*/ S.String;
 
-export interface UpdateRequest {
+export interface PutUrlNormalizationRequest {
   /** The unique ID of the zone. */
   zoneId: string;
   /** The scope of the URL normalization. */
@@ -80,7 +96,7 @@ export interface UpdateRequest {
   /** The type of URL normalization performed by Cloudflare. */
   type: UpdateRequestType;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutUrlNormalizationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     scope: UpdateRequestScope,
@@ -92,7 +108,9 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "PutUrlNormalizationRequest",
+}) as any as S.Schema<PutUrlNormalizationRequest>;
 
 export type UpdateResponseScope = "incoming" | "both" | "none" | (string & {});
 export const UpdateResponseScope = /*@__PURE__*/ S.String;
@@ -101,57 +119,59 @@ export type UpdateResponseType = "cloudflare" | "rfc3986" | (string & {});
 export const UpdateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface PutUrlNormalizationResponse {
   /** The scope of the URL normalization. */
   scope: UpdateResponseScope;
   /** The type of URL normalization performed by Cloudflare. */
   type: UpdateResponseType;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutUrlNormalizationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scope: UpdateResponseScope,
     type: UpdateResponseType,
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "PutUrlNormalizationResponse",
+}) as any as S.Schema<PutUrlNormalizationResponse>;
 
-export type DeleteError = CloudflareOpError;
+export type DeleteUrlNormalizationError = Forbidden | CloudflareOpError;
 /** Deletes the URL Normalization settings. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteUrlNormalization: API.OperationMethod<
+  DeleteUrlNormalizationRequest,
+  DeleteUrlNormalizationResponse,
+  DeleteUrlNormalizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteUrlNormalizationRequest,
+  output: DeleteUrlNormalizationResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
+export type GetUrlNormalizationError = Forbidden | CloudflareOpError;
 /** Fetches the current URL Normalization settings. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getUrlNormalization: API.OperationMethod<
+  GetUrlNormalizationRequest,
+  GetUrlNormalizationResponse,
+  GetUrlNormalizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetUrlNormalizationRequest,
+  output: GetUrlNormalizationResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
+export type PutUrlNormalizationError = Forbidden | CloudflareOpError;
 /** Updates the URL Normalization settings. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export const putUrlNormalization: API.OperationMethod<
+  PutUrlNormalizationRequest,
+  PutUrlNormalizationResponse,
+  PutUrlNormalizationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PutUrlNormalizationRequest,
+  output: PutUrlNormalizationResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

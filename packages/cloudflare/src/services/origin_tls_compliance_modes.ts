@@ -9,27 +9,30 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface DeleteRequest {
+export interface DeleteOriginTlsComplianceModeRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+export const DeleteOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "DeleteOriginTlsComplianceModeRequest",
+}) as any as S.Schema<DeleteOriginTlsComplianceModeRequest>;
 
 export type DeleteResponseId = "origin_tls_compliance_modes" | (string & {});
 export const DeleteResponseId = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
+export interface DeleteOriginTlsComplianceModeResponse {
   /** The identifier of the caching setting. */
   id: DeleteResponseId;
   /** Whether the setting is editable. */
@@ -37,71 +40,22 @@ export interface DeleteResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: DeleteResponseId,
-    editable: S.Boolean,
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
-
-export type EditRequestValueList = string[];
-export const EditRequestValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditRequestValueList>;
-
-export interface EditRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint. */
-  value: EditRequestValueList;
-}
-export const EditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    value: EditRequestValueList,
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
-      code: 200,
+export const DeleteOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: DeleteResponseId,
+      editable: S.Boolean,
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
     }),
-  ),
-).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
+).annotate({
+  identifier: "DeleteOriginTlsComplianceModeResponse",
+}) as any as S.Schema<DeleteOriginTlsComplianceModeResponse>;
 
-export type EditResponseId = "origin_tls_compliance_modes" | (string & {});
-export const EditResponseId = /*@__PURE__*/ S.String;
-
-export type EditResponseValueList = string[];
-export const EditResponseValueList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponseValueList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EditResponse {
-  /** The identifier of the caching setting. */
-  id: EditResponseId;
-  /** Whether the setting is editable. */
-  editable: boolean;
-  /** List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint. */
-  value: EditResponseValueList;
-  /** Last time this setting was modified. */
-  modifiedOn?: string;
-}
-export const EditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: EditResponseId,
-    editable: S.Boolean,
-    value: EditResponseValueList,
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
-
-export interface GetRequest {
+export interface GetOriginTlsComplianceModeRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -111,7 +65,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetOriginTlsComplianceModeRequest",
+}) as any as S.Schema<GetOriginTlsComplianceModeRequest>;
 
 export type GetResponseId = "origin_tls_compliance_modes" | (string & {});
 export const GetResponseId = /*@__PURE__*/ S.String;
@@ -122,7 +78,7 @@ export const GetResponseValueList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponseValueList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetOriginTlsComplianceModeResponse {
   /** The identifier of the caching setting. */
   id: GetResponseId;
   /** Whether the setting is editable. */
@@ -132,27 +88,86 @@ export interface GetResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: GetResponseId,
     editable: S.Boolean,
     value: GetResponseValueList,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetOriginTlsComplianceModeResponse",
+}) as any as S.Schema<GetOriginTlsComplianceModeResponse>;
+
+export type EditRequestValueList = string[];
+export const EditRequestValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditRequestValueList>;
+
+export interface PatchOriginTlsComplianceModeRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint. */
+  value: EditRequestValueList;
+}
+export const PatchOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    value: EditRequestValueList,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/settings/origin_tls_compliance_modes",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchOriginTlsComplianceModeRequest",
+}) as any as S.Schema<PatchOriginTlsComplianceModeRequest>;
+
+export type EditResponseId = "origin_tls_compliance_modes" | (string & {});
+export const EditResponseId = /*@__PURE__*/ S.String;
+
+export type EditResponseValueList = string[];
+export const EditResponseValueList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponseValueList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchOriginTlsComplianceModeResponse {
+  /** The identifier of the caching setting. */
+  id: EditResponseId;
+  /** Whether the setting is editable. */
+  editable: boolean;
+  /** List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint. */
+  value: EditResponseValueList;
+  /** Last time this setting was modified. */
+  modifiedOn?: string;
+}
+export const PatchOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: EditResponseId,
+      editable: S.Boolean,
+      value: EditResponseValueList,
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    }),
+).annotate({
+  identifier: "PatchOriginTlsComplianceModeResponse",
+}) as any as S.Schema<PatchOriginTlsComplianceModeResponse>;
 
 export type UpdateRequestValueList = string[];
 export const UpdateRequestValueList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestValueList>;
 
-export interface UpdateRequest {
+export interface PutOriginTlsComplianceModeRequest {
   /** Identifier. */
   zoneId: string;
   /** List of TLS compliance modes that constrain the key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. Currently supported values are `fips` (FIPS-approved curves) and `pqh` (post-quantum hybrid). Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Multiple modes are combined as the intersection of their permitted algorithm lists; selections whose intersection is empty are rejected. An empty list clears the constraint. */
   value: UpdateRequestValueList;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutOriginTlsComplianceModeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     value: UpdateRequestValueList,
@@ -163,7 +178,9 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "PutOriginTlsComplianceModeRequest",
+}) as any as S.Schema<PutOriginTlsComplianceModeRequest>;
 
 export type UpdateResponseId = "origin_tls_compliance_modes" | (string & {});
 export const UpdateResponseId = /*@__PURE__*/ S.String;
@@ -174,7 +191,7 @@ export const UpdateResponseValueList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateResponseValueList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface PutOriginTlsComplianceModeResponse {
   /** The identifier of the caching setting. */
   id: UpdateResponseId;
   /** Whether the setting is editable. */
@@ -184,67 +201,69 @@ export interface UpdateResponse {
   /** Last time this setting was modified. */
   modifiedOn?: string;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutOriginTlsComplianceModeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: UpdateResponseId,
     editable: S.Boolean,
     value: UpdateResponseValueList,
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "PutOriginTlsComplianceModeResponse",
+}) as any as S.Schema<PutOriginTlsComplianceModeResponse>;
 
-export type DeleteError = CloudflareOpError;
+export type DeleteOriginTlsComplianceModeError = CloudflareOpError;
 /** Delete the Origin TLS Compliance Modes setting for the zone, removing any configured compliance constraint. After deletion, Cloudflare's default behavior applies (no compliance filtering of the key-exchange algorithm list sent to the origin). */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteOriginTlsComplianceMode: API.OperationMethod<
+  DeleteOriginTlsComplianceModeRequest,
+  DeleteOriginTlsComplianceModeResponse,
+  DeleteOriginTlsComplianceModeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
+  input: DeleteOriginTlsComplianceModeRequest,
+  output: DeleteOriginTlsComplianceModeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type EditError = CloudflareOpError;
-/** Update the set of TLS compliance modes for the zone. PATCH performs a full replace of the modes list, not a merge — the request body is treated as the complete new list, and any modes not present in it are removed. (To remove a single mode from an existing configuration, send the updated list without it.) The request body must be of the form `{"value": ["fips", "pqh"]}`. Currently supported modes are `fips` and `pqh`; an empty list clears the constraint. Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Invalid mode values are rejected with a 4xx response. */
-export const edit: API.OperationMethod<
-  EditRequest,
-  EditResponse,
-  EditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EditRequest,
-  output: EditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GetError = CloudflareOpError;
+export type GetOriginTlsComplianceModeError = CloudflareOpError;
 /** Origin TLS Compliance Modes constrains the set of TLS key-exchange algorithms Cloudflare may use when establishing the TLS connection to the zone's origin. The value is a list of named compliance modes (currently `fips` and `pqh`). Multiple modes are combined as the intersection of their permitted algorithm lists. An empty list (or no rule configured) means no compliance constraint is applied. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getOriginTlsComplianceMode: API.OperationMethod<
+  GetOriginTlsComplianceModeRequest,
+  GetOriginTlsComplianceModeResponse,
+  GetOriginTlsComplianceModeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
+  input: GetOriginTlsComplianceModeRequest,
+  output: GetOriginTlsComplianceModeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
-/** Replace the entire set of TLS compliance modes for the zone with the list provided in the request body. PUT performs a full replace, not a merge — any modes not present in the request body are removed. The request body must be of the form `{"value": ["fips", "pqh"]}`. Currently supported modes are `fips` and `pqh`; an empty list clears the constraint. Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Invalid mode values are rejected with a 4xx response. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export type PatchOriginTlsComplianceModeError = CloudflareOpError;
+/** Update the set of TLS compliance modes for the zone. PATCH performs a full replace of the modes list, not a merge — the request body is treated as the complete new list, and any modes not present in it are removed. (To remove a single mode from an existing configuration, send the updated list without it.) The request body must be of the form `{"value": ["fips", "pqh"]}`. Currently supported modes are `fips` and `pqh`; an empty list clears the constraint. Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Invalid mode values are rejected with a 4xx response. */
+export const patchOriginTlsComplianceMode: API.OperationMethod<
+  PatchOriginTlsComplianceModeRequest,
+  PatchOriginTlsComplianceModeResponse,
+  PatchOriginTlsComplianceModeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
+  input: PatchOriginTlsComplianceModeRequest,
+  output: PatchOriginTlsComplianceModeResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutOriginTlsComplianceModeError = CloudflareOpError;
+/** Replace the entire set of TLS compliance modes for the zone with the list provided in the request body. PUT performs a full replace, not a merge — any modes not present in the request body are removed. The request body must be of the form `{"value": ["fips", "pqh"]}`. Currently supported modes are `fips` and `pqh`; an empty list clears the constraint. Future modes (e.g. `cnsa2`) may be added; clients should treat unknown values as opaque strings. Invalid mode values are rejected with a 4xx response. */
+export const putOriginTlsComplianceMode: API.OperationMethod<
+  PutOriginTlsComplianceModeRequest,
+  PutOriginTlsComplianceModeResponse,
+  PutOriginTlsComplianceModeError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutOriginTlsComplianceModeRequest,
+  output: PutOriginTlsComplianceModeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

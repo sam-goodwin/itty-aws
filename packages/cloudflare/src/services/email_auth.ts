@@ -9,7 +9,489 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface DmarcReportsEditRequest {
+export interface GetDmarcReportRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const GetDmarcReportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/email/auth/dmarc-reports",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetDmarcReportRequest",
+}) as any as S.Schema<GetDmarcReportRequest>;
+
+export type DmarcReportsGetResponseApprovedSourcesItemIpsList = string[];
+export const DmarcReportsGetResponseApprovedSourcesItemIpsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DmarcReportsGetResponseApprovedSourcesItemIpsList>;
+
+export interface DmarcReportsGetResponseApprovedSourcesItem {
+  /** Deprecated, use created_at */
+  created?: string;
+  /** Creation timestamp */
+  createdAt?: string;
+  /** The source domain */
+  domain?: string;
+  /** Resolved IP addresses from SPF */
+  ips?: DmarcReportsGetResponseApprovedSourcesItemIpsList;
+  /** Deprecated, use modified_at */
+  modified?: string;
+  /** Last modification timestamp */
+  modifiedAt?: string;
+  /** Source name (typically same as domain) */
+  name?: string;
+  /** URL-friendly identifier */
+  slug?: string;
+  /** Source UUID */
+  tag?: string;
+}
+export const DmarcReportsGetResponseApprovedSourcesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      created: S.optional(S.String),
+      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+      domain: S.optional(S.String),
+      ips: S.optional(DmarcReportsGetResponseApprovedSourcesItemIpsList),
+      modified: S.optional(S.String),
+      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+      name: S.optional(S.String),
+      slug: S.optional(S.String),
+      tag: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DmarcReportsGetResponseApprovedSourcesItem",
+  }) as any as S.Schema<DmarcReportsGetResponseApprovedSourcesItem>;
+
+export type DmarcReportsGetResponseApprovedSourcesList =
+  DmarcReportsGetResponseApprovedSourcesItem[];
+export const DmarcReportsGetResponseApprovedSourcesList = /*@__PURE__*/ S.Array(
+  DmarcReportsGetResponseApprovedSourcesItem,
+) as any as S.Schema<DmarcReportsGetResponseApprovedSourcesList>;
+
+export interface DmarcReportsGetResponseRecordsBimiRecordsItem {
+  /** DNS record ID */
+  id?: string;
+  /** Record content */
+  content?: string;
+  /** DNS record name */
+  name?: string;
+  /** Time to live in seconds */
+  ttl?: number;
+  /** Record type */
+  type?: string;
+}
+export const DmarcReportsGetResponseRecordsBimiRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      content: S.optional(S.String),
+      name: S.optional(S.String),
+      ttl: S.optional(S.Number),
+      type: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DmarcReportsGetResponseRecordsBimiRecordsItem",
+  }) as any as S.Schema<DmarcReportsGetResponseRecordsBimiRecordsItem>;
+
+export type DmarcReportsGetResponseRecordsBimiRecordsList =
+  DmarcReportsGetResponseRecordsBimiRecordsItem[];
+export const DmarcReportsGetResponseRecordsBimiRecordsList =
+  /*@__PURE__*/ S.Array(
+    DmarcReportsGetResponseRecordsBimiRecordsItem,
+  ) as any as S.Schema<DmarcReportsGetResponseRecordsBimiRecordsList>;
+
+export interface DmarcReportsGetResponseRecordsCnameDkimRecordsItem {
+  /** DNS record ID */
+  id?: string;
+  /** Record content */
+  content?: string;
+  /** DNS record name */
+  name?: string;
+  /** Time to live in seconds */
+  ttl?: number;
+  /** Record type */
+  type?: string;
+}
+export const DmarcReportsGetResponseRecordsCnameDkimRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      content: S.optional(S.String),
+      name: S.optional(S.String),
+      ttl: S.optional(S.Number),
+      type: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DmarcReportsGetResponseRecordsCnameDkimRecordsItem",
+  }) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDkimRecordsItem>;
+
+export type DmarcReportsGetResponseRecordsCnameDkimRecordsList =
+  DmarcReportsGetResponseRecordsCnameDkimRecordsItem[];
+export const DmarcReportsGetResponseRecordsCnameDkimRecordsList =
+  /*@__PURE__*/ S.Array(
+    DmarcReportsGetResponseRecordsCnameDkimRecordsItem,
+  ) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDkimRecordsList>;
+
+export interface DmarcReportsGetResponseRecordsCnameDmarcRecordsItem {
+  /** DNS record ID */
+  id?: string;
+  /** Record content */
+  content?: string;
+  /** DNS record name */
+  name?: string;
+  /** Time to live in seconds */
+  ttl?: number;
+  /** Record type */
+  type?: string;
+}
+export const DmarcReportsGetResponseRecordsCnameDmarcRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      content: S.optional(S.String),
+      name: S.optional(S.String),
+      ttl: S.optional(S.Number),
+      type: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DmarcReportsGetResponseRecordsCnameDmarcRecordsItem",
+  }) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDmarcRecordsItem>;
+
+export type DmarcReportsGetResponseRecordsCnameDmarcRecordsList =
+  DmarcReportsGetResponseRecordsCnameDmarcRecordsItem[];
+export const DmarcReportsGetResponseRecordsCnameDmarcRecordsList =
+  /*@__PURE__*/ S.Array(
+    DmarcReportsGetResponseRecordsCnameDmarcRecordsItem,
+  ) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDmarcRecordsList>;
+
+export interface DmarcReportsGetResponseRecordsCnameSpfRecordsItem {
+  /** DNS record ID */
+  id?: string;
+  /** Record content */
+  content?: string;
+  /** DNS record name */
+  name?: string;
+  /** Time to live in seconds */
+  ttl?: number;
+  /** Record type */
+  type?: string;
+}
+export const DmarcReportsGetResponseRecordsCnameSpfRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      content: S.optional(S.String),
+      name: S.optional(S.String),
+      ttl: S.optional(S.Number),
+      type: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DmarcReportsGetResponseRecordsCnameSpfRecordsItem",
+  }) as any as S.Schema<DmarcReportsGetResponseRecordsCnameSpfRecordsItem>;
+
+export type DmarcReportsGetResponseRecordsCnameSpfRecordsList =
+  DmarcReportsGetResponseRecordsCnameSpfRecordsItem[];
+export const DmarcReportsGetResponseRecordsCnameSpfRecordsList =
+  /*@__PURE__*/ S.Array(
+    DmarcReportsGetResponseRecordsCnameSpfRecordsItem,
+  ) as any as S.Schema<DmarcReportsGetResponseRecordsCnameSpfRecordsList>;
+
+export interface DmarcReportsGetResponseRecordsDkimRecordsItem {
+  /** DNS record ID */
+  id?: string;
+  /** Record content */
+  content?: string;
+  /** DNS record name */
+  name?: string;
+  /** Time to live in seconds */
+  ttl?: number;
+  /** Record type */
+  type?: string;
+}
+export const DmarcReportsGetResponseRecordsDkimRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      content: S.optional(S.String),
+      name: S.optional(S.String),
+      ttl: S.optional(S.Number),
+      type: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DmarcReportsGetResponseRecordsDkimRecordsItem",
+  }) as any as S.Schema<DmarcReportsGetResponseRecordsDkimRecordsItem>;
+
+export type DmarcReportsGetResponseRecordsDkimRecordsList =
+  DmarcReportsGetResponseRecordsDkimRecordsItem[];
+export const DmarcReportsGetResponseRecordsDkimRecordsList =
+  /*@__PURE__*/ S.Array(
+    DmarcReportsGetResponseRecordsDkimRecordsItem,
+  ) as any as S.Schema<DmarcReportsGetResponseRecordsDkimRecordsList>;
+
+export interface DmarcReportsGetResponseRecordsDmarcRecordsItem {
+  /** DNS record ID */
+  id?: string;
+  /** Record content */
+  content?: string;
+  /** DNS record name */
+  name?: string;
+  /** Time to live in seconds */
+  ttl?: number;
+  /** Record type */
+  type?: string;
+}
+export const DmarcReportsGetResponseRecordsDmarcRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      content: S.optional(S.String),
+      name: S.optional(S.String),
+      ttl: S.optional(S.Number),
+      type: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DmarcReportsGetResponseRecordsDmarcRecordsItem",
+  }) as any as S.Schema<DmarcReportsGetResponseRecordsDmarcRecordsItem>;
+
+export type DmarcReportsGetResponseRecordsDmarcRecordsList =
+  DmarcReportsGetResponseRecordsDmarcRecordsItem[];
+export const DmarcReportsGetResponseRecordsDmarcRecordsList =
+  /*@__PURE__*/ S.Array(
+    DmarcReportsGetResponseRecordsDmarcRecordsItem,
+  ) as any as S.Schema<DmarcReportsGetResponseRecordsDmarcRecordsList>;
+
+export interface DmarcReportsGetResponseRecordsSpfRecordsItem {
+  /** DNS record ID */
+  id?: string;
+  /** Record content */
+  content?: string;
+  /** DNS record name */
+  name?: string;
+  /** Time to live in seconds */
+  ttl?: number;
+  /** Record type */
+  type?: string;
+}
+export const DmarcReportsGetResponseRecordsSpfRecordsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      content: S.optional(S.String),
+      name: S.optional(S.String),
+      ttl: S.optional(S.Number),
+      type: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "DmarcReportsGetResponseRecordsSpfRecordsItem",
+  }) as any as S.Schema<DmarcReportsGetResponseRecordsSpfRecordsItem>;
+
+export type DmarcReportsGetResponseRecordsSpfRecordsList =
+  DmarcReportsGetResponseRecordsSpfRecordsItem[];
+export const DmarcReportsGetResponseRecordsSpfRecordsList =
+  /*@__PURE__*/ S.Array(
+    DmarcReportsGetResponseRecordsSpfRecordsItem,
+  ) as any as S.Schema<DmarcReportsGetResponseRecordsSpfRecordsList>;
+
+export interface DmarcReportsGetResponseRecords {
+  /** BIMI TXT records */
+  bimiRecords?: DmarcReportsGetResponseRecordsBimiRecordsList;
+  /** CNAME records for DKIM */
+  cnameDkimRecords?: DmarcReportsGetResponseRecordsCnameDkimRecordsList;
+  /** CNAME records at _dmarc (problematic) */
+  cnameDmarcRecords?: DmarcReportsGetResponseRecordsCnameDmarcRecordsList;
+  /** CNAME records for SPF */
+  cnameSpfRecords?: DmarcReportsGetResponseRecordsCnameSpfRecordsList;
+  /** DKIM TXT records */
+  dkimRecords?: DmarcReportsGetResponseRecordsDkimRecordsList;
+  /** DMARC TXT records */
+  dmarcRecords?: DmarcReportsGetResponseRecordsDmarcRecordsList;
+  /** SPF TXT records */
+  spfRecords?: DmarcReportsGetResponseRecordsSpfRecordsList;
+}
+export const DmarcReportsGetResponseRecords = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    bimiRecords: S.optional(
+      DmarcReportsGetResponseRecordsBimiRecordsList.pipe(
+        T.Body("bimi_records"),
+      ),
+    ),
+    cnameDkimRecords: S.optional(
+      DmarcReportsGetResponseRecordsCnameDkimRecordsList.pipe(
+        T.Body("cname_dkim_records"),
+      ),
+    ),
+    cnameDmarcRecords: S.optional(
+      DmarcReportsGetResponseRecordsCnameDmarcRecordsList.pipe(
+        T.Body("cname_dmarc_records"),
+      ),
+    ),
+    cnameSpfRecords: S.optional(
+      DmarcReportsGetResponseRecordsCnameSpfRecordsList.pipe(
+        T.Body("cname_spf_records"),
+      ),
+    ),
+    dkimRecords: S.optional(
+      DmarcReportsGetResponseRecordsDkimRecordsList.pipe(
+        T.Body("dkim_records"),
+      ),
+    ),
+    dmarcRecords: S.optional(
+      DmarcReportsGetResponseRecordsDmarcRecordsList.pipe(
+        T.Body("dmarc_records"),
+      ),
+    ),
+    spfRecords: S.optional(
+      DmarcReportsGetResponseRecordsSpfRecordsList.pipe(T.Body("spf_records")),
+    ),
+  }),
+).annotate({
+  identifier: "DmarcReportsGetResponseRecords",
+}) as any as S.Schema<DmarcReportsGetResponseRecords>;
+
+export type DmarcReportsGetResponseStatus =
+  | "missing-dmarc-report"
+  | "multiple-dmarc-reports"
+  | "missing-dmarc-rua"
+  | "cname-on-dmarc-record"
+  | (string & {});
+export const DmarcReportsGetResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetDmarcReportResponse {
+  /** List of approved sending sources (omitted when empty) */
+  approvedSources?: DmarcReportsGetResponseApprovedSourcesList;
+  /** Deprecated, use created_at */
+  created?: string;
+  /** Creation timestamp */
+  createdAt?: string;
+  /** Whether DMARC reports are enabled */
+  enabled?: boolean;
+  /** Deprecated, use modified_at */
+  modified?: string;
+  /** Last modification timestamp */
+  modifiedAt?: string;
+  /** Live DNS records for the zone, grouped by type */
+  records?: DmarcReportsGetResponseRecords;
+  /** Prefix for DMARC RUA addresses (32-char hex string) */
+  ruaPrefix?: string;
+  /** Whether to skip the setup wizard */
+  skipWizard?: boolean;
+  /** DMARC configuration status */
+  status?: DmarcReportsGetResponseStatus;
+  /** Use `zone_id` instead */
+  tag?: string;
+  /** Zone identifier */
+  zoneId?: string;
+}
+export const GetDmarcReportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    approvedSources: S.optional(
+      DmarcReportsGetResponseApprovedSourcesList.pipe(
+        T.Body("approved_sources"),
+      ),
+    ),
+    created: S.optional(S.String),
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    enabled: S.optional(S.Boolean),
+    modified: S.optional(S.String),
+    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
+    records: S.optional(DmarcReportsGetResponseRecords),
+    ruaPrefix: S.optional(S.String.pipe(T.Body("rua_prefix"))),
+    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
+    status: S.optional(DmarcReportsGetResponseStatus),
+    tag: S.optional(S.String),
+    zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
+  }),
+).annotate({
+  identifier: "GetDmarcReportResponse",
+}) as any as S.Schema<GetDmarcReportResponse>;
+
+export interface GetSpfInspectRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** DNS record ID (rec_tag) to inspect */
+  id: string;
+}
+export const GetSpfInspectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    id: S.String.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/email/auth/spf/inspect",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSpfInspectRequest",
+}) as any as S.Schema<GetSpfInspectRequest>;
+
+export type SpfInspectGetResponseComponentsList = unknown[];
+export const SpfInspectGetResponseComponentsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SpfInspectGetResponseComponentsList>;
+
+export interface SpfInspectGetResponseErrorsItem {
+  /** Error code. Known values: */
+  code: string;
+  /** Domain where the error occurred */
+  domain: string;
+  /** Human-readable error message */
+  message: string;
+  /** Additional error-specific details (optional). */
+  details?: string;
+}
+export const SpfInspectGetResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    code: S.String,
+    domain: S.String,
+    message: S.String,
+    details: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SpfInspectGetResponseErrorsItem",
+}) as any as S.Schema<SpfInspectGetResponseErrorsItem>;
+
+export type SpfInspectGetResponseErrorsList = SpfInspectGetResponseErrorsItem[];
+export const SpfInspectGetResponseErrorsList = /*@__PURE__*/ S.Array(
+  SpfInspectGetResponseErrorsItem,
+) as any as S.Schema<SpfInspectGetResponseErrorsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSpfInspectResponse {
+  /** Parsed SPF components (mechanisms) */
+  components: SpfInspectGetResponseComponentsList;
+  /** Domain being inspected */
+  domain: string;
+  /** Raw SPF record content */
+  record: string;
+  /** Total number of DNS lookups performed across all includes */
+  totalLookups: number;
+  /** All errors encountered during inspection, collected from the entire tree. */
+  errors?: SpfInspectGetResponseErrorsList;
+}
+export const GetSpfInspectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    components: SpfInspectGetResponseComponentsList,
+    domain: S.String,
+    record: S.String,
+    totalLookups: S.Number.pipe(T.Body("total_lookups")),
+    errors: S.optional(SpfInspectGetResponseErrorsList),
+  }),
+).annotate({
+  identifier: "GetSpfInspectResponse",
+}) as any as S.Schema<GetSpfInspectResponse>;
+
+export interface PatchDmarcReportRequest {
   /** Identifier. */
   zoneId: string;
   /** Enable or disable DMARC reports for this zone */
@@ -17,7 +499,7 @@ export interface DmarcReportsEditRequest {
   /** Skip the DMARC setup wizard */
   skipWizard?: boolean;
 }
-export const DmarcReportsEditRequest = /*@__PURE__*/ S.suspend(() =>
+export const PatchDmarcReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     enabled: S.optional(S.Boolean),
@@ -30,8 +512,8 @@ export const DmarcReportsEditRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DmarcReportsEditRequest",
-}) as any as S.Schema<DmarcReportsEditRequest>;
+  identifier: "PatchDmarcReportRequest",
+}) as any as S.Schema<PatchDmarcReportRequest>;
 
 export type DmarcReportsEditResponseApprovedSourcesItemIpsList = string[];
 export const DmarcReportsEditResponseApprovedSourcesItemIpsList =
@@ -372,7 +854,7 @@ export type DmarcReportsEditResponseStatus =
 export const DmarcReportsEditResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DmarcReportsEditResponse {
+export interface PatchDmarcReportResponse {
   /** List of approved sending sources (omitted when empty) */
   approvedSources?: DmarcReportsEditResponseApprovedSourcesList;
   /** Deprecated, use created_at */
@@ -398,7 +880,7 @@ export interface DmarcReportsEditResponse {
   /** Zone identifier */
   zoneId?: string;
 }
-export const DmarcReportsEditResponse = /*@__PURE__*/ S.suspend(() =>
+export const PatchDmarcReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     approvedSources: S.optional(
       DmarcReportsEditResponseApprovedSourcesList.pipe(
@@ -418,529 +900,47 @@ export const DmarcReportsEditResponse = /*@__PURE__*/ S.suspend(() =>
     zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
   }),
 ).annotate({
-  identifier: "DmarcReportsEditResponse",
-}) as any as S.Schema<DmarcReportsEditResponse>;
+  identifier: "PatchDmarcReportResponse",
+}) as any as S.Schema<PatchDmarcReportResponse>;
 
-export interface DmarcReportsGetRequest {
-  /** Identifier. */
-  zoneId: string;
-}
-export const DmarcReportsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/auth/dmarc-reports",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DmarcReportsGetRequest",
-}) as any as S.Schema<DmarcReportsGetRequest>;
-
-export type DmarcReportsGetResponseApprovedSourcesItemIpsList = string[];
-export const DmarcReportsGetResponseApprovedSourcesItemIpsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<DmarcReportsGetResponseApprovedSourcesItemIpsList>;
-
-export interface DmarcReportsGetResponseApprovedSourcesItem {
-  /** Deprecated, use created_at */
-  created?: string;
-  /** Creation timestamp */
-  createdAt?: string;
-  /** The source domain */
-  domain?: string;
-  /** Resolved IP addresses from SPF */
-  ips?: DmarcReportsGetResponseApprovedSourcesItemIpsList;
-  /** Deprecated, use modified_at */
-  modified?: string;
-  /** Last modification timestamp */
-  modifiedAt?: string;
-  /** Source name (typically same as domain) */
-  name?: string;
-  /** URL-friendly identifier */
-  slug?: string;
-  /** Source UUID */
-  tag?: string;
-}
-export const DmarcReportsGetResponseApprovedSourcesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      created: S.optional(S.String),
-      createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-      domain: S.optional(S.String),
-      ips: S.optional(DmarcReportsGetResponseApprovedSourcesItemIpsList),
-      modified: S.optional(S.String),
-      modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-      name: S.optional(S.String),
-      slug: S.optional(S.String),
-      tag: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseApprovedSourcesItem",
-  }) as any as S.Schema<DmarcReportsGetResponseApprovedSourcesItem>;
-
-export type DmarcReportsGetResponseApprovedSourcesList =
-  DmarcReportsGetResponseApprovedSourcesItem[];
-export const DmarcReportsGetResponseApprovedSourcesList = /*@__PURE__*/ S.Array(
-  DmarcReportsGetResponseApprovedSourcesItem,
-) as any as S.Schema<DmarcReportsGetResponseApprovedSourcesList>;
-
-export interface DmarcReportsGetResponseRecordsBimiRecordsItem {
-  /** DNS record ID */
-  id?: string;
-  /** Record content */
-  content?: string;
-  /** DNS record name */
-  name?: string;
-  /** Time to live in seconds */
-  ttl?: number;
-  /** Record type */
-  type?: string;
-}
-export const DmarcReportsGetResponseRecordsBimiRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      name: S.optional(S.String),
-      ttl: S.optional(S.Number),
-      type: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsBimiRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsBimiRecordsItem>;
-
-export type DmarcReportsGetResponseRecordsBimiRecordsList =
-  DmarcReportsGetResponseRecordsBimiRecordsItem[];
-export const DmarcReportsGetResponseRecordsBimiRecordsList =
-  /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsBimiRecordsItem,
-  ) as any as S.Schema<DmarcReportsGetResponseRecordsBimiRecordsList>;
-
-export interface DmarcReportsGetResponseRecordsCnameDkimRecordsItem {
-  /** DNS record ID */
-  id?: string;
-  /** Record content */
-  content?: string;
-  /** DNS record name */
-  name?: string;
-  /** Time to live in seconds */
-  ttl?: number;
-  /** Record type */
-  type?: string;
-}
-export const DmarcReportsGetResponseRecordsCnameDkimRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      name: S.optional(S.String),
-      ttl: S.optional(S.Number),
-      type: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsCnameDkimRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDkimRecordsItem>;
-
-export type DmarcReportsGetResponseRecordsCnameDkimRecordsList =
-  DmarcReportsGetResponseRecordsCnameDkimRecordsItem[];
-export const DmarcReportsGetResponseRecordsCnameDkimRecordsList =
-  /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsCnameDkimRecordsItem,
-  ) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDkimRecordsList>;
-
-export interface DmarcReportsGetResponseRecordsCnameDmarcRecordsItem {
-  /** DNS record ID */
-  id?: string;
-  /** Record content */
-  content?: string;
-  /** DNS record name */
-  name?: string;
-  /** Time to live in seconds */
-  ttl?: number;
-  /** Record type */
-  type?: string;
-}
-export const DmarcReportsGetResponseRecordsCnameDmarcRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      name: S.optional(S.String),
-      ttl: S.optional(S.Number),
-      type: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsCnameDmarcRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDmarcRecordsItem>;
-
-export type DmarcReportsGetResponseRecordsCnameDmarcRecordsList =
-  DmarcReportsGetResponseRecordsCnameDmarcRecordsItem[];
-export const DmarcReportsGetResponseRecordsCnameDmarcRecordsList =
-  /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsCnameDmarcRecordsItem,
-  ) as any as S.Schema<DmarcReportsGetResponseRecordsCnameDmarcRecordsList>;
-
-export interface DmarcReportsGetResponseRecordsCnameSpfRecordsItem {
-  /** DNS record ID */
-  id?: string;
-  /** Record content */
-  content?: string;
-  /** DNS record name */
-  name?: string;
-  /** Time to live in seconds */
-  ttl?: number;
-  /** Record type */
-  type?: string;
-}
-export const DmarcReportsGetResponseRecordsCnameSpfRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      name: S.optional(S.String),
-      ttl: S.optional(S.Number),
-      type: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsCnameSpfRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsCnameSpfRecordsItem>;
-
-export type DmarcReportsGetResponseRecordsCnameSpfRecordsList =
-  DmarcReportsGetResponseRecordsCnameSpfRecordsItem[];
-export const DmarcReportsGetResponseRecordsCnameSpfRecordsList =
-  /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsCnameSpfRecordsItem,
-  ) as any as S.Schema<DmarcReportsGetResponseRecordsCnameSpfRecordsList>;
-
-export interface DmarcReportsGetResponseRecordsDkimRecordsItem {
-  /** DNS record ID */
-  id?: string;
-  /** Record content */
-  content?: string;
-  /** DNS record name */
-  name?: string;
-  /** Time to live in seconds */
-  ttl?: number;
-  /** Record type */
-  type?: string;
-}
-export const DmarcReportsGetResponseRecordsDkimRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      name: S.optional(S.String),
-      ttl: S.optional(S.Number),
-      type: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsDkimRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsDkimRecordsItem>;
-
-export type DmarcReportsGetResponseRecordsDkimRecordsList =
-  DmarcReportsGetResponseRecordsDkimRecordsItem[];
-export const DmarcReportsGetResponseRecordsDkimRecordsList =
-  /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsDkimRecordsItem,
-  ) as any as S.Schema<DmarcReportsGetResponseRecordsDkimRecordsList>;
-
-export interface DmarcReportsGetResponseRecordsDmarcRecordsItem {
-  /** DNS record ID */
-  id?: string;
-  /** Record content */
-  content?: string;
-  /** DNS record name */
-  name?: string;
-  /** Time to live in seconds */
-  ttl?: number;
-  /** Record type */
-  type?: string;
-}
-export const DmarcReportsGetResponseRecordsDmarcRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      name: S.optional(S.String),
-      ttl: S.optional(S.Number),
-      type: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsDmarcRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsDmarcRecordsItem>;
-
-export type DmarcReportsGetResponseRecordsDmarcRecordsList =
-  DmarcReportsGetResponseRecordsDmarcRecordsItem[];
-export const DmarcReportsGetResponseRecordsDmarcRecordsList =
-  /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsDmarcRecordsItem,
-  ) as any as S.Schema<DmarcReportsGetResponseRecordsDmarcRecordsList>;
-
-export interface DmarcReportsGetResponseRecordsSpfRecordsItem {
-  /** DNS record ID */
-  id?: string;
-  /** Record content */
-  content?: string;
-  /** DNS record name */
-  name?: string;
-  /** Time to live in seconds */
-  ttl?: number;
-  /** Record type */
-  type?: string;
-}
-export const DmarcReportsGetResponseRecordsSpfRecordsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      name: S.optional(S.String),
-      ttl: S.optional(S.Number),
-      type: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "DmarcReportsGetResponseRecordsSpfRecordsItem",
-  }) as any as S.Schema<DmarcReportsGetResponseRecordsSpfRecordsItem>;
-
-export type DmarcReportsGetResponseRecordsSpfRecordsList =
-  DmarcReportsGetResponseRecordsSpfRecordsItem[];
-export const DmarcReportsGetResponseRecordsSpfRecordsList =
-  /*@__PURE__*/ S.Array(
-    DmarcReportsGetResponseRecordsSpfRecordsItem,
-  ) as any as S.Schema<DmarcReportsGetResponseRecordsSpfRecordsList>;
-
-export interface DmarcReportsGetResponseRecords {
-  /** BIMI TXT records */
-  bimiRecords?: DmarcReportsGetResponseRecordsBimiRecordsList;
-  /** CNAME records for DKIM */
-  cnameDkimRecords?: DmarcReportsGetResponseRecordsCnameDkimRecordsList;
-  /** CNAME records at _dmarc (problematic) */
-  cnameDmarcRecords?: DmarcReportsGetResponseRecordsCnameDmarcRecordsList;
-  /** CNAME records for SPF */
-  cnameSpfRecords?: DmarcReportsGetResponseRecordsCnameSpfRecordsList;
-  /** DKIM TXT records */
-  dkimRecords?: DmarcReportsGetResponseRecordsDkimRecordsList;
-  /** DMARC TXT records */
-  dmarcRecords?: DmarcReportsGetResponseRecordsDmarcRecordsList;
-  /** SPF TXT records */
-  spfRecords?: DmarcReportsGetResponseRecordsSpfRecordsList;
-}
-export const DmarcReportsGetResponseRecords = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    bimiRecords: S.optional(
-      DmarcReportsGetResponseRecordsBimiRecordsList.pipe(
-        T.Body("bimi_records"),
-      ),
-    ),
-    cnameDkimRecords: S.optional(
-      DmarcReportsGetResponseRecordsCnameDkimRecordsList.pipe(
-        T.Body("cname_dkim_records"),
-      ),
-    ),
-    cnameDmarcRecords: S.optional(
-      DmarcReportsGetResponseRecordsCnameDmarcRecordsList.pipe(
-        T.Body("cname_dmarc_records"),
-      ),
-    ),
-    cnameSpfRecords: S.optional(
-      DmarcReportsGetResponseRecordsCnameSpfRecordsList.pipe(
-        T.Body("cname_spf_records"),
-      ),
-    ),
-    dkimRecords: S.optional(
-      DmarcReportsGetResponseRecordsDkimRecordsList.pipe(
-        T.Body("dkim_records"),
-      ),
-    ),
-    dmarcRecords: S.optional(
-      DmarcReportsGetResponseRecordsDmarcRecordsList.pipe(
-        T.Body("dmarc_records"),
-      ),
-    ),
-    spfRecords: S.optional(
-      DmarcReportsGetResponseRecordsSpfRecordsList.pipe(T.Body("spf_records")),
-    ),
-  }),
-).annotate({
-  identifier: "DmarcReportsGetResponseRecords",
-}) as any as S.Schema<DmarcReportsGetResponseRecords>;
-
-export type DmarcReportsGetResponseStatus =
-  | "missing-dmarc-report"
-  | "multiple-dmarc-reports"
-  | "missing-dmarc-rua"
-  | "cname-on-dmarc-record"
-  | (string & {});
-export const DmarcReportsGetResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DmarcReportsGetResponse {
-  /** List of approved sending sources (omitted when empty) */
-  approvedSources?: DmarcReportsGetResponseApprovedSourcesList;
-  /** Deprecated, use created_at */
-  created?: string;
-  /** Creation timestamp */
-  createdAt?: string;
-  /** Whether DMARC reports are enabled */
-  enabled?: boolean;
-  /** Deprecated, use modified_at */
-  modified?: string;
-  /** Last modification timestamp */
-  modifiedAt?: string;
-  /** Live DNS records for the zone, grouped by type */
-  records?: DmarcReportsGetResponseRecords;
-  /** Prefix for DMARC RUA addresses (32-char hex string) */
-  ruaPrefix?: string;
-  /** Whether to skip the setup wizard */
-  skipWizard?: boolean;
-  /** DMARC configuration status */
-  status?: DmarcReportsGetResponseStatus;
-  /** Use `zone_id` instead */
-  tag?: string;
-  /** Zone identifier */
-  zoneId?: string;
-}
-export const DmarcReportsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    approvedSources: S.optional(
-      DmarcReportsGetResponseApprovedSourcesList.pipe(
-        T.Body("approved_sources"),
-      ),
-    ),
-    created: S.optional(S.String),
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    enabled: S.optional(S.Boolean),
-    modified: S.optional(S.String),
-    modifiedAt: S.optional(S.String.pipe(T.Body("modified_at"))),
-    records: S.optional(DmarcReportsGetResponseRecords),
-    ruaPrefix: S.optional(S.String.pipe(T.Body("rua_prefix"))),
-    skipWizard: S.optional(S.Boolean.pipe(T.Body("skip_wizard"))),
-    status: S.optional(DmarcReportsGetResponseStatus),
-    tag: S.optional(S.String),
-    zoneId: S.optional(S.String.pipe(T.Body("zone_id"))),
-  }),
-).annotate({
-  identifier: "DmarcReportsGetResponse",
-}) as any as S.Schema<DmarcReportsGetResponse>;
-
-export interface SpfInspectGetRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** DNS record ID (rec_tag) to inspect */
-  id: string;
-}
-export const SpfInspectGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    id: S.String.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/auth/spf/inspect",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SpfInspectGetRequest",
-}) as any as S.Schema<SpfInspectGetRequest>;
-
-export type SpfInspectGetResponseComponentsList = unknown[];
-export const SpfInspectGetResponseComponentsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SpfInspectGetResponseComponentsList>;
-
-export interface SpfInspectGetResponseErrorsItem {
-  /** Error code. Known values: */
-  code: string;
-  /** Domain where the error occurred */
-  domain: string;
-  /** Human-readable error message */
-  message: string;
-  /** Additional error-specific details (optional). */
-  details?: string;
-}
-export const SpfInspectGetResponseErrorsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    code: S.String,
-    domain: S.String,
-    message: S.String,
-    details: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SpfInspectGetResponseErrorsItem",
-}) as any as S.Schema<SpfInspectGetResponseErrorsItem>;
-
-export type SpfInspectGetResponseErrorsList = SpfInspectGetResponseErrorsItem[];
-export const SpfInspectGetResponseErrorsList = /*@__PURE__*/ S.Array(
-  SpfInspectGetResponseErrorsItem,
-) as any as S.Schema<SpfInspectGetResponseErrorsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SpfInspectGetResponse {
-  /** Parsed SPF components (mechanisms) */
-  components: SpfInspectGetResponseComponentsList;
-  /** Domain being inspected */
-  domain: string;
-  /** Raw SPF record content */
-  record: string;
-  /** Total number of DNS lookups performed across all includes */
-  totalLookups: number;
-  /** All errors encountered during inspection, collected from the entire tree. */
-  errors?: SpfInspectGetResponseErrorsList;
-}
-export const SpfInspectGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    components: SpfInspectGetResponseComponentsList,
-    domain: S.String,
-    record: S.String,
-    totalLookups: S.Number.pipe(T.Body("total_lookups")),
-    errors: S.optional(SpfInspectGetResponseErrorsList),
-  }),
-).annotate({
-  identifier: "SpfInspectGetResponse",
-}) as any as S.Schema<SpfInspectGetResponse>;
-
-export type DmarcReportsEditError = CloudflareOpError;
-/** Updates the DMARC report configuration for a zone. At least one of `enabled` or `skip_wizard` must be provided. When enabling, the handler will ensure the DMARC RUA record exists in DNS. */
-export const dmarcReportsEdit: API.OperationMethod<
-  DmarcReportsEditRequest,
-  DmarcReportsEditResponse,
-  DmarcReportsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DmarcReportsEditRequest,
-  output: DmarcReportsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DmarcReportsGetError = CloudflareOpError;
+export type GetDmarcReportError = CloudflareOpError;
 /** Retrieves the current DMARC report configuration and status for a zone. Returns the RUA prefix, enabled status, approved sources, and DNS records. */
-export const dmarcReportsGet: API.OperationMethod<
-  DmarcReportsGetRequest,
-  DmarcReportsGetResponse,
-  DmarcReportsGetError,
+export const getDmarcReport: API.OperationMethod<
+  GetDmarcReportRequest,
+  GetDmarcReportResponse,
+  GetDmarcReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DmarcReportsGetRequest,
-  output: DmarcReportsGetResponse,
+  input: GetDmarcReportRequest,
+  output: GetDmarcReportResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SpfInspectGetError = CloudflareOpError;
+export type GetSpfInspectError = CloudflareOpError;
 /** Inspects a specific SPF TXT record and returns a parsed tree structure in the spflimit-worker format. The record ID must be provided via the `id` query parameter. Returns a recursive tree showing: - Parsed components with their qualifiers and types - Nested includes recursively resolved within components - Per-component and total lookup counts - Detailed error information with context */
-export const spfInspectGet: API.OperationMethod<
-  SpfInspectGetRequest,
-  SpfInspectGetResponse,
-  SpfInspectGetError,
+export const getSpfInspect: API.OperationMethod<
+  GetSpfInspectRequest,
+  GetSpfInspectResponse,
+  GetSpfInspectError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SpfInspectGetRequest,
-  output: SpfInspectGetResponse,
+  input: GetSpfInspectRequest,
+  output: GetSpfInspectResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchDmarcReportError = CloudflareOpError;
+/** Updates the DMARC report configuration for a zone. At least one of `enabled` or `skip_wizard` must be provided. When enabling, the handler will ensure the DMARC RUA record exists in DNS. */
+export const patchDmarcReport: API.OperationMethod<
+  PatchDmarcReportRequest,
+  PatchDmarcReportResponse,
+  PatchDmarcReportError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchDmarcReportRequest,
+  output: PatchDmarcReportResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

@@ -1,0 +1,88 @@
+{
+  "description": "Align calls#TurnGet with distilled cloudflare/calls getTurn",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.calls#TurnGet",
+      "path": "/shapes/com.cloudflare.calls#GetTurn"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.calls#TurnGetRequest",
+      "path": "/shapes/com.cloudflare.calls#GetTurnRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.calls#GetTurn/input/target",
+      "value": "com.cloudflare.calls#GetTurnRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.calls#TurnGetResponse",
+      "path": "/shapes/com.cloudflare.calls#GetTurnResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.calls#GetTurn/output/target",
+      "value": "com.cloudflare.calls#GetTurnResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.calls#TurnKeyNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 20008
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.calls#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.calls#GetTurn/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.calls#TurnKeyNotFound"
+        },
+        {
+          "target": "com.cloudflare.calls#Forbidden"
+        }
+      ]
+    }
+  ]
+}

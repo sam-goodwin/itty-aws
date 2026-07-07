@@ -9,6 +9,78 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class DatabaseAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<DatabaseAlreadyExists>()("DatabaseAlreadyExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7502 }],
+) {}
+
+export class DatabaseNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<DatabaseNotFound>()("DatabaseNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7404 }],
+) {}
+
+export class InternalError extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InternalError>()("InternalError", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7500 }],
+) {}
+
+export class InvalidObjectIdentifier extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidObjectIdentifier>()("InvalidObjectIdentifier", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7003 }],
+) {}
+
+export class InvalidProperty extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidProperty>()("InvalidProperty", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7400 }],
+) {}
+
+export class InvalidRequest extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidRequest>()("InvalidRequest", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7400 }],
+) {}
+
+export class NoHistoryAvailable extends T.applyErrorMatchers(
+  S.TaggedErrorClass<NoHistoryAvailable>()("NoHistoryAvailable", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7500 }],
+) {}
+
+export class TimestampTooOld extends T.applyErrorMatchers(
+  S.TaggedErrorClass<TimestampTooOld>()("TimestampTooOld", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7400 }],
+) {}
+
+export class UnknownError extends T.applyErrorMatchers(
+  S.TaggedErrorClass<UnknownError>()("UnknownError", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 0 }],
+) {}
+
 export type DatabaseCreateRequestJurisdiction =
   | "eu"
   | "fedramp"
@@ -41,7 +113,7 @@ export const DatabaseCreateRequestReadReplication = /*@__PURE__*/ S.suspend(
   identifier: "DatabaseCreateRequestReadReplication",
 }) as any as S.Schema<DatabaseCreateRequestReadReplication>;
 
-export interface DatabaseCreateRequest {
+export interface CreateDatabaseRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database name. */
@@ -53,7 +125,7 @@ export interface DatabaseCreateRequest {
   /** Configuration for D1 read replication. */
   readReplication?: DatabaseCreateRequestReadReplication;
 }
-export const DatabaseCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -74,8 +146,8 @@ export const DatabaseCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DatabaseCreateRequest",
-}) as any as S.Schema<DatabaseCreateRequest>;
+  identifier: "CreateDatabaseRequest",
+}) as any as S.Schema<CreateDatabaseRequest>;
 
 export type DatabaseCreateResponseJurisdiction =
   | "eu"
@@ -103,7 +175,7 @@ export const DatabaseCreateResponseReadReplication = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DatabaseCreateResponseReadReplication>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DatabaseCreateResponse {
+export interface CreateDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
   createdAt?: string;
   /** The D1 database's size, in bytes. */
@@ -119,7 +191,7 @@ export interface DatabaseCreateResponse {
   uuid?: string;
   version?: string;
 }
-export const DatabaseCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     fileSize: S.optional(S.Number.pipe(T.Body("file_size"))),
@@ -133,16 +205,16 @@ export const DatabaseCreateResponse = /*@__PURE__*/ S.suspend(() =>
     version: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "DatabaseCreateResponse",
-}) as any as S.Schema<DatabaseCreateResponse>;
+  identifier: "CreateDatabaseResponse",
+}) as any as S.Schema<CreateDatabaseResponse>;
 
-export interface DatabaseDeleteRequest {
+export interface DeleteDatabaseRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database identifier (UUID). */
   databaseId: string;
 }
-export const DatabaseDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -154,119 +226,20 @@ export const DatabaseDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DatabaseDeleteRequest",
-}) as any as S.Schema<DatabaseDeleteRequest>;
+  identifier: "DeleteDatabaseRequest",
+}) as any as S.Schema<DeleteDatabaseRequest>;
 
-export interface DatabaseDeleteResponse {
+export interface DeleteDatabaseResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const DatabaseDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DatabaseDeleteResponse",
-}) as any as S.Schema<DatabaseDeleteResponse>;
-
-export type DatabaseEditRequestReadReplicationMode =
-  | "auto"
-  | "disabled"
-  | (string & {});
-export const DatabaseEditRequestReadReplicationMode = /*@__PURE__*/ S.String;
-
-export interface DatabaseEditRequestReadReplication {
-  /** The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted). */
-  mode: DatabaseEditRequestReadReplicationMode;
-}
-export const DatabaseEditRequestReadReplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DatabaseEditRequestReadReplicationMode,
-  }),
-).annotate({
-  identifier: "DatabaseEditRequestReadReplication",
-}) as any as S.Schema<DatabaseEditRequestReadReplication>;
-
-export interface DatabaseEditRequest {
-  /** Account identifier tag. */
-  accountId: string;
-  /** D1 database identifier (UUID). */
-  databaseId: string;
-  /** Configuration for D1 read replication. */
-  readReplication?: DatabaseEditRequestReadReplication;
-}
-export const DatabaseEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    databaseId: S.String.pipe(T.Label("database_id")),
-    readReplication: S.optional(
-      DatabaseEditRequestReadReplication.pipe(T.Body("read_replication")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/d1/database/{database_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DatabaseEditRequest",
-}) as any as S.Schema<DatabaseEditRequest>;
-
-export type DatabaseEditResponseJurisdiction = "eu" | "fedramp" | (string & {});
-export const DatabaseEditResponseJurisdiction = /*@__PURE__*/ S.String;
-
-export type DatabaseEditResponseReadReplicationMode =
-  | "auto"
-  | "disabled"
-  | (string & {});
-export const DatabaseEditResponseReadReplicationMode = /*@__PURE__*/ S.String;
-
-export interface DatabaseEditResponseReadReplication {
-  /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
-  mode: DatabaseEditResponseReadReplicationMode;
-}
-export const DatabaseEditResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    mode: DatabaseEditResponseReadReplicationMode,
-  }),
-).annotate({
-  identifier: "DatabaseEditResponseReadReplication",
-}) as any as S.Schema<DatabaseEditResponseReadReplication>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DatabaseEditResponse {
-  /** Specifies the timestamp the resource was created as an ISO8601 string. */
-  createdAt?: string;
-  /** The D1 database's size, in bytes. */
-  fileSize?: number;
-  /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
-  jurisdiction?: DatabaseEditResponseJurisdiction;
-  /** D1 database name. */
-  name?: string;
-  numTables?: number;
-  /** Configuration for D1 read replication. */
-  readReplication?: DatabaseEditResponseReadReplication;
-  /** D1 database identifier (UUID). */
-  uuid?: string;
-  version?: string;
-}
-export const DatabaseEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
-    fileSize: S.optional(S.Number.pipe(T.Body("file_size"))),
-    jurisdiction: S.optional(DatabaseEditResponseJurisdiction),
-    name: S.optional(S.String),
-    numTables: S.optional(S.Number.pipe(T.Body("num_tables"))),
-    readReplication: S.optional(
-      DatabaseEditResponseReadReplication.pipe(T.Body("read_replication")),
-    ),
-    uuid: S.optional(S.String),
-    version: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DatabaseEditResponse",
-}) as any as S.Schema<DatabaseEditResponse>;
+  identifier: "DeleteDatabaseResponse",
+}) as any as S.Schema<DeleteDatabaseResponse>;
 
 export type DatabaseExportRequestOutputFormat = "polling" | (string & {});
 export const DatabaseExportRequestOutputFormat = /*@__PURE__*/ S.String;
@@ -294,7 +267,7 @@ export const DatabaseExportRequestDumpOptions = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseExportRequestDumpOptions",
 }) as any as S.Schema<DatabaseExportRequestDumpOptions>;
 
-export interface DatabaseExportRequest {
+export interface ExportDatabaseRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database identifier (UUID). */
@@ -305,7 +278,7 @@ export interface DatabaseExportRequest {
   currentBookmark?: string;
   dumpOptions?: DatabaseExportRequestDumpOptions;
 }
-export const DatabaseExportRequest = /*@__PURE__*/ S.suspend(() =>
+export const ExportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -324,8 +297,8 @@ export const DatabaseExportRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DatabaseExportRequest",
-}) as any as S.Schema<DatabaseExportRequest>;
+  identifier: "ExportDatabaseRequest",
+}) as any as S.Schema<ExportDatabaseRequest>;
 
 export type DatabaseExportResponseMessagesList = string[];
 export const DatabaseExportResponseMessagesList = /*@__PURE__*/ S.Array(
@@ -354,7 +327,7 @@ export type DatabaseExportResponseType = "export" | (string & {});
 export const DatabaseExportResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DatabaseExportResponse {
+export interface ExportDatabaseResponse {
   /** The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the export task. */
   atBookmark?: string;
   /** Only present when status = 'error'. Contains the error message. */
@@ -367,7 +340,7 @@ export interface DatabaseExportResponse {
   success?: boolean;
   type?: DatabaseExportResponseType;
 }
-export const DatabaseExportResponse = /*@__PURE__*/ S.suspend(() =>
+export const ExportDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     atBookmark: S.optional(S.String.pipe(T.Body("at_bookmark"))),
     error: S.optional(S.String),
@@ -378,8 +351,47 @@ export const DatabaseExportResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(DatabaseExportResponseType),
   }),
 ).annotate({
-  identifier: "DatabaseExportResponse",
-}) as any as S.Schema<DatabaseExportResponse>;
+  identifier: "ExportDatabaseResponse",
+}) as any as S.Schema<ExportDatabaseResponse>;
+
+export interface GetBookmarkDatabaseTimeTravelRequest {
+  /** Account identifier tag. */
+  accountId: string;
+  /** D1 database identifier (UUID). */
+  databaseId: string;
+  /** An optional ISO 8601 timestamp. If provided, returns the nearest available bookmark at or before this timestamp. If omitted, returns the current bookmark. */
+  timestamp?: string;
+}
+export const GetBookmarkDatabaseTimeTravelRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      databaseId: S.String.pipe(T.Label("database_id")),
+      timestamp: S.optional(S.String.pipe(T.Query())),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/d1/database/{database_id}/time_travel/bookmark",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "GetBookmarkDatabaseTimeTravelRequest",
+}) as any as S.Schema<GetBookmarkDatabaseTimeTravelRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetBookmarkDatabaseTimeTravelResponse {
+  /** A bookmark representing a specific state of the database at a specific point in time. */
+  bookmark?: string;
+}
+export const GetBookmarkDatabaseTimeTravelResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      bookmark: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "GetBookmarkDatabaseTimeTravelResponse",
+}) as any as S.Schema<GetBookmarkDatabaseTimeTravelResponse>;
 
 export type DatabaseGetRequestFields =
   | "uuid"
@@ -393,7 +405,7 @@ export const DatabaseGetRequestFieldsList = /*@__PURE__*/ S.Array(
   DatabaseGetRequestFields,
 ) as any as S.Schema<DatabaseGetRequestFieldsList>;
 
-export interface DatabaseGetRequest {
+export interface GetDatabaseRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database identifier (UUID). */
@@ -401,7 +413,7 @@ export interface DatabaseGetRequest {
   /** Comma-separated list of fields to include in the response. When omitted, */
   fields?: DatabaseGetRequestFieldsList;
 }
-export const DatabaseGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -414,8 +426,8 @@ export const DatabaseGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DatabaseGetRequest",
-}) as any as S.Schema<DatabaseGetRequest>;
+  identifier: "GetDatabaseRequest",
+}) as any as S.Schema<GetDatabaseRequest>;
 
 export type DatabaseGetResponseJurisdiction = "eu" | "fedramp" | (string & {});
 export const DatabaseGetResponseJurisdiction = /*@__PURE__*/ S.String;
@@ -439,7 +451,7 @@ export const DatabaseGetResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DatabaseGetResponseReadReplication>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DatabaseGetResponse {
+export interface GetDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
   createdAt?: string;
   /** The D1 database's size, in bytes. */
@@ -455,7 +467,7 @@ export interface DatabaseGetResponse {
   uuid?: string;
   version?: string;
 }
-export const DatabaseGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     fileSize: S.optional(S.Number.pipe(T.Body("file_size"))),
@@ -469,8 +481,8 @@ export const DatabaseGetResponse = /*@__PURE__*/ S.suspend(() =>
     version: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "DatabaseGetResponse",
-}) as any as S.Schema<DatabaseGetResponse>;
+  identifier: "GetDatabaseResponse",
+}) as any as S.Schema<GetDatabaseResponse>;
 
 export interface DatabaseImportRequestBody {
   InitObjectActionEtag__: unknown;
@@ -493,14 +505,14 @@ export const DatabaseImportRequestBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseImportRequestBody",
 }) as any as S.Schema<DatabaseImportRequestBody>;
 
-export interface DatabaseImportRequest {
+export interface ImportDatabaseRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database identifier (UUID). */
   databaseId: string;
   body: DatabaseImportRequestBody;
 }
-export const DatabaseImportRequest = /*@__PURE__*/ S.suspend(() =>
+export const ImportDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -513,8 +525,8 @@ export const DatabaseImportRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DatabaseImportRequest",
-}) as any as S.Schema<DatabaseImportRequest>;
+  identifier: "ImportDatabaseRequest",
+}) as any as S.Schema<ImportDatabaseRequest>;
 
 export type DatabaseImportResponseMessagesList = string[];
 export const DatabaseImportResponseMessagesList = /*@__PURE__*/ S.Array(
@@ -612,7 +624,7 @@ export type DatabaseImportResponseType = "import" | (string & {});
 export const DatabaseImportResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DatabaseImportResponse {
+export interface ImportDatabaseResponse {
   /** The current time-travel bookmark for your D1, used to poll for updates. Will not change for the duration of the import. Only returned if an import process is currently running or recently finished. */
   atBookmark?: string;
   /** Only present when status = 'error'. Contains the error message that prevented the import from succeeding. */
@@ -629,7 +641,7 @@ export interface DatabaseImportResponse {
   /** The R2 presigned URL to use for uploading. Only returned when for the 'init' action. */
   uploadUrl?: string;
 }
-export const DatabaseImportResponse = /*@__PURE__*/ S.suspend(() =>
+export const ImportDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     atBookmark: S.optional(S.String.pipe(T.Body("at_bookmark"))),
     error: S.optional(S.String),
@@ -642,10 +654,10 @@ export const DatabaseImportResponse = /*@__PURE__*/ S.suspend(() =>
     uploadUrl: S.optional(S.String.pipe(T.Body("upload_url"))),
   }),
 ).annotate({
-  identifier: "DatabaseImportResponse",
-}) as any as S.Schema<DatabaseImportResponse>;
+  identifier: "ImportDatabaseResponse",
+}) as any as S.Schema<ImportDatabaseResponse>;
 
-export interface DatabaseListRequest {
+export interface ListDatabasesRequest {
   /** Account identifier tag. */
   accountId: string;
   /** a database name to search for. */
@@ -655,7 +667,7 @@ export interface DatabaseListRequest {
   /** Number of items per page. */
   perPage?: number;
 }
-export const DatabaseListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListDatabasesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String.pipe(T.Query())),
@@ -669,8 +681,8 @@ export const DatabaseListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DatabaseListRequest",
-}) as any as S.Schema<DatabaseListRequest>;
+  identifier: "ListDatabasesRequest",
+}) as any as S.Schema<ListDatabasesRequest>;
 
 export type DatabaseListResultItemJurisdiction =
   | "eu"
@@ -706,17 +718,116 @@ export const DatabaseListResultList = /*@__PURE__*/ S.Array(
   DatabaseListResultItem,
 ) as any as S.Schema<DatabaseListResultList>;
 
-export interface DatabaseListResponse {
+export interface ListDatabasesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DatabaseListResultList;
 }
-export const DatabaseListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DatabaseListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DatabaseListResponse",
-}) as any as S.Schema<DatabaseListResponse>;
+  identifier: "ListDatabasesResponse",
+}) as any as S.Schema<ListDatabasesResponse>;
+
+export type DatabaseEditRequestReadReplicationMode =
+  | "auto"
+  | "disabled"
+  | (string & {});
+export const DatabaseEditRequestReadReplicationMode = /*@__PURE__*/ S.String;
+
+export interface DatabaseEditRequestReadReplication {
+  /** The read replication mode for the database. Use 'auto' to create replicas and allow D1 automatically place them around the world, or 'disabled' to not use any database replicas (it can take a few hours for all replicas to be deleted). */
+  mode: DatabaseEditRequestReadReplicationMode;
+}
+export const DatabaseEditRequestReadReplication = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: DatabaseEditRequestReadReplicationMode,
+  }),
+).annotate({
+  identifier: "DatabaseEditRequestReadReplication",
+}) as any as S.Schema<DatabaseEditRequestReadReplication>;
+
+export interface PatchDatabaseRequest {
+  /** Account identifier tag. */
+  accountId: string;
+  /** D1 database identifier (UUID). */
+  databaseId: string;
+  /** Configuration for D1 read replication. */
+  readReplication?: DatabaseEditRequestReadReplication;
+}
+export const PatchDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    databaseId: S.String.pipe(T.Label("database_id")),
+    readReplication: S.optional(
+      DatabaseEditRequestReadReplication.pipe(T.Body("read_replication")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/d1/database/{database_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchDatabaseRequest",
+}) as any as S.Schema<PatchDatabaseRequest>;
+
+export type DatabaseEditResponseJurisdiction = "eu" | "fedramp" | (string & {});
+export const DatabaseEditResponseJurisdiction = /*@__PURE__*/ S.String;
+
+export type DatabaseEditResponseReadReplicationMode =
+  | "auto"
+  | "disabled"
+  | (string & {});
+export const DatabaseEditResponseReadReplicationMode = /*@__PURE__*/ S.String;
+
+export interface DatabaseEditResponseReadReplication {
+  /** The read replication mode for the database. Mode 'auto' denotes that D1 creates replicas and automatically places them around the world. Mode 'disabled' denotes that no database replicas are used. */
+  mode: DatabaseEditResponseReadReplicationMode;
+}
+export const DatabaseEditResponseReadReplication = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: DatabaseEditResponseReadReplicationMode,
+  }),
+).annotate({
+  identifier: "DatabaseEditResponseReadReplication",
+}) as any as S.Schema<DatabaseEditResponseReadReplication>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchDatabaseResponse {
+  /** Specifies the timestamp the resource was created as an ISO8601 string. */
+  createdAt?: string;
+  /** The D1 database's size, in bytes. */
+  fileSize?: number;
+  /** Specify the location to restrict the D1 database to run and store data. If this option is present, the location hint is ignored. */
+  jurisdiction?: DatabaseEditResponseJurisdiction;
+  /** D1 database name. */
+  name?: string;
+  numTables?: number;
+  /** Configuration for D1 read replication. */
+  readReplication?: DatabaseEditResponseReadReplication;
+  /** D1 database identifier (UUID). */
+  uuid?: string;
+  version?: string;
+}
+export const PatchDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
+    fileSize: S.optional(S.Number.pipe(T.Body("file_size"))),
+    jurisdiction: S.optional(DatabaseEditResponseJurisdiction),
+    name: S.optional(S.String),
+    numTables: S.optional(S.Number.pipe(T.Body("num_tables"))),
+    readReplication: S.optional(
+      DatabaseEditResponseReadReplication.pipe(T.Body("read_replication")),
+    ),
+    uuid: S.optional(S.String),
+    version: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PatchDatabaseResponse",
+}) as any as S.Schema<PatchDatabaseResponse>;
 
 export interface DatabaseQueryRequestBody {
   /** A single query with or without parameters */
@@ -736,7 +847,7 @@ export const DatabaseQueryRequestBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseQueryRequestBody",
 }) as any as S.Schema<DatabaseQueryRequestBody>;
 
-export interface DatabaseQueryRequest {
+export interface QueryDatabaseRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database identifier (UUID). */
@@ -744,7 +855,7 @@ export interface DatabaseQueryRequest {
   /** A single query object or a batch query object */
   body: DatabaseQueryRequestBody;
 }
-export const DatabaseQueryRequest = /*@__PURE__*/ S.suspend(() =>
+export const QueryDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -757,8 +868,8 @@ export const DatabaseQueryRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DatabaseQueryRequest",
-}) as any as S.Schema<DatabaseQueryRequest>;
+  identifier: "QueryDatabaseRequest",
+}) as any as S.Schema<QueryDatabaseRequest>;
 
 export type DatabaseQueryResultItemMetaServedByRegion =
   | "WNAM"
@@ -850,17 +961,17 @@ export const DatabaseQueryResultList = /*@__PURE__*/ S.Array(
   DatabaseQueryResultItem,
 ) as any as S.Schema<DatabaseQueryResultList>;
 
-export interface DatabaseQueryResponse {
+export interface QueryDatabaseResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DatabaseQueryResultList;
 }
-export const DatabaseQueryResponse = /*@__PURE__*/ S.suspend(() =>
+export const QueryDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DatabaseQueryResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DatabaseQueryResponse",
-}) as any as S.Schema<DatabaseQueryResponse>;
+  identifier: "QueryDatabaseResponse",
+}) as any as S.Schema<QueryDatabaseResponse>;
 
 export interface DatabaseRawRequestBody {
   /** A single query with or without parameters */
@@ -880,7 +991,7 @@ export const DatabaseRawRequestBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatabaseRawRequestBody",
 }) as any as S.Schema<DatabaseRawRequestBody>;
 
-export interface DatabaseRawRequest {
+export interface RawDatabaseRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database identifier (UUID). */
@@ -888,7 +999,7 @@ export interface DatabaseRawRequest {
   /** A single query object or a batch query object */
   body: DatabaseRawRequestBody;
 }
-export const DatabaseRawRequest = /*@__PURE__*/ S.suspend(() =>
+export const RawDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -901,8 +1012,8 @@ export const DatabaseRawRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DatabaseRawRequest",
-}) as any as S.Schema<DatabaseRawRequest>;
+  identifier: "RawDatabaseRequest",
+}) as any as S.Schema<RawDatabaseRequest>;
 
 export type DatabaseRawResultItemMetaServedByRegion =
   | "WNAM"
@@ -1027,58 +1138,19 @@ export const DatabaseRawResultList = /*@__PURE__*/ S.Array(
   DatabaseRawResultItem,
 ) as any as S.Schema<DatabaseRawResultList>;
 
-export interface DatabaseRawResponse {
+export interface RawDatabaseResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: DatabaseRawResultList;
 }
-export const DatabaseRawResponse = /*@__PURE__*/ S.suspend(() =>
+export const RawDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(DatabaseRawResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DatabaseRawResponse",
-}) as any as S.Schema<DatabaseRawResponse>;
+  identifier: "RawDatabaseResponse",
+}) as any as S.Schema<RawDatabaseResponse>;
 
-export interface DatabaseTimeTravelGetBookmarkRequest {
-  /** Account identifier tag. */
-  accountId: string;
-  /** D1 database identifier (UUID). */
-  databaseId: string;
-  /** An optional ISO 8601 timestamp. If provided, returns the nearest available bookmark at or before this timestamp. If omitted, returns the current bookmark. */
-  timestamp?: string;
-}
-export const DatabaseTimeTravelGetBookmarkRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      databaseId: S.String.pipe(T.Label("database_id")),
-      timestamp: S.optional(S.String.pipe(T.Query())),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/d1/database/{database_id}/time_travel/bookmark",
-        code: 200,
-      }),
-    ),
-).annotate({
-  identifier: "DatabaseTimeTravelGetBookmarkRequest",
-}) as any as S.Schema<DatabaseTimeTravelGetBookmarkRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DatabaseTimeTravelGetBookmarkResponse {
-  /** A bookmark representing a specific state of the database at a specific point in time. */
-  bookmark?: string;
-}
-export const DatabaseTimeTravelGetBookmarkResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      bookmark: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "DatabaseTimeTravelGetBookmarkResponse",
-}) as any as S.Schema<DatabaseTimeTravelGetBookmarkResponse>;
-
-export interface DatabaseTimeTravelRestoreRequest {
+export interface RestoreDatabaseTimeTravelRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database identifier (UUID). */
@@ -1088,7 +1160,7 @@ export interface DatabaseTimeTravelRestoreRequest {
   /** An ISO 8601 timestamp to restore the database to. Required if `bookmark` is not provided. */
   timestamp?: string;
 }
-export const DatabaseTimeTravelRestoreRequest = /*@__PURE__*/ S.suspend(() =>
+export const RestoreDatabaseTimeTravelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -1102,11 +1174,11 @@ export const DatabaseTimeTravelRestoreRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DatabaseTimeTravelRestoreRequest",
-}) as any as S.Schema<DatabaseTimeTravelRestoreRequest>;
+  identifier: "RestoreDatabaseTimeTravelRequest",
+}) as any as S.Schema<RestoreDatabaseTimeTravelRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DatabaseTimeTravelRestoreResponse {
+export interface RestoreDatabaseTimeTravelResponse {
   /** The new bookmark representing the state of the database after the restore operation. */
   bookmark?: string;
   /** A message describing the result of the restore operation. */
@@ -1114,15 +1186,15 @@ export interface DatabaseTimeTravelRestoreResponse {
   /** The bookmark representing the state of the database before the restore operation. Can be used to undo the restore if needed. */
   previousBookmark?: string;
 }
-export const DatabaseTimeTravelRestoreResponse = /*@__PURE__*/ S.suspend(() =>
+export const RestoreDatabaseTimeTravelResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     bookmark: S.optional(S.String),
     message: S.optional(S.String),
     previousBookmark: S.optional(S.String.pipe(T.Body("previous_bookmark"))),
   }),
 ).annotate({
-  identifier: "DatabaseTimeTravelRestoreResponse",
-}) as any as S.Schema<DatabaseTimeTravelRestoreResponse>;
+  identifier: "RestoreDatabaseTimeTravelResponse",
+}) as any as S.Schema<RestoreDatabaseTimeTravelResponse>;
 
 export type DatabaseUpdateRequestReadReplicationMode =
   | "auto"
@@ -1143,7 +1215,7 @@ export const DatabaseUpdateRequestReadReplication = /*@__PURE__*/ S.suspend(
   identifier: "DatabaseUpdateRequestReadReplication",
 }) as any as S.Schema<DatabaseUpdateRequestReadReplication>;
 
-export interface DatabaseUpdateRequest {
+export interface UpdateDatabaseRequest {
   /** Account identifier tag. */
   accountId: string;
   /** D1 database identifier (UUID). */
@@ -1151,7 +1223,7 @@ export interface DatabaseUpdateRequest {
   /** Configuration for D1 read replication. */
   readReplication: DatabaseUpdateRequestReadReplication;
 }
-export const DatabaseUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateDatabaseRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     databaseId: S.String.pipe(T.Label("database_id")),
@@ -1166,8 +1238,8 @@ export const DatabaseUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DatabaseUpdateRequest",
-}) as any as S.Schema<DatabaseUpdateRequest>;
+  identifier: "UpdateDatabaseRequest",
+}) as any as S.Schema<UpdateDatabaseRequest>;
 
 export type DatabaseUpdateResponseJurisdiction =
   | "eu"
@@ -1195,7 +1267,7 @@ export const DatabaseUpdateResponseReadReplication = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<DatabaseUpdateResponseReadReplication>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DatabaseUpdateResponse {
+export interface UpdateDatabaseResponse {
   /** Specifies the timestamp the resource was created as an ISO8601 string. */
   createdAt?: string;
   /** The D1 database's size, in bytes. */
@@ -1211,7 +1283,7 @@ export interface DatabaseUpdateResponse {
   uuid?: string;
   version?: string;
 }
-export const DatabaseUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdAt: S.optional(S.String.pipe(T.Body("created_at"))),
     fileSize: S.optional(S.Number.pipe(T.Body("file_size"))),
@@ -1225,173 +1297,257 @@ export const DatabaseUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     version: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "DatabaseUpdateResponse",
-}) as any as S.Schema<DatabaseUpdateResponse>;
+  identifier: "UpdateDatabaseResponse",
+}) as any as S.Schema<UpdateDatabaseResponse>;
 
-export type DatabaseCreateError = CloudflareOpError;
+export type CreateDatabaseError =
+  | InvalidObjectIdentifier
+  | InvalidProperty
+  | DatabaseAlreadyExists
+  | CloudflareOpError;
 /** Returns the created D1 database. */
-export const databaseCreate: API.OperationMethod<
-  DatabaseCreateRequest,
-  DatabaseCreateResponse,
-  DatabaseCreateError,
+export const createDatabase: API.OperationMethod<
+  CreateDatabaseRequest,
+  CreateDatabaseResponse,
+  CreateDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseCreateRequest,
-  output: DatabaseCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateDatabaseRequest,
+  output: CreateDatabaseResponse,
+  errors: [
+    InvalidObjectIdentifier,
+    InvalidProperty,
+    DatabaseAlreadyExists,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type DatabaseDeleteError = CloudflareOpError;
+export type DeleteDatabaseError =
+  | InvalidObjectIdentifier
+  | DatabaseNotFound
+  | UnknownError
+  | CloudflareOpError;
 /** Deletes the specified D1 database. */
-export const databaseDelete: API.OperationMethod<
-  DatabaseDeleteRequest,
-  DatabaseDeleteResponse,
-  DatabaseDeleteError,
+export const deleteDatabase: API.OperationMethod<
+  DeleteDatabaseRequest,
+  DeleteDatabaseResponse,
+  DeleteDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseDeleteRequest,
-  output: DatabaseDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteDatabaseRequest,
+  output: DeleteDatabaseResponse,
+  errors: [
+    InvalidObjectIdentifier,
+    DatabaseNotFound,
+    UnknownError,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type DatabaseEditError = CloudflareOpError;
-/** Updates partially the specified D1 database. */
-export const databaseEdit: API.OperationMethod<
-  DatabaseEditRequest,
-  DatabaseEditResponse,
-  DatabaseEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseEditRequest,
-  output: DatabaseEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DatabaseExportError = CloudflareOpError;
+export type ExportDatabaseError =
+  | InvalidObjectIdentifier
+  | InvalidRequest
+  | DatabaseNotFound
+  | CloudflareOpError;
 /** Returns a URL where the SQL contents of your D1 can be downloaded. Note: this process may take some time for larger DBs, during which your D1 will be unavailable to serve queries. To avoid blocking your DB unnecessarily, an in-progress export must be continually polled or will automatically cancel. */
-export const databaseExport: API.OperationMethod<
-  DatabaseExportRequest,
-  DatabaseExportResponse,
-  DatabaseExportError,
+export const exportDatabase: API.OperationMethod<
+  ExportDatabaseRequest,
+  ExportDatabaseResponse,
+  ExportDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseExportRequest,
-  output: DatabaseExportResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ExportDatabaseRequest,
+  output: ExportDatabaseResponse,
+  errors: [
+    InvalidObjectIdentifier,
+    InvalidRequest,
+    DatabaseNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type DatabaseGetError = CloudflareOpError;
-/** Returns the specified D1 database. */
-export const databaseGet: API.OperationMethod<
-  DatabaseGetRequest,
-  DatabaseGetResponse,
-  DatabaseGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseGetRequest,
-  output: DatabaseGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DatabaseImportError = CloudflareOpError;
-/** Generates a temporary URL for uploading an SQL file to, then instructing the D1 to import it and polling it for status updates. Imports block the D1 for their duration. */
-export const databaseImport: API.OperationMethod<
-  DatabaseImportRequest,
-  DatabaseImportResponse,
-  DatabaseImportError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseImportRequest,
-  output: DatabaseImportResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DatabaseListError = CloudflareOpError;
-/** Returns a list of D1 databases. */
-export const databaseList: API.OperationMethod<
-  DatabaseListRequest,
-  DatabaseListResponse,
-  DatabaseListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseListRequest,
-  output: DatabaseListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DatabaseQueryError = CloudflareOpError;
-/** Returns the query result as an object. */
-export const databaseQuery: API.OperationMethod<
-  DatabaseQueryRequest,
-  DatabaseQueryResponse,
-  DatabaseQueryError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseQueryRequest,
-  output: DatabaseQueryResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DatabaseRawError = CloudflareOpError;
-/** Returns the query result rows as arrays rather than objects. This is a performance-optimized version of the /query endpoint. */
-export const databaseRaw: API.OperationMethod<
-  DatabaseRawRequest,
-  DatabaseRawResponse,
-  DatabaseRawError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseRawRequest,
-  output: DatabaseRawResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DatabaseTimeTravelGetBookmarkError = CloudflareOpError;
+export type GetBookmarkDatabaseTimeTravelError =
+  | InvalidObjectIdentifier
+  | NoHistoryAvailable
+  | TimestampTooOld
+  | DatabaseNotFound
+  | CloudflareOpError;
 /** Retrieves the current bookmark, or the nearest bookmark at or before a provided timestamp. Bookmarks can be used with the restore endpoint to revert the database to a previous point in time. */
-export const databaseTimeTravelGetBookmark: API.OperationMethod<
-  DatabaseTimeTravelGetBookmarkRequest,
-  DatabaseTimeTravelGetBookmarkResponse,
-  DatabaseTimeTravelGetBookmarkError,
+export const getBookmarkDatabaseTimeTravel: API.OperationMethod<
+  GetBookmarkDatabaseTimeTravelRequest,
+  GetBookmarkDatabaseTimeTravelResponse,
+  GetBookmarkDatabaseTimeTravelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseTimeTravelGetBookmarkRequest,
-  output: DatabaseTimeTravelGetBookmarkResponse,
+  input: GetBookmarkDatabaseTimeTravelRequest,
+  output: GetBookmarkDatabaseTimeTravelResponse,
+  errors: [
+    InvalidObjectIdentifier,
+    NoHistoryAvailable,
+    TimestampTooOld,
+    DatabaseNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetDatabaseError =
+  | InvalidObjectIdentifier
+  | DatabaseNotFound
+  | UnknownError
+  | CloudflareOpError;
+/** Returns the specified D1 database. */
+export const getDatabase: API.OperationMethod<
+  GetDatabaseRequest,
+  GetDatabaseResponse,
+  GetDatabaseError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDatabaseRequest,
+  output: GetDatabaseResponse,
+  errors: [
+    InvalidObjectIdentifier,
+    DatabaseNotFound,
+    UnknownError,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ImportDatabaseError = InvalidObjectIdentifier | CloudflareOpError;
+/** Generates a temporary URL for uploading an SQL file to, then instructing the D1 to import it and polling it for status updates. Imports block the D1 for their duration. */
+export const importDatabase: API.OperationMethod<
+  ImportDatabaseRequest,
+  ImportDatabaseResponse,
+  ImportDatabaseError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ImportDatabaseRequest,
+  output: ImportDatabaseResponse,
+  errors: [InvalidObjectIdentifier, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListDatabasesError = CloudflareOpError;
+/** Returns a list of D1 databases. */
+export const listDatabases: API.OperationMethod<
+  ListDatabasesRequest,
+  ListDatabasesResponse,
+  ListDatabasesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListDatabasesRequest,
+  output: ListDatabasesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DatabaseTimeTravelRestoreError = CloudflareOpError;
+export type PatchDatabaseError =
+  | InvalidObjectIdentifier
+  | InternalError
+  | DatabaseNotFound
+  | CloudflareOpError;
+/** Updates partially the specified D1 database. */
+export const patchDatabase: API.OperationMethod<
+  PatchDatabaseRequest,
+  PatchDatabaseResponse,
+  PatchDatabaseError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchDatabaseRequest,
+  output: PatchDatabaseResponse,
+  errors: [
+    InvalidObjectIdentifier,
+    InternalError,
+    DatabaseNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type QueryDatabaseError = CloudflareOpError;
+/** Returns the query result as an object. */
+export const queryDatabase: API.OperationMethod<
+  QueryDatabaseRequest,
+  QueryDatabaseResponse,
+  QueryDatabaseError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: QueryDatabaseRequest,
+  output: QueryDatabaseResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type RawDatabaseError = CloudflareOpError;
+/** Returns the query result rows as arrays rather than objects. This is a performance-optimized version of the /query endpoint. */
+export const rawDatabase: API.OperationMethod<
+  RawDatabaseRequest,
+  RawDatabaseResponse,
+  RawDatabaseError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RawDatabaseRequest,
+  output: RawDatabaseResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type RestoreDatabaseTimeTravelError =
+  | InvalidObjectIdentifier
+  | NoHistoryAvailable
+  | DatabaseNotFound
+  | InvalidProperty
+  | CloudflareOpError;
 /** Restores a D1 database to a previous point in time either via a bookmark or a timestamp. */
-export const databaseTimeTravelRestore: API.OperationMethod<
-  DatabaseTimeTravelRestoreRequest,
-  DatabaseTimeTravelRestoreResponse,
-  DatabaseTimeTravelRestoreError,
+export const restoreDatabaseTimeTravel: API.OperationMethod<
+  RestoreDatabaseTimeTravelRequest,
+  RestoreDatabaseTimeTravelResponse,
+  RestoreDatabaseTimeTravelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseTimeTravelRestoreRequest,
-  output: DatabaseTimeTravelRestoreResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: RestoreDatabaseTimeTravelRequest,
+  output: RestoreDatabaseTimeTravelResponse,
+  errors: [
+    InvalidObjectIdentifier,
+    NoHistoryAvailable,
+    DatabaseNotFound,
+    InvalidProperty,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type DatabaseUpdateError = CloudflareOpError;
+export type UpdateDatabaseError =
+  | InvalidObjectIdentifier
+  | InternalError
+  | DatabaseNotFound
+  | CloudflareOpError;
 /** Updates the specified D1 database. */
-export const databaseUpdate: API.OperationMethod<
-  DatabaseUpdateRequest,
-  DatabaseUpdateResponse,
-  DatabaseUpdateError,
+export const updateDatabase: API.OperationMethod<
+  UpdateDatabaseRequest,
+  UpdateDatabaseResponse,
+  UpdateDatabaseError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DatabaseUpdateRequest,
-  output: DatabaseUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateDatabaseRequest,
+  output: UpdateDatabaseResponse,
+  errors: [
+    InvalidObjectIdentifier,
+    InternalError,
+    DatabaseNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

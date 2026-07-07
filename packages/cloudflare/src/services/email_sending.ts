@@ -9,6 +9,322 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class SendingSubdomainAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SendingSubdomainAlreadyExists>()(
+    "SendingSubdomainAlreadyExists",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 2040 }],
+) {}
+
+export class SendingSubdomainNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SendingSubdomainNotFound>()("SendingSubdomainNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 2033 }],
+) {}
+
+export interface CreateSubdomainRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** The subdomain name. Must be within the zone. */
+  name: string;
+}
+export const CreateSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    name: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/email/sending/subdomains",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateSubdomainRequest",
+}) as any as S.Schema<CreateSubdomainRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateSubdomainResponse {
+  /** Whether Email Sending is enabled on this subdomain. */
+  enabled: boolean;
+  /** The subdomain domain name. */
+  name: string;
+  /** Sending subdomain identifier. */
+  tag: string;
+  /** The date and time the destination address has been created. */
+  created?: string;
+  /** The DKIM selector used for email signing. */
+  dkimSelector?: string;
+  /** The date and time the destination address was last modified. */
+  modified?: string;
+  /** Whether sent messages from this subdomain can be previewed in the activity log. */
+  previewEnabled?: boolean;
+  /** The return-path domain used for bounce handling. */
+  returnPathDomain?: string;
+}
+export const CreateSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    name: S.String,
+    tag: S.String,
+    created: S.optional(S.String),
+    dkimSelector: S.optional(S.String.pipe(T.Body("dkim_selector"))),
+    modified: S.optional(S.String),
+    previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
+    returnPathDomain: S.optional(S.String.pipe(T.Body("return_path_domain"))),
+  }),
+).annotate({
+  identifier: "CreateSubdomainResponse",
+}) as any as S.Schema<CreateSubdomainResponse>;
+
+export interface DeleteSubdomainRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Sending subdomain identifier. */
+  subdomainId: string;
+}
+export const DeleteSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    subdomainId: S.String.pipe(T.Label("subdomain_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSubdomainRequest",
+}) as any as S.Schema<DeleteSubdomainRequest>;
+
+export interface DeleteSubdomainResponse {}
+export const DeleteSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteSubdomainResponse",
+}) as any as S.Schema<DeleteSubdomainResponse>;
+
+export interface GetSubdomainRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Sending subdomain identifier. */
+  subdomainId: string;
+}
+export const GetSubdomainRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    subdomainId: S.String.pipe(T.Label("subdomain_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSubdomainRequest",
+}) as any as S.Schema<GetSubdomainRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSubdomainResponse {
+  /** Whether Email Sending is enabled on this subdomain. */
+  enabled: boolean;
+  /** The subdomain domain name. */
+  name: string;
+  /** Sending subdomain identifier. */
+  tag: string;
+  /** The date and time the destination address has been created. */
+  created?: string;
+  /** The DKIM selector used for email signing. */
+  dkimSelector?: string;
+  /** The date and time the destination address was last modified. */
+  modified?: string;
+  /** Whether sent messages from this subdomain can be previewed in the activity log. */
+  previewEnabled?: boolean;
+  /** The return-path domain used for bounce handling. */
+  returnPathDomain?: string;
+}
+export const GetSubdomainResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    name: S.String,
+    tag: S.String,
+    created: S.optional(S.String),
+    dkimSelector: S.optional(S.String.pipe(T.Body("dkim_selector"))),
+    modified: S.optional(S.String),
+    previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
+    returnPathDomain: S.optional(S.String.pipe(T.Body("return_path_domain"))),
+  }),
+).annotate({
+  identifier: "GetSubdomainResponse",
+}) as any as S.Schema<GetSubdomainResponse>;
+
+export interface GetSubdomainDnsRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Sending subdomain identifier. */
+  subdomainId: string;
+}
+export const GetSubdomainDnsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    subdomainId: S.String.pipe(T.Label("subdomain_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSubdomainDnsRequest",
+}) as any as S.Schema<GetSubdomainDnsRequest>;
+
+export interface SubdomainsDnsGetResultItemTtl {
+  number: unknown;
+  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
+  "1": unknown;
+}
+export const SubdomainsDnsGetResultItemTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    number: S.Unknown,
+    "1": S.Unknown,
+  }),
+).annotate({
+  identifier: "SubdomainsDnsGetResultItemTtl",
+}) as any as S.Schema<SubdomainsDnsGetResultItemTtl>;
+
+export type SubdomainsDnsGetResultItemType =
+  | "A"
+  | "AAAA"
+  | "CNAME"
+  | (string & {});
+export const SubdomainsDnsGetResultItemType = /*@__PURE__*/ S.String;
+
+export interface SubdomainsDnsGetResultItem {
+  /** DNS record content. */
+  content?: string;
+  /** DNS record name (or @ for the zone apex). */
+  name?: string;
+  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
+  priority?: number;
+  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
+  ttl?: SubdomainsDnsGetResultItemTtl;
+  /** DNS record type. */
+  type?: SubdomainsDnsGetResultItemType;
+}
+export const SubdomainsDnsGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    content: S.optional(S.String),
+    name: S.optional(S.String),
+    priority: S.optional(S.Number),
+    ttl: S.optional(SubdomainsDnsGetResultItemTtl),
+    type: S.optional(SubdomainsDnsGetResultItemType),
+  }),
+).annotate({
+  identifier: "SubdomainsDnsGetResultItem",
+}) as any as S.Schema<SubdomainsDnsGetResultItem>;
+
+export type SubdomainsDnsGetResultList = SubdomainsDnsGetResultItem[];
+export const SubdomainsDnsGetResultList = /*@__PURE__*/ S.Array(
+  SubdomainsDnsGetResultItem,
+) as any as S.Schema<SubdomainsDnsGetResultList>;
+
+export interface GetSubdomainDnsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: SubdomainsDnsGetResultList;
+}
+export const GetSubdomainDnsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(SubdomainsDnsGetResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "GetSubdomainDnsResponse",
+}) as any as S.Schema<GetSubdomainDnsResponse>;
+
+export interface ListSubdomainsRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const ListSubdomainsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/email/sending/subdomains",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListSubdomainsRequest",
+}) as any as S.Schema<ListSubdomainsRequest>;
+
+export interface SubdomainsListResultItem {
+  /** Whether Email Sending is enabled on this subdomain. */
+  enabled: boolean;
+  /** The subdomain domain name. */
+  name: string;
+  /** Sending subdomain identifier. */
+  tag: string;
+  /** The date and time the destination address has been created. */
+  created?: string;
+  /** The DKIM selector used for email signing. */
+  dkimSelector?: string;
+  /** The date and time the destination address was last modified. */
+  modified?: string;
+  /** Whether sent messages from this subdomain can be previewed in the activity log. */
+  previewEnabled?: boolean;
+  /** The return-path domain used for bounce handling. */
+  returnPathDomain?: string;
+}
+export const SubdomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    name: S.String,
+    tag: S.String,
+    created: S.optional(S.String),
+    dkimSelector: S.optional(S.String.pipe(T.Body("dkim_selector"))),
+    modified: S.optional(S.String),
+    previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
+    returnPathDomain: S.optional(S.String.pipe(T.Body("return_path_domain"))),
+  }),
+).annotate({
+  identifier: "SubdomainsListResultItem",
+}) as any as S.Schema<SubdomainsListResultItem>;
+
+export type SubdomainsListResultList = SubdomainsListResultItem[];
+export const SubdomainsListResultList = /*@__PURE__*/ S.Array(
+  SubdomainsListResultItem,
+) as any as S.Schema<SubdomainsListResultList>;
+
+export interface ListSubdomainsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: SubdomainsListResultList;
+}
+export const ListSubdomainsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(SubdomainsListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListSubdomainsResponse",
+}) as any as S.Schema<ListSubdomainsResponse>;
+
 export interface SendRequestFrom {
   /** An email address as a plain string. */
   EmailSendingEmailAddressString: string;
@@ -123,7 +439,7 @@ export const SendRequestTo = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "SendRequestTo" }) as any as S.Schema<SendRequestTo>;
 
-export interface SendRequest {
+export interface SendEmailSendingRequest {
   /** Identifier of the account. */
   accountId: string;
   /** Sender email address. Either a plain string or an object with address and name. */
@@ -147,7 +463,7 @@ export interface SendRequest {
   /** Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either. */
   to?: SendRequestTo;
 }
-export const SendRequest = /*@__PURE__*/ S.suspend(() =>
+export const SendEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     from: SendRequestFrom,
@@ -167,7 +483,9 @@ export const SendRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "SendRequest" }) as any as S.Schema<SendRequest>;
+).annotate({
+  identifier: "SendEmailSendingRequest",
+}) as any as S.Schema<SendEmailSendingRequest>;
 
 export type SendResponseDeliveredList = string[];
 export const SendResponseDeliveredList = /*@__PURE__*/ S.Array(
@@ -185,7 +503,7 @@ export const SendResponseQueuedList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SendResponseQueuedList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SendResponse {
+export interface SendEmailSendingResponse {
   /** Email addresses to which the message was delivered immediately. */
   delivered: SendResponseDeliveredList;
   /** Message ID of the sent email. */
@@ -195,7 +513,7 @@ export interface SendResponse {
   /** Email addresses for which delivery was queued for later. */
   queued: SendResponseQueuedList;
 }
-export const SendResponse = /*@__PURE__*/ S.suspend(() =>
+export const SendEmailSendingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delivered: SendResponseDeliveredList,
     messageId: S.String.pipe(T.Body("message_id")),
@@ -204,14 +522,16 @@ export const SendResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     queued: SendResponseQueuedList,
   }),
-).annotate({ identifier: "SendResponse" }) as any as S.Schema<SendResponse>;
+).annotate({
+  identifier: "SendEmailSendingResponse",
+}) as any as S.Schema<SendEmailSendingResponse>;
 
 export type SendRawRequestRecipientsList = string[];
 export const SendRawRequestRecipientsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<SendRawRequestRecipientsList>;
 
-export interface SendRawRequest {
+export interface SendRawEmailSendingRequest {
   /** Identifier of the account. */
   accountId: string;
   /** Sender email address. */
@@ -221,7 +541,7 @@ export interface SendRawRequest {
   /** List of recipient email addresses. */
   recipients: SendRawRequestRecipientsList;
 }
-export const SendRawRequest = /*@__PURE__*/ S.suspend(() =>
+export const SendRawEmailSendingRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     from: S.String,
@@ -234,7 +554,9 @@ export const SendRawRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "SendRawRequest" }) as any as S.Schema<SendRawRequest>;
+).annotate({
+  identifier: "SendRawEmailSendingRequest",
+}) as any as S.Schema<SendRawEmailSendingRequest>;
 
 export type SendRawResponseDeliveredList = string[];
 export const SendRawResponseDeliveredList = /*@__PURE__*/ S.Array(
@@ -252,7 +574,7 @@ export const SendRawResponseQueuedList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<SendRawResponseQueuedList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SendRawResponse {
+export interface SendRawEmailSendingResponse {
   /** Email addresses to which the message was delivered immediately. */
   delivered: SendRawResponseDeliveredList;
   /** Message ID of the sent email. */
@@ -262,7 +584,7 @@ export interface SendRawResponse {
   /** Email addresses for which delivery was queued for later. */
   queued: SendRawResponseQueuedList;
 }
-export const SendRawResponse = /*@__PURE__*/ S.suspend(() =>
+export const SendRawEmailSendingResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     delivered: SendRawResponseDeliveredList,
     messageId: S.String.pipe(T.Body("message_id")),
@@ -272,392 +594,127 @@ export const SendRawResponse = /*@__PURE__*/ S.suspend(() =>
     queued: SendRawResponseQueuedList,
   }),
 ).annotate({
-  identifier: "SendRawResponse",
-}) as any as S.Schema<SendRawResponse>;
+  identifier: "SendRawEmailSendingResponse",
+}) as any as S.Schema<SendRawEmailSendingResponse>;
 
-export interface SubdomainsCreateRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** The subdomain name. Must be within the zone. */
-  name: string;
-}
-export const SubdomainsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/email/sending/subdomains",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SubdomainsCreateRequest",
-}) as any as S.Schema<SubdomainsCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SubdomainsCreateResponse {
-  /** Whether Email Sending is enabled on this subdomain. */
-  enabled: boolean;
-  /** The subdomain domain name. */
-  name: string;
-  /** Sending subdomain identifier. */
-  tag: string;
-  /** The date and time the destination address has been created. */
-  created?: string;
-  /** The DKIM selector used for email signing. */
-  dkimSelector?: string;
-  /** The date and time the destination address was last modified. */
-  modified?: string;
-  /** Whether sent messages from this subdomain can be previewed in the activity log. */
-  previewEnabled?: boolean;
-  /** The return-path domain used for bounce handling. */
-  returnPathDomain?: string;
-}
-export const SubdomainsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    name: S.String,
-    tag: S.String,
-    created: S.optional(S.String),
-    dkimSelector: S.optional(S.String.pipe(T.Body("dkim_selector"))),
-    modified: S.optional(S.String),
-    previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
-    returnPathDomain: S.optional(S.String.pipe(T.Body("return_path_domain"))),
-  }),
-).annotate({
-  identifier: "SubdomainsCreateResponse",
-}) as any as S.Schema<SubdomainsCreateResponse>;
-
-export interface SubdomainsDeleteRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Sending subdomain identifier. */
-  subdomainId: string;
-}
-export const SubdomainsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    subdomainId: S.String.pipe(T.Label("subdomain_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SubdomainsDeleteRequest",
-}) as any as S.Schema<SubdomainsDeleteRequest>;
-
-export interface SubdomainsDeleteResponse {}
-export const SubdomainsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "SubdomainsDeleteResponse",
-}) as any as S.Schema<SubdomainsDeleteResponse>;
-
-export interface SubdomainsDnsGetRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Sending subdomain identifier. */
-  subdomainId: string;
-}
-export const SubdomainsDnsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    subdomainId: S.String.pipe(T.Label("subdomain_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}/dns",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SubdomainsDnsGetRequest",
-}) as any as S.Schema<SubdomainsDnsGetRequest>;
-
-export interface SubdomainsDnsGetResultItemTtl {
-  number: unknown;
-  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
-  "1": unknown;
-}
-export const SubdomainsDnsGetResultItemTtl = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    number: S.Unknown,
-    "1": S.Unknown,
-  }),
-).annotate({
-  identifier: "SubdomainsDnsGetResultItemTtl",
-}) as any as S.Schema<SubdomainsDnsGetResultItemTtl>;
-
-export type SubdomainsDnsGetResultItemType =
-  | "A"
-  | "AAAA"
-  | "CNAME"
-  | (string & {});
-export const SubdomainsDnsGetResultItemType = /*@__PURE__*/ S.String;
-
-export interface SubdomainsDnsGetResultItem {
-  /** DNS record content. */
-  content?: string;
-  /** DNS record name (or @ for the zone apex). */
-  name?: string;
-  /** Required for MX, SRV and URI records. Unused by other record types. Records with lower priorities are preferred. */
-  priority?: number;
-  /** Time to live, in seconds, of the DNS record. Must be between 60 and 86400, or 1 for 'automatic'. */
-  ttl?: SubdomainsDnsGetResultItemTtl;
-  /** DNS record type. */
-  type?: SubdomainsDnsGetResultItemType;
-}
-export const SubdomainsDnsGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    content: S.optional(S.String),
-    name: S.optional(S.String),
-    priority: S.optional(S.Number),
-    ttl: S.optional(SubdomainsDnsGetResultItemTtl),
-    type: S.optional(SubdomainsDnsGetResultItemType),
-  }),
-).annotate({
-  identifier: "SubdomainsDnsGetResultItem",
-}) as any as S.Schema<SubdomainsDnsGetResultItem>;
-
-export type SubdomainsDnsGetResultList = SubdomainsDnsGetResultItem[];
-export const SubdomainsDnsGetResultList = /*@__PURE__*/ S.Array(
-  SubdomainsDnsGetResultItem,
-) as any as S.Schema<SubdomainsDnsGetResultList>;
-
-export interface SubdomainsDnsGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SubdomainsDnsGetResultList;
-}
-export const SubdomainsDnsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SubdomainsDnsGetResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "SubdomainsDnsGetResponse",
-}) as any as S.Schema<SubdomainsDnsGetResponse>;
-
-export interface SubdomainsGetRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Sending subdomain identifier. */
-  subdomainId: string;
-}
-export const SubdomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    subdomainId: S.String.pipe(T.Label("subdomain_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/sending/subdomains/{subdomain_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SubdomainsGetRequest",
-}) as any as S.Schema<SubdomainsGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SubdomainsGetResponse {
-  /** Whether Email Sending is enabled on this subdomain. */
-  enabled: boolean;
-  /** The subdomain domain name. */
-  name: string;
-  /** Sending subdomain identifier. */
-  tag: string;
-  /** The date and time the destination address has been created. */
-  created?: string;
-  /** The DKIM selector used for email signing. */
-  dkimSelector?: string;
-  /** The date and time the destination address was last modified. */
-  modified?: string;
-  /** Whether sent messages from this subdomain can be previewed in the activity log. */
-  previewEnabled?: boolean;
-  /** The return-path domain used for bounce handling. */
-  returnPathDomain?: string;
-}
-export const SubdomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    name: S.String,
-    tag: S.String,
-    created: S.optional(S.String),
-    dkimSelector: S.optional(S.String.pipe(T.Body("dkim_selector"))),
-    modified: S.optional(S.String),
-    previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
-    returnPathDomain: S.optional(S.String.pipe(T.Body("return_path_domain"))),
-  }),
-).annotate({
-  identifier: "SubdomainsGetResponse",
-}) as any as S.Schema<SubdomainsGetResponse>;
-
-export interface SubdomainsListRequest {
-  /** Identifier. */
-  zoneId: string;
-}
-export const SubdomainsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/sending/subdomains",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SubdomainsListRequest",
-}) as any as S.Schema<SubdomainsListRequest>;
-
-export interface SubdomainsListResultItem {
-  /** Whether Email Sending is enabled on this subdomain. */
-  enabled: boolean;
-  /** The subdomain domain name. */
-  name: string;
-  /** Sending subdomain identifier. */
-  tag: string;
-  /** The date and time the destination address has been created. */
-  created?: string;
-  /** The DKIM selector used for email signing. */
-  dkimSelector?: string;
-  /** The date and time the destination address was last modified. */
-  modified?: string;
-  /** Whether sent messages from this subdomain can be previewed in the activity log. */
-  previewEnabled?: boolean;
-  /** The return-path domain used for bounce handling. */
-  returnPathDomain?: string;
-}
-export const SubdomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    name: S.String,
-    tag: S.String,
-    created: S.optional(S.String),
-    dkimSelector: S.optional(S.String.pipe(T.Body("dkim_selector"))),
-    modified: S.optional(S.String),
-    previewEnabled: S.optional(S.Boolean.pipe(T.Body("preview_enabled"))),
-    returnPathDomain: S.optional(S.String.pipe(T.Body("return_path_domain"))),
-  }),
-).annotate({
-  identifier: "SubdomainsListResultItem",
-}) as any as S.Schema<SubdomainsListResultItem>;
-
-export type SubdomainsListResultList = SubdomainsListResultItem[];
-export const SubdomainsListResultList = /*@__PURE__*/ S.Array(
-  SubdomainsListResultItem,
-) as any as S.Schema<SubdomainsListResultList>;
-
-export interface SubdomainsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SubdomainsListResultList;
-}
-export const SubdomainsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SubdomainsListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "SubdomainsListResponse",
-}) as any as S.Schema<SubdomainsListResponse>;
-
-export type SendError = CloudflareOpError;
-/** Send an email */
-export const send: API.OperationMethod<
-  SendRequest,
-  SendResponse,
-  SendError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SendRequest,
-  output: SendResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SendRawError = CloudflareOpError;
-/** Send a raw MIME email */
-export const sendRaw: API.OperationMethod<
-  SendRawRequest,
-  SendRawResponse,
-  SendRawError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SendRawRequest,
-  output: SendRawResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SubdomainsCreateError = CloudflareOpError;
+export type CreateSubdomainError =
+  | Forbidden
+  | SendingSubdomainAlreadyExists
+  | CloudflareOpError;
 /** Creates a new sending subdomain or re-enables sending on an existing subdomain that had it disabled. If zone-level Email Sending has not been enabled yet, the zone flag is automatically set when the entitlement is present. */
-export const subdomainsCreate: API.OperationMethod<
-  SubdomainsCreateRequest,
-  SubdomainsCreateResponse,
-  SubdomainsCreateError,
+export const createSubdomain: API.OperationMethod<
+  CreateSubdomainRequest,
+  CreateSubdomainResponse,
+  CreateSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubdomainsCreateRequest,
-  output: SubdomainsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateSubdomainRequest,
+  output: CreateSubdomainResponse,
+  errors: [
+    Forbidden,
+    SendingSubdomainAlreadyExists,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SubdomainsDeleteError = CloudflareOpError;
+export type DeleteSubdomainError =
+  | Forbidden
+  | SendingSubdomainNotFound
+  | CloudflareOpError;
 /** Disables sending on a subdomain and removes its DNS records. If routing is still active on the subdomain, only sending is disabled. */
-export const subdomainsDelete: API.OperationMethod<
-  SubdomainsDeleteRequest,
-  SubdomainsDeleteResponse,
-  SubdomainsDeleteError,
+export const deleteSubdomain: API.OperationMethod<
+  DeleteSubdomainRequest,
+  DeleteSubdomainResponse,
+  DeleteSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubdomainsDeleteRequest,
-  output: SubdomainsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteSubdomainRequest,
+  output: DeleteSubdomainResponse,
+  errors: [
+    Forbidden,
+    SendingSubdomainNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SubdomainsDnsGetError = CloudflareOpError;
-/** Returns the expected DNS records for a sending subdomain. */
-export const subdomainsDnsGet: API.OperationMethod<
-  SubdomainsDnsGetRequest,
-  SubdomainsDnsGetResponse,
-  SubdomainsDnsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SubdomainsDnsGetRequest,
-  output: SubdomainsDnsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SubdomainsGetError = CloudflareOpError;
+export type GetSubdomainError =
+  | Forbidden
+  | SendingSubdomainNotFound
+  | CloudflareOpError;
 /** Gets information for a specific sending subdomain. */
-export const subdomainsGet: API.OperationMethod<
-  SubdomainsGetRequest,
-  SubdomainsGetResponse,
-  SubdomainsGetError,
+export const getSubdomain: API.OperationMethod<
+  GetSubdomainRequest,
+  GetSubdomainResponse,
+  GetSubdomainError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubdomainsGetRequest,
-  output: SubdomainsGetResponse,
+  input: GetSubdomainRequest,
+  output: GetSubdomainResponse,
+  errors: [
+    Forbidden,
+    SendingSubdomainNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSubdomainDnsError = CloudflareOpError;
+/** Returns the expected DNS records for a sending subdomain. */
+export const getSubdomainDns: API.OperationMethod<
+  GetSubdomainDnsRequest,
+  GetSubdomainDnsResponse,
+  GetSubdomainDnsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSubdomainDnsRequest,
+  output: GetSubdomainDnsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SubdomainsListError = CloudflareOpError;
+export type ListSubdomainsError = Forbidden | CloudflareOpError;
 /** Lists all sending-enabled subdomains for the zone. */
-export const subdomainsList: API.OperationMethod<
-  SubdomainsListRequest,
-  SubdomainsListResponse,
-  SubdomainsListError,
+export const listSubdomains: API.OperationMethod<
+  ListSubdomainsRequest,
+  ListSubdomainsResponse,
+  ListSubdomainsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SubdomainsListRequest,
-  output: SubdomainsListResponse,
+  input: ListSubdomainsRequest,
+  output: ListSubdomainsResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type SendEmailSendingError = CloudflareOpError;
+/** Send an email */
+export const sendEmailSending: API.OperationMethod<
+  SendEmailSendingRequest,
+  SendEmailSendingResponse,
+  SendEmailSendingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SendEmailSendingRequest,
+  output: SendEmailSendingResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type SendRawEmailSendingError = CloudflareOpError;
+/** Send a raw MIME email */
+export const sendRawEmailSending: API.OperationMethod<
+  SendRawEmailSendingRequest,
+  SendRawEmailSendingResponse,
+  SendRawEmailSendingError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: SendRawEmailSendingRequest,
+  output: SendRawEmailSendingResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

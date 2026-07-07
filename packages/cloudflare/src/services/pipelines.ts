@@ -9,6 +9,126 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class InvalidSinkConfig extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidSinkConfig>()("InvalidSinkConfig", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1012 }],
+) {}
+
+export class InvalidSinkId extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidSinkId>()("InvalidSinkId", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 2 }],
+) {}
+
+export class InvalidSql extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidSql>()("InvalidSql", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1014 }],
+) {}
+
+export class InvalidStreamId extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidStreamId>()("InvalidStreamId", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 2 }],
+) {}
+
+export class InvalidStreamName extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidStreamName>()("InvalidStreamName", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 2 }],
+) {}
+
+export class PipelineAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PipelineAlreadyExists>()("PipelineAlreadyExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1003 }],
+) {}
+
+export class PipelineNotExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PipelineNotExists>()("PipelineNotExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1000 }],
+) {}
+
+export class SinkAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SinkAlreadyExists>()("SinkAlreadyExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1003 }],
+) {}
+
+export class SinkAuthFailed extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SinkAuthFailed>()("SinkAuthFailed", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1012, message: { includes: "could not authenticate" } }],
+) {}
+
+export class SinkInUse extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SinkInUse>()("SinkInUse", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 422, message: { includes: "in use" } }],
+) {}
+
+export class SinkNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SinkNotFound>()("SinkNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1015 }],
+) {}
+
+export class StreamAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<StreamAlreadyExists>()("StreamAlreadyExists", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1003 }],
+) {}
+
+export class StreamInUse extends T.applyErrorMatchers(
+  S.TaggedErrorClass<StreamInUse>()("StreamInUse", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 422, message: { includes: "in use" } }],
+) {}
+
+export class StreamNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<StreamNotFound>()("StreamNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1016 }],
+) {}
+
+export class TableNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<TableNotFound>()("TableNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1014, message: { includes: "not found" } }],
+) {}
+
 export interface CreateRequestDestinationBatch {
   /** Specifies rough maximum size of files. */
   maxBytes?: number;
@@ -144,7 +264,7 @@ export const CreateRequestSourceList = /*@__PURE__*/ S.Array(
   CreateRequestSourceItem,
 ) as any as S.Schema<CreateRequestSourceList>;
 
-export interface CreateRequest {
+export interface CreatePipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   destination: CreateRequestDestination;
@@ -152,7 +272,7 @@ export interface CreateRequest {
   name: string;
   source: CreateRequestSourceList;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     destination: CreateRequestDestination,
@@ -165,7 +285,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreatePipelineRequest",
+}) as any as S.Schema<CreatePipelineRequest>;
 
 export interface CreateResponseDestinationBatch {
   /** Specifies rough maximum size of files. */
@@ -284,7 +406,7 @@ export const CreateResponseSourceList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateResponseSourceList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
+export interface CreatePipelineResponse {
   /** Specifies the pipeline identifier. */
   id: string;
   destination: CreateResponseDestination;
@@ -296,7 +418,7 @@ export interface CreateResponse {
   /** Indicates the version number of last saved configuration. */
   version: number;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreatePipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     destination: CreateResponseDestination,
@@ -305,9 +427,719 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
     source: CreateResponseSourceList,
     version: S.Number,
   }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+).annotate({
+  identifier: "CreatePipelineResponse",
+}) as any as S.Schema<CreatePipelineResponse>;
 
-export interface CreateV1Request {
+export type SinksCreateRequestType = "r2" | "r2_data_catalog" | (string & {});
+export const SinksCreateRequestType = /*@__PURE__*/ S.String;
+
+export interface SinksCreateRequestConfig {
+  CloudflarePipelinesR2TableObjectAccountIdBucketCredentials5More__: unknown;
+  /** R2 Data Catalog Sink */
+  CloudflarePipelinesR2DataCatalogTableObjectTokenAccountIdBucket3More__: unknown;
+}
+export const SinksCreateRequestConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CloudflarePipelinesR2TableObjectAccountIdBucketCredentials5More__:
+      S.Unknown.pipe(
+        T.Body(
+          "CloudflarePipelinesR2Table object { account_id, bucket, credentials, 5 more }",
+        ),
+      ),
+    CloudflarePipelinesR2DataCatalogTableObjectTokenAccountIdBucket3More__:
+      S.Unknown.pipe(
+        T.Body(
+          "CloudflarePipelinesR2DataCatalogTable object { token, account_id, bucket, 3 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "SinksCreateRequestConfig",
+}) as any as S.Schema<SinksCreateRequestConfig>;
+
+export interface SinksCreateRequestFormat {
+  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
+  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
+}
+export const SinksCreateRequestFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
+      T.Body(
+        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
+      ),
+    ),
+    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
+      T.Body("Parquet object { type, compression, row_group_bytes }"),
+    ),
+  }),
+).annotate({
+  identifier: "SinksCreateRequestFormat",
+}) as any as S.Schema<SinksCreateRequestFormat>;
+
+export interface SinksCreateRequestSchemaFieldsItem {
+  Int32ObjectTypeMetadataKeyName2More__: unknown;
+  Int64ObjectTypeMetadataKeyName2More__: unknown;
+  Float32ObjectTypeMetadataKeyName2More__: unknown;
+  Float64ObjectTypeMetadataKeyName2More__: unknown;
+  BoolObjectTypeMetadataKeyName2More__: unknown;
+  StringObjectTypeMetadataKeyName2More__: unknown;
+  BinaryObjectTypeMetadataKeyName2More__: unknown;
+  TimestampObjectTypeMetadataKeyName3More__: unknown;
+  JsonObjectTypeMetadataKeyName2More__: unknown;
+  Struct: unknown;
+  List: unknown;
+}
+export const SinksCreateRequestSchemaFieldsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Int32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Int32 object { type, metadata_key, name, 2 more }"),
+    ),
+    Int64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Int64 object { type, metadata_key, name, 2 more }"),
+    ),
+    Float32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Float32 object { type, metadata_key, name, 2 more }"),
+    ),
+    Float64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Float64 object { type, metadata_key, name, 2 more }"),
+    ),
+    BoolObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Bool object { type, metadata_key, name, 2 more }"),
+    ),
+    StringObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("String object { type, metadata_key, name, 2 more }"),
+    ),
+    BinaryObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Binary object { type, metadata_key, name, 2 more }"),
+    ),
+    TimestampObjectTypeMetadataKeyName3More__: S.Unknown.pipe(
+      T.Body("Timestamp object { type, metadata_key, name, 3 more }"),
+    ),
+    JsonObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Json object { type, metadata_key, name, 2 more }"),
+    ),
+    Struct: S.Unknown,
+    List: S.Unknown,
+  }),
+).annotate({
+  identifier: "SinksCreateRequestSchemaFieldsItem",
+}) as any as S.Schema<SinksCreateRequestSchemaFieldsItem>;
+
+export type SinksCreateRequestSchemaFieldsList =
+  SinksCreateRequestSchemaFieldsItem[];
+export const SinksCreateRequestSchemaFieldsList = /*@__PURE__*/ S.Array(
+  SinksCreateRequestSchemaFieldsItem,
+) as any as S.Schema<SinksCreateRequestSchemaFieldsList>;
+
+export interface SinksCreateRequestSchemaFormat {
+  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
+  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
+}
+export const SinksCreateRequestSchemaFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
+      T.Body(
+        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
+      ),
+    ),
+    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
+      T.Body("Parquet object { type, compression, row_group_bytes }"),
+    ),
+  }),
+).annotate({
+  identifier: "SinksCreateRequestSchemaFormat",
+}) as any as S.Schema<SinksCreateRequestSchemaFormat>;
+
+export interface SinksCreateRequestSchema {
+  fields?: SinksCreateRequestSchemaFieldsList;
+  format?: SinksCreateRequestSchemaFormat;
+  inferred?: boolean;
+}
+export const SinksCreateRequestSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fields: S.optional(SinksCreateRequestSchemaFieldsList),
+    format: S.optional(SinksCreateRequestSchemaFormat),
+    inferred: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SinksCreateRequestSchema",
+}) as any as S.Schema<SinksCreateRequestSchema>;
+
+export interface CreateSinkRequest {
+  /** Specifies the public ID of the account. */
+  accountId: string;
+  /** Defines the name of the Sink. */
+  name: string;
+  /** Specifies the type of sink. */
+  type: SinksCreateRequestType;
+  /** Defines the configuration of the R2 Sink. */
+  config?: SinksCreateRequestConfig;
+  format?: SinksCreateRequestFormat;
+  schema?: SinksCreateRequestSchema;
+}
+export const CreateSinkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.String,
+    type: SinksCreateRequestType,
+    config: S.optional(SinksCreateRequestConfig),
+    format: S.optional(SinksCreateRequestFormat),
+    schema: S.optional(SinksCreateRequestSchema),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/pipelines/v1/sinks",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateSinkRequest",
+}) as any as S.Schema<CreateSinkRequest>;
+
+export type SinksCreateResponseType = "r2" | "r2_data_catalog" | (string & {});
+export const SinksCreateResponseType = /*@__PURE__*/ S.String;
+
+export interface SinksCreateResponseConfig {
+  CloudflarePipelinesR2TableObjectAccountIdBucketCredentials5More__: unknown;
+  /** R2 Data Catalog Sink */
+  CloudflarePipelinesR2DataCatalogTableObjectTokenAccountIdBucket3More__: unknown;
+}
+export const SinksCreateResponseConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CloudflarePipelinesR2TableObjectAccountIdBucketCredentials5More__:
+      S.Unknown.pipe(
+        T.Body(
+          "CloudflarePipelinesR2Table object { account_id, bucket, credentials, 5 more }",
+        ),
+      ),
+    CloudflarePipelinesR2DataCatalogTableObjectTokenAccountIdBucket3More__:
+      S.Unknown.pipe(
+        T.Body(
+          "CloudflarePipelinesR2DataCatalogTable object { token, account_id, bucket, 3 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "SinksCreateResponseConfig",
+}) as any as S.Schema<SinksCreateResponseConfig>;
+
+export interface SinksCreateResponseFormat {
+  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
+  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
+}
+export const SinksCreateResponseFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
+      T.Body(
+        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
+      ),
+    ),
+    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
+      T.Body("Parquet object { type, compression, row_group_bytes }"),
+    ),
+  }),
+).annotate({
+  identifier: "SinksCreateResponseFormat",
+}) as any as S.Schema<SinksCreateResponseFormat>;
+
+export interface SinksCreateResponseSchemaFieldsItem {
+  Int32ObjectTypeMetadataKeyName2More__: unknown;
+  Int64ObjectTypeMetadataKeyName2More__: unknown;
+  Float32ObjectTypeMetadataKeyName2More__: unknown;
+  Float64ObjectTypeMetadataKeyName2More__: unknown;
+  BoolObjectTypeMetadataKeyName2More__: unknown;
+  StringObjectTypeMetadataKeyName2More__: unknown;
+  BinaryObjectTypeMetadataKeyName2More__: unknown;
+  TimestampObjectTypeMetadataKeyName3More__: unknown;
+  JsonObjectTypeMetadataKeyName2More__: unknown;
+  Struct: unknown;
+  List: unknown;
+}
+export const SinksCreateResponseSchemaFieldsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Int32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Int32 object { type, metadata_key, name, 2 more }"),
+    ),
+    Int64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Int64 object { type, metadata_key, name, 2 more }"),
+    ),
+    Float32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Float32 object { type, metadata_key, name, 2 more }"),
+    ),
+    Float64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Float64 object { type, metadata_key, name, 2 more }"),
+    ),
+    BoolObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Bool object { type, metadata_key, name, 2 more }"),
+    ),
+    StringObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("String object { type, metadata_key, name, 2 more }"),
+    ),
+    BinaryObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Binary object { type, metadata_key, name, 2 more }"),
+    ),
+    TimestampObjectTypeMetadataKeyName3More__: S.Unknown.pipe(
+      T.Body("Timestamp object { type, metadata_key, name, 3 more }"),
+    ),
+    JsonObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Json object { type, metadata_key, name, 2 more }"),
+    ),
+    Struct: S.Unknown,
+    List: S.Unknown,
+  }),
+).annotate({
+  identifier: "SinksCreateResponseSchemaFieldsItem",
+}) as any as S.Schema<SinksCreateResponseSchemaFieldsItem>;
+
+export type SinksCreateResponseSchemaFieldsList =
+  SinksCreateResponseSchemaFieldsItem[];
+export const SinksCreateResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
+  SinksCreateResponseSchemaFieldsItem,
+) as any as S.Schema<SinksCreateResponseSchemaFieldsList>;
+
+export interface SinksCreateResponseSchemaFormat {
+  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
+  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
+}
+export const SinksCreateResponseSchemaFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
+      T.Body(
+        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
+      ),
+    ),
+    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
+      T.Body("Parquet object { type, compression, row_group_bytes }"),
+    ),
+  }),
+).annotate({
+  identifier: "SinksCreateResponseSchemaFormat",
+}) as any as S.Schema<SinksCreateResponseSchemaFormat>;
+
+export interface SinksCreateResponseSchema {
+  fields?: SinksCreateResponseSchemaFieldsList;
+  format?: SinksCreateResponseSchemaFormat;
+  inferred?: boolean;
+}
+export const SinksCreateResponseSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fields: S.optional(SinksCreateResponseSchemaFieldsList),
+    format: S.optional(SinksCreateResponseSchemaFormat),
+    inferred: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SinksCreateResponseSchema",
+}) as any as S.Schema<SinksCreateResponseSchema>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateSinkResponse {
+  /** Indicates a unique identifier for this sink. */
+  id: string;
+  createdAt: string;
+  modifiedAt: string;
+  /** Defines the name of the Sink. */
+  name: string;
+  /** Specifies the type of sink. */
+  type: SinksCreateResponseType;
+  /** R2 Data Catalog Sink */
+  config?: SinksCreateResponseConfig;
+  format?: SinksCreateResponseFormat;
+  schema?: SinksCreateResponseSchema;
+}
+export const CreateSinkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    type: SinksCreateResponseType,
+    config: S.optional(SinksCreateResponseConfig),
+    format: S.optional(SinksCreateResponseFormat),
+    schema: S.optional(SinksCreateResponseSchema),
+  }),
+).annotate({
+  identifier: "CreateSinkResponse",
+}) as any as S.Schema<CreateSinkResponse>;
+
+export interface StreamsCreateRequestFormat {
+  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
+  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
+}
+export const StreamsCreateRequestFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
+      T.Body(
+        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
+      ),
+    ),
+    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
+      T.Body("Parquet object { type, compression, row_group_bytes }"),
+    ),
+  }),
+).annotate({
+  identifier: "StreamsCreateRequestFormat",
+}) as any as S.Schema<StreamsCreateRequestFormat>;
+
+export type StreamsCreateRequestHttpCorsOriginsList = string[];
+export const StreamsCreateRequestHttpCorsOriginsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StreamsCreateRequestHttpCorsOriginsList>;
+
+export interface StreamsCreateRequestHttpCors {
+  origins?: StreamsCreateRequestHttpCorsOriginsList;
+}
+export const StreamsCreateRequestHttpCors = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    origins: S.optional(StreamsCreateRequestHttpCorsOriginsList),
+  }),
+).annotate({
+  identifier: "StreamsCreateRequestHttpCors",
+}) as any as S.Schema<StreamsCreateRequestHttpCors>;
+
+export interface StreamsCreateRequestHttp {
+  /** Indicates that authentication is required for the HTTP endpoint. */
+  authentication: boolean;
+  /** Indicates that the HTTP endpoint is enabled. */
+  enabled: boolean;
+  /** Specifies the CORS options for the HTTP endpoint. */
+  cors?: StreamsCreateRequestHttpCors;
+}
+export const StreamsCreateRequestHttp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authentication: S.Boolean,
+    enabled: S.Boolean,
+    cors: S.optional(StreamsCreateRequestHttpCors),
+  }),
+).annotate({
+  identifier: "StreamsCreateRequestHttp",
+}) as any as S.Schema<StreamsCreateRequestHttp>;
+
+export interface StreamsCreateRequestSchemaFieldsItem {
+  Int32ObjectTypeMetadataKeyName2More__: unknown;
+  Int64ObjectTypeMetadataKeyName2More__: unknown;
+  Float32ObjectTypeMetadataKeyName2More__: unknown;
+  Float64ObjectTypeMetadataKeyName2More__: unknown;
+  BoolObjectTypeMetadataKeyName2More__: unknown;
+  StringObjectTypeMetadataKeyName2More__: unknown;
+  BinaryObjectTypeMetadataKeyName2More__: unknown;
+  TimestampObjectTypeMetadataKeyName3More__: unknown;
+  JsonObjectTypeMetadataKeyName2More__: unknown;
+  Struct: unknown;
+  List: unknown;
+}
+export const StreamsCreateRequestSchemaFieldsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Int32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Int32 object { type, metadata_key, name, 2 more }"),
+      ),
+      Int64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Int64 object { type, metadata_key, name, 2 more }"),
+      ),
+      Float32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Float32 object { type, metadata_key, name, 2 more }"),
+      ),
+      Float64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Float64 object { type, metadata_key, name, 2 more }"),
+      ),
+      BoolObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Bool object { type, metadata_key, name, 2 more }"),
+      ),
+      StringObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("String object { type, metadata_key, name, 2 more }"),
+      ),
+      BinaryObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Binary object { type, metadata_key, name, 2 more }"),
+      ),
+      TimestampObjectTypeMetadataKeyName3More__: S.Unknown.pipe(
+        T.Body("Timestamp object { type, metadata_key, name, 3 more }"),
+      ),
+      JsonObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Json object { type, metadata_key, name, 2 more }"),
+      ),
+      Struct: S.Unknown,
+      List: S.Unknown,
+    }),
+).annotate({
+  identifier: "StreamsCreateRequestSchemaFieldsItem",
+}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItem>;
+
+export type StreamsCreateRequestSchemaFieldsList =
+  StreamsCreateRequestSchemaFieldsItem[];
+export const StreamsCreateRequestSchemaFieldsList = /*@__PURE__*/ S.Array(
+  StreamsCreateRequestSchemaFieldsItem,
+) as any as S.Schema<StreamsCreateRequestSchemaFieldsList>;
+
+export interface StreamsCreateRequestSchemaFormat {
+  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
+  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
+}
+export const StreamsCreateRequestSchemaFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
+      T.Body(
+        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
+      ),
+    ),
+    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
+      T.Body("Parquet object { type, compression, row_group_bytes }"),
+    ),
+  }),
+).annotate({
+  identifier: "StreamsCreateRequestSchemaFormat",
+}) as any as S.Schema<StreamsCreateRequestSchemaFormat>;
+
+export interface StreamsCreateRequestSchema {
+  fields?: StreamsCreateRequestSchemaFieldsList;
+  format?: StreamsCreateRequestSchemaFormat;
+  inferred?: boolean;
+}
+export const StreamsCreateRequestSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fields: S.optional(StreamsCreateRequestSchemaFieldsList),
+    format: S.optional(StreamsCreateRequestSchemaFormat),
+    inferred: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "StreamsCreateRequestSchema",
+}) as any as S.Schema<StreamsCreateRequestSchema>;
+
+export interface StreamsCreateRequestWorkerBinding {
+  /** Indicates that the worker binding is enabled. */
+  enabled: boolean;
+}
+export const StreamsCreateRequestWorkerBinding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+  }),
+).annotate({
+  identifier: "StreamsCreateRequestWorkerBinding",
+}) as any as S.Schema<StreamsCreateRequestWorkerBinding>;
+
+export interface CreateStreamRequest {
+  /** Specifies the public ID of the account. */
+  accountId: string;
+  /** Specifies the name of the Stream. */
+  name: string;
+  format?: StreamsCreateRequestFormat;
+  http?: StreamsCreateRequestHttp;
+  schema?: StreamsCreateRequestSchema;
+  workerBinding?: StreamsCreateRequestWorkerBinding;
+}
+export const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.String,
+    format: S.optional(StreamsCreateRequestFormat),
+    http: S.optional(StreamsCreateRequestHttp),
+    schema: S.optional(StreamsCreateRequestSchema),
+    workerBinding: S.optional(
+      StreamsCreateRequestWorkerBinding.pipe(T.Body("worker_binding")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/pipelines/v1/streams",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateStreamRequest",
+}) as any as S.Schema<CreateStreamRequest>;
+
+export type StreamsCreateResponseHttpCorsOriginsList = string[];
+export const StreamsCreateResponseHttpCorsOriginsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StreamsCreateResponseHttpCorsOriginsList>;
+
+export interface StreamsCreateResponseHttpCors {
+  origins?: StreamsCreateResponseHttpCorsOriginsList;
+}
+export const StreamsCreateResponseHttpCors = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    origins: S.optional(StreamsCreateResponseHttpCorsOriginsList),
+  }),
+).annotate({
+  identifier: "StreamsCreateResponseHttpCors",
+}) as any as S.Schema<StreamsCreateResponseHttpCors>;
+
+export interface StreamsCreateResponseHttp {
+  /** Indicates that authentication is required for the HTTP endpoint. */
+  authentication: boolean;
+  /** Indicates that the HTTP endpoint is enabled. */
+  enabled: boolean;
+  /** Specifies the CORS options for the HTTP endpoint. */
+  cors?: StreamsCreateResponseHttpCors;
+}
+export const StreamsCreateResponseHttp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authentication: S.Boolean,
+    enabled: S.Boolean,
+    cors: S.optional(StreamsCreateResponseHttpCors),
+  }),
+).annotate({
+  identifier: "StreamsCreateResponseHttp",
+}) as any as S.Schema<StreamsCreateResponseHttp>;
+
+export interface StreamsCreateResponseWorkerBinding {
+  /** Indicates that the worker binding is enabled. */
+  enabled: boolean;
+}
+export const StreamsCreateResponseWorkerBinding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+  }),
+).annotate({
+  identifier: "StreamsCreateResponseWorkerBinding",
+}) as any as S.Schema<StreamsCreateResponseWorkerBinding>;
+
+export interface StreamsCreateResponseFormat {
+  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
+  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
+}
+export const StreamsCreateResponseFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
+      T.Body(
+        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
+      ),
+    ),
+    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
+      T.Body("Parquet object { type, compression, row_group_bytes }"),
+    ),
+  }),
+).annotate({
+  identifier: "StreamsCreateResponseFormat",
+}) as any as S.Schema<StreamsCreateResponseFormat>;
+
+export interface StreamsCreateResponseSchemaFieldsItem {
+  Int32ObjectTypeMetadataKeyName2More__: unknown;
+  Int64ObjectTypeMetadataKeyName2More__: unknown;
+  Float32ObjectTypeMetadataKeyName2More__: unknown;
+  Float64ObjectTypeMetadataKeyName2More__: unknown;
+  BoolObjectTypeMetadataKeyName2More__: unknown;
+  StringObjectTypeMetadataKeyName2More__: unknown;
+  BinaryObjectTypeMetadataKeyName2More__: unknown;
+  TimestampObjectTypeMetadataKeyName3More__: unknown;
+  JsonObjectTypeMetadataKeyName2More__: unknown;
+  Struct: unknown;
+  List: unknown;
+}
+export const StreamsCreateResponseSchemaFieldsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Int32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Int32 object { type, metadata_key, name, 2 more }"),
+      ),
+      Int64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Int64 object { type, metadata_key, name, 2 more }"),
+      ),
+      Float32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Float32 object { type, metadata_key, name, 2 more }"),
+      ),
+      Float64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Float64 object { type, metadata_key, name, 2 more }"),
+      ),
+      BoolObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Bool object { type, metadata_key, name, 2 more }"),
+      ),
+      StringObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("String object { type, metadata_key, name, 2 more }"),
+      ),
+      BinaryObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Binary object { type, metadata_key, name, 2 more }"),
+      ),
+      TimestampObjectTypeMetadataKeyName3More__: S.Unknown.pipe(
+        T.Body("Timestamp object { type, metadata_key, name, 3 more }"),
+      ),
+      JsonObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+        T.Body("Json object { type, metadata_key, name, 2 more }"),
+      ),
+      Struct: S.Unknown,
+      List: S.Unknown,
+    }),
+).annotate({
+  identifier: "StreamsCreateResponseSchemaFieldsItem",
+}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItem>;
+
+export type StreamsCreateResponseSchemaFieldsList =
+  StreamsCreateResponseSchemaFieldsItem[];
+export const StreamsCreateResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
+  StreamsCreateResponseSchemaFieldsItem,
+) as any as S.Schema<StreamsCreateResponseSchemaFieldsList>;
+
+export interface StreamsCreateResponseSchemaFormat {
+  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
+  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
+}
+export const StreamsCreateResponseSchemaFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
+      T.Body(
+        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
+      ),
+    ),
+    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
+      T.Body("Parquet object { type, compression, row_group_bytes }"),
+    ),
+  }),
+).annotate({
+  identifier: "StreamsCreateResponseSchemaFormat",
+}) as any as S.Schema<StreamsCreateResponseSchemaFormat>;
+
+export interface StreamsCreateResponseSchema {
+  fields?: StreamsCreateResponseSchemaFieldsList;
+  format?: StreamsCreateResponseSchemaFormat;
+  inferred?: boolean;
+}
+export const StreamsCreateResponseSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fields: S.optional(StreamsCreateResponseSchemaFieldsList),
+    format: S.optional(StreamsCreateResponseSchemaFormat),
+    inferred: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "StreamsCreateResponseSchema",
+}) as any as S.Schema<StreamsCreateResponseSchema>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateStreamResponse {
+  /** Indicates a unique identifier for this stream. */
+  id: string;
+  createdAt: string;
+  http: StreamsCreateResponseHttp;
+  modifiedAt: string;
+  /** Indicates the name of the Stream. */
+  name: string;
+  /** Indicates the current version of this stream. */
+  version: number;
+  workerBinding: StreamsCreateResponseWorkerBinding;
+  /** Indicates the endpoint URL of this stream. */
+  endpoint?: string;
+  format?: StreamsCreateResponseFormat;
+  schema?: StreamsCreateResponseSchema;
+}
+export const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    http: StreamsCreateResponseHttp,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    version: S.Number,
+    workerBinding: StreamsCreateResponseWorkerBinding.pipe(
+      T.Body("worker_binding"),
+    ),
+    endpoint: S.optional(S.String),
+    format: S.optional(StreamsCreateResponseFormat),
+    schema: S.optional(StreamsCreateResponseSchema),
+  }),
+).annotate({
+  identifier: "CreateStreamResponse",
+}) as any as S.Schema<CreateStreamResponse>;
+
+export interface CreateV1PipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies the name of the Pipeline. */
@@ -315,7 +1147,7 @@ export interface CreateV1Request {
   /** Specifies SQL for the Pipeline processing flow. */
   sql: string;
 }
-export const CreateV1Request = /*@__PURE__*/ S.suspend(() =>
+export const CreateV1PipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.String,
@@ -328,11 +1160,11 @@ export const CreateV1Request = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CreateV1Request",
-}) as any as S.Schema<CreateV1Request>;
+  identifier: "CreateV1PipelineRequest",
+}) as any as S.Schema<CreateV1PipelineRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateV1Response {
+export interface CreateV1PipelineResponse {
   /** Indicates a unique identifier for this pipeline. */
   id: string;
   createdAt: string;
@@ -344,7 +1176,7 @@ export interface CreateV1Response {
   /** Indicates the current status of the Pipeline. */
   status: string;
 }
-export const CreateV1Response = /*@__PURE__*/ S.suspend(() =>
+export const CreateV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -354,16 +1186,16 @@ export const CreateV1Response = /*@__PURE__*/ S.suspend(() =>
     status: S.String,
   }),
 ).annotate({
-  identifier: "CreateV1Response",
-}) as any as S.Schema<CreateV1Response>;
+  identifier: "CreateV1PipelineResponse",
+}) as any as S.Schema<CreateV1PipelineResponse>;
 
-export interface DeleteRequest {
+export interface DeletePipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Defines the name of the pipeline. */
   pipelineName: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeletePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pipelineName: S.String.pipe(T.Label("pipeline_name")),
@@ -374,20 +1206,96 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeletePipelineRequest",
+}) as any as S.Schema<DeletePipelineRequest>;
 
-export interface DeleteResponse {}
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeletePipelineResponse {}
+export const DeletePipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+).annotate({
+  identifier: "DeletePipelineResponse",
+}) as any as S.Schema<DeletePipelineResponse>;
 
-export interface DeleteV1Request {
+export interface DeleteSinkRequest {
+  /** Specifies the public ID of the account. */
+  accountId: string;
+  /** Specifies the publid ID of the sink. */
+  sinkId: string;
+  /** Deprecated: Delete sink forcefully, including deleting any dependent pipelines. */
+  force?: string;
+}
+export const DeleteSinkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    sinkId: S.String.pipe(T.Label("sink_id")),
+    force: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/pipelines/v1/sinks/{sink_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSinkRequest",
+}) as any as S.Schema<DeleteSinkRequest>;
+
+export interface DeleteSinkResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const DeleteSinkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "DeleteSinkResponse",
+}) as any as S.Schema<DeleteSinkResponse>;
+
+export interface DeleteStreamRequest {
+  /** Specifies the public ID of the account. */
+  accountId: string;
+  /** Specifies the public ID of the stream. */
+  streamId: string;
+  /** Deprecated: Delete stream forcefully, including deleting any dependent pipelines. */
+  force?: string;
+}
+export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    streamId: S.String.pipe(T.Label("stream_id")),
+    force: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteStreamRequest",
+}) as any as S.Schema<DeleteStreamRequest>;
+
+export interface DeleteStreamResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const DeleteStreamResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "DeleteStreamResponse",
+}) as any as S.Schema<DeleteStreamResponse>;
+
+export interface DeleteV1PipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies the public ID of the pipeline. */
   pipelineId: string;
 }
-export const DeleteV1Request = /*@__PURE__*/ S.suspend(() =>
+export const DeleteV1PipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pipelineId: S.String.pipe(T.Label("pipeline_id")),
@@ -399,28 +1307,28 @@ export const DeleteV1Request = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DeleteV1Request",
-}) as any as S.Schema<DeleteV1Request>;
+  identifier: "DeleteV1PipelineRequest",
+}) as any as S.Schema<DeleteV1PipelineRequest>;
 
-export interface DeleteV1Response {
+export interface DeleteV1PipelineResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const DeleteV1Response = /*@__PURE__*/ S.suspend(() =>
+export const DeleteV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DeleteV1Response",
-}) as any as S.Schema<DeleteV1Response>;
+  identifier: "DeleteV1PipelineResponse",
+}) as any as S.Schema<DeleteV1PipelineResponse>;
 
-export interface GetRequest {
+export interface GetPipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Defines the name of the pipeline. */
   pipelineName: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pipelineName: S.String.pipe(T.Label("pipeline_name")),
@@ -431,7 +1339,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetPipelineRequest",
+}) as any as S.Schema<GetPipelineRequest>;
 
 export interface GetResponseDestinationBatch {
   /** Specifies rough maximum size of files. */
@@ -549,7 +1459,7 @@ export const GetResponseSourceList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponseSourceList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetPipelineResponse {
   /** Specifies the pipeline identifier. */
   id: string;
   destination: GetResponseDestination;
@@ -561,7 +1471,7 @@ export interface GetResponse {
   /** Indicates the version number of last saved configuration. */
   version: number;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetPipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     destination: GetResponseDestination,
@@ -570,15 +1480,413 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     source: GetResponseSourceList,
     version: S.Number,
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetPipelineResponse",
+}) as any as S.Schema<GetPipelineResponse>;
 
-export interface GetV1Request {
+export interface GetSinkRequest {
+  /** Specifies the public ID of the account. */
+  accountId: string;
+  /** Specifies the publid ID of the sink. */
+  sinkId: string;
+}
+export const GetSinkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    sinkId: S.String.pipe(T.Label("sink_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/pipelines/v1/sinks/{sink_id}",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "GetSinkRequest" }) as any as S.Schema<GetSinkRequest>;
+
+export type SinksGetResponseType = "r2" | "r2_data_catalog" | (string & {});
+export const SinksGetResponseType = /*@__PURE__*/ S.String;
+
+export interface SinksGetResponseConfig {
+  /** R2 Sink public configuration. */
+  CloudflarePipelinesR2TablePublicObjectAccountIdBucketFileNaming4More__: unknown;
+  /** R2 Data Catalog Sink public configuration. */
+  CloudflarePipelinesR2DataCatalogTablePublicObjectAccountIdBucketTableName2More__: unknown;
+}
+export const SinksGetResponseConfig = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    CloudflarePipelinesR2TablePublicObjectAccountIdBucketFileNaming4More__:
+      S.Unknown.pipe(
+        T.Body(
+          "CloudflarePipelinesR2TablePublic object { account_id, bucket, file_naming, 4 more }",
+        ),
+      ),
+    CloudflarePipelinesR2DataCatalogTablePublicObjectAccountIdBucketTableName2More__:
+      S.Unknown.pipe(
+        T.Body(
+          "CloudflarePipelinesR2DataCatalogTablePublic object { account_id, bucket, table_name, 2 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "SinksGetResponseConfig",
+}) as any as S.Schema<SinksGetResponseConfig>;
+
+export interface SinksGetResponseFormat {
+  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
+  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
+}
+export const SinksGetResponseFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
+      T.Body(
+        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
+      ),
+    ),
+    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
+      T.Body("Parquet object { type, compression, row_group_bytes }"),
+    ),
+  }),
+).annotate({
+  identifier: "SinksGetResponseFormat",
+}) as any as S.Schema<SinksGetResponseFormat>;
+
+export interface SinksGetResponseSchemaFieldsItem {
+  Int32ObjectTypeMetadataKeyName2More__: unknown;
+  Int64ObjectTypeMetadataKeyName2More__: unknown;
+  Float32ObjectTypeMetadataKeyName2More__: unknown;
+  Float64ObjectTypeMetadataKeyName2More__: unknown;
+  BoolObjectTypeMetadataKeyName2More__: unknown;
+  StringObjectTypeMetadataKeyName2More__: unknown;
+  BinaryObjectTypeMetadataKeyName2More__: unknown;
+  TimestampObjectTypeMetadataKeyName3More__: unknown;
+  JsonObjectTypeMetadataKeyName2More__: unknown;
+  Struct: unknown;
+  List: unknown;
+}
+export const SinksGetResponseSchemaFieldsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Int32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Int32 object { type, metadata_key, name, 2 more }"),
+    ),
+    Int64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Int64 object { type, metadata_key, name, 2 more }"),
+    ),
+    Float32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Float32 object { type, metadata_key, name, 2 more }"),
+    ),
+    Float64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Float64 object { type, metadata_key, name, 2 more }"),
+    ),
+    BoolObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Bool object { type, metadata_key, name, 2 more }"),
+    ),
+    StringObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("String object { type, metadata_key, name, 2 more }"),
+    ),
+    BinaryObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Binary object { type, metadata_key, name, 2 more }"),
+    ),
+    TimestampObjectTypeMetadataKeyName3More__: S.Unknown.pipe(
+      T.Body("Timestamp object { type, metadata_key, name, 3 more }"),
+    ),
+    JsonObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Json object { type, metadata_key, name, 2 more }"),
+    ),
+    Struct: S.Unknown,
+    List: S.Unknown,
+  }),
+).annotate({
+  identifier: "SinksGetResponseSchemaFieldsItem",
+}) as any as S.Schema<SinksGetResponseSchemaFieldsItem>;
+
+export type SinksGetResponseSchemaFieldsList =
+  SinksGetResponseSchemaFieldsItem[];
+export const SinksGetResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
+  SinksGetResponseSchemaFieldsItem,
+) as any as S.Schema<SinksGetResponseSchemaFieldsList>;
+
+export interface SinksGetResponseSchemaFormat {
+  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
+  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
+}
+export const SinksGetResponseSchemaFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
+      T.Body(
+        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
+      ),
+    ),
+    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
+      T.Body("Parquet object { type, compression, row_group_bytes }"),
+    ),
+  }),
+).annotate({
+  identifier: "SinksGetResponseSchemaFormat",
+}) as any as S.Schema<SinksGetResponseSchemaFormat>;
+
+export interface SinksGetResponseSchema {
+  fields?: SinksGetResponseSchemaFieldsList;
+  format?: SinksGetResponseSchemaFormat;
+  inferred?: boolean;
+}
+export const SinksGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fields: S.optional(SinksGetResponseSchemaFieldsList),
+    format: S.optional(SinksGetResponseSchemaFormat),
+    inferred: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "SinksGetResponseSchema",
+}) as any as S.Schema<SinksGetResponseSchema>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSinkResponse {
+  /** Indicates a unique identifier for this sink. */
+  id: string;
+  createdAt: string;
+  modifiedAt: string;
+  /** Defines the name of the Sink. */
+  name: string;
+  /** Specifies the type of sink. */
+  type: SinksGetResponseType;
+  /** Defines the configuration of the R2 Sink. */
+  config?: SinksGetResponseConfig;
+  format?: SinksGetResponseFormat;
+  schema?: SinksGetResponseSchema;
+}
+export const GetSinkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    type: SinksGetResponseType,
+    config: S.optional(SinksGetResponseConfig),
+    format: S.optional(SinksGetResponseFormat),
+    schema: S.optional(SinksGetResponseSchema),
+  }),
+).annotate({
+  identifier: "GetSinkResponse",
+}) as any as S.Schema<GetSinkResponse>;
+
+export interface GetStreamRequest {
+  /** Specifies the public ID of the account. */
+  accountId: string;
+  /** Specifies the public ID of the stream. */
+  streamId: string;
+}
+export const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    streamId: S.String.pipe(T.Label("stream_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetStreamRequest",
+}) as any as S.Schema<GetStreamRequest>;
+
+export type StreamsGetResponseHttpCorsOriginsList = string[];
+export const StreamsGetResponseHttpCorsOriginsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StreamsGetResponseHttpCorsOriginsList>;
+
+export interface StreamsGetResponseHttpCors {
+  origins?: StreamsGetResponseHttpCorsOriginsList;
+}
+export const StreamsGetResponseHttpCors = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    origins: S.optional(StreamsGetResponseHttpCorsOriginsList),
+  }),
+).annotate({
+  identifier: "StreamsGetResponseHttpCors",
+}) as any as S.Schema<StreamsGetResponseHttpCors>;
+
+export interface StreamsGetResponseHttp {
+  /** Indicates that authentication is required for the HTTP endpoint. */
+  authentication: boolean;
+  /** Indicates that the HTTP endpoint is enabled. */
+  enabled: boolean;
+  /** Specifies the CORS options for the HTTP endpoint. */
+  cors?: StreamsGetResponseHttpCors;
+}
+export const StreamsGetResponseHttp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    authentication: S.Boolean,
+    enabled: S.Boolean,
+    cors: S.optional(StreamsGetResponseHttpCors),
+  }),
+).annotate({
+  identifier: "StreamsGetResponseHttp",
+}) as any as S.Schema<StreamsGetResponseHttp>;
+
+export interface StreamsGetResponseWorkerBinding {
+  /** Indicates that the worker binding is enabled. */
+  enabled: boolean;
+}
+export const StreamsGetResponseWorkerBinding = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+  }),
+).annotate({
+  identifier: "StreamsGetResponseWorkerBinding",
+}) as any as S.Schema<StreamsGetResponseWorkerBinding>;
+
+export interface StreamsGetResponseFormat {
+  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
+  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
+}
+export const StreamsGetResponseFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
+      T.Body(
+        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
+      ),
+    ),
+    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
+      T.Body("Parquet object { type, compression, row_group_bytes }"),
+    ),
+  }),
+).annotate({
+  identifier: "StreamsGetResponseFormat",
+}) as any as S.Schema<StreamsGetResponseFormat>;
+
+export interface StreamsGetResponseSchemaFieldsItem {
+  Int32ObjectTypeMetadataKeyName2More__: unknown;
+  Int64ObjectTypeMetadataKeyName2More__: unknown;
+  Float32ObjectTypeMetadataKeyName2More__: unknown;
+  Float64ObjectTypeMetadataKeyName2More__: unknown;
+  BoolObjectTypeMetadataKeyName2More__: unknown;
+  StringObjectTypeMetadataKeyName2More__: unknown;
+  BinaryObjectTypeMetadataKeyName2More__: unknown;
+  TimestampObjectTypeMetadataKeyName3More__: unknown;
+  JsonObjectTypeMetadataKeyName2More__: unknown;
+  Struct: unknown;
+  List: unknown;
+}
+export const StreamsGetResponseSchemaFieldsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    Int32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Int32 object { type, metadata_key, name, 2 more }"),
+    ),
+    Int64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Int64 object { type, metadata_key, name, 2 more }"),
+    ),
+    Float32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Float32 object { type, metadata_key, name, 2 more }"),
+    ),
+    Float64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Float64 object { type, metadata_key, name, 2 more }"),
+    ),
+    BoolObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Bool object { type, metadata_key, name, 2 more }"),
+    ),
+    StringObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("String object { type, metadata_key, name, 2 more }"),
+    ),
+    BinaryObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Binary object { type, metadata_key, name, 2 more }"),
+    ),
+    TimestampObjectTypeMetadataKeyName3More__: S.Unknown.pipe(
+      T.Body("Timestamp object { type, metadata_key, name, 3 more }"),
+    ),
+    JsonObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
+      T.Body("Json object { type, metadata_key, name, 2 more }"),
+    ),
+    Struct: S.Unknown,
+    List: S.Unknown,
+  }),
+).annotate({
+  identifier: "StreamsGetResponseSchemaFieldsItem",
+}) as any as S.Schema<StreamsGetResponseSchemaFieldsItem>;
+
+export type StreamsGetResponseSchemaFieldsList =
+  StreamsGetResponseSchemaFieldsItem[];
+export const StreamsGetResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
+  StreamsGetResponseSchemaFieldsItem,
+) as any as S.Schema<StreamsGetResponseSchemaFieldsList>;
+
+export interface StreamsGetResponseSchemaFormat {
+  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
+  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
+}
+export const StreamsGetResponseSchemaFormat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
+      T.Body(
+        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
+      ),
+    ),
+    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
+      T.Body("Parquet object { type, compression, row_group_bytes }"),
+    ),
+  }),
+).annotate({
+  identifier: "StreamsGetResponseSchemaFormat",
+}) as any as S.Schema<StreamsGetResponseSchemaFormat>;
+
+export interface StreamsGetResponseSchema {
+  fields?: StreamsGetResponseSchemaFieldsList;
+  format?: StreamsGetResponseSchemaFormat;
+  inferred?: boolean;
+}
+export const StreamsGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    fields: S.optional(StreamsGetResponseSchemaFieldsList),
+    format: S.optional(StreamsGetResponseSchemaFormat),
+    inferred: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "StreamsGetResponseSchema",
+}) as any as S.Schema<StreamsGetResponseSchema>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetStreamResponse {
+  /** Indicates a unique identifier for this stream. */
+  id: string;
+  createdAt: string;
+  http: StreamsGetResponseHttp;
+  modifiedAt: string;
+  /** Indicates the name of the Stream. */
+  name: string;
+  /** Indicates the current version of this stream. */
+  version: number;
+  workerBinding: StreamsGetResponseWorkerBinding;
+  /** Indicates the endpoint URL of this stream. */
+  endpoint?: string;
+  format?: StreamsGetResponseFormat;
+  schema?: StreamsGetResponseSchema;
+}
+export const GetStreamResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    http: StreamsGetResponseHttp,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    version: S.Number,
+    workerBinding: StreamsGetResponseWorkerBinding.pipe(
+      T.Body("worker_binding"),
+    ),
+    endpoint: S.optional(S.String),
+    format: S.optional(StreamsGetResponseFormat),
+    schema: S.optional(StreamsGetResponseSchema),
+  }),
+).annotate({
+  identifier: "GetStreamResponse",
+}) as any as S.Schema<GetStreamResponse>;
+
+export interface GetV1PipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies the public ID of the pipeline. */
   pipelineId: string;
 }
-export const GetV1Request = /*@__PURE__*/ S.suspend(() =>
+export const GetV1PipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pipelineId: S.String.pipe(T.Label("pipeline_id")),
@@ -589,7 +1897,9 @@ export const GetV1Request = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetV1Request" }) as any as S.Schema<GetV1Request>;
+).annotate({
+  identifier: "GetV1PipelineRequest",
+}) as any as S.Schema<GetV1PipelineRequest>;
 
 export type GetV1ResponseTablesItemType = "stream" | "sink" | (string & {});
 export const GetV1ResponseTablesItemType = /*@__PURE__*/ S.String;
@@ -624,7 +1934,7 @@ export const GetV1ResponseTablesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetV1ResponseTablesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetV1Response {
+export interface GetV1PipelineResponse {
   /** Indicates a unique identifier for this pipeline. */
   id: string;
   createdAt: string;
@@ -640,7 +1950,7 @@ export interface GetV1Response {
   /** Indicates the reason for the failure of the Pipeline. */
   failureReason?: string;
 }
-export const GetV1Response = /*@__PURE__*/ S.suspend(() =>
+export const GetV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -651,9 +1961,11 @@ export const GetV1Response = /*@__PURE__*/ S.suspend(() =>
     tables: GetV1ResponseTablesList,
     failureReason: S.optional(S.String.pipe(T.Body("failure_reason"))),
   }),
-).annotate({ identifier: "GetV1Response" }) as any as S.Schema<GetV1Response>;
+).annotate({
+  identifier: "GetV1PipelineResponse",
+}) as any as S.Schema<GetV1PipelineResponse>;
 
-export interface ListRequest {
+export interface ListPipelinesRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies which page to retrieve. */
@@ -663,7 +1975,7 @@ export interface ListRequest {
   /** Specifies the prefix of pipeline name to search. */
   search?: string;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListPipelinesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     page: S.optional(S.String.pipe(T.Query())),
@@ -676,7 +1988,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListPipelinesRequest",
+}) as any as S.Schema<ListPipelinesRequest>;
 
 export interface ListResponseResultsItemDestinationBatch {
   /** Specifies rough maximum size of files. */
@@ -829,633 +2143,18 @@ export const ListResponseResultsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResponseResultsList>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ListResponse {
+export interface ListPipelinesResponse {
   results: ListResponseResultsList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListPipelinesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     results: ListResponseResultsList,
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
-
-export interface ListV1Request {
-  /** Specifies the public ID of the account. */
-  accountId: string;
-  /** Filters pipelines by name (case-insensitive substring). */
-  name?: string;
-  page?: number;
-  perPage?: number;
-}
-export const ListV1Request = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    name: S.optional(S.String.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pipelines/v1/pipelines",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "ListV1Request" }) as any as S.Schema<ListV1Request>;
-
-export interface ListV1ResultItem {
-  /** Indicates a unique identifier for this pipeline. */
-  id: string;
-  createdAt: string;
-  modifiedAt: string;
-  /** Indicates the name of the Pipeline. */
-  name: string;
-  /** Specifies SQL for the Pipeline processing flow. */
-  sql: string;
-  /** Indicates the current status of the Pipeline. */
-  status: string;
-}
-export const ListV1ResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    sql: S.String,
-    status: S.String,
-  }),
 ).annotate({
-  identifier: "ListV1ResultItem",
-}) as any as S.Schema<ListV1ResultItem>;
+  identifier: "ListPipelinesResponse",
+}) as any as S.Schema<ListPipelinesResponse>;
 
-export type ListV1ResultList = ListV1ResultItem[];
-export const ListV1ResultList = /*@__PURE__*/ S.Array(
-  ListV1ResultItem,
-) as any as S.Schema<ListV1ResultList>;
-
-export interface ListV1Response {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListV1ResultList;
-}
-export const ListV1Response = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ListV1ResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({ identifier: "ListV1Response" }) as any as S.Schema<ListV1Response>;
-
-export type SinksCreateRequestType = "r2" | "r2_data_catalog" | (string & {});
-export const SinksCreateRequestType = /*@__PURE__*/ S.String;
-
-export interface SinksCreateRequestConfig {
-  CloudflarePipelinesR2TableObjectAccountIdBucketCredentials5More__: unknown;
-  /** R2 Data Catalog Sink */
-  CloudflarePipelinesR2DataCatalogTableObjectTokenAccountIdBucket3More__: unknown;
-}
-export const SinksCreateRequestConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CloudflarePipelinesR2TableObjectAccountIdBucketCredentials5More__:
-      S.Unknown.pipe(
-        T.Body(
-          "CloudflarePipelinesR2Table object { account_id, bucket, credentials, 5 more }",
-        ),
-      ),
-    CloudflarePipelinesR2DataCatalogTableObjectTokenAccountIdBucket3More__:
-      S.Unknown.pipe(
-        T.Body(
-          "CloudflarePipelinesR2DataCatalogTable object { token, account_id, bucket, 3 more }",
-        ),
-      ),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestConfig",
-}) as any as S.Schema<SinksCreateRequestConfig>;
-
-export interface SinksCreateRequestFormat {
-  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
-  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
-}
-export const SinksCreateRequestFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
-      T.Body(
-        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
-      ),
-    ),
-    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
-      T.Body("Parquet object { type, compression, row_group_bytes }"),
-    ),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestFormat",
-}) as any as S.Schema<SinksCreateRequestFormat>;
-
-export interface SinksCreateRequestSchemaFieldsItem {
-  Int32ObjectTypeMetadataKeyName2More__: unknown;
-  Int64ObjectTypeMetadataKeyName2More__: unknown;
-  Float32ObjectTypeMetadataKeyName2More__: unknown;
-  Float64ObjectTypeMetadataKeyName2More__: unknown;
-  BoolObjectTypeMetadataKeyName2More__: unknown;
-  StringObjectTypeMetadataKeyName2More__: unknown;
-  BinaryObjectTypeMetadataKeyName2More__: unknown;
-  TimestampObjectTypeMetadataKeyName3More__: unknown;
-  JsonObjectTypeMetadataKeyName2More__: unknown;
-  Struct: unknown;
-  List: unknown;
-}
-export const SinksCreateRequestSchemaFieldsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Int32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Int32 object { type, metadata_key, name, 2 more }"),
-    ),
-    Int64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Int64 object { type, metadata_key, name, 2 more }"),
-    ),
-    Float32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Float32 object { type, metadata_key, name, 2 more }"),
-    ),
-    Float64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Float64 object { type, metadata_key, name, 2 more }"),
-    ),
-    BoolObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Bool object { type, metadata_key, name, 2 more }"),
-    ),
-    StringObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("String object { type, metadata_key, name, 2 more }"),
-    ),
-    BinaryObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Binary object { type, metadata_key, name, 2 more }"),
-    ),
-    TimestampObjectTypeMetadataKeyName3More__: S.Unknown.pipe(
-      T.Body("Timestamp object { type, metadata_key, name, 3 more }"),
-    ),
-    JsonObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Json object { type, metadata_key, name, 2 more }"),
-    ),
-    Struct: S.Unknown,
-    List: S.Unknown,
-  }),
-).annotate({
-  identifier: "SinksCreateRequestSchemaFieldsItem",
-}) as any as S.Schema<SinksCreateRequestSchemaFieldsItem>;
-
-export type SinksCreateRequestSchemaFieldsList =
-  SinksCreateRequestSchemaFieldsItem[];
-export const SinksCreateRequestSchemaFieldsList = /*@__PURE__*/ S.Array(
-  SinksCreateRequestSchemaFieldsItem,
-) as any as S.Schema<SinksCreateRequestSchemaFieldsList>;
-
-export interface SinksCreateRequestSchemaFormat {
-  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
-  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
-}
-export const SinksCreateRequestSchemaFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
-      T.Body(
-        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
-      ),
-    ),
-    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
-      T.Body("Parquet object { type, compression, row_group_bytes }"),
-    ),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestSchemaFormat",
-}) as any as S.Schema<SinksCreateRequestSchemaFormat>;
-
-export interface SinksCreateRequestSchema {
-  fields?: SinksCreateRequestSchemaFieldsList;
-  format?: SinksCreateRequestSchemaFormat;
-  inferred?: boolean;
-}
-export const SinksCreateRequestSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(SinksCreateRequestSchemaFieldsList),
-    format: S.optional(SinksCreateRequestSchemaFormat),
-    inferred: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SinksCreateRequestSchema",
-}) as any as S.Schema<SinksCreateRequestSchema>;
-
-export interface SinksCreateRequest {
-  /** Specifies the public ID of the account. */
-  accountId: string;
-  /** Defines the name of the Sink. */
-  name: string;
-  /** Specifies the type of sink. */
-  type: SinksCreateRequestType;
-  /** Defines the configuration of the R2 Sink. */
-  config?: SinksCreateRequestConfig;
-  format?: SinksCreateRequestFormat;
-  schema?: SinksCreateRequestSchema;
-}
-export const SinksCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    name: S.String,
-    type: SinksCreateRequestType,
-    config: S.optional(SinksCreateRequestConfig),
-    format: S.optional(SinksCreateRequestFormat),
-    schema: S.optional(SinksCreateRequestSchema),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pipelines/v1/sinks",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SinksCreateRequest",
-}) as any as S.Schema<SinksCreateRequest>;
-
-export type SinksCreateResponseType = "r2" | "r2_data_catalog" | (string & {});
-export const SinksCreateResponseType = /*@__PURE__*/ S.String;
-
-export interface SinksCreateResponseConfig {
-  CloudflarePipelinesR2TableObjectAccountIdBucketCredentials5More__: unknown;
-  /** R2 Data Catalog Sink */
-  CloudflarePipelinesR2DataCatalogTableObjectTokenAccountIdBucket3More__: unknown;
-}
-export const SinksCreateResponseConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CloudflarePipelinesR2TableObjectAccountIdBucketCredentials5More__:
-      S.Unknown.pipe(
-        T.Body(
-          "CloudflarePipelinesR2Table object { account_id, bucket, credentials, 5 more }",
-        ),
-      ),
-    CloudflarePipelinesR2DataCatalogTableObjectTokenAccountIdBucket3More__:
-      S.Unknown.pipe(
-        T.Body(
-          "CloudflarePipelinesR2DataCatalogTable object { token, account_id, bucket, 3 more }",
-        ),
-      ),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseConfig",
-}) as any as S.Schema<SinksCreateResponseConfig>;
-
-export interface SinksCreateResponseFormat {
-  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
-  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
-}
-export const SinksCreateResponseFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
-      T.Body(
-        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
-      ),
-    ),
-    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
-      T.Body("Parquet object { type, compression, row_group_bytes }"),
-    ),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseFormat",
-}) as any as S.Schema<SinksCreateResponseFormat>;
-
-export interface SinksCreateResponseSchemaFieldsItem {
-  Int32ObjectTypeMetadataKeyName2More__: unknown;
-  Int64ObjectTypeMetadataKeyName2More__: unknown;
-  Float32ObjectTypeMetadataKeyName2More__: unknown;
-  Float64ObjectTypeMetadataKeyName2More__: unknown;
-  BoolObjectTypeMetadataKeyName2More__: unknown;
-  StringObjectTypeMetadataKeyName2More__: unknown;
-  BinaryObjectTypeMetadataKeyName2More__: unknown;
-  TimestampObjectTypeMetadataKeyName3More__: unknown;
-  JsonObjectTypeMetadataKeyName2More__: unknown;
-  Struct: unknown;
-  List: unknown;
-}
-export const SinksCreateResponseSchemaFieldsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Int32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Int32 object { type, metadata_key, name, 2 more }"),
-    ),
-    Int64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Int64 object { type, metadata_key, name, 2 more }"),
-    ),
-    Float32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Float32 object { type, metadata_key, name, 2 more }"),
-    ),
-    Float64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Float64 object { type, metadata_key, name, 2 more }"),
-    ),
-    BoolObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Bool object { type, metadata_key, name, 2 more }"),
-    ),
-    StringObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("String object { type, metadata_key, name, 2 more }"),
-    ),
-    BinaryObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Binary object { type, metadata_key, name, 2 more }"),
-    ),
-    TimestampObjectTypeMetadataKeyName3More__: S.Unknown.pipe(
-      T.Body("Timestamp object { type, metadata_key, name, 3 more }"),
-    ),
-    JsonObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Json object { type, metadata_key, name, 2 more }"),
-    ),
-    Struct: S.Unknown,
-    List: S.Unknown,
-  }),
-).annotate({
-  identifier: "SinksCreateResponseSchemaFieldsItem",
-}) as any as S.Schema<SinksCreateResponseSchemaFieldsItem>;
-
-export type SinksCreateResponseSchemaFieldsList =
-  SinksCreateResponseSchemaFieldsItem[];
-export const SinksCreateResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
-  SinksCreateResponseSchemaFieldsItem,
-) as any as S.Schema<SinksCreateResponseSchemaFieldsList>;
-
-export interface SinksCreateResponseSchemaFormat {
-  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
-  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
-}
-export const SinksCreateResponseSchemaFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
-      T.Body(
-        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
-      ),
-    ),
-    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
-      T.Body("Parquet object { type, compression, row_group_bytes }"),
-    ),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseSchemaFormat",
-}) as any as S.Schema<SinksCreateResponseSchemaFormat>;
-
-export interface SinksCreateResponseSchema {
-  fields?: SinksCreateResponseSchemaFieldsList;
-  format?: SinksCreateResponseSchemaFormat;
-  inferred?: boolean;
-}
-export const SinksCreateResponseSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(SinksCreateResponseSchemaFieldsList),
-    format: S.optional(SinksCreateResponseSchemaFormat),
-    inferred: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SinksCreateResponseSchema",
-}) as any as S.Schema<SinksCreateResponseSchema>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SinksCreateResponse {
-  /** Indicates a unique identifier for this sink. */
-  id: string;
-  createdAt: string;
-  modifiedAt: string;
-  /** Defines the name of the Sink. */
-  name: string;
-  /** Specifies the type of sink. */
-  type: SinksCreateResponseType;
-  /** R2 Data Catalog Sink */
-  config?: SinksCreateResponseConfig;
-  format?: SinksCreateResponseFormat;
-  schema?: SinksCreateResponseSchema;
-}
-export const SinksCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    type: SinksCreateResponseType,
-    config: S.optional(SinksCreateResponseConfig),
-    format: S.optional(SinksCreateResponseFormat),
-    schema: S.optional(SinksCreateResponseSchema),
-  }),
-).annotate({
-  identifier: "SinksCreateResponse",
-}) as any as S.Schema<SinksCreateResponse>;
-
-export interface SinksDeleteRequest {
-  /** Specifies the public ID of the account. */
-  accountId: string;
-  /** Specifies the publid ID of the sink. */
-  sinkId: string;
-  /** Deprecated: Delete sink forcefully, including deleting any dependent pipelines. */
-  force?: string;
-}
-export const SinksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    sinkId: S.String.pipe(T.Label("sink_id")),
-    force: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/pipelines/v1/sinks/{sink_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SinksDeleteRequest",
-}) as any as S.Schema<SinksDeleteRequest>;
-
-export interface SinksDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const SinksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "SinksDeleteResponse",
-}) as any as S.Schema<SinksDeleteResponse>;
-
-export interface SinksGetRequest {
-  /** Specifies the public ID of the account. */
-  accountId: string;
-  /** Specifies the publid ID of the sink. */
-  sinkId: string;
-}
-export const SinksGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    sinkId: S.String.pipe(T.Label("sink_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pipelines/v1/sinks/{sink_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SinksGetRequest",
-}) as any as S.Schema<SinksGetRequest>;
-
-export type SinksGetResponseType = "r2" | "r2_data_catalog" | (string & {});
-export const SinksGetResponseType = /*@__PURE__*/ S.String;
-
-export interface SinksGetResponseConfig {
-  /** R2 Sink public configuration. */
-  CloudflarePipelinesR2TablePublicObjectAccountIdBucketFileNaming4More__: unknown;
-  /** R2 Data Catalog Sink public configuration. */
-  CloudflarePipelinesR2DataCatalogTablePublicObjectAccountIdBucketTableName2More__: unknown;
-}
-export const SinksGetResponseConfig = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    CloudflarePipelinesR2TablePublicObjectAccountIdBucketFileNaming4More__:
-      S.Unknown.pipe(
-        T.Body(
-          "CloudflarePipelinesR2TablePublic object { account_id, bucket, file_naming, 4 more }",
-        ),
-      ),
-    CloudflarePipelinesR2DataCatalogTablePublicObjectAccountIdBucketTableName2More__:
-      S.Unknown.pipe(
-        T.Body(
-          "CloudflarePipelinesR2DataCatalogTablePublic object { account_id, bucket, table_name, 2 more }",
-        ),
-      ),
-  }),
-).annotate({
-  identifier: "SinksGetResponseConfig",
-}) as any as S.Schema<SinksGetResponseConfig>;
-
-export interface SinksGetResponseFormat {
-  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
-  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
-}
-export const SinksGetResponseFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
-      T.Body(
-        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
-      ),
-    ),
-    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
-      T.Body("Parquet object { type, compression, row_group_bytes }"),
-    ),
-  }),
-).annotate({
-  identifier: "SinksGetResponseFormat",
-}) as any as S.Schema<SinksGetResponseFormat>;
-
-export interface SinksGetResponseSchemaFieldsItem {
-  Int32ObjectTypeMetadataKeyName2More__: unknown;
-  Int64ObjectTypeMetadataKeyName2More__: unknown;
-  Float32ObjectTypeMetadataKeyName2More__: unknown;
-  Float64ObjectTypeMetadataKeyName2More__: unknown;
-  BoolObjectTypeMetadataKeyName2More__: unknown;
-  StringObjectTypeMetadataKeyName2More__: unknown;
-  BinaryObjectTypeMetadataKeyName2More__: unknown;
-  TimestampObjectTypeMetadataKeyName3More__: unknown;
-  JsonObjectTypeMetadataKeyName2More__: unknown;
-  Struct: unknown;
-  List: unknown;
-}
-export const SinksGetResponseSchemaFieldsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Int32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Int32 object { type, metadata_key, name, 2 more }"),
-    ),
-    Int64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Int64 object { type, metadata_key, name, 2 more }"),
-    ),
-    Float32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Float32 object { type, metadata_key, name, 2 more }"),
-    ),
-    Float64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Float64 object { type, metadata_key, name, 2 more }"),
-    ),
-    BoolObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Bool object { type, metadata_key, name, 2 more }"),
-    ),
-    StringObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("String object { type, metadata_key, name, 2 more }"),
-    ),
-    BinaryObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Binary object { type, metadata_key, name, 2 more }"),
-    ),
-    TimestampObjectTypeMetadataKeyName3More__: S.Unknown.pipe(
-      T.Body("Timestamp object { type, metadata_key, name, 3 more }"),
-    ),
-    JsonObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Json object { type, metadata_key, name, 2 more }"),
-    ),
-    Struct: S.Unknown,
-    List: S.Unknown,
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFieldsItem",
-}) as any as S.Schema<SinksGetResponseSchemaFieldsItem>;
-
-export type SinksGetResponseSchemaFieldsList =
-  SinksGetResponseSchemaFieldsItem[];
-export const SinksGetResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
-  SinksGetResponseSchemaFieldsItem,
-) as any as S.Schema<SinksGetResponseSchemaFieldsList>;
-
-export interface SinksGetResponseSchemaFormat {
-  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
-  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
-}
-export const SinksGetResponseSchemaFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
-      T.Body(
-        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
-      ),
-    ),
-    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
-      T.Body("Parquet object { type, compression, row_group_bytes }"),
-    ),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchemaFormat",
-}) as any as S.Schema<SinksGetResponseSchemaFormat>;
-
-export interface SinksGetResponseSchema {
-  fields?: SinksGetResponseSchemaFieldsList;
-  format?: SinksGetResponseSchemaFormat;
-  inferred?: boolean;
-}
-export const SinksGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(SinksGetResponseSchemaFieldsList),
-    format: S.optional(SinksGetResponseSchemaFormat),
-    inferred: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SinksGetResponseSchema",
-}) as any as S.Schema<SinksGetResponseSchema>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SinksGetResponse {
-  /** Indicates a unique identifier for this sink. */
-  id: string;
-  createdAt: string;
-  modifiedAt: string;
-  /** Defines the name of the Sink. */
-  name: string;
-  /** Specifies the type of sink. */
-  type: SinksGetResponseType;
-  /** Defines the configuration of the R2 Sink. */
-  config?: SinksGetResponseConfig;
-  format?: SinksGetResponseFormat;
-  schema?: SinksGetResponseSchema;
-}
-export const SinksGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    type: SinksGetResponseType,
-    config: S.optional(SinksGetResponseConfig),
-    format: S.optional(SinksGetResponseFormat),
-    schema: S.optional(SinksGetResponseSchema),
-  }),
-).annotate({
-  identifier: "SinksGetResponse",
-}) as any as S.Schema<SinksGetResponse>;
-
-export interface SinksListRequest {
+export interface ListSinksRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Filters sinks by name (case-insensitive substring). */
@@ -1464,7 +2163,7 @@ export interface SinksListRequest {
   perPage?: number;
   pipelineId?: string;
 }
-export const SinksListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListSinksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String.pipe(T.Query())),
@@ -1479,8 +2178,8 @@ export const SinksListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SinksListRequest",
-}) as any as S.Schema<SinksListRequest>;
+  identifier: "ListSinksRequest",
+}) as any as S.Schema<ListSinksRequest>;
 
 export type SinksListResultItemType = "r2" | "r2_data_catalog" | (string & {});
 export const SinksListResultItemType = /*@__PURE__*/ S.String;
@@ -1652,643 +2351,19 @@ export const SinksListResultList = /*@__PURE__*/ S.Array(
   SinksListResultItem,
 ) as any as S.Schema<SinksListResultList>;
 
-export interface SinksListResponse {
+export interface ListSinksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SinksListResultList;
 }
-export const SinksListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListSinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SinksListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "SinksListResponse",
-}) as any as S.Schema<SinksListResponse>;
+  identifier: "ListSinksResponse",
+}) as any as S.Schema<ListSinksResponse>;
 
-export interface StreamsCreateRequestFormat {
-  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
-  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
-}
-export const StreamsCreateRequestFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
-      T.Body(
-        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
-      ),
-    ),
-    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
-      T.Body("Parquet object { type, compression, row_group_bytes }"),
-    ),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestFormat",
-}) as any as S.Schema<StreamsCreateRequestFormat>;
-
-export type StreamsCreateRequestHttpCorsOriginsList = string[];
-export const StreamsCreateRequestHttpCorsOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsCreateRequestHttpCorsOriginsList>;
-
-export interface StreamsCreateRequestHttpCors {
-  origins?: StreamsCreateRequestHttpCorsOriginsList;
-}
-export const StreamsCreateRequestHttpCors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origins: S.optional(StreamsCreateRequestHttpCorsOriginsList),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestHttpCors",
-}) as any as S.Schema<StreamsCreateRequestHttpCors>;
-
-export interface StreamsCreateRequestHttp {
-  /** Indicates that authentication is required for the HTTP endpoint. */
-  authentication: boolean;
-  /** Indicates that the HTTP endpoint is enabled. */
-  enabled: boolean;
-  /** Specifies the CORS options for the HTTP endpoint. */
-  cors?: StreamsCreateRequestHttpCors;
-}
-export const StreamsCreateRequestHttp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authentication: S.Boolean,
-    enabled: S.Boolean,
-    cors: S.optional(StreamsCreateRequestHttpCors),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestHttp",
-}) as any as S.Schema<StreamsCreateRequestHttp>;
-
-export interface StreamsCreateRequestSchemaFieldsItem {
-  Int32ObjectTypeMetadataKeyName2More__: unknown;
-  Int64ObjectTypeMetadataKeyName2More__: unknown;
-  Float32ObjectTypeMetadataKeyName2More__: unknown;
-  Float64ObjectTypeMetadataKeyName2More__: unknown;
-  BoolObjectTypeMetadataKeyName2More__: unknown;
-  StringObjectTypeMetadataKeyName2More__: unknown;
-  BinaryObjectTypeMetadataKeyName2More__: unknown;
-  TimestampObjectTypeMetadataKeyName3More__: unknown;
-  JsonObjectTypeMetadataKeyName2More__: unknown;
-  Struct: unknown;
-  List: unknown;
-}
-export const StreamsCreateRequestSchemaFieldsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Int32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Int32 object { type, metadata_key, name, 2 more }"),
-      ),
-      Int64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Int64 object { type, metadata_key, name, 2 more }"),
-      ),
-      Float32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Float32 object { type, metadata_key, name, 2 more }"),
-      ),
-      Float64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Float64 object { type, metadata_key, name, 2 more }"),
-      ),
-      BoolObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Bool object { type, metadata_key, name, 2 more }"),
-      ),
-      StringObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("String object { type, metadata_key, name, 2 more }"),
-      ),
-      BinaryObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Binary object { type, metadata_key, name, 2 more }"),
-      ),
-      TimestampObjectTypeMetadataKeyName3More__: S.Unknown.pipe(
-        T.Body("Timestamp object { type, metadata_key, name, 3 more }"),
-      ),
-      JsonObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Json object { type, metadata_key, name, 2 more }"),
-      ),
-      Struct: S.Unknown,
-      List: S.Unknown,
-    }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFieldsItem",
-}) as any as S.Schema<StreamsCreateRequestSchemaFieldsItem>;
-
-export type StreamsCreateRequestSchemaFieldsList =
-  StreamsCreateRequestSchemaFieldsItem[];
-export const StreamsCreateRequestSchemaFieldsList = /*@__PURE__*/ S.Array(
-  StreamsCreateRequestSchemaFieldsItem,
-) as any as S.Schema<StreamsCreateRequestSchemaFieldsList>;
-
-export interface StreamsCreateRequestSchemaFormat {
-  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
-  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
-}
-export const StreamsCreateRequestSchemaFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
-      T.Body(
-        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
-      ),
-    ),
-    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
-      T.Body("Parquet object { type, compression, row_group_bytes }"),
-    ),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchemaFormat",
-}) as any as S.Schema<StreamsCreateRequestSchemaFormat>;
-
-export interface StreamsCreateRequestSchema {
-  fields?: StreamsCreateRequestSchemaFieldsList;
-  format?: StreamsCreateRequestSchemaFormat;
-  inferred?: boolean;
-}
-export const StreamsCreateRequestSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(StreamsCreateRequestSchemaFieldsList),
-    format: S.optional(StreamsCreateRequestSchemaFormat),
-    inferred: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestSchema",
-}) as any as S.Schema<StreamsCreateRequestSchema>;
-
-export interface StreamsCreateRequestWorkerBinding {
-  /** Indicates that the worker binding is enabled. */
-  enabled: boolean;
-}
-export const StreamsCreateRequestWorkerBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "StreamsCreateRequestWorkerBinding",
-}) as any as S.Schema<StreamsCreateRequestWorkerBinding>;
-
-export interface StreamsCreateRequest {
-  /** Specifies the public ID of the account. */
-  accountId: string;
-  /** Specifies the name of the Stream. */
-  name: string;
-  format?: StreamsCreateRequestFormat;
-  http?: StreamsCreateRequestHttp;
-  schema?: StreamsCreateRequestSchema;
-  workerBinding?: StreamsCreateRequestWorkerBinding;
-}
-export const StreamsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    name: S.String,
-    format: S.optional(StreamsCreateRequestFormat),
-    http: S.optional(StreamsCreateRequestHttp),
-    schema: S.optional(StreamsCreateRequestSchema),
-    workerBinding: S.optional(
-      StreamsCreateRequestWorkerBinding.pipe(T.Body("worker_binding")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pipelines/v1/streams",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "StreamsCreateRequest",
-}) as any as S.Schema<StreamsCreateRequest>;
-
-export type StreamsCreateResponseHttpCorsOriginsList = string[];
-export const StreamsCreateResponseHttpCorsOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsCreateResponseHttpCorsOriginsList>;
-
-export interface StreamsCreateResponseHttpCors {
-  origins?: StreamsCreateResponseHttpCorsOriginsList;
-}
-export const StreamsCreateResponseHttpCors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origins: S.optional(StreamsCreateResponseHttpCorsOriginsList),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseHttpCors",
-}) as any as S.Schema<StreamsCreateResponseHttpCors>;
-
-export interface StreamsCreateResponseHttp {
-  /** Indicates that authentication is required for the HTTP endpoint. */
-  authentication: boolean;
-  /** Indicates that the HTTP endpoint is enabled. */
-  enabled: boolean;
-  /** Specifies the CORS options for the HTTP endpoint. */
-  cors?: StreamsCreateResponseHttpCors;
-}
-export const StreamsCreateResponseHttp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authentication: S.Boolean,
-    enabled: S.Boolean,
-    cors: S.optional(StreamsCreateResponseHttpCors),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseHttp",
-}) as any as S.Schema<StreamsCreateResponseHttp>;
-
-export interface StreamsCreateResponseWorkerBinding {
-  /** Indicates that the worker binding is enabled. */
-  enabled: boolean;
-}
-export const StreamsCreateResponseWorkerBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseWorkerBinding",
-}) as any as S.Schema<StreamsCreateResponseWorkerBinding>;
-
-export interface StreamsCreateResponseFormat {
-  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
-  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
-}
-export const StreamsCreateResponseFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
-      T.Body(
-        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
-      ),
-    ),
-    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
-      T.Body("Parquet object { type, compression, row_group_bytes }"),
-    ),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseFormat",
-}) as any as S.Schema<StreamsCreateResponseFormat>;
-
-export interface StreamsCreateResponseSchemaFieldsItem {
-  Int32ObjectTypeMetadataKeyName2More__: unknown;
-  Int64ObjectTypeMetadataKeyName2More__: unknown;
-  Float32ObjectTypeMetadataKeyName2More__: unknown;
-  Float64ObjectTypeMetadataKeyName2More__: unknown;
-  BoolObjectTypeMetadataKeyName2More__: unknown;
-  StringObjectTypeMetadataKeyName2More__: unknown;
-  BinaryObjectTypeMetadataKeyName2More__: unknown;
-  TimestampObjectTypeMetadataKeyName3More__: unknown;
-  JsonObjectTypeMetadataKeyName2More__: unknown;
-  Struct: unknown;
-  List: unknown;
-}
-export const StreamsCreateResponseSchemaFieldsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      Int32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Int32 object { type, metadata_key, name, 2 more }"),
-      ),
-      Int64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Int64 object { type, metadata_key, name, 2 more }"),
-      ),
-      Float32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Float32 object { type, metadata_key, name, 2 more }"),
-      ),
-      Float64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Float64 object { type, metadata_key, name, 2 more }"),
-      ),
-      BoolObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Bool object { type, metadata_key, name, 2 more }"),
-      ),
-      StringObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("String object { type, metadata_key, name, 2 more }"),
-      ),
-      BinaryObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Binary object { type, metadata_key, name, 2 more }"),
-      ),
-      TimestampObjectTypeMetadataKeyName3More__: S.Unknown.pipe(
-        T.Body("Timestamp object { type, metadata_key, name, 3 more }"),
-      ),
-      JsonObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-        T.Body("Json object { type, metadata_key, name, 2 more }"),
-      ),
-      Struct: S.Unknown,
-      List: S.Unknown,
-    }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFieldsItem",
-}) as any as S.Schema<StreamsCreateResponseSchemaFieldsItem>;
-
-export type StreamsCreateResponseSchemaFieldsList =
-  StreamsCreateResponseSchemaFieldsItem[];
-export const StreamsCreateResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
-  StreamsCreateResponseSchemaFieldsItem,
-) as any as S.Schema<StreamsCreateResponseSchemaFieldsList>;
-
-export interface StreamsCreateResponseSchemaFormat {
-  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
-  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
-}
-export const StreamsCreateResponseSchemaFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
-      T.Body(
-        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
-      ),
-    ),
-    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
-      T.Body("Parquet object { type, compression, row_group_bytes }"),
-    ),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchemaFormat",
-}) as any as S.Schema<StreamsCreateResponseSchemaFormat>;
-
-export interface StreamsCreateResponseSchema {
-  fields?: StreamsCreateResponseSchemaFieldsList;
-  format?: StreamsCreateResponseSchemaFormat;
-  inferred?: boolean;
-}
-export const StreamsCreateResponseSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(StreamsCreateResponseSchemaFieldsList),
-    format: S.optional(StreamsCreateResponseSchemaFormat),
-    inferred: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponseSchema",
-}) as any as S.Schema<StreamsCreateResponseSchema>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface StreamsCreateResponse {
-  /** Indicates a unique identifier for this stream. */
-  id: string;
-  createdAt: string;
-  http: StreamsCreateResponseHttp;
-  modifiedAt: string;
-  /** Indicates the name of the Stream. */
-  name: string;
-  /** Indicates the current version of this stream. */
-  version: number;
-  workerBinding: StreamsCreateResponseWorkerBinding;
-  /** Indicates the endpoint URL of this stream. */
-  endpoint?: string;
-  format?: StreamsCreateResponseFormat;
-  schema?: StreamsCreateResponseSchema;
-}
-export const StreamsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    http: StreamsCreateResponseHttp,
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    version: S.Number,
-    workerBinding: StreamsCreateResponseWorkerBinding.pipe(
-      T.Body("worker_binding"),
-    ),
-    endpoint: S.optional(S.String),
-    format: S.optional(StreamsCreateResponseFormat),
-    schema: S.optional(StreamsCreateResponseSchema),
-  }),
-).annotate({
-  identifier: "StreamsCreateResponse",
-}) as any as S.Schema<StreamsCreateResponse>;
-
-export interface StreamsDeleteRequest {
-  /** Specifies the public ID of the account. */
-  accountId: string;
-  /** Specifies the public ID of the stream. */
-  streamId: string;
-  /** Deprecated: Delete stream forcefully, including deleting any dependent pipelines. */
-  force?: string;
-}
-export const StreamsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    streamId: S.String.pipe(T.Label("stream_id")),
-    force: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "StreamsDeleteRequest",
-}) as any as S.Schema<StreamsDeleteRequest>;
-
-export interface StreamsDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const StreamsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "StreamsDeleteResponse",
-}) as any as S.Schema<StreamsDeleteResponse>;
-
-export interface StreamsGetRequest {
-  /** Specifies the public ID of the account. */
-  accountId: string;
-  /** Specifies the public ID of the stream. */
-  streamId: string;
-}
-export const StreamsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    streamId: S.String.pipe(T.Label("stream_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "StreamsGetRequest",
-}) as any as S.Schema<StreamsGetRequest>;
-
-export type StreamsGetResponseHttpCorsOriginsList = string[];
-export const StreamsGetResponseHttpCorsOriginsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StreamsGetResponseHttpCorsOriginsList>;
-
-export interface StreamsGetResponseHttpCors {
-  origins?: StreamsGetResponseHttpCorsOriginsList;
-}
-export const StreamsGetResponseHttpCors = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    origins: S.optional(StreamsGetResponseHttpCorsOriginsList),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseHttpCors",
-}) as any as S.Schema<StreamsGetResponseHttpCors>;
-
-export interface StreamsGetResponseHttp {
-  /** Indicates that authentication is required for the HTTP endpoint. */
-  authentication: boolean;
-  /** Indicates that the HTTP endpoint is enabled. */
-  enabled: boolean;
-  /** Specifies the CORS options for the HTTP endpoint. */
-  cors?: StreamsGetResponseHttpCors;
-}
-export const StreamsGetResponseHttp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    authentication: S.Boolean,
-    enabled: S.Boolean,
-    cors: S.optional(StreamsGetResponseHttpCors),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseHttp",
-}) as any as S.Schema<StreamsGetResponseHttp>;
-
-export interface StreamsGetResponseWorkerBinding {
-  /** Indicates that the worker binding is enabled. */
-  enabled: boolean;
-}
-export const StreamsGetResponseWorkerBinding = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-  }),
-).annotate({
-  identifier: "StreamsGetResponseWorkerBinding",
-}) as any as S.Schema<StreamsGetResponseWorkerBinding>;
-
-export interface StreamsGetResponseFormat {
-  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
-  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
-}
-export const StreamsGetResponseFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
-      T.Body(
-        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
-      ),
-    ),
-    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
-      T.Body("Parquet object { type, compression, row_group_bytes }"),
-    ),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseFormat",
-}) as any as S.Schema<StreamsGetResponseFormat>;
-
-export interface StreamsGetResponseSchemaFieldsItem {
-  Int32ObjectTypeMetadataKeyName2More__: unknown;
-  Int64ObjectTypeMetadataKeyName2More__: unknown;
-  Float32ObjectTypeMetadataKeyName2More__: unknown;
-  Float64ObjectTypeMetadataKeyName2More__: unknown;
-  BoolObjectTypeMetadataKeyName2More__: unknown;
-  StringObjectTypeMetadataKeyName2More__: unknown;
-  BinaryObjectTypeMetadataKeyName2More__: unknown;
-  TimestampObjectTypeMetadataKeyName3More__: unknown;
-  JsonObjectTypeMetadataKeyName2More__: unknown;
-  Struct: unknown;
-  List: unknown;
-}
-export const StreamsGetResponseSchemaFieldsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    Int32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Int32 object { type, metadata_key, name, 2 more }"),
-    ),
-    Int64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Int64 object { type, metadata_key, name, 2 more }"),
-    ),
-    Float32ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Float32 object { type, metadata_key, name, 2 more }"),
-    ),
-    Float64ObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Float64 object { type, metadata_key, name, 2 more }"),
-    ),
-    BoolObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Bool object { type, metadata_key, name, 2 more }"),
-    ),
-    StringObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("String object { type, metadata_key, name, 2 more }"),
-    ),
-    BinaryObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Binary object { type, metadata_key, name, 2 more }"),
-    ),
-    TimestampObjectTypeMetadataKeyName3More__: S.Unknown.pipe(
-      T.Body("Timestamp object { type, metadata_key, name, 3 more }"),
-    ),
-    JsonObjectTypeMetadataKeyName2More__: S.Unknown.pipe(
-      T.Body("Json object { type, metadata_key, name, 2 more }"),
-    ),
-    Struct: S.Unknown,
-    List: S.Unknown,
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFieldsItem",
-}) as any as S.Schema<StreamsGetResponseSchemaFieldsItem>;
-
-export type StreamsGetResponseSchemaFieldsList =
-  StreamsGetResponseSchemaFieldsItem[];
-export const StreamsGetResponseSchemaFieldsList = /*@__PURE__*/ S.Array(
-  StreamsGetResponseSchemaFieldsItem,
-) as any as S.Schema<StreamsGetResponseSchemaFieldsList>;
-
-export interface StreamsGetResponseSchemaFormat {
-  JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: unknown;
-  ParquetObjectTypeCompressionRowGroupBytes__: unknown;
-}
-export const StreamsGetResponseSchemaFormat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    JsonObjectTypeDecimalEncodingTimestampFormatUnstructured__: S.Unknown.pipe(
-      T.Body(
-        "Json object { type, decimal_encoding, timestamp_format, unstructured }",
-      ),
-    ),
-    ParquetObjectTypeCompressionRowGroupBytes__: S.Unknown.pipe(
-      T.Body("Parquet object { type, compression, row_group_bytes }"),
-    ),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchemaFormat",
-}) as any as S.Schema<StreamsGetResponseSchemaFormat>;
-
-export interface StreamsGetResponseSchema {
-  fields?: StreamsGetResponseSchemaFieldsList;
-  format?: StreamsGetResponseSchemaFormat;
-  inferred?: boolean;
-}
-export const StreamsGetResponseSchema = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    fields: S.optional(StreamsGetResponseSchemaFieldsList),
-    format: S.optional(StreamsGetResponseSchemaFormat),
-    inferred: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "StreamsGetResponseSchema",
-}) as any as S.Schema<StreamsGetResponseSchema>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface StreamsGetResponse {
-  /** Indicates a unique identifier for this stream. */
-  id: string;
-  createdAt: string;
-  http: StreamsGetResponseHttp;
-  modifiedAt: string;
-  /** Indicates the name of the Stream. */
-  name: string;
-  /** Indicates the current version of this stream. */
-  version: number;
-  workerBinding: StreamsGetResponseWorkerBinding;
-  /** Indicates the endpoint URL of this stream. */
-  endpoint?: string;
-  format?: StreamsGetResponseFormat;
-  schema?: StreamsGetResponseSchema;
-}
-export const StreamsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    http: StreamsGetResponseHttp,
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    version: S.Number,
-    workerBinding: StreamsGetResponseWorkerBinding.pipe(
-      T.Body("worker_binding"),
-    ),
-    endpoint: S.optional(S.String),
-    format: S.optional(StreamsGetResponseFormat),
-    schema: S.optional(StreamsGetResponseSchema),
-  }),
-).annotate({
-  identifier: "StreamsGetResponse",
-}) as any as S.Schema<StreamsGetResponse>;
-
-export interface StreamsListRequest {
+export interface ListStreamsRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Filters streams by name (case-insensitive substring). */
@@ -2298,7 +2373,7 @@ export interface StreamsListRequest {
   /** Specifies the public ID of the pipeline. */
   pipelineId?: string;
 }
-export const StreamsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String.pipe(T.Query())),
@@ -2313,8 +2388,8 @@ export const StreamsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "StreamsListRequest",
-}) as any as S.Schema<StreamsListRequest>;
+  identifier: "ListStreamsRequest",
+}) as any as S.Schema<ListStreamsRequest>;
 
 export type StreamsListResultItemHttpCorsOriginsList = string[];
 export const StreamsListResultItemHttpCorsOriginsList = /*@__PURE__*/ S.Array(
@@ -2511,17 +2586,84 @@ export const StreamsListResultList = /*@__PURE__*/ S.Array(
   StreamsListResultItem,
 ) as any as S.Schema<StreamsListResultList>;
 
-export interface StreamsListResponse {
+export interface ListStreamsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: StreamsListResultList;
 }
-export const StreamsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(StreamsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "StreamsListResponse",
-}) as any as S.Schema<StreamsListResponse>;
+  identifier: "ListStreamsResponse",
+}) as any as S.Schema<ListStreamsResponse>;
+
+export interface ListV1PipelineRequest {
+  /** Specifies the public ID of the account. */
+  accountId: string;
+  /** Filters pipelines by name (case-insensitive substring). */
+  name?: string;
+  page?: number;
+  perPage?: number;
+}
+export const ListV1PipelineRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.optional(S.String.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/pipelines/v1/pipelines",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListV1PipelineRequest",
+}) as any as S.Schema<ListV1PipelineRequest>;
+
+export interface ListV1ResultItem {
+  /** Indicates a unique identifier for this pipeline. */
+  id: string;
+  createdAt: string;
+  modifiedAt: string;
+  /** Indicates the name of the Pipeline. */
+  name: string;
+  /** Specifies SQL for the Pipeline processing flow. */
+  sql: string;
+  /** Indicates the current status of the Pipeline. */
+  status: string;
+}
+export const ListV1ResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    sql: S.String,
+    status: S.String,
+  }),
+).annotate({
+  identifier: "ListV1ResultItem",
+}) as any as S.Schema<ListV1ResultItem>;
+
+export type ListV1ResultList = ListV1ResultItem[];
+export const ListV1ResultList = /*@__PURE__*/ S.Array(
+  ListV1ResultItem,
+) as any as S.Schema<ListV1ResultList>;
+
+export interface ListV1PipelineResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: ListV1ResultList;
+}
+export const ListV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(ListV1ResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListV1PipelineResponse",
+}) as any as S.Schema<ListV1PipelineResponse>;
 
 export type StreamsUpdateRequestHttpCorsOriginsList = string[];
 export const StreamsUpdateRequestHttpCorsOriginsList = /*@__PURE__*/ S.Array(
@@ -2569,7 +2711,7 @@ export const StreamsUpdateRequestWorkerBinding = /*@__PURE__*/ S.suspend(() =>
   identifier: "StreamsUpdateRequestWorkerBinding",
 }) as any as S.Schema<StreamsUpdateRequestWorkerBinding>;
 
-export interface StreamsUpdateRequest {
+export interface PatchStreamRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies the public ID of the stream. */
@@ -2577,7 +2719,7 @@ export interface StreamsUpdateRequest {
   http?: StreamsUpdateRequestHttp;
   workerBinding?: StreamsUpdateRequestWorkerBinding;
 }
-export const StreamsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PatchStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     streamId: S.String.pipe(T.Label("stream_id")),
@@ -2593,8 +2735,8 @@ export const StreamsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "StreamsUpdateRequest",
-}) as any as S.Schema<StreamsUpdateRequest>;
+  identifier: "PatchStreamRequest",
+}) as any as S.Schema<PatchStreamRequest>;
 
 export type StreamsUpdateResponseHttpCorsOriginsList = string[];
 export const StreamsUpdateResponseHttpCorsOriginsList = /*@__PURE__*/ S.Array(
@@ -2662,7 +2804,7 @@ export const StreamsUpdateResponseFormat = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<StreamsUpdateResponseFormat>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface StreamsUpdateResponse {
+export interface PatchStreamResponse {
   /** Indicates a unique identifier for this stream. */
   id: string;
   createdAt: string;
@@ -2677,7 +2819,7 @@ export interface StreamsUpdateResponse {
   endpoint?: string;
   format?: StreamsUpdateResponseFormat;
 }
-export const StreamsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PatchStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -2692,8 +2834,8 @@ export const StreamsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     format: S.optional(StreamsUpdateResponseFormat),
   }),
 ).annotate({
-  identifier: "StreamsUpdateResponse",
-}) as any as S.Schema<StreamsUpdateResponse>;
+  identifier: "PatchStreamResponse",
+}) as any as S.Schema<PatchStreamResponse>;
 
 export interface UpdateRequestDestinationBatch {
   /** Specifies rough maximum size of files. */
@@ -2830,7 +2972,7 @@ export const UpdateRequestSourceList = /*@__PURE__*/ S.Array(
   UpdateRequestSourceItem,
 ) as any as S.Schema<UpdateRequestSourceList>;
 
-export interface UpdateRequest {
+export interface UpdatePipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Defines the name of the pipeline. */
@@ -2840,7 +2982,7 @@ export interface UpdateRequest {
   name: string;
   source: UpdateRequestSourceList;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdatePipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     pipelineName: S.String.pipe(T.Label("pipeline_name")),
@@ -2854,7 +2996,9 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "UpdatePipelineRequest",
+}) as any as S.Schema<UpdatePipelineRequest>;
 
 export interface UpdateResponseDestinationBatch {
   /** Specifies rough maximum size of files. */
@@ -2973,7 +3117,7 @@ export const UpdateResponseSourceList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateResponseSourceList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface UpdatePipelineResponse {
   /** Specifies the pipeline identifier. */
   id: string;
   destination: UpdateResponseDestination;
@@ -2985,7 +3129,7 @@ export interface UpdateResponse {
   /** Indicates the version number of last saved configuration. */
   version: number;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdatePipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     destination: UpdateResponseDestination,
@@ -2994,15 +3138,17 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
     source: UpdateResponseSourceList,
     version: S.Number,
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "UpdatePipelineResponse",
+}) as any as S.Schema<UpdatePipelineResponse>;
 
-export interface ValidateSqlRequest {
+export interface ValidateSqlPipelineRequest {
   /** Specifies the public ID of the account. */
   accountId: string;
   /** Specifies SQL to validate. */
   sql: string;
 }
-export const ValidateSqlRequest = /*@__PURE__*/ S.suspend(() =>
+export const ValidateSqlPipelineRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     sql: S.String,
@@ -3014,8 +3160,8 @@ export const ValidateSqlRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ValidateSqlRequest",
-}) as any as S.Schema<ValidateSqlRequest>;
+  identifier: "ValidateSqlPipelineRequest",
+}) as any as S.Schema<ValidateSqlPipelineRequest>;
 
 export type ValidateSqlResponseTablesMap = {
   [key: string]: unknown | undefined;
@@ -3087,282 +3233,343 @@ export const ValidateSqlResponseGraph = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ValidateSqlResponseGraph>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ValidateSqlResponse {
+export interface ValidateSqlPipelineResponse {
   /** Indicates tables involved in the processing. */
   tables: ValidateSqlResponseTablesMap;
   graph?: ValidateSqlResponseGraph;
 }
-export const ValidateSqlResponse = /*@__PURE__*/ S.suspend(() =>
+export const ValidateSqlPipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     tables: ValidateSqlResponseTablesMap,
     graph: S.optional(ValidateSqlResponseGraph),
   }),
 ).annotate({
-  identifier: "ValidateSqlResponse",
-}) as any as S.Schema<ValidateSqlResponse>;
+  identifier: "ValidateSqlPipelineResponse",
+}) as any as S.Schema<ValidateSqlPipelineResponse>;
 
-export type CreateError = CloudflareOpError;
+export type CreatePipelineError = CloudflareOpError;
 /** [DEPRECATED] Create a new pipeline. Use the new /pipelines/v1/pipelines endpoint instead. */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createPipeline: API.OperationMethod<
+  CreatePipelineRequest,
+  CreatePipelineResponse,
+  CreatePipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
+  input: CreatePipelineRequest,
+  output: CreatePipelineResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type CreateV1Error = CloudflareOpError;
-/** Create a new Pipeline. */
-export const createV1: API.OperationMethod<
-  CreateV1Request,
-  CreateV1Response,
-  CreateV1Error,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateV1Request,
-  output: CreateV1Response,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DeleteError = CloudflareOpError;
-/** [DEPRECATED] Delete a pipeline. Use the new /pipelines/v1/pipelines endpoint instead. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DeleteV1Error = CloudflareOpError;
-/** Delete Pipeline in Account. */
-export const deleteV1: API.OperationMethod<
-  DeleteV1Request,
-  DeleteV1Response,
-  DeleteV1Error,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteV1Request,
-  output: DeleteV1Response,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GetError = CloudflareOpError;
-/** [DEPRECATED] Get configuration of a pipeline. Use the new /pipelines/v1/pipelines endpoint instead. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GetV1Error = CloudflareOpError;
-/** Get Pipelines Details. */
-export const getV1: API.OperationMethod<
-  GetV1Request,
-  GetV1Response,
-  GetV1Error,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetV1Request,
-  output: GetV1Response,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ListError = CloudflareOpError;
-/** [DEPRECATED] List, filter, and paginate pipelines in an account. Use the new /pipelines/v1/pipelines endpoint instead. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ListV1Error = CloudflareOpError;
-/** List/Filter Pipelines in Account. */
-export const listV1: API.OperationMethod<
-  ListV1Request,
-  ListV1Response,
-  ListV1Error,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListV1Request,
-  output: ListV1Response,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SinksCreateError = CloudflareOpError;
+export type CreateSinkError =
+  | SinkAuthFailed
+  | InvalidSinkConfig
+  | SinkAlreadyExists
+  | CloudflareOpError;
 /** Create a new Sink. */
-export const sinksCreate: API.OperationMethod<
-  SinksCreateRequest,
-  SinksCreateResponse,
-  SinksCreateError,
+export const createSink: API.OperationMethod<
+  CreateSinkRequest,
+  CreateSinkResponse,
+  CreateSinkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SinksCreateRequest,
-  output: SinksCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateSinkRequest,
+  output: CreateSinkResponse,
+  errors: [
+    SinkAuthFailed,
+    InvalidSinkConfig,
+    SinkAlreadyExists,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SinksDeleteError = CloudflareOpError;
-/** Delete Pipeline in Account. */
-export const sinksDelete: API.OperationMethod<
-  SinksDeleteRequest,
-  SinksDeleteResponse,
-  SinksDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SinksDeleteRequest,
-  output: SinksDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SinksGetError = CloudflareOpError;
-/** Get Sink Details. */
-export const sinksGet: API.OperationMethod<
-  SinksGetRequest,
-  SinksGetResponse,
-  SinksGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SinksGetRequest,
-  output: SinksGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SinksListError = CloudflareOpError;
-/** List/Filter Sinks in Account. */
-export const sinksList: API.OperationMethod<
-  SinksListRequest,
-  SinksListResponse,
-  SinksListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SinksListRequest,
-  output: SinksListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type StreamsCreateError = CloudflareOpError;
+export type CreateStreamError =
+  | InvalidStreamName
+  | StreamAlreadyExists
+  | CloudflareOpError;
 /** Create a new Stream. */
-export const streamsCreate: API.OperationMethod<
-  StreamsCreateRequest,
-  StreamsCreateResponse,
-  StreamsCreateError,
+export const createStream: API.OperationMethod<
+  CreateStreamRequest,
+  CreateStreamResponse,
+  CreateStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamsCreateRequest,
-  output: StreamsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateStreamRequest,
+  output: CreateStreamResponse,
+  errors: [
+    InvalidStreamName,
+    StreamAlreadyExists,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type StreamsDeleteError = CloudflareOpError;
+export type CreateV1PipelineError =
+  | TableNotFound
+  | InvalidSql
+  | PipelineAlreadyExists
+  | CloudflareOpError;
+/** Create a new Pipeline. */
+export const createV1Pipeline: API.OperationMethod<
+  CreateV1PipelineRequest,
+  CreateV1PipelineResponse,
+  CreateV1PipelineError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateV1PipelineRequest,
+  output: CreateV1PipelineResponse,
+  errors: [
+    TableNotFound,
+    InvalidSql,
+    PipelineAlreadyExists,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeletePipelineError = PipelineNotExists | CloudflareOpError;
+/** [DEPRECATED] Delete a pipeline. Use the new /pipelines/v1/pipelines endpoint instead. */
+export const deletePipeline: API.OperationMethod<
+  DeletePipelineRequest,
+  DeletePipelineResponse,
+  DeletePipelineError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePipelineRequest,
+  output: DeletePipelineResponse,
+  errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSinkError =
+  | SinkNotFound
+  | InvalidSinkId
+  | SinkInUse
+  | CloudflareOpError;
+/** Delete Pipeline in Account. */
+export const deleteSink: API.OperationMethod<
+  DeleteSinkRequest,
+  DeleteSinkResponse,
+  DeleteSinkError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSinkRequest,
+  output: DeleteSinkResponse,
+  errors: [
+    SinkNotFound,
+    InvalidSinkId,
+    SinkInUse,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteStreamError =
+  | PipelineNotExists
+  | StreamNotFound
+  | InvalidStreamId
+  | StreamInUse
+  | CloudflareOpError;
 /** Delete Stream in Account. */
-export const streamsDelete: API.OperationMethod<
-  StreamsDeleteRequest,
-  StreamsDeleteResponse,
-  StreamsDeleteError,
+export const deleteStream: API.OperationMethod<
+  DeleteStreamRequest,
+  DeleteStreamResponse,
+  DeleteStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamsDeleteRequest,
-  output: StreamsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteStreamRequest,
+  output: DeleteStreamResponse,
+  errors: [
+    PipelineNotExists,
+    StreamNotFound,
+    InvalidStreamId,
+    StreamInUse,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type StreamsGetError = CloudflareOpError;
+export type DeleteV1PipelineError = PipelineNotExists | CloudflareOpError;
+/** Delete Pipeline in Account. */
+export const deleteV1Pipeline: API.OperationMethod<
+  DeleteV1PipelineRequest,
+  DeleteV1PipelineResponse,
+  DeleteV1PipelineError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteV1PipelineRequest,
+  output: DeleteV1PipelineResponse,
+  errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetPipelineError = PipelineNotExists | CloudflareOpError;
+/** [DEPRECATED] Get configuration of a pipeline. Use the new /pipelines/v1/pipelines endpoint instead. */
+export const getPipeline: API.OperationMethod<
+  GetPipelineRequest,
+  GetPipelineResponse,
+  GetPipelineError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPipelineRequest,
+  output: GetPipelineResponse,
+  errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSinkError = SinkNotFound | InvalidSinkId | CloudflareOpError;
+/** Get Sink Details. */
+export const getSink: API.OperationMethod<
+  GetSinkRequest,
+  GetSinkResponse,
+  GetSinkError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSinkRequest,
+  output: GetSinkResponse,
+  errors: [SinkNotFound, InvalidSinkId, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetStreamError =
+  | StreamNotFound
+  | InvalidStreamId
+  | CloudflareOpError;
 /** Get Stream Details. */
-export const streamsGet: API.OperationMethod<
-  StreamsGetRequest,
-  StreamsGetResponse,
-  StreamsGetError,
+export const getStream: API.OperationMethod<
+  GetStreamRequest,
+  GetStreamResponse,
+  GetStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamsGetRequest,
-  output: StreamsGetResponse,
+  input: GetStreamRequest,
+  output: GetStreamResponse,
+  errors: [
+    StreamNotFound,
+    InvalidStreamId,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetV1PipelineError = PipelineNotExists | CloudflareOpError;
+/** Get Pipelines Details. */
+export const getV1Pipeline: API.OperationMethod<
+  GetV1PipelineRequest,
+  GetV1PipelineResponse,
+  GetV1PipelineError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetV1PipelineRequest,
+  output: GetV1PipelineResponse,
+  errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListPipelinesError = CloudflareOpError;
+/** [DEPRECATED] List, filter, and paginate pipelines in an account. Use the new /pipelines/v1/pipelines endpoint instead. */
+export const listPipelines: API.OperationMethod<
+  ListPipelinesRequest,
+  ListPipelinesResponse,
+  ListPipelinesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPipelinesRequest,
+  output: ListPipelinesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type StreamsListError = CloudflareOpError;
+export type ListSinksError = CloudflareOpError;
+/** List/Filter Sinks in Account. */
+export const listSinks: API.OperationMethod<
+  ListSinksRequest,
+  ListSinksResponse,
+  ListSinksError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSinksRequest,
+  output: ListSinksResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListStreamsError = CloudflareOpError;
 /** List/Filter Streams in Account. */
-export const streamsList: API.OperationMethod<
-  StreamsListRequest,
-  StreamsListResponse,
-  StreamsListError,
+export const listStreams: API.OperationMethod<
+  ListStreamsRequest,
+  ListStreamsResponse,
+  ListStreamsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamsListRequest,
-  output: StreamsListResponse,
+  input: ListStreamsRequest,
+  output: ListStreamsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type StreamsUpdateError = CloudflareOpError;
+export type ListV1PipelineError = CloudflareOpError;
+/** List/Filter Pipelines in Account. */
+export const listV1Pipeline: API.OperationMethod<
+  ListV1PipelineRequest,
+  ListV1PipelineResponse,
+  ListV1PipelineError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListV1PipelineRequest,
+  output: ListV1PipelineResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchStreamError = StreamNotFound | CloudflareOpError;
 /** Update a Stream. */
-export const streamsUpdate: API.OperationMethod<
-  StreamsUpdateRequest,
-  StreamsUpdateResponse,
-  StreamsUpdateError,
+export const patchStream: API.OperationMethod<
+  PatchStreamRequest,
+  PatchStreamResponse,
+  PatchStreamError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StreamsUpdateRequest,
-  output: StreamsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PatchStreamRequest,
+  output: PatchStreamResponse,
+  errors: [StreamNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
+export type UpdatePipelineError = PipelineNotExists | CloudflareOpError;
 /** [DEPRECATED] Update an existing pipeline. Use the new /pipelines/v1/pipelines endpoint instead. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export const updatePipeline: API.OperationMethod<
+  UpdatePipelineRequest,
+  UpdatePipelineResponse,
+  UpdatePipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdatePipelineRequest,
+  output: UpdatePipelineResponse,
+  errors: [PipelineNotExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ValidateSqlError = CloudflareOpError;
+export type ValidateSqlPipelineError =
+  | TableNotFound
+  | InvalidSql
+  | CloudflareOpError;
 /** Validate Arroyo SQL. */
-export const validateSql: API.OperationMethod<
-  ValidateSqlRequest,
-  ValidateSqlResponse,
-  ValidateSqlError,
+export const validateSqlPipeline: API.OperationMethod<
+  ValidateSqlPipelineRequest,
+  ValidateSqlPipelineResponse,
+  ValidateSqlPipelineError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ValidateSqlRequest,
-  output: ValidateSqlResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ValidateSqlPipelineRequest,
+  output: ValidateSqlPipelineResponse,
+  errors: [TableNotFound, InvalidSql, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

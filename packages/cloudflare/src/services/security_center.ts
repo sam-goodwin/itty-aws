@@ -9,6 +9,46 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export interface GetInsightContextRequest {
+  /** Identifier. */
+  accountId: string;
+  issueId: string;
+}
+export const GetInsightContextRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    issueId: S.String.pipe(T.Label("issue_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/security-center/insights/{issue_id}/context",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetInsightContextRequest",
+}) as any as S.Schema<GetInsightContextRequest>;
+
+export type InsightsContextGetResultMap = {
+  [key: string]: unknown | undefined;
+};
+export const InsightsContextGetResultMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<InsightsContextGetResultMap>;
+
+export interface GetInsightContextResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: InsightsContextGetResultMap;
+}
+export const GetInsightContextResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(InsightsContextGetResultMap.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "GetInsightContextResponse",
+}) as any as S.Schema<GetInsightContextResponse>;
+
 export type InsightsAuditLogsListRequestFieldChanged =
   | "status"
   | "user_classification"
@@ -436,46 +476,6 @@ export const InsightsClassificationUpdateResponse = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "InsightsClassificationUpdateResponse",
 }) as any as S.Schema<InsightsClassificationUpdateResponse>;
-
-export interface InsightsContextGetRequest {
-  /** Identifier. */
-  accountId: string;
-  issueId: string;
-}
-export const InsightsContextGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    issueId: S.String.pipe(T.Label("issue_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/security-center/insights/{issue_id}/context",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "InsightsContextGetRequest",
-}) as any as S.Schema<InsightsContextGetRequest>;
-
-export type InsightsContextGetResultMap = {
-  [key: string]: unknown | undefined;
-};
-export const InsightsContextGetResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<InsightsContextGetResultMap>;
-
-export interface InsightsContextGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InsightsContextGetResultMap;
-}
-export const InsightsContextGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(InsightsContextGetResultMap.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "InsightsContextGetResponse",
-}) as any as S.Schema<InsightsContextGetResponse>;
 
 export interface InsightsDismissRequest {
   accountsOrZones: string;
@@ -1005,6 +1005,20 @@ export const InsightsTypeGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "InsightsTypeGetResponse",
 }) as any as S.Schema<InsightsTypeGetResponse>;
 
+export type GetInsightContextError = CloudflareOpError;
+/** Returns the full context payload for an insight. This endpoint is used for insights with large payloads that are not included inline in the list response. */
+export const getInsightContext: API.OperationMethod<
+  GetInsightContextRequest,
+  GetInsightContextResponse,
+  GetInsightContextError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetInsightContextRequest,
+  output: GetInsightContextResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
 export type InsightsAuditLogsListError = CloudflareOpError;
 /** Lists audit log entries for all Security Center insights in the account or zone, showing changes to insight status and classification. */
 export const insightsAuditLogsList: API.OperationMethod<
@@ -1057,20 +1071,6 @@ export const insightsClassificationUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: InsightsClassificationUpdateRequest,
   output: InsightsClassificationUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type InsightsContextGetError = CloudflareOpError;
-/** Returns the full context payload for an insight. This endpoint is used for insights with large payloads that are not included inline in the list response. */
-export const insightsContextGet: API.OperationMethod<
-  InsightsContextGetRequest,
-  InsightsContextGetResponse,
-  InsightsContextGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: InsightsContextGetRequest,
-  output: InsightsContextGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

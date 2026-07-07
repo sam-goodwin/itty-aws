@@ -9,267 +9,85 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface QuotaGetRequest {
-  /** Account Identifier */
-  accountId: string;
-}
-export const QuotaGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secrets_store/quota",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "QuotaGetRequest",
-}) as any as S.Schema<QuotaGetRequest>;
-
-export interface QuotaGetResponseSecrets {
-  /** The number of secrets the account is entitlted to use */
-  quota: number;
-  /** The number of secrets the account is currently using */
-  usage: number;
-}
-export const QuotaGetResponseSecrets = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    quota: S.Number,
-    usage: S.Number,
+export class InvalidAccountId extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "QuotaGetResponseSecrets",
-}) as any as S.Schema<QuotaGetResponseSecrets>;
+  [{ code: 7003 }],
+) {}
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface QuotaGetResponse {
-  secrets: QuotaGetResponseSecrets;
-}
-export const QuotaGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    secrets: QuotaGetResponseSecrets,
+export class InvalidJsonBody extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidJsonBody>()("InvalidJsonBody", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "QuotaGetResponse",
-}) as any as S.Schema<QuotaGetResponse>;
+  [{ code: 1001, message: { includes: "invalid_json_body" } }],
+) {}
 
-export interface StoresCreateRequest {
-  /** Account Identifier */
-  accountId: string;
-  /** The name of the store */
-  name: string;
-}
-export const StoresCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    name: S.String,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/secrets_store/stores",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "StoresCreateRequest",
-}) as any as S.Schema<StoresCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface StoresCreateResponse {
-  /** Store Identifier */
-  id: string;
-  /** Whenthe secret was created. */
-  created: string;
-  /** When the secret was modified. */
-  modified: string;
-  /** The name of the store */
-  name: string;
-  /** Account Identifier */
-  accountId?: string;
-}
-export const StoresCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+export class NotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "StoresCreateResponse",
-}) as any as S.Schema<StoresCreateResponse>;
+  [{ code: 1000 }],
+) {}
 
-export interface StoresDeleteRequest {
-  /** Account Identifier */
-  accountId: string;
-  /** Store Identifier */
-  storeId: string;
-  /** When true, cascade-deletes all secrets in the store before deleting */
-  force?: boolean;
-}
-export const StoresDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    storeId: S.String.pipe(T.Label("store_id")),
-    force: S.optional(S.Boolean.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "StoresDeleteRequest",
-}) as any as S.Schema<StoresDeleteRequest>;
-
-export interface StoresDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const StoresDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+export class SecretNameAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SecretNameAlreadyExists>()("SecretNameAlreadyExists", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "StoresDeleteResponse",
-}) as any as S.Schema<StoresDeleteResponse>;
+  [{ code: 1003, message: { includes: "secret_name_already_exists" } }],
+) {}
 
-export interface StoresGetRequest {
+export class SecretNameEmpty extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SecretNameEmpty>()("SecretNameEmpty", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1001, message: { includes: "secret_name_empty" } }],
+) {}
+
+export class SecretNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SecretNotFound>()("SecretNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1001, message: { includes: "secret_not_found" } }],
+) {}
+
+export class SecretScopeInvalid extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SecretScopeInvalid>()("SecretScopeInvalid", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1001, message: { includes: "secret_scope_invalid" } }],
+) {}
+
+export class SecretScopesEmpty extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SecretScopesEmpty>()("SecretScopesEmpty", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1001, message: { includes: "secret_scopes_empty" } }],
+) {}
+
+export class StoreNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<StoreNotFound>()("StoreNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1001, message: { includes: "store_not_found" } }],
+) {}
+
+export interface BulkDeleteStoreSecretsRequest {
   /** Account Identifier */
   accountId: string;
   /** Store Identifier */
   storeId: string;
 }
-export const StoresGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    storeId: S.String.pipe(T.Label("store_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "StoresGetRequest",
-}) as any as S.Schema<StoresGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface StoresGetResponse {
-  /** Store Identifier */
-  id: string;
-  /** Whenthe secret was created. */
-  created: string;
-  /** When the secret was modified. */
-  modified: string;
-  /** The name of the store */
-  name: string;
-  /** Account Identifier */
-  accountId?: string;
-}
-export const StoresGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
-  }),
-).annotate({
-  identifier: "StoresGetResponse",
-}) as any as S.Schema<StoresGetResponse>;
-
-export type StoresListRequestDirection = "asc" | "desc" | (string & {});
-export const StoresListRequestDirection = /*@__PURE__*/ S.String;
-
-export type StoresListRequestOrder =
-  | "name"
-  | "comment"
-  | "created"
-  | (string & {});
-export const StoresListRequestOrder = /*@__PURE__*/ S.String;
-
-export interface StoresListRequest {
-  /** Account Identifier */
-  accountId: string;
-  /** Direction to sort objects */
-  direction?: StoresListRequestDirection;
-  /** Order secrets by values in the given field */
-  order?: StoresListRequestOrder;
-  /** Page number */
-  page?: number;
-  /** Number of objects to return per page */
-  perPage?: number;
-}
-export const StoresListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    direction: S.optional(StoresListRequestDirection.pipe(T.Query())),
-    order: S.optional(StoresListRequestOrder.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/secrets_store/stores",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "StoresListRequest",
-}) as any as S.Schema<StoresListRequest>;
-
-export interface StoresListResultItem {
-  /** Store Identifier */
-  id: string;
-  /** Whenthe secret was created. */
-  created: string;
-  /** When the secret was modified. */
-  modified: string;
-  /** The name of the store */
-  name: string;
-  /** Account Identifier */
-  accountId?: string;
-}
-export const StoresListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    created: S.String,
-    modified: S.String,
-    name: S.String,
-    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
-  }),
-).annotate({
-  identifier: "StoresListResultItem",
-}) as any as S.Schema<StoresListResultItem>;
-
-export type StoresListResultList = StoresListResultItem[];
-export const StoresListResultList = /*@__PURE__*/ S.Array(
-  StoresListResultItem,
-) as any as S.Schema<StoresListResultList>;
-
-export interface StoresListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: StoresListResultList;
-}
-export const StoresListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(StoresListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "StoresListResponse",
-}) as any as S.Schema<StoresListResponse>;
-
-export interface StoresSecretsBulkDeleteRequest {
-  /** Account Identifier */
-  accountId: string;
-  /** Store Identifier */
-  storeId: string;
-}
-export const StoresSecretsBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const BulkDeleteStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -281,20 +99,66 @@ export const StoresSecretsBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "StoresSecretsBulkDeleteRequest",
-}) as any as S.Schema<StoresSecretsBulkDeleteRequest>;
+  identifier: "BulkDeleteStoreSecretsRequest",
+}) as any as S.Schema<BulkDeleteStoreSecretsRequest>;
 
-export interface StoresSecretsBulkDeleteResponse {
+export interface BulkDeleteStoreSecretsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const StoresSecretsBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const BulkDeleteStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "StoresSecretsBulkDeleteResponse",
-}) as any as S.Schema<StoresSecretsBulkDeleteResponse>;
+  identifier: "BulkDeleteStoreSecretsResponse",
+}) as any as S.Schema<BulkDeleteStoreSecretsResponse>;
+
+export interface CreateStoreRequest {
+  /** Account Identifier */
+  accountId: string;
+  /** The name of the store */
+  name: string;
+}
+export const CreateStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.String,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/secrets_store/stores",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateStoreRequest",
+}) as any as S.Schema<CreateStoreRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateStoreResponse {
+  /** Store Identifier */
+  id: string;
+  /** Whenthe secret was created. */
+  created: string;
+  /** When the secret was modified. */
+  modified: string;
+  /** The name of the store */
+  name: string;
+  /** Account Identifier */
+  accountId?: string;
+}
+export const CreateStoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    created: S.String,
+    modified: S.String,
+    name: S.String,
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+  }),
+).annotate({
+  identifier: "CreateStoreResponse",
+}) as any as S.Schema<CreateStoreResponse>;
 
 export type StoresSecretsCreateRequestBodyItemScopesList = string[];
 export const StoresSecretsCreateRequestBodyItemScopesList =
@@ -329,14 +193,14 @@ export const StoresSecretsCreateRequestBodyList = /*@__PURE__*/ S.Array(
   StoresSecretsCreateRequestBodyItem,
 ) as any as S.Schema<StoresSecretsCreateRequestBodyList>;
 
-export interface StoresSecretsCreateRequest {
+export interface CreateStoreSecretRequest {
   /** Account Identifier */
   accountId: string;
   /** Store Identifier */
   storeId: string;
   body: StoresSecretsCreateRequestBodyList;
 }
-export const StoresSecretsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -349,8 +213,8 @@ export const StoresSecretsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "StoresSecretsCreateRequest",
-}) as any as S.Schema<StoresSecretsCreateRequest>;
+  identifier: "CreateStoreSecretRequest",
+}) as any as S.Schema<CreateStoreSecretRequest>;
 
 export type StoresSecretsCreateResultItemStatus =
   | "pending"
@@ -401,19 +265,55 @@ export const StoresSecretsCreateResultList = /*@__PURE__*/ S.Array(
   StoresSecretsCreateResultItem,
 ) as any as S.Schema<StoresSecretsCreateResultList>;
 
-export interface StoresSecretsCreateResponse {
+export interface CreateStoreSecretResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: StoresSecretsCreateResultList;
 }
-export const StoresSecretsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(StoresSecretsCreateResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "StoresSecretsCreateResponse",
-}) as any as S.Schema<StoresSecretsCreateResponse>;
+  identifier: "CreateStoreSecretResponse",
+}) as any as S.Schema<CreateStoreSecretResponse>;
 
-export interface StoresSecretsDeleteRequest {
+export interface DeleteStoreRequest {
+  /** Account Identifier */
+  accountId: string;
+  /** Store Identifier */
+  storeId: string;
+  /** When true, cascade-deletes all secrets in the store before deleting */
+  force?: boolean;
+}
+export const DeleteStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    storeId: S.String.pipe(T.Label("store_id")),
+    force: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteStoreRequest",
+}) as any as S.Schema<DeleteStoreRequest>;
+
+export interface DeleteStoreResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const DeleteStoreResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "DeleteStoreResponse",
+}) as any as S.Schema<DeleteStoreResponse>;
+
+export interface DeleteStoreSecretRequest {
   /** Account Identifier */
   accountId: string;
   /** Store Identifier */
@@ -421,7 +321,7 @@ export interface StoresSecretsDeleteRequest {
   /** Secret identifier tag. */
   secretId: string;
 }
-export const StoresSecretsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -434,27 +334,27 @@ export const StoresSecretsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "StoresSecretsDeleteRequest",
-}) as any as S.Schema<StoresSecretsDeleteRequest>;
+  identifier: "DeleteStoreSecretRequest",
+}) as any as S.Schema<DeleteStoreSecretRequest>;
 
-export interface StoresSecretsDeleteResponse {
+export interface DeleteStoreSecretResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const StoresSecretsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "StoresSecretsDeleteResponse",
-}) as any as S.Schema<StoresSecretsDeleteResponse>;
+  identifier: "DeleteStoreSecretResponse",
+}) as any as S.Schema<DeleteStoreSecretResponse>;
 
 export type StoresSecretsDuplicateRequestScopesList = string[];
 export const StoresSecretsDuplicateRequestScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StoresSecretsDuplicateRequestScopesList>;
 
-export interface StoresSecretsDuplicateRequest {
+export interface DuplicateStoreSecretRequest {
   /** Account Identifier */
   accountId: string;
   /** Store Identifier */
@@ -468,7 +368,7 @@ export interface StoresSecretsDuplicateRequest {
   /** Freeform text describing the secret */
   comment?: string;
 }
-export const StoresSecretsDuplicateRequest = /*@__PURE__*/ S.suspend(() =>
+export const DuplicateStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -484,8 +384,8 @@ export const StoresSecretsDuplicateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "StoresSecretsDuplicateRequest",
-}) as any as S.Schema<StoresSecretsDuplicateRequest>;
+  identifier: "DuplicateStoreSecretRequest",
+}) as any as S.Schema<DuplicateStoreSecretRequest>;
 
 export type StoresSecretsDuplicateResponseStatus =
   | "pending"
@@ -500,7 +400,7 @@ export const StoresSecretsDuplicateResponseScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StoresSecretsDuplicateResponseScopesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface StoresSecretsDuplicateResponse {
+export interface DuplicateStoreSecretResponse {
   /** Secret identifier tag. */
   id: string;
   /** Whenthe secret was created. */
@@ -517,7 +417,7 @@ export interface StoresSecretsDuplicateResponse {
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsDuplicateResponseScopesList;
 }
-export const StoresSecretsDuplicateResponse = /*@__PURE__*/ S.suspend(() =>
+export const DuplicateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
@@ -529,93 +429,101 @@ export const StoresSecretsDuplicateResponse = /*@__PURE__*/ S.suspend(() =>
     scopes: S.optional(StoresSecretsDuplicateResponseScopesList),
   }),
 ).annotate({
-  identifier: "StoresSecretsDuplicateResponse",
-}) as any as S.Schema<StoresSecretsDuplicateResponse>;
+  identifier: "DuplicateStoreSecretResponse",
+}) as any as S.Schema<DuplicateStoreSecretResponse>;
 
-export type StoresSecretsEditRequestScopesList = string[];
-export const StoresSecretsEditRequestScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StoresSecretsEditRequestScopesList>;
-
-export interface StoresSecretsEditRequest {
+export interface GetQuotaRequest {
   /** Account Identifier */
   accountId: string;
-  /** Store Identifier */
-  storeId: string;
-  /** Secret identifier tag. */
-  secretId: string;
-  /** Freeform text describing the secret */
-  comment?: string;
-  /** The list of services that can use this secret. */
-  scopes?: StoresSecretsEditRequestScopesList;
-  /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets. */
-  value?: string;
 }
-export const StoresSecretsEditRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetQuotaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    storeId: S.String.pipe(T.Label("store_id")),
-    secretId: S.String.pipe(T.Label("secret_id")),
-    comment: S.optional(S.String),
-    scopes: S.optional(StoresSecretsEditRequestScopesList),
-    value: S.optional(S.String),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets/{secret_id}",
+      method: "GET",
+      uri: "/accounts/{account_id}/secrets_store/quota",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "StoresSecretsEditRequest",
-}) as any as S.Schema<StoresSecretsEditRequest>;
+  identifier: "GetQuotaRequest",
+}) as any as S.Schema<GetQuotaRequest>;
 
-export type StoresSecretsEditResponseStatus =
-  | "pending"
-  | "active"
-  | "deleted"
-  | (string & {});
-export const StoresSecretsEditResponseStatus = /*@__PURE__*/ S.String;
-
-export type StoresSecretsEditResponseScopesList = string[];
-export const StoresSecretsEditResponseScopesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<StoresSecretsEditResponseScopesList>;
+export interface QuotaGetResponseSecrets {
+  /** The number of secrets the account is entitlted to use */
+  quota: number;
+  /** The number of secrets the account is currently using */
+  usage: number;
+}
+export const QuotaGetResponseSecrets = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    quota: S.Number,
+    usage: S.Number,
+  }),
+).annotate({
+  identifier: "QuotaGetResponseSecrets",
+}) as any as S.Schema<QuotaGetResponseSecrets>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface StoresSecretsEditResponse {
-  /** Secret identifier tag. */
+export interface GetQuotaResponse {
+  secrets: QuotaGetResponseSecrets;
+}
+export const GetQuotaResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    secrets: QuotaGetResponseSecrets,
+  }),
+).annotate({
+  identifier: "GetQuotaResponse",
+}) as any as S.Schema<GetQuotaResponse>;
+
+export interface GetStoreRequest {
+  /** Account Identifier */
+  accountId: string;
+  /** Store Identifier */
+  storeId: string;
+}
+export const GetStoreRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    storeId: S.String.pipe(T.Label("store_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetStoreRequest",
+}) as any as S.Schema<GetStoreRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetStoreResponse {
+  /** Store Identifier */
   id: string;
   /** Whenthe secret was created. */
   created: string;
   /** When the secret was modified. */
   modified: string;
-  /** The name of the secret */
+  /** The name of the store */
   name: string;
-  status: StoresSecretsEditResponseStatus;
-  /** Store Identifier */
-  storeId: string;
-  /** Freeform text describing the secret */
-  comment?: string;
-  /** The list of services that can use this secret. */
-  scopes?: StoresSecretsEditResponseScopesList;
+  /** Account Identifier */
+  accountId?: string;
 }
-export const StoresSecretsEditResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetStoreResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
     modified: S.String,
     name: S.String,
-    status: StoresSecretsEditResponseStatus,
-    storeId: S.String.pipe(T.Body("store_id")),
-    comment: S.optional(S.String),
-    scopes: S.optional(StoresSecretsEditResponseScopesList),
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
   }),
 ).annotate({
-  identifier: "StoresSecretsEditResponse",
-}) as any as S.Schema<StoresSecretsEditResponse>;
+  identifier: "GetStoreResponse",
+}) as any as S.Schema<GetStoreResponse>;
 
-export interface StoresSecretsGetRequest {
+export interface GetStoreSecretRequest {
   /** Account Identifier */
   accountId: string;
   /** Store Identifier */
@@ -623,7 +531,7 @@ export interface StoresSecretsGetRequest {
   /** Secret identifier tag. */
   secretId: string;
 }
-export const StoresSecretsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -636,8 +544,8 @@ export const StoresSecretsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "StoresSecretsGetRequest",
-}) as any as S.Schema<StoresSecretsGetRequest>;
+  identifier: "GetStoreSecretRequest",
+}) as any as S.Schema<GetStoreSecretRequest>;
 
 export type StoresSecretsGetResponseStatus =
   | "pending"
@@ -652,7 +560,7 @@ export const StoresSecretsGetResponseScopesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<StoresSecretsGetResponseScopesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface StoresSecretsGetResponse {
+export interface GetStoreSecretResponse {
   /** Secret identifier tag. */
   id: string;
   /** Whenthe secret was created. */
@@ -669,7 +577,7 @@ export interface StoresSecretsGetResponse {
   /** The list of services that can use this secret. */
   scopes?: StoresSecretsGetResponseScopesList;
 }
-export const StoresSecretsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     created: S.String,
@@ -681,8 +589,89 @@ export const StoresSecretsGetResponse = /*@__PURE__*/ S.suspend(() =>
     scopes: S.optional(StoresSecretsGetResponseScopesList),
   }),
 ).annotate({
-  identifier: "StoresSecretsGetResponse",
-}) as any as S.Schema<StoresSecretsGetResponse>;
+  identifier: "GetStoreSecretResponse",
+}) as any as S.Schema<GetStoreSecretResponse>;
+
+export type StoresListRequestDirection = "asc" | "desc" | (string & {});
+export const StoresListRequestDirection = /*@__PURE__*/ S.String;
+
+export type StoresListRequestOrder =
+  | "name"
+  | "comment"
+  | "created"
+  | (string & {});
+export const StoresListRequestOrder = /*@__PURE__*/ S.String;
+
+export interface ListStoresRequest {
+  /** Account Identifier */
+  accountId: string;
+  /** Direction to sort objects */
+  direction?: StoresListRequestDirection;
+  /** Order secrets by values in the given field */
+  order?: StoresListRequestOrder;
+  /** Page number */
+  page?: number;
+  /** Number of objects to return per page */
+  perPage?: number;
+}
+export const ListStoresRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    direction: S.optional(StoresListRequestDirection.pipe(T.Query())),
+    order: S.optional(StoresListRequestOrder.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/secrets_store/stores",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListStoresRequest",
+}) as any as S.Schema<ListStoresRequest>;
+
+export interface StoresListResultItem {
+  /** Store Identifier */
+  id: string;
+  /** Whenthe secret was created. */
+  created: string;
+  /** When the secret was modified. */
+  modified: string;
+  /** The name of the store */
+  name: string;
+  /** Account Identifier */
+  accountId?: string;
+}
+export const StoresListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    created: S.String,
+    modified: S.String,
+    name: S.String,
+    accountId: S.optional(S.String.pipe(T.Body("account_id"))),
+  }),
+).annotate({
+  identifier: "StoresListResultItem",
+}) as any as S.Schema<StoresListResultItem>;
+
+export type StoresListResultList = StoresListResultItem[];
+export const StoresListResultList = /*@__PURE__*/ S.Array(
+  StoresListResultItem,
+) as any as S.Schema<StoresListResultList>;
+
+export interface ListStoresResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: StoresListResultList;
+}
+export const ListStoresResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(StoresListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListStoresResponse",
+}) as any as S.Schema<ListStoresResponse>;
 
 export type StoresSecretsListRequestDirection = "asc" | "desc" | (string & {});
 export const StoresSecretsListRequestDirection = /*@__PURE__*/ S.String;
@@ -699,7 +688,7 @@ export const StoresSecretsListRequestScopesList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<StoresSecretsListRequestScopesList>;
 
-export interface StoresSecretsListRequest {
+export interface ListStoreSecretsRequest {
   /** Account Identifier */
   accountId: string;
   /** Store Identifier */
@@ -717,7 +706,7 @@ export interface StoresSecretsListRequest {
   /** Search secrets using a filter string, filtering across name and comment */
   search?: string;
 }
-export const StoresSecretsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListStoreSecretsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     storeId: S.String.pipe(T.Label("store_id")),
@@ -735,8 +724,8 @@ export const StoresSecretsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "StoresSecretsListRequest",
-}) as any as S.Schema<StoresSecretsListRequest>;
+  identifier: "ListStoreSecretsRequest",
+}) as any as S.Schema<ListStoreSecretsRequest>;
 
 export type StoresSecretsListResultItemStatus =
   | "pending"
@@ -787,182 +776,361 @@ export const StoresSecretsListResultList = /*@__PURE__*/ S.Array(
   StoresSecretsListResultItem,
 ) as any as S.Schema<StoresSecretsListResultList>;
 
-export interface StoresSecretsListResponse {
+export interface ListStoreSecretsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: StoresSecretsListResultList;
 }
-export const StoresSecretsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(StoresSecretsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "StoresSecretsListResponse",
-}) as any as S.Schema<StoresSecretsListResponse>;
+  identifier: "ListStoreSecretsResponse",
+}) as any as S.Schema<ListStoreSecretsResponse>;
 
-export type QuotaGetError = CloudflareOpError;
-/** Lists the number of secrets used in the account. */
-export const quotaGet: API.OperationMethod<
-  QuotaGetRequest,
-  QuotaGetResponse,
-  QuotaGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: QuotaGetRequest,
-  output: QuotaGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type StoresSecretsEditRequestScopesList = string[];
+export const StoresSecretsEditRequestScopesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StoresSecretsEditRequestScopesList>;
 
-export type StoresCreateError = CloudflareOpError;
-/** Creates a store in the account */
-export const storesCreate: API.OperationMethod<
-  StoresCreateRequest,
-  StoresCreateResponse,
-  StoresCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StoresCreateRequest,
-  output: StoresCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface PatchStoreSecretRequest {
+  /** Account Identifier */
+  accountId: string;
+  /** Store Identifier */
+  storeId: string;
+  /** Secret identifier tag. */
+  secretId: string;
+  /** Freeform text describing the secret */
+  comment?: string;
+  /** The list of services that can use this secret. */
+  scopes?: StoresSecretsEditRequestScopesList;
+  /** The value of the secret. Maximum 64 KiB (65,536 bytes). Note that this is 'write only' - no API response will provide this value, it is only used to create/modify secrets. */
+  value?: string;
+}
+export const PatchStoreSecretRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    storeId: S.String.pipe(T.Label("store_id")),
+    secretId: S.String.pipe(T.Label("secret_id")),
+    comment: S.optional(S.String),
+    scopes: S.optional(StoresSecretsEditRequestScopesList),
+    value: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/secrets_store/stores/{store_id}/secrets/{secret_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchStoreSecretRequest",
+}) as any as S.Schema<PatchStoreSecretRequest>;
 
-export type StoresDeleteError = CloudflareOpError;
-/** Deletes a single store. By default, a store that still contains secrets cannot be deleted and returns HTTP 409 (Conflict) with the "store_not_empty" error. Pass `force=true` to cascade-delete all secrets in the store. Empty stores are always deleted regardless of the force parameter. */
-export const storesDelete: API.OperationMethod<
-  StoresDeleteRequest,
-  StoresDeleteResponse,
-  StoresDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StoresDeleteRequest,
-  output: StoresDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type StoresSecretsEditResponseStatus =
+  | "pending"
+  | "active"
+  | "deleted"
+  | (string & {});
+export const StoresSecretsEditResponseStatus = /*@__PURE__*/ S.String;
 
-export type StoresGetError = CloudflareOpError;
-/** Returns details of a single store */
-export const storesGet: API.OperationMethod<
-  StoresGetRequest,
-  StoresGetResponse,
-  StoresGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StoresGetRequest,
-  output: StoresGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type StoresSecretsEditResponseScopesList = string[];
+export const StoresSecretsEditResponseScopesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<StoresSecretsEditResponseScopesList>;
 
-export type StoresListError = CloudflareOpError;
-/** Lists all the stores in an account */
-export const storesList: API.OperationMethod<
-  StoresListRequest,
-  StoresListResponse,
-  StoresListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StoresListRequest,
-  output: StoresListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchStoreSecretResponse {
+  /** Secret identifier tag. */
+  id: string;
+  /** Whenthe secret was created. */
+  created: string;
+  /** When the secret was modified. */
+  modified: string;
+  /** The name of the secret */
+  name: string;
+  status: StoresSecretsEditResponseStatus;
+  /** Store Identifier */
+  storeId: string;
+  /** Freeform text describing the secret */
+  comment?: string;
+  /** The list of services that can use this secret. */
+  scopes?: StoresSecretsEditResponseScopesList;
+}
+export const PatchStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    created: S.String,
+    modified: S.String,
+    name: S.String,
+    status: StoresSecretsEditResponseStatus,
+    storeId: S.String.pipe(T.Body("store_id")),
+    comment: S.optional(S.String),
+    scopes: S.optional(StoresSecretsEditResponseScopesList),
+  }),
+).annotate({
+  identifier: "PatchStoreSecretResponse",
+}) as any as S.Schema<PatchStoreSecretResponse>;
 
-export type StoresSecretsBulkDeleteError = CloudflareOpError;
+export type BulkDeleteStoreSecretsError =
+  | StoreNotFound
+  | InvalidAccountId
+  | InvalidJsonBody
+  | CloudflareOpError;
 /** Deletes one or more secrets */
-export const storesSecretsBulkDelete: API.OperationMethod<
-  StoresSecretsBulkDeleteRequest,
-  StoresSecretsBulkDeleteResponse,
-  StoresSecretsBulkDeleteError,
+export const bulkDeleteStoreSecrets: API.OperationMethod<
+  BulkDeleteStoreSecretsRequest,
+  BulkDeleteStoreSecretsResponse,
+  BulkDeleteStoreSecretsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StoresSecretsBulkDeleteRequest,
-  output: StoresSecretsBulkDeleteResponse,
+  input: BulkDeleteStoreSecretsRequest,
+  output: BulkDeleteStoreSecretsResponse,
+  errors: [
+    StoreNotFound,
+    InvalidAccountId,
+    InvalidJsonBody,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateStoreError = CloudflareOpError;
+/** Creates a store in the account */
+export const createStore: API.OperationMethod<
+  CreateStoreRequest,
+  CreateStoreResponse,
+  CreateStoreError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateStoreRequest,
+  output: CreateStoreResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type StoresSecretsCreateError = CloudflareOpError;
+export type CreateStoreSecretError =
+  | StoreNotFound
+  | InvalidAccountId
+  | SecretNameEmpty
+  | SecretNameAlreadyExists
+  | SecretScopeInvalid
+  | CloudflareOpError;
 /** Creates a secret in the account */
-export const storesSecretsCreate: API.OperationMethod<
-  StoresSecretsCreateRequest,
-  StoresSecretsCreateResponse,
-  StoresSecretsCreateError,
+export const createStoreSecret: API.OperationMethod<
+  CreateStoreSecretRequest,
+  CreateStoreSecretResponse,
+  CreateStoreSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StoresSecretsCreateRequest,
-  output: StoresSecretsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateStoreSecretRequest,
+  output: CreateStoreSecretResponse,
+  errors: [
+    StoreNotFound,
+    InvalidAccountId,
+    SecretNameEmpty,
+    SecretNameAlreadyExists,
+    SecretScopeInvalid,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type StoresSecretsDeleteError = CloudflareOpError;
+export type DeleteStoreError =
+  | StoreNotFound
+  | InvalidAccountId
+  | NotFound
+  | CloudflareOpError;
+/** Deletes a single store. By default, a store that still contains secrets cannot be deleted and returns HTTP 409 (Conflict) with the "store_not_empty" error. Pass `force=true` to cascade-delete all secrets in the store. Empty stores are always deleted regardless of the force parameter. */
+export const deleteStore: API.OperationMethod<
+  DeleteStoreRequest,
+  DeleteStoreResponse,
+  DeleteStoreError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteStoreRequest,
+  output: DeleteStoreResponse,
+  errors: [
+    StoreNotFound,
+    InvalidAccountId,
+    NotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteStoreSecretError =
+  | StoreNotFound
+  | SecretNotFound
+  | InvalidAccountId
+  | NotFound
+  | CloudflareOpError;
 /** Deletes a single secret */
-export const storesSecretsDelete: API.OperationMethod<
-  StoresSecretsDeleteRequest,
-  StoresSecretsDeleteResponse,
-  StoresSecretsDeleteError,
+export const deleteStoreSecret: API.OperationMethod<
+  DeleteStoreSecretRequest,
+  DeleteStoreSecretResponse,
+  DeleteStoreSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StoresSecretsDeleteRequest,
-  output: StoresSecretsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteStoreSecretRequest,
+  output: DeleteStoreSecretResponse,
+  errors: [
+    StoreNotFound,
+    SecretNotFound,
+    InvalidAccountId,
+    NotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type StoresSecretsDuplicateError = CloudflareOpError;
+export type DuplicateStoreSecretError =
+  | StoreNotFound
+  | SecretNotFound
+  | SecretNameEmpty
+  | SecretScopesEmpty
+  | SecretNameAlreadyExists
+  | InvalidAccountId
+  | SecretScopeInvalid
+  | CloudflareOpError;
 /** Duplicates the secret, keeping the value */
-export const storesSecretsDuplicate: API.OperationMethod<
-  StoresSecretsDuplicateRequest,
-  StoresSecretsDuplicateResponse,
-  StoresSecretsDuplicateError,
+export const duplicateStoreSecret: API.OperationMethod<
+  DuplicateStoreSecretRequest,
+  DuplicateStoreSecretResponse,
+  DuplicateStoreSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StoresSecretsDuplicateRequest,
-  output: StoresSecretsDuplicateResponse,
+  input: DuplicateStoreSecretRequest,
+  output: DuplicateStoreSecretResponse,
+  errors: [
+    StoreNotFound,
+    SecretNotFound,
+    SecretNameEmpty,
+    SecretScopesEmpty,
+    SecretNameAlreadyExists,
+    InvalidAccountId,
+    SecretScopeInvalid,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetQuotaError = InvalidAccountId | CloudflareOpError;
+/** Lists the number of secrets used in the account. */
+export const getQuota: API.OperationMethod<
+  GetQuotaRequest,
+  GetQuotaResponse,
+  GetQuotaError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetQuotaRequest,
+  output: GetQuotaResponse,
+  errors: [InvalidAccountId, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetStoreError = CloudflareOpError;
+/** Returns details of a single store */
+export const getStore: API.OperationMethod<
+  GetStoreRequest,
+  GetStoreResponse,
+  GetStoreError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetStoreRequest,
+  output: GetStoreResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type StoresSecretsEditError = CloudflareOpError;
-/** Updates a single secret */
-export const storesSecretsEdit: API.OperationMethod<
-  StoresSecretsEditRequest,
-  StoresSecretsEditResponse,
-  StoresSecretsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: StoresSecretsEditRequest,
-  output: StoresSecretsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type StoresSecretsGetError = CloudflareOpError;
+export type GetStoreSecretError =
+  | StoreNotFound
+  | SecretNotFound
+  | InvalidAccountId
+  | NotFound
+  | CloudflareOpError;
 /** Returns details of a single secret */
-export const storesSecretsGet: API.OperationMethod<
-  StoresSecretsGetRequest,
-  StoresSecretsGetResponse,
-  StoresSecretsGetError,
+export const getStoreSecret: API.OperationMethod<
+  GetStoreSecretRequest,
+  GetStoreSecretResponse,
+  GetStoreSecretError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StoresSecretsGetRequest,
-  output: StoresSecretsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetStoreSecretRequest,
+  output: GetStoreSecretResponse,
+  errors: [
+    StoreNotFound,
+    SecretNotFound,
+    InvalidAccountId,
+    NotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type StoresSecretsListError = CloudflareOpError;
-/** Lists all store secrets */
-export const storesSecretsList: API.OperationMethod<
-  StoresSecretsListRequest,
-  StoresSecretsListResponse,
-  StoresSecretsListError,
+export type ListStoresError = InvalidAccountId | CloudflareOpError;
+/** Lists all the stores in an account */
+export const listStores: API.OperationMethod<
+  ListStoresRequest,
+  ListStoresResponse,
+  ListStoresError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: StoresSecretsListRequest,
-  output: StoresSecretsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ListStoresRequest,
+  output: ListStoresResponse,
+  errors: [InvalidAccountId, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListStoreSecretsError =
+  | StoreNotFound
+  | InvalidAccountId
+  | CloudflareOpError;
+/** Lists all store secrets */
+export const listStoreSecrets: API.OperationMethod<
+  ListStoreSecretsRequest,
+  ListStoreSecretsResponse,
+  ListStoreSecretsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListStoreSecretsRequest,
+  output: ListStoreSecretsResponse,
+  errors: [
+    StoreNotFound,
+    InvalidAccountId,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchStoreSecretError =
+  | StoreNotFound
+  | SecretNotFound
+  | InvalidAccountId
+  | SecretScopeInvalid
+  | CloudflareOpError;
+/** Updates a single secret */
+export const patchStoreSecret: API.OperationMethod<
+  PatchStoreSecretRequest,
+  PatchStoreSecretResponse,
+  PatchStoreSecretError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchStoreSecretRequest,
+  output: PatchStoreSecretResponse,
+  errors: [
+    StoreNotFound,
+    SecretNotFound,
+    InvalidAccountId,
+    SecretScopeInvalid,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

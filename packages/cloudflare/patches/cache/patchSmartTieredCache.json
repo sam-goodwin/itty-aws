@@ -1,0 +1,62 @@
+{
+  "description": "Align cache#SmartTieredCacheEdit with distilled cloudflare/cache patchSmartTieredCache",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.cache#SmartTieredCacheEdit",
+      "path": "/shapes/com.cloudflare.cache#PatchSmartTieredCache"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.cache#SmartTieredCacheEditRequest",
+      "path": "/shapes/com.cloudflare.cache#PatchSmartTieredCacheRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.cache#PatchSmartTieredCache/input/target",
+      "value": "com.cloudflare.cache#PatchSmartTieredCacheRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.cache#SmartTieredCacheEditResponse",
+      "path": "/shapes/com.cloudflare.cache#PatchSmartTieredCacheResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.cache#PatchSmartTieredCache/output/target",
+      "value": "com.cloudflare.cache#PatchSmartTieredCacheResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.cache#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.cache#PatchSmartTieredCache/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.cache#Forbidden"
+        }
+      ]
+    }
+  ]
+}

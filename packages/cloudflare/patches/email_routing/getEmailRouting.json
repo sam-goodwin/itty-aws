@@ -1,0 +1,62 @@
+{
+  "description": "Align email_routing#Get with distilled cloudflare/email-routing getEmailRouting",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.email_routing#Get",
+      "path": "/shapes/com.cloudflare.email_routing#GetEmailRouting"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.email_routing#GetRequest",
+      "path": "/shapes/com.cloudflare.email_routing#GetEmailRoutingRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.email_routing#GetEmailRouting/input/target",
+      "value": "com.cloudflare.email_routing#GetEmailRoutingRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.email_routing#GetResponse",
+      "path": "/shapes/com.cloudflare.email_routing#GetEmailRoutingResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.email_routing#GetEmailRouting/output/target",
+      "value": "com.cloudflare.email_routing#GetEmailRoutingResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_routing#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.email_routing#GetEmailRouting/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.email_routing#Forbidden"
+        }
+      ]
+    }
+  ]
+}

@@ -9,6 +9,38 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class InvalidWeb3HostnameTarget extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidWeb3HostnameTarget>()("InvalidWeb3HostnameTarget", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1006 }],
+) {}
+
+export class Web3HostnameNotEntitled extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Web3HostnameNotEntitled>()("Web3HostnameNotEntitled", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1010, message: { includes: "not entitled" } }],
+) {}
+
+export class Web3HostnameNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Web3HostnameNotFound>()("Web3HostnameNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1002 }],
+) {}
+
 export type HostnamesCreateRequestTarget =
   | "ethereum"
   | "ipfs"
@@ -16,7 +48,7 @@ export type HostnamesCreateRequestTarget =
   | (string & {});
 export const HostnamesCreateRequestTarget = /*@__PURE__*/ S.String;
 
-export interface HostnamesCreateRequest {
+export interface CreateHostnameRequest {
   /** Specify the identifier of the hostname. */
   zoneId: string;
   /** Specify the hostname that points to the target gateway via CNAME. */
@@ -28,7 +60,7 @@ export interface HostnamesCreateRequest {
   /** Specify the DNSLink value used if the target is ipfs. */
   dnslink?: string;
 }
-export const HostnamesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     name: S.String,
@@ -43,8 +75,8 @@ export const HostnamesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HostnamesCreateRequest",
-}) as any as S.Schema<HostnamesCreateRequest>;
+  identifier: "CreateHostnameRequest",
+}) as any as S.Schema<CreateHostnameRequest>;
 
 export type HostnamesCreateResponseStatus =
   | "active"
@@ -62,7 +94,7 @@ export type HostnamesCreateResponseTarget =
 export const HostnamesCreateResponseTarget = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HostnamesCreateResponse {
+export interface CreateHostnameResponse {
   /** Specify the identifier of the hostname. */
   id?: string;
   createdOn?: string;
@@ -78,7 +110,7 @@ export interface HostnamesCreateResponse {
   /** Specify the target gateway of the hostname. */
   target?: HostnamesCreateResponseTarget;
 }
-export const HostnamesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
@@ -90,16 +122,90 @@ export const HostnamesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     target: S.optional(HostnamesCreateResponseTarget),
   }),
 ).annotate({
-  identifier: "HostnamesCreateResponse",
-}) as any as S.Schema<HostnamesCreateResponse>;
+  identifier: "CreateHostnameResponse",
+}) as any as S.Schema<CreateHostnameResponse>;
 
-export interface HostnamesDeleteRequest {
+export type HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType =
+  | "cid"
+  | "content_path"
+  | (string & {});
+export const HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType =
+  /*@__PURE__*/ S.String;
+
+export interface CreateHostnameIpfsUniversalPathContentListEntryRequest {
+  /** Specify the identifier of the hostname. */
+  zoneId: string;
+  /** Specify the identifier of the hostname. */
+  identifier: string;
+  /** Specify the CID or content path of content to block. */
+  content: string;
+  /** Specify the type of content list entry to block. */
+  type: HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType;
+  /** Specify an optional description of the content list entry. */
+  description?: string;
+}
+export const CreateHostnameIpfsUniversalPathContentListEntryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      identifier: S.String.pipe(T.Label()),
+      content: S.String,
+      type: HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType,
+      description: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateHostnameIpfsUniversalPathContentListEntryRequest",
+  }) as any as S.Schema<CreateHostnameIpfsUniversalPathContentListEntryRequest>;
+
+export type HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType =
+  | "cid"
+  | "content_path"
+  | (string & {});
+export const HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateHostnameIpfsUniversalPathContentListEntryResponse {
+  /** Specify the identifier of the hostname. */
+  id?: string;
+  /** Specify the CID or content path of content to block. */
+  content?: string;
+  createdOn?: string;
+  /** Specify an optional description of the content list entry. */
+  description?: string;
+  modifiedOn?: string;
+  /** Specify the type of content list entry to block. */
+  type?: HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType;
+}
+export const CreateHostnameIpfsUniversalPathContentListEntryResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      content: S.optional(S.String),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      description: S.optional(S.String),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      type: S.optional(
+        HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType,
+      ),
+    }),
+  ).annotate({
+    identifier: "CreateHostnameIpfsUniversalPathContentListEntryResponse",
+  }) as any as S.Schema<CreateHostnameIpfsUniversalPathContentListEntryResponse>;
+
+export interface DeleteHostnameRequest {
   /** Specify the identifier of the hostname. */
   zoneId: string;
   /** Specify the identifier of the hostname. */
   identifier: string;
 }
-export const HostnamesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     identifier: S.String.pipe(T.Label()),
@@ -111,103 +217,70 @@ export const HostnamesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HostnamesDeleteRequest",
-}) as any as S.Schema<HostnamesDeleteRequest>;
+  identifier: "DeleteHostnameRequest",
+}) as any as S.Schema<DeleteHostnameRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HostnamesDeleteResponse {
+export interface DeleteHostnameResponse {
   /** Specify the identifier of the hostname. */
   id: string;
 }
-export const HostnamesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
 ).annotate({
-  identifier: "HostnamesDeleteResponse",
-}) as any as S.Schema<HostnamesDeleteResponse>;
+  identifier: "DeleteHostnameResponse",
+}) as any as S.Schema<DeleteHostnameResponse>;
 
-export interface HostnamesEditRequest {
+export interface DeleteHostnameIpfsUniversalPathContentListEntryRequest {
   /** Specify the identifier of the hostname. */
   zoneId: string;
   /** Specify the identifier of the hostname. */
   identifier: string;
-  /** Specify an optional description of the hostname. */
-  description?: string;
-  /** Specify the DNSLink value used if the target is ipfs. */
-  dnslink?: string;
+  /** Specify the identifier of the hostname. */
+  contentListEntryIdentifier: string;
 }
-export const HostnamesEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    identifier: S.String.pipe(T.Label()),
-    description: S.optional(S.String),
-    dnslink: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/web3/hostnames/{identifier}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HostnamesEditRequest",
-}) as any as S.Schema<HostnamesEditRequest>;
-
-export type HostnamesEditResponseStatus =
-  | "active"
-  | "pending"
-  | "deleting"
-  | "error"
-  | (string & {});
-export const HostnamesEditResponseStatus = /*@__PURE__*/ S.String;
-
-export type HostnamesEditResponseTarget =
-  | "ethereum"
-  | "ipfs"
-  | "ipfs_universal_path"
-  | (string & {});
-export const HostnamesEditResponseTarget = /*@__PURE__*/ S.String;
+export const DeleteHostnameIpfsUniversalPathContentListEntryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      identifier: S.String.pipe(T.Label()),
+      contentListEntryIdentifier: S.String.pipe(
+        T.Label("content_list_entry_identifier"),
+      ),
+    }).pipe(
+      T.Http({
+        method: "DELETE",
+        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "DeleteHostnameIpfsUniversalPathContentListEntryRequest",
+  }) as any as S.Schema<DeleteHostnameIpfsUniversalPathContentListEntryRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HostnamesEditResponse {
+export interface DeleteHostnameIpfsUniversalPathContentListEntryResponse {
   /** Specify the identifier of the hostname. */
-  id?: string;
-  createdOn?: string;
-  /** Specify an optional description of the hostname. */
-  description?: string;
-  /** Specify the DNSLink value used if the target is ipfs. */
-  dnslink?: string;
-  modifiedOn?: string;
-  /** Specify the hostname that points to the target gateway via CNAME. */
-  name?: string;
-  /** Specifies the status of the hostname's activation. */
-  status?: HostnamesEditResponseStatus;
-  /** Specify the target gateway of the hostname. */
-  target?: HostnamesEditResponseTarget;
+  id: string;
 }
-export const HostnamesEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    dnslink: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    status: S.optional(HostnamesEditResponseStatus),
-    target: S.optional(HostnamesEditResponseTarget),
-  }),
-).annotate({
-  identifier: "HostnamesEditResponse",
-}) as any as S.Schema<HostnamesEditResponse>;
+export const DeleteHostnameIpfsUniversalPathContentListEntryResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+    }),
+  ).annotate({
+    identifier: "DeleteHostnameIpfsUniversalPathContentListEntryResponse",
+  }) as any as S.Schema<DeleteHostnameIpfsUniversalPathContentListEntryResponse>;
 
-export interface HostnamesGetRequest {
+export interface GetHostnameRequest {
   /** Specify the identifier of the hostname. */
   zoneId: string;
   /** Specify the identifier of the hostname. */
   identifier: string;
 }
-export const HostnamesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetHostnameRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     identifier: S.String.pipe(T.Label()),
@@ -219,8 +292,8 @@ export const HostnamesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HostnamesGetRequest",
-}) as any as S.Schema<HostnamesGetRequest>;
+  identifier: "GetHostnameRequest",
+}) as any as S.Schema<GetHostnameRequest>;
 
 export type HostnamesGetResponseStatus =
   | "active"
@@ -238,7 +311,7 @@ export type HostnamesGetResponseTarget =
 export const HostnamesGetResponseTarget = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HostnamesGetResponse {
+export interface GetHostnameResponse {
   /** Specify the identifier of the hostname. */
   id?: string;
   createdOn?: string;
@@ -254,7 +327,7 @@ export interface HostnamesGetResponse {
   /** Specify the target gateway of the hostname. */
   target?: HostnamesGetResponseTarget;
 }
-export const HostnamesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
@@ -266,84 +339,54 @@ export const HostnamesGetResponse = /*@__PURE__*/ S.suspend(() =>
     target: S.optional(HostnamesGetResponseTarget),
   }),
 ).annotate({
-  identifier: "HostnamesGetResponse",
-}) as any as S.Schema<HostnamesGetResponse>;
+  identifier: "GetHostnameResponse",
+}) as any as S.Schema<GetHostnameResponse>;
 
-export type HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType =
-  | "cid"
-  | "content_path"
-  | (string & {});
-export const HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType =
-  /*@__PURE__*/ S.String;
-
-export interface HostnamesIpfsUniversalPathsContentListsEntriesCreateRequest {
+export interface GetHostnameIpfsUniversalPathContentListRequest {
   /** Specify the identifier of the hostname. */
   zoneId: string;
   /** Specify the identifier of the hostname. */
   identifier: string;
-  /** Specify the CID or content path of content to block. */
-  content: string;
-  /** Specify the type of content list entry to block. */
-  type: HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType;
-  /** Specify an optional description of the content list entry. */
-  description?: string;
 }
-export const HostnamesIpfsUniversalPathsContentListsEntriesCreateRequest =
+export const GetHostnameIpfsUniversalPathContentListRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
       identifier: S.String.pipe(T.Label()),
-      content: S.String,
-      type: HostnamesIpfsUniversalPathsContentListsEntriesCreateRequestType,
-      description: S.optional(S.String),
     }).pipe(
       T.Http({
-        method: "POST",
-        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries",
+        method: "GET",
+        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list",
         code: 200,
       }),
     ),
   ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsEntriesCreateRequest",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesCreateRequest>;
+    identifier: "GetHostnameIpfsUniversalPathContentListRequest",
+  }) as any as S.Schema<GetHostnameIpfsUniversalPathContentListRequest>;
 
-export type HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType =
-  | "cid"
-  | "content_path"
+export type HostnamesIpfsUniversalPathsContentListsGetResponseAction =
+  | "block"
   | (string & {});
-export const HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType =
+export const HostnamesIpfsUniversalPathsContentListsGetResponseAction =
   /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HostnamesIpfsUniversalPathsContentListsEntriesCreateResponse {
-  /** Specify the identifier of the hostname. */
-  id?: string;
-  /** Specify the CID or content path of content to block. */
-  content?: string;
-  createdOn?: string;
-  /** Specify an optional description of the content list entry. */
-  description?: string;
-  modifiedOn?: string;
-  /** Specify the type of content list entry to block. */
-  type?: HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType;
+export interface GetHostnameIpfsUniversalPathContentListResponse {
+  /** Behavior of the content list. */
+  action?: HostnamesIpfsUniversalPathsContentListsGetResponseAction;
 }
-export const HostnamesIpfsUniversalPathsContentListsEntriesCreateResponse =
+export const GetHostnameIpfsUniversalPathContentListResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      type: S.optional(
-        HostnamesIpfsUniversalPathsContentListsEntriesCreateResponseType,
+      action: S.optional(
+        HostnamesIpfsUniversalPathsContentListsGetResponseAction,
       ),
     }),
   ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsEntriesCreateResponse",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesCreateResponse>;
+    identifier: "GetHostnameIpfsUniversalPathContentListResponse",
+  }) as any as S.Schema<GetHostnameIpfsUniversalPathContentListResponse>;
 
-export interface HostnamesIpfsUniversalPathsContentListsEntriesDeleteRequest {
+export interface GetHostnameIpfsUniversalPathContentListEntryRequest {
   /** Specify the identifier of the hostname. */
   zoneId: string;
   /** Specify the identifier of the hostname. */
@@ -351,48 +394,7 @@ export interface HostnamesIpfsUniversalPathsContentListsEntriesDeleteRequest {
   /** Specify the identifier of the hostname. */
   contentListEntryIdentifier: string;
 }
-export const HostnamesIpfsUniversalPathsContentListsEntriesDeleteRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zoneId: S.String.pipe(T.Label("zone_id")),
-      identifier: S.String.pipe(T.Label()),
-      contentListEntryIdentifier: S.String.pipe(
-        T.Label("content_list_entry_identifier"),
-      ),
-    }).pipe(
-      T.Http({
-        method: "DELETE",
-        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsEntriesDeleteRequest",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HostnamesIpfsUniversalPathsContentListsEntriesDeleteResponse {
-  /** Specify the identifier of the hostname. */
-  id: string;
-}
-export const HostnamesIpfsUniversalPathsContentListsEntriesDeleteResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-    }),
-  ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsEntriesDeleteResponse",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesDeleteResponse>;
-
-export interface HostnamesIpfsUniversalPathsContentListsEntriesGetRequest {
-  /** Specify the identifier of the hostname. */
-  zoneId: string;
-  /** Specify the identifier of the hostname. */
-  identifier: string;
-  /** Specify the identifier of the hostname. */
-  contentListEntryIdentifier: string;
-}
-export const HostnamesIpfsUniversalPathsContentListsEntriesGetRequest =
+export const GetHostnameIpfsUniversalPathContentListEntryRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
@@ -408,8 +410,8 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesGetRequest =
       }),
     ),
   ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsEntriesGetRequest",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesGetRequest>;
+    identifier: "GetHostnameIpfsUniversalPathContentListEntryRequest",
+  }) as any as S.Schema<GetHostnameIpfsUniversalPathContentListEntryRequest>;
 
 export type HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType =
   | "cid"
@@ -419,7 +421,7 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType =
   /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HostnamesIpfsUniversalPathsContentListsEntriesGetResponse {
+export interface GetHostnameIpfsUniversalPathContentListEntryResponse {
   /** Specify the identifier of the hostname. */
   id?: string;
   /** Specify the CID or content path of content to block. */
@@ -431,7 +433,7 @@ export interface HostnamesIpfsUniversalPathsContentListsEntriesGetResponse {
   /** Specify the type of content list entry to block. */
   type?: HostnamesIpfsUniversalPathsContentListsEntriesGetResponseType;
 }
-export const HostnamesIpfsUniversalPathsContentListsEntriesGetResponse =
+export const GetHostnameIpfsUniversalPathContentListEntryResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       id: S.optional(S.String),
@@ -444,16 +446,16 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesGetResponse =
       ),
     }),
   ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsEntriesGetResponse",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesGetResponse>;
+    identifier: "GetHostnameIpfsUniversalPathContentListEntryResponse",
+  }) as any as S.Schema<GetHostnameIpfsUniversalPathContentListEntryResponse>;
 
-export interface HostnamesIpfsUniversalPathsContentListsEntriesListRequest {
+export interface ListHostnameIpfsUniversalPathContentListEntriesRequest {
   /** Specify the identifier of the hostname. */
   zoneId: string;
   /** Specify the identifier of the hostname. */
   identifier: string;
 }
-export const HostnamesIpfsUniversalPathsContentListsEntriesListRequest =
+export const ListHostnameIpfsUniversalPathContentListEntriesRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       zoneId: S.String.pipe(T.Label("zone_id")),
@@ -466,8 +468,8 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesListRequest =
       }),
     ),
   ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsEntriesListRequest",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesListRequest>;
+    identifier: "ListHostnameIpfsUniversalPathContentListEntriesRequest",
+  }) as any as S.Schema<ListHostnameIpfsUniversalPathContentListEntriesRequest>;
 
 export type HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesItemType =
   "cid" | "content_path" | (string & {});
@@ -511,11 +513,11 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesLi
   ) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HostnamesIpfsUniversalPathsContentListsEntriesListResponse {
+export interface ListHostnameIpfsUniversalPathContentListEntriesResponse {
   /** Provides content list entries. */
   entries?: HostnamesIpfsUniversalPathsContentListsEntriesListResponseEntriesList;
 }
-export const HostnamesIpfsUniversalPathsContentListsEntriesListResponse =
+export const ListHostnameIpfsUniversalPathContentListEntriesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       entries: S.optional(
@@ -523,234 +525,14 @@ export const HostnamesIpfsUniversalPathsContentListsEntriesListResponse =
       ),
     }),
   ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsEntriesListResponse",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesListResponse>;
+    identifier: "ListHostnameIpfsUniversalPathContentListEntriesResponse",
+  }) as any as S.Schema<ListHostnameIpfsUniversalPathContentListEntriesResponse>;
 
-export type HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType =
-  | "cid"
-  | "content_path"
-  | (string & {});
-export const HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType =
-  /*@__PURE__*/ S.String;
-
-export interface HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequest {
-  /** Specify the identifier of the hostname. */
-  zoneId: string;
-  /** Specify the identifier of the hostname. */
-  identifier: string;
-  /** Specify the identifier of the hostname. */
-  contentListEntryIdentifier: string;
-  /** Specify the CID or content path of content to block. */
-  content: string;
-  /** Specify the type of content list entry to block. */
-  type: HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType;
-  /** Specify an optional description of the content list entry. */
-  description?: string;
-}
-export const HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zoneId: S.String.pipe(T.Label("zone_id")),
-      identifier: S.String.pipe(T.Label()),
-      contentListEntryIdentifier: S.String.pipe(
-        T.Label("content_list_entry_identifier"),
-      ),
-      content: S.String,
-      type: HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType,
-      description: S.optional(S.String),
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequest",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequest>;
-
-export type HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType =
-  | "cid"
-  | "content_path"
-  | (string & {});
-export const HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponse {
-  /** Specify the identifier of the hostname. */
-  id?: string;
-  /** Specify the CID or content path of content to block. */
-  content?: string;
-  createdOn?: string;
-  /** Specify an optional description of the content list entry. */
-  description?: string;
-  modifiedOn?: string;
-  /** Specify the type of content list entry to block. */
-  type?: HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType;
-}
-export const HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      type: S.optional(
-        HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType,
-      ),
-    }),
-  ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponse",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponse>;
-
-export interface HostnamesIpfsUniversalPathsContentListsGetRequest {
-  /** Specify the identifier of the hostname. */
-  zoneId: string;
-  /** Specify the identifier of the hostname. */
-  identifier: string;
-}
-export const HostnamesIpfsUniversalPathsContentListsGetRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zoneId: S.String.pipe(T.Label("zone_id")),
-      identifier: S.String.pipe(T.Label()),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsGetRequest",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsGetRequest>;
-
-export type HostnamesIpfsUniversalPathsContentListsGetResponseAction =
-  | "block"
-  | (string & {});
-export const HostnamesIpfsUniversalPathsContentListsGetResponseAction =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HostnamesIpfsUniversalPathsContentListsGetResponse {
-  /** Behavior of the content list. */
-  action?: HostnamesIpfsUniversalPathsContentListsGetResponseAction;
-}
-export const HostnamesIpfsUniversalPathsContentListsGetResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(
-        HostnamesIpfsUniversalPathsContentListsGetResponseAction,
-      ),
-    }),
-  ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsGetResponse",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsGetResponse>;
-
-export type HostnamesIpfsUniversalPathsContentListsUpdateRequestAction =
-  | "block"
-  | (string & {});
-export const HostnamesIpfsUniversalPathsContentListsUpdateRequestAction =
-  /*@__PURE__*/ S.String;
-
-export type HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType =
-  "cid" | "content_path" | (string & {});
-export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType =
-  /*@__PURE__*/ S.String;
-
-export interface HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem {
-  /** Specify the identifier of the hostname. */
-  id?: string;
-  /** Specify the CID or content path of content to block. */
-  content?: string;
-  createdOn?: string;
-  /** Specify an optional description of the content list entry. */
-  description?: string;
-  modifiedOn?: string;
-  /** Specify the type of content list entry to block. */
-  type?: HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType;
-}
-export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      content: S.optional(S.String),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      type: S.optional(
-        HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem>;
-
-export type HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList =
-  HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem[];
-export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList =
-  /*@__PURE__*/ S.Array(
-    HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem,
-  ) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList>;
-
-export interface HostnamesIpfsUniversalPathsContentListsUpdateRequest {
-  /** Specify the identifier of the hostname. */
-  zoneId: string;
-  /** Specify the identifier of the hostname. */
-  identifier: string;
-  /** Behavior of the content list. */
-  action: HostnamesIpfsUniversalPathsContentListsUpdateRequestAction;
-  /** Provides content list entries. */
-  entries: HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList;
-}
-export const HostnamesIpfsUniversalPathsContentListsUpdateRequest =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      zoneId: S.String.pipe(T.Label("zone_id")),
-      identifier: S.String.pipe(T.Label()),
-      action: HostnamesIpfsUniversalPathsContentListsUpdateRequestAction,
-      entries: HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList,
-    }).pipe(
-      T.Http({
-        method: "PUT",
-        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list",
-        code: 200,
-      }),
-    ),
-  ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsUpdateRequest",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsUpdateRequest>;
-
-export type HostnamesIpfsUniversalPathsContentListsUpdateResponseAction =
-  | "block"
-  | (string & {});
-export const HostnamesIpfsUniversalPathsContentListsUpdateResponseAction =
-  /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HostnamesIpfsUniversalPathsContentListsUpdateResponse {
-  /** Behavior of the content list. */
-  action?: HostnamesIpfsUniversalPathsContentListsUpdateResponseAction;
-}
-export const HostnamesIpfsUniversalPathsContentListsUpdateResponse =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      action: S.optional(
-        HostnamesIpfsUniversalPathsContentListsUpdateResponseAction,
-      ),
-    }),
-  ).annotate({
-    identifier: "HostnamesIpfsUniversalPathsContentListsUpdateResponse",
-  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsUpdateResponse>;
-
-export interface HostnamesListRequest {
+export interface ListHostnamesRequest {
   /** Specify the identifier of the hostname. */
   zoneId: string;
 }
-export const HostnamesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListHostnamesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -761,8 +543,8 @@ export const HostnamesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HostnamesListRequest",
-}) as any as S.Schema<HostnamesListRequest>;
+  identifier: "ListHostnamesRequest",
+}) as any as S.Schema<ListHostnamesRequest>;
 
 export type HostnamesListResultItemStatus =
   | "active"
@@ -815,188 +597,498 @@ export const HostnamesListResultList = /*@__PURE__*/ S.Array(
   HostnamesListResultItem,
 ) as any as S.Schema<HostnamesListResultList>;
 
-export interface HostnamesListResponse {
+export interface ListHostnamesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: HostnamesListResultList;
 }
-export const HostnamesListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListHostnamesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(HostnamesListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "HostnamesListResponse",
-}) as any as S.Schema<HostnamesListResponse>;
+  identifier: "ListHostnamesResponse",
+}) as any as S.Schema<ListHostnamesResponse>;
 
-export type HostnamesCreateError = CloudflareOpError;
+export interface PatchHostnameRequest {
+  /** Specify the identifier of the hostname. */
+  zoneId: string;
+  /** Specify the identifier of the hostname. */
+  identifier: string;
+  /** Specify an optional description of the hostname. */
+  description?: string;
+  /** Specify the DNSLink value used if the target is ipfs. */
+  dnslink?: string;
+}
+export const PatchHostnameRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    identifier: S.String.pipe(T.Label()),
+    description: S.optional(S.String),
+    dnslink: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/web3/hostnames/{identifier}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchHostnameRequest",
+}) as any as S.Schema<PatchHostnameRequest>;
+
+export type HostnamesEditResponseStatus =
+  | "active"
+  | "pending"
+  | "deleting"
+  | "error"
+  | (string & {});
+export const HostnamesEditResponseStatus = /*@__PURE__*/ S.String;
+
+export type HostnamesEditResponseTarget =
+  | "ethereum"
+  | "ipfs"
+  | "ipfs_universal_path"
+  | (string & {});
+export const HostnamesEditResponseTarget = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchHostnameResponse {
+  /** Specify the identifier of the hostname. */
+  id?: string;
+  createdOn?: string;
+  /** Specify an optional description of the hostname. */
+  description?: string;
+  /** Specify the DNSLink value used if the target is ipfs. */
+  dnslink?: string;
+  modifiedOn?: string;
+  /** Specify the hostname that points to the target gateway via CNAME. */
+  name?: string;
+  /** Specifies the status of the hostname's activation. */
+  status?: HostnamesEditResponseStatus;
+  /** Specify the target gateway of the hostname. */
+  target?: HostnamesEditResponseTarget;
+}
+export const PatchHostnameResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    dnslink: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+    status: S.optional(HostnamesEditResponseStatus),
+    target: S.optional(HostnamesEditResponseTarget),
+  }),
+).annotate({
+  identifier: "PatchHostnameResponse",
+}) as any as S.Schema<PatchHostnameResponse>;
+
+export type HostnamesIpfsUniversalPathsContentListsUpdateRequestAction =
+  | "block"
+  | (string & {});
+export const HostnamesIpfsUniversalPathsContentListsUpdateRequestAction =
+  /*@__PURE__*/ S.String;
+
+export type HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType =
+  "cid" | "content_path" | (string & {});
+export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType =
+  /*@__PURE__*/ S.String;
+
+export interface HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem {
+  /** Specify the identifier of the hostname. */
+  id?: string;
+  /** Specify the CID or content path of content to block. */
+  content?: string;
+  createdOn?: string;
+  /** Specify an optional description of the content list entry. */
+  description?: string;
+  modifiedOn?: string;
+  /** Specify the type of content list entry to block. */
+  type?: HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType;
+}
+export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      content: S.optional(S.String),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      description: S.optional(S.String),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      type: S.optional(
+        HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItemType,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem",
+  }) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem>;
+
+export type HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList =
+  HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem[];
+export const HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList =
+  /*@__PURE__*/ S.Array(
+    HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesItem,
+  ) as any as S.Schema<HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList>;
+
+export interface PutHostnameIpfsUniversalPathContentListRequest {
+  /** Specify the identifier of the hostname. */
+  zoneId: string;
+  /** Specify the identifier of the hostname. */
+  identifier: string;
+  /** Behavior of the content list. */
+  action: HostnamesIpfsUniversalPathsContentListsUpdateRequestAction;
+  /** Provides content list entries. */
+  entries: HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList;
+}
+export const PutHostnameIpfsUniversalPathContentListRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      identifier: S.String.pipe(T.Label()),
+      action: HostnamesIpfsUniversalPathsContentListsUpdateRequestAction,
+      entries: HostnamesIpfsUniversalPathsContentListsUpdateRequestEntriesList,
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "PutHostnameIpfsUniversalPathContentListRequest",
+  }) as any as S.Schema<PutHostnameIpfsUniversalPathContentListRequest>;
+
+export type HostnamesIpfsUniversalPathsContentListsUpdateResponseAction =
+  | "block"
+  | (string & {});
+export const HostnamesIpfsUniversalPathsContentListsUpdateResponseAction =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PutHostnameIpfsUniversalPathContentListResponse {
+  /** Behavior of the content list. */
+  action?: HostnamesIpfsUniversalPathsContentListsUpdateResponseAction;
+}
+export const PutHostnameIpfsUniversalPathContentListResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action: S.optional(
+        HostnamesIpfsUniversalPathsContentListsUpdateResponseAction,
+      ),
+    }),
+  ).annotate({
+    identifier: "PutHostnameIpfsUniversalPathContentListResponse",
+  }) as any as S.Schema<PutHostnameIpfsUniversalPathContentListResponse>;
+
+export type HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType =
+  | "cid"
+  | "content_path"
+  | (string & {});
+export const HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType =
+  /*@__PURE__*/ S.String;
+
+export interface UpdateHostnameIpfsUniversalPathContentListEntryRequest {
+  /** Specify the identifier of the hostname. */
+  zoneId: string;
+  /** Specify the identifier of the hostname. */
+  identifier: string;
+  /** Specify the identifier of the hostname. */
+  contentListEntryIdentifier: string;
+  /** Specify the CID or content path of content to block. */
+  content: string;
+  /** Specify the type of content list entry to block. */
+  type: HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType;
+  /** Specify an optional description of the content list entry. */
+  description?: string;
+}
+export const UpdateHostnameIpfsUniversalPathContentListEntryRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      identifier: S.String.pipe(T.Label()),
+      contentListEntryIdentifier: S.String.pipe(
+        T.Label("content_list_entry_identifier"),
+      ),
+      content: S.String,
+      type: HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequestType,
+      description: S.optional(S.String),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/web3/hostnames/{identifier}/ipfs_universal_path/content_list/entries/{content_list_entry_identifier}",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateHostnameIpfsUniversalPathContentListEntryRequest",
+  }) as any as S.Schema<UpdateHostnameIpfsUniversalPathContentListEntryRequest>;
+
+export type HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType =
+  | "cid"
+  | "content_path"
+  | (string & {});
+export const HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType =
+  /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateHostnameIpfsUniversalPathContentListEntryResponse {
+  /** Specify the identifier of the hostname. */
+  id?: string;
+  /** Specify the CID or content path of content to block. */
+  content?: string;
+  createdOn?: string;
+  /** Specify an optional description of the content list entry. */
+  description?: string;
+  modifiedOn?: string;
+  /** Specify the type of content list entry to block. */
+  type?: HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType;
+}
+export const UpdateHostnameIpfsUniversalPathContentListEntryResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      content: S.optional(S.String),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      description: S.optional(S.String),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      type: S.optional(
+        HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponseType,
+      ),
+    }),
+  ).annotate({
+    identifier: "UpdateHostnameIpfsUniversalPathContentListEntryResponse",
+  }) as any as S.Schema<UpdateHostnameIpfsUniversalPathContentListEntryResponse>;
+
+export type CreateHostnameError =
+  | Web3HostnameNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Create Web3 Hostname */
-export const hostnamesCreate: API.OperationMethod<
-  HostnamesCreateRequest,
-  HostnamesCreateResponse,
-  HostnamesCreateError,
+export const createHostname: API.OperationMethod<
+  CreateHostnameRequest,
+  CreateHostnameResponse,
+  CreateHostnameError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HostnamesCreateRequest,
-  output: HostnamesCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateHostnameRequest,
+  output: CreateHostnameResponse,
+  errors: [
+    Web3HostnameNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type HostnamesDeleteError = CloudflareOpError;
-/** Delete Web3 Hostname */
-export const hostnamesDelete: API.OperationMethod<
-  HostnamesDeleteRequest,
-  HostnamesDeleteResponse,
-  HostnamesDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HostnamesDeleteRequest,
-  output: HostnamesDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type HostnamesEditError = CloudflareOpError;
-/** Edit Web3 Hostname */
-export const hostnamesEdit: API.OperationMethod<
-  HostnamesEditRequest,
-  HostnamesEditResponse,
-  HostnamesEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HostnamesEditRequest,
-  output: HostnamesEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type HostnamesGetError = CloudflareOpError;
-/** Web3 Hostname Details */
-export const hostnamesGet: API.OperationMethod<
-  HostnamesGetRequest,
-  HostnamesGetResponse,
-  HostnamesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HostnamesGetRequest,
-  output: HostnamesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type HostnamesIpfsUniversalPathsContentListsEntriesCreateError =
+export type CreateHostnameIpfsUniversalPathContentListEntryError =
   CloudflareOpError;
 /** Create IPFS Universal Path Gateway Content List Entry */
-export const hostnamesIpfsUniversalPathsContentListsEntriesCreate: API.OperationMethod<
-  HostnamesIpfsUniversalPathsContentListsEntriesCreateRequest,
-  HostnamesIpfsUniversalPathsContentListsEntriesCreateResponse,
-  HostnamesIpfsUniversalPathsContentListsEntriesCreateError,
+export const createHostnameIpfsUniversalPathContentListEntry: API.OperationMethod<
+  CreateHostnameIpfsUniversalPathContentListEntryRequest,
+  CreateHostnameIpfsUniversalPathContentListEntryResponse,
+  CreateHostnameIpfsUniversalPathContentListEntryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HostnamesIpfsUniversalPathsContentListsEntriesCreateRequest,
-  output: HostnamesIpfsUniversalPathsContentListsEntriesCreateResponse,
+  input: CreateHostnameIpfsUniversalPathContentListEntryRequest,
+  output: CreateHostnameIpfsUniversalPathContentListEntryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type HostnamesIpfsUniversalPathsContentListsEntriesDeleteError =
+export type DeleteHostnameError =
+  | Web3HostnameNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Delete Web3 Hostname */
+export const deleteHostname: API.OperationMethod<
+  DeleteHostnameRequest,
+  DeleteHostnameResponse,
+  DeleteHostnameError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteHostnameRequest,
+  output: DeleteHostnameResponse,
+  errors: [
+    Web3HostnameNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteHostnameIpfsUniversalPathContentListEntryError =
   CloudflareOpError;
 /** Delete IPFS Universal Path Gateway Content List Entry */
-export const hostnamesIpfsUniversalPathsContentListsEntriesDelete: API.OperationMethod<
-  HostnamesIpfsUniversalPathsContentListsEntriesDeleteRequest,
-  HostnamesIpfsUniversalPathsContentListsEntriesDeleteResponse,
-  HostnamesIpfsUniversalPathsContentListsEntriesDeleteError,
+export const deleteHostnameIpfsUniversalPathContentListEntry: API.OperationMethod<
+  DeleteHostnameIpfsUniversalPathContentListEntryRequest,
+  DeleteHostnameIpfsUniversalPathContentListEntryResponse,
+  DeleteHostnameIpfsUniversalPathContentListEntryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HostnamesIpfsUniversalPathsContentListsEntriesDeleteRequest,
-  output: HostnamesIpfsUniversalPathsContentListsEntriesDeleteResponse,
+  input: DeleteHostnameIpfsUniversalPathContentListEntryRequest,
+  output: DeleteHostnameIpfsUniversalPathContentListEntryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type HostnamesIpfsUniversalPathsContentListsEntriesGetError =
+export type GetHostnameError =
+  | Web3HostnameNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Web3 Hostname Details */
+export const getHostname: API.OperationMethod<
+  GetHostnameRequest,
+  GetHostnameResponse,
+  GetHostnameError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetHostnameRequest,
+  output: GetHostnameResponse,
+  errors: [
+    Web3HostnameNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetHostnameIpfsUniversalPathContentListError =
+  | Web3HostnameNotFound
+  | InvalidWeb3HostnameTarget
+  | Forbidden
+  | CloudflareOpError;
+/** IPFS Universal Path Gateway Content List Details */
+export const getHostnameIpfsUniversalPathContentList: API.OperationMethod<
+  GetHostnameIpfsUniversalPathContentListRequest,
+  GetHostnameIpfsUniversalPathContentListResponse,
+  GetHostnameIpfsUniversalPathContentListError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetHostnameIpfsUniversalPathContentListRequest,
+  output: GetHostnameIpfsUniversalPathContentListResponse,
+  errors: [
+    Web3HostnameNotFound,
+    InvalidWeb3HostnameTarget,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetHostnameIpfsUniversalPathContentListEntryError =
   CloudflareOpError;
 /** IPFS Universal Path Gateway Content List Entry Details */
-export const hostnamesIpfsUniversalPathsContentListsEntriesGet: API.OperationMethod<
-  HostnamesIpfsUniversalPathsContentListsEntriesGetRequest,
-  HostnamesIpfsUniversalPathsContentListsEntriesGetResponse,
-  HostnamesIpfsUniversalPathsContentListsEntriesGetError,
+export const getHostnameIpfsUniversalPathContentListEntry: API.OperationMethod<
+  GetHostnameIpfsUniversalPathContentListEntryRequest,
+  GetHostnameIpfsUniversalPathContentListEntryResponse,
+  GetHostnameIpfsUniversalPathContentListEntryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HostnamesIpfsUniversalPathsContentListsEntriesGetRequest,
-  output: HostnamesIpfsUniversalPathsContentListsEntriesGetResponse,
+  input: GetHostnameIpfsUniversalPathContentListEntryRequest,
+  output: GetHostnameIpfsUniversalPathContentListEntryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type HostnamesIpfsUniversalPathsContentListsEntriesListError =
-  CloudflareOpError;
+export type ListHostnameIpfsUniversalPathContentListEntriesError =
+  | Web3HostnameNotFound
+  | InvalidWeb3HostnameTarget
+  | Forbidden
+  | CloudflareOpError;
 /** List IPFS Universal Path Gateway Content List Entries */
-export const hostnamesIpfsUniversalPathsContentListsEntriesList: API.OperationMethod<
-  HostnamesIpfsUniversalPathsContentListsEntriesListRequest,
-  HostnamesIpfsUniversalPathsContentListsEntriesListResponse,
-  HostnamesIpfsUniversalPathsContentListsEntriesListError,
+export const listHostnameIpfsUniversalPathContentListEntries: API.OperationMethod<
+  ListHostnameIpfsUniversalPathContentListEntriesRequest,
+  ListHostnameIpfsUniversalPathContentListEntriesResponse,
+  ListHostnameIpfsUniversalPathContentListEntriesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HostnamesIpfsUniversalPathsContentListsEntriesListRequest,
-  output: HostnamesIpfsUniversalPathsContentListsEntriesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ListHostnameIpfsUniversalPathContentListEntriesRequest,
+  output: ListHostnameIpfsUniversalPathContentListEntriesResponse,
+  errors: [
+    Web3HostnameNotFound,
+    InvalidWeb3HostnameTarget,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type HostnamesIpfsUniversalPathsContentListsEntriesUpdateError =
+export type ListHostnamesError = Forbidden | CloudflareOpError;
+/** List Web3 Hostnames */
+export const listHostnames: API.OperationMethod<
+  ListHostnamesRequest,
+  ListHostnamesResponse,
+  ListHostnamesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListHostnamesRequest,
+  output: ListHostnamesResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchHostnameError =
+  | Web3HostnameNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Edit Web3 Hostname */
+export const patchHostname: API.OperationMethod<
+  PatchHostnameRequest,
+  PatchHostnameResponse,
+  PatchHostnameError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchHostnameRequest,
+  output: PatchHostnameResponse,
+  errors: [
+    Web3HostnameNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutHostnameIpfsUniversalPathContentListError =
+  | Web3HostnameNotFound
+  | InvalidWeb3HostnameTarget
+  | Forbidden
+  | CloudflareOpError;
+/** Update IPFS Universal Path Gateway Content List */
+export const putHostnameIpfsUniversalPathContentList: API.OperationMethod<
+  PutHostnameIpfsUniversalPathContentListRequest,
+  PutHostnameIpfsUniversalPathContentListResponse,
+  PutHostnameIpfsUniversalPathContentListError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutHostnameIpfsUniversalPathContentListRequest,
+  output: PutHostnameIpfsUniversalPathContentListResponse,
+  errors: [
+    Web3HostnameNotFound,
+    InvalidWeb3HostnameTarget,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateHostnameIpfsUniversalPathContentListEntryError =
   CloudflareOpError;
 /** Edit IPFS Universal Path Gateway Content List Entry */
-export const hostnamesIpfsUniversalPathsContentListsEntriesUpdate: API.OperationMethod<
-  HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequest,
-  HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponse,
-  HostnamesIpfsUniversalPathsContentListsEntriesUpdateError,
+export const updateHostnameIpfsUniversalPathContentListEntry: API.OperationMethod<
+  UpdateHostnameIpfsUniversalPathContentListEntryRequest,
+  UpdateHostnameIpfsUniversalPathContentListEntryResponse,
+  UpdateHostnameIpfsUniversalPathContentListEntryError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: HostnamesIpfsUniversalPathsContentListsEntriesUpdateRequest,
-  output: HostnamesIpfsUniversalPathsContentListsEntriesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type HostnamesIpfsUniversalPathsContentListsGetError = CloudflareOpError;
-/** IPFS Universal Path Gateway Content List Details */
-export const hostnamesIpfsUniversalPathsContentListsGet: API.OperationMethod<
-  HostnamesIpfsUniversalPathsContentListsGetRequest,
-  HostnamesIpfsUniversalPathsContentListsGetResponse,
-  HostnamesIpfsUniversalPathsContentListsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HostnamesIpfsUniversalPathsContentListsGetRequest,
-  output: HostnamesIpfsUniversalPathsContentListsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type HostnamesIpfsUniversalPathsContentListsUpdateError =
-  CloudflareOpError;
-/** Update IPFS Universal Path Gateway Content List */
-export const hostnamesIpfsUniversalPathsContentListsUpdate: API.OperationMethod<
-  HostnamesIpfsUniversalPathsContentListsUpdateRequest,
-  HostnamesIpfsUniversalPathsContentListsUpdateResponse,
-  HostnamesIpfsUniversalPathsContentListsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HostnamesIpfsUniversalPathsContentListsUpdateRequest,
-  output: HostnamesIpfsUniversalPathsContentListsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type HostnamesListError = CloudflareOpError;
-/** List Web3 Hostnames */
-export const hostnamesList: API.OperationMethod<
-  HostnamesListRequest,
-  HostnamesListResponse,
-  HostnamesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HostnamesListRequest,
-  output: HostnamesListResponse,
+  input: UpdateHostnameIpfsUniversalPathContentListEntryRequest,
+  output: UpdateHostnameIpfsUniversalPathContentListEntryResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

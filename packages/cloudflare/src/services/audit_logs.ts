@@ -12,7 +12,7 @@ import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 export type ListRequestDirection = "desc" | "asc" | (string & {});
 export const ListRequestDirection = /*@__PURE__*/ S.String;
 
-export interface ListRequest {
+export interface ListAuditLogsRequest {
   /** Identifier */
   accountId: string;
   /** Finds a specific log by its ID. */
@@ -35,7 +35,7 @@ export interface ListRequest {
   since?: string;
   zone?: string;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAuditLogsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -56,14 +56,16 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListAuditLogsRequest",
+}) as any as S.Schema<ListAuditLogsRequest>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ListResponse {
+export interface ListAuditLogsResponse {
   objectErrorsMessagesResultSuccess__: unknown;
   AaaAPIResponseCommonObjectErrorsMessagesSuccess__: unknown;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListAuditLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     objectErrorsMessagesResultSuccess__: S.Unknown.pipe(
       T.Body("object { errors, messages, result, success }"),
@@ -72,18 +74,20 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
       T.Body("AaaAPIResponseCommon object { errors, messages, success }"),
     ),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListAuditLogsResponse",
+}) as any as S.Schema<ListAuditLogsResponse>;
 
-export type ListError = CloudflareOpError;
+export type ListAuditLogsError = CloudflareOpError;
 /** Gets a list of audit logs for an account. Can be filtered by who made the change, on which zone, and the timeframe of the change. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
+export const listAuditLogs: API.OperationMethod<
+  ListAuditLogsRequest,
+  ListAuditLogsResponse,
+  ListAuditLogsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
+  input: ListAuditLogsRequest,
+  output: ListAuditLogsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

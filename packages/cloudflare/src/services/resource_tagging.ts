@@ -9,12 +9,36 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface AccountTagsDeleteRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class TagPreconditionFailed extends T.applyErrorMatchers(
+  S.TaggedErrorClass<TagPreconditionFailed>()("TagPreconditionFailed", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 412 }],
+) {}
+
+export class ZoneTagResourceNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<ZoneTagResourceNotFound>()("ZoneTagResourceNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export interface DeleteAccountTagRequest {
   /** Identifier. */
   accountId: string;
   IfMatch_?: string;
 }
-export const AccountTagsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
@@ -22,15 +46,38 @@ export const AccountTagsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     T.Http({ method: "DELETE", uri: "/accounts/{account_id}/tags", code: 200 }),
   ),
 ).annotate({
-  identifier: "AccountTagsDeleteRequest",
-}) as any as S.Schema<AccountTagsDeleteRequest>;
+  identifier: "DeleteAccountTagRequest",
+}) as any as S.Schema<DeleteAccountTagRequest>;
 
-export interface AccountTagsDeleteResponse {}
-export const AccountTagsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export interface DeleteAccountTagResponse {}
+export const DeleteAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "AccountTagsDeleteResponse",
-}) as any as S.Schema<AccountTagsDeleteResponse>;
+  identifier: "DeleteAccountTagResponse",
+}) as any as S.Schema<DeleteAccountTagResponse>;
+
+export interface DeleteZoneTagRequest {
+  /** Zone ID is required only for zone-level resources */
+  zoneId: string;
+  IfMatch_?: string;
+}
+export const DeleteZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
+  }).pipe(
+    T.Http({ method: "DELETE", uri: "/zones/{zone_id}/tags", code: 200 }),
+  ),
+).annotate({
+  identifier: "DeleteZoneTagRequest",
+}) as any as S.Schema<DeleteZoneTagRequest>;
+
+export interface DeleteZoneTagResponse {}
+export const DeleteZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteZoneTagResponse",
+}) as any as S.Schema<DeleteZoneTagResponse>;
 
 export type AccountTagsGetRequestResourceType =
   | "access_application"
@@ -39,7 +86,7 @@ export type AccountTagsGetRequestResourceType =
   | (string & {});
 export const AccountTagsGetRequestResourceType = /*@__PURE__*/ S.String;
 
-export interface AccountTagsGetRequest {
+export interface GetAccountTagRequest {
   /** Identifier. */
   accountId: string;
   /** The ID of the resource to retrieve tags for. */
@@ -49,7 +96,7 @@ export interface AccountTagsGetRequest {
   /** Worker identifier. Required for worker_version resources. */
   workerId?: string;
 }
-export const AccountTagsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     resourceId: S.String.pipe(T.Query("resource_id")),
@@ -61,11 +108,11 @@ export const AccountTagsGetRequest = /*@__PURE__*/ S.suspend(() =>
     T.Http({ method: "GET", uri: "/accounts/{account_id}/tags", code: 200 }),
   ),
 ).annotate({
-  identifier: "AccountTagsGetRequest",
-}) as any as S.Schema<AccountTagsGetRequest>;
+  identifier: "GetAccountTagRequest",
+}) as any as S.Schema<GetAccountTagRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AccountTagsGetResponse {
+export interface GetAccountTagResponse {
   /** Response for access_application resources */
   AccessApplicationObjectIdEtagName2More__: unknown;
   /** Response for access_application_policy resources */
@@ -121,7 +168,7 @@ export interface AccountTagsGetResponse {
   /** Response for zone resources */
   ZoneObjectIdEtagName3More__: unknown;
 }
-export const AccountTagsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccessApplicationObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessApplication object { id, etag, name, 2 more }"),
@@ -209,55 +256,41 @@ export const AccountTagsGetResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "AccountTagsGetResponse",
-}) as any as S.Schema<AccountTagsGetResponse>;
+  identifier: "GetAccountTagResponse",
+}) as any as S.Schema<GetAccountTagResponse>;
 
-export interface AccountTagsUpdateRequestBody {
-  /** Request body schema for deleting tags from account-level resources. */
-  ResourceTaggingSetTagsRequestAccountLevelWorkerVersionObjectResourceIdResourceTypeWorkerIdTags__: unknown;
-  /** Request body schema for deleting tags from account-level resources. */
-  ResourceTaggingSetTagsRequestAccountLevelBaseObjectResourceIdResourceTypeTags__: unknown;
-}
-export const AccountTagsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ResourceTaggingSetTagsRequestAccountLevelWorkerVersionObjectResourceIdResourceTypeWorkerIdTags__:
-      S.Unknown.pipe(
-        T.Body(
-          "ResourceTaggingSetTagsRequestAccountLevelWorkerVersion object { resource_id, resource_type, worker_id, tags }",
-        ),
-      ),
-    ResourceTaggingSetTagsRequestAccountLevelBaseObjectResourceIdResourceTypeTags__:
-      S.Unknown.pipe(
-        T.Body(
-          "ResourceTaggingSetTagsRequestAccountLevelBase object { resource_id, resource_type, tags }",
-        ),
-      ),
-  }),
-).annotate({
-  identifier: "AccountTagsUpdateRequestBody",
-}) as any as S.Schema<AccountTagsUpdateRequestBody>;
+export type ZoneTagsGetRequestResourceType =
+  | "access_application_policy"
+  | "api_gateway_operation"
+  | "custom_certificate"
+  | (string & {});
+export const ZoneTagsGetRequestResourceType = /*@__PURE__*/ S.String;
 
-export interface AccountTagsUpdateRequest {
-  /** Identifier. */
-  accountId: string;
-  IfMatch_?: string;
-  /** Request body schema for setting tags on account-level resources. */
-  body: AccountTagsUpdateRequestBody;
+export interface GetZoneTagRequest {
+  /** Zone ID is required only for zone-level resources */
+  zoneId: string;
+  /** The ID of the resource to retrieve tags for. */
+  resourceId: string;
+  /** The type of the resource. */
+  resourceType: ZoneTagsGetRequestResourceType;
+  /** Access application ID identifier. Required for access_application_policy resources. */
+  accessApplicationId?: string;
 }
-export const AccountTagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
-    body: AccountTagsUpdateRequestBody,
-  }).pipe(
-    T.Http({ method: "PUT", uri: "/accounts/{account_id}/tags", code: 200 }),
-  ),
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    resourceId: S.String.pipe(T.Query("resource_id")),
+    resourceType: ZoneTagsGetRequestResourceType.pipe(T.Query("resource_type")),
+    accessApplicationId: S.optional(
+      S.String.pipe(T.Query("access_application_id")),
+    ),
+  }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/tags", code: 200 })),
 ).annotate({
-  identifier: "AccountTagsUpdateRequest",
-}) as any as S.Schema<AccountTagsUpdateRequest>;
+  identifier: "GetZoneTagRequest",
+}) as any as S.Schema<GetZoneTagRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AccountTagsUpdateResponse {
+export interface GetZoneTagResponse {
   /** Response for access_application resources */
   AccessApplicationObjectIdEtagName2More__: unknown;
   /** Response for access_application_policy resources */
@@ -313,7 +346,7 @@ export interface AccountTagsUpdateResponse {
   /** Response for zone resources */
   ZoneObjectIdEtagName3More__: unknown;
 }
-export const AccountTagsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccessApplicationObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessApplication object { id, etag, name, 2 more }"),
@@ -401,16 +434,16 @@ export const AccountTagsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "AccountTagsUpdateResponse",
-}) as any as S.Schema<AccountTagsUpdateResponse>;
+  identifier: "GetZoneTagResponse",
+}) as any as S.Schema<GetZoneTagResponse>;
 
-export interface KeysListRequest {
+export interface ListKeysRequest {
   /** Identifier. */
   accountId: string;
   /** Cursor for pagination. */
   cursor?: string;
 }
-export const KeysListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListKeysRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -422,25 +455,25 @@ export const KeysListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "KeysListRequest",
-}) as any as S.Schema<KeysListRequest>;
+  identifier: "ListKeysRequest",
+}) as any as S.Schema<ListKeysRequest>;
 
 export type KeysListResultList = string[];
 export const KeysListResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<KeysListResultList>;
 
-export interface KeysListResponse {
+export interface ListKeysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: KeysListResultList;
 }
-export const KeysListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(KeysListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "KeysListResponse",
-}) as any as S.Schema<KeysListResponse>;
+  identifier: "ListKeysResponse",
+}) as any as S.Schema<ListKeysResponse>;
 
 export type ListRequestTagList = string[];
 export const ListRequestTagList = /*@__PURE__*/ S.Array(
@@ -459,7 +492,7 @@ export const ListRequestTypeList = /*@__PURE__*/ S.Array(
   ListRequestType,
 ) as any as S.Schema<ListRequestTypeList>;
 
-export interface ListRequest {
+export interface ListResourceTaggingsRequest {
   /** Identifier. */
   accountId: string;
   /** Cursor for pagination. */
@@ -469,7 +502,7 @@ export interface ListRequest {
   /** Filter by resource type. Can be repeated to filter by multiple types (OR logic). Example: ?type=zone&type=worker */
   type?: ListRequestTypeList;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListResourceTaggingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cursor: S.optional(S.String.pipe(T.Query())),
@@ -482,7 +515,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListResourceTaggingsRequest",
+}) as any as S.Schema<ListResourceTaggingsRequest>;
 
 export interface ListResultItem {
   /** Response for access_application resources */
@@ -634,15 +669,17 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListResourceTaggingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListResourceTaggingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListResourceTaggingsResponse",
+}) as any as S.Schema<ListResourceTaggingsResponse>;
 
 export type ValuesListRequestType =
   | "access_application"
@@ -651,7 +688,7 @@ export type ValuesListRequestType =
   | (string & {});
 export const ValuesListRequestType = /*@__PURE__*/ S.String;
 
-export interface ValuesListRequest {
+export interface ListValuesRequest {
   /** Identifier. */
   accountId: string;
   tagKey: string;
@@ -660,7 +697,7 @@ export interface ValuesListRequest {
   /** Filter by resource type. */
   type?: ValuesListRequestType;
 }
-export const ValuesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListValuesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     tagKey: S.String.pipe(T.Label("tag_key")),
@@ -674,81 +711,72 @@ export const ValuesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ValuesListRequest",
-}) as any as S.Schema<ValuesListRequest>;
+  identifier: "ListValuesRequest",
+}) as any as S.Schema<ListValuesRequest>;
 
 export type ValuesListResultList = string[];
 export const ValuesListResultList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ValuesListResultList>;
 
-export interface ValuesListResponse {
+export interface ListValuesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ValuesListResultList;
 }
-export const ValuesListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListValuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ValuesListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "ValuesListResponse",
-}) as any as S.Schema<ValuesListResponse>;
+  identifier: "ListValuesResponse",
+}) as any as S.Schema<ListValuesResponse>;
 
-export interface ZoneTagsDeleteRequest {
-  /** Zone ID is required only for zone-level resources */
-  zoneId: string;
-  IfMatch_?: string;
+export interface AccountTagsUpdateRequestBody {
+  /** Request body schema for deleting tags from account-level resources. */
+  ResourceTaggingSetTagsRequestAccountLevelWorkerVersionObjectResourceIdResourceTypeWorkerIdTags__: unknown;
+  /** Request body schema for deleting tags from account-level resources. */
+  ResourceTaggingSetTagsRequestAccountLevelBaseObjectResourceIdResourceTypeTags__: unknown;
 }
-export const ZoneTagsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const AccountTagsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
+    ResourceTaggingSetTagsRequestAccountLevelWorkerVersionObjectResourceIdResourceTypeWorkerIdTags__:
+      S.Unknown.pipe(
+        T.Body(
+          "ResourceTaggingSetTagsRequestAccountLevelWorkerVersion object { resource_id, resource_type, worker_id, tags }",
+        ),
+      ),
+    ResourceTaggingSetTagsRequestAccountLevelBaseObjectResourceIdResourceTypeTags__:
+      S.Unknown.pipe(
+        T.Body(
+          "ResourceTaggingSetTagsRequestAccountLevelBase object { resource_id, resource_type, tags }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "AccountTagsUpdateRequestBody",
+}) as any as S.Schema<AccountTagsUpdateRequestBody>;
+
+export interface PutAccountTagRequest {
+  /** Identifier. */
+  accountId: string;
+  IfMatch_?: string;
+  /** Request body schema for setting tags on account-level resources. */
+  body: AccountTagsUpdateRequestBody;
+}
+export const PutAccountTagRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
     IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
+    body: AccountTagsUpdateRequestBody,
   }).pipe(
-    T.Http({ method: "DELETE", uri: "/zones/{zone_id}/tags", code: 200 }),
+    T.Http({ method: "PUT", uri: "/accounts/{account_id}/tags", code: 200 }),
   ),
 ).annotate({
-  identifier: "ZoneTagsDeleteRequest",
-}) as any as S.Schema<ZoneTagsDeleteRequest>;
-
-export interface ZoneTagsDeleteResponse {}
-export const ZoneTagsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "ZoneTagsDeleteResponse",
-}) as any as S.Schema<ZoneTagsDeleteResponse>;
-
-export type ZoneTagsGetRequestResourceType =
-  | "access_application_policy"
-  | "api_gateway_operation"
-  | "custom_certificate"
-  | (string & {});
-export const ZoneTagsGetRequestResourceType = /*@__PURE__*/ S.String;
-
-export interface ZoneTagsGetRequest {
-  /** Zone ID is required only for zone-level resources */
-  zoneId: string;
-  /** The ID of the resource to retrieve tags for. */
-  resourceId: string;
-  /** The type of the resource. */
-  resourceType: ZoneTagsGetRequestResourceType;
-  /** Access application ID identifier. Required for access_application_policy resources. */
-  accessApplicationId?: string;
-}
-export const ZoneTagsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    resourceId: S.String.pipe(T.Query("resource_id")),
-    resourceType: ZoneTagsGetRequestResourceType.pipe(T.Query("resource_type")),
-    accessApplicationId: S.optional(
-      S.String.pipe(T.Query("access_application_id")),
-    ),
-  }).pipe(T.Http({ method: "GET", uri: "/zones/{zone_id}/tags", code: 200 })),
-).annotate({
-  identifier: "ZoneTagsGetRequest",
-}) as any as S.Schema<ZoneTagsGetRequest>;
+  identifier: "PutAccountTagRequest",
+}) as any as S.Schema<PutAccountTagRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTagsGetResponse {
+export interface PutAccountTagResponse {
   /** Response for access_application resources */
   AccessApplicationObjectIdEtagName2More__: unknown;
   /** Response for access_application_policy resources */
@@ -804,7 +832,7 @@ export interface ZoneTagsGetResponse {
   /** Response for zone resources */
   ZoneObjectIdEtagName3More__: unknown;
 }
-export const ZoneTagsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutAccountTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccessApplicationObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessApplication object { id, etag, name, 2 more }"),
@@ -892,8 +920,8 @@ export const ZoneTagsGetResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "ZoneTagsGetResponse",
-}) as any as S.Schema<ZoneTagsGetResponse>;
+  identifier: "PutAccountTagResponse",
+}) as any as S.Schema<PutAccountTagResponse>;
 
 export interface ZoneTagsUpdateRequestBody {
   /** Request body schema for deleting tags from zone-level resources. Zone ID comes from URL path. */
@@ -920,25 +948,25 @@ export const ZoneTagsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "ZoneTagsUpdateRequestBody",
 }) as any as S.Schema<ZoneTagsUpdateRequestBody>;
 
-export interface ZoneTagsUpdateRequest {
+export interface PutZoneTagRequest {
   /** Zone ID is required only for zone-level resources */
   zoneId: string;
   IfMatch_?: string;
   /** Request body schema for setting tags on zone-level resources. */
   body: ZoneTagsUpdateRequestBody;
 }
-export const ZoneTagsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutZoneTagRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     IfMatch_: S.optional(S.String.pipe(T.Header('"If-Match"'))),
     body: ZoneTagsUpdateRequestBody,
   }).pipe(T.Http({ method: "PUT", uri: "/zones/{zone_id}/tags", code: 200 })),
 ).annotate({
-  identifier: "ZoneTagsUpdateRequest",
-}) as any as S.Schema<ZoneTagsUpdateRequest>;
+  identifier: "PutZoneTagRequest",
+}) as any as S.Schema<PutZoneTagRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ZoneTagsUpdateResponse {
+export interface PutZoneTagResponse {
   /** Response for access_application resources */
   AccessApplicationObjectIdEtagName2More__: unknown;
   /** Response for access_application_policy resources */
@@ -994,7 +1022,7 @@ export interface ZoneTagsUpdateResponse {
   /** Response for zone resources */
   ZoneObjectIdEtagName3More__: unknown;
 }
-export const ZoneTagsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutZoneTagResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     AccessApplicationObjectIdEtagName2More__: S.Unknown.pipe(
       T.Body("AccessApplication object { id, etag, name, 2 more }"),
@@ -1082,131 +1110,157 @@ export const ZoneTagsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "ZoneTagsUpdateResponse",
-}) as any as S.Schema<ZoneTagsUpdateResponse>;
+  identifier: "PutZoneTagResponse",
+}) as any as S.Schema<PutZoneTagResponse>;
 
-export type AccountTagsDeleteError = CloudflareOpError;
+export type DeleteAccountTagError = Forbidden | CloudflareOpError;
 /** Removes all tags from a specific account-level resource. */
-export const accountTagsDelete: API.OperationMethod<
-  AccountTagsDeleteRequest,
-  AccountTagsDeleteResponse,
-  AccountTagsDeleteError,
+export const deleteAccountTag: API.OperationMethod<
+  DeleteAccountTagRequest,
+  DeleteAccountTagResponse,
+  DeleteAccountTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AccountTagsDeleteRequest,
-  output: AccountTagsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteAccountTagRequest,
+  output: DeleteAccountTagResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type AccountTagsGetError = CloudflareOpError;
-/** Retrieves tags for a specific account-level resource. */
-export const accountTagsGet: API.OperationMethod<
-  AccountTagsGetRequest,
-  AccountTagsGetResponse,
-  AccountTagsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountTagsGetRequest,
-  output: AccountTagsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AccountTagsUpdateError = CloudflareOpError;
-/** Creates or updates tags for a specific account-level resource. */
-export const accountTagsUpdate: API.OperationMethod<
-  AccountTagsUpdateRequest,
-  AccountTagsUpdateResponse,
-  AccountTagsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AccountTagsUpdateRequest,
-  output: AccountTagsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type KeysListError = CloudflareOpError;
-/** Lists all distinct tag keys used across resources in an account. */
-export const keysList: API.OperationMethod<
-  KeysListRequest,
-  KeysListResponse,
-  KeysListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: KeysListRequest,
-  output: KeysListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ListError = CloudflareOpError;
-/** Lists all tagged resources for an account. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ValuesListError = CloudflareOpError;
-/** Lists all distinct values for a given tag key, optionally filtered by resource type. */
-export const valuesList: API.OperationMethod<
-  ValuesListRequest,
-  ValuesListResponse,
-  ValuesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ValuesListRequest,
-  output: ValuesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ZoneTagsDeleteError = CloudflareOpError;
+export type DeleteZoneTagError = Forbidden | CloudflareOpError;
 /** Removes all tags from a specific zone-level resource. */
-export const zoneTagsDelete: API.OperationMethod<
-  ZoneTagsDeleteRequest,
-  ZoneTagsDeleteResponse,
-  ZoneTagsDeleteError,
+export const deleteZoneTag: API.OperationMethod<
+  DeleteZoneTagRequest,
+  DeleteZoneTagResponse,
+  DeleteZoneTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTagsDeleteRequest,
-  output: ZoneTagsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteZoneTagRequest,
+  output: DeleteZoneTagResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ZoneTagsGetError = CloudflareOpError;
+export type GetAccountTagError = Forbidden | CloudflareOpError;
+/** Retrieves tags for a specific account-level resource. */
+export const getAccountTag: API.OperationMethod<
+  GetAccountTagRequest,
+  GetAccountTagResponse,
+  GetAccountTagError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAccountTagRequest,
+  output: GetAccountTagResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetZoneTagError =
+  | ZoneTagResourceNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Retrieves tags for a specific zone-level resource. */
-export const zoneTagsGet: API.OperationMethod<
-  ZoneTagsGetRequest,
-  ZoneTagsGetResponse,
-  ZoneTagsGetError,
+export const getZoneTag: API.OperationMethod<
+  GetZoneTagRequest,
+  GetZoneTagResponse,
+  GetZoneTagError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTagsGetRequest,
-  output: ZoneTagsGetResponse,
+  input: GetZoneTagRequest,
+  output: GetZoneTagResponse,
+  errors: [
+    ZoneTagResourceNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListKeysError = CloudflareOpError;
+/** Lists all distinct tag keys used across resources in an account. */
+export const listKeys: API.OperationMethod<
+  ListKeysRequest,
+  ListKeysResponse,
+  ListKeysError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListKeysRequest,
+  output: ListKeysResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ZoneTagsUpdateError = CloudflareOpError;
-/** Creates or updates tags for a specific zone-level resource. Replaces all existing tags for the resource. */
-export const zoneTagsUpdate: API.OperationMethod<
-  ZoneTagsUpdateRequest,
-  ZoneTagsUpdateResponse,
-  ZoneTagsUpdateError,
+export type ListResourceTaggingsError = CloudflareOpError;
+/** Lists all tagged resources for an account. */
+export const listResourceTaggings: API.OperationMethod<
+  ListResourceTaggingsRequest,
+  ListResourceTaggingsResponse,
+  ListResourceTaggingsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ZoneTagsUpdateRequest,
-  output: ZoneTagsUpdateResponse,
+  input: ListResourceTaggingsRequest,
+  output: ListResourceTaggingsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListValuesError = CloudflareOpError;
+/** Lists all distinct values for a given tag key, optionally filtered by resource type. */
+export const listValues: API.OperationMethod<
+  ListValuesRequest,
+  ListValuesResponse,
+  ListValuesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListValuesRequest,
+  output: ListValuesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutAccountTagError =
+  | Forbidden
+  | TagPreconditionFailed
+  | CloudflareOpError;
+/** Creates or updates tags for a specific account-level resource. */
+export const putAccountTag: API.OperationMethod<
+  PutAccountTagRequest,
+  PutAccountTagResponse,
+  PutAccountTagError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutAccountTagRequest,
+  output: PutAccountTagResponse,
+  errors: [
+    Forbidden,
+    TagPreconditionFailed,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutZoneTagError =
+  | ZoneTagResourceNotFound
+  | Forbidden
+  | TagPreconditionFailed
+  | CloudflareOpError;
+/** Creates or updates tags for a specific zone-level resource. Replaces all existing tags for the resource. */
+export const putZoneTag: API.OperationMethod<
+  PutZoneTagRequest,
+  PutZoneTagResponse,
+  PutZoneTagError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutZoneTagRequest,
+  output: PutZoneTagResponse,
+  errors: [
+    ZoneTagResourceNotFound,
+    Forbidden,
+    TagPreconditionFailed,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

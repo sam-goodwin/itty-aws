@@ -9,11 +9,60 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface ConfigGetRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class NotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<NotFound>()("NotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export interface CreatePublishRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Zaraz configuration description. */
+  body?: string;
+}
+export const CreatePublishRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    body: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/settings/zaraz/publish",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreatePublishRequest",
+}) as any as S.Schema<CreatePublishRequest>;
+
+export interface CreatePublishResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: string;
+}
+export const CreatePublishResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.String.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "CreatePublishResponse",
+}) as any as S.Schema<CreatePublishResponse>;
+
+export interface GetConfigRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const ConfigGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -24,8 +73,8 @@ export const ConfigGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConfigGetRequest",
-}) as any as S.Schema<ConfigGetRequest>;
+  identifier: "GetConfigRequest",
+}) as any as S.Schema<GetConfigRequest>;
 
 export interface ConfigGetResponseSettingsContextEnricher {
   escapedWorkerName: string;
@@ -261,7 +310,7 @@ export const ConfigGetResponseConsent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigGetResponseConsent>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConfigGetResponse {
+export interface GetConfigResponse {
   /** Data layer compatibility mode enabled. */
   dataLayer: boolean;
   /** The key for Zaraz debug mode. */
@@ -283,7 +332,7 @@ export interface ConfigGetResponse {
   /** Single Page Application support enabled. */
   historyChange?: boolean;
 }
-export const ConfigGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataLayer: S.Boolean,
     debugKey: S.String,
@@ -297,8 +346,486 @@ export const ConfigGetResponse = /*@__PURE__*/ S.suspend(() =>
     historyChange: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "ConfigGetResponse",
-}) as any as S.Schema<ConfigGetResponse>;
+  identifier: "GetConfigResponse",
+}) as any as S.Schema<GetConfigResponse>;
+
+export interface GetDefaultRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const GetDefaultRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/settings/zaraz/default",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetDefaultRequest",
+}) as any as S.Schema<GetDefaultRequest>;
+
+export interface DefaultGetResponseSettingsContextEnricher {
+  escapedWorkerName: string;
+  workerTag: string;
+}
+export const DefaultGetResponseSettingsContextEnricher =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      escapedWorkerName: S.String,
+      workerTag: S.String,
+    }),
+  ).annotate({
+    identifier: "DefaultGetResponseSettingsContextEnricher",
+  }) as any as S.Schema<DefaultGetResponseSettingsContextEnricher>;
+
+export interface DefaultGetResponseSettings {
+  /** Automatic injection of Zaraz scripts enabled. */
+  autoInjectScript: boolean;
+  /** Details of the worker that receives and edits Zaraz Context object. */
+  contextEnricher?: DefaultGetResponseSettingsContextEnricher;
+  /** The domain Zaraz will use for writing and reading its cookies. */
+  cookieDomain?: string;
+  /** Ecommerce API enabled. */
+  ecommerce?: boolean;
+  /** Custom endpoint for server-side track events. */
+  eventsApiPath?: string;
+  /** Hiding external referrer URL enabled. */
+  hideExternalReferer?: boolean;
+  /** Trimming IP address enabled. */
+  hideIPAddress?: boolean;
+  /** Removing URL query params enabled. */
+  hideQueryParams?: boolean;
+  /** Removing sensitive data from User Agent string enabled. */
+  hideUserAgent?: boolean;
+  /** Custom endpoint for Zaraz init script. */
+  initPath?: string;
+  /** Injection of Zaraz scripts into iframes enabled. */
+  injectIframes?: boolean;
+  /** Custom path for Managed Components server functionalities. */
+  mcRootPath?: string;
+  /** Custom endpoint for Zaraz main script. */
+  scriptPath?: string;
+  /** Custom endpoint for Zaraz tracking requests. */
+  trackPath?: string;
+}
+export const DefaultGetResponseSettings = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    autoInjectScript: S.Boolean,
+    contextEnricher: S.optional(DefaultGetResponseSettingsContextEnricher),
+    cookieDomain: S.optional(S.String),
+    ecommerce: S.optional(S.Boolean),
+    eventsApiPath: S.optional(S.String),
+    hideExternalReferer: S.optional(S.Boolean),
+    hideIPAddress: S.optional(S.Boolean),
+    hideQueryParams: S.optional(S.Boolean),
+    hideUserAgent: S.optional(S.Boolean),
+    initPath: S.optional(S.String),
+    injectIframes: S.optional(S.Boolean),
+    mcRootPath: S.optional(S.String),
+    scriptPath: S.optional(S.String),
+    trackPath: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DefaultGetResponseSettings",
+}) as any as S.Schema<DefaultGetResponseSettings>;
+
+export type DefaultGetResponseToolsMap = { [key: string]: unknown | undefined };
+export const DefaultGetResponseToolsMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DefaultGetResponseToolsMap>;
+
+export type DefaultGetResponseTriggersMap = {
+  [key: string]: unknown | undefined;
+};
+export const DefaultGetResponseTriggersMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DefaultGetResponseTriggersMap>;
+
+export type DefaultGetResponseVariablesMap = {
+  [key: string]: unknown | undefined;
+};
+export const DefaultGetResponseVariablesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DefaultGetResponseVariablesMap>;
+
+export interface DefaultGetResponseAnalytics {
+  /** Consent purpose assigned to Monitoring. */
+  defaultPurpose?: string;
+  /** Whether Advanced Monitoring reports are enabled. */
+  enabled?: boolean;
+  /** Session expiration time (seconds). */
+  sessionExpTime?: number;
+}
+export const DefaultGetResponseAnalytics = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    defaultPurpose: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    sessionExpTime: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "DefaultGetResponseAnalytics",
+}) as any as S.Schema<DefaultGetResponseAnalytics>;
+
+export type DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap = {
+  [key: string]: unknown | undefined;
+};
+export const DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap>;
+
+export type DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
+  { [key: string]: unknown | undefined };
+export const DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap>;
+
+export type DefaultGetResponseConsentButtonTextTranslationsRejectAllMap = {
+  [key: string]: unknown | undefined;
+};
+export const DefaultGetResponseConsentButtonTextTranslationsRejectAllMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslationsRejectAllMap>;
+
+export interface DefaultGetResponseConsentButtonTextTranslations {
+  /** Object where keys are language codes. */
+  acceptAll: DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap;
+  /** Object where keys are language codes. */
+  confirmMyChoices: DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap;
+  /** Object where keys are language codes. */
+  rejectAll: DefaultGetResponseConsentButtonTextTranslationsRejectAllMap;
+}
+export const DefaultGetResponseConsentButtonTextTranslations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      acceptAll:
+        DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap.pipe(
+          T.Body("accept_all"),
+        ),
+      confirmMyChoices:
+        DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
+          T.Body("confirm_my_choices"),
+        ),
+      rejectAll:
+        DefaultGetResponseConsentButtonTextTranslationsRejectAllMap.pipe(
+          T.Body("reject_all"),
+        ),
+    }),
+  ).annotate({
+    identifier: "DefaultGetResponseConsentButtonTextTranslations",
+  }) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslations>;
+
+export type DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  { [key: string]: unknown | undefined };
+export const DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
+
+export type DefaultGetResponseConsentPurposesMap = {
+  [key: string]: unknown | undefined;
+};
+export const DefaultGetResponseConsentPurposesMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<DefaultGetResponseConsentPurposesMap>;
+
+export type DefaultGetResponseConsentPurposesWithTranslationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const DefaultGetResponseConsentPurposesWithTranslationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DefaultGetResponseConsentPurposesWithTranslationsMap>;
+
+export interface DefaultGetResponseConsent {
+  enabled: boolean;
+  buttonTextTranslations?: DefaultGetResponseConsentButtonTextTranslations;
+  companyEmail?: string;
+  companyName?: string;
+  companyStreetAddress?: string;
+  consentModalIntroHTML?: string;
+  /** Object where keys are language codes. */
+  consentModalIntroHTMLWithTranslations?: DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap;
+  cookieName?: string;
+  customCSS?: string;
+  customIntroDisclaimerDismissed?: boolean;
+  defaultLanguage?: string;
+  hideModal?: boolean;
+  /** Object where keys are purpose alpha-numeric IDs. */
+  purposes?: DefaultGetResponseConsentPurposesMap;
+  /** Object where keys are purpose alpha-numeric IDs. */
+  purposesWithTranslations?: DefaultGetResponseConsentPurposesWithTranslationsMap;
+  tcfCompliant?: boolean;
+}
+export const DefaultGetResponseConsent = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    buttonTextTranslations: S.optional(
+      DefaultGetResponseConsentButtonTextTranslations,
+    ),
+    companyEmail: S.optional(S.String),
+    companyName: S.optional(S.String),
+    companyStreetAddress: S.optional(S.String),
+    consentModalIntroHTML: S.optional(S.String),
+    consentModalIntroHTMLWithTranslations: S.optional(
+      DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap,
+    ),
+    cookieName: S.optional(S.String),
+    customCSS: S.optional(S.String),
+    customIntroDisclaimerDismissed: S.optional(S.Boolean),
+    defaultLanguage: S.optional(S.String),
+    hideModal: S.optional(S.Boolean),
+    purposes: S.optional(DefaultGetResponseConsentPurposesMap),
+    purposesWithTranslations: S.optional(
+      DefaultGetResponseConsentPurposesWithTranslationsMap,
+    ),
+    tcfCompliant: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DefaultGetResponseConsent",
+}) as any as S.Schema<DefaultGetResponseConsent>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetDefaultResponse {
+  /** Data layer compatibility mode enabled. */
+  dataLayer: boolean;
+  /** The key for Zaraz debug mode. */
+  debugKey: string;
+  /** General Zaraz settings. */
+  settings: DefaultGetResponseSettings;
+  /** Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object. */
+  tools: DefaultGetResponseToolsMap;
+  /** Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration. */
+  triggers: DefaultGetResponseTriggersMap;
+  /** Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included. */
+  variables: DefaultGetResponseVariablesMap;
+  /** Zaraz internal version of the config. */
+  zarazVersion: number;
+  /** Cloudflare Monitoring settings. */
+  analytics?: DefaultGetResponseAnalytics;
+  /** Consent management configuration. */
+  consent?: DefaultGetResponseConsent;
+  /** Single Page Application support enabled. */
+  historyChange?: boolean;
+}
+export const GetDefaultResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    dataLayer: S.Boolean,
+    debugKey: S.String,
+    settings: DefaultGetResponseSettings,
+    tools: DefaultGetResponseToolsMap,
+    triggers: DefaultGetResponseTriggersMap,
+    variables: DefaultGetResponseVariablesMap,
+    zarazVersion: S.Number,
+    analytics: S.optional(DefaultGetResponseAnalytics),
+    consent: S.optional(DefaultGetResponseConsent),
+    historyChange: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GetDefaultResponse",
+}) as any as S.Schema<GetDefaultResponse>;
+
+export interface GetExportRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const GetExportRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/settings/zaraz/export",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetExportRequest",
+}) as any as S.Schema<GetExportRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface GetExportResponse {
+  /** Zaraz configuration. */
+  ConfigurationObjectDataLayerDebugKeySettings7More__: unknown;
+}
+export const GetExportResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ConfigurationObjectDataLayerDebugKeySettings7More__: S.Unknown.pipe(
+      T.Body("Configuration object { dataLayer, debugKey, settings, 7 more }"),
+    ),
+  }),
+).annotate({
+  identifier: "GetExportResponse",
+}) as any as S.Schema<GetExportResponse>;
+
+export type HistoryConfigsGetRequestIdsList = number[];
+export const HistoryConfigsGetRequestIdsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<HistoryConfigsGetRequestIdsList>;
+
+export interface GetHistoryConfigRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Comma separated list of Zaraz configuration IDs. */
+  ids: HistoryConfigsGetRequestIdsList;
+}
+export const GetHistoryConfigRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    ids: HistoryConfigsGetRequestIdsList.pipe(T.Query()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/settings/zaraz/history/configs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetHistoryConfigRequest",
+}) as any as S.Schema<GetHistoryConfigRequest>;
+
+export type HistoryConfigsGetResultMap = { [key: string]: unknown | undefined };
+export const HistoryConfigsGetResultMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<HistoryConfigsGetResultMap>;
+
+export interface GetHistoryConfigResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: HistoryConfigsGetResultMap;
+}
+export const GetHistoryConfigResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(HistoryConfigsGetResultMap.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "GetHistoryConfigResponse",
+}) as any as S.Schema<GetHistoryConfigResponse>;
+
+export interface GetWorkflowRequest {
+  /** Identifier. */
+  zoneId: string;
+}
+export const GetWorkflowRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/settings/zaraz/workflow",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetWorkflowRequest",
+}) as any as S.Schema<GetWorkflowRequest>;
+
+export interface GetWorkflowResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const GetWorkflowResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "GetWorkflowResponse",
+}) as any as S.Schema<GetWorkflowResponse>;
+
+export type HistoryListRequestSortField =
+  | "id"
+  | "user_id"
+  | "description"
+  | (string & {});
+export const HistoryListRequestSortField = /*@__PURE__*/ S.String;
+
+export type HistoryListRequestSortOrder = "DESC" | "ASC" | (string & {});
+export const HistoryListRequestSortOrder = /*@__PURE__*/ S.String;
+
+export interface ListHistoriesRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Maximum amount of results to list. Default value is 10. */
+  limit?: number;
+  /** Ordinal number to start listing the results with. Default value is 0. */
+  offset?: number;
+  /** The field to sort by. Default is updated_at. */
+  sortField?: HistoryListRequestSortField;
+  /** Sorting order. Default is DESC. */
+  sortOrder?: HistoryListRequestSortOrder;
+}
+export const ListHistoriesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    sortField: S.optional(HistoryListRequestSortField.pipe(T.Query())),
+    sortOrder: S.optional(HistoryListRequestSortOrder.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/settings/zaraz/history",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListHistoriesRequest",
+}) as any as S.Schema<ListHistoriesRequest>;
+
+export interface HistoryListResultItem {
+  /** ID of the configuration. */
+  id: number;
+  /** Date and time the configuration was created. */
+  createdAt: string;
+  /** Configuration description provided by the user who published this configuration. */
+  description: string;
+  /** Date and time the configuration was last updated. */
+  updatedAt: string;
+  /** Alpha-numeric ID of the account user who published the configuration. */
+  userId: string;
+}
+export const HistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.Number,
+    createdAt: S.String,
+    description: S.String,
+    updatedAt: S.String,
+    userId: S.String,
+  }),
+).annotate({
+  identifier: "HistoryListResultItem",
+}) as any as S.Schema<HistoryListResultItem>;
+
+export type HistoryListResultList = HistoryListResultItem[];
+export const HistoryListResultList = /*@__PURE__*/ S.Array(
+  HistoryListResultItem,
+) as any as S.Schema<HistoryListResultList>;
+
+export interface ListHistoriesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: HistoryListResultList;
+}
+export const ListHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(HistoryListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListHistoriesResponse",
+}) as any as S.Schema<ListHistoriesResponse>;
 
 export interface ConfigUpdateRequestSettingsContextEnricher {
   escapedWorkerName: string;
@@ -534,7 +1061,7 @@ export const ConfigUpdateRequestConsent = /*@__PURE__*/ S.suspend(() =>
   identifier: "ConfigUpdateRequestConsent",
 }) as any as S.Schema<ConfigUpdateRequestConsent>;
 
-export interface ConfigUpdateRequest {
+export interface PutConfigRequest {
   /** Identifier. */
   zoneId: string;
   /** Data layer compatibility mode enabled. */
@@ -558,7 +1085,7 @@ export interface ConfigUpdateRequest {
   /** Single Page Application support enabled. */
   historyChange?: boolean;
 }
-export const ConfigUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutConfigRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dataLayer: S.Boolean,
@@ -579,8 +1106,8 @@ export const ConfigUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConfigUpdateRequest",
-}) as any as S.Schema<ConfigUpdateRequest>;
+  identifier: "PutConfigRequest",
+}) as any as S.Schema<PutConfigRequest>;
 
 export interface ConfigUpdateResponseSettingsContextEnricher {
   escapedWorkerName: string;
@@ -817,7 +1344,7 @@ export const ConfigUpdateResponseConsent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConfigUpdateResponseConsent>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConfigUpdateResponse {
+export interface PutConfigResponse {
   /** Data layer compatibility mode enabled. */
   dataLayer: boolean;
   /** The key for Zaraz debug mode. */
@@ -839,7 +1366,7 @@ export interface ConfigUpdateResponse {
   /** Single Page Application support enabled. */
   historyChange?: boolean;
 }
-export const ConfigUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutConfigResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataLayer: S.Boolean,
     debugKey: S.String,
@@ -853,464 +1380,16 @@ export const ConfigUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     historyChange: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "ConfigUpdateResponse",
-}) as any as S.Schema<ConfigUpdateResponse>;
+  identifier: "PutConfigResponse",
+}) as any as S.Schema<PutConfigResponse>;
 
-export interface DefaultGetRequest {
-  /** Identifier. */
-  zoneId: string;
-}
-export const DefaultGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/settings/zaraz/default",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "DefaultGetRequest",
-}) as any as S.Schema<DefaultGetRequest>;
-
-export interface DefaultGetResponseSettingsContextEnricher {
-  escapedWorkerName: string;
-  workerTag: string;
-}
-export const DefaultGetResponseSettingsContextEnricher =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      escapedWorkerName: S.String,
-      workerTag: S.String,
-    }),
-  ).annotate({
-    identifier: "DefaultGetResponseSettingsContextEnricher",
-  }) as any as S.Schema<DefaultGetResponseSettingsContextEnricher>;
-
-export interface DefaultGetResponseSettings {
-  /** Automatic injection of Zaraz scripts enabled. */
-  autoInjectScript: boolean;
-  /** Details of the worker that receives and edits Zaraz Context object. */
-  contextEnricher?: DefaultGetResponseSettingsContextEnricher;
-  /** The domain Zaraz will use for writing and reading its cookies. */
-  cookieDomain?: string;
-  /** Ecommerce API enabled. */
-  ecommerce?: boolean;
-  /** Custom endpoint for server-side track events. */
-  eventsApiPath?: string;
-  /** Hiding external referrer URL enabled. */
-  hideExternalReferer?: boolean;
-  /** Trimming IP address enabled. */
-  hideIPAddress?: boolean;
-  /** Removing URL query params enabled. */
-  hideQueryParams?: boolean;
-  /** Removing sensitive data from User Agent string enabled. */
-  hideUserAgent?: boolean;
-  /** Custom endpoint for Zaraz init script. */
-  initPath?: string;
-  /** Injection of Zaraz scripts into iframes enabled. */
-  injectIframes?: boolean;
-  /** Custom path for Managed Components server functionalities. */
-  mcRootPath?: string;
-  /** Custom endpoint for Zaraz main script. */
-  scriptPath?: string;
-  /** Custom endpoint for Zaraz tracking requests. */
-  trackPath?: string;
-}
-export const DefaultGetResponseSettings = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    autoInjectScript: S.Boolean,
-    contextEnricher: S.optional(DefaultGetResponseSettingsContextEnricher),
-    cookieDomain: S.optional(S.String),
-    ecommerce: S.optional(S.Boolean),
-    eventsApiPath: S.optional(S.String),
-    hideExternalReferer: S.optional(S.Boolean),
-    hideIPAddress: S.optional(S.Boolean),
-    hideQueryParams: S.optional(S.Boolean),
-    hideUserAgent: S.optional(S.Boolean),
-    initPath: S.optional(S.String),
-    injectIframes: S.optional(S.Boolean),
-    mcRootPath: S.optional(S.String),
-    scriptPath: S.optional(S.String),
-    trackPath: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "DefaultGetResponseSettings",
-}) as any as S.Schema<DefaultGetResponseSettings>;
-
-export type DefaultGetResponseToolsMap = { [key: string]: unknown | undefined };
-export const DefaultGetResponseToolsMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DefaultGetResponseToolsMap>;
-
-export type DefaultGetResponseTriggersMap = {
-  [key: string]: unknown | undefined;
-};
-export const DefaultGetResponseTriggersMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DefaultGetResponseTriggersMap>;
-
-export type DefaultGetResponseVariablesMap = {
-  [key: string]: unknown | undefined;
-};
-export const DefaultGetResponseVariablesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DefaultGetResponseVariablesMap>;
-
-export interface DefaultGetResponseAnalytics {
-  /** Consent purpose assigned to Monitoring. */
-  defaultPurpose?: string;
-  /** Whether Advanced Monitoring reports are enabled. */
-  enabled?: boolean;
-  /** Session expiration time (seconds). */
-  sessionExpTime?: number;
-}
-export const DefaultGetResponseAnalytics = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    defaultPurpose: S.optional(S.String),
-    enabled: S.optional(S.Boolean),
-    sessionExpTime: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "DefaultGetResponseAnalytics",
-}) as any as S.Schema<DefaultGetResponseAnalytics>;
-
-export type DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap = {
-  [key: string]: unknown | undefined;
-};
-export const DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap>;
-
-export type DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
-  { [key: string]: unknown | undefined };
-export const DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap>;
-
-export type DefaultGetResponseConsentButtonTextTranslationsRejectAllMap = {
-  [key: string]: unknown | undefined;
-};
-export const DefaultGetResponseConsentButtonTextTranslationsRejectAllMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslationsRejectAllMap>;
-
-export interface DefaultGetResponseConsentButtonTextTranslations {
-  /** Object where keys are language codes. */
-  acceptAll: DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap;
-  /** Object where keys are language codes. */
-  confirmMyChoices: DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap;
-  /** Object where keys are language codes. */
-  rejectAll: DefaultGetResponseConsentButtonTextTranslationsRejectAllMap;
-}
-export const DefaultGetResponseConsentButtonTextTranslations =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      acceptAll:
-        DefaultGetResponseConsentButtonTextTranslationsAcceptAllMap.pipe(
-          T.Body("accept_all"),
-        ),
-      confirmMyChoices:
-        DefaultGetResponseConsentButtonTextTranslationsConfirmMyChoicesMap.pipe(
-          T.Body("confirm_my_choices"),
-        ),
-      rejectAll:
-        DefaultGetResponseConsentButtonTextTranslationsRejectAllMap.pipe(
-          T.Body("reject_all"),
-        ),
-    }),
-  ).annotate({
-    identifier: "DefaultGetResponseConsentButtonTextTranslations",
-  }) as any as S.Schema<DefaultGetResponseConsentButtonTextTranslations>;
-
-export type DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap =
-  { [key: string]: unknown | undefined };
-export const DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap>;
-
-export type DefaultGetResponseConsentPurposesMap = {
-  [key: string]: unknown | undefined;
-};
-export const DefaultGetResponseConsentPurposesMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<DefaultGetResponseConsentPurposesMap>;
-
-export type DefaultGetResponseConsentPurposesWithTranslationsMap = {
-  [key: string]: unknown | undefined;
-};
-export const DefaultGetResponseConsentPurposesWithTranslationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<DefaultGetResponseConsentPurposesWithTranslationsMap>;
-
-export interface DefaultGetResponseConsent {
-  enabled: boolean;
-  buttonTextTranslations?: DefaultGetResponseConsentButtonTextTranslations;
-  companyEmail?: string;
-  companyName?: string;
-  companyStreetAddress?: string;
-  consentModalIntroHTML?: string;
-  /** Object where keys are language codes. */
-  consentModalIntroHTMLWithTranslations?: DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap;
-  cookieName?: string;
-  customCSS?: string;
-  customIntroDisclaimerDismissed?: boolean;
-  defaultLanguage?: string;
-  hideModal?: boolean;
-  /** Object where keys are purpose alpha-numeric IDs. */
-  purposes?: DefaultGetResponseConsentPurposesMap;
-  /** Object where keys are purpose alpha-numeric IDs. */
-  purposesWithTranslations?: DefaultGetResponseConsentPurposesWithTranslationsMap;
-  tcfCompliant?: boolean;
-}
-export const DefaultGetResponseConsent = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.Boolean,
-    buttonTextTranslations: S.optional(
-      DefaultGetResponseConsentButtonTextTranslations,
-    ),
-    companyEmail: S.optional(S.String),
-    companyName: S.optional(S.String),
-    companyStreetAddress: S.optional(S.String),
-    consentModalIntroHTML: S.optional(S.String),
-    consentModalIntroHTMLWithTranslations: S.optional(
-      DefaultGetResponseConsentConsentModalIntroHTMLWithTranslationsMap,
-    ),
-    cookieName: S.optional(S.String),
-    customCSS: S.optional(S.String),
-    customIntroDisclaimerDismissed: S.optional(S.Boolean),
-    defaultLanguage: S.optional(S.String),
-    hideModal: S.optional(S.Boolean),
-    purposes: S.optional(DefaultGetResponseConsentPurposesMap),
-    purposesWithTranslations: S.optional(
-      DefaultGetResponseConsentPurposesWithTranslationsMap,
-    ),
-    tcfCompliant: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DefaultGetResponseConsent",
-}) as any as S.Schema<DefaultGetResponseConsent>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DefaultGetResponse {
-  /** Data layer compatibility mode enabled. */
-  dataLayer: boolean;
-  /** The key for Zaraz debug mode. */
-  debugKey: string;
-  /** General Zaraz settings. */
-  settings: DefaultGetResponseSettings;
-  /** Tools set up under Zaraz configuration, where key is the alpha-numeric tool ID and value is the tool configuration object. */
-  tools: DefaultGetResponseToolsMap;
-  /** Triggers set up under Zaraz configuration, where key is the trigger alpha-numeric ID and value is the trigger configuration. */
-  triggers: DefaultGetResponseTriggersMap;
-  /** Variables set up under Zaraz configuration, where key is the variable alpha-numeric ID and value is the variable configuration. Values of variables of type secret are not included. */
-  variables: DefaultGetResponseVariablesMap;
-  /** Zaraz internal version of the config. */
-  zarazVersion: number;
-  /** Cloudflare Monitoring settings. */
-  analytics?: DefaultGetResponseAnalytics;
-  /** Consent management configuration. */
-  consent?: DefaultGetResponseConsent;
-  /** Single Page Application support enabled. */
-  historyChange?: boolean;
-}
-export const DefaultGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    dataLayer: S.Boolean,
-    debugKey: S.String,
-    settings: DefaultGetResponseSettings,
-    tools: DefaultGetResponseToolsMap,
-    triggers: DefaultGetResponseTriggersMap,
-    variables: DefaultGetResponseVariablesMap,
-    zarazVersion: S.Number,
-    analytics: S.optional(DefaultGetResponseAnalytics),
-    consent: S.optional(DefaultGetResponseConsent),
-    historyChange: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "DefaultGetResponse",
-}) as any as S.Schema<DefaultGetResponse>;
-
-export interface ExportGetRequest {
-  /** Identifier. */
-  zoneId: string;
-}
-export const ExportGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/settings/zaraz/export",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ExportGetRequest",
-}) as any as S.Schema<ExportGetRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ExportGetResponse {
-  /** Zaraz configuration. */
-  ConfigurationObjectDataLayerDebugKeySettings7More__: unknown;
-}
-export const ExportGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ConfigurationObjectDataLayerDebugKeySettings7More__: S.Unknown.pipe(
-      T.Body("Configuration object { dataLayer, debugKey, settings, 7 more }"),
-    ),
-  }),
-).annotate({
-  identifier: "ExportGetResponse",
-}) as any as S.Schema<ExportGetResponse>;
-
-export type HistoryConfigsGetRequestIdsList = number[];
-export const HistoryConfigsGetRequestIdsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<HistoryConfigsGetRequestIdsList>;
-
-export interface HistoryConfigsGetRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Comma separated list of Zaraz configuration IDs. */
-  ids: HistoryConfigsGetRequestIdsList;
-}
-export const HistoryConfigsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    ids: HistoryConfigsGetRequestIdsList.pipe(T.Query()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/settings/zaraz/history/configs",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HistoryConfigsGetRequest",
-}) as any as S.Schema<HistoryConfigsGetRequest>;
-
-export type HistoryConfigsGetResultMap = { [key: string]: unknown | undefined };
-export const HistoryConfigsGetResultMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<HistoryConfigsGetResultMap>;
-
-export interface HistoryConfigsGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: HistoryConfigsGetResultMap;
-}
-export const HistoryConfigsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(HistoryConfigsGetResultMap.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "HistoryConfigsGetResponse",
-}) as any as S.Schema<HistoryConfigsGetResponse>;
-
-export type HistoryListRequestSortField =
-  | "id"
-  | "user_id"
-  | "description"
-  | (string & {});
-export const HistoryListRequestSortField = /*@__PURE__*/ S.String;
-
-export type HistoryListRequestSortOrder = "DESC" | "ASC" | (string & {});
-export const HistoryListRequestSortOrder = /*@__PURE__*/ S.String;
-
-export interface HistoryListRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Maximum amount of results to list. Default value is 10. */
-  limit?: number;
-  /** Ordinal number to start listing the results with. Default value is 0. */
-  offset?: number;
-  /** The field to sort by. Default is updated_at. */
-  sortField?: HistoryListRequestSortField;
-  /** Sorting order. Default is DESC. */
-  sortOrder?: HistoryListRequestSortOrder;
-}
-export const HistoryListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    sortField: S.optional(HistoryListRequestSortField.pipe(T.Query())),
-    sortOrder: S.optional(HistoryListRequestSortOrder.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/settings/zaraz/history",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "HistoryListRequest",
-}) as any as S.Schema<HistoryListRequest>;
-
-export interface HistoryListResultItem {
-  /** ID of the configuration. */
-  id: number;
-  /** Date and time the configuration was created. */
-  createdAt: string;
-  /** Configuration description provided by the user who published this configuration. */
-  description: string;
-  /** Date and time the configuration was last updated. */
-  updatedAt: string;
-  /** Alpha-numeric ID of the account user who published the configuration. */
-  userId: string;
-}
-export const HistoryListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.Number,
-    createdAt: S.String,
-    description: S.String,
-    updatedAt: S.String,
-    userId: S.String,
-  }),
-).annotate({
-  identifier: "HistoryListResultItem",
-}) as any as S.Schema<HistoryListResultItem>;
-
-export type HistoryListResultList = HistoryListResultItem[];
-export const HistoryListResultList = /*@__PURE__*/ S.Array(
-  HistoryListResultItem,
-) as any as S.Schema<HistoryListResultList>;
-
-export interface HistoryListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: HistoryListResultList;
-}
-export const HistoryListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(HistoryListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "HistoryListResponse",
-}) as any as S.Schema<HistoryListResponse>;
-
-export interface HistoryUpdateRequest {
+export interface PutHistoryRequest {
   /** Identifier. */
   zoneId: string;
   /** ID of the Zaraz configuration to restore. */
   body: number;
 }
-export const HistoryUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutHistoryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: S.Number,
@@ -1322,8 +1401,8 @@ export const HistoryUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "HistoryUpdateRequest",
-}) as any as S.Schema<HistoryUpdateRequest>;
+  identifier: "PutHistoryRequest",
+}) as any as S.Schema<PutHistoryRequest>;
 
 export interface HistoryUpdateResponseSettingsContextEnricher {
   escapedWorkerName: string;
@@ -1560,7 +1639,7 @@ export const HistoryUpdateResponseConsent = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<HistoryUpdateResponseConsent>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface HistoryUpdateResponse {
+export interface PutHistoryResponse {
   /** Data layer compatibility mode enabled. */
   dataLayer: boolean;
   /** The key for Zaraz debug mode. */
@@ -1582,7 +1661,7 @@ export interface HistoryUpdateResponse {
   /** Single Page Application support enabled. */
   historyChange?: boolean;
 }
-export const HistoryUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutHistoryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     dataLayer: S.Boolean,
     debugKey: S.String,
@@ -1596,49 +1675,16 @@ export const HistoryUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     historyChange: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "HistoryUpdateResponse",
-}) as any as S.Schema<HistoryUpdateResponse>;
+  identifier: "PutHistoryResponse",
+}) as any as S.Schema<PutHistoryResponse>;
 
-export interface PublishCreateRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Zaraz configuration description. */
-  body?: string;
-}
-export const PublishCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    body: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/settings/zaraz/publish",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PublishCreateRequest",
-}) as any as S.Schema<PublishCreateRequest>;
-
-export interface PublishCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
-export const PublishCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "PublishCreateResponse",
-}) as any as S.Schema<PublishCreateResponse>;
-
-export interface UpdateRequest {
+export interface PutZarazRequest {
   /** Identifier. */
   zoneId: string;
   /** Zaraz workflow. */
   workflow: unknown;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutZarazRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     workflow: S.Unknown,
@@ -1649,184 +1695,158 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
-
-export interface UpdateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
-
-export interface WorkflowGetRequest {
-  /** Identifier. */
-  zoneId: string;
-}
-export const WorkflowGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/settings/zaraz/workflow",
-      code: 200,
-    }),
-  ),
 ).annotate({
-  identifier: "WorkflowGetRequest",
-}) as any as S.Schema<WorkflowGetRequest>;
+  identifier: "PutZarazRequest",
+}) as any as S.Schema<PutZarazRequest>;
 
-export interface WorkflowGetResponse {
+export interface PutZarazResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const WorkflowGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutZarazResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "WorkflowGetResponse",
-}) as any as S.Schema<WorkflowGetResponse>;
+  identifier: "PutZarazResponse",
+}) as any as S.Schema<PutZarazResponse>;
 
-export type ConfigGetError = CloudflareOpError;
-/** Gets latest Zaraz configuration for a zone. It can be preview or published configuration, whichever was the last updated. Secret variables values will not be included. */
-export const configGet: API.OperationMethod<
-  ConfigGetRequest,
-  ConfigGetResponse,
-  ConfigGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigGetRequest,
-  output: ConfigGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConfigUpdateError = CloudflareOpError;
-/** Updates Zaraz configuration for a zone. */
-export const configUpdate: API.OperationMethod<
-  ConfigUpdateRequest,
-  ConfigUpdateResponse,
-  ConfigUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConfigUpdateRequest,
-  output: ConfigUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DefaultGetError = CloudflareOpError;
-/** Gets default Zaraz configuration for a zone. */
-export const defaultGet: API.OperationMethod<
-  DefaultGetRequest,
-  DefaultGetResponse,
-  DefaultGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DefaultGetRequest,
-  output: DefaultGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ExportGetError = CloudflareOpError;
-/** Exports full current published Zaraz configuration for a zone, secret variables included. */
-export const exportGet: API.OperationMethod<
-  ExportGetRequest,
-  ExportGetResponse,
-  ExportGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ExportGetRequest,
-  output: ExportGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type HistoryConfigsGetError = CloudflareOpError;
-/** Gets a history of published Zaraz configurations by ID(s) for a zone. */
-export const historyConfigsGet: API.OperationMethod<
-  HistoryConfigsGetRequest,
-  HistoryConfigsGetResponse,
-  HistoryConfigsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HistoryConfigsGetRequest,
-  output: HistoryConfigsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type HistoryListError = CloudflareOpError;
-/** Lists a history of published Zaraz configuration records for a zone. */
-export const historyList: API.OperationMethod<
-  HistoryListRequest,
-  HistoryListResponse,
-  HistoryListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HistoryListRequest,
-  output: HistoryListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type HistoryUpdateError = CloudflareOpError;
-/** Restores a historical published Zaraz configuration by ID for a zone. */
-export const historyUpdate: API.OperationMethod<
-  HistoryUpdateRequest,
-  HistoryUpdateResponse,
-  HistoryUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: HistoryUpdateRequest,
-  output: HistoryUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PublishCreateError = CloudflareOpError;
+export type CreatePublishError = CloudflareOpError;
 /** Publish current Zaraz preview configuration for a zone. */
-export const publishCreate: API.OperationMethod<
-  PublishCreateRequest,
-  PublishCreateResponse,
-  PublishCreateError,
+export const createPublish: API.OperationMethod<
+  CreatePublishRequest,
+  CreatePublishResponse,
+  CreatePublishError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: PublishCreateRequest,
-  output: PublishCreateResponse,
+  input: CreatePublishRequest,
+  output: CreatePublishResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
-/** Updates Zaraz workflow for a zone. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export type GetConfigError = Forbidden | NotFound | CloudflareOpError;
+/** Gets latest Zaraz configuration for a zone. It can be preview or published configuration, whichever was the last updated. Secret variables values will not be included. */
+export const getConfig: API.OperationMethod<
+  GetConfigRequest,
+  GetConfigResponse,
+  GetConfigError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
+  input: GetConfigRequest,
+  output: GetConfigResponse,
+  errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetDefaultError = CloudflareOpError;
+/** Gets default Zaraz configuration for a zone. */
+export const getDefault: API.OperationMethod<
+  GetDefaultRequest,
+  GetDefaultResponse,
+  GetDefaultError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDefaultRequest,
+  output: GetDefaultResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WorkflowGetError = CloudflareOpError;
+export type GetExportError = CloudflareOpError;
+/** Exports full current published Zaraz configuration for a zone, secret variables included. */
+export const getExport: API.OperationMethod<
+  GetExportRequest,
+  GetExportResponse,
+  GetExportError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetExportRequest,
+  output: GetExportResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetHistoryConfigError = CloudflareOpError;
+/** Gets a history of published Zaraz configurations by ID(s) for a zone. */
+export const getHistoryConfig: API.OperationMethod<
+  GetHistoryConfigRequest,
+  GetHistoryConfigResponse,
+  GetHistoryConfigError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetHistoryConfigRequest,
+  output: GetHistoryConfigResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetWorkflowError = Forbidden | NotFound | CloudflareOpError;
 /** Gets Zaraz workflow for a zone. */
-export const workflowGet: API.OperationMethod<
-  WorkflowGetRequest,
-  WorkflowGetResponse,
-  WorkflowGetError,
+export const getWorkflow: API.OperationMethod<
+  GetWorkflowRequest,
+  GetWorkflowResponse,
+  GetWorkflowError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WorkflowGetRequest,
-  output: WorkflowGetResponse,
+  input: GetWorkflowRequest,
+  output: GetWorkflowResponse,
+  errors: [Forbidden, NotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListHistoriesError = CloudflareOpError;
+/** Lists a history of published Zaraz configuration records for a zone. */
+export const listHistories: API.OperationMethod<
+  ListHistoriesRequest,
+  ListHistoriesResponse,
+  ListHistoriesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListHistoriesRequest,
+  output: ListHistoriesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutConfigError = CloudflareOpError;
+/** Updates Zaraz configuration for a zone. */
+export const putConfig: API.OperationMethod<
+  PutConfigRequest,
+  PutConfigResponse,
+  PutConfigError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutConfigRequest,
+  output: PutConfigResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutHistoryError = CloudflareOpError;
+/** Restores a historical published Zaraz configuration by ID for a zone. */
+export const putHistory: API.OperationMethod<
+  PutHistoryRequest,
+  PutHistoryResponse,
+  PutHistoryError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutHistoryRequest,
+  output: PutHistoryResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutZarazError = CloudflareOpError;
+/** Updates Zaraz workflow for a zone. */
+export const putZaraz: API.OperationMethod<
+  PutZarazRequest,
+  PutZarazResponse,
+  PutZarazError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutZarazRequest,
+  output: PutZarazResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

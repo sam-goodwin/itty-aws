@@ -9,13 +9,37 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface SfuCreateRequest {
+export class CallsAppNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CallsAppNotFound>()("CallsAppNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 20007 }],
+) {}
+
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class TurnKeyNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<TurnKeyNotFound>()("TurnKeyNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 20008 }],
+) {}
+
+export interface CreateSfuRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A short description of Calls app, not shown to end users. */
   name?: string;
 }
-export const SfuCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateSfuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     name: S.optional(S.String),
@@ -27,11 +51,11 @@ export const SfuCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SfuCreateRequest",
-}) as any as S.Schema<SfuCreateRequest>;
+  identifier: "CreateSfuRequest",
+}) as any as S.Schema<CreateSfuRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SfuCreateResponse {
+export interface CreateSfuResponse {
   /** The date and time the item was created. */
   created?: string;
   /** The date and time the item was last modified. */
@@ -43,7 +67,7 @@ export interface SfuCreateResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid?: string;
 }
-export const SfuCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateSfuResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     modified: S.optional(S.String),
@@ -52,16 +76,62 @@ export const SfuCreateResponse = /*@__PURE__*/ S.suspend(() =>
     uid: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SfuCreateResponse",
-}) as any as S.Schema<SfuCreateResponse>;
+  identifier: "CreateSfuResponse",
+}) as any as S.Schema<CreateSfuResponse>;
 
-export interface SfuDeleteRequest {
+export interface CreateTurnRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** A short description of a TURN key, not shown to end users. */
+  name?: string;
+}
+export const CreateTurnRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/calls/turn_keys",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateTurnRequest",
+}) as any as S.Schema<CreateTurnRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateTurnResponse {
+  /** The date and time the item was created. */
+  created?: string;
+  /** Bearer token */
+  key?: string;
+  /** The date and time the item was last modified. */
+  modified?: string;
+  /** A short description of a TURN key, not shown to end users. */
+  name?: string;
+  /** A Cloudflare-generated unique identifier for a item. */
+  uid?: string;
+}
+export const CreateTurnResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    created: S.optional(S.String),
+    key: S.optional(S.String),
+    modified: S.optional(S.String),
+    name: S.optional(S.String),
+    uid: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateTurnResponse",
+}) as any as S.Schema<CreateTurnResponse>;
+
+export interface DeleteSfuRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a item. */
   appId: string;
 }
-export const SfuDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSfuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -73,11 +143,11 @@ export const SfuDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SfuDeleteRequest",
-}) as any as S.Schema<SfuDeleteRequest>;
+  identifier: "DeleteSfuRequest",
+}) as any as S.Schema<DeleteSfuRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SfuDeleteResponse {
+export interface DeleteSfuResponse {
   /** The date and time the item was created. */
   created?: string;
   /** The date and time the item was last modified. */
@@ -87,7 +157,7 @@ export interface SfuDeleteResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid?: string;
 }
-export const SfuDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSfuResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     modified: S.optional(S.String),
@@ -95,16 +165,59 @@ export const SfuDeleteResponse = /*@__PURE__*/ S.suspend(() =>
     uid: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SfuDeleteResponse",
-}) as any as S.Schema<SfuDeleteResponse>;
+  identifier: "DeleteSfuResponse",
+}) as any as S.Schema<DeleteSfuResponse>;
 
-export interface SfuGetRequest {
+export interface DeleteTurnRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a item. */
+  keyId: string;
+}
+export const DeleteTurnRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    keyId: S.String.pipe(T.Label("key_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/calls/turn_keys/{key_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteTurnRequest",
+}) as any as S.Schema<DeleteTurnRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteTurnResponse {
+  /** The date and time the item was created. */
+  created?: string;
+  /** The date and time the item was last modified. */
+  modified?: string;
+  /** A short description of Calls app, not shown to end users. */
+  name?: string;
+  /** A Cloudflare-generated unique identifier for a item. */
+  uid?: string;
+}
+export const DeleteTurnResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    created: S.optional(S.String),
+    modified: S.optional(S.String),
+    name: S.optional(S.String),
+    uid: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteTurnResponse",
+}) as any as S.Schema<DeleteTurnResponse>;
+
+export interface GetSfuRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a item. */
   appId: string;
 }
-export const SfuGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSfuRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -115,10 +228,10 @@ export const SfuGetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "SfuGetRequest" }) as any as S.Schema<SfuGetRequest>;
+).annotate({ identifier: "GetSfuRequest" }) as any as S.Schema<GetSfuRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SfuGetResponse {
+export interface GetSfuResponse {
   /** The date and time the item was created. */
   created?: string;
   /** The date and time the item was last modified. */
@@ -128,20 +241,61 @@ export interface SfuGetResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid?: string;
 }
-export const SfuGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSfuResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     modified: S.optional(S.String),
     name: S.optional(S.String),
     uid: S.optional(S.String),
   }),
-).annotate({ identifier: "SfuGetResponse" }) as any as S.Schema<SfuGetResponse>;
+).annotate({ identifier: "GetSfuResponse" }) as any as S.Schema<GetSfuResponse>;
 
-export interface SfuListRequest {
+export interface GetTurnRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a item. */
+  keyId: string;
+}
+export const GetTurnRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    keyId: S.String.pipe(T.Label("key_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/calls/turn_keys/{key_id}",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "GetTurnRequest" }) as any as S.Schema<GetTurnRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetTurnResponse {
+  /** The date and time the item was created. */
+  created?: string;
+  /** The date and time the item was last modified. */
+  modified?: string;
+  /** A short description of Calls app, not shown to end users. */
+  name?: string;
+  /** A Cloudflare-generated unique identifier for a item. */
+  uid?: string;
+}
+export const GetTurnResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    created: S.optional(S.String),
+    modified: S.optional(S.String),
+    name: S.optional(S.String),
+    uid: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetTurnResponse",
+}) as any as S.Schema<GetTurnResponse>;
+
+export interface ListSfusRequest {
   /** The account identifier tag. */
   accountId: string;
 }
-export const SfuListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListSfusRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -151,7 +305,9 @@ export const SfuListRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "SfuListRequest" }) as any as S.Schema<SfuListRequest>;
+).annotate({
+  identifier: "ListSfusRequest",
+}) as any as S.Schema<ListSfusRequest>;
 
 export interface SfuListResultItem {
   /** The date and time the item was created. */
@@ -179,199 +335,23 @@ export const SfuListResultList = /*@__PURE__*/ S.Array(
   SfuListResultItem,
 ) as any as S.Schema<SfuListResultList>;
 
-export interface SfuListResponse {
+export interface ListSfusResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SfuListResultList;
 }
-export const SfuListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListSfusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SfuListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "SfuListResponse",
-}) as any as S.Schema<SfuListResponse>;
+  identifier: "ListSfusResponse",
+}) as any as S.Schema<ListSfusResponse>;
 
-export interface SfuUpdateRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** A Cloudflare-generated unique identifier for a item. */
-  appId: string;
-  /** A short description of Calls app, not shown to end users. */
-  name?: string;
-}
-export const SfuUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-    name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/calls/apps/{app_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SfuUpdateRequest",
-}) as any as S.Schema<SfuUpdateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SfuUpdateResponse {
-  /** The date and time the item was created. */
-  created?: string;
-  /** The date and time the item was last modified. */
-  modified?: string;
-  /** A short description of Calls app, not shown to end users. */
-  name?: string;
-  /** A Cloudflare-generated unique identifier for a item. */
-  uid?: string;
-}
-export const SfuUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.String),
-    modified: S.optional(S.String),
-    name: S.optional(S.String),
-    uid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SfuUpdateResponse",
-}) as any as S.Schema<SfuUpdateResponse>;
-
-export interface TurnCreateRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** A short description of a TURN key, not shown to end users. */
-  name?: string;
-}
-export const TurnCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/calls/turn_keys",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "TurnCreateRequest",
-}) as any as S.Schema<TurnCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TurnCreateResponse {
-  /** The date and time the item was created. */
-  created?: string;
-  /** Bearer token */
-  key?: string;
-  /** The date and time the item was last modified. */
-  modified?: string;
-  /** A short description of a TURN key, not shown to end users. */
-  name?: string;
-  /** A Cloudflare-generated unique identifier for a item. */
-  uid?: string;
-}
-export const TurnCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.String),
-    key: S.optional(S.String),
-    modified: S.optional(S.String),
-    name: S.optional(S.String),
-    uid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TurnCreateResponse",
-}) as any as S.Schema<TurnCreateResponse>;
-
-export interface TurnDeleteRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** A Cloudflare-generated unique identifier for a item. */
-  keyId: string;
-}
-export const TurnDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    keyId: S.String.pipe(T.Label("key_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/calls/turn_keys/{key_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "TurnDeleteRequest",
-}) as any as S.Schema<TurnDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TurnDeleteResponse {
-  /** The date and time the item was created. */
-  created?: string;
-  /** The date and time the item was last modified. */
-  modified?: string;
-  /** A short description of Calls app, not shown to end users. */
-  name?: string;
-  /** A Cloudflare-generated unique identifier for a item. */
-  uid?: string;
-}
-export const TurnDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.String),
-    modified: S.optional(S.String),
-    name: S.optional(S.String),
-    uid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TurnDeleteResponse",
-}) as any as S.Schema<TurnDeleteResponse>;
-
-export interface TurnGetRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** A Cloudflare-generated unique identifier for a item. */
-  keyId: string;
-}
-export const TurnGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    keyId: S.String.pipe(T.Label("key_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/calls/turn_keys/{key_id}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "TurnGetRequest" }) as any as S.Schema<TurnGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TurnGetResponse {
-  /** The date and time the item was created. */
-  created?: string;
-  /** The date and time the item was last modified. */
-  modified?: string;
-  /** A short description of Calls app, not shown to end users. */
-  name?: string;
-  /** A Cloudflare-generated unique identifier for a item. */
-  uid?: string;
-}
-export const TurnGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.String),
-    modified: S.optional(S.String),
-    name: S.optional(S.String),
-    uid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TurnGetResponse",
-}) as any as S.Schema<TurnGetResponse>;
-
-export interface TurnListRequest {
+export interface ListTurnsRequest {
   /** The account identifier tag. */
   accountId: string;
 }
-export const TurnListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListTurnsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -382,8 +362,8 @@ export const TurnListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "TurnListRequest",
-}) as any as S.Schema<TurnListRequest>;
+  identifier: "ListTurnsRequest",
+}) as any as S.Schema<ListTurnsRequest>;
 
 export interface TurnListResultItem {
   /** The date and time the item was created. */
@@ -411,19 +391,65 @@ export const TurnListResultList = /*@__PURE__*/ S.Array(
   TurnListResultItem,
 ) as any as S.Schema<TurnListResultList>;
 
-export interface TurnListResponse {
+export interface ListTurnsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: TurnListResultList;
 }
-export const TurnListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListTurnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(TurnListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "TurnListResponse",
-}) as any as S.Schema<TurnListResponse>;
+  identifier: "ListTurnsResponse",
+}) as any as S.Schema<ListTurnsResponse>;
 
-export interface TurnUpdateRequest {
+export interface UpdateSfuRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a item. */
+  appId: string;
+  /** A short description of Calls app, not shown to end users. */
+  name?: string;
+}
+export const UpdateSfuRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+    name: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/calls/apps/{app_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSfuRequest",
+}) as any as S.Schema<UpdateSfuRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateSfuResponse {
+  /** The date and time the item was created. */
+  created?: string;
+  /** The date and time the item was last modified. */
+  modified?: string;
+  /** A short description of Calls app, not shown to end users. */
+  name?: string;
+  /** A Cloudflare-generated unique identifier for a item. */
+  uid?: string;
+}
+export const UpdateSfuResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    created: S.optional(S.String),
+    modified: S.optional(S.String),
+    name: S.optional(S.String),
+    uid: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "UpdateSfuResponse",
+}) as any as S.Schema<UpdateSfuResponse>;
+
+export interface UpdateTurnRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a item. */
@@ -431,7 +457,7 @@ export interface TurnUpdateRequest {
   /** A short description of a TURN key, not shown to end users. */
   name?: string;
 }
-export const TurnUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateTurnRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     keyId: S.String.pipe(T.Label("key_id")),
@@ -444,11 +470,11 @@ export const TurnUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "TurnUpdateRequest",
-}) as any as S.Schema<TurnUpdateRequest>;
+  identifier: "UpdateTurnRequest",
+}) as any as S.Schema<UpdateTurnRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TurnUpdateResponse {
+export interface UpdateTurnResponse {
   /** The date and time the item was created. */
   created?: string;
   /** The date and time the item was last modified. */
@@ -458,7 +484,7 @@ export interface TurnUpdateResponse {
   /** A Cloudflare-generated unique identifier for a item. */
   uid?: string;
 }
-export const TurnUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateTurnResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     modified: S.optional(S.String),
@@ -466,145 +492,145 @@ export const TurnUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     uid: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "TurnUpdateResponse",
-}) as any as S.Schema<TurnUpdateResponse>;
+  identifier: "UpdateTurnResponse",
+}) as any as S.Schema<UpdateTurnResponse>;
 
-export type SfuCreateError = CloudflareOpError;
+export type CreateSfuError = Forbidden | CloudflareOpError;
 /** Creates a new Cloudflare calls app. An app is an unique enviroment where each Session can access all Tracks within the app. */
-export const sfuCreate: API.OperationMethod<
-  SfuCreateRequest,
-  SfuCreateResponse,
-  SfuCreateError,
+export const createSfu: API.OperationMethod<
+  CreateSfuRequest,
+  CreateSfuResponse,
+  CreateSfuError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SfuCreateRequest,
-  output: SfuCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateSfuRequest,
+  output: CreateSfuResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SfuDeleteError = CloudflareOpError;
-/** Deletes an app from Cloudflare Calls */
-export const sfuDelete: API.OperationMethod<
-  SfuDeleteRequest,
-  SfuDeleteResponse,
-  SfuDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SfuDeleteRequest,
-  output: SfuDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SfuGetError = CloudflareOpError;
-/** Fetches details for a single Calls app. */
-export const sfuGet: API.OperationMethod<
-  SfuGetRequest,
-  SfuGetResponse,
-  SfuGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SfuGetRequest,
-  output: SfuGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SfuListError = CloudflareOpError;
-/** Lists all apps in the Cloudflare account */
-export const sfuList: API.OperationMethod<
-  SfuListRequest,
-  SfuListResponse,
-  SfuListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SfuListRequest,
-  output: SfuListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SfuUpdateError = CloudflareOpError;
-/** Edit details for a single app. */
-export const sfuUpdate: API.OperationMethod<
-  SfuUpdateRequest,
-  SfuUpdateResponse,
-  SfuUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SfuUpdateRequest,
-  output: SfuUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type TurnCreateError = CloudflareOpError;
+export type CreateTurnError = Forbidden | CloudflareOpError;
 /** Creates a new Cloudflare Calls TURN key. */
-export const turnCreate: API.OperationMethod<
-  TurnCreateRequest,
-  TurnCreateResponse,
-  TurnCreateError,
+export const createTurn: API.OperationMethod<
+  CreateTurnRequest,
+  CreateTurnResponse,
+  CreateTurnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TurnCreateRequest,
-  output: TurnCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateTurnRequest,
+  output: CreateTurnResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type TurnDeleteError = CloudflareOpError;
+export type DeleteSfuError = CallsAppNotFound | Forbidden | CloudflareOpError;
+/** Deletes an app from Cloudflare Calls */
+export const deleteSfu: API.OperationMethod<
+  DeleteSfuRequest,
+  DeleteSfuResponse,
+  DeleteSfuError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSfuRequest,
+  output: DeleteSfuResponse,
+  errors: [CallsAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteTurnError = TurnKeyNotFound | Forbidden | CloudflareOpError;
 /** Deletes a TURN key from Cloudflare Calls */
-export const turnDelete: API.OperationMethod<
-  TurnDeleteRequest,
-  TurnDeleteResponse,
-  TurnDeleteError,
+export const deleteTurn: API.OperationMethod<
+  DeleteTurnRequest,
+  DeleteTurnResponse,
+  DeleteTurnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TurnDeleteRequest,
-  output: TurnDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteTurnRequest,
+  output: DeleteTurnResponse,
+  errors: [TurnKeyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type TurnGetError = CloudflareOpError;
+export type GetSfuError = CallsAppNotFound | Forbidden | CloudflareOpError;
+/** Fetches details for a single Calls app. */
+export const getSfu: API.OperationMethod<
+  GetSfuRequest,
+  GetSfuResponse,
+  GetSfuError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSfuRequest,
+  output: GetSfuResponse,
+  errors: [CallsAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetTurnError = TurnKeyNotFound | Forbidden | CloudflareOpError;
 /** Fetches details for a single TURN key. */
-export const turnGet: API.OperationMethod<
-  TurnGetRequest,
-  TurnGetResponse,
-  TurnGetError,
+export const getTurn: API.OperationMethod<
+  GetTurnRequest,
+  GetTurnResponse,
+  GetTurnError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TurnGetRequest,
-  output: TurnGetResponse,
+  input: GetTurnRequest,
+  output: GetTurnResponse,
+  errors: [TurnKeyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSfusError = CloudflareOpError;
+/** Lists all apps in the Cloudflare account */
+export const listSfus: API.OperationMethod<
+  ListSfusRequest,
+  ListSfusResponse,
+  ListSfusError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSfusRequest,
+  output: ListSfusResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type TurnListError = CloudflareOpError;
+export type ListTurnsError = CloudflareOpError;
 /** Lists all TURN keys in the Cloudflare account */
-export const turnList: API.OperationMethod<
-  TurnListRequest,
-  TurnListResponse,
-  TurnListError,
+export const listTurns: API.OperationMethod<
+  ListTurnsRequest,
+  ListTurnsResponse,
+  ListTurnsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TurnListRequest,
-  output: TurnListResponse,
+  input: ListTurnsRequest,
+  output: ListTurnsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type TurnUpdateError = CloudflareOpError;
-/** Edit details for a single TURN key. */
-export const turnUpdate: API.OperationMethod<
-  TurnUpdateRequest,
-  TurnUpdateResponse,
-  TurnUpdateError,
+export type UpdateSfuError = CallsAppNotFound | Forbidden | CloudflareOpError;
+/** Edit details for a single app. */
+export const updateSfu: API.OperationMethod<
+  UpdateSfuRequest,
+  UpdateSfuResponse,
+  UpdateSfuError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TurnUpdateRequest,
-  output: TurnUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateSfuRequest,
+  output: UpdateSfuResponse,
+  errors: [CallsAppNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateTurnError = TurnKeyNotFound | Forbidden | CloudflareOpError;
+/** Edit details for a single TURN key. */
+export const updateTurn: API.OperationMethod<
+  UpdateTurnRequest,
+  UpdateTurnResponse,
+  UpdateTurnError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateTurnRequest,
+  output: UpdateTurnResponse,
+  errors: [TurnKeyNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

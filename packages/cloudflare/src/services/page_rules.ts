@@ -9,6 +9,30 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class InvalidZoneIdentifier extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidZoneIdentifier>()("InvalidZoneIdentifier", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 400, message: { includes: "Invalid zone identifier" } }],
+) {}
+
+export class PageRuleNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<PageRuleNotFound>()("PageRuleNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
 export interface CreateRequestActionsItem {
   AlwaysUseHTTPSObjectId__: unknown;
   AutomaticHTTPSRewritesObjectIdValue__: unknown;
@@ -202,7 +226,7 @@ export const CreateRequestTargetsList = /*@__PURE__*/ S.Array(
 export type CreateRequestStatus = "active" | "disabled" | (string & {});
 export const CreateRequestStatus = /*@__PURE__*/ S.String;
 
-export interface CreateRequest {
+export interface CreatePageRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** The set of actions to perform if the targets of this rule match the */
@@ -214,7 +238,7 @@ export interface CreateRequest {
   /** The status of the Page Rule. */
   status?: CreateRequestStatus;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreatePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     actions: CreateRequestActionsList,
@@ -224,7 +248,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({ method: "POST", uri: "/zones/{zone_id}/pagerules", code: 200 }),
   ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreatePageRuleRequest",
+}) as any as S.Schema<CreatePageRuleRequest>;
 
 export interface CreateResponseActionsItem {
   AlwaysUseHTTPSObjectId__: unknown;
@@ -420,7 +446,7 @@ export const CreateResponseTargetsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<CreateResponseTargetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
+export interface CreatePageRuleResponse {
   /** Identifier. */
   id: string;
   /** The set of actions to perform if the targets of this rule match the */
@@ -436,7 +462,7 @@ export interface CreateResponse {
   /** The rule targets to evaluate on each request. */
   targets: CreateResponseTargetsList;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreatePageRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     actions: CreateResponseActionsList,
@@ -446,15 +472,17 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
     status: CreateResponseStatus,
     targets: CreateResponseTargetsList,
   }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+).annotate({
+  identifier: "CreatePageRuleResponse",
+}) as any as S.Schema<CreatePageRuleResponse>;
 
-export interface DeleteRequest {
+export interface DeletePageRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   pageruleId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeletePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     pageruleId: S.String.pipe(T.Label("pagerule_id")),
@@ -465,470 +493,30 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeletePageRuleRequest",
+}) as any as S.Schema<DeletePageRuleRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
+export interface DeletePageRuleResponse {
   /** Identifier. */
   id: string;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeletePageRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
   }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
-
-export interface EditRequestActionsItem {
-  AlwaysUseHTTPSObjectId__: unknown;
-  AutomaticHTTPSRewritesObjectIdValue__: unknown;
-  BrowserCacheTTLObjectIdValue__: unknown;
-  BrowserCheckObjectIdValue__: unknown;
-  BypassCacheOnCookieObjectIdValue__: unknown;
-  CacheByDeviceTypeObjectIdValue__: unknown;
-  CacheDeceptionArmorObjectIdValue__: unknown;
-  CacheKeyFieldsObjectIdValue__: unknown;
-  CacheLevelObjectIdValue__: unknown;
-  CacheOnCookieObjectIdValue__: unknown;
-  CacheTTLByStatusObjectIdValue__: unknown;
-  DisableAppsObjectId__: unknown;
-  DisablePerformanceObjectId__: unknown;
-  DisableSecurityObjectId__: unknown;
-  DisableZarazObjectId__: unknown;
-  EdgeCacheTTLObjectIdValue__: unknown;
-  EmailObfuscationObjectIdValue__: unknown;
-  ExplicitCacheControlObjectIdValue__: unknown;
-  ForwardingURLObjectIdValue__: unknown;
-  HostHeaderOverrideObjectIdValue__: unknown;
-  IPGeolocationObjectIdValue__: unknown;
-  MirageObjectIdValue__: unknown;
-  OpportunisticEncryptionObjectIdValue__: unknown;
-  OriginErrorPagePassThruObjectIdValue__: unknown;
-  PolishObjectIdValue__: unknown;
-  ResolveOverrideObjectIdValue__: unknown;
-  RespectStrongEtagObjectIdValue__: unknown;
-  ResponseBufferingObjectIdValue__: unknown;
-  RocketLoaderObjectIdValue__: unknown;
-  SecurityLevelObjectIdValue__: unknown;
-  SortQueryStringForCacheObjectIdValue__: unknown;
-  SSLObjectIdValue__: unknown;
-  TrueClientIPHeaderObjectIdValue__: unknown;
-  WAFObjectIdValue__: unknown;
-}
-export const EditRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AlwaysUseHTTPSObjectId__: S.Unknown.pipe(
-      T.Body("AlwaysUseHTTPS object { id }"),
-    ),
-    AutomaticHTTPSRewritesObjectIdValue__: S.Unknown.pipe(
-      T.Body("AutomaticHTTPSRewrites object { id, value }"),
-    ),
-    BrowserCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCacheTTL object { id, value }"),
-    ),
-    BrowserCheckObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCheck object { id, value }"),
-    ),
-    BypassCacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("BypassCacheOnCookie object { id, value }"),
-    ),
-    CacheByDeviceTypeObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheByDeviceType object { id, value }"),
-    ),
-    CacheDeceptionArmorObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheDeceptionArmor object { id, value }"),
-    ),
-    CacheKeyFieldsObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheKeyFields object { id, value }"),
-    ),
-    CacheLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheLevel object { id, value }"),
-    ),
-    CacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheOnCookie object { id, value }"),
-    ),
-    CacheTTLByStatusObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheTTLByStatus object { id, value }"),
-    ),
-    DisableAppsObjectId__: S.Unknown.pipe(T.Body("DisableApps object { id }")),
-    DisablePerformanceObjectId__: S.Unknown.pipe(
-      T.Body("DisablePerformance object { id }"),
-    ),
-    DisableSecurityObjectId__: S.Unknown.pipe(
-      T.Body("DisableSecurity object { id }"),
-    ),
-    DisableZarazObjectId__: S.Unknown.pipe(
-      T.Body("DisableZaraz object { id }"),
-    ),
-    EdgeCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("EdgeCacheTTL object { id, value }"),
-    ),
-    EmailObfuscationObjectIdValue__: S.Unknown.pipe(
-      T.Body("EmailObfuscation object { id, value }"),
-    ),
-    ExplicitCacheControlObjectIdValue__: S.Unknown.pipe(
-      T.Body("ExplicitCacheControl object { id, value }"),
-    ),
-    ForwardingURLObjectIdValue__: S.Unknown.pipe(
-      T.Body("ForwardingURL object { id, value }"),
-    ),
-    HostHeaderOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("HostHeaderOverride object { id, value }"),
-    ),
-    IPGeolocationObjectIdValue__: S.Unknown.pipe(
-      T.Body("IPGeolocation object { id, value }"),
-    ),
-    MirageObjectIdValue__: S.Unknown.pipe(
-      T.Body("Mirage object { id, value }"),
-    ),
-    OpportunisticEncryptionObjectIdValue__: S.Unknown.pipe(
-      T.Body("OpportunisticEncryption object { id, value }"),
-    ),
-    OriginErrorPagePassThruObjectIdValue__: S.Unknown.pipe(
-      T.Body("OriginErrorPagePassThru object { id, value }"),
-    ),
-    PolishObjectIdValue__: S.Unknown.pipe(
-      T.Body("Polish object { id, value }"),
-    ),
-    ResolveOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResolveOverride object { id, value }"),
-    ),
-    RespectStrongEtagObjectIdValue__: S.Unknown.pipe(
-      T.Body("RespectStrongEtag object { id, value }"),
-    ),
-    ResponseBufferingObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResponseBuffering object { id, value }"),
-    ),
-    RocketLoaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("RocketLoader object { id, value }"),
-    ),
-    SecurityLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("SecurityLevel object { id, value }"),
-    ),
-    SortQueryStringForCacheObjectIdValue__: S.Unknown.pipe(
-      T.Body("SortQueryStringForCache object { id, value }"),
-    ),
-    SSLObjectIdValue__: S.Unknown.pipe(T.Body("SSL object { id, value }")),
-    TrueClientIPHeaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("TrueClientIPHeader object { id, value }"),
-    ),
-    WAFObjectIdValue__: S.Unknown.pipe(T.Body("WAF object { id, value }")),
-  }),
 ).annotate({
-  identifier: "EditRequestActionsItem",
-}) as any as S.Schema<EditRequestActionsItem>;
+  identifier: "DeletePageRuleResponse",
+}) as any as S.Schema<DeletePageRuleResponse>;
 
-export type EditRequestActionsList = EditRequestActionsItem[];
-export const EditRequestActionsList = /*@__PURE__*/ S.Array(
-  EditRequestActionsItem,
-) as any as S.Schema<EditRequestActionsList>;
-
-export type EditRequestStatus = "active" | "disabled" | (string & {});
-export const EditRequestStatus = /*@__PURE__*/ S.String;
-
-export type EditRequestTargetsItemConstraintOperator =
-  | "matches"
-  | "contains"
-  | "equals"
-  | (string & {});
-export const EditRequestTargetsItemConstraintOperator = /*@__PURE__*/ S.String;
-
-export interface EditRequestTargetsItemConstraint {
-  /** The matches operator can use asterisks and pipes as wildcard and 'or' operators. */
-  operator: EditRequestTargetsItemConstraintOperator;
-  /** The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders. */
-  value: string;
-}
-export const EditRequestTargetsItemConstraint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: EditRequestTargetsItemConstraintOperator,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "EditRequestTargetsItemConstraint",
-}) as any as S.Schema<EditRequestTargetsItemConstraint>;
-
-export type EditRequestTargetsItemTarget = "url" | (string & {});
-export const EditRequestTargetsItemTarget = /*@__PURE__*/ S.String;
-
-export interface EditRequestTargetsItem {
-  /** String constraint. */
-  constraint?: EditRequestTargetsItemConstraint;
-  /** A target based on the URL of the request. */
-  target?: EditRequestTargetsItemTarget;
-}
-export const EditRequestTargetsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    constraint: S.optional(EditRequestTargetsItemConstraint),
-    target: S.optional(EditRequestTargetsItemTarget),
-  }),
-).annotate({
-  identifier: "EditRequestTargetsItem",
-}) as any as S.Schema<EditRequestTargetsItem>;
-
-export type EditRequestTargetsList = EditRequestTargetsItem[];
-export const EditRequestTargetsList = /*@__PURE__*/ S.Array(
-  EditRequestTargetsItem,
-) as any as S.Schema<EditRequestTargetsList>;
-
-export interface EditRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Identifier. */
-  pageruleId: string;
-  /** The set of actions to perform if the targets of this rule match the */
-  actions?: EditRequestActionsList;
-  /** The priority of the rule, used to define which Page Rule is processed */
-  priority?: number;
-  /** The status of the Page Rule. */
-  status?: EditRequestStatus;
-  /** The rule targets to evaluate on each request. */
-  targets?: EditRequestTargetsList;
-}
-export const EditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    pageruleId: S.String.pipe(T.Label("pagerule_id")),
-    actions: S.optional(EditRequestActionsList),
-    priority: S.optional(S.Number),
-    status: S.optional(EditRequestStatus),
-    targets: S.optional(EditRequestTargetsList),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/pagerules/{pagerule_id}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
-
-export interface EditResponseActionsItem {
-  AlwaysUseHTTPSObjectId__: unknown;
-  AutomaticHTTPSRewritesObjectIdValue__: unknown;
-  BrowserCacheTTLObjectIdValue__: unknown;
-  BrowserCheckObjectIdValue__: unknown;
-  BypassCacheOnCookieObjectIdValue__: unknown;
-  CacheByDeviceTypeObjectIdValue__: unknown;
-  CacheDeceptionArmorObjectIdValue__: unknown;
-  CacheKeyFieldsObjectIdValue__: unknown;
-  CacheLevelObjectIdValue__: unknown;
-  CacheOnCookieObjectIdValue__: unknown;
-  CacheTTLByStatusObjectIdValue__: unknown;
-  DisableAppsObjectId__: unknown;
-  DisablePerformanceObjectId__: unknown;
-  DisableSecurityObjectId__: unknown;
-  DisableZarazObjectId__: unknown;
-  EdgeCacheTTLObjectIdValue__: unknown;
-  EmailObfuscationObjectIdValue__: unknown;
-  ExplicitCacheControlObjectIdValue__: unknown;
-  ForwardingURLObjectIdValue__: unknown;
-  HostHeaderOverrideObjectIdValue__: unknown;
-  IPGeolocationObjectIdValue__: unknown;
-  MirageObjectIdValue__: unknown;
-  OpportunisticEncryptionObjectIdValue__: unknown;
-  OriginErrorPagePassThruObjectIdValue__: unknown;
-  PolishObjectIdValue__: unknown;
-  ResolveOverrideObjectIdValue__: unknown;
-  RespectStrongEtagObjectIdValue__: unknown;
-  ResponseBufferingObjectIdValue__: unknown;
-  RocketLoaderObjectIdValue__: unknown;
-  SecurityLevelObjectIdValue__: unknown;
-  SortQueryStringForCacheObjectIdValue__: unknown;
-  SSLObjectIdValue__: unknown;
-  TrueClientIPHeaderObjectIdValue__: unknown;
-  WAFObjectIdValue__: unknown;
-}
-export const EditResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    AlwaysUseHTTPSObjectId__: S.Unknown.pipe(
-      T.Body("AlwaysUseHTTPS object { id }"),
-    ),
-    AutomaticHTTPSRewritesObjectIdValue__: S.Unknown.pipe(
-      T.Body("AutomaticHTTPSRewrites object { id, value }"),
-    ),
-    BrowserCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCacheTTL object { id, value }"),
-    ),
-    BrowserCheckObjectIdValue__: S.Unknown.pipe(
-      T.Body("BrowserCheck object { id, value }"),
-    ),
-    BypassCacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("BypassCacheOnCookie object { id, value }"),
-    ),
-    CacheByDeviceTypeObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheByDeviceType object { id, value }"),
-    ),
-    CacheDeceptionArmorObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheDeceptionArmor object { id, value }"),
-    ),
-    CacheKeyFieldsObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheKeyFields object { id, value }"),
-    ),
-    CacheLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheLevel object { id, value }"),
-    ),
-    CacheOnCookieObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheOnCookie object { id, value }"),
-    ),
-    CacheTTLByStatusObjectIdValue__: S.Unknown.pipe(
-      T.Body("CacheTTLByStatus object { id, value }"),
-    ),
-    DisableAppsObjectId__: S.Unknown.pipe(T.Body("DisableApps object { id }")),
-    DisablePerformanceObjectId__: S.Unknown.pipe(
-      T.Body("DisablePerformance object { id }"),
-    ),
-    DisableSecurityObjectId__: S.Unknown.pipe(
-      T.Body("DisableSecurity object { id }"),
-    ),
-    DisableZarazObjectId__: S.Unknown.pipe(
-      T.Body("DisableZaraz object { id }"),
-    ),
-    EdgeCacheTTLObjectIdValue__: S.Unknown.pipe(
-      T.Body("EdgeCacheTTL object { id, value }"),
-    ),
-    EmailObfuscationObjectIdValue__: S.Unknown.pipe(
-      T.Body("EmailObfuscation object { id, value }"),
-    ),
-    ExplicitCacheControlObjectIdValue__: S.Unknown.pipe(
-      T.Body("ExplicitCacheControl object { id, value }"),
-    ),
-    ForwardingURLObjectIdValue__: S.Unknown.pipe(
-      T.Body("ForwardingURL object { id, value }"),
-    ),
-    HostHeaderOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("HostHeaderOverride object { id, value }"),
-    ),
-    IPGeolocationObjectIdValue__: S.Unknown.pipe(
-      T.Body("IPGeolocation object { id, value }"),
-    ),
-    MirageObjectIdValue__: S.Unknown.pipe(
-      T.Body("Mirage object { id, value }"),
-    ),
-    OpportunisticEncryptionObjectIdValue__: S.Unknown.pipe(
-      T.Body("OpportunisticEncryption object { id, value }"),
-    ),
-    OriginErrorPagePassThruObjectIdValue__: S.Unknown.pipe(
-      T.Body("OriginErrorPagePassThru object { id, value }"),
-    ),
-    PolishObjectIdValue__: S.Unknown.pipe(
-      T.Body("Polish object { id, value }"),
-    ),
-    ResolveOverrideObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResolveOverride object { id, value }"),
-    ),
-    RespectStrongEtagObjectIdValue__: S.Unknown.pipe(
-      T.Body("RespectStrongEtag object { id, value }"),
-    ),
-    ResponseBufferingObjectIdValue__: S.Unknown.pipe(
-      T.Body("ResponseBuffering object { id, value }"),
-    ),
-    RocketLoaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("RocketLoader object { id, value }"),
-    ),
-    SecurityLevelObjectIdValue__: S.Unknown.pipe(
-      T.Body("SecurityLevel object { id, value }"),
-    ),
-    SortQueryStringForCacheObjectIdValue__: S.Unknown.pipe(
-      T.Body("SortQueryStringForCache object { id, value }"),
-    ),
-    SSLObjectIdValue__: S.Unknown.pipe(T.Body("SSL object { id, value }")),
-    TrueClientIPHeaderObjectIdValue__: S.Unknown.pipe(
-      T.Body("TrueClientIPHeader object { id, value }"),
-    ),
-    WAFObjectIdValue__: S.Unknown.pipe(T.Body("WAF object { id, value }")),
-  }),
-).annotate({
-  identifier: "EditResponseActionsItem",
-}) as any as S.Schema<EditResponseActionsItem>;
-
-export type EditResponseActionsList = EditResponseActionsItem[];
-export const EditResponseActionsList = /*@__PURE__*/ S.Array(
-  EditResponseActionsItem,
-) as any as S.Schema<EditResponseActionsList>;
-
-export type EditResponseStatus = "active" | "disabled" | (string & {});
-export const EditResponseStatus = /*@__PURE__*/ S.String;
-
-export type EditResponseTargetsItemConstraintOperator =
-  | "matches"
-  | "contains"
-  | "equals"
-  | (string & {});
-export const EditResponseTargetsItemConstraintOperator = /*@__PURE__*/ S.String;
-
-export interface EditResponseTargetsItemConstraint {
-  /** The matches operator can use asterisks and pipes as wildcard and 'or' operators. */
-  operator: EditResponseTargetsItemConstraintOperator;
-  /** The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders. */
-  value: string;
-}
-export const EditResponseTargetsItemConstraint = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    operator: EditResponseTargetsItemConstraintOperator,
-    value: S.String,
-  }),
-).annotate({
-  identifier: "EditResponseTargetsItemConstraint",
-}) as any as S.Schema<EditResponseTargetsItemConstraint>;
-
-export type EditResponseTargetsItemTarget = "url" | (string & {});
-export const EditResponseTargetsItemTarget = /*@__PURE__*/ S.String;
-
-export interface EditResponseTargetsItem {
-  /** String constraint. */
-  constraint?: EditResponseTargetsItemConstraint;
-  /** A target based on the URL of the request. */
-  target?: EditResponseTargetsItemTarget;
-}
-export const EditResponseTargetsItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    constraint: S.optional(EditResponseTargetsItemConstraint),
-    target: S.optional(EditResponseTargetsItemTarget),
-  }),
-).annotate({
-  identifier: "EditResponseTargetsItem",
-}) as any as S.Schema<EditResponseTargetsItem>;
-
-export type EditResponseTargetsList = EditResponseTargetsItem[];
-export const EditResponseTargetsList = /*@__PURE__*/ S.Array(
-  EditResponseTargetsItem,
-) as any as S.Schema<EditResponseTargetsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EditResponse {
-  /** Identifier. */
-  id: string;
-  /** The set of actions to perform if the targets of this rule match the */
-  actions: EditResponseActionsList;
-  /** The timestamp of when the Page Rule was created. */
-  createdOn: string;
-  /** The timestamp of when the Page Rule was last modified. */
-  modifiedOn: string;
-  /** The priority of the rule, used to define which Page Rule is processed */
-  priority: number;
-  /** The status of the Page Rule. */
-  status: EditResponseStatus;
-  /** The rule targets to evaluate on each request. */
-  targets: EditResponseTargetsList;
-}
-export const EditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    actions: EditResponseActionsList,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    priority: S.Number,
-    status: EditResponseStatus,
-    targets: EditResponseTargetsList,
-  }),
-).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
-
-export interface GetRequest {
+export interface GetPageRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   pageruleId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetPageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     pageruleId: S.String.pipe(T.Label("pagerule_id")),
@@ -939,7 +527,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetPageRuleRequest",
+}) as any as S.Schema<GetPageRuleRequest>;
 
 export interface GetResponseActionsItem {
   AlwaysUseHTTPSObjectId__: unknown;
@@ -1134,7 +724,7 @@ export const GetResponseTargetsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponseTargetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetPageRuleResponse {
   /** Identifier. */
   id: string;
   /** The set of actions to perform if the targets of this rule match the */
@@ -1150,7 +740,7 @@ export interface GetResponse {
   /** The rule targets to evaluate on each request. */
   targets: GetResponseTargetsList;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetPageRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     actions: GetResponseActionsList,
@@ -1160,7 +750,9 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     status: GetResponseStatus,
     targets: GetResponseTargetsList,
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetPageRuleResponse",
+}) as any as S.Schema<GetPageRuleResponse>;
 
 export type ListRequestDirection = "asc" | "desc" | (string & {});
 export const ListRequestDirection = /*@__PURE__*/ S.String;
@@ -1174,7 +766,7 @@ export const ListRequestOrder = /*@__PURE__*/ S.String;
 export type ListRequestStatus = "active" | "disabled" | (string & {});
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
-export interface ListRequest {
+export interface ListPageRulesRequest {
   /** Identifier. */
   zoneId: string;
   /** The direction used to sort returned Page Rules. */
@@ -1186,7 +778,7 @@ export interface ListRequest {
   /** The status of the Page Rule. */
   status?: ListRequestStatus;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListPageRulesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(ListRequestDirection.pipe(T.Query())),
@@ -1196,7 +788,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/pagerules", code: 200 }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListPageRulesRequest",
+}) as any as S.Schema<ListPageRulesRequest>;
 
 export interface ListResultItemActionsItem {
   AlwaysUseHTTPSObjectId__: unknown;
@@ -1424,15 +1018,465 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListPageRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListPageRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListPageRulesResponse",
+}) as any as S.Schema<ListPageRulesResponse>;
+
+export interface EditRequestActionsItem {
+  AlwaysUseHTTPSObjectId__: unknown;
+  AutomaticHTTPSRewritesObjectIdValue__: unknown;
+  BrowserCacheTTLObjectIdValue__: unknown;
+  BrowserCheckObjectIdValue__: unknown;
+  BypassCacheOnCookieObjectIdValue__: unknown;
+  CacheByDeviceTypeObjectIdValue__: unknown;
+  CacheDeceptionArmorObjectIdValue__: unknown;
+  CacheKeyFieldsObjectIdValue__: unknown;
+  CacheLevelObjectIdValue__: unknown;
+  CacheOnCookieObjectIdValue__: unknown;
+  CacheTTLByStatusObjectIdValue__: unknown;
+  DisableAppsObjectId__: unknown;
+  DisablePerformanceObjectId__: unknown;
+  DisableSecurityObjectId__: unknown;
+  DisableZarazObjectId__: unknown;
+  EdgeCacheTTLObjectIdValue__: unknown;
+  EmailObfuscationObjectIdValue__: unknown;
+  ExplicitCacheControlObjectIdValue__: unknown;
+  ForwardingURLObjectIdValue__: unknown;
+  HostHeaderOverrideObjectIdValue__: unknown;
+  IPGeolocationObjectIdValue__: unknown;
+  MirageObjectIdValue__: unknown;
+  OpportunisticEncryptionObjectIdValue__: unknown;
+  OriginErrorPagePassThruObjectIdValue__: unknown;
+  PolishObjectIdValue__: unknown;
+  ResolveOverrideObjectIdValue__: unknown;
+  RespectStrongEtagObjectIdValue__: unknown;
+  ResponseBufferingObjectIdValue__: unknown;
+  RocketLoaderObjectIdValue__: unknown;
+  SecurityLevelObjectIdValue__: unknown;
+  SortQueryStringForCacheObjectIdValue__: unknown;
+  SSLObjectIdValue__: unknown;
+  TrueClientIPHeaderObjectIdValue__: unknown;
+  WAFObjectIdValue__: unknown;
+}
+export const EditRequestActionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AlwaysUseHTTPSObjectId__: S.Unknown.pipe(
+      T.Body("AlwaysUseHTTPS object { id }"),
+    ),
+    AutomaticHTTPSRewritesObjectIdValue__: S.Unknown.pipe(
+      T.Body("AutomaticHTTPSRewrites object { id, value }"),
+    ),
+    BrowserCacheTTLObjectIdValue__: S.Unknown.pipe(
+      T.Body("BrowserCacheTTL object { id, value }"),
+    ),
+    BrowserCheckObjectIdValue__: S.Unknown.pipe(
+      T.Body("BrowserCheck object { id, value }"),
+    ),
+    BypassCacheOnCookieObjectIdValue__: S.Unknown.pipe(
+      T.Body("BypassCacheOnCookie object { id, value }"),
+    ),
+    CacheByDeviceTypeObjectIdValue__: S.Unknown.pipe(
+      T.Body("CacheByDeviceType object { id, value }"),
+    ),
+    CacheDeceptionArmorObjectIdValue__: S.Unknown.pipe(
+      T.Body("CacheDeceptionArmor object { id, value }"),
+    ),
+    CacheKeyFieldsObjectIdValue__: S.Unknown.pipe(
+      T.Body("CacheKeyFields object { id, value }"),
+    ),
+    CacheLevelObjectIdValue__: S.Unknown.pipe(
+      T.Body("CacheLevel object { id, value }"),
+    ),
+    CacheOnCookieObjectIdValue__: S.Unknown.pipe(
+      T.Body("CacheOnCookie object { id, value }"),
+    ),
+    CacheTTLByStatusObjectIdValue__: S.Unknown.pipe(
+      T.Body("CacheTTLByStatus object { id, value }"),
+    ),
+    DisableAppsObjectId__: S.Unknown.pipe(T.Body("DisableApps object { id }")),
+    DisablePerformanceObjectId__: S.Unknown.pipe(
+      T.Body("DisablePerformance object { id }"),
+    ),
+    DisableSecurityObjectId__: S.Unknown.pipe(
+      T.Body("DisableSecurity object { id }"),
+    ),
+    DisableZarazObjectId__: S.Unknown.pipe(
+      T.Body("DisableZaraz object { id }"),
+    ),
+    EdgeCacheTTLObjectIdValue__: S.Unknown.pipe(
+      T.Body("EdgeCacheTTL object { id, value }"),
+    ),
+    EmailObfuscationObjectIdValue__: S.Unknown.pipe(
+      T.Body("EmailObfuscation object { id, value }"),
+    ),
+    ExplicitCacheControlObjectIdValue__: S.Unknown.pipe(
+      T.Body("ExplicitCacheControl object { id, value }"),
+    ),
+    ForwardingURLObjectIdValue__: S.Unknown.pipe(
+      T.Body("ForwardingURL object { id, value }"),
+    ),
+    HostHeaderOverrideObjectIdValue__: S.Unknown.pipe(
+      T.Body("HostHeaderOverride object { id, value }"),
+    ),
+    IPGeolocationObjectIdValue__: S.Unknown.pipe(
+      T.Body("IPGeolocation object { id, value }"),
+    ),
+    MirageObjectIdValue__: S.Unknown.pipe(
+      T.Body("Mirage object { id, value }"),
+    ),
+    OpportunisticEncryptionObjectIdValue__: S.Unknown.pipe(
+      T.Body("OpportunisticEncryption object { id, value }"),
+    ),
+    OriginErrorPagePassThruObjectIdValue__: S.Unknown.pipe(
+      T.Body("OriginErrorPagePassThru object { id, value }"),
+    ),
+    PolishObjectIdValue__: S.Unknown.pipe(
+      T.Body("Polish object { id, value }"),
+    ),
+    ResolveOverrideObjectIdValue__: S.Unknown.pipe(
+      T.Body("ResolveOverride object { id, value }"),
+    ),
+    RespectStrongEtagObjectIdValue__: S.Unknown.pipe(
+      T.Body("RespectStrongEtag object { id, value }"),
+    ),
+    ResponseBufferingObjectIdValue__: S.Unknown.pipe(
+      T.Body("ResponseBuffering object { id, value }"),
+    ),
+    RocketLoaderObjectIdValue__: S.Unknown.pipe(
+      T.Body("RocketLoader object { id, value }"),
+    ),
+    SecurityLevelObjectIdValue__: S.Unknown.pipe(
+      T.Body("SecurityLevel object { id, value }"),
+    ),
+    SortQueryStringForCacheObjectIdValue__: S.Unknown.pipe(
+      T.Body("SortQueryStringForCache object { id, value }"),
+    ),
+    SSLObjectIdValue__: S.Unknown.pipe(T.Body("SSL object { id, value }")),
+    TrueClientIPHeaderObjectIdValue__: S.Unknown.pipe(
+      T.Body("TrueClientIPHeader object { id, value }"),
+    ),
+    WAFObjectIdValue__: S.Unknown.pipe(T.Body("WAF object { id, value }")),
+  }),
+).annotate({
+  identifier: "EditRequestActionsItem",
+}) as any as S.Schema<EditRequestActionsItem>;
+
+export type EditRequestActionsList = EditRequestActionsItem[];
+export const EditRequestActionsList = /*@__PURE__*/ S.Array(
+  EditRequestActionsItem,
+) as any as S.Schema<EditRequestActionsList>;
+
+export type EditRequestStatus = "active" | "disabled" | (string & {});
+export const EditRequestStatus = /*@__PURE__*/ S.String;
+
+export type EditRequestTargetsItemConstraintOperator =
+  | "matches"
+  | "contains"
+  | "equals"
+  | (string & {});
+export const EditRequestTargetsItemConstraintOperator = /*@__PURE__*/ S.String;
+
+export interface EditRequestTargetsItemConstraint {
+  /** The matches operator can use asterisks and pipes as wildcard and 'or' operators. */
+  operator: EditRequestTargetsItemConstraintOperator;
+  /** The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders. */
+  value: string;
+}
+export const EditRequestTargetsItemConstraint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operator: EditRequestTargetsItemConstraintOperator,
+    value: S.String,
+  }),
+).annotate({
+  identifier: "EditRequestTargetsItemConstraint",
+}) as any as S.Schema<EditRequestTargetsItemConstraint>;
+
+export type EditRequestTargetsItemTarget = "url" | (string & {});
+export const EditRequestTargetsItemTarget = /*@__PURE__*/ S.String;
+
+export interface EditRequestTargetsItem {
+  /** String constraint. */
+  constraint?: EditRequestTargetsItemConstraint;
+  /** A target based on the URL of the request. */
+  target?: EditRequestTargetsItemTarget;
+}
+export const EditRequestTargetsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    constraint: S.optional(EditRequestTargetsItemConstraint),
+    target: S.optional(EditRequestTargetsItemTarget),
+  }),
+).annotate({
+  identifier: "EditRequestTargetsItem",
+}) as any as S.Schema<EditRequestTargetsItem>;
+
+export type EditRequestTargetsList = EditRequestTargetsItem[];
+export const EditRequestTargetsList = /*@__PURE__*/ S.Array(
+  EditRequestTargetsItem,
+) as any as S.Schema<EditRequestTargetsList>;
+
+export interface PatchPageRuleRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  pageruleId: string;
+  /** The set of actions to perform if the targets of this rule match the */
+  actions?: EditRequestActionsList;
+  /** The priority of the rule, used to define which Page Rule is processed */
+  priority?: number;
+  /** The status of the Page Rule. */
+  status?: EditRequestStatus;
+  /** The rule targets to evaluate on each request. */
+  targets?: EditRequestTargetsList;
+}
+export const PatchPageRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    pageruleId: S.String.pipe(T.Label("pagerule_id")),
+    actions: S.optional(EditRequestActionsList),
+    priority: S.optional(S.Number),
+    status: S.optional(EditRequestStatus),
+    targets: S.optional(EditRequestTargetsList),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/pagerules/{pagerule_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchPageRuleRequest",
+}) as any as S.Schema<PatchPageRuleRequest>;
+
+export interface EditResponseActionsItem {
+  AlwaysUseHTTPSObjectId__: unknown;
+  AutomaticHTTPSRewritesObjectIdValue__: unknown;
+  BrowserCacheTTLObjectIdValue__: unknown;
+  BrowserCheckObjectIdValue__: unknown;
+  BypassCacheOnCookieObjectIdValue__: unknown;
+  CacheByDeviceTypeObjectIdValue__: unknown;
+  CacheDeceptionArmorObjectIdValue__: unknown;
+  CacheKeyFieldsObjectIdValue__: unknown;
+  CacheLevelObjectIdValue__: unknown;
+  CacheOnCookieObjectIdValue__: unknown;
+  CacheTTLByStatusObjectIdValue__: unknown;
+  DisableAppsObjectId__: unknown;
+  DisablePerformanceObjectId__: unknown;
+  DisableSecurityObjectId__: unknown;
+  DisableZarazObjectId__: unknown;
+  EdgeCacheTTLObjectIdValue__: unknown;
+  EmailObfuscationObjectIdValue__: unknown;
+  ExplicitCacheControlObjectIdValue__: unknown;
+  ForwardingURLObjectIdValue__: unknown;
+  HostHeaderOverrideObjectIdValue__: unknown;
+  IPGeolocationObjectIdValue__: unknown;
+  MirageObjectIdValue__: unknown;
+  OpportunisticEncryptionObjectIdValue__: unknown;
+  OriginErrorPagePassThruObjectIdValue__: unknown;
+  PolishObjectIdValue__: unknown;
+  ResolveOverrideObjectIdValue__: unknown;
+  RespectStrongEtagObjectIdValue__: unknown;
+  ResponseBufferingObjectIdValue__: unknown;
+  RocketLoaderObjectIdValue__: unknown;
+  SecurityLevelObjectIdValue__: unknown;
+  SortQueryStringForCacheObjectIdValue__: unknown;
+  SSLObjectIdValue__: unknown;
+  TrueClientIPHeaderObjectIdValue__: unknown;
+  WAFObjectIdValue__: unknown;
+}
+export const EditResponseActionsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    AlwaysUseHTTPSObjectId__: S.Unknown.pipe(
+      T.Body("AlwaysUseHTTPS object { id }"),
+    ),
+    AutomaticHTTPSRewritesObjectIdValue__: S.Unknown.pipe(
+      T.Body("AutomaticHTTPSRewrites object { id, value }"),
+    ),
+    BrowserCacheTTLObjectIdValue__: S.Unknown.pipe(
+      T.Body("BrowserCacheTTL object { id, value }"),
+    ),
+    BrowserCheckObjectIdValue__: S.Unknown.pipe(
+      T.Body("BrowserCheck object { id, value }"),
+    ),
+    BypassCacheOnCookieObjectIdValue__: S.Unknown.pipe(
+      T.Body("BypassCacheOnCookie object { id, value }"),
+    ),
+    CacheByDeviceTypeObjectIdValue__: S.Unknown.pipe(
+      T.Body("CacheByDeviceType object { id, value }"),
+    ),
+    CacheDeceptionArmorObjectIdValue__: S.Unknown.pipe(
+      T.Body("CacheDeceptionArmor object { id, value }"),
+    ),
+    CacheKeyFieldsObjectIdValue__: S.Unknown.pipe(
+      T.Body("CacheKeyFields object { id, value }"),
+    ),
+    CacheLevelObjectIdValue__: S.Unknown.pipe(
+      T.Body("CacheLevel object { id, value }"),
+    ),
+    CacheOnCookieObjectIdValue__: S.Unknown.pipe(
+      T.Body("CacheOnCookie object { id, value }"),
+    ),
+    CacheTTLByStatusObjectIdValue__: S.Unknown.pipe(
+      T.Body("CacheTTLByStatus object { id, value }"),
+    ),
+    DisableAppsObjectId__: S.Unknown.pipe(T.Body("DisableApps object { id }")),
+    DisablePerformanceObjectId__: S.Unknown.pipe(
+      T.Body("DisablePerformance object { id }"),
+    ),
+    DisableSecurityObjectId__: S.Unknown.pipe(
+      T.Body("DisableSecurity object { id }"),
+    ),
+    DisableZarazObjectId__: S.Unknown.pipe(
+      T.Body("DisableZaraz object { id }"),
+    ),
+    EdgeCacheTTLObjectIdValue__: S.Unknown.pipe(
+      T.Body("EdgeCacheTTL object { id, value }"),
+    ),
+    EmailObfuscationObjectIdValue__: S.Unknown.pipe(
+      T.Body("EmailObfuscation object { id, value }"),
+    ),
+    ExplicitCacheControlObjectIdValue__: S.Unknown.pipe(
+      T.Body("ExplicitCacheControl object { id, value }"),
+    ),
+    ForwardingURLObjectIdValue__: S.Unknown.pipe(
+      T.Body("ForwardingURL object { id, value }"),
+    ),
+    HostHeaderOverrideObjectIdValue__: S.Unknown.pipe(
+      T.Body("HostHeaderOverride object { id, value }"),
+    ),
+    IPGeolocationObjectIdValue__: S.Unknown.pipe(
+      T.Body("IPGeolocation object { id, value }"),
+    ),
+    MirageObjectIdValue__: S.Unknown.pipe(
+      T.Body("Mirage object { id, value }"),
+    ),
+    OpportunisticEncryptionObjectIdValue__: S.Unknown.pipe(
+      T.Body("OpportunisticEncryption object { id, value }"),
+    ),
+    OriginErrorPagePassThruObjectIdValue__: S.Unknown.pipe(
+      T.Body("OriginErrorPagePassThru object { id, value }"),
+    ),
+    PolishObjectIdValue__: S.Unknown.pipe(
+      T.Body("Polish object { id, value }"),
+    ),
+    ResolveOverrideObjectIdValue__: S.Unknown.pipe(
+      T.Body("ResolveOverride object { id, value }"),
+    ),
+    RespectStrongEtagObjectIdValue__: S.Unknown.pipe(
+      T.Body("RespectStrongEtag object { id, value }"),
+    ),
+    ResponseBufferingObjectIdValue__: S.Unknown.pipe(
+      T.Body("ResponseBuffering object { id, value }"),
+    ),
+    RocketLoaderObjectIdValue__: S.Unknown.pipe(
+      T.Body("RocketLoader object { id, value }"),
+    ),
+    SecurityLevelObjectIdValue__: S.Unknown.pipe(
+      T.Body("SecurityLevel object { id, value }"),
+    ),
+    SortQueryStringForCacheObjectIdValue__: S.Unknown.pipe(
+      T.Body("SortQueryStringForCache object { id, value }"),
+    ),
+    SSLObjectIdValue__: S.Unknown.pipe(T.Body("SSL object { id, value }")),
+    TrueClientIPHeaderObjectIdValue__: S.Unknown.pipe(
+      T.Body("TrueClientIPHeader object { id, value }"),
+    ),
+    WAFObjectIdValue__: S.Unknown.pipe(T.Body("WAF object { id, value }")),
+  }),
+).annotate({
+  identifier: "EditResponseActionsItem",
+}) as any as S.Schema<EditResponseActionsItem>;
+
+export type EditResponseActionsList = EditResponseActionsItem[];
+export const EditResponseActionsList = /*@__PURE__*/ S.Array(
+  EditResponseActionsItem,
+) as any as S.Schema<EditResponseActionsList>;
+
+export type EditResponseStatus = "active" | "disabled" | (string & {});
+export const EditResponseStatus = /*@__PURE__*/ S.String;
+
+export type EditResponseTargetsItemConstraintOperator =
+  | "matches"
+  | "contains"
+  | "equals"
+  | (string & {});
+export const EditResponseTargetsItemConstraintOperator = /*@__PURE__*/ S.String;
+
+export interface EditResponseTargetsItemConstraint {
+  /** The matches operator can use asterisks and pipes as wildcard and 'or' operators. */
+  operator: EditResponseTargetsItemConstraintOperator;
+  /** The URL pattern to match against the current request. The pattern may contain up to four asterisks ('*') as placeholders. */
+  value: string;
+}
+export const EditResponseTargetsItemConstraint = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    operator: EditResponseTargetsItemConstraintOperator,
+    value: S.String,
+  }),
+).annotate({
+  identifier: "EditResponseTargetsItemConstraint",
+}) as any as S.Schema<EditResponseTargetsItemConstraint>;
+
+export type EditResponseTargetsItemTarget = "url" | (string & {});
+export const EditResponseTargetsItemTarget = /*@__PURE__*/ S.String;
+
+export interface EditResponseTargetsItem {
+  /** String constraint. */
+  constraint?: EditResponseTargetsItemConstraint;
+  /** A target based on the URL of the request. */
+  target?: EditResponseTargetsItemTarget;
+}
+export const EditResponseTargetsItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    constraint: S.optional(EditResponseTargetsItemConstraint),
+    target: S.optional(EditResponseTargetsItemTarget),
+  }),
+).annotate({
+  identifier: "EditResponseTargetsItem",
+}) as any as S.Schema<EditResponseTargetsItem>;
+
+export type EditResponseTargetsList = EditResponseTargetsItem[];
+export const EditResponseTargetsList = /*@__PURE__*/ S.Array(
+  EditResponseTargetsItem,
+) as any as S.Schema<EditResponseTargetsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchPageRuleResponse {
+  /** Identifier. */
+  id: string;
+  /** The set of actions to perform if the targets of this rule match the */
+  actions: EditResponseActionsList;
+  /** The timestamp of when the Page Rule was created. */
+  createdOn: string;
+  /** The timestamp of when the Page Rule was last modified. */
+  modifiedOn: string;
+  /** The priority of the rule, used to define which Page Rule is processed */
+  priority: number;
+  /** The status of the Page Rule. */
+  status: EditResponseStatus;
+  /** The rule targets to evaluate on each request. */
+  targets: EditResponseTargetsList;
+}
+export const PatchPageRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    actions: EditResponseActionsList,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    priority: S.Number,
+    status: EditResponseStatus,
+    targets: EditResponseTargetsList,
+  }),
+).annotate({
+  identifier: "PatchPageRuleResponse",
+}) as any as S.Schema<PatchPageRuleResponse>;
 
 export interface UpdateRequestActionsItem {
   AlwaysUseHTTPSObjectId__: unknown;
@@ -1627,7 +1671,7 @@ export const UpdateRequestTargetsList = /*@__PURE__*/ S.Array(
 export type UpdateRequestStatus = "active" | "disabled" | (string & {});
 export const UpdateRequestStatus = /*@__PURE__*/ S.String;
 
-export interface UpdateRequest {
+export interface UpdatePageRuleRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
@@ -1641,7 +1685,7 @@ export interface UpdateRequest {
   /** The status of the Page Rule. */
   status?: UpdateRequestStatus;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdatePageRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     pageruleId: S.String.pipe(T.Label("pagerule_id")),
@@ -1656,7 +1700,9 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "UpdatePageRuleRequest",
+}) as any as S.Schema<UpdatePageRuleRequest>;
 
 export interface UpdateResponseActionsItem {
   AlwaysUseHTTPSObjectId__: unknown;
@@ -1852,7 +1898,7 @@ export const UpdateResponseTargetsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateResponseTargetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface UpdatePageRuleResponse {
   /** Identifier. */
   id: string;
   /** The set of actions to perform if the targets of this rule match the */
@@ -1868,7 +1914,7 @@ export interface UpdateResponse {
   /** The rule targets to evaluate on each request. */
   targets: UpdateResponseTargetsList;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdatePageRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     actions: UpdateResponseActionsList,
@@ -1878,88 +1924,107 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
     status: UpdateResponseStatus,
     targets: UpdateResponseTargetsList,
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "UpdatePageRuleResponse",
+}) as any as S.Schema<UpdatePageRuleResponse>;
 
-export type CreateError = CloudflareOpError;
+export type CreatePageRuleError = Forbidden | CloudflareOpError;
 /** Creates a new Page Rule. */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createPageRule: API.OperationMethod<
+  CreatePageRuleRequest,
+  CreatePageRuleResponse,
+  CreatePageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreatePageRuleRequest,
+  output: CreatePageRuleResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DeleteError = CloudflareOpError;
+export type DeletePageRuleError =
+  | PageRuleNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Deletes an existing Page Rule. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deletePageRule: API.OperationMethod<
+  DeletePageRuleRequest,
+  DeletePageRuleResponse,
+  DeletePageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeletePageRuleRequest,
+  output: DeletePageRuleResponse,
+  errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type EditError = CloudflareOpError;
-/** Updates one or more fields of an existing Page Rule. */
-export const edit: API.OperationMethod<
-  EditRequest,
-  EditResponse,
-  EditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EditRequest,
-  output: EditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GetError = CloudflareOpError;
+export type GetPageRuleError = PageRuleNotFound | Forbidden | CloudflareOpError;
 /** Fetches the details of a Page Rule. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getPageRule: API.OperationMethod<
+  GetPageRuleRequest,
+  GetPageRuleResponse,
+  GetPageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetPageRuleRequest,
+  output: GetPageRuleResponse,
+  errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ListError = CloudflareOpError;
+export type ListPageRulesError =
+  | Forbidden
+  | InvalidZoneIdentifier
+  | CloudflareOpError;
 /** Fetches Page Rules in a zone. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
+export const listPageRules: API.OperationMethod<
+  ListPageRulesRequest,
+  ListPageRulesResponse,
+  ListPageRulesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ListPageRulesRequest,
+  output: ListPageRulesResponse,
+  errors: [
+    Forbidden,
+    InvalidZoneIdentifier,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
-/** Replaces the configuration of an existing Page Rule. The configuration of the updated Page Rule will exactly match the data passed in the API request. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export type PatchPageRuleError =
+  | PageRuleNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Updates one or more fields of an existing Page Rule. */
+export const patchPageRule: API.OperationMethod<
+  PatchPageRuleRequest,
+  PatchPageRuleResponse,
+  PatchPageRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PatchPageRuleRequest,
+  output: PatchPageRuleResponse,
+  errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdatePageRuleError =
+  | PageRuleNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Replaces the configuration of an existing Page Rule. The configuration of the updated Page Rule will exactly match the data passed in the API request. */
+export const updatePageRule: API.OperationMethod<
+  UpdatePageRuleRequest,
+  UpdatePageRuleResponse,
+  UpdatePageRuleError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdatePageRuleRequest,
+  output: UpdatePageRuleResponse,
+  errors: [PageRuleNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

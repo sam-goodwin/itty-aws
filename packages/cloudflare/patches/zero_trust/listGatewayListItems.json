@@ -1,0 +1,62 @@
+{
+  "description": "Align zero_trust#GatewayListsItemsList with distilled cloudflare/zero-trust listGatewayListItems",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#GatewayListsItemsList",
+      "path": "/shapes/com.cloudflare.zero_trust#ListGatewayListItems"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#GatewayListsItemsListRequest",
+      "path": "/shapes/com.cloudflare.zero_trust#ListGatewayListItemsRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#ListGatewayListItems/input/target",
+      "value": "com.cloudflare.zero_trust#ListGatewayListItemsRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.zero_trust#GatewayListsItemsListResponse",
+      "path": "/shapes/com.cloudflare.zero_trust#ListGatewayListItemsResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.zero_trust#ListGatewayListItems/output/target",
+      "value": "com.cloudflare.zero_trust#ListGatewayListItemsResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#GatewayListNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 2218
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.zero_trust#ListGatewayListItems/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.zero_trust#GatewayListNotFound"
+        }
+      ]
+    }
+  ]
+}

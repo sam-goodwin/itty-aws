@@ -9,7 +9,63 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface AudioTracksCopyRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class LiveInputNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<LiveInputNotFound>()("LiveInputNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10003 }],
+) {}
+
+export class OutputNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<OutputNotFound>()("OutputNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10003 }],
+) {}
+
+export class SigningKeyNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SigningKeyNotFound>()("SigningKeyNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10003 }],
+) {}
+
+export class WatermarkImageInvalid extends T.applyErrorMatchers(
+  S.TaggedErrorClass<WatermarkImageInvalid>()("WatermarkImageInvalid", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10004 }],
+) {}
+
+export class WatermarkNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<WatermarkNotFound>()("WatermarkNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10003 }],
+) {}
+
+export class WebhookNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<WebhookNotFound>()("WebhookNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10003 }],
+) {}
+
+export interface CopyAudioTrackRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a media item. */
@@ -19,7 +75,7 @@ export interface AudioTracksCopyRequest {
   /** An audio track URL. The server must be publicly routable and support `HTTP HEAD` requests and `HTTP GET` range requests. The server should respond to `HTTP HEAD` requests with a `content-range` header that includes the size of the file. */
   url?: string;
 }
-export const AudioTracksCopyRequest = /*@__PURE__*/ S.suspend(() =>
+export const CopyAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -33,8 +89,8 @@ export const AudioTracksCopyRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AudioTracksCopyRequest",
-}) as any as S.Schema<AudioTracksCopyRequest>;
+  identifier: "CopyAudioTrackRequest",
+}) as any as S.Schema<CopyAudioTrackRequest>;
 
 export type AudioTracksCopyResponseStatus =
   | "queued"
@@ -44,7 +100,7 @@ export type AudioTracksCopyResponseStatus =
 export const AudioTracksCopyResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AudioTracksCopyResponse {
+export interface CopyAudioTrackResponse {
   /** Denotes whether the audio track will be played by default in a player. */
   default?: boolean;
   /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
@@ -54,7 +110,7 @@ export interface AudioTracksCopyResponse {
   /** A Cloudflare-generated unique identifier for a media item. */
   uid?: string;
 }
-export const AudioTracksCopyResponse = /*@__PURE__*/ S.suspend(() =>
+export const CopyAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     default: S.optional(S.Boolean),
     label: S.optional(S.String),
@@ -62,238 +118,10 @@ export const AudioTracksCopyResponse = /*@__PURE__*/ S.suspend(() =>
     uid: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "AudioTracksCopyResponse",
-}) as any as S.Schema<AudioTracksCopyResponse>;
+  identifier: "CopyAudioTrackResponse",
+}) as any as S.Schema<CopyAudioTrackResponse>;
 
-export interface AudioTracksDeleteRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** A Cloudflare-generated unique identifier for a media item. */
-  identifier: string;
-  /** The unique identifier for an additional audio track. */
-  audioIdentifier: string;
-}
-export const AudioTracksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    identifier: S.String.pipe(T.Label()),
-    audioIdentifier: S.String.pipe(T.Label("audio_identifier")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/stream/{identifier}/audio/{audio_identifier}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AudioTracksDeleteRequest",
-}) as any as S.Schema<AudioTracksDeleteRequest>;
-
-export interface AudioTracksDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
-export const AudioTracksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "AudioTracksDeleteResponse",
-}) as any as S.Schema<AudioTracksDeleteResponse>;
-
-export interface AudioTracksEditRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** A Cloudflare-generated unique identifier for a media item. */
-  identifier: string;
-  /** The unique identifier for an additional audio track. */
-  audioIdentifier: string;
-  /** Denotes whether the audio track will be played by default in a player. */
-  default?: boolean;
-  /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
-  label?: string;
-}
-export const AudioTracksEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    identifier: S.String.pipe(T.Label()),
-    audioIdentifier: S.String.pipe(T.Label("audio_identifier")),
-    default: S.optional(S.Boolean),
-    label: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/stream/{identifier}/audio/{audio_identifier}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AudioTracksEditRequest",
-}) as any as S.Schema<AudioTracksEditRequest>;
-
-export type AudioTracksEditResponseStatus =
-  | "queued"
-  | "ready"
-  | "error"
-  | (string & {});
-export const AudioTracksEditResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AudioTracksEditResponse {
-  /** Denotes whether the audio track will be played by default in a player. */
-  default?: boolean;
-  /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
-  label?: string;
-  /** Specifies the processing status of the video. */
-  status?: AudioTracksEditResponseStatus;
-  /** A Cloudflare-generated unique identifier for a media item. */
-  uid?: string;
-}
-export const AudioTracksEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    default: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    status: S.optional(AudioTracksEditResponseStatus),
-    uid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AudioTracksEditResponse",
-}) as any as S.Schema<AudioTracksEditResponse>;
-
-export interface AudioTracksGetRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** A Cloudflare-generated unique identifier for a media item. */
-  identifier: string;
-}
-export const AudioTracksGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    identifier: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/stream/{identifier}/audio",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AudioTracksGetRequest",
-}) as any as S.Schema<AudioTracksGetRequest>;
-
-export type AudioTracksGetResponseAudioItemStatus =
-  | "queued"
-  | "ready"
-  | "error"
-  | (string & {});
-export const AudioTracksGetResponseAudioItemStatus = /*@__PURE__*/ S.String;
-
-export interface AudioTracksGetResponseAudioItem {
-  /** Denotes whether the audio track will be played by default in a player. */
-  default?: boolean;
-  /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
-  label?: string;
-  /** Specifies the processing status of the video. */
-  status?: AudioTracksGetResponseAudioItemStatus;
-  /** A Cloudflare-generated unique identifier for a media item. */
-  uid?: string;
-}
-export const AudioTracksGetResponseAudioItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    default: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    status: S.optional(AudioTracksGetResponseAudioItemStatus),
-    uid: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "AudioTracksGetResponseAudioItem",
-}) as any as S.Schema<AudioTracksGetResponseAudioItem>;
-
-export type AudioTracksGetResponseAudioList = AudioTracksGetResponseAudioItem[];
-export const AudioTracksGetResponseAudioList = /*@__PURE__*/ S.Array(
-  AudioTracksGetResponseAudioItem,
-) as any as S.Schema<AudioTracksGetResponseAudioList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AudioTracksGetResponse {
-  /** Array of audio tracks for the video. */
-  audio?: AudioTracksGetResponseAudioList;
-}
-export const AudioTracksGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    audio: S.optional(AudioTracksGetResponseAudioList),
-  }),
-).annotate({
-  identifier: "AudioTracksGetResponse",
-}) as any as S.Schema<AudioTracksGetResponse>;
-
-export interface CaptionsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A Cloudflare-generated unique identifier for a media item. */
-  identifier: string;
-}
-export const CaptionsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    identifier: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/stream/{identifier}/captions",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CaptionsGetRequest",
-}) as any as S.Schema<CaptionsGetRequest>;
-
-export type CaptionsGetResultItemStatus =
-  | "ready"
-  | "inprogress"
-  | "error"
-  | (string & {});
-export const CaptionsGetResultItemStatus = /*@__PURE__*/ S.String;
-
-export interface CaptionsGetResultItem {
-  /** Whether the caption was generated via AI. */
-  generated?: boolean;
-  /** The language label displayed in the native language to users. */
-  label?: string;
-  /** The language tag in BCP 47 format. */
-  language?: string;
-  /** The status of a generated caption. */
-  status?: CaptionsGetResultItemStatus;
-}
-export const CaptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    generated: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    language: S.optional(S.String),
-    status: S.optional(CaptionsGetResultItemStatus),
-  }),
-).annotate({
-  identifier: "CaptionsGetResultItem",
-}) as any as S.Schema<CaptionsGetResultItem>;
-
-export type CaptionsGetResultList = CaptionsGetResultItem[];
-export const CaptionsGetResultList = /*@__PURE__*/ S.Array(
-  CaptionsGetResultItem,
-) as any as S.Schema<CaptionsGetResultList>;
-
-export interface CaptionsGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CaptionsGetResultList;
-}
-export const CaptionsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(CaptionsGetResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "CaptionsGetResponse",
-}) as any as S.Schema<CaptionsGetResponse>;
-
-export interface CaptionsLanguageCreateRequest {
+export interface CreateCaptionLanguageRequest {
   /** Identifier. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a media item. */
@@ -301,7 +129,7 @@ export interface CaptionsLanguageCreateRequest {
   /** The language tag in BCP 47 format. */
   language: string;
 }
-export const CaptionsLanguageCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -314,8 +142,8 @@ export const CaptionsLanguageCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CaptionsLanguageCreateRequest",
-}) as any as S.Schema<CaptionsLanguageCreateRequest>;
+  identifier: "CreateCaptionLanguageRequest",
+}) as any as S.Schema<CreateCaptionLanguageRequest>;
 
 export type CaptionsLanguageCreateResponseStatus =
   | "ready"
@@ -325,7 +153,7 @@ export type CaptionsLanguageCreateResponseStatus =
 export const CaptionsLanguageCreateResponseStatus = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CaptionsLanguageCreateResponse {
+export interface CreateCaptionLanguageResponse {
   /** Whether the caption was generated via AI. */
   generated?: boolean;
   /** The language label displayed in the native language to users. */
@@ -335,7 +163,7 @@ export interface CaptionsLanguageCreateResponse {
   /** The status of a generated caption. */
   status?: CaptionsLanguageCreateResponseStatus;
 }
-export const CaptionsLanguageCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     generated: S.optional(S.Boolean),
     label: S.optional(S.String),
@@ -343,181 +171,8 @@ export const CaptionsLanguageCreateResponse = /*@__PURE__*/ S.suspend(() =>
     status: S.optional(CaptionsLanguageCreateResponseStatus),
   }),
 ).annotate({
-  identifier: "CaptionsLanguageCreateResponse",
-}) as any as S.Schema<CaptionsLanguageCreateResponse>;
-
-export interface CaptionsLanguageDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A Cloudflare-generated unique identifier for a media item. */
-  identifier: string;
-  /** The language tag in BCP 47 format. */
-  language: string;
-}
-export const CaptionsLanguageDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    identifier: S.String.pipe(T.Label()),
-    language: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/stream/{identifier}/captions/{language}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CaptionsLanguageDeleteRequest",
-}) as any as S.Schema<CaptionsLanguageDeleteRequest>;
-
-export interface CaptionsLanguageDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
-export const CaptionsLanguageDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "CaptionsLanguageDeleteResponse",
-}) as any as S.Schema<CaptionsLanguageDeleteResponse>;
-
-export interface CaptionsLanguageGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A Cloudflare-generated unique identifier for a media item. */
-  identifier: string;
-  /** The language tag in BCP 47 format. */
-  language: string;
-}
-export const CaptionsLanguageGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    identifier: S.String.pipe(T.Label()),
-    language: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/stream/{identifier}/captions/{language}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CaptionsLanguageGetRequest",
-}) as any as S.Schema<CaptionsLanguageGetRequest>;
-
-export type CaptionsLanguageGetResponseStatus =
-  | "ready"
-  | "inprogress"
-  | "error"
-  | (string & {});
-export const CaptionsLanguageGetResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CaptionsLanguageGetResponse {
-  /** Whether the caption was generated via AI. */
-  generated?: boolean;
-  /** The language label displayed in the native language to users. */
-  label?: string;
-  /** The language tag in BCP 47 format. */
-  language?: string;
-  /** The status of a generated caption. */
-  status?: CaptionsLanguageGetResponseStatus;
-}
-export const CaptionsLanguageGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    generated: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    language: S.optional(S.String),
-    status: S.optional(CaptionsLanguageGetResponseStatus),
-  }),
-).annotate({
-  identifier: "CaptionsLanguageGetResponse",
-}) as any as S.Schema<CaptionsLanguageGetResponse>;
-
-export interface CaptionsLanguageUpdateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A Cloudflare-generated unique identifier for a media item. */
-  identifier: string;
-  /** The language tag in BCP 47 format. */
-  language: string;
-}
-export const CaptionsLanguageUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    identifier: S.String.pipe(T.Label()),
-    language: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/stream/{identifier}/captions/{language}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CaptionsLanguageUpdateRequest",
-}) as any as S.Schema<CaptionsLanguageUpdateRequest>;
-
-export type CaptionsLanguageUpdateResponseStatus =
-  | "ready"
-  | "inprogress"
-  | "error"
-  | (string & {});
-export const CaptionsLanguageUpdateResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CaptionsLanguageUpdateResponse {
-  /** Whether the caption was generated via AI. */
-  generated?: boolean;
-  /** The language label displayed in the native language to users. */
-  label?: string;
-  /** The language tag in BCP 47 format. */
-  language?: string;
-  /** The status of a generated caption. */
-  status?: CaptionsLanguageUpdateResponseStatus;
-}
-export const CaptionsLanguageUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    generated: S.optional(S.Boolean),
-    label: S.optional(S.String),
-    language: S.optional(S.String),
-    status: S.optional(CaptionsLanguageUpdateResponseStatus),
-  }),
-).annotate({
-  identifier: "CaptionsLanguageUpdateResponse",
-}) as any as S.Schema<CaptionsLanguageUpdateResponse>;
-
-export interface CaptionsLanguageVttGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A Cloudflare-generated unique identifier for a media item. */
-  identifier: string;
-  /** The language tag in BCP 47 format. */
-  language: string;
-}
-export const CaptionsLanguageVttGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    identifier: S.String.pipe(T.Label()),
-    language: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/stream/{identifier}/captions/{language}/vtt",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CaptionsLanguageVttGetRequest",
-}) as any as S.Schema<CaptionsLanguageVttGetRequest>;
-
-export interface CaptionsLanguageVttGetResponse {}
-export const CaptionsLanguageVttGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "CaptionsLanguageVttGetResponse",
-}) as any as S.Schema<CaptionsLanguageVttGetResponse>;
+  identifier: "CreateCaptionLanguageResponse",
+}) as any as S.Schema<CreateCaptionLanguageResponse>;
 
 export type ClipCreateRequestAllowedOriginsList = unknown[];
 export const ClipCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
@@ -536,7 +191,7 @@ export const ClipCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
   identifier: "ClipCreateRequestWatermark",
 }) as any as S.Schema<ClipCreateRequestWatermark>;
 
-export interface ClipCreateRequest {
+export interface CreateClipRequest {
   /** The account identifier tag. */
   accountId: string;
   /** The unique video identifier (UID). */
@@ -565,7 +220,7 @@ export interface ClipCreateRequest {
   url?: string;
   watermark?: ClipCreateRequestWatermark;
 }
-export const ClipCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateClipRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     clippedFromVideoUID: S.String,
@@ -589,8 +244,8 @@ export const ClipCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ClipCreateRequest",
-}) as any as S.Schema<ClipCreateRequest>;
+  identifier: "CreateClipRequest",
+}) as any as S.Schema<CreateClipRequest>;
 
 export type ClipCreateResponseAllowedOriginsList = unknown[];
 export const ClipCreateResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
@@ -717,7 +372,7 @@ export const ClipCreateResponseWatermark = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ClipCreateResponseWatermark>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ClipCreateResponse {
+export interface CreateClipResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
   allowedOrigins?: ClipCreateResponseAllowedOriginsList;
   /** The unique identifier of the source video this video was clipped from. */
@@ -768,7 +423,7 @@ export interface ClipCreateResponse {
   uploadExpiry?: string;
   watermark?: ClipCreateResponseWatermark;
 }
-export const ClipCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateClipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(ClipCreateResponseAllowedOriginsList),
     clippedFrom: S.optional(S.String),
@@ -798,8 +453,8 @@ export const ClipCreateResponse = /*@__PURE__*/ S.suspend(() =>
     watermark: S.optional(ClipCreateResponseWatermark),
   }),
 ).annotate({
-  identifier: "ClipCreateResponse",
-}) as any as S.Schema<ClipCreateResponse>;
+  identifier: "CreateClipResponse",
+}) as any as S.Schema<CreateClipResponse>;
 
 export type CopyCreateRequestAllowedOriginsList = unknown[];
 export const CopyCreateRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
@@ -818,7 +473,7 @@ export const CopyCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
   identifier: "CopyCreateRequestWatermark",
 }) as any as S.Schema<CopyCreateRequestWatermark>;
 
-export interface CopyCreateRequest {
+export interface CreateCopyRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A user-defined identifier for the media creator. */
@@ -843,7 +498,7 @@ export interface CopyCreateRequest {
   url?: string;
   watermark?: CopyCreateRequestWatermark;
 }
-export const CopyCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateCopyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     UploadCreator_: S.optional(S.String.pipe(T.Header('"Upload-Creator"'))),
@@ -865,8 +520,8 @@ export const CopyCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CopyCreateRequest",
-}) as any as S.Schema<CopyCreateRequest>;
+  identifier: "CreateCopyRequest",
+}) as any as S.Schema<CreateCopyRequest>;
 
 export type CopyCreateResponseAllowedOriginsList = unknown[];
 export const CopyCreateResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
@@ -993,7 +648,7 @@ export const CopyCreateResponseWatermark = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CopyCreateResponseWatermark>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CopyCreateResponse {
+export interface CreateCopyResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
   allowedOrigins?: CopyCreateResponseAllowedOriginsList;
   /** The unique identifier of the source video this video was clipped from. */
@@ -1044,7 +699,7 @@ export interface CopyCreateResponse {
   uploadExpiry?: string;
   watermark?: CopyCreateResponseWatermark;
 }
-export const CopyCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateCopyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(CopyCreateResponseAllowedOriginsList),
     clippedFrom: S.optional(S.String),
@@ -1074,67 +729,8 @@ export const CopyCreateResponse = /*@__PURE__*/ S.suspend(() =>
     watermark: S.optional(CopyCreateResponseWatermark),
   }),
 ).annotate({
-  identifier: "CopyCreateResponse",
-}) as any as S.Schema<CopyCreateResponse>;
-
-export type CreateRequestTusResumable = "1.0.0" | (string & {});
-export const CreateRequestTusResumable = /*@__PURE__*/ S.String;
-
-export interface CreateRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients. */
-  directUser?: boolean;
-  /** Specifies the TUS protocol version. This value must be included in every upload request. */
-  TusResumable_: CreateRequestTusResumable;
-  /** Indicates the size of the entire upload in bytes. The value must be a non-negative integer. */
-  UploadLength_: number;
-  /** A user-defined identifier for the media creator. */
-  UploadCreator_?: string;
-  /** Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded. */
-  UploadMetadata_?: string;
-}
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    directUser: S.optional(S.Boolean.pipe(T.Query("direct_user"))),
-    TusResumable_: CreateRequestTusResumable.pipe(T.Header('"Tus-Resumable"')),
-    UploadLength_: S.Number.pipe(T.Header('"Upload-Length"')),
-    UploadCreator_: S.optional(S.String.pipe(T.Header('"Upload-Creator"'))),
-    UploadMetadata_: S.optional(S.String.pipe(T.Header('"Upload-Metadata"'))),
-  }).pipe(
-    T.Http({ method: "POST", uri: "/accounts/{account_id}/stream", code: 200 }),
-  ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
-
-export interface CreateResponse {}
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
-
-export interface DeleteRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** A Cloudflare-generated unique identifier for a media item. */
-  identifier: string;
-}
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    identifier: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/stream/{identifier}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
-
-export interface DeleteResponse {}
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+  identifier: "CreateCopyResponse",
+}) as any as S.Schema<CreateCopyResponse>;
 
 export type DirectUploadCreateRequestAllowedOriginsList = unknown[];
 export const DirectUploadCreateRequestAllowedOriginsList =
@@ -1154,7 +750,7 @@ export const DirectUploadCreateRequestWatermark = /*@__PURE__*/ S.suspend(() =>
   identifier: "DirectUploadCreateRequestWatermark",
 }) as any as S.Schema<DirectUploadCreateRequestWatermark>;
 
-export interface DirectUploadCreateRequest {
+export interface CreateDirectUploadRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A user-defined identifier for the media creator. */
@@ -1177,7 +773,7 @@ export interface DirectUploadCreateRequest {
   thumbnailTimestampPct?: number;
   watermark?: DirectUploadCreateRequestWatermark;
 }
-export const DirectUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateDirectUploadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     UploadCreator_: S.optional(S.String.pipe(T.Header('"Upload-Creator"'))),
@@ -1198,8 +794,8 @@ export const DirectUploadCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DirectUploadCreateRequest",
-}) as any as S.Schema<DirectUploadCreateRequest>;
+  identifier: "CreateDirectUploadRequest",
+}) as any as S.Schema<CreateDirectUploadRequest>;
 
 export interface DirectUploadCreateResponseWatermark {
   /** The date and a time a watermark profile was created. */
@@ -1244,7 +840,7 @@ export const DirectUploadCreateResponseWatermark = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DirectUploadCreateResponseWatermark>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DirectUploadCreateResponse {
+export interface CreateDirectUploadResponse {
   /** Indicates the date and time at which the video will be deleted. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. If specified, must be at least 30 days from upload time. */
   scheduledDeletion?: string;
   /** A Cloudflare-generated unique identifier for a media item. */
@@ -1253,7 +849,7 @@ export interface DirectUploadCreateResponse {
   uploadURL?: string;
   watermark?: DirectUploadCreateResponseWatermark;
 }
-export const DirectUploadCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateDirectUploadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     scheduledDeletion: S.optional(S.String),
     uid: S.optional(S.String),
@@ -1261,16 +857,16 @@ export const DirectUploadCreateResponse = /*@__PURE__*/ S.suspend(() =>
     watermark: S.optional(DirectUploadCreateResponseWatermark),
   }),
 ).annotate({
-  identifier: "DirectUploadCreateResponse",
-}) as any as S.Schema<DirectUploadCreateResponse>;
+  identifier: "CreateDirectUploadResponse",
+}) as any as S.Schema<CreateDirectUploadResponse>;
 
-export interface DownloadsCreateRequest {
+export interface CreateDownloadRequest {
   /** Identifier. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
 }
-export const DownloadsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1282,8 +878,8 @@ export const DownloadsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DownloadsCreateRequest",
-}) as any as S.Schema<DownloadsCreateRequest>;
+  identifier: "CreateDownloadRequest",
+}) as any as S.Schema<CreateDownloadRequest>;
 
 export type DownloadsCreateResponseAudioStatus =
   | "ready"
@@ -1336,28 +932,699 @@ export const DownloadsCreateResponseDefault = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<DownloadsCreateResponseDefault>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DownloadsCreateResponse {
+export interface CreateDownloadResponse {
   /** The audio-only download. Only present if this download type has been created. */
   audio?: DownloadsCreateResponseAudio;
   /** The default video download. Only present if this download type has been created. */
   default?: DownloadsCreateResponseDefault;
 }
-export const DownloadsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateDownloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     audio: S.optional(DownloadsCreateResponseAudio),
     default: S.optional(DownloadsCreateResponseDefault),
   }),
 ).annotate({
-  identifier: "DownloadsCreateResponse",
-}) as any as S.Schema<DownloadsCreateResponse>;
+  identifier: "CreateDownloadResponse",
+}) as any as S.Schema<CreateDownloadResponse>;
 
-export interface DownloadsDeleteRequest {
+export interface CreateKeyRequest {
+  /** Identifier. */
+  accountId: string;
+  body: unknown;
+}
+export const CreateKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    body: S.Unknown,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/stream/keys",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateKeyRequest",
+}) as any as S.Schema<CreateKeyRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateKeyResponse {
+  /** Identifier. */
+  id?: string;
+  /** The date and time a signing key was created. */
+  created?: string;
+  /** The signing key in JWK format. */
+  jwk?: string;
+  /** The signing key in PEM format. */
+  pem?: string;
+}
+export const CreateKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    created: S.optional(S.String),
+    jwk: S.optional(S.String),
+    pem: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateKeyResponse",
+}) as any as S.Schema<CreateKeyResponse>;
+
+export type LiveInputsCreateRequestRecordingAllowedOriginsList = string[];
+export const LiveInputsCreateRequestRecordingAllowedOriginsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<LiveInputsCreateRequestRecordingAllowedOriginsList>;
+
+export type LiveInputsCreateRequestRecordingMode =
+  | "off"
+  | "automatic"
+  | (string & {});
+export const LiveInputsCreateRequestRecordingMode = /*@__PURE__*/ S.String;
+
+export interface LiveInputsCreateRequestRecording {
+  /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
+  allowedOrigins?: LiveInputsCreateRequestRecordingAllowedOriginsList;
+  /** Disables reporting the number of live viewers when this property is set to `true`. */
+  hideLiveViewerCount?: boolean;
+  /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
+  mode?: LiveInputsCreateRequestRecordingMode;
+  /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
+  requireSignedURLs?: boolean;
+  /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
+  timeoutSeconds?: number;
+}
+export const LiveInputsCreateRequestRecording = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedOrigins: S.optional(
+      LiveInputsCreateRequestRecordingAllowedOriginsList,
+    ),
+    hideLiveViewerCount: S.optional(S.Boolean),
+    mode: S.optional(LiveInputsCreateRequestRecordingMode),
+    requireSignedURLs: S.optional(S.Boolean),
+    timeoutSeconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "LiveInputsCreateRequestRecording",
+}) as any as S.Schema<LiveInputsCreateRequestRecording>;
+
+export interface CreateLiveInputRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Sets the creator ID asssociated with this live input. */
+  defaultCreator?: string;
+  /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
+  deleteRecordingAfterDays?: number;
+  /** Indicates whether the live input is enabled and can accept streams. */
+  enabled?: boolean;
+  /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
+  meta?: unknown;
+  /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
+  preferLowLatency?: boolean;
+  /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
+  recording?: LiveInputsCreateRequestRecording;
+}
+export const CreateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    defaultCreator: S.optional(S.String),
+    deleteRecordingAfterDays: S.optional(S.Number),
+    enabled: S.optional(S.Boolean),
+    meta: S.optional(S.Unknown),
+    preferLowLatency: S.optional(S.Boolean),
+    recording: S.optional(LiveInputsCreateRequestRecording),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/stream/live_inputs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateLiveInputRequest",
+}) as any as S.Schema<CreateLiveInputRequest>;
+
+export type LiveInputsCreateResponseRecordingAllowedOriginsList = string[];
+export const LiveInputsCreateResponseRecordingAllowedOriginsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<LiveInputsCreateResponseRecordingAllowedOriginsList>;
+
+export type LiveInputsCreateResponseRecordingMode =
+  | "off"
+  | "automatic"
+  | (string & {});
+export const LiveInputsCreateResponseRecordingMode = /*@__PURE__*/ S.String;
+
+export interface LiveInputsCreateResponseRecording {
+  /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
+  allowedOrigins?: LiveInputsCreateResponseRecordingAllowedOriginsList;
+  /** Disables reporting the number of live viewers when this property is set to `true`. */
+  hideLiveViewerCount?: boolean;
+  /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
+  mode?: LiveInputsCreateResponseRecordingMode;
+  /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
+  requireSignedURLs?: boolean;
+  /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
+  timeoutSeconds?: number;
+}
+export const LiveInputsCreateResponseRecording = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedOrigins: S.optional(
+      LiveInputsCreateResponseRecordingAllowedOriginsList,
+    ),
+    hideLiveViewerCount: S.optional(S.Boolean),
+    mode: S.optional(LiveInputsCreateResponseRecordingMode),
+    requireSignedURLs: S.optional(S.Boolean),
+    timeoutSeconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "LiveInputsCreateResponseRecording",
+}) as any as S.Schema<LiveInputsCreateResponseRecording>;
+
+export interface LiveInputsCreateResponseRtmps {
+  /** The secret key to use when streaming via RTMPS to a live input. */
+  streamKey?: string;
+  /** The RTMPS URL you provide to the broadcaster, which they stream live video to. */
+  url?: string;
+}
+export const LiveInputsCreateResponseRtmps = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    streamKey: S.optional(S.String),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LiveInputsCreateResponseRtmps",
+}) as any as S.Schema<LiveInputsCreateResponseRtmps>;
+
+export interface LiveInputsCreateResponseRtmpsPlayback {
+  /** The secret key to use for playback via RTMPS. */
+  streamKey?: string;
+  /** The URL used to play live video over RTMPS. */
+  url?: string;
+}
+export const LiveInputsCreateResponseRtmpsPlayback = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      streamKey: S.optional(S.String),
+      url: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "LiveInputsCreateResponseRtmpsPlayback",
+}) as any as S.Schema<LiveInputsCreateResponseRtmpsPlayback>;
+
+export interface LiveInputsCreateResponseSrt {
+  /** The secret key to use when streaming via SRT to a live input. */
+  passphrase?: string;
+  /** The identifier of the live input to use when streaming via SRT. */
+  streamId?: string;
+  /** The SRT URL you provide to the broadcaster, which they stream live video to. */
+  url?: string;
+}
+export const LiveInputsCreateResponseSrt = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    passphrase: S.optional(S.String),
+    streamId: S.optional(S.String),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LiveInputsCreateResponseSrt",
+}) as any as S.Schema<LiveInputsCreateResponseSrt>;
+
+export interface LiveInputsCreateResponseSrtPlayback {
+  /** The secret key to use for playback via SRT. */
+  passphrase?: string;
+  /** The identifier of the live input to use for playback via SRT. */
+  streamId?: string;
+  /** The URL used to play live video over SRT. */
+  url?: string;
+}
+export const LiveInputsCreateResponseSrtPlayback = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    passphrase: S.optional(S.String),
+    streamId: S.optional(S.String),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LiveInputsCreateResponseSrtPlayback",
+}) as any as S.Schema<LiveInputsCreateResponseSrtPlayback>;
+
+export type LiveInputsCreateResponseStatus =
+  | "connected"
+  | "reconnected"
+  | "reconnecting"
+  | (string & {});
+export const LiveInputsCreateResponseStatus = /*@__PURE__*/ S.String;
+
+export interface LiveInputsCreateResponseWebRTC {
+  /** The WebRTC URL you provide to the broadcaster, which they stream live video to. */
+  url?: string;
+}
+export const LiveInputsCreateResponseWebRTC = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LiveInputsCreateResponseWebRTC",
+}) as any as S.Schema<LiveInputsCreateResponseWebRTC>;
+
+export interface LiveInputsCreateResponseWebRTCPlayback {
+  /** The URL used to play live video over WebRTC. */
+  url?: string;
+}
+export const LiveInputsCreateResponseWebRTCPlayback = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      url: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "LiveInputsCreateResponseWebRTCPlayback",
+}) as any as S.Schema<LiveInputsCreateResponseWebRTCPlayback>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateLiveInputResponse {
+  /** The date and time the live input was created. */
+  created?: string;
+  /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
+  deleteRecordingAfterDays?: number;
+  /** Indicates whether the live input is enabled and can accept streams. */
+  enabled?: boolean;
+  /** The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated. */
+  keysRotatedAt?: string;
+  /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
+  meta?: unknown;
+  /** The date and time the live input was last modified. */
+  modified?: string;
+  /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
+  preferLowLatency?: boolean;
+  /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
+  recording?: LiveInputsCreateResponseRecording;
+  /** Details for streaming to an live input using RTMPS. */
+  rtmps?: LiveInputsCreateResponseRtmps;
+  /** Details for playback from an live input using RTMPS. */
+  rtmpsPlayback?: LiveInputsCreateResponseRtmpsPlayback;
+  /** Details for streaming to a live input using SRT. */
+  srt?: LiveInputsCreateResponseSrt;
+  /** Details for playback from an live input using SRT. */
+  srtPlayback?: LiveInputsCreateResponseSrtPlayback;
+  /** The connection status of a live input. */
+  status?: LiveInputsCreateResponseStatus;
+  /** A unique identifier for a live input. */
+  uid?: string;
+  /** Details for streaming to a live input using WebRTC. */
+  webRTC?: LiveInputsCreateResponseWebRTC;
+  /** Details for playback from a live input using WebRTC. */
+  webRTCPlayback?: LiveInputsCreateResponseWebRTCPlayback;
+}
+export const CreateLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    created: S.optional(S.String),
+    deleteRecordingAfterDays: S.optional(S.Number),
+    enabled: S.optional(S.Boolean),
+    keysRotatedAt: S.optional(S.String),
+    meta: S.optional(S.Unknown),
+    modified: S.optional(S.String),
+    preferLowLatency: S.optional(S.Boolean),
+    recording: S.optional(LiveInputsCreateResponseRecording),
+    rtmps: S.optional(LiveInputsCreateResponseRtmps),
+    rtmpsPlayback: S.optional(LiveInputsCreateResponseRtmpsPlayback),
+    srt: S.optional(LiveInputsCreateResponseSrt),
+    srtPlayback: S.optional(LiveInputsCreateResponseSrtPlayback),
+    status: S.optional(LiveInputsCreateResponseStatus),
+    uid: S.optional(S.String),
+    webRTC: S.optional(LiveInputsCreateResponseWebRTC),
+    webRTCPlayback: S.optional(LiveInputsCreateResponseWebRTCPlayback),
+  }),
+).annotate({
+  identifier: "CreateLiveInputResponse",
+}) as any as S.Schema<CreateLiveInputResponse>;
+
+export interface CreateLiveInputOutputRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A unique identifier for a live input. */
+  liveInputIdentifier: string;
+  /** The streamKey used to authenticate against an output's target. */
+  streamKey: string;
+  /** The URL an output uses to restream. */
+  url: string;
+  /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
+  enabled?: boolean;
+}
+export const CreateLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
+    streamKey: S.String,
+    url: S.String,
+    enabled: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateLiveInputOutputRequest",
+}) as any as S.Schema<CreateLiveInputOutputRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateLiveInputOutputResponse {
+  /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
+  enabled?: boolean;
+  /** The streamKey used to authenticate against an output's target. */
+  streamKey?: string;
+  /** A unique identifier for the output. */
+  uid?: string;
+  /** The URL an output uses to restream. */
+  url?: string;
+}
+export const CreateLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    streamKey: S.optional(S.String),
+    uid: S.optional(S.String),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateLiveInputOutputResponse",
+}) as any as S.Schema<CreateLiveInputOutputResponse>;
+
+export type CreateRequestTusResumable = "1.0.0" | (string & {});
+export const CreateRequestTusResumable = /*@__PURE__*/ S.String;
+
+export interface CreateStreamRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** Provisions a URL to let your end users upload videos directly to Cloudflare Stream without exposing your API token to clients. */
+  directUser?: boolean;
+  /** Specifies the TUS protocol version. This value must be included in every upload request. */
+  TusResumable_: CreateRequestTusResumable;
+  /** Indicates the size of the entire upload in bytes. The value must be a non-negative integer. */
+  UploadLength_: number;
+  /** A user-defined identifier for the media creator. */
+  UploadCreator_?: string;
+  /** Comma-separated key-value pairs following the TUS protocol specification. Values are Base-64 encoded. */
+  UploadMetadata_?: string;
+}
+export const CreateStreamRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    directUser: S.optional(S.Boolean.pipe(T.Query("direct_user"))),
+    TusResumable_: CreateRequestTusResumable.pipe(T.Header('"Tus-Resumable"')),
+    UploadLength_: S.Number.pipe(T.Header('"Upload-Length"')),
+    UploadCreator_: S.optional(S.String.pipe(T.Header('"Upload-Creator"'))),
+    UploadMetadata_: S.optional(S.String.pipe(T.Header('"Upload-Metadata"'))),
+  }).pipe(
+    T.Http({ method: "POST", uri: "/accounts/{account_id}/stream", code: 200 }),
+  ),
+).annotate({
+  identifier: "CreateStreamRequest",
+}) as any as S.Schema<CreateStreamRequest>;
+
+export interface CreateStreamResponse {}
+export const CreateStreamResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CreateStreamResponse",
+}) as any as S.Schema<CreateStreamResponse>;
+
+export type TokenCreateRequestAccessRulesItemAction =
+  | "allow"
+  | "block"
+  | (string & {});
+export const TokenCreateRequestAccessRulesItemAction = /*@__PURE__*/ S.String;
+
+export type TokenCreateRequestAccessRulesItemCountryList = string[];
+export const TokenCreateRequestAccessRulesItemCountryList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<TokenCreateRequestAccessRulesItemCountryList>;
+
+export type TokenCreateRequestAccessRulesItemIpList = string[];
+export const TokenCreateRequestAccessRulesItemIpList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<TokenCreateRequestAccessRulesItemIpList>;
+
+export type TokenCreateRequestAccessRulesItemType =
+  | "any"
+  | "ip.src"
+  | "ip.geoip.country"
+  | (string & {});
+export const TokenCreateRequestAccessRulesItemType = /*@__PURE__*/ S.String;
+
+export interface TokenCreateRequestAccessRulesItem {
+  /** The action to take when a request matches a rule. If the action is `block`, the signed token blocks views for viewers matching the rule. */
+  action?: TokenCreateRequestAccessRulesItemAction;
+  /** An array of 2-letter country codes in ISO 3166-1 Alpha-2 format used to match requests. */
+  country?: TokenCreateRequestAccessRulesItemCountryList;
+  /** An array of IPv4 or IPV6 addresses or CIDRs used to match requests. */
+  ip?: TokenCreateRequestAccessRulesItemIpList;
+  /** Lists available rule types to match for requests. An `any` type matches all requests and can be used as a wildcard to apply default actions after other rules. */
+  type?: TokenCreateRequestAccessRulesItemType;
+}
+export const TokenCreateRequestAccessRulesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action: S.optional(TokenCreateRequestAccessRulesItemAction),
+    country: S.optional(TokenCreateRequestAccessRulesItemCountryList),
+    ip: S.optional(TokenCreateRequestAccessRulesItemIpList),
+    type: S.optional(TokenCreateRequestAccessRulesItemType),
+  }),
+).annotate({
+  identifier: "TokenCreateRequestAccessRulesItem",
+}) as any as S.Schema<TokenCreateRequestAccessRulesItem>;
+
+export type TokenCreateRequestAccessRulesList =
+  TokenCreateRequestAccessRulesItem[];
+export const TokenCreateRequestAccessRulesList = /*@__PURE__*/ S.Array(
+  TokenCreateRequestAccessRulesItem,
+) as any as S.Schema<TokenCreateRequestAccessRulesList>;
+
+export interface TokenCreateRequestFlags {
+  /** Whether to return the original video without transformations. */
+  original?: boolean;
+}
+export const TokenCreateRequestFlags = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    original: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "TokenCreateRequestFlags",
+}) as any as S.Schema<TokenCreateRequestFlags>;
+
+export interface CreateTokenRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  identifier: string;
+  /** The optional ID of a Stream signing key. If present, the `pem` field is also required. */
+  id?: string;
+  /** The optional list of access rule constraints on the token. Access can be blocked or allowed based on an IP, IP range, or by country. Access rules are evaluated from first to last. If a rule matches, the associated action is applied and no further rules are evaluated. */
+  accessRules?: TokenCreateRequestAccessRulesList;
+  /** The optional boolean value that enables using signed tokens to access MP4 download links for a video. */
+  downloadable?: boolean;
+  /** The optional unix epoch timestamp that specficies the time after a token is not accepted. The maximum time specification is 24 hours from issuing time. If this field is not set, the default is one hour after issuing. */
+  exp?: number;
+  /** Optional flags for the signed token. */
+  flags?: TokenCreateRequestFlags;
+  /** The optional unix epoch timestamp that specifies the time before a the token is not accepted. If this field is not set, the default is one hour before issuing. */
+  nbf?: number;
+  /** The optional base64 encoded private key in PEM format associated with a Stream signing key. If present, the `id` field is also required. */
+  pem?: string;
+}
+export const CreateTokenRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    identifier: S.String.pipe(T.Label()),
+    id: S.optional(S.String),
+    accessRules: S.optional(TokenCreateRequestAccessRulesList),
+    downloadable: S.optional(S.Boolean),
+    exp: S.optional(S.Number),
+    flags: S.optional(TokenCreateRequestFlags),
+    nbf: S.optional(S.Number),
+    pem: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/stream/{identifier}/token",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateTokenRequest",
+}) as any as S.Schema<CreateTokenRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateTokenResponse {
+  /** The signed token used with the signed URLs feature. */
+  token?: string;
+}
+export const CreateTokenResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    token: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateTokenResponse",
+}) as any as S.Schema<CreateTokenResponse>;
+
+export interface CreateWatermarkRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** A short description of the watermark profile. */
+  name?: string;
+  /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
+  opacity?: number;
+  /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
+  padding?: number;
+  /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
+  position?: string;
+  /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
+  scale?: number;
+  /** URL of the watermark image to copy. */
+  url?: string;
+}
+export const CreateWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.optional(S.String),
+    opacity: S.optional(S.Number),
+    padding: S.optional(S.Number),
+    position: S.optional(S.String),
+    scale: S.optional(S.Number),
+    url: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/stream/watermarks",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateWatermarkRequest",
+}) as any as S.Schema<CreateWatermarkRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateWatermarkResponse {
+  /** The date and a time a watermark profile was created. */
+  created?: string;
+  /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
+  downloadedFrom?: string;
+  /** The height of the image in pixels. */
+  height?: number;
+  /** A short description of the watermark profile. */
+  name?: string;
+  /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
+  opacity?: number;
+  /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
+  padding?: number;
+  /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
+  position?: string;
+  /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
+  scale?: number;
+  /** The size of the image in bytes. */
+  size?: number;
+  /** The unique identifier for a watermark profile. */
+  uid?: string;
+  /** The width of the image in pixels. */
+  width?: number;
+}
+export const CreateWatermarkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    created: S.optional(S.String),
+    downloadedFrom: S.optional(S.String),
+    height: S.optional(S.Number),
+    name: S.optional(S.String),
+    opacity: S.optional(S.Number),
+    padding: S.optional(S.Number),
+    position: S.optional(S.String),
+    scale: S.optional(S.Number),
+    size: S.optional(S.Number),
+    uid: S.optional(S.String),
+    width: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CreateWatermarkResponse",
+}) as any as S.Schema<CreateWatermarkResponse>;
+
+export interface DeleteAudioTrackRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  identifier: string;
+  /** The unique identifier for an additional audio track. */
+  audioIdentifier: string;
+}
+export const DeleteAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    identifier: S.String.pipe(T.Label()),
+    audioIdentifier: S.String.pipe(T.Label("audio_identifier")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/stream/{identifier}/audio/{audio_identifier}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAudioTrackRequest",
+}) as any as S.Schema<DeleteAudioTrackRequest>;
+
+export interface DeleteAudioTrackResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: string;
+}
+export const DeleteAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.String.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "DeleteAudioTrackResponse",
+}) as any as S.Schema<DeleteAudioTrackResponse>;
+
+export interface DeleteCaptionLanguageRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  identifier: string;
+  /** The language tag in BCP 47 format. */
+  language: string;
+}
+export const DeleteCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    identifier: S.String.pipe(T.Label()),
+    language: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/stream/{identifier}/captions/{language}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCaptionLanguageRequest",
+}) as any as S.Schema<DeleteCaptionLanguageRequest>;
+
+export interface DeleteCaptionLanguageResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: string;
+}
+export const DeleteCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.String.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "DeleteCaptionLanguageResponse",
+}) as any as S.Schema<DeleteCaptionLanguageResponse>;
+
+export interface DeleteDownloadRequest {
   /** Identifier. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
 }
-export const DownloadsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteDownloadRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1369,107 +1636,203 @@ export const DownloadsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "DownloadsDeleteRequest",
-}) as any as S.Schema<DownloadsDeleteRequest>;
+  identifier: "DeleteDownloadRequest",
+}) as any as S.Schema<DeleteDownloadRequest>;
 
-export interface DownloadsDeleteResponse {
+export interface DeleteDownloadResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: string;
 }
-export const DownloadsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteDownloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DownloadsDeleteResponse",
-}) as any as S.Schema<DownloadsDeleteResponse>;
+  identifier: "DeleteDownloadResponse",
+}) as any as S.Schema<DeleteDownloadResponse>;
 
-export interface DownloadsGetRequest {
+export interface DeleteKeyRequest {
   /** Identifier. */
   accountId: string;
-  /** A Cloudflare-generated unique identifier for a media item. */
+  /** Identifier. */
   identifier: string;
 }
-export const DownloadsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteKeyRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/stream/{identifier}/downloads",
+      method: "DELETE",
+      uri: "/accounts/{account_id}/stream/keys/{identifier}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "DownloadsGetRequest",
-}) as any as S.Schema<DownloadsGetRequest>;
+  identifier: "DeleteKeyRequest",
+}) as any as S.Schema<DeleteKeyRequest>;
 
-export type DownloadsGetResponseAudioStatus =
-  | "ready"
-  | "inprogress"
-  | "error"
-  | (string & {});
-export const DownloadsGetResponseAudioStatus = /*@__PURE__*/ S.String;
-
-export interface DownloadsGetResponseAudio {
-  /** Indicates the progress as a percentage between 0 and 100. */
-  percentComplete: number;
-  /** The status of a generated download. */
-  status: DownloadsGetResponseAudioStatus;
-  /** The URL to access the generated download. */
-  url?: string;
+export interface DeleteKeyResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: string;
 }
-export const DownloadsGetResponseAudio = /*@__PURE__*/ S.suspend(() =>
+export const DeleteKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    percentComplete: S.Number,
-    status: DownloadsGetResponseAudioStatus,
-    url: S.optional(S.String),
+    result: S.optional(S.String.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DownloadsGetResponseAudio",
-}) as any as S.Schema<DownloadsGetResponseAudio>;
+  identifier: "DeleteKeyResponse",
+}) as any as S.Schema<DeleteKeyResponse>;
 
-export type DownloadsGetResponseDefaultStatus =
-  | "ready"
-  | "inprogress"
-  | "error"
-  | (string & {});
-export const DownloadsGetResponseDefaultStatus = /*@__PURE__*/ S.String;
-
-export interface DownloadsGetResponseDefault {
-  /** Indicates the progress as a percentage between 0 and 100. */
-  percentComplete: number;
-  /** The status of a generated download. */
-  status: DownloadsGetResponseDefaultStatus;
-  /** The URL to access the generated download. */
-  url?: string;
+export interface DeleteLiveInputRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A unique identifier for a live input. */
+  liveInputIdentifier: string;
 }
-export const DownloadsGetResponseDefault = /*@__PURE__*/ S.suspend(() =>
+export const DeleteLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    percentComplete: S.Number,
-    status: DownloadsGetResponseDefaultStatus,
-    url: S.optional(S.String),
+    accountId: S.String.pipe(T.Label("account_id")),
+    liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteLiveInputRequest",
+}) as any as S.Schema<DeleteLiveInputRequest>;
+
+export interface DeleteLiveInputResponse {}
+export const DeleteLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteLiveInputResponse",
+}) as any as S.Schema<DeleteLiveInputResponse>;
+
+export interface DeleteLiveInputOutputRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A unique identifier for a live input. */
+  liveInputIdentifier: string;
+  /** A unique identifier for the output. */
+  outputIdentifier: string;
+}
+export const DeleteLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
+    outputIdentifier: S.String.pipe(T.Label("output_identifier")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteLiveInputOutputRequest",
+}) as any as S.Schema<DeleteLiveInputOutputRequest>;
+
+export interface DeleteLiveInputOutputResponse {}
+export const DeleteLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteLiveInputOutputResponse",
+}) as any as S.Schema<DeleteLiveInputOutputResponse>;
+
+export interface DeleteStreamRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  identifier: string;
+}
+export const DeleteStreamRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    identifier: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/stream/{identifier}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteStreamRequest",
+}) as any as S.Schema<DeleteStreamRequest>;
+
+export interface DeleteStreamResponse {}
+export const DeleteStreamResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeleteStreamResponse",
+}) as any as S.Schema<DeleteStreamResponse>;
+
+export interface DeleteWatermarkRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The unique identifier for a watermark profile. */
+  identifier: string;
+}
+export const DeleteWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    identifier: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/stream/watermarks/{identifier}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteWatermarkRequest",
+}) as any as S.Schema<DeleteWatermarkRequest>;
+
+export interface DeleteWatermarkResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: string;
+}
+export const DeleteWatermarkResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.String.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DownloadsGetResponseDefault",
-}) as any as S.Schema<DownloadsGetResponseDefault>;
+  identifier: "DeleteWatermarkResponse",
+}) as any as S.Schema<DeleteWatermarkResponse>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DownloadsGetResponse {
-  /** The audio-only download. Only present if this download type has been created. */
-  audio?: DownloadsGetResponseAudio;
-  /** The default video download. Only present if this download type has been created. */
-  default?: DownloadsGetResponseDefault;
+export interface DeleteWebhookRequest {
+  /** The account identifier tag. */
+  accountId: string;
 }
-export const DownloadsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    audio: S.optional(DownloadsGetResponseAudio),
-    default: S.optional(DownloadsGetResponseDefault),
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/stream/webhook",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteWebhookRequest",
+}) as any as S.Schema<DeleteWebhookRequest>;
+
+export interface DeleteWebhookResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: string;
+}
+export const DeleteWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.String.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "DownloadsGetResponse",
-}) as any as S.Schema<DownloadsGetResponse>;
+  identifier: "DeleteWebhookResponse",
+}) as any as S.Schema<DeleteWebhookResponse>;
 
 export type EditRequestAllowedOriginsList = unknown[];
 export const EditRequestAllowedOriginsList = /*@__PURE__*/ S.Array(
@@ -1493,7 +1856,7 @@ export const EditRequestPublicDetails = /*@__PURE__*/ S.suspend(() =>
   identifier: "EditRequestPublicDetails",
 }) as any as S.Schema<EditRequestPublicDetails>;
 
-export interface EditRequest {
+export interface EditStreamRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a media item. */
@@ -1519,7 +1882,7 @@ export interface EditRequest {
   /** The date and time when the video upload URL is no longer valid for direct user uploads. */
   uploadExpiry?: string;
 }
-export const EditRequest = /*@__PURE__*/ S.suspend(() =>
+export const EditStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1540,7 +1903,9 @@ export const EditRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
+).annotate({
+  identifier: "EditStreamRequest",
+}) as any as S.Schema<EditStreamRequest>;
 
 export type EditResponseAllowedOriginsList = unknown[];
 export const EditResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
@@ -1667,7 +2032,7 @@ export const EditResponseWatermark = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<EditResponseWatermark>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EditResponse {
+export interface EditStreamResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
   allowedOrigins?: EditResponseAllowedOriginsList;
   /** The unique identifier of the source video this video was clipped from. */
@@ -1718,7 +2083,7 @@ export interface EditResponse {
   uploadExpiry?: string;
   watermark?: EditResponseWatermark;
 }
-export const EditResponse = /*@__PURE__*/ S.suspend(() =>
+export const EditStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(EditResponseAllowedOriginsList),
     clippedFrom: S.optional(S.String),
@@ -1747,15 +2112,321 @@ export const EditResponse = /*@__PURE__*/ S.suspend(() =>
     uploadExpiry: S.optional(S.String),
     watermark: S.optional(EditResponseWatermark),
   }),
-).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
+).annotate({
+  identifier: "EditStreamResponse",
+}) as any as S.Schema<EditStreamResponse>;
 
-export interface EmbedGetRequest {
+export interface GetAudioTrackRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
 }
-export const EmbedGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    identifier: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/stream/{identifier}/audio",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetAudioTrackRequest",
+}) as any as S.Schema<GetAudioTrackRequest>;
+
+export type AudioTracksGetResponseAudioItemStatus =
+  | "queued"
+  | "ready"
+  | "error"
+  | (string & {});
+export const AudioTracksGetResponseAudioItemStatus = /*@__PURE__*/ S.String;
+
+export interface AudioTracksGetResponseAudioItem {
+  /** Denotes whether the audio track will be played by default in a player. */
+  default?: boolean;
+  /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
+  label?: string;
+  /** Specifies the processing status of the video. */
+  status?: AudioTracksGetResponseAudioItemStatus;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  uid?: string;
+}
+export const AudioTracksGetResponseAudioItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    default: S.optional(S.Boolean),
+    label: S.optional(S.String),
+    status: S.optional(AudioTracksGetResponseAudioItemStatus),
+    uid: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AudioTracksGetResponseAudioItem",
+}) as any as S.Schema<AudioTracksGetResponseAudioItem>;
+
+export type AudioTracksGetResponseAudioList = AudioTracksGetResponseAudioItem[];
+export const AudioTracksGetResponseAudioList = /*@__PURE__*/ S.Array(
+  AudioTracksGetResponseAudioItem,
+) as any as S.Schema<AudioTracksGetResponseAudioList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetAudioTrackResponse {
+  /** Array of audio tracks for the video. */
+  audio?: AudioTracksGetResponseAudioList;
+}
+export const GetAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    audio: S.optional(AudioTracksGetResponseAudioList),
+  }),
+).annotate({
+  identifier: "GetAudioTrackResponse",
+}) as any as S.Schema<GetAudioTrackResponse>;
+
+export interface GetCaptionRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  identifier: string;
+}
+export const GetCaptionRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    identifier: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/stream/{identifier}/captions",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetCaptionRequest",
+}) as any as S.Schema<GetCaptionRequest>;
+
+export type CaptionsGetResultItemStatus =
+  | "ready"
+  | "inprogress"
+  | "error"
+  | (string & {});
+export const CaptionsGetResultItemStatus = /*@__PURE__*/ S.String;
+
+export interface CaptionsGetResultItem {
+  /** Whether the caption was generated via AI. */
+  generated?: boolean;
+  /** The language label displayed in the native language to users. */
+  label?: string;
+  /** The language tag in BCP 47 format. */
+  language?: string;
+  /** The status of a generated caption. */
+  status?: CaptionsGetResultItemStatus;
+}
+export const CaptionsGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    generated: S.optional(S.Boolean),
+    label: S.optional(S.String),
+    language: S.optional(S.String),
+    status: S.optional(CaptionsGetResultItemStatus),
+  }),
+).annotate({
+  identifier: "CaptionsGetResultItem",
+}) as any as S.Schema<CaptionsGetResultItem>;
+
+export type CaptionsGetResultList = CaptionsGetResultItem[];
+export const CaptionsGetResultList = /*@__PURE__*/ S.Array(
+  CaptionsGetResultItem,
+) as any as S.Schema<CaptionsGetResultList>;
+
+export interface GetCaptionResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: CaptionsGetResultList;
+}
+export const GetCaptionResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(CaptionsGetResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "GetCaptionResponse",
+}) as any as S.Schema<GetCaptionResponse>;
+
+export interface GetCaptionLanguageRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  identifier: string;
+  /** The language tag in BCP 47 format. */
+  language: string;
+}
+export const GetCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    identifier: S.String.pipe(T.Label()),
+    language: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/stream/{identifier}/captions/{language}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetCaptionLanguageRequest",
+}) as any as S.Schema<GetCaptionLanguageRequest>;
+
+export type CaptionsLanguageGetResponseStatus =
+  | "ready"
+  | "inprogress"
+  | "error"
+  | (string & {});
+export const CaptionsLanguageGetResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetCaptionLanguageResponse {
+  /** Whether the caption was generated via AI. */
+  generated?: boolean;
+  /** The language label displayed in the native language to users. */
+  label?: string;
+  /** The language tag in BCP 47 format. */
+  language?: string;
+  /** The status of a generated caption. */
+  status?: CaptionsLanguageGetResponseStatus;
+}
+export const GetCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    generated: S.optional(S.Boolean),
+    label: S.optional(S.String),
+    language: S.optional(S.String),
+    status: S.optional(CaptionsLanguageGetResponseStatus),
+  }),
+).annotate({
+  identifier: "GetCaptionLanguageResponse",
+}) as any as S.Schema<GetCaptionLanguageResponse>;
+
+export interface GetCaptionLanguageVttRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  identifier: string;
+  /** The language tag in BCP 47 format. */
+  language: string;
+}
+export const GetCaptionLanguageVttRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    identifier: S.String.pipe(T.Label()),
+    language: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/stream/{identifier}/captions/{language}/vtt",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetCaptionLanguageVttRequest",
+}) as any as S.Schema<GetCaptionLanguageVttRequest>;
+
+export interface GetCaptionLanguageVttResponse {}
+export const GetCaptionLanguageVttResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "GetCaptionLanguageVttResponse",
+}) as any as S.Schema<GetCaptionLanguageVttResponse>;
+
+export interface GetDownloadRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  identifier: string;
+}
+export const GetDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    identifier: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/stream/{identifier}/downloads",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetDownloadRequest",
+}) as any as S.Schema<GetDownloadRequest>;
+
+export type DownloadsGetResponseAudioStatus =
+  | "ready"
+  | "inprogress"
+  | "error"
+  | (string & {});
+export const DownloadsGetResponseAudioStatus = /*@__PURE__*/ S.String;
+
+export interface DownloadsGetResponseAudio {
+  /** Indicates the progress as a percentage between 0 and 100. */
+  percentComplete: number;
+  /** The status of a generated download. */
+  status: DownloadsGetResponseAudioStatus;
+  /** The URL to access the generated download. */
+  url?: string;
+}
+export const DownloadsGetResponseAudio = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    percentComplete: S.Number,
+    status: DownloadsGetResponseAudioStatus,
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DownloadsGetResponseAudio",
+}) as any as S.Schema<DownloadsGetResponseAudio>;
+
+export type DownloadsGetResponseDefaultStatus =
+  | "ready"
+  | "inprogress"
+  | "error"
+  | (string & {});
+export const DownloadsGetResponseDefaultStatus = /*@__PURE__*/ S.String;
+
+export interface DownloadsGetResponseDefault {
+  /** Indicates the progress as a percentage between 0 and 100. */
+  percentComplete: number;
+  /** The status of a generated download. */
+  status: DownloadsGetResponseDefaultStatus;
+  /** The URL to access the generated download. */
+  url?: string;
+}
+export const DownloadsGetResponseDefault = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    percentComplete: S.Number,
+    status: DownloadsGetResponseDefaultStatus,
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DownloadsGetResponseDefault",
+}) as any as S.Schema<DownloadsGetResponseDefault>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetDownloadResponse {
+  /** The audio-only download. Only present if this download type has been created. */
+  audio?: DownloadsGetResponseAudio;
+  /** The default video download. Only present if this download type has been created. */
+  default?: DownloadsGetResponseDefault;
+}
+export const GetDownloadResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    audio: S.optional(DownloadsGetResponseAudio),
+    default: S.optional(DownloadsGetResponseDefault),
+  }),
+).annotate({
+  identifier: "GetDownloadResponse",
+}) as any as S.Schema<GetDownloadResponse>;
+
+export interface GetEmbedRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  identifier: string;
+}
+export const GetEmbedRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1767,23 +2438,286 @@ export const EmbedGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "EmbedGetRequest",
-}) as any as S.Schema<EmbedGetRequest>;
+  identifier: "GetEmbedRequest",
+}) as any as S.Schema<GetEmbedRequest>;
 
-export interface EmbedGetResponse {}
-export const EmbedGetResponse = /*@__PURE__*/ S.suspend(() =>
+export interface GetEmbedResponse {}
+export const GetEmbedResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "EmbedGetResponse",
-}) as any as S.Schema<EmbedGetResponse>;
+  identifier: "GetEmbedResponse",
+}) as any as S.Schema<GetEmbedResponse>;
 
-export interface GetRequest {
+export interface GetKeyRequest {
+  /** Identifier. */
+  accountId: string;
+}
+export const GetKeyRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/stream/keys",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "GetKeyRequest" }) as any as S.Schema<GetKeyRequest>;
+
+export interface KeysGetResultItem {
+  /** Identifier. */
+  id?: string;
+  /** The date and time a signing key was created. */
+  created?: string;
+  /** The unique identifier for the signing key. */
+  keyId?: string;
+}
+export const KeysGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    created: S.optional(S.String),
+    keyId: S.optional(S.String.pipe(T.Body("key_id"))),
+  }),
+).annotate({
+  identifier: "KeysGetResultItem",
+}) as any as S.Schema<KeysGetResultItem>;
+
+export type KeysGetResultList = KeysGetResultItem[];
+export const KeysGetResultList = /*@__PURE__*/ S.Array(
+  KeysGetResultItem,
+) as any as S.Schema<KeysGetResultList>;
+
+export interface GetKeyResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: KeysGetResultList;
+}
+export const GetKeyResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(KeysGetResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({ identifier: "GetKeyResponse" }) as any as S.Schema<GetKeyResponse>;
+
+export interface GetLiveInputRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A unique identifier for a live input. */
+  liveInputIdentifier: string;
+}
+export const GetLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetLiveInputRequest",
+}) as any as S.Schema<GetLiveInputRequest>;
+
+export type LiveInputsGetResponseRecordingAllowedOriginsList = string[];
+export const LiveInputsGetResponseRecordingAllowedOriginsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<LiveInputsGetResponseRecordingAllowedOriginsList>;
+
+export type LiveInputsGetResponseRecordingMode =
+  | "off"
+  | "automatic"
+  | (string & {});
+export const LiveInputsGetResponseRecordingMode = /*@__PURE__*/ S.String;
+
+export interface LiveInputsGetResponseRecording {
+  /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
+  allowedOrigins?: LiveInputsGetResponseRecordingAllowedOriginsList;
+  /** Disables reporting the number of live viewers when this property is set to `true`. */
+  hideLiveViewerCount?: boolean;
+  /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
+  mode?: LiveInputsGetResponseRecordingMode;
+  /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
+  requireSignedURLs?: boolean;
+  /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
+  timeoutSeconds?: number;
+}
+export const LiveInputsGetResponseRecording = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    allowedOrigins: S.optional(
+      LiveInputsGetResponseRecordingAllowedOriginsList,
+    ),
+    hideLiveViewerCount: S.optional(S.Boolean),
+    mode: S.optional(LiveInputsGetResponseRecordingMode),
+    requireSignedURLs: S.optional(S.Boolean),
+    timeoutSeconds: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "LiveInputsGetResponseRecording",
+}) as any as S.Schema<LiveInputsGetResponseRecording>;
+
+export interface LiveInputsGetResponseRtmps {
+  /** The secret key to use when streaming via RTMPS to a live input. */
+  streamKey?: string;
+  /** The RTMPS URL you provide to the broadcaster, which they stream live video to. */
+  url?: string;
+}
+export const LiveInputsGetResponseRtmps = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    streamKey: S.optional(S.String),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LiveInputsGetResponseRtmps",
+}) as any as S.Schema<LiveInputsGetResponseRtmps>;
+
+export interface LiveInputsGetResponseRtmpsPlayback {
+  /** The secret key to use for playback via RTMPS. */
+  streamKey?: string;
+  /** The URL used to play live video over RTMPS. */
+  url?: string;
+}
+export const LiveInputsGetResponseRtmpsPlayback = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    streamKey: S.optional(S.String),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LiveInputsGetResponseRtmpsPlayback",
+}) as any as S.Schema<LiveInputsGetResponseRtmpsPlayback>;
+
+export interface LiveInputsGetResponseSrt {
+  /** The secret key to use when streaming via SRT to a live input. */
+  passphrase?: string;
+  /** The identifier of the live input to use when streaming via SRT. */
+  streamId?: string;
+  /** The SRT URL you provide to the broadcaster, which they stream live video to. */
+  url?: string;
+}
+export const LiveInputsGetResponseSrt = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    passphrase: S.optional(S.String),
+    streamId: S.optional(S.String),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LiveInputsGetResponseSrt",
+}) as any as S.Schema<LiveInputsGetResponseSrt>;
+
+export interface LiveInputsGetResponseSrtPlayback {
+  /** The secret key to use for playback via SRT. */
+  passphrase?: string;
+  /** The identifier of the live input to use for playback via SRT. */
+  streamId?: string;
+  /** The URL used to play live video over SRT. */
+  url?: string;
+}
+export const LiveInputsGetResponseSrtPlayback = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    passphrase: S.optional(S.String),
+    streamId: S.optional(S.String),
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LiveInputsGetResponseSrtPlayback",
+}) as any as S.Schema<LiveInputsGetResponseSrtPlayback>;
+
+export type LiveInputsGetResponseStatus =
+  | "connected"
+  | "reconnected"
+  | "reconnecting"
+  | (string & {});
+export const LiveInputsGetResponseStatus = /*@__PURE__*/ S.String;
+
+export interface LiveInputsGetResponseWebRTC {
+  /** The WebRTC URL you provide to the broadcaster, which they stream live video to. */
+  url?: string;
+}
+export const LiveInputsGetResponseWebRTC = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LiveInputsGetResponseWebRTC",
+}) as any as S.Schema<LiveInputsGetResponseWebRTC>;
+
+export interface LiveInputsGetResponseWebRTCPlayback {
+  /** The URL used to play live video over WebRTC. */
+  url?: string;
+}
+export const LiveInputsGetResponseWebRTCPlayback = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    url: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "LiveInputsGetResponseWebRTCPlayback",
+}) as any as S.Schema<LiveInputsGetResponseWebRTCPlayback>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetLiveInputResponse {
+  /** The date and time the live input was created. */
+  created?: string;
+  /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
+  deleteRecordingAfterDays?: number;
+  /** Indicates whether the live input is enabled and can accept streams. */
+  enabled?: boolean;
+  /** The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated. */
+  keysRotatedAt?: string;
+  /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
+  meta?: unknown;
+  /** The date and time the live input was last modified. */
+  modified?: string;
+  /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
+  preferLowLatency?: boolean;
+  /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
+  recording?: LiveInputsGetResponseRecording;
+  /** Details for streaming to an live input using RTMPS. */
+  rtmps?: LiveInputsGetResponseRtmps;
+  /** Details for playback from an live input using RTMPS. */
+  rtmpsPlayback?: LiveInputsGetResponseRtmpsPlayback;
+  /** Details for streaming to a live input using SRT. */
+  srt?: LiveInputsGetResponseSrt;
+  /** Details for playback from an live input using SRT. */
+  srtPlayback?: LiveInputsGetResponseSrtPlayback;
+  /** The connection status of a live input. */
+  status?: LiveInputsGetResponseStatus;
+  /** A unique identifier for a live input. */
+  uid?: string;
+  /** Details for streaming to a live input using WebRTC. */
+  webRTC?: LiveInputsGetResponseWebRTC;
+  /** Details for playback from a live input using WebRTC. */
+  webRTCPlayback?: LiveInputsGetResponseWebRTCPlayback;
+}
+export const GetLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    created: S.optional(S.String),
+    deleteRecordingAfterDays: S.optional(S.Number),
+    enabled: S.optional(S.Boolean),
+    keysRotatedAt: S.optional(S.String),
+    meta: S.optional(S.Unknown),
+    modified: S.optional(S.String),
+    preferLowLatency: S.optional(S.Boolean),
+    recording: S.optional(LiveInputsGetResponseRecording),
+    rtmps: S.optional(LiveInputsGetResponseRtmps),
+    rtmpsPlayback: S.optional(LiveInputsGetResponseRtmpsPlayback),
+    srt: S.optional(LiveInputsGetResponseSrt),
+    srtPlayback: S.optional(LiveInputsGetResponseSrtPlayback),
+    status: S.optional(LiveInputsGetResponseStatus),
+    uid: S.optional(S.String),
+    webRTC: S.optional(LiveInputsGetResponseWebRTC),
+    webRTCPlayback: S.optional(LiveInputsGetResponseWebRTCPlayback),
+  }),
+).annotate({
+  identifier: "GetLiveInputResponse",
+}) as any as S.Schema<GetLiveInputResponse>;
+
+export interface GetStreamRequest {
   /** The account identifier tag. */
   accountId: string;
   /** A Cloudflare-generated unique identifier for a media item. */
   identifier: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetStreamRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
@@ -1794,7 +2728,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetStreamRequest",
+}) as any as S.Schema<GetStreamRequest>;
 
 export type GetResponseAllowedOriginsList = unknown[];
 export const GetResponseAllowedOriginsList = /*@__PURE__*/ S.Array(
@@ -1921,7 +2857,7 @@ export const GetResponseWatermark = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseWatermark>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetStreamResponse {
   /** Lists the origins allowed to display the video. Enter allowed origin domains in an array and use `*` for wildcard subdomains. Empty arrays allow the video to be viewed on any origin. */
   allowedOrigins?: GetResponseAllowedOriginsList;
   /** The unique identifier of the source video this video was clipped from. */
@@ -1972,7 +2908,7 @@ export interface GetResponse {
   uploadExpiry?: string;
   watermark?: GetResponseWatermark;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetStreamResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     allowedOrigins: S.optional(GetResponseAllowedOriginsList),
     clippedFrom: S.optional(S.String),
@@ -2001,133 +2937,247 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     uploadExpiry: S.optional(S.String),
     watermark: S.optional(GetResponseWatermark),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
-
-export interface KeysCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  body: unknown;
-}
-export const KeysCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/stream/keys",
-      code: 200,
-    }),
-  ),
 ).annotate({
-  identifier: "KeysCreateRequest",
-}) as any as S.Schema<KeysCreateRequest>;
+  identifier: "GetStreamResponse",
+}) as any as S.Schema<GetStreamResponse>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface KeysCreateResponse {
-  /** Identifier. */
-  id?: string;
-  /** The date and time a signing key was created. */
-  created?: string;
-  /** The signing key in JWK format. */
-  jwk?: string;
-  /** The signing key in PEM format. */
-  pem?: string;
-}
-export const KeysCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    jwk: S.optional(S.String),
-    pem: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "KeysCreateResponse",
-}) as any as S.Schema<KeysCreateResponse>;
-
-export interface KeysDeleteRequest {
-  /** Identifier. */
+export interface GetWatermarkRequest {
+  /** The account identifier tag. */
   accountId: string;
-  /** Identifier. */
+  /** The unique identifier for a watermark profile. */
   identifier: string;
 }
-export const KeysDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetWatermarkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     identifier: S.String.pipe(T.Label()),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/stream/keys/{identifier}",
+      method: "GET",
+      uri: "/accounts/{account_id}/stream/watermarks/{identifier}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "KeysDeleteRequest",
-}) as any as S.Schema<KeysDeleteRequest>;
+  identifier: "GetWatermarkRequest",
+}) as any as S.Schema<GetWatermarkRequest>;
 
-export interface KeysDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetWatermarkResponse {
+  /** The date and a time a watermark profile was created. */
+  created?: string;
+  /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
+  downloadedFrom?: string;
+  /** The height of the image in pixels. */
+  height?: number;
+  /** A short description of the watermark profile. */
+  name?: string;
+  /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
+  opacity?: number;
+  /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
+  padding?: number;
+  /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
+  position?: string;
+  /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
+  scale?: number;
+  /** The size of the image in bytes. */
+  size?: number;
+  /** The unique identifier for a watermark profile. */
+  uid?: string;
+  /** The width of the image in pixels. */
+  width?: number;
 }
-export const KeysDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetWatermarkResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
+    created: S.optional(S.String),
+    downloadedFrom: S.optional(S.String),
+    height: S.optional(S.Number),
+    name: S.optional(S.String),
+    opacity: S.optional(S.Number),
+    padding: S.optional(S.Number),
+    position: S.optional(S.String),
+    scale: S.optional(S.Number),
+    size: S.optional(S.Number),
+    uid: S.optional(S.String),
+    width: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "KeysDeleteResponse",
-}) as any as S.Schema<KeysDeleteResponse>;
+  identifier: "GetWatermarkResponse",
+}) as any as S.Schema<GetWatermarkResponse>;
 
-export interface KeysGetRequest {
-  /** Identifier. */
+export interface GetWebhookRequest {
+  /** The account identifier tag. */
   accountId: string;
 }
-export const KeysGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetWebhookRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/accounts/{account_id}/stream/keys",
+      uri: "/accounts/{account_id}/stream/webhook",
       code: 200,
     }),
   ),
-).annotate({ identifier: "KeysGetRequest" }) as any as S.Schema<KeysGetRequest>;
+).annotate({
+  identifier: "GetWebhookRequest",
+}) as any as S.Schema<GetWebhookRequest>;
 
-export interface KeysGetResultItem {
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetWebhookResponse {
+  /** The date and time the webhook was last modified. */
+  modified?: string;
+  /** The URL where webhooks will be sent. */
+  notificationUrl?: string;
+  /** The URL where webhooks will be sent. */
+  notificationUrl2?: string;
+  /** The secret used to verify webhook signatures. */
+  secret?: string;
+}
+export const GetWebhookResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modified: S.optional(S.String),
+    notificationUrl: S.optional(S.String.pipe(T.Body("notification_url"))),
+    notificationUrl2: S.optional(S.String.pipe(T.Body("notificationUrl"))),
+    secret: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "GetWebhookResponse",
+}) as any as S.Schema<GetWebhookResponse>;
+
+export interface ListLiveInputOutputsRequest {
   /** Identifier. */
-  id?: string;
-  /** The date and time a signing key was created. */
-  created?: string;
-  /** The unique identifier for the signing key. */
-  keyId?: string;
+  accountId: string;
+  /** A unique identifier for a live input. */
+  liveInputIdentifier: string;
 }
-export const KeysGetResultItem = /*@__PURE__*/ S.suspend(() =>
+export const ListLiveInputOutputsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    created: S.optional(S.String),
-    keyId: S.optional(S.String.pipe(T.Body("key_id"))),
+    accountId: S.String.pipe(T.Label("account_id")),
+    liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListLiveInputOutputsRequest",
+}) as any as S.Schema<ListLiveInputOutputsRequest>;
+
+export interface LiveInputsOutputsListResultItem {
+  /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
+  enabled?: boolean;
+  /** The streamKey used to authenticate against an output's target. */
+  streamKey?: string;
+  /** A unique identifier for the output. */
+  uid?: string;
+  /** The URL an output uses to restream. */
+  url?: string;
+}
+export const LiveInputsOutputsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.optional(S.Boolean),
+    streamKey: S.optional(S.String),
+    uid: S.optional(S.String),
+    url: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "KeysGetResultItem",
-}) as any as S.Schema<KeysGetResultItem>;
+  identifier: "LiveInputsOutputsListResultItem",
+}) as any as S.Schema<LiveInputsOutputsListResultItem>;
 
-export type KeysGetResultList = KeysGetResultItem[];
-export const KeysGetResultList = /*@__PURE__*/ S.Array(
-  KeysGetResultItem,
-) as any as S.Schema<KeysGetResultList>;
+export type LiveInputsOutputsListResultList = LiveInputsOutputsListResultItem[];
+export const LiveInputsOutputsListResultList = /*@__PURE__*/ S.Array(
+  LiveInputsOutputsListResultItem,
+) as any as S.Schema<LiveInputsOutputsListResultList>;
 
-export interface KeysGetResponse {
+export interface ListLiveInputOutputsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: KeysGetResultList;
+  result?: LiveInputsOutputsListResultList;
 }
-export const KeysGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListLiveInputOutputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(KeysGetResultList.pipe(T.EnvelopePayload())),
+    result: S.optional(
+      LiveInputsOutputsListResultList.pipe(T.EnvelopePayload()),
+    ),
   }),
 ).annotate({
-  identifier: "KeysGetResponse",
-}) as any as S.Schema<KeysGetResponse>;
+  identifier: "ListLiveInputOutputsResponse",
+}) as any as S.Schema<ListLiveInputOutputsResponse>;
+
+export interface ListLiveInputsRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Includes the total number of videos associated with the submitted query parameters. */
+  includeCounts?: boolean;
+}
+export const ListLiveInputsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    includeCounts: S.optional(S.Boolean.pipe(T.Query("include_counts"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/stream/live_inputs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListLiveInputsRequest",
+}) as any as S.Schema<ListLiveInputsRequest>;
+
+export interface LiveInputsListResponseLiveInputsItem {
+  /** The date and time the live input was created. */
+  created?: string;
+  /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
+  deleteRecordingAfterDays?: number;
+  /** Indicates whether the live input is enabled and can accept streams. */
+  enabled?: boolean;
+  /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
+  meta?: unknown;
+  /** The date and time the live input was last modified. */
+  modified?: string;
+  /** A unique identifier for a live input. */
+  uid?: string;
+}
+export const LiveInputsListResponseLiveInputsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      created: S.optional(S.String),
+      deleteRecordingAfterDays: S.optional(S.Number),
+      enabled: S.optional(S.Boolean),
+      meta: S.optional(S.Unknown),
+      modified: S.optional(S.String),
+      uid: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "LiveInputsListResponseLiveInputsItem",
+}) as any as S.Schema<LiveInputsListResponseLiveInputsItem>;
+
+export type LiveInputsListResponseLiveInputsList =
+  LiveInputsListResponseLiveInputsItem[];
+export const LiveInputsListResponseLiveInputsList = /*@__PURE__*/ S.Array(
+  LiveInputsListResponseLiveInputsItem,
+) as any as S.Schema<LiveInputsListResponseLiveInputsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface ListLiveInputsResponse {
+  liveInputs?: LiveInputsListResponseLiveInputsList;
+  /** The total number of remaining live inputs based on cursor position. */
+  range?: number;
+  /** The total number of live inputs that match the provided filters. */
+  total?: number;
+}
+export const ListLiveInputsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    liveInputs: S.optional(LiveInputsListResponseLiveInputsList),
+    range: S.optional(S.Number),
+    total: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "ListLiveInputsResponse",
+}) as any as S.Schema<ListLiveInputsResponse>;
 
 export type ListRequestStatus =
   | "pendingupload"
@@ -2136,7 +3186,7 @@ export type ListRequestStatus =
   | (string & {});
 export const ListRequestStatus = /*@__PURE__*/ S.String;
 
-export interface ListRequest {
+export interface ListStreamsRequest {
   /** The account identifier tag. */
   accountId: string;
   /** Filter by video ID(s). Can be a single ID or a comma-separated list of IDs. */
@@ -2170,7 +3220,7 @@ export interface ListRequest {
   /** Provides a fast, exact string match on the `name` key in the `meta` field. */
   videoName?: string;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListStreamsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     id: S.optional(S.String.pipe(T.Query())),
@@ -2191,7 +3241,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", uri: "/accounts/{account_id}/stream", code: 200 }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListStreamsRequest",
+}) as any as S.Schema<ListStreamsRequest>;
 
 export type ListResultItemAllowedOriginsList = unknown[];
 export const ListResultItemAllowedOriginsList = /*@__PURE__*/ S.Array(
@@ -2404,792 +3456,295 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListStreamsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
-
-export type LiveInputsCreateRequestRecordingAllowedOriginsList = string[];
-export const LiveInputsCreateRequestRecordingAllowedOriginsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<LiveInputsCreateRequestRecordingAllowedOriginsList>;
-
-export type LiveInputsCreateRequestRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
-export const LiveInputsCreateRequestRecordingMode = /*@__PURE__*/ S.String;
-
-export interface LiveInputsCreateRequestRecording {
-  /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
-  allowedOrigins?: LiveInputsCreateRequestRecordingAllowedOriginsList;
-  /** Disables reporting the number of live viewers when this property is set to `true`. */
-  hideLiveViewerCount?: boolean;
-  /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
-  mode?: LiveInputsCreateRequestRecordingMode;
-  /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
-  requireSignedURLs?: boolean;
-  /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
-  timeoutSeconds?: number;
-}
-export const LiveInputsCreateRequestRecording = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedOrigins: S.optional(
-      LiveInputsCreateRequestRecordingAllowedOriginsList,
-    ),
-    hideLiveViewerCount: S.optional(S.Boolean),
-    mode: S.optional(LiveInputsCreateRequestRecordingMode),
-    requireSignedURLs: S.optional(S.Boolean),
-    timeoutSeconds: S.optional(S.Number),
-  }),
 ).annotate({
-  identifier: "LiveInputsCreateRequestRecording",
-}) as any as S.Schema<LiveInputsCreateRequestRecording>;
+  identifier: "ListStreamsResponse",
+}) as any as S.Schema<ListStreamsResponse>;
 
-export interface LiveInputsCreateRequest {
-  /** Identifier. */
+export interface ListWatermarksRequest {
+  /** The account identifier tag. */
   accountId: string;
-  /** Sets the creator ID asssociated with this live input. */
-  defaultCreator?: string;
-  /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
-  deleteRecordingAfterDays?: number;
-  /** Indicates whether the live input is enabled and can accept streams. */
-  enabled?: boolean;
-  /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
-  meta?: unknown;
-  /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
-  preferLowLatency?: boolean;
-  /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
-  recording?: LiveInputsCreateRequestRecording;
 }
-export const LiveInputsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListWatermarksRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    defaultCreator: S.optional(S.String),
-    deleteRecordingAfterDays: S.optional(S.Number),
-    enabled: S.optional(S.Boolean),
-    meta: S.optional(S.Unknown),
-    preferLowLatency: S.optional(S.Boolean),
-    recording: S.optional(LiveInputsCreateRequestRecording),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/stream/live_inputs",
+      method: "GET",
+      uri: "/accounts/{account_id}/stream/watermarks",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "LiveInputsCreateRequest",
-}) as any as S.Schema<LiveInputsCreateRequest>;
+  identifier: "ListWatermarksRequest",
+}) as any as S.Schema<ListWatermarksRequest>;
 
-export type LiveInputsCreateResponseRecordingAllowedOriginsList = string[];
-export const LiveInputsCreateResponseRecordingAllowedOriginsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<LiveInputsCreateResponseRecordingAllowedOriginsList>;
-
-export type LiveInputsCreateResponseRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
-export const LiveInputsCreateResponseRecordingMode = /*@__PURE__*/ S.String;
-
-export interface LiveInputsCreateResponseRecording {
-  /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
-  allowedOrigins?: LiveInputsCreateResponseRecordingAllowedOriginsList;
-  /** Disables reporting the number of live viewers when this property is set to `true`. */
-  hideLiveViewerCount?: boolean;
-  /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
-  mode?: LiveInputsCreateResponseRecordingMode;
-  /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
-  requireSignedURLs?: boolean;
-  /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
-  timeoutSeconds?: number;
-}
-export const LiveInputsCreateResponseRecording = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedOrigins: S.optional(
-      LiveInputsCreateResponseRecordingAllowedOriginsList,
-    ),
-    hideLiveViewerCount: S.optional(S.Boolean),
-    mode: S.optional(LiveInputsCreateResponseRecordingMode),
-    requireSignedURLs: S.optional(S.Boolean),
-    timeoutSeconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "LiveInputsCreateResponseRecording",
-}) as any as S.Schema<LiveInputsCreateResponseRecording>;
-
-export interface LiveInputsCreateResponseRtmps {
-  /** The secret key to use when streaming via RTMPS to a live input. */
-  streamKey?: string;
-  /** The RTMPS URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
-}
-export const LiveInputsCreateResponseRtmps = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    streamKey: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveInputsCreateResponseRtmps",
-}) as any as S.Schema<LiveInputsCreateResponseRtmps>;
-
-export interface LiveInputsCreateResponseRtmpsPlayback {
-  /** The secret key to use for playback via RTMPS. */
-  streamKey?: string;
-  /** The URL used to play live video over RTMPS. */
-  url?: string;
-}
-export const LiveInputsCreateResponseRtmpsPlayback = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      streamKey: S.optional(S.String),
-      url: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "LiveInputsCreateResponseRtmpsPlayback",
-}) as any as S.Schema<LiveInputsCreateResponseRtmpsPlayback>;
-
-export interface LiveInputsCreateResponseSrt {
-  /** The secret key to use when streaming via SRT to a live input. */
-  passphrase?: string;
-  /** The identifier of the live input to use when streaming via SRT. */
-  streamId?: string;
-  /** The SRT URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
-}
-export const LiveInputsCreateResponseSrt = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    passphrase: S.optional(S.String),
-    streamId: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveInputsCreateResponseSrt",
-}) as any as S.Schema<LiveInputsCreateResponseSrt>;
-
-export interface LiveInputsCreateResponseSrtPlayback {
-  /** The secret key to use for playback via SRT. */
-  passphrase?: string;
-  /** The identifier of the live input to use for playback via SRT. */
-  streamId?: string;
-  /** The URL used to play live video over SRT. */
-  url?: string;
-}
-export const LiveInputsCreateResponseSrtPlayback = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    passphrase: S.optional(S.String),
-    streamId: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveInputsCreateResponseSrtPlayback",
-}) as any as S.Schema<LiveInputsCreateResponseSrtPlayback>;
-
-export type LiveInputsCreateResponseStatus =
-  | "connected"
-  | "reconnected"
-  | "reconnecting"
-  | (string & {});
-export const LiveInputsCreateResponseStatus = /*@__PURE__*/ S.String;
-
-export interface LiveInputsCreateResponseWebRTC {
-  /** The WebRTC URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
-}
-export const LiveInputsCreateResponseWebRTC = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveInputsCreateResponseWebRTC",
-}) as any as S.Schema<LiveInputsCreateResponseWebRTC>;
-
-export interface LiveInputsCreateResponseWebRTCPlayback {
-  /** The URL used to play live video over WebRTC. */
-  url?: string;
-}
-export const LiveInputsCreateResponseWebRTCPlayback = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      url: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "LiveInputsCreateResponseWebRTCPlayback",
-}) as any as S.Schema<LiveInputsCreateResponseWebRTCPlayback>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LiveInputsCreateResponse {
-  /** The date and time the live input was created. */
+export interface WatermarksListResultItem {
+  /** The date and a time a watermark profile was created. */
   created?: string;
-  /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
-  deleteRecordingAfterDays?: number;
-  /** Indicates whether the live input is enabled and can accept streams. */
-  enabled?: boolean;
-  /** The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated. */
-  keysRotatedAt?: string;
-  /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
-  meta?: unknown;
-  /** The date and time the live input was last modified. */
-  modified?: string;
-  /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
-  preferLowLatency?: boolean;
-  /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
-  recording?: LiveInputsCreateResponseRecording;
-  /** Details for streaming to an live input using RTMPS. */
-  rtmps?: LiveInputsCreateResponseRtmps;
-  /** Details for playback from an live input using RTMPS. */
-  rtmpsPlayback?: LiveInputsCreateResponseRtmpsPlayback;
-  /** Details for streaming to a live input using SRT. */
-  srt?: LiveInputsCreateResponseSrt;
-  /** Details for playback from an live input using SRT. */
-  srtPlayback?: LiveInputsCreateResponseSrtPlayback;
-  /** The connection status of a live input. */
-  status?: LiveInputsCreateResponseStatus;
-  /** A unique identifier for a live input. */
+  /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
+  downloadedFrom?: string;
+  /** The height of the image in pixels. */
+  height?: number;
+  /** A short description of the watermark profile. */
+  name?: string;
+  /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
+  opacity?: number;
+  /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
+  padding?: number;
+  /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
+  position?: string;
+  /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
+  scale?: number;
+  /** The size of the image in bytes. */
+  size?: number;
+  /** The unique identifier for a watermark profile. */
   uid?: string;
-  /** Details for streaming to a live input using WebRTC. */
-  webRTC?: LiveInputsCreateResponseWebRTC;
-  /** Details for playback from a live input using WebRTC. */
-  webRTCPlayback?: LiveInputsCreateResponseWebRTCPlayback;
+  /** The width of the image in pixels. */
+  width?: number;
 }
-export const LiveInputsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const WatermarksListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
-    deleteRecordingAfterDays: S.optional(S.Number),
-    enabled: S.optional(S.Boolean),
-    keysRotatedAt: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    modified: S.optional(S.String),
-    preferLowLatency: S.optional(S.Boolean),
-    recording: S.optional(LiveInputsCreateResponseRecording),
-    rtmps: S.optional(LiveInputsCreateResponseRtmps),
-    rtmpsPlayback: S.optional(LiveInputsCreateResponseRtmpsPlayback),
-    srt: S.optional(LiveInputsCreateResponseSrt),
-    srtPlayback: S.optional(LiveInputsCreateResponseSrtPlayback),
-    status: S.optional(LiveInputsCreateResponseStatus),
+    downloadedFrom: S.optional(S.String),
+    height: S.optional(S.Number),
+    name: S.optional(S.String),
+    opacity: S.optional(S.Number),
+    padding: S.optional(S.Number),
+    position: S.optional(S.String),
+    scale: S.optional(S.Number),
+    size: S.optional(S.Number),
     uid: S.optional(S.String),
-    webRTC: S.optional(LiveInputsCreateResponseWebRTC),
-    webRTCPlayback: S.optional(LiveInputsCreateResponseWebRTCPlayback),
+    width: S.optional(S.Number),
   }),
 ).annotate({
-  identifier: "LiveInputsCreateResponse",
-}) as any as S.Schema<LiveInputsCreateResponse>;
+  identifier: "WatermarksListResultItem",
+}) as any as S.Schema<WatermarksListResultItem>;
 
-export interface LiveInputsDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A unique identifier for a live input. */
-  liveInputIdentifier: string;
-}
-export const LiveInputsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LiveInputsDeleteRequest",
-}) as any as S.Schema<LiveInputsDeleteRequest>;
+export type WatermarksListResultList = WatermarksListResultItem[];
+export const WatermarksListResultList = /*@__PURE__*/ S.Array(
+  WatermarksListResultItem,
+) as any as S.Schema<WatermarksListResultList>;
 
-export interface LiveInputsDeleteResponse {}
-export const LiveInputsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LiveInputsDeleteResponse",
-}) as any as S.Schema<LiveInputsDeleteResponse>;
-
-export interface LiveInputsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A unique identifier for a live input. */
-  liveInputIdentifier: string;
-}
-export const LiveInputsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LiveInputsGetRequest",
-}) as any as S.Schema<LiveInputsGetRequest>;
-
-export type LiveInputsGetResponseRecordingAllowedOriginsList = string[];
-export const LiveInputsGetResponseRecordingAllowedOriginsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<LiveInputsGetResponseRecordingAllowedOriginsList>;
-
-export type LiveInputsGetResponseRecordingMode =
-  | "off"
-  | "automatic"
-  | (string & {});
-export const LiveInputsGetResponseRecordingMode = /*@__PURE__*/ S.String;
-
-export interface LiveInputsGetResponseRecording {
-  /** Lists the origins allowed to display videos created with this input. Enter allowed origin domains in an array and use `*` for wildcard subdomains. An empty array allows videos to be viewed on any origin. */
-  allowedOrigins?: LiveInputsGetResponseRecordingAllowedOriginsList;
-  /** Disables reporting the number of live viewers when this property is set to `true`. */
-  hideLiveViewerCount?: boolean;
-  /** Specifies the recording behavior for the live input. Set this value to `off` to prevent a recording. Set the value to `automatic` to begin a recording and transition to on-demand after Stream Live stops receiving input. */
-  mode?: LiveInputsGetResponseRecordingMode;
-  /** Indicates if a video using the live input has the `requireSignedURLs` property set. Also enforces access controls on any video recording of the livestream with the live input. */
-  requireSignedURLs?: boolean;
-  /** Determines the amount of time a live input configured in `automatic` mode should wait before a recording transitions from live to on-demand. `0` is recommended for most use cases and indicates the platform default should be used. */
-  timeoutSeconds?: number;
-}
-export const LiveInputsGetResponseRecording = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    allowedOrigins: S.optional(
-      LiveInputsGetResponseRecordingAllowedOriginsList,
-    ),
-    hideLiveViewerCount: S.optional(S.Boolean),
-    mode: S.optional(LiveInputsGetResponseRecordingMode),
-    requireSignedURLs: S.optional(S.Boolean),
-    timeoutSeconds: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "LiveInputsGetResponseRecording",
-}) as any as S.Schema<LiveInputsGetResponseRecording>;
-
-export interface LiveInputsGetResponseRtmps {
-  /** The secret key to use when streaming via RTMPS to a live input. */
-  streamKey?: string;
-  /** The RTMPS URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
-}
-export const LiveInputsGetResponseRtmps = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    streamKey: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveInputsGetResponseRtmps",
-}) as any as S.Schema<LiveInputsGetResponseRtmps>;
-
-export interface LiveInputsGetResponseRtmpsPlayback {
-  /** The secret key to use for playback via RTMPS. */
-  streamKey?: string;
-  /** The URL used to play live video over RTMPS. */
-  url?: string;
-}
-export const LiveInputsGetResponseRtmpsPlayback = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    streamKey: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveInputsGetResponseRtmpsPlayback",
-}) as any as S.Schema<LiveInputsGetResponseRtmpsPlayback>;
-
-export interface LiveInputsGetResponseSrt {
-  /** The secret key to use when streaming via SRT to a live input. */
-  passphrase?: string;
-  /** The identifier of the live input to use when streaming via SRT. */
-  streamId?: string;
-  /** The SRT URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
-}
-export const LiveInputsGetResponseSrt = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    passphrase: S.optional(S.String),
-    streamId: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveInputsGetResponseSrt",
-}) as any as S.Schema<LiveInputsGetResponseSrt>;
-
-export interface LiveInputsGetResponseSrtPlayback {
-  /** The secret key to use for playback via SRT. */
-  passphrase?: string;
-  /** The identifier of the live input to use for playback via SRT. */
-  streamId?: string;
-  /** The URL used to play live video over SRT. */
-  url?: string;
-}
-export const LiveInputsGetResponseSrtPlayback = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    passphrase: S.optional(S.String),
-    streamId: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveInputsGetResponseSrtPlayback",
-}) as any as S.Schema<LiveInputsGetResponseSrtPlayback>;
-
-export type LiveInputsGetResponseStatus =
-  | "connected"
-  | "reconnected"
-  | "reconnecting"
-  | (string & {});
-export const LiveInputsGetResponseStatus = /*@__PURE__*/ S.String;
-
-export interface LiveInputsGetResponseWebRTC {
-  /** The WebRTC URL you provide to the broadcaster, which they stream live video to. */
-  url?: string;
-}
-export const LiveInputsGetResponseWebRTC = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveInputsGetResponseWebRTC",
-}) as any as S.Schema<LiveInputsGetResponseWebRTC>;
-
-export interface LiveInputsGetResponseWebRTCPlayback {
-  /** The URL used to play live video over WebRTC. */
-  url?: string;
-}
-export const LiveInputsGetResponseWebRTCPlayback = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveInputsGetResponseWebRTCPlayback",
-}) as any as S.Schema<LiveInputsGetResponseWebRTCPlayback>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LiveInputsGetResponse {
-  /** The date and time the live input was created. */
-  created?: string;
-  /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
-  deleteRecordingAfterDays?: number;
-  /** Indicates whether the live input is enabled and can accept streams. */
-  enabled?: boolean;
-  /** The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated. */
-  keysRotatedAt?: string;
-  /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
-  meta?: unknown;
-  /** The date and time the live input was last modified. */
-  modified?: string;
-  /** When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility. */
-  preferLowLatency?: boolean;
-  /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
-  recording?: LiveInputsGetResponseRecording;
-  /** Details for streaming to an live input using RTMPS. */
-  rtmps?: LiveInputsGetResponseRtmps;
-  /** Details for playback from an live input using RTMPS. */
-  rtmpsPlayback?: LiveInputsGetResponseRtmpsPlayback;
-  /** Details for streaming to a live input using SRT. */
-  srt?: LiveInputsGetResponseSrt;
-  /** Details for playback from an live input using SRT. */
-  srtPlayback?: LiveInputsGetResponseSrtPlayback;
-  /** The connection status of a live input. */
-  status?: LiveInputsGetResponseStatus;
-  /** A unique identifier for a live input. */
-  uid?: string;
-  /** Details for streaming to a live input using WebRTC. */
-  webRTC?: LiveInputsGetResponseWebRTC;
-  /** Details for playback from a live input using WebRTC. */
-  webRTCPlayback?: LiveInputsGetResponseWebRTCPlayback;
-}
-export const LiveInputsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.String),
-    deleteRecordingAfterDays: S.optional(S.Number),
-    enabled: S.optional(S.Boolean),
-    keysRotatedAt: S.optional(S.String),
-    meta: S.optional(S.Unknown),
-    modified: S.optional(S.String),
-    preferLowLatency: S.optional(S.Boolean),
-    recording: S.optional(LiveInputsGetResponseRecording),
-    rtmps: S.optional(LiveInputsGetResponseRtmps),
-    rtmpsPlayback: S.optional(LiveInputsGetResponseRtmpsPlayback),
-    srt: S.optional(LiveInputsGetResponseSrt),
-    srtPlayback: S.optional(LiveInputsGetResponseSrtPlayback),
-    status: S.optional(LiveInputsGetResponseStatus),
-    uid: S.optional(S.String),
-    webRTC: S.optional(LiveInputsGetResponseWebRTC),
-    webRTCPlayback: S.optional(LiveInputsGetResponseWebRTCPlayback),
-  }),
-).annotate({
-  identifier: "LiveInputsGetResponse",
-}) as any as S.Schema<LiveInputsGetResponse>;
-
-export interface LiveInputsListRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Includes the total number of videos associated with the submitted query parameters. */
-  includeCounts?: boolean;
-}
-export const LiveInputsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    includeCounts: S.optional(S.Boolean.pipe(T.Query("include_counts"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/stream/live_inputs",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LiveInputsListRequest",
-}) as any as S.Schema<LiveInputsListRequest>;
-
-export interface LiveInputsListResponseLiveInputsItem {
-  /** The date and time the live input was created. */
-  created?: string;
-  /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
-  deleteRecordingAfterDays?: number;
-  /** Indicates whether the live input is enabled and can accept streams. */
-  enabled?: boolean;
-  /** A user modifiable key-value store used to reference other systems of record for managing live inputs. */
-  meta?: unknown;
-  /** The date and time the live input was last modified. */
-  modified?: string;
-  /** A unique identifier for a live input. */
-  uid?: string;
-}
-export const LiveInputsListResponseLiveInputsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      created: S.optional(S.String),
-      deleteRecordingAfterDays: S.optional(S.Number),
-      enabled: S.optional(S.Boolean),
-      meta: S.optional(S.Unknown),
-      modified: S.optional(S.String),
-      uid: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "LiveInputsListResponseLiveInputsItem",
-}) as any as S.Schema<LiveInputsListResponseLiveInputsItem>;
-
-export type LiveInputsListResponseLiveInputsList =
-  LiveInputsListResponseLiveInputsItem[];
-export const LiveInputsListResponseLiveInputsList = /*@__PURE__*/ S.Array(
-  LiveInputsListResponseLiveInputsItem,
-) as any as S.Schema<LiveInputsListResponseLiveInputsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LiveInputsListResponse {
-  liveInputs?: LiveInputsListResponseLiveInputsList;
-  /** The total number of remaining live inputs based on cursor position. */
-  range?: number;
-  /** The total number of live inputs that match the provided filters. */
-  total?: number;
-}
-export const LiveInputsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    liveInputs: S.optional(LiveInputsListResponseLiveInputsList),
-    range: S.optional(S.Number),
-    total: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "LiveInputsListResponse",
-}) as any as S.Schema<LiveInputsListResponse>;
-
-export interface LiveInputsOutputsCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A unique identifier for a live input. */
-  liveInputIdentifier: string;
-  /** The streamKey used to authenticate against an output's target. */
-  streamKey: string;
-  /** The URL an output uses to restream. */
-  url: string;
-  /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
-  enabled?: boolean;
-}
-export const LiveInputsOutputsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
-    streamKey: S.String,
-    url: S.String,
-    enabled: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LiveInputsOutputsCreateRequest",
-}) as any as S.Schema<LiveInputsOutputsCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LiveInputsOutputsCreateResponse {
-  /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
-  enabled?: boolean;
-  /** The streamKey used to authenticate against an output's target. */
-  streamKey?: string;
-  /** A unique identifier for the output. */
-  uid?: string;
-  /** The URL an output uses to restream. */
-  url?: string;
-}
-export const LiveInputsOutputsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    streamKey: S.optional(S.String),
-    uid: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveInputsOutputsCreateResponse",
-}) as any as S.Schema<LiveInputsOutputsCreateResponse>;
-
-export interface LiveInputsOutputsDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A unique identifier for a live input. */
-  liveInputIdentifier: string;
-  /** A unique identifier for the output. */
-  outputIdentifier: string;
-}
-export const LiveInputsOutputsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
-    outputIdentifier: S.String.pipe(T.Label("output_identifier")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LiveInputsOutputsDeleteRequest",
-}) as any as S.Schema<LiveInputsOutputsDeleteRequest>;
-
-export interface LiveInputsOutputsDeleteResponse {}
-export const LiveInputsOutputsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "LiveInputsOutputsDeleteResponse",
-}) as any as S.Schema<LiveInputsOutputsDeleteResponse>;
-
-export interface LiveInputsOutputsListRequest {
-  /** Identifier. */
-  accountId: string;
-  /** A unique identifier for a live input. */
-  liveInputIdentifier: string;
-}
-export const LiveInputsOutputsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LiveInputsOutputsListRequest",
-}) as any as S.Schema<LiveInputsOutputsListRequest>;
-
-export interface LiveInputsOutputsListResultItem {
-  /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
-  enabled?: boolean;
-  /** The streamKey used to authenticate against an output's target. */
-  streamKey?: string;
-  /** A unique identifier for the output. */
-  uid?: string;
-  /** The URL an output uses to restream. */
-  url?: string;
-}
-export const LiveInputsOutputsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    enabled: S.optional(S.Boolean),
-    streamKey: S.optional(S.String),
-    uid: S.optional(S.String),
-    url: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "LiveInputsOutputsListResultItem",
-}) as any as S.Schema<LiveInputsOutputsListResultItem>;
-
-export type LiveInputsOutputsListResultList = LiveInputsOutputsListResultItem[];
-export const LiveInputsOutputsListResultList = /*@__PURE__*/ S.Array(
-  LiveInputsOutputsListResultItem,
-) as any as S.Schema<LiveInputsOutputsListResultList>;
-
-export interface LiveInputsOutputsListResponse {
+export interface ListWatermarksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LiveInputsOutputsListResultList;
+  result?: WatermarksListResultList;
 }
-export const LiveInputsOutputsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListWatermarksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      LiveInputsOutputsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: S.optional(WatermarksListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "LiveInputsOutputsListResponse",
-}) as any as S.Schema<LiveInputsOutputsListResponse>;
+  identifier: "ListWatermarksResponse",
+}) as any as S.Schema<ListWatermarksResponse>;
 
-export interface LiveInputsOutputsUpdateRequest {
-  /** Identifier. */
+export interface PatchAudioTrackRequest {
+  /** The account identifier tag. */
   accountId: string;
-  /** A unique identifier for a live input. */
-  liveInputIdentifier: string;
-  /** A unique identifier for the output. */
-  outputIdentifier: string;
-  /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
-  enabled: boolean;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  identifier: string;
+  /** The unique identifier for an additional audio track. */
+  audioIdentifier: string;
+  /** Denotes whether the audio track will be played by default in a player. */
+  default?: boolean;
+  /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
+  label?: string;
 }
-export const LiveInputsOutputsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PatchAudioTrackRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
-    outputIdentifier: S.String.pipe(T.Label("output_identifier")),
-    enabled: S.Boolean,
+    identifier: S.String.pipe(T.Label()),
+    audioIdentifier: S.String.pipe(T.Label("audio_identifier")),
+    default: S.optional(S.Boolean),
+    label: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/stream/{identifier}/audio/{audio_identifier}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchAudioTrackRequest",
+}) as any as S.Schema<PatchAudioTrackRequest>;
+
+export type AudioTracksEditResponseStatus =
+  | "queued"
+  | "ready"
+  | "error"
+  | (string & {});
+export const AudioTracksEditResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchAudioTrackResponse {
+  /** Denotes whether the audio track will be played by default in a player. */
+  default?: boolean;
+  /** A string to uniquely identify the track amongst other audio track labels for the specified video. */
+  label?: string;
+  /** Specifies the processing status of the video. */
+  status?: AudioTracksEditResponseStatus;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  uid?: string;
+}
+export const PatchAudioTrackResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    default: S.optional(S.Boolean),
+    label: S.optional(S.String),
+    status: S.optional(AudioTracksEditResponseStatus),
+    uid: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PatchAudioTrackResponse",
+}) as any as S.Schema<PatchAudioTrackResponse>;
+
+export interface PutWebhookRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** The URL where webhooks will be sent. */
+  notificationUrl?: string;
+  /** The URL where webhooks will be sent. */
+  notificationUrl2?: string;
+}
+export const PutWebhookRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    notificationUrl: S.optional(S.String.pipe(T.Body("notification_url"))),
+    notificationUrl2: S.optional(S.String.pipe(T.Body("notificationUrl"))),
   }).pipe(
     T.Http({
       method: "PUT",
-      uri: "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}",
+      uri: "/accounts/{account_id}/stream/webhook",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "LiveInputsOutputsUpdateRequest",
-}) as any as S.Schema<LiveInputsOutputsUpdateRequest>;
+  identifier: "PutWebhookRequest",
+}) as any as S.Schema<PutWebhookRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LiveInputsOutputsUpdateResponse {
-  /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
-  enabled?: boolean;
-  /** The streamKey used to authenticate against an output's target. */
-  streamKey?: string;
-  /** A unique identifier for the output. */
-  uid?: string;
-  /** The URL an output uses to restream. */
-  url?: string;
+export interface PutWebhookResponse {
+  /** The date and time the webhook was last modified. */
+  modified?: string;
+  /** The URL where webhooks will be sent. */
+  notificationUrl?: string;
+  /** The URL where webhooks will be sent. */
+  notificationUrl2?: string;
+  /** The secret used to verify webhook signatures. */
+  secret?: string;
 }
-export const LiveInputsOutputsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutWebhookResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    enabled: S.optional(S.Boolean),
-    streamKey: S.optional(S.String),
-    uid: S.optional(S.String),
-    url: S.optional(S.String),
+    modified: S.optional(S.String),
+    notificationUrl: S.optional(S.String.pipe(T.Body("notification_url"))),
+    notificationUrl2: S.optional(S.String.pipe(T.Body("notificationUrl"))),
+    secret: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "LiveInputsOutputsUpdateResponse",
-}) as any as S.Schema<LiveInputsOutputsUpdateResponse>;
+  identifier: "PutWebhookResponse",
+}) as any as S.Schema<PutWebhookResponse>;
+
+export interface StorageUsageVideoRequest {
+  /** The account identifier tag. */
+  accountId: string;
+  /** A user-defined identifier for the media creator. */
+  creator?: string;
+}
+export const StorageUsageVideoRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    creator: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/stream/storage-usage",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "StorageUsageVideoRequest",
+}) as any as S.Schema<StorageUsageVideoRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface StorageUsageVideoResponse {
+  /** A user-defined identifier for the media creator. */
+  creator?: string;
+  /** The total minutes of video content stored in the account. May contain decimal values. */
+  totalStorageMinutes?: number;
+  /** The storage capacity alloted for the account. */
+  totalStorageMinutesLimit?: number;
+  /** The total count of videos associated with the account. */
+  videoCount?: number;
+}
+export const StorageUsageVideoResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    creator: S.optional(S.String),
+    totalStorageMinutes: S.optional(S.Number),
+    totalStorageMinutesLimit: S.optional(S.Number),
+    videoCount: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "StorageUsageVideoResponse",
+}) as any as S.Schema<StorageUsageVideoResponse>;
+
+export interface UpdateCaptionLanguageRequest {
+  /** Identifier. */
+  accountId: string;
+  /** A Cloudflare-generated unique identifier for a media item. */
+  identifier: string;
+  /** The language tag in BCP 47 format. */
+  language: string;
+}
+export const UpdateCaptionLanguageRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    identifier: S.String.pipe(T.Label()),
+    language: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/stream/{identifier}/captions/{language}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateCaptionLanguageRequest",
+}) as any as S.Schema<UpdateCaptionLanguageRequest>;
+
+export type CaptionsLanguageUpdateResponseStatus =
+  | "ready"
+  | "inprogress"
+  | "error"
+  | (string & {});
+export const CaptionsLanguageUpdateResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateCaptionLanguageResponse {
+  /** Whether the caption was generated via AI. */
+  generated?: boolean;
+  /** The language label displayed in the native language to users. */
+  label?: string;
+  /** The language tag in BCP 47 format. */
+  language?: string;
+  /** The status of a generated caption. */
+  status?: CaptionsLanguageUpdateResponseStatus;
+}
+export const UpdateCaptionLanguageResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    generated: S.optional(S.Boolean),
+    label: S.optional(S.String),
+    language: S.optional(S.String),
+    status: S.optional(CaptionsLanguageUpdateResponseStatus),
+  }),
+).annotate({
+  identifier: "UpdateCaptionLanguageResponse",
+}) as any as S.Schema<UpdateCaptionLanguageResponse>;
 
 export type LiveInputsUpdateRequestRecordingAllowedOriginsList = string[];
 export const LiveInputsUpdateRequestRecordingAllowedOriginsList =
@@ -3229,7 +3784,7 @@ export const LiveInputsUpdateRequestRecording = /*@__PURE__*/ S.suspend(() =>
   identifier: "LiveInputsUpdateRequestRecording",
 }) as any as S.Schema<LiveInputsUpdateRequestRecording>;
 
-export interface LiveInputsUpdateRequest {
+export interface UpdateLiveInputRequest {
   /** Identifier. */
   accountId: string;
   /** A unique identifier for a live input. */
@@ -3247,7 +3802,7 @@ export interface LiveInputsUpdateRequest {
   /** Records the input to a Cloudflare Stream video. Behavior depends on the mode. In most cases, the video will initially be viewable as a live video and transition to on-demand after a condition is satisfied. */
   recording?: LiveInputsUpdateRequestRecording;
 }
-export const LiveInputsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateLiveInputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
@@ -3265,8 +3820,8 @@ export const LiveInputsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "LiveInputsUpdateRequest",
-}) as any as S.Schema<LiveInputsUpdateRequest>;
+  identifier: "UpdateLiveInputRequest",
+}) as any as S.Schema<UpdateLiveInputRequest>;
 
 export type LiveInputsUpdateResponseRecordingAllowedOriginsList = string[];
 export const LiveInputsUpdateResponseRecordingAllowedOriginsList =
@@ -3406,7 +3961,7 @@ export const LiveInputsUpdateResponseWebRTCPlayback = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<LiveInputsUpdateResponseWebRTCPlayback>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LiveInputsUpdateResponse {
+export interface UpdateLiveInputResponse {
   /** The date and time the live input was created. */
   created?: string;
   /** Indicates the number of days after which the live inputs recordings will be deleted. When a stream completes and the recording is ready, the value is used to calculate a scheduled deletion date for that recording. Omit the field to indicate no change, or include with a `null` value to remove an existing scheduled deletion. */
@@ -3440,7 +3995,7 @@ export interface LiveInputsUpdateResponse {
   /** Details for playback from a live input using WebRTC. */
   webRTCPlayback?: LiveInputsUpdateResponseWebRTCPlayback;
 }
-export const LiveInputsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateLiveInputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     created: S.optional(S.String),
     deleteRecordingAfterDays: S.optional(S.Number),
@@ -3460,1137 +4015,726 @@ export const LiveInputsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     webRTCPlayback: S.optional(LiveInputsUpdateResponseWebRTCPlayback),
   }),
 ).annotate({
-  identifier: "LiveInputsUpdateResponse",
-}) as any as S.Schema<LiveInputsUpdateResponse>;
+  identifier: "UpdateLiveInputResponse",
+}) as any as S.Schema<UpdateLiveInputResponse>;
 
-export type TokenCreateRequestAccessRulesItemAction =
-  | "allow"
-  | "block"
-  | (string & {});
-export const TokenCreateRequestAccessRulesItemAction = /*@__PURE__*/ S.String;
-
-export type TokenCreateRequestAccessRulesItemCountryList = string[];
-export const TokenCreateRequestAccessRulesItemCountryList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<TokenCreateRequestAccessRulesItemCountryList>;
-
-export type TokenCreateRequestAccessRulesItemIpList = string[];
-export const TokenCreateRequestAccessRulesItemIpList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<TokenCreateRequestAccessRulesItemIpList>;
-
-export type TokenCreateRequestAccessRulesItemType =
-  | "any"
-  | "ip.src"
-  | "ip.geoip.country"
-  | (string & {});
-export const TokenCreateRequestAccessRulesItemType = /*@__PURE__*/ S.String;
-
-export interface TokenCreateRequestAccessRulesItem {
-  /** The action to take when a request matches a rule. If the action is `block`, the signed token blocks views for viewers matching the rule. */
-  action?: TokenCreateRequestAccessRulesItemAction;
-  /** An array of 2-letter country codes in ISO 3166-1 Alpha-2 format used to match requests. */
-  country?: TokenCreateRequestAccessRulesItemCountryList;
-  /** An array of IPv4 or IPV6 addresses or CIDRs used to match requests. */
-  ip?: TokenCreateRequestAccessRulesItemIpList;
-  /** Lists available rule types to match for requests. An `any` type matches all requests and can be used as a wildcard to apply default actions after other rules. */
-  type?: TokenCreateRequestAccessRulesItemType;
-}
-export const TokenCreateRequestAccessRulesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    action: S.optional(TokenCreateRequestAccessRulesItemAction),
-    country: S.optional(TokenCreateRequestAccessRulesItemCountryList),
-    ip: S.optional(TokenCreateRequestAccessRulesItemIpList),
-    type: S.optional(TokenCreateRequestAccessRulesItemType),
-  }),
-).annotate({
-  identifier: "TokenCreateRequestAccessRulesItem",
-}) as any as S.Schema<TokenCreateRequestAccessRulesItem>;
-
-export type TokenCreateRequestAccessRulesList =
-  TokenCreateRequestAccessRulesItem[];
-export const TokenCreateRequestAccessRulesList = /*@__PURE__*/ S.Array(
-  TokenCreateRequestAccessRulesItem,
-) as any as S.Schema<TokenCreateRequestAccessRulesList>;
-
-export interface TokenCreateRequestFlags {
-  /** Whether to return the original video without transformations. */
-  original?: boolean;
-}
-export const TokenCreateRequestFlags = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    original: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "TokenCreateRequestFlags",
-}) as any as S.Schema<TokenCreateRequestFlags>;
-
-export interface TokenCreateRequest {
-  /** The account identifier tag. */
+export interface UpdateLiveInputOutputRequest {
+  /** Identifier. */
   accountId: string;
-  /** A Cloudflare-generated unique identifier for a media item. */
-  identifier: string;
-  /** The optional ID of a Stream signing key. If present, the `pem` field is also required. */
-  id?: string;
-  /** The optional list of access rule constraints on the token. Access can be blocked or allowed based on an IP, IP range, or by country. Access rules are evaluated from first to last. If a rule matches, the associated action is applied and no further rules are evaluated. */
-  accessRules?: TokenCreateRequestAccessRulesList;
-  /** The optional boolean value that enables using signed tokens to access MP4 download links for a video. */
-  downloadable?: boolean;
-  /** The optional unix epoch timestamp that specficies the time after a token is not accepted. The maximum time specification is 24 hours from issuing time. If this field is not set, the default is one hour after issuing. */
-  exp?: number;
-  /** Optional flags for the signed token. */
-  flags?: TokenCreateRequestFlags;
-  /** The optional unix epoch timestamp that specifies the time before a the token is not accepted. If this field is not set, the default is one hour before issuing. */
-  nbf?: number;
-  /** The optional base64 encoded private key in PEM format associated with a Stream signing key. If present, the `id` field is also required. */
-  pem?: string;
+  /** A unique identifier for a live input. */
+  liveInputIdentifier: string;
+  /** A unique identifier for the output. */
+  outputIdentifier: string;
+  /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
+  enabled: boolean;
 }
-export const TokenCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateLiveInputOutputRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    identifier: S.String.pipe(T.Label()),
-    id: S.optional(S.String),
-    accessRules: S.optional(TokenCreateRequestAccessRulesList),
-    downloadable: S.optional(S.Boolean),
-    exp: S.optional(S.Number),
-    flags: S.optional(TokenCreateRequestFlags),
-    nbf: S.optional(S.Number),
-    pem: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/stream/{identifier}/token",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "TokenCreateRequest",
-}) as any as S.Schema<TokenCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface TokenCreateResponse {
-  /** The signed token used with the signed URLs feature. */
-  token?: string;
-}
-export const TokenCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    token: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "TokenCreateResponse",
-}) as any as S.Schema<TokenCreateResponse>;
-
-export interface VideosStorageUsageRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** A user-defined identifier for the media creator. */
-  creator?: string;
-}
-export const VideosStorageUsageRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    creator: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/stream/storage-usage",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "VideosStorageUsageRequest",
-}) as any as S.Schema<VideosStorageUsageRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface VideosStorageUsageResponse {
-  /** A user-defined identifier for the media creator. */
-  creator?: string;
-  /** The total minutes of video content stored in the account. May contain decimal values. */
-  totalStorageMinutes?: number;
-  /** The storage capacity alloted for the account. */
-  totalStorageMinutesLimit?: number;
-  /** The total count of videos associated with the account. */
-  videoCount?: number;
-}
-export const VideosStorageUsageResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    creator: S.optional(S.String),
-    totalStorageMinutes: S.optional(S.Number),
-    totalStorageMinutesLimit: S.optional(S.Number),
-    videoCount: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "VideosStorageUsageResponse",
-}) as any as S.Schema<VideosStorageUsageResponse>;
-
-export interface WatermarksCreateRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** A short description of the watermark profile. */
-  name?: string;
-  /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
-  /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
-  /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
-  /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
-  /** URL of the watermark image to copy. */
-  url?: string;
-}
-export const WatermarksCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    url: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/stream/watermarks",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WatermarksCreateRequest",
-}) as any as S.Schema<WatermarksCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WatermarksCreateResponse {
-  /** The date and a time a watermark profile was created. */
-  created?: string;
-  /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
-  downloadedFrom?: string;
-  /** The height of the image in pixels. */
-  height?: number;
-  /** A short description of the watermark profile. */
-  name?: string;
-  /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
-  /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
-  /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
-  /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
-  /** The size of the image in bytes. */
-  size?: number;
-  /** The unique identifier for a watermark profile. */
-  uid?: string;
-  /** The width of the image in pixels. */
-  width?: number;
-}
-export const WatermarksCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.String),
-    downloadedFrom: S.optional(S.String),
-    height: S.optional(S.Number),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    size: S.optional(S.Number),
-    uid: S.optional(S.String),
-    width: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WatermarksCreateResponse",
-}) as any as S.Schema<WatermarksCreateResponse>;
-
-export interface WatermarksDeleteRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The unique identifier for a watermark profile. */
-  identifier: string;
-}
-export const WatermarksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    identifier: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/stream/watermarks/{identifier}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WatermarksDeleteRequest",
-}) as any as S.Schema<WatermarksDeleteRequest>;
-
-export interface WatermarksDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
-export const WatermarksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "WatermarksDeleteResponse",
-}) as any as S.Schema<WatermarksDeleteResponse>;
-
-export interface WatermarksGetRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The unique identifier for a watermark profile. */
-  identifier: string;
-}
-export const WatermarksGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    identifier: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/stream/watermarks/{identifier}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WatermarksGetRequest",
-}) as any as S.Schema<WatermarksGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WatermarksGetResponse {
-  /** The date and a time a watermark profile was created. */
-  created?: string;
-  /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
-  downloadedFrom?: string;
-  /** The height of the image in pixels. */
-  height?: number;
-  /** A short description of the watermark profile. */
-  name?: string;
-  /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
-  /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
-  /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
-  /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
-  /** The size of the image in bytes. */
-  size?: number;
-  /** The unique identifier for a watermark profile. */
-  uid?: string;
-  /** The width of the image in pixels. */
-  width?: number;
-}
-export const WatermarksGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.String),
-    downloadedFrom: S.optional(S.String),
-    height: S.optional(S.Number),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    size: S.optional(S.Number),
-    uid: S.optional(S.String),
-    width: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WatermarksGetResponse",
-}) as any as S.Schema<WatermarksGetResponse>;
-
-export interface WatermarksListRequest {
-  /** The account identifier tag. */
-  accountId: string;
-}
-export const WatermarksListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/stream/watermarks",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WatermarksListRequest",
-}) as any as S.Schema<WatermarksListRequest>;
-
-export interface WatermarksListResultItem {
-  /** The date and a time a watermark profile was created. */
-  created?: string;
-  /** The source URL for a downloaded image. If the watermark profile was created via direct upload, this field is null. */
-  downloadedFrom?: string;
-  /** The height of the image in pixels. */
-  height?: number;
-  /** A short description of the watermark profile. */
-  name?: string;
-  /** The translucency of the image. A value of `0.0` makes the image completely transparent, and `1.0` makes the image completely opaque. Note that if the image is already semi-transparent, setting this to `1.0` will not make the image completely opaque. */
-  opacity?: number;
-  /** The whitespace between the adjacent edges (determined by position) of the video and the image. `0.0` indicates no padding, and `1.0` indicates a fully padded video width or length, as determined by the algorithm. */
-  padding?: number;
-  /** The location of the image. Valid positions are: `upperRight`, `upperLeft`, `lowerLeft`, `lowerRight`, and `center`. Note that `center` ignores the `padding` parameter. */
-  position?: string;
-  /** The size of the image relative to the overall size of the video. This parameter will adapt to horizontal and vertical videos automatically. `0.0` indicates no scaling (use the size of the image as-is), and `1.0`fills the entire video. */
-  scale?: number;
-  /** The size of the image in bytes. */
-  size?: number;
-  /** The unique identifier for a watermark profile. */
-  uid?: string;
-  /** The width of the image in pixels. */
-  width?: number;
-}
-export const WatermarksListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    created: S.optional(S.String),
-    downloadedFrom: S.optional(S.String),
-    height: S.optional(S.Number),
-    name: S.optional(S.String),
-    opacity: S.optional(S.Number),
-    padding: S.optional(S.Number),
-    position: S.optional(S.String),
-    scale: S.optional(S.Number),
-    size: S.optional(S.Number),
-    uid: S.optional(S.String),
-    width: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "WatermarksListResultItem",
-}) as any as S.Schema<WatermarksListResultItem>;
-
-export type WatermarksListResultList = WatermarksListResultItem[];
-export const WatermarksListResultList = /*@__PURE__*/ S.Array(
-  WatermarksListResultItem,
-) as any as S.Schema<WatermarksListResultList>;
-
-export interface WatermarksListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: WatermarksListResultList;
-}
-export const WatermarksListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(WatermarksListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "WatermarksListResponse",
-}) as any as S.Schema<WatermarksListResponse>;
-
-export interface WebhooksDeleteRequest {
-  /** The account identifier tag. */
-  accountId: string;
-}
-export const WebhooksDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/stream/webhook",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WebhooksDeleteRequest",
-}) as any as S.Schema<WebhooksDeleteRequest>;
-
-export interface WebhooksDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: string;
-}
-export const WebhooksDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.String.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "WebhooksDeleteResponse",
-}) as any as S.Schema<WebhooksDeleteResponse>;
-
-export interface WebhooksGetRequest {
-  /** The account identifier tag. */
-  accountId: string;
-}
-export const WebhooksGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/stream/webhook",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "WebhooksGetRequest",
-}) as any as S.Schema<WebhooksGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WebhooksGetResponse {
-  /** The date and time the webhook was last modified. */
-  modified?: string;
-  /** The URL where webhooks will be sent. */
-  notificationUrl?: string;
-  /** The URL where webhooks will be sent. */
-  notificationUrl2?: string;
-  /** The secret used to verify webhook signatures. */
-  secret?: string;
-}
-export const WebhooksGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modified: S.optional(S.String),
-    notificationUrl: S.optional(S.String.pipe(T.Body("notification_url"))),
-    notificationUrl2: S.optional(S.String.pipe(T.Body("notificationUrl"))),
-    secret: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "WebhooksGetResponse",
-}) as any as S.Schema<WebhooksGetResponse>;
-
-export interface WebhooksUpdateRequest {
-  /** The account identifier tag. */
-  accountId: string;
-  /** The URL where webhooks will be sent. */
-  notificationUrl?: string;
-  /** The URL where webhooks will be sent. */
-  notificationUrl2?: string;
-}
-export const WebhooksUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    notificationUrl: S.optional(S.String.pipe(T.Body("notification_url"))),
-    notificationUrl2: S.optional(S.String.pipe(T.Body("notificationUrl"))),
+    liveInputIdentifier: S.String.pipe(T.Label("live_input_identifier")),
+    outputIdentifier: S.String.pipe(T.Label("output_identifier")),
+    enabled: S.Boolean,
   }).pipe(
     T.Http({
       method: "PUT",
-      uri: "/accounts/{account_id}/stream/webhook",
+      uri: "/accounts/{account_id}/stream/live_inputs/{live_input_identifier}/outputs/{output_identifier}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "WebhooksUpdateRequest",
-}) as any as S.Schema<WebhooksUpdateRequest>;
+  identifier: "UpdateLiveInputOutputRequest",
+}) as any as S.Schema<UpdateLiveInputOutputRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface WebhooksUpdateResponse {
-  /** The date and time the webhook was last modified. */
-  modified?: string;
-  /** The URL where webhooks will be sent. */
-  notificationUrl?: string;
-  /** The URL where webhooks will be sent. */
-  notificationUrl2?: string;
-  /** The secret used to verify webhook signatures. */
-  secret?: string;
+export interface UpdateLiveInputOutputResponse {
+  /** When enabled, live video streamed to the associated live input will be sent to the output URL. When disabled, live video will not be sent to the output URL, even when streaming to the associated live input. Use this to control precisely when you start and stop simulcasting to specific destinations like YouTube and Twitch. */
+  enabled?: boolean;
+  /** The streamKey used to authenticate against an output's target. */
+  streamKey?: string;
+  /** A unique identifier for the output. */
+  uid?: string;
+  /** The URL an output uses to restream. */
+  url?: string;
 }
-export const WebhooksUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateLiveInputOutputResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    modified: S.optional(S.String),
-    notificationUrl: S.optional(S.String.pipe(T.Body("notification_url"))),
-    notificationUrl2: S.optional(S.String.pipe(T.Body("notificationUrl"))),
-    secret: S.optional(S.String),
+    enabled: S.optional(S.Boolean),
+    streamKey: S.optional(S.String),
+    uid: S.optional(S.String),
+    url: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "WebhooksUpdateResponse",
-}) as any as S.Schema<WebhooksUpdateResponse>;
+  identifier: "UpdateLiveInputOutputResponse",
+}) as any as S.Schema<UpdateLiveInputOutputResponse>;
 
-export type AudioTracksCopyError = CloudflareOpError;
+export type CopyAudioTrackError = CloudflareOpError;
 /** Adds an additional audio track to a video using the provided audio track URL. */
-export const audioTracksCopy: API.OperationMethod<
-  AudioTracksCopyRequest,
-  AudioTracksCopyResponse,
-  AudioTracksCopyError,
+export const copyAudioTrack: API.OperationMethod<
+  CopyAudioTrackRequest,
+  CopyAudioTrackResponse,
+  CopyAudioTrackError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AudioTracksCopyRequest,
-  output: AudioTracksCopyResponse,
+  input: CopyAudioTrackRequest,
+  output: CopyAudioTrackResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type AudioTracksDeleteError = CloudflareOpError;
-/** Deletes additional audio tracks on a video. Deleting a default audio track is not allowed. You must assign another audio track as default prior to deletion. */
-export const audioTracksDelete: API.OperationMethod<
-  AudioTracksDeleteRequest,
-  AudioTracksDeleteResponse,
-  AudioTracksDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AudioTracksDeleteRequest,
-  output: AudioTracksDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AudioTracksEditError = CloudflareOpError;
-/** Edits additional audio tracks on a video. Editing the default status of an audio track to `true` will mark all other audio tracks on the video default status to `false`. */
-export const audioTracksEdit: API.OperationMethod<
-  AudioTracksEditRequest,
-  AudioTracksEditResponse,
-  AudioTracksEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AudioTracksEditRequest,
-  output: AudioTracksEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AudioTracksGetError = CloudflareOpError;
-/** Lists additional audio tracks on a video. Note this API will not return information for audio attached to the video upload. */
-export const audioTracksGet: API.OperationMethod<
-  AudioTracksGetRequest,
-  AudioTracksGetResponse,
-  AudioTracksGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AudioTracksGetRequest,
-  output: AudioTracksGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CaptionsGetError = CloudflareOpError;
-/** Lists the available captions or subtitles for a specific video. */
-export const captionsGet: API.OperationMethod<
-  CaptionsGetRequest,
-  CaptionsGetResponse,
-  CaptionsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CaptionsGetRequest,
-  output: CaptionsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CaptionsLanguageCreateError = CloudflareOpError;
+export type CreateCaptionLanguageError = CloudflareOpError;
 /** Generate captions or subtitles for provided language via AI. */
-export const captionsLanguageCreate: API.OperationMethod<
-  CaptionsLanguageCreateRequest,
-  CaptionsLanguageCreateResponse,
-  CaptionsLanguageCreateError,
+export const createCaptionLanguage: API.OperationMethod<
+  CreateCaptionLanguageRequest,
+  CreateCaptionLanguageResponse,
+  CreateCaptionLanguageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CaptionsLanguageCreateRequest,
-  output: CaptionsLanguageCreateResponse,
+  input: CreateCaptionLanguageRequest,
+  output: CreateCaptionLanguageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type CaptionsLanguageDeleteError = CloudflareOpError;
-/** Removes the captions or subtitles from a video. */
-export const captionsLanguageDelete: API.OperationMethod<
-  CaptionsLanguageDeleteRequest,
-  CaptionsLanguageDeleteResponse,
-  CaptionsLanguageDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CaptionsLanguageDeleteRequest,
-  output: CaptionsLanguageDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CaptionsLanguageGetError = CloudflareOpError;
-/** Lists the captions or subtitles for provided language. */
-export const captionsLanguageGet: API.OperationMethod<
-  CaptionsLanguageGetRequest,
-  CaptionsLanguageGetResponse,
-  CaptionsLanguageGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CaptionsLanguageGetRequest,
-  output: CaptionsLanguageGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CaptionsLanguageUpdateError = CloudflareOpError;
-/** Uploads the caption or subtitle file to the endpoint for a specific BCP47 language. One caption or subtitle file per language is allowed. */
-export const captionsLanguageUpdate: API.OperationMethod<
-  CaptionsLanguageUpdateRequest,
-  CaptionsLanguageUpdateResponse,
-  CaptionsLanguageUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CaptionsLanguageUpdateRequest,
-  output: CaptionsLanguageUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CaptionsLanguageVttGetError = CloudflareOpError;
-/** Return WebVTT captions for a provided language. */
-export const captionsLanguageVttGet: API.OperationMethod<
-  CaptionsLanguageVttGetRequest,
-  CaptionsLanguageVttGetResponse,
-  CaptionsLanguageVttGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CaptionsLanguageVttGetRequest,
-  output: CaptionsLanguageVttGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ClipCreateError = CloudflareOpError;
+export type CreateClipError = CloudflareOpError;
 /** Clips a video based on the specified start and end times provided in seconds. */
-export const clipCreate: API.OperationMethod<
-  ClipCreateRequest,
-  ClipCreateResponse,
-  ClipCreateError,
+export const createClip: API.OperationMethod<
+  CreateClipRequest,
+  CreateClipResponse,
+  CreateClipError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ClipCreateRequest,
-  output: ClipCreateResponse,
+  input: CreateClipRequest,
+  output: CreateClipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type CopyCreateError = CloudflareOpError;
+export type CreateCopyError = CloudflareOpError;
 /** Uploads a video to Stream from a provided URL. */
-export const copyCreate: API.OperationMethod<
-  CopyCreateRequest,
-  CopyCreateResponse,
-  CopyCreateError,
+export const createCopy: API.OperationMethod<
+  CreateCopyRequest,
+  CreateCopyResponse,
+  CreateCopyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CopyCreateRequest,
-  output: CopyCreateResponse,
+  input: CreateCopyRequest,
+  output: CreateCopyResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type CreateError = CloudflareOpError;
-/** Initiates a video upload using the TUS protocol. On success, the server responds with a status code 201 (created) and includes a `location` header to indicate where the content should be uploaded. Refer to https://tus.io for protocol details. */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DeleteError = CloudflareOpError;
-/** Deletes a video and its copies from Cloudflare Stream. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DirectUploadCreateError = CloudflareOpError;
+export type CreateDirectUploadError = CloudflareOpError;
 /** Creates a direct upload that allows video uploads without an API key. */
-export const directUploadCreate: API.OperationMethod<
-  DirectUploadCreateRequest,
-  DirectUploadCreateResponse,
-  DirectUploadCreateError,
+export const createDirectUpload: API.OperationMethod<
+  CreateDirectUploadRequest,
+  CreateDirectUploadResponse,
+  CreateDirectUploadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DirectUploadCreateRequest,
-  output: DirectUploadCreateResponse,
+  input: CreateDirectUploadRequest,
+  output: CreateDirectUploadResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DownloadsCreateError = CloudflareOpError;
+export type CreateDownloadError = CloudflareOpError;
 /** Creates a download for a video when a video is ready to view. Use `/downloads/{download_type}` instead for type-specific downloads. Available types are `default` and `audio`. */
-export const downloadsCreate: API.OperationMethod<
-  DownloadsCreateRequest,
-  DownloadsCreateResponse,
-  DownloadsCreateError,
+export const createDownload: API.OperationMethod<
+  CreateDownloadRequest,
+  CreateDownloadResponse,
+  CreateDownloadError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DownloadsCreateRequest,
-  output: DownloadsCreateResponse,
+  input: CreateDownloadRequest,
+  output: CreateDownloadResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DownloadsDeleteError = CloudflareOpError;
-/** Delete the downloads for a video. Use `/downloads/{download_type}` instead for type-specific downloads. Available types are `default` and `audio`. */
-export const downloadsDelete: API.OperationMethod<
-  DownloadsDeleteRequest,
-  DownloadsDeleteResponse,
-  DownloadsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DownloadsDeleteRequest,
-  output: DownloadsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type DownloadsGetError = CloudflareOpError;
-/** Lists the downloads created for a video. */
-export const downloadsGet: API.OperationMethod<
-  DownloadsGetRequest,
-  DownloadsGetResponse,
-  DownloadsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DownloadsGetRequest,
-  output: DownloadsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type EditError = CloudflareOpError;
-/** Edit details for a single video. */
-export const edit: API.OperationMethod<
-  EditRequest,
-  EditResponse,
-  EditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EditRequest,
-  output: EditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type EmbedGetError = CloudflareOpError;
-/** Fetches an HTML code snippet to embed a video in a web page delivered through Cloudflare. On success, returns an HTML fragment for use on web pages to display a video. On failure, returns a JSON response body. */
-export const embedGet: API.OperationMethod<
-  EmbedGetRequest,
-  EmbedGetResponse,
-  EmbedGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EmbedGetRequest,
-  output: EmbedGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GetError = CloudflareOpError;
-/** Fetches details for a single video. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type KeysCreateError = CloudflareOpError;
+export type CreateKeyError = CloudflareOpError;
 /** Creates an RSA private key in PEM and JWK formats. Key files are only displayed once after creation. Keys are created, used, and deleted independently of videos, and every key can sign any video. */
-export const keysCreate: API.OperationMethod<
-  KeysCreateRequest,
-  KeysCreateResponse,
-  KeysCreateError,
+export const createKey: API.OperationMethod<
+  CreateKeyRequest,
+  CreateKeyResponse,
+  CreateKeyError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: KeysCreateRequest,
-  output: KeysCreateResponse,
+  input: CreateKeyRequest,
+  output: CreateKeyResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type KeysDeleteError = CloudflareOpError;
-/** Deletes signing keys and revokes all signed URLs generated with the key. */
-export const keysDelete: API.OperationMethod<
-  KeysDeleteRequest,
-  KeysDeleteResponse,
-  KeysDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: KeysDeleteRequest,
-  output: KeysDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type KeysGetError = CloudflareOpError;
-/** Lists the video ID and creation date and time when a signing key was created. */
-export const keysGet: API.OperationMethod<
-  KeysGetRequest,
-  KeysGetResponse,
-  KeysGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: KeysGetRequest,
-  output: KeysGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ListError = CloudflareOpError;
-/** Lists up to 1000 videos from a single request. For a specific range, refer to the optional parameters. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LiveInputsCreateError = CloudflareOpError;
+export type CreateLiveInputError = CloudflareOpError;
 /** Creates a live input, and returns credentials that you or your users can use to stream live video to Cloudflare Stream. */
-export const liveInputsCreate: API.OperationMethod<
-  LiveInputsCreateRequest,
-  LiveInputsCreateResponse,
-  LiveInputsCreateError,
+export const createLiveInput: API.OperationMethod<
+  CreateLiveInputRequest,
+  CreateLiveInputResponse,
+  CreateLiveInputError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LiveInputsCreateRequest,
-  output: LiveInputsCreateResponse,
+  input: CreateLiveInputRequest,
+  output: CreateLiveInputResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LiveInputsDeleteError = CloudflareOpError;
-/** Prevents a live input from being streamed to and makes the live input inaccessible to any future API calls. */
-export const liveInputsDelete: API.OperationMethod<
-  LiveInputsDeleteRequest,
-  LiveInputsDeleteResponse,
-  LiveInputsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LiveInputsDeleteRequest,
-  output: LiveInputsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LiveInputsGetError = CloudflareOpError;
-/** Retrieves details of an existing live input. */
-export const liveInputsGet: API.OperationMethod<
-  LiveInputsGetRequest,
-  LiveInputsGetResponse,
-  LiveInputsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LiveInputsGetRequest,
-  output: LiveInputsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LiveInputsListError = CloudflareOpError;
-/** Lists the live inputs created for an account. To get the credentials needed to stream to a specific live input, request a single live input. */
-export const liveInputsList: API.OperationMethod<
-  LiveInputsListRequest,
-  LiveInputsListResponse,
-  LiveInputsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LiveInputsListRequest,
-  output: LiveInputsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LiveInputsOutputsCreateError = CloudflareOpError;
+export type CreateLiveInputOutputError =
+  | LiveInputNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a new output that can be used to simulcast or restream live video to other RTMP or SRT destinations. Outputs are always linked to a specific live input —&nbsp;one live input can have many outputs. */
-export const liveInputsOutputsCreate: API.OperationMethod<
-  LiveInputsOutputsCreateRequest,
-  LiveInputsOutputsCreateResponse,
-  LiveInputsOutputsCreateError,
+export const createLiveInputOutput: API.OperationMethod<
+  CreateLiveInputOutputRequest,
+  CreateLiveInputOutputResponse,
+  CreateLiveInputOutputError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LiveInputsOutputsCreateRequest,
-  output: LiveInputsOutputsCreateResponse,
+  input: CreateLiveInputOutputRequest,
+  output: CreateLiveInputOutputResponse,
+  errors: [
+    LiveInputNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateStreamError = CloudflareOpError;
+/** Initiates a video upload using the TUS protocol. On success, the server responds with a status code 201 (created) and includes a `location` header to indicate where the content should be uploaded. Refer to https://tus.io for protocol details. */
+export const createStream: API.OperationMethod<
+  CreateStreamRequest,
+  CreateStreamResponse,
+  CreateStreamError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateStreamRequest,
+  output: CreateStreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type LiveInputsOutputsDeleteError = CloudflareOpError;
-/** Deletes an output and removes it from the associated live input. */
-export const liveInputsOutputsDelete: API.OperationMethod<
-  LiveInputsOutputsDeleteRequest,
-  LiveInputsOutputsDeleteResponse,
-  LiveInputsOutputsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LiveInputsOutputsDeleteRequest,
-  output: LiveInputsOutputsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LiveInputsOutputsListError = CloudflareOpError;
-/** Retrieves all outputs associated with a specified live input. */
-export const liveInputsOutputsList: API.OperationMethod<
-  LiveInputsOutputsListRequest,
-  LiveInputsOutputsListResponse,
-  LiveInputsOutputsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LiveInputsOutputsListRequest,
-  output: LiveInputsOutputsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LiveInputsOutputsUpdateError = CloudflareOpError;
-/** Updates the state of an output. */
-export const liveInputsOutputsUpdate: API.OperationMethod<
-  LiveInputsOutputsUpdateRequest,
-  LiveInputsOutputsUpdateResponse,
-  LiveInputsOutputsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LiveInputsOutputsUpdateRequest,
-  output: LiveInputsOutputsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type LiveInputsUpdateError = CloudflareOpError;
-/** Updates a specified live input. */
-export const liveInputsUpdate: API.OperationMethod<
-  LiveInputsUpdateRequest,
-  LiveInputsUpdateResponse,
-  LiveInputsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LiveInputsUpdateRequest,
-  output: LiveInputsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type TokenCreateError = CloudflareOpError;
+export type CreateTokenError = CloudflareOpError;
 /** Creates a signed URL token for a video. If a body is not provided in the request, a token is created with default values. */
-export const tokenCreate: API.OperationMethod<
-  TokenCreateRequest,
-  TokenCreateResponse,
-  TokenCreateError,
+export const createToken: API.OperationMethod<
+  CreateTokenRequest,
+  CreateTokenResponse,
+  CreateTokenError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TokenCreateRequest,
-  output: TokenCreateResponse,
+  input: CreateTokenRequest,
+  output: CreateTokenResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type VideosStorageUsageError = CloudflareOpError;
-/** Returns information about an account's storage use. */
-export const videosStorageUsage: API.OperationMethod<
-  VideosStorageUsageRequest,
-  VideosStorageUsageResponse,
-  VideosStorageUsageError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: VideosStorageUsageRequest,
-  output: VideosStorageUsageResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WatermarksCreateError = CloudflareOpError;
+export type CreateWatermarkError =
+  | WatermarkImageInvalid
+  | Forbidden
+  | CloudflareOpError;
 /** Creates watermark profiles using a single `HTTP POST multipart/form-data` request. */
-export const watermarksCreate: API.OperationMethod<
-  WatermarksCreateRequest,
-  WatermarksCreateResponse,
-  WatermarksCreateError,
+export const createWatermark: API.OperationMethod<
+  CreateWatermarkRequest,
+  CreateWatermarkResponse,
+  CreateWatermarkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatermarksCreateRequest,
-  output: WatermarksCreateResponse,
+  input: CreateWatermarkRequest,
+  output: CreateWatermarkResponse,
+  errors: [
+    WatermarkImageInvalid,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteAudioTrackError = CloudflareOpError;
+/** Deletes additional audio tracks on a video. Deleting a default audio track is not allowed. You must assign another audio track as default prior to deletion. */
+export const deleteAudioTrack: API.OperationMethod<
+  DeleteAudioTrackRequest,
+  DeleteAudioTrackResponse,
+  DeleteAudioTrackError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAudioTrackRequest,
+  output: DeleteAudioTrackResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WatermarksDeleteError = CloudflareOpError;
+export type DeleteCaptionLanguageError = CloudflareOpError;
+/** Removes the captions or subtitles from a video. */
+export const deleteCaptionLanguage: API.OperationMethod<
+  DeleteCaptionLanguageRequest,
+  DeleteCaptionLanguageResponse,
+  DeleteCaptionLanguageError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCaptionLanguageRequest,
+  output: DeleteCaptionLanguageResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteDownloadError = CloudflareOpError;
+/** Delete the downloads for a video. Use `/downloads/{download_type}` instead for type-specific downloads. Available types are `default` and `audio`. */
+export const deleteDownload: API.OperationMethod<
+  DeleteDownloadRequest,
+  DeleteDownloadResponse,
+  DeleteDownloadError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteDownloadRequest,
+  output: DeleteDownloadResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteKeyError = SigningKeyNotFound | Forbidden | CloudflareOpError;
+/** Deletes signing keys and revokes all signed URLs generated with the key. */
+export const deleteKey: API.OperationMethod<
+  DeleteKeyRequest,
+  DeleteKeyResponse,
+  DeleteKeyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteKeyRequest,
+  output: DeleteKeyResponse,
+  errors: [
+    SigningKeyNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteLiveInputError =
+  | LiveInputNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Prevents a live input from being streamed to and makes the live input inaccessible to any future API calls. */
+export const deleteLiveInput: API.OperationMethod<
+  DeleteLiveInputRequest,
+  DeleteLiveInputResponse,
+  DeleteLiveInputError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteLiveInputRequest,
+  output: DeleteLiveInputResponse,
+  errors: [
+    LiveInputNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteLiveInputOutputError =
+  | OutputNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Deletes an output and removes it from the associated live input. */
+export const deleteLiveInputOutput: API.OperationMethod<
+  DeleteLiveInputOutputRequest,
+  DeleteLiveInputOutputResponse,
+  DeleteLiveInputOutputError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteLiveInputOutputRequest,
+  output: DeleteLiveInputOutputResponse,
+  errors: [OutputNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteStreamError = CloudflareOpError;
+/** Deletes a video and its copies from Cloudflare Stream. */
+export const deleteStream: API.OperationMethod<
+  DeleteStreamRequest,
+  DeleteStreamResponse,
+  DeleteStreamError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteStreamRequest,
+  output: DeleteStreamResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteWatermarkError =
+  | WatermarkNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Deletes a watermark profile. */
-export const watermarksDelete: API.OperationMethod<
-  WatermarksDeleteRequest,
-  WatermarksDeleteResponse,
-  WatermarksDeleteError,
+export const deleteWatermark: API.OperationMethod<
+  DeleteWatermarkRequest,
+  DeleteWatermarkResponse,
+  DeleteWatermarkError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WatermarksDeleteRequest,
-  output: WatermarksDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteWatermarkRequest,
+  output: DeleteWatermarkResponse,
+  errors: [
+    WatermarkNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type WatermarksGetError = CloudflareOpError;
-/** Retrieves details for a single watermark profile. */
-export const watermarksGet: API.OperationMethod<
-  WatermarksGetRequest,
-  WatermarksGetResponse,
-  WatermarksGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WatermarksGetRequest,
-  output: WatermarksGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WatermarksListError = CloudflareOpError;
-/** Lists all watermark profiles for an account. */
-export const watermarksList: API.OperationMethod<
-  WatermarksListRequest,
-  WatermarksListResponse,
-  WatermarksListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: WatermarksListRequest,
-  output: WatermarksListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type WebhooksDeleteError = CloudflareOpError;
+export type DeleteWebhookError =
+  | WebhookNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Deletes a webhook. */
-export const webhooksDelete: API.OperationMethod<
-  WebhooksDeleteRequest,
-  WebhooksDeleteResponse,
-  WebhooksDeleteError,
+export const deleteWebhook: API.OperationMethod<
+  DeleteWebhookRequest,
+  DeleteWebhookResponse,
+  DeleteWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksDeleteRequest,
-  output: WebhooksDeleteResponse,
+  input: DeleteWebhookRequest,
+  output: DeleteWebhookResponse,
+  errors: [WebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type EditStreamError = CloudflareOpError;
+/** Edit details for a single video. */
+export const editStream: API.OperationMethod<
+  EditStreamRequest,
+  EditStreamResponse,
+  EditStreamError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: EditStreamRequest,
+  output: EditStreamResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WebhooksGetError = CloudflareOpError;
+export type GetAudioTrackError = CloudflareOpError;
+/** Lists additional audio tracks on a video. Note this API will not return information for audio attached to the video upload. */
+export const getAudioTrack: API.OperationMethod<
+  GetAudioTrackRequest,
+  GetAudioTrackResponse,
+  GetAudioTrackError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAudioTrackRequest,
+  output: GetAudioTrackResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetCaptionError = CloudflareOpError;
+/** Lists the available captions or subtitles for a specific video. */
+export const getCaption: API.OperationMethod<
+  GetCaptionRequest,
+  GetCaptionResponse,
+  GetCaptionError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCaptionRequest,
+  output: GetCaptionResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetCaptionLanguageError = CloudflareOpError;
+/** Lists the captions or subtitles for provided language. */
+export const getCaptionLanguage: API.OperationMethod<
+  GetCaptionLanguageRequest,
+  GetCaptionLanguageResponse,
+  GetCaptionLanguageError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCaptionLanguageRequest,
+  output: GetCaptionLanguageResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetCaptionLanguageVttError = CloudflareOpError;
+/** Return WebVTT captions for a provided language. */
+export const getCaptionLanguageVtt: API.OperationMethod<
+  GetCaptionLanguageVttRequest,
+  GetCaptionLanguageVttResponse,
+  GetCaptionLanguageVttError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCaptionLanguageVttRequest,
+  output: GetCaptionLanguageVttResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetDownloadError = CloudflareOpError;
+/** Lists the downloads created for a video. */
+export const getDownload: API.OperationMethod<
+  GetDownloadRequest,
+  GetDownloadResponse,
+  GetDownloadError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetDownloadRequest,
+  output: GetDownloadResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetEmbedError = CloudflareOpError;
+/** Fetches an HTML code snippet to embed a video in a web page delivered through Cloudflare. On success, returns an HTML fragment for use on web pages to display a video. On failure, returns a JSON response body. */
+export const getEmbed: API.OperationMethod<
+  GetEmbedRequest,
+  GetEmbedResponse,
+  GetEmbedError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetEmbedRequest,
+  output: GetEmbedResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetKeyError = Forbidden | CloudflareOpError;
+/** Lists the video ID and creation date and time when a signing key was created. */
+export const getKey: API.OperationMethod<
+  GetKeyRequest,
+  GetKeyResponse,
+  GetKeyError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetKeyRequest,
+  output: GetKeyResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetLiveInputError =
+  | LiveInputNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Retrieves details of an existing live input. */
+export const getLiveInput: API.OperationMethod<
+  GetLiveInputRequest,
+  GetLiveInputResponse,
+  GetLiveInputError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLiveInputRequest,
+  output: GetLiveInputResponse,
+  errors: [
+    LiveInputNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetStreamError = CloudflareOpError;
+/** Fetches details for a single video. */
+export const getStream: API.OperationMethod<
+  GetStreamRequest,
+  GetStreamResponse,
+  GetStreamError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetStreamRequest,
+  output: GetStreamResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetWatermarkError =
+  | WatermarkNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Retrieves details for a single watermark profile. */
+export const getWatermark: API.OperationMethod<
+  GetWatermarkRequest,
+  GetWatermarkResponse,
+  GetWatermarkError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetWatermarkRequest,
+  output: GetWatermarkResponse,
+  errors: [
+    WatermarkNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetWebhookError = WebhookNotFound | Forbidden | CloudflareOpError;
 /** Retrieves a list of webhooks. */
-export const webhooksGet: API.OperationMethod<
-  WebhooksGetRequest,
-  WebhooksGetResponse,
-  WebhooksGetError,
+export const getWebhook: API.OperationMethod<
+  GetWebhookRequest,
+  GetWebhookResponse,
+  GetWebhookError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksGetRequest,
-  output: WebhooksGetResponse,
+  input: GetWebhookRequest,
+  output: GetWebhookResponse,
+  errors: [WebhookNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListLiveInputOutputsError =
+  | LiveInputNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Retrieves all outputs associated with a specified live input. */
+export const listLiveInputOutputs: API.OperationMethod<
+  ListLiveInputOutputsRequest,
+  ListLiveInputOutputsResponse,
+  ListLiveInputOutputsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListLiveInputOutputsRequest,
+  output: ListLiveInputOutputsResponse,
+  errors: [
+    LiveInputNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListLiveInputsError = CloudflareOpError;
+/** Lists the live inputs created for an account. To get the credentials needed to stream to a specific live input, request a single live input. */
+export const listLiveInputs: API.OperationMethod<
+  ListLiveInputsRequest,
+  ListLiveInputsResponse,
+  ListLiveInputsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListLiveInputsRequest,
+  output: ListLiveInputsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type WebhooksUpdateError = CloudflareOpError;
-/** Creates a webhook notification. */
-export const webhooksUpdate: API.OperationMethod<
-  WebhooksUpdateRequest,
-  WebhooksUpdateResponse,
-  WebhooksUpdateError,
+export type ListStreamsError = CloudflareOpError;
+/** Lists up to 1000 videos from a single request. For a specific range, refer to the optional parameters. */
+export const listStreams: API.OperationMethod<
+  ListStreamsRequest,
+  ListStreamsResponse,
+  ListStreamsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: WebhooksUpdateRequest,
-  output: WebhooksUpdateResponse,
+  input: ListStreamsRequest,
+  output: ListStreamsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListWatermarksError = CloudflareOpError;
+/** Lists all watermark profiles for an account. */
+export const listWatermarks: API.OperationMethod<
+  ListWatermarksRequest,
+  ListWatermarksResponse,
+  ListWatermarksError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListWatermarksRequest,
+  output: ListWatermarksResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchAudioTrackError = CloudflareOpError;
+/** Edits additional audio tracks on a video. Editing the default status of an audio track to `true` will mark all other audio tracks on the video default status to `false`. */
+export const patchAudioTrack: API.OperationMethod<
+  PatchAudioTrackRequest,
+  PatchAudioTrackResponse,
+  PatchAudioTrackError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchAudioTrackRequest,
+  output: PatchAudioTrackResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutWebhookError = CloudflareOpError;
+/** Creates a webhook notification. */
+export const putWebhook: API.OperationMethod<
+  PutWebhookRequest,
+  PutWebhookResponse,
+  PutWebhookError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutWebhookRequest,
+  output: PutWebhookResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type StorageUsageVideoError = CloudflareOpError;
+/** Returns information about an account's storage use. */
+export const storageUsageVideo: API.OperationMethod<
+  StorageUsageVideoRequest,
+  StorageUsageVideoResponse,
+  StorageUsageVideoError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: StorageUsageVideoRequest,
+  output: StorageUsageVideoResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateCaptionLanguageError = CloudflareOpError;
+/** Uploads the caption or subtitle file to the endpoint for a specific BCP47 language. One caption or subtitle file per language is allowed. */
+export const updateCaptionLanguage: API.OperationMethod<
+  UpdateCaptionLanguageRequest,
+  UpdateCaptionLanguageResponse,
+  UpdateCaptionLanguageError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateCaptionLanguageRequest,
+  output: UpdateCaptionLanguageResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateLiveInputError = CloudflareOpError;
+/** Updates a specified live input. */
+export const updateLiveInput: API.OperationMethod<
+  UpdateLiveInputRequest,
+  UpdateLiveInputResponse,
+  UpdateLiveInputError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateLiveInputRequest,
+  output: UpdateLiveInputResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateLiveInputOutputError =
+  | OutputNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** Updates the state of an output. */
+export const updateLiveInputOutput: API.OperationMethod<
+  UpdateLiveInputOutputRequest,
+  UpdateLiveInputOutputResponse,
+  UpdateLiveInputOutputError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateLiveInputOutputRequest,
+  output: UpdateLiveInputOutputResponse,
+  errors: [OutputNotFound, Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

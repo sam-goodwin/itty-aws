@@ -9,6 +9,22 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class InvalidAccountId extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidAccountId>()("InvalidAccountId", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7003 }],
+) {}
+
+export class InvalidRequest extends T.applyErrorMatchers(
+  S.TaggedErrorClass<InvalidRequest>()("InvalidRequest", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7003 }],
+) {}
+
 export interface CreateRequestBody {
   AbuseDmcaObjectActAddress1AgentName18More__: unknown;
   AbuseTrademarkObjectActEmailEmail214More__: unknown;
@@ -50,13 +66,13 @@ export const CreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestBody",
 }) as any as S.Schema<CreateRequestBody>;
 
-export interface CreateRequest {
+export interface CreateAbuseReportRequest {
   accountId: string;
   /** The report type for submitted reports. */
   reportParam: string;
   body: CreateRequestBody;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateAbuseReportRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportParam: S.String.pipe(T.Label("report_param")),
@@ -68,17 +84,21 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreateAbuseReportRequest",
+}) as any as S.Schema<CreateAbuseReportRequest>;
 
-export interface CreateResponse {
+export interface CreateAbuseReportResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: string;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateAbuseReportResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.String.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+).annotate({
+  identifier: "CreateAbuseReportResponse",
+}) as any as S.Schema<CreateAbuseReportResponse>;
 
 export interface GetRequest {
   accountId: string;
@@ -201,7 +221,7 @@ export const ListRequestStatus = /*@__PURE__*/ S.String;
 export type ListRequestType = "PHISH" | "GEN" | "THREAT" | (string & {});
 export const ListRequestType = /*@__PURE__*/ S.String;
 
-export interface ListRequest {
+export interface ListAbuseReportsRequest {
   accountId: string;
   /** Returns reports created after the specified date */
   createdAfter?: string;
@@ -222,7 +242,7 @@ export interface ListRequest {
   /** Filter by the type of the report. */
   type?: ListRequestType;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAbuseReportsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     createdAfter: S.optional(S.String.pipe(T.Query("created_after"))),
@@ -243,7 +263,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListAbuseReportsRequest",
+}) as any as S.Schema<ListAbuseReportsRequest>;
 
 export interface ListResponseReportsItemMitigationSummary {
   /** How many of the reported URLs were confirmed as abusive. */
@@ -351,14 +373,16 @@ export const ListResponseReportsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ListResponseReportsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ListResponse {
+export interface ListAbuseReportsResponse {
   reports: ListResponseReportsList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListAbuseReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     reports: ListResponseReportsList,
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListAbuseReportsResponse",
+}) as any as S.Schema<ListAbuseReportsResponse>;
 
 export type MitigationsListRequestEntityType =
   | "url_pattern"
@@ -388,7 +412,7 @@ export type MitigationsListRequestType =
   | (string & {});
 export const MitigationsListRequestType = /*@__PURE__*/ S.String;
 
-export interface MitigationsListRequest {
+export interface ListMitigationsRequest {
   accountId: string;
   reportId: string;
   /** Returns mitigation that were dispatched after the given date */
@@ -408,7 +432,7 @@ export interface MitigationsListRequest {
   /** Filter by the type of mitigation. This filter parameter can be specified multiple times to include multiple types of mitigations in the result set, e.g. ?type=rate_limit_cache&type=legal_block. */
   type?: MitigationsListRequestType;
 }
-export const MitigationsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListMitigationsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportId: S.String.pipe(T.Label("report_id")),
@@ -430,8 +454,8 @@ export const MitigationsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MitigationsListRequest",
-}) as any as S.Schema<MitigationsListRequest>;
+  identifier: "ListMitigationsRequest",
+}) as any as S.Schema<ListMitigationsRequest>;
 
 export type MitigationsListResponseMitigationsItemEntityType =
   | "url_pattern"
@@ -493,16 +517,16 @@ export const MitigationsListResponseMitigationsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<MitigationsListResponseMitigationsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface MitigationsListResponse {
+export interface ListMitigationsResponse {
   mitigations: MitigationsListResponseMitigationsList;
 }
-export const MitigationsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListMitigationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     mitigations: MitigationsListResponseMitigationsList,
   }),
 ).annotate({
-  identifier: "MitigationsListResponse",
-}) as any as S.Schema<MitigationsListResponse>;
+  identifier: "ListMitigationsResponse",
+}) as any as S.Schema<ListMitigationsResponse>;
 
 export type MitigationsReviewRequestAppealsItemReason =
   | "removed"
@@ -531,13 +555,13 @@ export const MitigationsReviewRequestAppealsList = /*@__PURE__*/ S.Array(
   MitigationsReviewRequestAppealsItem,
 ) as any as S.Schema<MitigationsReviewRequestAppealsList>;
 
-export interface MitigationsReviewRequest {
+export interface ReviewMitigationRequest {
   accountId: string;
   reportId: string;
   /** List of mitigations to appeal. */
   appeals: MitigationsReviewRequestAppealsList;
 }
-export const MitigationsReviewRequest = /*@__PURE__*/ S.suspend(() =>
+export const ReviewMitigationRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     reportId: S.String.pipe(T.Label("report_id")),
@@ -550,8 +574,8 @@ export const MitigationsReviewRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "MitigationsReviewRequest",
-}) as any as S.Schema<MitigationsReviewRequest>;
+  identifier: "ReviewMitigationRequest",
+}) as any as S.Schema<ReviewMitigationRequest>;
 
 export type MitigationsReviewResultItemEntityType =
   | "url_pattern"
@@ -607,29 +631,29 @@ export const MitigationsReviewResultList = /*@__PURE__*/ S.Array(
   MitigationsReviewResultItem,
 ) as any as S.Schema<MitigationsReviewResultList>;
 
-export interface MitigationsReviewResponse {
+export interface ReviewMitigationResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: MitigationsReviewResultList;
 }
-export const MitigationsReviewResponse = /*@__PURE__*/ S.suspend(() =>
+export const ReviewMitigationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(MitigationsReviewResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "MitigationsReviewResponse",
-}) as any as S.Schema<MitigationsReviewResponse>;
+  identifier: "ReviewMitigationResponse",
+}) as any as S.Schema<ReviewMitigationResponse>;
 
-export type CreateError = CloudflareOpError;
+export type CreateAbuseReportError = InvalidRequest | CloudflareOpError;
 /** Submit the Abuse Report of a particular type */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createAbuseReport: API.OperationMethod<
+  CreateAbuseReportRequest,
+  CreateAbuseReportResponse,
+  CreateAbuseReportError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateAbuseReportRequest,
+  output: CreateAbuseReportResponse,
+  errors: [InvalidRequest, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
@@ -647,44 +671,44 @@ export const get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-export type ListError = CloudflareOpError;
+export type ListAbuseReportsError = InvalidAccountId | CloudflareOpError;
 /** List the abuse reports for a given account */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
+export const listAbuseReports: API.OperationMethod<
+  ListAbuseReportsRequest,
+  ListAbuseReportsResponse,
+  ListAbuseReportsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ListAbuseReportsRequest,
+  output: ListAbuseReportsResponse,
+  errors: [InvalidAccountId, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type MitigationsListError = CloudflareOpError;
+export type ListMitigationsError = CloudflareOpError;
 /** List mitigations done to remediate the abuse report. */
-export const mitigationsList: API.OperationMethod<
-  MitigationsListRequest,
-  MitigationsListResponse,
-  MitigationsListError,
+export const listMitigations: API.OperationMethod<
+  ListMitigationsRequest,
+  ListMitigationsResponse,
+  ListMitigationsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MitigationsListRequest,
-  output: MitigationsListResponse,
+  input: ListMitigationsRequest,
+  output: ListMitigationsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type MitigationsReviewError = CloudflareOpError;
+export type ReviewMitigationError = CloudflareOpError;
 /** Request a review for mitigations on an account. */
-export const mitigationsReview: API.OperationMethod<
-  MitigationsReviewRequest,
-  MitigationsReviewResponse,
-  MitigationsReviewError,
+export const reviewMitigation: API.OperationMethod<
+  ReviewMitigationRequest,
+  ReviewMitigationResponse,
+  ReviewMitigationError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: MitigationsReviewRequest,
-  output: MitigationsReviewResponse,
+  input: ReviewMitigationRequest,
+  output: ReviewMitigationResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

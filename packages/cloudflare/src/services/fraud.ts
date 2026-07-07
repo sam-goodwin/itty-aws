@@ -9,11 +9,27 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface GetRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class FraudDetectionNotEntitled extends T.applyErrorMatchers(
+  S.TaggedErrorClass<FraudDetectionNotEntitled>()("FraudDetectionNotEntitled", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10400 }],
+) {}
+
+export interface GetFraudRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetFraudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -23,7 +39,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetFraudRequest",
+}) as any as S.Schema<GetFraudRequest>;
 
 export type GetResponseAuthenticationSettingsFailureCriteriaKind =
   | "status_code"
@@ -123,7 +141,7 @@ export const GetResponseUsernameExpressionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GetResponseUsernameExpressionsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetFraudResponse {
   /** Configuration for classifying login authentication outcomes based on the origin response. */
   authenticationSettings?: GetResponseAuthenticationSettings;
   /** Whether Fraud User Profiles is enabled for the zone. */
@@ -131,7 +149,7 @@ export interface GetResponse {
   /** List of expressions to detect usernames in write HTTP requests. */
   usernameExpressions?: GetResponseUsernameExpressionsList;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetFraudResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationSettings: S.optional(
       GetResponseAuthenticationSettings.pipe(T.Body("authentication_settings")),
@@ -143,7 +161,9 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
       GetResponseUsernameExpressionsList.pipe(T.Body("username_expressions")),
     ),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetFraudResponse",
+}) as any as S.Schema<GetFraudResponse>;
 
 export type UpdateRequestAuthenticationSettingsFailureCriteriaKind =
   | "status_code"
@@ -242,7 +262,7 @@ export const UpdateRequestUsernameExpressionsList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<UpdateRequestUsernameExpressionsList>;
 
-export interface UpdateRequest {
+export interface PutFraudRequest {
   /** Identifier. */
   zoneId: string;
   /** Configuration for classifying login authentication outcomes based on the origin response. */
@@ -252,7 +272,7 @@ export interface UpdateRequest {
   /** List of expressions to detect usernames in write HTTP requests. */
   usernameExpressions?: UpdateRequestUsernameExpressionsList;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutFraudRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     authenticationSettings: S.optional(
@@ -273,7 +293,9 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "PutFraudRequest",
+}) as any as S.Schema<PutFraudRequest>;
 
 export type UpdateResponseAuthenticationSettingsFailureCriteriaKind =
   | "status_code"
@@ -374,7 +396,7 @@ export const UpdateResponseUsernameExpressionsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<UpdateResponseUsernameExpressionsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface PutFraudResponse {
   /** Configuration for classifying login authentication outcomes based on the origin response. */
   authenticationSettings?: UpdateResponseAuthenticationSettings;
   /** Whether Fraud User Profiles is enabled for the zone. */
@@ -382,7 +404,7 @@ export interface UpdateResponse {
   /** List of expressions to detect usernames in write HTTP requests. */
   usernameExpressions?: UpdateResponseUsernameExpressionsList;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutFraudResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     authenticationSettings: S.optional(
       UpdateResponseAuthenticationSettings.pipe(
@@ -398,32 +420,42 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "PutFraudResponse",
+}) as any as S.Schema<PutFraudResponse>;
 
-export type GetError = CloudflareOpError;
+export type GetFraudError = Forbidden | CloudflareOpError;
 /** Retrieve Fraud Detection settings for a zone. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getFraud: API.OperationMethod<
+  GetFraudRequest,
+  GetFraudResponse,
+  GetFraudError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetFraudRequest,
+  output: GetFraudResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
+export type PutFraudError =
+  | Forbidden
+  | FraudDetectionNotEntitled
+  | CloudflareOpError;
 /** Update Fraud Detection settings for a zone. Notes on `username_expressions` behavior: - If omitted or set to null, expressions are not modified. - If provided as an empty array `[]`, all expressions will be cleared. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export const putFraud: API.OperationMethod<
+  PutFraudRequest,
+  PutFraudResponse,
+  PutFraudError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PutFraudRequest,
+  output: PutFraudResponse,
+  errors: [
+    Forbidden,
+    FraudDetectionNotEntitled,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

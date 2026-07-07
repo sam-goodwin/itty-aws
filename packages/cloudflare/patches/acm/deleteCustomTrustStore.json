@@ -1,0 +1,140 @@
+{
+  "description": "Align acm#CustomTrustStoreDelete with distilled cloudflare/acm deleteCustomTrustStore",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.acm#CustomTrustStoreDelete",
+      "path": "/shapes/com.cloudflare.acm#DeleteCustomTrustStore"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.acm#CustomTrustStoreDeleteRequest",
+      "path": "/shapes/com.cloudflare.acm#DeleteCustomTrustStoreRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.acm#DeleteCustomTrustStore/input/target",
+      "value": "com.cloudflare.acm#DeleteCustomTrustStoreRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.acm#CustomTrustStoreDeleteResponse",
+      "path": "/shapes/com.cloudflare.acm#DeleteCustomTrustStoreResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.acm#DeleteCustomTrustStore/output/target",
+      "value": "com.cloudflare.acm#DeleteCustomTrustStoreResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.acm#InvalidObjectIdentifier",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 7003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.acm#AdvancedCertificateManagerRequired",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 1450
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.acm#CustomTrustStoreNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.acm#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.acm#DeleteCustomTrustStore/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.acm#InvalidObjectIdentifier"
+        },
+        {
+          "target": "com.cloudflare.acm#AdvancedCertificateManagerRequired"
+        },
+        {
+          "target": "com.cloudflare.acm#CustomTrustStoreNotFound"
+        },
+        {
+          "target": "com.cloudflare.acm#Forbidden"
+        }
+      ]
+    }
+  ]
+}

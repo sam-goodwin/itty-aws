@@ -1,0 +1,88 @@
+{
+  "description": "Align rum#RulesUpdate with distilled cloudflare/rum updateRule",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rum#RulesUpdate",
+      "path": "/shapes/com.cloudflare.rum#UpdateRule"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rum#RulesUpdateRequest",
+      "path": "/shapes/com.cloudflare.rum#UpdateRuleRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.rum#UpdateRule/input/target",
+      "value": "com.cloudflare.rum#UpdateRuleRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.rum#RulesUpdateResponse",
+      "path": "/shapes/com.cloudflare.rum#UpdateRuleResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.rum#UpdateRule/output/target",
+      "value": "com.cloudflare.rum#UpdateRuleResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#RulesetNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 404
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.rum#UpdateRule/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.rum#Forbidden"
+        },
+        {
+          "target": "com.cloudflare.rum#RulesetNotFound"
+        }
+      ]
+    }
+  ]
+}

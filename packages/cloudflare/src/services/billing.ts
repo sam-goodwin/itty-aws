@@ -9,11 +9,11 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface ProfilesGetRequest {
+export interface GetProfileRequest {
   /** Identifier */
   accountId: string;
 }
-export const ProfilesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetProfileRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -24,11 +24,11 @@ export const ProfilesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ProfilesGetRequest",
-}) as any as S.Schema<ProfilesGetRequest>;
+  identifier: "GetProfileRequest",
+}) as any as S.Schema<GetProfileRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ProfilesGetResponse {
+export interface GetProfileResponse {
   /** Billing item identifier tag. */
   id?: string;
   accountType?: string;
@@ -70,7 +70,7 @@ export interface ProfilesGetResponse {
   vat?: string;
   zipcode?: string;
 }
-export const ProfilesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetProfileResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     accountType: S.optional(S.String.pipe(T.Body("account_type"))),
@@ -117,10 +117,10 @@ export const ProfilesGetResponse = /*@__PURE__*/ S.suspend(() =>
     zipcode: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "ProfilesGetResponse",
-}) as any as S.Schema<ProfilesGetResponse>;
+  identifier: "GetProfileResponse",
+}) as any as S.Schema<GetProfileResponse>;
 
-export interface UsageGetRequest {
+export interface GetUsageRequest {
   /** Represents a Cloudflare resource identifier tag. */
   accountId: string;
   /** Start date for the usage query (ISO 8601). Required if `to` is set. When omitted along with `to`, defaults to the start of the current month. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
@@ -130,7 +130,7 @@ export interface UsageGetRequest {
   /** End date for the usage query (ISO 8601). Required if `from` is set. When omitted along with `from`, defaults to today. Filters by charge period (when consumption happened), not billing period. The maximum date range is 31 days. */
   to?: string;
 }
-export const UsageGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     from: S.optional(S.String.pipe(T.Query())),
@@ -144,8 +144,8 @@ export const UsageGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "UsageGetRequest",
-}) as any as S.Schema<UsageGetRequest>;
+  identifier: "GetUsageRequest",
+}) as any as S.Schema<GetUsageRequest>;
 
 export type UsageGetResultItemChargeCategory = "Usage" | (string & {});
 export const UsageGetResultItemChargeCategory = /*@__PURE__*/ S.String;
@@ -271,19 +271,19 @@ export const UsageGetResultList = /*@__PURE__*/ S.Array(
   UsageGetResultItem,
 ) as any as S.Schema<UsageGetResultList>;
 
-export interface UsageGetResponse {
+export interface GetUsageResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UsageGetResultList;
 }
-export const UsageGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(UsageGetResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "UsageGetResponse",
-}) as any as S.Schema<UsageGetResponse>;
+  identifier: "GetUsageResponse",
+}) as any as S.Schema<GetUsageResponse>;
 
-export interface UsagePaygoRequest {
+export interface PaygoUsageRequest {
   /** Represents a Cloudflare resource identifier tag. */
   accountId: string;
   /** Start date for the usage query (ISO 8601). */
@@ -291,7 +291,7 @@ export interface UsagePaygoRequest {
   /** End date for the usage query (ISO 8601). */
   to?: string;
 }
-export const UsagePaygoRequest = /*@__PURE__*/ S.suspend(() =>
+export const PaygoUsageRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     from: S.optional(S.String.pipe(T.Query())),
@@ -304,8 +304,8 @@ export const UsagePaygoRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "UsagePaygoRequest",
-}) as any as S.Schema<UsagePaygoRequest>;
+  identifier: "PaygoUsageRequest",
+}) as any as S.Schema<PaygoUsageRequest>;
 
 export interface UsagePaygoResultItem {
   /** Specifies the billing currency code (ISO 4217). */
@@ -366,56 +366,56 @@ export const UsagePaygoResultList = /*@__PURE__*/ S.Array(
   UsagePaygoResultItem,
 ) as any as S.Schema<UsagePaygoResultList>;
 
-export interface UsagePaygoResponse {
+export interface PaygoUsageResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: UsagePaygoResultList;
 }
-export const UsagePaygoResponse = /*@__PURE__*/ S.suspend(() =>
+export const PaygoUsageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(UsagePaygoResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "UsagePaygoResponse",
-}) as any as S.Schema<UsagePaygoResponse>;
+  identifier: "PaygoUsageResponse",
+}) as any as S.Schema<PaygoUsageResponse>;
 
-export type ProfilesGetError = CloudflareOpError;
+export type GetProfileError = CloudflareOpError;
 /** Gets the current billing profile for the account. */
-export const profilesGet: API.OperationMethod<
-  ProfilesGetRequest,
-  ProfilesGetResponse,
-  ProfilesGetError,
+export const getProfile: API.OperationMethod<
+  GetProfileRequest,
+  GetProfileResponse,
+  GetProfileError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ProfilesGetRequest,
-  output: ProfilesGetResponse,
+  input: GetProfileRequest,
+  output: GetProfileResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UsageGetError = CloudflareOpError;
+export type GetUsageError = CloudflareOpError;
 /** Returns cost and usage data for a single Cloudflare account, aligned with the [FinOps FOCUS v1.3](https://focus.finops.org/focus-specification/v1-3/) Cost and Usage dataset specification. Each record represents one billable metric for one account on one day. This includes all metered usage, including usage that falls within free-tier allowances and may result in zero cost. **Note:** Cost and pricing fields are not yet populated and will be absent from responses until billing integration is complete. When `from` and `to` are omitted, defaults to the start of the current month through today. The maximum date range is 31 days. */
-export const usageGet: API.OperationMethod<
-  UsageGetRequest,
-  UsageGetResponse,
-  UsageGetError,
+export const getUsage: API.OperationMethod<
+  GetUsageRequest,
+  GetUsageResponse,
+  GetUsageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsageGetRequest,
-  output: UsageGetResponse,
+  input: GetUsageRequest,
+  output: GetUsageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UsagePaygoError = CloudflareOpError;
+export type PaygoUsageError = CloudflareOpError;
 /** Returns billable usage data for PayGo (self-serve) accounts. When no query parameters are provided, returns usage for the current billing period. This endpoint is currently in alpha and access is restricted to select accounts. While in alpha, the endpoint may get breaking changes. */
-export const usagePaygo: API.OperationMethod<
-  UsagePaygoRequest,
-  UsagePaygoResponse,
-  UsagePaygoError,
+export const paygoUsage: API.OperationMethod<
+  PaygoUsageRequest,
+  PaygoUsageResponse,
+  PaygoUsageError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UsagePaygoRequest,
-  output: UsagePaygoResponse,
+  input: PaygoUsageRequest,
+  output: PaygoUsageResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

@@ -1,0 +1,78 @@
+{
+  "description": "Align stream#LiveInputsOutputsDelete with distilled cloudflare/stream deleteLiveInputOutput",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#LiveInputsOutputsDelete",
+      "path": "/shapes/com.cloudflare.stream#DeleteLiveInputOutput"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.stream#LiveInputsOutputsDeleteRequest",
+      "path": "/shapes/com.cloudflare.stream#DeleteLiveInputOutputRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.stream#DeleteLiveInputOutput/input/target",
+      "value": "com.cloudflare.stream#DeleteLiveInputOutputRequest"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#OutputNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 10003
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.stream#DeleteLiveInputOutput/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.stream#OutputNotFound"
+        },
+        {
+          "target": "com.cloudflare.stream#Forbidden"
+        }
+      ]
+    }
+  ]
+}

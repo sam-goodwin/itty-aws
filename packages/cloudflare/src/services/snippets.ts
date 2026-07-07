@@ -9,13 +9,114 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface ContentGetRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class SnippetInUse extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SnippetInUse>()("SnippetInUse", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [
+    { status: 400, message: { includes: "still used" } },
+    { status: 409, message: { includes: "still used" } },
+  ],
+) {}
+
+export class SnippetNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SnippetNotFound>()("SnippetNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [
+    { status: 400, message: { includes: "snippet not found" } },
+    { status: 404 },
+  ],
+) {}
+
+export class SnippetRulesNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SnippetRulesNotFound>()("SnippetRulesNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 404 }],
+) {}
+
+export interface DeleteRuleRequest {
+  /** Use this field to specify the unique ID of the zone. */
+  zoneId: string;
+}
+export const DeleteRuleRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/snippets/snippet_rules",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRuleRequest",
+}) as any as S.Schema<DeleteRuleRequest>;
+
+export interface DeleteRuleResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "DeleteRuleResponse",
+}) as any as S.Schema<DeleteRuleResponse>;
+
+export interface DeleteSnippetRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
   /** Identify the snippet. */
   snippetName: string;
 }
-export const ContentGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteSnippetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    snippetName: S.String.pipe(T.Label("snippet_name")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/snippets/{snippet_name}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSnippetRequest",
+}) as any as S.Schema<DeleteSnippetRequest>;
+
+export interface DeleteSnippetResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const DeleteSnippetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "DeleteSnippetResponse",
+}) as any as S.Schema<DeleteSnippetResponse>;
+
+export interface GetContentRequest {
+  /** Use this field to specify the unique ID of the zone. */
+  zoneId: string;
+  /** Identify the snippet. */
+  snippetName: string;
+}
+export const GetContentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     snippetName: S.String.pipe(T.Label("snippet_name")),
@@ -27,52 +128,51 @@ export const ContentGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ContentGetRequest",
-}) as any as S.Schema<ContentGetRequest>;
+  identifier: "GetContentRequest",
+}) as any as S.Schema<GetContentRequest>;
 
-export interface ContentGetResponse {}
-export const ContentGetResponse = /*@__PURE__*/ S.suspend(() =>
+export interface GetContentResponse {}
+export const GetContentResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({}),
 ).annotate({
-  identifier: "ContentGetResponse",
-}) as any as S.Schema<ContentGetResponse>;
+  identifier: "GetContentResponse",
+}) as any as S.Schema<GetContentResponse>;
 
-export interface DeleteRequest {
+export interface GetRuleRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
-  /** Identify the snippet. */
-  snippetName: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
-    snippetName: S.String.pipe(T.Label("snippet_name")),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/snippets/{snippet_name}",
+      method: "GET",
+      uri: "/zones/{zone_id}/snippets/snippet_rules",
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({ identifier: "GetRuleRequest" }) as any as S.Schema<GetRuleRequest>;
 
-export interface DeleteResponse {
+export interface GetRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+).annotate({
+  identifier: "GetRuleResponse",
+}) as any as S.Schema<GetRuleResponse>;
 
-export interface GetRequest {
+export interface GetSnippetRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
   /** Identify the snippet. */
   snippetName: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetSnippetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     snippetName: S.String.pipe(T.Label("snippet_name")),
@@ -83,10 +183,12 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetSnippetRequest",
+}) as any as S.Schema<GetSnippetRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetSnippetResponse {
   /** Indicates when the snippet was created. */
   createdOn: string;
   /** Identify the snippet. */
@@ -94,15 +196,17 @@ export interface GetResponse {
   /** Indicates when the snippet was last modified. */
   modifiedOn?: string;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetSnippetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.String.pipe(T.Body("created_on")),
     snippetName: S.String.pipe(T.Body("snippet_name")),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetSnippetResponse",
+}) as any as S.Schema<GetSnippetResponse>;
 
-export interface ListRequest {
+export interface ListSnippetsRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
   /** Specifies the current page number. */
@@ -110,7 +214,7 @@ export interface ListRequest {
   /** Specifies how many results to return per page. */
   perPage?: number;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListSnippetsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     page: S.optional(S.Number.pipe(T.Query())),
@@ -118,7 +222,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
   }).pipe(
     T.Http({ method: "GET", uri: "/zones/{zone_id}/snippets", code: 200 }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListSnippetsRequest",
+}) as any as S.Schema<ListSnippetsRequest>;
 
 export interface ListResultItem {
   /** Indicates when the snippet was created. */
@@ -141,105 +247,17 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListSnippetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListSnippetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
-
-export interface RulesDeleteRequest {
-  /** Use this field to specify the unique ID of the zone. */
-  zoneId: string;
-}
-export const RulesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/snippets/snippet_rules",
-      code: 200,
-    }),
-  ),
 ).annotate({
-  identifier: "RulesDeleteRequest",
-}) as any as S.Schema<RulesDeleteRequest>;
-
-export interface RulesDeleteResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const RulesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "RulesDeleteResponse",
-}) as any as S.Schema<RulesDeleteResponse>;
-
-export interface RulesGetRequest {
-  /** Use this field to specify the unique ID of the zone. */
-  zoneId: string;
-}
-export const RulesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/snippets/snippet_rules",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RulesGetRequest",
-}) as any as S.Schema<RulesGetRequest>;
-
-export interface RulesGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const RulesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "RulesGetResponse",
-}) as any as S.Schema<RulesGetResponse>;
-
-export interface RulesListRequest {
-  /** Use this field to specify the unique ID of the zone. */
-  zoneId: string;
-}
-export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/snippets/snippet_rules",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RulesListRequest",
-}) as any as S.Schema<RulesListRequest>;
-
-export interface RulesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: unknown;
-}
-export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "RulesListResponse",
-}) as any as S.Schema<RulesListResponse>;
+  identifier: "ListSnippetsResponse",
+}) as any as S.Schema<ListSnippetsResponse>;
 
 export interface RulesUpdateRequestRulesItem {
   /** Specify the unique ID of the rule. */
@@ -273,13 +291,13 @@ export const RulesUpdateRequestRulesList = /*@__PURE__*/ S.Array(
   RulesUpdateRequestRulesItem,
 ) as any as S.Schema<RulesUpdateRequestRulesList>;
 
-export interface RulesUpdateRequest {
+export interface PutRuleRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
   /** Lists snippet rules. */
   rules: RulesUpdateRequestRulesList;
 }
-export const RulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutRuleRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     rules: RulesUpdateRequestRulesList,
@@ -290,29 +308,27 @@ export const RulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({
-  identifier: "RulesUpdateRequest",
-}) as any as S.Schema<RulesUpdateRequest>;
+).annotate({ identifier: "PutRuleRequest" }) as any as S.Schema<PutRuleRequest>;
 
-export interface RulesUpdateResponse {
+export interface PutRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: unknown;
 }
-export const RulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "RulesUpdateResponse",
-}) as any as S.Schema<RulesUpdateResponse>;
+  identifier: "PutRuleResponse",
+}) as any as S.Schema<PutRuleResponse>;
 
-export interface UpdateRequest {
+export interface PutSnippetRequest {
   /** Use this field to specify the unique ID of the zone. */
   zoneId: string;
   /** Identify the snippet. */
   snippetName: string;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutSnippetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     snippetName: S.String.pipe(T.Label("snippet_name")),
@@ -323,10 +339,12 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "PutSnippetRequest",
+}) as any as S.Schema<PutSnippetRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface PutSnippetResponse {
   /** Indicates when the snippet was created. */
   createdOn: string;
   /** Identify the snippet. */
@@ -334,94 +352,170 @@ export interface UpdateResponse {
   /** Indicates when the snippet was last modified. */
   modifiedOn?: string;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutSnippetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     createdOn: S.String.pipe(T.Body("created_on")),
     snippetName: S.String.pipe(T.Body("snippet_name")),
     modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "PutSnippetResponse",
+}) as any as S.Schema<PutSnippetResponse>;
 
-export type ContentGetError = CloudflareOpError;
-/** Fetches the content of a snippet belonging to the zone. */
-export const contentGet: API.OperationMethod<
-  ContentGetRequest,
-  ContentGetResponse,
-  ContentGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ContentGetRequest,
-  output: ContentGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface RulesListRequest {
+  /** Use this field to specify the unique ID of the zone. */
+  zoneId: string;
+}
+export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/snippets/snippet_rules",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "RulesListRequest",
+}) as any as S.Schema<RulesListRequest>;
 
-export type DeleteError = CloudflareOpError;
-/** Deletes a snippet belonging to the zone. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface RulesListResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: unknown;
+}
+export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "RulesListResponse",
+}) as any as S.Schema<RulesListResponse>;
 
-export type GetError = CloudflareOpError;
-/** Fetches a snippet belonging to the zone. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ListError = CloudflareOpError;
-/** Fetches all snippets belonging to the zone. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RulesDeleteError = CloudflareOpError;
+export type DeleteRuleError =
+  | SnippetRulesNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Deletes all snippet rules belonging to the zone. */
-export const rulesDelete: API.OperationMethod<
-  RulesDeleteRequest,
-  RulesDeleteResponse,
-  RulesDeleteError,
+export const deleteRule: API.OperationMethod<
+  DeleteRuleRequest,
+  DeleteRuleResponse,
+  DeleteRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesDeleteRequest,
-  output: RulesDeleteResponse,
+  input: DeleteRuleRequest,
+  output: DeleteRuleResponse,
+  errors: [
+    SnippetRulesNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSnippetError =
+  | SnippetNotFound
+  | SnippetInUse
+  | CloudflareOpError;
+/** Deletes a snippet belonging to the zone. */
+export const deleteSnippet: API.OperationMethod<
+  DeleteSnippetRequest,
+  DeleteSnippetResponse,
+  DeleteSnippetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSnippetRequest,
+  output: DeleteSnippetResponse,
+  errors: [
+    SnippetNotFound,
+    SnippetInUse,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetContentError = CloudflareOpError;
+/** Fetches the content of a snippet belonging to the zone. */
+export const getContent: API.OperationMethod<
+  GetContentRequest,
+  GetContentResponse,
+  GetContentError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetContentRequest,
+  output: GetContentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RulesGetError = CloudflareOpError;
+export type GetRuleError = CloudflareOpError;
 /** Fetches all snippet rules belonging to the zone. */
-export const rulesGet: API.OperationMethod<
-  RulesGetRequest,
-  RulesGetResponse,
-  RulesGetError,
+export const getRule: API.OperationMethod<
+  GetRuleRequest,
+  GetRuleResponse,
+  GetRuleError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RulesGetRequest,
-  output: RulesGetResponse,
+  input: GetRuleRequest,
+  output: GetRuleResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSnippetError = SnippetNotFound | CloudflareOpError;
+/** Fetches a snippet belonging to the zone. */
+export const getSnippet: API.OperationMethod<
+  GetSnippetRequest,
+  GetSnippetResponse,
+  GetSnippetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSnippetRequest,
+  output: GetSnippetResponse,
+  errors: [SnippetNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSnippetsError = Forbidden | CloudflareOpError;
+/** Fetches all snippets belonging to the zone. */
+export const listSnippets: API.OperationMethod<
+  ListSnippetsRequest,
+  ListSnippetsResponse,
+  ListSnippetsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSnippetsRequest,
+  output: ListSnippetsResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutRuleError = CloudflareOpError;
+/** Updates all snippet rules belonging to the zone. */
+export const putRule: API.OperationMethod<
+  PutRuleRequest,
+  PutRuleResponse,
+  PutRuleError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutRuleRequest,
+  output: PutRuleResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutSnippetError = CloudflareOpError;
+/** Creates or updates a snippet belonging to the zone. */
+export const putSnippet: API.OperationMethod<
+  PutSnippetRequest,
+  PutSnippetResponse,
+  PutSnippetError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutSnippetRequest,
+  output: PutSnippetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
@@ -436,34 +530,6 @@ export const rulesList: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesListRequest,
   output: RulesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RulesUpdateError = CloudflareOpError;
-/** Updates all snippet rules belonging to the zone. */
-export const rulesUpdate: API.OperationMethod<
-  RulesUpdateRequest,
-  RulesUpdateResponse,
-  RulesUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RulesUpdateRequest,
-  output: RulesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type UpdateError = CloudflareOpError;
-/** Creates or updates a snippet belonging to the zone. */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

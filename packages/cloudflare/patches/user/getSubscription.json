@@ -1,0 +1,20 @@
+{
+  "description": "Align user#SubscriptionsGet with distilled cloudflare/user getSubscription",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.user#SubscriptionsGet",
+      "path": "/shapes/com.cloudflare.user#GetSubscription"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.user#SubscriptionsGetResponse",
+      "path": "/shapes/com.cloudflare.user#GetSubscriptionResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.user#GetSubscription/output/target",
+      "value": "com.cloudflare.user#GetSubscriptionResponse"
+    }
+  ]
+}

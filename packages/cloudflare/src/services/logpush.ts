@@ -9,6 +9,58 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export interface CreateEdgeRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Comma-separated list of fields. */
+  fields?: string;
+  /** Filters to drill down into specific events. */
+  filter?: string;
+  /** The sample parameter is the sample rate of the records set by the client: "sample": 1 is 100% of records "sample": 10 is 10% and so on. */
+  sample?: number;
+}
+export const CreateEdgeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    fields: S.optional(S.String),
+    filter: S.optional(S.String),
+    sample: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/logpush/edge/jobs",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateEdgeRequest",
+}) as any as S.Schema<CreateEdgeRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateEdgeResponse {
+  /** Unique WebSocket address that will receive messages from Cloudflare’s edge. */
+  destinationConf?: string;
+  /** Comma-separated list of fields. */
+  fields?: string;
+  /** Filters to drill down into specific events. */
+  filter?: string;
+  /** The sample parameter is the sample rate of the records set by the client: "sample": 1 is 100% of records "sample": 10 is 10% and so on. */
+  sample?: number;
+  /** Unique session id of the job. */
+  sessionId?: string;
+}
+export const CreateEdgeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
+    fields: S.optional(S.String),
+    filter: S.optional(S.String),
+    sample: S.optional(S.Number),
+    sessionId: S.optional(S.String.pipe(T.Body("session_id"))),
+  }),
+).annotate({
+  identifier: "CreateEdgeResponse",
+}) as any as S.Schema<CreateEdgeResponse>;
+
 export type DatasetsFieldsGetRequestDatasetId =
   | "access_requests"
   | "audit_logs"
@@ -302,63 +354,11 @@ export const DatasetsJobsGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "DatasetsJobsGetResponse",
 }) as any as S.Schema<DatasetsJobsGetResponse>;
 
-export interface EdgeCreateRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Comma-separated list of fields. */
-  fields?: string;
-  /** Filters to drill down into specific events. */
-  filter?: string;
-  /** The sample parameter is the sample rate of the records set by the client: "sample": 1 is 100% of records "sample": 10 is 10% and so on. */
-  sample?: number;
-}
-export const EdgeCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    fields: S.optional(S.String),
-    filter: S.optional(S.String),
-    sample: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/logpush/edge/jobs",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "EdgeCreateRequest",
-}) as any as S.Schema<EdgeCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EdgeCreateResponse {
-  /** Unique WebSocket address that will receive messages from Cloudflare’s edge. */
-  destinationConf?: string;
-  /** Comma-separated list of fields. */
-  fields?: string;
-  /** Filters to drill down into specific events. */
-  filter?: string;
-  /** The sample parameter is the sample rate of the records set by the client: "sample": 1 is 100% of records "sample": 10 is 10% and so on. */
-  sample?: number;
-  /** Unique session id of the job. */
-  sessionId?: string;
-}
-export const EdgeCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    destinationConf: S.optional(S.String.pipe(T.Body("destination_conf"))),
-    fields: S.optional(S.String),
-    filter: S.optional(S.String),
-    sample: S.optional(S.Number),
-    sessionId: S.optional(S.String.pipe(T.Body("session_id"))),
-  }),
-).annotate({
-  identifier: "EdgeCreateResponse",
-}) as any as S.Schema<EdgeCreateResponse>;
-
-export interface EdgeGetRequest {
+export interface GetEdgeRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const EdgeGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetEdgeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -368,7 +368,7 @@ export const EdgeGetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "EdgeGetRequest" }) as any as S.Schema<EdgeGetRequest>;
+).annotate({ identifier: "GetEdgeRequest" }) as any as S.Schema<GetEdgeRequest>;
 
 export interface EdgeGetResultItem {
   /** Unique WebSocket address that will receive messages from Cloudflare’s edge. */
@@ -399,17 +399,17 @@ export const EdgeGetResultList = /*@__PURE__*/ S.Array(
   EdgeGetResultItem,
 ) as any as S.Schema<EdgeGetResultList>;
 
-export interface EdgeGetResponse {
+export interface GetEdgeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: EdgeGetResultList;
 }
-export const EdgeGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetEdgeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(EdgeGetResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "EdgeGetResponse",
-}) as any as S.Schema<EdgeGetResponse>;
+  identifier: "GetEdgeResponse",
+}) as any as S.Schema<GetEdgeResponse>;
 
 export type JobsCreateRequestDataset =
   | "access_requests"
@@ -1866,6 +1866,20 @@ export const ValidateOriginResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ValidateOriginResponse",
 }) as any as S.Schema<ValidateOriginResponse>;
 
+export type CreateEdgeError = CloudflareOpError;
+/** Creates a new Instant Logs job for a zone. */
+export const createEdge: API.OperationMethod<
+  CreateEdgeRequest,
+  CreateEdgeResponse,
+  CreateEdgeError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateEdgeRequest,
+  output: CreateEdgeResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
 export type DatasetsFieldsGetError = CloudflareOpError;
 /** Lists all fields available for a dataset. The response result is. an object with key-value pairs, where keys are field names, and values are descriptions. */
 export const datasetsFieldsGet: API.OperationMethod<
@@ -1894,30 +1908,16 @@ export const datasetsJobsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-export type EdgeCreateError = CloudflareOpError;
-/** Creates a new Instant Logs job for a zone. */
-export const edgeCreate: API.OperationMethod<
-  EdgeCreateRequest,
-  EdgeCreateResponse,
-  EdgeCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EdgeCreateRequest,
-  output: EdgeCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type EdgeGetError = CloudflareOpError;
+export type GetEdgeError = CloudflareOpError;
 /** Lists Instant Logs jobs for a zone. */
-export const edgeGet: API.OperationMethod<
-  EdgeGetRequest,
-  EdgeGetResponse,
-  EdgeGetError,
+export const getEdge: API.OperationMethod<
+  GetEdgeRequest,
+  GetEdgeResponse,
+  GetEdgeError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: EdgeGetRequest,
-  output: EdgeGetResponse,
+  input: GetEdgeRequest,
+  output: GetEdgeResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

@@ -9,6 +9,14 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
 export interface FeedbackCreateRequestRequestsByAttribute {
   metric: string;
   requests: number;
@@ -146,11 +154,11 @@ export const FeedbackListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "FeedbackListResponse",
 }) as any as S.Schema<FeedbackListResponse>;
 
-export interface GetRequest {
+export interface GetBotManagementRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetBotManagementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -160,16 +168,18 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetBotManagementRequest",
+}) as any as S.Schema<GetBotManagementRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetBotManagementResponse {
   BotFightModeConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection6More__: unknown;
   SuperBotFightModeDefinitelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection9More__: unknown;
   SuperBotFightModeLikelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection10More__: unknown;
   SubscriptionConfigurationObjectAiBotsProtectionAutoUpdateModelBmCookieEnabled8More__: unknown;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetBotManagementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BotFightModeConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection6More__:
       S.Unknown.pipe(
@@ -196,7 +206,9 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
         ),
       ),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetBotManagementResponse",
+}) as any as S.Schema<GetBotManagementResponse>;
 
 export interface UpdateRequestBody {
   BotFightModeConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection6More__: unknown;
@@ -235,12 +247,12 @@ export const UpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "UpdateRequestBody",
 }) as any as S.Schema<UpdateRequestBody>;
 
-export interface UpdateRequest {
+export interface PutBotManagementRequest {
   /** Identifier. */
   zoneId: string;
   body: UpdateRequestBody;
 }
-export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PutBotManagementRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     body: UpdateRequestBody,
@@ -251,16 +263,18 @@ export const UpdateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "UpdateRequest" }) as any as S.Schema<UpdateRequest>;
+).annotate({
+  identifier: "PutBotManagementRequest",
+}) as any as S.Schema<PutBotManagementRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface UpdateResponse {
+export interface PutBotManagementResponse {
   BotFightModeConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection6More__: unknown;
   SuperBotFightModeDefinitelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection9More__: unknown;
   SuperBotFightModeLikelyConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection10More__: unknown;
   SubscriptionConfigurationObjectAiBotsProtectionAutoUpdateModelBmCookieEnabled8More__: unknown;
 }
-export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PutBotManagementResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     BotFightModeConfigurationObjectAiBotsProtectionCfRobotsVariantContentBotsProtection6More__:
       S.Unknown.pipe(
@@ -287,7 +301,9 @@ export const UpdateResponse = /*@__PURE__*/ S.suspend(() =>
         ),
       ),
   }),
-).annotate({ identifier: "UpdateResponse" }) as any as S.Schema<UpdateResponse>;
+).annotate({
+  identifier: "PutBotManagementResponse",
+}) as any as S.Schema<PutBotManagementResponse>;
 
 export type FeedbackCreateError = CloudflareOpError;
 /** Submit a feedback report for the specified zone. Use `type` to indicate whether the report is a false positive (good traffic flagged as bot) or a false negative (bot traffic missed). Furthermore, you can also use `expression` as a wirefilter to identify the affected traffic sample. See more accepted API fields and expression types at https://developers.cloudflare.com/bots/concepts/feedback-loop/#api-fields and https://developers.cloudflare.com/bots/concepts/feedback-loop/#expression-fields, respectively. */
@@ -317,30 +333,30 @@ export const feedbackList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
+export type GetBotManagementError = Forbidden | CloudflareOpError;
 /** Retrieve a zone's Bot Management Config */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getBotManagement: API.OperationMethod<
+  GetBotManagementRequest,
+  GetBotManagementResponse,
+  GetBotManagementError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetBotManagementRequest,
+  output: GetBotManagementResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type UpdateError = CloudflareOpError;
+export type PutBotManagementError = Forbidden | CloudflareOpError;
 /** Updates the Bot Management configuration for a zone. This API is used to update: - **Bot Fight Mode** - **Super Bot Fight Mode** - **Bot Management for Enterprise** See [Bot Plans](https://developers.cloudflare.com/bots/plans/) for more information on the different plans \ If you recently upgraded or downgraded your plan, refer to the following examples to clean up old configurations. Copy and paste the example body to remove old zone configurations based on your current plan. #### Clean up configuration for Bot Fight Mode plan ```json { "sbfm_likely_automated": "allow", "sbfm_definitely_automated": "allow", "sbfm_verified_bots": "allow", "sbfm_static_resource_protection": false, "optimize_wordpress": false, "suppress_session_score": false } ``` #### Clean up configuration for SBFM Pro plan ```json { "sbfm_likely_automated": "allow", "fight_mode": false } ``` #### Clean up configuration for SBFM Biz plan ```json { "fight_mode": false } ``` #### Clean up configuration for BM Enterprise Subscription plan It is strongly recommended that you ensure you have [custom rules](https://developers.cloudflare.com/waf/custom-rules/) in place to protect your zone before disabling the SBFM rules. Without these protections, your zone is vulnerable to attacks. ```json { "sbfm_likely_automated": "allow", "sbfm_definitely_automated": "allow", "sbfm_verified_bots": "allow", "sbfm_static_resource_protection": false, "optimize_wordpress": false, "fight_mode": false } ``` */
-export const update: API.OperationMethod<
-  UpdateRequest,
-  UpdateResponse,
-  UpdateError,
+export const putBotManagement: API.OperationMethod<
+  PutBotManagementRequest,
+  PutBotManagementResponse,
+  PutBotManagementError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: UpdateRequest,
-  output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: PutBotManagementRequest,
+  output: PutBotManagementResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

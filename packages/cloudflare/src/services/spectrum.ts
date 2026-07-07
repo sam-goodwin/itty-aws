@@ -9,7 +9,127 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface AnalyticsAggregatesCurrentsGetRequest {
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class SpectrumAppNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SpectrumAppNotFound>()("SpectrumAppNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 10006 }],
+) {}
+
+export class SpectrumProtocolNotAvailable extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SpectrumProtocolNotAvailable>()(
+    "SpectrumProtocolNotAvailable",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 13002 }],
+) {}
+
+export interface AppsCreateRequestBody {
+  SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: unknown;
+  SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: unknown;
+}
+export const AppsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: S.Unknown.pipe(
+      T.Body("SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"),
+    ),
+    SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: S.Unknown.pipe(
+      T.Body(
+        "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "AppsCreateRequestBody",
+}) as any as S.Schema<AppsCreateRequestBody>;
+
+export interface CreateAppRequest {
+  /** Zone identifier. */
+  zoneId: string;
+  body: AppsCreateRequestBody;
+}
+export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    body: AppsCreateRequestBody,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/spectrum/apps",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateAppRequest",
+}) as any as S.Schema<CreateAppRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateAppResponse {
+  SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: unknown;
+  SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: unknown;
+}
+export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: S.Unknown.pipe(
+      T.Body("SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"),
+    ),
+    SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: S.Unknown.pipe(
+      T.Body(
+        "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "CreateAppResponse",
+}) as any as S.Schema<CreateAppResponse>;
+
+export interface DeleteAppRequest {
+  /** Zone identifier. */
+  zoneId: string;
+  /** App identifier. */
+  appId: string;
+}
+export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    appId: S.String.pipe(T.Label("app_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/zones/{zone_id}/spectrum/apps/{app_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAppRequest",
+}) as any as S.Schema<DeleteAppRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteAppResponse {
+  /** Identifier. */
+  id: string;
+}
+export const DeleteAppResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "DeleteAppResponse",
+}) as any as S.Schema<DeleteAppResponse>;
+
+export interface GetAnalyticAggregateCurrentRequest {
   /** Identifier. */
   zoneId: string;
   /** Comma-delimited list of Spectrum Application Id(s). If provided, the response will be limited to Spectrum Application Id(s) that match. */
@@ -17,22 +137,21 @@ export interface AnalyticsAggregatesCurrentsGetRequest {
   /** Co-location identifier. */
   coloName?: string;
 }
-export const AnalyticsAggregatesCurrentsGetRequest = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      zoneId: S.String.pipe(T.Label("zone_id")),
-      appID: S.optional(S.String.pipe(T.Query())),
-      coloName: S.optional(S.String.pipe(T.Query("colo_name"))),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/zones/{zone_id}/spectrum/analytics/aggregate/current",
-        code: 200,
-      }),
-    ),
+export const GetAnalyticAggregateCurrentRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    appID: S.optional(S.String.pipe(T.Query())),
+    coloName: S.optional(S.String.pipe(T.Query("colo_name"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/spectrum/analytics/aggregate/current",
+      code: 200,
+    }),
+  ),
 ).annotate({
-  identifier: "AnalyticsAggregatesCurrentsGetRequest",
-}) as any as S.Schema<AnalyticsAggregatesCurrentsGetRequest>;
+  identifier: "GetAnalyticAggregateCurrentRequest",
+}) as any as S.Schema<GetAnalyticAggregateCurrentRequest>;
 
 export interface AnalyticsAggregatesCurrentsGetResultItem {
   /** Application identifier. */
@@ -65,20 +184,19 @@ export const AnalyticsAggregatesCurrentsGetResultList = /*@__PURE__*/ S.Array(
   AnalyticsAggregatesCurrentsGetResultItem,
 ) as any as S.Schema<AnalyticsAggregatesCurrentsGetResultList>;
 
-export interface AnalyticsAggregatesCurrentsGetResponse {
+export interface GetAnalyticAggregateCurrentResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AnalyticsAggregatesCurrentsGetResultList;
 }
-export const AnalyticsAggregatesCurrentsGetResponse = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      result: S.optional(
-        AnalyticsAggregatesCurrentsGetResultList.pipe(T.EnvelopePayload()),
-      ),
-    }),
+export const GetAnalyticAggregateCurrentResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      AnalyticsAggregatesCurrentsGetResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
 ).annotate({
-  identifier: "AnalyticsAggregatesCurrentsGetResponse",
-}) as any as S.Schema<AnalyticsAggregatesCurrentsGetResponse>;
+  identifier: "GetAnalyticAggregateCurrentResponse",
+}) as any as S.Schema<GetAnalyticAggregateCurrentResponse>;
 
 export type AnalyticsEventsBytimesGetRequestTimeDelta =
   | "year"
@@ -112,7 +230,7 @@ export const AnalyticsEventsBytimesGetRequestSortList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AnalyticsEventsBytimesGetRequestSortList>;
 
-export interface AnalyticsEventsBytimesGetRequest {
+export interface GetAnalyticEventBytimeRequest {
   /** Identifier. */
   zoneId: string;
   /** Used to select time series resolution. */
@@ -130,7 +248,7 @@ export interface AnalyticsEventsBytimesGetRequest {
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string;
 }
-export const AnalyticsEventsBytimesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAnalyticEventBytimeRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     timeDelta: AnalyticsEventsBytimesGetRequestTimeDelta.pipe(
@@ -154,8 +272,8 @@ export const AnalyticsEventsBytimesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AnalyticsEventsBytimesGetRequest",
-}) as any as S.Schema<AnalyticsEventsBytimesGetRequest>;
+  identifier: "GetAnalyticEventBytimeRequest",
+}) as any as S.Schema<GetAnalyticEventBytimeRequest>;
 
 export type AnalyticsEventsBytimesGetResponseDataItemDimensionsList = string[];
 export const AnalyticsEventsBytimesGetResponseDataItemDimensionsList =
@@ -298,7 +416,7 @@ export const AnalyticsEventsBytimesGetResponseTimeIntervalsList =
   ) as any as S.Schema<AnalyticsEventsBytimesGetResponseTimeIntervalsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AnalyticsEventsBytimesGetResponse {
+export interface GetAnalyticEventBytimeResponse {
   /** List of columns returned by the analytics query. */
   data: AnalyticsEventsBytimesGetResponseDataList;
   /** Number of seconds between current time and last processed event, i.e. how many seconds of data could be missing. */
@@ -315,7 +433,7 @@ export interface AnalyticsEventsBytimesGetResponse {
   /** List of time interval buckets: [start, end]. */
   timeIntervals?: AnalyticsEventsBytimesGetResponseTimeIntervalsList;
 }
-export const AnalyticsEventsBytimesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetAnalyticEventBytimeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AnalyticsEventsBytimesGetResponseDataList,
     dataLag: S.Number.pipe(T.Body("data_lag")),
@@ -331,8 +449,8 @@ export const AnalyticsEventsBytimesGetResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "AnalyticsEventsBytimesGetResponse",
-}) as any as S.Schema<AnalyticsEventsBytimesGetResponse>;
+  identifier: "GetAnalyticEventBytimeResponse",
+}) as any as S.Schema<GetAnalyticEventBytimeResponse>;
 
 export type AnalyticsEventsSummariesGetRequestDimensionsList = string[];
 export const AnalyticsEventsSummariesGetRequestDimensionsList =
@@ -359,7 +477,7 @@ export const AnalyticsEventsSummariesGetRequestSortList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<AnalyticsEventsSummariesGetRequestSortList>;
 
-export interface AnalyticsEventsSummariesGetRequest {
+export interface GetAnalyticEventSummaryRequest {
   /** Identifier. */
   zoneId: string;
   /** Can be used to break down the data by given attributes. Options are: */
@@ -375,7 +493,7 @@ export interface AnalyticsEventsSummariesGetRequest {
   /** End of time interval to query, defaults to current time. Timestamp must be in RFC3339 format and uses UTC unless otherwise specified. */
   until?: string;
 }
-export const AnalyticsEventsSummariesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAnalyticEventSummaryRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     dimensions: S.optional(
@@ -398,8 +516,8 @@ export const AnalyticsEventsSummariesGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AnalyticsEventsSummariesGetRequest",
-}) as any as S.Schema<AnalyticsEventsSummariesGetRequest>;
+  identifier: "GetAnalyticEventSummaryRequest",
+}) as any as S.Schema<GetAnalyticEventSummaryRequest>;
 
 export type AnalyticsEventsSummariesGetResponseDataItemDimensionsList =
   string[];
@@ -546,7 +664,7 @@ export const AnalyticsEventsSummariesGetResponseTimeIntervalsList =
   ) as any as S.Schema<AnalyticsEventsSummariesGetResponseTimeIntervalsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AnalyticsEventsSummariesGetResponse {
+export interface GetAnalyticEventSummaryResponse {
   /** List of columns returned by the analytics query. */
   data: AnalyticsEventsSummariesGetResponseDataList;
   /** Number of seconds between current time and last processed event, i.e. how many seconds of data could be missing. */
@@ -563,7 +681,7 @@ export interface AnalyticsEventsSummariesGetResponse {
   /** List of time interval buckets: [start, end]. */
   timeIntervals?: AnalyticsEventsSummariesGetResponseTimeIntervalsList;
 }
-export const AnalyticsEventsSummariesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetAnalyticEventSummaryResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     data: AnalyticsEventsSummariesGetResponseDataList,
     dataLag: S.Number.pipe(T.Body("data_lag")),
@@ -579,109 +697,16 @@ export const AnalyticsEventsSummariesGetResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "AnalyticsEventsSummariesGetResponse",
-}) as any as S.Schema<AnalyticsEventsSummariesGetResponse>;
+  identifier: "GetAnalyticEventSummaryResponse",
+}) as any as S.Schema<GetAnalyticEventSummaryResponse>;
 
-export interface AppsCreateRequestBody {
-  SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: unknown;
-  SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: unknown;
-}
-export const AppsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: S.Unknown.pipe(
-      T.Body("SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"),
-    ),
-    SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: S.Unknown.pipe(
-      T.Body(
-        "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "AppsCreateRequestBody",
-}) as any as S.Schema<AppsCreateRequestBody>;
-
-export interface AppsCreateRequest {
-  /** Zone identifier. */
-  zoneId: string;
-  body: AppsCreateRequestBody;
-}
-export const AppsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    body: AppsCreateRequestBody,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/zones/{zone_id}/spectrum/apps",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsCreateRequest",
-}) as any as S.Schema<AppsCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsCreateResponse {
-  SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: unknown;
-  SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: unknown;
-}
-export const AppsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: S.Unknown.pipe(
-      T.Body("SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"),
-    ),
-    SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: S.Unknown.pipe(
-      T.Body(
-        "SpectrumConfigPaygoAppConfig object { id, created_on, dns, 3 more }",
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "AppsCreateResponse",
-}) as any as S.Schema<AppsCreateResponse>;
-
-export interface AppsDeleteRequest {
+export interface GetAppRequest {
   /** Zone identifier. */
   zoneId: string;
   /** App identifier. */
   appId: string;
 }
-export const AppsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    appId: S.String.pipe(T.Label("app_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/zones/{zone_id}/spectrum/apps/{app_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsDeleteRequest",
-}) as any as S.Schema<AppsDeleteRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsDeleteResponse {
-  /** Identifier. */
-  id: string;
-}
-export const AppsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-  }),
-).annotate({
-  identifier: "AppsDeleteResponse",
-}) as any as S.Schema<AppsDeleteResponse>;
-
-export interface AppsGetRequest {
-  /** Zone identifier. */
-  zoneId: string;
-  /** App identifier. */
-  appId: string;
-}
-export const AppsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -692,14 +717,14 @@ export const AppsGetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "AppsGetRequest" }) as any as S.Schema<AppsGetRequest>;
+).annotate({ identifier: "GetAppRequest" }) as any as S.Schema<GetAppRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsGetResponse {
+export interface GetAppResponse {
   SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: unknown;
   SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: unknown;
 }
-export const AppsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: S.Unknown.pipe(
       T.Body("SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"),
@@ -710,9 +735,7 @@ export const AppsGetResponse = /*@__PURE__*/ S.suspend(() =>
       ),
     ),
   }),
-).annotate({
-  identifier: "AppsGetResponse",
-}) as any as S.Schema<AppsGetResponse>;
+).annotate({ identifier: "GetAppResponse" }) as any as S.Schema<GetAppResponse>;
 
 export type AppsListRequestDirection = "asc" | "desc" | (string & {});
 export const AppsListRequestDirection = /*@__PURE__*/ S.String;
@@ -724,7 +747,7 @@ export type AppsListRequestOrder =
   | (string & {});
 export const AppsListRequestOrder = /*@__PURE__*/ S.String;
 
-export interface AppsListRequest {
+export interface ListAppsRequest {
   /** Zone identifier. */
   zoneId: string;
   /** Sets the direction by which results are ordered. */
@@ -736,7 +759,7 @@ export interface AppsListRequest {
   /** Sets the maximum number of results per page. */
   perPage?: number;
 }
-export const AppsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     direction: S.optional(AppsListRequestDirection.pipe(T.Query())),
@@ -747,8 +770,8 @@ export const AppsListRequest = /*@__PURE__*/ S.suspend(() =>
     T.Http({ method: "GET", uri: "/zones/{zone_id}/spectrum/apps", code: 200 }),
   ),
 ).annotate({
-  identifier: "AppsListRequest",
-}) as any as S.Schema<AppsListRequest>;
+  identifier: "ListAppsRequest",
+}) as any as S.Schema<ListAppsRequest>;
 
 export interface AppsListResultItem {
   arrayOfObjectIdCreatedOnDns12More__: unknown;
@@ -772,17 +795,17 @@ export const AppsListResultList = /*@__PURE__*/ S.Array(
   AppsListResultItem,
 ) as any as S.Schema<AppsListResultList>;
 
-export interface AppsListResponse {
+export interface ListAppsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: AppsListResultList;
 }
-export const AppsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(AppsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "AppsListResponse",
-}) as any as S.Schema<AppsListResponse>;
+  identifier: "ListAppsResponse",
+}) as any as S.Schema<ListAppsResponse>;
 
 export interface AppsUpdateRequestBody {
   SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: unknown;
@@ -803,14 +826,14 @@ export const AppsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   identifier: "AppsUpdateRequestBody",
 }) as any as S.Schema<AppsUpdateRequestBody>;
 
-export interface AppsUpdateRequest {
+export interface UpdateAppRequest {
   /** Zone identifier. */
   zoneId: string;
   /** App identifier. */
   appId: string;
   body: AppsUpdateRequestBody;
 }
-export const AppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     appId: S.String.pipe(T.Label("app_id")),
@@ -823,15 +846,15 @@ export const AppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "AppsUpdateRequest",
-}) as any as S.Schema<AppsUpdateRequest>;
+  identifier: "UpdateAppRequest",
+}) as any as S.Schema<UpdateAppRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsUpdateResponse {
+export interface UpdateAppResponse {
   SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: unknown;
   SpectrumConfigPaygoAppConfigObjectIdCreatedOnDns3More__: unknown;
 }
-export const AppsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     SpectrumConfigAppConfigObjectIdCreatedOnDns12More__: S.Unknown.pipe(
       T.Body("SpectrumConfigAppConfig object { id, created_on, dns, 12 more }"),
@@ -843,117 +866,148 @@ export const AppsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "AppsUpdateResponse",
-}) as any as S.Schema<AppsUpdateResponse>;
+  identifier: "UpdateAppResponse",
+}) as any as S.Schema<UpdateAppResponse>;
 
-export type AnalyticsAggregatesCurrentsGetError = CloudflareOpError;
-/** Retrieves analytics aggregated from the last minute of usage on Spectrum applications underneath a given zone. */
-export const analyticsAggregatesCurrentsGet: API.OperationMethod<
-  AnalyticsAggregatesCurrentsGetRequest,
-  AnalyticsAggregatesCurrentsGetResponse,
-  AnalyticsAggregatesCurrentsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AnalyticsAggregatesCurrentsGetRequest,
-  output: AnalyticsAggregatesCurrentsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AnalyticsEventsBytimesGetError = CloudflareOpError;
-/** Retrieves a list of aggregate metrics grouped by time interval. */
-export const analyticsEventsBytimesGet: API.OperationMethod<
-  AnalyticsEventsBytimesGetRequest,
-  AnalyticsEventsBytimesGetResponse,
-  AnalyticsEventsBytimesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AnalyticsEventsBytimesGetRequest,
-  output: AnalyticsEventsBytimesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AnalyticsEventsSummariesGetError = CloudflareOpError;
-/** Retrieves a list of summarised aggregate metrics over a given time period. */
-export const analyticsEventsSummariesGet: API.OperationMethod<
-  AnalyticsEventsSummariesGetRequest,
-  AnalyticsEventsSummariesGetResponse,
-  AnalyticsEventsSummariesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AnalyticsEventsSummariesGetRequest,
-  output: AnalyticsEventsSummariesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AppsCreateError = CloudflareOpError;
+export type CreateAppError =
+  | SpectrumProtocolNotAvailable
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a new Spectrum application from a configuration using a name for the origin. */
-export const appsCreate: API.OperationMethod<
-  AppsCreateRequest,
-  AppsCreateResponse,
-  AppsCreateError,
+export const createApp: API.OperationMethod<
+  CreateAppRequest,
+  CreateAppResponse,
+  CreateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppsCreateRequest,
-  output: AppsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateAppRequest,
+  output: CreateAppResponse,
+  errors: [
+    SpectrumProtocolNotAvailable,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type AppsDeleteError = CloudflareOpError;
+export type DeleteAppError =
+  | SpectrumAppNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Deletes a previously existing application. */
-export const appsDelete: API.OperationMethod<
-  AppsDeleteRequest,
-  AppsDeleteResponse,
-  AppsDeleteError,
+export const deleteApp: API.OperationMethod<
+  DeleteAppRequest,
+  DeleteAppResponse,
+  DeleteAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppsDeleteRequest,
-  output: AppsDeleteResponse,
+  input: DeleteAppRequest,
+  output: DeleteAppResponse,
+  errors: [
+    SpectrumAppNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetAnalyticAggregateCurrentError = CloudflareOpError;
+/** Retrieves analytics aggregated from the last minute of usage on Spectrum applications underneath a given zone. */
+export const getAnalyticAggregateCurrent: API.OperationMethod<
+  GetAnalyticAggregateCurrentRequest,
+  GetAnalyticAggregateCurrentResponse,
+  GetAnalyticAggregateCurrentError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAnalyticAggregateCurrentRequest,
+  output: GetAnalyticAggregateCurrentResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type AppsGetError = CloudflareOpError;
+export type GetAnalyticEventBytimeError = CloudflareOpError;
+/** Retrieves a list of aggregate metrics grouped by time interval. */
+export const getAnalyticEventBytime: API.OperationMethod<
+  GetAnalyticEventBytimeRequest,
+  GetAnalyticEventBytimeResponse,
+  GetAnalyticEventBytimeError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAnalyticEventBytimeRequest,
+  output: GetAnalyticEventBytimeResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetAnalyticEventSummaryError = CloudflareOpError;
+/** Retrieves a list of summarised aggregate metrics over a given time period. */
+export const getAnalyticEventSummary: API.OperationMethod<
+  GetAnalyticEventSummaryRequest,
+  GetAnalyticEventSummaryResponse,
+  GetAnalyticEventSummaryError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAnalyticEventSummaryRequest,
+  output: GetAnalyticEventSummaryResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetAppError = SpectrumAppNotFound | Forbidden | CloudflareOpError;
 /** Gets the application configuration of a specific application inside a zone. */
-export const appsGet: API.OperationMethod<
-  AppsGetRequest,
-  AppsGetResponse,
-  AppsGetError,
+export const getApp: API.OperationMethod<
+  GetAppRequest,
+  GetAppResponse,
+  GetAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppsGetRequest,
-  output: AppsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetAppRequest,
+  output: GetAppResponse,
+  errors: [
+    SpectrumAppNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type AppsListError = CloudflareOpError;
+export type ListAppsError = Forbidden | CloudflareOpError;
 /** Retrieves a list of currently existing Spectrum applications inside a zone. */
-export const appsList: API.OperationMethod<
-  AppsListRequest,
-  AppsListResponse,
-  AppsListError,
+export const listApps: API.OperationMethod<
+  ListAppsRequest,
+  ListAppsResponse,
+  ListAppsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppsListRequest,
-  output: AppsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ListAppsRequest,
+  output: ListAppsResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type AppsUpdateError = CloudflareOpError;
+export type UpdateAppError =
+  | SpectrumAppNotFound
+  | SpectrumProtocolNotAvailable
+  | Forbidden
+  | CloudflareOpError;
 /** Updates a previously existing application's configuration that uses a name for the origin. */
-export const appsUpdate: API.OperationMethod<
-  AppsUpdateRequest,
-  AppsUpdateResponse,
-  AppsUpdateError,
+export const updateApp: API.OperationMethod<
+  UpdateAppRequest,
+  UpdateAppResponse,
+  UpdateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: AppsUpdateRequest,
-  output: AppsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateAppRequest,
+  output: UpdateAppResponse,
+  errors: [
+    SpectrumAppNotFound,
+    SpectrumProtocolNotAvailable,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

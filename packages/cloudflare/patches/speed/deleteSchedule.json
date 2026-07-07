@@ -1,0 +1,91 @@
+{
+  "description": "Align speed#ScheduleDelete with distilled cloudflare/speed deleteSchedule",
+  "patches": [
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.speed#ScheduleDelete",
+      "path": "/shapes/com.cloudflare.speed#DeleteSchedule"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.speed#ScheduleDeleteRequest",
+      "path": "/shapes/com.cloudflare.speed#DeleteScheduleRequest"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.speed#DeleteSchedule/input/target",
+      "value": "com.cloudflare.speed#DeleteScheduleRequest"
+    },
+    {
+      "op": "move",
+      "from": "/shapes/com.cloudflare.speed#ScheduleDeleteResponse",
+      "path": "/shapes/com.cloudflare.speed#DeleteScheduleResponse"
+    },
+    {
+      "op": "replace",
+      "path": "/shapes/com.cloudflare.speed#DeleteSchedule/output/target",
+      "value": "com.cloudflare.speed#DeleteScheduleResponse"
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.speed#TestScheduleNotFound",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "code": 404,
+              "message": {
+                "includes": "schedule_not_found"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.speed#Forbidden",
+      "value": {
+        "type": "structure",
+        "members": {
+          "code": {
+            "target": "smithy.api#Integer"
+          },
+          "message": {
+            "target": "smithy.api#String"
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "com.cloudflare.protocols#errorMatchers": [
+            {
+              "status": 403
+            }
+          ]
+        }
+      }
+    },
+    {
+      "op": "add",
+      "path": "/shapes/com.cloudflare.speed#DeleteSchedule/errors",
+      "value": [
+        {
+          "target": "com.cloudflare.speed#TestScheduleNotFound"
+        },
+        {
+          "target": "com.cloudflare.speed#Forbidden"
+        }
+      ]
+    }
+  ]
+}

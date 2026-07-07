@@ -9,74 +9,46 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface AuthorsListRequest {
-  accountId: string;
-}
-export const AuthorsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai/authors/search",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AuthorsListRequest",
-}) as any as S.Schema<AuthorsListRequest>;
-
-export type AuthorsListResultList = unknown[];
-export const AuthorsListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<AuthorsListResultList>;
-
-export interface AuthorsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AuthorsListResultList;
-}
-export const AuthorsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(AuthorsListResultList.pipe(T.EnvelopePayload())),
+export class AccountNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AccountNotFound>()("AccountNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "AuthorsListResponse",
-}) as any as S.Schema<AuthorsListResponse>;
+  [{ code: 7003 }],
+) {}
 
-export interface FinetunesAssetsCreateRequest {
-  accountId: string;
-  finetuneId: string;
-}
-export const FinetunesAssetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    finetuneId: S.String.pipe(T.Label("finetune_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/ai/finetunes/{finetune_id}/finetune-assets",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "FinetunesAssetsCreateRequest",
-}) as any as S.Schema<FinetunesAssetsCreateRequest>;
+export class ModelNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<ModelNotFound>()("ModelNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 7003 }, { code: 7000 }],
+) {}
 
-export interface FinetunesAssetsCreateResponse {}
-export const FinetunesAssetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "FinetunesAssetsCreateResponse",
-}) as any as S.Schema<FinetunesAssetsCreateResponse>;
+export class ModelNotSupported extends T.applyErrorMatchers(
+  S.TaggedErrorClass<ModelNotSupported>()("ModelNotSupported", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1000 }],
+) {}
 
-export interface FinetunesCreateRequest {
+export class ModelSchemaNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<ModelSchemaNotFound>()("ModelSchemaNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 6002 }],
+) {}
+
+export interface CreateFinetuneRequest {
   accountId: string;
   model: string;
   name: string;
   description?: string;
   public?: boolean;
 }
-export const FinetunesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateFinetuneRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     model: S.String,
@@ -91,11 +63,11 @@ export const FinetunesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "FinetunesCreateRequest",
-}) as any as S.Schema<FinetunesCreateRequest>;
+  identifier: "CreateFinetuneRequest",
+}) as any as S.Schema<CreateFinetuneRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface FinetunesCreateResponse {
+export interface CreateFinetuneResponse {
   id: string;
   createdAt: string;
   model: string;
@@ -104,7 +76,7 @@ export interface FinetunesCreateResponse {
   public: boolean;
   description?: string;
 }
-export const FinetunesCreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateFinetuneResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdAt: S.String.pipe(T.Body("created_at")),
@@ -115,184 +87,41 @@ export const FinetunesCreateResponse = /*@__PURE__*/ S.suspend(() =>
     description: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "FinetunesCreateResponse",
-}) as any as S.Schema<FinetunesCreateResponse>;
+  identifier: "CreateFinetuneResponse",
+}) as any as S.Schema<CreateFinetuneResponse>;
 
-export interface FinetunesListRequest {
+export interface CreateFinetuneAssetRequest {
   accountId: string;
+  finetuneId: string;
 }
-export const FinetunesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateFinetuneAssetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
+    finetuneId: S.String.pipe(T.Label("finetune_id")),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai/finetunes",
+      method: "POST",
+      uri: "/accounts/{account_id}/ai/finetunes/{finetune_id}/finetune-assets",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "FinetunesListRequest",
-}) as any as S.Schema<FinetunesListRequest>;
+  identifier: "CreateFinetuneAssetRequest",
+}) as any as S.Schema<CreateFinetuneAssetRequest>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface FinetunesListResponse {
-  id: string;
-  createdAt: string;
-  model: string;
-  modifiedAt: string;
-  name: string;
-  description?: string;
-}
-export const FinetunesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    model: S.String,
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    description: S.optional(S.String),
-  }),
+export interface CreateFinetuneAssetResponse {}
+export const CreateFinetuneAssetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "FinetunesListResponse",
-}) as any as S.Schema<FinetunesListResponse>;
+  identifier: "CreateFinetuneAssetResponse",
+}) as any as S.Schema<CreateFinetuneAssetResponse>;
 
-export interface FinetunesPublicListRequest {
-  accountId: string;
-  /** Pagination Limit */
-  limit?: number;
-  /** Pagination Offset */
-  offset?: number;
-  /** Order By Column Name */
-  orderBy?: string;
-}
-export const FinetunesPublicListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    limit: S.optional(S.Number.pipe(T.Query())),
-    offset: S.optional(S.Number.pipe(T.Query())),
-    orderBy: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai/finetunes/public",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "FinetunesPublicListRequest",
-}) as any as S.Schema<FinetunesPublicListRequest>;
-
-export interface FinetunesPublicListResultItem {
-  id: string;
-  createdAt: string;
-  model: string;
-  modifiedAt: string;
-  name: string;
-  public: boolean;
-  description?: string;
-}
-export const FinetunesPublicListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdAt: S.String.pipe(T.Body("created_at")),
-    model: S.String,
-    modifiedAt: S.String.pipe(T.Body("modified_at")),
-    name: S.String,
-    public: S.Boolean,
-    description: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "FinetunesPublicListResultItem",
-}) as any as S.Schema<FinetunesPublicListResultItem>;
-
-export type FinetunesPublicListResultList = FinetunesPublicListResultItem[];
-export const FinetunesPublicListResultList = /*@__PURE__*/ S.Array(
-  FinetunesPublicListResultItem,
-) as any as S.Schema<FinetunesPublicListResultList>;
-
-export interface FinetunesPublicListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: FinetunesPublicListResultList;
-}
-export const FinetunesPublicListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(FinetunesPublicListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "FinetunesPublicListResponse",
-}) as any as S.Schema<FinetunesPublicListResponse>;
-
-export type ModelsListRequestFormat = "openrouter" | (string & {});
-export const ModelsListRequestFormat = /*@__PURE__*/ S.String;
-
-export interface ModelsListRequest {
-  accountId: string;
-  /** Filter by Author */
-  author?: string;
-  /** If set, return models in the requested marketplace format instead of the default response. */
-  format?: ModelsListRequestFormat;
-  /** Filter to hide experimental models */
-  hideExperimental?: boolean;
-  /** If true, include models whose planned_deprecation_date is in the past — but only within a three-month grace window after that date. Models whose planned_deprecation_date is more than three months in the past remain hidden regardless of this flag. Future planned-deprecation dates are always included regardless of this flag. Defaults to false, preserving the existing behavior of hiding all past-dated deprecations. */
-  includeDeprecated?: boolean;
-  page?: number;
-  perPage?: number;
-  /** Search */
-  search?: string;
-  /** Filter by Source Id */
-  source?: number;
-  /** Filter by Task Name */
-  task?: string;
-}
-export const ModelsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    author: S.optional(S.String.pipe(T.Query())),
-    format: S.optional(ModelsListRequestFormat.pipe(T.Query())),
-    hideExperimental: S.optional(S.Boolean.pipe(T.Query("hide_experimental"))),
-    includeDeprecated: S.optional(
-      S.Boolean.pipe(T.Query("include_deprecated")),
-    ),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-    search: S.optional(S.String.pipe(T.Query())),
-    source: S.optional(S.Number.pipe(T.Query())),
-    task: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai/models/search",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ModelsListRequest",
-}) as any as S.Schema<ModelsListRequest>;
-
-/** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface ModelsListResponse {
-  objectErrorsMessagesResultSuccess__: unknown;
-  /** Marketplace-format response. See https://openrouter.ai/docs/guides/get-started/for-providers */
-  DataObjectData__: unknown;
-}
-export const ModelsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    objectErrorsMessagesResultSuccess__: S.Unknown.pipe(
-      T.Body("object { errors, messages, result, success }"),
-    ),
-    DataObjectData__: S.Unknown.pipe(T.Body("Data object { data }")),
-  }),
-).annotate({
-  identifier: "ModelsListResponse",
-}) as any as S.Schema<ModelsListResponse>;
-
-export interface ModelsSchemaGetRequest {
+export interface GetModelSchemaRequest {
   accountId: string;
   /** Model Name */
   model: string;
 }
-export const ModelsSchemaGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetModelSchemaRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     model: S.String.pipe(T.Query()),
@@ -304,8 +133,8 @@ export const ModelsSchemaGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ModelsSchemaGetRequest",
-}) as any as S.Schema<ModelsSchemaGetRequest>;
+  identifier: "GetModelSchemaRequest",
+}) as any as S.Schema<GetModelSchemaRequest>;
 
 export interface ModelsSchemaGetResponseInput {
   additionalProperties: boolean;
@@ -338,18 +167,255 @@ export const ModelsSchemaGetResponseOutput = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ModelsSchemaGetResponseOutput>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ModelsSchemaGetResponse {
+export interface GetModelSchemaResponse {
   input: ModelsSchemaGetResponseInput;
   output: ModelsSchemaGetResponseOutput;
 }
-export const ModelsSchemaGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetModelSchemaResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     input: ModelsSchemaGetResponseInput,
     output: ModelsSchemaGetResponseOutput,
   }),
 ).annotate({
-  identifier: "ModelsSchemaGetResponse",
-}) as any as S.Schema<ModelsSchemaGetResponse>;
+  identifier: "GetModelSchemaResponse",
+}) as any as S.Schema<GetModelSchemaResponse>;
+
+export interface ListAuthorsRequest {
+  accountId: string;
+}
+export const ListAuthorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai/authors/search",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListAuthorsRequest",
+}) as any as S.Schema<ListAuthorsRequest>;
+
+export type AuthorsListResultList = unknown[];
+export const AuthorsListResultList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<AuthorsListResultList>;
+
+export interface ListAuthorsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: AuthorsListResultList;
+}
+export const ListAuthorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(AuthorsListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListAuthorsResponse",
+}) as any as S.Schema<ListAuthorsResponse>;
+
+export interface ListFinetunePublicsRequest {
+  accountId: string;
+  /** Pagination Limit */
+  limit?: number;
+  /** Pagination Offset */
+  offset?: number;
+  /** Order By Column Name */
+  orderBy?: string;
+}
+export const ListFinetunePublicsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    limit: S.optional(S.Number.pipe(T.Query())),
+    offset: S.optional(S.Number.pipe(T.Query())),
+    orderBy: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai/finetunes/public",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListFinetunePublicsRequest",
+}) as any as S.Schema<ListFinetunePublicsRequest>;
+
+export interface FinetunesPublicListResultItem {
+  id: string;
+  createdAt: string;
+  model: string;
+  modifiedAt: string;
+  name: string;
+  public: boolean;
+  description?: string;
+}
+export const FinetunesPublicListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    model: S.String,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    public: S.Boolean,
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "FinetunesPublicListResultItem",
+}) as any as S.Schema<FinetunesPublicListResultItem>;
+
+export type FinetunesPublicListResultList = FinetunesPublicListResultItem[];
+export const FinetunesPublicListResultList = /*@__PURE__*/ S.Array(
+  FinetunesPublicListResultItem,
+) as any as S.Schema<FinetunesPublicListResultList>;
+
+export interface ListFinetunePublicsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: FinetunesPublicListResultList;
+}
+export const ListFinetunePublicsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(FinetunesPublicListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListFinetunePublicsResponse",
+}) as any as S.Schema<ListFinetunePublicsResponse>;
+
+export interface ListFinetunesRequest {
+  accountId: string;
+}
+export const ListFinetunesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai/finetunes",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListFinetunesRequest",
+}) as any as S.Schema<ListFinetunesRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface ListFinetunesResponse {
+  id: string;
+  createdAt: string;
+  model: string;
+  modifiedAt: string;
+  name: string;
+  description?: string;
+}
+export const ListFinetunesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdAt: S.String.pipe(T.Body("created_at")),
+    model: S.String,
+    modifiedAt: S.String.pipe(T.Body("modified_at")),
+    name: S.String,
+    description: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListFinetunesResponse",
+}) as any as S.Schema<ListFinetunesResponse>;
+
+export type ModelsListRequestFormat = "openrouter" | (string & {});
+export const ModelsListRequestFormat = /*@__PURE__*/ S.String;
+
+export interface ListModelsRequest {
+  accountId: string;
+  /** Filter by Author */
+  author?: string;
+  /** If set, return models in the requested marketplace format instead of the default response. */
+  format?: ModelsListRequestFormat;
+  /** Filter to hide experimental models */
+  hideExperimental?: boolean;
+  /** If true, include models whose planned_deprecation_date is in the past — but only within a three-month grace window after that date. Models whose planned_deprecation_date is more than three months in the past remain hidden regardless of this flag. Future planned-deprecation dates are always included regardless of this flag. Defaults to false, preserving the existing behavior of hiding all past-dated deprecations. */
+  includeDeprecated?: boolean;
+  page?: number;
+  perPage?: number;
+  /** Search */
+  search?: string;
+  /** Filter by Source Id */
+  source?: number;
+  /** Filter by Task Name */
+  task?: string;
+}
+export const ListModelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    author: S.optional(S.String.pipe(T.Query())),
+    format: S.optional(ModelsListRequestFormat.pipe(T.Query())),
+    hideExperimental: S.optional(S.Boolean.pipe(T.Query("hide_experimental"))),
+    includeDeprecated: S.optional(
+      S.Boolean.pipe(T.Query("include_deprecated")),
+    ),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+    search: S.optional(S.String.pipe(T.Query())),
+    source: S.optional(S.Number.pipe(T.Query())),
+    task: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai/models/search",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListModelsRequest",
+}) as any as S.Schema<ListModelsRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface ListModelsResponse {
+  objectErrorsMessagesResultSuccess__: unknown;
+  /** Marketplace-format response. See https://openrouter.ai/docs/guides/get-started/for-providers */
+  DataObjectData__: unknown;
+}
+export const ListModelsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    objectErrorsMessagesResultSuccess__: S.Unknown.pipe(
+      T.Body("object { errors, messages, result, success }"),
+    ),
+    DataObjectData__: S.Unknown.pipe(T.Body("Data object { data }")),
+  }),
+).annotate({
+  identifier: "ListModelsResponse",
+}) as any as S.Schema<ListModelsResponse>;
+
+export interface ListTasksRequest {
+  accountId: string;
+}
+export const ListTasksRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/ai/tasks/search",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListTasksRequest",
+}) as any as S.Schema<ListTasksRequest>;
+
+export type TasksListResultList = unknown[];
+export const TasksListResultList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<TasksListResultList>;
+
+export interface ListTasksResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: TasksListResultList;
+}
+export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(TasksListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListTasksResponse",
+}) as any as S.Schema<ListTasksResponse>;
 
 export interface RunRequestBody {
   TextClassificationObjectText__: unknown;
@@ -427,12 +493,12 @@ export const RunRequestBody = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "RunRequestBody" }) as any as S.Schema<RunRequestBody>;
 
-export interface RunRequest {
+export interface RunAiRequest {
   accountId: string;
   modelName: string;
   body?: RunRequestBody;
 }
-export const RunRequest = /*@__PURE__*/ S.suspend(() =>
+export const RunAiRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     modelName: S.String.pipe(T.Label("model_name")),
@@ -444,7 +510,7 @@ export const RunRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "RunRequest" }) as any as S.Schema<RunRequest>;
+).annotate({ identifier: "RunAiRequest" }) as any as S.Schema<RunAiRequest>;
 
 export interface RunResultItemTextClassificationItem {
   /** The classification label assigned to the text (e.g., 'POSITIVE' or 'NEGATIVE') */
@@ -598,54 +664,20 @@ export const RunResultList = /*@__PURE__*/ S.Array(
   RunResultItem,
 ) as any as S.Schema<RunResultList>;
 
-export interface RunResponse {
+export interface RunAiResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: RunResultList;
 }
-export const RunResponse = /*@__PURE__*/ S.suspend(() =>
+export const RunAiResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(RunResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "RunResponse" }) as any as S.Schema<RunResponse>;
+).annotate({ identifier: "RunAiResponse" }) as any as S.Schema<RunAiResponse>;
 
-export interface TasksListRequest {
+export interface SupportedToMarkdownRequest {
   accountId: string;
 }
-export const TasksListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/ai/tasks/search",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "TasksListRequest",
-}) as any as S.Schema<TasksListRequest>;
-
-export type TasksListResultList = unknown[];
-export const TasksListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<TasksListResultList>;
-
-export interface TasksListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TasksListResultList;
-}
-export const TasksListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(TasksListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "TasksListResponse",
-}) as any as S.Schema<TasksListResponse>;
-
-export interface ToMarkdownSupportedRequest {
-  accountId: string;
-}
-export const ToMarkdownSupportedRequest = /*@__PURE__*/ S.suspend(() =>
+export const SupportedToMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -656,8 +688,8 @@ export const ToMarkdownSupportedRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ToMarkdownSupportedRequest",
-}) as any as S.Schema<ToMarkdownSupportedRequest>;
+  identifier: "SupportedToMarkdownRequest",
+}) as any as S.Schema<SupportedToMarkdownRequest>;
 
 export interface ToMarkdownSupportedResultItem {
   extension: string;
@@ -677,22 +709,22 @@ export const ToMarkdownSupportedResultList = /*@__PURE__*/ S.Array(
   ToMarkdownSupportedResultItem,
 ) as any as S.Schema<ToMarkdownSupportedResultList>;
 
-export interface ToMarkdownSupportedResponse {
+export interface SupportedToMarkdownResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ToMarkdownSupportedResultList;
 }
-export const ToMarkdownSupportedResponse = /*@__PURE__*/ S.suspend(() =>
+export const SupportedToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ToMarkdownSupportedResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "ToMarkdownSupportedResponse",
-}) as any as S.Schema<ToMarkdownSupportedResponse>;
+  identifier: "SupportedToMarkdownResponse",
+}) as any as S.Schema<SupportedToMarkdownResponse>;
 
-export interface ToMarkdownTransformRequest {
+export interface TransformToMarkdownRequest {
   accountId: string;
 }
-export const ToMarkdownTransformRequest = /*@__PURE__*/ S.suspend(() =>
+export const TransformToMarkdownRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -703,8 +735,8 @@ export const ToMarkdownTransformRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ToMarkdownTransformRequest",
-}) as any as S.Schema<ToMarkdownTransformRequest>;
+  identifier: "TransformToMarkdownRequest",
+}) as any as S.Schema<TransformToMarkdownRequest>;
 
 export interface ToMarkdownTransformResultItem {
   data: string;
@@ -730,168 +762,194 @@ export const ToMarkdownTransformResultList = /*@__PURE__*/ S.Array(
   ToMarkdownTransformResultItem,
 ) as any as S.Schema<ToMarkdownTransformResultList>;
 
-export interface ToMarkdownTransformResponse {
+export interface TransformToMarkdownResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ToMarkdownTransformResultList;
 }
-export const ToMarkdownTransformResponse = /*@__PURE__*/ S.suspend(() =>
+export const TransformToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ToMarkdownTransformResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "ToMarkdownTransformResponse",
-}) as any as S.Schema<ToMarkdownTransformResponse>;
+  identifier: "TransformToMarkdownResponse",
+}) as any as S.Schema<TransformToMarkdownResponse>;
 
-export type AuthorsListError = CloudflareOpError;
-/** Searches Workers AI models by author or organization name. */
-export const authorsList: API.OperationMethod<
-  AuthorsListRequest,
-  AuthorsListResponse,
-  AuthorsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AuthorsListRequest,
-  output: AuthorsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type FinetunesAssetsCreateError = CloudflareOpError;
-/** Uploads training data assets for a Workers AI fine-tuning job. */
-export const finetunesAssetsCreate: API.OperationMethod<
-  FinetunesAssetsCreateRequest,
-  FinetunesAssetsCreateResponse,
-  FinetunesAssetsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FinetunesAssetsCreateRequest,
-  output: FinetunesAssetsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type FinetunesCreateError = CloudflareOpError;
+export type CreateFinetuneError =
+  | ModelNotSupported
+  | AccountNotFound
+  | CloudflareOpError;
 /** Creates a new fine-tuning job for a Workers AI model using custom training data. */
-export const finetunesCreate: API.OperationMethod<
-  FinetunesCreateRequest,
-  FinetunesCreateResponse,
-  FinetunesCreateError,
+export const createFinetune: API.OperationMethod<
+  CreateFinetuneRequest,
+  CreateFinetuneResponse,
+  CreateFinetuneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FinetunesCreateRequest,
-  output: FinetunesCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateFinetuneRequest,
+  output: CreateFinetuneResponse,
+  errors: [
+    ModelNotSupported,
+    AccountNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type FinetunesListError = CloudflareOpError;
-/** Lists all fine-tuning jobs created by the account, including status and metrics. */
-export const finetunesList: API.OperationMethod<
-  FinetunesListRequest,
-  FinetunesListResponse,
-  FinetunesListError,
+export type CreateFinetuneAssetError =
+  | ModelNotSupported
+  | AccountNotFound
+  | CloudflareOpError;
+/** Uploads training data assets for a Workers AI fine-tuning job. */
+export const createFinetuneAsset: API.OperationMethod<
+  CreateFinetuneAssetRequest,
+  CreateFinetuneAssetResponse,
+  CreateFinetuneAssetError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: FinetunesListRequest,
-  output: FinetunesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateFinetuneAssetRequest,
+  output: CreateFinetuneAssetResponse,
+  errors: [
+    ModelNotSupported,
+    AccountNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type FinetunesPublicListError = CloudflareOpError;
-/** Lists publicly available fine-tuned models that can be used with Workers AI. */
-export const finetunesPublicList: API.OperationMethod<
-  FinetunesPublicListRequest,
-  FinetunesPublicListResponse,
-  FinetunesPublicListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: FinetunesPublicListRequest,
-  output: FinetunesPublicListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ModelsListError = CloudflareOpError;
-/** Searches Workers AI models by name or description. */
-export const modelsList: API.OperationMethod<
-  ModelsListRequest,
-  ModelsListResponse,
-  ModelsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ModelsListRequest,
-  output: ModelsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ModelsSchemaGetError = CloudflareOpError;
+export type GetModelSchemaError =
+  | ModelNotSupported
+  | ModelSchemaNotFound
+  | AccountNotFound
+  | CloudflareOpError;
 /** Retrieves the input and output JSON schema definition for a Workers AI model. */
-export const modelsSchemaGet: API.OperationMethod<
-  ModelsSchemaGetRequest,
-  ModelsSchemaGetResponse,
-  ModelsSchemaGetError,
+export const getModelSchema: API.OperationMethod<
+  GetModelSchemaRequest,
+  GetModelSchemaResponse,
+  GetModelSchemaError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ModelsSchemaGetRequest,
-  output: ModelsSchemaGetResponse,
+  input: GetModelSchemaRequest,
+  output: GetModelSchemaResponse,
+  errors: [
+    ModelNotSupported,
+    ModelSchemaNotFound,
+    AccountNotFound,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListAuthorsError = CloudflareOpError;
+/** Searches Workers AI models by author or organization name. */
+export const listAuthors: API.OperationMethod<
+  ListAuthorsRequest,
+  ListAuthorsResponse,
+  ListAuthorsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAuthorsRequest,
+  output: ListAuthorsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RunError = CloudflareOpError;
-/** This endpoint provides users with the capability to run specific AI models on-demand. By submitting the required input data, users can receive real-time predictions or results generated by the chosen AI model. The endpoint supports various AI model types, ensuring flexibility and adaptability for diverse use cases. Model specific inputs available in [Cloudflare Docs](https://developers.cloudflare.com/workers-ai/models/). */
-export const run: API.OperationMethod<
-  RunRequest,
-  RunResponse,
-  RunError,
+export type ListFinetunePublicsError = CloudflareOpError;
+/** Lists publicly available fine-tuned models that can be used with Workers AI. */
+export const listFinetunePublics: API.OperationMethod<
+  ListFinetunePublicsRequest,
+  ListFinetunePublicsResponse,
+  ListFinetunePublicsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RunRequest,
-  output: RunResponse,
+  input: ListFinetunePublicsRequest,
+  output: ListFinetunePublicsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type TasksListError = CloudflareOpError;
+export type ListFinetunesError = AccountNotFound | CloudflareOpError;
+/** Lists all fine-tuning jobs created by the account, including status and metrics. */
+export const listFinetunes: API.OperationMethod<
+  ListFinetunesRequest,
+  ListFinetunesResponse,
+  ListFinetunesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListFinetunesRequest,
+  output: ListFinetunesResponse,
+  errors: [AccountNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListModelsError = CloudflareOpError;
+/** Searches Workers AI models by name or description. */
+export const listModels: API.OperationMethod<
+  ListModelsRequest,
+  ListModelsResponse,
+  ListModelsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListModelsRequest,
+  output: ListModelsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListTasksError = CloudflareOpError;
 /** Searches Workers AI models by task type (e.g., text-generation, embeddings). */
-export const tasksList: API.OperationMethod<
-  TasksListRequest,
-  TasksListResponse,
-  TasksListError,
+export const listTasks: API.OperationMethod<
+  ListTasksRequest,
+  ListTasksResponse,
+  ListTasksError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: TasksListRequest,
-  output: TasksListResponse,
+  input: ListTasksRequest,
+  output: ListTasksResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ToMarkdownSupportedError = CloudflareOpError;
+export type RunAiError = ModelNotFound | CloudflareOpError;
+/** This endpoint provides users with the capability to run specific AI models on-demand. By submitting the required input data, users can receive real-time predictions or results generated by the chosen AI model. The endpoint supports various AI model types, ensuring flexibility and adaptability for diverse use cases. Model specific inputs available in [Cloudflare Docs](https://developers.cloudflare.com/workers-ai/models/). */
+export const runAi: API.OperationMethod<
+  RunAiRequest,
+  RunAiResponse,
+  RunAiError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: RunAiRequest,
+  output: RunAiResponse,
+  errors: [ModelNotFound, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type SupportedToMarkdownError = CloudflareOpError;
 /** Lists all file formats supported for conversion to Markdown. */
-export const toMarkdownSupported: API.OperationMethod<
-  ToMarkdownSupportedRequest,
-  ToMarkdownSupportedResponse,
-  ToMarkdownSupportedError,
+export const supportedToMarkdown: API.OperationMethod<
+  SupportedToMarkdownRequest,
+  SupportedToMarkdownResponse,
+  SupportedToMarkdownError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ToMarkdownSupportedRequest,
-  output: ToMarkdownSupportedResponse,
+  input: SupportedToMarkdownRequest,
+  output: SupportedToMarkdownResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ToMarkdownTransformError = CloudflareOpError;
+export type TransformToMarkdownError = CloudflareOpError;
 /** Converts uploaded files into Markdown format using Workers AI. */
-export const toMarkdownTransform: API.OperationMethod<
-  ToMarkdownTransformRequest,
-  ToMarkdownTransformResponse,
-  ToMarkdownTransformError,
+export const transformToMarkdown: API.OperationMethod<
+  TransformToMarkdownRequest,
+  TransformToMarkdownResponse,
+  TransformToMarkdownError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ToMarkdownTransformRequest,
-  output: ToMarkdownTransformResponse,
+  input: TransformToMarkdownRequest,
+  output: TransformToMarkdownResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

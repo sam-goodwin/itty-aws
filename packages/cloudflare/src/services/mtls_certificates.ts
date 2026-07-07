@@ -9,60 +9,34 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export interface AssociationsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Identifier. */
-  mtlsCertificateId: string;
-}
-export const AssociationsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    mtlsCertificateId: S.String.pipe(T.Label("mtls_certificate_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/mtls_certificates/{mtls_certificate_id}/associations",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AssociationsGetRequest",
-}) as any as S.Schema<AssociationsGetRequest>;
-
-export interface AssociationsGetResultItem {
-  /** The service using the certificate. */
-  service?: string;
-  /** Certificate deployment status for the given service. */
-  status?: string;
-}
-export const AssociationsGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    service: S.optional(S.String),
-    status: S.optional(S.String),
+export class CertificateAlreadyDeleted extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CertificateAlreadyDeleted>()("CertificateAlreadyDeleted", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "AssociationsGetResultItem",
-}) as any as S.Schema<AssociationsGetResultItem>;
+  [{ status: 400, message: { includes: "already deleted" } }],
+) {}
 
-export type AssociationsGetResultList = AssociationsGetResultItem[];
-export const AssociationsGetResultList = /*@__PURE__*/ S.Array(
-  AssociationsGetResultItem,
-) as any as S.Schema<AssociationsGetResultList>;
-
-export interface AssociationsGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AssociationsGetResultList;
-}
-export const AssociationsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(AssociationsGetResultList.pipe(T.EnvelopePayload())),
+export class CertificateAlreadyExists extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CertificateAlreadyExists>()("CertificateAlreadyExists", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "AssociationsGetResponse",
-}) as any as S.Schema<AssociationsGetResponse>;
+  [{ code: 1471, message: { includes: "already exists" } }],
+) {}
 
-export interface CreateRequest {
+export class CertificateNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<CertificateNotFound>()("CertificateNotFound", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [
+    { code: 1472, message: { includes: "Certificate not found" } },
+    { status: 404 },
+  ],
+) {}
+
+export interface CreateMtlsCertificateRequest {
   /** Identifier. */
   accountId: string;
   /** Indicates whether the certificate is a CA or leaf certificate. */
@@ -74,7 +48,7 @@ export interface CreateRequest {
   /** The private key for the certificate. This field is only needed for specific use cases such as using a custom certificate with Zero Trust's block page. */
   privateKey?: string;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     ca: S.Boolean,
@@ -88,7 +62,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreateMtlsCertificateRequest",
+}) as any as S.Schema<CreateMtlsCertificateRequest>;
 
 export type CreateResponseType =
   | "custom"
@@ -98,7 +74,7 @@ export type CreateResponseType =
 export const CreateResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
+export interface CreateMtlsCertificateResponse {
   /** Identifier. */
   id?: string;
   /** Indicates whether the certificate is a CA or leaf certificate. */
@@ -122,7 +98,7 @@ export interface CreateResponse {
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     ca: S.optional(S.Boolean),
@@ -136,15 +112,17 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
     updatedAt: S.optional(S.String.pipe(T.Body("updated_at"))),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
   }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+).annotate({
+  identifier: "CreateMtlsCertificateResponse",
+}) as any as S.Schema<CreateMtlsCertificateResponse>;
 
-export interface DeleteRequest {
+export interface DeleteMtlsCertificateRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier. */
   mtlsCertificateId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     mtlsCertificateId: S.String.pipe(T.Label("mtls_certificate_id")),
@@ -155,7 +133,9 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeleteMtlsCertificateRequest",
+}) as any as S.Schema<DeleteMtlsCertificateRequest>;
 
 export type DeleteResponseType =
   | "custom"
@@ -165,7 +145,7 @@ export type DeleteResponseType =
 export const DeleteResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
+export interface DeleteMtlsCertificateResponse {
   /** Identifier. */
   id?: string;
   /** Indicates whether the certificate is a CA or leaf certificate. */
@@ -187,7 +167,7 @@ export interface DeleteResponse {
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     ca: S.optional(S.Boolean),
@@ -200,15 +180,70 @@ export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(DeleteResponseType),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
   }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
+).annotate({
+  identifier: "DeleteMtlsCertificateResponse",
+}) as any as S.Schema<DeleteMtlsCertificateResponse>;
 
-export interface GetRequest {
+export interface GetAssociationRequest {
   /** Identifier. */
   accountId: string;
   /** Identifier. */
   mtlsCertificateId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetAssociationRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    mtlsCertificateId: S.String.pipe(T.Label("mtls_certificate_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/mtls_certificates/{mtls_certificate_id}/associations",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetAssociationRequest",
+}) as any as S.Schema<GetAssociationRequest>;
+
+export interface AssociationsGetResultItem {
+  /** The service using the certificate. */
+  service?: string;
+  /** Certificate deployment status for the given service. */
+  status?: string;
+}
+export const AssociationsGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    service: S.optional(S.String),
+    status: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "AssociationsGetResultItem",
+}) as any as S.Schema<AssociationsGetResultItem>;
+
+export type AssociationsGetResultList = AssociationsGetResultItem[];
+export const AssociationsGetResultList = /*@__PURE__*/ S.Array(
+  AssociationsGetResultItem,
+) as any as S.Schema<AssociationsGetResultList>;
+
+export interface GetAssociationResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: AssociationsGetResultList;
+}
+export const GetAssociationResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(AssociationsGetResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "GetAssociationResponse",
+}) as any as S.Schema<GetAssociationResponse>;
+
+export interface GetMtlsCertificateRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  mtlsCertificateId: string;
+}
+export const GetMtlsCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     mtlsCertificateId: S.String.pipe(T.Label("mtls_certificate_id")),
@@ -219,7 +254,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetMtlsCertificateRequest",
+}) as any as S.Schema<GetMtlsCertificateRequest>;
 
 export type GetResponseType =
   | "custom"
@@ -229,7 +266,7 @@ export type GetResponseType =
 export const GetResponseType = /*@__PURE__*/ S.String;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetMtlsCertificateResponse {
   /** Identifier. */
   id?: string;
   /** Indicates whether the certificate is a CA or leaf certificate. */
@@ -251,7 +288,7 @@ export interface GetResponse {
   /** This is the time the certificate was uploaded. */
   uploadedOn?: string;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetMtlsCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     ca: S.optional(S.Boolean),
@@ -264,7 +301,9 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     type: S.optional(GetResponseType),
     uploadedOn: S.optional(S.String.pipe(T.Body("uploaded_on"))),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetMtlsCertificateResponse",
+}) as any as S.Schema<GetMtlsCertificateResponse>;
 
 export type ListRequestType =
   | "custom"
@@ -278,13 +317,13 @@ export const ListRequestTypeList = /*@__PURE__*/ S.Array(
   ListRequestType,
 ) as any as S.Schema<ListRequestTypeList>;
 
-export interface ListRequest {
+export interface ListMtlsCertificatesRequest {
   /** Identifier. */
   accountId: string;
   /** Filters results by certificate type. Multiple types can be comma-separated. */
   type?: ListRequestTypeList;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListMtlsCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     type: S.optional(ListRequestTypeList.pipe(T.Query())),
@@ -295,7 +334,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListMtlsCertificatesRequest",
+}) as any as S.Schema<ListMtlsCertificatesRequest>;
 
 export type ListResultItemType =
   | "custom"
@@ -346,82 +387,94 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListMtlsCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListMtlsCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListMtlsCertificatesResponse",
+}) as any as S.Schema<ListMtlsCertificatesResponse>;
 
-export type AssociationsGetError = CloudflareOpError;
-/** Lists all active associations between the certificate and Cloudflare services. */
-export const associationsGet: API.OperationMethod<
-  AssociationsGetRequest,
-  AssociationsGetResponse,
-  AssociationsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AssociationsGetRequest,
-  output: AssociationsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CreateError = CloudflareOpError;
+export type CreateMtlsCertificateError =
+  | CertificateAlreadyExists
+  | CloudflareOpError;
 /** Upload a certificate that you want to use with mTLS-enabled Cloudflare services, such as Bring Your Own CA (BYO-CA) for mTLS. To create certificates issued by the Cloudflare managed CA, use the [Create Client Certificate endpoint](/api/resources/client_certificates/methods/create/). */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createMtlsCertificate: API.OperationMethod<
+  CreateMtlsCertificateRequest,
+  CreateMtlsCertificateResponse,
+  CreateMtlsCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateMtlsCertificateRequest,
+  output: CreateMtlsCertificateResponse,
+  errors: [CertificateAlreadyExists, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type DeleteError = CloudflareOpError;
+export type DeleteMtlsCertificateError =
+  | CertificateNotFound
+  | CertificateAlreadyDeleted
+  | CloudflareOpError;
 /** Deletes the mTLS certificate unless the certificate is in use by one or more Cloudflare services. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteMtlsCertificate: API.OperationMethod<
+  DeleteMtlsCertificateRequest,
+  DeleteMtlsCertificateResponse,
+  DeleteMtlsCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
+  input: DeleteMtlsCertificateRequest,
+  output: DeleteMtlsCertificateResponse,
+  errors: [
+    CertificateNotFound,
+    CertificateAlreadyDeleted,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetAssociationError = CloudflareOpError;
+/** Lists all active associations between the certificate and Cloudflare services. */
+export const getAssociation: API.OperationMethod<
+  GetAssociationRequest,
+  GetAssociationResponse,
+  GetAssociationError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetAssociationRequest,
+  output: GetAssociationResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type GetError = CloudflareOpError;
+export type GetMtlsCertificateError = CertificateNotFound | CloudflareOpError;
 /** Fetches a single mTLS certificate uploaded to your account. To get a certificate issued by the Cloudflare managed CA, use the [Client Certificate Details endpoint](/api/resources/client_certificates/methods/get/). */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getMtlsCertificate: API.OperationMethod<
+  GetMtlsCertificateRequest,
+  GetMtlsCertificateResponse,
+  GetMtlsCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetMtlsCertificateRequest,
+  output: GetMtlsCertificateResponse,
+  errors: [CertificateNotFound, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type ListError = CloudflareOpError;
+export type ListMtlsCertificatesError = CloudflareOpError;
 /** Lists all mTLS certificates uploaded to your account, such as Bring Your Own CA (BYO-CA) for mTLS. To list certificates issued by the Cloudflare managed CA, use the [List Client Certificates endpoint](/api/resources/client_certificates/methods/list/). */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
+export const listMtlsCertificates: API.OperationMethod<
+  ListMtlsCertificatesRequest,
+  ListMtlsCertificatesResponse,
+  ListMtlsCertificatesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
+  input: ListMtlsCertificatesRequest,
+  output: ListMtlsCertificatesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

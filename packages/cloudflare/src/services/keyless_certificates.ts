@@ -9,6 +9,33 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ status: 403 }],
+) {}
+
+export class KeylessCertificateNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<KeylessCertificateNotFound>()(
+    "KeylessCertificateNotFound",
+    {
+      code: S.Number,
+      message: S.String,
+    },
+  ),
+  [{ code: 1005, message: { includes: "Invalid or missing Keyless SSL" } }],
+) {}
+
+export class KeylessSslNotAvailable extends T.applyErrorMatchers(
+  S.TaggedErrorClass<KeylessSslNotAvailable>()("KeylessSslNotAvailable", {
+    code: S.Number,
+    message: S.String,
+  }),
+  [{ code: 1067, message: { includes: "Keyless SSL is not available" } }],
+) {}
+
 export interface CreateRequestTunnel {
   /** Private IP of the Key Server Host. */
   privateIp: string;
@@ -24,7 +51,7 @@ export const CreateRequestTunnel = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateRequestTunnel",
 }) as any as S.Schema<CreateRequestTunnel>;
 
-export interface CreateRequest {
+export interface CreateKeylessCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** The zone's SSL certificate or SSL certificate and intermediate(s). */
@@ -40,7 +67,7 @@ export interface CreateRequest {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateRequestTunnel;
 }
-export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const CreateKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     certificate: S.String,
@@ -56,7 +83,9 @@ export const CreateRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "CreateRequest" }) as any as S.Schema<CreateRequest>;
+).annotate({
+  identifier: "CreateKeylessCertificateRequest",
+}) as any as S.Schema<CreateKeylessCertificateRequest>;
 
 export type CreateResponsePermissionsList = string[];
 export const CreateResponsePermissionsList = /*@__PURE__*/ S.Array(
@@ -82,7 +111,7 @@ export const CreateResponseTunnel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<CreateResponseTunnel>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CreateResponse {
+export interface CreateKeylessCertificateResponse {
   /** Keyless certificate identifier tag. */
   id: string;
   /** When the Keyless SSL was created. */
@@ -104,7 +133,7 @@ export interface CreateResponse {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: CreateResponseTunnel;
 }
-export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
+export const CreateKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -117,15 +146,17 @@ export const CreateResponse = /*@__PURE__*/ S.suspend(() =>
     status: CreateResponseStatus,
     tunnel: S.optional(CreateResponseTunnel),
   }),
-).annotate({ identifier: "CreateResponse" }) as any as S.Schema<CreateResponse>;
+).annotate({
+  identifier: "CreateKeylessCertificateResponse",
+}) as any as S.Schema<CreateKeylessCertificateResponse>;
 
-export interface DeleteRequest {
+export interface DeleteKeylessCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   keylessCertificateId: string;
 }
-export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const DeleteKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     keylessCertificateId: S.String.pipe(T.Label("keyless_certificate_id")),
@@ -136,136 +167,30 @@ export const DeleteRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "DeleteRequest" }) as any as S.Schema<DeleteRequest>;
+).annotate({
+  identifier: "DeleteKeylessCertificateRequest",
+}) as any as S.Schema<DeleteKeylessCertificateRequest>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface DeleteResponse {
+export interface DeleteKeylessCertificateResponse {
   /** Identifier. */
   id?: string;
 }
-export const DeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const DeleteKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
   }),
-).annotate({ identifier: "DeleteResponse" }) as any as S.Schema<DeleteResponse>;
-
-export interface EditRequestTunnel {
-  /** Private IP of the Key Server Host. */
-  privateIp: string;
-  /** Cloudflare Tunnel Virtual Network ID. */
-  vnetId: string;
-}
-export const EditRequestTunnel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateIp: S.String.pipe(T.Body("private_ip")),
-    vnetId: S.String.pipe(T.Body("vnet_id")),
-  }),
 ).annotate({
-  identifier: "EditRequestTunnel",
-}) as any as S.Schema<EditRequestTunnel>;
+  identifier: "DeleteKeylessCertificateResponse",
+}) as any as S.Schema<DeleteKeylessCertificateResponse>;
 
-export interface EditRequest {
-  /** Identifier. */
-  zoneId: string;
-  /** Identifier. */
-  keylessCertificateId: string;
-  /** Whether or not the Keyless SSL is on or off. */
-  enabled?: boolean;
-  /** The keyless SSL name. */
-  host?: string;
-  /** The keyless SSL name. */
-  name?: string;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
-  port?: number;
-  /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: EditRequestTunnel;
-}
-export const EditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zoneId: S.String.pipe(T.Label("zone_id")),
-    keylessCertificateId: S.String.pipe(T.Label("keyless_certificate_id")),
-    enabled: S.optional(S.Boolean),
-    host: S.optional(S.String),
-    name: S.optional(S.String),
-    port: S.optional(S.Number),
-    tunnel: S.optional(EditRequestTunnel),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/zones/{zone_id}/keyless_certificates/{keyless_certificate_id}",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "EditRequest" }) as any as S.Schema<EditRequest>;
-
-export type EditResponsePermissionsList = string[];
-export const EditResponsePermissionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<EditResponsePermissionsList>;
-
-export type EditResponseStatus = "active" | "deleted" | (string & {});
-export const EditResponseStatus = /*@__PURE__*/ S.String;
-
-export interface EditResponseTunnel {
-  /** Private IP of the Key Server Host. */
-  privateIp: string;
-  /** Cloudflare Tunnel Virtual Network ID. */
-  vnetId: string;
-}
-export const EditResponseTunnel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    privateIp: S.String.pipe(T.Body("private_ip")),
-    vnetId: S.String.pipe(T.Body("vnet_id")),
-  }),
-).annotate({
-  identifier: "EditResponseTunnel",
-}) as any as S.Schema<EditResponseTunnel>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface EditResponse {
-  /** Keyless certificate identifier tag. */
-  id: string;
-  /** When the Keyless SSL was created. */
-  createdOn: string;
-  /** Whether or not the Keyless SSL is on or off. */
-  enabled: boolean;
-  /** The keyless SSL name. */
-  host: string;
-  /** When the Keyless SSL was last modified. */
-  modifiedOn: string;
-  /** The keyless SSL name. */
-  name: string;
-  /** Available permissions for the Keyless SSL for the current user requesting the item. */
-  permissions: EditResponsePermissionsList;
-  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
-  port: number;
-  /** Status of the Keyless SSL. */
-  status: EditResponseStatus;
-  /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
-  tunnel?: EditResponseTunnel;
-}
-export const EditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    enabled: S.Boolean,
-    host: S.String,
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    permissions: EditResponsePermissionsList,
-    port: S.Number,
-    status: EditResponseStatus,
-    tunnel: S.optional(EditResponseTunnel),
-  }),
-).annotate({ identifier: "EditResponse" }) as any as S.Schema<EditResponse>;
-
-export interface GetRequest {
+export interface GetKeylessCertificateRequest {
   /** Identifier. */
   zoneId: string;
   /** Identifier. */
   keylessCertificateId: string;
 }
-export const GetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
     keylessCertificateId: S.String.pipe(T.Label("keyless_certificate_id")),
@@ -276,7 +201,9 @@ export const GetRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "GetRequest" }) as any as S.Schema<GetRequest>;
+).annotate({
+  identifier: "GetKeylessCertificateRequest",
+}) as any as S.Schema<GetKeylessCertificateRequest>;
 
 export type GetResponsePermissionsList = string[];
 export const GetResponsePermissionsList = /*@__PURE__*/ S.Array(
@@ -302,7 +229,7 @@ export const GetResponseTunnel = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<GetResponseTunnel>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GetResponse {
+export interface GetKeylessCertificateResponse {
   /** Keyless certificate identifier tag. */
   id: string;
   /** When the Keyless SSL was created. */
@@ -324,7 +251,7 @@ export interface GetResponse {
   /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
   tunnel?: GetResponseTunnel;
 }
-export const GetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     createdOn: S.String.pipe(T.Body("created_on")),
@@ -337,13 +264,15 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
     status: GetResponseStatus,
     tunnel: S.optional(GetResponseTunnel),
   }),
-).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
+).annotate({
+  identifier: "GetKeylessCertificateResponse",
+}) as any as S.Schema<GetKeylessCertificateResponse>;
 
-export interface ListRequest {
+export interface ListKeylessCertificatesRequest {
   /** Identifier. */
   zoneId: string;
 }
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListKeylessCertificatesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zoneId: S.String.pipe(T.Label("zone_id")),
   }).pipe(
@@ -353,7 +282,9 @@ export const ListRequest = /*@__PURE__*/ S.suspend(() =>
       code: 200,
     }),
   ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
+).annotate({
+  identifier: "ListKeylessCertificatesRequest",
+}) as any as S.Schema<ListKeylessCertificatesRequest>;
 
 export type ListResultItemPermissionsList = string[];
 export const ListResultItemPermissionsList = /*@__PURE__*/ S.Array(
@@ -420,82 +351,230 @@ export const ListResultList = /*@__PURE__*/ S.Array(
   ListResultItem,
 ) as any as S.Schema<ListResultList>;
 
-export interface ListResponse {
+export interface ListKeylessCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: ListResultList;
 }
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListKeylessCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
   }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
+).annotate({
+  identifier: "ListKeylessCertificatesResponse",
+}) as any as S.Schema<ListKeylessCertificatesResponse>;
 
-export type CreateError = CloudflareOpError;
+export interface EditRequestTunnel {
+  /** Private IP of the Key Server Host. */
+  privateIp: string;
+  /** Cloudflare Tunnel Virtual Network ID. */
+  vnetId: string;
+}
+export const EditRequestTunnel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateIp: S.String.pipe(T.Body("private_ip")),
+    vnetId: S.String.pipe(T.Body("vnet_id")),
+  }),
+).annotate({
+  identifier: "EditRequestTunnel",
+}) as any as S.Schema<EditRequestTunnel>;
+
+export interface PatchKeylessCertificateRequest {
+  /** Identifier. */
+  zoneId: string;
+  /** Identifier. */
+  keylessCertificateId: string;
+  /** Whether or not the Keyless SSL is on or off. */
+  enabled?: boolean;
+  /** The keyless SSL name. */
+  host?: string;
+  /** The keyless SSL name. */
+  name?: string;
+  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  port?: number;
+  /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
+  tunnel?: EditRequestTunnel;
+}
+export const PatchKeylessCertificateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    keylessCertificateId: S.String.pipe(T.Label("keyless_certificate_id")),
+    enabled: S.optional(S.Boolean),
+    host: S.optional(S.String),
+    name: S.optional(S.String),
+    port: S.optional(S.Number),
+    tunnel: S.optional(EditRequestTunnel),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/zones/{zone_id}/keyless_certificates/{keyless_certificate_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchKeylessCertificateRequest",
+}) as any as S.Schema<PatchKeylessCertificateRequest>;
+
+export type EditResponsePermissionsList = string[];
+export const EditResponsePermissionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<EditResponsePermissionsList>;
+
+export type EditResponseStatus = "active" | "deleted" | (string & {});
+export const EditResponseStatus = /*@__PURE__*/ S.String;
+
+export interface EditResponseTunnel {
+  /** Private IP of the Key Server Host. */
+  privateIp: string;
+  /** Cloudflare Tunnel Virtual Network ID. */
+  vnetId: string;
+}
+export const EditResponseTunnel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    privateIp: S.String.pipe(T.Body("private_ip")),
+    vnetId: S.String.pipe(T.Body("vnet_id")),
+  }),
+).annotate({
+  identifier: "EditResponseTunnel",
+}) as any as S.Schema<EditResponseTunnel>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchKeylessCertificateResponse {
+  /** Keyless certificate identifier tag. */
+  id: string;
+  /** When the Keyless SSL was created. */
+  createdOn: string;
+  /** Whether or not the Keyless SSL is on or off. */
+  enabled: boolean;
+  /** The keyless SSL name. */
+  host: string;
+  /** When the Keyless SSL was last modified. */
+  modifiedOn: string;
+  /** The keyless SSL name. */
+  name: string;
+  /** Available permissions for the Keyless SSL for the current user requesting the item. */
+  permissions: EditResponsePermissionsList;
+  /** The keyless SSL port used to communicate between Cloudflare and the client's Keyless SSL server. */
+  port: number;
+  /** Status of the Keyless SSL. */
+  status: EditResponseStatus;
+  /** Configuration for using Keyless SSL through a Cloudflare Tunnel. */
+  tunnel?: EditResponseTunnel;
+}
+export const PatchKeylessCertificateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    enabled: S.Boolean,
+    host: S.String,
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    permissions: EditResponsePermissionsList,
+    port: S.Number,
+    status: EditResponseStatus,
+    tunnel: S.optional(EditResponseTunnel),
+  }),
+).annotate({
+  identifier: "PatchKeylessCertificateResponse",
+}) as any as S.Schema<PatchKeylessCertificateResponse>;
+
+export type CreateKeylessCertificateError =
+  | KeylessSslNotAvailable
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a Keyless SSL configuration that allows SSL/TLS termination without exposing private keys to Cloudflare. Keys remain on your infrastructure. */
-export const create: API.OperationMethod<
-  CreateRequest,
-  CreateResponse,
-  CreateError,
+export const createKeylessCertificate: API.OperationMethod<
+  CreateKeylessCertificateRequest,
+  CreateKeylessCertificateResponse,
+  CreateKeylessCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CreateRequest,
-  output: CreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateKeylessCertificateRequest,
+  output: CreateKeylessCertificateResponse,
+  errors: [
+    KeylessSslNotAvailable,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type DeleteError = CloudflareOpError;
+export type DeleteKeylessCertificateError =
+  | KeylessCertificateNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Removes a Keyless SSL configuration. SSL connections will no longer use the keyless server for cryptographic operations. */
-export const Delete: API.OperationMethod<
-  DeleteRequest,
-  DeleteResponse,
-  DeleteError,
+export const deleteKeylessCertificate: API.OperationMethod<
+  DeleteKeylessCertificateRequest,
+  DeleteKeylessCertificateResponse,
+  DeleteKeylessCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: DeleteRequest,
-  output: DeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: DeleteKeylessCertificateRequest,
+  output: DeleteKeylessCertificateResponse,
+  errors: [
+    KeylessCertificateNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type EditError = CloudflareOpError;
-/** This will update attributes of a Keyless SSL. Consists of one or more of the following: host,name,port. */
-export const edit: API.OperationMethod<
-  EditRequest,
-  EditResponse,
-  EditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: EditRequest,
-  output: EditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GetError = CloudflareOpError;
+export type GetKeylessCertificateError =
+  | KeylessCertificateNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Get details for one Keyless SSL configuration. */
-export const get: API.OperationMethod<
-  GetRequest,
-  GetResponse,
-  GetError,
+export const getKeylessCertificate: API.OperationMethod<
+  GetKeylessCertificateRequest,
+  GetKeylessCertificateResponse,
+  GetKeylessCertificateError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GetRequest,
-  output: GetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: GetKeylessCertificateRequest,
+  output: GetKeylessCertificateResponse,
+  errors: [
+    KeylessCertificateNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type ListError = CloudflareOpError;
+export type ListKeylessCertificatesError = Forbidden | CloudflareOpError;
 /** List all Keyless SSL configurations for a given zone. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
+export const listKeylessCertificates: API.OperationMethod<
+  ListKeylessCertificatesRequest,
+  ListKeylessCertificatesResponse,
+  ListKeylessCertificatesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: ListKeylessCertificatesRequest,
+  output: ListKeylessCertificatesResponse,
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchKeylessCertificateError =
+  | KeylessCertificateNotFound
+  | Forbidden
+  | CloudflareOpError;
+/** This will update attributes of a Keyless SSL. Consists of one or more of the following: host,name,port. */
+export const patchKeylessCertificate: API.OperationMethod<
+  PatchKeylessCertificateRequest,
+  PatchKeylessCertificateResponse,
+  PatchKeylessCertificateError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchKeylessCertificateRequest,
+  output: PatchKeylessCertificateResponse,
+  errors: [
+    KeylessCertificateNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));

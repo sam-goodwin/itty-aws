@@ -9,1431 +9,101 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
-export type AppsCreateRequestHostnamesList = string[];
-export const AppsCreateRequestHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateRequestHostnamesList>;
-
-export type AppsCreateRequestIpSubnetsList = string[];
-export const AppsCreateRequestIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateRequestIpSubnetsList>;
-
-export type AppsCreateRequestSourceSubnetsList = string[];
-export const AppsCreateRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateRequestSourceSubnetsList>;
-
-export interface AppsCreateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Display name for the app. */
-  name: string;
-  /** Category of the app. */
-  type: string;
-  /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsCreateRequestHostnamesList;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsCreateRequestIpSubnetsList;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsCreateRequestSourceSubnetsList;
-}
-export const AppsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    name: S.String,
-    type: S.String,
-    hostnames: S.optional(AppsCreateRequestHostnamesList),
-    ipSubnets: S.optional(
-      AppsCreateRequestIpSubnetsList.pipe(T.Body("ip_subnets")),
-    ),
-    sourceSubnets: S.optional(
-      AppsCreateRequestSourceSubnetsList.pipe(T.Body("source_subnets")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/apps",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsCreateRequest",
-}) as any as S.Schema<AppsCreateRequest>;
-
-export type AppsCreateResponseHostnamesList = string[];
-export const AppsCreateResponseHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateResponseHostnamesList>;
-
-export type AppsCreateResponseIpSubnetsList = string[];
-export const AppsCreateResponseIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateResponseIpSubnetsList>;
-
-export type AppsCreateResponseSourceSubnetsList = string[];
-export const AppsCreateResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsCreateResponseSourceSubnetsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsCreateResponse {
-  /** Magic account app ID. */
-  accountAppId: string;
-  /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsCreateResponseHostnamesList;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsCreateResponseIpSubnetsList;
-  /** Display name for the app. */
-  name?: string;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsCreateResponseSourceSubnetsList;
-  /** Category of the app. */
-  type?: string;
-}
-export const AppsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.String.pipe(T.Body("account_app_id")),
-    hostnames: S.optional(AppsCreateResponseHostnamesList),
-    ipSubnets: S.optional(
-      AppsCreateResponseIpSubnetsList.pipe(T.Body("ip_subnets")),
-    ),
-    name: S.optional(S.String),
-    sourceSubnets: S.optional(
-      AppsCreateResponseSourceSubnetsList.pipe(T.Body("source_subnets")),
-    ),
-    type: S.optional(S.String),
+export class AppNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<AppNotFound>()("AppNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "AppsCreateResponse",
-}) as any as S.Schema<AppsCreateResponse>;
+  [{ status: 404 }],
+) {}
 
-export interface AppsDeleteRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  accountAppId: string;
-}
-export const AppsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    accountAppId: S.String.pipe(T.Label("account_app_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/apps/{account_app_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsDeleteRequest",
-}) as any as S.Schema<AppsDeleteRequest>;
-
-export type AppsDeleteResponseHostnamesList = string[];
-export const AppsDeleteResponseHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsDeleteResponseHostnamesList>;
-
-export type AppsDeleteResponseIpSubnetsList = string[];
-export const AppsDeleteResponseIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsDeleteResponseIpSubnetsList>;
-
-export type AppsDeleteResponseSourceSubnetsList = string[];
-export const AppsDeleteResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsDeleteResponseSourceSubnetsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsDeleteResponse {
-  /** Magic account app ID. */
-  accountAppId: string;
-  /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsDeleteResponseHostnamesList;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsDeleteResponseIpSubnetsList;
-  /** Display name for the app. */
-  name?: string;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsDeleteResponseSourceSubnetsList;
-  /** Category of the app. */
-  type?: string;
-}
-export const AppsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.String.pipe(T.Body("account_app_id")),
-    hostnames: S.optional(AppsDeleteResponseHostnamesList),
-    ipSubnets: S.optional(
-      AppsDeleteResponseIpSubnetsList.pipe(T.Body("ip_subnets")),
-    ),
-    name: S.optional(S.String),
-    sourceSubnets: S.optional(
-      AppsDeleteResponseSourceSubnetsList.pipe(T.Body("source_subnets")),
-    ),
-    type: S.optional(S.String),
+export class Forbidden extends T.applyErrorMatchers(
+  S.TaggedErrorClass<Forbidden>()("Forbidden", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "AppsDeleteResponse",
-}) as any as S.Schema<AppsDeleteResponse>;
+  [{ status: 403 }],
+) {}
 
-export type AppsEditRequestHostnamesList = string[];
-export const AppsEditRequestHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsEditRequestHostnamesList>;
-
-export type AppsEditRequestIpSubnetsList = string[];
-export const AppsEditRequestIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsEditRequestIpSubnetsList>;
-
-export type AppsEditRequestSourceSubnetsList = string[];
-export const AppsEditRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsEditRequestSourceSubnetsList>;
-
-export interface AppsEditRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  accountAppId: string;
-  /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsEditRequestHostnamesList;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsEditRequestIpSubnetsList;
-  /** Display name for the app. */
-  name?: string;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsEditRequestSourceSubnetsList;
-  /** Category of the app. */
-  type?: string;
-}
-export const AppsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    accountAppId: S.String.pipe(T.Label("account_app_id")),
-    hostnames: S.optional(AppsEditRequestHostnamesList),
-    ipSubnets: S.optional(
-      AppsEditRequestIpSubnetsList.pipe(T.Body("ip_subnets")),
-    ),
-    name: S.optional(S.String),
-    sourceSubnets: S.optional(
-      AppsEditRequestSourceSubnetsList.pipe(T.Body("source_subnets")),
-    ),
-    type: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/apps/{account_app_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsEditRequest",
-}) as any as S.Schema<AppsEditRequest>;
-
-export type AppsEditResponseHostnamesList = string[];
-export const AppsEditResponseHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsEditResponseHostnamesList>;
-
-export type AppsEditResponseIpSubnetsList = string[];
-export const AppsEditResponseIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsEditResponseIpSubnetsList>;
-
-export type AppsEditResponseSourceSubnetsList = string[];
-export const AppsEditResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsEditResponseSourceSubnetsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsEditResponse {
-  /** Magic account app ID. */
-  accountAppId: string;
-  /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsEditResponseHostnamesList;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsEditResponseIpSubnetsList;
-  /** Display name for the app. */
-  name?: string;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsEditResponseSourceSubnetsList;
-  /** Category of the app. */
-  type?: string;
-}
-export const AppsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.String.pipe(T.Body("account_app_id")),
-    hostnames: S.optional(AppsEditResponseHostnamesList),
-    ipSubnets: S.optional(
-      AppsEditResponseIpSubnetsList.pipe(T.Body("ip_subnets")),
-    ),
-    name: S.optional(S.String),
-    sourceSubnets: S.optional(
-      AppsEditResponseSourceSubnetsList.pipe(T.Body("source_subnets")),
-    ),
-    type: S.optional(S.String),
+export class GreTunnelNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<GreTunnelNotFound>()("GreTunnelNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "AppsEditResponse",
-}) as any as S.Schema<AppsEditResponse>;
+  [{ code: 1029 }],
+) {}
 
-export interface AppsListRequest {
-  /** Identifier */
-  accountId: string;
-}
-export const AppsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/apps",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsListRequest",
-}) as any as S.Schema<AppsListRequest>;
-
-export interface AppsListResultItem {
-  /** Custom app defined for an account. */
-  MagicAccountAppObjectAccountAppIdHostnamesIpSubnets3More__: unknown;
-  /** Managed app defined by Cloudflare. */
-  MagicManagedAppObjectManagedAppIdHostnamesIpSubnets3More__: unknown;
-}
-export const AppsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MagicAccountAppObjectAccountAppIdHostnamesIpSubnets3More__: S.Unknown.pipe(
-      T.Body(
-        "MagicAccountApp object { account_app_id, hostnames, ip_subnets, 3 more }",
-      ),
-    ),
-    MagicManagedAppObjectManagedAppIdHostnamesIpSubnets3More__: S.Unknown.pipe(
-      T.Body(
-        "MagicManagedApp object { managed_app_id, hostnames, ip_subnets, 3 more }",
-      ),
-    ),
+export class IpsecTunnelNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<IpsecTunnelNotFound>()("IpsecTunnelNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "AppsListResultItem",
-}) as any as S.Schema<AppsListResultItem>;
+  [{ code: 1032 }],
+) {}
 
-export type AppsListResultList = AppsListResultItem[];
-export const AppsListResultList = /*@__PURE__*/ S.Array(
-  AppsListResultItem,
-) as any as S.Schema<AppsListResultList>;
-
-export interface AppsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AppsListResultList;
-}
-export const AppsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(AppsListResultList.pipe(T.EnvelopePayload())),
+export class MagicTransitNotOnboarded extends T.applyErrorMatchers(
+  S.TaggedErrorClass<MagicTransitNotOnboarded>()("MagicTransitNotOnboarded", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "AppsListResponse",
-}) as any as S.Schema<AppsListResponse>;
+  [{ code: 1012 }],
+) {}
 
-export type AppsUpdateRequestHostnamesList = string[];
-export const AppsUpdateRequestHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateRequestHostnamesList>;
-
-export type AppsUpdateRequestIpSubnetsList = string[];
-export const AppsUpdateRequestIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateRequestIpSubnetsList>;
-
-export type AppsUpdateRequestSourceSubnetsList = string[];
-export const AppsUpdateRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateRequestSourceSubnetsList>;
-
-export interface AppsUpdateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  accountAppId: string;
-  /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsUpdateRequestHostnamesList;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsUpdateRequestIpSubnetsList;
-  /** Display name for the app. */
-  name?: string;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsUpdateRequestSourceSubnetsList;
-  /** Category of the app. */
-  type?: string;
-}
-export const AppsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    accountAppId: S.String.pipe(T.Label("account_app_id")),
-    hostnames: S.optional(AppsUpdateRequestHostnamesList),
-    ipSubnets: S.optional(
-      AppsUpdateRequestIpSubnetsList.pipe(T.Body("ip_subnets")),
-    ),
-    name: S.optional(S.String),
-    sourceSubnets: S.optional(
-      AppsUpdateRequestSourceSubnetsList.pipe(T.Body("source_subnets")),
-    ),
-    type: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/apps/{account_app_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "AppsUpdateRequest",
-}) as any as S.Schema<AppsUpdateRequest>;
-
-export type AppsUpdateResponseHostnamesList = string[];
-export const AppsUpdateResponseHostnamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateResponseHostnamesList>;
-
-export type AppsUpdateResponseIpSubnetsList = string[];
-export const AppsUpdateResponseIpSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateResponseIpSubnetsList>;
-
-export type AppsUpdateResponseSourceSubnetsList = string[];
-export const AppsUpdateResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<AppsUpdateResponseSourceSubnetsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface AppsUpdateResponse {
-  /** Magic account app ID. */
-  accountAppId: string;
-  /** FQDNs to associate with traffic decisions. */
-  hostnames?: AppsUpdateResponseHostnamesList;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  ipSubnets?: AppsUpdateResponseIpSubnetsList;
-  /** Display name for the app. */
-  name?: string;
-  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
-  sourceSubnets?: AppsUpdateResponseSourceSubnetsList;
-  /** Category of the app. */
-  type?: string;
-}
-export const AppsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountAppId: S.String.pipe(T.Body("account_app_id")),
-    hostnames: S.optional(AppsUpdateResponseHostnamesList),
-    ipSubnets: S.optional(
-      AppsUpdateResponseIpSubnetsList.pipe(T.Body("ip_subnets")),
-    ),
-    name: S.optional(S.String),
-    sourceSubnets: S.optional(
-      AppsUpdateResponseSourceSubnetsList.pipe(T.Body("source_subnets")),
-    ),
-    type: S.optional(S.String),
+export class MagicWanUnauthorized extends T.applyErrorMatchers(
+  S.TaggedErrorClass<MagicWanUnauthorized>()("MagicWanUnauthorized", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "AppsUpdateResponse",
-}) as any as S.Schema<AppsUpdateResponse>;
+  [{ code: 1025 }],
+) {}
 
-export interface Cf1SitesCreateRequestBodyItemLocation {
-  /** Latitude of the CF1 Site. */
-  lat?: number;
-  /** Longitude of the CF1 Site. */
-  long?: number;
-  /** Name of nearest town, city, or village. */
-  name?: string;
-}
-export const Cf1SitesCreateRequestBodyItemLocation = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      lat: S.optional(S.Number),
-      long: S.optional(S.Number),
-      name: S.optional(S.String),
-    }),
-).annotate({
-  identifier: "Cf1SitesCreateRequestBodyItemLocation",
-}) as any as S.Schema<Cf1SitesCreateRequestBodyItemLocation>;
-
-export interface Cf1SitesCreateRequestBodyItem {
-  /** A human-provided name describing the CF1 Site that should be unique within the account. */
-  name: string;
-  /** Identifier */
-  id?: string;
-  createdOn?: string;
-  /** A human-provided description of the CF1 Site. */
-  description?: string;
-  location?: Cf1SitesCreateRequestBodyItemLocation;
-  modifiedOn?: string;
-}
-export const Cf1SitesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    location: S.optional(Cf1SitesCreateRequestBodyItemLocation),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+export class RouteNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<RouteNotFound>()("RouteNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "Cf1SitesCreateRequestBodyItem",
-}) as any as S.Schema<Cf1SitesCreateRequestBodyItem>;
+  [{ code: 1020 }],
+) {}
 
-export type Cf1SitesCreateRequestBodyList = Cf1SitesCreateRequestBodyItem[];
-export const Cf1SitesCreateRequestBodyList = /*@__PURE__*/ S.Array(
-  Cf1SitesCreateRequestBodyItem,
-) as any as S.Schema<Cf1SitesCreateRequestBodyList>;
-
-export interface Cf1SitesCreateRequest {
-  /** Identifier */
-  accountId: string;
-  body: Cf1SitesCreateRequestBodyList;
-}
-export const Cf1SitesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    body: Cf1SitesCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cf1_sites",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "Cf1SitesCreateRequest",
-}) as any as S.Schema<Cf1SitesCreateRequest>;
-
-export interface Cf1SitesCreateResultItemLocation {
-  /** Latitude of the CF1 Site. */
-  lat?: number;
-  /** Longitude of the CF1 Site. */
-  long?: number;
-  /** Name of nearest town, city, or village. */
-  name?: string;
-}
-export const Cf1SitesCreateResultItemLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.Number),
-    long: S.optional(S.Number),
-    name: S.optional(S.String),
+export class SiteAclNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SiteAclNotFound>()("SiteAclNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "Cf1SitesCreateResultItemLocation",
-}) as any as S.Schema<Cf1SitesCreateResultItemLocation>;
+  [{ status: 404 }],
+) {}
 
-export interface Cf1SitesCreateResultItem {
-  /** A human-provided name describing the CF1 Site that should be unique within the account. */
-  name: string;
-  /** Identifier */
-  id?: string;
-  createdOn?: string;
-  /** A human-provided description of the CF1 Site. */
-  description?: string;
-  location?: Cf1SitesCreateResultItemLocation;
-  modifiedOn?: string;
-}
-export const Cf1SitesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    location: S.optional(Cf1SitesCreateResultItemLocation),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+export class SiteLanNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SiteLanNotFound>()("SiteLanNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "Cf1SitesCreateResultItem",
-}) as any as S.Schema<Cf1SitesCreateResultItem>;
+  [{ status: 404 }],
+) {}
 
-export type Cf1SitesCreateResultList = Cf1SitesCreateResultItem[];
-export const Cf1SitesCreateResultList = /*@__PURE__*/ S.Array(
-  Cf1SitesCreateResultItem,
-) as any as S.Schema<Cf1SitesCreateResultList>;
-
-export interface Cf1SitesCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: Cf1SitesCreateResultList;
-}
-export const Cf1SitesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(Cf1SitesCreateResultList.pipe(T.EnvelopePayload())),
+export class SiteNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SiteNotFound>()("SiteNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "Cf1SitesCreateResponse",
-}) as any as S.Schema<Cf1SitesCreateResponse>;
+  [{ status: 404 }],
+) {}
 
-export interface Cf1SitesDeleteRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  cf1SiteId: string;
-}
-export const Cf1SitesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "Cf1SitesDeleteRequest",
-}) as any as S.Schema<Cf1SitesDeleteRequest>;
-
-export interface Cf1SitesDeleteResponseLocation {
-  /** Latitude of the CF1 Site. */
-  lat?: number;
-  /** Longitude of the CF1 Site. */
-  long?: number;
-  /** Name of nearest town, city, or village. */
-  name?: string;
-}
-export const Cf1SitesDeleteResponseLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.Number),
-    long: S.optional(S.Number),
-    name: S.optional(S.String),
+export class SiteWanNotFound extends T.applyErrorMatchers(
+  S.TaggedErrorClass<SiteWanNotFound>()("SiteWanNotFound", {
+    code: S.Number,
+    message: S.String,
   }),
-).annotate({
-  identifier: "Cf1SitesDeleteResponseLocation",
-}) as any as S.Schema<Cf1SitesDeleteResponseLocation>;
+  [{ status: 404 }],
+) {}
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface Cf1SitesDeleteResponse {
-  /** A human-provided name describing the CF1 Site that should be unique within the account. */
-  name: string;
-  /** Identifier */
-  id?: string;
-  createdOn?: string;
-  /** A human-provided description of the CF1 Site. */
-  description?: string;
-  location?: Cf1SitesDeleteResponseLocation;
-  modifiedOn?: string;
-}
-export const Cf1SitesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    location: S.optional(Cf1SitesDeleteResponseLocation),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesDeleteResponse",
-}) as any as S.Schema<Cf1SitesDeleteResponse>;
-
-export interface Cf1SitesGetRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  cf1SiteId: string;
-}
-export const Cf1SitesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "Cf1SitesGetRequest",
-}) as any as S.Schema<Cf1SitesGetRequest>;
-
-export interface Cf1SitesGetResponseLocation {
-  /** Latitude of the CF1 Site. */
-  lat?: number;
-  /** Longitude of the CF1 Site. */
-  long?: number;
-  /** Name of nearest town, city, or village. */
-  name?: string;
-}
-export const Cf1SitesGetResponseLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.Number),
-    long: S.optional(S.Number),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Cf1SitesGetResponseLocation",
-}) as any as S.Schema<Cf1SitesGetResponseLocation>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface Cf1SitesGetResponse {
-  /** A human-provided name describing the CF1 Site that should be unique within the account. */
-  name: string;
-  /** Identifier */
-  id?: string;
-  createdOn?: string;
-  /** A human-provided description of the CF1 Site. */
-  description?: string;
-  location?: Cf1SitesGetResponseLocation;
-  modifiedOn?: string;
-}
-export const Cf1SitesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    location: S.optional(Cf1SitesGetResponseLocation),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesGetResponse",
-}) as any as S.Schema<Cf1SitesGetResponse>;
-
-export interface Cf1SitesListRequest {
-  /** Identifier */
-  accountId: string;
-}
-export const Cf1SitesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cf1_sites",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "Cf1SitesListRequest",
-}) as any as S.Schema<Cf1SitesListRequest>;
-
-export interface Cf1SitesListResultItemLocation {
-  /** Latitude of the CF1 Site. */
-  lat?: number;
-  /** Longitude of the CF1 Site. */
-  long?: number;
-  /** Name of nearest town, city, or village. */
-  name?: string;
-}
-export const Cf1SitesListResultItemLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.Number),
-    long: S.optional(S.Number),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Cf1SitesListResultItemLocation",
-}) as any as S.Schema<Cf1SitesListResultItemLocation>;
-
-export interface Cf1SitesListResultItem {
-  /** A human-provided name describing the CF1 Site that should be unique within the account. */
-  name: string;
-  /** Identifier */
-  id?: string;
-  createdOn?: string;
-  /** A human-provided description of the CF1 Site. */
-  description?: string;
-  location?: Cf1SitesListResultItemLocation;
-  modifiedOn?: string;
-}
-export const Cf1SitesListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    location: S.optional(Cf1SitesListResultItemLocation),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesListResultItem",
-}) as any as S.Schema<Cf1SitesListResultItem>;
-
-export type Cf1SitesListResultList = Cf1SitesListResultItem[];
-export const Cf1SitesListResultList = /*@__PURE__*/ S.Array(
-  Cf1SitesListResultItem,
-) as any as S.Schema<Cf1SitesListResultList>;
-
-export interface Cf1SitesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: Cf1SitesListResultList;
-}
-export const Cf1SitesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(Cf1SitesListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "Cf1SitesListResponse",
-}) as any as S.Schema<Cf1SitesListResponse>;
-
-export interface Cf1SitesRampsCreateRequestBodyItem {
-  /** Identifier of the source network resource to associate as a ramp. */
-  sourceRampId: string;
-  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
-  type: unknown;
-}
-export const Cf1SitesRampsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    sourceRampId: S.String.pipe(T.Body("source_ramp_id")),
-    type: S.Unknown,
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsCreateRequestBodyItem",
-}) as any as S.Schema<Cf1SitesRampsCreateRequestBodyItem>;
-
-export type Cf1SitesRampsCreateRequestBodyList =
-  Cf1SitesRampsCreateRequestBodyItem[];
-export const Cf1SitesRampsCreateRequestBodyList = /*@__PURE__*/ S.Array(
-  Cf1SitesRampsCreateRequestBodyItem,
-) as any as S.Schema<Cf1SitesRampsCreateRequestBodyList>;
-
-export interface Cf1SitesRampsCreateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  cf1SiteId: string;
-  body: Cf1SitesRampsCreateRequestBodyList;
-}
-export const Cf1SitesRampsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
-    body: Cf1SitesRampsCreateRequestBodyList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "Cf1SitesRampsCreateRequest",
-}) as any as S.Schema<Cf1SitesRampsCreateRequest>;
-
-export interface Cf1SitesRampsCreateResultItemGre {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsCreateResultItemGre = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsCreateResultItemGre",
-}) as any as S.Schema<Cf1SitesRampsCreateResultItemGre>;
-
-export interface Cf1SitesRampsCreateResultItemGreInterconnect {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsCreateResultItemGreInterconnect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-    }),
-  ).annotate({
-    identifier: "Cf1SitesRampsCreateResultItemGreInterconnect",
-  }) as any as S.Schema<Cf1SitesRampsCreateResultItemGreInterconnect>;
-
-export interface Cf1SitesRampsCreateResultItemIpsec {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsCreateResultItemIpsec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsCreateResultItemIpsec",
-}) as any as S.Schema<Cf1SitesRampsCreateResultItemIpsec>;
-
-export interface Cf1SitesRampsCreateResultItemMconn {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsCreateResultItemMconn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsCreateResultItemMconn",
-}) as any as S.Schema<Cf1SitesRampsCreateResultItemMconn>;
-
-export interface Cf1SitesRampsCreateResultItemMplsInterconnect {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsCreateResultItemMplsInterconnect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-    }),
-  ).annotate({
-    identifier: "Cf1SitesRampsCreateResultItemMplsInterconnect",
-  }) as any as S.Schema<Cf1SitesRampsCreateResultItemMplsInterconnect>;
-
-export interface Cf1SitesRampsCreateResultItem {
-  /** Identifier */
-  id: string;
-  createdOn: string;
-  modifiedOn: string;
-  /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
-  name: string;
-  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
-  type: unknown;
-  /** A human-provided description of the ramp. */
-  description?: string;
-  gre?: Cf1SitesRampsCreateResultItemGre;
-  greInterconnect?: Cf1SitesRampsCreateResultItemGreInterconnect;
-  ipsec?: Cf1SitesRampsCreateResultItemIpsec;
-  mconn?: Cf1SitesRampsCreateResultItemMconn;
-  mplsInterconnect?: Cf1SitesRampsCreateResultItemMplsInterconnect;
-}
-export const Cf1SitesRampsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    type: S.Unknown,
-    description: S.optional(S.String),
-    gre: S.optional(Cf1SitesRampsCreateResultItemGre),
-    greInterconnect: S.optional(
-      Cf1SitesRampsCreateResultItemGreInterconnect.pipe(
-        T.Body("gre_interconnect"),
-      ),
-    ),
-    ipsec: S.optional(Cf1SitesRampsCreateResultItemIpsec),
-    mconn: S.optional(Cf1SitesRampsCreateResultItemMconn),
-    mplsInterconnect: S.optional(
-      Cf1SitesRampsCreateResultItemMplsInterconnect.pipe(
-        T.Body("mpls_interconnect"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsCreateResultItem",
-}) as any as S.Schema<Cf1SitesRampsCreateResultItem>;
-
-export type Cf1SitesRampsCreateResultList = Cf1SitesRampsCreateResultItem[];
-export const Cf1SitesRampsCreateResultList = /*@__PURE__*/ S.Array(
-  Cf1SitesRampsCreateResultItem,
-) as any as S.Schema<Cf1SitesRampsCreateResultList>;
-
-export interface Cf1SitesRampsCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: Cf1SitesRampsCreateResultList;
-}
-export const Cf1SitesRampsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(Cf1SitesRampsCreateResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsCreateResponse",
-}) as any as S.Schema<Cf1SitesRampsCreateResponse>;
-
-export interface Cf1SitesRampsDeleteRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  cf1SiteId: string;
-  /** Identifier */
-  rampId: string;
-}
-export const Cf1SitesRampsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
-    rampId: S.String.pipe(T.Label("ramp_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps/{ramp_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "Cf1SitesRampsDeleteRequest",
-}) as any as S.Schema<Cf1SitesRampsDeleteRequest>;
-
-export interface Cf1SitesRampsDeleteResponseGre {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsDeleteResponseGre = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsDeleteResponseGre",
-}) as any as S.Schema<Cf1SitesRampsDeleteResponseGre>;
-
-export interface Cf1SitesRampsDeleteResponseGreInterconnect {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsDeleteResponseGreInterconnect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-    }),
-  ).annotate({
-    identifier: "Cf1SitesRampsDeleteResponseGreInterconnect",
-  }) as any as S.Schema<Cf1SitesRampsDeleteResponseGreInterconnect>;
-
-export interface Cf1SitesRampsDeleteResponseIpsec {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsDeleteResponseIpsec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsDeleteResponseIpsec",
-}) as any as S.Schema<Cf1SitesRampsDeleteResponseIpsec>;
-
-export interface Cf1SitesRampsDeleteResponseMconn {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsDeleteResponseMconn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsDeleteResponseMconn",
-}) as any as S.Schema<Cf1SitesRampsDeleteResponseMconn>;
-
-export interface Cf1SitesRampsDeleteResponseMplsInterconnect {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsDeleteResponseMplsInterconnect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-    }),
-  ).annotate({
-    identifier: "Cf1SitesRampsDeleteResponseMplsInterconnect",
-  }) as any as S.Schema<Cf1SitesRampsDeleteResponseMplsInterconnect>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface Cf1SitesRampsDeleteResponse {
-  /** Identifier */
-  id: string;
-  createdOn: string;
-  modifiedOn: string;
-  /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
-  name: string;
-  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
-  type: unknown;
-  /** A human-provided description of the ramp. */
-  description?: string;
-  gre?: Cf1SitesRampsDeleteResponseGre;
-  greInterconnect?: Cf1SitesRampsDeleteResponseGreInterconnect;
-  ipsec?: Cf1SitesRampsDeleteResponseIpsec;
-  mconn?: Cf1SitesRampsDeleteResponseMconn;
-  mplsInterconnect?: Cf1SitesRampsDeleteResponseMplsInterconnect;
-}
-export const Cf1SitesRampsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    type: S.Unknown,
-    description: S.optional(S.String),
-    gre: S.optional(Cf1SitesRampsDeleteResponseGre),
-    greInterconnect: S.optional(
-      Cf1SitesRampsDeleteResponseGreInterconnect.pipe(
-        T.Body("gre_interconnect"),
-      ),
-    ),
-    ipsec: S.optional(Cf1SitesRampsDeleteResponseIpsec),
-    mconn: S.optional(Cf1SitesRampsDeleteResponseMconn),
-    mplsInterconnect: S.optional(
-      Cf1SitesRampsDeleteResponseMplsInterconnect.pipe(
-        T.Body("mpls_interconnect"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsDeleteResponse",
-}) as any as S.Schema<Cf1SitesRampsDeleteResponse>;
-
-export interface Cf1SitesRampsGetRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  cf1SiteId: string;
-  /** Identifier */
-  rampId: string;
-}
-export const Cf1SitesRampsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
-    rampId: S.String.pipe(T.Label("ramp_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps/{ramp_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "Cf1SitesRampsGetRequest",
-}) as any as S.Schema<Cf1SitesRampsGetRequest>;
-
-export interface Cf1SitesRampsGetResponseGre {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsGetResponseGre = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsGetResponseGre",
-}) as any as S.Schema<Cf1SitesRampsGetResponseGre>;
-
-export interface Cf1SitesRampsGetResponseGreInterconnect {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsGetResponseGreInterconnect = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-    }),
-).annotate({
-  identifier: "Cf1SitesRampsGetResponseGreInterconnect",
-}) as any as S.Schema<Cf1SitesRampsGetResponseGreInterconnect>;
-
-export interface Cf1SitesRampsGetResponseIpsec {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsGetResponseIpsec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsGetResponseIpsec",
-}) as any as S.Schema<Cf1SitesRampsGetResponseIpsec>;
-
-export interface Cf1SitesRampsGetResponseMconn {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsGetResponseMconn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsGetResponseMconn",
-}) as any as S.Schema<Cf1SitesRampsGetResponseMconn>;
-
-export interface Cf1SitesRampsGetResponseMplsInterconnect {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsGetResponseMplsInterconnect = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-    }),
-).annotate({
-  identifier: "Cf1SitesRampsGetResponseMplsInterconnect",
-}) as any as S.Schema<Cf1SitesRampsGetResponseMplsInterconnect>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface Cf1SitesRampsGetResponse {
-  /** Identifier */
-  id: string;
-  createdOn: string;
-  modifiedOn: string;
-  /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
-  name: string;
-  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
-  type: unknown;
-  /** A human-provided description of the ramp. */
-  description?: string;
-  gre?: Cf1SitesRampsGetResponseGre;
-  greInterconnect?: Cf1SitesRampsGetResponseGreInterconnect;
-  ipsec?: Cf1SitesRampsGetResponseIpsec;
-  mconn?: Cf1SitesRampsGetResponseMconn;
-  mplsInterconnect?: Cf1SitesRampsGetResponseMplsInterconnect;
-}
-export const Cf1SitesRampsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    type: S.Unknown,
-    description: S.optional(S.String),
-    gre: S.optional(Cf1SitesRampsGetResponseGre),
-    greInterconnect: S.optional(
-      Cf1SitesRampsGetResponseGreInterconnect.pipe(T.Body("gre_interconnect")),
-    ),
-    ipsec: S.optional(Cf1SitesRampsGetResponseIpsec),
-    mconn: S.optional(Cf1SitesRampsGetResponseMconn),
-    mplsInterconnect: S.optional(
-      Cf1SitesRampsGetResponseMplsInterconnect.pipe(
-        T.Body("mpls_interconnect"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsGetResponse",
-}) as any as S.Schema<Cf1SitesRampsGetResponse>;
-
-export interface Cf1SitesRampsListRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  cf1SiteId: string;
-}
-export const Cf1SitesRampsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "Cf1SitesRampsListRequest",
-}) as any as S.Schema<Cf1SitesRampsListRequest>;
-
-export interface Cf1SitesRampsListResultItemGre {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsListResultItemGre = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsListResultItemGre",
-}) as any as S.Schema<Cf1SitesRampsListResultItemGre>;
-
-export interface Cf1SitesRampsListResultItemGreInterconnect {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsListResultItemGreInterconnect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-    }),
-  ).annotate({
-    identifier: "Cf1SitesRampsListResultItemGreInterconnect",
-  }) as any as S.Schema<Cf1SitesRampsListResultItemGreInterconnect>;
-
-export interface Cf1SitesRampsListResultItemIpsec {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsListResultItemIpsec = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsListResultItemIpsec",
-}) as any as S.Schema<Cf1SitesRampsListResultItemIpsec>;
-
-export interface Cf1SitesRampsListResultItemMconn {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsListResultItemMconn = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsListResultItemMconn",
-}) as any as S.Schema<Cf1SitesRampsListResultItemMconn>;
-
-export interface Cf1SitesRampsListResultItemMplsInterconnect {
-  /** URL reference to the source network resource that this ramp is managed by. */
-  managedBy?: string;
-}
-export const Cf1SitesRampsListResultItemMplsInterconnect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
-    }),
-  ).annotate({
-    identifier: "Cf1SitesRampsListResultItemMplsInterconnect",
-  }) as any as S.Schema<Cf1SitesRampsListResultItemMplsInterconnect>;
-
-export interface Cf1SitesRampsListResultItem {
-  /** Identifier */
-  id: string;
-  createdOn: string;
-  modifiedOn: string;
-  /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
-  name: string;
-  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
-  type: unknown;
-  /** A human-provided description of the ramp. */
-  description?: string;
-  gre?: Cf1SitesRampsListResultItemGre;
-  greInterconnect?: Cf1SitesRampsListResultItemGreInterconnect;
-  ipsec?: Cf1SitesRampsListResultItemIpsec;
-  mconn?: Cf1SitesRampsListResultItemMconn;
-  mplsInterconnect?: Cf1SitesRampsListResultItemMplsInterconnect;
-}
-export const Cf1SitesRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    createdOn: S.String.pipe(T.Body("created_on")),
-    modifiedOn: S.String.pipe(T.Body("modified_on")),
-    name: S.String,
-    type: S.Unknown,
-    description: S.optional(S.String),
-    gre: S.optional(Cf1SitesRampsListResultItemGre),
-    greInterconnect: S.optional(
-      Cf1SitesRampsListResultItemGreInterconnect.pipe(
-        T.Body("gre_interconnect"),
-      ),
-    ),
-    ipsec: S.optional(Cf1SitesRampsListResultItemIpsec),
-    mconn: S.optional(Cf1SitesRampsListResultItemMconn),
-    mplsInterconnect: S.optional(
-      Cf1SitesRampsListResultItemMplsInterconnect.pipe(
-        T.Body("mpls_interconnect"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsListResultItem",
-}) as any as S.Schema<Cf1SitesRampsListResultItem>;
-
-export type Cf1SitesRampsListResultList = Cf1SitesRampsListResultItem[];
-export const Cf1SitesRampsListResultList = /*@__PURE__*/ S.Array(
-  Cf1SitesRampsListResultItem,
-) as any as S.Schema<Cf1SitesRampsListResultList>;
-
-export interface Cf1SitesRampsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: Cf1SitesRampsListResultList;
-}
-export const Cf1SitesRampsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(Cf1SitesRampsListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "Cf1SitesRampsListResponse",
-}) as any as S.Schema<Cf1SitesRampsListResponse>;
-
-export interface Cf1SitesUpdateRequestLocation {
-  /** Latitude of the CF1 Site. */
-  lat?: number;
-  /** Longitude of the CF1 Site. */
-  long?: number;
-  /** Name of nearest town, city, or village. */
-  name?: string;
-}
-export const Cf1SitesUpdateRequestLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.Number),
-    long: S.optional(S.Number),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Cf1SitesUpdateRequestLocation",
-}) as any as S.Schema<Cf1SitesUpdateRequestLocation>;
-
-export interface Cf1SitesUpdateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  cf1SiteId: string;
-  /** A human-provided description of the CF1 Site. */
-  description?: string;
-  location?: Cf1SitesUpdateRequestLocation;
-  /** A human-provided name describing the CF1 Site that should be unique within the account. */
-  name?: string;
-}
-export const Cf1SitesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
-    description: S.optional(S.String),
-    location: S.optional(Cf1SitesUpdateRequestLocation),
-    name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "Cf1SitesUpdateRequest",
-}) as any as S.Schema<Cf1SitesUpdateRequest>;
-
-export interface Cf1SitesUpdateResponseLocation {
-  /** Latitude of the CF1 Site. */
-  lat?: number;
-  /** Longitude of the CF1 Site. */
-  long?: number;
-  /** Name of nearest town, city, or village. */
-  name?: string;
-}
-export const Cf1SitesUpdateResponseLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.Number),
-    long: S.optional(S.Number),
-    name: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "Cf1SitesUpdateResponseLocation",
-}) as any as S.Schema<Cf1SitesUpdateResponseLocation>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface Cf1SitesUpdateResponse {
-  /** A human-provided name describing the CF1 Site that should be unique within the account. */
-  name: string;
-  /** Identifier */
-  id?: string;
-  createdOn?: string;
-  /** A human-provided description of the CF1 Site. */
-  description?: string;
-  location?: Cf1SitesUpdateResponseLocation;
-  modifiedOn?: string;
-}
-export const Cf1SitesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    name: S.String,
-    id: S.optional(S.String),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    location: S.optional(Cf1SitesUpdateResponseLocation),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-  }),
-).annotate({
-  identifier: "Cf1SitesUpdateResponse",
-}) as any as S.Schema<Cf1SitesUpdateResponse>;
-
-export interface CfInterconnectsBulkUpdateRequest {
+export interface BulkPutCfInterconnectsRequest {
   /** Identifier */
   accountId: string;
   XMagicNewHcTarget_?: boolean;
   body: unknown;
 }
-export const CfInterconnectsBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const BulkPutCfInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     XMagicNewHcTarget_: S.optional(
@@ -1448,8 +118,8 @@ export const CfInterconnectsBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CfInterconnectsBulkUpdateRequest",
-}) as any as S.Schema<CfInterconnectsBulkUpdateRequest>;
+  identifier: "BulkPutCfInterconnectsRequest",
+}) as any as S.Schema<BulkPutCfInterconnectsRequest>;
 
 export interface CfInterconnectsBulkUpdateResponseModifiedInterconnectsItemGre {
   /** The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect. */
@@ -1577,11 +247,11 @@ export const CfInterconnectsBulkUpdateResponseModifiedInterconnectsList =
   ) as any as S.Schema<CfInterconnectsBulkUpdateResponseModifiedInterconnectsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CfInterconnectsBulkUpdateResponse {
+export interface BulkPutCfInterconnectsResponse {
   modified?: boolean;
   modifiedInterconnects?: CfInterconnectsBulkUpdateResponseModifiedInterconnectsList;
 }
-export const CfInterconnectsBulkUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const BulkPutCfInterconnectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     modified: S.optional(S.Boolean),
     modifiedInterconnects: S.optional(
@@ -1591,17 +261,4923 @@ export const CfInterconnectsBulkUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
   }),
 ).annotate({
-  identifier: "CfInterconnectsBulkUpdateResponse",
-}) as any as S.Schema<CfInterconnectsBulkUpdateResponse>;
+  identifier: "BulkPutCfInterconnectsResponse",
+}) as any as S.Schema<BulkPutCfInterconnectsResponse>;
 
-export interface CfInterconnectsGetRequest {
+export interface BulkPutGreTunnelsRequest {
+  /** Identifier */
+  accountId: string;
+  XMagicNewHcTarget_?: boolean;
+  body: unknown;
+}
+export const BulkPutGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    XMagicNewHcTarget_: S.optional(
+      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    ),
+    body: S.Unknown,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/gre_tunnels",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "BulkPutGreTunnelsRequest",
+}) as any as S.Schema<BulkPutGreTunnelsRequest>;
+
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList =
+  string[];
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList>;
+
+export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customerAsn: S.Number.pipe(T.Body("customer_asn")),
+      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+      extraPrefixes: S.optional(
+        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList.pipe(
+          T.Body("extra_prefixes"),
+        ),
+      ),
+      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp",
+  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp>;
+
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING"
+  | (string & {});
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus {
+  state: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState;
+  tcpEstablished: boolean;
+  updatedAt: string;
+  bgpState?: string;
+  cfSpeakerIp?: string;
+  cfSpeakerPort?: number;
+  customerSpeakerIp?: string;
+  customerSpeakerPort?: number;
+}
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
+      customerSpeakerIp: S.optional(
+        S.String.pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.Number.pipe(T.Body("customer_speaker_port")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus",
+  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus>;
+
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection =
+  "unidirectional" | "bidirectional" | (string & {});
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget>;
+
+export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection,
+      ),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(
+        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget,
+      ),
+      type: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck",
+  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck>;
+
+export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem {
+  /** Identifier */
+  id: string;
+  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
+  cloudflareGreEndpoint: string;
+  /** The IP address assigned to the customer side of the GRE tunnel. */
+  customerGreEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
+  name: string;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp;
+  bgpStatus?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus;
+  /** The date and time the tunnel was created. */
+  createdOn?: string;
+  /** An optional description of the GRE tunnel. */
+  description?: string;
+  healthCheck?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number;
+}
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
+      customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
+      interfaceAddress: S.String.pipe(T.Body("interface_address")),
+      name: S.String,
+      automaticReturnRouting: S.optional(
+        S.Boolean.pipe(T.Body("automatic_return_routing")),
+      ),
+      bgp: S.optional(GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp),
+      bgpStatus: S.optional(
+        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus.pipe(
+          T.Body("bgp_status"),
+        ),
+      ),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      description: S.optional(S.String),
+      healthCheck: S.optional(
+        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck.pipe(
+          T.Body("health_check"),
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.String.pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      mtu: S.optional(S.Number),
+      ttl: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem",
+  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem>;
+
+export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsList =
+  GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem[];
+export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsList =
+  /*@__PURE__*/ S.Array(
+    GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem,
+  ) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface BulkPutGreTunnelsResponse {
+  modified?: boolean;
+  modifiedGreTunnels?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsList;
+}
+export const BulkPutGreTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modified: S.optional(S.Boolean),
+    modifiedGreTunnels: S.optional(
+      GreTunnelsBulkUpdateResponseModifiedGreTunnelsList.pipe(
+        T.Body("modified_gre_tunnels"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "BulkPutGreTunnelsResponse",
+}) as any as S.Schema<BulkPutGreTunnelsResponse>;
+
+export interface BulkPutIpsecTunnelsRequest {
+  /** Identifier */
+  accountId: string;
+  XMagicNewHcTarget_?: boolean;
+  body: unknown;
+}
+export const BulkPutIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    XMagicNewHcTarget_: S.optional(
+      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    ),
+    body: S.Unknown,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/ipsec_tunnels",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "BulkPutIpsecTunnelsRequest",
+}) as any as S.Schema<BulkPutIpsecTunnelsRequest>;
+
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList =
+  string[];
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList>;
+
+export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customerAsn: S.Number.pipe(T.Body("customer_asn")),
+      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+      extraPrefixes: S.optional(
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList.pipe(
+          T.Body("extra_prefixes"),
+        ),
+      ),
+      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp",
+  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp>;
+
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState =
+  "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus {
+  state: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState;
+  tcpEstablished: boolean;
+  updatedAt: string;
+  bgpState?: string;
+  cfSpeakerIp?: string;
+  cfSpeakerPort?: number;
+  customerSpeakerIp?: string;
+  customerSpeakerPort?: number;
+}
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state:
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
+      customerSpeakerIp: S.optional(
+        S.String.pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.Number.pipe(T.Body("customer_speaker_port")),
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus",
+  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus>;
+
+export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities {
+  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
+  fqdnId?: string;
+}
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities",
+  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities>;
+
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection =
+  "unidirectional" | "bidirectional" | (string & {});
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget>;
+
+export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection,
+      ),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget,
+      ),
+      type: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck",
+  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck>;
+
+export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata {
+  /** The date and time the tunnel was last modified. */
+  lastGeneratedOn?: string;
+}
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata",
+  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata>;
+
+export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem {
+  /** Identifier */
+  id: string;
+  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
+  cloudflareEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
+  name: string;
+  /** When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2). */
+  allowNullCipher?: boolean;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp;
+  bgpStatus?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus;
+  /** The date and time the tunnel was created. */
+  createdOn?: string;
+  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string;
+  healthCheck?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean;
+}
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
+      interfaceAddress: S.String.pipe(T.Body("interface_address")),
+      name: S.String,
+      allowNullCipher: S.optional(S.Boolean.pipe(T.Body("allow_null_cipher"))),
+      automaticReturnRouting: S.optional(
+        S.Boolean.pipe(T.Body("automatic_return_routing")),
+      ),
+      bgp: S.optional(
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp,
+      ),
+      bgpStatus: S.optional(
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus.pipe(
+          T.Body("bgp_status"),
+        ),
+      ),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      customRemoteIdentities: S.optional(
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities.pipe(
+          T.Body("custom_remote_identities"),
+        ),
+      ),
+      customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
+      description: S.optional(S.String),
+      healthCheck: S.optional(
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck.pipe(
+          T.Body("health_check"),
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.String.pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      pskMetadata: S.optional(
+        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata.pipe(
+          T.Body("psk_metadata"),
+        ),
+      ),
+      replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem",
+  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem>;
+
+export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList =
+  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem[];
+export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList =
+  /*@__PURE__*/ S.Array(
+    IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem,
+  ) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface BulkPutIpsecTunnelsResponse {
+  modified?: boolean;
+  modifiedIpsecTunnels?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList;
+}
+export const BulkPutIpsecTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modified: S.optional(S.Boolean),
+    modifiedIpsecTunnels: S.optional(
+      IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList.pipe(
+        T.Body("modified_ipsec_tunnels"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "BulkPutIpsecTunnelsResponse",
+}) as any as S.Schema<BulkPutIpsecTunnelsResponse>;
+
+export type RoutesBulkUpdateRequestRoutesItemScopeColoNamesList = string[];
+export const RoutesBulkUpdateRequestRoutesItemScopeColoNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RoutesBulkUpdateRequestRoutesItemScopeColoNamesList>;
+
+export type RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList = string[];
+export const RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList>;
+
+export interface RoutesBulkUpdateRequestRoutesItemScope {
+  /** List of colo names for the ECMP scope. */
+  coloNames?: RoutesBulkUpdateRequestRoutesItemScopeColoNamesList;
+  /** List of colo regions for the ECMP scope. */
+  coloRegions?: RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList;
+}
+export const RoutesBulkUpdateRequestRoutesItemScope = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      coloNames: S.optional(
+        RoutesBulkUpdateRequestRoutesItemScopeColoNamesList.pipe(
+          T.Body("colo_names"),
+        ),
+      ),
+      coloRegions: S.optional(
+        RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList.pipe(
+          T.Body("colo_regions"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "RoutesBulkUpdateRequestRoutesItemScope",
+}) as any as S.Schema<RoutesBulkUpdateRequestRoutesItemScope>;
+
+export interface RoutesBulkUpdateRequestRoutesItem {
+  /** Identifier */
+  id: string;
+  /** The next-hop IP Address for the static route. */
+  nexthop: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  prefix: string;
+  /** Priority of the static route. */
+  priority: number;
+  /** An optional human provided description of the static route. */
+  description?: string;
+  /** Used only for ECMP routes. */
+  scope?: RoutesBulkUpdateRequestRoutesItemScope;
+  /** Optional weight of the ECMP scope - if provided. */
+  weight?: number;
+}
+export const RoutesBulkUpdateRequestRoutesItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    nexthop: S.String,
+    prefix: S.String,
+    priority: S.Number,
+    description: S.optional(S.String),
+    scope: S.optional(RoutesBulkUpdateRequestRoutesItemScope),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RoutesBulkUpdateRequestRoutesItem",
+}) as any as S.Schema<RoutesBulkUpdateRequestRoutesItem>;
+
+export type RoutesBulkUpdateRequestRoutesList =
+  RoutesBulkUpdateRequestRoutesItem[];
+export const RoutesBulkUpdateRequestRoutesList = /*@__PURE__*/ S.Array(
+  RoutesBulkUpdateRequestRoutesItem,
+) as any as S.Schema<RoutesBulkUpdateRequestRoutesList>;
+
+export interface BulkPutRoutesRequest {
+  /** Identifier */
+  accountId: string;
+  routes: RoutesBulkUpdateRequestRoutesList;
+}
+export const BulkPutRoutesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    routes: RoutesBulkUpdateRequestRoutesList,
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/routes",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "BulkPutRoutesRequest",
+}) as any as S.Schema<BulkPutRoutesRequest>;
+
+export type RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList =
+  string[];
+export const RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList>;
+
+export type RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList =
+  string[];
+export const RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList>;
+
+export interface RoutesBulkUpdateResponseModifiedRoutesItemScope {
+  /** List of colo names for the ECMP scope. */
+  coloNames?: RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList;
+  /** List of colo regions for the ECMP scope. */
+  coloRegions?: RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList;
+}
+export const RoutesBulkUpdateResponseModifiedRoutesItemScope =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      coloNames: S.optional(
+        RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList.pipe(
+          T.Body("colo_names"),
+        ),
+      ),
+      coloRegions: S.optional(
+        RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList.pipe(
+          T.Body("colo_regions"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "RoutesBulkUpdateResponseModifiedRoutesItemScope",
+  }) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItemScope>;
+
+export interface RoutesBulkUpdateResponseModifiedRoutesItem {
+  /** Identifier */
+  id: string;
+  /** The next-hop IP Address for the static route. */
+  nexthop: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  prefix: string;
+  /** Priority of the static route. */
+  priority: number;
+  /** When the route was created. */
+  createdOn?: string;
+  /** An optional human provided description of the static route. */
+  description?: string;
+  /** When the route was last modified. */
+  modifiedOn?: string;
+  /** Used only for ECMP routes. */
+  scope?: RoutesBulkUpdateResponseModifiedRoutesItemScope;
+  /** Optional weight of the ECMP scope - if provided. */
+  weight?: number;
+}
+export const RoutesBulkUpdateResponseModifiedRoutesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      nexthop: S.String,
+      prefix: S.String,
+      priority: S.Number,
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      description: S.optional(S.String),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      scope: S.optional(RoutesBulkUpdateResponseModifiedRoutesItemScope),
+      weight: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "RoutesBulkUpdateResponseModifiedRoutesItem",
+  }) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItem>;
+
+export type RoutesBulkUpdateResponseModifiedRoutesList =
+  RoutesBulkUpdateResponseModifiedRoutesItem[];
+export const RoutesBulkUpdateResponseModifiedRoutesList = /*@__PURE__*/ S.Array(
+  RoutesBulkUpdateResponseModifiedRoutesItem,
+) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface BulkPutRoutesResponse {
+  modified?: boolean;
+  modifiedRoutes?: RoutesBulkUpdateResponseModifiedRoutesList;
+}
+export const BulkPutRoutesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modified: S.optional(S.Boolean),
+    modifiedRoutes: S.optional(
+      RoutesBulkUpdateResponseModifiedRoutesList.pipe(
+        T.Body("modified_routes"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "BulkPutRoutesResponse",
+}) as any as S.Schema<BulkPutRoutesResponse>;
+
+export type AppsCreateRequestHostnamesList = string[];
+export const AppsCreateRequestHostnamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsCreateRequestHostnamesList>;
+
+export type AppsCreateRequestIpSubnetsList = string[];
+export const AppsCreateRequestIpSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsCreateRequestIpSubnetsList>;
+
+export type AppsCreateRequestSourceSubnetsList = string[];
+export const AppsCreateRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsCreateRequestSourceSubnetsList>;
+
+export interface CreateAppRequest {
+  /** Identifier */
+  accountId: string;
+  /** Display name for the app. */
+  name: string;
+  /** Category of the app. */
+  type: string;
+  /** FQDNs to associate with traffic decisions. */
+  hostnames?: AppsCreateRequestHostnamesList;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  ipSubnets?: AppsCreateRequestIpSubnetsList;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: AppsCreateRequestSourceSubnetsList;
+}
+export const CreateAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.String,
+    type: S.String,
+    hostnames: S.optional(AppsCreateRequestHostnamesList),
+    ipSubnets: S.optional(
+      AppsCreateRequestIpSubnetsList.pipe(T.Body("ip_subnets")),
+    ),
+    sourceSubnets: S.optional(
+      AppsCreateRequestSourceSubnetsList.pipe(T.Body("source_subnets")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/apps",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateAppRequest",
+}) as any as S.Schema<CreateAppRequest>;
+
+export type AppsCreateResponseHostnamesList = string[];
+export const AppsCreateResponseHostnamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsCreateResponseHostnamesList>;
+
+export type AppsCreateResponseIpSubnetsList = string[];
+export const AppsCreateResponseIpSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsCreateResponseIpSubnetsList>;
+
+export type AppsCreateResponseSourceSubnetsList = string[];
+export const AppsCreateResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsCreateResponseSourceSubnetsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateAppResponse {
+  /** Magic account app ID. */
+  accountAppId: string;
+  /** FQDNs to associate with traffic decisions. */
+  hostnames?: AppsCreateResponseHostnamesList;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  ipSubnets?: AppsCreateResponseIpSubnetsList;
+  /** Display name for the app. */
+  name?: string;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: AppsCreateResponseSourceSubnetsList;
+  /** Category of the app. */
+  type?: string;
+}
+export const CreateAppResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.String.pipe(T.Body("account_app_id")),
+    hostnames: S.optional(AppsCreateResponseHostnamesList),
+    ipSubnets: S.optional(
+      AppsCreateResponseIpSubnetsList.pipe(T.Body("ip_subnets")),
+    ),
+    name: S.optional(S.String),
+    sourceSubnets: S.optional(
+      AppsCreateResponseSourceSubnetsList.pipe(T.Body("source_subnets")),
+    ),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreateAppResponse",
+}) as any as S.Schema<CreateAppResponse>;
+
+export interface Cf1SitesCreateRequestBodyItemLocation {
+  /** Latitude of the CF1 Site. */
+  lat?: number;
+  /** Longitude of the CF1 Site. */
+  long?: number;
+  /** Name of nearest town, city, or village. */
+  name?: string;
+}
+export const Cf1SitesCreateRequestBodyItemLocation = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      lat: S.optional(S.Number),
+      long: S.optional(S.Number),
+      name: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "Cf1SitesCreateRequestBodyItemLocation",
+}) as any as S.Schema<Cf1SitesCreateRequestBodyItemLocation>;
+
+export interface Cf1SitesCreateRequestBodyItem {
+  /** A human-provided name describing the CF1 Site that should be unique within the account. */
+  name: string;
+  /** Identifier */
+  id?: string;
+  createdOn?: string;
+  /** A human-provided description of the CF1 Site. */
+  description?: string;
+  location?: Cf1SitesCreateRequestBodyItemLocation;
+  modifiedOn?: string;
+}
+export const Cf1SitesCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    location: S.optional(Cf1SitesCreateRequestBodyItemLocation),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesCreateRequestBodyItem",
+}) as any as S.Schema<Cf1SitesCreateRequestBodyItem>;
+
+export type Cf1SitesCreateRequestBodyList = Cf1SitesCreateRequestBodyItem[];
+export const Cf1SitesCreateRequestBodyList = /*@__PURE__*/ S.Array(
+  Cf1SitesCreateRequestBodyItem,
+) as any as S.Schema<Cf1SitesCreateRequestBodyList>;
+
+export interface CreateCf1SiteRequest {
+  /** Identifier */
+  accountId: string;
+  body: Cf1SitesCreateRequestBodyList;
+}
+export const CreateCf1SiteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    body: Cf1SitesCreateRequestBodyList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/cf1_sites",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCf1SiteRequest",
+}) as any as S.Schema<CreateCf1SiteRequest>;
+
+export interface Cf1SitesCreateResultItemLocation {
+  /** Latitude of the CF1 Site. */
+  lat?: number;
+  /** Longitude of the CF1 Site. */
+  long?: number;
+  /** Name of nearest town, city, or village. */
+  name?: string;
+}
+export const Cf1SitesCreateResultItemLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.Number),
+    long: S.optional(S.Number),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Cf1SitesCreateResultItemLocation",
+}) as any as S.Schema<Cf1SitesCreateResultItemLocation>;
+
+export interface Cf1SitesCreateResultItem {
+  /** A human-provided name describing the CF1 Site that should be unique within the account. */
+  name: string;
+  /** Identifier */
+  id?: string;
+  createdOn?: string;
+  /** A human-provided description of the CF1 Site. */
+  description?: string;
+  location?: Cf1SitesCreateResultItemLocation;
+  modifiedOn?: string;
+}
+export const Cf1SitesCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    location: S.optional(Cf1SitesCreateResultItemLocation),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesCreateResultItem",
+}) as any as S.Schema<Cf1SitesCreateResultItem>;
+
+export type Cf1SitesCreateResultList = Cf1SitesCreateResultItem[];
+export const Cf1SitesCreateResultList = /*@__PURE__*/ S.Array(
+  Cf1SitesCreateResultItem,
+) as any as S.Schema<Cf1SitesCreateResultList>;
+
+export interface CreateCf1SiteResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: Cf1SitesCreateResultList;
+}
+export const CreateCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(Cf1SitesCreateResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "CreateCf1SiteResponse",
+}) as any as S.Schema<CreateCf1SiteResponse>;
+
+export interface Cf1SitesRampsCreateRequestBodyItem {
+  /** Identifier of the source network resource to associate as a ramp. */
+  sourceRampId: string;
+  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
+  type: unknown;
+}
+export const Cf1SitesRampsCreateRequestBodyItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    sourceRampId: S.String.pipe(T.Body("source_ramp_id")),
+    type: S.Unknown,
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsCreateRequestBodyItem",
+}) as any as S.Schema<Cf1SitesRampsCreateRequestBodyItem>;
+
+export type Cf1SitesRampsCreateRequestBodyList =
+  Cf1SitesRampsCreateRequestBodyItem[];
+export const Cf1SitesRampsCreateRequestBodyList = /*@__PURE__*/ S.Array(
+  Cf1SitesRampsCreateRequestBodyItem,
+) as any as S.Schema<Cf1SitesRampsCreateRequestBodyList>;
+
+export interface CreateCf1SiteRampRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  cf1SiteId: string;
+  body: Cf1SitesRampsCreateRequestBodyList;
+}
+export const CreateCf1SiteRampRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
+    body: Cf1SitesRampsCreateRequestBodyList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateCf1SiteRampRequest",
+}) as any as S.Schema<CreateCf1SiteRampRequest>;
+
+export interface Cf1SitesRampsCreateResultItemGre {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsCreateResultItemGre = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsCreateResultItemGre",
+}) as any as S.Schema<Cf1SitesRampsCreateResultItemGre>;
+
+export interface Cf1SitesRampsCreateResultItemGreInterconnect {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsCreateResultItemGreInterconnect =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+    }),
+  ).annotate({
+    identifier: "Cf1SitesRampsCreateResultItemGreInterconnect",
+  }) as any as S.Schema<Cf1SitesRampsCreateResultItemGreInterconnect>;
+
+export interface Cf1SitesRampsCreateResultItemIpsec {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsCreateResultItemIpsec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsCreateResultItemIpsec",
+}) as any as S.Schema<Cf1SitesRampsCreateResultItemIpsec>;
+
+export interface Cf1SitesRampsCreateResultItemMconn {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsCreateResultItemMconn = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsCreateResultItemMconn",
+}) as any as S.Schema<Cf1SitesRampsCreateResultItemMconn>;
+
+export interface Cf1SitesRampsCreateResultItemMplsInterconnect {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsCreateResultItemMplsInterconnect =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+    }),
+  ).annotate({
+    identifier: "Cf1SitesRampsCreateResultItemMplsInterconnect",
+  }) as any as S.Schema<Cf1SitesRampsCreateResultItemMplsInterconnect>;
+
+export interface Cf1SitesRampsCreateResultItem {
+  /** Identifier */
+  id: string;
+  createdOn: string;
+  modifiedOn: string;
+  /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
+  name: string;
+  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
+  type: unknown;
+  /** A human-provided description of the ramp. */
+  description?: string;
+  gre?: Cf1SitesRampsCreateResultItemGre;
+  greInterconnect?: Cf1SitesRampsCreateResultItemGreInterconnect;
+  ipsec?: Cf1SitesRampsCreateResultItemIpsec;
+  mconn?: Cf1SitesRampsCreateResultItemMconn;
+  mplsInterconnect?: Cf1SitesRampsCreateResultItemMplsInterconnect;
+}
+export const Cf1SitesRampsCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    type: S.Unknown,
+    description: S.optional(S.String),
+    gre: S.optional(Cf1SitesRampsCreateResultItemGre),
+    greInterconnect: S.optional(
+      Cf1SitesRampsCreateResultItemGreInterconnect.pipe(
+        T.Body("gre_interconnect"),
+      ),
+    ),
+    ipsec: S.optional(Cf1SitesRampsCreateResultItemIpsec),
+    mconn: S.optional(Cf1SitesRampsCreateResultItemMconn),
+    mplsInterconnect: S.optional(
+      Cf1SitesRampsCreateResultItemMplsInterconnect.pipe(
+        T.Body("mpls_interconnect"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsCreateResultItem",
+}) as any as S.Schema<Cf1SitesRampsCreateResultItem>;
+
+export type Cf1SitesRampsCreateResultList = Cf1SitesRampsCreateResultItem[];
+export const Cf1SitesRampsCreateResultList = /*@__PURE__*/ S.Array(
+  Cf1SitesRampsCreateResultItem,
+) as any as S.Schema<Cf1SitesRampsCreateResultList>;
+
+export interface CreateCf1SiteRampResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: Cf1SitesRampsCreateResultList;
+}
+export const CreateCf1SiteRampResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(Cf1SitesRampsCreateResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "CreateCf1SiteRampResponse",
+}) as any as S.Schema<CreateCf1SiteRampResponse>;
+
+export interface ConnectorsCreateRequestDevice {
+  id?: string;
+  /** When true, create and provision a new licence key for the connector. */
+  provisionLicense?: boolean;
+  serialNumber?: string;
+}
+export const ConnectorsCreateRequestDevice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    provisionLicense: S.optional(S.Boolean.pipe(T.Body("provision_license"))),
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
+  }),
+).annotate({
+  identifier: "ConnectorsCreateRequestDevice",
+}) as any as S.Schema<ConnectorsCreateRequestDevice>;
+
+export type ConnectorsCreateRequestInterruptWindowDaysOfWeekItem =
+  | "Sunday"
+  | "Monday"
+  | "Tuesday"
+  | (string & {});
+export const ConnectorsCreateRequestInterruptWindowDaysOfWeekItem =
+  /*@__PURE__*/ S.String;
+
+export type ConnectorsCreateRequestInterruptWindowDaysOfWeekList =
+  ConnectorsCreateRequestInterruptWindowDaysOfWeekItem[];
+export const ConnectorsCreateRequestInterruptWindowDaysOfWeekList =
+  /*@__PURE__*/ S.Array(
+    ConnectorsCreateRequestInterruptWindowDaysOfWeekItem,
+  ) as any as S.Schema<ConnectorsCreateRequestInterruptWindowDaysOfWeekList>;
+
+export type ConnectorsCreateRequestInterruptWindowEmbargoDatesList = string[];
+export const ConnectorsCreateRequestInterruptWindowEmbargoDatesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectorsCreateRequestInterruptWindowEmbargoDatesList>;
+
+export interface CreateConnectorRequest {
+  /** Account identifier */
+  accountId: string;
+  /** Exactly one of id, serial_number, or provision_license must be provided. */
+  device: ConnectorsCreateRequestDevice;
+  activated?: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek?: ConnectorsCreateRequestInterruptWindowDaysOfWeekList;
+  interruptWindowDurationHours?: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates?: ConnectorsCreateRequestInterruptWindowEmbargoDatesList;
+  interruptWindowHourOfDay?: number;
+  notes?: string;
+  primary?: boolean;
+  siteId?: string;
+  timezone?: string;
+}
+export const CreateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    device: ConnectorsCreateRequestDevice,
+    activated: S.optional(S.Boolean),
+    interruptWindowDaysOfWeek: S.optional(
+      ConnectorsCreateRequestInterruptWindowDaysOfWeekList.pipe(
+        T.Body("interrupt_window_days_of_week"),
+      ),
+    ),
+    interruptWindowDurationHours: S.optional(
+      S.Number.pipe(T.Body("interrupt_window_duration_hours")),
+    ),
+    interruptWindowEmbargoDates: S.optional(
+      ConnectorsCreateRequestInterruptWindowEmbargoDatesList.pipe(
+        T.Body("interrupt_window_embargo_dates"),
+      ),
+    ),
+    interruptWindowHourOfDay: S.optional(
+      S.Number.pipe(T.Body("interrupt_window_hour_of_day")),
+    ),
+    notes: S.optional(S.String),
+    primary: S.optional(S.Boolean),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    timezone: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/connectors",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateConnectorRequest",
+}) as any as S.Schema<CreateConnectorRequest>;
+
+export type ConnectorsCreateResponseInterruptWindowDaysOfWeekItem =
+  | "Sunday"
+  | "Monday"
+  | "Tuesday"
+  | (string & {});
+export const ConnectorsCreateResponseInterruptWindowDaysOfWeekItem =
+  /*@__PURE__*/ S.String;
+
+export type ConnectorsCreateResponseInterruptWindowDaysOfWeekList =
+  ConnectorsCreateResponseInterruptWindowDaysOfWeekItem[];
+export const ConnectorsCreateResponseInterruptWindowDaysOfWeekList =
+  /*@__PURE__*/ S.Array(
+    ConnectorsCreateResponseInterruptWindowDaysOfWeekItem,
+  ) as any as S.Schema<ConnectorsCreateResponseInterruptWindowDaysOfWeekList>;
+
+export type ConnectorsCreateResponseInterruptWindowEmbargoDatesList = string[];
+export const ConnectorsCreateResponseInterruptWindowEmbargoDatesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectorsCreateResponseInterruptWindowEmbargoDatesList>;
+
+export type ConnectorsCreateResponseDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
+export const ConnectorsCreateResponseDeviceType = /*@__PURE__*/ S.String;
+
+export interface ConnectorsCreateResponseDevice {
+  id: string;
+  serialNumber?: string;
+  type?: ConnectorsCreateResponseDeviceType;
+}
+export const ConnectorsCreateResponseDevice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
+    type: S.optional(ConnectorsCreateResponseDeviceType),
+  }),
+).annotate({
+  identifier: "ConnectorsCreateResponseDevice",
+}) as any as S.Schema<ConnectorsCreateResponseDevice>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateConnectorResponse {
+  id: string;
+  activated: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek: ConnectorsCreateResponseInterruptWindowDaysOfWeekList;
+  interruptWindowDurationHours: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates: ConnectorsCreateResponseInterruptWindowEmbargoDatesList;
+  interruptWindowHourOfDay: number;
+  lastUpdated: string;
+  notes: string;
+  primary: boolean;
+  timezone: string;
+  device?: ConnectorsCreateResponseDevice;
+  lastHeartbeat?: string;
+  lastSeenVersion?: string;
+  licenseKey?: string;
+  siteId?: string;
+}
+export const CreateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    activated: S.Boolean,
+    interruptWindowDaysOfWeek:
+      ConnectorsCreateResponseInterruptWindowDaysOfWeekList.pipe(
+        T.Body("interrupt_window_days_of_week"),
+      ),
+    interruptWindowDurationHours: S.Number.pipe(
+      T.Body("interrupt_window_duration_hours"),
+    ),
+    interruptWindowEmbargoDates:
+      ConnectorsCreateResponseInterruptWindowEmbargoDatesList.pipe(
+        T.Body("interrupt_window_embargo_dates"),
+      ),
+    interruptWindowHourOfDay: S.Number.pipe(
+      T.Body("interrupt_window_hour_of_day"),
+    ),
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    notes: S.String,
+    primary: S.Boolean,
+    timezone: S.String,
+    device: S.optional(ConnectorsCreateResponseDevice),
+    lastHeartbeat: S.optional(S.String.pipe(T.Body("last_heartbeat"))),
+    lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
+    licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+  }),
+).annotate({
+  identifier: "CreateConnectorResponse",
+}) as any as S.Schema<CreateConnectorResponse>;
+
+export type GreTunnelsCreateRequestBgpExtraPrefixesList = string[];
+export const GreTunnelsCreateRequestBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GreTunnelsCreateRequestBgpExtraPrefixesList>;
+
+export interface GreTunnelsCreateRequestBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: GreTunnelsCreateRequestBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const GreTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerAsn: S.Number.pipe(T.Body("customer_asn")),
+    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+    extraPrefixes: S.optional(
+      GreTunnelsCreateRequestBgpExtraPrefixesList.pipe(
+        T.Body("extra_prefixes"),
+      ),
+    ),
+    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+  }),
+).annotate({
+  identifier: "GreTunnelsCreateRequestBgp",
+}) as any as S.Schema<GreTunnelsCreateRequestBgp>;
+
+export type GreTunnelsCreateRequestHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional"
+  | (string & {});
+export const GreTunnelsCreateRequestHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsCreateRequestHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const GreTunnelsCreateRequestHealthCheckTarget = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+).annotate({
+  identifier: "GreTunnelsCreateRequestHealthCheckTarget",
+}) as any as S.Schema<GreTunnelsCreateRequestHealthCheckTarget>;
+
+export interface GreTunnelsCreateRequestHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsCreateRequestHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsCreateRequestHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const GreTunnelsCreateRequestHealthCheck = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    direction: S.optional(GreTunnelsCreateRequestHealthCheckDirection),
+    enabled: S.optional(S.Boolean),
+    rate: S.optional(S.Unknown),
+    target: S.optional(GreTunnelsCreateRequestHealthCheckTarget),
+    type: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "GreTunnelsCreateRequestHealthCheck",
+}) as any as S.Schema<GreTunnelsCreateRequestHealthCheck>;
+
+export interface CreateGreTunnelRequest {
+  /** Identifier */
+  accountId: string;
+  XMagicNewHcTarget_?: boolean;
+  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
+  cloudflareGreEndpoint: string;
+  /** The IP address assigned to the customer side of the GRE tunnel. */
+  customerGreEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
+  name: string;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: GreTunnelsCreateRequestBgp;
+  /** An optional description of the GRE tunnel. */
+  description?: string;
+  healthCheck?: GreTunnelsCreateRequestHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number;
+}
+export const CreateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    XMagicNewHcTarget_: S.optional(
+      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    ),
+    cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
+    customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
+    interfaceAddress: S.String.pipe(T.Body("interface_address")),
+    name: S.String,
+    automaticReturnRouting: S.optional(
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
+    ),
+    bgp: S.optional(GreTunnelsCreateRequestBgp),
+    description: S.optional(S.String),
+    healthCheck: S.optional(
+      GreTunnelsCreateRequestHealthCheck.pipe(T.Body("health_check")),
+    ),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    mtu: S.optional(S.Number),
+    ttl: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/gre_tunnels",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateGreTunnelRequest",
+}) as any as S.Schema<CreateGreTunnelRequest>;
+
+export type GreTunnelsCreateResponseBgpExtraPrefixesList = string[];
+export const GreTunnelsCreateResponseBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GreTunnelsCreateResponseBgpExtraPrefixesList>;
+
+export interface GreTunnelsCreateResponseBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: GreTunnelsCreateResponseBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const GreTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerAsn: S.Number.pipe(T.Body("customer_asn")),
+    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+    extraPrefixes: S.optional(
+      GreTunnelsCreateResponseBgpExtraPrefixesList.pipe(
+        T.Body("extra_prefixes"),
+      ),
+    ),
+    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+  }),
+).annotate({
+  identifier: "GreTunnelsCreateResponseBgp",
+}) as any as S.Schema<GreTunnelsCreateResponseBgp>;
+
+export type GreTunnelsCreateResponseBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING"
+  | (string & {});
+export const GreTunnelsCreateResponseBgpStatusState = /*@__PURE__*/ S.String;
+
+export interface GreTunnelsCreateResponseBgpStatus {
+  state: GreTunnelsCreateResponseBgpStatusState;
+  tcpEstablished: boolean;
+  updatedAt: string;
+  bgpState?: string;
+  cfSpeakerIp?: string;
+  cfSpeakerPort?: number;
+  customerSpeakerIp?: string;
+  customerSpeakerPort?: number;
+}
+export const GreTunnelsCreateResponseBgpStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: GreTunnelsCreateResponseBgpStatusState,
+    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
+    cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
+    cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
+    customerSpeakerIp: S.optional(S.String.pipe(T.Body("customer_speaker_ip"))),
+    customerSpeakerPort: S.optional(
+      S.Number.pipe(T.Body("customer_speaker_port")),
+    ),
+  }),
+).annotate({
+  identifier: "GreTunnelsCreateResponseBgpStatus",
+}) as any as S.Schema<GreTunnelsCreateResponseBgpStatus>;
+
+export type GreTunnelsCreateResponseHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional"
+  | (string & {});
+export const GreTunnelsCreateResponseHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsCreateResponseHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const GreTunnelsCreateResponseHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "GreTunnelsCreateResponseHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsCreateResponseHealthCheckTarget>;
+
+export interface GreTunnelsCreateResponseHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsCreateResponseHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsCreateResponseHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const GreTunnelsCreateResponseHealthCheck = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    direction: S.optional(GreTunnelsCreateResponseHealthCheckDirection),
+    enabled: S.optional(S.Boolean),
+    rate: S.optional(S.Unknown),
+    target: S.optional(GreTunnelsCreateResponseHealthCheckTarget),
+    type: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "GreTunnelsCreateResponseHealthCheck",
+}) as any as S.Schema<GreTunnelsCreateResponseHealthCheck>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateGreTunnelResponse {
+  /** Identifier */
+  id: string;
+  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
+  cloudflareGreEndpoint: string;
+  /** The IP address assigned to the customer side of the GRE tunnel. */
+  customerGreEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
+  name: string;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: GreTunnelsCreateResponseBgp;
+  bgpStatus?: GreTunnelsCreateResponseBgpStatus;
+  /** The date and time the tunnel was created. */
+  createdOn?: string;
+  /** An optional description of the GRE tunnel. */
+  description?: string;
+  healthCheck?: GreTunnelsCreateResponseHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number;
+}
+export const CreateGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
+    customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
+    interfaceAddress: S.String.pipe(T.Body("interface_address")),
+    name: S.String,
+    automaticReturnRouting: S.optional(
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
+    ),
+    bgp: S.optional(GreTunnelsCreateResponseBgp),
+    bgpStatus: S.optional(
+      GreTunnelsCreateResponseBgpStatus.pipe(T.Body("bgp_status")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    healthCheck: S.optional(
+      GreTunnelsCreateResponseHealthCheck.pipe(T.Body("health_check")),
+    ),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    mtu: S.optional(S.Number),
+    ttl: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CreateGreTunnelResponse",
+}) as any as S.Schema<CreateGreTunnelResponse>;
+
+export type IpsecTunnelsCreateRequestBgpExtraPrefixesList = string[];
+export const IpsecTunnelsCreateRequestBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IpsecTunnelsCreateRequestBgpExtraPrefixesList>;
+
+export interface IpsecTunnelsCreateRequestBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: IpsecTunnelsCreateRequestBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const IpsecTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerAsn: S.Number.pipe(T.Body("customer_asn")),
+    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+    extraPrefixes: S.optional(
+      IpsecTunnelsCreateRequestBgpExtraPrefixesList.pipe(
+        T.Body("extra_prefixes"),
+      ),
+    ),
+    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+  }),
+).annotate({
+  identifier: "IpsecTunnelsCreateRequestBgp",
+}) as any as S.Schema<IpsecTunnelsCreateRequestBgp>;
+
+export interface IpsecTunnelsCreateRequestCustomRemoteIdentities {
+  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
+  fqdnId?: string;
+}
+export const IpsecTunnelsCreateRequestCustomRemoteIdentities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsCreateRequestCustomRemoteIdentities",
+  }) as any as S.Schema<IpsecTunnelsCreateRequestCustomRemoteIdentities>;
+
+export type IpsecTunnelsCreateRequestHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional"
+  | (string & {});
+export const IpsecTunnelsCreateRequestHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsCreateRequestHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const IpsecTunnelsCreateRequestHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsCreateRequestHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsCreateRequestHealthCheckTarget>;
+
+export interface IpsecTunnelsCreateRequestHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsCreateRequestHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsCreateRequestHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const IpsecTunnelsCreateRequestHealthCheck = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      direction: S.optional(IpsecTunnelsCreateRequestHealthCheckDirection),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(IpsecTunnelsCreateRequestHealthCheckTarget),
+      type: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "IpsecTunnelsCreateRequestHealthCheck",
+}) as any as S.Schema<IpsecTunnelsCreateRequestHealthCheck>;
+
+export interface CreateIpsecTunnelRequest {
+  /** Identifier */
+  accountId: string;
+  XMagicNewHcTarget_?: boolean;
+  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
+  cloudflareEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
+  name: string;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: IpsecTunnelsCreateRequestBgp;
+  customRemoteIdentities?: IpsecTunnelsCreateRequestCustomRemoteIdentities;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string;
+  healthCheck?: IpsecTunnelsCreateRequestHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** A randomly generated or provided string for use in the IPsec tunnel. */
+  psk?: string;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean;
+}
+export const CreateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    XMagicNewHcTarget_: S.optional(
+      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    ),
+    cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
+    interfaceAddress: S.String.pipe(T.Body("interface_address")),
+    name: S.String,
+    automaticReturnRouting: S.optional(
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
+    ),
+    bgp: S.optional(IpsecTunnelsCreateRequestBgp),
+    customRemoteIdentities: S.optional(
+      IpsecTunnelsCreateRequestCustomRemoteIdentities.pipe(
+        T.Body("custom_remote_identities"),
+      ),
+    ),
+    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
+    description: S.optional(S.String),
+    healthCheck: S.optional(
+      IpsecTunnelsCreateRequestHealthCheck.pipe(T.Body("health_check")),
+    ),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    psk: S.optional(S.String),
+    replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/ipsec_tunnels",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateIpsecTunnelRequest",
+}) as any as S.Schema<CreateIpsecTunnelRequest>;
+
+export type IpsecTunnelsCreateResponseBgpExtraPrefixesList = string[];
+export const IpsecTunnelsCreateResponseBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IpsecTunnelsCreateResponseBgpExtraPrefixesList>;
+
+export interface IpsecTunnelsCreateResponseBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: IpsecTunnelsCreateResponseBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const IpsecTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerAsn: S.Number.pipe(T.Body("customer_asn")),
+    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+    extraPrefixes: S.optional(
+      IpsecTunnelsCreateResponseBgpExtraPrefixesList.pipe(
+        T.Body("extra_prefixes"),
+      ),
+    ),
+    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+  }),
+).annotate({
+  identifier: "IpsecTunnelsCreateResponseBgp",
+}) as any as S.Schema<IpsecTunnelsCreateResponseBgp>;
+
+export type IpsecTunnelsCreateResponseBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING"
+  | (string & {});
+export const IpsecTunnelsCreateResponseBgpStatusState = /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsCreateResponseBgpStatus {
+  state: IpsecTunnelsCreateResponseBgpStatusState;
+  tcpEstablished: boolean;
+  updatedAt: string;
+  bgpState?: string;
+  cfSpeakerIp?: string;
+  cfSpeakerPort?: number;
+  customerSpeakerIp?: string;
+  customerSpeakerPort?: number;
+}
+export const IpsecTunnelsCreateResponseBgpStatus = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    state: IpsecTunnelsCreateResponseBgpStatusState,
+    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+    updatedAt: S.String.pipe(T.Body("updated_at")),
+    bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
+    cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
+    cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
+    customerSpeakerIp: S.optional(S.String.pipe(T.Body("customer_speaker_ip"))),
+    customerSpeakerPort: S.optional(
+      S.Number.pipe(T.Body("customer_speaker_port")),
+    ),
+  }),
+).annotate({
+  identifier: "IpsecTunnelsCreateResponseBgpStatus",
+}) as any as S.Schema<IpsecTunnelsCreateResponseBgpStatus>;
+
+export interface IpsecTunnelsCreateResponseCustomRemoteIdentities {
+  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
+  fqdnId?: string;
+}
+export const IpsecTunnelsCreateResponseCustomRemoteIdentities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsCreateResponseCustomRemoteIdentities",
+  }) as any as S.Schema<IpsecTunnelsCreateResponseCustomRemoteIdentities>;
+
+export type IpsecTunnelsCreateResponseHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional"
+  | (string & {});
+export const IpsecTunnelsCreateResponseHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsCreateResponseHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const IpsecTunnelsCreateResponseHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsCreateResponseHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsCreateResponseHealthCheckTarget>;
+
+export interface IpsecTunnelsCreateResponseHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsCreateResponseHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsCreateResponseHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const IpsecTunnelsCreateResponseHealthCheck = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      direction: S.optional(IpsecTunnelsCreateResponseHealthCheckDirection),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(IpsecTunnelsCreateResponseHealthCheckTarget),
+      type: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "IpsecTunnelsCreateResponseHealthCheck",
+}) as any as S.Schema<IpsecTunnelsCreateResponseHealthCheck>;
+
+export interface IpsecTunnelsCreateResponsePskMetadata {
+  /** The date and time the tunnel was last modified. */
+  lastGeneratedOn?: string;
+}
+export const IpsecTunnelsCreateResponsePskMetadata = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
+    }),
+).annotate({
+  identifier: "IpsecTunnelsCreateResponsePskMetadata",
+}) as any as S.Schema<IpsecTunnelsCreateResponsePskMetadata>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateIpsecTunnelResponse {
+  /** Identifier */
+  id: string;
+  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
+  cloudflareEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
+  name: string;
+  /** When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2). */
+  allowNullCipher?: boolean;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: IpsecTunnelsCreateResponseBgp;
+  bgpStatus?: IpsecTunnelsCreateResponseBgpStatus;
+  /** The date and time the tunnel was created. */
+  createdOn?: string;
+  customRemoteIdentities?: IpsecTunnelsCreateResponseCustomRemoteIdentities;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string;
+  healthCheck?: IpsecTunnelsCreateResponseHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata?: IpsecTunnelsCreateResponsePskMetadata;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean;
+}
+export const CreateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
+    interfaceAddress: S.String.pipe(T.Body("interface_address")),
+    name: S.String,
+    allowNullCipher: S.optional(S.Boolean.pipe(T.Body("allow_null_cipher"))),
+    automaticReturnRouting: S.optional(
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
+    ),
+    bgp: S.optional(IpsecTunnelsCreateResponseBgp),
+    bgpStatus: S.optional(
+      IpsecTunnelsCreateResponseBgpStatus.pipe(T.Body("bgp_status")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    customRemoteIdentities: S.optional(
+      IpsecTunnelsCreateResponseCustomRemoteIdentities.pipe(
+        T.Body("custom_remote_identities"),
+      ),
+    ),
+    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
+    description: S.optional(S.String),
+    healthCheck: S.optional(
+      IpsecTunnelsCreateResponseHealthCheck.pipe(T.Body("health_check")),
+    ),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    pskMetadata: S.optional(
+      IpsecTunnelsCreateResponsePskMetadata.pipe(T.Body("psk_metadata")),
+    ),
+    replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
+  }),
+).annotate({
+  identifier: "CreateIpsecTunnelResponse",
+}) as any as S.Schema<CreateIpsecTunnelResponse>;
+
+export interface PcapsCreateRequestBody {
+  MagicVisibilityPCAPsPCAPsRequestSimpleObjectPacketLimitSystemTimeLimit3More__: unknown;
+  MagicVisibilityPCAPsPCAPsRequestFullObjectColoNameDestinationConfSystem5More__: unknown;
+}
+export const PcapsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MagicVisibilityPCAPsPCAPsRequestSimpleObjectPacketLimitSystemTimeLimit3More__:
+      S.Unknown.pipe(
+        T.Body(
+          "MagicVisibilityPCAPsPCAPsRequestSimple object { packet_limit, system, time_limit, 3 more }",
+        ),
+      ),
+    MagicVisibilityPCAPsPCAPsRequestFullObjectColoNameDestinationConfSystem5More__:
+      S.Unknown.pipe(
+        T.Body(
+          "MagicVisibilityPCAPsPCAPsRequestFull object { colo_name, destination_conf, system, 5 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "PcapsCreateRequestBody",
+}) as any as S.Schema<PcapsCreateRequestBody>;
+
+export interface CreatePcapRequest {
+  /** Identifier. */
+  accountId: string;
+  body: PcapsCreateRequestBody;
+}
+export const CreatePcapRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    body: PcapsCreateRequestBody,
+  }).pipe(
+    T.Http({ method: "POST", uri: "/accounts/{account_id}/pcaps", code: 200 }),
+  ),
+).annotate({
+  identifier: "CreatePcapRequest",
+}) as any as S.Schema<CreatePcapRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreatePcapResponse {
+  PCAPObjectIdFilterV1OffsetTime5More__: unknown;
+  MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__: unknown;
+}
+export const CreatePcapResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PCAPObjectIdFilterV1OffsetTime5More__: S.Unknown.pipe(
+      T.Body("PCAP object { id, filter_v1, offset_time, 5 more }"),
+    ),
+    MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__:
+      S.Unknown.pipe(
+        T.Body(
+          "MagicVisibilityPCAPsPCAPsResponseFull object { id, byte_limit, colo_name, 10 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "CreatePcapResponse",
+}) as any as S.Schema<CreatePcapResponse>;
+
+export interface CreatePcapOwnershipRequest {
+  /** Identifier. */
+  accountId: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf: string;
+}
+export const CreatePcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    destinationConf: S.String.pipe(T.Body("destination_conf")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/pcaps/ownership",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreatePcapOwnershipRequest",
+}) as any as S.Schema<CreatePcapOwnershipRequest>;
+
+export type PcapsOwnershipCreateResponseStatus =
+  | "pending"
+  | "success"
+  | "failed"
+  | (string & {});
+export const PcapsOwnershipCreateResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreatePcapOwnershipResponse {
+  /** The bucket ID associated with the packet captures API. */
+  id: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf: string;
+  /** The ownership challenge filename stored in the bucket. */
+  filename: string;
+  /** The status of the ownership challenge. Can be pending, success or failed. */
+  status: PcapsOwnershipCreateResponseStatus;
+  /** The RFC 3339 timestamp when the bucket was added to packet captures API. */
+  submitted: string;
+  /** The RFC 3339 timestamp when the bucket was validated. */
+  validated?: string;
+}
+export const CreatePcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    destinationConf: S.String.pipe(T.Body("destination_conf")),
+    filename: S.String,
+    status: PcapsOwnershipCreateResponseStatus,
+    submitted: S.String,
+    validated: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "CreatePcapOwnershipResponse",
+}) as any as S.Schema<CreatePcapOwnershipResponse>;
+
+export type RoutesCreateRequestScopeColoNamesList = string[];
+export const RoutesCreateRequestScopeColoNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RoutesCreateRequestScopeColoNamesList>;
+
+export type RoutesCreateRequestScopeColoRegionsList = string[];
+export const RoutesCreateRequestScopeColoRegionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RoutesCreateRequestScopeColoRegionsList>;
+
+export interface RoutesCreateRequestScope {
+  /** List of colo names for the ECMP scope. */
+  coloNames?: RoutesCreateRequestScopeColoNamesList;
+  /** List of colo regions for the ECMP scope. */
+  coloRegions?: RoutesCreateRequestScopeColoRegionsList;
+}
+export const RoutesCreateRequestScope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    coloNames: S.optional(
+      RoutesCreateRequestScopeColoNamesList.pipe(T.Body("colo_names")),
+    ),
+    coloRegions: S.optional(
+      RoutesCreateRequestScopeColoRegionsList.pipe(T.Body("colo_regions")),
+    ),
+  }),
+).annotate({
+  identifier: "RoutesCreateRequestScope",
+}) as any as S.Schema<RoutesCreateRequestScope>;
+
+export interface CreateRouteRequest {
+  /** Identifier */
+  accountId: string;
+  /** The next-hop IP Address for the static route. */
+  nexthop: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  prefix: string;
+  /** Priority of the static route. */
+  priority: number;
+  /** An optional human provided description of the static route. */
+  description?: string;
+  /** Used only for ECMP routes. */
+  scope?: RoutesCreateRequestScope;
+  /** Optional weight of the ECMP scope - if provided. */
+  weight?: number;
+}
+export const CreateRouteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    nexthop: S.String,
+    prefix: S.String,
+    priority: S.Number,
+    description: S.optional(S.String),
+    scope: S.optional(RoutesCreateRequestScope),
+    weight: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/routes",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateRouteRequest",
+}) as any as S.Schema<CreateRouteRequest>;
+
+export type RoutesCreateResponseScopeColoNamesList = string[];
+export const RoutesCreateResponseScopeColoNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RoutesCreateResponseScopeColoNamesList>;
+
+export type RoutesCreateResponseScopeColoRegionsList = string[];
+export const RoutesCreateResponseScopeColoRegionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RoutesCreateResponseScopeColoRegionsList>;
+
+export interface RoutesCreateResponseScope {
+  /** List of colo names for the ECMP scope. */
+  coloNames?: RoutesCreateResponseScopeColoNamesList;
+  /** List of colo regions for the ECMP scope. */
+  coloRegions?: RoutesCreateResponseScopeColoRegionsList;
+}
+export const RoutesCreateResponseScope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    coloNames: S.optional(
+      RoutesCreateResponseScopeColoNamesList.pipe(T.Body("colo_names")),
+    ),
+    coloRegions: S.optional(
+      RoutesCreateResponseScopeColoRegionsList.pipe(T.Body("colo_regions")),
+    ),
+  }),
+).annotate({
+  identifier: "RoutesCreateResponseScope",
+}) as any as S.Schema<RoutesCreateResponseScope>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateRouteResponse {
+  /** Identifier */
+  id: string;
+  /** The next-hop IP Address for the static route. */
+  nexthop: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  prefix: string;
+  /** Priority of the static route. */
+  priority: number;
+  /** When the route was created. */
+  createdOn?: string;
+  /** An optional human provided description of the static route. */
+  description?: string;
+  /** When the route was last modified. */
+  modifiedOn?: string;
+  /** Used only for ECMP routes. */
+  scope?: RoutesCreateResponseScope;
+  /** Optional weight of the ECMP scope - if provided. */
+  weight?: number;
+}
+export const CreateRouteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    nexthop: S.String,
+    prefix: S.String,
+    priority: S.Number,
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    scope: S.optional(RoutesCreateResponseScope),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "CreateRouteResponse",
+}) as any as S.Schema<CreateRouteResponse>;
+
+export interface SitesCreateRequestLocation {
+  /** Latitude */
+  lat?: string;
+  /** Longitude */
+  lon?: string;
+}
+export const SitesCreateRequestLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.String),
+    lon: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SitesCreateRequestLocation",
+}) as any as S.Schema<SitesCreateRequestLocation>;
+
+export interface CreateSiteRequest {
+  /** Identifier */
+  accountId: string;
+  /** The name of the site. */
+  name: string;
+  /** Magic Connector identifier tag. */
+  connectorId?: string;
+  description?: string;
+  /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
+  haMode?: boolean;
+  /** Location of site in latitude and longitude. */
+  location?: SitesCreateRequestLocation;
+  /** Magic Connector identifier tag. Used when high availability mode is on. */
+  secondaryConnectorId?: string;
+}
+export const CreateSiteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    name: S.String,
+    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
+    description: S.optional(S.String),
+    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
+    location: S.optional(SitesCreateRequestLocation),
+    secondaryConnectorId: S.optional(
+      S.String.pipe(T.Body("secondary_connector_id")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/sites",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateSiteRequest",
+}) as any as S.Schema<CreateSiteRequest>;
+
+export interface SitesCreateResponseLocation {
+  /** Latitude */
+  lat?: string;
+  /** Longitude */
+  lon?: string;
+}
+export const SitesCreateResponseLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.String),
+    lon: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SitesCreateResponseLocation",
+}) as any as S.Schema<SitesCreateResponseLocation>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateSiteResponse {
+  /** Identifier */
+  id?: string;
+  /** Magic Connector identifier tag. */
+  connectorId?: string;
+  description?: string;
+  /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
+  haMode?: boolean;
+  /** Location of site in latitude and longitude. */
+  location?: SitesCreateResponseLocation;
+  /** The name of the site. */
+  name?: string;
+  /** Magic Connector identifier tag. Used when high availability mode is on. */
+  secondaryConnectorId?: string;
+}
+export const CreateSiteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
+    description: S.optional(S.String),
+    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
+    location: S.optional(SitesCreateResponseLocation),
+    name: S.optional(S.String),
+    secondaryConnectorId: S.optional(
+      S.String.pipe(T.Body("secondary_connector_id")),
+    ),
+  }),
+).annotate({
+  identifier: "CreateSiteResponse",
+}) as any as S.Schema<CreateSiteResponse>;
+
+export type SitesAclsCreateRequestLan1PortRangesList = string[];
+export const SitesAclsCreateRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SitesAclsCreateRequestLan1PortRangesList>;
+
+export type SitesAclsCreateRequestLan1PortsList = number[];
+export const SitesAclsCreateRequestLan1PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsCreateRequestLan1PortsList>;
+
+export type SitesAclsCreateRequestLan1SubnetsList = unknown[];
+export const SitesAclsCreateRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsCreateRequestLan1SubnetsList>;
+
+export interface SitesAclsCreateRequestLan1 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsCreateRequestLan1PortRangesList;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsCreateRequestLan1PortsList;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsCreateRequestLan1SubnetsList;
+}
+export const SitesAclsCreateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      SitesAclsCreateRequestLan1PortRangesList.pipe(T.Body("port_ranges")),
+    ),
+    ports: S.optional(SitesAclsCreateRequestLan1PortsList),
+    subnets: S.optional(SitesAclsCreateRequestLan1SubnetsList),
+  }),
+).annotate({
+  identifier: "SitesAclsCreateRequestLan1",
+}) as any as S.Schema<SitesAclsCreateRequestLan1>;
+
+export type SitesAclsCreateRequestProtocolsList = unknown[];
+export const SitesAclsCreateRequestProtocolsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsCreateRequestProtocolsList>;
+
+export interface CreateSiteAclRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  lan1: SitesAclsCreateRequestLan1;
+  lan2: unknown;
+  /** The name of the ACL. */
+  name: string;
+  /** Description for the ACL. */
+  description?: string;
+  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  forwardLocally?: boolean;
+  protocols?: SitesAclsCreateRequestProtocolsList;
+  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean;
+}
+export const CreateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    lan1: SitesAclsCreateRequestLan1.pipe(T.Body("lan_1")),
+    lan2: S.Unknown.pipe(T.Body("lan_2")),
+    name: S.String,
+    description: S.optional(S.String),
+    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
+    protocols: S.optional(SitesAclsCreateRequestProtocolsList),
+    unidirectional: S.optional(S.Boolean),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateSiteAclRequest",
+}) as any as S.Schema<CreateSiteAclRequest>;
+
+export type SitesAclsCreateResponseLan1PortRangesList = string[];
+export const SitesAclsCreateResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SitesAclsCreateResponseLan1PortRangesList>;
+
+export type SitesAclsCreateResponseLan1PortsList = number[];
+export const SitesAclsCreateResponseLan1PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsCreateResponseLan1PortsList>;
+
+export type SitesAclsCreateResponseLan1SubnetsList = unknown[];
+export const SitesAclsCreateResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsCreateResponseLan1SubnetsList>;
+
+export interface SitesAclsCreateResponseLan1 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsCreateResponseLan1PortRangesList;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsCreateResponseLan1PortsList;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsCreateResponseLan1SubnetsList;
+}
+export const SitesAclsCreateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      SitesAclsCreateResponseLan1PortRangesList.pipe(T.Body("port_ranges")),
+    ),
+    ports: S.optional(SitesAclsCreateResponseLan1PortsList),
+    subnets: S.optional(SitesAclsCreateResponseLan1SubnetsList),
+  }),
+).annotate({
+  identifier: "SitesAclsCreateResponseLan1",
+}) as any as S.Schema<SitesAclsCreateResponseLan1>;
+
+export type SitesAclsCreateResponseProtocolsList = unknown[];
+export const SitesAclsCreateResponseProtocolsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsCreateResponseProtocolsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateSiteAclResponse {
+  /** Identifier */
+  id?: string;
+  /** Description for the ACL. */
+  description?: string;
+  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  forwardLocally?: boolean;
+  lan1?: SitesAclsCreateResponseLan1;
+  lan2?: unknown;
+  /** The name of the ACL. */
+  name?: string;
+  protocols?: SitesAclsCreateResponseProtocolsList;
+  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean;
+}
+export const CreateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
+    lan1: S.optional(SitesAclsCreateResponseLan1.pipe(T.Body("lan_1"))),
+    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
+    name: S.optional(S.String),
+    protocols: S.optional(SitesAclsCreateResponseProtocolsList),
+    unidirectional: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "CreateSiteAclResponse",
+}) as any as S.Schema<CreateSiteAclResponse>;
+
+export interface SitesLansCreateRequestNat {
+  /** A valid CIDR notation representing an IP range. */
+  staticPrefix?: string;
+}
+export const SitesLansCreateRequestNat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
+  }),
+).annotate({
+  identifier: "SitesLansCreateRequestNat",
+}) as any as S.Schema<SitesLansCreateRequestNat>;
+
+export interface SitesLansCreateRequestRoutedSubnetsItem {
+  /** A valid IPv4 address. */
+  nextHop: string;
+  /** A valid CIDR notation representing an IP range. */
+  prefix: string;
+  nat?: unknown;
+}
+export const SitesLansCreateRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextHop: S.String.pipe(T.Body("next_hop")),
+      prefix: S.String,
+      nat: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "SitesLansCreateRequestRoutedSubnetsItem",
+}) as any as S.Schema<SitesLansCreateRequestRoutedSubnetsItem>;
+
+export type SitesLansCreateRequestRoutedSubnetsList =
+  SitesLansCreateRequestRoutedSubnetsItem[];
+export const SitesLansCreateRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
+  SitesLansCreateRequestRoutedSubnetsItem,
+) as any as S.Schema<SitesLansCreateRequestRoutedSubnetsList>;
+
+export type SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList =
+  string[];
+export const SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList>;
+
+export interface SitesLansCreateRequestStaticAddressingDhcpRelay {
+  /** List of DHCP server IPs. */
+  serverAddresses?: SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList;
+}
+export const SitesLansCreateRequestStaticAddressingDhcpRelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serverAddresses: S.optional(
+        SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList.pipe(
+          T.Body("server_addresses"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansCreateRequestStaticAddressingDhcpRelay",
+  }) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpRelay>;
+
+export type SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
+  "text" | "hex" | "ip" | (string & {});
+export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem {
+  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
+  code: number;
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  type: SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType;
+  /** The option value, interpreted according to the type field. */
+  value: string;
+}
+export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.Number,
+      type: SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType,
+      value: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem",
+  }) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
+
+export type SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList =
+  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem[];
+export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList =
+  /*@__PURE__*/ S.Array(
+    SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem,
+  ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList>;
+
+export type SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList =
+  string[];
+export const SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList>;
+
+export type SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap>;
+
+export interface SitesLansCreateRequestStaticAddressingDhcpServer {
+  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
+  dhcpOptions?: SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList;
+  /** A valid IPv4 address. */
+  dhcpPoolEnd?: string;
+  /** A valid IPv4 address. */
+  dhcpPoolStart?: string;
+  /** A valid IPv4 address. */
+  dnsServer?: string;
+  dnsServers?: SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList;
+  /** Mapping of MAC addresses to IP addresses */
+  reservations?: SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap;
+}
+export const SitesLansCreateRequestStaticAddressingDhcpServer =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dhcpOptions: S.optional(
+        SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList.pipe(
+          T.Body("dhcp_options"),
+        ),
+      ),
+      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
+      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
+      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
+      dnsServers: S.optional(
+        SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList.pipe(
+          T.Body("dns_servers"),
+        ),
+      ),
+      reservations: S.optional(
+        SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansCreateRequestStaticAddressingDhcpServer",
+  }) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServer>;
+
+export interface SitesLansCreateRequestStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  dhcpRelay?: SitesLansCreateRequestStaticAddressingDhcpRelay;
+  dhcpServer?: SitesLansCreateRequestStaticAddressingDhcpServer;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string;
+}
+export const SitesLansCreateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.String,
+      dhcpRelay: S.optional(
+        SitesLansCreateRequestStaticAddressingDhcpRelay.pipe(
+          T.Body("dhcp_relay"),
+        ),
+      ),
+      dhcpServer: S.optional(
+        SitesLansCreateRequestStaticAddressingDhcpServer.pipe(
+          T.Body("dhcp_server"),
+        ),
+      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
+    }),
+).annotate({
+  identifier: "SitesLansCreateRequestStaticAddressing",
+}) as any as S.Schema<SitesLansCreateRequestStaticAddressing>;
+
+export interface CreateSiteLanRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  bondId?: number;
+  /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
+  haLink?: boolean;
+  /** mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean;
+  /** mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean;
+  name?: string;
+  nat?: SitesLansCreateRequestNat;
+  physport?: number;
+  routedSubnets?: SitesLansCreateRequestRoutedSubnetsList;
+  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
+  staticAddressing?: SitesLansCreateRequestStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const CreateSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
+    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
+    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
+    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
+    name: S.optional(S.String),
+    nat: S.optional(SitesLansCreateRequestNat),
+    physport: S.optional(S.Number),
+    routedSubnets: S.optional(
+      SitesLansCreateRequestRoutedSubnetsList.pipe(T.Body("routed_subnets")),
+    ),
+    staticAddressing: S.optional(
+      SitesLansCreateRequestStaticAddressing.pipe(T.Body("static_addressing")),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateSiteLanRequest",
+}) as any as S.Schema<CreateSiteLanRequest>;
+
+export interface SitesLansCreateResultItemNat {
+  /** A valid CIDR notation representing an IP range. */
+  staticPrefix?: string;
+}
+export const SitesLansCreateResultItemNat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
+  }),
+).annotate({
+  identifier: "SitesLansCreateResultItemNat",
+}) as any as S.Schema<SitesLansCreateResultItemNat>;
+
+export interface SitesLansCreateResultItemRoutedSubnetsItem {
+  /** A valid IPv4 address. */
+  nextHop: string;
+  /** A valid CIDR notation representing an IP range. */
+  prefix: string;
+  nat?: unknown;
+}
+export const SitesLansCreateResultItemRoutedSubnetsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      nextHop: S.String.pipe(T.Body("next_hop")),
+      prefix: S.String,
+      nat: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "SitesLansCreateResultItemRoutedSubnetsItem",
+  }) as any as S.Schema<SitesLansCreateResultItemRoutedSubnetsItem>;
+
+export type SitesLansCreateResultItemRoutedSubnetsList =
+  SitesLansCreateResultItemRoutedSubnetsItem[];
+export const SitesLansCreateResultItemRoutedSubnetsList = /*@__PURE__*/ S.Array(
+  SitesLansCreateResultItemRoutedSubnetsItem,
+) as any as S.Schema<SitesLansCreateResultItemRoutedSubnetsList>;
+
+export type SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList =
+  string[];
+export const SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList>;
+
+export interface SitesLansCreateResultItemStaticAddressingDhcpRelay {
+  /** List of DHCP server IPs. */
+  serverAddresses?: SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList;
+}
+export const SitesLansCreateResultItemStaticAddressingDhcpRelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serverAddresses: S.optional(
+        SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList.pipe(
+          T.Body("server_addresses"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansCreateResultItemStaticAddressingDhcpRelay",
+  }) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpRelay>;
+
+export type SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
+  "text" | "hex" | "ip" | (string & {});
+export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem {
+  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
+  code: number;
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  type: SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType;
+  /** The option value, interpreted according to the type field. */
+  value: string;
+}
+export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.Number,
+      type: SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType,
+      value: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem",
+  }) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
+
+export type SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList =
+  SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem[];
+export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList =
+  /*@__PURE__*/ S.Array(
+    SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem,
+  ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList>;
+
+export type SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList =
+  string[];
+export const SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList>;
+
+export type SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap =
+  { [key: string]: unknown | undefined };
+export const SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap>;
+
+export interface SitesLansCreateResultItemStaticAddressingDhcpServer {
+  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
+  dhcpOptions?: SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList;
+  /** A valid IPv4 address. */
+  dhcpPoolEnd?: string;
+  /** A valid IPv4 address. */
+  dhcpPoolStart?: string;
+  /** A valid IPv4 address. */
+  dnsServer?: string;
+  dnsServers?: SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList;
+  /** Mapping of MAC addresses to IP addresses */
+  reservations?: SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap;
+}
+export const SitesLansCreateResultItemStaticAddressingDhcpServer =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dhcpOptions: S.optional(
+        SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList.pipe(
+          T.Body("dhcp_options"),
+        ),
+      ),
+      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
+      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
+      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
+      dnsServers: S.optional(
+        SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList.pipe(
+          T.Body("dns_servers"),
+        ),
+      ),
+      reservations: S.optional(
+        SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansCreateResultItemStaticAddressingDhcpServer",
+  }) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServer>;
+
+export interface SitesLansCreateResultItemStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  dhcpRelay?: SitesLansCreateResultItemStaticAddressingDhcpRelay;
+  dhcpServer?: SitesLansCreateResultItemStaticAddressingDhcpServer;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string;
+}
+export const SitesLansCreateResultItemStaticAddressing =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.String,
+      dhcpRelay: S.optional(
+        SitesLansCreateResultItemStaticAddressingDhcpRelay.pipe(
+          T.Body("dhcp_relay"),
+        ),
+      ),
+      dhcpServer: S.optional(
+        SitesLansCreateResultItemStaticAddressingDhcpServer.pipe(
+          T.Body("dhcp_server"),
+        ),
+      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
+    }),
+  ).annotate({
+    identifier: "SitesLansCreateResultItemStaticAddressing",
+  }) as any as S.Schema<SitesLansCreateResultItemStaticAddressing>;
+
+export interface SitesLansCreateResultItem {
+  /** Identifier */
+  id?: string;
+  bondId?: number;
+  /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
+  haLink?: boolean;
+  /** mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean;
+  /** mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean;
+  name?: string;
+  nat?: SitesLansCreateResultItemNat;
+  physport?: number;
+  routedSubnets?: SitesLansCreateResultItemRoutedSubnetsList;
+  /** Identifier */
+  siteId?: string;
+  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
+  staticAddressing?: SitesLansCreateResultItemStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const SitesLansCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
+    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
+    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
+    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
+    name: S.optional(S.String),
+    nat: S.optional(SitesLansCreateResultItemNat),
+    physport: S.optional(S.Number),
+    routedSubnets: S.optional(
+      SitesLansCreateResultItemRoutedSubnetsList.pipe(T.Body("routed_subnets")),
+    ),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    staticAddressing: S.optional(
+      SitesLansCreateResultItemStaticAddressing.pipe(
+        T.Body("static_addressing"),
+      ),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }),
+).annotate({
+  identifier: "SitesLansCreateResultItem",
+}) as any as S.Schema<SitesLansCreateResultItem>;
+
+export type SitesLansCreateResultList = SitesLansCreateResultItem[];
+export const SitesLansCreateResultList = /*@__PURE__*/ S.Array(
+  SitesLansCreateResultItem,
+) as any as S.Schema<SitesLansCreateResultList>;
+
+export interface CreateSiteLanResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: SitesLansCreateResultList;
+}
+export const CreateSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(SitesLansCreateResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "CreateSiteLanResponse",
+}) as any as S.Schema<CreateSiteLanResponse>;
+
+export interface SitesWansCreateRequestStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  /** A valid IPv4 address. */
+  gatewayAddress: string;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+}
+export const SitesWansCreateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.String,
+      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+    }),
+).annotate({
+  identifier: "SitesWansCreateRequestStaticAddressing",
+}) as any as S.Schema<SitesWansCreateRequestStaticAddressing>;
+
+export interface CreateSiteWanRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  physport: number;
+  name?: string;
+  priority?: number;
+  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
+  staticAddressing?: SitesWansCreateRequestStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const CreateSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    physport: S.Number,
+    name: S.optional(S.String),
+    priority: S.optional(S.Number),
+    staticAddressing: S.optional(
+      SitesWansCreateRequestStaticAddressing.pipe(T.Body("static_addressing")),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CreateSiteWanRequest",
+}) as any as S.Schema<CreateSiteWanRequest>;
+
+export type SitesWansCreateResultItemHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
+export const SitesWansCreateResultItemHealthCheckRate = /*@__PURE__*/ S.String;
+
+export interface SitesWansCreateResultItemStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  /** A valid IPv4 address. */
+  gatewayAddress: string;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+}
+export const SitesWansCreateResultItemStaticAddressing =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      address: S.String,
+      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+    }),
+  ).annotate({
+    identifier: "SitesWansCreateResultItemStaticAddressing",
+  }) as any as S.Schema<SitesWansCreateResultItemStaticAddressing>;
+
+export interface SitesWansCreateResultItem {
+  /** Identifier */
+  id?: string;
+  /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
+  healthCheckRate?: SitesWansCreateResultItemHealthCheckRate;
+  name?: string;
+  physport?: number;
+  /** Priority of WAN for traffic loadbalancing. */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
+  staticAddressing?: SitesWansCreateResultItemStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const SitesWansCreateResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    healthCheckRate: S.optional(
+      SitesWansCreateResultItemHealthCheckRate.pipe(
+        T.Body("health_check_rate"),
+      ),
+    ),
+    name: S.optional(S.String),
+    physport: S.optional(S.Number),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    staticAddressing: S.optional(
+      SitesWansCreateResultItemStaticAddressing.pipe(
+        T.Body("static_addressing"),
+      ),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }),
+).annotate({
+  identifier: "SitesWansCreateResultItem",
+}) as any as S.Schema<SitesWansCreateResultItem>;
+
+export type SitesWansCreateResultList = SitesWansCreateResultItem[];
+export const SitesWansCreateResultList = /*@__PURE__*/ S.Array(
+  SitesWansCreateResultItem,
+) as any as S.Schema<SitesWansCreateResultList>;
+
+export interface CreateSiteWanResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: SitesWansCreateResultList;
+}
+export const CreateSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(SitesWansCreateResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "CreateSiteWanResponse",
+}) as any as S.Schema<CreateSiteWanResponse>;
+
+export interface DeleteAppRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  accountAppId: string;
+}
+export const DeleteAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    accountAppId: S.String.pipe(T.Label("account_app_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/apps/{account_app_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteAppRequest",
+}) as any as S.Schema<DeleteAppRequest>;
+
+export type AppsDeleteResponseHostnamesList = string[];
+export const AppsDeleteResponseHostnamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsDeleteResponseHostnamesList>;
+
+export type AppsDeleteResponseIpSubnetsList = string[];
+export const AppsDeleteResponseIpSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsDeleteResponseIpSubnetsList>;
+
+export type AppsDeleteResponseSourceSubnetsList = string[];
+export const AppsDeleteResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsDeleteResponseSourceSubnetsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteAppResponse {
+  /** Magic account app ID. */
+  accountAppId: string;
+  /** FQDNs to associate with traffic decisions. */
+  hostnames?: AppsDeleteResponseHostnamesList;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  ipSubnets?: AppsDeleteResponseIpSubnetsList;
+  /** Display name for the app. */
+  name?: string;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: AppsDeleteResponseSourceSubnetsList;
+  /** Category of the app. */
+  type?: string;
+}
+export const DeleteAppResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.String.pipe(T.Body("account_app_id")),
+    hostnames: S.optional(AppsDeleteResponseHostnamesList),
+    ipSubnets: S.optional(
+      AppsDeleteResponseIpSubnetsList.pipe(T.Body("ip_subnets")),
+    ),
+    name: S.optional(S.String),
+    sourceSubnets: S.optional(
+      AppsDeleteResponseSourceSubnetsList.pipe(T.Body("source_subnets")),
+    ),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "DeleteAppResponse",
+}) as any as S.Schema<DeleteAppResponse>;
+
+export interface DeleteCf1SiteRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  cf1SiteId: string;
+}
+export const DeleteCf1SiteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCf1SiteRequest",
+}) as any as S.Schema<DeleteCf1SiteRequest>;
+
+export interface Cf1SitesDeleteResponseLocation {
+  /** Latitude of the CF1 Site. */
+  lat?: number;
+  /** Longitude of the CF1 Site. */
+  long?: number;
+  /** Name of nearest town, city, or village. */
+  name?: string;
+}
+export const Cf1SitesDeleteResponseLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.Number),
+    long: S.optional(S.Number),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Cf1SitesDeleteResponseLocation",
+}) as any as S.Schema<Cf1SitesDeleteResponseLocation>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteCf1SiteResponse {
+  /** A human-provided name describing the CF1 Site that should be unique within the account. */
+  name: string;
+  /** Identifier */
+  id?: string;
+  createdOn?: string;
+  /** A human-provided description of the CF1 Site. */
+  description?: string;
+  location?: Cf1SitesDeleteResponseLocation;
+  modifiedOn?: string;
+}
+export const DeleteCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    location: S.optional(Cf1SitesDeleteResponseLocation),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "DeleteCf1SiteResponse",
+}) as any as S.Schema<DeleteCf1SiteResponse>;
+
+export interface DeleteCf1SiteRampRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  cf1SiteId: string;
+  /** Identifier */
+  rampId: string;
+}
+export const DeleteCf1SiteRampRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
+    rampId: S.String.pipe(T.Label("ramp_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps/{ramp_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteCf1SiteRampRequest",
+}) as any as S.Schema<DeleteCf1SiteRampRequest>;
+
+export interface Cf1SitesRampsDeleteResponseGre {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsDeleteResponseGre = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsDeleteResponseGre",
+}) as any as S.Schema<Cf1SitesRampsDeleteResponseGre>;
+
+export interface Cf1SitesRampsDeleteResponseGreInterconnect {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsDeleteResponseGreInterconnect =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+    }),
+  ).annotate({
+    identifier: "Cf1SitesRampsDeleteResponseGreInterconnect",
+  }) as any as S.Schema<Cf1SitesRampsDeleteResponseGreInterconnect>;
+
+export interface Cf1SitesRampsDeleteResponseIpsec {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsDeleteResponseIpsec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsDeleteResponseIpsec",
+}) as any as S.Schema<Cf1SitesRampsDeleteResponseIpsec>;
+
+export interface Cf1SitesRampsDeleteResponseMconn {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsDeleteResponseMconn = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsDeleteResponseMconn",
+}) as any as S.Schema<Cf1SitesRampsDeleteResponseMconn>;
+
+export interface Cf1SitesRampsDeleteResponseMplsInterconnect {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsDeleteResponseMplsInterconnect =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+    }),
+  ).annotate({
+    identifier: "Cf1SitesRampsDeleteResponseMplsInterconnect",
+  }) as any as S.Schema<Cf1SitesRampsDeleteResponseMplsInterconnect>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteCf1SiteRampResponse {
+  /** Identifier */
+  id: string;
+  createdOn: string;
+  modifiedOn: string;
+  /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
+  name: string;
+  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
+  type: unknown;
+  /** A human-provided description of the ramp. */
+  description?: string;
+  gre?: Cf1SitesRampsDeleteResponseGre;
+  greInterconnect?: Cf1SitesRampsDeleteResponseGreInterconnect;
+  ipsec?: Cf1SitesRampsDeleteResponseIpsec;
+  mconn?: Cf1SitesRampsDeleteResponseMconn;
+  mplsInterconnect?: Cf1SitesRampsDeleteResponseMplsInterconnect;
+}
+export const DeleteCf1SiteRampResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    type: S.Unknown,
+    description: S.optional(S.String),
+    gre: S.optional(Cf1SitesRampsDeleteResponseGre),
+    greInterconnect: S.optional(
+      Cf1SitesRampsDeleteResponseGreInterconnect.pipe(
+        T.Body("gre_interconnect"),
+      ),
+    ),
+    ipsec: S.optional(Cf1SitesRampsDeleteResponseIpsec),
+    mconn: S.optional(Cf1SitesRampsDeleteResponseMconn),
+    mplsInterconnect: S.optional(
+      Cf1SitesRampsDeleteResponseMplsInterconnect.pipe(
+        T.Body("mpls_interconnect"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "DeleteCf1SiteRampResponse",
+}) as any as S.Schema<DeleteCf1SiteRampResponse>;
+
+export interface DeleteConnectorRequest {
+  /** Account identifier */
+  accountId: string;
+  connectorId: string;
+}
+export const DeleteConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    connectorId: S.String.pipe(T.Label("connector_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteConnectorRequest",
+}) as any as S.Schema<DeleteConnectorRequest>;
+
+export type ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem =
+  | "Sunday"
+  | "Monday"
+  | "Tuesday"
+  | (string & {});
+export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem =
+  /*@__PURE__*/ S.String;
+
+export type ConnectorsDeleteResponseInterruptWindowDaysOfWeekList =
+  ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem[];
+export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekList =
+  /*@__PURE__*/ S.Array(
+    ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem,
+  ) as any as S.Schema<ConnectorsDeleteResponseInterruptWindowDaysOfWeekList>;
+
+export type ConnectorsDeleteResponseInterruptWindowEmbargoDatesList = string[];
+export const ConnectorsDeleteResponseInterruptWindowEmbargoDatesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectorsDeleteResponseInterruptWindowEmbargoDatesList>;
+
+export type ConnectorsDeleteResponseDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
+export const ConnectorsDeleteResponseDeviceType = /*@__PURE__*/ S.String;
+
+export interface ConnectorsDeleteResponseDevice {
+  id: string;
+  serialNumber?: string;
+  type?: ConnectorsDeleteResponseDeviceType;
+}
+export const ConnectorsDeleteResponseDevice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
+    type: S.optional(ConnectorsDeleteResponseDeviceType),
+  }),
+).annotate({
+  identifier: "ConnectorsDeleteResponseDevice",
+}) as any as S.Schema<ConnectorsDeleteResponseDevice>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteConnectorResponse {
+  id: string;
+  activated: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek: ConnectorsDeleteResponseInterruptWindowDaysOfWeekList;
+  interruptWindowDurationHours: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates: ConnectorsDeleteResponseInterruptWindowEmbargoDatesList;
+  interruptWindowHourOfDay: number;
+  lastUpdated: string;
+  notes: string;
+  primary: boolean;
+  timezone: string;
+  device?: ConnectorsDeleteResponseDevice;
+  lastHeartbeat?: string;
+  lastSeenVersion?: string;
+  licenseKey?: string;
+  siteId?: string;
+}
+export const DeleteConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    activated: S.Boolean,
+    interruptWindowDaysOfWeek:
+      ConnectorsDeleteResponseInterruptWindowDaysOfWeekList.pipe(
+        T.Body("interrupt_window_days_of_week"),
+      ),
+    interruptWindowDurationHours: S.Number.pipe(
+      T.Body("interrupt_window_duration_hours"),
+    ),
+    interruptWindowEmbargoDates:
+      ConnectorsDeleteResponseInterruptWindowEmbargoDatesList.pipe(
+        T.Body("interrupt_window_embargo_dates"),
+      ),
+    interruptWindowHourOfDay: S.Number.pipe(
+      T.Body("interrupt_window_hour_of_day"),
+    ),
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    notes: S.String,
+    primary: S.Boolean,
+    timezone: S.String,
+    device: S.optional(ConnectorsDeleteResponseDevice),
+    lastHeartbeat: S.optional(S.String.pipe(T.Body("last_heartbeat"))),
+    lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
+    licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+  }),
+).annotate({
+  identifier: "DeleteConnectorResponse",
+}) as any as S.Schema<DeleteConnectorResponse>;
+
+export interface DeleteGreTunnelRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  greTunnelId: string;
+  XMagicNewHcTarget_?: boolean;
+}
+export const DeleteGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    greTunnelId: S.String.pipe(T.Label("gre_tunnel_id")),
+    XMagicNewHcTarget_: S.optional(
+      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    ),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteGreTunnelRequest",
+}) as any as S.Schema<DeleteGreTunnelRequest>;
+
+export type GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList =
+  string[];
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList>;
+
+export interface GreTunnelsDeleteResponseDeletedGreTunnelBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customerAsn: S.Number.pipe(T.Body("customer_asn")),
+      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+      extraPrefixes: S.optional(
+        GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList.pipe(
+          T.Body("extra_prefixes"),
+        ),
+      ),
+      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsDeleteResponseDeletedGreTunnelBgp",
+  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgp>;
+
+export type GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING"
+  | (string & {});
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus {
+  state: GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState;
+  tcpEstablished: boolean;
+  updatedAt: string;
+  bgpState?: string;
+  cfSpeakerIp?: string;
+  cfSpeakerPort?: number;
+  customerSpeakerIp?: string;
+  customerSpeakerPort?: number;
+}
+export const GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
+      customerSpeakerIp: S.optional(
+        S.String.pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.Number.pipe(T.Body("customer_speaker_port")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus",
+  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus>;
+
+export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional"
+  | (string & {});
+export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget>;
+
+export interface GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection,
+      ),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(
+        GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget,
+      ),
+      type: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck",
+  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck>;
+
+export interface GreTunnelsDeleteResponseDeletedGreTunnel {
+  /** Identifier */
+  id: string;
+  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
+  cloudflareGreEndpoint: string;
+  /** The IP address assigned to the customer side of the GRE tunnel. */
+  customerGreEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
+  name: string;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: GreTunnelsDeleteResponseDeletedGreTunnelBgp;
+  bgpStatus?: GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus;
+  /** The date and time the tunnel was created. */
+  createdOn?: string;
+  /** An optional description of the GRE tunnel. */
+  description?: string;
+  healthCheck?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number;
+}
+export const GreTunnelsDeleteResponseDeletedGreTunnel = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
+      customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
+      interfaceAddress: S.String.pipe(T.Body("interface_address")),
+      name: S.String,
+      automaticReturnRouting: S.optional(
+        S.Boolean.pipe(T.Body("automatic_return_routing")),
+      ),
+      bgp: S.optional(GreTunnelsDeleteResponseDeletedGreTunnelBgp),
+      bgpStatus: S.optional(
+        GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus.pipe(
+          T.Body("bgp_status"),
+        ),
+      ),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      description: S.optional(S.String),
+      healthCheck: S.optional(
+        GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck.pipe(
+          T.Body("health_check"),
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.String.pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      mtu: S.optional(S.Number),
+      ttl: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "GreTunnelsDeleteResponseDeletedGreTunnel",
+}) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnel>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteGreTunnelResponse {
+  deleted?: boolean;
+  deletedGreTunnel?: GreTunnelsDeleteResponseDeletedGreTunnel;
+}
+export const DeleteGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deleted: S.optional(S.Boolean),
+    deletedGreTunnel: S.optional(
+      GreTunnelsDeleteResponseDeletedGreTunnel.pipe(
+        T.Body("deleted_gre_tunnel"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "DeleteGreTunnelResponse",
+}) as any as S.Schema<DeleteGreTunnelResponse>;
+
+export interface DeleteIpsecTunnelRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  ipsecTunnelId: string;
+  XMagicNewHcTarget_?: boolean;
+}
+export const DeleteIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
+    XMagicNewHcTarget_: S.optional(
+      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    ),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteIpsecTunnelRequest",
+}) as any as S.Schema<DeleteIpsecTunnelRequest>;
+
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList =
+  string[];
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList>;
+
+export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customerAsn: S.Number.pipe(T.Body("customer_asn")),
+      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+      extraPrefixes: S.optional(
+        IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList.pipe(
+          T.Body("extra_prefixes"),
+        ),
+      ),
+      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp",
+  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp>;
+
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING"
+  | (string & {});
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus {
+  state: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState;
+  tcpEstablished: boolean;
+  updatedAt: string;
+  bgpState?: string;
+  cfSpeakerIp?: string;
+  cfSpeakerPort?: number;
+  customerSpeakerIp?: string;
+  customerSpeakerPort?: number;
+}
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
+      customerSpeakerIp: S.optional(
+        S.String.pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.Number.pipe(T.Body("customer_speaker_port")),
+      ),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus",
+  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus>;
+
+export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities {
+  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
+  fqdnId?: string;
+}
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities",
+  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities>;
+
+export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional"
+  | (string & {});
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget>;
+
+export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection,
+      ),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(
+        IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget,
+      ),
+      type: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck",
+  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck>;
+
+export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata {
+  /** The date and time the tunnel was last modified. */
+  lastGeneratedOn?: string;
+}
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata",
+  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata>;
+
+export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnel {
+  /** Identifier */
+  id: string;
+  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
+  cloudflareEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
+  name: string;
+  /** When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2). */
+  allowNullCipher?: boolean;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp;
+  bgpStatus?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus;
+  /** The date and time the tunnel was created. */
+  createdOn?: string;
+  customRemoteIdentities?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string;
+  healthCheck?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean;
+}
+export const IpsecTunnelsDeleteResponseDeletedIpsecTunnel =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
+      interfaceAddress: S.String.pipe(T.Body("interface_address")),
+      name: S.String,
+      allowNullCipher: S.optional(S.Boolean.pipe(T.Body("allow_null_cipher"))),
+      automaticReturnRouting: S.optional(
+        S.Boolean.pipe(T.Body("automatic_return_routing")),
+      ),
+      bgp: S.optional(IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp),
+      bgpStatus: S.optional(
+        IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus.pipe(
+          T.Body("bgp_status"),
+        ),
+      ),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      customRemoteIdentities: S.optional(
+        IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities.pipe(
+          T.Body("custom_remote_identities"),
+        ),
+      ),
+      customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
+      description: S.optional(S.String),
+      healthCheck: S.optional(
+        IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck.pipe(
+          T.Body("health_check"),
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.String.pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      pskMetadata: S.optional(
+        IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata.pipe(
+          T.Body("psk_metadata"),
+        ),
+      ),
+      replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnel",
+  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnel>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteIpsecTunnelResponse {
+  deleted?: boolean;
+  deletedIpsecTunnel?: IpsecTunnelsDeleteResponseDeletedIpsecTunnel;
+}
+export const DeleteIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deleted: S.optional(S.Boolean),
+    deletedIpsecTunnel: S.optional(
+      IpsecTunnelsDeleteResponseDeletedIpsecTunnel.pipe(
+        T.Body("deleted_ipsec_tunnel"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "DeleteIpsecTunnelResponse",
+}) as any as S.Schema<DeleteIpsecTunnelResponse>;
+
+export interface DeletePcapOwnershipRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  ownershipId: string;
+}
+export const DeletePcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    ownershipId: S.String.pipe(T.Label("ownership_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/pcaps/ownership/{ownership_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeletePcapOwnershipRequest",
+}) as any as S.Schema<DeletePcapOwnershipRequest>;
+
+export interface DeletePcapOwnershipResponse {}
+export const DeletePcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "DeletePcapOwnershipResponse",
+}) as any as S.Schema<DeletePcapOwnershipResponse>;
+
+export interface DeleteRouteRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  routeId: string;
+}
+export const DeleteRouteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    routeId: S.String.pipe(T.Label("route_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/routes/{route_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteRouteRequest",
+}) as any as S.Schema<DeleteRouteRequest>;
+
+export type RoutesDeleteResponseDeletedRouteScopeColoNamesList = string[];
+export const RoutesDeleteResponseDeletedRouteScopeColoNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RoutesDeleteResponseDeletedRouteScopeColoNamesList>;
+
+export type RoutesDeleteResponseDeletedRouteScopeColoRegionsList = string[];
+export const RoutesDeleteResponseDeletedRouteScopeColoRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RoutesDeleteResponseDeletedRouteScopeColoRegionsList>;
+
+export interface RoutesDeleteResponseDeletedRouteScope {
+  /** List of colo names for the ECMP scope. */
+  coloNames?: RoutesDeleteResponseDeletedRouteScopeColoNamesList;
+  /** List of colo regions for the ECMP scope. */
+  coloRegions?: RoutesDeleteResponseDeletedRouteScopeColoRegionsList;
+}
+export const RoutesDeleteResponseDeletedRouteScope = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      coloNames: S.optional(
+        RoutesDeleteResponseDeletedRouteScopeColoNamesList.pipe(
+          T.Body("colo_names"),
+        ),
+      ),
+      coloRegions: S.optional(
+        RoutesDeleteResponseDeletedRouteScopeColoRegionsList.pipe(
+          T.Body("colo_regions"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "RoutesDeleteResponseDeletedRouteScope",
+}) as any as S.Schema<RoutesDeleteResponseDeletedRouteScope>;
+
+export interface RoutesDeleteResponseDeletedRoute {
+  /** Identifier */
+  id: string;
+  /** The next-hop IP Address for the static route. */
+  nexthop: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  prefix: string;
+  /** Priority of the static route. */
+  priority: number;
+  /** When the route was created. */
+  createdOn?: string;
+  /** An optional human provided description of the static route. */
+  description?: string;
+  /** When the route was last modified. */
+  modifiedOn?: string;
+  /** Used only for ECMP routes. */
+  scope?: RoutesDeleteResponseDeletedRouteScope;
+  /** Optional weight of the ECMP scope - if provided. */
+  weight?: number;
+}
+export const RoutesDeleteResponseDeletedRoute = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    nexthop: S.String,
+    prefix: S.String,
+    priority: S.Number,
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    scope: S.optional(RoutesDeleteResponseDeletedRouteScope),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RoutesDeleteResponseDeletedRoute",
+}) as any as S.Schema<RoutesDeleteResponseDeletedRoute>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteRouteResponse {
+  deleted?: boolean;
+  deletedRoute?: RoutesDeleteResponseDeletedRoute;
+}
+export const DeleteRouteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deleted: S.optional(S.Boolean),
+    deletedRoute: S.optional(
+      RoutesDeleteResponseDeletedRoute.pipe(T.Body("deleted_route")),
+    ),
+  }),
+).annotate({
+  identifier: "DeleteRouteResponse",
+}) as any as S.Schema<DeleteRouteResponse>;
+
+export interface DeleteSiteRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+}
+export const DeleteSiteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSiteRequest",
+}) as any as S.Schema<DeleteSiteRequest>;
+
+export interface SitesDeleteResponseLocation {
+  /** Latitude */
+  lat?: string;
+  /** Longitude */
+  lon?: string;
+}
+export const SitesDeleteResponseLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.String),
+    lon: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SitesDeleteResponseLocation",
+}) as any as S.Schema<SitesDeleteResponseLocation>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteSiteResponse {
+  /** Identifier */
+  id?: string;
+  /** Magic Connector identifier tag. */
+  connectorId?: string;
+  description?: string;
+  /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
+  haMode?: boolean;
+  /** Location of site in latitude and longitude. */
+  location?: SitesDeleteResponseLocation;
+  /** The name of the site. */
+  name?: string;
+  /** Magic Connector identifier tag. Used when high availability mode is on. */
+  secondaryConnectorId?: string;
+}
+export const DeleteSiteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
+    description: S.optional(S.String),
+    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
+    location: S.optional(SitesDeleteResponseLocation),
+    name: S.optional(S.String),
+    secondaryConnectorId: S.optional(
+      S.String.pipe(T.Body("secondary_connector_id")),
+    ),
+  }),
+).annotate({
+  identifier: "DeleteSiteResponse",
+}) as any as S.Schema<DeleteSiteResponse>;
+
+export interface DeleteSiteAclRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  /** Identifier */
+  aclId: string;
+}
+export const DeleteSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    aclId: S.String.pipe(T.Label("acl_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSiteAclRequest",
+}) as any as S.Schema<DeleteSiteAclRequest>;
+
+export type SitesAclsDeleteResponseLan1PortRangesList = string[];
+export const SitesAclsDeleteResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SitesAclsDeleteResponseLan1PortRangesList>;
+
+export type SitesAclsDeleteResponseLan1PortsList = number[];
+export const SitesAclsDeleteResponseLan1PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsDeleteResponseLan1PortsList>;
+
+export type SitesAclsDeleteResponseLan1SubnetsList = unknown[];
+export const SitesAclsDeleteResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsDeleteResponseLan1SubnetsList>;
+
+export interface SitesAclsDeleteResponseLan1 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsDeleteResponseLan1PortRangesList;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsDeleteResponseLan1PortsList;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsDeleteResponseLan1SubnetsList;
+}
+export const SitesAclsDeleteResponseLan1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      SitesAclsDeleteResponseLan1PortRangesList.pipe(T.Body("port_ranges")),
+    ),
+    ports: S.optional(SitesAclsDeleteResponseLan1PortsList),
+    subnets: S.optional(SitesAclsDeleteResponseLan1SubnetsList),
+  }),
+).annotate({
+  identifier: "SitesAclsDeleteResponseLan1",
+}) as any as S.Schema<SitesAclsDeleteResponseLan1>;
+
+export type SitesAclsDeleteResponseProtocolsList = unknown[];
+export const SitesAclsDeleteResponseProtocolsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsDeleteResponseProtocolsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteSiteAclResponse {
+  /** Identifier */
+  id?: string;
+  /** Description for the ACL. */
+  description?: string;
+  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  forwardLocally?: boolean;
+  lan1?: SitesAclsDeleteResponseLan1;
+  lan2?: unknown;
+  /** The name of the ACL. */
+  name?: string;
+  protocols?: SitesAclsDeleteResponseProtocolsList;
+  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean;
+}
+export const DeleteSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
+    lan1: S.optional(SitesAclsDeleteResponseLan1.pipe(T.Body("lan_1"))),
+    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
+    name: S.optional(S.String),
+    protocols: S.optional(SitesAclsDeleteResponseProtocolsList),
+    unidirectional: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "DeleteSiteAclResponse",
+}) as any as S.Schema<DeleteSiteAclResponse>;
+
+export interface DeleteSiteLanRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  /** Identifier */
+  lanId: string;
+}
+export const DeleteSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    lanId: S.String.pipe(T.Label("lan_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSiteLanRequest",
+}) as any as S.Schema<DeleteSiteLanRequest>;
+
+export interface SitesLansDeleteResponseNat {
+  /** A valid CIDR notation representing an IP range. */
+  staticPrefix?: string;
+}
+export const SitesLansDeleteResponseNat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
+  }),
+).annotate({
+  identifier: "SitesLansDeleteResponseNat",
+}) as any as S.Schema<SitesLansDeleteResponseNat>;
+
+export interface SitesLansDeleteResponseRoutedSubnetsItem {
+  /** A valid IPv4 address. */
+  nextHop: string;
+  /** A valid CIDR notation representing an IP range. */
+  prefix: string;
+  nat?: unknown;
+}
+export const SitesLansDeleteResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextHop: S.String.pipe(T.Body("next_hop")),
+      prefix: S.String,
+      nat: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "SitesLansDeleteResponseRoutedSubnetsItem",
+}) as any as S.Schema<SitesLansDeleteResponseRoutedSubnetsItem>;
+
+export type SitesLansDeleteResponseRoutedSubnetsList =
+  SitesLansDeleteResponseRoutedSubnetsItem[];
+export const SitesLansDeleteResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
+  SitesLansDeleteResponseRoutedSubnetsItem,
+) as any as S.Schema<SitesLansDeleteResponseRoutedSubnetsList>;
+
+export type SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList =
+  string[];
+export const SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList>;
+
+export interface SitesLansDeleteResponseStaticAddressingDhcpRelay {
+  /** List of DHCP server IPs. */
+  serverAddresses?: SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList;
+}
+export const SitesLansDeleteResponseStaticAddressingDhcpRelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serverAddresses: S.optional(
+        SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList.pipe(
+          T.Body("server_addresses"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansDeleteResponseStaticAddressingDhcpRelay",
+  }) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpRelay>;
+
+export type SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType =
+  "text" | "hex" | "ip" | (string & {});
+export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem {
+  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
+  code: number;
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  type: SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType;
+  /** The option value, interpreted according to the type field. */
+  value: string;
+}
+export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.Number,
+      type: SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType,
+      value: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem",
+  }) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem>;
+
+export type SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList =
+  SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem[];
+export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList =
+  /*@__PURE__*/ S.Array(
+    SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem,
+  ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList>;
+
+export type SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList =
+  string[];
+export const SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList>;
+
+export type SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap>;
+
+export interface SitesLansDeleteResponseStaticAddressingDhcpServer {
+  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
+  dhcpOptions?: SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList;
+  /** A valid IPv4 address. */
+  dhcpPoolEnd?: string;
+  /** A valid IPv4 address. */
+  dhcpPoolStart?: string;
+  /** A valid IPv4 address. */
+  dnsServer?: string;
+  dnsServers?: SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList;
+  /** Mapping of MAC addresses to IP addresses */
+  reservations?: SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap;
+}
+export const SitesLansDeleteResponseStaticAddressingDhcpServer =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dhcpOptions: S.optional(
+        SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList.pipe(
+          T.Body("dhcp_options"),
+        ),
+      ),
+      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
+      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
+      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
+      dnsServers: S.optional(
+        SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList.pipe(
+          T.Body("dns_servers"),
+        ),
+      ),
+      reservations: S.optional(
+        SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansDeleteResponseStaticAddressingDhcpServer",
+  }) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServer>;
+
+export interface SitesLansDeleteResponseStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  dhcpRelay?: SitesLansDeleteResponseStaticAddressingDhcpRelay;
+  dhcpServer?: SitesLansDeleteResponseStaticAddressingDhcpServer;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string;
+}
+export const SitesLansDeleteResponseStaticAddressing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.String,
+      dhcpRelay: S.optional(
+        SitesLansDeleteResponseStaticAddressingDhcpRelay.pipe(
+          T.Body("dhcp_relay"),
+        ),
+      ),
+      dhcpServer: S.optional(
+        SitesLansDeleteResponseStaticAddressingDhcpServer.pipe(
+          T.Body("dhcp_server"),
+        ),
+      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
+    }),
+).annotate({
+  identifier: "SitesLansDeleteResponseStaticAddressing",
+}) as any as S.Schema<SitesLansDeleteResponseStaticAddressing>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteSiteLanResponse {
+  /** Identifier */
+  id?: string;
+  bondId?: number;
+  /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
+  haLink?: boolean;
+  /** mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean;
+  /** mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean;
+  name?: string;
+  nat?: SitesLansDeleteResponseNat;
+  physport?: number;
+  routedSubnets?: SitesLansDeleteResponseRoutedSubnetsList;
+  /** Identifier */
+  siteId?: string;
+  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
+  staticAddressing?: SitesLansDeleteResponseStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const DeleteSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
+    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
+    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
+    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
+    name: S.optional(S.String),
+    nat: S.optional(SitesLansDeleteResponseNat),
+    physport: S.optional(S.Number),
+    routedSubnets: S.optional(
+      SitesLansDeleteResponseRoutedSubnetsList.pipe(T.Body("routed_subnets")),
+    ),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    staticAddressing: S.optional(
+      SitesLansDeleteResponseStaticAddressing.pipe(T.Body("static_addressing")),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }),
+).annotate({
+  identifier: "DeleteSiteLanResponse",
+}) as any as S.Schema<DeleteSiteLanResponse>;
+
+export interface DeleteSiteWanRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  /** Identifier */
+  wanId: string;
+}
+export const DeleteSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    wanId: S.String.pipe(T.Label("wan_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "DeleteSiteWanRequest",
+}) as any as S.Schema<DeleteSiteWanRequest>;
+
+export type SitesWansDeleteResponseHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
+export const SitesWansDeleteResponseHealthCheckRate = /*@__PURE__*/ S.String;
+
+export interface SitesWansDeleteResponseStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  /** A valid IPv4 address. */
+  gatewayAddress: string;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+}
+export const SitesWansDeleteResponseStaticAddressing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.String,
+      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+    }),
+).annotate({
+  identifier: "SitesWansDeleteResponseStaticAddressing",
+}) as any as S.Schema<SitesWansDeleteResponseStaticAddressing>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface DeleteSiteWanResponse {
+  /** Identifier */
+  id?: string;
+  /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
+  healthCheckRate?: SitesWansDeleteResponseHealthCheckRate;
+  name?: string;
+  physport?: number;
+  /** Priority of WAN for traffic loadbalancing. */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
+  staticAddressing?: SitesWansDeleteResponseStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const DeleteSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    healthCheckRate: S.optional(
+      SitesWansDeleteResponseHealthCheckRate.pipe(T.Body("health_check_rate")),
+    ),
+    name: S.optional(S.String),
+    physport: S.optional(S.Number),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    staticAddressing: S.optional(
+      SitesWansDeleteResponseStaticAddressing.pipe(T.Body("static_addressing")),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }),
+).annotate({
+  identifier: "DeleteSiteWanResponse",
+}) as any as S.Schema<DeleteSiteWanResponse>;
+
+export interface EmptyRouteRequest {
+  /** Identifier */
+  accountId: string;
+}
+export const EmptyRouteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/magic/routes",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "EmptyRouteRequest",
+}) as any as S.Schema<EmptyRouteRequest>;
+
+export type RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList = string[];
+export const RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList>;
+
+export type RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList = string[];
+export const RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList>;
+
+export interface RoutesEmptyResponseDeletedRoutesItemScope {
+  /** List of colo names for the ECMP scope. */
+  coloNames?: RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList;
+  /** List of colo regions for the ECMP scope. */
+  coloRegions?: RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList;
+}
+export const RoutesEmptyResponseDeletedRoutesItemScope =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      coloNames: S.optional(
+        RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList.pipe(
+          T.Body("colo_names"),
+        ),
+      ),
+      coloRegions: S.optional(
+        RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList.pipe(
+          T.Body("colo_regions"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "RoutesEmptyResponseDeletedRoutesItemScope",
+  }) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItemScope>;
+
+export interface RoutesEmptyResponseDeletedRoutesItem {
+  /** Identifier */
+  id: string;
+  /** The next-hop IP Address for the static route. */
+  nexthop: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  prefix: string;
+  /** Priority of the static route. */
+  priority: number;
+  /** When the route was created. */
+  createdOn?: string;
+  /** An optional human provided description of the static route. */
+  description?: string;
+  /** When the route was last modified. */
+  modifiedOn?: string;
+  /** Used only for ECMP routes. */
+  scope?: RoutesEmptyResponseDeletedRoutesItemScope;
+  /** Optional weight of the ECMP scope - if provided. */
+  weight?: number;
+}
+export const RoutesEmptyResponseDeletedRoutesItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      nexthop: S.String,
+      prefix: S.String,
+      priority: S.Number,
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      description: S.optional(S.String),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      scope: S.optional(RoutesEmptyResponseDeletedRoutesItemScope),
+      weight: S.optional(S.Number),
+    }),
+).annotate({
+  identifier: "RoutesEmptyResponseDeletedRoutesItem",
+}) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItem>;
+
+export type RoutesEmptyResponseDeletedRoutesList =
+  RoutesEmptyResponseDeletedRoutesItem[];
+export const RoutesEmptyResponseDeletedRoutesList = /*@__PURE__*/ S.Array(
+  RoutesEmptyResponseDeletedRoutesItem,
+) as any as S.Schema<RoutesEmptyResponseDeletedRoutesList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface EmptyRouteResponse {
+  deleted?: boolean;
+  deletedRoutes?: RoutesEmptyResponseDeletedRoutesList;
+}
+export const EmptyRouteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    deleted: S.optional(S.Boolean),
+    deletedRoutes: S.optional(
+      RoutesEmptyResponseDeletedRoutesList.pipe(T.Body("deleted_routes")),
+    ),
+  }),
+).annotate({
+  identifier: "EmptyRouteResponse",
+}) as any as S.Schema<EmptyRouteResponse>;
+
+export interface GetCf1SiteRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  cf1SiteId: string;
+}
+export const GetCf1SiteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetCf1SiteRequest",
+}) as any as S.Schema<GetCf1SiteRequest>;
+
+export interface Cf1SitesGetResponseLocation {
+  /** Latitude of the CF1 Site. */
+  lat?: number;
+  /** Longitude of the CF1 Site. */
+  long?: number;
+  /** Name of nearest town, city, or village. */
+  name?: string;
+}
+export const Cf1SitesGetResponseLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.Number),
+    long: S.optional(S.Number),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Cf1SitesGetResponseLocation",
+}) as any as S.Schema<Cf1SitesGetResponseLocation>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetCf1SiteResponse {
+  /** A human-provided name describing the CF1 Site that should be unique within the account. */
+  name: string;
+  /** Identifier */
+  id?: string;
+  createdOn?: string;
+  /** A human-provided description of the CF1 Site. */
+  description?: string;
+  location?: Cf1SitesGetResponseLocation;
+  modifiedOn?: string;
+}
+export const GetCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    location: S.optional(Cf1SitesGetResponseLocation),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "GetCf1SiteResponse",
+}) as any as S.Schema<GetCf1SiteResponse>;
+
+export interface GetCf1SiteRampRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  cf1SiteId: string;
+  /** Identifier */
+  rampId: string;
+}
+export const GetCf1SiteRampRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
+    rampId: S.String.pipe(T.Label("ramp_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps/{ramp_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetCf1SiteRampRequest",
+}) as any as S.Schema<GetCf1SiteRampRequest>;
+
+export interface Cf1SitesRampsGetResponseGre {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsGetResponseGre = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsGetResponseGre",
+}) as any as S.Schema<Cf1SitesRampsGetResponseGre>;
+
+export interface Cf1SitesRampsGetResponseGreInterconnect {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsGetResponseGreInterconnect = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+    }),
+).annotate({
+  identifier: "Cf1SitesRampsGetResponseGreInterconnect",
+}) as any as S.Schema<Cf1SitesRampsGetResponseGreInterconnect>;
+
+export interface Cf1SitesRampsGetResponseIpsec {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsGetResponseIpsec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsGetResponseIpsec",
+}) as any as S.Schema<Cf1SitesRampsGetResponseIpsec>;
+
+export interface Cf1SitesRampsGetResponseMconn {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsGetResponseMconn = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsGetResponseMconn",
+}) as any as S.Schema<Cf1SitesRampsGetResponseMconn>;
+
+export interface Cf1SitesRampsGetResponseMplsInterconnect {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsGetResponseMplsInterconnect = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+    }),
+).annotate({
+  identifier: "Cf1SitesRampsGetResponseMplsInterconnect",
+}) as any as S.Schema<Cf1SitesRampsGetResponseMplsInterconnect>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetCf1SiteRampResponse {
+  /** Identifier */
+  id: string;
+  createdOn: string;
+  modifiedOn: string;
+  /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
+  name: string;
+  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
+  type: unknown;
+  /** A human-provided description of the ramp. */
+  description?: string;
+  gre?: Cf1SitesRampsGetResponseGre;
+  greInterconnect?: Cf1SitesRampsGetResponseGreInterconnect;
+  ipsec?: Cf1SitesRampsGetResponseIpsec;
+  mconn?: Cf1SitesRampsGetResponseMconn;
+  mplsInterconnect?: Cf1SitesRampsGetResponseMplsInterconnect;
+}
+export const GetCf1SiteRampResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    type: S.Unknown,
+    description: S.optional(S.String),
+    gre: S.optional(Cf1SitesRampsGetResponseGre),
+    greInterconnect: S.optional(
+      Cf1SitesRampsGetResponseGreInterconnect.pipe(T.Body("gre_interconnect")),
+    ),
+    ipsec: S.optional(Cf1SitesRampsGetResponseIpsec),
+    mconn: S.optional(Cf1SitesRampsGetResponseMconn),
+    mplsInterconnect: S.optional(
+      Cf1SitesRampsGetResponseMplsInterconnect.pipe(
+        T.Body("mpls_interconnect"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "GetCf1SiteRampResponse",
+}) as any as S.Schema<GetCf1SiteRampResponse>;
+
+export interface GetCfInterconnectRequest {
   /** Identifier */
   accountId: string;
   /** Identifier */
   cfInterconnectId: string;
   XMagicNewHcTarget_?: boolean;
 }
-export const CfInterconnectsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     cfInterconnectId: S.String.pipe(T.Label("cf_interconnect_id")),
@@ -1616,8 +5192,8 @@ export const CfInterconnectsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "CfInterconnectsGetRequest",
-}) as any as S.Schema<CfInterconnectsGetRequest>;
+  identifier: "GetCfInterconnectRequest",
+}) as any as S.Schema<GetCfInterconnectRequest>;
 
 export interface CfInterconnectsGetResponseInterconnectGre {
   /** The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect. */
@@ -1734,689 +5310,112 @@ export const CfInterconnectsGetResponseInterconnect = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<CfInterconnectsGetResponseInterconnect>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CfInterconnectsGetResponse {
+export interface GetCfInterconnectResponse {
   interconnect?: CfInterconnectsGetResponseInterconnect;
 }
-export const CfInterconnectsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetCfInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     interconnect: S.optional(CfInterconnectsGetResponseInterconnect),
   }),
 ).annotate({
-  identifier: "CfInterconnectsGetResponse",
-}) as any as S.Schema<CfInterconnectsGetResponse>;
+  identifier: "GetCfInterconnectResponse",
+}) as any as S.Schema<GetCfInterconnectResponse>;
 
-export interface CfInterconnectsListRequest {
-  /** Identifier */
+export interface GetConnectorRequest {
+  /** Account identifier */
   accountId: string;
-  XMagicNewHcTarget_?: boolean;
+  connectorId: string;
 }
-export const CfInterconnectsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
+    connectorId: S.String.pipe(T.Label("connector_id")),
   }).pipe(
     T.Http({
       method: "GET",
-      uri: "/accounts/{account_id}/magic/cf_interconnects",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CfInterconnectsListRequest",
-}) as any as S.Schema<CfInterconnectsListRequest>;
-
-export interface CfInterconnectsListResponseInterconnectsItemGre {
-  /** The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect. */
-  cloudflareEndpoint?: string;
-}
-export const CfInterconnectsListResponseInterconnectsItemGre =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cloudflareEndpoint: S.optional(
-        S.String.pipe(T.Body("cloudflare_endpoint")),
-      ),
-    }),
-  ).annotate({
-    identifier: "CfInterconnectsListResponseInterconnectsItemGre",
-  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemGre>;
-
-export interface CfInterconnectsListResponseInterconnectsItemHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const CfInterconnectsListResponseInterconnectsItemHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "CfInterconnectsListResponseInterconnectsItemHealthCheckTarget",
-  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemHealthCheckTarget>;
-
-export interface CfInterconnectsListResponseInterconnectsItemHealthCheck {
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: CfInterconnectsListResponseInterconnectsItemHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const CfInterconnectsListResponseInterconnectsItemHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(
-        CfInterconnectsListResponseInterconnectsItemHealthCheckTarget,
-      ),
-      type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "CfInterconnectsListResponseInterconnectsItemHealthCheck",
-  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemHealthCheck>;
-
-export interface CfInterconnectsListResponseInterconnectsItem {
-  /** Identifier */
-  id?: string;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  /** The name of the interconnect. The name cannot share a name with other tunnels. */
-  coloName?: string;
-  /** The date and time the tunnel was created. */
-  createdOn?: string;
-  /** An optional description of the interconnect. */
-  description?: string;
-  /** The configuration specific to GRE interconnects. */
-  gre?: CfInterconnectsListResponseInterconnectsItemGre;
-  healthCheck?: CfInterconnectsListResponseInterconnectsItemHealthCheck;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress?: string;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string;
-  /** The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576. */
-  mtu?: number;
-  /** The name of the interconnect. The name cannot share a name with other tunnels. */
-  name?: string;
-  /** An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource. */
-  virtualPortReservationId?: string;
-}
-export const CfInterconnectsListResponseInterconnectsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      automaticReturnRouting: S.optional(
-        S.Boolean.pipe(T.Body("automatic_return_routing")),
-      ),
-      coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      gre: S.optional(CfInterconnectsListResponseInterconnectsItemGre),
-      healthCheck: S.optional(
-        CfInterconnectsListResponseInterconnectsItemHealthCheck.pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress: S.optional(S.String.pipe(T.Body("interface_address"))),
-      interfaceAddress6: S.optional(
-        S.String.pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      mtu: S.optional(S.Number),
-      name: S.optional(S.String),
-      virtualPortReservationId: S.optional(
-        S.String.pipe(T.Body("virtual_port_reservation_id")),
-      ),
-    }),
-  ).annotate({
-    identifier: "CfInterconnectsListResponseInterconnectsItem",
-  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItem>;
-
-export type CfInterconnectsListResponseInterconnectsList =
-  CfInterconnectsListResponseInterconnectsItem[];
-export const CfInterconnectsListResponseInterconnectsList =
-  /*@__PURE__*/ S.Array(
-    CfInterconnectsListResponseInterconnectsItem,
-  ) as any as S.Schema<CfInterconnectsListResponseInterconnectsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CfInterconnectsListResponse {
-  interconnects?: CfInterconnectsListResponseInterconnectsList;
-}
-export const CfInterconnectsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    interconnects: S.optional(CfInterconnectsListResponseInterconnectsList),
-  }),
-).annotate({
-  identifier: "CfInterconnectsListResponse",
-}) as any as S.Schema<CfInterconnectsListResponse>;
-
-export interface CfInterconnectsUpdateRequestGre {
-  /** The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect. */
-  cloudflareEndpoint?: string;
-}
-export const CfInterconnectsUpdateRequestGre = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    cloudflareEndpoint: S.optional(
-      S.String.pipe(T.Body("cloudflare_endpoint")),
-    ),
-  }),
-).annotate({
-  identifier: "CfInterconnectsUpdateRequestGre",
-}) as any as S.Schema<CfInterconnectsUpdateRequestGre>;
-
-export interface CfInterconnectsUpdateRequestHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const CfInterconnectsUpdateRequestHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "CfInterconnectsUpdateRequestHealthCheckTarget",
-  }) as any as S.Schema<CfInterconnectsUpdateRequestHealthCheckTarget>;
-
-export interface CfInterconnectsUpdateRequestHealthCheck {
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: CfInterconnectsUpdateRequestHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const CfInterconnectsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(CfInterconnectsUpdateRequestHealthCheckTarget),
-      type: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "CfInterconnectsUpdateRequestHealthCheck",
-}) as any as S.Schema<CfInterconnectsUpdateRequestHealthCheck>;
-
-export interface CfInterconnectsUpdateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  cfInterconnectId: string;
-  XMagicNewHcTarget_?: boolean;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  /** An optional description of the interconnect. */
-  description?: string;
-  /** The configuration specific to GRE interconnects. */
-  gre?: CfInterconnectsUpdateRequestGre;
-  healthCheck?: CfInterconnectsUpdateRequestHealthCheck;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress?: string;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576. */
-  mtu?: number;
-  /** The name of the interconnect. The name cannot share a name with other tunnels. */
-  name?: string;
-}
-export const CfInterconnectsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    cfInterconnectId: S.String.pipe(T.Label("cf_interconnect_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
-    automaticReturnRouting: S.optional(
-      S.Boolean.pipe(T.Body("automatic_return_routing")),
-    ),
-    description: S.optional(S.String),
-    gre: S.optional(CfInterconnectsUpdateRequestGre),
-    healthCheck: S.optional(
-      CfInterconnectsUpdateRequestHealthCheck.pipe(T.Body("health_check")),
-    ),
-    interfaceAddress: S.optional(S.String.pipe(T.Body("interface_address"))),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    mtu: S.optional(S.Number),
-    name: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/cf_interconnects/{cf_interconnect_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "CfInterconnectsUpdateRequest",
-}) as any as S.Schema<CfInterconnectsUpdateRequest>;
-
-export interface CfInterconnectsUpdateResponseModifiedInterconnectGre {
-  /** The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect. */
-  cloudflareEndpoint?: string;
-}
-export const CfInterconnectsUpdateResponseModifiedInterconnectGre =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      cloudflareEndpoint: S.optional(
-        S.String.pipe(T.Body("cloudflare_endpoint")),
-      ),
-    }),
-  ).annotate({
-    identifier: "CfInterconnectsUpdateResponseModifiedInterconnectGre",
-  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectGre>;
-
-export interface CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier:
-      "CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget",
-  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget>;
-
-export interface CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck {
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(
-        CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget,
-      ),
-      type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck",
-  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck>;
-
-export interface CfInterconnectsUpdateResponseModifiedInterconnect {
-  /** Identifier */
-  id?: string;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  /** The name of the interconnect. The name cannot share a name with other tunnels. */
-  coloName?: string;
-  /** The date and time the tunnel was created. */
-  createdOn?: string;
-  /** An optional description of the interconnect. */
-  description?: string;
-  /** The configuration specific to GRE interconnects. */
-  gre?: CfInterconnectsUpdateResponseModifiedInterconnectGre;
-  healthCheck?: CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress?: string;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string;
-  /** The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576. */
-  mtu?: number;
-  /** The name of the interconnect. The name cannot share a name with other tunnels. */
-  name?: string;
-  /** An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource. */
-  virtualPortReservationId?: string;
-}
-export const CfInterconnectsUpdateResponseModifiedInterconnect =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.optional(S.String),
-      automaticReturnRouting: S.optional(
-        S.Boolean.pipe(T.Body("automatic_return_routing")),
-      ),
-      coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      gre: S.optional(CfInterconnectsUpdateResponseModifiedInterconnectGre),
-      healthCheck: S.optional(
-        CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck.pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress: S.optional(S.String.pipe(T.Body("interface_address"))),
-      interfaceAddress6: S.optional(
-        S.String.pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      mtu: S.optional(S.Number),
-      name: S.optional(S.String),
-      virtualPortReservationId: S.optional(
-        S.String.pipe(T.Body("virtual_port_reservation_id")),
-      ),
-    }),
-  ).annotate({
-    identifier: "CfInterconnectsUpdateResponseModifiedInterconnect",
-  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnect>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface CfInterconnectsUpdateResponse {
-  modified?: boolean;
-  modifiedInterconnect?: CfInterconnectsUpdateResponseModifiedInterconnect;
-}
-export const CfInterconnectsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modified: S.optional(S.Boolean),
-    modifiedInterconnect: S.optional(
-      CfInterconnectsUpdateResponseModifiedInterconnect.pipe(
-        T.Body("modified_interconnect"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "CfInterconnectsUpdateResponse",
-}) as any as S.Schema<CfInterconnectsUpdateResponse>;
-
-export interface ConnectorsCreateRequestDevice {
-  id?: string;
-  /** When true, create and provision a new licence key for the connector. */
-  provisionLicense?: boolean;
-  serialNumber?: string;
-}
-export const ConnectorsCreateRequestDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    provisionLicense: S.optional(S.Boolean.pipe(T.Body("provision_license"))),
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-  }),
-).annotate({
-  identifier: "ConnectorsCreateRequestDevice",
-}) as any as S.Schema<ConnectorsCreateRequestDevice>;
-
-export type ConnectorsCreateRequestInterruptWindowDaysOfWeekItem =
-  | "Sunday"
-  | "Monday"
-  | "Tuesday"
-  | (string & {});
-export const ConnectorsCreateRequestInterruptWindowDaysOfWeekItem =
-  /*@__PURE__*/ S.String;
-
-export type ConnectorsCreateRequestInterruptWindowDaysOfWeekList =
-  ConnectorsCreateRequestInterruptWindowDaysOfWeekItem[];
-export const ConnectorsCreateRequestInterruptWindowDaysOfWeekList =
-  /*@__PURE__*/ S.Array(
-    ConnectorsCreateRequestInterruptWindowDaysOfWeekItem,
-  ) as any as S.Schema<ConnectorsCreateRequestInterruptWindowDaysOfWeekList>;
-
-export type ConnectorsCreateRequestInterruptWindowEmbargoDatesList = string[];
-export const ConnectorsCreateRequestInterruptWindowEmbargoDatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectorsCreateRequestInterruptWindowEmbargoDatesList>;
-
-export interface ConnectorsCreateRequest {
-  /** Account identifier */
-  accountId: string;
-  /** Exactly one of id, serial_number, or provision_license must be provided. */
-  device: ConnectorsCreateRequestDevice;
-  activated?: boolean;
-  /** Allowed days of the week for upgrades. Default is all days. */
-  interruptWindowDaysOfWeek?: ConnectorsCreateRequestInterruptWindowDaysOfWeekList;
-  interruptWindowDurationHours?: number;
-  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
-  interruptWindowEmbargoDates?: ConnectorsCreateRequestInterruptWindowEmbargoDatesList;
-  interruptWindowHourOfDay?: number;
-  notes?: string;
-  primary?: boolean;
-  siteId?: string;
-  timezone?: string;
-}
-export const ConnectorsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    device: ConnectorsCreateRequestDevice,
-    activated: S.optional(S.Boolean),
-    interruptWindowDaysOfWeek: S.optional(
-      ConnectorsCreateRequestInterruptWindowDaysOfWeekList.pipe(
-        T.Body("interrupt_window_days_of_week"),
-      ),
-    ),
-    interruptWindowDurationHours: S.optional(
-      S.Number.pipe(T.Body("interrupt_window_duration_hours")),
-    ),
-    interruptWindowEmbargoDates: S.optional(
-      ConnectorsCreateRequestInterruptWindowEmbargoDatesList.pipe(
-        T.Body("interrupt_window_embargo_dates"),
-      ),
-    ),
-    interruptWindowHourOfDay: S.optional(
-      S.Number.pipe(T.Body("interrupt_window_hour_of_day")),
-    ),
-    notes: S.optional(S.String),
-    primary: S.optional(S.Boolean),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    timezone: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/connectors",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorsCreateRequest",
-}) as any as S.Schema<ConnectorsCreateRequest>;
-
-export type ConnectorsCreateResponseInterruptWindowDaysOfWeekItem =
-  | "Sunday"
-  | "Monday"
-  | "Tuesday"
-  | (string & {});
-export const ConnectorsCreateResponseInterruptWindowDaysOfWeekItem =
-  /*@__PURE__*/ S.String;
-
-export type ConnectorsCreateResponseInterruptWindowDaysOfWeekList =
-  ConnectorsCreateResponseInterruptWindowDaysOfWeekItem[];
-export const ConnectorsCreateResponseInterruptWindowDaysOfWeekList =
-  /*@__PURE__*/ S.Array(
-    ConnectorsCreateResponseInterruptWindowDaysOfWeekItem,
-  ) as any as S.Schema<ConnectorsCreateResponseInterruptWindowDaysOfWeekList>;
-
-export type ConnectorsCreateResponseInterruptWindowEmbargoDatesList = string[];
-export const ConnectorsCreateResponseInterruptWindowEmbargoDatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectorsCreateResponseInterruptWindowEmbargoDatesList>;
-
-export type ConnectorsCreateResponseDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
-export const ConnectorsCreateResponseDeviceType = /*@__PURE__*/ S.String;
-
-export interface ConnectorsCreateResponseDevice {
-  id: string;
-  serialNumber?: string;
-  type?: ConnectorsCreateResponseDeviceType;
-}
-export const ConnectorsCreateResponseDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    type: S.optional(ConnectorsCreateResponseDeviceType),
-  }),
-).annotate({
-  identifier: "ConnectorsCreateResponseDevice",
-}) as any as S.Schema<ConnectorsCreateResponseDevice>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConnectorsCreateResponse {
-  id: string;
-  activated: boolean;
-  /** Allowed days of the week for upgrades. Default is all days. */
-  interruptWindowDaysOfWeek: ConnectorsCreateResponseInterruptWindowDaysOfWeekList;
-  interruptWindowDurationHours: number;
-  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
-  interruptWindowEmbargoDates: ConnectorsCreateResponseInterruptWindowEmbargoDatesList;
-  interruptWindowHourOfDay: number;
-  lastUpdated: string;
-  notes: string;
-  primary: boolean;
-  timezone: string;
-  device?: ConnectorsCreateResponseDevice;
-  lastHeartbeat?: string;
-  lastSeenVersion?: string;
-  licenseKey?: string;
-  siteId?: string;
-}
-export const ConnectorsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    activated: S.Boolean,
-    interruptWindowDaysOfWeek:
-      ConnectorsCreateResponseInterruptWindowDaysOfWeekList.pipe(
-        T.Body("interrupt_window_days_of_week"),
-      ),
-    interruptWindowDurationHours: S.Number.pipe(
-      T.Body("interrupt_window_duration_hours"),
-    ),
-    interruptWindowEmbargoDates:
-      ConnectorsCreateResponseInterruptWindowEmbargoDatesList.pipe(
-        T.Body("interrupt_window_embargo_dates"),
-      ),
-    interruptWindowHourOfDay: S.Number.pipe(
-      T.Body("interrupt_window_hour_of_day"),
-    ),
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    notes: S.String,
-    primary: S.Boolean,
-    timezone: S.String,
-    device: S.optional(ConnectorsCreateResponseDevice),
-    lastHeartbeat: S.optional(S.String.pipe(T.Body("last_heartbeat"))),
-    lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
-    licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "ConnectorsCreateResponse",
-}) as any as S.Schema<ConnectorsCreateResponse>;
-
-export interface ConnectorsDeleteRequest {
-  /** Account identifier */
-  accountId: string;
-  connectorId: string;
-}
-export const ConnectorsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    connectorId: S.String.pipe(T.Label("connector_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
       uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "ConnectorsDeleteRequest",
-}) as any as S.Schema<ConnectorsDeleteRequest>;
+  identifier: "GetConnectorRequest",
+}) as any as S.Schema<GetConnectorRequest>;
 
-export type ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem =
+export type ConnectorsGetResponseInterruptWindowDaysOfWeekItem =
   | "Sunday"
   | "Monday"
   | "Tuesday"
   | (string & {});
-export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem =
+export const ConnectorsGetResponseInterruptWindowDaysOfWeekItem =
   /*@__PURE__*/ S.String;
 
-export type ConnectorsDeleteResponseInterruptWindowDaysOfWeekList =
-  ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem[];
-export const ConnectorsDeleteResponseInterruptWindowDaysOfWeekList =
+export type ConnectorsGetResponseInterruptWindowDaysOfWeekList =
+  ConnectorsGetResponseInterruptWindowDaysOfWeekItem[];
+export const ConnectorsGetResponseInterruptWindowDaysOfWeekList =
   /*@__PURE__*/ S.Array(
-    ConnectorsDeleteResponseInterruptWindowDaysOfWeekItem,
-  ) as any as S.Schema<ConnectorsDeleteResponseInterruptWindowDaysOfWeekList>;
+    ConnectorsGetResponseInterruptWindowDaysOfWeekItem,
+  ) as any as S.Schema<ConnectorsGetResponseInterruptWindowDaysOfWeekList>;
 
-export type ConnectorsDeleteResponseInterruptWindowEmbargoDatesList = string[];
-export const ConnectorsDeleteResponseInterruptWindowEmbargoDatesList =
+export type ConnectorsGetResponseInterruptWindowEmbargoDatesList = string[];
+export const ConnectorsGetResponseInterruptWindowEmbargoDatesList =
   /*@__PURE__*/ S.Array(
     S.String,
-  ) as any as S.Schema<ConnectorsDeleteResponseInterruptWindowEmbargoDatesList>;
+  ) as any as S.Schema<ConnectorsGetResponseInterruptWindowEmbargoDatesList>;
 
-export type ConnectorsDeleteResponseDeviceType =
+export type ConnectorsGetResponseDeviceType =
   | "MANAGED"
   | "LICENSED"
   | (string & {});
-export const ConnectorsDeleteResponseDeviceType = /*@__PURE__*/ S.String;
+export const ConnectorsGetResponseDeviceType = /*@__PURE__*/ S.String;
 
-export interface ConnectorsDeleteResponseDevice {
+export interface ConnectorsGetResponseDevice {
   id: string;
   serialNumber?: string;
-  type?: ConnectorsDeleteResponseDeviceType;
+  type?: ConnectorsGetResponseDeviceType;
 }
-export const ConnectorsDeleteResponseDevice = /*@__PURE__*/ S.suspend(() =>
+export const ConnectorsGetResponseDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    type: S.optional(ConnectorsDeleteResponseDeviceType),
+    type: S.optional(ConnectorsGetResponseDeviceType),
   }),
 ).annotate({
-  identifier: "ConnectorsDeleteResponseDevice",
-}) as any as S.Schema<ConnectorsDeleteResponseDevice>;
+  identifier: "ConnectorsGetResponseDevice",
+}) as any as S.Schema<ConnectorsGetResponseDevice>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConnectorsDeleteResponse {
+export interface GetConnectorResponse {
   id: string;
   activated: boolean;
   /** Allowed days of the week for upgrades. Default is all days. */
-  interruptWindowDaysOfWeek: ConnectorsDeleteResponseInterruptWindowDaysOfWeekList;
+  interruptWindowDaysOfWeek: ConnectorsGetResponseInterruptWindowDaysOfWeekList;
   interruptWindowDurationHours: number;
   /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
-  interruptWindowEmbargoDates: ConnectorsDeleteResponseInterruptWindowEmbargoDatesList;
+  interruptWindowEmbargoDates: ConnectorsGetResponseInterruptWindowEmbargoDatesList;
   interruptWindowHourOfDay: number;
   lastUpdated: string;
   notes: string;
   primary: boolean;
   timezone: string;
-  device?: ConnectorsDeleteResponseDevice;
+  device?: ConnectorsGetResponseDevice;
   lastHeartbeat?: string;
   lastSeenVersion?: string;
   licenseKey?: string;
   siteId?: string;
 }
-export const ConnectorsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.String,
     activated: S.Boolean,
     interruptWindowDaysOfWeek:
-      ConnectorsDeleteResponseInterruptWindowDaysOfWeekList.pipe(
+      ConnectorsGetResponseInterruptWindowDaysOfWeekList.pipe(
         T.Body("interrupt_window_days_of_week"),
       ),
     interruptWindowDurationHours: S.Number.pipe(
       T.Body("interrupt_window_duration_hours"),
     ),
     interruptWindowEmbargoDates:
-      ConnectorsDeleteResponseInterruptWindowEmbargoDatesList.pipe(
+      ConnectorsGetResponseInterruptWindowEmbargoDatesList.pipe(
         T.Body("interrupt_window_embargo_dates"),
       ),
     interruptWindowHourOfDay: S.Number.pipe(
@@ -2426,194 +5425,24 @@ export const ConnectorsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
     notes: S.String,
     primary: S.Boolean,
     timezone: S.String,
-    device: S.optional(ConnectorsDeleteResponseDevice),
+    device: S.optional(ConnectorsGetResponseDevice),
     lastHeartbeat: S.optional(S.String.pipe(T.Body("last_heartbeat"))),
     lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
     licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
     siteId: S.optional(S.String.pipe(T.Body("site_id"))),
   }),
 ).annotate({
-  identifier: "ConnectorsDeleteResponse",
-}) as any as S.Schema<ConnectorsDeleteResponse>;
+  identifier: "GetConnectorResponse",
+}) as any as S.Schema<GetConnectorResponse>;
 
-export type ConnectorsEditRequestInterruptWindowDaysOfWeekItem =
-  | "Sunday"
-  | "Monday"
-  | "Tuesday"
-  | (string & {});
-export const ConnectorsEditRequestInterruptWindowDaysOfWeekItem =
-  /*@__PURE__*/ S.String;
-
-export type ConnectorsEditRequestInterruptWindowDaysOfWeekList =
-  ConnectorsEditRequestInterruptWindowDaysOfWeekItem[];
-export const ConnectorsEditRequestInterruptWindowDaysOfWeekList =
-  /*@__PURE__*/ S.Array(
-    ConnectorsEditRequestInterruptWindowDaysOfWeekItem,
-  ) as any as S.Schema<ConnectorsEditRequestInterruptWindowDaysOfWeekList>;
-
-export type ConnectorsEditRequestInterruptWindowEmbargoDatesList = string[];
-export const ConnectorsEditRequestInterruptWindowEmbargoDatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectorsEditRequestInterruptWindowEmbargoDatesList>;
-
-export interface ConnectorsEditRequest {
-  /** Account identifier */
-  accountId: string;
-  connectorId: string;
-  activated?: boolean;
-  /** Allowed days of the week for upgrades. Default is all days. */
-  interruptWindowDaysOfWeek?: ConnectorsEditRequestInterruptWindowDaysOfWeekList;
-  interruptWindowDurationHours?: number;
-  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
-  interruptWindowEmbargoDates?: ConnectorsEditRequestInterruptWindowEmbargoDatesList;
-  interruptWindowHourOfDay?: number;
-  notes?: string;
-  primary?: boolean;
-  /** When true, regenerate license key for the connector. */
-  provisionLicense?: boolean;
-  siteId?: string;
-  timezone?: string;
-}
-export const ConnectorsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    connectorId: S.String.pipe(T.Label("connector_id")),
-    activated: S.optional(S.Boolean),
-    interruptWindowDaysOfWeek: S.optional(
-      ConnectorsEditRequestInterruptWindowDaysOfWeekList.pipe(
-        T.Body("interrupt_window_days_of_week"),
-      ),
-    ),
-    interruptWindowDurationHours: S.optional(
-      S.Number.pipe(T.Body("interrupt_window_duration_hours")),
-    ),
-    interruptWindowEmbargoDates: S.optional(
-      ConnectorsEditRequestInterruptWindowEmbargoDatesList.pipe(
-        T.Body("interrupt_window_embargo_dates"),
-      ),
-    ),
-    interruptWindowHourOfDay: S.optional(
-      S.Number.pipe(T.Body("interrupt_window_hour_of_day")),
-    ),
-    notes: S.optional(S.String),
-    primary: S.optional(S.Boolean),
-    provisionLicense: S.optional(S.Boolean.pipe(T.Body("provision_license"))),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    timezone: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorsEditRequest",
-}) as any as S.Schema<ConnectorsEditRequest>;
-
-export type ConnectorsEditResponseInterruptWindowDaysOfWeekItem =
-  | "Sunday"
-  | "Monday"
-  | "Tuesday"
-  | (string & {});
-export const ConnectorsEditResponseInterruptWindowDaysOfWeekItem =
-  /*@__PURE__*/ S.String;
-
-export type ConnectorsEditResponseInterruptWindowDaysOfWeekList =
-  ConnectorsEditResponseInterruptWindowDaysOfWeekItem[];
-export const ConnectorsEditResponseInterruptWindowDaysOfWeekList =
-  /*@__PURE__*/ S.Array(
-    ConnectorsEditResponseInterruptWindowDaysOfWeekItem,
-  ) as any as S.Schema<ConnectorsEditResponseInterruptWindowDaysOfWeekList>;
-
-export type ConnectorsEditResponseInterruptWindowEmbargoDatesList = string[];
-export const ConnectorsEditResponseInterruptWindowEmbargoDatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectorsEditResponseInterruptWindowEmbargoDatesList>;
-
-export type ConnectorsEditResponseDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
-export const ConnectorsEditResponseDeviceType = /*@__PURE__*/ S.String;
-
-export interface ConnectorsEditResponseDevice {
-  id: string;
-  serialNumber?: string;
-  type?: ConnectorsEditResponseDeviceType;
-}
-export const ConnectorsEditResponseDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    type: S.optional(ConnectorsEditResponseDeviceType),
-  }),
-).annotate({
-  identifier: "ConnectorsEditResponseDevice",
-}) as any as S.Schema<ConnectorsEditResponseDevice>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConnectorsEditResponse {
-  id: string;
-  activated: boolean;
-  /** Allowed days of the week for upgrades. Default is all days. */
-  interruptWindowDaysOfWeek: ConnectorsEditResponseInterruptWindowDaysOfWeekList;
-  interruptWindowDurationHours: number;
-  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
-  interruptWindowEmbargoDates: ConnectorsEditResponseInterruptWindowEmbargoDatesList;
-  interruptWindowHourOfDay: number;
-  lastUpdated: string;
-  notes: string;
-  primary: boolean;
-  timezone: string;
-  device?: ConnectorsEditResponseDevice;
-  lastHeartbeat?: string;
-  lastSeenVersion?: string;
-  licenseKey?: string;
-  siteId?: string;
-}
-export const ConnectorsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    activated: S.Boolean,
-    interruptWindowDaysOfWeek:
-      ConnectorsEditResponseInterruptWindowDaysOfWeekList.pipe(
-        T.Body("interrupt_window_days_of_week"),
-      ),
-    interruptWindowDurationHours: S.Number.pipe(
-      T.Body("interrupt_window_duration_hours"),
-    ),
-    interruptWindowEmbargoDates:
-      ConnectorsEditResponseInterruptWindowEmbargoDatesList.pipe(
-        T.Body("interrupt_window_embargo_dates"),
-      ),
-    interruptWindowHourOfDay: S.Number.pipe(
-      T.Body("interrupt_window_hour_of_day"),
-    ),
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    notes: S.String,
-    primary: S.Boolean,
-    timezone: S.String,
-    device: S.optional(ConnectorsEditResponseDevice),
-    lastHeartbeat: S.optional(S.String.pipe(T.Body("last_heartbeat"))),
-    lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
-    licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "ConnectorsEditResponse",
-}) as any as S.Schema<ConnectorsEditResponse>;
-
-export interface ConnectorsEventsGetRequest {
+export interface GetConnectorEventRequest {
   /** Account identifier */
   accountId: string;
   connectorId: string;
   eventT: number;
   eventN: number;
 }
-export const ConnectorsEventsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetConnectorEventRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     connectorId: S.String.pipe(T.Label("connector_id")),
@@ -2627,8 +5456,8 @@ export const ConnectorsEventsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConnectorsEventsGetRequest",
-}) as any as S.Schema<ConnectorsEventsGetRequest>;
+  identifier: "GetConnectorEventRequest",
+}) as any as S.Schema<GetConnectorEventRequest>;
 
 export interface ConnectorsEventsGetResponseE {
   InitObjectK__: unknown;
@@ -2718,7 +5547,7 @@ export const ConnectorsEventsGetResponseE = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<ConnectorsEventsGetResponseE>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConnectorsEventsGetResponse {
+export interface GetConnectorEventResponse {
   e: ConnectorsEventsGetResponseE;
   /** Sequence number, used to order events with the same timestamp */
   n: number;
@@ -2727,7 +5556,7 @@ export interface ConnectorsEventsGetResponse {
   /** Version */
   v?: string;
 }
-export const ConnectorsEventsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetConnectorEventResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     e: ConnectorsEventsGetResponseE,
     n: S.Number,
@@ -2735,494 +5564,16 @@ export const ConnectorsEventsGetResponse = /*@__PURE__*/ S.suspend(() =>
     v: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "ConnectorsEventsGetResponse",
-}) as any as S.Schema<ConnectorsEventsGetResponse>;
+  identifier: "GetConnectorEventResponse",
+}) as any as S.Schema<GetConnectorEventResponse>;
 
-export interface ConnectorsEventsLatestListRequest {
-  /** Account identifier */
-  accountId: string;
-  connectorId: string;
-}
-export const ConnectorsEventsLatestListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    connectorId: S.String.pipe(T.Label("connector_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/latest",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorsEventsLatestListRequest",
-}) as any as S.Schema<ConnectorsEventsLatestListRequest>;
-
-export interface ConnectorsEventsLatestListResponseItemsItemE {
-  InitObjectK__: unknown;
-  LeaveObjectK__: unknown;
-  StartAttestationObjectK__: unknown;
-  FinishAttestationSuccessObjectK__: unknown;
-  FinishAttestationFailureObjectK__: unknown;
-  StartRotateCryptKeyObjectK__: unknown;
-  FinishRotateCryptKeySuccessObjectK__: unknown;
-  FinishRotateCryptKeyFailureObjectK__: unknown;
-  StartRotatePkiObjectK__: unknown;
-  FinishRotatePkiSuccessObjectK__: unknown;
-  FinishRotatePkiFailureObjectK__: unknown;
-  StartUpgradeObjectKUrl__: unknown;
-  FinishUpgradeSuccessObjectK__: unknown;
-  FinishUpgradeFailureObjectK__: unknown;
-  ReconcileObjectK__: unknown;
-  ConfigureCloudflaredTunnelObjectK__: unknown;
-  RekeyInstallBothObjectKTunnelId__: unknown;
-  RekeyStartObjectKTunnelId__: unknown;
-  RekeyAdvanceObjectKTunnelId__: unknown;
-  RekeyCompleteObjectKTunnelId__: unknown;
-  RekeyResetObjectKTunnelId__: unknown;
-}
-export const ConnectorsEventsLatestListResponseItemsItemE =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      InitObjectK__: S.Unknown.pipe(T.Body("Init object { k }")),
-      LeaveObjectK__: S.Unknown.pipe(T.Body("Leave object { k }")),
-      StartAttestationObjectK__: S.Unknown.pipe(
-        T.Body("StartAttestation object { k }"),
-      ),
-      FinishAttestationSuccessObjectK__: S.Unknown.pipe(
-        T.Body("FinishAttestationSuccess object { k }"),
-      ),
-      FinishAttestationFailureObjectK__: S.Unknown.pipe(
-        T.Body("FinishAttestationFailure object { k }"),
-      ),
-      StartRotateCryptKeyObjectK__: S.Unknown.pipe(
-        T.Body("StartRotateCryptKey object { k }"),
-      ),
-      FinishRotateCryptKeySuccessObjectK__: S.Unknown.pipe(
-        T.Body("FinishRotateCryptKeySuccess object { k }"),
-      ),
-      FinishRotateCryptKeyFailureObjectK__: S.Unknown.pipe(
-        T.Body("FinishRotateCryptKeyFailure object { k }"),
-      ),
-      StartRotatePkiObjectK__: S.Unknown.pipe(
-        T.Body("StartRotatePki object { k }"),
-      ),
-      FinishRotatePkiSuccessObjectK__: S.Unknown.pipe(
-        T.Body("FinishRotatePkiSuccess object { k }"),
-      ),
-      FinishRotatePkiFailureObjectK__: S.Unknown.pipe(
-        T.Body("FinishRotatePkiFailure object { k }"),
-      ),
-      StartUpgradeObjectKUrl__: S.Unknown.pipe(
-        T.Body("StartUpgrade object { k, url }"),
-      ),
-      FinishUpgradeSuccessObjectK__: S.Unknown.pipe(
-        T.Body("FinishUpgradeSuccess object { k }"),
-      ),
-      FinishUpgradeFailureObjectK__: S.Unknown.pipe(
-        T.Body("FinishUpgradeFailure object { k }"),
-      ),
-      ReconcileObjectK__: S.Unknown.pipe(T.Body("Reconcile object { k }")),
-      ConfigureCloudflaredTunnelObjectK__: S.Unknown.pipe(
-        T.Body("ConfigureCloudflaredTunnel object { k }"),
-      ),
-      RekeyInstallBothObjectKTunnelId__: S.Unknown.pipe(
-        T.Body("RekeyInstallBoth object { k, tunnel_id }"),
-      ),
-      RekeyStartObjectKTunnelId__: S.Unknown.pipe(
-        T.Body("RekeyStart object { k, tunnel_id }"),
-      ),
-      RekeyAdvanceObjectKTunnelId__: S.Unknown.pipe(
-        T.Body("RekeyAdvance object { k, tunnel_id }"),
-      ),
-      RekeyCompleteObjectKTunnelId__: S.Unknown.pipe(
-        T.Body("RekeyComplete object { k, tunnel_id }"),
-      ),
-      RekeyResetObjectKTunnelId__: S.Unknown.pipe(
-        T.Body("RekeyReset object { k, tunnel_id }"),
-      ),
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItemE",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemE>;
-
-export interface ConnectorsEventsLatestListResponseItemsItem {
-  e: ConnectorsEventsLatestListResponseItemsItemE;
-  /** Sequence number, used to order events with the same timestamp */
-  n: number;
-  /** Time the Event was recorded (seconds since the Unix epoch) */
-  t: number;
-  /** Version */
-  v?: string;
-}
-export const ConnectorsEventsLatestListResponseItemsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      e: ConnectorsEventsLatestListResponseItemsItemE,
-      n: S.Number,
-      t: S.Number,
-      v: S.optional(S.String),
-    }),
-  ).annotate({
-    identifier: "ConnectorsEventsLatestListResponseItemsItem",
-  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItem>;
-
-export type ConnectorsEventsLatestListResponseItemsList =
-  ConnectorsEventsLatestListResponseItemsItem[];
-export const ConnectorsEventsLatestListResponseItemsList =
-  /*@__PURE__*/ S.Array(
-    ConnectorsEventsLatestListResponseItemsItem,
-  ) as any as S.Schema<ConnectorsEventsLatestListResponseItemsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConnectorsEventsLatestListResponse {
-  count: number;
-  items: ConnectorsEventsLatestListResponseItemsList;
-}
-export const ConnectorsEventsLatestListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    items: ConnectorsEventsLatestListResponseItemsList,
-  }),
-).annotate({
-  identifier: "ConnectorsEventsLatestListResponse",
-}) as any as S.Schema<ConnectorsEventsLatestListResponse>;
-
-export interface ConnectorsEventsListRequest {
-  /** Account identifier */
-  accountId: string;
-  connectorId: string;
-  from: number;
-  to: number;
-  cursor?: string;
-  /** Filter by event kind */
-  k?: string;
-  limit?: number;
-}
-export const ConnectorsEventsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    connectorId: S.String.pipe(T.Label("connector_id")),
-    from: S.Number.pipe(T.Query()),
-    to: S.Number.pipe(T.Query()),
-    cursor: S.optional(S.String.pipe(T.Query())),
-    k: S.optional(S.String.pipe(T.Query())),
-    limit: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorsEventsListRequest",
-}) as any as S.Schema<ConnectorsEventsListRequest>;
-
-export interface ConnectorsEventsListResponseItemsItem {
-  /** Time the Event was collected (seconds since the Unix epoch) */
-  a: number;
-  /** Kind */
-  k: string;
-  /** Sequence number, used to order events with the same timestamp */
-  n: number;
-  /** Time the Event was recorded (seconds since the Unix epoch) */
-  t: number;
-}
-export const ConnectorsEventsListResponseItemsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      a: S.Number,
-      k: S.String,
-      n: S.Number,
-      t: S.Number,
-    }),
-).annotate({
-  identifier: "ConnectorsEventsListResponseItemsItem",
-}) as any as S.Schema<ConnectorsEventsListResponseItemsItem>;
-
-export type ConnectorsEventsListResponseItemsList =
-  ConnectorsEventsListResponseItemsItem[];
-export const ConnectorsEventsListResponseItemsList = /*@__PURE__*/ S.Array(
-  ConnectorsEventsListResponseItemsItem,
-) as any as S.Schema<ConnectorsEventsListResponseItemsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConnectorsEventsListResponse {
-  count: number;
-  items: ConnectorsEventsListResponseItemsList;
-  cursor?: string;
-}
-export const ConnectorsEventsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    count: S.Number,
-    items: ConnectorsEventsListResponseItemsList,
-    cursor: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ConnectorsEventsListResponse",
-}) as any as S.Schema<ConnectorsEventsListResponse>;
-
-export interface ConnectorsGetRequest {
-  /** Account identifier */
-  accountId: string;
-  connectorId: string;
-}
-export const ConnectorsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    connectorId: S.String.pipe(T.Label("connector_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorsGetRequest",
-}) as any as S.Schema<ConnectorsGetRequest>;
-
-export type ConnectorsGetResponseInterruptWindowDaysOfWeekItem =
-  | "Sunday"
-  | "Monday"
-  | "Tuesday"
-  | (string & {});
-export const ConnectorsGetResponseInterruptWindowDaysOfWeekItem =
-  /*@__PURE__*/ S.String;
-
-export type ConnectorsGetResponseInterruptWindowDaysOfWeekList =
-  ConnectorsGetResponseInterruptWindowDaysOfWeekItem[];
-export const ConnectorsGetResponseInterruptWindowDaysOfWeekList =
-  /*@__PURE__*/ S.Array(
-    ConnectorsGetResponseInterruptWindowDaysOfWeekItem,
-  ) as any as S.Schema<ConnectorsGetResponseInterruptWindowDaysOfWeekList>;
-
-export type ConnectorsGetResponseInterruptWindowEmbargoDatesList = string[];
-export const ConnectorsGetResponseInterruptWindowEmbargoDatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectorsGetResponseInterruptWindowEmbargoDatesList>;
-
-export type ConnectorsGetResponseDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
-export const ConnectorsGetResponseDeviceType = /*@__PURE__*/ S.String;
-
-export interface ConnectorsGetResponseDevice {
-  id: string;
-  serialNumber?: string;
-  type?: ConnectorsGetResponseDeviceType;
-}
-export const ConnectorsGetResponseDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    type: S.optional(ConnectorsGetResponseDeviceType),
-  }),
-).annotate({
-  identifier: "ConnectorsGetResponseDevice",
-}) as any as S.Schema<ConnectorsGetResponseDevice>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConnectorsGetResponse {
-  id: string;
-  activated: boolean;
-  /** Allowed days of the week for upgrades. Default is all days. */
-  interruptWindowDaysOfWeek: ConnectorsGetResponseInterruptWindowDaysOfWeekList;
-  interruptWindowDurationHours: number;
-  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
-  interruptWindowEmbargoDates: ConnectorsGetResponseInterruptWindowEmbargoDatesList;
-  interruptWindowHourOfDay: number;
-  lastUpdated: string;
-  notes: string;
-  primary: boolean;
-  timezone: string;
-  device?: ConnectorsGetResponseDevice;
-  lastHeartbeat?: string;
-  lastSeenVersion?: string;
-  licenseKey?: string;
-  siteId?: string;
-}
-export const ConnectorsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    activated: S.Boolean,
-    interruptWindowDaysOfWeek:
-      ConnectorsGetResponseInterruptWindowDaysOfWeekList.pipe(
-        T.Body("interrupt_window_days_of_week"),
-      ),
-    interruptWindowDurationHours: S.Number.pipe(
-      T.Body("interrupt_window_duration_hours"),
-    ),
-    interruptWindowEmbargoDates:
-      ConnectorsGetResponseInterruptWindowEmbargoDatesList.pipe(
-        T.Body("interrupt_window_embargo_dates"),
-      ),
-    interruptWindowHourOfDay: S.Number.pipe(
-      T.Body("interrupt_window_hour_of_day"),
-    ),
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    notes: S.String,
-    primary: S.Boolean,
-    timezone: S.String,
-    device: S.optional(ConnectorsGetResponseDevice),
-    lastHeartbeat: S.optional(S.String.pipe(T.Body("last_heartbeat"))),
-    lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
-    licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "ConnectorsGetResponse",
-}) as any as S.Schema<ConnectorsGetResponse>;
-
-export type ConnectorsListRequestDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
-export const ConnectorsListRequestDeviceType = /*@__PURE__*/ S.String;
-
-export interface ConnectorsListRequest {
-  /** Account identifier */
-  accountId: string;
-  /** Filter connectors by device type. */
-  deviceType?: ConnectorsListRequestDeviceType;
-}
-export const ConnectorsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    deviceType: S.optional(
-      ConnectorsListRequestDeviceType.pipe(T.Query("device_type")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/connectors",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorsListRequest",
-}) as any as S.Schema<ConnectorsListRequest>;
-
-export type ConnectorsListResultItemInterruptWindowDaysOfWeekItem =
-  | "Sunday"
-  | "Monday"
-  | "Tuesday"
-  | (string & {});
-export const ConnectorsListResultItemInterruptWindowDaysOfWeekItem =
-  /*@__PURE__*/ S.String;
-
-export type ConnectorsListResultItemInterruptWindowDaysOfWeekList =
-  ConnectorsListResultItemInterruptWindowDaysOfWeekItem[];
-export const ConnectorsListResultItemInterruptWindowDaysOfWeekList =
-  /*@__PURE__*/ S.Array(
-    ConnectorsListResultItemInterruptWindowDaysOfWeekItem,
-  ) as any as S.Schema<ConnectorsListResultItemInterruptWindowDaysOfWeekList>;
-
-export type ConnectorsListResultItemInterruptWindowEmbargoDatesList = string[];
-export const ConnectorsListResultItemInterruptWindowEmbargoDatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectorsListResultItemInterruptWindowEmbargoDatesList>;
-
-export type ConnectorsListResultItemDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
-export const ConnectorsListResultItemDeviceType = /*@__PURE__*/ S.String;
-
-export interface ConnectorsListResultItemDevice {
-  id: string;
-  serialNumber?: string;
-  type?: ConnectorsListResultItemDeviceType;
-}
-export const ConnectorsListResultItemDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    type: S.optional(ConnectorsListResultItemDeviceType),
-  }),
-).annotate({
-  identifier: "ConnectorsListResultItemDevice",
-}) as any as S.Schema<ConnectorsListResultItemDevice>;
-
-export interface ConnectorsListResultItem {
-  id: string;
-  activated: boolean;
-  /** Allowed days of the week for upgrades. Default is all days. */
-  interruptWindowDaysOfWeek: ConnectorsListResultItemInterruptWindowDaysOfWeekList;
-  interruptWindowDurationHours: number;
-  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
-  interruptWindowEmbargoDates: ConnectorsListResultItemInterruptWindowEmbargoDatesList;
-  interruptWindowHourOfDay: number;
-  lastUpdated: string;
-  notes: string;
-  primary: boolean;
-  timezone: string;
-  device?: ConnectorsListResultItemDevice;
-  lastHeartbeat?: string;
-  lastSeenVersion?: string;
-  licenseKey?: string;
-  siteId?: string;
-}
-export const ConnectorsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    activated: S.Boolean,
-    interruptWindowDaysOfWeek:
-      ConnectorsListResultItemInterruptWindowDaysOfWeekList.pipe(
-        T.Body("interrupt_window_days_of_week"),
-      ),
-    interruptWindowDurationHours: S.Number.pipe(
-      T.Body("interrupt_window_duration_hours"),
-    ),
-    interruptWindowEmbargoDates:
-      ConnectorsListResultItemInterruptWindowEmbargoDatesList.pipe(
-        T.Body("interrupt_window_embargo_dates"),
-      ),
-    interruptWindowHourOfDay: S.Number.pipe(
-      T.Body("interrupt_window_hour_of_day"),
-    ),
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    notes: S.String,
-    primary: S.Boolean,
-    timezone: S.String,
-    device: S.optional(ConnectorsListResultItemDevice),
-    lastHeartbeat: S.optional(S.String.pipe(T.Body("last_heartbeat"))),
-    lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
-    licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "ConnectorsListResultItem",
-}) as any as S.Schema<ConnectorsListResultItem>;
-
-export type ConnectorsListResultList = ConnectorsListResultItem[];
-export const ConnectorsListResultList = /*@__PURE__*/ S.Array(
-  ConnectorsListResultItem,
-) as any as S.Schema<ConnectorsListResultList>;
-
-export interface ConnectorsListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ConnectorsListResultList;
-}
-export const ConnectorsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ConnectorsListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "ConnectorsListResponse",
-}) as any as S.Schema<ConnectorsListResponse>;
-
-export interface ConnectorsSnapshotsGetRequest {
+export interface GetConnectorSnapshotRequest {
   /** Account identifier */
   accountId: string;
   connectorId: string;
   snapshotT: number;
 }
-export const ConnectorsSnapshotsGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const GetConnectorSnapshotRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     connectorId: S.String.pipe(T.Label("connector_id")),
@@ -3235,8 +5586,8 @@ export const ConnectorsSnapshotsGetRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConnectorsSnapshotsGetRequest",
-}) as any as S.Schema<ConnectorsSnapshotsGetRequest>;
+  identifier: "GetConnectorSnapshotRequest",
+}) as any as S.Schema<GetConnectorSnapshotRequest>;
 
 export interface ConnectorsSnapshotsGetResponseBondsItem {
   /** Name of the network interface */
@@ -3620,7 +5971,7 @@ export const ConnectorsSnapshotsGetResponseTunnelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConnectorsSnapshotsGetResponseTunnelsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConnectorsSnapshotsGetResponse {
+export interface GetConnectorSnapshotResponse {
   /** Count of failures to reclaim space */
   countReclaimFailures: number;
   /** Count of reclaimed paths */
@@ -3960,7 +6311,7 @@ export interface ConnectorsSnapshotsGetResponse {
   /** Uptime of the system, including time spent in suspend */
   uptimeTotalMs?: number;
 }
-export const ConnectorsSnapshotsGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const GetConnectorSnapshotResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     countReclaimFailures: S.Number.pipe(T.Body("count_reclaim_failures")),
     countReclaimedPaths: S.Number.pipe(T.Body("count_reclaimed_paths")),
@@ -4331,29 +6682,2042 @@ export const ConnectorsSnapshotsGetResponse = /*@__PURE__*/ S.suspend(() =>
     uptimeTotalMs: S.optional(S.Number.pipe(T.Body("uptime_total_ms"))),
   }),
 ).annotate({
-  identifier: "ConnectorsSnapshotsGetResponse",
-}) as any as S.Schema<ConnectorsSnapshotsGetResponse>;
+  identifier: "GetConnectorSnapshotResponse",
+}) as any as S.Schema<GetConnectorSnapshotResponse>;
 
-export interface ConnectorsSnapshotsLatestListRequest {
+export interface GetGreTunnelRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  greTunnelId: string;
+  XMagicNewHcTarget_?: boolean;
+}
+export const GetGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    greTunnelId: S.String.pipe(T.Label("gre_tunnel_id")),
+    XMagicNewHcTarget_: S.optional(
+      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetGreTunnelRequest",
+}) as any as S.Schema<GetGreTunnelRequest>;
+
+export type GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList = string[];
+export const GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList>;
+
+export interface GreTunnelsGetResponseGreTunnelBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const GreTunnelsGetResponseGreTunnelBgp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerAsn: S.Number.pipe(T.Body("customer_asn")),
+    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+    extraPrefixes: S.optional(
+      GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList.pipe(
+        T.Body("extra_prefixes"),
+      ),
+    ),
+    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+  }),
+).annotate({
+  identifier: "GreTunnelsGetResponseGreTunnelBgp",
+}) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgp>;
+
+export type GreTunnelsGetResponseGreTunnelBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING"
+  | (string & {});
+export const GreTunnelsGetResponseGreTunnelBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsGetResponseGreTunnelBgpStatus {
+  state: GreTunnelsGetResponseGreTunnelBgpStatusState;
+  tcpEstablished: boolean;
+  updatedAt: string;
+  bgpState?: string;
+  cfSpeakerIp?: string;
+  cfSpeakerPort?: number;
+  customerSpeakerIp?: string;
+  customerSpeakerPort?: number;
+}
+export const GreTunnelsGetResponseGreTunnelBgpStatus = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      state: GreTunnelsGetResponseGreTunnelBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
+      customerSpeakerIp: S.optional(
+        S.String.pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.Number.pipe(T.Body("customer_speaker_port")),
+      ),
+    }),
+).annotate({
+  identifier: "GreTunnelsGetResponseGreTunnelBgpStatus",
+}) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgpStatus>;
+
+export type GreTunnelsGetResponseGreTunnelHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional"
+  | (string & {});
+export const GreTunnelsGetResponseGreTunnelHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsGetResponseGreTunnelHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const GreTunnelsGetResponseGreTunnelHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "GreTunnelsGetResponseGreTunnelHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsGetResponseGreTunnelHealthCheckTarget>;
+
+export interface GreTunnelsGetResponseGreTunnelHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsGetResponseGreTunnelHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsGetResponseGreTunnelHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const GreTunnelsGetResponseGreTunnelHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(GreTunnelsGetResponseGreTunnelHealthCheckDirection),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(GreTunnelsGetResponseGreTunnelHealthCheckTarget),
+      type: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsGetResponseGreTunnelHealthCheck",
+  }) as any as S.Schema<GreTunnelsGetResponseGreTunnelHealthCheck>;
+
+export interface GreTunnelsGetResponseGreTunnel {
+  /** Identifier */
+  id: string;
+  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
+  cloudflareGreEndpoint: string;
+  /** The IP address assigned to the customer side of the GRE tunnel. */
+  customerGreEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
+  name: string;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: GreTunnelsGetResponseGreTunnelBgp;
+  bgpStatus?: GreTunnelsGetResponseGreTunnelBgpStatus;
+  /** The date and time the tunnel was created. */
+  createdOn?: string;
+  /** An optional description of the GRE tunnel. */
+  description?: string;
+  healthCheck?: GreTunnelsGetResponseGreTunnelHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number;
+}
+export const GreTunnelsGetResponseGreTunnel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
+    customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
+    interfaceAddress: S.String.pipe(T.Body("interface_address")),
+    name: S.String,
+    automaticReturnRouting: S.optional(
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
+    ),
+    bgp: S.optional(GreTunnelsGetResponseGreTunnelBgp),
+    bgpStatus: S.optional(
+      GreTunnelsGetResponseGreTunnelBgpStatus.pipe(T.Body("bgp_status")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    healthCheck: S.optional(
+      GreTunnelsGetResponseGreTunnelHealthCheck.pipe(T.Body("health_check")),
+    ),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    mtu: S.optional(S.Number),
+    ttl: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GreTunnelsGetResponseGreTunnel",
+}) as any as S.Schema<GreTunnelsGetResponseGreTunnel>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetGreTunnelResponse {
+  greTunnel?: GreTunnelsGetResponseGreTunnel;
+}
+export const GetGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    greTunnel: S.optional(
+      GreTunnelsGetResponseGreTunnel.pipe(T.Body("gre_tunnel")),
+    ),
+  }),
+).annotate({
+  identifier: "GetGreTunnelResponse",
+}) as any as S.Schema<GetGreTunnelResponse>;
+
+export interface GetIpsecTunnelRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  ipsecTunnelId: string;
+  XMagicNewHcTarget_?: boolean;
+}
+export const GetIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
+    XMagicNewHcTarget_: S.optional(
+      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetIpsecTunnelRequest",
+}) as any as S.Schema<GetIpsecTunnelRequest>;
+
+export type IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList = string[];
+export const IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList>;
+
+export interface IpsecTunnelsGetResponseIpsecTunnelBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const IpsecTunnelsGetResponseIpsecTunnelBgp = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      customerAsn: S.Number.pipe(T.Body("customer_asn")),
+      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+      extraPrefixes: S.optional(
+        IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList.pipe(
+          T.Body("extra_prefixes"),
+        ),
+      ),
+      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    }),
+).annotate({
+  identifier: "IpsecTunnelsGetResponseIpsecTunnelBgp",
+}) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgp>;
+
+export type IpsecTunnelsGetResponseIpsecTunnelBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING"
+  | (string & {});
+export const IpsecTunnelsGetResponseIpsecTunnelBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsGetResponseIpsecTunnelBgpStatus {
+  state: IpsecTunnelsGetResponseIpsecTunnelBgpStatusState;
+  tcpEstablished: boolean;
+  updatedAt: string;
+  bgpState?: string;
+  cfSpeakerIp?: string;
+  cfSpeakerPort?: number;
+  customerSpeakerIp?: string;
+  customerSpeakerPort?: number;
+}
+export const IpsecTunnelsGetResponseIpsecTunnelBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: IpsecTunnelsGetResponseIpsecTunnelBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
+      customerSpeakerIp: S.optional(
+        S.String.pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.Number.pipe(T.Body("customer_speaker_port")),
+      ),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsGetResponseIpsecTunnelBgpStatus",
+  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgpStatus>;
+
+export interface IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities {
+  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
+  fqdnId?: string;
+}
+export const IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities",
+  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities>;
+
+export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional"
+  | (string & {});
+export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget>;
+
+export interface IpsecTunnelsGetResponseIpsecTunnelHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const IpsecTunnelsGetResponseIpsecTunnelHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection,
+      ),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget),
+      type: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsGetResponseIpsecTunnelHealthCheck",
+  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelHealthCheck>;
+
+export interface IpsecTunnelsGetResponseIpsecTunnelPskMetadata {
+  /** The date and time the tunnel was last modified. */
+  lastGeneratedOn?: string;
+}
+export const IpsecTunnelsGetResponseIpsecTunnelPskMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsGetResponseIpsecTunnelPskMetadata",
+  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelPskMetadata>;
+
+export interface IpsecTunnelsGetResponseIpsecTunnel {
+  /** Identifier */
+  id: string;
+  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
+  cloudflareEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
+  name: string;
+  /** When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2). */
+  allowNullCipher?: boolean;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: IpsecTunnelsGetResponseIpsecTunnelBgp;
+  bgpStatus?: IpsecTunnelsGetResponseIpsecTunnelBgpStatus;
+  /** The date and time the tunnel was created. */
+  createdOn?: string;
+  customRemoteIdentities?: IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string;
+  healthCheck?: IpsecTunnelsGetResponseIpsecTunnelHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata?: IpsecTunnelsGetResponseIpsecTunnelPskMetadata;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean;
+}
+export const IpsecTunnelsGetResponseIpsecTunnel = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
+    interfaceAddress: S.String.pipe(T.Body("interface_address")),
+    name: S.String,
+    allowNullCipher: S.optional(S.Boolean.pipe(T.Body("allow_null_cipher"))),
+    automaticReturnRouting: S.optional(
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
+    ),
+    bgp: S.optional(IpsecTunnelsGetResponseIpsecTunnelBgp),
+    bgpStatus: S.optional(
+      IpsecTunnelsGetResponseIpsecTunnelBgpStatus.pipe(T.Body("bgp_status")),
+    ),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    customRemoteIdentities: S.optional(
+      IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities.pipe(
+        T.Body("custom_remote_identities"),
+      ),
+    ),
+    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
+    description: S.optional(S.String),
+    healthCheck: S.optional(
+      IpsecTunnelsGetResponseIpsecTunnelHealthCheck.pipe(
+        T.Body("health_check"),
+      ),
+    ),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    pskMetadata: S.optional(
+      IpsecTunnelsGetResponseIpsecTunnelPskMetadata.pipe(
+        T.Body("psk_metadata"),
+      ),
+    ),
+    replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
+  }),
+).annotate({
+  identifier: "IpsecTunnelsGetResponseIpsecTunnel",
+}) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnel>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetIpsecTunnelResponse {
+  ipsecTunnel?: IpsecTunnelsGetResponseIpsecTunnel;
+}
+export const GetIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipsecTunnel: S.optional(
+      IpsecTunnelsGetResponseIpsecTunnel.pipe(T.Body("ipsec_tunnel")),
+    ),
+  }),
+).annotate({
+  identifier: "GetIpsecTunnelResponse",
+}) as any as S.Schema<GetIpsecTunnelResponse>;
+
+export interface GetPcapRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  pcapId: string;
+}
+export const GetPcapRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    pcapId: S.String.pipe(T.Label("pcap_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/pcaps/{pcap_id}",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "GetPcapRequest" }) as any as S.Schema<GetPcapRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetPcapResponse {
+  PCAPObjectIdFilterV1OffsetTime5More__: unknown;
+  MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__: unknown;
+}
+export const GetPcapResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    PCAPObjectIdFilterV1OffsetTime5More__: S.Unknown.pipe(
+      T.Body("PCAP object { id, filter_v1, offset_time, 5 more }"),
+    ),
+    MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__:
+      S.Unknown.pipe(
+        T.Body(
+          "MagicVisibilityPCAPsPCAPsResponseFull object { id, byte_limit, colo_name, 10 more }",
+        ),
+      ),
+  }),
+).annotate({
+  identifier: "GetPcapResponse",
+}) as any as S.Schema<GetPcapResponse>;
+
+export interface GetPcapDownloadRequest {
+  /** Identifier. */
+  accountId: string;
+  /** Identifier. */
+  pcapId: string;
+}
+export const GetPcapDownloadRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    pcapId: S.String.pipe(T.Label("pcap_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/pcaps/{pcap_id}/download",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetPcapDownloadRequest",
+}) as any as S.Schema<GetPcapDownloadRequest>;
+
+export interface GetPcapDownloadResponse {}
+export const GetPcapDownloadResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "GetPcapDownloadResponse",
+}) as any as S.Schema<GetPcapDownloadResponse>;
+
+export interface GetPcapOwnershipRequest {
+  /** Identifier. */
+  accountId: string;
+}
+export const GetPcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/pcaps/ownership",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetPcapOwnershipRequest",
+}) as any as S.Schema<GetPcapOwnershipRequest>;
+
+export type PcapsOwnershipGetResultItemStatus =
+  | "pending"
+  | "success"
+  | "failed"
+  | (string & {});
+export const PcapsOwnershipGetResultItemStatus = /*@__PURE__*/ S.String;
+
+export interface PcapsOwnershipGetResultItem {
+  /** The bucket ID associated with the packet captures API. */
+  id: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf: string;
+  /** The ownership challenge filename stored in the bucket. */
+  filename: string;
+  /** The status of the ownership challenge. Can be pending, success or failed. */
+  status: PcapsOwnershipGetResultItemStatus;
+  /** The RFC 3339 timestamp when the bucket was added to packet captures API. */
+  submitted: string;
+  /** The RFC 3339 timestamp when the bucket was validated. */
+  validated?: string;
+}
+export const PcapsOwnershipGetResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    destinationConf: S.String.pipe(T.Body("destination_conf")),
+    filename: S.String,
+    status: PcapsOwnershipGetResultItemStatus,
+    submitted: S.String,
+    validated: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PcapsOwnershipGetResultItem",
+}) as any as S.Schema<PcapsOwnershipGetResultItem>;
+
+export type PcapsOwnershipGetResultList = PcapsOwnershipGetResultItem[];
+export const PcapsOwnershipGetResultList = /*@__PURE__*/ S.Array(
+  PcapsOwnershipGetResultItem,
+) as any as S.Schema<PcapsOwnershipGetResultList>;
+
+export interface GetPcapOwnershipResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: PcapsOwnershipGetResultList;
+}
+export const GetPcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(PcapsOwnershipGetResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "GetPcapOwnershipResponse",
+}) as any as S.Schema<GetPcapOwnershipResponse>;
+
+export interface GetRouteRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  routeId: string;
+}
+export const GetRouteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    routeId: S.String.pipe(T.Label("route_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/routes/{route_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetRouteRequest",
+}) as any as S.Schema<GetRouteRequest>;
+
+export type RoutesGetResponseRouteScopeColoNamesList = string[];
+export const RoutesGetResponseRouteScopeColoNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RoutesGetResponseRouteScopeColoNamesList>;
+
+export type RoutesGetResponseRouteScopeColoRegionsList = string[];
+export const RoutesGetResponseRouteScopeColoRegionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RoutesGetResponseRouteScopeColoRegionsList>;
+
+export interface RoutesGetResponseRouteScope {
+  /** List of colo names for the ECMP scope. */
+  coloNames?: RoutesGetResponseRouteScopeColoNamesList;
+  /** List of colo regions for the ECMP scope. */
+  coloRegions?: RoutesGetResponseRouteScopeColoRegionsList;
+}
+export const RoutesGetResponseRouteScope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    coloNames: S.optional(
+      RoutesGetResponseRouteScopeColoNamesList.pipe(T.Body("colo_names")),
+    ),
+    coloRegions: S.optional(
+      RoutesGetResponseRouteScopeColoRegionsList.pipe(T.Body("colo_regions")),
+    ),
+  }),
+).annotate({
+  identifier: "RoutesGetResponseRouteScope",
+}) as any as S.Schema<RoutesGetResponseRouteScope>;
+
+export interface RoutesGetResponseRoute {
+  /** Identifier */
+  id: string;
+  /** The next-hop IP Address for the static route. */
+  nexthop: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  prefix: string;
+  /** Priority of the static route. */
+  priority: number;
+  /** When the route was created. */
+  createdOn?: string;
+  /** An optional human provided description of the static route. */
+  description?: string;
+  /** When the route was last modified. */
+  modifiedOn?: string;
+  /** Used only for ECMP routes. */
+  scope?: RoutesGetResponseRouteScope;
+  /** Optional weight of the ECMP scope - if provided. */
+  weight?: number;
+}
+export const RoutesGetResponseRoute = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    nexthop: S.String,
+    prefix: S.String,
+    priority: S.Number,
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    scope: S.optional(RoutesGetResponseRouteScope),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RoutesGetResponseRoute",
+}) as any as S.Schema<RoutesGetResponseRoute>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetRouteResponse {
+  route?: RoutesGetResponseRoute;
+}
+export const GetRouteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    route: S.optional(RoutesGetResponseRoute),
+  }),
+).annotate({
+  identifier: "GetRouteResponse",
+}) as any as S.Schema<GetRouteResponse>;
+
+export interface GetSiteRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  XMagicNewHcTarget_?: boolean;
+}
+export const GetSiteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    XMagicNewHcTarget_: S.optional(
+      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "GetSiteRequest" }) as any as S.Schema<GetSiteRequest>;
+
+export interface SitesGetResponseLocation {
+  /** Latitude */
+  lat?: string;
+  /** Longitude */
+  lon?: string;
+}
+export const SitesGetResponseLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.String),
+    lon: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SitesGetResponseLocation",
+}) as any as S.Schema<SitesGetResponseLocation>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSiteResponse {
+  /** Identifier */
+  id?: string;
+  /** Magic Connector identifier tag. */
+  connectorId?: string;
+  description?: string;
+  /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
+  haMode?: boolean;
+  /** Location of site in latitude and longitude. */
+  location?: SitesGetResponseLocation;
+  /** The name of the site. */
+  name?: string;
+  /** Magic Connector identifier tag. Used when high availability mode is on. */
+  secondaryConnectorId?: string;
+}
+export const GetSiteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
+    description: S.optional(S.String),
+    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
+    location: S.optional(SitesGetResponseLocation),
+    name: S.optional(S.String),
+    secondaryConnectorId: S.optional(
+      S.String.pipe(T.Body("secondary_connector_id")),
+    ),
+  }),
+).annotate({
+  identifier: "GetSiteResponse",
+}) as any as S.Schema<GetSiteResponse>;
+
+export interface GetSiteAclRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  /** Identifier */
+  aclId: string;
+}
+export const GetSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    aclId: S.String.pipe(T.Label("acl_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSiteAclRequest",
+}) as any as S.Schema<GetSiteAclRequest>;
+
+export type SitesAclsGetResponseLan1PortRangesList = string[];
+export const SitesAclsGetResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SitesAclsGetResponseLan1PortRangesList>;
+
+export type SitesAclsGetResponseLan1PortsList = number[];
+export const SitesAclsGetResponseLan1PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsGetResponseLan1PortsList>;
+
+export type SitesAclsGetResponseLan1SubnetsList = unknown[];
+export const SitesAclsGetResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsGetResponseLan1SubnetsList>;
+
+export interface SitesAclsGetResponseLan1 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsGetResponseLan1PortRangesList;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsGetResponseLan1PortsList;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsGetResponseLan1SubnetsList;
+}
+export const SitesAclsGetResponseLan1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      SitesAclsGetResponseLan1PortRangesList.pipe(T.Body("port_ranges")),
+    ),
+    ports: S.optional(SitesAclsGetResponseLan1PortsList),
+    subnets: S.optional(SitesAclsGetResponseLan1SubnetsList),
+  }),
+).annotate({
+  identifier: "SitesAclsGetResponseLan1",
+}) as any as S.Schema<SitesAclsGetResponseLan1>;
+
+export type SitesAclsGetResponseProtocolsList = unknown[];
+export const SitesAclsGetResponseProtocolsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsGetResponseProtocolsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSiteAclResponse {
+  /** Identifier */
+  id?: string;
+  /** Description for the ACL. */
+  description?: string;
+  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  forwardLocally?: boolean;
+  lan1?: SitesAclsGetResponseLan1;
+  lan2?: unknown;
+  /** The name of the ACL. */
+  name?: string;
+  protocols?: SitesAclsGetResponseProtocolsList;
+  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean;
+}
+export const GetSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    description: S.optional(S.String),
+    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
+    lan1: S.optional(SitesAclsGetResponseLan1.pipe(T.Body("lan_1"))),
+    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
+    name: S.optional(S.String),
+    protocols: S.optional(SitesAclsGetResponseProtocolsList),
+    unidirectional: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "GetSiteAclResponse",
+}) as any as S.Schema<GetSiteAclResponse>;
+
+export interface GetSiteLanRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  /** Identifier */
+  lanId: string;
+}
+export const GetSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    lanId: S.String.pipe(T.Label("lan_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSiteLanRequest",
+}) as any as S.Schema<GetSiteLanRequest>;
+
+export interface SitesLansGetResponseNat {
+  /** A valid CIDR notation representing an IP range. */
+  staticPrefix?: string;
+}
+export const SitesLansGetResponseNat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
+  }),
+).annotate({
+  identifier: "SitesLansGetResponseNat",
+}) as any as S.Schema<SitesLansGetResponseNat>;
+
+export interface SitesLansGetResponseRoutedSubnetsItem {
+  /** A valid IPv4 address. */
+  nextHop: string;
+  /** A valid CIDR notation representing an IP range. */
+  prefix: string;
+  nat?: unknown;
+}
+export const SitesLansGetResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextHop: S.String.pipe(T.Body("next_hop")),
+      prefix: S.String,
+      nat: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "SitesLansGetResponseRoutedSubnetsItem",
+}) as any as S.Schema<SitesLansGetResponseRoutedSubnetsItem>;
+
+export type SitesLansGetResponseRoutedSubnetsList =
+  SitesLansGetResponseRoutedSubnetsItem[];
+export const SitesLansGetResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
+  SitesLansGetResponseRoutedSubnetsItem,
+) as any as S.Schema<SitesLansGetResponseRoutedSubnetsList>;
+
+export type SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList =
+  string[];
+export const SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList>;
+
+export interface SitesLansGetResponseStaticAddressingDhcpRelay {
+  /** List of DHCP server IPs. */
+  serverAddresses?: SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList;
+}
+export const SitesLansGetResponseStaticAddressingDhcpRelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serverAddresses: S.optional(
+        SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList.pipe(
+          T.Body("server_addresses"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansGetResponseStaticAddressingDhcpRelay",
+  }) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpRelay>;
+
+export type SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType =
+  | "text"
+  | "hex"
+  | "ip"
+  | (string & {});
+export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem {
+  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
+  code: number;
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  type: SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType;
+  /** The option value, interpreted according to the type field. */
+  value: string;
+}
+export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.Number,
+      type: SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType,
+      value: S.String,
+    }),
+  ).annotate({
+    identifier: "SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem",
+  }) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem>;
+
+export type SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList =
+  SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem[];
+export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList =
+  /*@__PURE__*/ S.Array(
+    SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem,
+  ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList>;
+
+export type SitesLansGetResponseStaticAddressingDhcpServerDnsServersList =
+  string[];
+export const SitesLansGetResponseStaticAddressingDhcpServerDnsServersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDnsServersList>;
+
+export type SitesLansGetResponseStaticAddressingDhcpServerReservationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const SitesLansGetResponseStaticAddressingDhcpServerReservationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerReservationsMap>;
+
+export interface SitesLansGetResponseStaticAddressingDhcpServer {
+  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
+  dhcpOptions?: SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList;
+  /** A valid IPv4 address. */
+  dhcpPoolEnd?: string;
+  /** A valid IPv4 address. */
+  dhcpPoolStart?: string;
+  /** A valid IPv4 address. */
+  dnsServer?: string;
+  dnsServers?: SitesLansGetResponseStaticAddressingDhcpServerDnsServersList;
+  /** Mapping of MAC addresses to IP addresses */
+  reservations?: SitesLansGetResponseStaticAddressingDhcpServerReservationsMap;
+}
+export const SitesLansGetResponseStaticAddressingDhcpServer =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dhcpOptions: S.optional(
+        SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList.pipe(
+          T.Body("dhcp_options"),
+        ),
+      ),
+      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
+      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
+      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
+      dnsServers: S.optional(
+        SitesLansGetResponseStaticAddressingDhcpServerDnsServersList.pipe(
+          T.Body("dns_servers"),
+        ),
+      ),
+      reservations: S.optional(
+        SitesLansGetResponseStaticAddressingDhcpServerReservationsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansGetResponseStaticAddressingDhcpServer",
+  }) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServer>;
+
+export interface SitesLansGetResponseStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  dhcpRelay?: SitesLansGetResponseStaticAddressingDhcpRelay;
+  dhcpServer?: SitesLansGetResponseStaticAddressingDhcpServer;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string;
+}
+export const SitesLansGetResponseStaticAddressing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.String,
+      dhcpRelay: S.optional(
+        SitesLansGetResponseStaticAddressingDhcpRelay.pipe(
+          T.Body("dhcp_relay"),
+        ),
+      ),
+      dhcpServer: S.optional(
+        SitesLansGetResponseStaticAddressingDhcpServer.pipe(
+          T.Body("dhcp_server"),
+        ),
+      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
+    }),
+).annotate({
+  identifier: "SitesLansGetResponseStaticAddressing",
+}) as any as S.Schema<SitesLansGetResponseStaticAddressing>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSiteLanResponse {
+  /** Identifier */
+  id?: string;
+  bondId?: number;
+  /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
+  haLink?: boolean;
+  /** mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean;
+  /** mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean;
+  name?: string;
+  nat?: SitesLansGetResponseNat;
+  physport?: number;
+  routedSubnets?: SitesLansGetResponseRoutedSubnetsList;
+  /** Identifier */
+  siteId?: string;
+  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
+  staticAddressing?: SitesLansGetResponseStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const GetSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
+    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
+    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
+    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
+    name: S.optional(S.String),
+    nat: S.optional(SitesLansGetResponseNat),
+    physport: S.optional(S.Number),
+    routedSubnets: S.optional(
+      SitesLansGetResponseRoutedSubnetsList.pipe(T.Body("routed_subnets")),
+    ),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    staticAddressing: S.optional(
+      SitesLansGetResponseStaticAddressing.pipe(T.Body("static_addressing")),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }),
+).annotate({
+  identifier: "GetSiteLanResponse",
+}) as any as S.Schema<GetSiteLanResponse>;
+
+export interface GetSiteWanRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  /** Identifier */
+  wanId: string;
+}
+export const GetSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    wanId: S.String.pipe(T.Label("wan_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetSiteWanRequest",
+}) as any as S.Schema<GetSiteWanRequest>;
+
+export type SitesWansGetResponseHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
+export const SitesWansGetResponseHealthCheckRate = /*@__PURE__*/ S.String;
+
+export interface SitesWansGetResponseStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  /** A valid IPv4 address. */
+  gatewayAddress: string;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+}
+export const SitesWansGetResponseStaticAddressing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.String,
+      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+    }),
+).annotate({
+  identifier: "SitesWansGetResponseStaticAddressing",
+}) as any as S.Schema<SitesWansGetResponseStaticAddressing>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetSiteWanResponse {
+  /** Identifier */
+  id?: string;
+  /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
+  healthCheckRate?: SitesWansGetResponseHealthCheckRate;
+  name?: string;
+  physport?: number;
+  /** Priority of WAN for traffic loadbalancing. */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
+  staticAddressing?: SitesWansGetResponseStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const GetSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    healthCheckRate: S.optional(
+      SitesWansGetResponseHealthCheckRate.pipe(T.Body("health_check_rate")),
+    ),
+    name: S.optional(S.String),
+    physport: S.optional(S.Number),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    staticAddressing: S.optional(
+      SitesWansGetResponseStaticAddressing.pipe(T.Body("static_addressing")),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }),
+).annotate({
+  identifier: "GetSiteWanResponse",
+}) as any as S.Schema<GetSiteWanResponse>;
+
+export interface ListAppsRequest {
+  /** Identifier */
+  accountId: string;
+}
+export const ListAppsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/apps",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListAppsRequest",
+}) as any as S.Schema<ListAppsRequest>;
+
+export interface AppsListResultItem {
+  /** Custom app defined for an account. */
+  MagicAccountAppObjectAccountAppIdHostnamesIpSubnets3More__: unknown;
+  /** Managed app defined by Cloudflare. */
+  MagicManagedAppObjectManagedAppIdHostnamesIpSubnets3More__: unknown;
+}
+export const AppsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    MagicAccountAppObjectAccountAppIdHostnamesIpSubnets3More__: S.Unknown.pipe(
+      T.Body(
+        "MagicAccountApp object { account_app_id, hostnames, ip_subnets, 3 more }",
+      ),
+    ),
+    MagicManagedAppObjectManagedAppIdHostnamesIpSubnets3More__: S.Unknown.pipe(
+      T.Body(
+        "MagicManagedApp object { managed_app_id, hostnames, ip_subnets, 3 more }",
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "AppsListResultItem",
+}) as any as S.Schema<AppsListResultItem>;
+
+export type AppsListResultList = AppsListResultItem[];
+export const AppsListResultList = /*@__PURE__*/ S.Array(
+  AppsListResultItem,
+) as any as S.Schema<AppsListResultList>;
+
+export interface ListAppsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: AppsListResultList;
+}
+export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(AppsListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListAppsResponse",
+}) as any as S.Schema<ListAppsResponse>;
+
+export interface ListCf1SiteRampsRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  cf1SiteId: string;
+}
+export const ListCf1SiteRampsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}/ramps",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListCf1SiteRampsRequest",
+}) as any as S.Schema<ListCf1SiteRampsRequest>;
+
+export interface Cf1SitesRampsListResultItemGre {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsListResultItemGre = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsListResultItemGre",
+}) as any as S.Schema<Cf1SitesRampsListResultItemGre>;
+
+export interface Cf1SitesRampsListResultItemGreInterconnect {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsListResultItemGreInterconnect =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+    }),
+  ).annotate({
+    identifier: "Cf1SitesRampsListResultItemGreInterconnect",
+  }) as any as S.Schema<Cf1SitesRampsListResultItemGreInterconnect>;
+
+export interface Cf1SitesRampsListResultItemIpsec {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsListResultItemIpsec = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsListResultItemIpsec",
+}) as any as S.Schema<Cf1SitesRampsListResultItemIpsec>;
+
+export interface Cf1SitesRampsListResultItemMconn {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsListResultItemMconn = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsListResultItemMconn",
+}) as any as S.Schema<Cf1SitesRampsListResultItemMconn>;
+
+export interface Cf1SitesRampsListResultItemMplsInterconnect {
+  /** URL reference to the source network resource that this ramp is managed by. */
+  managedBy?: string;
+}
+export const Cf1SitesRampsListResultItemMplsInterconnect =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      managedBy: S.optional(S.String.pipe(T.Body("managed_by"))),
+    }),
+  ).annotate({
+    identifier: "Cf1SitesRampsListResultItemMplsInterconnect",
+  }) as any as S.Schema<Cf1SitesRampsListResultItemMplsInterconnect>;
+
+export interface Cf1SitesRampsListResultItem {
+  /** Identifier */
+  id: string;
+  createdOn: string;
+  modifiedOn: string;
+  /** A human-provided name describing the ramp that should be unique within the CF1 Site. */
+  name: string;
+  /** The type of network connection (ramp) linking a CF1 Site to Cloudflare's network. */
+  type: unknown;
+  /** A human-provided description of the ramp. */
+  description?: string;
+  gre?: Cf1SitesRampsListResultItemGre;
+  greInterconnect?: Cf1SitesRampsListResultItemGreInterconnect;
+  ipsec?: Cf1SitesRampsListResultItemIpsec;
+  mconn?: Cf1SitesRampsListResultItemMconn;
+  mplsInterconnect?: Cf1SitesRampsListResultItemMplsInterconnect;
+}
+export const Cf1SitesRampsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    createdOn: S.String.pipe(T.Body("created_on")),
+    modifiedOn: S.String.pipe(T.Body("modified_on")),
+    name: S.String,
+    type: S.Unknown,
+    description: S.optional(S.String),
+    gre: S.optional(Cf1SitesRampsListResultItemGre),
+    greInterconnect: S.optional(
+      Cf1SitesRampsListResultItemGreInterconnect.pipe(
+        T.Body("gre_interconnect"),
+      ),
+    ),
+    ipsec: S.optional(Cf1SitesRampsListResultItemIpsec),
+    mconn: S.optional(Cf1SitesRampsListResultItemMconn),
+    mplsInterconnect: S.optional(
+      Cf1SitesRampsListResultItemMplsInterconnect.pipe(
+        T.Body("mpls_interconnect"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "Cf1SitesRampsListResultItem",
+}) as any as S.Schema<Cf1SitesRampsListResultItem>;
+
+export type Cf1SitesRampsListResultList = Cf1SitesRampsListResultItem[];
+export const Cf1SitesRampsListResultList = /*@__PURE__*/ S.Array(
+  Cf1SitesRampsListResultItem,
+) as any as S.Schema<Cf1SitesRampsListResultList>;
+
+export interface ListCf1SiteRampsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: Cf1SitesRampsListResultList;
+}
+export const ListCf1SiteRampsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(Cf1SitesRampsListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListCf1SiteRampsResponse",
+}) as any as S.Schema<ListCf1SiteRampsResponse>;
+
+export interface ListCf1SitesRequest {
+  /** Identifier */
+  accountId: string;
+}
+export const ListCf1SitesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cf1_sites",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListCf1SitesRequest",
+}) as any as S.Schema<ListCf1SitesRequest>;
+
+export interface Cf1SitesListResultItemLocation {
+  /** Latitude of the CF1 Site. */
+  lat?: number;
+  /** Longitude of the CF1 Site. */
+  long?: number;
+  /** Name of nearest town, city, or village. */
+  name?: string;
+}
+export const Cf1SitesListResultItemLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.Number),
+    long: S.optional(S.Number),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Cf1SitesListResultItemLocation",
+}) as any as S.Schema<Cf1SitesListResultItemLocation>;
+
+export interface Cf1SitesListResultItem {
+  /** A human-provided name describing the CF1 Site that should be unique within the account. */
+  name: string;
+  /** Identifier */
+  id?: string;
+  createdOn?: string;
+  /** A human-provided description of the CF1 Site. */
+  description?: string;
+  location?: Cf1SitesListResultItemLocation;
+  modifiedOn?: string;
+}
+export const Cf1SitesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    location: S.optional(Cf1SitesListResultItemLocation),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "Cf1SitesListResultItem",
+}) as any as S.Schema<Cf1SitesListResultItem>;
+
+export type Cf1SitesListResultList = Cf1SitesListResultItem[];
+export const Cf1SitesListResultList = /*@__PURE__*/ S.Array(
+  Cf1SitesListResultItem,
+) as any as S.Schema<Cf1SitesListResultList>;
+
+export interface ListCf1SitesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: Cf1SitesListResultList;
+}
+export const ListCf1SitesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(Cf1SitesListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListCf1SitesResponse",
+}) as any as S.Schema<ListCf1SitesResponse>;
+
+export interface ListCfInterconnectsRequest {
+  /** Identifier */
+  accountId: string;
+  XMagicNewHcTarget_?: boolean;
+}
+export const ListCfInterconnectsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    XMagicNewHcTarget_: S.optional(
+      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/cf_interconnects",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListCfInterconnectsRequest",
+}) as any as S.Schema<ListCfInterconnectsRequest>;
+
+export interface CfInterconnectsListResponseInterconnectsItemGre {
+  /** The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect. */
+  cloudflareEndpoint?: string;
+}
+export const CfInterconnectsListResponseInterconnectsItemGre =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cloudflareEndpoint: S.optional(
+        S.String.pipe(T.Body("cloudflare_endpoint")),
+      ),
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsListResponseInterconnectsItemGre",
+  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemGre>;
+
+export interface CfInterconnectsListResponseInterconnectsItemHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const CfInterconnectsListResponseInterconnectsItemHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsListResponseInterconnectsItemHealthCheckTarget",
+  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemHealthCheckTarget>;
+
+export interface CfInterconnectsListResponseInterconnectsItemHealthCheck {
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: CfInterconnectsListResponseInterconnectsItemHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const CfInterconnectsListResponseInterconnectsItemHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(
+        CfInterconnectsListResponseInterconnectsItemHealthCheckTarget,
+      ),
+      type: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsListResponseInterconnectsItemHealthCheck",
+  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItemHealthCheck>;
+
+export interface CfInterconnectsListResponseInterconnectsItem {
+  /** Identifier */
+  id?: string;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  /** The name of the interconnect. The name cannot share a name with other tunnels. */
+  coloName?: string;
+  /** The date and time the tunnel was created. */
+  createdOn?: string;
+  /** An optional description of the interconnect. */
+  description?: string;
+  /** The configuration specific to GRE interconnects. */
+  gre?: CfInterconnectsListResponseInterconnectsItemGre;
+  healthCheck?: CfInterconnectsListResponseInterconnectsItemHealthCheck;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress?: string;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string;
+  /** The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576. */
+  mtu?: number;
+  /** The name of the interconnect. The name cannot share a name with other tunnels. */
+  name?: string;
+  /** An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource. */
+  virtualPortReservationId?: string;
+}
+export const CfInterconnectsListResponseInterconnectsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      automaticReturnRouting: S.optional(
+        S.Boolean.pipe(T.Body("automatic_return_routing")),
+      ),
+      coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      description: S.optional(S.String),
+      gre: S.optional(CfInterconnectsListResponseInterconnectsItemGre),
+      healthCheck: S.optional(
+        CfInterconnectsListResponseInterconnectsItemHealthCheck.pipe(
+          T.Body("health_check"),
+        ),
+      ),
+      interfaceAddress: S.optional(S.String.pipe(T.Body("interface_address"))),
+      interfaceAddress6: S.optional(
+        S.String.pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      mtu: S.optional(S.Number),
+      name: S.optional(S.String),
+      virtualPortReservationId: S.optional(
+        S.String.pipe(T.Body("virtual_port_reservation_id")),
+      ),
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsListResponseInterconnectsItem",
+  }) as any as S.Schema<CfInterconnectsListResponseInterconnectsItem>;
+
+export type CfInterconnectsListResponseInterconnectsList =
+  CfInterconnectsListResponseInterconnectsItem[];
+export const CfInterconnectsListResponseInterconnectsList =
+  /*@__PURE__*/ S.Array(
+    CfInterconnectsListResponseInterconnectsItem,
+  ) as any as S.Schema<CfInterconnectsListResponseInterconnectsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface ListCfInterconnectsResponse {
+  interconnects?: CfInterconnectsListResponseInterconnectsList;
+}
+export const ListCfInterconnectsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    interconnects: S.optional(CfInterconnectsListResponseInterconnectsList),
+  }),
+).annotate({
+  identifier: "ListCfInterconnectsResponse",
+}) as any as S.Schema<ListCfInterconnectsResponse>;
+
+export interface ListConnectorEventLatestsRequest {
   /** Account identifier */
   accountId: string;
   connectorId: string;
 }
-export const ConnectorsSnapshotsLatestListRequest = /*@__PURE__*/ S.suspend(
+export const ListConnectorEventLatestsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    connectorId: S.String.pipe(T.Label("connector_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events/latest",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListConnectorEventLatestsRequest",
+}) as any as S.Schema<ListConnectorEventLatestsRequest>;
+
+export interface ConnectorsEventsLatestListResponseItemsItemE {
+  InitObjectK__: unknown;
+  LeaveObjectK__: unknown;
+  StartAttestationObjectK__: unknown;
+  FinishAttestationSuccessObjectK__: unknown;
+  FinishAttestationFailureObjectK__: unknown;
+  StartRotateCryptKeyObjectK__: unknown;
+  FinishRotateCryptKeySuccessObjectK__: unknown;
+  FinishRotateCryptKeyFailureObjectK__: unknown;
+  StartRotatePkiObjectK__: unknown;
+  FinishRotatePkiSuccessObjectK__: unknown;
+  FinishRotatePkiFailureObjectK__: unknown;
+  StartUpgradeObjectKUrl__: unknown;
+  FinishUpgradeSuccessObjectK__: unknown;
+  FinishUpgradeFailureObjectK__: unknown;
+  ReconcileObjectK__: unknown;
+  ConfigureCloudflaredTunnelObjectK__: unknown;
+  RekeyInstallBothObjectKTunnelId__: unknown;
+  RekeyStartObjectKTunnelId__: unknown;
+  RekeyAdvanceObjectKTunnelId__: unknown;
+  RekeyCompleteObjectKTunnelId__: unknown;
+  RekeyResetObjectKTunnelId__: unknown;
+}
+export const ConnectorsEventsLatestListResponseItemsItemE =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      InitObjectK__: S.Unknown.pipe(T.Body("Init object { k }")),
+      LeaveObjectK__: S.Unknown.pipe(T.Body("Leave object { k }")),
+      StartAttestationObjectK__: S.Unknown.pipe(
+        T.Body("StartAttestation object { k }"),
+      ),
+      FinishAttestationSuccessObjectK__: S.Unknown.pipe(
+        T.Body("FinishAttestationSuccess object { k }"),
+      ),
+      FinishAttestationFailureObjectK__: S.Unknown.pipe(
+        T.Body("FinishAttestationFailure object { k }"),
+      ),
+      StartRotateCryptKeyObjectK__: S.Unknown.pipe(
+        T.Body("StartRotateCryptKey object { k }"),
+      ),
+      FinishRotateCryptKeySuccessObjectK__: S.Unknown.pipe(
+        T.Body("FinishRotateCryptKeySuccess object { k }"),
+      ),
+      FinishRotateCryptKeyFailureObjectK__: S.Unknown.pipe(
+        T.Body("FinishRotateCryptKeyFailure object { k }"),
+      ),
+      StartRotatePkiObjectK__: S.Unknown.pipe(
+        T.Body("StartRotatePki object { k }"),
+      ),
+      FinishRotatePkiSuccessObjectK__: S.Unknown.pipe(
+        T.Body("FinishRotatePkiSuccess object { k }"),
+      ),
+      FinishRotatePkiFailureObjectK__: S.Unknown.pipe(
+        T.Body("FinishRotatePkiFailure object { k }"),
+      ),
+      StartUpgradeObjectKUrl__: S.Unknown.pipe(
+        T.Body("StartUpgrade object { k, url }"),
+      ),
+      FinishUpgradeSuccessObjectK__: S.Unknown.pipe(
+        T.Body("FinishUpgradeSuccess object { k }"),
+      ),
+      FinishUpgradeFailureObjectK__: S.Unknown.pipe(
+        T.Body("FinishUpgradeFailure object { k }"),
+      ),
+      ReconcileObjectK__: S.Unknown.pipe(T.Body("Reconcile object { k }")),
+      ConfigureCloudflaredTunnelObjectK__: S.Unknown.pipe(
+        T.Body("ConfigureCloudflaredTunnel object { k }"),
+      ),
+      RekeyInstallBothObjectKTunnelId__: S.Unknown.pipe(
+        T.Body("RekeyInstallBoth object { k, tunnel_id }"),
+      ),
+      RekeyStartObjectKTunnelId__: S.Unknown.pipe(
+        T.Body("RekeyStart object { k, tunnel_id }"),
+      ),
+      RekeyAdvanceObjectKTunnelId__: S.Unknown.pipe(
+        T.Body("RekeyAdvance object { k, tunnel_id }"),
+      ),
+      RekeyCompleteObjectKTunnelId__: S.Unknown.pipe(
+        T.Body("RekeyComplete object { k, tunnel_id }"),
+      ),
+      RekeyResetObjectKTunnelId__: S.Unknown.pipe(
+        T.Body("RekeyReset object { k, tunnel_id }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItemE",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItemE>;
+
+export interface ConnectorsEventsLatestListResponseItemsItem {
+  e: ConnectorsEventsLatestListResponseItemsItemE;
+  /** Sequence number, used to order events with the same timestamp */
+  n: number;
+  /** Time the Event was recorded (seconds since the Unix epoch) */
+  t: number;
+  /** Version */
+  v?: string;
+}
+export const ConnectorsEventsLatestListResponseItemsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      e: ConnectorsEventsLatestListResponseItemsItemE,
+      n: S.Number,
+      t: S.Number,
+      v: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ConnectorsEventsLatestListResponseItemsItem",
+  }) as any as S.Schema<ConnectorsEventsLatestListResponseItemsItem>;
+
+export type ConnectorsEventsLatestListResponseItemsList =
+  ConnectorsEventsLatestListResponseItemsItem[];
+export const ConnectorsEventsLatestListResponseItemsList =
+  /*@__PURE__*/ S.Array(
+    ConnectorsEventsLatestListResponseItemsItem,
+  ) as any as S.Schema<ConnectorsEventsLatestListResponseItemsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface ListConnectorEventLatestsResponse {
+  count: number;
+  items: ConnectorsEventsLatestListResponseItemsList;
+}
+export const ListConnectorEventLatestsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    items: ConnectorsEventsLatestListResponseItemsList,
+  }),
+).annotate({
+  identifier: "ListConnectorEventLatestsResponse",
+}) as any as S.Schema<ListConnectorEventLatestsResponse>;
+
+export interface ListConnectorEventsRequest {
+  /** Account identifier */
+  accountId: string;
+  connectorId: string;
+  from: number;
+  to: number;
+  cursor?: string;
+  /** Filter by event kind */
+  k?: string;
+  limit?: number;
+}
+export const ListConnectorEventsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    connectorId: S.String.pipe(T.Label("connector_id")),
+    from: S.Number.pipe(T.Query()),
+    to: S.Number.pipe(T.Query()),
+    cursor: S.optional(S.String.pipe(T.Query())),
+    k: S.optional(S.String.pipe(T.Query())),
+    limit: S.optional(S.Number.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/events",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListConnectorEventsRequest",
+}) as any as S.Schema<ListConnectorEventsRequest>;
+
+export interface ConnectorsEventsListResponseItemsItem {
+  /** Time the Event was collected (seconds since the Unix epoch) */
+  a: number;
+  /** Kind */
+  k: string;
+  /** Sequence number, used to order events with the same timestamp */
+  n: number;
+  /** Time the Event was recorded (seconds since the Unix epoch) */
+  t: number;
+}
+export const ConnectorsEventsListResponseItemsItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      accountId: S.String.pipe(T.Label("account_id")),
-      connectorId: S.String.pipe(T.Label("connector_id")),
-    }).pipe(
-      T.Http({
-        method: "GET",
-        uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/latest",
-        code: 200,
-      }),
-    ),
+      a: S.Number,
+      k: S.String,
+      n: S.Number,
+      t: S.Number,
+    }),
 ).annotate({
-  identifier: "ConnectorsSnapshotsLatestListRequest",
-}) as any as S.Schema<ConnectorsSnapshotsLatestListRequest>;
+  identifier: "ConnectorsEventsListResponseItemsItem",
+}) as any as S.Schema<ConnectorsEventsListResponseItemsItem>;
+
+export type ConnectorsEventsListResponseItemsList =
+  ConnectorsEventsListResponseItemsItem[];
+export const ConnectorsEventsListResponseItemsList = /*@__PURE__*/ S.Array(
+  ConnectorsEventsListResponseItemsItem,
+) as any as S.Schema<ConnectorsEventsListResponseItemsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface ListConnectorEventsResponse {
+  count: number;
+  items: ConnectorsEventsListResponseItemsList;
+  cursor?: string;
+}
+export const ListConnectorEventsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    count: S.Number,
+    items: ConnectorsEventsListResponseItemsList,
+    cursor: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ListConnectorEventsResponse",
+}) as any as S.Schema<ListConnectorEventsResponse>;
+
+export type ConnectorsListRequestDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
+export const ConnectorsListRequestDeviceType = /*@__PURE__*/ S.String;
+
+export interface ListConnectorsRequest {
+  /** Account identifier */
+  accountId: string;
+  /** Filter connectors by device type. */
+  deviceType?: ConnectorsListRequestDeviceType;
+}
+export const ListConnectorsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    deviceType: S.optional(
+      ConnectorsListRequestDeviceType.pipe(T.Query("device_type")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/connectors",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListConnectorsRequest",
+}) as any as S.Schema<ListConnectorsRequest>;
+
+export type ConnectorsListResultItemInterruptWindowDaysOfWeekItem =
+  | "Sunday"
+  | "Monday"
+  | "Tuesday"
+  | (string & {});
+export const ConnectorsListResultItemInterruptWindowDaysOfWeekItem =
+  /*@__PURE__*/ S.String;
+
+export type ConnectorsListResultItemInterruptWindowDaysOfWeekList =
+  ConnectorsListResultItemInterruptWindowDaysOfWeekItem[];
+export const ConnectorsListResultItemInterruptWindowDaysOfWeekList =
+  /*@__PURE__*/ S.Array(
+    ConnectorsListResultItemInterruptWindowDaysOfWeekItem,
+  ) as any as S.Schema<ConnectorsListResultItemInterruptWindowDaysOfWeekList>;
+
+export type ConnectorsListResultItemInterruptWindowEmbargoDatesList = string[];
+export const ConnectorsListResultItemInterruptWindowEmbargoDatesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectorsListResultItemInterruptWindowEmbargoDatesList>;
+
+export type ConnectorsListResultItemDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
+export const ConnectorsListResultItemDeviceType = /*@__PURE__*/ S.String;
+
+export interface ConnectorsListResultItemDevice {
+  id: string;
+  serialNumber?: string;
+  type?: ConnectorsListResultItemDeviceType;
+}
+export const ConnectorsListResultItemDevice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
+    type: S.optional(ConnectorsListResultItemDeviceType),
+  }),
+).annotate({
+  identifier: "ConnectorsListResultItemDevice",
+}) as any as S.Schema<ConnectorsListResultItemDevice>;
+
+export interface ConnectorsListResultItem {
+  id: string;
+  activated: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek: ConnectorsListResultItemInterruptWindowDaysOfWeekList;
+  interruptWindowDurationHours: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates: ConnectorsListResultItemInterruptWindowEmbargoDatesList;
+  interruptWindowHourOfDay: number;
+  lastUpdated: string;
+  notes: string;
+  primary: boolean;
+  timezone: string;
+  device?: ConnectorsListResultItemDevice;
+  lastHeartbeat?: string;
+  lastSeenVersion?: string;
+  licenseKey?: string;
+  siteId?: string;
+}
+export const ConnectorsListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    activated: S.Boolean,
+    interruptWindowDaysOfWeek:
+      ConnectorsListResultItemInterruptWindowDaysOfWeekList.pipe(
+        T.Body("interrupt_window_days_of_week"),
+      ),
+    interruptWindowDurationHours: S.Number.pipe(
+      T.Body("interrupt_window_duration_hours"),
+    ),
+    interruptWindowEmbargoDates:
+      ConnectorsListResultItemInterruptWindowEmbargoDatesList.pipe(
+        T.Body("interrupt_window_embargo_dates"),
+      ),
+    interruptWindowHourOfDay: S.Number.pipe(
+      T.Body("interrupt_window_hour_of_day"),
+    ),
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    notes: S.String,
+    primary: S.Boolean,
+    timezone: S.String,
+    device: S.optional(ConnectorsListResultItemDevice),
+    lastHeartbeat: S.optional(S.String.pipe(T.Body("last_heartbeat"))),
+    lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
+    licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+  }),
+).annotate({
+  identifier: "ConnectorsListResultItem",
+}) as any as S.Schema<ConnectorsListResultItem>;
+
+export type ConnectorsListResultList = ConnectorsListResultItem[];
+export const ConnectorsListResultList = /*@__PURE__*/ S.Array(
+  ConnectorsListResultItem,
+) as any as S.Schema<ConnectorsListResultList>;
+
+export interface ListConnectorsResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: ConnectorsListResultList;
+}
+export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(ConnectorsListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListConnectorsResponse",
+}) as any as S.Schema<ListConnectorsResponse>;
+
+export interface ListConnectorSnapshotLatestsRequest {
+  /** Account identifier */
+  accountId: string;
+  connectorId: string;
+}
+export const ListConnectorSnapshotLatestsRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    connectorId: S.String.pipe(T.Label("connector_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/connectors/{connector_id}/telemetry/snapshots/latest",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListConnectorSnapshotLatestsRequest",
+}) as any as S.Schema<ListConnectorSnapshotLatestsRequest>;
 
 export interface ConnectorsSnapshotsLatestListResponseItemsItemBondsItem {
   /** Name of the network interface */
@@ -5512,21 +9876,21 @@ export const ConnectorsSnapshotsLatestListResponseItemsList =
   ) as any as S.Schema<ConnectorsSnapshotsLatestListResponseItemsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConnectorsSnapshotsLatestListResponse {
+export interface ListConnectorSnapshotLatestsResponse {
   count: number;
   items: ConnectorsSnapshotsLatestListResponseItemsList;
 }
-export const ConnectorsSnapshotsLatestListResponse = /*@__PURE__*/ S.suspend(
+export const ListConnectorSnapshotLatestsResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       count: S.Number,
       items: ConnectorsSnapshotsLatestListResponseItemsList,
     }),
 ).annotate({
-  identifier: "ConnectorsSnapshotsLatestListResponse",
-}) as any as S.Schema<ConnectorsSnapshotsLatestListResponse>;
+  identifier: "ListConnectorSnapshotLatestsResponse",
+}) as any as S.Schema<ListConnectorSnapshotLatestsResponse>;
 
-export interface ConnectorsSnapshotsListRequest {
+export interface ListConnectorSnapshotsRequest {
   /** Account identifier */
   accountId: string;
   connectorId: string;
@@ -5535,7 +9899,7 @@ export interface ConnectorsSnapshotsListRequest {
   cursor?: string;
   limit?: number;
 }
-export const ConnectorsSnapshotsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListConnectorSnapshotsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     connectorId: S.String.pipe(T.Label("connector_id")),
@@ -5551,8 +9915,8 @@ export const ConnectorsSnapshotsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "ConnectorsSnapshotsListRequest",
-}) as any as S.Schema<ConnectorsSnapshotsListRequest>;
+  identifier: "ListConnectorSnapshotsRequest",
+}) as any as S.Schema<ListConnectorSnapshotsRequest>;
 
 export interface ConnectorsSnapshotsListResponseItemsItem {
   /** Time the Snapshot was collected (seconds since the Unix epoch) */
@@ -5577,1200 +9941,27 @@ export const ConnectorsSnapshotsListResponseItemsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<ConnectorsSnapshotsListResponseItemsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConnectorsSnapshotsListResponse {
+export interface ListConnectorSnapshotsResponse {
   count: number;
   items: ConnectorsSnapshotsListResponseItemsList;
   cursor?: string;
 }
-export const ConnectorsSnapshotsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListConnectorSnapshotsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     count: S.Number,
     items: ConnectorsSnapshotsListResponseItemsList,
     cursor: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "ConnectorsSnapshotsListResponse",
-}) as any as S.Schema<ConnectorsSnapshotsListResponse>;
+  identifier: "ListConnectorSnapshotsResponse",
+}) as any as S.Schema<ListConnectorSnapshotsResponse>;
 
-export type ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem =
-  | "Sunday"
-  | "Monday"
-  | "Tuesday"
-  | (string & {});
-export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem =
-  /*@__PURE__*/ S.String;
-
-export type ConnectorsUpdateRequestInterruptWindowDaysOfWeekList =
-  ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem[];
-export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekList =
-  /*@__PURE__*/ S.Array(
-    ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem,
-  ) as any as S.Schema<ConnectorsUpdateRequestInterruptWindowDaysOfWeekList>;
-
-export type ConnectorsUpdateRequestInterruptWindowEmbargoDatesList = string[];
-export const ConnectorsUpdateRequestInterruptWindowEmbargoDatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectorsUpdateRequestInterruptWindowEmbargoDatesList>;
-
-export interface ConnectorsUpdateRequest {
-  /** Account identifier */
-  accountId: string;
-  connectorId: string;
-  activated?: boolean;
-  /** Allowed days of the week for upgrades. Default is all days. */
-  interruptWindowDaysOfWeek?: ConnectorsUpdateRequestInterruptWindowDaysOfWeekList;
-  interruptWindowDurationHours?: number;
-  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
-  interruptWindowEmbargoDates?: ConnectorsUpdateRequestInterruptWindowEmbargoDatesList;
-  interruptWindowHourOfDay?: number;
-  notes?: string;
-  primary?: boolean;
-  /** When true, regenerate license key for the connector. */
-  provisionLicense?: boolean;
-  siteId?: string;
-  timezone?: string;
-}
-export const ConnectorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    connectorId: S.String.pipe(T.Label("connector_id")),
-    activated: S.optional(S.Boolean),
-    interruptWindowDaysOfWeek: S.optional(
-      ConnectorsUpdateRequestInterruptWindowDaysOfWeekList.pipe(
-        T.Body("interrupt_window_days_of_week"),
-      ),
-    ),
-    interruptWindowDurationHours: S.optional(
-      S.Number.pipe(T.Body("interrupt_window_duration_hours")),
-    ),
-    interruptWindowEmbargoDates: S.optional(
-      ConnectorsUpdateRequestInterruptWindowEmbargoDatesList.pipe(
-        T.Body("interrupt_window_embargo_dates"),
-      ),
-    ),
-    interruptWindowHourOfDay: S.optional(
-      S.Number.pipe(T.Body("interrupt_window_hour_of_day")),
-    ),
-    notes: S.optional(S.String),
-    primary: S.optional(S.Boolean),
-    provisionLicense: S.optional(S.Boolean.pipe(T.Body("provision_license"))),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    timezone: S.optional(S.String),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "ConnectorsUpdateRequest",
-}) as any as S.Schema<ConnectorsUpdateRequest>;
-
-export type ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem =
-  | "Sunday"
-  | "Monday"
-  | "Tuesday"
-  | (string & {});
-export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem =
-  /*@__PURE__*/ S.String;
-
-export type ConnectorsUpdateResponseInterruptWindowDaysOfWeekList =
-  ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem[];
-export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekList =
-  /*@__PURE__*/ S.Array(
-    ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem,
-  ) as any as S.Schema<ConnectorsUpdateResponseInterruptWindowDaysOfWeekList>;
-
-export type ConnectorsUpdateResponseInterruptWindowEmbargoDatesList = string[];
-export const ConnectorsUpdateResponseInterruptWindowEmbargoDatesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<ConnectorsUpdateResponseInterruptWindowEmbargoDatesList>;
-
-export type ConnectorsUpdateResponseDeviceType =
-  | "MANAGED"
-  | "LICENSED"
-  | (string & {});
-export const ConnectorsUpdateResponseDeviceType = /*@__PURE__*/ S.String;
-
-export interface ConnectorsUpdateResponseDevice {
-  id: string;
-  serialNumber?: string;
-  type?: ConnectorsUpdateResponseDeviceType;
-}
-export const ConnectorsUpdateResponseDevice = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
-    type: S.optional(ConnectorsUpdateResponseDeviceType),
-  }),
-).annotate({
-  identifier: "ConnectorsUpdateResponseDevice",
-}) as any as S.Schema<ConnectorsUpdateResponseDevice>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface ConnectorsUpdateResponse {
-  id: string;
-  activated: boolean;
-  /** Allowed days of the week for upgrades. Default is all days. */
-  interruptWindowDaysOfWeek: ConnectorsUpdateResponseInterruptWindowDaysOfWeekList;
-  interruptWindowDurationHours: number;
-  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
-  interruptWindowEmbargoDates: ConnectorsUpdateResponseInterruptWindowEmbargoDatesList;
-  interruptWindowHourOfDay: number;
-  lastUpdated: string;
-  notes: string;
-  primary: boolean;
-  timezone: string;
-  device?: ConnectorsUpdateResponseDevice;
-  lastHeartbeat?: string;
-  lastSeenVersion?: string;
-  licenseKey?: string;
-  siteId?: string;
-}
-export const ConnectorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    activated: S.Boolean,
-    interruptWindowDaysOfWeek:
-      ConnectorsUpdateResponseInterruptWindowDaysOfWeekList.pipe(
-        T.Body("interrupt_window_days_of_week"),
-      ),
-    interruptWindowDurationHours: S.Number.pipe(
-      T.Body("interrupt_window_duration_hours"),
-    ),
-    interruptWindowEmbargoDates:
-      ConnectorsUpdateResponseInterruptWindowEmbargoDatesList.pipe(
-        T.Body("interrupt_window_embargo_dates"),
-      ),
-    interruptWindowHourOfDay: S.Number.pipe(
-      T.Body("interrupt_window_hour_of_day"),
-    ),
-    lastUpdated: S.String.pipe(T.Body("last_updated")),
-    notes: S.String,
-    primary: S.Boolean,
-    timezone: S.String,
-    device: S.optional(ConnectorsUpdateResponseDevice),
-    lastHeartbeat: S.optional(S.String.pipe(T.Body("last_heartbeat"))),
-    lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
-    licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-  }),
-).annotate({
-  identifier: "ConnectorsUpdateResponse",
-}) as any as S.Schema<ConnectorsUpdateResponse>;
-
-export interface GreTunnelsBulkUpdateRequest {
-  /** Identifier */
-  accountId: string;
-  XMagicNewHcTarget_?: boolean;
-  body: unknown;
-}
-export const GreTunnelsBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
-    body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/gre_tunnels",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GreTunnelsBulkUpdateRequest",
-}) as any as S.Schema<GreTunnelsBulkUpdateRequest>;
-
-export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList =
-  string[];
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList>;
-
-export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customerAsn: S.Number.pipe(T.Body("customer_asn")),
-      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-      extraPrefixes: S.optional(
-        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList.pipe(
-          T.Body("extra_prefixes"),
-        ),
-      ),
-      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp",
-  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp>;
-
-export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus {
-  state: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string;
-  cfSpeakerIp?: string;
-  cfSpeakerPort?: number;
-  customerSpeakerIp?: string;
-  customerSpeakerPort?: number;
-}
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
-      customerSpeakerIp: S.optional(
-        S.String.pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.Number.pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus",
-  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus>;
-
-export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection =
-  "unidirectional" | "bidirectional" | (string & {});
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier:
-      "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget",
-  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget>;
-
-export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckDirection,
-      ),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(
-        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheckTarget,
-      ),
-      type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck",
-  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck>;
-
-export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem {
-  /** Identifier */
-  id: string;
-  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
-  cloudflareGreEndpoint: string;
-  /** The IP address assigned to the customer side of the GRE tunnel. */
-  customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
-  name: string;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp;
-  bgpStatus?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus;
-  /** The date and time the tunnel was created. */
-  createdOn?: string;
-  /** An optional description of the GRE tunnel. */
-  description?: string;
-  healthCheck?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number;
-}
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
-      customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
-      interfaceAddress: S.String.pipe(T.Body("interface_address")),
-      name: S.String,
-      automaticReturnRouting: S.optional(
-        S.Boolean.pipe(T.Body("automatic_return_routing")),
-      ),
-      bgp: S.optional(GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp),
-      bgpStatus: S.optional(
-        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpStatus.pipe(
-          T.Body("bgp_status"),
-        ),
-      ),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      healthCheck: S.optional(
-        GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemHealthCheck.pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress6: S.optional(
-        S.String.pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      mtu: S.optional(S.Number),
-      ttl: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem",
-  }) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem>;
-
-export type GreTunnelsBulkUpdateResponseModifiedGreTunnelsList =
-  GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem[];
-export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsList =
-  /*@__PURE__*/ S.Array(
-    GreTunnelsBulkUpdateResponseModifiedGreTunnelsItem,
-  ) as any as S.Schema<GreTunnelsBulkUpdateResponseModifiedGreTunnelsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GreTunnelsBulkUpdateResponse {
-  modified?: boolean;
-  modifiedGreTunnels?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsList;
-}
-export const GreTunnelsBulkUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modified: S.optional(S.Boolean),
-    modifiedGreTunnels: S.optional(
-      GreTunnelsBulkUpdateResponseModifiedGreTunnelsList.pipe(
-        T.Body("modified_gre_tunnels"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "GreTunnelsBulkUpdateResponse",
-}) as any as S.Schema<GreTunnelsBulkUpdateResponse>;
-
-export type GreTunnelsCreateRequestBgpExtraPrefixesList = string[];
-export const GreTunnelsCreateRequestBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GreTunnelsCreateRequestBgpExtraPrefixesList>;
-
-export interface GreTunnelsCreateRequestBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: GreTunnelsCreateRequestBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const GreTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      GreTunnelsCreateRequestBgpExtraPrefixesList.pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "GreTunnelsCreateRequestBgp",
-}) as any as S.Schema<GreTunnelsCreateRequestBgp>;
-
-export type GreTunnelsCreateRequestHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional"
-  | (string & {});
-export const GreTunnelsCreateRequestHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsCreateRequestHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const GreTunnelsCreateRequestHealthCheckTarget = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-).annotate({
-  identifier: "GreTunnelsCreateRequestHealthCheckTarget",
-}) as any as S.Schema<GreTunnelsCreateRequestHealthCheckTarget>;
-
-export interface GreTunnelsCreateRequestHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsCreateRequestHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsCreateRequestHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const GreTunnelsCreateRequestHealthCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    direction: S.optional(GreTunnelsCreateRequestHealthCheckDirection),
-    enabled: S.optional(S.Boolean),
-    rate: S.optional(S.Unknown),
-    target: S.optional(GreTunnelsCreateRequestHealthCheckTarget),
-    type: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "GreTunnelsCreateRequestHealthCheck",
-}) as any as S.Schema<GreTunnelsCreateRequestHealthCheck>;
-
-export interface GreTunnelsCreateRequest {
-  /** Identifier */
-  accountId: string;
-  XMagicNewHcTarget_?: boolean;
-  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
-  cloudflareGreEndpoint: string;
-  /** The IP address assigned to the customer side of the GRE tunnel. */
-  customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
-  name: string;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: GreTunnelsCreateRequestBgp;
-  /** An optional description of the GRE tunnel. */
-  description?: string;
-  healthCheck?: GreTunnelsCreateRequestHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number;
-}
-export const GreTunnelsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
-    cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
-    customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
-    interfaceAddress: S.String.pipe(T.Body("interface_address")),
-    name: S.String,
-    automaticReturnRouting: S.optional(
-      S.Boolean.pipe(T.Body("automatic_return_routing")),
-    ),
-    bgp: S.optional(GreTunnelsCreateRequestBgp),
-    description: S.optional(S.String),
-    healthCheck: S.optional(
-      GreTunnelsCreateRequestHealthCheck.pipe(T.Body("health_check")),
-    ),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    mtu: S.optional(S.Number),
-    ttl: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/gre_tunnels",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GreTunnelsCreateRequest",
-}) as any as S.Schema<GreTunnelsCreateRequest>;
-
-export type GreTunnelsCreateResponseBgpExtraPrefixesList = string[];
-export const GreTunnelsCreateResponseBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GreTunnelsCreateResponseBgpExtraPrefixesList>;
-
-export interface GreTunnelsCreateResponseBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: GreTunnelsCreateResponseBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const GreTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      GreTunnelsCreateResponseBgpExtraPrefixesList.pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "GreTunnelsCreateResponseBgp",
-}) as any as S.Schema<GreTunnelsCreateResponseBgp>;
-
-export type GreTunnelsCreateResponseBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
-export const GreTunnelsCreateResponseBgpStatusState = /*@__PURE__*/ S.String;
-
-export interface GreTunnelsCreateResponseBgpStatus {
-  state: GreTunnelsCreateResponseBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string;
-  cfSpeakerIp?: string;
-  cfSpeakerPort?: number;
-  customerSpeakerIp?: string;
-  customerSpeakerPort?: number;
-}
-export const GreTunnelsCreateResponseBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: GreTunnelsCreateResponseBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
-    customerSpeakerIp: S.optional(S.String.pipe(T.Body("customer_speaker_ip"))),
-    customerSpeakerPort: S.optional(
-      S.Number.pipe(T.Body("customer_speaker_port")),
-    ),
-  }),
-).annotate({
-  identifier: "GreTunnelsCreateResponseBgpStatus",
-}) as any as S.Schema<GreTunnelsCreateResponseBgpStatus>;
-
-export type GreTunnelsCreateResponseHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional"
-  | (string & {});
-export const GreTunnelsCreateResponseHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsCreateResponseHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const GreTunnelsCreateResponseHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "GreTunnelsCreateResponseHealthCheckTarget",
-  }) as any as S.Schema<GreTunnelsCreateResponseHealthCheckTarget>;
-
-export interface GreTunnelsCreateResponseHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsCreateResponseHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsCreateResponseHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const GreTunnelsCreateResponseHealthCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    direction: S.optional(GreTunnelsCreateResponseHealthCheckDirection),
-    enabled: S.optional(S.Boolean),
-    rate: S.optional(S.Unknown),
-    target: S.optional(GreTunnelsCreateResponseHealthCheckTarget),
-    type: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "GreTunnelsCreateResponseHealthCheck",
-}) as any as S.Schema<GreTunnelsCreateResponseHealthCheck>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GreTunnelsCreateResponse {
-  /** Identifier */
-  id: string;
-  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
-  cloudflareGreEndpoint: string;
-  /** The IP address assigned to the customer side of the GRE tunnel. */
-  customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
-  name: string;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: GreTunnelsCreateResponseBgp;
-  bgpStatus?: GreTunnelsCreateResponseBgpStatus;
-  /** The date and time the tunnel was created. */
-  createdOn?: string;
-  /** An optional description of the GRE tunnel. */
-  description?: string;
-  healthCheck?: GreTunnelsCreateResponseHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number;
-}
-export const GreTunnelsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
-    customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
-    interfaceAddress: S.String.pipe(T.Body("interface_address")),
-    name: S.String,
-    automaticReturnRouting: S.optional(
-      S.Boolean.pipe(T.Body("automatic_return_routing")),
-    ),
-    bgp: S.optional(GreTunnelsCreateResponseBgp),
-    bgpStatus: S.optional(
-      GreTunnelsCreateResponseBgpStatus.pipe(T.Body("bgp_status")),
-    ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    healthCheck: S.optional(
-      GreTunnelsCreateResponseHealthCheck.pipe(T.Body("health_check")),
-    ),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    mtu: S.optional(S.Number),
-    ttl: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GreTunnelsCreateResponse",
-}) as any as S.Schema<GreTunnelsCreateResponse>;
-
-export interface GreTunnelsDeleteRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  greTunnelId: string;
-  XMagicNewHcTarget_?: boolean;
-}
-export const GreTunnelsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    greTunnelId: S.String.pipe(T.Label("gre_tunnel_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GreTunnelsDeleteRequest",
-}) as any as S.Schema<GreTunnelsDeleteRequest>;
-
-export type GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList =
-  string[];
-export const GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList>;
-
-export interface GreTunnelsDeleteResponseDeletedGreTunnelBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const GreTunnelsDeleteResponseDeletedGreTunnelBgp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customerAsn: S.Number.pipe(T.Body("customer_asn")),
-      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-      extraPrefixes: S.optional(
-        GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList.pipe(
-          T.Body("extra_prefixes"),
-        ),
-      ),
-      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsDeleteResponseDeletedGreTunnelBgp",
-  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgp>;
-
-export type GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
-export const GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus {
-  state: GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string;
-  cfSpeakerIp?: string;
-  cfSpeakerPort?: number;
-  customerSpeakerIp?: string;
-  customerSpeakerPort?: number;
-}
-export const GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: GreTunnelsDeleteResponseDeletedGreTunnelBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
-      customerSpeakerIp: S.optional(
-        S.String.pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.Number.pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus",
-  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus>;
-
-export type GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional"
-  | (string & {});
-export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget",
-  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget>;
-
-export interface GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckDirection,
-      ),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(
-        GreTunnelsDeleteResponseDeletedGreTunnelHealthCheckTarget,
-      ),
-      type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck",
-  }) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck>;
-
-export interface GreTunnelsDeleteResponseDeletedGreTunnel {
-  /** Identifier */
-  id: string;
-  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
-  cloudflareGreEndpoint: string;
-  /** The IP address assigned to the customer side of the GRE tunnel. */
-  customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
-  name: string;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: GreTunnelsDeleteResponseDeletedGreTunnelBgp;
-  bgpStatus?: GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus;
-  /** The date and time the tunnel was created. */
-  createdOn?: string;
-  /** An optional description of the GRE tunnel. */
-  description?: string;
-  healthCheck?: GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number;
-}
-export const GreTunnelsDeleteResponseDeletedGreTunnel = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
-      customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
-      interfaceAddress: S.String.pipe(T.Body("interface_address")),
-      name: S.String,
-      automaticReturnRouting: S.optional(
-        S.Boolean.pipe(T.Body("automatic_return_routing")),
-      ),
-      bgp: S.optional(GreTunnelsDeleteResponseDeletedGreTunnelBgp),
-      bgpStatus: S.optional(
-        GreTunnelsDeleteResponseDeletedGreTunnelBgpStatus.pipe(
-          T.Body("bgp_status"),
-        ),
-      ),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      healthCheck: S.optional(
-        GreTunnelsDeleteResponseDeletedGreTunnelHealthCheck.pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress6: S.optional(
-        S.String.pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      mtu: S.optional(S.Number),
-      ttl: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "GreTunnelsDeleteResponseDeletedGreTunnel",
-}) as any as S.Schema<GreTunnelsDeleteResponseDeletedGreTunnel>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GreTunnelsDeleteResponse {
-  deleted?: boolean;
-  deletedGreTunnel?: GreTunnelsDeleteResponseDeletedGreTunnel;
-}
-export const GreTunnelsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deleted: S.optional(S.Boolean),
-    deletedGreTunnel: S.optional(
-      GreTunnelsDeleteResponseDeletedGreTunnel.pipe(
-        T.Body("deleted_gre_tunnel"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "GreTunnelsDeleteResponse",
-}) as any as S.Schema<GreTunnelsDeleteResponse>;
-
-export interface GreTunnelsGetRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  greTunnelId: string;
-  XMagicNewHcTarget_?: boolean;
-}
-export const GreTunnelsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    greTunnelId: S.String.pipe(T.Label("gre_tunnel_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GreTunnelsGetRequest",
-}) as any as S.Schema<GreTunnelsGetRequest>;
-
-export type GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList = string[];
-export const GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList>;
-
-export interface GreTunnelsGetResponseGreTunnelBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const GreTunnelsGetResponseGreTunnelBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList.pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "GreTunnelsGetResponseGreTunnelBgp",
-}) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgp>;
-
-export type GreTunnelsGetResponseGreTunnelBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
-export const GreTunnelsGetResponseGreTunnelBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsGetResponseGreTunnelBgpStatus {
-  state: GreTunnelsGetResponseGreTunnelBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string;
-  cfSpeakerIp?: string;
-  cfSpeakerPort?: number;
-  customerSpeakerIp?: string;
-  customerSpeakerPort?: number;
-}
-export const GreTunnelsGetResponseGreTunnelBgpStatus = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      state: GreTunnelsGetResponseGreTunnelBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
-      customerSpeakerIp: S.optional(
-        S.String.pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.Number.pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-).annotate({
-  identifier: "GreTunnelsGetResponseGreTunnelBgpStatus",
-}) as any as S.Schema<GreTunnelsGetResponseGreTunnelBgpStatus>;
-
-export type GreTunnelsGetResponseGreTunnelHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional"
-  | (string & {});
-export const GreTunnelsGetResponseGreTunnelHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsGetResponseGreTunnelHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const GreTunnelsGetResponseGreTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "GreTunnelsGetResponseGreTunnelHealthCheckTarget",
-  }) as any as S.Schema<GreTunnelsGetResponseGreTunnelHealthCheckTarget>;
-
-export interface GreTunnelsGetResponseGreTunnelHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsGetResponseGreTunnelHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsGetResponseGreTunnelHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const GreTunnelsGetResponseGreTunnelHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(GreTunnelsGetResponseGreTunnelHealthCheckDirection),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(GreTunnelsGetResponseGreTunnelHealthCheckTarget),
-      type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsGetResponseGreTunnelHealthCheck",
-  }) as any as S.Schema<GreTunnelsGetResponseGreTunnelHealthCheck>;
-
-export interface GreTunnelsGetResponseGreTunnel {
-  /** Identifier */
-  id: string;
-  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
-  cloudflareGreEndpoint: string;
-  /** The IP address assigned to the customer side of the GRE tunnel. */
-  customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
-  name: string;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: GreTunnelsGetResponseGreTunnelBgp;
-  bgpStatus?: GreTunnelsGetResponseGreTunnelBgpStatus;
-  /** The date and time the tunnel was created. */
-  createdOn?: string;
-  /** An optional description of the GRE tunnel. */
-  description?: string;
-  healthCheck?: GreTunnelsGetResponseGreTunnelHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number;
-}
-export const GreTunnelsGetResponseGreTunnel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
-    customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
-    interfaceAddress: S.String.pipe(T.Body("interface_address")),
-    name: S.String,
-    automaticReturnRouting: S.optional(
-      S.Boolean.pipe(T.Body("automatic_return_routing")),
-    ),
-    bgp: S.optional(GreTunnelsGetResponseGreTunnelBgp),
-    bgpStatus: S.optional(
-      GreTunnelsGetResponseGreTunnelBgpStatus.pipe(T.Body("bgp_status")),
-    ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    healthCheck: S.optional(
-      GreTunnelsGetResponseGreTunnelHealthCheck.pipe(T.Body("health_check")),
-    ),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    mtu: S.optional(S.Number),
-    ttl: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "GreTunnelsGetResponseGreTunnel",
-}) as any as S.Schema<GreTunnelsGetResponseGreTunnel>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GreTunnelsGetResponse {
-  greTunnel?: GreTunnelsGetResponseGreTunnel;
-}
-export const GreTunnelsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    greTunnel: S.optional(
-      GreTunnelsGetResponseGreTunnel.pipe(T.Body("gre_tunnel")),
-    ),
-  }),
-).annotate({
-  identifier: "GreTunnelsGetResponse",
-}) as any as S.Schema<GreTunnelsGetResponse>;
-
-export interface GreTunnelsListRequest {
+export interface ListGreTunnelsRequest {
   /** Identifier */
   accountId: string;
   XMagicNewHcTarget_?: boolean;
 }
-export const GreTunnelsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListGreTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     XMagicNewHcTarget_: S.optional(
@@ -6784,8 +9975,8 @@ export const GreTunnelsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "GreTunnelsListRequest",
-}) as any as S.Schema<GreTunnelsListRequest>;
+  identifier: "ListGreTunnelsRequest",
+}) as any as S.Schema<ListGreTunnelsRequest>;
 
 export type GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList = string[];
 export const GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList =
@@ -6982,1528 +10173,25 @@ export const GreTunnelsListResponseGreTunnelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<GreTunnelsListResponseGreTunnelsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GreTunnelsListResponse {
+export interface ListGreTunnelsResponse {
   greTunnels?: GreTunnelsListResponseGreTunnelsList;
 }
-export const GreTunnelsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListGreTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     greTunnels: S.optional(
       GreTunnelsListResponseGreTunnelsList.pipe(T.Body("gre_tunnels")),
     ),
   }),
 ).annotate({
-  identifier: "GreTunnelsListResponse",
-}) as any as S.Schema<GreTunnelsListResponse>;
+  identifier: "ListGreTunnelsResponse",
+}) as any as S.Schema<ListGreTunnelsResponse>;
 
-export type GreTunnelsUpdateRequestHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional"
-  | (string & {});
-export const GreTunnelsUpdateRequestHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsUpdateRequestHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const GreTunnelsUpdateRequestHealthCheckTarget = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-).annotate({
-  identifier: "GreTunnelsUpdateRequestHealthCheckTarget",
-}) as any as S.Schema<GreTunnelsUpdateRequestHealthCheckTarget>;
-
-export interface GreTunnelsUpdateRequestHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsUpdateRequestHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsUpdateRequestHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const GreTunnelsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    direction: S.optional(GreTunnelsUpdateRequestHealthCheckDirection),
-    enabled: S.optional(S.Boolean),
-    rate: S.optional(S.Unknown),
-    target: S.optional(GreTunnelsUpdateRequestHealthCheckTarget),
-    type: S.optional(S.Unknown),
-  }),
-).annotate({
-  identifier: "GreTunnelsUpdateRequestHealthCheck",
-}) as any as S.Schema<GreTunnelsUpdateRequestHealthCheck>;
-
-export interface GreTunnelsUpdateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  greTunnelId: string;
-  XMagicNewHcTarget_?: boolean;
-  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
-  cloudflareGreEndpoint: string;
-  /** The IP address assigned to the customer side of the GRE tunnel. */
-  customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
-  name: string;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  /** An optional description of the GRE tunnel. */
-  description?: string;
-  healthCheck?: GreTunnelsUpdateRequestHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number;
-}
-export const GreTunnelsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    greTunnelId: S.String.pipe(T.Label("gre_tunnel_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
-    cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
-    customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
-    interfaceAddress: S.String.pipe(T.Body("interface_address")),
-    name: S.String,
-    automaticReturnRouting: S.optional(
-      S.Boolean.pipe(T.Body("automatic_return_routing")),
-    ),
-    description: S.optional(S.String),
-    healthCheck: S.optional(
-      GreTunnelsUpdateRequestHealthCheck.pipe(T.Body("health_check")),
-    ),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    mtu: S.optional(S.Number),
-    ttl: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "GreTunnelsUpdateRequest",
-}) as any as S.Schema<GreTunnelsUpdateRequest>;
-
-export type GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList =
-  string[];
-export const GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList>;
-
-export interface GreTunnelsUpdateResponseModifiedGreTunnelBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const GreTunnelsUpdateResponseModifiedGreTunnelBgp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customerAsn: S.Number.pipe(T.Body("customer_asn")),
-      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-      extraPrefixes: S.optional(
-        GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList.pipe(
-          T.Body("extra_prefixes"),
-        ),
-      ),
-      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsUpdateResponseModifiedGreTunnelBgp",
-  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgp>;
-
-export type GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
-export const GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus {
-  state: GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string;
-  cfSpeakerIp?: string;
-  cfSpeakerPort?: number;
-  customerSpeakerIp?: string;
-  customerSpeakerPort?: number;
-}
-export const GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
-      customerSpeakerIp: S.optional(
-        S.String.pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.Number.pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus",
-  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus>;
-
-export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional"
-  | (string & {});
-export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget",
-  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget>;
-
-export interface GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection,
-      ),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(
-        GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget,
-      ),
-      type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck",
-  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck>;
-
-export interface GreTunnelsUpdateResponseModifiedGreTunnel {
-  /** Identifier */
-  id: string;
-  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
-  cloudflareGreEndpoint: string;
-  /** The IP address assigned to the customer side of the GRE tunnel. */
-  customerGreEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
-  name: string;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: GreTunnelsUpdateResponseModifiedGreTunnelBgp;
-  bgpStatus?: GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus;
-  /** The date and time the tunnel was created. */
-  createdOn?: string;
-  /** An optional description of the GRE tunnel. */
-  description?: string;
-  healthCheck?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string;
-  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
-  mtu?: number;
-  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
-  ttl?: number;
-}
-export const GreTunnelsUpdateResponseModifiedGreTunnel =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
-      customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
-      interfaceAddress: S.String.pipe(T.Body("interface_address")),
-      name: S.String,
-      automaticReturnRouting: S.optional(
-        S.Boolean.pipe(T.Body("automatic_return_routing")),
-      ),
-      bgp: S.optional(GreTunnelsUpdateResponseModifiedGreTunnelBgp),
-      bgpStatus: S.optional(
-        GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus.pipe(
-          T.Body("bgp_status"),
-        ),
-      ),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      healthCheck: S.optional(
-        GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck.pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress6: S.optional(
-        S.String.pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      mtu: S.optional(S.Number),
-      ttl: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "GreTunnelsUpdateResponseModifiedGreTunnel",
-  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnel>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface GreTunnelsUpdateResponse {
-  modified?: boolean;
-  modifiedGreTunnel?: GreTunnelsUpdateResponseModifiedGreTunnel;
-}
-export const GreTunnelsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modified: S.optional(S.Boolean),
-    modifiedGreTunnel: S.optional(
-      GreTunnelsUpdateResponseModifiedGreTunnel.pipe(
-        T.Body("modified_gre_tunnel"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "GreTunnelsUpdateResponse",
-}) as any as S.Schema<GreTunnelsUpdateResponse>;
-
-export interface IpsecTunnelsBulkUpdateRequest {
-  /** Identifier */
-  accountId: string;
-  XMagicNewHcTarget_?: boolean;
-  body: unknown;
-}
-export const IpsecTunnelsBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
-    body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "IpsecTunnelsBulkUpdateRequest",
-}) as any as S.Schema<IpsecTunnelsBulkUpdateRequest>;
-
-export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList =
-  string[];
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList>;
-
-export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customerAsn: S.Number.pipe(T.Body("customer_asn")),
-      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-      extraPrefixes: S.optional(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList.pipe(
-          T.Body("extra_prefixes"),
-        ),
-      ),
-      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp",
-  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp>;
-
-export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState =
-  "BGP_DOWN" | "BGP_UP" | "BGP_ESTABLISHING" | (string & {});
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus {
-  state: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string;
-  cfSpeakerIp?: string;
-  cfSpeakerPort?: number;
-  customerSpeakerIp?: string;
-  customerSpeakerPort?: number;
-}
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state:
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
-      customerSpeakerIp: S.optional(
-        S.String.pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.Number.pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus",
-  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus>;
-
-export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities {
-  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
-  fqdnId?: string;
-}
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
-    }),
-  ).annotate({
-    identifier:
-      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities",
-  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities>;
-
-export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection =
-  "unidirectional" | "bidirectional" | (string & {});
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier:
-      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget>;
-
-export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckDirection,
-      ),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheckTarget,
-      ),
-      type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck",
-  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck>;
-
-export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata {
-  /** The date and time the tunnel was last modified. */
-  lastGeneratedOn?: string;
-}
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
-    }),
-  ).annotate({
-    identifier:
-      "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata",
-  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata>;
-
-export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem {
-  /** Identifier */
-  id: string;
-  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
-  cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
-  name: string;
-  /** When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2). */
-  allowNullCipher?: boolean;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp;
-  bgpStatus?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus;
-  /** The date and time the tunnel was created. */
-  createdOn?: string;
-  customRemoteIdentities?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string;
-  healthCheck?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string;
-  /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean;
-}
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
-      interfaceAddress: S.String.pipe(T.Body("interface_address")),
-      name: S.String,
-      allowNullCipher: S.optional(S.Boolean.pipe(T.Body("allow_null_cipher"))),
-      automaticReturnRouting: S.optional(
-        S.Boolean.pipe(T.Body("automatic_return_routing")),
-      ),
-      bgp: S.optional(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp,
-      ),
-      bgpStatus: S.optional(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpStatus.pipe(
-          T.Body("bgp_status"),
-        ),
-      ),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      customRemoteIdentities: S.optional(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemCustomRemoteIdentities.pipe(
-          T.Body("custom_remote_identities"),
-        ),
-      ),
-      customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
-      description: S.optional(S.String),
-      healthCheck: S.optional(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemHealthCheck.pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress6: S.optional(
-        S.String.pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      pskMetadata: S.optional(
-        IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemPskMetadata.pipe(
-          T.Body("psk_metadata"),
-        ),
-      ),
-      replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem",
-  }) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem>;
-
-export type IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList =
-  IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem[];
-export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList =
-  /*@__PURE__*/ S.Array(
-    IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItem,
-  ) as any as S.Schema<IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface IpsecTunnelsBulkUpdateResponse {
-  modified?: boolean;
-  modifiedIpsecTunnels?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList;
-}
-export const IpsecTunnelsBulkUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modified: S.optional(S.Boolean),
-    modifiedIpsecTunnels: S.optional(
-      IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsList.pipe(
-        T.Body("modified_ipsec_tunnels"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsBulkUpdateResponse",
-}) as any as S.Schema<IpsecTunnelsBulkUpdateResponse>;
-
-export type IpsecTunnelsCreateRequestBgpExtraPrefixesList = string[];
-export const IpsecTunnelsCreateRequestBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IpsecTunnelsCreateRequestBgpExtraPrefixesList>;
-
-export interface IpsecTunnelsCreateRequestBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: IpsecTunnelsCreateRequestBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const IpsecTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      IpsecTunnelsCreateRequestBgpExtraPrefixesList.pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsCreateRequestBgp",
-}) as any as S.Schema<IpsecTunnelsCreateRequestBgp>;
-
-export interface IpsecTunnelsCreateRequestCustomRemoteIdentities {
-  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
-  fqdnId?: string;
-}
-export const IpsecTunnelsCreateRequestCustomRemoteIdentities =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsCreateRequestCustomRemoteIdentities",
-  }) as any as S.Schema<IpsecTunnelsCreateRequestCustomRemoteIdentities>;
-
-export type IpsecTunnelsCreateRequestHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional"
-  | (string & {});
-export const IpsecTunnelsCreateRequestHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsCreateRequestHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const IpsecTunnelsCreateRequestHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsCreateRequestHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsCreateRequestHealthCheckTarget>;
-
-export interface IpsecTunnelsCreateRequestHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsCreateRequestHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsCreateRequestHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const IpsecTunnelsCreateRequestHealthCheck = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      direction: S.optional(IpsecTunnelsCreateRequestHealthCheckDirection),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(IpsecTunnelsCreateRequestHealthCheckTarget),
-      type: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "IpsecTunnelsCreateRequestHealthCheck",
-}) as any as S.Schema<IpsecTunnelsCreateRequestHealthCheck>;
-
-export interface IpsecTunnelsCreateRequest {
-  /** Identifier */
-  accountId: string;
-  XMagicNewHcTarget_?: boolean;
-  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
-  cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
-  name: string;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: IpsecTunnelsCreateRequestBgp;
-  customRemoteIdentities?: IpsecTunnelsCreateRequestCustomRemoteIdentities;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string;
-  healthCheck?: IpsecTunnelsCreateRequestHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** A randomly generated or provided string for use in the IPsec tunnel. */
-  psk?: string;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean;
-}
-export const IpsecTunnelsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
-    cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
-    interfaceAddress: S.String.pipe(T.Body("interface_address")),
-    name: S.String,
-    automaticReturnRouting: S.optional(
-      S.Boolean.pipe(T.Body("automatic_return_routing")),
-    ),
-    bgp: S.optional(IpsecTunnelsCreateRequestBgp),
-    customRemoteIdentities: S.optional(
-      IpsecTunnelsCreateRequestCustomRemoteIdentities.pipe(
-        T.Body("custom_remote_identities"),
-      ),
-    ),
-    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
-    description: S.optional(S.String),
-    healthCheck: S.optional(
-      IpsecTunnelsCreateRequestHealthCheck.pipe(T.Body("health_check")),
-    ),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    psk: S.optional(S.String),
-    replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "IpsecTunnelsCreateRequest",
-}) as any as S.Schema<IpsecTunnelsCreateRequest>;
-
-export type IpsecTunnelsCreateResponseBgpExtraPrefixesList = string[];
-export const IpsecTunnelsCreateResponseBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IpsecTunnelsCreateResponseBgpExtraPrefixesList>;
-
-export interface IpsecTunnelsCreateResponseBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: IpsecTunnelsCreateResponseBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const IpsecTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      IpsecTunnelsCreateResponseBgpExtraPrefixesList.pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsCreateResponseBgp",
-}) as any as S.Schema<IpsecTunnelsCreateResponseBgp>;
-
-export type IpsecTunnelsCreateResponseBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
-export const IpsecTunnelsCreateResponseBgpStatusState = /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsCreateResponseBgpStatus {
-  state: IpsecTunnelsCreateResponseBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string;
-  cfSpeakerIp?: string;
-  cfSpeakerPort?: number;
-  customerSpeakerIp?: string;
-  customerSpeakerPort?: number;
-}
-export const IpsecTunnelsCreateResponseBgpStatus = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    state: IpsecTunnelsCreateResponseBgpStatusState,
-    tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
-    cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
-    cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
-    customerSpeakerIp: S.optional(S.String.pipe(T.Body("customer_speaker_ip"))),
-    customerSpeakerPort: S.optional(
-      S.Number.pipe(T.Body("customer_speaker_port")),
-    ),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsCreateResponseBgpStatus",
-}) as any as S.Schema<IpsecTunnelsCreateResponseBgpStatus>;
-
-export interface IpsecTunnelsCreateResponseCustomRemoteIdentities {
-  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
-  fqdnId?: string;
-}
-export const IpsecTunnelsCreateResponseCustomRemoteIdentities =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsCreateResponseCustomRemoteIdentities",
-  }) as any as S.Schema<IpsecTunnelsCreateResponseCustomRemoteIdentities>;
-
-export type IpsecTunnelsCreateResponseHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional"
-  | (string & {});
-export const IpsecTunnelsCreateResponseHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsCreateResponseHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const IpsecTunnelsCreateResponseHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsCreateResponseHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsCreateResponseHealthCheckTarget>;
-
-export interface IpsecTunnelsCreateResponseHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsCreateResponseHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsCreateResponseHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const IpsecTunnelsCreateResponseHealthCheck = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      direction: S.optional(IpsecTunnelsCreateResponseHealthCheckDirection),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(IpsecTunnelsCreateResponseHealthCheckTarget),
-      type: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "IpsecTunnelsCreateResponseHealthCheck",
-}) as any as S.Schema<IpsecTunnelsCreateResponseHealthCheck>;
-
-export interface IpsecTunnelsCreateResponsePskMetadata {
-  /** The date and time the tunnel was last modified. */
-  lastGeneratedOn?: string;
-}
-export const IpsecTunnelsCreateResponsePskMetadata = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
-    }),
-).annotate({
-  identifier: "IpsecTunnelsCreateResponsePskMetadata",
-}) as any as S.Schema<IpsecTunnelsCreateResponsePskMetadata>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface IpsecTunnelsCreateResponse {
-  /** Identifier */
-  id: string;
-  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
-  cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
-  name: string;
-  /** When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2). */
-  allowNullCipher?: boolean;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: IpsecTunnelsCreateResponseBgp;
-  bgpStatus?: IpsecTunnelsCreateResponseBgpStatus;
-  /** The date and time the tunnel was created. */
-  createdOn?: string;
-  customRemoteIdentities?: IpsecTunnelsCreateResponseCustomRemoteIdentities;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string;
-  healthCheck?: IpsecTunnelsCreateResponseHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string;
-  /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsCreateResponsePskMetadata;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean;
-}
-export const IpsecTunnelsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
-    interfaceAddress: S.String.pipe(T.Body("interface_address")),
-    name: S.String,
-    allowNullCipher: S.optional(S.Boolean.pipe(T.Body("allow_null_cipher"))),
-    automaticReturnRouting: S.optional(
-      S.Boolean.pipe(T.Body("automatic_return_routing")),
-    ),
-    bgp: S.optional(IpsecTunnelsCreateResponseBgp),
-    bgpStatus: S.optional(
-      IpsecTunnelsCreateResponseBgpStatus.pipe(T.Body("bgp_status")),
-    ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customRemoteIdentities: S.optional(
-      IpsecTunnelsCreateResponseCustomRemoteIdentities.pipe(
-        T.Body("custom_remote_identities"),
-      ),
-    ),
-    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
-    description: S.optional(S.String),
-    healthCheck: S.optional(
-      IpsecTunnelsCreateResponseHealthCheck.pipe(T.Body("health_check")),
-    ),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    pskMetadata: S.optional(
-      IpsecTunnelsCreateResponsePskMetadata.pipe(T.Body("psk_metadata")),
-    ),
-    replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsCreateResponse",
-}) as any as S.Schema<IpsecTunnelsCreateResponse>;
-
-export interface IpsecTunnelsDeleteRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  ipsecTunnelId: string;
-  XMagicNewHcTarget_?: boolean;
-}
-export const IpsecTunnelsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "IpsecTunnelsDeleteRequest",
-}) as any as S.Schema<IpsecTunnelsDeleteRequest>;
-
-export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList =
-  string[];
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList>;
-
-export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customerAsn: S.Number.pipe(T.Body("customer_asn")),
-      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-      extraPrefixes: S.optional(
-        IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList.pipe(
-          T.Body("extra_prefixes"),
-        ),
-      ),
-      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp",
-  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp>;
-
-export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus {
-  state: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string;
-  cfSpeakerIp?: string;
-  cfSpeakerPort?: number;
-  customerSpeakerIp?: string;
-  customerSpeakerPort?: number;
-}
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
-      customerSpeakerIp: S.optional(
-        S.String.pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.Number.pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus",
-  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus>;
-
-export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities {
-  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
-  fqdnId?: string;
-}
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
-    }),
-  ).annotate({
-    identifier:
-      "IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities",
-  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities>;
-
-export type IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional"
-  | (string & {});
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget>;
-
-export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckDirection,
-      ),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(
-        IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheckTarget,
-      ),
-      type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck",
-  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck>;
-
-export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata {
-  /** The date and time the tunnel was last modified. */
-  lastGeneratedOn?: string;
-}
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata",
-  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata>;
-
-export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnel {
-  /** Identifier */
-  id: string;
-  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
-  cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
-  name: string;
-  /** When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2). */
-  allowNullCipher?: boolean;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp;
-  bgpStatus?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus;
-  /** The date and time the tunnel was created. */
-  createdOn?: string;
-  customRemoteIdentities?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string;
-  healthCheck?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string;
-  /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean;
-}
-export const IpsecTunnelsDeleteResponseDeletedIpsecTunnel =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
-      interfaceAddress: S.String.pipe(T.Body("interface_address")),
-      name: S.String,
-      allowNullCipher: S.optional(S.Boolean.pipe(T.Body("allow_null_cipher"))),
-      automaticReturnRouting: S.optional(
-        S.Boolean.pipe(T.Body("automatic_return_routing")),
-      ),
-      bgp: S.optional(IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp),
-      bgpStatus: S.optional(
-        IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpStatus.pipe(
-          T.Body("bgp_status"),
-        ),
-      ),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      customRemoteIdentities: S.optional(
-        IpsecTunnelsDeleteResponseDeletedIpsecTunnelCustomRemoteIdentities.pipe(
-          T.Body("custom_remote_identities"),
-        ),
-      ),
-      customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
-      description: S.optional(S.String),
-      healthCheck: S.optional(
-        IpsecTunnelsDeleteResponseDeletedIpsecTunnelHealthCheck.pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress6: S.optional(
-        S.String.pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      pskMetadata: S.optional(
-        IpsecTunnelsDeleteResponseDeletedIpsecTunnelPskMetadata.pipe(
-          T.Body("psk_metadata"),
-        ),
-      ),
-      replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsDeleteResponseDeletedIpsecTunnel",
-  }) as any as S.Schema<IpsecTunnelsDeleteResponseDeletedIpsecTunnel>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface IpsecTunnelsDeleteResponse {
-  deleted?: boolean;
-  deletedIpsecTunnel?: IpsecTunnelsDeleteResponseDeletedIpsecTunnel;
-}
-export const IpsecTunnelsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deleted: S.optional(S.Boolean),
-    deletedIpsecTunnel: S.optional(
-      IpsecTunnelsDeleteResponseDeletedIpsecTunnel.pipe(
-        T.Body("deleted_ipsec_tunnel"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsDeleteResponse",
-}) as any as S.Schema<IpsecTunnelsDeleteResponse>;
-
-export interface IpsecTunnelsGetRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  ipsecTunnelId: string;
-  XMagicNewHcTarget_?: boolean;
-}
-export const IpsecTunnelsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "IpsecTunnelsGetRequest",
-}) as any as S.Schema<IpsecTunnelsGetRequest>;
-
-export type IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList = string[];
-export const IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList>;
-
-export interface IpsecTunnelsGetResponseIpsecTunnelBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const IpsecTunnelsGetResponseIpsecTunnelBgp = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      customerAsn: S.Number.pipe(T.Body("customer_asn")),
-      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-      extraPrefixes: S.optional(
-        IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList.pipe(
-          T.Body("extra_prefixes"),
-        ),
-      ),
-      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-    }),
-).annotate({
-  identifier: "IpsecTunnelsGetResponseIpsecTunnelBgp",
-}) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgp>;
-
-export type IpsecTunnelsGetResponseIpsecTunnelBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
-export const IpsecTunnelsGetResponseIpsecTunnelBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsGetResponseIpsecTunnelBgpStatus {
-  state: IpsecTunnelsGetResponseIpsecTunnelBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string;
-  cfSpeakerIp?: string;
-  cfSpeakerPort?: number;
-  customerSpeakerIp?: string;
-  customerSpeakerPort?: number;
-}
-export const IpsecTunnelsGetResponseIpsecTunnelBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: IpsecTunnelsGetResponseIpsecTunnelBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
-      customerSpeakerIp: S.optional(
-        S.String.pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.Number.pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsGetResponseIpsecTunnelBgpStatus",
-  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelBgpStatus>;
-
-export interface IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities {
-  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
-  fqdnId?: string;
-}
-export const IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities",
-  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities>;
-
-export type IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional"
-  | (string & {});
-export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget>;
-
-export interface IpsecTunnelsGetResponseIpsecTunnelHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const IpsecTunnelsGetResponseIpsecTunnelHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        IpsecTunnelsGetResponseIpsecTunnelHealthCheckDirection,
-      ),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(IpsecTunnelsGetResponseIpsecTunnelHealthCheckTarget),
-      type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsGetResponseIpsecTunnelHealthCheck",
-  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelHealthCheck>;
-
-export interface IpsecTunnelsGetResponseIpsecTunnelPskMetadata {
-  /** The date and time the tunnel was last modified. */
-  lastGeneratedOn?: string;
-}
-export const IpsecTunnelsGetResponseIpsecTunnelPskMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsGetResponseIpsecTunnelPskMetadata",
-  }) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnelPskMetadata>;
-
-export interface IpsecTunnelsGetResponseIpsecTunnel {
-  /** Identifier */
-  id: string;
-  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
-  cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
-  name: string;
-  /** When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2). */
-  allowNullCipher?: boolean;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: IpsecTunnelsGetResponseIpsecTunnelBgp;
-  bgpStatus?: IpsecTunnelsGetResponseIpsecTunnelBgpStatus;
-  /** The date and time the tunnel was created. */
-  createdOn?: string;
-  customRemoteIdentities?: IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string;
-  healthCheck?: IpsecTunnelsGetResponseIpsecTunnelHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string;
-  /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsGetResponseIpsecTunnelPskMetadata;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean;
-}
-export const IpsecTunnelsGetResponseIpsecTunnel = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
-    interfaceAddress: S.String.pipe(T.Body("interface_address")),
-    name: S.String,
-    allowNullCipher: S.optional(S.Boolean.pipe(T.Body("allow_null_cipher"))),
-    automaticReturnRouting: S.optional(
-      S.Boolean.pipe(T.Body("automatic_return_routing")),
-    ),
-    bgp: S.optional(IpsecTunnelsGetResponseIpsecTunnelBgp),
-    bgpStatus: S.optional(
-      IpsecTunnelsGetResponseIpsecTunnelBgpStatus.pipe(T.Body("bgp_status")),
-    ),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customRemoteIdentities: S.optional(
-      IpsecTunnelsGetResponseIpsecTunnelCustomRemoteIdentities.pipe(
-        T.Body("custom_remote_identities"),
-      ),
-    ),
-    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
-    description: S.optional(S.String),
-    healthCheck: S.optional(
-      IpsecTunnelsGetResponseIpsecTunnelHealthCheck.pipe(
-        T.Body("health_check"),
-      ),
-    ),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    pskMetadata: S.optional(
-      IpsecTunnelsGetResponseIpsecTunnelPskMetadata.pipe(
-        T.Body("psk_metadata"),
-      ),
-    ),
-    replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsGetResponseIpsecTunnel",
-}) as any as S.Schema<IpsecTunnelsGetResponseIpsecTunnel>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface IpsecTunnelsGetResponse {
-  ipsecTunnel?: IpsecTunnelsGetResponseIpsecTunnel;
-}
-export const IpsecTunnelsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipsecTunnel: S.optional(
-      IpsecTunnelsGetResponseIpsecTunnel.pipe(T.Body("ipsec_tunnel")),
-    ),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsGetResponse",
-}) as any as S.Schema<IpsecTunnelsGetResponse>;
-
-export interface IpsecTunnelsListRequest {
+export interface ListIpsecTunnelsRequest {
   /** Identifier */
   accountId: string;
   XMagicNewHcTarget_?: boolean;
 }
-export const IpsecTunnelsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListIpsecTunnelsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     XMagicNewHcTarget_: S.optional(
@@ -8517,8 +10205,8 @@ export const IpsecTunnelsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "IpsecTunnelsListRequest",
-}) as any as S.Schema<IpsecTunnelsListRequest>;
+  identifier: "ListIpsecTunnelsRequest",
+}) as any as S.Schema<ListIpsecTunnelsRequest>;
 
 export type IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList =
   string[];
@@ -8758,716 +10446,32 @@ export const IpsecTunnelsListResponseIpsecTunnelsList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<IpsecTunnelsListResponseIpsecTunnelsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface IpsecTunnelsListResponse {
+export interface ListIpsecTunnelsResponse {
   ipsecTunnels?: IpsecTunnelsListResponseIpsecTunnelsList;
 }
-export const IpsecTunnelsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListIpsecTunnelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     ipsecTunnels: S.optional(
       IpsecTunnelsListResponseIpsecTunnelsList.pipe(T.Body("ipsec_tunnels")),
     ),
   }),
 ).annotate({
-  identifier: "IpsecTunnelsListResponse",
-}) as any as S.Schema<IpsecTunnelsListResponse>;
+  identifier: "ListIpsecTunnelsResponse",
+}) as any as S.Schema<ListIpsecTunnelsResponse>;
 
-export interface IpsecTunnelsPskGenerateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  ipsecTunnelId: string;
-  body: unknown;
-}
-export const IpsecTunnelsPskGenerateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
-    body: S.Unknown,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}/psk_generate",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "IpsecTunnelsPskGenerateRequest",
-}) as any as S.Schema<IpsecTunnelsPskGenerateRequest>;
-
-export interface IpsecTunnelsPskGenerateResponsePskMetadata {
-  /** The date and time the tunnel was last modified. */
-  lastGeneratedOn?: string;
-}
-export const IpsecTunnelsPskGenerateResponsePskMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsPskGenerateResponsePskMetadata",
-  }) as any as S.Schema<IpsecTunnelsPskGenerateResponsePskMetadata>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface IpsecTunnelsPskGenerateResponse {
-  /** Identifier */
-  ipsecTunnelId?: string;
-  /** A randomly generated or provided string for use in the IPsec tunnel. */
-  psk?: string;
-  /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsPskGenerateResponsePskMetadata;
-}
-export const IpsecTunnelsPskGenerateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    ipsecTunnelId: S.optional(S.String.pipe(T.Body("ipsec_tunnel_id"))),
-    psk: S.optional(S.String),
-    pskMetadata: S.optional(
-      IpsecTunnelsPskGenerateResponsePskMetadata.pipe(T.Body("psk_metadata")),
-    ),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsPskGenerateResponse",
-}) as any as S.Schema<IpsecTunnelsPskGenerateResponse>;
-
-export interface IpsecTunnelsPskSetRequestPsksItem {
-  /** The ID of the IPsec tunnel. */
-  id: string;
-  /** A randomly generated or provided string for use in the IPsec tunnel. */
-  psk: string;
-}
-export const IpsecTunnelsPskSetRequestPsksItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    psk: S.String,
-  }),
-).annotate({
-  identifier: "IpsecTunnelsPskSetRequestPsksItem",
-}) as any as S.Schema<IpsecTunnelsPskSetRequestPsksItem>;
-
-export type IpsecTunnelsPskSetRequestPsksList =
-  IpsecTunnelsPskSetRequestPsksItem[];
-export const IpsecTunnelsPskSetRequestPsksList = /*@__PURE__*/ S.Array(
-  IpsecTunnelsPskSetRequestPsksItem,
-) as any as S.Schema<IpsecTunnelsPskSetRequestPsksList>;
-
-export interface IpsecTunnelsPskSetRequest {
-  /** Identifier */
-  accountId: string;
-  /** If `true`, only run validation without persisting changes. */
-  validateOnly?: boolean;
-  /** List of tunnel ID and PSK pairs. */
-  psks: IpsecTunnelsPskSetRequestPsksList;
-}
-export const IpsecTunnelsPskSetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    validateOnly: S.optional(S.Boolean.pipe(T.Query("validate_only"))),
-    psks: IpsecTunnelsPskSetRequestPsksList,
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels/psk",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "IpsecTunnelsPskSetRequest",
-}) as any as S.Schema<IpsecTunnelsPskSetRequest>;
-
-export type IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap = {
-  [key: string]: unknown | undefined;
-};
-export const IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap>;
-
-export type IpsecTunnelsPskSetResponseUnappliedPsksMap = {
-  [key: string]: unknown | undefined;
-};
-export const IpsecTunnelsPskSetResponseUnappliedPsksMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<IpsecTunnelsPskSetResponseUnappliedPsksMap>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface IpsecTunnelsPskSetResponse {
-  /** Map of tunnel IDs to successfully applied PSK details. */
-  successfullyAppliedPsks?: IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap;
-  /** Map of tunnel IDs to failure reasons for PSKs that could not be applied. */
-  unappliedPsks?: IpsecTunnelsPskSetResponseUnappliedPsksMap;
-}
-export const IpsecTunnelsPskSetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    successfullyAppliedPsks: S.optional(
-      IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap.pipe(
-        T.Body("successfully_applied_psks"),
-      ),
-    ),
-    unappliedPsks: S.optional(
-      IpsecTunnelsPskSetResponseUnappliedPsksMap.pipe(T.Body("unapplied_psks")),
-    ),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsPskSetResponse",
-}) as any as S.Schema<IpsecTunnelsPskSetResponse>;
-
-export type IpsecTunnelsUpdateRequestBgpExtraPrefixesList = string[];
-export const IpsecTunnelsUpdateRequestBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IpsecTunnelsUpdateRequestBgpExtraPrefixesList>;
-
-export interface IpsecTunnelsUpdateRequestBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: IpsecTunnelsUpdateRequestBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const IpsecTunnelsUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    customerAsn: S.Number.pipe(T.Body("customer_asn")),
-    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-    extraPrefixes: S.optional(
-      IpsecTunnelsUpdateRequestBgpExtraPrefixesList.pipe(
-        T.Body("extra_prefixes"),
-      ),
-    ),
-    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsUpdateRequestBgp",
-}) as any as S.Schema<IpsecTunnelsUpdateRequestBgp>;
-
-export interface IpsecTunnelsUpdateRequestCustomRemoteIdentities {
-  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
-  fqdnId?: string;
-}
-export const IpsecTunnelsUpdateRequestCustomRemoteIdentities =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsUpdateRequestCustomRemoteIdentities",
-  }) as any as S.Schema<IpsecTunnelsUpdateRequestCustomRemoteIdentities>;
-
-export type IpsecTunnelsUpdateRequestHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional"
-  | (string & {});
-export const IpsecTunnelsUpdateRequestHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsUpdateRequestHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const IpsecTunnelsUpdateRequestHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsUpdateRequestHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsUpdateRequestHealthCheckTarget>;
-
-export interface IpsecTunnelsUpdateRequestHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsUpdateRequestHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsUpdateRequestHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const IpsecTunnelsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      direction: S.optional(IpsecTunnelsUpdateRequestHealthCheckDirection),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(IpsecTunnelsUpdateRequestHealthCheckTarget),
-      type: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "IpsecTunnelsUpdateRequestHealthCheck",
-}) as any as S.Schema<IpsecTunnelsUpdateRequestHealthCheck>;
-
-export interface IpsecTunnelsUpdateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  ipsecTunnelId: string;
-  XMagicNewHcTarget_?: boolean;
-  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
-  cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
-  name: string;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: IpsecTunnelsUpdateRequestBgp;
-  customRemoteIdentities?: IpsecTunnelsUpdateRequestCustomRemoteIdentities;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string;
-  healthCheck?: IpsecTunnelsUpdateRequestHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** A randomly generated or provided string for use in the IPsec tunnel. */
-  psk?: string;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean;
-}
-export const IpsecTunnelsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
-    XMagicNewHcTarget_: S.optional(
-      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
-    ),
-    cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
-    interfaceAddress: S.String.pipe(T.Body("interface_address")),
-    name: S.String,
-    automaticReturnRouting: S.optional(
-      S.Boolean.pipe(T.Body("automatic_return_routing")),
-    ),
-    bgp: S.optional(IpsecTunnelsUpdateRequestBgp),
-    customRemoteIdentities: S.optional(
-      IpsecTunnelsUpdateRequestCustomRemoteIdentities.pipe(
-        T.Body("custom_remote_identities"),
-      ),
-    ),
-    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
-    description: S.optional(S.String),
-    healthCheck: S.optional(
-      IpsecTunnelsUpdateRequestHealthCheck.pipe(T.Body("health_check")),
-    ),
-    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
-    psk: S.optional(S.String),
-    replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "IpsecTunnelsUpdateRequest",
-}) as any as S.Schema<IpsecTunnelsUpdateRequest>;
-
-export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList =
-  string[];
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList>;
-
-export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp {
-  /** ASN used on the customer end of the BGP session */
-  customerAsn: number;
-  /** ID of the BGP filter profile applied to routes advertised to the customer. */
-  exportFilterId?: string;
-  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
-  extraPrefixes?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList;
-  /** ID of the BGP filter profile applied to routes received from the customer. */
-  importFilterId?: string;
-  /** MD5 key to use for session authentication. */
-  md5Key?: string;
-}
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      customerAsn: S.Number.pipe(T.Body("customer_asn")),
-      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
-      extraPrefixes: S.optional(
-        IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList.pipe(
-          T.Body("extra_prefixes"),
-        ),
-      ),
-      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
-      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp",
-  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp>;
-
-export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState =
-  | "BGP_DOWN"
-  | "BGP_UP"
-  | "BGP_ESTABLISHING"
-  | (string & {});
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus {
-  state: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState;
-  tcpEstablished: boolean;
-  updatedAt: string;
-  bgpState?: string;
-  cfSpeakerIp?: string;
-  cfSpeakerPort?: number;
-  customerSpeakerIp?: string;
-  customerSpeakerPort?: number;
-}
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      state: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState,
-      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
-      updatedAt: S.String.pipe(T.Body("updated_at")),
-      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
-      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
-      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
-      customerSpeakerIp: S.optional(
-        S.String.pipe(T.Body("customer_speaker_ip")),
-      ),
-      customerSpeakerPort: S.optional(
-        S.Number.pipe(T.Body("customer_speaker_port")),
-      ),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus",
-  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus>;
-
-export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities {
-  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
-  fqdnId?: string;
-}
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
-    }),
-  ).annotate({
-    identifier:
-      "IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities",
-  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities>;
-
-export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection =
-  | "unidirectional"
-  | "bidirectional"
-  | (string & {});
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection =
-  /*@__PURE__*/ S.String;
-
-export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget {
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
-  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
-  string: unknown;
-}
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
-        T.Body("MagicHealthCheckTarget object { effective, saved }"),
-      ),
-      string: S.Unknown,
-    }),
-  ).annotate({
-    identifier:
-      "IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget",
-  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget>;
-
-export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck {
-  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
-  direction?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection;
-  /** Determines whether to run healthchecks for a tunnel. */
-  enabled?: boolean;
-  /** How frequent the health check is run. The default value is `mid`. */
-  rate?: unknown;
-  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
-  target?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget;
-  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
-  type?: unknown;
-}
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      direction: S.optional(
-        IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection,
-      ),
-      enabled: S.optional(S.Boolean),
-      rate: S.optional(S.Unknown),
-      target: S.optional(
-        IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget,
-      ),
-      type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck",
-  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck>;
-
-export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata {
-  /** The date and time the tunnel was last modified. */
-  lastGeneratedOn?: string;
-}
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata",
-  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata>;
-
-export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnel {
-  /** Identifier */
-  id: string;
-  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
-  cloudflareEndpoint: string;
-  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
-  interfaceAddress: string;
-  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
-  name: string;
-  /** When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2). */
-  allowNullCipher?: boolean;
-  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
-  automaticReturnRouting?: boolean;
-  bgp?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp;
-  bgpStatus?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus;
-  /** The date and time the tunnel was created. */
-  createdOn?: string;
-  customRemoteIdentities?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities;
-  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
-  customerEndpoint?: string;
-  /** An optional description forthe IPsec tunnel. */
-  description?: string;
-  healthCheck?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck;
-  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
-  interfaceAddress6?: string;
-  /** The date and time the tunnel was last modified. */
-  modifiedOn?: string;
-  /** The PSK metadata that includes when the PSK was generated. */
-  pskMetadata?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata;
-  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
-  replayProtection?: boolean;
-}
-export const IpsecTunnelsUpdateResponseModifiedIpsecTunnel =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
-      interfaceAddress: S.String.pipe(T.Body("interface_address")),
-      name: S.String,
-      allowNullCipher: S.optional(S.Boolean.pipe(T.Body("allow_null_cipher"))),
-      automaticReturnRouting: S.optional(
-        S.Boolean.pipe(T.Body("automatic_return_routing")),
-      ),
-      bgp: S.optional(IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp),
-      bgpStatus: S.optional(
-        IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus.pipe(
-          T.Body("bgp_status"),
-        ),
-      ),
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      customRemoteIdentities: S.optional(
-        IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities.pipe(
-          T.Body("custom_remote_identities"),
-        ),
-      ),
-      customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
-      description: S.optional(S.String),
-      healthCheck: S.optional(
-        IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck.pipe(
-          T.Body("health_check"),
-        ),
-      ),
-      interfaceAddress6: S.optional(
-        S.String.pipe(T.Body("interface_address6")),
-      ),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      pskMetadata: S.optional(
-        IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata.pipe(
-          T.Body("psk_metadata"),
-        ),
-      ),
-      replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
-    }),
-  ).annotate({
-    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnel",
-  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnel>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface IpsecTunnelsUpdateResponse {
-  modified?: boolean;
-  modifiedIpsecTunnel?: IpsecTunnelsUpdateResponseModifiedIpsecTunnel;
-}
-export const IpsecTunnelsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modified: S.optional(S.Boolean),
-    modifiedIpsecTunnel: S.optional(
-      IpsecTunnelsUpdateResponseModifiedIpsecTunnel.pipe(
-        T.Body("modified_ipsec_tunnel"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "IpsecTunnelsUpdateResponse",
-}) as any as S.Schema<IpsecTunnelsUpdateResponse>;
-
-export interface PcapsCreateRequestBody {
-  MagicVisibilityPCAPsPCAPsRequestSimpleObjectPacketLimitSystemTimeLimit3More__: unknown;
-  MagicVisibilityPCAPsPCAPsRequestFullObjectColoNameDestinationConfSystem5More__: unknown;
-}
-export const PcapsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    MagicVisibilityPCAPsPCAPsRequestSimpleObjectPacketLimitSystemTimeLimit3More__:
-      S.Unknown.pipe(
-        T.Body(
-          "MagicVisibilityPCAPsPCAPsRequestSimple object { packet_limit, system, time_limit, 3 more }",
-        ),
-      ),
-    MagicVisibilityPCAPsPCAPsRequestFullObjectColoNameDestinationConfSystem5More__:
-      S.Unknown.pipe(
-        T.Body(
-          "MagicVisibilityPCAPsPCAPsRequestFull object { colo_name, destination_conf, system, 5 more }",
-        ),
-      ),
-  }),
-).annotate({
-  identifier: "PcapsCreateRequestBody",
-}) as any as S.Schema<PcapsCreateRequestBody>;
-
-export interface PcapsCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  body: PcapsCreateRequestBody;
-}
-export const PcapsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    body: PcapsCreateRequestBody,
-  }).pipe(
-    T.Http({ method: "POST", uri: "/accounts/{account_id}/pcaps", code: 200 }),
-  ),
-).annotate({
-  identifier: "PcapsCreateRequest",
-}) as any as S.Schema<PcapsCreateRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PcapsCreateResponse {
-  PCAPObjectIdFilterV1OffsetTime5More__: unknown;
-  MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__: unknown;
-}
-export const PcapsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PCAPObjectIdFilterV1OffsetTime5More__: S.Unknown.pipe(
-      T.Body("PCAP object { id, filter_v1, offset_time, 5 more }"),
-    ),
-    MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__:
-      S.Unknown.pipe(
-        T.Body(
-          "MagicVisibilityPCAPsPCAPsResponseFull object { id, byte_limit, colo_name, 10 more }",
-        ),
-      ),
-  }),
-).annotate({
-  identifier: "PcapsCreateResponse",
-}) as any as S.Schema<PcapsCreateResponse>;
-
-export interface PcapsDownloadGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Identifier. */
-  pcapId: string;
-}
-export const PcapsDownloadGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    pcapId: S.String.pipe(T.Label("pcap_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pcaps/{pcap_id}/download",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PcapsDownloadGetRequest",
-}) as any as S.Schema<PcapsDownloadGetRequest>;
-
-export interface PcapsDownloadGetResponse {}
-export const PcapsDownloadGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PcapsDownloadGetResponse",
-}) as any as S.Schema<PcapsDownloadGetResponse>;
-
-export interface PcapsGetRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Identifier. */
-  pcapId: string;
-}
-export const PcapsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    pcapId: S.String.pipe(T.Label("pcap_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pcaps/{pcap_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PcapsGetRequest",
-}) as any as S.Schema<PcapsGetRequest>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PcapsGetResponse {
-  PCAPObjectIdFilterV1OffsetTime5More__: unknown;
-  MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__: unknown;
-}
-export const PcapsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    PCAPObjectIdFilterV1OffsetTime5More__: S.Unknown.pipe(
-      T.Body("PCAP object { id, filter_v1, offset_time, 5 more }"),
-    ),
-    MagicVisibilityPCAPsPCAPsResponseFullObjectIdByteLimitColoName10More__:
-      S.Unknown.pipe(
-        T.Body(
-          "MagicVisibilityPCAPsPCAPsResponseFull object { id, byte_limit, colo_name, 10 more }",
-        ),
-      ),
-  }),
-).annotate({
-  identifier: "PcapsGetResponse",
-}) as any as S.Schema<PcapsGetResponse>;
-
-export interface PcapsListRequest {
+export interface ListPcapsRequest {
   /** Identifier. */
   accountId: string;
 }
-export const PcapsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListPcapsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
     T.Http({ method: "GET", uri: "/accounts/{account_id}/pcaps", code: 200 }),
   ),
 ).annotate({
-  identifier: "PcapsListRequest",
-}) as any as S.Schema<PcapsListRequest>;
+  identifier: "ListPcapsRequest",
+}) as any as S.Schema<ListPcapsRequest>;
 
 export interface PcapsListResultItem {
   PCAPObjectIdFilterV1OffsetTime5More__: unknown;
@@ -9494,905 +10498,23 @@ export const PcapsListResultList = /*@__PURE__*/ S.Array(
   PcapsListResultItem,
 ) as any as S.Schema<PcapsListResultList>;
 
-export interface PcapsListResponse {
+export interface ListPcapsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: PcapsListResultList;
 }
-export const PcapsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListPcapsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(PcapsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "PcapsListResponse",
-}) as any as S.Schema<PcapsListResponse>;
+  identifier: "ListPcapsResponse",
+}) as any as S.Schema<ListPcapsResponse>;
 
-export interface PcapsOwnershipCreateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** The full URI for the bucket. This field only applies to `full` packet captures. */
-  destinationConf: string;
-}
-export const PcapsOwnershipCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    destinationConf: S.String.pipe(T.Body("destination_conf")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pcaps/ownership",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PcapsOwnershipCreateRequest",
-}) as any as S.Schema<PcapsOwnershipCreateRequest>;
-
-export type PcapsOwnershipCreateResponseStatus =
-  | "pending"
-  | "success"
-  | "failed"
-  | (string & {});
-export const PcapsOwnershipCreateResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PcapsOwnershipCreateResponse {
-  /** The bucket ID associated with the packet captures API. */
-  id: string;
-  /** The full URI for the bucket. This field only applies to `full` packet captures. */
-  destinationConf: string;
-  /** The ownership challenge filename stored in the bucket. */
-  filename: string;
-  /** The status of the ownership challenge. Can be pending, success or failed. */
-  status: PcapsOwnershipCreateResponseStatus;
-  /** The RFC 3339 timestamp when the bucket was added to packet captures API. */
-  submitted: string;
-  /** The RFC 3339 timestamp when the bucket was validated. */
-  validated?: string;
-}
-export const PcapsOwnershipCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    destinationConf: S.String.pipe(T.Body("destination_conf")),
-    filename: S.String,
-    status: PcapsOwnershipCreateResponseStatus,
-    submitted: S.String,
-    validated: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PcapsOwnershipCreateResponse",
-}) as any as S.Schema<PcapsOwnershipCreateResponse>;
-
-export interface PcapsOwnershipDeleteRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Identifier. */
-  ownershipId: string;
-}
-export const PcapsOwnershipDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    ownershipId: S.String.pipe(T.Label("ownership_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/pcaps/ownership/{ownership_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PcapsOwnershipDeleteRequest",
-}) as any as S.Schema<PcapsOwnershipDeleteRequest>;
-
-export interface PcapsOwnershipDeleteResponse {}
-export const PcapsOwnershipDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PcapsOwnershipDeleteResponse",
-}) as any as S.Schema<PcapsOwnershipDeleteResponse>;
-
-export interface PcapsOwnershipGetRequest {
-  /** Identifier. */
-  accountId: string;
-}
-export const PcapsOwnershipGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/pcaps/ownership",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PcapsOwnershipGetRequest",
-}) as any as S.Schema<PcapsOwnershipGetRequest>;
-
-export type PcapsOwnershipGetResultItemStatus =
-  | "pending"
-  | "success"
-  | "failed"
-  | (string & {});
-export const PcapsOwnershipGetResultItemStatus = /*@__PURE__*/ S.String;
-
-export interface PcapsOwnershipGetResultItem {
-  /** The bucket ID associated with the packet captures API. */
-  id: string;
-  /** The full URI for the bucket. This field only applies to `full` packet captures. */
-  destinationConf: string;
-  /** The ownership challenge filename stored in the bucket. */
-  filename: string;
-  /** The status of the ownership challenge. Can be pending, success or failed. */
-  status: PcapsOwnershipGetResultItemStatus;
-  /** The RFC 3339 timestamp when the bucket was added to packet captures API. */
-  submitted: string;
-  /** The RFC 3339 timestamp when the bucket was validated. */
-  validated?: string;
-}
-export const PcapsOwnershipGetResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    destinationConf: S.String.pipe(T.Body("destination_conf")),
-    filename: S.String,
-    status: PcapsOwnershipGetResultItemStatus,
-    submitted: S.String,
-    validated: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PcapsOwnershipGetResultItem",
-}) as any as S.Schema<PcapsOwnershipGetResultItem>;
-
-export type PcapsOwnershipGetResultList = PcapsOwnershipGetResultItem[];
-export const PcapsOwnershipGetResultList = /*@__PURE__*/ S.Array(
-  PcapsOwnershipGetResultItem,
-) as any as S.Schema<PcapsOwnershipGetResultList>;
-
-export interface PcapsOwnershipGetResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PcapsOwnershipGetResultList;
-}
-export const PcapsOwnershipGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(PcapsOwnershipGetResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "PcapsOwnershipGetResponse",
-}) as any as S.Schema<PcapsOwnershipGetResponse>;
-
-export interface PcapsOwnershipValidateRequest {
-  /** Identifier. */
-  accountId: string;
-  /** The full URI for the bucket. This field only applies to `full` packet captures. */
-  destinationConf: string;
-  /** The ownership challenge filename stored in the bucket. */
-  ownershipChallenge: string;
-}
-export const PcapsOwnershipValidateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    destinationConf: S.String.pipe(T.Body("destination_conf")),
-    ownershipChallenge: S.String.pipe(T.Body("ownership_challenge")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/pcaps/ownership/validate",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PcapsOwnershipValidateRequest",
-}) as any as S.Schema<PcapsOwnershipValidateRequest>;
-
-export type PcapsOwnershipValidateResponseStatus =
-  | "pending"
-  | "success"
-  | "failed"
-  | (string & {});
-export const PcapsOwnershipValidateResponseStatus = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface PcapsOwnershipValidateResponse {
-  /** The bucket ID associated with the packet captures API. */
-  id: string;
-  /** The full URI for the bucket. This field only applies to `full` packet captures. */
-  destinationConf: string;
-  /** The ownership challenge filename stored in the bucket. */
-  filename: string;
-  /** The status of the ownership challenge. Can be pending, success or failed. */
-  status: PcapsOwnershipValidateResponseStatus;
-  /** The RFC 3339 timestamp when the bucket was added to packet captures API. */
-  submitted: string;
-  /** The RFC 3339 timestamp when the bucket was validated. */
-  validated?: string;
-}
-export const PcapsOwnershipValidateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    destinationConf: S.String.pipe(T.Body("destination_conf")),
-    filename: S.String,
-    status: PcapsOwnershipValidateResponseStatus,
-    submitted: S.String,
-    validated: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "PcapsOwnershipValidateResponse",
-}) as any as S.Schema<PcapsOwnershipValidateResponse>;
-
-export interface PcapsStopRequest {
-  /** Identifier. */
-  accountId: string;
-  /** Identifier. */
-  pcapId: string;
-}
-export const PcapsStopRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    pcapId: S.String.pipe(T.Label("pcap_id")),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/pcaps/{pcap_id}/stop",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "PcapsStopRequest",
-}) as any as S.Schema<PcapsStopRequest>;
-
-export interface PcapsStopResponse {}
-export const PcapsStopResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({}),
-).annotate({
-  identifier: "PcapsStopResponse",
-}) as any as S.Schema<PcapsStopResponse>;
-
-export type RoutesBulkUpdateRequestRoutesItemScopeColoNamesList = string[];
-export const RoutesBulkUpdateRequestRoutesItemScopeColoNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RoutesBulkUpdateRequestRoutesItemScopeColoNamesList>;
-
-export type RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList = string[];
-export const RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList>;
-
-export interface RoutesBulkUpdateRequestRoutesItemScope {
-  /** List of colo names for the ECMP scope. */
-  coloNames?: RoutesBulkUpdateRequestRoutesItemScopeColoNamesList;
-  /** List of colo regions for the ECMP scope. */
-  coloRegions?: RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList;
-}
-export const RoutesBulkUpdateRequestRoutesItemScope = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      coloNames: S.optional(
-        RoutesBulkUpdateRequestRoutesItemScopeColoNamesList.pipe(
-          T.Body("colo_names"),
-        ),
-      ),
-      coloRegions: S.optional(
-        RoutesBulkUpdateRequestRoutesItemScopeColoRegionsList.pipe(
-          T.Body("colo_regions"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "RoutesBulkUpdateRequestRoutesItemScope",
-}) as any as S.Schema<RoutesBulkUpdateRequestRoutesItemScope>;
-
-export interface RoutesBulkUpdateRequestRoutesItem {
-  /** Identifier */
-  id: string;
-  /** The next-hop IP Address for the static route. */
-  nexthop: string;
-  /** IP Prefix in Classless Inter-Domain Routing format. */
-  prefix: string;
-  /** Priority of the static route. */
-  priority: number;
-  /** An optional human provided description of the static route. */
-  description?: string;
-  /** Used only for ECMP routes. */
-  scope?: RoutesBulkUpdateRequestRoutesItemScope;
-  /** Optional weight of the ECMP scope - if provided. */
-  weight?: number;
-}
-export const RoutesBulkUpdateRequestRoutesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    nexthop: S.String,
-    prefix: S.String,
-    priority: S.Number,
-    description: S.optional(S.String),
-    scope: S.optional(RoutesBulkUpdateRequestRoutesItemScope),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RoutesBulkUpdateRequestRoutesItem",
-}) as any as S.Schema<RoutesBulkUpdateRequestRoutesItem>;
-
-export type RoutesBulkUpdateRequestRoutesList =
-  RoutesBulkUpdateRequestRoutesItem[];
-export const RoutesBulkUpdateRequestRoutesList = /*@__PURE__*/ S.Array(
-  RoutesBulkUpdateRequestRoutesItem,
-) as any as S.Schema<RoutesBulkUpdateRequestRoutesList>;
-
-export interface RoutesBulkUpdateRequest {
-  /** Identifier */
-  accountId: string;
-  routes: RoutesBulkUpdateRequestRoutesList;
-}
-export const RoutesBulkUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    routes: RoutesBulkUpdateRequestRoutesList,
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/routes",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RoutesBulkUpdateRequest",
-}) as any as S.Schema<RoutesBulkUpdateRequest>;
-
-export type RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList =
-  string[];
-export const RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList>;
-
-export type RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList =
-  string[];
-export const RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList>;
-
-export interface RoutesBulkUpdateResponseModifiedRoutesItemScope {
-  /** List of colo names for the ECMP scope. */
-  coloNames?: RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList;
-  /** List of colo regions for the ECMP scope. */
-  coloRegions?: RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList;
-}
-export const RoutesBulkUpdateResponseModifiedRoutesItemScope =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      coloNames: S.optional(
-        RoutesBulkUpdateResponseModifiedRoutesItemScopeColoNamesList.pipe(
-          T.Body("colo_names"),
-        ),
-      ),
-      coloRegions: S.optional(
-        RoutesBulkUpdateResponseModifiedRoutesItemScopeColoRegionsList.pipe(
-          T.Body("colo_regions"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "RoutesBulkUpdateResponseModifiedRoutesItemScope",
-  }) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItemScope>;
-
-export interface RoutesBulkUpdateResponseModifiedRoutesItem {
-  /** Identifier */
-  id: string;
-  /** The next-hop IP Address for the static route. */
-  nexthop: string;
-  /** IP Prefix in Classless Inter-Domain Routing format. */
-  prefix: string;
-  /** Priority of the static route. */
-  priority: number;
-  /** When the route was created. */
-  createdOn?: string;
-  /** An optional human provided description of the static route. */
-  description?: string;
-  /** When the route was last modified. */
-  modifiedOn?: string;
-  /** Used only for ECMP routes. */
-  scope?: RoutesBulkUpdateResponseModifiedRoutesItemScope;
-  /** Optional weight of the ECMP scope - if provided. */
-  weight?: number;
-}
-export const RoutesBulkUpdateResponseModifiedRoutesItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      id: S.String,
-      nexthop: S.String,
-      prefix: S.String,
-      priority: S.Number,
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      scope: S.optional(RoutesBulkUpdateResponseModifiedRoutesItemScope),
-      weight: S.optional(S.Number),
-    }),
-  ).annotate({
-    identifier: "RoutesBulkUpdateResponseModifiedRoutesItem",
-  }) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesItem>;
-
-export type RoutesBulkUpdateResponseModifiedRoutesList =
-  RoutesBulkUpdateResponseModifiedRoutesItem[];
-export const RoutesBulkUpdateResponseModifiedRoutesList = /*@__PURE__*/ S.Array(
-  RoutesBulkUpdateResponseModifiedRoutesItem,
-) as any as S.Schema<RoutesBulkUpdateResponseModifiedRoutesList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RoutesBulkUpdateResponse {
-  modified?: boolean;
-  modifiedRoutes?: RoutesBulkUpdateResponseModifiedRoutesList;
-}
-export const RoutesBulkUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modified: S.optional(S.Boolean),
-    modifiedRoutes: S.optional(
-      RoutesBulkUpdateResponseModifiedRoutesList.pipe(
-        T.Body("modified_routes"),
-      ),
-    ),
-  }),
-).annotate({
-  identifier: "RoutesBulkUpdateResponse",
-}) as any as S.Schema<RoutesBulkUpdateResponse>;
-
-export type RoutesCreateRequestScopeColoNamesList = string[];
-export const RoutesCreateRequestScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesCreateRequestScopeColoNamesList>;
-
-export type RoutesCreateRequestScopeColoRegionsList = string[];
-export const RoutesCreateRequestScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesCreateRequestScopeColoRegionsList>;
-
-export interface RoutesCreateRequestScope {
-  /** List of colo names for the ECMP scope. */
-  coloNames?: RoutesCreateRequestScopeColoNamesList;
-  /** List of colo regions for the ECMP scope. */
-  coloRegions?: RoutesCreateRequestScopeColoRegionsList;
-}
-export const RoutesCreateRequestScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coloNames: S.optional(
-      RoutesCreateRequestScopeColoNamesList.pipe(T.Body("colo_names")),
-    ),
-    coloRegions: S.optional(
-      RoutesCreateRequestScopeColoRegionsList.pipe(T.Body("colo_regions")),
-    ),
-  }),
-).annotate({
-  identifier: "RoutesCreateRequestScope",
-}) as any as S.Schema<RoutesCreateRequestScope>;
-
-export interface RoutesCreateRequest {
-  /** Identifier */
-  accountId: string;
-  /** The next-hop IP Address for the static route. */
-  nexthop: string;
-  /** IP Prefix in Classless Inter-Domain Routing format. */
-  prefix: string;
-  /** Priority of the static route. */
-  priority: number;
-  /** An optional human provided description of the static route. */
-  description?: string;
-  /** Used only for ECMP routes. */
-  scope?: RoutesCreateRequestScope;
-  /** Optional weight of the ECMP scope - if provided. */
-  weight?: number;
-}
-export const RoutesCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    nexthop: S.String,
-    prefix: S.String,
-    priority: S.Number,
-    description: S.optional(S.String),
-    scope: S.optional(RoutesCreateRequestScope),
-    weight: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/routes",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RoutesCreateRequest",
-}) as any as S.Schema<RoutesCreateRequest>;
-
-export type RoutesCreateResponseScopeColoNamesList = string[];
-export const RoutesCreateResponseScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesCreateResponseScopeColoNamesList>;
-
-export type RoutesCreateResponseScopeColoRegionsList = string[];
-export const RoutesCreateResponseScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesCreateResponseScopeColoRegionsList>;
-
-export interface RoutesCreateResponseScope {
-  /** List of colo names for the ECMP scope. */
-  coloNames?: RoutesCreateResponseScopeColoNamesList;
-  /** List of colo regions for the ECMP scope. */
-  coloRegions?: RoutesCreateResponseScopeColoRegionsList;
-}
-export const RoutesCreateResponseScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coloNames: S.optional(
-      RoutesCreateResponseScopeColoNamesList.pipe(T.Body("colo_names")),
-    ),
-    coloRegions: S.optional(
-      RoutesCreateResponseScopeColoRegionsList.pipe(T.Body("colo_regions")),
-    ),
-  }),
-).annotate({
-  identifier: "RoutesCreateResponseScope",
-}) as any as S.Schema<RoutesCreateResponseScope>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RoutesCreateResponse {
-  /** Identifier */
-  id: string;
-  /** The next-hop IP Address for the static route. */
-  nexthop: string;
-  /** IP Prefix in Classless Inter-Domain Routing format. */
-  prefix: string;
-  /** Priority of the static route. */
-  priority: number;
-  /** When the route was created. */
-  createdOn?: string;
-  /** An optional human provided description of the static route. */
-  description?: string;
-  /** When the route was last modified. */
-  modifiedOn?: string;
-  /** Used only for ECMP routes. */
-  scope?: RoutesCreateResponseScope;
-  /** Optional weight of the ECMP scope - if provided. */
-  weight?: number;
-}
-export const RoutesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    nexthop: S.String,
-    prefix: S.String,
-    priority: S.Number,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    scope: S.optional(RoutesCreateResponseScope),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RoutesCreateResponse",
-}) as any as S.Schema<RoutesCreateResponse>;
-
-export interface RoutesDeleteRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  routeId: string;
-}
-export const RoutesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    routeId: S.String.pipe(T.Label("route_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/routes/{route_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RoutesDeleteRequest",
-}) as any as S.Schema<RoutesDeleteRequest>;
-
-export type RoutesDeleteResponseDeletedRouteScopeColoNamesList = string[];
-export const RoutesDeleteResponseDeletedRouteScopeColoNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RoutesDeleteResponseDeletedRouteScopeColoNamesList>;
-
-export type RoutesDeleteResponseDeletedRouteScopeColoRegionsList = string[];
-export const RoutesDeleteResponseDeletedRouteScopeColoRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RoutesDeleteResponseDeletedRouteScopeColoRegionsList>;
-
-export interface RoutesDeleteResponseDeletedRouteScope {
-  /** List of colo names for the ECMP scope. */
-  coloNames?: RoutesDeleteResponseDeletedRouteScopeColoNamesList;
-  /** List of colo regions for the ECMP scope. */
-  coloRegions?: RoutesDeleteResponseDeletedRouteScopeColoRegionsList;
-}
-export const RoutesDeleteResponseDeletedRouteScope = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      coloNames: S.optional(
-        RoutesDeleteResponseDeletedRouteScopeColoNamesList.pipe(
-          T.Body("colo_names"),
-        ),
-      ),
-      coloRegions: S.optional(
-        RoutesDeleteResponseDeletedRouteScopeColoRegionsList.pipe(
-          T.Body("colo_regions"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "RoutesDeleteResponseDeletedRouteScope",
-}) as any as S.Schema<RoutesDeleteResponseDeletedRouteScope>;
-
-export interface RoutesDeleteResponseDeletedRoute {
-  /** Identifier */
-  id: string;
-  /** The next-hop IP Address for the static route. */
-  nexthop: string;
-  /** IP Prefix in Classless Inter-Domain Routing format. */
-  prefix: string;
-  /** Priority of the static route. */
-  priority: number;
-  /** When the route was created. */
-  createdOn?: string;
-  /** An optional human provided description of the static route. */
-  description?: string;
-  /** When the route was last modified. */
-  modifiedOn?: string;
-  /** Used only for ECMP routes. */
-  scope?: RoutesDeleteResponseDeletedRouteScope;
-  /** Optional weight of the ECMP scope - if provided. */
-  weight?: number;
-}
-export const RoutesDeleteResponseDeletedRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    nexthop: S.String,
-    prefix: S.String,
-    priority: S.Number,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    scope: S.optional(RoutesDeleteResponseDeletedRouteScope),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RoutesDeleteResponseDeletedRoute",
-}) as any as S.Schema<RoutesDeleteResponseDeletedRoute>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RoutesDeleteResponse {
-  deleted?: boolean;
-  deletedRoute?: RoutesDeleteResponseDeletedRoute;
-}
-export const RoutesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deleted: S.optional(S.Boolean),
-    deletedRoute: S.optional(
-      RoutesDeleteResponseDeletedRoute.pipe(T.Body("deleted_route")),
-    ),
-  }),
-).annotate({
-  identifier: "RoutesDeleteResponse",
-}) as any as S.Schema<RoutesDeleteResponse>;
-
-export interface RoutesEmptyRequest {
+export interface ListRoutesRequest {
   /** Identifier */
   accountId: string;
 }
-export const RoutesEmptyRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/routes",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RoutesEmptyRequest",
-}) as any as S.Schema<RoutesEmptyRequest>;
-
-export type RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList = string[];
-export const RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList>;
-
-export type RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList = string[];
-export const RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList>;
-
-export interface RoutesEmptyResponseDeletedRoutesItemScope {
-  /** List of colo names for the ECMP scope. */
-  coloNames?: RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList;
-  /** List of colo regions for the ECMP scope. */
-  coloRegions?: RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList;
-}
-export const RoutesEmptyResponseDeletedRoutesItemScope =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      coloNames: S.optional(
-        RoutesEmptyResponseDeletedRoutesItemScopeColoNamesList.pipe(
-          T.Body("colo_names"),
-        ),
-      ),
-      coloRegions: S.optional(
-        RoutesEmptyResponseDeletedRoutesItemScopeColoRegionsList.pipe(
-          T.Body("colo_regions"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "RoutesEmptyResponseDeletedRoutesItemScope",
-  }) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItemScope>;
-
-export interface RoutesEmptyResponseDeletedRoutesItem {
-  /** Identifier */
-  id: string;
-  /** The next-hop IP Address for the static route. */
-  nexthop: string;
-  /** IP Prefix in Classless Inter-Domain Routing format. */
-  prefix: string;
-  /** Priority of the static route. */
-  priority: number;
-  /** When the route was created. */
-  createdOn?: string;
-  /** An optional human provided description of the static route. */
-  description?: string;
-  /** When the route was last modified. */
-  modifiedOn?: string;
-  /** Used only for ECMP routes. */
-  scope?: RoutesEmptyResponseDeletedRoutesItemScope;
-  /** Optional weight of the ECMP scope - if provided. */
-  weight?: number;
-}
-export const RoutesEmptyResponseDeletedRoutesItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      id: S.String,
-      nexthop: S.String,
-      prefix: S.String,
-      priority: S.Number,
-      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-      description: S.optional(S.String),
-      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-      scope: S.optional(RoutesEmptyResponseDeletedRoutesItemScope),
-      weight: S.optional(S.Number),
-    }),
-).annotate({
-  identifier: "RoutesEmptyResponseDeletedRoutesItem",
-}) as any as S.Schema<RoutesEmptyResponseDeletedRoutesItem>;
-
-export type RoutesEmptyResponseDeletedRoutesList =
-  RoutesEmptyResponseDeletedRoutesItem[];
-export const RoutesEmptyResponseDeletedRoutesList = /*@__PURE__*/ S.Array(
-  RoutesEmptyResponseDeletedRoutesItem,
-) as any as S.Schema<RoutesEmptyResponseDeletedRoutesList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RoutesEmptyResponse {
-  deleted?: boolean;
-  deletedRoutes?: RoutesEmptyResponseDeletedRoutesList;
-}
-export const RoutesEmptyResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    deleted: S.optional(S.Boolean),
-    deletedRoutes: S.optional(
-      RoutesEmptyResponseDeletedRoutesList.pipe(T.Body("deleted_routes")),
-    ),
-  }),
-).annotate({
-  identifier: "RoutesEmptyResponse",
-}) as any as S.Schema<RoutesEmptyResponse>;
-
-export interface RoutesGetRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  routeId: string;
-}
-export const RoutesGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    routeId: S.String.pipe(T.Label("route_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/routes/{route_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RoutesGetRequest",
-}) as any as S.Schema<RoutesGetRequest>;
-
-export type RoutesGetResponseRouteScopeColoNamesList = string[];
-export const RoutesGetResponseRouteScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesGetResponseRouteScopeColoNamesList>;
-
-export type RoutesGetResponseRouteScopeColoRegionsList = string[];
-export const RoutesGetResponseRouteScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesGetResponseRouteScopeColoRegionsList>;
-
-export interface RoutesGetResponseRouteScope {
-  /** List of colo names for the ECMP scope. */
-  coloNames?: RoutesGetResponseRouteScopeColoNamesList;
-  /** List of colo regions for the ECMP scope. */
-  coloRegions?: RoutesGetResponseRouteScopeColoRegionsList;
-}
-export const RoutesGetResponseRouteScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coloNames: S.optional(
-      RoutesGetResponseRouteScopeColoNamesList.pipe(T.Body("colo_names")),
-    ),
-    coloRegions: S.optional(
-      RoutesGetResponseRouteScopeColoRegionsList.pipe(T.Body("colo_regions")),
-    ),
-  }),
-).annotate({
-  identifier: "RoutesGetResponseRouteScope",
-}) as any as S.Schema<RoutesGetResponseRouteScope>;
-
-export interface RoutesGetResponseRoute {
-  /** Identifier */
-  id: string;
-  /** The next-hop IP Address for the static route. */
-  nexthop: string;
-  /** IP Prefix in Classless Inter-Domain Routing format. */
-  prefix: string;
-  /** Priority of the static route. */
-  priority: number;
-  /** When the route was created. */
-  createdOn?: string;
-  /** An optional human provided description of the static route. */
-  description?: string;
-  /** When the route was last modified. */
-  modifiedOn?: string;
-  /** Used only for ECMP routes. */
-  scope?: RoutesGetResponseRouteScope;
-  /** Optional weight of the ECMP scope - if provided. */
-  weight?: number;
-}
-export const RoutesGetResponseRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    nexthop: S.String,
-    prefix: S.String,
-    priority: S.Number,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    scope: S.optional(RoutesGetResponseRouteScope),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RoutesGetResponseRoute",
-}) as any as S.Schema<RoutesGetResponseRoute>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RoutesGetResponse {
-  route?: RoutesGetResponseRoute;
-}
-export const RoutesGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    route: S.optional(RoutesGetResponseRoute),
-  }),
-).annotate({
-  identifier: "RoutesGetResponse",
-}) as any as S.Schema<RoutesGetResponse>;
-
-export interface RoutesListRequest {
-  /** Identifier */
-  accountId: string;
-}
-export const RoutesListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListRoutesRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
   }).pipe(
@@ -10403,8 +10525,8 @@ export const RoutesListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "RoutesListRequest",
-}) as any as S.Schema<RoutesListRequest>;
+  identifier: "ListRoutesRequest",
+}) as any as S.Schema<ListRoutesRequest>;
 
 export type RoutesListResponseRoutesItemScopeColoNamesList = string[];
 export const RoutesListResponseRoutesItemScopeColoNamesList =
@@ -10481,709 +10603,24 @@ export const RoutesListResponseRoutesList = /*@__PURE__*/ S.Array(
 ) as any as S.Schema<RoutesListResponseRoutesList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RoutesListResponse {
+export interface ListRoutesResponse {
   routes?: RoutesListResponseRoutesList;
 }
-export const RoutesListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListRoutesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     routes: S.optional(RoutesListResponseRoutesList),
   }),
 ).annotate({
-  identifier: "RoutesListResponse",
-}) as any as S.Schema<RoutesListResponse>;
+  identifier: "ListRoutesResponse",
+}) as any as S.Schema<ListRoutesResponse>;
 
-export type RoutesUpdateRequestScopeColoNamesList = string[];
-export const RoutesUpdateRequestScopeColoNamesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesUpdateRequestScopeColoNamesList>;
-
-export type RoutesUpdateRequestScopeColoRegionsList = string[];
-export const RoutesUpdateRequestScopeColoRegionsList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<RoutesUpdateRequestScopeColoRegionsList>;
-
-export interface RoutesUpdateRequestScope {
-  /** List of colo names for the ECMP scope. */
-  coloNames?: RoutesUpdateRequestScopeColoNamesList;
-  /** List of colo regions for the ECMP scope. */
-  coloRegions?: RoutesUpdateRequestScopeColoRegionsList;
-}
-export const RoutesUpdateRequestScope = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    coloNames: S.optional(
-      RoutesUpdateRequestScopeColoNamesList.pipe(T.Body("colo_names")),
-    ),
-    coloRegions: S.optional(
-      RoutesUpdateRequestScopeColoRegionsList.pipe(T.Body("colo_regions")),
-    ),
-  }),
-).annotate({
-  identifier: "RoutesUpdateRequestScope",
-}) as any as S.Schema<RoutesUpdateRequestScope>;
-
-export interface RoutesUpdateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  routeId: string;
-  /** The next-hop IP Address for the static route. */
-  nexthop: string;
-  /** IP Prefix in Classless Inter-Domain Routing format. */
-  prefix: string;
-  /** Priority of the static route. */
-  priority: number;
-  /** An optional human provided description of the static route. */
-  description?: string;
-  /** Used only for ECMP routes. */
-  scope?: RoutesUpdateRequestScope;
-  /** Optional weight of the ECMP scope - if provided. */
-  weight?: number;
-}
-export const RoutesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    routeId: S.String.pipe(T.Label("route_id")),
-    nexthop: S.String,
-    prefix: S.String,
-    priority: S.Number,
-    description: S.optional(S.String),
-    scope: S.optional(RoutesUpdateRequestScope),
-    weight: S.optional(S.Number),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/routes/{route_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RoutesUpdateRequest",
-}) as any as S.Schema<RoutesUpdateRequest>;
-
-export type RoutesUpdateResponseModifiedRouteScopeColoNamesList = string[];
-export const RoutesUpdateResponseModifiedRouteScopeColoNamesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RoutesUpdateResponseModifiedRouteScopeColoNamesList>;
-
-export type RoutesUpdateResponseModifiedRouteScopeColoRegionsList = string[];
-export const RoutesUpdateResponseModifiedRouteScopeColoRegionsList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<RoutesUpdateResponseModifiedRouteScopeColoRegionsList>;
-
-export interface RoutesUpdateResponseModifiedRouteScope {
-  /** List of colo names for the ECMP scope. */
-  coloNames?: RoutesUpdateResponseModifiedRouteScopeColoNamesList;
-  /** List of colo regions for the ECMP scope. */
-  coloRegions?: RoutesUpdateResponseModifiedRouteScopeColoRegionsList;
-}
-export const RoutesUpdateResponseModifiedRouteScope = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      coloNames: S.optional(
-        RoutesUpdateResponseModifiedRouteScopeColoNamesList.pipe(
-          T.Body("colo_names"),
-        ),
-      ),
-      coloRegions: S.optional(
-        RoutesUpdateResponseModifiedRouteScopeColoRegionsList.pipe(
-          T.Body("colo_regions"),
-        ),
-      ),
-    }),
-).annotate({
-  identifier: "RoutesUpdateResponseModifiedRouteScope",
-}) as any as S.Schema<RoutesUpdateResponseModifiedRouteScope>;
-
-export interface RoutesUpdateResponseModifiedRoute {
-  /** Identifier */
-  id: string;
-  /** The next-hop IP Address for the static route. */
-  nexthop: string;
-  /** IP Prefix in Classless Inter-Domain Routing format. */
-  prefix: string;
-  /** Priority of the static route. */
-  priority: number;
-  /** When the route was created. */
-  createdOn?: string;
-  /** An optional human provided description of the static route. */
-  description?: string;
-  /** When the route was last modified. */
-  modifiedOn?: string;
-  /** Used only for ECMP routes. */
-  scope?: RoutesUpdateResponseModifiedRouteScope;
-  /** Optional weight of the ECMP scope - if provided. */
-  weight?: number;
-}
-export const RoutesUpdateResponseModifiedRoute = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    nexthop: S.String,
-    prefix: S.String,
-    priority: S.Number,
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    description: S.optional(S.String),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    scope: S.optional(RoutesUpdateResponseModifiedRouteScope),
-    weight: S.optional(S.Number),
-  }),
-).annotate({
-  identifier: "RoutesUpdateResponseModifiedRoute",
-}) as any as S.Schema<RoutesUpdateResponseModifiedRoute>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RoutesUpdateResponse {
-  modified?: boolean;
-  modifiedRoute?: RoutesUpdateResponseModifiedRoute;
-}
-export const RoutesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    modified: S.optional(S.Boolean),
-    modifiedRoute: S.optional(
-      RoutesUpdateResponseModifiedRoute.pipe(T.Body("modified_route")),
-    ),
-  }),
-).annotate({
-  identifier: "RoutesUpdateResponse",
-}) as any as S.Schema<RoutesUpdateResponse>;
-
-export type SitesAclsCreateRequestLan1PortRangesList = string[];
-export const SitesAclsCreateRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsCreateRequestLan1PortRangesList>;
-
-export type SitesAclsCreateRequestLan1PortsList = number[];
-export const SitesAclsCreateRequestLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsCreateRequestLan1PortsList>;
-
-export type SitesAclsCreateRequestLan1SubnetsList = unknown[];
-export const SitesAclsCreateRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SitesAclsCreateRequestLan1SubnetsList>;
-
-export interface SitesAclsCreateRequestLan1 {
-  /** The identifier for the LAN you want to create an ACL policy with. */
-  lanId: string;
-  /** The name of the LAN based on the provided lan_id. */
-  lanName?: string;
-  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
-  portRanges?: SitesAclsCreateRequestLan1PortRangesList;
-  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
-  ports?: SitesAclsCreateRequestLan1PortsList;
-  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
-  subnets?: SitesAclsCreateRequestLan1SubnetsList;
-}
-export const SitesAclsCreateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      SitesAclsCreateRequestLan1PortRangesList.pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(SitesAclsCreateRequestLan1PortsList),
-    subnets: S.optional(SitesAclsCreateRequestLan1SubnetsList),
-  }),
-).annotate({
-  identifier: "SitesAclsCreateRequestLan1",
-}) as any as S.Schema<SitesAclsCreateRequestLan1>;
-
-export type SitesAclsCreateRequestProtocolsList = unknown[];
-export const SitesAclsCreateRequestProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SitesAclsCreateRequestProtocolsList>;
-
-export interface SitesAclsCreateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  lan1: SitesAclsCreateRequestLan1;
-  lan2: unknown;
-  /** The name of the ACL. */
-  name: string;
-  /** Description for the ACL. */
-  description?: string;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
-  forwardLocally?: boolean;
-  protocols?: SitesAclsCreateRequestProtocolsList;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean;
-}
-export const SitesAclsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    lan1: SitesAclsCreateRequestLan1.pipe(T.Body("lan_1")),
-    lan2: S.Unknown.pipe(T.Body("lan_2")),
-    name: S.String,
-    description: S.optional(S.String),
-    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    protocols: S.optional(SitesAclsCreateRequestProtocolsList),
-    unidirectional: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesAclsCreateRequest",
-}) as any as S.Schema<SitesAclsCreateRequest>;
-
-export type SitesAclsCreateResponseLan1PortRangesList = string[];
-export const SitesAclsCreateResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsCreateResponseLan1PortRangesList>;
-
-export type SitesAclsCreateResponseLan1PortsList = number[];
-export const SitesAclsCreateResponseLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsCreateResponseLan1PortsList>;
-
-export type SitesAclsCreateResponseLan1SubnetsList = unknown[];
-export const SitesAclsCreateResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SitesAclsCreateResponseLan1SubnetsList>;
-
-export interface SitesAclsCreateResponseLan1 {
-  /** The identifier for the LAN you want to create an ACL policy with. */
-  lanId: string;
-  /** The name of the LAN based on the provided lan_id. */
-  lanName?: string;
-  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
-  portRanges?: SitesAclsCreateResponseLan1PortRangesList;
-  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
-  ports?: SitesAclsCreateResponseLan1PortsList;
-  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
-  subnets?: SitesAclsCreateResponseLan1SubnetsList;
-}
-export const SitesAclsCreateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      SitesAclsCreateResponseLan1PortRangesList.pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(SitesAclsCreateResponseLan1PortsList),
-    subnets: S.optional(SitesAclsCreateResponseLan1SubnetsList),
-  }),
-).annotate({
-  identifier: "SitesAclsCreateResponseLan1",
-}) as any as S.Schema<SitesAclsCreateResponseLan1>;
-
-export type SitesAclsCreateResponseProtocolsList = unknown[];
-export const SitesAclsCreateResponseProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SitesAclsCreateResponseProtocolsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesAclsCreateResponse {
-  /** Identifier */
-  id?: string;
-  /** Description for the ACL. */
-  description?: string;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
-  forwardLocally?: boolean;
-  lan1?: SitesAclsCreateResponseLan1;
-  lan2?: unknown;
-  /** The name of the ACL. */
-  name?: string;
-  protocols?: SitesAclsCreateResponseProtocolsList;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean;
-}
-export const SitesAclsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsCreateResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
-    name: S.optional(S.String),
-    protocols: S.optional(SitesAclsCreateResponseProtocolsList),
-    unidirectional: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SitesAclsCreateResponse",
-}) as any as S.Schema<SitesAclsCreateResponse>;
-
-export interface SitesAclsDeleteRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  /** Identifier */
-  aclId: string;
-}
-export const SitesAclsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    aclId: S.String.pipe(T.Label("acl_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesAclsDeleteRequest",
-}) as any as S.Schema<SitesAclsDeleteRequest>;
-
-export type SitesAclsDeleteResponseLan1PortRangesList = string[];
-export const SitesAclsDeleteResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsDeleteResponseLan1PortRangesList>;
-
-export type SitesAclsDeleteResponseLan1PortsList = number[];
-export const SitesAclsDeleteResponseLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsDeleteResponseLan1PortsList>;
-
-export type SitesAclsDeleteResponseLan1SubnetsList = unknown[];
-export const SitesAclsDeleteResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SitesAclsDeleteResponseLan1SubnetsList>;
-
-export interface SitesAclsDeleteResponseLan1 {
-  /** The identifier for the LAN you want to create an ACL policy with. */
-  lanId: string;
-  /** The name of the LAN based on the provided lan_id. */
-  lanName?: string;
-  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
-  portRanges?: SitesAclsDeleteResponseLan1PortRangesList;
-  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
-  ports?: SitesAclsDeleteResponseLan1PortsList;
-  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
-  subnets?: SitesAclsDeleteResponseLan1SubnetsList;
-}
-export const SitesAclsDeleteResponseLan1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      SitesAclsDeleteResponseLan1PortRangesList.pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(SitesAclsDeleteResponseLan1PortsList),
-    subnets: S.optional(SitesAclsDeleteResponseLan1SubnetsList),
-  }),
-).annotate({
-  identifier: "SitesAclsDeleteResponseLan1",
-}) as any as S.Schema<SitesAclsDeleteResponseLan1>;
-
-export type SitesAclsDeleteResponseProtocolsList = unknown[];
-export const SitesAclsDeleteResponseProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SitesAclsDeleteResponseProtocolsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesAclsDeleteResponse {
-  /** Identifier */
-  id?: string;
-  /** Description for the ACL. */
-  description?: string;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
-  forwardLocally?: boolean;
-  lan1?: SitesAclsDeleteResponseLan1;
-  lan2?: unknown;
-  /** The name of the ACL. */
-  name?: string;
-  protocols?: SitesAclsDeleteResponseProtocolsList;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean;
-}
-export const SitesAclsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsDeleteResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
-    name: S.optional(S.String),
-    protocols: S.optional(SitesAclsDeleteResponseProtocolsList),
-    unidirectional: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SitesAclsDeleteResponse",
-}) as any as S.Schema<SitesAclsDeleteResponse>;
-
-export type SitesAclsEditRequestLan1PortRangesList = string[];
-export const SitesAclsEditRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsEditRequestLan1PortRangesList>;
-
-export type SitesAclsEditRequestLan1PortsList = number[];
-export const SitesAclsEditRequestLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsEditRequestLan1PortsList>;
-
-export type SitesAclsEditRequestLan1SubnetsList = unknown[];
-export const SitesAclsEditRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SitesAclsEditRequestLan1SubnetsList>;
-
-export interface SitesAclsEditRequestLan1 {
-  /** The identifier for the LAN you want to create an ACL policy with. */
-  lanId: string;
-  /** The name of the LAN based on the provided lan_id. */
-  lanName?: string;
-  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
-  portRanges?: SitesAclsEditRequestLan1PortRangesList;
-  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
-  ports?: SitesAclsEditRequestLan1PortsList;
-  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
-  subnets?: SitesAclsEditRequestLan1SubnetsList;
-}
-export const SitesAclsEditRequestLan1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      SitesAclsEditRequestLan1PortRangesList.pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(SitesAclsEditRequestLan1PortsList),
-    subnets: S.optional(SitesAclsEditRequestLan1SubnetsList),
-  }),
-).annotate({
-  identifier: "SitesAclsEditRequestLan1",
-}) as any as S.Schema<SitesAclsEditRequestLan1>;
-
-export type SitesAclsEditRequestProtocolsList = unknown[];
-export const SitesAclsEditRequestProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SitesAclsEditRequestProtocolsList>;
-
-export interface SitesAclsEditRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  /** Identifier */
-  aclId: string;
-  /** Description for the ACL. */
-  description?: string;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
-  forwardLocally?: boolean;
-  lan1?: SitesAclsEditRequestLan1;
-  lan2?: unknown;
-  /** The name of the ACL. */
-  name?: string;
-  protocols?: SitesAclsEditRequestProtocolsList;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean;
-}
-export const SitesAclsEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    aclId: S.String.pipe(T.Label("acl_id")),
-    description: S.optional(S.String),
-    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsEditRequestLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
-    name: S.optional(S.String),
-    protocols: S.optional(SitesAclsEditRequestProtocolsList),
-    unidirectional: S.optional(S.Boolean),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesAclsEditRequest",
-}) as any as S.Schema<SitesAclsEditRequest>;
-
-export type SitesAclsEditResponseLan1PortRangesList = string[];
-export const SitesAclsEditResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsEditResponseLan1PortRangesList>;
-
-export type SitesAclsEditResponseLan1PortsList = number[];
-export const SitesAclsEditResponseLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsEditResponseLan1PortsList>;
-
-export type SitesAclsEditResponseLan1SubnetsList = unknown[];
-export const SitesAclsEditResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SitesAclsEditResponseLan1SubnetsList>;
-
-export interface SitesAclsEditResponseLan1 {
-  /** The identifier for the LAN you want to create an ACL policy with. */
-  lanId: string;
-  /** The name of the LAN based on the provided lan_id. */
-  lanName?: string;
-  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
-  portRanges?: SitesAclsEditResponseLan1PortRangesList;
-  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
-  ports?: SitesAclsEditResponseLan1PortsList;
-  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
-  subnets?: SitesAclsEditResponseLan1SubnetsList;
-}
-export const SitesAclsEditResponseLan1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      SitesAclsEditResponseLan1PortRangesList.pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(SitesAclsEditResponseLan1PortsList),
-    subnets: S.optional(SitesAclsEditResponseLan1SubnetsList),
-  }),
-).annotate({
-  identifier: "SitesAclsEditResponseLan1",
-}) as any as S.Schema<SitesAclsEditResponseLan1>;
-
-export type SitesAclsEditResponseProtocolsList = unknown[];
-export const SitesAclsEditResponseProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SitesAclsEditResponseProtocolsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesAclsEditResponse {
-  /** Identifier */
-  id?: string;
-  /** Description for the ACL. */
-  description?: string;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
-  forwardLocally?: boolean;
-  lan1?: SitesAclsEditResponseLan1;
-  lan2?: unknown;
-  /** The name of the ACL. */
-  name?: string;
-  protocols?: SitesAclsEditResponseProtocolsList;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean;
-}
-export const SitesAclsEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsEditResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
-    name: S.optional(S.String),
-    protocols: S.optional(SitesAclsEditResponseProtocolsList),
-    unidirectional: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SitesAclsEditResponse",
-}) as any as S.Schema<SitesAclsEditResponse>;
-
-export interface SitesAclsGetRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  /** Identifier */
-  aclId: string;
-}
-export const SitesAclsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    aclId: S.String.pipe(T.Label("acl_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesAclsGetRequest",
-}) as any as S.Schema<SitesAclsGetRequest>;
-
-export type SitesAclsGetResponseLan1PortRangesList = string[];
-export const SitesAclsGetResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
-  S.String,
-) as any as S.Schema<SitesAclsGetResponseLan1PortRangesList>;
-
-export type SitesAclsGetResponseLan1PortsList = number[];
-export const SitesAclsGetResponseLan1PortsList = /*@__PURE__*/ S.Array(
-  S.Number,
-) as any as S.Schema<SitesAclsGetResponseLan1PortsList>;
-
-export type SitesAclsGetResponseLan1SubnetsList = unknown[];
-export const SitesAclsGetResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SitesAclsGetResponseLan1SubnetsList>;
-
-export interface SitesAclsGetResponseLan1 {
-  /** The identifier for the LAN you want to create an ACL policy with. */
-  lanId: string;
-  /** The name of the LAN based on the provided lan_id. */
-  lanName?: string;
-  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
-  portRanges?: SitesAclsGetResponseLan1PortRangesList;
-  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
-  ports?: SitesAclsGetResponseLan1PortsList;
-  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
-  subnets?: SitesAclsGetResponseLan1SubnetsList;
-}
-export const SitesAclsGetResponseLan1 = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lanId: S.String.pipe(T.Body("lan_id")),
-    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
-    portRanges: S.optional(
-      SitesAclsGetResponseLan1PortRangesList.pipe(T.Body("port_ranges")),
-    ),
-    ports: S.optional(SitesAclsGetResponseLan1PortsList),
-    subnets: S.optional(SitesAclsGetResponseLan1SubnetsList),
-  }),
-).annotate({
-  identifier: "SitesAclsGetResponseLan1",
-}) as any as S.Schema<SitesAclsGetResponseLan1>;
-
-export type SitesAclsGetResponseProtocolsList = unknown[];
-export const SitesAclsGetResponseProtocolsList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<SitesAclsGetResponseProtocolsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesAclsGetResponse {
-  /** Identifier */
-  id?: string;
-  /** Description for the ACL. */
-  description?: string;
-  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
-  forwardLocally?: boolean;
-  lan1?: SitesAclsGetResponseLan1;
-  lan2?: unknown;
-  /** The name of the ACL. */
-  name?: string;
-  protocols?: SitesAclsGetResponseProtocolsList;
-  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
-  unidirectional?: boolean;
-}
-export const SitesAclsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    description: S.optional(S.String),
-    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsGetResponseLan1.pipe(T.Body("lan_1"))),
-    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
-    name: S.optional(S.String),
-    protocols: S.optional(SitesAclsGetResponseProtocolsList),
-    unidirectional: S.optional(S.Boolean),
-  }),
-).annotate({
-  identifier: "SitesAclsGetResponse",
-}) as any as S.Schema<SitesAclsGetResponse>;
-
-export interface SitesAclsListRequest {
+export interface ListSiteAclsRequest {
   /** Identifier */
   accountId: string;
   /** Identifier */
   siteId: string;
 }
-export const SitesAclsListRequest = /*@__PURE__*/ S.suspend(() =>
+export const ListSiteAclsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
@@ -11195,8 +10632,8 @@ export const SitesAclsListRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SitesAclsListRequest",
-}) as any as S.Schema<SitesAclsListRequest>;
+  identifier: "ListSiteAclsRequest",
+}) as any as S.Schema<ListSiteAclsRequest>;
 
 export type SitesAclsListResultItemLan1PortRangesList = string[];
 export const SitesAclsListResultItemLan1PortRangesList = /*@__PURE__*/ S.Array(
@@ -11279,65 +10716,967 @@ export const SitesAclsListResultList = /*@__PURE__*/ S.Array(
   SitesAclsListResultItem,
 ) as any as S.Schema<SitesAclsListResultList>;
 
-export interface SitesAclsListResponse {
+export interface ListSiteAclsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
   result?: SitesAclsListResultList;
 }
-export const SitesAclsListResponse = /*@__PURE__*/ S.suspend(() =>
+export const ListSiteAclsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     result: S.optional(SitesAclsListResultList.pipe(T.EnvelopePayload())),
   }),
 ).annotate({
-  identifier: "SitesAclsListResponse",
-}) as any as S.Schema<SitesAclsListResponse>;
+  identifier: "ListSiteAclsResponse",
+}) as any as S.Schema<ListSiteAclsResponse>;
 
-export type SitesAclsUpdateRequestLan1PortRangesList = string[];
-export const SitesAclsUpdateRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
+export interface ListSiteLansRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+}
+export const ListSiteLansRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListSiteLansRequest",
+}) as any as S.Schema<ListSiteLansRequest>;
+
+export interface SitesLansListResultItemNat {
+  /** A valid CIDR notation representing an IP range. */
+  staticPrefix?: string;
+}
+export const SitesLansListResultItemNat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
+  }),
+).annotate({
+  identifier: "SitesLansListResultItemNat",
+}) as any as S.Schema<SitesLansListResultItemNat>;
+
+export interface SitesLansListResultItemRoutedSubnetsItem {
+  /** A valid IPv4 address. */
+  nextHop: string;
+  /** A valid CIDR notation representing an IP range. */
+  prefix: string;
+  nat?: unknown;
+}
+export const SitesLansListResultItemRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextHop: S.String.pipe(T.Body("next_hop")),
+      prefix: S.String,
+      nat: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "SitesLansListResultItemRoutedSubnetsItem",
+}) as any as S.Schema<SitesLansListResultItemRoutedSubnetsItem>;
+
+export type SitesLansListResultItemRoutedSubnetsList =
+  SitesLansListResultItemRoutedSubnetsItem[];
+export const SitesLansListResultItemRoutedSubnetsList = /*@__PURE__*/ S.Array(
+  SitesLansListResultItemRoutedSubnetsItem,
+) as any as S.Schema<SitesLansListResultItemRoutedSubnetsList>;
+
+export type SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList =
+  string[];
+export const SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList>;
+
+export interface SitesLansListResultItemStaticAddressingDhcpRelay {
+  /** List of DHCP server IPs. */
+  serverAddresses?: SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList;
+}
+export const SitesLansListResultItemStaticAddressingDhcpRelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serverAddresses: S.optional(
+        SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList.pipe(
+          T.Body("server_addresses"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansListResultItemStaticAddressingDhcpRelay",
+  }) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpRelay>;
+
+export type SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
+  "text" | "hex" | "ip" | (string & {});
+export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem {
+  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
+  code: number;
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  type: SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType;
+  /** The option value, interpreted according to the type field. */
+  value: string;
+}
+export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.Number,
+      type: SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType,
+      value: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem",
+  }) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
+
+export type SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList =
+  SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem[];
+export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList =
+  /*@__PURE__*/ S.Array(
+    SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem,
+  ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList>;
+
+export type SitesLansListResultItemStaticAddressingDhcpServerDnsServersList =
+  string[];
+export const SitesLansListResultItemStaticAddressingDhcpServerDnsServersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDnsServersList>;
+
+export type SitesLansListResultItemStaticAddressingDhcpServerReservationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const SitesLansListResultItemStaticAddressingDhcpServerReservationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerReservationsMap>;
+
+export interface SitesLansListResultItemStaticAddressingDhcpServer {
+  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
+  dhcpOptions?: SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList;
+  /** A valid IPv4 address. */
+  dhcpPoolEnd?: string;
+  /** A valid IPv4 address. */
+  dhcpPoolStart?: string;
+  /** A valid IPv4 address. */
+  dnsServer?: string;
+  dnsServers?: SitesLansListResultItemStaticAddressingDhcpServerDnsServersList;
+  /** Mapping of MAC addresses to IP addresses */
+  reservations?: SitesLansListResultItemStaticAddressingDhcpServerReservationsMap;
+}
+export const SitesLansListResultItemStaticAddressingDhcpServer =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dhcpOptions: S.optional(
+        SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList.pipe(
+          T.Body("dhcp_options"),
+        ),
+      ),
+      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
+      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
+      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
+      dnsServers: S.optional(
+        SitesLansListResultItemStaticAddressingDhcpServerDnsServersList.pipe(
+          T.Body("dns_servers"),
+        ),
+      ),
+      reservations: S.optional(
+        SitesLansListResultItemStaticAddressingDhcpServerReservationsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansListResultItemStaticAddressingDhcpServer",
+  }) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServer>;
+
+export interface SitesLansListResultItemStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  dhcpRelay?: SitesLansListResultItemStaticAddressingDhcpRelay;
+  dhcpServer?: SitesLansListResultItemStaticAddressingDhcpServer;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string;
+}
+export const SitesLansListResultItemStaticAddressing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.String,
+      dhcpRelay: S.optional(
+        SitesLansListResultItemStaticAddressingDhcpRelay.pipe(
+          T.Body("dhcp_relay"),
+        ),
+      ),
+      dhcpServer: S.optional(
+        SitesLansListResultItemStaticAddressingDhcpServer.pipe(
+          T.Body("dhcp_server"),
+        ),
+      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
+    }),
+).annotate({
+  identifier: "SitesLansListResultItemStaticAddressing",
+}) as any as S.Schema<SitesLansListResultItemStaticAddressing>;
+
+export interface SitesLansListResultItem {
+  /** Identifier */
+  id?: string;
+  bondId?: number;
+  /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
+  haLink?: boolean;
+  /** mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean;
+  /** mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean;
+  name?: string;
+  nat?: SitesLansListResultItemNat;
+  physport?: number;
+  routedSubnets?: SitesLansListResultItemRoutedSubnetsList;
+  /** Identifier */
+  siteId?: string;
+  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
+  staticAddressing?: SitesLansListResultItemStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const SitesLansListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
+    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
+    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
+    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
+    name: S.optional(S.String),
+    nat: S.optional(SitesLansListResultItemNat),
+    physport: S.optional(S.Number),
+    routedSubnets: S.optional(
+      SitesLansListResultItemRoutedSubnetsList.pipe(T.Body("routed_subnets")),
+    ),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    staticAddressing: S.optional(
+      SitesLansListResultItemStaticAddressing.pipe(T.Body("static_addressing")),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }),
+).annotate({
+  identifier: "SitesLansListResultItem",
+}) as any as S.Schema<SitesLansListResultItem>;
+
+export type SitesLansListResultList = SitesLansListResultItem[];
+export const SitesLansListResultList = /*@__PURE__*/ S.Array(
+  SitesLansListResultItem,
+) as any as S.Schema<SitesLansListResultList>;
+
+export interface ListSiteLansResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: SitesLansListResultList;
+}
+export const ListSiteLansResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(SitesLansListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListSiteLansResponse",
+}) as any as S.Schema<ListSiteLansResponse>;
+
+export interface ListSitesRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  connectorid?: string;
+}
+export const ListSitesRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    connectorid: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/sites",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListSitesRequest",
+}) as any as S.Schema<ListSitesRequest>;
+
+export interface SitesListResultItemLocation {
+  /** Latitude */
+  lat?: string;
+  /** Longitude */
+  lon?: string;
+}
+export const SitesListResultItemLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.String),
+    lon: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SitesListResultItemLocation",
+}) as any as S.Schema<SitesListResultItemLocation>;
+
+export interface SitesListResultItem {
+  /** Identifier */
+  id?: string;
+  /** Magic Connector identifier tag. */
+  connectorId?: string;
+  description?: string;
+  /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
+  haMode?: boolean;
+  /** Location of site in latitude and longitude. */
+  location?: SitesListResultItemLocation;
+  /** The name of the site. */
+  name?: string;
+  /** Magic Connector identifier tag. Used when high availability mode is on. */
+  secondaryConnectorId?: string;
+}
+export const SitesListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
+    description: S.optional(S.String),
+    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
+    location: S.optional(SitesListResultItemLocation),
+    name: S.optional(S.String),
+    secondaryConnectorId: S.optional(
+      S.String.pipe(T.Body("secondary_connector_id")),
+    ),
+  }),
+).annotate({
+  identifier: "SitesListResultItem",
+}) as any as S.Schema<SitesListResultItem>;
+
+export type SitesListResultList = SitesListResultItem[];
+export const SitesListResultList = /*@__PURE__*/ S.Array(
+  SitesListResultItem,
+) as any as S.Schema<SitesListResultList>;
+
+export interface ListSitesResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: SitesListResultList;
+}
+export const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(SitesListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListSitesResponse",
+}) as any as S.Schema<ListSitesResponse>;
+
+export interface ListSiteWansRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+}
+export const ListSiteWansRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListSiteWansRequest",
+}) as any as S.Schema<ListSiteWansRequest>;
+
+export type SitesWansListResultItemHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
+export const SitesWansListResultItemHealthCheckRate = /*@__PURE__*/ S.String;
+
+export interface SitesWansListResultItemStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  /** A valid IPv4 address. */
+  gatewayAddress: string;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+}
+export const SitesWansListResultItemStaticAddressing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.String,
+      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+    }),
+).annotate({
+  identifier: "SitesWansListResultItemStaticAddressing",
+}) as any as S.Schema<SitesWansListResultItemStaticAddressing>;
+
+export interface SitesWansListResultItem {
+  /** Identifier */
+  id?: string;
+  /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
+  healthCheckRate?: SitesWansListResultItemHealthCheckRate;
+  name?: string;
+  physport?: number;
+  /** Priority of WAN for traffic loadbalancing. */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
+  staticAddressing?: SitesWansListResultItemStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const SitesWansListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    healthCheckRate: S.optional(
+      SitesWansListResultItemHealthCheckRate.pipe(T.Body("health_check_rate")),
+    ),
+    name: S.optional(S.String),
+    physport: S.optional(S.Number),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    staticAddressing: S.optional(
+      SitesWansListResultItemStaticAddressing.pipe(T.Body("static_addressing")),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }),
+).annotate({
+  identifier: "SitesWansListResultItem",
+}) as any as S.Schema<SitesWansListResultItem>;
+
+export type SitesWansListResultList = SitesWansListResultItem[];
+export const SitesWansListResultList = /*@__PURE__*/ S.Array(
+  SitesWansListResultItem,
+) as any as S.Schema<SitesWansListResultList>;
+
+export interface ListSiteWansResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result?: SitesWansListResultList;
+}
+export const ListSiteWansResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(SitesWansListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "ListSiteWansResponse",
+}) as any as S.Schema<ListSiteWansResponse>;
+
+export type AppsEditRequestHostnamesList = string[];
+export const AppsEditRequestHostnamesList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<SitesAclsUpdateRequestLan1PortRangesList>;
+) as any as S.Schema<AppsEditRequestHostnamesList>;
 
-export type SitesAclsUpdateRequestLan1PortsList = number[];
-export const SitesAclsUpdateRequestLan1PortsList = /*@__PURE__*/ S.Array(
+export type AppsEditRequestIpSubnetsList = string[];
+export const AppsEditRequestIpSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsEditRequestIpSubnetsList>;
+
+export type AppsEditRequestSourceSubnetsList = string[];
+export const AppsEditRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsEditRequestSourceSubnetsList>;
+
+export interface PatchAppRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  accountAppId: string;
+  /** FQDNs to associate with traffic decisions. */
+  hostnames?: AppsEditRequestHostnamesList;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  ipSubnets?: AppsEditRequestIpSubnetsList;
+  /** Display name for the app. */
+  name?: string;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: AppsEditRequestSourceSubnetsList;
+  /** Category of the app. */
+  type?: string;
+}
+export const PatchAppRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    accountAppId: S.String.pipe(T.Label("account_app_id")),
+    hostnames: S.optional(AppsEditRequestHostnamesList),
+    ipSubnets: S.optional(
+      AppsEditRequestIpSubnetsList.pipe(T.Body("ip_subnets")),
+    ),
+    name: S.optional(S.String),
+    sourceSubnets: S.optional(
+      AppsEditRequestSourceSubnetsList.pipe(T.Body("source_subnets")),
+    ),
+    type: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/magic/apps/{account_app_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchAppRequest",
+}) as any as S.Schema<PatchAppRequest>;
+
+export type AppsEditResponseHostnamesList = string[];
+export const AppsEditResponseHostnamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsEditResponseHostnamesList>;
+
+export type AppsEditResponseIpSubnetsList = string[];
+export const AppsEditResponseIpSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsEditResponseIpSubnetsList>;
+
+export type AppsEditResponseSourceSubnetsList = string[];
+export const AppsEditResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsEditResponseSourceSubnetsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchAppResponse {
+  /** Magic account app ID. */
+  accountAppId: string;
+  /** FQDNs to associate with traffic decisions. */
+  hostnames?: AppsEditResponseHostnamesList;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  ipSubnets?: AppsEditResponseIpSubnetsList;
+  /** Display name for the app. */
+  name?: string;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: AppsEditResponseSourceSubnetsList;
+  /** Category of the app. */
+  type?: string;
+}
+export const PatchAppResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountAppId: S.String.pipe(T.Body("account_app_id")),
+    hostnames: S.optional(AppsEditResponseHostnamesList),
+    ipSubnets: S.optional(
+      AppsEditResponseIpSubnetsList.pipe(T.Body("ip_subnets")),
+    ),
+    name: S.optional(S.String),
+    sourceSubnets: S.optional(
+      AppsEditResponseSourceSubnetsList.pipe(T.Body("source_subnets")),
+    ),
+    type: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "PatchAppResponse",
+}) as any as S.Schema<PatchAppResponse>;
+
+export interface Cf1SitesUpdateRequestLocation {
+  /** Latitude of the CF1 Site. */
+  lat?: number;
+  /** Longitude of the CF1 Site. */
+  long?: number;
+  /** Name of nearest town, city, or village. */
+  name?: string;
+}
+export const Cf1SitesUpdateRequestLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.Number),
+    long: S.optional(S.Number),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Cf1SitesUpdateRequestLocation",
+}) as any as S.Schema<Cf1SitesUpdateRequestLocation>;
+
+export interface PatchCf1SiteRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  cf1SiteId: string;
+  /** A human-provided description of the CF1 Site. */
+  description?: string;
+  location?: Cf1SitesUpdateRequestLocation;
+  /** A human-provided name describing the CF1 Site that should be unique within the account. */
+  name?: string;
+}
+export const PatchCf1SiteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cf1SiteId: S.String.pipe(T.Label("cf1_site_id")),
+    description: S.optional(S.String),
+    location: S.optional(Cf1SitesUpdateRequestLocation),
+    name: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/magic/cf1_sites/{cf1_site_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchCf1SiteRequest",
+}) as any as S.Schema<PatchCf1SiteRequest>;
+
+export interface Cf1SitesUpdateResponseLocation {
+  /** Latitude of the CF1 Site. */
+  lat?: number;
+  /** Longitude of the CF1 Site. */
+  long?: number;
+  /** Name of nearest town, city, or village. */
+  name?: string;
+}
+export const Cf1SitesUpdateResponseLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.Number),
+    long: S.optional(S.Number),
+    name: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "Cf1SitesUpdateResponseLocation",
+}) as any as S.Schema<Cf1SitesUpdateResponseLocation>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchCf1SiteResponse {
+  /** A human-provided name describing the CF1 Site that should be unique within the account. */
+  name: string;
+  /** Identifier */
+  id?: string;
+  createdOn?: string;
+  /** A human-provided description of the CF1 Site. */
+  description?: string;
+  location?: Cf1SitesUpdateResponseLocation;
+  modifiedOn?: string;
+}
+export const PatchCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    name: S.String,
+    id: S.optional(S.String),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    location: S.optional(Cf1SitesUpdateResponseLocation),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+  }),
+).annotate({
+  identifier: "PatchCf1SiteResponse",
+}) as any as S.Schema<PatchCf1SiteResponse>;
+
+export type ConnectorsEditRequestInterruptWindowDaysOfWeekItem =
+  | "Sunday"
+  | "Monday"
+  | "Tuesday"
+  | (string & {});
+export const ConnectorsEditRequestInterruptWindowDaysOfWeekItem =
+  /*@__PURE__*/ S.String;
+
+export type ConnectorsEditRequestInterruptWindowDaysOfWeekList =
+  ConnectorsEditRequestInterruptWindowDaysOfWeekItem[];
+export const ConnectorsEditRequestInterruptWindowDaysOfWeekList =
+  /*@__PURE__*/ S.Array(
+    ConnectorsEditRequestInterruptWindowDaysOfWeekItem,
+  ) as any as S.Schema<ConnectorsEditRequestInterruptWindowDaysOfWeekList>;
+
+export type ConnectorsEditRequestInterruptWindowEmbargoDatesList = string[];
+export const ConnectorsEditRequestInterruptWindowEmbargoDatesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectorsEditRequestInterruptWindowEmbargoDatesList>;
+
+export interface PatchConnectorRequest {
+  /** Account identifier */
+  accountId: string;
+  connectorId: string;
+  activated?: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek?: ConnectorsEditRequestInterruptWindowDaysOfWeekList;
+  interruptWindowDurationHours?: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates?: ConnectorsEditRequestInterruptWindowEmbargoDatesList;
+  interruptWindowHourOfDay?: number;
+  notes?: string;
+  primary?: boolean;
+  /** When true, regenerate license key for the connector. */
+  provisionLicense?: boolean;
+  siteId?: string;
+  timezone?: string;
+}
+export const PatchConnectorRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    connectorId: S.String.pipe(T.Label("connector_id")),
+    activated: S.optional(S.Boolean),
+    interruptWindowDaysOfWeek: S.optional(
+      ConnectorsEditRequestInterruptWindowDaysOfWeekList.pipe(
+        T.Body("interrupt_window_days_of_week"),
+      ),
+    ),
+    interruptWindowDurationHours: S.optional(
+      S.Number.pipe(T.Body("interrupt_window_duration_hours")),
+    ),
+    interruptWindowEmbargoDates: S.optional(
+      ConnectorsEditRequestInterruptWindowEmbargoDatesList.pipe(
+        T.Body("interrupt_window_embargo_dates"),
+      ),
+    ),
+    interruptWindowHourOfDay: S.optional(
+      S.Number.pipe(T.Body("interrupt_window_hour_of_day")),
+    ),
+    notes: S.optional(S.String),
+    primary: S.optional(S.Boolean),
+    provisionLicense: S.optional(S.Boolean.pipe(T.Body("provision_license"))),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    timezone: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchConnectorRequest",
+}) as any as S.Schema<PatchConnectorRequest>;
+
+export type ConnectorsEditResponseInterruptWindowDaysOfWeekItem =
+  | "Sunday"
+  | "Monday"
+  | "Tuesday"
+  | (string & {});
+export const ConnectorsEditResponseInterruptWindowDaysOfWeekItem =
+  /*@__PURE__*/ S.String;
+
+export type ConnectorsEditResponseInterruptWindowDaysOfWeekList =
+  ConnectorsEditResponseInterruptWindowDaysOfWeekItem[];
+export const ConnectorsEditResponseInterruptWindowDaysOfWeekList =
+  /*@__PURE__*/ S.Array(
+    ConnectorsEditResponseInterruptWindowDaysOfWeekItem,
+  ) as any as S.Schema<ConnectorsEditResponseInterruptWindowDaysOfWeekList>;
+
+export type ConnectorsEditResponseInterruptWindowEmbargoDatesList = string[];
+export const ConnectorsEditResponseInterruptWindowEmbargoDatesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectorsEditResponseInterruptWindowEmbargoDatesList>;
+
+export type ConnectorsEditResponseDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
+export const ConnectorsEditResponseDeviceType = /*@__PURE__*/ S.String;
+
+export interface ConnectorsEditResponseDevice {
+  id: string;
+  serialNumber?: string;
+  type?: ConnectorsEditResponseDeviceType;
+}
+export const ConnectorsEditResponseDevice = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
+    type: S.optional(ConnectorsEditResponseDeviceType),
+  }),
+).annotate({
+  identifier: "ConnectorsEditResponseDevice",
+}) as any as S.Schema<ConnectorsEditResponseDevice>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchConnectorResponse {
+  id: string;
+  activated: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek: ConnectorsEditResponseInterruptWindowDaysOfWeekList;
+  interruptWindowDurationHours: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates: ConnectorsEditResponseInterruptWindowEmbargoDatesList;
+  interruptWindowHourOfDay: number;
+  lastUpdated: string;
+  notes: string;
+  primary: boolean;
+  timezone: string;
+  device?: ConnectorsEditResponseDevice;
+  lastHeartbeat?: string;
+  lastSeenVersion?: string;
+  licenseKey?: string;
+  siteId?: string;
+}
+export const PatchConnectorResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    activated: S.Boolean,
+    interruptWindowDaysOfWeek:
+      ConnectorsEditResponseInterruptWindowDaysOfWeekList.pipe(
+        T.Body("interrupt_window_days_of_week"),
+      ),
+    interruptWindowDurationHours: S.Number.pipe(
+      T.Body("interrupt_window_duration_hours"),
+    ),
+    interruptWindowEmbargoDates:
+      ConnectorsEditResponseInterruptWindowEmbargoDatesList.pipe(
+        T.Body("interrupt_window_embargo_dates"),
+      ),
+    interruptWindowHourOfDay: S.Number.pipe(
+      T.Body("interrupt_window_hour_of_day"),
+    ),
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    notes: S.String,
+    primary: S.Boolean,
+    timezone: S.String,
+    device: S.optional(ConnectorsEditResponseDevice),
+    lastHeartbeat: S.optional(S.String.pipe(T.Body("last_heartbeat"))),
+    lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
+    licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+  }),
+).annotate({
+  identifier: "PatchConnectorResponse",
+}) as any as S.Schema<PatchConnectorResponse>;
+
+export interface SitesEditRequestLocation {
+  /** Latitude */
+  lat?: string;
+  /** Longitude */
+  lon?: string;
+}
+export const SitesEditRequestLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.String),
+    lon: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SitesEditRequestLocation",
+}) as any as S.Schema<SitesEditRequestLocation>;
+
+export interface PatchSiteRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  /** Magic Connector identifier tag. */
+  connectorId?: string;
+  description?: string;
+  /** Location of site in latitude and longitude. */
+  location?: SitesEditRequestLocation;
+  /** The name of the site. */
+  name?: string;
+  /** Magic Connector identifier tag. Used when high availability mode is on. */
+  secondaryConnectorId?: string;
+}
+export const PatchSiteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
+    description: S.optional(S.String),
+    location: S.optional(SitesEditRequestLocation),
+    name: S.optional(S.String),
+    secondaryConnectorId: S.optional(
+      S.String.pipe(T.Body("secondary_connector_id")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchSiteRequest",
+}) as any as S.Schema<PatchSiteRequest>;
+
+export interface SitesEditResponseLocation {
+  /** Latitude */
+  lat?: string;
+  /** Longitude */
+  lon?: string;
+}
+export const SitesEditResponseLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.String),
+    lon: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SitesEditResponseLocation",
+}) as any as S.Schema<SitesEditResponseLocation>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSiteResponse {
+  /** Identifier */
+  id?: string;
+  /** Magic Connector identifier tag. */
+  connectorId?: string;
+  description?: string;
+  /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
+  haMode?: boolean;
+  /** Location of site in latitude and longitude. */
+  location?: SitesEditResponseLocation;
+  /** The name of the site. */
+  name?: string;
+  /** Magic Connector identifier tag. Used when high availability mode is on. */
+  secondaryConnectorId?: string;
+}
+export const PatchSiteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
+    description: S.optional(S.String),
+    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
+    location: S.optional(SitesEditResponseLocation),
+    name: S.optional(S.String),
+    secondaryConnectorId: S.optional(
+      S.String.pipe(T.Body("secondary_connector_id")),
+    ),
+  }),
+).annotate({
+  identifier: "PatchSiteResponse",
+}) as any as S.Schema<PatchSiteResponse>;
+
+export type SitesAclsEditRequestLan1PortRangesList = string[];
+export const SitesAclsEditRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SitesAclsEditRequestLan1PortRangesList>;
+
+export type SitesAclsEditRequestLan1PortsList = number[];
+export const SitesAclsEditRequestLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
-) as any as S.Schema<SitesAclsUpdateRequestLan1PortsList>;
+) as any as S.Schema<SitesAclsEditRequestLan1PortsList>;
 
-export type SitesAclsUpdateRequestLan1SubnetsList = unknown[];
-export const SitesAclsUpdateRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
+export type SitesAclsEditRequestLan1SubnetsList = unknown[];
+export const SitesAclsEditRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<SitesAclsUpdateRequestLan1SubnetsList>;
+) as any as S.Schema<SitesAclsEditRequestLan1SubnetsList>;
 
-export interface SitesAclsUpdateRequestLan1 {
+export interface SitesAclsEditRequestLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
   /** The name of the LAN based on the provided lan_id. */
   lanName?: string;
   /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
-  portRanges?: SitesAclsUpdateRequestLan1PortRangesList;
+  portRanges?: SitesAclsEditRequestLan1PortRangesList;
   /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
-  ports?: SitesAclsUpdateRequestLan1PortsList;
+  ports?: SitesAclsEditRequestLan1PortsList;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
-  subnets?: SitesAclsUpdateRequestLan1SubnetsList;
+  subnets?: SitesAclsEditRequestLan1SubnetsList;
 }
-export const SitesAclsUpdateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
+export const SitesAclsEditRequestLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lanId: S.String.pipe(T.Body("lan_id")),
     lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
     portRanges: S.optional(
-      SitesAclsUpdateRequestLan1PortRangesList.pipe(T.Body("port_ranges")),
+      SitesAclsEditRequestLan1PortRangesList.pipe(T.Body("port_ranges")),
     ),
-    ports: S.optional(SitesAclsUpdateRequestLan1PortsList),
-    subnets: S.optional(SitesAclsUpdateRequestLan1SubnetsList),
+    ports: S.optional(SitesAclsEditRequestLan1PortsList),
+    subnets: S.optional(SitesAclsEditRequestLan1SubnetsList),
   }),
 ).annotate({
-  identifier: "SitesAclsUpdateRequestLan1",
-}) as any as S.Schema<SitesAclsUpdateRequestLan1>;
+  identifier: "SitesAclsEditRequestLan1",
+}) as any as S.Schema<SitesAclsEditRequestLan1>;
 
-export type SitesAclsUpdateRequestProtocolsList = unknown[];
-export const SitesAclsUpdateRequestProtocolsList = /*@__PURE__*/ S.Array(
+export type SitesAclsEditRequestProtocolsList = unknown[];
+export const SitesAclsEditRequestProtocolsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<SitesAclsUpdateRequestProtocolsList>;
+) as any as S.Schema<SitesAclsEditRequestProtocolsList>;
 
-export interface SitesAclsUpdateRequest {
+export interface PatchSiteAclRequest {
   /** Identifier */
   accountId: string;
   /** Identifier */
@@ -11348,113 +11687,1061 @@ export interface SitesAclsUpdateRequest {
   description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
-  lan1?: SitesAclsUpdateRequestLan1;
+  lan1?: SitesAclsEditRequestLan1;
   lan2?: unknown;
   /** The name of the ACL. */
   name?: string;
-  protocols?: SitesAclsUpdateRequestProtocolsList;
+  protocols?: SitesAclsEditRequestProtocolsList;
   /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
   unidirectional?: boolean;
 }
-export const SitesAclsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const PatchSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
     aclId: S.String.pipe(T.Label("acl_id")),
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsUpdateRequestLan1.pipe(T.Body("lan_1"))),
+    lan1: S.optional(SitesAclsEditRequestLan1.pipe(T.Body("lan_1"))),
     lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
     name: S.optional(S.String),
-    protocols: S.optional(SitesAclsUpdateRequestProtocolsList),
+    protocols: S.optional(SitesAclsEditRequestProtocolsList),
     unidirectional: S.optional(S.Boolean),
   }).pipe(
     T.Http({
-      method: "PUT",
+      method: "PATCH",
       uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "SitesAclsUpdateRequest",
-}) as any as S.Schema<SitesAclsUpdateRequest>;
+  identifier: "PatchSiteAclRequest",
+}) as any as S.Schema<PatchSiteAclRequest>;
 
-export type SitesAclsUpdateResponseLan1PortRangesList = string[];
-export const SitesAclsUpdateResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
+export type SitesAclsEditResponseLan1PortRangesList = string[];
+export const SitesAclsEditResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
   S.String,
-) as any as S.Schema<SitesAclsUpdateResponseLan1PortRangesList>;
+) as any as S.Schema<SitesAclsEditResponseLan1PortRangesList>;
 
-export type SitesAclsUpdateResponseLan1PortsList = number[];
-export const SitesAclsUpdateResponseLan1PortsList = /*@__PURE__*/ S.Array(
+export type SitesAclsEditResponseLan1PortsList = number[];
+export const SitesAclsEditResponseLan1PortsList = /*@__PURE__*/ S.Array(
   S.Number,
-) as any as S.Schema<SitesAclsUpdateResponseLan1PortsList>;
+) as any as S.Schema<SitesAclsEditResponseLan1PortsList>;
 
-export type SitesAclsUpdateResponseLan1SubnetsList = unknown[];
-export const SitesAclsUpdateResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
+export type SitesAclsEditResponseLan1SubnetsList = unknown[];
+export const SitesAclsEditResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<SitesAclsUpdateResponseLan1SubnetsList>;
+) as any as S.Schema<SitesAclsEditResponseLan1SubnetsList>;
 
-export interface SitesAclsUpdateResponseLan1 {
+export interface SitesAclsEditResponseLan1 {
   /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
   /** The name of the LAN based on the provided lan_id. */
   lanName?: string;
   /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
-  portRanges?: SitesAclsUpdateResponseLan1PortRangesList;
+  portRanges?: SitesAclsEditResponseLan1PortRangesList;
   /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
-  ports?: SitesAclsUpdateResponseLan1PortsList;
+  ports?: SitesAclsEditResponseLan1PortsList;
   /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
-  subnets?: SitesAclsUpdateResponseLan1SubnetsList;
+  subnets?: SitesAclsEditResponseLan1SubnetsList;
 }
-export const SitesAclsUpdateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
+export const SitesAclsEditResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lanId: S.String.pipe(T.Body("lan_id")),
     lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
     portRanges: S.optional(
-      SitesAclsUpdateResponseLan1PortRangesList.pipe(T.Body("port_ranges")),
+      SitesAclsEditResponseLan1PortRangesList.pipe(T.Body("port_ranges")),
     ),
-    ports: S.optional(SitesAclsUpdateResponseLan1PortsList),
-    subnets: S.optional(SitesAclsUpdateResponseLan1SubnetsList),
+    ports: S.optional(SitesAclsEditResponseLan1PortsList),
+    subnets: S.optional(SitesAclsEditResponseLan1SubnetsList),
   }),
 ).annotate({
-  identifier: "SitesAclsUpdateResponseLan1",
-}) as any as S.Schema<SitesAclsUpdateResponseLan1>;
+  identifier: "SitesAclsEditResponseLan1",
+}) as any as S.Schema<SitesAclsEditResponseLan1>;
 
-export type SitesAclsUpdateResponseProtocolsList = unknown[];
-export const SitesAclsUpdateResponseProtocolsList = /*@__PURE__*/ S.Array(
+export type SitesAclsEditResponseProtocolsList = unknown[];
+export const SitesAclsEditResponseProtocolsList = /*@__PURE__*/ S.Array(
   S.Unknown,
-) as any as S.Schema<SitesAclsUpdateResponseProtocolsList>;
+) as any as S.Schema<SitesAclsEditResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesAclsUpdateResponse {
+export interface PatchSiteAclResponse {
   /** Identifier */
   id?: string;
   /** Description for the ACL. */
   description?: string;
   /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
   forwardLocally?: boolean;
-  lan1?: SitesAclsUpdateResponseLan1;
+  lan1?: SitesAclsEditResponseLan1;
   lan2?: unknown;
   /** The name of the ACL. */
   name?: string;
-  protocols?: SitesAclsUpdateResponseProtocolsList;
+  protocols?: SitesAclsEditResponseProtocolsList;
   /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
   unidirectional?: boolean;
 }
-export const SitesAclsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const PatchSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     description: S.optional(S.String),
     forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
-    lan1: S.optional(SitesAclsUpdateResponseLan1.pipe(T.Body("lan_1"))),
+    lan1: S.optional(SitesAclsEditResponseLan1.pipe(T.Body("lan_1"))),
     lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
     name: S.optional(S.String),
-    protocols: S.optional(SitesAclsUpdateResponseProtocolsList),
+    protocols: S.optional(SitesAclsEditResponseProtocolsList),
     unidirectional: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "SitesAclsUpdateResponse",
-}) as any as S.Schema<SitesAclsUpdateResponse>;
+  identifier: "PatchSiteAclResponse",
+}) as any as S.Schema<PatchSiteAclResponse>;
+
+export interface SitesLansEditRequestNat {
+  /** A valid CIDR notation representing an IP range. */
+  staticPrefix?: string;
+}
+export const SitesLansEditRequestNat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
+  }),
+).annotate({
+  identifier: "SitesLansEditRequestNat",
+}) as any as S.Schema<SitesLansEditRequestNat>;
+
+export interface SitesLansEditRequestRoutedSubnetsItem {
+  /** A valid IPv4 address. */
+  nextHop: string;
+  /** A valid CIDR notation representing an IP range. */
+  prefix: string;
+  nat?: unknown;
+}
+export const SitesLansEditRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextHop: S.String.pipe(T.Body("next_hop")),
+      prefix: S.String,
+      nat: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "SitesLansEditRequestRoutedSubnetsItem",
+}) as any as S.Schema<SitesLansEditRequestRoutedSubnetsItem>;
+
+export type SitesLansEditRequestRoutedSubnetsList =
+  SitesLansEditRequestRoutedSubnetsItem[];
+export const SitesLansEditRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
+  SitesLansEditRequestRoutedSubnetsItem,
+) as any as S.Schema<SitesLansEditRequestRoutedSubnetsList>;
+
+export type SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList =
+  string[];
+export const SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList>;
+
+export interface SitesLansEditRequestStaticAddressingDhcpRelay {
+  /** List of DHCP server IPs. */
+  serverAddresses?: SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList;
+}
+export const SitesLansEditRequestStaticAddressingDhcpRelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serverAddresses: S.optional(
+        SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList.pipe(
+          T.Body("server_addresses"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansEditRequestStaticAddressingDhcpRelay",
+  }) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpRelay>;
+
+export type SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType =
+  | "text"
+  | "hex"
+  | "ip"
+  | (string & {});
+export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem {
+  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
+  code: number;
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  type: SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType;
+  /** The option value, interpreted according to the type field. */
+  value: string;
+}
+export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.Number,
+      type: SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType,
+      value: S.String,
+    }),
+  ).annotate({
+    identifier: "SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem",
+  }) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem>;
+
+export type SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList =
+  SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem[];
+export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList =
+  /*@__PURE__*/ S.Array(
+    SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem,
+  ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList>;
+
+export type SitesLansEditRequestStaticAddressingDhcpServerDnsServersList =
+  string[];
+export const SitesLansEditRequestStaticAddressingDhcpServerDnsServersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDnsServersList>;
+
+export type SitesLansEditRequestStaticAddressingDhcpServerReservationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const SitesLansEditRequestStaticAddressingDhcpServerReservationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerReservationsMap>;
+
+export interface SitesLansEditRequestStaticAddressingDhcpServer {
+  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
+  dhcpOptions?: SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList;
+  /** A valid IPv4 address. */
+  dhcpPoolEnd?: string;
+  /** A valid IPv4 address. */
+  dhcpPoolStart?: string;
+  /** A valid IPv4 address. */
+  dnsServer?: string;
+  dnsServers?: SitesLansEditRequestStaticAddressingDhcpServerDnsServersList;
+  /** Mapping of MAC addresses to IP addresses */
+  reservations?: SitesLansEditRequestStaticAddressingDhcpServerReservationsMap;
+}
+export const SitesLansEditRequestStaticAddressingDhcpServer =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dhcpOptions: S.optional(
+        SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList.pipe(
+          T.Body("dhcp_options"),
+        ),
+      ),
+      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
+      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
+      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
+      dnsServers: S.optional(
+        SitesLansEditRequestStaticAddressingDhcpServerDnsServersList.pipe(
+          T.Body("dns_servers"),
+        ),
+      ),
+      reservations: S.optional(
+        SitesLansEditRequestStaticAddressingDhcpServerReservationsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansEditRequestStaticAddressingDhcpServer",
+  }) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServer>;
+
+export interface SitesLansEditRequestStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  dhcpRelay?: SitesLansEditRequestStaticAddressingDhcpRelay;
+  dhcpServer?: SitesLansEditRequestStaticAddressingDhcpServer;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string;
+}
+export const SitesLansEditRequestStaticAddressing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.String,
+      dhcpRelay: S.optional(
+        SitesLansEditRequestStaticAddressingDhcpRelay.pipe(
+          T.Body("dhcp_relay"),
+        ),
+      ),
+      dhcpServer: S.optional(
+        SitesLansEditRequestStaticAddressingDhcpServer.pipe(
+          T.Body("dhcp_server"),
+        ),
+      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
+    }),
+).annotate({
+  identifier: "SitesLansEditRequestStaticAddressing",
+}) as any as S.Schema<SitesLansEditRequestStaticAddressing>;
+
+export interface PatchSiteLanRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  /** Identifier */
+  lanId: string;
+  bondId?: number;
+  /** mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean;
+  /** mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean;
+  name?: string;
+  nat?: SitesLansEditRequestNat;
+  physport?: number;
+  routedSubnets?: SitesLansEditRequestRoutedSubnetsList;
+  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
+  staticAddressing?: SitesLansEditRequestStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const PatchSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    lanId: S.String.pipe(T.Label("lan_id")),
+    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
+    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
+    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
+    name: S.optional(S.String),
+    nat: S.optional(SitesLansEditRequestNat),
+    physport: S.optional(S.Number),
+    routedSubnets: S.optional(
+      SitesLansEditRequestRoutedSubnetsList.pipe(T.Body("routed_subnets")),
+    ),
+    staticAddressing: S.optional(
+      SitesLansEditRequestStaticAddressing.pipe(T.Body("static_addressing")),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchSiteLanRequest",
+}) as any as S.Schema<PatchSiteLanRequest>;
+
+export interface SitesLansEditResponseNat {
+  /** A valid CIDR notation representing an IP range. */
+  staticPrefix?: string;
+}
+export const SitesLansEditResponseNat = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
+  }),
+).annotate({
+  identifier: "SitesLansEditResponseNat",
+}) as any as S.Schema<SitesLansEditResponseNat>;
+
+export interface SitesLansEditResponseRoutedSubnetsItem {
+  /** A valid IPv4 address. */
+  nextHop: string;
+  /** A valid CIDR notation representing an IP range. */
+  prefix: string;
+  nat?: unknown;
+}
+export const SitesLansEditResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      nextHop: S.String.pipe(T.Body("next_hop")),
+      prefix: S.String,
+      nat: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "SitesLansEditResponseRoutedSubnetsItem",
+}) as any as S.Schema<SitesLansEditResponseRoutedSubnetsItem>;
+
+export type SitesLansEditResponseRoutedSubnetsList =
+  SitesLansEditResponseRoutedSubnetsItem[];
+export const SitesLansEditResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
+  SitesLansEditResponseRoutedSubnetsItem,
+) as any as S.Schema<SitesLansEditResponseRoutedSubnetsList>;
+
+export type SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList =
+  string[];
+export const SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList>;
+
+export interface SitesLansEditResponseStaticAddressingDhcpRelay {
+  /** List of DHCP server IPs. */
+  serverAddresses?: SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList;
+}
+export const SitesLansEditResponseStaticAddressingDhcpRelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      serverAddresses: S.optional(
+        SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList.pipe(
+          T.Body("server_addresses"),
+        ),
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansEditResponseStaticAddressingDhcpRelay",
+  }) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpRelay>;
+
+export type SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType =
+  "text" | "hex" | "ip" | (string & {});
+export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem {
+  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
+  code: number;
+  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
+  type: SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType;
+  /** The option value, interpreted according to the type field. */
+  value: string;
+}
+export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      code: S.Number,
+      type: SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType,
+      value: S.String,
+    }),
+  ).annotate({
+    identifier:
+      "SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem",
+  }) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem>;
+
+export type SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList =
+  SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem[];
+export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList =
+  /*@__PURE__*/ S.Array(
+    SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem,
+  ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList>;
+
+export type SitesLansEditResponseStaticAddressingDhcpServerDnsServersList =
+  string[];
+export const SitesLansEditResponseStaticAddressingDhcpServerDnsServersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDnsServersList>;
+
+export type SitesLansEditResponseStaticAddressingDhcpServerReservationsMap = {
+  [key: string]: unknown | undefined;
+};
+export const SitesLansEditResponseStaticAddressingDhcpServerReservationsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerReservationsMap>;
+
+export interface SitesLansEditResponseStaticAddressingDhcpServer {
+  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
+  dhcpOptions?: SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList;
+  /** A valid IPv4 address. */
+  dhcpPoolEnd?: string;
+  /** A valid IPv4 address. */
+  dhcpPoolStart?: string;
+  /** A valid IPv4 address. */
+  dnsServer?: string;
+  dnsServers?: SitesLansEditResponseStaticAddressingDhcpServerDnsServersList;
+  /** Mapping of MAC addresses to IP addresses */
+  reservations?: SitesLansEditResponseStaticAddressingDhcpServerReservationsMap;
+}
+export const SitesLansEditResponseStaticAddressingDhcpServer =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      dhcpOptions: S.optional(
+        SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList.pipe(
+          T.Body("dhcp_options"),
+        ),
+      ),
+      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
+      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
+      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
+      dnsServers: S.optional(
+        SitesLansEditResponseStaticAddressingDhcpServerDnsServersList.pipe(
+          T.Body("dns_servers"),
+        ),
+      ),
+      reservations: S.optional(
+        SitesLansEditResponseStaticAddressingDhcpServerReservationsMap,
+      ),
+    }),
+  ).annotate({
+    identifier: "SitesLansEditResponseStaticAddressingDhcpServer",
+  }) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServer>;
+
+export interface SitesLansEditResponseStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  dhcpRelay?: SitesLansEditResponseStaticAddressingDhcpRelay;
+  dhcpServer?: SitesLansEditResponseStaticAddressingDhcpServer;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+  /** A valid CIDR notation representing an IP range. */
+  virtualAddress?: string;
+}
+export const SitesLansEditResponseStaticAddressing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.String,
+      dhcpRelay: S.optional(
+        SitesLansEditResponseStaticAddressingDhcpRelay.pipe(
+          T.Body("dhcp_relay"),
+        ),
+      ),
+      dhcpServer: S.optional(
+        SitesLansEditResponseStaticAddressingDhcpServer.pipe(
+          T.Body("dhcp_server"),
+        ),
+      ),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
+    }),
+).annotate({
+  identifier: "SitesLansEditResponseStaticAddressing",
+}) as any as S.Schema<SitesLansEditResponseStaticAddressing>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSiteLanResponse {
+  /** Identifier */
+  id?: string;
+  bondId?: number;
+  /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
+  haLink?: boolean;
+  /** mark true to use this LAN for source-based breakout traffic */
+  isBreakout?: boolean;
+  /** mark true to use this LAN for source-based prioritized traffic */
+  isPrioritized?: boolean;
+  name?: string;
+  nat?: SitesLansEditResponseNat;
+  physport?: number;
+  routedSubnets?: SitesLansEditResponseRoutedSubnetsList;
+  /** Identifier */
+  siteId?: string;
+  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
+  staticAddressing?: SitesLansEditResponseStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const PatchSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
+    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
+    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
+    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
+    name: S.optional(S.String),
+    nat: S.optional(SitesLansEditResponseNat),
+    physport: S.optional(S.Number),
+    routedSubnets: S.optional(
+      SitesLansEditResponseRoutedSubnetsList.pipe(T.Body("routed_subnets")),
+    ),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    staticAddressing: S.optional(
+      SitesLansEditResponseStaticAddressing.pipe(T.Body("static_addressing")),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }),
+).annotate({
+  identifier: "PatchSiteLanResponse",
+}) as any as S.Schema<PatchSiteLanResponse>;
+
+export interface SitesWansEditRequestStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  /** A valid IPv4 address. */
+  gatewayAddress: string;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+}
+export const SitesWansEditRequestStaticAddressing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.String,
+      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+    }),
+).annotate({
+  identifier: "SitesWansEditRequestStaticAddressing",
+}) as any as S.Schema<SitesWansEditRequestStaticAddressing>;
+
+export interface PatchSiteWanRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  /** Identifier */
+  wanId: string;
+  name?: string;
+  physport?: number;
+  priority?: number;
+  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
+  staticAddressing?: SitesWansEditRequestStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const PatchSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    wanId: S.String.pipe(T.Label("wan_id")),
+    name: S.optional(S.String),
+    physport: S.optional(S.Number),
+    priority: S.optional(S.Number),
+    staticAddressing: S.optional(
+      SitesWansEditRequestStaticAddressing.pipe(T.Body("static_addressing")),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PatchSiteWanRequest",
+}) as any as S.Schema<PatchSiteWanRequest>;
+
+export type SitesWansEditResponseHealthCheckRate =
+  | "low"
+  | "mid"
+  | "high"
+  | (string & {});
+export const SitesWansEditResponseHealthCheckRate = /*@__PURE__*/ S.String;
+
+export interface SitesWansEditResponseStaticAddressing {
+  /** A valid CIDR notation representing an IP range. */
+  address: string;
+  /** A valid IPv4 address. */
+  gatewayAddress: string;
+  /** A valid CIDR notation representing an IP range. */
+  secondaryAddress?: string;
+}
+export const SitesWansEditResponseStaticAddressing = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      address: S.String,
+      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
+      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
+    }),
+).annotate({
+  identifier: "SitesWansEditResponseStaticAddressing",
+}) as any as S.Schema<SitesWansEditResponseStaticAddressing>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PatchSiteWanResponse {
+  /** Identifier */
+  id?: string;
+  /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
+  healthCheckRate?: SitesWansEditResponseHealthCheckRate;
+  name?: string;
+  physport?: number;
+  /** Priority of WAN for traffic loadbalancing. */
+  priority?: number;
+  /** Identifier */
+  siteId?: string;
+  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
+  staticAddressing?: SitesWansEditResponseStaticAddressing;
+  /** VLAN ID. Use zero for untagged. */
+  vlanTag?: number;
+}
+export const PatchSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    healthCheckRate: S.optional(
+      SitesWansEditResponseHealthCheckRate.pipe(T.Body("health_check_rate")),
+    ),
+    name: S.optional(S.String),
+    physport: S.optional(S.Number),
+    priority: S.optional(S.Number),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    staticAddressing: S.optional(
+      SitesWansEditResponseStaticAddressing.pipe(T.Body("static_addressing")),
+    ),
+    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+  }),
+).annotate({
+  identifier: "PatchSiteWanResponse",
+}) as any as S.Schema<PatchSiteWanResponse>;
+
+export interface PskGenerateIpsecTunnelRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  ipsecTunnelId: string;
+  body: unknown;
+}
+export const PskGenerateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
+    body: S.Unknown,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}/psk_generate",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PskGenerateIpsecTunnelRequest",
+}) as any as S.Schema<PskGenerateIpsecTunnelRequest>;
+
+export interface IpsecTunnelsPskGenerateResponsePskMetadata {
+  /** The date and time the tunnel was last modified. */
+  lastGeneratedOn?: string;
+}
+export const IpsecTunnelsPskGenerateResponsePskMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsPskGenerateResponsePskMetadata",
+  }) as any as S.Schema<IpsecTunnelsPskGenerateResponsePskMetadata>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PskGenerateIpsecTunnelResponse {
+  /** Identifier */
+  ipsecTunnelId?: string;
+  /** A randomly generated or provided string for use in the IPsec tunnel. */
+  psk?: string;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata?: IpsecTunnelsPskGenerateResponsePskMetadata;
+}
+export const PskGenerateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    ipsecTunnelId: S.optional(S.String.pipe(T.Body("ipsec_tunnel_id"))),
+    psk: S.optional(S.String),
+    pskMetadata: S.optional(
+      IpsecTunnelsPskGenerateResponsePskMetadata.pipe(T.Body("psk_metadata")),
+    ),
+  }),
+).annotate({
+  identifier: "PskGenerateIpsecTunnelResponse",
+}) as any as S.Schema<PskGenerateIpsecTunnelResponse>;
+
+export interface IpsecTunnelsPskSetRequestPsksItem {
+  /** The ID of the IPsec tunnel. */
+  id: string;
+  /** A randomly generated or provided string for use in the IPsec tunnel. */
+  psk: string;
+}
+export const IpsecTunnelsPskSetRequestPsksItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    psk: S.String,
+  }),
+).annotate({
+  identifier: "IpsecTunnelsPskSetRequestPsksItem",
+}) as any as S.Schema<IpsecTunnelsPskSetRequestPsksItem>;
+
+export type IpsecTunnelsPskSetRequestPsksList =
+  IpsecTunnelsPskSetRequestPsksItem[];
+export const IpsecTunnelsPskSetRequestPsksList = /*@__PURE__*/ S.Array(
+  IpsecTunnelsPskSetRequestPsksItem,
+) as any as S.Schema<IpsecTunnelsPskSetRequestPsksList>;
+
+export interface PskSetIpsecTunnelRequest {
+  /** Identifier */
+  accountId: string;
+  /** If `true`, only run validation without persisting changes. */
+  validateOnly?: boolean;
+  /** List of tunnel ID and PSK pairs. */
+  psks: IpsecTunnelsPskSetRequestPsksList;
+}
+export const PskSetIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    validateOnly: S.optional(S.Boolean.pipe(T.Query("validate_only"))),
+    psks: IpsecTunnelsPskSetRequestPsksList,
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/magic/ipsec_tunnels/psk",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PskSetIpsecTunnelRequest",
+}) as any as S.Schema<PskSetIpsecTunnelRequest>;
+
+export type IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap = {
+  [key: string]: unknown | undefined;
+};
+export const IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap>;
+
+export type IpsecTunnelsPskSetResponseUnappliedPsksMap = {
+  [key: string]: unknown | undefined;
+};
+export const IpsecTunnelsPskSetResponseUnappliedPsksMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<IpsecTunnelsPskSetResponseUnappliedPsksMap>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PskSetIpsecTunnelResponse {
+  /** Map of tunnel IDs to successfully applied PSK details. */
+  successfullyAppliedPsks?: IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap;
+  /** Map of tunnel IDs to failure reasons for PSKs that could not be applied. */
+  unappliedPsks?: IpsecTunnelsPskSetResponseUnappliedPsksMap;
+}
+export const PskSetIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    successfullyAppliedPsks: S.optional(
+      IpsecTunnelsPskSetResponseSuccessfullyAppliedPsksMap.pipe(
+        T.Body("successfully_applied_psks"),
+      ),
+    ),
+    unappliedPsks: S.optional(
+      IpsecTunnelsPskSetResponseUnappliedPsksMap.pipe(T.Body("unapplied_psks")),
+    ),
+  }),
+).annotate({
+  identifier: "PskSetIpsecTunnelResponse",
+}) as any as S.Schema<PskSetIpsecTunnelResponse>;
+
+export interface CfInterconnectsUpdateRequestGre {
+  /** The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect. */
+  cloudflareEndpoint?: string;
+}
+export const CfInterconnectsUpdateRequestGre = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    cloudflareEndpoint: S.optional(
+      S.String.pipe(T.Body("cloudflare_endpoint")),
+    ),
+  }),
+).annotate({
+  identifier: "CfInterconnectsUpdateRequestGre",
+}) as any as S.Schema<CfInterconnectsUpdateRequestGre>;
+
+export interface CfInterconnectsUpdateRequestHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const CfInterconnectsUpdateRequestHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsUpdateRequestHealthCheckTarget",
+  }) as any as S.Schema<CfInterconnectsUpdateRequestHealthCheckTarget>;
+
+export interface CfInterconnectsUpdateRequestHealthCheck {
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: CfInterconnectsUpdateRequestHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const CfInterconnectsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(CfInterconnectsUpdateRequestHealthCheckTarget),
+      type: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "CfInterconnectsUpdateRequestHealthCheck",
+}) as any as S.Schema<CfInterconnectsUpdateRequestHealthCheck>;
+
+export interface PutCfInterconnectRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  cfInterconnectId: string;
+  XMagicNewHcTarget_?: boolean;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  /** An optional description of the interconnect. */
+  description?: string;
+  /** The configuration specific to GRE interconnects. */
+  gre?: CfInterconnectsUpdateRequestGre;
+  healthCheck?: CfInterconnectsUpdateRequestHealthCheck;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress?: string;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576. */
+  mtu?: number;
+  /** The name of the interconnect. The name cannot share a name with other tunnels. */
+  name?: string;
+}
+export const PutCfInterconnectRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    cfInterconnectId: S.String.pipe(T.Label("cf_interconnect_id")),
+    XMagicNewHcTarget_: S.optional(
+      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    ),
+    automaticReturnRouting: S.optional(
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
+    ),
+    description: S.optional(S.String),
+    gre: S.optional(CfInterconnectsUpdateRequestGre),
+    healthCheck: S.optional(
+      CfInterconnectsUpdateRequestHealthCheck.pipe(T.Body("health_check")),
+    ),
+    interfaceAddress: S.optional(S.String.pipe(T.Body("interface_address"))),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    mtu: S.optional(S.Number),
+    name: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/cf_interconnects/{cf_interconnect_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "PutCfInterconnectRequest",
+}) as any as S.Schema<PutCfInterconnectRequest>;
+
+export interface CfInterconnectsUpdateResponseModifiedInterconnectGre {
+  /** The IP address assigned to the Cloudflare side of the GRE tunnel created as part of the Interconnect. */
+  cloudflareEndpoint?: string;
+}
+export const CfInterconnectsUpdateResponseModifiedInterconnectGre =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cloudflareEndpoint: S.optional(
+        S.String.pipe(T.Body("cloudflare_endpoint")),
+      ),
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsUpdateResponseModifiedInterconnectGre",
+  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectGre>;
+
+export interface CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget",
+  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget>;
+
+export interface CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck {
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(
+        CfInterconnectsUpdateResponseModifiedInterconnectHealthCheckTarget,
+      ),
+      type: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck",
+  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck>;
+
+export interface CfInterconnectsUpdateResponseModifiedInterconnect {
+  /** Identifier */
+  id?: string;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  /** The name of the interconnect. The name cannot share a name with other tunnels. */
+  coloName?: string;
+  /** The date and time the tunnel was created. */
+  createdOn?: string;
+  /** An optional description of the interconnect. */
+  description?: string;
+  /** The configuration specific to GRE interconnects. */
+  gre?: CfInterconnectsUpdateResponseModifiedInterconnectGre;
+  healthCheck?: CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress?: string;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string;
+  /** The Maximum Transmission Unit (MTU) in bytes for the interconnect. The minimum value is 576. */
+  mtu?: number;
+  /** The name of the interconnect. The name cannot share a name with other tunnels. */
+  name?: string;
+  /** An identifier that correlates this interconnect with the corresponding V2 CNI interconnect resource. */
+  virtualPortReservationId?: string;
+}
+export const CfInterconnectsUpdateResponseModifiedInterconnect =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      automaticReturnRouting: S.optional(
+        S.Boolean.pipe(T.Body("automatic_return_routing")),
+      ),
+      coloName: S.optional(S.String.pipe(T.Body("colo_name"))),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      description: S.optional(S.String),
+      gre: S.optional(CfInterconnectsUpdateResponseModifiedInterconnectGre),
+      healthCheck: S.optional(
+        CfInterconnectsUpdateResponseModifiedInterconnectHealthCheck.pipe(
+          T.Body("health_check"),
+        ),
+      ),
+      interfaceAddress: S.optional(S.String.pipe(T.Body("interface_address"))),
+      interfaceAddress6: S.optional(
+        S.String.pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      mtu: S.optional(S.Number),
+      name: S.optional(S.String),
+      virtualPortReservationId: S.optional(
+        S.String.pipe(T.Body("virtual_port_reservation_id")),
+      ),
+    }),
+  ).annotate({
+    identifier: "CfInterconnectsUpdateResponseModifiedInterconnect",
+  }) as any as S.Schema<CfInterconnectsUpdateResponseModifiedInterconnect>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface PutCfInterconnectResponse {
+  modified?: boolean;
+  modifiedInterconnect?: CfInterconnectsUpdateResponseModifiedInterconnect;
+}
+export const PutCfInterconnectResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modified: S.optional(S.Boolean),
+    modifiedInterconnect: S.optional(
+      CfInterconnectsUpdateResponseModifiedInterconnect.pipe(
+        T.Body("modified_interconnect"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "PutCfInterconnectResponse",
+}) as any as S.Schema<PutCfInterconnectResponse>;
 
 export interface SitesAppConfigurationCreateRequestBody {
   AccountAppObjectAccountAppIdBreakoutPreferredWansPriority__: unknown;
@@ -11755,314 +13042,1258 @@ export const SitesAppConfigurationUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SitesAppConfigurationUpdateResponse",
 }) as any as S.Schema<SitesAppConfigurationUpdateResponse>;
 
-export interface SitesCreateRequestLocation {
-  /** Latitude */
-  lat?: string;
-  /** Longitude */
-  lon?: string;
-}
-export const SitesCreateRequestLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.String),
-    lon: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SitesCreateRequestLocation",
-}) as any as S.Schema<SitesCreateRequestLocation>;
-
-export interface SitesCreateRequest {
-  /** Identifier */
+export interface StopPcapRequest {
+  /** Identifier. */
   accountId: string;
-  /** The name of the site. */
-  name: string;
-  /** Magic Connector identifier tag. */
-  connectorId?: string;
-  description?: string;
-  /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
-  haMode?: boolean;
-  /** Location of site in latitude and longitude. */
-  location?: SitesCreateRequestLocation;
-  /** Magic Connector identifier tag. Used when high availability mode is on. */
-  secondaryConnectorId?: string;
+  /** Identifier. */
+  pcapId: string;
 }
-export const SitesCreateRequest = /*@__PURE__*/ S.suspend(() =>
+export const StopPcapRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    name: S.String,
-    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
-    description: S.optional(S.String),
-    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
-    location: S.optional(SitesCreateRequestLocation),
-    secondaryConnectorId: S.optional(
-      S.String.pipe(T.Body("secondary_connector_id")),
-    ),
+    pcapId: S.String.pipe(T.Label("pcap_id")),
   }).pipe(
     T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/sites",
+      method: "PUT",
+      uri: "/accounts/{account_id}/pcaps/{pcap_id}/stop",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "SitesCreateRequest",
-}) as any as S.Schema<SitesCreateRequest>;
+  identifier: "StopPcapRequest",
+}) as any as S.Schema<StopPcapRequest>;
 
-export interface SitesCreateResponseLocation {
-  /** Latitude */
-  lat?: string;
-  /** Longitude */
-  lon?: string;
-}
-export const SitesCreateResponseLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.String),
-    lon: S.optional(S.String),
-  }),
+export interface StopPcapResponse {}
+export const StopPcapResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
 ).annotate({
-  identifier: "SitesCreateResponseLocation",
-}) as any as S.Schema<SitesCreateResponseLocation>;
+  identifier: "StopPcapResponse",
+}) as any as S.Schema<StopPcapResponse>;
 
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesCreateResponse {
-  /** Identifier */
-  id?: string;
-  /** Magic Connector identifier tag. */
-  connectorId?: string;
-  description?: string;
-  /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
-  haMode?: boolean;
-  /** Location of site in latitude and longitude. */
-  location?: SitesCreateResponseLocation;
-  /** The name of the site. */
-  name?: string;
-  /** Magic Connector identifier tag. Used when high availability mode is on. */
-  secondaryConnectorId?: string;
-}
-export const SitesCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
-    description: S.optional(S.String),
-    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
-    location: S.optional(SitesCreateResponseLocation),
-    name: S.optional(S.String),
-    secondaryConnectorId: S.optional(
-      S.String.pipe(T.Body("secondary_connector_id")),
-    ),
-  }),
-).annotate({
-  identifier: "SitesCreateResponse",
-}) as any as S.Schema<SitesCreateResponse>;
+export type AppsUpdateRequestHostnamesList = string[];
+export const AppsUpdateRequestHostnamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsUpdateRequestHostnamesList>;
 
-export interface SitesDeleteRequest {
+export type AppsUpdateRequestIpSubnetsList = string[];
+export const AppsUpdateRequestIpSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsUpdateRequestIpSubnetsList>;
+
+export type AppsUpdateRequestSourceSubnetsList = string[];
+export const AppsUpdateRequestSourceSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsUpdateRequestSourceSubnetsList>;
+
+export interface UpdateAppRequest {
   /** Identifier */
   accountId: string;
   /** Identifier */
-  siteId: string;
+  accountAppId: string;
+  /** FQDNs to associate with traffic decisions. */
+  hostnames?: AppsUpdateRequestHostnamesList;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  ipSubnets?: AppsUpdateRequestIpSubnetsList;
+  /** Display name for the app. */
+  name?: string;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: AppsUpdateRequestSourceSubnetsList;
+  /** Category of the app. */
+  type?: string;
 }
-export const SitesDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateAppRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
+    accountAppId: S.String.pipe(T.Label("account_app_id")),
+    hostnames: S.optional(AppsUpdateRequestHostnamesList),
+    ipSubnets: S.optional(
+      AppsUpdateRequestIpSubnetsList.pipe(T.Body("ip_subnets")),
+    ),
+    name: S.optional(S.String),
+    sourceSubnets: S.optional(
+      AppsUpdateRequestSourceSubnetsList.pipe(T.Body("source_subnets")),
+    ),
+    type: S.optional(S.String),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}",
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/apps/{account_app_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "SitesDeleteRequest",
-}) as any as S.Schema<SitesDeleteRequest>;
+  identifier: "UpdateAppRequest",
+}) as any as S.Schema<UpdateAppRequest>;
 
-export interface SitesDeleteResponseLocation {
-  /** Latitude */
-  lat?: string;
-  /** Longitude */
-  lon?: string;
-}
-export const SitesDeleteResponseLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.String),
-    lon: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SitesDeleteResponseLocation",
-}) as any as S.Schema<SitesDeleteResponseLocation>;
+export type AppsUpdateResponseHostnamesList = string[];
+export const AppsUpdateResponseHostnamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsUpdateResponseHostnamesList>;
+
+export type AppsUpdateResponseIpSubnetsList = string[];
+export const AppsUpdateResponseIpSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsUpdateResponseIpSubnetsList>;
+
+export type AppsUpdateResponseSourceSubnetsList = string[];
+export const AppsUpdateResponseSourceSubnetsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<AppsUpdateResponseSourceSubnetsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesDeleteResponse {
-  /** Identifier */
-  id?: string;
-  /** Magic Connector identifier tag. */
-  connectorId?: string;
-  description?: string;
-  /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
-  haMode?: boolean;
-  /** Location of site in latitude and longitude. */
-  location?: SitesDeleteResponseLocation;
-  /** The name of the site. */
+export interface UpdateAppResponse {
+  /** Magic account app ID. */
+  accountAppId: string;
+  /** FQDNs to associate with traffic decisions. */
+  hostnames?: AppsUpdateResponseHostnamesList;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  ipSubnets?: AppsUpdateResponseIpSubnetsList;
+  /** Display name for the app. */
   name?: string;
-  /** Magic Connector identifier tag. Used when high availability mode is on. */
-  secondaryConnectorId?: string;
+  /** IPv4 CIDRs to associate with traffic decisions. (IPv6 CIDRs are currently unsupported) */
+  sourceSubnets?: AppsUpdateResponseSourceSubnetsList;
+  /** Category of the app. */
+  type?: string;
 }
-export const SitesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateAppResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
-    description: S.optional(S.String),
-    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
-    location: S.optional(SitesDeleteResponseLocation),
-    name: S.optional(S.String),
-    secondaryConnectorId: S.optional(
-      S.String.pipe(T.Body("secondary_connector_id")),
+    accountAppId: S.String.pipe(T.Body("account_app_id")),
+    hostnames: S.optional(AppsUpdateResponseHostnamesList),
+    ipSubnets: S.optional(
+      AppsUpdateResponseIpSubnetsList.pipe(T.Body("ip_subnets")),
     ),
+    name: S.optional(S.String),
+    sourceSubnets: S.optional(
+      AppsUpdateResponseSourceSubnetsList.pipe(T.Body("source_subnets")),
+    ),
+    type: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SitesDeleteResponse",
-}) as any as S.Schema<SitesDeleteResponse>;
+  identifier: "UpdateAppResponse",
+}) as any as S.Schema<UpdateAppResponse>;
 
-export interface SitesEditRequestLocation {
-  /** Latitude */
-  lat?: string;
-  /** Longitude */
-  lon?: string;
-}
-export const SitesEditRequestLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.String),
-    lon: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SitesEditRequestLocation",
-}) as any as S.Schema<SitesEditRequestLocation>;
+export type ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem =
+  | "Sunday"
+  | "Monday"
+  | "Tuesday"
+  | (string & {});
+export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem =
+  /*@__PURE__*/ S.String;
 
-export interface SitesEditRequest {
-  /** Identifier */
+export type ConnectorsUpdateRequestInterruptWindowDaysOfWeekList =
+  ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem[];
+export const ConnectorsUpdateRequestInterruptWindowDaysOfWeekList =
+  /*@__PURE__*/ S.Array(
+    ConnectorsUpdateRequestInterruptWindowDaysOfWeekItem,
+  ) as any as S.Schema<ConnectorsUpdateRequestInterruptWindowDaysOfWeekList>;
+
+export type ConnectorsUpdateRequestInterruptWindowEmbargoDatesList = string[];
+export const ConnectorsUpdateRequestInterruptWindowEmbargoDatesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectorsUpdateRequestInterruptWindowEmbargoDatesList>;
+
+export interface UpdateConnectorRequest {
+  /** Account identifier */
   accountId: string;
-  /** Identifier */
-  siteId: string;
-  /** Magic Connector identifier tag. */
-  connectorId?: string;
-  description?: string;
-  /** Location of site in latitude and longitude. */
-  location?: SitesEditRequestLocation;
-  /** The name of the site. */
-  name?: string;
-  /** Magic Connector identifier tag. Used when high availability mode is on. */
-  secondaryConnectorId?: string;
+  connectorId: string;
+  activated?: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek?: ConnectorsUpdateRequestInterruptWindowDaysOfWeekList;
+  interruptWindowDurationHours?: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates?: ConnectorsUpdateRequestInterruptWindowEmbargoDatesList;
+  interruptWindowHourOfDay?: number;
+  notes?: string;
+  primary?: boolean;
+  /** When true, regenerate license key for the connector. */
+  provisionLicense?: boolean;
+  siteId?: string;
+  timezone?: string;
 }
-export const SitesEditRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateConnectorRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
-    description: S.optional(S.String),
-    location: S.optional(SitesEditRequestLocation),
-    name: S.optional(S.String),
-    secondaryConnectorId: S.optional(
-      S.String.pipe(T.Body("secondary_connector_id")),
+    connectorId: S.String.pipe(T.Label("connector_id")),
+    activated: S.optional(S.Boolean),
+    interruptWindowDaysOfWeek: S.optional(
+      ConnectorsUpdateRequestInterruptWindowDaysOfWeekList.pipe(
+        T.Body("interrupt_window_days_of_week"),
+      ),
     ),
+    interruptWindowDurationHours: S.optional(
+      S.Number.pipe(T.Body("interrupt_window_duration_hours")),
+    ),
+    interruptWindowEmbargoDates: S.optional(
+      ConnectorsUpdateRequestInterruptWindowEmbargoDatesList.pipe(
+        T.Body("interrupt_window_embargo_dates"),
+      ),
+    ),
+    interruptWindowHourOfDay: S.optional(
+      S.Number.pipe(T.Body("interrupt_window_hour_of_day")),
+    ),
+    notes: S.optional(S.String),
+    primary: S.optional(S.Boolean),
+    provisionLicense: S.optional(S.Boolean.pipe(T.Body("provision_license"))),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
+    timezone: S.optional(S.String),
   }).pipe(
     T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}",
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/connectors/{connector_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "SitesEditRequest",
-}) as any as S.Schema<SitesEditRequest>;
+  identifier: "UpdateConnectorRequest",
+}) as any as S.Schema<UpdateConnectorRequest>;
 
-export interface SitesEditResponseLocation {
-  /** Latitude */
-  lat?: string;
-  /** Longitude */
-  lon?: string;
+export type ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem =
+  | "Sunday"
+  | "Monday"
+  | "Tuesday"
+  | (string & {});
+export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem =
+  /*@__PURE__*/ S.String;
+
+export type ConnectorsUpdateResponseInterruptWindowDaysOfWeekList =
+  ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem[];
+export const ConnectorsUpdateResponseInterruptWindowDaysOfWeekList =
+  /*@__PURE__*/ S.Array(
+    ConnectorsUpdateResponseInterruptWindowDaysOfWeekItem,
+  ) as any as S.Schema<ConnectorsUpdateResponseInterruptWindowDaysOfWeekList>;
+
+export type ConnectorsUpdateResponseInterruptWindowEmbargoDatesList = string[];
+export const ConnectorsUpdateResponseInterruptWindowEmbargoDatesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<ConnectorsUpdateResponseInterruptWindowEmbargoDatesList>;
+
+export type ConnectorsUpdateResponseDeviceType =
+  | "MANAGED"
+  | "LICENSED"
+  | (string & {});
+export const ConnectorsUpdateResponseDeviceType = /*@__PURE__*/ S.String;
+
+export interface ConnectorsUpdateResponseDevice {
+  id: string;
+  serialNumber?: string;
+  type?: ConnectorsUpdateResponseDeviceType;
 }
-export const SitesEditResponseLocation = /*@__PURE__*/ S.suspend(() =>
+export const ConnectorsUpdateResponseDevice = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    lat: S.optional(S.String),
-    lon: S.optional(S.String),
+    id: S.String,
+    serialNumber: S.optional(S.String.pipe(T.Body("serial_number"))),
+    type: S.optional(ConnectorsUpdateResponseDeviceType),
   }),
 ).annotate({
-  identifier: "SitesEditResponseLocation",
-}) as any as S.Schema<SitesEditResponseLocation>;
+  identifier: "ConnectorsUpdateResponseDevice",
+}) as any as S.Schema<ConnectorsUpdateResponseDevice>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesEditResponse {
-  /** Identifier */
-  id?: string;
-  /** Magic Connector identifier tag. */
-  connectorId?: string;
-  description?: string;
-  /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
-  haMode?: boolean;
-  /** Location of site in latitude and longitude. */
-  location?: SitesEditResponseLocation;
-  /** The name of the site. */
-  name?: string;
-  /** Magic Connector identifier tag. Used when high availability mode is on. */
-  secondaryConnectorId?: string;
+export interface UpdateConnectorResponse {
+  id: string;
+  activated: boolean;
+  /** Allowed days of the week for upgrades. Default is all days. */
+  interruptWindowDaysOfWeek: ConnectorsUpdateResponseInterruptWindowDaysOfWeekList;
+  interruptWindowDurationHours: number;
+  /** List of dates (YYYY-MM-DD) when upgrades are blocked. */
+  interruptWindowEmbargoDates: ConnectorsUpdateResponseInterruptWindowEmbargoDatesList;
+  interruptWindowHourOfDay: number;
+  lastUpdated: string;
+  notes: string;
+  primary: boolean;
+  timezone: string;
+  device?: ConnectorsUpdateResponseDevice;
+  lastHeartbeat?: string;
+  lastSeenVersion?: string;
+  licenseKey?: string;
+  siteId?: string;
 }
-export const SitesEditResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateConnectorResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    id: S.optional(S.String),
-    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
-    description: S.optional(S.String),
-    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
-    location: S.optional(SitesEditResponseLocation),
-    name: S.optional(S.String),
-    secondaryConnectorId: S.optional(
-      S.String.pipe(T.Body("secondary_connector_id")),
+    id: S.String,
+    activated: S.Boolean,
+    interruptWindowDaysOfWeek:
+      ConnectorsUpdateResponseInterruptWindowDaysOfWeekList.pipe(
+        T.Body("interrupt_window_days_of_week"),
+      ),
+    interruptWindowDurationHours: S.Number.pipe(
+      T.Body("interrupt_window_duration_hours"),
     ),
+    interruptWindowEmbargoDates:
+      ConnectorsUpdateResponseInterruptWindowEmbargoDatesList.pipe(
+        T.Body("interrupt_window_embargo_dates"),
+      ),
+    interruptWindowHourOfDay: S.Number.pipe(
+      T.Body("interrupt_window_hour_of_day"),
+    ),
+    lastUpdated: S.String.pipe(T.Body("last_updated")),
+    notes: S.String,
+    primary: S.Boolean,
+    timezone: S.String,
+    device: S.optional(ConnectorsUpdateResponseDevice),
+    lastHeartbeat: S.optional(S.String.pipe(T.Body("last_heartbeat"))),
+    lastSeenVersion: S.optional(S.String.pipe(T.Body("last_seen_version"))),
+    licenseKey: S.optional(S.String.pipe(T.Body("license_key"))),
+    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
   }),
 ).annotate({
-  identifier: "SitesEditResponse",
-}) as any as S.Schema<SitesEditResponse>;
+  identifier: "UpdateConnectorResponse",
+}) as any as S.Schema<UpdateConnectorResponse>;
 
-export interface SitesGetRequest {
+export type GreTunnelsUpdateRequestHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional"
+  | (string & {});
+export const GreTunnelsUpdateRequestHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsUpdateRequestHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const GreTunnelsUpdateRequestHealthCheckTarget = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+).annotate({
+  identifier: "GreTunnelsUpdateRequestHealthCheckTarget",
+}) as any as S.Schema<GreTunnelsUpdateRequestHealthCheckTarget>;
+
+export interface GreTunnelsUpdateRequestHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsUpdateRequestHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsUpdateRequestHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const GreTunnelsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    direction: S.optional(GreTunnelsUpdateRequestHealthCheckDirection),
+    enabled: S.optional(S.Boolean),
+    rate: S.optional(S.Unknown),
+    target: S.optional(GreTunnelsUpdateRequestHealthCheckTarget),
+    type: S.optional(S.Unknown),
+  }),
+).annotate({
+  identifier: "GreTunnelsUpdateRequestHealthCheck",
+}) as any as S.Schema<GreTunnelsUpdateRequestHealthCheck>;
+
+export interface UpdateGreTunnelRequest {
   /** Identifier */
   accountId: string;
   /** Identifier */
-  siteId: string;
+  greTunnelId: string;
   XMagicNewHcTarget_?: boolean;
+  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
+  cloudflareGreEndpoint: string;
+  /** The IP address assigned to the customer side of the GRE tunnel. */
+  customerGreEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
+  name: string;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  /** An optional description of the GRE tunnel. */
+  description?: string;
+  healthCheck?: GreTunnelsUpdateRequestHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number;
 }
-export const SitesGetRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateGreTunnelRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
+    greTunnelId: S.String.pipe(T.Label("gre_tunnel_id")),
     XMagicNewHcTarget_: S.optional(
       S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
     ),
+    cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
+    customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
+    interfaceAddress: S.String.pipe(T.Body("interface_address")),
+    name: S.String,
+    automaticReturnRouting: S.optional(
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
+    ),
+    description: S.optional(S.String),
+    healthCheck: S.optional(
+      GreTunnelsUpdateRequestHealthCheck.pipe(T.Body("health_check")),
+    ),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    mtu: S.optional(S.Number),
+    ttl: S.optional(S.Number),
   }).pipe(
     T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}",
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/gre_tunnels/{gre_tunnel_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "SitesGetRequest",
-}) as any as S.Schema<SitesGetRequest>;
+  identifier: "UpdateGreTunnelRequest",
+}) as any as S.Schema<UpdateGreTunnelRequest>;
 
-export interface SitesGetResponseLocation {
+export type GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList =
+  string[];
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList>;
+
+export interface GreTunnelsUpdateResponseModifiedGreTunnelBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customerAsn: S.Number.pipe(T.Body("customer_asn")),
+      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+      extraPrefixes: S.optional(
+        GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList.pipe(
+          T.Body("extra_prefixes"),
+        ),
+      ),
+      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsUpdateResponseModifiedGreTunnelBgp",
+  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgp>;
+
+export type GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING"
+  | (string & {});
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus {
+  state: GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState;
+  tcpEstablished: boolean;
+  updatedAt: string;
+  bgpState?: string;
+  cfSpeakerIp?: string;
+  cfSpeakerPort?: number;
+  customerSpeakerIp?: string;
+  customerSpeakerPort?: number;
+}
+export const GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: GreTunnelsUpdateResponseModifiedGreTunnelBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
+      customerSpeakerIp: S.optional(
+        S.String.pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.Number.pipe(T.Body("customer_speaker_port")),
+      ),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus",
+  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus>;
+
+export type GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional"
+  | (string & {});
+export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget",
+  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget>;
+
+export interface GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckDirection,
+      ),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(
+        GreTunnelsUpdateResponseModifiedGreTunnelHealthCheckTarget,
+      ),
+      type: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck",
+  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck>;
+
+export interface GreTunnelsUpdateResponseModifiedGreTunnel {
+  /** Identifier */
+  id: string;
+  /** The IP address assigned to the Cloudflare side of the GRE tunnel. */
+  cloudflareGreEndpoint: string;
+  /** The IP address assigned to the customer side of the GRE tunnel. */
+  customerGreEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the tunnel. The name cannot contain spaces or special characters, must be 15 characters or less, and cannot share a name with another GRE tunnel. */
+  name: string;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: GreTunnelsUpdateResponseModifiedGreTunnelBgp;
+  bgpStatus?: GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus;
+  /** The date and time the tunnel was created. */
+  createdOn?: string;
+  /** An optional description of the GRE tunnel. */
+  description?: string;
+  healthCheck?: GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string;
+  /** Maximum Transmission Unit (MTU) in bytes for the GRE tunnel. The minimum value is 576. */
+  mtu?: number;
+  /** Time To Live (TTL) in number of hops of the GRE tunnel. */
+  ttl?: number;
+}
+export const GreTunnelsUpdateResponseModifiedGreTunnel =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudflareGreEndpoint: S.String.pipe(T.Body("cloudflare_gre_endpoint")),
+      customerGreEndpoint: S.String.pipe(T.Body("customer_gre_endpoint")),
+      interfaceAddress: S.String.pipe(T.Body("interface_address")),
+      name: S.String,
+      automaticReturnRouting: S.optional(
+        S.Boolean.pipe(T.Body("automatic_return_routing")),
+      ),
+      bgp: S.optional(GreTunnelsUpdateResponseModifiedGreTunnelBgp),
+      bgpStatus: S.optional(
+        GreTunnelsUpdateResponseModifiedGreTunnelBgpStatus.pipe(
+          T.Body("bgp_status"),
+        ),
+      ),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      description: S.optional(S.String),
+      healthCheck: S.optional(
+        GreTunnelsUpdateResponseModifiedGreTunnelHealthCheck.pipe(
+          T.Body("health_check"),
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.String.pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      mtu: S.optional(S.Number),
+      ttl: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier: "GreTunnelsUpdateResponseModifiedGreTunnel",
+  }) as any as S.Schema<GreTunnelsUpdateResponseModifiedGreTunnel>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateGreTunnelResponse {
+  modified?: boolean;
+  modifiedGreTunnel?: GreTunnelsUpdateResponseModifiedGreTunnel;
+}
+export const UpdateGreTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modified: S.optional(S.Boolean),
+    modifiedGreTunnel: S.optional(
+      GreTunnelsUpdateResponseModifiedGreTunnel.pipe(
+        T.Body("modified_gre_tunnel"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateGreTunnelResponse",
+}) as any as S.Schema<UpdateGreTunnelResponse>;
+
+export type IpsecTunnelsUpdateRequestBgpExtraPrefixesList = string[];
+export const IpsecTunnelsUpdateRequestBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IpsecTunnelsUpdateRequestBgpExtraPrefixesList>;
+
+export interface IpsecTunnelsUpdateRequestBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: IpsecTunnelsUpdateRequestBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const IpsecTunnelsUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    customerAsn: S.Number.pipe(T.Body("customer_asn")),
+    exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+    extraPrefixes: S.optional(
+      IpsecTunnelsUpdateRequestBgpExtraPrefixesList.pipe(
+        T.Body("extra_prefixes"),
+      ),
+    ),
+    importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+    md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+  }),
+).annotate({
+  identifier: "IpsecTunnelsUpdateRequestBgp",
+}) as any as S.Schema<IpsecTunnelsUpdateRequestBgp>;
+
+export interface IpsecTunnelsUpdateRequestCustomRemoteIdentities {
+  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
+  fqdnId?: string;
+}
+export const IpsecTunnelsUpdateRequestCustomRemoteIdentities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsUpdateRequestCustomRemoteIdentities",
+  }) as any as S.Schema<IpsecTunnelsUpdateRequestCustomRemoteIdentities>;
+
+export type IpsecTunnelsUpdateRequestHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional"
+  | (string & {});
+export const IpsecTunnelsUpdateRequestHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsUpdateRequestHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const IpsecTunnelsUpdateRequestHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsUpdateRequestHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsUpdateRequestHealthCheckTarget>;
+
+export interface IpsecTunnelsUpdateRequestHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsUpdateRequestHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsUpdateRequestHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const IpsecTunnelsUpdateRequestHealthCheck = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      direction: S.optional(IpsecTunnelsUpdateRequestHealthCheckDirection),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(IpsecTunnelsUpdateRequestHealthCheckTarget),
+      type: S.optional(S.Unknown),
+    }),
+).annotate({
+  identifier: "IpsecTunnelsUpdateRequestHealthCheck",
+}) as any as S.Schema<IpsecTunnelsUpdateRequestHealthCheck>;
+
+export interface UpdateIpsecTunnelRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  ipsecTunnelId: string;
+  XMagicNewHcTarget_?: boolean;
+  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
+  cloudflareEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
+  name: string;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: IpsecTunnelsUpdateRequestBgp;
+  customRemoteIdentities?: IpsecTunnelsUpdateRequestCustomRemoteIdentities;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string;
+  healthCheck?: IpsecTunnelsUpdateRequestHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** A randomly generated or provided string for use in the IPsec tunnel. */
+  psk?: string;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean;
+}
+export const UpdateIpsecTunnelRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    ipsecTunnelId: S.String.pipe(T.Label("ipsec_tunnel_id")),
+    XMagicNewHcTarget_: S.optional(
+      S.Boolean.pipe(T.Header('"x-magic-new-hc-target"')),
+    ),
+    cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
+    interfaceAddress: S.String.pipe(T.Body("interface_address")),
+    name: S.String,
+    automaticReturnRouting: S.optional(
+      S.Boolean.pipe(T.Body("automatic_return_routing")),
+    ),
+    bgp: S.optional(IpsecTunnelsUpdateRequestBgp),
+    customRemoteIdentities: S.optional(
+      IpsecTunnelsUpdateRequestCustomRemoteIdentities.pipe(
+        T.Body("custom_remote_identities"),
+      ),
+    ),
+    customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
+    description: S.optional(S.String),
+    healthCheck: S.optional(
+      IpsecTunnelsUpdateRequestHealthCheck.pipe(T.Body("health_check")),
+    ),
+    interfaceAddress6: S.optional(S.String.pipe(T.Body("interface_address6"))),
+    psk: S.optional(S.String),
+    replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/ipsec_tunnels/{ipsec_tunnel_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateIpsecTunnelRequest",
+}) as any as S.Schema<UpdateIpsecTunnelRequest>;
+
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList =
+  string[];
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList>;
+
+export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp {
+  /** ASN used on the customer end of the BGP session */
+  customerAsn: number;
+  /** ID of the BGP filter profile applied to routes advertised to the customer. */
+  exportFilterId?: string;
+  /** Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table. */
+  extraPrefixes?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList;
+  /** ID of the BGP filter profile applied to routes received from the customer. */
+  importFilterId?: string;
+  /** MD5 key to use for session authentication. */
+  md5Key?: string;
+}
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      customerAsn: S.Number.pipe(T.Body("customer_asn")),
+      exportFilterId: S.optional(S.String.pipe(T.Body("export_filter_id"))),
+      extraPrefixes: S.optional(
+        IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList.pipe(
+          T.Body("extra_prefixes"),
+        ),
+      ),
+      importFilterId: S.optional(S.String.pipe(T.Body("import_filter_id"))),
+      md5Key: S.optional(S.String.pipe(T.Body("md5_key"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp",
+  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp>;
+
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState =
+  | "BGP_DOWN"
+  | "BGP_UP"
+  | "BGP_ESTABLISHING"
+  | (string & {});
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus {
+  state: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState;
+  tcpEstablished: boolean;
+  updatedAt: string;
+  bgpState?: string;
+  cfSpeakerIp?: string;
+  cfSpeakerPort?: number;
+  customerSpeakerIp?: string;
+  customerSpeakerPort?: number;
+}
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      state: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatusState,
+      tcpEstablished: S.Boolean.pipe(T.Body("tcp_established")),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      bgpState: S.optional(S.String.pipe(T.Body("bgp_state"))),
+      cfSpeakerIp: S.optional(S.String.pipe(T.Body("cf_speaker_ip"))),
+      cfSpeakerPort: S.optional(S.Number.pipe(T.Body("cf_speaker_port"))),
+      customerSpeakerIp: S.optional(
+        S.String.pipe(T.Body("customer_speaker_ip")),
+      ),
+      customerSpeakerPort: S.optional(
+        S.Number.pipe(T.Body("customer_speaker_port")),
+      ),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus",
+  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus>;
+
+export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities {
+  /** A custom IKE ID of type FQDN that may be used to identity the IPsec tunnel. The */
+  fqdnId?: string;
+}
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      fqdnId: S.optional(S.String.pipe(T.Body("fqdn_id"))),
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities",
+  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities>;
+
+export type IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection =
+  | "unidirectional"
+  | "bidirectional"
+  | (string & {});
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection =
+  /*@__PURE__*/ S.String;
+
+export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget {
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. */
+  MagicHealthCheckTargetObjectEffectiveSaved__: unknown;
+  string: unknown;
+}
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      MagicHealthCheckTargetObjectEffectiveSaved__: S.Unknown.pipe(
+        T.Body("MagicHealthCheckTarget object { effective, saved }"),
+      ),
+      string: S.Unknown,
+    }),
+  ).annotate({
+    identifier:
+      "IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget",
+  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget>;
+
+export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck {
+  /** The direction of the flow of the healthcheck. Either unidirectional, where the probe comes to you via the tunnel and the result comes back to Cloudflare via the open Internet, or bidirectional where both the probe and result come and go via the tunnel. */
+  direction?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection;
+  /** Determines whether to run healthchecks for a tunnel. */
+  enabled?: boolean;
+  /** How frequent the health check is run. The default value is `mid`. */
+  rate?: unknown;
+  /** The destination address in a request type health check. After the healthcheck is decapsulated at the customer end of the tunnel, the ICMP echo will be forwarded to this address. This field defaults to `customer_gre_endpoint address`. This field is ignored for bidirectional healthchecks as the interface_address (not assigned to the Cloudflare side of the tunnel) is used as the target. Must be in object form if the x-magic-new-hc-target header is set to true and string form if x-magic-new-hc-target is absent or set to false. */
+  target?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget;
+  /** The type of healthcheck to run, reply or request. The default value is `reply`. */
+  type?: unknown;
+}
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      direction: S.optional(
+        IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckDirection,
+      ),
+      enabled: S.optional(S.Boolean),
+      rate: S.optional(S.Unknown),
+      target: S.optional(
+        IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheckTarget,
+      ),
+      type: S.optional(S.Unknown),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck",
+  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck>;
+
+export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata {
+  /** The date and time the tunnel was last modified. */
+  lastGeneratedOn?: string;
+}
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lastGeneratedOn: S.optional(S.String.pipe(T.Body("last_generated_on"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata",
+  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata>;
+
+export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnel {
+  /** Identifier */
+  id: string;
+  /** The IP address assigned to the Cloudflare side of the IPsec tunnel. */
+  cloudflareEndpoint: string;
+  /** A 31-bit prefix (/31 in CIDR notation) supporting two hosts, one for each side of the tunnel. Select the subnet from the following private IP space: 10.0.0.0–10.255.255.255, 172.16.0.0–172.31.255.255, 192.168.0.0–192.168.255.255. */
+  interfaceAddress: string;
+  /** The name of the IPsec tunnel. The name cannot share a name with other tunnels. */
+  name: string;
+  /** When `true`, the tunnel can use a null-cipher (`ENCR_NULL`) in the ESP tunnel (Phase 2). */
+  allowNullCipher?: boolean;
+  /** True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected. */
+  automaticReturnRouting?: boolean;
+  bgp?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp;
+  bgpStatus?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus;
+  /** The date and time the tunnel was created. */
+  createdOn?: string;
+  customRemoteIdentities?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities;
+  /** The IP address assigned to the customer side of the IPsec tunnel. Not required, but must be set for proactive traceroutes to work. */
+  customerEndpoint?: string;
+  /** An optional description forthe IPsec tunnel. */
+  description?: string;
+  healthCheck?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck;
+  /** A 127 bit IPV6 prefix from within the virtual_subnet6 prefix space with the address being the first IP of the subnet and not same as the address of virtual_subnet6. Eg if virtual_subnet6 is 2606:54c1:7:0:a9fe:12d2::/127 , interface_address6 could be 2606:54c1:7:0:a9fe:12d2:1:200/127 */
+  interfaceAddress6?: string;
+  /** The date and time the tunnel was last modified. */
+  modifiedOn?: string;
+  /** The PSK metadata that includes when the PSK was generated. */
+  pskMetadata?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata;
+  /** If `true`, then IPsec replay protection will be supported in the Cloudflare-to-customer direction. */
+  replayProtection?: boolean;
+}
+export const IpsecTunnelsUpdateResponseModifiedIpsecTunnel =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.String,
+      cloudflareEndpoint: S.String.pipe(T.Body("cloudflare_endpoint")),
+      interfaceAddress: S.String.pipe(T.Body("interface_address")),
+      name: S.String,
+      allowNullCipher: S.optional(S.Boolean.pipe(T.Body("allow_null_cipher"))),
+      automaticReturnRouting: S.optional(
+        S.Boolean.pipe(T.Body("automatic_return_routing")),
+      ),
+      bgp: S.optional(IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp),
+      bgpStatus: S.optional(
+        IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpStatus.pipe(
+          T.Body("bgp_status"),
+        ),
+      ),
+      createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+      customRemoteIdentities: S.optional(
+        IpsecTunnelsUpdateResponseModifiedIpsecTunnelCustomRemoteIdentities.pipe(
+          T.Body("custom_remote_identities"),
+        ),
+      ),
+      customerEndpoint: S.optional(S.String.pipe(T.Body("customer_endpoint"))),
+      description: S.optional(S.String),
+      healthCheck: S.optional(
+        IpsecTunnelsUpdateResponseModifiedIpsecTunnelHealthCheck.pipe(
+          T.Body("health_check"),
+        ),
+      ),
+      interfaceAddress6: S.optional(
+        S.String.pipe(T.Body("interface_address6")),
+      ),
+      modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+      pskMetadata: S.optional(
+        IpsecTunnelsUpdateResponseModifiedIpsecTunnelPskMetadata.pipe(
+          T.Body("psk_metadata"),
+        ),
+      ),
+      replayProtection: S.optional(S.Boolean.pipe(T.Body("replay_protection"))),
+    }),
+  ).annotate({
+    identifier: "IpsecTunnelsUpdateResponseModifiedIpsecTunnel",
+  }) as any as S.Schema<IpsecTunnelsUpdateResponseModifiedIpsecTunnel>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateIpsecTunnelResponse {
+  modified?: boolean;
+  modifiedIpsecTunnel?: IpsecTunnelsUpdateResponseModifiedIpsecTunnel;
+}
+export const UpdateIpsecTunnelResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modified: S.optional(S.Boolean),
+    modifiedIpsecTunnel: S.optional(
+      IpsecTunnelsUpdateResponseModifiedIpsecTunnel.pipe(
+        T.Body("modified_ipsec_tunnel"),
+      ),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateIpsecTunnelResponse",
+}) as any as S.Schema<UpdateIpsecTunnelResponse>;
+
+export type RoutesUpdateRequestScopeColoNamesList = string[];
+export const RoutesUpdateRequestScopeColoNamesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RoutesUpdateRequestScopeColoNamesList>;
+
+export type RoutesUpdateRequestScopeColoRegionsList = string[];
+export const RoutesUpdateRequestScopeColoRegionsList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<RoutesUpdateRequestScopeColoRegionsList>;
+
+export interface RoutesUpdateRequestScope {
+  /** List of colo names for the ECMP scope. */
+  coloNames?: RoutesUpdateRequestScopeColoNamesList;
+  /** List of colo regions for the ECMP scope. */
+  coloRegions?: RoutesUpdateRequestScopeColoRegionsList;
+}
+export const RoutesUpdateRequestScope = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    coloNames: S.optional(
+      RoutesUpdateRequestScopeColoNamesList.pipe(T.Body("colo_names")),
+    ),
+    coloRegions: S.optional(
+      RoutesUpdateRequestScopeColoRegionsList.pipe(T.Body("colo_regions")),
+    ),
+  }),
+).annotate({
+  identifier: "RoutesUpdateRequestScope",
+}) as any as S.Schema<RoutesUpdateRequestScope>;
+
+export interface UpdateRouteRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  routeId: string;
+  /** The next-hop IP Address for the static route. */
+  nexthop: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  prefix: string;
+  /** Priority of the static route. */
+  priority: number;
+  /** An optional human provided description of the static route. */
+  description?: string;
+  /** Used only for ECMP routes. */
+  scope?: RoutesUpdateRequestScope;
+  /** Optional weight of the ECMP scope - if provided. */
+  weight?: number;
+}
+export const UpdateRouteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    routeId: S.String.pipe(T.Label("route_id")),
+    nexthop: S.String,
+    prefix: S.String,
+    priority: S.Number,
+    description: S.optional(S.String),
+    scope: S.optional(RoutesUpdateRequestScope),
+    weight: S.optional(S.Number),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/routes/{route_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateRouteRequest",
+}) as any as S.Schema<UpdateRouteRequest>;
+
+export type RoutesUpdateResponseModifiedRouteScopeColoNamesList = string[];
+export const RoutesUpdateResponseModifiedRouteScopeColoNamesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RoutesUpdateResponseModifiedRouteScopeColoNamesList>;
+
+export type RoutesUpdateResponseModifiedRouteScopeColoRegionsList = string[];
+export const RoutesUpdateResponseModifiedRouteScopeColoRegionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<RoutesUpdateResponseModifiedRouteScopeColoRegionsList>;
+
+export interface RoutesUpdateResponseModifiedRouteScope {
+  /** List of colo names for the ECMP scope. */
+  coloNames?: RoutesUpdateResponseModifiedRouteScopeColoNamesList;
+  /** List of colo regions for the ECMP scope. */
+  coloRegions?: RoutesUpdateResponseModifiedRouteScopeColoRegionsList;
+}
+export const RoutesUpdateResponseModifiedRouteScope = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      coloNames: S.optional(
+        RoutesUpdateResponseModifiedRouteScopeColoNamesList.pipe(
+          T.Body("colo_names"),
+        ),
+      ),
+      coloRegions: S.optional(
+        RoutesUpdateResponseModifiedRouteScopeColoRegionsList.pipe(
+          T.Body("colo_regions"),
+        ),
+      ),
+    }),
+).annotate({
+  identifier: "RoutesUpdateResponseModifiedRouteScope",
+}) as any as S.Schema<RoutesUpdateResponseModifiedRouteScope>;
+
+export interface RoutesUpdateResponseModifiedRoute {
+  /** Identifier */
+  id: string;
+  /** The next-hop IP Address for the static route. */
+  nexthop: string;
+  /** IP Prefix in Classless Inter-Domain Routing format. */
+  prefix: string;
+  /** Priority of the static route. */
+  priority: number;
+  /** When the route was created. */
+  createdOn?: string;
+  /** An optional human provided description of the static route. */
+  description?: string;
+  /** When the route was last modified. */
+  modifiedOn?: string;
+  /** Used only for ECMP routes. */
+  scope?: RoutesUpdateResponseModifiedRouteScope;
+  /** Optional weight of the ECMP scope - if provided. */
+  weight?: number;
+}
+export const RoutesUpdateResponseModifiedRoute = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    nexthop: S.String,
+    prefix: S.String,
+    priority: S.Number,
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    description: S.optional(S.String),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    scope: S.optional(RoutesUpdateResponseModifiedRouteScope),
+    weight: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "RoutesUpdateResponseModifiedRoute",
+}) as any as S.Schema<RoutesUpdateResponseModifiedRoute>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateRouteResponse {
+  modified?: boolean;
+  modifiedRoute?: RoutesUpdateResponseModifiedRoute;
+}
+export const UpdateRouteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    modified: S.optional(S.Boolean),
+    modifiedRoute: S.optional(
+      RoutesUpdateResponseModifiedRoute.pipe(T.Body("modified_route")),
+    ),
+  }),
+).annotate({
+  identifier: "UpdateRouteResponse",
+}) as any as S.Schema<UpdateRouteResponse>;
+
+export interface SitesUpdateRequestLocation {
   /** Latitude */
   lat?: string;
   /** Longitude */
   lon?: string;
 }
-export const SitesGetResponseLocation = /*@__PURE__*/ S.suspend(() =>
+export const SitesUpdateRequestLocation = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     lat: S.optional(S.String),
     lon: S.optional(S.String),
   }),
 ).annotate({
-  identifier: "SitesGetResponseLocation",
-}) as any as S.Schema<SitesGetResponseLocation>;
+  identifier: "SitesUpdateRequestLocation",
+}) as any as S.Schema<SitesUpdateRequestLocation>;
+
+export interface UpdateSiteRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  /** Magic Connector identifier tag. */
+  connectorId?: string;
+  description?: string;
+  /** Location of site in latitude and longitude. */
+  location?: SitesUpdateRequestLocation;
+  /** The name of the site. */
+  name?: string;
+  /** Magic Connector identifier tag. Used when high availability mode is on. */
+  secondaryConnectorId?: string;
+}
+export const UpdateSiteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    siteId: S.String.pipe(T.Label("site_id")),
+    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
+    description: S.optional(S.String),
+    location: S.optional(SitesUpdateRequestLocation),
+    name: S.optional(S.String),
+    secondaryConnectorId: S.optional(
+      S.String.pipe(T.Body("secondary_connector_id")),
+    ),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "UpdateSiteRequest",
+}) as any as S.Schema<UpdateSiteRequest>;
+
+export interface SitesUpdateResponseLocation {
+  /** Latitude */
+  lat?: string;
+  /** Longitude */
+  lon?: string;
+}
+export const SitesUpdateResponseLocation = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lat: S.optional(S.String),
+    lon: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "SitesUpdateResponseLocation",
+}) as any as S.Schema<SitesUpdateResponseLocation>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesGetResponse {
+export interface UpdateSiteResponse {
   /** Identifier */
   id?: string;
   /** Magic Connector identifier tag. */
@@ -12071,1690 +14302,192 @@ export interface SitesGetResponse {
   /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
   haMode?: boolean;
   /** Location of site in latitude and longitude. */
-  location?: SitesGetResponseLocation;
+  location?: SitesUpdateResponseLocation;
   /** The name of the site. */
   name?: string;
   /** Magic Connector identifier tag. Used when high availability mode is on. */
   secondaryConnectorId?: string;
 }
-export const SitesGetResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSiteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
     description: S.optional(S.String),
     haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
-    location: S.optional(SitesGetResponseLocation),
+    location: S.optional(SitesUpdateResponseLocation),
     name: S.optional(S.String),
     secondaryConnectorId: S.optional(
       S.String.pipe(T.Body("secondary_connector_id")),
     ),
   }),
 ).annotate({
-  identifier: "SitesGetResponse",
-}) as any as S.Schema<SitesGetResponse>;
+  identifier: "UpdateSiteResponse",
+}) as any as S.Schema<UpdateSiteResponse>;
 
-export interface SitesLansCreateRequestNat {
-  /** A valid CIDR notation representing an IP range. */
-  staticPrefix?: string;
-}
-export const SitesLansCreateRequestNat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
-  }),
-).annotate({
-  identifier: "SitesLansCreateRequestNat",
-}) as any as S.Schema<SitesLansCreateRequestNat>;
+export type SitesAclsUpdateRequestLan1PortRangesList = string[];
+export const SitesAclsUpdateRequestLan1PortRangesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SitesAclsUpdateRequestLan1PortRangesList>;
 
-export interface SitesLansCreateRequestRoutedSubnetsItem {
-  /** A valid IPv4 address. */
-  nextHop: string;
-  /** A valid CIDR notation representing an IP range. */
-  prefix: string;
-  nat?: unknown;
-}
-export const SitesLansCreateRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextHop: S.String.pipe(T.Body("next_hop")),
-      prefix: S.String,
-      nat: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "SitesLansCreateRequestRoutedSubnetsItem",
-}) as any as S.Schema<SitesLansCreateRequestRoutedSubnetsItem>;
+export type SitesAclsUpdateRequestLan1PortsList = number[];
+export const SitesAclsUpdateRequestLan1PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsUpdateRequestLan1PortsList>;
 
-export type SitesLansCreateRequestRoutedSubnetsList =
-  SitesLansCreateRequestRoutedSubnetsItem[];
-export const SitesLansCreateRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansCreateRequestRoutedSubnetsItem,
-) as any as S.Schema<SitesLansCreateRequestRoutedSubnetsList>;
+export type SitesAclsUpdateRequestLan1SubnetsList = unknown[];
+export const SitesAclsUpdateRequestLan1SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsUpdateRequestLan1SubnetsList>;
 
-export type SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList =
-  string[];
-export const SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList>;
-
-export interface SitesLansCreateRequestStaticAddressingDhcpRelay {
-  /** List of DHCP server IPs. */
-  serverAddresses?: SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList;
-}
-export const SitesLansCreateRequestStaticAddressingDhcpRelay =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serverAddresses: S.optional(
-        SitesLansCreateRequestStaticAddressingDhcpRelayServerAddressesList.pipe(
-          T.Body("server_addresses"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansCreateRequestStaticAddressingDhcpRelay",
-  }) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpRelay>;
-
-export type SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | (string & {});
-export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType =
-  /*@__PURE__*/ S.String;
-
-export interface SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem {
-  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
-  code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
-  type: SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType;
-  /** The option value, interpreted according to the type field. */
-  value: string;
-}
-export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem>;
-
-export type SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem[];
-export const SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList =
-  /*@__PURE__*/ S.Array(
-    SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsItem,
-  ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList>;
-
-export type SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList =
-  string[];
-export const SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList>;
-
-export type SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
-};
-export const SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap>;
-
-export interface SitesLansCreateRequestStaticAddressingDhcpServer {
-  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
-  dhcpOptions?: SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList;
-  /** A valid IPv4 address. */
-  dhcpPoolEnd?: string;
-  /** A valid IPv4 address. */
-  dhcpPoolStart?: string;
-  /** A valid IPv4 address. */
-  dnsServer?: string;
-  dnsServers?: SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList;
-  /** Mapping of MAC addresses to IP addresses */
-  reservations?: SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap;
-}
-export const SitesLansCreateRequestStaticAddressingDhcpServer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dhcpOptions: S.optional(
-        SitesLansCreateRequestStaticAddressingDhcpServerDhcpOptionsList.pipe(
-          T.Body("dhcp_options"),
-        ),
-      ),
-      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
-      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
-      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
-      dnsServers: S.optional(
-        SitesLansCreateRequestStaticAddressingDhcpServerDnsServersList.pipe(
-          T.Body("dns_servers"),
-        ),
-      ),
-      reservations: S.optional(
-        SitesLansCreateRequestStaticAddressingDhcpServerReservationsMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansCreateRequestStaticAddressingDhcpServer",
-  }) as any as S.Schema<SitesLansCreateRequestStaticAddressingDhcpServer>;
-
-export interface SitesLansCreateRequestStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  dhcpRelay?: SitesLansCreateRequestStaticAddressingDhcpRelay;
-  dhcpServer?: SitesLansCreateRequestStaticAddressingDhcpServer;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string;
-}
-export const SitesLansCreateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.String,
-      dhcpRelay: S.optional(
-        SitesLansCreateRequestStaticAddressingDhcpRelay.pipe(
-          T.Body("dhcp_relay"),
-        ),
-      ),
-      dhcpServer: S.optional(
-        SitesLansCreateRequestStaticAddressingDhcpServer.pipe(
-          T.Body("dhcp_server"),
-        ),
-      ),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
-    }),
-).annotate({
-  identifier: "SitesLansCreateRequestStaticAddressing",
-}) as any as S.Schema<SitesLansCreateRequestStaticAddressing>;
-
-export interface SitesLansCreateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  bondId?: number;
-  /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
-  haLink?: boolean;
-  /** mark true to use this LAN for source-based breakout traffic */
-  isBreakout?: boolean;
-  /** mark true to use this LAN for source-based prioritized traffic */
-  isPrioritized?: boolean;
-  name?: string;
-  nat?: SitesLansCreateRequestNat;
-  physport?: number;
-  routedSubnets?: SitesLansCreateRequestRoutedSubnetsList;
-  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
-  staticAddressing?: SitesLansCreateRequestStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesLansCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
-    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
-    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
-    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
-    name: S.optional(S.String),
-    nat: S.optional(SitesLansCreateRequestNat),
-    physport: S.optional(S.Number),
-    routedSubnets: S.optional(
-      SitesLansCreateRequestRoutedSubnetsList.pipe(T.Body("routed_subnets")),
-    ),
-    staticAddressing: S.optional(
-      SitesLansCreateRequestStaticAddressing.pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesLansCreateRequest",
-}) as any as S.Schema<SitesLansCreateRequest>;
-
-export interface SitesLansCreateResultItemNat {
-  /** A valid CIDR notation representing an IP range. */
-  staticPrefix?: string;
-}
-export const SitesLansCreateResultItemNat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
-  }),
-).annotate({
-  identifier: "SitesLansCreateResultItemNat",
-}) as any as S.Schema<SitesLansCreateResultItemNat>;
-
-export interface SitesLansCreateResultItemRoutedSubnetsItem {
-  /** A valid IPv4 address. */
-  nextHop: string;
-  /** A valid CIDR notation representing an IP range. */
-  prefix: string;
-  nat?: unknown;
-}
-export const SitesLansCreateResultItemRoutedSubnetsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      nextHop: S.String.pipe(T.Body("next_hop")),
-      prefix: S.String,
-      nat: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "SitesLansCreateResultItemRoutedSubnetsItem",
-  }) as any as S.Schema<SitesLansCreateResultItemRoutedSubnetsItem>;
-
-export type SitesLansCreateResultItemRoutedSubnetsList =
-  SitesLansCreateResultItemRoutedSubnetsItem[];
-export const SitesLansCreateResultItemRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansCreateResultItemRoutedSubnetsItem,
-) as any as S.Schema<SitesLansCreateResultItemRoutedSubnetsList>;
-
-export type SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList =
-  string[];
-export const SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList>;
-
-export interface SitesLansCreateResultItemStaticAddressingDhcpRelay {
-  /** List of DHCP server IPs. */
-  serverAddresses?: SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList;
-}
-export const SitesLansCreateResultItemStaticAddressingDhcpRelay =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serverAddresses: S.optional(
-        SitesLansCreateResultItemStaticAddressingDhcpRelayServerAddressesList.pipe(
-          T.Body("server_addresses"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansCreateResultItemStaticAddressingDhcpRelay",
-  }) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpRelay>;
-
-export type SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | (string & {});
-export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
-  /*@__PURE__*/ S.String;
-
-export interface SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem {
-  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
-  code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
-  type: SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType;
-  /** The option value, interpreted according to the type field. */
-  value: string;
-}
-export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
-
-export type SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem[];
-export const SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList =
-  /*@__PURE__*/ S.Array(
-    SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsItem,
-  ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList>;
-
-export type SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList =
-  string[];
-export const SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList>;
-
-export type SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap =
-  { [key: string]: unknown | undefined };
-export const SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap>;
-
-export interface SitesLansCreateResultItemStaticAddressingDhcpServer {
-  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
-  dhcpOptions?: SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList;
-  /** A valid IPv4 address. */
-  dhcpPoolEnd?: string;
-  /** A valid IPv4 address. */
-  dhcpPoolStart?: string;
-  /** A valid IPv4 address. */
-  dnsServer?: string;
-  dnsServers?: SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList;
-  /** Mapping of MAC addresses to IP addresses */
-  reservations?: SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap;
-}
-export const SitesLansCreateResultItemStaticAddressingDhcpServer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dhcpOptions: S.optional(
-        SitesLansCreateResultItemStaticAddressingDhcpServerDhcpOptionsList.pipe(
-          T.Body("dhcp_options"),
-        ),
-      ),
-      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
-      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
-      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
-      dnsServers: S.optional(
-        SitesLansCreateResultItemStaticAddressingDhcpServerDnsServersList.pipe(
-          T.Body("dns_servers"),
-        ),
-      ),
-      reservations: S.optional(
-        SitesLansCreateResultItemStaticAddressingDhcpServerReservationsMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansCreateResultItemStaticAddressingDhcpServer",
-  }) as any as S.Schema<SitesLansCreateResultItemStaticAddressingDhcpServer>;
-
-export interface SitesLansCreateResultItemStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  dhcpRelay?: SitesLansCreateResultItemStaticAddressingDhcpRelay;
-  dhcpServer?: SitesLansCreateResultItemStaticAddressingDhcpServer;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string;
-}
-export const SitesLansCreateResultItemStaticAddressing =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      address: S.String,
-      dhcpRelay: S.optional(
-        SitesLansCreateResultItemStaticAddressingDhcpRelay.pipe(
-          T.Body("dhcp_relay"),
-        ),
-      ),
-      dhcpServer: S.optional(
-        SitesLansCreateResultItemStaticAddressingDhcpServer.pipe(
-          T.Body("dhcp_server"),
-        ),
-      ),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
-    }),
-  ).annotate({
-    identifier: "SitesLansCreateResultItemStaticAddressing",
-  }) as any as S.Schema<SitesLansCreateResultItemStaticAddressing>;
-
-export interface SitesLansCreateResultItem {
-  /** Identifier */
-  id?: string;
-  bondId?: number;
-  /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
-  haLink?: boolean;
-  /** mark true to use this LAN for source-based breakout traffic */
-  isBreakout?: boolean;
-  /** mark true to use this LAN for source-based prioritized traffic */
-  isPrioritized?: boolean;
-  name?: string;
-  nat?: SitesLansCreateResultItemNat;
-  physport?: number;
-  routedSubnets?: SitesLansCreateResultItemRoutedSubnetsList;
-  /** Identifier */
-  siteId?: string;
-  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
-  staticAddressing?: SitesLansCreateResultItemStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesLansCreateResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
-    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
-    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
-    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
-    name: S.optional(S.String),
-    nat: S.optional(SitesLansCreateResultItemNat),
-    physport: S.optional(S.Number),
-    routedSubnets: S.optional(
-      SitesLansCreateResultItemRoutedSubnetsList.pipe(T.Body("routed_subnets")),
-    ),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      SitesLansCreateResultItemStaticAddressing.pipe(
-        T.Body("static_addressing"),
-      ),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
-).annotate({
-  identifier: "SitesLansCreateResultItem",
-}) as any as S.Schema<SitesLansCreateResultItem>;
-
-export type SitesLansCreateResultList = SitesLansCreateResultItem[];
-export const SitesLansCreateResultList = /*@__PURE__*/ S.Array(
-  SitesLansCreateResultItem,
-) as any as S.Schema<SitesLansCreateResultList>;
-
-export interface SitesLansCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SitesLansCreateResultList;
-}
-export const SitesLansCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SitesLansCreateResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "SitesLansCreateResponse",
-}) as any as S.Schema<SitesLansCreateResponse>;
-
-export interface SitesLansDeleteRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  /** Identifier */
+export interface SitesAclsUpdateRequestLan1 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
   lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsUpdateRequestLan1PortRangesList;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsUpdateRequestLan1PortsList;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsUpdateRequestLan1SubnetsList;
 }
-export const SitesLansDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+export const SitesAclsUpdateRequestLan1 = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      SitesAclsUpdateRequestLan1PortRangesList.pipe(T.Body("port_ranges")),
+    ),
+    ports: S.optional(SitesAclsUpdateRequestLan1PortsList),
+    subnets: S.optional(SitesAclsUpdateRequestLan1SubnetsList),
+  }),
+).annotate({
+  identifier: "SitesAclsUpdateRequestLan1",
+}) as any as S.Schema<SitesAclsUpdateRequestLan1>;
+
+export type SitesAclsUpdateRequestProtocolsList = unknown[];
+export const SitesAclsUpdateRequestProtocolsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsUpdateRequestProtocolsList>;
+
+export interface UpdateSiteAclRequest {
+  /** Identifier */
+  accountId: string;
+  /** Identifier */
+  siteId: string;
+  /** Identifier */
+  aclId: string;
+  /** Description for the ACL. */
+  description?: string;
+  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  forwardLocally?: boolean;
+  lan1?: SitesAclsUpdateRequestLan1;
+  lan2?: unknown;
+  /** The name of the ACL. */
+  name?: string;
+  protocols?: SitesAclsUpdateRequestProtocolsList;
+  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean;
+}
+export const UpdateSiteAclRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
-    lanId: S.String.pipe(T.Label("lan_id")),
+    aclId: S.String.pipe(T.Label("acl_id")),
+    description: S.optional(S.String),
+    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
+    lan1: S.optional(SitesAclsUpdateRequestLan1.pipe(T.Body("lan_1"))),
+    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
+    name: S.optional(S.String),
+    protocols: S.optional(SitesAclsUpdateRequestProtocolsList),
+    unidirectional: S.optional(S.Boolean),
   }).pipe(
     T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
+      method: "PUT",
+      uri: "/accounts/{account_id}/magic/sites/{site_id}/acls/{acl_id}",
       code: 200,
     }),
   ),
 ).annotate({
-  identifier: "SitesLansDeleteRequest",
-}) as any as S.Schema<SitesLansDeleteRequest>;
+  identifier: "UpdateSiteAclRequest",
+}) as any as S.Schema<UpdateSiteAclRequest>;
 
-export interface SitesLansDeleteResponseNat {
-  /** A valid CIDR notation representing an IP range. */
-  staticPrefix?: string;
+export type SitesAclsUpdateResponseLan1PortRangesList = string[];
+export const SitesAclsUpdateResponseLan1PortRangesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<SitesAclsUpdateResponseLan1PortRangesList>;
+
+export type SitesAclsUpdateResponseLan1PortsList = number[];
+export const SitesAclsUpdateResponseLan1PortsList = /*@__PURE__*/ S.Array(
+  S.Number,
+) as any as S.Schema<SitesAclsUpdateResponseLan1PortsList>;
+
+export type SitesAclsUpdateResponseLan1SubnetsList = unknown[];
+export const SitesAclsUpdateResponseLan1SubnetsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsUpdateResponseLan1SubnetsList>;
+
+export interface SitesAclsUpdateResponseLan1 {
+  /** The identifier for the LAN you want to create an ACL policy with. */
+  lanId: string;
+  /** The name of the LAN based on the provided lan_id. */
+  lanName?: string;
+  /** Array of port ranges on the provided LAN that will be included in the ACL. If no ports or port rangess are provided, communication on any port on this LAN is allowed. */
+  portRanges?: SitesAclsUpdateResponseLan1PortRangesList;
+  /** Array of ports on the provided LAN that will be included in the ACL. If no ports or port ranges are provided, communication on any port on this LAN is allowed. */
+  ports?: SitesAclsUpdateResponseLan1PortsList;
+  /** Array of subnet IPs within the LAN that will be included in the ACL. If no subnets are provided, communication on any subnets on this LAN are allowed. */
+  subnets?: SitesAclsUpdateResponseLan1SubnetsList;
 }
-export const SitesLansDeleteResponseNat = /*@__PURE__*/ S.suspend(() =>
+export const SitesAclsUpdateResponseLan1 = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
+    lanId: S.String.pipe(T.Body("lan_id")),
+    lanName: S.optional(S.String.pipe(T.Body("lan_name"))),
+    portRanges: S.optional(
+      SitesAclsUpdateResponseLan1PortRangesList.pipe(T.Body("port_ranges")),
+    ),
+    ports: S.optional(SitesAclsUpdateResponseLan1PortsList),
+    subnets: S.optional(SitesAclsUpdateResponseLan1SubnetsList),
   }),
 ).annotate({
-  identifier: "SitesLansDeleteResponseNat",
-}) as any as S.Schema<SitesLansDeleteResponseNat>;
+  identifier: "SitesAclsUpdateResponseLan1",
+}) as any as S.Schema<SitesAclsUpdateResponseLan1>;
 
-export interface SitesLansDeleteResponseRoutedSubnetsItem {
-  /** A valid IPv4 address. */
-  nextHop: string;
-  /** A valid CIDR notation representing an IP range. */
-  prefix: string;
-  nat?: unknown;
-}
-export const SitesLansDeleteResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextHop: S.String.pipe(T.Body("next_hop")),
-      prefix: S.String,
-      nat: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "SitesLansDeleteResponseRoutedSubnetsItem",
-}) as any as S.Schema<SitesLansDeleteResponseRoutedSubnetsItem>;
-
-export type SitesLansDeleteResponseRoutedSubnetsList =
-  SitesLansDeleteResponseRoutedSubnetsItem[];
-export const SitesLansDeleteResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansDeleteResponseRoutedSubnetsItem,
-) as any as S.Schema<SitesLansDeleteResponseRoutedSubnetsList>;
-
-export type SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList =
-  string[];
-export const SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList>;
-
-export interface SitesLansDeleteResponseStaticAddressingDhcpRelay {
-  /** List of DHCP server IPs. */
-  serverAddresses?: SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList;
-}
-export const SitesLansDeleteResponseStaticAddressingDhcpRelay =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serverAddresses: S.optional(
-        SitesLansDeleteResponseStaticAddressingDhcpRelayServerAddressesList.pipe(
-          T.Body("server_addresses"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansDeleteResponseStaticAddressingDhcpRelay",
-  }) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpRelay>;
-
-export type SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | (string & {});
-export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  /*@__PURE__*/ S.String;
-
-export interface SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem {
-  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
-  code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
-  type: SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType;
-  /** The option value, interpreted according to the type field. */
-  value: string;
-}
-export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem>;
-
-export type SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem[];
-export const SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList =
-  /*@__PURE__*/ S.Array(
-    SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsItem,
-  ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList>;
-
-export type SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList =
-  string[];
-export const SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList>;
-
-export type SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
-};
-export const SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap>;
-
-export interface SitesLansDeleteResponseStaticAddressingDhcpServer {
-  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
-  dhcpOptions?: SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList;
-  /** A valid IPv4 address. */
-  dhcpPoolEnd?: string;
-  /** A valid IPv4 address. */
-  dhcpPoolStart?: string;
-  /** A valid IPv4 address. */
-  dnsServer?: string;
-  dnsServers?: SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList;
-  /** Mapping of MAC addresses to IP addresses */
-  reservations?: SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap;
-}
-export const SitesLansDeleteResponseStaticAddressingDhcpServer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dhcpOptions: S.optional(
-        SitesLansDeleteResponseStaticAddressingDhcpServerDhcpOptionsList.pipe(
-          T.Body("dhcp_options"),
-        ),
-      ),
-      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
-      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
-      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
-      dnsServers: S.optional(
-        SitesLansDeleteResponseStaticAddressingDhcpServerDnsServersList.pipe(
-          T.Body("dns_servers"),
-        ),
-      ),
-      reservations: S.optional(
-        SitesLansDeleteResponseStaticAddressingDhcpServerReservationsMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansDeleteResponseStaticAddressingDhcpServer",
-  }) as any as S.Schema<SitesLansDeleteResponseStaticAddressingDhcpServer>;
-
-export interface SitesLansDeleteResponseStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  dhcpRelay?: SitesLansDeleteResponseStaticAddressingDhcpRelay;
-  dhcpServer?: SitesLansDeleteResponseStaticAddressingDhcpServer;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string;
-}
-export const SitesLansDeleteResponseStaticAddressing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.String,
-      dhcpRelay: S.optional(
-        SitesLansDeleteResponseStaticAddressingDhcpRelay.pipe(
-          T.Body("dhcp_relay"),
-        ),
-      ),
-      dhcpServer: S.optional(
-        SitesLansDeleteResponseStaticAddressingDhcpServer.pipe(
-          T.Body("dhcp_server"),
-        ),
-      ),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
-    }),
-).annotate({
-  identifier: "SitesLansDeleteResponseStaticAddressing",
-}) as any as S.Schema<SitesLansDeleteResponseStaticAddressing>;
+export type SitesAclsUpdateResponseProtocolsList = unknown[];
+export const SitesAclsUpdateResponseProtocolsList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<SitesAclsUpdateResponseProtocolsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesLansDeleteResponse {
+export interface UpdateSiteAclResponse {
   /** Identifier */
   id?: string;
-  bondId?: number;
-  /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
-  haLink?: boolean;
-  /** mark true to use this LAN for source-based breakout traffic */
-  isBreakout?: boolean;
-  /** mark true to use this LAN for source-based prioritized traffic */
-  isPrioritized?: boolean;
+  /** Description for the ACL. */
+  description?: string;
+  /** The desired forwarding action for this ACL policy. If set to "false", the policy will forward traffic to Cloudflare. If set to "true", the policy will forward traffic locally on the Magic Connector. If not included in request, will default to false. */
+  forwardLocally?: boolean;
+  lan1?: SitesAclsUpdateResponseLan1;
+  lan2?: unknown;
+  /** The name of the ACL. */
   name?: string;
-  nat?: SitesLansDeleteResponseNat;
-  physport?: number;
-  routedSubnets?: SitesLansDeleteResponseRoutedSubnetsList;
-  /** Identifier */
-  siteId?: string;
-  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
-  staticAddressing?: SitesLansDeleteResponseStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
+  protocols?: SitesAclsUpdateResponseProtocolsList;
+  /** The desired traffic direction for this ACL policy. If set to "false", the policy will allow bidirectional traffic. If set to "true", the policy will only allow traffic in one direction. If not included in request, will default to false. */
+  unidirectional?: boolean;
 }
-export const SitesLansDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSiteAclResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
-    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
-    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
-    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
-    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
+    description: S.optional(S.String),
+    forwardLocally: S.optional(S.Boolean.pipe(T.Body("forward_locally"))),
+    lan1: S.optional(SitesAclsUpdateResponseLan1.pipe(T.Body("lan_1"))),
+    lan2: S.optional(S.Unknown.pipe(T.Body("lan_2"))),
     name: S.optional(S.String),
-    nat: S.optional(SitesLansDeleteResponseNat),
-    physport: S.optional(S.Number),
-    routedSubnets: S.optional(
-      SitesLansDeleteResponseRoutedSubnetsList.pipe(T.Body("routed_subnets")),
-    ),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      SitesLansDeleteResponseStaticAddressing.pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
+    protocols: S.optional(SitesAclsUpdateResponseProtocolsList),
+    unidirectional: S.optional(S.Boolean),
   }),
 ).annotate({
-  identifier: "SitesLansDeleteResponse",
-}) as any as S.Schema<SitesLansDeleteResponse>;
-
-export interface SitesLansEditRequestNat {
-  /** A valid CIDR notation representing an IP range. */
-  staticPrefix?: string;
-}
-export const SitesLansEditRequestNat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
-  }),
-).annotate({
-  identifier: "SitesLansEditRequestNat",
-}) as any as S.Schema<SitesLansEditRequestNat>;
-
-export interface SitesLansEditRequestRoutedSubnetsItem {
-  /** A valid IPv4 address. */
-  nextHop: string;
-  /** A valid CIDR notation representing an IP range. */
-  prefix: string;
-  nat?: unknown;
-}
-export const SitesLansEditRequestRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextHop: S.String.pipe(T.Body("next_hop")),
-      prefix: S.String,
-      nat: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "SitesLansEditRequestRoutedSubnetsItem",
-}) as any as S.Schema<SitesLansEditRequestRoutedSubnetsItem>;
-
-export type SitesLansEditRequestRoutedSubnetsList =
-  SitesLansEditRequestRoutedSubnetsItem[];
-export const SitesLansEditRequestRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansEditRequestRoutedSubnetsItem,
-) as any as S.Schema<SitesLansEditRequestRoutedSubnetsList>;
-
-export type SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList =
-  string[];
-export const SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList>;
-
-export interface SitesLansEditRequestStaticAddressingDhcpRelay {
-  /** List of DHCP server IPs. */
-  serverAddresses?: SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList;
-}
-export const SitesLansEditRequestStaticAddressingDhcpRelay =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serverAddresses: S.optional(
-        SitesLansEditRequestStaticAddressingDhcpRelayServerAddressesList.pipe(
-          T.Body("server_addresses"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansEditRequestStaticAddressingDhcpRelay",
-  }) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpRelay>;
-
-export type SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType =
-  | "text"
-  | "hex"
-  | "ip"
-  | (string & {});
-export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType =
-  /*@__PURE__*/ S.String;
-
-export interface SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem {
-  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
-  code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
-  type: SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType;
-  /** The option value, interpreted according to the type field. */
-  value: string;
-}
-export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem>;
-
-export type SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem[];
-export const SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList =
-  /*@__PURE__*/ S.Array(
-    SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsItem,
-  ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList>;
-
-export type SitesLansEditRequestStaticAddressingDhcpServerDnsServersList =
-  string[];
-export const SitesLansEditRequestStaticAddressingDhcpServerDnsServersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerDnsServersList>;
-
-export type SitesLansEditRequestStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
-};
-export const SitesLansEditRequestStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServerReservationsMap>;
-
-export interface SitesLansEditRequestStaticAddressingDhcpServer {
-  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
-  dhcpOptions?: SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList;
-  /** A valid IPv4 address. */
-  dhcpPoolEnd?: string;
-  /** A valid IPv4 address. */
-  dhcpPoolStart?: string;
-  /** A valid IPv4 address. */
-  dnsServer?: string;
-  dnsServers?: SitesLansEditRequestStaticAddressingDhcpServerDnsServersList;
-  /** Mapping of MAC addresses to IP addresses */
-  reservations?: SitesLansEditRequestStaticAddressingDhcpServerReservationsMap;
-}
-export const SitesLansEditRequestStaticAddressingDhcpServer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dhcpOptions: S.optional(
-        SitesLansEditRequestStaticAddressingDhcpServerDhcpOptionsList.pipe(
-          T.Body("dhcp_options"),
-        ),
-      ),
-      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
-      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
-      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
-      dnsServers: S.optional(
-        SitesLansEditRequestStaticAddressingDhcpServerDnsServersList.pipe(
-          T.Body("dns_servers"),
-        ),
-      ),
-      reservations: S.optional(
-        SitesLansEditRequestStaticAddressingDhcpServerReservationsMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansEditRequestStaticAddressingDhcpServer",
-  }) as any as S.Schema<SitesLansEditRequestStaticAddressingDhcpServer>;
-
-export interface SitesLansEditRequestStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  dhcpRelay?: SitesLansEditRequestStaticAddressingDhcpRelay;
-  dhcpServer?: SitesLansEditRequestStaticAddressingDhcpServer;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string;
-}
-export const SitesLansEditRequestStaticAddressing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.String,
-      dhcpRelay: S.optional(
-        SitesLansEditRequestStaticAddressingDhcpRelay.pipe(
-          T.Body("dhcp_relay"),
-        ),
-      ),
-      dhcpServer: S.optional(
-        SitesLansEditRequestStaticAddressingDhcpServer.pipe(
-          T.Body("dhcp_server"),
-        ),
-      ),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
-    }),
-).annotate({
-  identifier: "SitesLansEditRequestStaticAddressing",
-}) as any as S.Schema<SitesLansEditRequestStaticAddressing>;
-
-export interface SitesLansEditRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  /** Identifier */
-  lanId: string;
-  bondId?: number;
-  /** mark true to use this LAN for source-based breakout traffic */
-  isBreakout?: boolean;
-  /** mark true to use this LAN for source-based prioritized traffic */
-  isPrioritized?: boolean;
-  name?: string;
-  nat?: SitesLansEditRequestNat;
-  physport?: number;
-  routedSubnets?: SitesLansEditRequestRoutedSubnetsList;
-  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
-  staticAddressing?: SitesLansEditRequestStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesLansEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    lanId: S.String.pipe(T.Label("lan_id")),
-    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
-    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
-    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
-    name: S.optional(S.String),
-    nat: S.optional(SitesLansEditRequestNat),
-    physport: S.optional(S.Number),
-    routedSubnets: S.optional(
-      SitesLansEditRequestRoutedSubnetsList.pipe(T.Body("routed_subnets")),
-    ),
-    staticAddressing: S.optional(
-      SitesLansEditRequestStaticAddressing.pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesLansEditRequest",
-}) as any as S.Schema<SitesLansEditRequest>;
-
-export interface SitesLansEditResponseNat {
-  /** A valid CIDR notation representing an IP range. */
-  staticPrefix?: string;
-}
-export const SitesLansEditResponseNat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
-  }),
-).annotate({
-  identifier: "SitesLansEditResponseNat",
-}) as any as S.Schema<SitesLansEditResponseNat>;
-
-export interface SitesLansEditResponseRoutedSubnetsItem {
-  /** A valid IPv4 address. */
-  nextHop: string;
-  /** A valid CIDR notation representing an IP range. */
-  prefix: string;
-  nat?: unknown;
-}
-export const SitesLansEditResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextHop: S.String.pipe(T.Body("next_hop")),
-      prefix: S.String,
-      nat: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "SitesLansEditResponseRoutedSubnetsItem",
-}) as any as S.Schema<SitesLansEditResponseRoutedSubnetsItem>;
-
-export type SitesLansEditResponseRoutedSubnetsList =
-  SitesLansEditResponseRoutedSubnetsItem[];
-export const SitesLansEditResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansEditResponseRoutedSubnetsItem,
-) as any as S.Schema<SitesLansEditResponseRoutedSubnetsList>;
-
-export type SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList =
-  string[];
-export const SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList>;
-
-export interface SitesLansEditResponseStaticAddressingDhcpRelay {
-  /** List of DHCP server IPs. */
-  serverAddresses?: SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList;
-}
-export const SitesLansEditResponseStaticAddressingDhcpRelay =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serverAddresses: S.optional(
-        SitesLansEditResponseStaticAddressingDhcpRelayServerAddressesList.pipe(
-          T.Body("server_addresses"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansEditResponseStaticAddressingDhcpRelay",
-  }) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpRelay>;
-
-export type SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | (string & {});
-export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  /*@__PURE__*/ S.String;
-
-export interface SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem {
-  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
-  code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
-  type: SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType;
-  /** The option value, interpreted according to the type field. */
-  value: string;
-}
-export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem>;
-
-export type SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem[];
-export const SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList =
-  /*@__PURE__*/ S.Array(
-    SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsItem,
-  ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList>;
-
-export type SitesLansEditResponseStaticAddressingDhcpServerDnsServersList =
-  string[];
-export const SitesLansEditResponseStaticAddressingDhcpServerDnsServersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerDnsServersList>;
-
-export type SitesLansEditResponseStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
-};
-export const SitesLansEditResponseStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServerReservationsMap>;
-
-export interface SitesLansEditResponseStaticAddressingDhcpServer {
-  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
-  dhcpOptions?: SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList;
-  /** A valid IPv4 address. */
-  dhcpPoolEnd?: string;
-  /** A valid IPv4 address. */
-  dhcpPoolStart?: string;
-  /** A valid IPv4 address. */
-  dnsServer?: string;
-  dnsServers?: SitesLansEditResponseStaticAddressingDhcpServerDnsServersList;
-  /** Mapping of MAC addresses to IP addresses */
-  reservations?: SitesLansEditResponseStaticAddressingDhcpServerReservationsMap;
-}
-export const SitesLansEditResponseStaticAddressingDhcpServer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dhcpOptions: S.optional(
-        SitesLansEditResponseStaticAddressingDhcpServerDhcpOptionsList.pipe(
-          T.Body("dhcp_options"),
-        ),
-      ),
-      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
-      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
-      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
-      dnsServers: S.optional(
-        SitesLansEditResponseStaticAddressingDhcpServerDnsServersList.pipe(
-          T.Body("dns_servers"),
-        ),
-      ),
-      reservations: S.optional(
-        SitesLansEditResponseStaticAddressingDhcpServerReservationsMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansEditResponseStaticAddressingDhcpServer",
-  }) as any as S.Schema<SitesLansEditResponseStaticAddressingDhcpServer>;
-
-export interface SitesLansEditResponseStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  dhcpRelay?: SitesLansEditResponseStaticAddressingDhcpRelay;
-  dhcpServer?: SitesLansEditResponseStaticAddressingDhcpServer;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string;
-}
-export const SitesLansEditResponseStaticAddressing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.String,
-      dhcpRelay: S.optional(
-        SitesLansEditResponseStaticAddressingDhcpRelay.pipe(
-          T.Body("dhcp_relay"),
-        ),
-      ),
-      dhcpServer: S.optional(
-        SitesLansEditResponseStaticAddressingDhcpServer.pipe(
-          T.Body("dhcp_server"),
-        ),
-      ),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
-    }),
-).annotate({
-  identifier: "SitesLansEditResponseStaticAddressing",
-}) as any as S.Schema<SitesLansEditResponseStaticAddressing>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesLansEditResponse {
-  /** Identifier */
-  id?: string;
-  bondId?: number;
-  /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
-  haLink?: boolean;
-  /** mark true to use this LAN for source-based breakout traffic */
-  isBreakout?: boolean;
-  /** mark true to use this LAN for source-based prioritized traffic */
-  isPrioritized?: boolean;
-  name?: string;
-  nat?: SitesLansEditResponseNat;
-  physport?: number;
-  routedSubnets?: SitesLansEditResponseRoutedSubnetsList;
-  /** Identifier */
-  siteId?: string;
-  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
-  staticAddressing?: SitesLansEditResponseStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesLansEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
-    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
-    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
-    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
-    name: S.optional(S.String),
-    nat: S.optional(SitesLansEditResponseNat),
-    physport: S.optional(S.Number),
-    routedSubnets: S.optional(
-      SitesLansEditResponseRoutedSubnetsList.pipe(T.Body("routed_subnets")),
-    ),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      SitesLansEditResponseStaticAddressing.pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
-).annotate({
-  identifier: "SitesLansEditResponse",
-}) as any as S.Schema<SitesLansEditResponse>;
-
-export interface SitesLansGetRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  /** Identifier */
-  lanId: string;
-}
-export const SitesLansGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    lanId: S.String.pipe(T.Label("lan_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans/{lan_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesLansGetRequest",
-}) as any as S.Schema<SitesLansGetRequest>;
-
-export interface SitesLansGetResponseNat {
-  /** A valid CIDR notation representing an IP range. */
-  staticPrefix?: string;
-}
-export const SitesLansGetResponseNat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
-  }),
-).annotate({
-  identifier: "SitesLansGetResponseNat",
-}) as any as S.Schema<SitesLansGetResponseNat>;
-
-export interface SitesLansGetResponseRoutedSubnetsItem {
-  /** A valid IPv4 address. */
-  nextHop: string;
-  /** A valid CIDR notation representing an IP range. */
-  prefix: string;
-  nat?: unknown;
-}
-export const SitesLansGetResponseRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextHop: S.String.pipe(T.Body("next_hop")),
-      prefix: S.String,
-      nat: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "SitesLansGetResponseRoutedSubnetsItem",
-}) as any as S.Schema<SitesLansGetResponseRoutedSubnetsItem>;
-
-export type SitesLansGetResponseRoutedSubnetsList =
-  SitesLansGetResponseRoutedSubnetsItem[];
-export const SitesLansGetResponseRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansGetResponseRoutedSubnetsItem,
-) as any as S.Schema<SitesLansGetResponseRoutedSubnetsList>;
-
-export type SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList =
-  string[];
-export const SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList>;
-
-export interface SitesLansGetResponseStaticAddressingDhcpRelay {
-  /** List of DHCP server IPs. */
-  serverAddresses?: SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList;
-}
-export const SitesLansGetResponseStaticAddressingDhcpRelay =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serverAddresses: S.optional(
-        SitesLansGetResponseStaticAddressingDhcpRelayServerAddressesList.pipe(
-          T.Body("server_addresses"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansGetResponseStaticAddressingDhcpRelay",
-  }) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpRelay>;
-
-export type SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  | "text"
-  | "hex"
-  | "ip"
-  | (string & {});
-export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType =
-  /*@__PURE__*/ S.String;
-
-export interface SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem {
-  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
-  code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
-  type: SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType;
-  /** The option value, interpreted according to the type field. */
-  value: string;
-}
-export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier: "SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem>;
-
-export type SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem[];
-export const SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList =
-  /*@__PURE__*/ S.Array(
-    SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsItem,
-  ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList>;
-
-export type SitesLansGetResponseStaticAddressingDhcpServerDnsServersList =
-  string[];
-export const SitesLansGetResponseStaticAddressingDhcpServerDnsServersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerDnsServersList>;
-
-export type SitesLansGetResponseStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
-};
-export const SitesLansGetResponseStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServerReservationsMap>;
-
-export interface SitesLansGetResponseStaticAddressingDhcpServer {
-  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
-  dhcpOptions?: SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList;
-  /** A valid IPv4 address. */
-  dhcpPoolEnd?: string;
-  /** A valid IPv4 address. */
-  dhcpPoolStart?: string;
-  /** A valid IPv4 address. */
-  dnsServer?: string;
-  dnsServers?: SitesLansGetResponseStaticAddressingDhcpServerDnsServersList;
-  /** Mapping of MAC addresses to IP addresses */
-  reservations?: SitesLansGetResponseStaticAddressingDhcpServerReservationsMap;
-}
-export const SitesLansGetResponseStaticAddressingDhcpServer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dhcpOptions: S.optional(
-        SitesLansGetResponseStaticAddressingDhcpServerDhcpOptionsList.pipe(
-          T.Body("dhcp_options"),
-        ),
-      ),
-      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
-      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
-      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
-      dnsServers: S.optional(
-        SitesLansGetResponseStaticAddressingDhcpServerDnsServersList.pipe(
-          T.Body("dns_servers"),
-        ),
-      ),
-      reservations: S.optional(
-        SitesLansGetResponseStaticAddressingDhcpServerReservationsMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansGetResponseStaticAddressingDhcpServer",
-  }) as any as S.Schema<SitesLansGetResponseStaticAddressingDhcpServer>;
-
-export interface SitesLansGetResponseStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  dhcpRelay?: SitesLansGetResponseStaticAddressingDhcpRelay;
-  dhcpServer?: SitesLansGetResponseStaticAddressingDhcpServer;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string;
-}
-export const SitesLansGetResponseStaticAddressing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.String,
-      dhcpRelay: S.optional(
-        SitesLansGetResponseStaticAddressingDhcpRelay.pipe(
-          T.Body("dhcp_relay"),
-        ),
-      ),
-      dhcpServer: S.optional(
-        SitesLansGetResponseStaticAddressingDhcpServer.pipe(
-          T.Body("dhcp_server"),
-        ),
-      ),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
-    }),
-).annotate({
-  identifier: "SitesLansGetResponseStaticAddressing",
-}) as any as S.Schema<SitesLansGetResponseStaticAddressing>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesLansGetResponse {
-  /** Identifier */
-  id?: string;
-  bondId?: number;
-  /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
-  haLink?: boolean;
-  /** mark true to use this LAN for source-based breakout traffic */
-  isBreakout?: boolean;
-  /** mark true to use this LAN for source-based prioritized traffic */
-  isPrioritized?: boolean;
-  name?: string;
-  nat?: SitesLansGetResponseNat;
-  physport?: number;
-  routedSubnets?: SitesLansGetResponseRoutedSubnetsList;
-  /** Identifier */
-  siteId?: string;
-  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
-  staticAddressing?: SitesLansGetResponseStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesLansGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
-    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
-    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
-    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
-    name: S.optional(S.String),
-    nat: S.optional(SitesLansGetResponseNat),
-    physport: S.optional(S.Number),
-    routedSubnets: S.optional(
-      SitesLansGetResponseRoutedSubnetsList.pipe(T.Body("routed_subnets")),
-    ),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      SitesLansGetResponseStaticAddressing.pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
-).annotate({
-  identifier: "SitesLansGetResponse",
-}) as any as S.Schema<SitesLansGetResponse>;
-
-export interface SitesLansListRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-}
-export const SitesLansListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/lans",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesLansListRequest",
-}) as any as S.Schema<SitesLansListRequest>;
-
-export interface SitesLansListResultItemNat {
-  /** A valid CIDR notation representing an IP range. */
-  staticPrefix?: string;
-}
-export const SitesLansListResultItemNat = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    staticPrefix: S.optional(S.String.pipe(T.Body("static_prefix"))),
-  }),
-).annotate({
-  identifier: "SitesLansListResultItemNat",
-}) as any as S.Schema<SitesLansListResultItemNat>;
-
-export interface SitesLansListResultItemRoutedSubnetsItem {
-  /** A valid IPv4 address. */
-  nextHop: string;
-  /** A valid CIDR notation representing an IP range. */
-  prefix: string;
-  nat?: unknown;
-}
-export const SitesLansListResultItemRoutedSubnetsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      nextHop: S.String.pipe(T.Body("next_hop")),
-      prefix: S.String,
-      nat: S.optional(S.Unknown),
-    }),
-).annotate({
-  identifier: "SitesLansListResultItemRoutedSubnetsItem",
-}) as any as S.Schema<SitesLansListResultItemRoutedSubnetsItem>;
-
-export type SitesLansListResultItemRoutedSubnetsList =
-  SitesLansListResultItemRoutedSubnetsItem[];
-export const SitesLansListResultItemRoutedSubnetsList = /*@__PURE__*/ S.Array(
-  SitesLansListResultItemRoutedSubnetsItem,
-) as any as S.Schema<SitesLansListResultItemRoutedSubnetsList>;
-
-export type SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList =
-  string[];
-export const SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList>;
-
-export interface SitesLansListResultItemStaticAddressingDhcpRelay {
-  /** List of DHCP server IPs. */
-  serverAddresses?: SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList;
-}
-export const SitesLansListResultItemStaticAddressingDhcpRelay =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      serverAddresses: S.optional(
-        SitesLansListResultItemStaticAddressingDhcpRelayServerAddressesList.pipe(
-          T.Body("server_addresses"),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansListResultItemStaticAddressingDhcpRelay",
-  }) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpRelay>;
-
-export type SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
-  "text" | "hex" | "ip" | (string & {});
-export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType =
-  /*@__PURE__*/ S.String;
-
-export interface SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem {
-  /** DHCP option number (1-254). Options 0 and 255 are reserved by RFC 2132. Options 3, 6, and 51 are not allowed because they conflict with connector-managed configuration. */
-  code: number;
-  /** The type of the option value. text: a string (max 255 bytes). hex: colon-separated hex bytes (e.g. "01:04:aa:bb:cc", max 255 bytes). ip: an IPv4 address (e.g. "10.20.30.40"). byte: an unsigned integer 0-255 (1 byte). short: an unsigned integer 0-65535 (2 bytes). integer: an unsigned integer 0-4294967295 (4 bytes). */
-  type: SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType;
-  /** The option value, interpreted according to the type field. */
-  value: string;
-}
-export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      code: S.Number,
-      type: SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItemType,
-      value: S.String,
-    }),
-  ).annotate({
-    identifier:
-      "SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem",
-  }) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem>;
-
-export type SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList =
-  SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem[];
-export const SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList =
-  /*@__PURE__*/ S.Array(
-    SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsItem,
-  ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList>;
-
-export type SitesLansListResultItemStaticAddressingDhcpServerDnsServersList =
-  string[];
-export const SitesLansListResultItemStaticAddressingDhcpServerDnsServersList =
-  /*@__PURE__*/ S.Array(
-    S.String,
-  ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerDnsServersList>;
-
-export type SitesLansListResultItemStaticAddressingDhcpServerReservationsMap = {
-  [key: string]: unknown | undefined;
-};
-export const SitesLansListResultItemStaticAddressingDhcpServerReservationsMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServerReservationsMap>;
-
-export interface SitesLansListResultItemStaticAddressingDhcpServer {
-  /** Optional list of custom DHCP options to include in DHCP responses. Only valid when DHCP server is enabled. */
-  dhcpOptions?: SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList;
-  /** A valid IPv4 address. */
-  dhcpPoolEnd?: string;
-  /** A valid IPv4 address. */
-  dhcpPoolStart?: string;
-  /** A valid IPv4 address. */
-  dnsServer?: string;
-  dnsServers?: SitesLansListResultItemStaticAddressingDhcpServerDnsServersList;
-  /** Mapping of MAC addresses to IP addresses */
-  reservations?: SitesLansListResultItemStaticAddressingDhcpServerReservationsMap;
-}
-export const SitesLansListResultItemStaticAddressingDhcpServer =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      dhcpOptions: S.optional(
-        SitesLansListResultItemStaticAddressingDhcpServerDhcpOptionsList.pipe(
-          T.Body("dhcp_options"),
-        ),
-      ),
-      dhcpPoolEnd: S.optional(S.String.pipe(T.Body("dhcp_pool_end"))),
-      dhcpPoolStart: S.optional(S.String.pipe(T.Body("dhcp_pool_start"))),
-      dnsServer: S.optional(S.String.pipe(T.Body("dns_server"))),
-      dnsServers: S.optional(
-        SitesLansListResultItemStaticAddressingDhcpServerDnsServersList.pipe(
-          T.Body("dns_servers"),
-        ),
-      ),
-      reservations: S.optional(
-        SitesLansListResultItemStaticAddressingDhcpServerReservationsMap,
-      ),
-    }),
-  ).annotate({
-    identifier: "SitesLansListResultItemStaticAddressingDhcpServer",
-  }) as any as S.Schema<SitesLansListResultItemStaticAddressingDhcpServer>;
-
-export interface SitesLansListResultItemStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  dhcpRelay?: SitesLansListResultItemStaticAddressingDhcpRelay;
-  dhcpServer?: SitesLansListResultItemStaticAddressingDhcpServer;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-  /** A valid CIDR notation representing an IP range. */
-  virtualAddress?: string;
-}
-export const SitesLansListResultItemStaticAddressing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.String,
-      dhcpRelay: S.optional(
-        SitesLansListResultItemStaticAddressingDhcpRelay.pipe(
-          T.Body("dhcp_relay"),
-        ),
-      ),
-      dhcpServer: S.optional(
-        SitesLansListResultItemStaticAddressingDhcpServer.pipe(
-          T.Body("dhcp_server"),
-        ),
-      ),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-      virtualAddress: S.optional(S.String.pipe(T.Body("virtual_address"))),
-    }),
-).annotate({
-  identifier: "SitesLansListResultItemStaticAddressing",
-}) as any as S.Schema<SitesLansListResultItemStaticAddressing>;
-
-export interface SitesLansListResultItem {
-  /** Identifier */
-  id?: string;
-  bondId?: number;
-  /** mark true to use this LAN for HA probing. only works for site with HA turned on. only one LAN can be set as the ha_link. */
-  haLink?: boolean;
-  /** mark true to use this LAN for source-based breakout traffic */
-  isBreakout?: boolean;
-  /** mark true to use this LAN for source-based prioritized traffic */
-  isPrioritized?: boolean;
-  name?: string;
-  nat?: SitesLansListResultItemNat;
-  physport?: number;
-  routedSubnets?: SitesLansListResultItemRoutedSubnetsList;
-  /** Identifier */
-  siteId?: string;
-  /** If the site is not configured in high availability mode, this configuration is optional (if omitted, use DHCP). However, if in high availability mode, static_address is required along with secondary and virtual address. */
-  staticAddressing?: SitesLansListResultItemStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesLansListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
-    haLink: S.optional(S.Boolean.pipe(T.Body("ha_link"))),
-    isBreakout: S.optional(S.Boolean.pipe(T.Body("is_breakout"))),
-    isPrioritized: S.optional(S.Boolean.pipe(T.Body("is_prioritized"))),
-    name: S.optional(S.String),
-    nat: S.optional(SitesLansListResultItemNat),
-    physport: S.optional(S.Number),
-    routedSubnets: S.optional(
-      SitesLansListResultItemRoutedSubnetsList.pipe(T.Body("routed_subnets")),
-    ),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      SitesLansListResultItemStaticAddressing.pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
-).annotate({
-  identifier: "SitesLansListResultItem",
-}) as any as S.Schema<SitesLansListResultItem>;
-
-export type SitesLansListResultList = SitesLansListResultItem[];
-export const SitesLansListResultList = /*@__PURE__*/ S.Array(
-  SitesLansListResultItem,
-) as any as S.Schema<SitesLansListResultList>;
-
-export interface SitesLansListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SitesLansListResultList;
-}
-export const SitesLansListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SitesLansListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "SitesLansListResponse",
-}) as any as S.Schema<SitesLansListResponse>;
+  identifier: "UpdateSiteAclResponse",
+}) as any as S.Schema<UpdateSiteAclResponse>;
 
 export interface SitesLansUpdateRequestNat {
   /** A valid CIDR notation representing an IP range. */
@@ -13932,7 +14665,7 @@ export const SitesLansUpdateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
   identifier: "SitesLansUpdateRequestStaticAddressing",
 }) as any as S.Schema<SitesLansUpdateRequestStaticAddressing>;
 
-export interface SitesLansUpdateRequest {
+export interface UpdateSiteLanRequest {
   /** Identifier */
   accountId: string;
   /** Identifier */
@@ -13953,7 +14686,7 @@ export interface SitesLansUpdateRequest {
   /** VLAN ID. Use zero for untagged. */
   vlanTag?: number;
 }
-export const SitesLansUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSiteLanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
@@ -13979,8 +14712,8 @@ export const SitesLansUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SitesLansUpdateRequest",
-}) as any as S.Schema<SitesLansUpdateRequest>;
+  identifier: "UpdateSiteLanRequest",
+}) as any as S.Schema<UpdateSiteLanRequest>;
 
 export interface SitesLansUpdateResponseNat {
   /** A valid CIDR notation representing an IP range. */
@@ -14159,7 +14892,7 @@ export const SitesLansUpdateResponseStaticAddressing = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SitesLansUpdateResponseStaticAddressing>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesLansUpdateResponse {
+export interface UpdateSiteLanResponse {
   /** Identifier */
   id?: string;
   bondId?: number;
@@ -14180,7 +14913,7 @@ export interface SitesLansUpdateResponse {
   /** VLAN ID. Use zero for untagged. */
   vlanTag?: number;
 }
-export const SitesLansUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     bondId: S.optional(S.Number.pipe(T.Body("bond_id"))),
@@ -14200,717 +14933,8 @@ export const SitesLansUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
   }),
 ).annotate({
-  identifier: "SitesLansUpdateResponse",
-}) as any as S.Schema<SitesLansUpdateResponse>;
-
-export interface SitesListRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  connectorid?: string;
-}
-export const SitesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    connectorid: S.optional(S.String.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesListRequest",
-}) as any as S.Schema<SitesListRequest>;
-
-export interface SitesListResultItemLocation {
-  /** Latitude */
-  lat?: string;
-  /** Longitude */
-  lon?: string;
-}
-export const SitesListResultItemLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.String),
-    lon: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SitesListResultItemLocation",
-}) as any as S.Schema<SitesListResultItemLocation>;
-
-export interface SitesListResultItem {
-  /** Identifier */
-  id?: string;
-  /** Magic Connector identifier tag. */
-  connectorId?: string;
-  description?: string;
-  /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
-  haMode?: boolean;
-  /** Location of site in latitude and longitude. */
-  location?: SitesListResultItemLocation;
-  /** The name of the site. */
-  name?: string;
-  /** Magic Connector identifier tag. Used when high availability mode is on. */
-  secondaryConnectorId?: string;
-}
-export const SitesListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
-    description: S.optional(S.String),
-    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
-    location: S.optional(SitesListResultItemLocation),
-    name: S.optional(S.String),
-    secondaryConnectorId: S.optional(
-      S.String.pipe(T.Body("secondary_connector_id")),
-    ),
-  }),
-).annotate({
-  identifier: "SitesListResultItem",
-}) as any as S.Schema<SitesListResultItem>;
-
-export type SitesListResultList = SitesListResultItem[];
-export const SitesListResultList = /*@__PURE__*/ S.Array(
-  SitesListResultItem,
-) as any as S.Schema<SitesListResultList>;
-
-export interface SitesListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SitesListResultList;
-}
-export const SitesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SitesListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "SitesListResponse",
-}) as any as S.Schema<SitesListResponse>;
-
-export interface SitesUpdateRequestLocation {
-  /** Latitude */
-  lat?: string;
-  /** Longitude */
-  lon?: string;
-}
-export const SitesUpdateRequestLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.String),
-    lon: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SitesUpdateRequestLocation",
-}) as any as S.Schema<SitesUpdateRequestLocation>;
-
-export interface SitesUpdateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  /** Magic Connector identifier tag. */
-  connectorId?: string;
-  description?: string;
-  /** Location of site in latitude and longitude. */
-  location?: SitesUpdateRequestLocation;
-  /** The name of the site. */
-  name?: string;
-  /** Magic Connector identifier tag. Used when high availability mode is on. */
-  secondaryConnectorId?: string;
-}
-export const SitesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
-    description: S.optional(S.String),
-    location: S.optional(SitesUpdateRequestLocation),
-    name: S.optional(S.String),
-    secondaryConnectorId: S.optional(
-      S.String.pipe(T.Body("secondary_connector_id")),
-    ),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesUpdateRequest",
-}) as any as S.Schema<SitesUpdateRequest>;
-
-export interface SitesUpdateResponseLocation {
-  /** Latitude */
-  lat?: string;
-  /** Longitude */
-  lon?: string;
-}
-export const SitesUpdateResponseLocation = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    lat: S.optional(S.String),
-    lon: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "SitesUpdateResponseLocation",
-}) as any as S.Schema<SitesUpdateResponseLocation>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesUpdateResponse {
-  /** Identifier */
-  id?: string;
-  /** Magic Connector identifier tag. */
-  connectorId?: string;
-  description?: string;
-  /** Site high availability mode. If set to true, the site can have two connectors and runs in high availability mode. */
-  haMode?: boolean;
-  /** Location of site in latitude and longitude. */
-  location?: SitesUpdateResponseLocation;
-  /** The name of the site. */
-  name?: string;
-  /** Magic Connector identifier tag. Used when high availability mode is on. */
-  secondaryConnectorId?: string;
-}
-export const SitesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    connectorId: S.optional(S.String.pipe(T.Body("connector_id"))),
-    description: S.optional(S.String),
-    haMode: S.optional(S.Boolean.pipe(T.Body("ha_mode"))),
-    location: S.optional(SitesUpdateResponseLocation),
-    name: S.optional(S.String),
-    secondaryConnectorId: S.optional(
-      S.String.pipe(T.Body("secondary_connector_id")),
-    ),
-  }),
-).annotate({
-  identifier: "SitesUpdateResponse",
-}) as any as S.Schema<SitesUpdateResponse>;
-
-export interface SitesWansCreateRequestStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  /** A valid IPv4 address. */
-  gatewayAddress: string;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-}
-export const SitesWansCreateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.String,
-      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-    }),
-).annotate({
-  identifier: "SitesWansCreateRequestStaticAddressing",
-}) as any as S.Schema<SitesWansCreateRequestStaticAddressing>;
-
-export interface SitesWansCreateRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  physport: number;
-  name?: string;
-  priority?: number;
-  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
-  staticAddressing?: SitesWansCreateRequestStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesWansCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    physport: S.Number,
-    name: S.optional(S.String),
-    priority: S.optional(S.Number),
-    staticAddressing: S.optional(
-      SitesWansCreateRequestStaticAddressing.pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesWansCreateRequest",
-}) as any as S.Schema<SitesWansCreateRequest>;
-
-export type SitesWansCreateResultItemHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high"
-  | (string & {});
-export const SitesWansCreateResultItemHealthCheckRate = /*@__PURE__*/ S.String;
-
-export interface SitesWansCreateResultItemStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  /** A valid IPv4 address. */
-  gatewayAddress: string;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-}
-export const SitesWansCreateResultItemStaticAddressing =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      address: S.String,
-      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-    }),
-  ).annotate({
-    identifier: "SitesWansCreateResultItemStaticAddressing",
-  }) as any as S.Schema<SitesWansCreateResultItemStaticAddressing>;
-
-export interface SitesWansCreateResultItem {
-  /** Identifier */
-  id?: string;
-  /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
-  healthCheckRate?: SitesWansCreateResultItemHealthCheckRate;
-  name?: string;
-  physport?: number;
-  /** Priority of WAN for traffic loadbalancing. */
-  priority?: number;
-  /** Identifier */
-  siteId?: string;
-  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
-  staticAddressing?: SitesWansCreateResultItemStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesWansCreateResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    healthCheckRate: S.optional(
-      SitesWansCreateResultItemHealthCheckRate.pipe(
-        T.Body("health_check_rate"),
-      ),
-    ),
-    name: S.optional(S.String),
-    physport: S.optional(S.Number),
-    priority: S.optional(S.Number),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      SitesWansCreateResultItemStaticAddressing.pipe(
-        T.Body("static_addressing"),
-      ),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
-).annotate({
-  identifier: "SitesWansCreateResultItem",
-}) as any as S.Schema<SitesWansCreateResultItem>;
-
-export type SitesWansCreateResultList = SitesWansCreateResultItem[];
-export const SitesWansCreateResultList = /*@__PURE__*/ S.Array(
-  SitesWansCreateResultItem,
-) as any as S.Schema<SitesWansCreateResultList>;
-
-export interface SitesWansCreateResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SitesWansCreateResultList;
-}
-export const SitesWansCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SitesWansCreateResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "SitesWansCreateResponse",
-}) as any as S.Schema<SitesWansCreateResponse>;
-
-export interface SitesWansDeleteRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  /** Identifier */
-  wanId: string;
-}
-export const SitesWansDeleteRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    wanId: S.String.pipe(T.Label("wan_id")),
-  }).pipe(
-    T.Http({
-      method: "DELETE",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesWansDeleteRequest",
-}) as any as S.Schema<SitesWansDeleteRequest>;
-
-export type SitesWansDeleteResponseHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high"
-  | (string & {});
-export const SitesWansDeleteResponseHealthCheckRate = /*@__PURE__*/ S.String;
-
-export interface SitesWansDeleteResponseStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  /** A valid IPv4 address. */
-  gatewayAddress: string;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-}
-export const SitesWansDeleteResponseStaticAddressing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.String,
-      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-    }),
-).annotate({
-  identifier: "SitesWansDeleteResponseStaticAddressing",
-}) as any as S.Schema<SitesWansDeleteResponseStaticAddressing>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesWansDeleteResponse {
-  /** Identifier */
-  id?: string;
-  /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
-  healthCheckRate?: SitesWansDeleteResponseHealthCheckRate;
-  name?: string;
-  physport?: number;
-  /** Priority of WAN for traffic loadbalancing. */
-  priority?: number;
-  /** Identifier */
-  siteId?: string;
-  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
-  staticAddressing?: SitesWansDeleteResponseStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesWansDeleteResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    healthCheckRate: S.optional(
-      SitesWansDeleteResponseHealthCheckRate.pipe(T.Body("health_check_rate")),
-    ),
-    name: S.optional(S.String),
-    physport: S.optional(S.Number),
-    priority: S.optional(S.Number),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      SitesWansDeleteResponseStaticAddressing.pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
-).annotate({
-  identifier: "SitesWansDeleteResponse",
-}) as any as S.Schema<SitesWansDeleteResponse>;
-
-export interface SitesWansEditRequestStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  /** A valid IPv4 address. */
-  gatewayAddress: string;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-}
-export const SitesWansEditRequestStaticAddressing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.String,
-      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-    }),
-).annotate({
-  identifier: "SitesWansEditRequestStaticAddressing",
-}) as any as S.Schema<SitesWansEditRequestStaticAddressing>;
-
-export interface SitesWansEditRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  /** Identifier */
-  wanId: string;
-  name?: string;
-  physport?: number;
-  priority?: number;
-  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
-  staticAddressing?: SitesWansEditRequestStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesWansEditRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    wanId: S.String.pipe(T.Label("wan_id")),
-    name: S.optional(S.String),
-    physport: S.optional(S.Number),
-    priority: S.optional(S.Number),
-    staticAddressing: S.optional(
-      SitesWansEditRequestStaticAddressing.pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }).pipe(
-    T.Http({
-      method: "PATCH",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesWansEditRequest",
-}) as any as S.Schema<SitesWansEditRequest>;
-
-export type SitesWansEditResponseHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high"
-  | (string & {});
-export const SitesWansEditResponseHealthCheckRate = /*@__PURE__*/ S.String;
-
-export interface SitesWansEditResponseStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  /** A valid IPv4 address. */
-  gatewayAddress: string;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-}
-export const SitesWansEditResponseStaticAddressing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.String,
-      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-    }),
-).annotate({
-  identifier: "SitesWansEditResponseStaticAddressing",
-}) as any as S.Schema<SitesWansEditResponseStaticAddressing>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesWansEditResponse {
-  /** Identifier */
-  id?: string;
-  /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
-  healthCheckRate?: SitesWansEditResponseHealthCheckRate;
-  name?: string;
-  physport?: number;
-  /** Priority of WAN for traffic loadbalancing. */
-  priority?: number;
-  /** Identifier */
-  siteId?: string;
-  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
-  staticAddressing?: SitesWansEditResponseStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesWansEditResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    healthCheckRate: S.optional(
-      SitesWansEditResponseHealthCheckRate.pipe(T.Body("health_check_rate")),
-    ),
-    name: S.optional(S.String),
-    physport: S.optional(S.Number),
-    priority: S.optional(S.Number),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      SitesWansEditResponseStaticAddressing.pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
-).annotate({
-  identifier: "SitesWansEditResponse",
-}) as any as S.Schema<SitesWansEditResponse>;
-
-export interface SitesWansGetRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-  /** Identifier */
-  wanId: string;
-}
-export const SitesWansGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-    wanId: S.String.pipe(T.Label("wan_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans/{wan_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesWansGetRequest",
-}) as any as S.Schema<SitesWansGetRequest>;
-
-export type SitesWansGetResponseHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high"
-  | (string & {});
-export const SitesWansGetResponseHealthCheckRate = /*@__PURE__*/ S.String;
-
-export interface SitesWansGetResponseStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  /** A valid IPv4 address. */
-  gatewayAddress: string;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-}
-export const SitesWansGetResponseStaticAddressing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.String,
-      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-    }),
-).annotate({
-  identifier: "SitesWansGetResponseStaticAddressing",
-}) as any as S.Schema<SitesWansGetResponseStaticAddressing>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesWansGetResponse {
-  /** Identifier */
-  id?: string;
-  /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
-  healthCheckRate?: SitesWansGetResponseHealthCheckRate;
-  name?: string;
-  physport?: number;
-  /** Priority of WAN for traffic loadbalancing. */
-  priority?: number;
-  /** Identifier */
-  siteId?: string;
-  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
-  staticAddressing?: SitesWansGetResponseStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesWansGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    healthCheckRate: S.optional(
-      SitesWansGetResponseHealthCheckRate.pipe(T.Body("health_check_rate")),
-    ),
-    name: S.optional(S.String),
-    physport: S.optional(S.Number),
-    priority: S.optional(S.Number),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      SitesWansGetResponseStaticAddressing.pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
-).annotate({
-  identifier: "SitesWansGetResponse",
-}) as any as S.Schema<SitesWansGetResponse>;
-
-export interface SitesWansListRequest {
-  /** Identifier */
-  accountId: string;
-  /** Identifier */
-  siteId: string;
-}
-export const SitesWansListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountId: S.String.pipe(T.Label("account_id")),
-    siteId: S.String.pipe(T.Label("site_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/accounts/{account_id}/magic/sites/{site_id}/wans",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "SitesWansListRequest",
-}) as any as S.Schema<SitesWansListRequest>;
-
-export type SitesWansListResultItemHealthCheckRate =
-  | "low"
-  | "mid"
-  | "high"
-  | (string & {});
-export const SitesWansListResultItemHealthCheckRate = /*@__PURE__*/ S.String;
-
-export interface SitesWansListResultItemStaticAddressing {
-  /** A valid CIDR notation representing an IP range. */
-  address: string;
-  /** A valid IPv4 address. */
-  gatewayAddress: string;
-  /** A valid CIDR notation representing an IP range. */
-  secondaryAddress?: string;
-}
-export const SitesWansListResultItemStaticAddressing = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      address: S.String,
-      gatewayAddress: S.String.pipe(T.Body("gateway_address")),
-      secondaryAddress: S.optional(S.String.pipe(T.Body("secondary_address"))),
-    }),
-).annotate({
-  identifier: "SitesWansListResultItemStaticAddressing",
-}) as any as S.Schema<SitesWansListResultItemStaticAddressing>;
-
-export interface SitesWansListResultItem {
-  /** Identifier */
-  id?: string;
-  /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
-  healthCheckRate?: SitesWansListResultItemHealthCheckRate;
-  name?: string;
-  physport?: number;
-  /** Priority of WAN for traffic loadbalancing. */
-  priority?: number;
-  /** Identifier */
-  siteId?: string;
-  /** (optional) if omitted, use DHCP. Submit secondary_address when site is in high availability mode. */
-  staticAddressing?: SitesWansListResultItemStaticAddressing;
-  /** VLAN ID. Use zero for untagged. */
-  vlanTag?: number;
-}
-export const SitesWansListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    healthCheckRate: S.optional(
-      SitesWansListResultItemHealthCheckRate.pipe(T.Body("health_check_rate")),
-    ),
-    name: S.optional(S.String),
-    physport: S.optional(S.Number),
-    priority: S.optional(S.Number),
-    siteId: S.optional(S.String.pipe(T.Body("site_id"))),
-    staticAddressing: S.optional(
-      SitesWansListResultItemStaticAddressing.pipe(T.Body("static_addressing")),
-    ),
-    vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
-  }),
-).annotate({
-  identifier: "SitesWansListResultItem",
-}) as any as S.Schema<SitesWansListResultItem>;
-
-export type SitesWansListResultList = SitesWansListResultItem[];
-export const SitesWansListResultList = /*@__PURE__*/ S.Array(
-  SitesWansListResultItem,
-) as any as S.Schema<SitesWansListResultList>;
-
-export interface SitesWansListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SitesWansListResultList;
-}
-export const SitesWansListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(SitesWansListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "SitesWansListResponse",
-}) as any as S.Schema<SitesWansListResponse>;
+  identifier: "UpdateSiteLanResponse",
+}) as any as S.Schema<UpdateSiteLanResponse>;
 
 export interface SitesWansUpdateRequestStaticAddressing {
   /** A valid CIDR notation representing an IP range. */
@@ -14931,7 +14955,7 @@ export const SitesWansUpdateRequestStaticAddressing = /*@__PURE__*/ S.suspend(
   identifier: "SitesWansUpdateRequestStaticAddressing",
 }) as any as S.Schema<SitesWansUpdateRequestStaticAddressing>;
 
-export interface SitesWansUpdateRequest {
+export interface UpdateSiteWanRequest {
   /** Identifier */
   accountId: string;
   /** Identifier */
@@ -14946,7 +14970,7 @@ export interface SitesWansUpdateRequest {
   /** VLAN ID. Use zero for untagged. */
   vlanTag?: number;
 }
-export const SitesWansUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSiteWanRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     siteId: S.String.pipe(T.Label("site_id")),
@@ -14966,8 +14990,8 @@ export const SitesWansUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     }),
   ),
 ).annotate({
-  identifier: "SitesWansUpdateRequest",
-}) as any as S.Schema<SitesWansUpdateRequest>;
+  identifier: "UpdateSiteWanRequest",
+}) as any as S.Schema<UpdateSiteWanRequest>;
 
 export type SitesWansUpdateResponseHealthCheckRate =
   | "low"
@@ -14996,7 +15020,7 @@ export const SitesWansUpdateResponseStaticAddressing = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<SitesWansUpdateResponseStaticAddressing>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface SitesWansUpdateResponse {
+export interface UpdateSiteWanResponse {
   /** Identifier */
   id?: string;
   /** Magic WAN health check rate for tunnels created on this link. The default value is `mid`. */
@@ -15012,7 +15036,7 @@ export interface SitesWansUpdateResponse {
   /** VLAN ID. Use zero for untagged. */
   vlanTag?: number;
 }
-export const SitesWansUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+export const UpdateSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
     healthCheckRate: S.optional(
@@ -15028,929 +15052,1414 @@ export const SitesWansUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     vlanTag: S.optional(S.Number.pipe(T.Body("vlan_tag"))),
   }),
 ).annotate({
-  identifier: "SitesWansUpdateResponse",
-}) as any as S.Schema<SitesWansUpdateResponse>;
+  identifier: "UpdateSiteWanResponse",
+}) as any as S.Schema<UpdateSiteWanResponse>;
 
-export type AppsCreateError = CloudflareOpError;
-/** Creates a new App for an account */
-export const appsCreate: API.OperationMethod<
-  AppsCreateRequest,
-  AppsCreateResponse,
-  AppsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsCreateRequest,
-  output: AppsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export interface ValidatePcapOwnershipRequest {
+  /** Identifier. */
+  accountId: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf: string;
+  /** The ownership challenge filename stored in the bucket. */
+  ownershipChallenge: string;
+}
+export const ValidatePcapOwnershipRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    destinationConf: S.String.pipe(T.Body("destination_conf")),
+    ownershipChallenge: S.String.pipe(T.Body("ownership_challenge")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/pcaps/ownership/validate",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ValidatePcapOwnershipRequest",
+}) as any as S.Schema<ValidatePcapOwnershipRequest>;
 
-export type AppsDeleteError = CloudflareOpError;
-/** Deletes specific Account App. */
-export const appsDelete: API.OperationMethod<
-  AppsDeleteRequest,
-  AppsDeleteResponse,
-  AppsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsDeleteRequest,
-  output: AppsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+export type PcapsOwnershipValidateResponseStatus =
+  | "pending"
+  | "success"
+  | "failed"
+  | (string & {});
+export const PcapsOwnershipValidateResponseStatus = /*@__PURE__*/ S.String;
 
-export type AppsEditError = CloudflareOpError;
-/** Updates an Account App */
-export const appsEdit: API.OperationMethod<
-  AppsEditRequest,
-  AppsEditResponse,
-  AppsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsEditRequest,
-  output: AppsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface ValidatePcapOwnershipResponse {
+  /** The bucket ID associated with the packet captures API. */
+  id: string;
+  /** The full URI for the bucket. This field only applies to `full` packet captures. */
+  destinationConf: string;
+  /** The ownership challenge filename stored in the bucket. */
+  filename: string;
+  /** The status of the ownership challenge. Can be pending, success or failed. */
+  status: PcapsOwnershipValidateResponseStatus;
+  /** The RFC 3339 timestamp when the bucket was added to packet captures API. */
+  submitted: string;
+  /** The RFC 3339 timestamp when the bucket was validated. */
+  validated?: string;
+}
+export const ValidatePcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    destinationConf: S.String.pipe(T.Body("destination_conf")),
+    filename: S.String,
+    status: PcapsOwnershipValidateResponseStatus,
+    submitted: S.String,
+    validated: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "ValidatePcapOwnershipResponse",
+}) as any as S.Schema<ValidatePcapOwnershipResponse>;
 
-export type AppsListError = CloudflareOpError;
-/** Lists Apps associated with an account. */
-export const appsList: API.OperationMethod<
-  AppsListRequest,
-  AppsListResponse,
-  AppsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsListRequest,
-  output: AppsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type AppsUpdateError = CloudflareOpError;
-/** Updates an Account App */
-export const appsUpdate: API.OperationMethod<
-  AppsUpdateRequest,
-  AppsUpdateResponse,
-  AppsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: AppsUpdateRequest,
-  output: AppsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type Cf1SitesCreateError = CloudflareOpError;
-/** Creates new CF1 Sites for an account. Each site must have a unique name within the account. */
-export const cf1SitesCreate: API.OperationMethod<
-  Cf1SitesCreateRequest,
-  Cf1SitesCreateResponse,
-  Cf1SitesCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Cf1SitesCreateRequest,
-  output: Cf1SitesCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type Cf1SitesDeleteError = CloudflareOpError;
-/** Deletes a specific CF1 Site for an account. */
-export const cf1SitesDelete: API.OperationMethod<
-  Cf1SitesDeleteRequest,
-  Cf1SitesDeleteResponse,
-  Cf1SitesDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Cf1SitesDeleteRequest,
-  output: Cf1SitesDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type Cf1SitesGetError = CloudflareOpError;
-/** Gets a specific CF1 Site for an account. */
-export const cf1SitesGet: API.OperationMethod<
-  Cf1SitesGetRequest,
-  Cf1SitesGetResponse,
-  Cf1SitesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Cf1SitesGetRequest,
-  output: Cf1SitesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type Cf1SitesListError = CloudflareOpError;
-/** Lists CF1 Sites associated with an account. A CF1 Site represents a physical customer network location with optional geographic coordinates. */
-export const cf1SitesList: API.OperationMethod<
-  Cf1SitesListRequest,
-  Cf1SitesListResponse,
-  Cf1SitesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Cf1SitesListRequest,
-  output: Cf1SitesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type Cf1SitesRampsCreateError = CloudflareOpError;
-/** Creates ramps (network connections) for a CF1 Site. */
-export const cf1SitesRampsCreate: API.OperationMethod<
-  Cf1SitesRampsCreateRequest,
-  Cf1SitesRampsCreateResponse,
-  Cf1SitesRampsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Cf1SitesRampsCreateRequest,
-  output: Cf1SitesRampsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type Cf1SitesRampsDeleteError = CloudflareOpError;
-/** Deletes a specific ramp from a CF1 Site. */
-export const cf1SitesRampsDelete: API.OperationMethod<
-  Cf1SitesRampsDeleteRequest,
-  Cf1SitesRampsDeleteResponse,
-  Cf1SitesRampsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Cf1SitesRampsDeleteRequest,
-  output: Cf1SitesRampsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type Cf1SitesRampsGetError = CloudflareOpError;
-/** Gets a specific ramp for a CF1 Site. */
-export const cf1SitesRampsGet: API.OperationMethod<
-  Cf1SitesRampsGetRequest,
-  Cf1SitesRampsGetResponse,
-  Cf1SitesRampsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Cf1SitesRampsGetRequest,
-  output: Cf1SitesRampsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type Cf1SitesRampsListError = CloudflareOpError;
-/** Lists ramps (network connections) associated with a CF1 Site. Ramps represent GRE tunnels, IPsec tunnels, interconnects, or MCONN links. */
-export const cf1SitesRampsList: API.OperationMethod<
-  Cf1SitesRampsListRequest,
-  Cf1SitesRampsListResponse,
-  Cf1SitesRampsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Cf1SitesRampsListRequest,
-  output: Cf1SitesRampsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type Cf1SitesUpdateError = CloudflareOpError;
-/** Partially updates a specific CF1 Site for an account. Only the fields included in the request body are modified; omitted fields retain their existing values. */
-export const cf1SitesUpdate: API.OperationMethod<
-  Cf1SitesUpdateRequest,
-  Cf1SitesUpdateResponse,
-  Cf1SitesUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: Cf1SitesUpdateRequest,
-  output: Cf1SitesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CfInterconnectsBulkUpdateError = CloudflareOpError;
+export type BulkPutCfInterconnectsError = CloudflareOpError;
 /** Updates multiple interconnects associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
-export const cfInterconnectsBulkUpdate: API.OperationMethod<
-  CfInterconnectsBulkUpdateRequest,
-  CfInterconnectsBulkUpdateResponse,
-  CfInterconnectsBulkUpdateError,
+export const bulkPutCfInterconnects: API.OperationMethod<
+  BulkPutCfInterconnectsRequest,
+  BulkPutCfInterconnectsResponse,
+  BulkPutCfInterconnectsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: CfInterconnectsBulkUpdateRequest,
-  output: CfInterconnectsBulkUpdateResponse,
+  input: BulkPutCfInterconnectsRequest,
+  output: BulkPutCfInterconnectsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type CfInterconnectsGetError = CloudflareOpError;
-/** Lists details for a specific interconnect. */
-export const cfInterconnectsGet: API.OperationMethod<
-  CfInterconnectsGetRequest,
-  CfInterconnectsGetResponse,
-  CfInterconnectsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CfInterconnectsGetRequest,
-  output: CfInterconnectsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CfInterconnectsListError = CloudflareOpError;
-/** Lists interconnects associated with an account. */
-export const cfInterconnectsList: API.OperationMethod<
-  CfInterconnectsListRequest,
-  CfInterconnectsListResponse,
-  CfInterconnectsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CfInterconnectsListRequest,
-  output: CfInterconnectsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type CfInterconnectsUpdateError = CloudflareOpError;
-/** Updates a specific interconnect associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
-export const cfInterconnectsUpdate: API.OperationMethod<
-  CfInterconnectsUpdateRequest,
-  CfInterconnectsUpdateResponse,
-  CfInterconnectsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: CfInterconnectsUpdateRequest,
-  output: CfInterconnectsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConnectorsCreateError = CloudflareOpError;
-/** Add a connector to your account */
-export const connectorsCreate: API.OperationMethod<
-  ConnectorsCreateRequest,
-  ConnectorsCreateResponse,
-  ConnectorsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsCreateRequest,
-  output: ConnectorsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConnectorsDeleteError = CloudflareOpError;
-/** Remove a connector from your account */
-export const connectorsDelete: API.OperationMethod<
-  ConnectorsDeleteRequest,
-  ConnectorsDeleteResponse,
-  ConnectorsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsDeleteRequest,
-  output: ConnectorsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConnectorsEditError = CloudflareOpError;
-/** Edit Connector to update specific properties or Re-provision License Key */
-export const connectorsEdit: API.OperationMethod<
-  ConnectorsEditRequest,
-  ConnectorsEditResponse,
-  ConnectorsEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsEditRequest,
-  output: ConnectorsEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConnectorsEventsGetError = CloudflareOpError;
-/** Get Event */
-export const connectorsEventsGet: API.OperationMethod<
-  ConnectorsEventsGetRequest,
-  ConnectorsEventsGetResponse,
-  ConnectorsEventsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsEventsGetRequest,
-  output: ConnectorsEventsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConnectorsEventsLatestListError = CloudflareOpError;
-/** Get latest Events */
-export const connectorsEventsLatestList: API.OperationMethod<
-  ConnectorsEventsLatestListRequest,
-  ConnectorsEventsLatestListResponse,
-  ConnectorsEventsLatestListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsEventsLatestListRequest,
-  output: ConnectorsEventsLatestListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConnectorsEventsListError = CloudflareOpError;
-/** List Events */
-export const connectorsEventsList: API.OperationMethod<
-  ConnectorsEventsListRequest,
-  ConnectorsEventsListResponse,
-  ConnectorsEventsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsEventsListRequest,
-  output: ConnectorsEventsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConnectorsGetError = CloudflareOpError;
-/** Fetch Connector */
-export const connectorsGet: API.OperationMethod<
-  ConnectorsGetRequest,
-  ConnectorsGetResponse,
-  ConnectorsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsGetRequest,
-  output: ConnectorsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConnectorsListError = CloudflareOpError;
-/** List Connectors */
-export const connectorsList: API.OperationMethod<
-  ConnectorsListRequest,
-  ConnectorsListResponse,
-  ConnectorsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsListRequest,
-  output: ConnectorsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConnectorsSnapshotsGetError = CloudflareOpError;
-/** Get Snapshot */
-export const connectorsSnapshotsGet: API.OperationMethod<
-  ConnectorsSnapshotsGetRequest,
-  ConnectorsSnapshotsGetResponse,
-  ConnectorsSnapshotsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsSnapshotsGetRequest,
-  output: ConnectorsSnapshotsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConnectorsSnapshotsLatestListError = CloudflareOpError;
-/** Get latest Snapshots */
-export const connectorsSnapshotsLatestList: API.OperationMethod<
-  ConnectorsSnapshotsLatestListRequest,
-  ConnectorsSnapshotsLatestListResponse,
-  ConnectorsSnapshotsLatestListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsSnapshotsLatestListRequest,
-  output: ConnectorsSnapshotsLatestListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConnectorsSnapshotsListError = CloudflareOpError;
-/** List Snapshots */
-export const connectorsSnapshotsList: API.OperationMethod<
-  ConnectorsSnapshotsListRequest,
-  ConnectorsSnapshotsListResponse,
-  ConnectorsSnapshotsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsSnapshotsListRequest,
-  output: ConnectorsSnapshotsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type ConnectorsUpdateError = CloudflareOpError;
-/** Replace Connector or Re-provision License Key */
-export const connectorsUpdate: API.OperationMethod<
-  ConnectorsUpdateRequest,
-  ConnectorsUpdateResponse,
-  ConnectorsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ConnectorsUpdateRequest,
-  output: ConnectorsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GreTunnelsBulkUpdateError = CloudflareOpError;
+export type BulkPutGreTunnelsError = CloudflareOpError;
 /** Updates multiple GRE tunnels. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
-export const greTunnelsBulkUpdate: API.OperationMethod<
-  GreTunnelsBulkUpdateRequest,
-  GreTunnelsBulkUpdateResponse,
-  GreTunnelsBulkUpdateError,
+export const bulkPutGreTunnels: API.OperationMethod<
+  BulkPutGreTunnelsRequest,
+  BulkPutGreTunnelsResponse,
+  BulkPutGreTunnelsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: GreTunnelsBulkUpdateRequest,
-  output: GreTunnelsBulkUpdateResponse,
+  input: BulkPutGreTunnelsRequest,
+  output: BulkPutGreTunnelsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type GreTunnelsCreateError = CloudflareOpError;
-/** Creates a new GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
-export const greTunnelsCreate: API.OperationMethod<
-  GreTunnelsCreateRequest,
-  GreTunnelsCreateResponse,
-  GreTunnelsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GreTunnelsCreateRequest,
-  output: GreTunnelsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GreTunnelsDeleteError = CloudflareOpError;
-/** Disables and removes a specific static GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
-export const greTunnelsDelete: API.OperationMethod<
-  GreTunnelsDeleteRequest,
-  GreTunnelsDeleteResponse,
-  GreTunnelsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GreTunnelsDeleteRequest,
-  output: GreTunnelsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GreTunnelsGetError = CloudflareOpError;
-/** Lists informtion for a specific GRE tunnel. */
-export const greTunnelsGet: API.OperationMethod<
-  GreTunnelsGetRequest,
-  GreTunnelsGetResponse,
-  GreTunnelsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GreTunnelsGetRequest,
-  output: GreTunnelsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GreTunnelsListError = CloudflareOpError;
-/** Lists GRE tunnels associated with an account. */
-export const greTunnelsList: API.OperationMethod<
-  GreTunnelsListRequest,
-  GreTunnelsListResponse,
-  GreTunnelsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GreTunnelsListRequest,
-  output: GreTunnelsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type GreTunnelsUpdateError = CloudflareOpError;
-/** Updates a specific GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
-export const greTunnelsUpdate: API.OperationMethod<
-  GreTunnelsUpdateRequest,
-  GreTunnelsUpdateResponse,
-  GreTunnelsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: GreTunnelsUpdateRequest,
-  output: GreTunnelsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type IpsecTunnelsBulkUpdateError = CloudflareOpError;
+export type BulkPutIpsecTunnelsError = CloudflareOpError;
 /** Update multiple IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
-export const ipsecTunnelsBulkUpdate: API.OperationMethod<
-  IpsecTunnelsBulkUpdateRequest,
-  IpsecTunnelsBulkUpdateResponse,
-  IpsecTunnelsBulkUpdateError,
+export const bulkPutIpsecTunnels: API.OperationMethod<
+  BulkPutIpsecTunnelsRequest,
+  BulkPutIpsecTunnelsResponse,
+  BulkPutIpsecTunnelsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: IpsecTunnelsBulkUpdateRequest,
-  output: IpsecTunnelsBulkUpdateResponse,
+  input: BulkPutIpsecTunnelsRequest,
+  output: BulkPutIpsecTunnelsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type IpsecTunnelsCreateError = CloudflareOpError;
-/** Creates a new IPsec tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
-export const ipsecTunnelsCreate: API.OperationMethod<
-  IpsecTunnelsCreateRequest,
-  IpsecTunnelsCreateResponse,
-  IpsecTunnelsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IpsecTunnelsCreateRequest,
-  output: IpsecTunnelsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type IpsecTunnelsDeleteError = CloudflareOpError;
-/** Disables and removes a specific static IPsec Tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
-export const ipsecTunnelsDelete: API.OperationMethod<
-  IpsecTunnelsDeleteRequest,
-  IpsecTunnelsDeleteResponse,
-  IpsecTunnelsDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IpsecTunnelsDeleteRequest,
-  output: IpsecTunnelsDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type IpsecTunnelsGetError = CloudflareOpError;
-/** Lists details for a specific IPsec tunnel. */
-export const ipsecTunnelsGet: API.OperationMethod<
-  IpsecTunnelsGetRequest,
-  IpsecTunnelsGetResponse,
-  IpsecTunnelsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IpsecTunnelsGetRequest,
-  output: IpsecTunnelsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type IpsecTunnelsListError = CloudflareOpError;
-/** Lists IPsec tunnels associated with an account. */
-export const ipsecTunnelsList: API.OperationMethod<
-  IpsecTunnelsListRequest,
-  IpsecTunnelsListResponse,
-  IpsecTunnelsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IpsecTunnelsListRequest,
-  output: IpsecTunnelsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type IpsecTunnelsPskGenerateError = CloudflareOpError;
-/** Generates a Pre-Shared Key for a specific IPsec tunnel used in the IKE session. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After a PSK is generated, the PSK is immediately persisted to Cloudflare's edge and cannot be retrieved later. Store the PSK in a safe place. */
-export const ipsecTunnelsPskGenerate: API.OperationMethod<
-  IpsecTunnelsPskGenerateRequest,
-  IpsecTunnelsPskGenerateResponse,
-  IpsecTunnelsPskGenerateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IpsecTunnelsPskGenerateRequest,
-  output: IpsecTunnelsPskGenerateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type IpsecTunnelsPskSetError = CloudflareOpError;
-/** Sets Pre-Shared Keys for multiple IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After PSKs are applied, they are immediately persisted to Cloudflare's edge and cannot be retrieved later. Store the PSKs in a safe place. */
-export const ipsecTunnelsPskSet: API.OperationMethod<
-  IpsecTunnelsPskSetRequest,
-  IpsecTunnelsPskSetResponse,
-  IpsecTunnelsPskSetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IpsecTunnelsPskSetRequest,
-  output: IpsecTunnelsPskSetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type IpsecTunnelsUpdateError = CloudflareOpError;
-/** Updates a specific IPsec tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
-export const ipsecTunnelsUpdate: API.OperationMethod<
-  IpsecTunnelsUpdateRequest,
-  IpsecTunnelsUpdateResponse,
-  IpsecTunnelsUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: IpsecTunnelsUpdateRequest,
-  output: IpsecTunnelsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PcapsCreateError = CloudflareOpError;
-/** Create new PCAP request for account. */
-export const pcapsCreate: API.OperationMethod<
-  PcapsCreateRequest,
-  PcapsCreateResponse,
-  PcapsCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PcapsCreateRequest,
-  output: PcapsCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PcapsDownloadGetError = CloudflareOpError;
-/** Download PCAP information into a file. Response is a binary PCAP file. */
-export const pcapsDownloadGet: API.OperationMethod<
-  PcapsDownloadGetRequest,
-  PcapsDownloadGetResponse,
-  PcapsDownloadGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PcapsDownloadGetRequest,
-  output: PcapsDownloadGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PcapsGetError = CloudflareOpError;
-/** Get information for a PCAP request by id. */
-export const pcapsGet: API.OperationMethod<
-  PcapsGetRequest,
-  PcapsGetResponse,
-  PcapsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PcapsGetRequest,
-  output: PcapsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PcapsListError = CloudflareOpError;
-/** Lists all packet capture requests for an account. */
-export const pcapsList: API.OperationMethod<
-  PcapsListRequest,
-  PcapsListResponse,
-  PcapsListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PcapsListRequest,
-  output: PcapsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PcapsOwnershipCreateError = CloudflareOpError;
-/** Adds an AWS or GCP bucket to use with full packet captures. */
-export const pcapsOwnershipCreate: API.OperationMethod<
-  PcapsOwnershipCreateRequest,
-  PcapsOwnershipCreateResponse,
-  PcapsOwnershipCreateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PcapsOwnershipCreateRequest,
-  output: PcapsOwnershipCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PcapsOwnershipDeleteError = CloudflareOpError;
-/** Deletes buckets added to the packet captures API. */
-export const pcapsOwnershipDelete: API.OperationMethod<
-  PcapsOwnershipDeleteRequest,
-  PcapsOwnershipDeleteResponse,
-  PcapsOwnershipDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PcapsOwnershipDeleteRequest,
-  output: PcapsOwnershipDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PcapsOwnershipGetError = CloudflareOpError;
-/** List all buckets configured for use with PCAPs API. */
-export const pcapsOwnershipGet: API.OperationMethod<
-  PcapsOwnershipGetRequest,
-  PcapsOwnershipGetResponse,
-  PcapsOwnershipGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PcapsOwnershipGetRequest,
-  output: PcapsOwnershipGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PcapsOwnershipValidateError = CloudflareOpError;
-/** Validates buckets added to the packet captures API. */
-export const pcapsOwnershipValidate: API.OperationMethod<
-  PcapsOwnershipValidateRequest,
-  PcapsOwnershipValidateResponse,
-  PcapsOwnershipValidateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PcapsOwnershipValidateRequest,
-  output: PcapsOwnershipValidateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type PcapsStopError = CloudflareOpError;
-/** Stop full PCAP. */
-export const pcapsStop: API.OperationMethod<
-  PcapsStopRequest,
-  PcapsStopResponse,
-  PcapsStopError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: PcapsStopRequest,
-  output: PcapsStopResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RoutesBulkUpdateError = CloudflareOpError;
+export type BulkPutRoutesError = CloudflareOpError;
 /** Update multiple Magic static routes. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes. Only fields for a route that need to be changed need be provided. */
-export const routesBulkUpdate: API.OperationMethod<
-  RoutesBulkUpdateRequest,
-  RoutesBulkUpdateResponse,
-  RoutesBulkUpdateError,
+export const bulkPutRoutes: API.OperationMethod<
+  BulkPutRoutesRequest,
+  BulkPutRoutesResponse,
+  BulkPutRoutesError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RoutesBulkUpdateRequest,
-  output: RoutesBulkUpdateResponse,
+  input: BulkPutRoutesRequest,
+  output: BulkPutRoutesResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type RoutesCreateError = CloudflareOpError;
+export type CreateAppError =
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Creates a new App for an account */
+export const createApp: API.OperationMethod<
+  CreateAppRequest,
+  CreateAppResponse,
+  CreateAppError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateAppRequest,
+  output: CreateAppResponse,
+  errors: [
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateCf1SiteError = CloudflareOpError;
+/** Creates new CF1 Sites for an account. Each site must have a unique name within the account. */
+export const createCf1Site: API.OperationMethod<
+  CreateCf1SiteRequest,
+  CreateCf1SiteResponse,
+  CreateCf1SiteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCf1SiteRequest,
+  output: CreateCf1SiteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateCf1SiteRampError = CloudflareOpError;
+/** Creates ramps (network connections) for a CF1 Site. */
+export const createCf1SiteRamp: API.OperationMethod<
+  CreateCf1SiteRampRequest,
+  CreateCf1SiteRampResponse,
+  CreateCf1SiteRampError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateCf1SiteRampRequest,
+  output: CreateCf1SiteRampResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateConnectorError = CloudflareOpError;
+/** Add a connector to your account */
+export const createConnector: API.OperationMethod<
+  CreateConnectorRequest,
+  CreateConnectorResponse,
+  CreateConnectorError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateConnectorRequest,
+  output: CreateConnectorResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateGreTunnelError =
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Creates a new GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
+export const createGreTunnel: API.OperationMethod<
+  CreateGreTunnelRequest,
+  CreateGreTunnelResponse,
+  CreateGreTunnelError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateGreTunnelRequest,
+  output: CreateGreTunnelResponse,
+  errors: [
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateIpsecTunnelError =
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Creates a new IPsec tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
+export const createIpsecTunnel: API.OperationMethod<
+  CreateIpsecTunnelRequest,
+  CreateIpsecTunnelResponse,
+  CreateIpsecTunnelError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateIpsecTunnelRequest,
+  output: CreateIpsecTunnelResponse,
+  errors: [
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreatePcapError = CloudflareOpError;
+/** Create new PCAP request for account. */
+export const createPcap: API.OperationMethod<
+  CreatePcapRequest,
+  CreatePcapResponse,
+  CreatePcapError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreatePcapRequest,
+  output: CreatePcapResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreatePcapOwnershipError = CloudflareOpError;
+/** Adds an AWS or GCP bucket to use with full packet captures. */
+export const createPcapOwnership: API.OperationMethod<
+  CreatePcapOwnershipRequest,
+  CreatePcapOwnershipResponse,
+  CreatePcapOwnershipError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreatePcapOwnershipRequest,
+  output: CreatePcapOwnershipResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateRouteError =
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a new Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes. */
-export const routesCreate: API.OperationMethod<
-  RoutesCreateRequest,
-  RoutesCreateResponse,
-  RoutesCreateError,
+export const createRoute: API.OperationMethod<
+  CreateRouteRequest,
+  CreateRouteResponse,
+  CreateRouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RoutesCreateRequest,
-  output: RoutesCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateRouteRequest,
+  output: CreateRouteResponse,
+  errors: [
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type RoutesDeleteError = CloudflareOpError;
-/** Disable and remove a specific Magic static route. */
-export const routesDelete: API.OperationMethod<
-  RoutesDeleteRequest,
-  RoutesDeleteResponse,
-  RoutesDeleteError,
+export type CreateSiteError =
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Creates a new Site */
+export const createSite: API.OperationMethod<
+  CreateSiteRequest,
+  CreateSiteResponse,
+  CreateSiteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: RoutesDeleteRequest,
-  output: RoutesDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: CreateSiteRequest,
+  output: CreateSiteResponse,
+  errors: [
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type RoutesEmptyError = CloudflareOpError;
-/** Delete multiple Magic static routes. */
-export const routesEmpty: API.OperationMethod<
-  RoutesEmptyRequest,
-  RoutesEmptyResponse,
-  RoutesEmptyError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RoutesEmptyRequest,
-  output: RoutesEmptyResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RoutesGetError = CloudflareOpError;
-/** Get a specific Magic static route. */
-export const routesGet: API.OperationMethod<
-  RoutesGetRequest,
-  RoutesGetResponse,
-  RoutesGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RoutesGetRequest,
-  output: RoutesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RoutesListError = CloudflareOpError;
-/** List all Magic static routes. */
-export const routesList: API.OperationMethod<
-  RoutesListRequest,
-  RoutesListResponse,
-  RoutesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RoutesListRequest,
-  output: RoutesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type RoutesUpdateError = CloudflareOpError;
-/** Update a specific Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes. */
-export const routesUpdate: API.OperationMethod<
-  RoutesUpdateRequest,
-  RoutesUpdateResponse,
-  RoutesUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RoutesUpdateRequest,
-  output: RoutesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SitesAclsCreateError = CloudflareOpError;
+export type CreateSiteAclError =
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
 /** Creates a new Site ACL. */
-export const sitesAclsCreate: API.OperationMethod<
-  SitesAclsCreateRequest,
-  SitesAclsCreateResponse,
-  SitesAclsCreateError,
+export const createSiteAcl: API.OperationMethod<
+  CreateSiteAclRequest,
+  CreateSiteAclResponse,
+  CreateSiteAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesAclsCreateRequest,
-  output: SitesAclsCreateResponse,
+  input: CreateSiteAclRequest,
+  output: CreateSiteAclResponse,
+  errors: [
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateSiteLanError =
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Creates a new Site LAN. If the site is in high availability mode, static_addressing is required along with secondary and virtual address. */
+export const createSiteLan: API.OperationMethod<
+  CreateSiteLanRequest,
+  CreateSiteLanResponse,
+  CreateSiteLanError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSiteLanRequest,
+  output: CreateSiteLanResponse,
+  errors: [
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type CreateSiteWanError =
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Creates a new Site WAN. */
+export const createSiteWan: API.OperationMethod<
+  CreateSiteWanRequest,
+  CreateSiteWanResponse,
+  CreateSiteWanError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateSiteWanRequest,
+  output: CreateSiteWanResponse,
+  errors: [
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteAppError =
+  | AppNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Deletes specific Account App. */
+export const deleteApp: API.OperationMethod<
+  DeleteAppRequest,
+  DeleteAppResponse,
+  DeleteAppError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteAppRequest,
+  output: DeleteAppResponse,
+  errors: [
+    AppNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteCf1SiteError = CloudflareOpError;
+/** Deletes a specific CF1 Site for an account. */
+export const deleteCf1Site: API.OperationMethod<
+  DeleteCf1SiteRequest,
+  DeleteCf1SiteResponse,
+  DeleteCf1SiteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCf1SiteRequest,
+  output: DeleteCf1SiteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesAclsDeleteError = CloudflareOpError;
+export type DeleteCf1SiteRampError = CloudflareOpError;
+/** Deletes a specific ramp from a CF1 Site. */
+export const deleteCf1SiteRamp: API.OperationMethod<
+  DeleteCf1SiteRampRequest,
+  DeleteCf1SiteRampResponse,
+  DeleteCf1SiteRampError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteCf1SiteRampRequest,
+  output: DeleteCf1SiteRampResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteConnectorError = CloudflareOpError;
+/** Remove a connector from your account */
+export const deleteConnector: API.OperationMethod<
+  DeleteConnectorRequest,
+  DeleteConnectorResponse,
+  DeleteConnectorError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteConnectorRequest,
+  output: DeleteConnectorResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteGreTunnelError =
+  | GreTunnelNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Disables and removes a specific static GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
+export const deleteGreTunnel: API.OperationMethod<
+  DeleteGreTunnelRequest,
+  DeleteGreTunnelResponse,
+  DeleteGreTunnelError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteGreTunnelRequest,
+  output: DeleteGreTunnelResponse,
+  errors: [
+    GreTunnelNotFound,
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteIpsecTunnelError =
+  | IpsecTunnelNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Disables and removes a specific static IPsec Tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
+export const deleteIpsecTunnel: API.OperationMethod<
+  DeleteIpsecTunnelRequest,
+  DeleteIpsecTunnelResponse,
+  DeleteIpsecTunnelError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteIpsecTunnelRequest,
+  output: DeleteIpsecTunnelResponse,
+  errors: [
+    IpsecTunnelNotFound,
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeletePcapOwnershipError = CloudflareOpError;
+/** Deletes buckets added to the packet captures API. */
+export const deletePcapOwnership: API.OperationMethod<
+  DeletePcapOwnershipRequest,
+  DeletePcapOwnershipResponse,
+  DeletePcapOwnershipError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeletePcapOwnershipRequest,
+  output: DeletePcapOwnershipResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteRouteError =
+  | RouteNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Disable and remove a specific Magic static route. */
+export const deleteRoute: API.OperationMethod<
+  DeleteRouteRequest,
+  DeleteRouteResponse,
+  DeleteRouteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteRouteRequest,
+  output: DeleteRouteResponse,
+  errors: [
+    RouteNotFound,
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSiteError =
+  | SiteNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Remove a specific Site. */
+export const deleteSite: API.OperationMethod<
+  DeleteSiteRequest,
+  DeleteSiteResponse,
+  DeleteSiteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSiteRequest,
+  output: DeleteSiteResponse,
+  errors: [
+    SiteNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSiteAclError =
+  | SiteAclNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
 /** Remove a specific Site ACL. */
-export const sitesAclsDelete: API.OperationMethod<
-  SitesAclsDeleteRequest,
-  SitesAclsDeleteResponse,
-  SitesAclsDeleteError,
+export const deleteSiteAcl: API.OperationMethod<
+  DeleteSiteAclRequest,
+  DeleteSiteAclResponse,
+  DeleteSiteAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesAclsDeleteRequest,
-  output: SitesAclsDeleteResponse,
+  input: DeleteSiteAclRequest,
+  output: DeleteSiteAclResponse,
+  errors: [
+    SiteAclNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSiteLanError =
+  | SiteLanNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Remove a specific Site LAN. */
+export const deleteSiteLan: API.OperationMethod<
+  DeleteSiteLanRequest,
+  DeleteSiteLanResponse,
+  DeleteSiteLanError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSiteLanRequest,
+  output: DeleteSiteLanResponse,
+  errors: [
+    SiteLanNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type DeleteSiteWanError =
+  | SiteWanNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Remove a specific Site WAN. */
+export const deleteSiteWan: API.OperationMethod<
+  DeleteSiteWanRequest,
+  DeleteSiteWanResponse,
+  DeleteSiteWanError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: DeleteSiteWanRequest,
+  output: DeleteSiteWanResponse,
+  errors: [
+    SiteWanNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type EmptyRouteError = CloudflareOpError;
+/** Delete multiple Magic static routes. */
+export const emptyRoute: API.OperationMethod<
+  EmptyRouteRequest,
+  EmptyRouteResponse,
+  EmptyRouteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: EmptyRouteRequest,
+  output: EmptyRouteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesAclsEditError = CloudflareOpError;
-/** Patch a specific Site ACL. */
-export const sitesAclsEdit: API.OperationMethod<
-  SitesAclsEditRequest,
-  SitesAclsEditResponse,
-  SitesAclsEditError,
+export type GetCf1SiteError = CloudflareOpError;
+/** Gets a specific CF1 Site for an account. */
+export const getCf1Site: API.OperationMethod<
+  GetCf1SiteRequest,
+  GetCf1SiteResponse,
+  GetCf1SiteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesAclsEditRequest,
-  output: SitesAclsEditResponse,
+  input: GetCf1SiteRequest,
+  output: GetCf1SiteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesAclsGetError = CloudflareOpError;
+export type GetCf1SiteRampError = CloudflareOpError;
+/** Gets a specific ramp for a CF1 Site. */
+export const getCf1SiteRamp: API.OperationMethod<
+  GetCf1SiteRampRequest,
+  GetCf1SiteRampResponse,
+  GetCf1SiteRampError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCf1SiteRampRequest,
+  output: GetCf1SiteRampResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetCfInterconnectError = CloudflareOpError;
+/** Lists details for a specific interconnect. */
+export const getCfInterconnect: API.OperationMethod<
+  GetCfInterconnectRequest,
+  GetCfInterconnectResponse,
+  GetCfInterconnectError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetCfInterconnectRequest,
+  output: GetCfInterconnectResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetConnectorError = CloudflareOpError;
+/** Fetch Connector */
+export const getConnector: API.OperationMethod<
+  GetConnectorRequest,
+  GetConnectorResponse,
+  GetConnectorError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectorRequest,
+  output: GetConnectorResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetConnectorEventError = CloudflareOpError;
+/** Get Event */
+export const getConnectorEvent: API.OperationMethod<
+  GetConnectorEventRequest,
+  GetConnectorEventResponse,
+  GetConnectorEventError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectorEventRequest,
+  output: GetConnectorEventResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetConnectorSnapshotError = CloudflareOpError;
+/** Get Snapshot */
+export const getConnectorSnapshot: API.OperationMethod<
+  GetConnectorSnapshotRequest,
+  GetConnectorSnapshotResponse,
+  GetConnectorSnapshotError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetConnectorSnapshotRequest,
+  output: GetConnectorSnapshotResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetGreTunnelError =
+  | GreTunnelNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Lists informtion for a specific GRE tunnel. */
+export const getGreTunnel: API.OperationMethod<
+  GetGreTunnelRequest,
+  GetGreTunnelResponse,
+  GetGreTunnelError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetGreTunnelRequest,
+  output: GetGreTunnelResponse,
+  errors: [
+    GreTunnelNotFound,
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetIpsecTunnelError =
+  | IpsecTunnelNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Lists details for a specific IPsec tunnel. */
+export const getIpsecTunnel: API.OperationMethod<
+  GetIpsecTunnelRequest,
+  GetIpsecTunnelResponse,
+  GetIpsecTunnelError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetIpsecTunnelRequest,
+  output: GetIpsecTunnelResponse,
+  errors: [
+    IpsecTunnelNotFound,
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetPcapError = CloudflareOpError;
+/** Get information for a PCAP request by id. */
+export const getPcap: API.OperationMethod<
+  GetPcapRequest,
+  GetPcapResponse,
+  GetPcapError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPcapRequest,
+  output: GetPcapResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetPcapDownloadError = CloudflareOpError;
+/** Download PCAP information into a file. Response is a binary PCAP file. */
+export const getPcapDownload: API.OperationMethod<
+  GetPcapDownloadRequest,
+  GetPcapDownloadResponse,
+  GetPcapDownloadError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPcapDownloadRequest,
+  output: GetPcapDownloadResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetPcapOwnershipError = CloudflareOpError;
+/** List all buckets configured for use with PCAPs API. */
+export const getPcapOwnership: API.OperationMethod<
+  GetPcapOwnershipRequest,
+  GetPcapOwnershipResponse,
+  GetPcapOwnershipError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetPcapOwnershipRequest,
+  output: GetPcapOwnershipResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetRouteError =
+  | RouteNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Get a specific Magic static route. */
+export const getRoute: API.OperationMethod<
+  GetRouteRequest,
+  GetRouteResponse,
+  GetRouteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetRouteRequest,
+  output: GetRouteResponse,
+  errors: [
+    RouteNotFound,
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSiteError =
+  | SiteNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Get a specific Site. */
+export const getSite: API.OperationMethod<
+  GetSiteRequest,
+  GetSiteResponse,
+  GetSiteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSiteRequest,
+  output: GetSiteResponse,
+  errors: [
+    SiteNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSiteAclError =
+  | SiteAclNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
 /** Get a specific Site ACL. */
-export const sitesAclsGet: API.OperationMethod<
-  SitesAclsGetRequest,
-  SitesAclsGetResponse,
-  SitesAclsGetError,
+export const getSiteAcl: API.OperationMethod<
+  GetSiteAclRequest,
+  GetSiteAclResponse,
+  GetSiteAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesAclsGetRequest,
-  output: SitesAclsGetResponse,
+  input: GetSiteAclRequest,
+  output: GetSiteAclResponse,
+  errors: [
+    SiteAclNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSiteLanError =
+  | SiteLanNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Get a specific Site LAN. */
+export const getSiteLan: API.OperationMethod<
+  GetSiteLanRequest,
+  GetSiteLanResponse,
+  GetSiteLanError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSiteLanRequest,
+  output: GetSiteLanResponse,
+  errors: [
+    SiteLanNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type GetSiteWanError =
+  | SiteWanNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Get a specific Site WAN. */
+export const getSiteWan: API.OperationMethod<
+  GetSiteWanRequest,
+  GetSiteWanResponse,
+  GetSiteWanError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetSiteWanRequest,
+  output: GetSiteWanResponse,
+  errors: [
+    SiteWanNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListAppsError =
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Lists Apps associated with an account. */
+export const listApps: API.OperationMethod<
+  ListAppsRequest,
+  ListAppsResponse,
+  ListAppsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListAppsRequest,
+  output: ListAppsResponse,
+  errors: [
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListCf1SiteRampsError = CloudflareOpError;
+/** Lists ramps (network connections) associated with a CF1 Site. Ramps represent GRE tunnels, IPsec tunnels, interconnects, or MCONN links. */
+export const listCf1SiteRamps: API.OperationMethod<
+  ListCf1SiteRampsRequest,
+  ListCf1SiteRampsResponse,
+  ListCf1SiteRampsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCf1SiteRampsRequest,
+  output: ListCf1SiteRampsResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesAclsListError = CloudflareOpError;
+export type ListCf1SitesError = CloudflareOpError;
+/** Lists CF1 Sites associated with an account. A CF1 Site represents a physical customer network location with optional geographic coordinates. */
+export const listCf1Sites: API.OperationMethod<
+  ListCf1SitesRequest,
+  ListCf1SitesResponse,
+  ListCf1SitesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCf1SitesRequest,
+  output: ListCf1SitesResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListCfInterconnectsError = CloudflareOpError;
+/** Lists interconnects associated with an account. */
+export const listCfInterconnects: API.OperationMethod<
+  ListCfInterconnectsRequest,
+  ListCfInterconnectsResponse,
+  ListCfInterconnectsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListCfInterconnectsRequest,
+  output: ListCfInterconnectsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListConnectorEventLatestsError = CloudflareOpError;
+/** Get latest Events */
+export const listConnectorEventLatests: API.OperationMethod<
+  ListConnectorEventLatestsRequest,
+  ListConnectorEventLatestsResponse,
+  ListConnectorEventLatestsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConnectorEventLatestsRequest,
+  output: ListConnectorEventLatestsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListConnectorEventsError = CloudflareOpError;
+/** List Events */
+export const listConnectorEvents: API.OperationMethod<
+  ListConnectorEventsRequest,
+  ListConnectorEventsResponse,
+  ListConnectorEventsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConnectorEventsRequest,
+  output: ListConnectorEventsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListConnectorsError = CloudflareOpError;
+/** List Connectors */
+export const listConnectors: API.OperationMethod<
+  ListConnectorsRequest,
+  ListConnectorsResponse,
+  ListConnectorsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConnectorsRequest,
+  output: ListConnectorsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListConnectorSnapshotLatestsError = CloudflareOpError;
+/** Get latest Snapshots */
+export const listConnectorSnapshotLatests: API.OperationMethod<
+  ListConnectorSnapshotLatestsRequest,
+  ListConnectorSnapshotLatestsResponse,
+  ListConnectorSnapshotLatestsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConnectorSnapshotLatestsRequest,
+  output: ListConnectorSnapshotLatestsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListConnectorSnapshotsError = CloudflareOpError;
+/** List Snapshots */
+export const listConnectorSnapshots: API.OperationMethod<
+  ListConnectorSnapshotsRequest,
+  ListConnectorSnapshotsResponse,
+  ListConnectorSnapshotsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListConnectorSnapshotsRequest,
+  output: ListConnectorSnapshotsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListGreTunnelsError =
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Lists GRE tunnels associated with an account. */
+export const listGreTunnels: API.OperationMethod<
+  ListGreTunnelsRequest,
+  ListGreTunnelsResponse,
+  ListGreTunnelsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListGreTunnelsRequest,
+  output: ListGreTunnelsResponse,
+  errors: [
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListIpsecTunnelsError =
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Lists IPsec tunnels associated with an account. */
+export const listIpsecTunnels: API.OperationMethod<
+  ListIpsecTunnelsRequest,
+  ListIpsecTunnelsResponse,
+  ListIpsecTunnelsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListIpsecTunnelsRequest,
+  output: ListIpsecTunnelsResponse,
+  errors: [
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListPcapsError = CloudflareOpError;
+/** Lists all packet capture requests for an account. */
+export const listPcaps: API.OperationMethod<
+  ListPcapsRequest,
+  ListPcapsResponse,
+  ListPcapsError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListPcapsRequest,
+  output: ListPcapsResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListRoutesError =
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** List all Magic static routes. */
+export const listRoutes: API.OperationMethod<
+  ListRoutesRequest,
+  ListRoutesResponse,
+  ListRoutesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListRoutesRequest,
+  output: ListRoutesResponse,
+  errors: [
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSiteAclsError =
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
 /** Lists Site ACLs associated with an account. */
-export const sitesAclsList: API.OperationMethod<
-  SitesAclsListRequest,
-  SitesAclsListResponse,
-  SitesAclsListError,
+export const listSiteAcls: API.OperationMethod<
+  ListSiteAclsRequest,
+  ListSiteAclsResponse,
+  ListSiteAclsError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesAclsListRequest,
-  output: SitesAclsListResponse,
+  input: ListSiteAclsRequest,
+  output: ListSiteAclsResponse,
+  errors: [
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSiteLansError =
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Lists Site LANs associated with an account. */
+export const listSiteLans: API.OperationMethod<
+  ListSiteLansRequest,
+  ListSiteLansResponse,
+  ListSiteLansError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSiteLansRequest,
+  output: ListSiteLansResponse,
+  errors: [
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSitesError =
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Lists Sites associated with an account. Use connectorid query param to return sites where connectorid matches either site.ConnectorID or site.SecondaryConnectorID. */
+export const listSites: API.OperationMethod<
+  ListSitesRequest,
+  ListSitesResponse,
+  ListSitesError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSitesRequest,
+  output: ListSitesResponse,
+  errors: [
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ListSiteWansError =
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Lists Site WANs associated with an account. */
+export const listSiteWans: API.OperationMethod<
+  ListSiteWansRequest,
+  ListSiteWansResponse,
+  ListSiteWansError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ListSiteWansRequest,
+  output: ListSiteWansResponse,
+  errors: [
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchAppError =
+  | AppNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Updates an Account App */
+export const patchApp: API.OperationMethod<
+  PatchAppRequest,
+  PatchAppResponse,
+  PatchAppError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchAppRequest,
+  output: PatchAppResponse,
+  errors: [
+    AppNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchCf1SiteError = CloudflareOpError;
+/** Partially updates a specific CF1 Site for an account. Only the fields included in the request body are modified; omitted fields retain their existing values. */
+export const patchCf1Site: API.OperationMethod<
+  PatchCf1SiteRequest,
+  PatchCf1SiteResponse,
+  PatchCf1SiteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchCf1SiteRequest,
+  output: PatchCf1SiteResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesAclsUpdateError = CloudflareOpError;
-/** Update a specific Site ACL. */
-export const sitesAclsUpdate: API.OperationMethod<
-  SitesAclsUpdateRequest,
-  SitesAclsUpdateResponse,
-  SitesAclsUpdateError,
+export type PatchConnectorError = CloudflareOpError;
+/** Edit Connector to update specific properties or Re-provision License Key */
+export const patchConnector: API.OperationMethod<
+  PatchConnectorRequest,
+  PatchConnectorResponse,
+  PatchConnectorError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesAclsUpdateRequest,
-  output: SitesAclsUpdateResponse,
+  input: PatchConnectorRequest,
+  output: PatchConnectorResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSiteError =
+  | SiteNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Patch a specific Site. */
+export const patchSite: API.OperationMethod<
+  PatchSiteRequest,
+  PatchSiteResponse,
+  PatchSiteError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSiteRequest,
+  output: PatchSiteResponse,
+  errors: [
+    SiteNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSiteAclError =
+  | SiteAclNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Patch a specific Site ACL. */
+export const patchSiteAcl: API.OperationMethod<
+  PatchSiteAclRequest,
+  PatchSiteAclResponse,
+  PatchSiteAclError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSiteAclRequest,
+  output: PatchSiteAclResponse,
+  errors: [
+    SiteAclNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSiteLanError =
+  | SiteLanNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Patch a specific Site LAN. */
+export const patchSiteLan: API.OperationMethod<
+  PatchSiteLanRequest,
+  PatchSiteLanResponse,
+  PatchSiteLanError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSiteLanRequest,
+  output: PatchSiteLanResponse,
+  errors: [
+    SiteLanNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PatchSiteWanError =
+  | SiteWanNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Patch a specific Site WAN. */
+export const patchSiteWan: API.OperationMethod<
+  PatchSiteWanRequest,
+  PatchSiteWanResponse,
+  PatchSiteWanError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PatchSiteWanRequest,
+  output: PatchSiteWanResponse,
+  errors: [
+    SiteWanNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type PskGenerateIpsecTunnelError = CloudflareOpError;
+/** Generates a Pre-Shared Key for a specific IPsec tunnel used in the IKE session. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After a PSK is generated, the PSK is immediately persisted to Cloudflare's edge and cannot be retrieved later. Store the PSK in a safe place. */
+export const pskGenerateIpsecTunnel: API.OperationMethod<
+  PskGenerateIpsecTunnelRequest,
+  PskGenerateIpsecTunnelResponse,
+  PskGenerateIpsecTunnelError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PskGenerateIpsecTunnelRequest,
+  output: PskGenerateIpsecTunnelResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PskSetIpsecTunnelError = CloudflareOpError;
+/** Sets Pre-Shared Keys for multiple IPsec tunnels associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. After PSKs are applied, they are immediately persisted to Cloudflare's edge and cannot be retrieved later. Store the PSKs in a safe place. */
+export const pskSetIpsecTunnel: API.OperationMethod<
+  PskSetIpsecTunnelRequest,
+  PskSetIpsecTunnelResponse,
+  PskSetIpsecTunnelError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PskSetIpsecTunnelRequest,
+  output: PskSetIpsecTunnelResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+export type PutCfInterconnectError = CloudflareOpError;
+/** Updates a specific interconnect associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
+export const putCfInterconnect: API.OperationMethod<
+  PutCfInterconnectRequest,
+  PutCfInterconnectResponse,
+  PutCfInterconnectError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: PutCfInterconnectRequest,
+  output: PutCfInterconnectResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
@@ -16025,254 +16534,236 @@ export const sitesAppConfigurationUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-export type SitesCreateError = CloudflareOpError;
-/** Creates a new Site */
-export const sitesCreate: API.OperationMethod<
-  SitesCreateRequest,
-  SitesCreateResponse,
-  SitesCreateError,
+export type StopPcapError = CloudflareOpError;
+/** Stop full PCAP. */
+export const stopPcap: API.OperationMethod<
+  StopPcapRequest,
+  StopPcapResponse,
+  StopPcapError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesCreateRequest,
-  output: SitesCreateResponse,
+  input: StopPcapRequest,
+  output: StopPcapResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesDeleteError = CloudflareOpError;
-/** Remove a specific Site. */
-export const sitesDelete: API.OperationMethod<
-  SitesDeleteRequest,
-  SitesDeleteResponse,
-  SitesDeleteError,
+export type UpdateAppError =
+  | AppNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Updates an Account App */
+export const updateApp: API.OperationMethod<
+  UpdateAppRequest,
+  UpdateAppResponse,
+  UpdateAppError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesDeleteRequest,
-  output: SitesDeleteResponse,
+  input: UpdateAppRequest,
+  output: UpdateAppResponse,
+  errors: [
+    AppNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type UpdateConnectorError = CloudflareOpError;
+/** Replace Connector or Re-provision License Key */
+export const updateConnector: API.OperationMethod<
+  UpdateConnectorRequest,
+  UpdateConnectorResponse,
+  UpdateConnectorError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateConnectorRequest,
+  output: UpdateConnectorResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesEditError = CloudflareOpError;
-/** Patch a specific Site. */
-export const sitesEdit: API.OperationMethod<
-  SitesEditRequest,
-  SitesEditResponse,
-  SitesEditError,
+export type UpdateGreTunnelError =
+  | GreTunnelNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Updates a specific GRE tunnel. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
+export const updateGreTunnel: API.OperationMethod<
+  UpdateGreTunnelRequest,
+  UpdateGreTunnelResponse,
+  UpdateGreTunnelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesEditRequest,
-  output: SitesEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateGreTunnelRequest,
+  output: UpdateGreTunnelResponse,
+  errors: [
+    GreTunnelNotFound,
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesGetError = CloudflareOpError;
-/** Get a specific Site. */
-export const sitesGet: API.OperationMethod<
-  SitesGetRequest,
-  SitesGetResponse,
-  SitesGetError,
+export type UpdateIpsecTunnelError =
+  | IpsecTunnelNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Updates a specific IPsec tunnel associated with an account. Use `?validate_only=true` as an optional query parameter to only run validation without persisting changes. */
+export const updateIpsecTunnel: API.OperationMethod<
+  UpdateIpsecTunnelRequest,
+  UpdateIpsecTunnelResponse,
+  UpdateIpsecTunnelError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesGetRequest,
-  output: SitesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateIpsecTunnelRequest,
+  output: UpdateIpsecTunnelResponse,
+  errors: [
+    IpsecTunnelNotFound,
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesLansCreateError = CloudflareOpError;
-/** Creates a new Site LAN. If the site is in high availability mode, static_addressing is required along with secondary and virtual address. */
-export const sitesLansCreate: API.OperationMethod<
-  SitesLansCreateRequest,
-  SitesLansCreateResponse,
-  SitesLansCreateError,
+export type UpdateRouteError =
+  | RouteNotFound
+  | MagicTransitNotOnboarded
+  | Forbidden
+  | CloudflareOpError;
+/** Update a specific Magic static route. Use `?validate_only=true` as an optional query parameter to run validation only without persisting changes. */
+export const updateRoute: API.OperationMethod<
+  UpdateRouteRequest,
+  UpdateRouteResponse,
+  UpdateRouteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesLansCreateRequest,
-  output: SitesLansCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateRouteRequest,
+  output: UpdateRouteResponse,
+  errors: [
+    RouteNotFound,
+    MagicTransitNotOnboarded,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesLansDeleteError = CloudflareOpError;
-/** Remove a specific Site LAN. */
-export const sitesLansDelete: API.OperationMethod<
-  SitesLansDeleteRequest,
-  SitesLansDeleteResponse,
-  SitesLansDeleteError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SitesLansDeleteRequest,
-  output: SitesLansDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SitesLansEditError = CloudflareOpError;
-/** Patch a specific Site LAN. */
-export const sitesLansEdit: API.OperationMethod<
-  SitesLansEditRequest,
-  SitesLansEditResponse,
-  SitesLansEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SitesLansEditRequest,
-  output: SitesLansEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SitesLansGetError = CloudflareOpError;
-/** Get a specific Site LAN. */
-export const sitesLansGet: API.OperationMethod<
-  SitesLansGetRequest,
-  SitesLansGetResponse,
-  SitesLansGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SitesLansGetRequest,
-  output: SitesLansGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SitesLansListError = CloudflareOpError;
-/** Lists Site LANs associated with an account. */
-export const sitesLansList: API.OperationMethod<
-  SitesLansListRequest,
-  SitesLansListResponse,
-  SitesLansListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SitesLansListRequest,
-  output: SitesLansListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SitesLansUpdateError = CloudflareOpError;
-/** Update a specific Site LAN. */
-export const sitesLansUpdate: API.OperationMethod<
-  SitesLansUpdateRequest,
-  SitesLansUpdateResponse,
-  SitesLansUpdateError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SitesLansUpdateRequest,
-  output: SitesLansUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SitesListError = CloudflareOpError;
-/** Lists Sites associated with an account. Use connectorid query param to return sites where connectorid matches either site.ConnectorID or site.SecondaryConnectorID. */
-export const sitesList: API.OperationMethod<
-  SitesListRequest,
-  SitesListResponse,
-  SitesListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SitesListRequest,
-  output: SitesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SitesUpdateError = CloudflareOpError;
+export type UpdateSiteError =
+  | SiteNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
 /** Update a specific Site. */
-export const sitesUpdate: API.OperationMethod<
-  SitesUpdateRequest,
-  SitesUpdateResponse,
-  SitesUpdateError,
+export const updateSite: API.OperationMethod<
+  UpdateSiteRequest,
+  UpdateSiteResponse,
+  UpdateSiteError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesUpdateRequest,
-  output: SitesUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateSiteRequest,
+  output: UpdateSiteResponse,
+  errors: [
+    SiteNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesWansCreateError = CloudflareOpError;
-/** Creates a new Site WAN. */
-export const sitesWansCreate: API.OperationMethod<
-  SitesWansCreateRequest,
-  SitesWansCreateResponse,
-  SitesWansCreateError,
+export type UpdateSiteAclError =
+  | SiteAclNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Update a specific Site ACL. */
+export const updateSiteAcl: API.OperationMethod<
+  UpdateSiteAclRequest,
+  UpdateSiteAclResponse,
+  UpdateSiteAclError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesWansCreateRequest,
-  output: SitesWansCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateSiteAclRequest,
+  output: UpdateSiteAclResponse,
+  errors: [
+    SiteAclNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesWansDeleteError = CloudflareOpError;
-/** Remove a specific Site WAN. */
-export const sitesWansDelete: API.OperationMethod<
-  SitesWansDeleteRequest,
-  SitesWansDeleteResponse,
-  SitesWansDeleteError,
+export type UpdateSiteLanError =
+  | SiteLanNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
+/** Update a specific Site LAN. */
+export const updateSiteLan: API.OperationMethod<
+  UpdateSiteLanRequest,
+  UpdateSiteLanResponse,
+  UpdateSiteLanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesWansDeleteRequest,
-  output: SitesWansDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  input: UpdateSiteLanRequest,
+  output: UpdateSiteLanResponse,
+  errors: [
+    SiteLanNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
 }));
 
-export type SitesWansEditError = CloudflareOpError;
-/** Patch a specific Site WAN. */
-export const sitesWansEdit: API.OperationMethod<
-  SitesWansEditRequest,
-  SitesWansEditResponse,
-  SitesWansEditError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SitesWansEditRequest,
-  output: SitesWansEditResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SitesWansGetError = CloudflareOpError;
-/** Get a specific Site WAN. */
-export const sitesWansGet: API.OperationMethod<
-  SitesWansGetRequest,
-  SitesWansGetResponse,
-  SitesWansGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SitesWansGetRequest,
-  output: SitesWansGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SitesWansListError = CloudflareOpError;
-/** Lists Site WANs associated with an account. */
-export const sitesWansList: API.OperationMethod<
-  SitesWansListRequest,
-  SitesWansListResponse,
-  SitesWansListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: SitesWansListRequest,
-  output: SitesWansListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-export type SitesWansUpdateError = CloudflareOpError;
+export type UpdateSiteWanError =
+  | SiteWanNotFound
+  | MagicWanUnauthorized
+  | Forbidden
+  | CloudflareOpError;
 /** Update a specific Site WAN. */
-export const sitesWansUpdate: API.OperationMethod<
-  SitesWansUpdateRequest,
-  SitesWansUpdateResponse,
-  SitesWansUpdateError,
+export const updateSiteWan: API.OperationMethod<
+  UpdateSiteWanRequest,
+  UpdateSiteWanResponse,
+  UpdateSiteWanError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: SitesWansUpdateRequest,
-  output: SitesWansUpdateResponse,
+  input: UpdateSiteWanRequest,
+  output: UpdateSiteWanResponse,
+  errors: [
+    SiteWanNotFound,
+    MagicWanUnauthorized,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
+  protocol: CloudflareProtocol,
+}));
+
+export type ValidatePcapOwnershipError = CloudflareOpError;
+/** Validates buckets added to the packet captures API. */
+export const validatePcapOwnership: API.OperationMethod<
+  ValidatePcapOwnershipRequest,
+  ValidatePcapOwnershipResponse,
+  ValidatePcapOwnershipError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: ValidatePcapOwnershipRequest,
+  output: ValidatePcapOwnershipResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
