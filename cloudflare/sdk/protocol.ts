@@ -22,7 +22,10 @@
 import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import type * as AST from "effect/SchemaAST";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
+import type * as HttpClientError from "effect/unstable/http/HttpClientError";
 import * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
+import type * as HttpClientResponse from "effect/unstable/http/HttpClientResponse";
 import * as API from "@distilled.cloud/core/api";
 import {
   bodySymbol,
@@ -36,6 +39,20 @@ import {
 import { CloudflareCredentials } from "./credentials.ts";
 import { CloudflareError, CloudflareRateLimited } from "./errors.ts";
 import { envelopePayloadSymbol } from "./traits.ts";
+
+/**
+ * Error channel shared by every generated Cloudflare operation. Generated
+ * service files annotate operations with `API.OperationMethod<I, O,
+ * CloudflareOpError, CloudflareOpContext>` explicitly so the compiler never
+ * infers these back out of the schema generics.
+ */
+export type CloudflareOpError =
+  | CloudflareError
+  | CloudflareRateLimited
+  | HttpClientError.HttpClientError;
+
+/** Context (requirements) shared by every generated Cloudflare operation. */
+export type CloudflareOpContext = CloudflareCredentials | HttpClient.HttpClient;
 
 // --- AST helpers (survive S.optional / Suspend / transforms) -----------------
 
@@ -86,121 +103,140 @@ const fail = (
   e: CloudflareError | CloudflareRateLimited,
 ): Effect.Effect<never> => Effect.fail(e) as Effect.Effect<never>;
 
-export const CloudflareProtocol = Layer.effect(
-  API.Protocol,
+// The protocol layer is memoized per process by `API.make` (see
+// `OperationConfig.protocol`), so the build must not capture credentials —
+// `encode` resolves CloudflareCredentials from the calling fiber's context on
+// every request instead. Like the error channel above, the requirement is
+// erased at this boundary (Protocol effects are typed with no requirements)
+// and reintroduced for callers by the generated `CloudflareOpContext`
+// annotations.
+const encode = ({
+  input,
+  inputAst,
+}: {
+  readonly input: unknown;
+  readonly inputAst: AST.AST;
+}) =>
   Effect.gen(function* () {
     const creds = yield* CloudflareCredentials;
+    const inputObj = (input ?? {}) as Record<string, unknown>;
+    const http = getAnn(inputAst, httpSymbol) as HttpTrait | undefined;
+    if (!http) {
+      return yield* Effect.die(
+        new Error("operation input is missing the Http() trait"),
+      );
+    }
 
-    return API.Protocol.of({
-      encode: ({ input, inputAst }) =>
-        Effect.gen(function* () {
-          const inputObj = (input ?? {}) as Record<string, unknown>;
-          const http = getAnn(inputAst, httpSymbol) as HttpTrait | undefined;
-          if (!http) {
-            return yield* Effect.die(
-              new Error("operation input is missing the Http() trait"),
-            );
-          }
+    const headers: Record<string, string> = {
+      authorization: `Bearer ${creds.apiToken}`,
+    };
+    const body: Record<string, unknown> = {};
+    const query = new URLSearchParams();
+    let uri = http.uri;
 
-          const headers: Record<string, string> = {
-            authorization: `Bearer ${creds.apiToken}`,
-          };
-          const body: Record<string, unknown> = {};
-          const query = new URLSearchParams();
-          let uri = http.uri;
+    for (const prop of getProps(inputAst)) {
+      const key = String(prop.name);
+      const value = inputObj[key];
+      if (value === undefined) continue;
 
-          for (const prop of getProps(inputAst)) {
-            const key = String(prop.name);
-            const value = inputObj[key];
-            if (value === undefined) continue;
+      if (hasPropAnn(prop, labelSymbol)) {
+        const token = nameOf(prop, labelSymbol);
+        uri = uri.replace(`{${token}}`, encodeURIComponent(String(value)));
+      } else if (hasPropAnn(prop, headerSymbol)) {
+        headers[nameOf(prop, headerSymbol).toLowerCase()] = String(value);
+      } else if (hasPropAnn(prop, querySymbol)) {
+        const name = nameOf(prop, querySymbol);
+        if (Array.isArray(value)) {
+          for (const v of value) query.append(name, String(v));
+        } else {
+          query.append(name, String(value));
+        }
+      } else {
+        body[nameOf(prop, bodySymbol)] = value;
+      }
+    }
 
-            if (hasPropAnn(prop, labelSymbol)) {
-              const token = nameOf(prop, labelSymbol);
-              uri = uri.replace(
-                `{${token}}`,
-                encodeURIComponent(String(value)),
-              );
-            } else if (hasPropAnn(prop, headerSymbol)) {
-              headers[nameOf(prop, headerSymbol).toLowerCase()] = String(value);
-            } else if (hasPropAnn(prop, querySymbol)) {
-              const name = nameOf(prop, querySymbol);
-              if (Array.isArray(value)) {
-                for (const v of value) query.append(name, String(v));
-              } else {
-                query.append(name, String(value));
-              }
-            } else {
-              body[nameOf(prop, bodySymbol)] = value;
-            }
-          }
+    const qs = query.toString();
+    const url = `${creds.baseUrl}${uri}${qs ? `?${qs}` : ""}`;
 
-          const qs = query.toString();
-          const url = `${creds.baseUrl}${uri}${qs ? `?${qs}` : ""}`;
+    let request = HttpClientRequest.make(http.method)(url).pipe(
+      HttpClientRequest.setHeaders(headers),
+    );
+    if (!BODYLESS.has(http.method) && Object.keys(body).length > 0) {
+      request = request.pipe(HttpClientRequest.bodyJsonUnsafe(body));
+    }
+    return request;
+  });
 
-          let request = HttpClientRequest.make(http.method)(url).pipe(
-            HttpClientRequest.setHeaders(headers),
-          );
-          if (!BODYLESS.has(http.method) && Object.keys(body).length > 0) {
-            request = request.pipe(HttpClientRequest.bodyJsonUnsafe(body));
-          }
-          return request;
-        }),
+const decode = ({
+  response,
+  outputAst,
+}: {
+  readonly response: HttpClientResponse.HttpClientResponse;
+  readonly outputAst: AST.AST;
+}) =>
+  Effect.gen(function* () {
+    const json = ((yield* response.json.pipe(Effect.orDie)) ?? {}) as Record<
+      string,
+      unknown
+    >;
 
-      decode: ({ response, outputAst }) =>
-        Effect.gen(function* () {
-          const json = ((yield* response.json.pipe(Effect.orDie)) ??
-            {}) as Record<string, unknown>;
+    // Error envelope or non-2xx → typed Cloudflare error.
+    const failed = response.status >= 400 || json.success === false;
+    if (failed) {
+      const rawErrors = Array.isArray(json.errors) ? json.errors : [];
+      const errors = rawErrors.map((e: any) => ({
+        code: typeof e?.code === "number" ? e.code : undefined,
+        message: String(e?.message ?? `HTTP ${response.status}`),
+      }));
+      if (errors.length === 0) {
+        errors.push({
+          code: undefined,
+          message: `HTTP ${response.status}`,
+        });
+      }
+      if (response.status === 429) {
+        return yield* fail(
+          new CloudflareRateLimited({ status: response.status, errors }),
+        );
+      }
+      return yield* fail(
+        new CloudflareError({ status: response.status, errors }),
+      );
+    }
 
-          // Error envelope or non-2xx → typed Cloudflare error.
-          const failed = response.status >= 400 || json.success === false;
-          if (failed) {
-            const rawErrors = Array.isArray(json.errors) ? json.errors : [];
-            const errors = rawErrors.map((e: any) => ({
-              code: typeof e?.code === "number" ? e.code : undefined,
-              message: String(e?.message ?? `HTTP ${response.status}`),
-            }));
-            if (errors.length === 0) {
-              errors.push({
-                code: undefined,
-                message: `HTTP ${response.status}`,
-              });
-            }
-            if (response.status === 429) {
-              return yield* fail(
-                new CloudflareRateLimited({ status: response.status, errors }),
-              );
-            }
-            return yield* fail(
-              new CloudflareError({ status: response.status, errors }),
-            );
-          }
+    // Unwrap the envelope: the payload is `result` (fall back to the whole
+    // body for the handful of endpoints that don't use the envelope).
+    const payload = ("result" in json ? json.result : json) as
+      | Record<string, unknown>
+      | unknown;
+    const result: Record<string, unknown> = {};
 
-          // Unwrap the envelope: the payload is `result` (fall back to the whole
-          // body for the handful of endpoints that don't use the envelope).
-          const payload = ("result" in json ? json.result : json) as
-            | Record<string, unknown>
-            | unknown;
-          const result: Record<string, unknown> = {};
+    for (const prop of getProps(outputAst)) {
+      const key = String(prop.name);
+      if (hasPropAnn(prop, envelopePayloadSymbol)) {
+        result[key] = payload;
+      } else if (hasPropAnn(prop, headerSymbol)) {
+        const v = response.headers[nameOf(prop, headerSymbol).toLowerCase()];
+        if (v !== undefined) result[key] = v;
+      } else if (hasPropAnn(prop, responseCodeSymbol)) {
+        result[key] = response.status;
+      } else {
+        const wire = nameOf(prop, bodySymbol);
+        if (payload && typeof payload === "object" && wire in payload) {
+          result[key] = (payload as Record<string, unknown>)[wire];
+        }
+      }
+    }
+    return result;
+  });
 
-          for (const prop of getProps(outputAst)) {
-            const key = String(prop.name);
-            if (hasPropAnn(prop, envelopePayloadSymbol)) {
-              result[key] = payload;
-            } else if (hasPropAnn(prop, headerSymbol)) {
-              const v =
-                response.headers[nameOf(prop, headerSymbol).toLowerCase()];
-              if (v !== undefined) result[key] = v;
-            } else if (hasPropAnn(prop, responseCodeSymbol)) {
-              result[key] = response.status;
-            } else {
-              const wire = nameOf(prop, bodySymbol);
-              if (payload && typeof payload === "object" && wire in payload) {
-                result[key] = (payload as Record<string, unknown>)[wire];
-              }
-            }
-          }
-          return result;
-        }),
-    });
+export const CloudflareProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
+  API.Protocol,
+  API.Protocol.of({
+    // Erase encode's CloudflareCredentials requirement (see comment above).
+    encode: (args) =>
+      encode(args) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
+    decode,
   }),
 );

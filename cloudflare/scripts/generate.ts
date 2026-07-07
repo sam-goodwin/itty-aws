@@ -5,14 +5,25 @@
  * Input:  cloudflare/smithy/<resource>.json  (Smithy 2.0 models, one per resource)
  * Output: cloudflare/sdk/operations/<resource>.ts  +  operations/index.ts
  *
- * Each operation becomes an `API.make(...)` call following the playground shape:
+ * Each shape gets an explicit TypeScript type plus a schema const, and each
+ * operation becomes an explicitly-annotated `API.make(...)` call:
  *
- *   export const FinetunesCreate = API.make(() => ({
- *     input: FinetunesCreateRequest,    // S.Struct + Http()/Label()/Query()/Header() traits
- *     output: FinetunesCreateResponse,  // the unwrapped `result` payload
- *     errors: [CloudflareRateLimited, CloudflareError],
- *     protocol: CloudflareProtocol,
- *   }));
+ *   export interface FinetunesCreateRequest { ... }        // hand-emitted type
+ *   export const FinetunesCreateRequest = S.suspend(() =>  // lazy construction
+ *     S.Struct({ ... }).pipe(T.Http({ ... })),
+ *   ).annotate({ identifier: "FinetunesCreateRequest" })
+ *     as any as S.Schema<FinetunesCreateRequest>;          // no inference needed
+ *
+ *   export const FinetunesCreate: API.OperationMethod<
+ *     FinetunesCreateRequest, FinetunesCreateResponse,
+ *     CloudflareOpError, CloudflareOpContext
+ *   > = API.make(() => ({ input, output, errors, protocol }));
+ *
+ * Compile-time performance (ported from distilled PR #360): the emitted
+ * interfaces / type aliases and `as any as S.Schema<T>` casts carry the real
+ * types, `S` is the `any`-collapsing `@distilled.cloud/core/schema` wrapper so
+ * tsc never instantiates the heavy effect/Schema generics, and `S.suspend`
+ * defers schema construction to the first call of an operation.
  *
  * The protocol, credentials, errors, and traits are hand-written (see ../sdk).
  * Only ./operations is generated.
@@ -47,9 +58,28 @@ const PRELUDE: Record<string, string> = {
   Unit: "S.Struct({})",
 };
 
+/** TypeScript type for each prelude shape, mirroring PRELUDE's schemas. */
+const TS_PRELUDE: Record<string, string> = {
+  String: "string",
+  Boolean: "boolean",
+  Double: "number",
+  Float: "number",
+  Integer: "number",
+  Long: "number",
+  BigInteger: "number",
+  BigDecimal: "number",
+  Timestamp: "string",
+  Blob: "string",
+  Document: "unknown",
+  Unit: "{}",
+};
+
 const q = (s: string): string => JSON.stringify(s);
 const local = (id: string): string => id.split("#")[1] ?? id;
 const isPrelude = (id: string): boolean => id.startsWith("smithy.api#");
+
+const IDENT = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
+const tsKey = (s: string): string => (IDENT.test(s) ? s : q(s));
 
 const oneLine = (s: string | undefined): string | undefined =>
   s ? s.replace(/\s+/g, " ").replace(/\*\//g, "*\\/").trim() : undefined;
@@ -152,10 +182,16 @@ const generateModel = (
     if (isPrelude(target)) return PRELUDE[local(target)] ?? "S.Unknown";
     const name = local(target);
     const ti = indexOf.get(target);
-    if (ti !== undefined && ti > selfIdx)
-      return `S.suspend((): any => ${name})`;
+    if (ti !== undefined && ti > selfIdx) return `S.suspend(() => ${name})`;
     return name;
   };
+
+  // TypeScript type reference for a target. Named shapes all get an emitted
+  // interface / type alias, so forward references are always fine.
+  const tsRef = (target: string): string =>
+    isPrelude(target)
+      ? (TS_PRELUDE[local(target)] ?? "unknown")
+      : local(target);
 
   const emitMember = (memberName: string, m: any, selfIdx: number): string => {
     const traits = m.traits ?? {};
@@ -186,7 +222,10 @@ const generateModel = (
     return `  ${q(memberName)}: ${expr},`;
   };
 
-  // 5. Emit shape declarations in dependency order.
+  // 5. Emit shape declarations in dependency order. Every shape gets an
+  //    explicit TypeScript type (interface / type alias) next to its schema
+  //    const; the const is cast to `S.Schema<T>` so the compiler never infers
+  //    types out of the schema generics (see the header comment).
   const out: string[] = [];
   order.forEach((id, i) => {
     const d = shapes[id];
@@ -195,40 +234,67 @@ const generateModel = (
     if (doc) out.push(`/** ${doc} */`);
 
     if (d.type === "structure") {
-      const members = Object.entries(d.members ?? {}).map(([mn, m]) =>
-        emitMember(mn, m, i),
+      const entries = Object.entries(d.members ?? {});
+      const fields = entries.map(([mn, m]: [string, any]) => {
+        const opt = "smithy.api#required" in (m.traits ?? {}) ? "" : "?";
+        return `  ${tsKey(mn)}${opt}: ${tsRef(m.target)};`;
+      });
+      out.push(
+        fields.length
+          ? `export interface ${name} {\n${fields.join("\n")}\n}`
+          : `export interface ${name} {}`,
       );
+      const members = entries.map(([mn, m]) => emitMember(mn, m, i));
       const struct = members.length
         ? `S.Struct({\n${members.join("\n")}\n})`
         : `S.Struct({})`;
       const http = httpFor[id];
       const tail = http ? `.pipe(T.Http(${JSON.stringify(http)}))` : "";
-      out.push(`export const ${name} = /*@__PURE__*/ ${struct}${tail};\n`);
-    } else if (d.type === "list") {
       out.push(
-        `export const ${name} = /*@__PURE__*/ S.Array(${ref(d.member.target, i)});\n`,
+        `export const ${name} = /*@__PURE__*/ S.suspend(() =>\n` +
+          `${struct}${tail},\n` +
+          `).annotate({ identifier: ${q(name)} }) as any as S.Schema<${name}>;\n`,
+      );
+    } else if (d.type === "list") {
+      out.push(`export type ${name} = ${tsRef(d.member.target)}[];`);
+      out.push(
+        `export const ${name} = /*@__PURE__*/ S.Array(${ref(d.member.target, i)}) as any as S.Schema<${name}>;\n`,
       );
     } else if (d.type === "map") {
       out.push(
-        `export const ${name} = /*@__PURE__*/ S.Record(S.String, ${ref(d.value.target, i)});\n`,
-      );
-    } else if (d.type === "enum") {
-      const values = Object.values(d.members ?? {}).map(
-        (m: any) => m.traits?.["smithy.api#enumValue"],
+        `export type ${name} = { [key: string]: ${tsRef(d.value.target)} | undefined };`,
       );
       out.push(
-        `export const ${name} = /*@__PURE__*/ S.Literals([${values.map(q).join(", ")}]);\n`,
+        `export const ${name} = /*@__PURE__*/ S.Record(S.String, ${ref(d.value.target, i)}) as any as S.Schema<${name}>;\n`,
       );
+    } else if (d.type === "enum") {
+      // Open string union: literal members for autocomplete, `(string & {})`
+      // so unknown / future values still pass. The schema stays S.String —
+      // the protocol never validates enum membership.
+      const values = Object.values(d.members ?? {})
+        .map((m: any) => m.traits?.["smithy.api#enumValue"])
+        .filter((v: unknown): v is string => typeof v === "string");
+      const union = values.length
+        ? `${values.map(q).join(" | ")} | (string & {})`
+        : "string";
+      out.push(`export type ${name} = ${union};`);
+      out.push(`export const ${name} = /*@__PURE__*/ S.String;\n`);
     }
   });
 
-  // 6. Emit operations.
+  // 6. Emit operations with explicit OperationMethod annotations so the
+  //    call signature comes from the emitted interfaces, not inference.
   for (const op of selected) {
     const opName = local(op.id);
     const doc = oneLine(op.def.traits?.["smithy.api#documentation"]);
     if (doc) out.push(`/** ${doc} */`);
     out.push(
-      `export const ${opName} = /*@__PURE__*/ API.make(() => ({\n` +
+      `export const ${opName}: API.OperationMethod<\n` +
+        `  ${local(op.def.__input)},\n` +
+        `  ${local(op.def.__output)},\n` +
+        `  CloudflareOpError,\n` +
+        `  CloudflareOpContext\n` +
+        `> = /*@__PURE__*/ API.make(() => ({\n` +
         `  input: ${local(op.def.__input)},\n` +
         `  output: ${local(op.def.__output)},\n` +
         `  errors: [CloudflareRateLimited, CloudflareError],\n` +
@@ -239,10 +305,14 @@ const generateModel = (
 
   const header =
     `// AUTO-GENERATED by scripts/generate.ts from cloudflare/smithy. Do not edit.\n` +
-    `import * as S from "effect/Schema";\n` +
+    `import * as S from "@distilled.cloud/core/schema";\n` +
     `import * as API from "@distilled.cloud/core/api";\n` +
     `import * as T from "../traits.ts";\n` +
-    `import { CloudflareProtocol } from "../protocol.ts";\n` +
+    `import {\n` +
+    `  CloudflareProtocol,\n` +
+    `  type CloudflareOpError,\n` +
+    `  type CloudflareOpContext,\n` +
+    `} from "../protocol.ts";\n` +
     `import { CloudflareError, CloudflareRateLimited } from "../errors.ts";\n\n`;
 
   return { code: header + out.join("\n") + "\n", operations: selected.length };

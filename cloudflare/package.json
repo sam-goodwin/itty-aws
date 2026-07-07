@@ -7,7 +7,8 @@
     "download-api-docs": "bun scripts/download-api-docs.ts",
     "spec-to-smithy": "bun scripts/spec-to-smithy.ts",
     "generate": "bun scripts/generate.ts",
-    "typecheck": "tsgo -p tsconfig.json"
+    "typecheck": "tsgo -p tsconfig.json",
+    "typecheck:strict": "tsgo -p tsconfig.strict.json"
   },
   "dependencies": {
     "@distilled.cloud/core": "workspace:*",

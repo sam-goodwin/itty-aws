@@ -6,6 +6,7 @@ import * as Option from "effect/Option";
 import * as Schedule from "effect/Schedule";
 import * as S from "effect/Schema";
 import type * as AST from "effect/SchemaAST";
+import * as Scope from "effect/Scope";
 import * as HttpClient from "effect/unstable/http/HttpClient";
 import type * as HttpClientError from "effect/unstable/http/HttpClientError";
 import type * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
@@ -102,6 +103,57 @@ export type ApiErrorClass = {
   };
 };
 
+/**
+ * The shape of a generated SDK operation: a plain function from input to
+ * Effect. Generated service files annotate every exported operation with this
+ * type explicitly (against their hand-emitted interfaces), so the compiler
+ * never has to infer it back out of the schema generics.
+ */
+export type OperationMethod<I, O, E, R> = (input: I) => Effect.Effect<O, E, R>;
+
+/**
+ * Generated SDKs may wrap each request/response schema in
+ * `Schema.suspend(() => ...)`, whose `.ast` is a `Suspend` node rather than the
+ * real node — force it here. `Suspend.thunk` memoizes, so this only pays once,
+ * and the ast is returned untouched when it isn't a Suspend (the common case
+ * for non-suspended schemas).
+ */
+const resolveAst = (ast: AST.AST): AST.AST =>
+  ast._tag === "Suspend" ? resolveAst(ast.thunk()) : ast;
+
+/**
+ * Protocol layers are built once per process and shared by every operation
+ * call (keyed by layer value identity — generated operations all reference the
+ * same module-level layer const). The build runs against a process-lifetime
+ * scope, and concurrent first calls are deduplicated through a private
+ * MemoMap.
+ *
+ * Contract for protocol implementations: the layer build must not capture
+ * per-call context. Anything call-dependent — credentials, per-request
+ * options — must be resolved inside `encode`/`decode`, which execute on the
+ * calling fiber and therefore see the caller's services on every request.
+ */
+const protocolMemoMap = Layer.makeMemoMapUnsafe();
+const protocolScope = Scope.makeUnsafe();
+const protocolContexts = new WeakMap<
+  Layer.Layer<Protocol, any, any>,
+  Context.Context<Protocol>
+>();
+
+const protocolContext = <PE, PR>(
+  layer: Layer.Layer<Protocol, PE, PR>,
+): Effect.Effect<Context.Context<Protocol>, PE, PR> => {
+  const cached = protocolContexts.get(layer);
+  if (cached) return Effect.succeed(cached);
+  return Effect.map(
+    Layer.buildWithMemoMap(layer, protocolMemoMap, protocolScope),
+    (ctx) => {
+      protocolContexts.set(layer, ctx);
+      return ctx;
+    },
+  );
+};
+
 export interface OperationConfig<
   I extends S.Top,
   O extends S.Top,
@@ -112,7 +164,12 @@ export interface OperationConfig<
   input?: I;
   output?: O;
   errors?: E;
-  /** The protocol layer that knows how to encode/decode this operation's wire format. */
+  /**
+   * The protocol layer that knows how to encode/decode this operation's wire
+   * format. Built once per process and shared across all operations that
+   * reference the same layer value — it must resolve call-dependent services
+   * (credentials etc.) inside encode/decode, not at build time.
+   */
   protocol: Layer.Layer<Protocol, PE, PR>;
   retryPolicy?: RetryPolicyFn;
 }
@@ -125,28 +182,47 @@ export function make<
   const E extends readonly ApiErrorClass[] = readonly [],
 >(
   configFn: () => OperationConfig<I, O, PE, PR, E>,
-): (
-  input: S.Schema.Type<I>,
-) => Effect.Effect<
+): OperationMethod<
+  S.Schema.Type<I>,
   S.Schema.Type<O>,
   InstanceType<E[number]> | PE | HttpClientError.HttpClientError,
   PR | HttpClient.HttpClient
 > {
-  const cfg = configFn();
+  // Lazily resolve the operation config + schema ASTs on first call, not at
+  // module-load time. Generated SDKs wrap each request/response schema in
+  // `Schema.suspend(() => ...)`; forcing them here (rather than when the
+  // `export const` is evaluated) keeps importing a service module cheap and
+  // only pays the schema-construction cost for operations that are actually
+  // called. Memoized so subsequent calls are free.
+  interface Prepared {
+    readonly cfg: OperationConfig<I, O, PE, PR, E>;
+    readonly inputAst: AST.AST;
+    readonly outputAst: AST.AST;
+  }
+  let prepared: Prepared | undefined;
+  const prepare = (): Prepared => {
+    if (prepared) return prepared;
+    const cfg = configFn();
+    prepared = {
+      cfg,
+      inputAst: resolveAst(cfg.input!.ast),
+      outputAst: resolveAst(cfg.output!.ast),
+    };
+    return prepared;
+  };
   return ((input: unknown) =>
-    Effect.gen(function* () {
-      const protocol = yield* Protocol;
-      const client = yield* HttpClient.HttpClient;
-      const request = yield* protocol.encode({
-        input,
-        inputAst: cfg.input!.ast,
-      });
-      const response = yield* client.execute(request);
-      return yield* protocol.decode({
-        response,
-        outputAst: cfg.output!.ast,
-      });
-    }).pipe(Effect.provide(cfg.protocol))) as any;
+    Effect.suspend(() => {
+      const { cfg, inputAst, outputAst } = prepare();
+      return Effect.flatMap(protocolContext(cfg.protocol), (protocolCtx) =>
+        Effect.gen(function* () {
+          const protocol = yield* Protocol;
+          const client = yield* HttpClient.HttpClient;
+          const request = yield* protocol.encode({ input, inputAst });
+          const response = yield* client.execute(request);
+          return yield* protocol.decode({ response, outputAst });
+        }).pipe(Effect.provideContext(protocolCtx)),
+      );
+    })) as any;
 }
 
 //#endregion

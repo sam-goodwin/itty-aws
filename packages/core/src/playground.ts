@@ -5,6 +5,8 @@ import * as Match from "effect/Match";
 import * as Schedule from "effect/Schedule";
 import * as S from "effect/Schema";
 import * as AST from "effect/SchemaAST";
+import type * as HttpClient from "effect/unstable/http/HttpClient";
+import type * as HttpClientError from "effect/unstable/http/HttpClientError";
 import * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
 import * as API from "./api.ts";
 import { withCategory } from "./error-category.ts";
@@ -91,68 +93,69 @@ const nameOf = (prop: AST.PropertySignature, symbol: symbol): string => {
  *   - `ResponseCode()`      → response status code (decode only)
  *   - no trait              → JSON body field
  */
-export const SampleProtocol = Layer.effect(
+export const SampleProtocol: Layer.Layer<API.Protocol> = Layer.succeed(
   API.Protocol,
-  Effect.gen(function* () {
-    const creds = yield* SampleCredentials;
-    return API.Protocol.of({
-      encode: ({ input, inputAst }) =>
-        Effect.gen(function* () {
-          const inputObj = (input ?? {}) as Record<string, unknown>;
+  API.Protocol.of({
+    // Protocol layers are memoized per process by API.make, so credentials
+    // are resolved per request from the calling fiber's context — never at
+    // layer build time. The requirement is erased at this boundary and
+    // carried for callers by the operation's type annotation instead.
+    encode: ({ input, inputAst }) =>
+      Effect.gen(function* () {
+        const creds = yield* SampleCredentials;
+        const inputObj = (input ?? {}) as Record<string, unknown>;
 
-          const body: Record<string, unknown> = {};
-          const headers: Record<string, string> = {
-            authorization: `Bearer ${creds.token}`,
-          };
-          const query = new URLSearchParams();
+        const body: Record<string, unknown> = {};
+        const headers: Record<string, string> = {
+          authorization: `Bearer ${creds.token}`,
+        };
+        const query = new URLSearchParams();
 
-          for (const prop of getProps(inputAst)) {
-            const key = String(prop.name);
-            const value = inputObj[key];
-            if (value === undefined) continue;
+        for (const prop of getProps(inputAst)) {
+          const key = String(prop.name);
+          const value = inputObj[key];
+          if (value === undefined) continue;
 
-            if (hasPropAnn(prop, T.headerSymbol)) {
-              headers[nameOf(prop, T.headerSymbol).toLowerCase()] =
-                String(value);
-            } else if (hasPropAnn(prop, T.querySymbol)) {
-              query.append(nameOf(prop, T.querySymbol), String(value));
-            } else {
-              // Body(name?) or no binding — JSON body field
-              body[nameOf(prop, T.bodySymbol)] = value;
-            }
+          if (hasPropAnn(prop, T.headerSymbol)) {
+            headers[nameOf(prop, T.headerSymbol).toLowerCase()] = String(value);
+          } else if (hasPropAnn(prop, T.querySymbol)) {
+            query.append(nameOf(prop, T.querySymbol), String(value));
+          } else {
+            // Body(name?) or no binding — JSON body field
+            body[nameOf(prop, T.bodySymbol)] = value;
           }
+        }
 
-          const qs = query.toString();
-          const url = creds.endpoint + (qs ? `?${qs}` : "");
+        const qs = query.toString();
+        const url = creds.endpoint + (qs ? `?${qs}` : "");
 
-          return HttpClientRequest.post(url).pipe(
-            HttpClientRequest.setHeaders(headers),
-            HttpClientRequest.bodyJsonUnsafe(body),
-          );
-        }),
+        return HttpClientRequest.post(url).pipe(
+          HttpClientRequest.setHeaders(headers),
+          HttpClientRequest.bodyJsonUnsafe(body),
+        );
+      }) as Effect.Effect<HttpClientRequest.HttpClientRequest>,
 
-      decode: ({ response, outputAst }) =>
-        Effect.gen(function* () {
-          const json = ((yield* response.json.pipe(Effect.orDie)) ??
-            {}) as Record<string, unknown>;
-          const result: Record<string, unknown> = {};
+    decode: ({ response, outputAst }) =>
+      Effect.gen(function* () {
+        const json = ((yield* response.json.pipe(Effect.orDie)) ??
+          {}) as Record<string, unknown>;
+        const result: Record<string, unknown> = {};
 
-          for (const prop of getProps(outputAst)) {
-            const key = String(prop.name);
-            if (hasPropAnn(prop, T.headerSymbol)) {
-              const headerName = nameOf(prop, T.headerSymbol).toLowerCase();
-              const v = response.headers[headerName];
-              if (v !== undefined) result[key] = v;
-            } else if (hasPropAnn(prop, T.responseCodeSymbol)) {
-              result[key] = response.status;
-            } else {
-              const wireName = nameOf(prop, T.bodySymbol);
-              if (wireName in json) result[key] = json[wireName];
-            }
+        for (const prop of getProps(outputAst)) {
+          const key = String(prop.name);
+          if (hasPropAnn(prop, T.headerSymbol)) {
+            const headerName = nameOf(prop, T.headerSymbol).toLowerCase();
+            const v = response.headers[headerName];
+            if (v !== undefined) result[key] = v;
+          } else if (hasPropAnn(prop, T.responseCodeSymbol)) {
+            result[key] = response.status;
+          } else {
+            const wireName = nameOf(prop, T.bodySymbol);
+            if (wireName in json) result[key] = json[wireName];
           }
-          return result;
-        }),
-    });
+        }
+        return result;
+      }),
   }),
 );
 
@@ -163,7 +166,18 @@ export const SampleRetryPolicy = API.addRetryPolicy(
   ),
 );
 
-export const SampleOperation = /*@__PURE__*/ API.make(() => ({
+// Annotated explicitly: SampleProtocol resolves SampleCredentials inside
+// encode (per request), so the requirement no longer flows through the layer
+// generics — the annotation carries it, mirroring the generated SDKs.
+export const SampleOperation: API.OperationMethod<
+  S.Schema.Type<typeof SampleRequest>,
+  S.Schema.Type<typeof SampleResponse>,
+  | SampleRetryableError
+  | SampleErrorA
+  | SampleErrorB
+  | HttpClientError.HttpClientError,
+  SampleCredentials | HttpClient.HttpClient
+> = /*@__PURE__*/ API.make(() => ({
   input: SampleRequest,
   output: SampleResponse,
   errors: [SampleRetryableError, SampleErrorA, SampleErrorB],
