@@ -17,6 +17,14 @@ import { UploadableSchema } from "../schemas.ts";
 // Errors
 // =============================================================================
 
+export class D1DatabaseNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<D1DatabaseNotFound>()("D1DatabaseNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10181 }],
+) {}
+
 export class DispatchNamespaceAlreadyExists extends T.applyErrorMatchers(
   Schema.TaggedErrorClass<DispatchNamespaceAlreadyExists>()(
     "DispatchNamespaceAlreadyExists",
@@ -41,12 +49,84 @@ export class DispatchNamespaceScriptNotFound extends T.applyErrorMatchers(
   [{ code: 10007 }],
 ) {}
 
+export class DurableObjectClassNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DurableObjectClassNotFound>()(
+    "DurableObjectClassNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10061 }],
+) {}
+
 export class Forbidden extends T.applyErrorMatchers(
   Schema.TaggedErrorClass<Forbidden>()("Forbidden", {
     code: Schema.Number,
     message: Schema.String,
   }),
   [{ status: 403 }],
+) {}
+
+export class HyperdriveConfigNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HyperdriveConfigNotFound>()(
+    "HyperdriveConfigNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10157 }],
+) {}
+
+export class KVNamespaceNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<KVNamespaceNotFound>()("KVNamespaceNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10041 }],
+) {}
+
+export class MtlsCertificateNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MtlsCertificateNotFound>()(
+    "MtlsCertificateNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 100143 }],
+) {}
+
+export class QueueNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 11000 }],
+) {}
+
+export class R2BucketNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<R2BucketNotFound>()("R2BucketNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10085 }],
+) {}
+
+export class SecretsStoreBindingNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SecretsStoreBindingNotFound>()(
+    "SecretsStoreBindingNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10182 }],
+) {}
+
+export class ServiceBindingNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ServiceBindingNotFound>()("ServiceBindingNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10144 }],
+) {}
+
+export class VectorizeIndexNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VectorizeIndexNotFound>()("VectorizeIndexNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10159 }],
 ) {}
 
 // =============================================================================
@@ -3963,7 +4043,17 @@ export const PutDispatchNamespaceScriptResponse =
 export type PutDispatchNamespaceScriptError =
   | DefaultErrors
   | DispatchNamespaceNotFound
-  | Forbidden;
+  | Forbidden
+  | SecretsStoreBindingNotFound
+  | KVNamespaceNotFound
+  | R2BucketNotFound
+  | D1DatabaseNotFound
+  | QueueNotFound
+  | ServiceBindingNotFound
+  | DurableObjectClassNotFound
+  | HyperdriveConfigNotFound
+  | VectorizeIndexNotFound
+  | MtlsCertificateNotFound;
 
 export const putDispatchNamespaceScript: API.OperationMethod<
   PutDispatchNamespaceScriptRequest,
@@ -3973,7 +4063,20 @@ export const putDispatchNamespaceScript: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: PutDispatchNamespaceScriptRequest,
   output: PutDispatchNamespaceScriptResponse,
-  errors: [DispatchNamespaceNotFound, Forbidden],
+  errors: [
+    DispatchNamespaceNotFound,
+    Forbidden,
+    SecretsStoreBindingNotFound,
+    KVNamespaceNotFound,
+    R2BucketNotFound,
+    D1DatabaseNotFound,
+    QueueNotFound,
+    ServiceBindingNotFound,
+    DurableObjectClassNotFound,
+    HyperdriveConfigNotFound,
+    VectorizeIndexNotFound,
+    MtlsCertificateNotFound,
+  ],
 }));
 
 export interface DeleteDispatchNamespaceScriptRequest {
