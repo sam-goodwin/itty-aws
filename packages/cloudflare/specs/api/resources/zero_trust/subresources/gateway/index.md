@@ -1244,6 +1244,10 @@ Retrieve the current Zero Trust account configuration.
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -1375,6 +1379,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       "inspection": {
         "mode": "static"
       },
+      "max_ttl_secs": 3600,
       "protocol_detection": {
         "enabled": true
       },
@@ -1619,6 +1624,10 @@ Update the current Zero Trust account configuration.
 
       - `"dynamic"`
 
+  - `max_ttl_secs: optional number`
+
+    Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
   - `protocol_detection: optional ProtocolDetection`
 
     Specify whether to detect protocols from the initial bytes of client traffic.
@@ -1903,6 +1912,10 @@ Update the current Zero Trust account configuration.
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -2037,6 +2050,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       "inspection": {
         "mode": "static"
       },
+      "max_ttl_secs": 3600,
       "protocol_detection": {
         "enabled": true
       },
@@ -2057,7 +2071,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
 
 **patch** `/accounts/{account_id}/gateway/configuration`
 
-Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, or `certificate` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration.
+Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, `certificate`, or `max_ttl_secs` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration.
 
 ### Path Parameters
 
@@ -2281,6 +2295,10 @@ Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decr
 
       - `"dynamic"`
 
+  - `max_ttl_secs: optional number`
+
+    Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
   - `protocol_detection: optional ProtocolDetection`
 
     Specify whether to detect protocols from the initial bytes of client traffic.
@@ -2565,6 +2583,10 @@ Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decr
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -2699,6 +2721,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       "inspection": {
         "mode": "static"
       },
+      "max_ttl_secs": 3600,
       "protocol_detection": {
         "enabled": true
       },
@@ -2919,7 +2942,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
 
 ### Gateway Configuration Settings
 
-- `GatewayConfigurationSettings object { activity_log, antivirus, block_page, 11 more }`
+- `GatewayConfigurationSettings object { activity_log, antivirus, block_page, 12 more }`
 
   Specify account settings.
 
@@ -3134,6 +3157,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       - `"static"`
 
       - `"dynamic"`
+
+  - `max_ttl_secs: optional number`
+
+    Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
 
   - `protocol_detection: optional ProtocolDetection`
 
@@ -3433,6 +3460,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -3691,6 +3722,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -3948,6 +3983,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
         - `"static"`
 
         - `"dynamic"`
+
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
 
     - `protocol_detection: optional ProtocolDetection`
 
@@ -5417,6 +5456,24 @@ List Zero Trust Gateway locations for an account.
 
     Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
 
+  - `max_ttl: optional object { mode, ttl_secs }`
+
+    Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+    - `mode: "inherit" or "override" or "disabled"`
+
+      `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+      - `"inherit"`
+
+      - `"override"`
+
+      - `"disabled"`
+
+    - `ttl_secs: optional number`
+
+      Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
+
   - `name: optional string`
 
     Specify the location name.
@@ -5523,6 +5580,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/locations
       "ip": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
       "ipv4_destination": "172.64.36.1",
       "ipv4_destination_backup": "172.64.36.2",
+      "max_ttl": {
+        "mode": "override",
+        "ttl_secs": 3600
+      },
       "name": "Austin Office Location",
       "networks": [
         {
@@ -5677,6 +5738,24 @@ Get a single Zero Trust Gateway location.
 
     Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
 
+  - `max_ttl: optional object { mode, ttl_secs }`
+
+    Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+    - `mode: "inherit" or "override" or "disabled"`
+
+      `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+      - `"inherit"`
+
+      - `"override"`
+
+      - `"disabled"`
+
+    - `ttl_secs: optional number`
+
+      Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
+
   - `name: optional string`
 
     Specify the location name.
@@ -5764,6 +5843,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/locations
     "ip": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
     "ipv4_destination": "172.64.36.1",
     "ipv4_destination_backup": "172.64.36.2",
+    "max_ttl": {
+      "mode": "override",
+      "ttl_secs": 3600
+    },
     "name": "Austin Office Location",
     "networks": [
       {
@@ -5858,6 +5941,24 @@ Create a new Zero Trust Gateway location.
       - `network: string`
 
         Specify the IPv6 address or IPv6 CIDR.
+
+- `max_ttl: optional object { mode, ttl_secs }`
+
+  Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+  - `mode: "inherit" or "override" or "disabled"`
+
+    `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+    - `"inherit"`
+
+    - `"override"`
+
+    - `"disabled"`
+
+  - `ttl_secs: optional number`
+
+    Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
 
 - `networks: optional array of object { network }`
 
@@ -5991,6 +6092,24 @@ Create a new Zero Trust Gateway location.
 
     Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
 
+  - `max_ttl: optional object { mode, ttl_secs }`
+
+    Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+    - `mode: "inherit" or "override" or "disabled"`
+
+      `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+      - `"inherit"`
+
+      - `"override"`
+
+      - `"disabled"`
+
+    - `ttl_secs: optional number`
+
+      Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
+
   - `name: optional string`
 
     Specify the location name.
@@ -6083,6 +6202,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/locations
     "ip": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
     "ipv4_destination": "172.64.36.1",
     "ipv4_destination_backup": "172.64.36.2",
+    "max_ttl": {
+      "mode": "override",
+      "ttl_secs": 3600
+    },
     "name": "Austin Office Location",
     "networks": [
       {
@@ -6180,6 +6303,24 @@ Update a configured Zero Trust Gateway location.
 
         Specify the IPv6 address or IPv6 CIDR.
 
+- `max_ttl: optional object { mode, ttl_secs }`
+
+  Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+  - `mode: "inherit" or "override" or "disabled"`
+
+    `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+    - `"inherit"`
+
+    - `"override"`
+
+    - `"disabled"`
+
+  - `ttl_secs: optional number`
+
+    Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
+
 - `networks: optional array of object { network }`
 
   Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
@@ -6312,6 +6453,24 @@ Update a configured Zero Trust Gateway location.
 
     Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
 
+  - `max_ttl: optional object { mode, ttl_secs }`
+
+    Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+    - `mode: "inherit" or "override" or "disabled"`
+
+      `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+      - `"inherit"`
+
+      - `"override"`
+
+      - `"disabled"`
+
+    - `ttl_secs: optional number`
+
+      Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
+
   - `name: optional string`
 
     Specify the location name.
@@ -6405,6 +6564,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/locations
     "ip": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
     "ipv4_destination": "172.64.36.1",
     "ipv4_destination_backup": "172.64.36.2",
+    "max_ttl": {
+      "mode": "override",
+      "ttl_secs": 3600
+    },
     "name": "Austin Office Location",
     "networks": [
       {
@@ -6635,7 +6798,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/locations
 
 ### Location
 
-- `Location object { id, client_default, created_at, 11 more }`
+- `Location object { id, client_default, created_at, 12 more }`
 
   - `id: optional string`
 
@@ -6728,6 +6891,24 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/locations
   - `ipv4_destination_backup: optional string`
 
     Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
+
+  - `max_ttl: optional object { mode, ttl_secs }`
+
+    Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+    - `mode: "inherit" or "override" or "disabled"`
+
+      `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+      - `"inherit"`
+
+      - `"override"`
+
+      - `"disabled"`
+
+    - `ttl_secs: optional number`
+
+      Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
 
   - `name: optional string`
 

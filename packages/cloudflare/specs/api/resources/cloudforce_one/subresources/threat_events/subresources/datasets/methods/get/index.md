@@ -22,6 +22,8 @@ Reads a dataset
 
 - `uuid: string`
 
+- `deletedAt: optional string`
+
 ### Example
 
 ```http
@@ -35,6 +37,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
 {
   "isPublic": true,
   "name": "friendly dataset name",
-  "uuid": "12345678-1234-1234-1234-1234567890ab"
+  "uuid": "12345678-1234-1234-1234-1234567890ab",
+  "deletedAt": "deletedAt"
 }
 ```

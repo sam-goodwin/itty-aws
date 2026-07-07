@@ -2,7 +2,7 @@
 
 **post** `/accounts/{account_id}/browser-rendering/devtools/browser`
 
-Acquire a new browser DevTools session
+Acquires a browser and returns its session ID and websocket URL.
 
 ### Path Parameters
 
@@ -19,6 +19,10 @@ Acquire a new browser DevTools session
 - `lab: optional boolean`
 
   Use experimental browser.
+
+- `liveViewUrlExpiresInMs: optional number`
+
+  How long the live view URL remains valid, in milliseconds (max 60 minutes). Only used when targets is true.
 
 - `recording: optional boolean`
 

@@ -1153,12 +1153,14 @@ export interface DomainsGetRequest {
   account_id: string;
   domain?: string;
   skip_dns?: boolean;
+  skip_ranking?: boolean;
 }
 export const DomainsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
     domain: S.optional(S.String.pipe(T.Query())),
     skip_dns: S.optional(S.Boolean.pipe(T.Query())),
+    skip_ranking: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",

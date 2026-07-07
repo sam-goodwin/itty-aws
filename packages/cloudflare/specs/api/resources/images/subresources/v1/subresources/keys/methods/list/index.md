@@ -2,7 +2,7 @@
 
 **get** `/accounts/{account_id}/images/v1/keys`
 
-Lists your signing keys. These can be found on your Cloudflare Images dashboard.
+List your CF Images signing keys.
 
 ### Path Parameters
 

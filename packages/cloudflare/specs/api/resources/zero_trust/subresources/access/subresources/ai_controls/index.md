@@ -36,7 +36,7 @@ Lists all MCP portals configured for the account.
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -55,6 +55,10 @@ Lists all MCP portals configured for the account.
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -92,7 +96,7 @@ Lists all MCP portals configured for the account.
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -185,6 +189,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
               "foo": "bar"
             }
           ],
+          "server_id": "my-mcp-server",
           "tools": [
             {
               "foo": "bar"
@@ -317,7 +322,7 @@ Creates a new MCP portal for managing AI tool access through Cloudflare Access.
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -336,6 +341,10 @@ Creates a new MCP portal for managing AI tool access through Cloudflare Access.
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -373,7 +382,7 @@ Creates a new MCP portal for managing AI tool access through Cloudflare Access.
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -473,6 +482,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
             "foo": "bar"
           }
         ],
+        "server_id": "my-mcp-server",
         "tools": [
           {
             "foo": "bar"
@@ -558,7 +568,7 @@ Read details of an MCP Portal
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -577,6 +587,10 @@ Read details of an MCP Portal
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -614,7 +628,7 @@ Read details of an MCP Portal
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -706,6 +720,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
             "foo": "bar"
           }
         ],
+        "server_id": "my-mcp-server",
         "tools": [
           {
             "foo": "bar"
@@ -837,7 +852,7 @@ Updates an MCP portal configuration.
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -856,6 +871,10 @@ Updates an MCP portal configuration.
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -893,7 +912,7 @@ Updates an MCP portal configuration.
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -986,6 +1005,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
             "foo": "bar"
           }
         ],
+        "server_id": "my-mcp-server",
         "tools": [
           {
             "foo": "bar"
@@ -1133,7 +1153,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -1152,6 +1172,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -1189,7 +1213,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -1265,7 +1289,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -1284,6 +1308,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -1321,7 +1349,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -1397,7 +1425,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -1416,6 +1444,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -1453,7 +1485,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -1529,7 +1561,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -1548,6 +1580,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -1585,7 +1621,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -1757,7 +1793,7 @@ Lists all MCP portals configured for the account.
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -1896,7 +1932,7 @@ Creates a new MCP portal for managing AI tool access through Cloudflare Access.
 
 - `is_shared_oauth_callback_enabled: optional boolean`
 
-  When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
 - `secure_web_gateway: optional boolean`
 
@@ -1978,7 +2014,7 @@ Creates a new MCP portal for managing AI tool access through Cloudflare Access.
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -2159,7 +2195,7 @@ Retrieves gateway configuration for MCP portals.
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -2284,7 +2320,7 @@ Updates an MCP portal configuration.
 
 - `is_shared_oauth_callback_enabled: optional boolean`
 
-  When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
 - `name: optional string`
 
@@ -2368,7 +2404,7 @@ Updates an MCP portal configuration.
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -2542,7 +2578,7 @@ Deletes an MCP portal from the account.
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -2777,7 +2813,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -2869,7 +2905,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -2961,7 +2997,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -3053,7 +3089,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -3145,7 +3181,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 

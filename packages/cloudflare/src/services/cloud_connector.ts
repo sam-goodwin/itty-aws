@@ -203,7 +203,7 @@ export const RulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesUpdateResponse",
 }) as any as S.Schema<RulesUpdateResponse>;
 
-/** Rules */
+/** Retrieves the Cloud Connector rules configured for a zone. Rules define how traffic is routed to cloud services. */
 export const RulesList: API.OperationMethod<
   RulesListRequest,
   RulesListResponse,
@@ -216,7 +216,7 @@ export const RulesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Put Rules */
+/** Updates Cloud Connector rules for a zone, replacing the existing rule configuration. */
 export const RulesUpdate: API.OperationMethod<
   RulesUpdateRequest,
   RulesUpdateResponse,

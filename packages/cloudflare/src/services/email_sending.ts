@@ -189,6 +189,7 @@ export interface SubdomainsCreateResponse {
   created?: string;
   dkim_selector?: string;
   modified?: string;
+  preview_enabled?: boolean;
   return_path_domain?: string;
 }
 export const SubdomainsCreateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -199,6 +200,7 @@ export const SubdomainsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.optional(S.String),
     dkim_selector: S.optional(S.String),
     modified: S.optional(S.String),
+    preview_enabled: S.optional(S.Boolean),
     return_path_domain: S.optional(S.String),
   }),
 ).annotate({
@@ -293,6 +295,7 @@ export interface SubdomainsGetResponse {
   created?: string;
   dkim_selector?: string;
   modified?: string;
+  preview_enabled?: boolean;
   return_path_domain?: string;
 }
 export const SubdomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -303,6 +306,7 @@ export const SubdomainsGetResponse = /*@__PURE__*/ S.suspend(() =>
     created: S.optional(S.String),
     dkim_selector: S.optional(S.String),
     modified: S.optional(S.String),
+    preview_enabled: S.optional(S.Boolean),
     return_path_domain: S.optional(S.String),
   }),
 ).annotate({
@@ -333,6 +337,7 @@ export interface SubdomainsListResultItem {
   created?: string;
   dkim_selector?: string;
   modified?: string;
+  preview_enabled?: boolean;
   return_path_domain?: string;
 }
 export const SubdomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
@@ -343,6 +348,7 @@ export const SubdomainsListResultItem = /*@__PURE__*/ S.suspend(() =>
     created: S.optional(S.String),
     dkim_selector: S.optional(S.String),
     modified: S.optional(S.String),
+    preview_enabled: S.optional(S.Boolean),
     return_path_domain: S.optional(S.String),
   }),
 ).annotate({

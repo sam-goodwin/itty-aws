@@ -342,7 +342,7 @@ accounts. While in alpha, the endpoint may get breaking changes.
 
     Identifies the error or notice type.
 
-- `result: array of object { BillingCurrency, BillingPeriodStart, ChargePeriodEnd, 11 more }`
+- `result: array of object { BillingCurrency, BillingPeriodStart, ChargePeriodEnd, 12 more }`
 
   Contains the array of billable usage records.
 
@@ -393,6 +393,10 @@ accounts. While in alpha, the endpoint may get breaking changes.
   - `ServiceFamilyName: optional string`
 
     Identifies the product family for the Cloudflare service.
+
+  - `SubscriptionId: optional string`
+
+    The identifier for the Cloudflare subscription.
 
   - `ZoneId: optional string`
 
@@ -445,6 +449,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/paygo-usage \
       "PricingQuantity": 150000,
       "ServiceName": "Workers Standard",
       "ServiceFamilyName": "Workers",
+      "SubscriptionId": "3F3CD4CQ6N7FXO7IK6NVFJBOYA",
       "ZoneId": "023e105f4ecef8ad9ca31a8372d0c353",
       "ZoneName": "example.com"
     }
@@ -733,7 +738,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/billable/usage \
 
 ### Usage Paygo Response
 
-- `UsagePaygoResponse = array of object { BillingCurrency, BillingPeriodStart, ChargePeriodEnd, 11 more }`
+- `UsagePaygoResponse = array of object { BillingCurrency, BillingPeriodStart, ChargePeriodEnd, 12 more }`
 
   Contains the array of billable usage records.
 
@@ -784,6 +789,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/billable/usage \
   - `ServiceFamilyName: optional string`
 
     Identifies the product family for the Cloudflare service.
+
+  - `SubscriptionId: optional string`
+
+    The identifier for the Cloudflare subscription.
 
   - `ZoneId: optional string`
 

@@ -96,6 +96,14 @@ Use `datasetId=all` or `datasetId=*` to query all event datasets for the account
 
       - `number`
 
+- `source: optional "do" or "r2catalog"`
+
+  Read backend. 'do' (default) reads Durable Object storage. 'r2catalog' reads R2 Data Catalog (admin-only, experimental; supports a subset of search fields — no 'tags').
+
+  - `"do"`
+
+  - `"r2catalog"`
+
 ### Returns
 
 - `attacker: string`
@@ -1706,6 +1714,12 @@ Lists all datasets in an account
 
   Account ID.
 
+### Query Parameters
+
+- `includeDeleted: optional boolean`
+
+  When true, include soft-deleted datasets in the response. Each item includes a `deletedAt` field (ISO 8601 or null). Default: false.
+
 ### Returns
 
 - `isPublic: boolean`
@@ -1713,6 +1727,8 @@ Lists all datasets in an account
 - `name: string`
 
 - `uuid: string`
+
+- `deletedAt: optional string`
 
 ### Example
 
@@ -1728,7 +1744,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
   {
     "isPublic": true,
     "name": "friendly dataset name",
-    "uuid": "12345678-1234-1234-1234-1234567890ab"
+    "uuid": "12345678-1234-1234-1234-1234567890ab",
+    "deletedAt": "deletedAt"
   }
 ]
 ```
@@ -1757,6 +1774,8 @@ Reads a dataset
 
 - `uuid: string`
 
+- `deletedAt: optional string`
+
 ### Example
 
 ```http
@@ -1770,7 +1789,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
 {
   "isPublic": true,
   "name": "friendly dataset name",
-  "uuid": "12345678-1234-1234-1234-1234567890ab"
+  "uuid": "12345678-1234-1234-1234-1234567890ab",
+  "deletedAt": "deletedAt"
 }
 ```
 
@@ -1804,6 +1824,8 @@ Creates a dataset
 
 - `uuid: string`
 
+- `deletedAt: optional string`
+
 ### Example
 
 ```http
@@ -1822,7 +1844,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
 {
   "isPublic": true,
   "name": "friendly dataset name",
-  "uuid": "12345678-1234-1234-1234-1234567890ab"
+  "uuid": "12345678-1234-1234-1234-1234567890ab",
+  "deletedAt": "deletedAt"
 }
 ```
 
@@ -1860,6 +1883,8 @@ Updates an existing dataset
 
 - `uuid: string`
 
+- `deletedAt: optional string`
+
 ### Example
 
 ```http
@@ -1879,7 +1904,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
 {
   "isPublic": true,
   "name": "friendly dataset name",
-  "uuid": "12345678-1234-1234-1234-1234567890ab"
+  "uuid": "12345678-1234-1234-1234-1234567890ab",
+  "deletedAt": "deletedAt"
 }
 ```
 
@@ -1941,43 +1967,51 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
 
 ### Dataset List Response
 
-- `DatasetListResponse = array of object { isPublic, name, uuid }`
+- `DatasetListResponse = array of object { isPublic, name, uuid, deletedAt }`
 
   - `isPublic: boolean`
 
   - `name: string`
 
   - `uuid: string`
+
+  - `deletedAt: optional string`
 
 ### Dataset Get Response
 
-- `DatasetGetResponse object { isPublic, name, uuid }`
+- `DatasetGetResponse object { isPublic, name, uuid, deletedAt }`
 
   - `isPublic: boolean`
 
   - `name: string`
 
   - `uuid: string`
+
+  - `deletedAt: optional string`
 
 ### Dataset Create Response
 
-- `DatasetCreateResponse object { isPublic, name, uuid }`
+- `DatasetCreateResponse object { isPublic, name, uuid, deletedAt }`
 
   - `isPublic: boolean`
 
   - `name: string`
 
   - `uuid: string`
+
+  - `deletedAt: optional string`
 
 ### Dataset Edit Response
 
-- `DatasetEditResponse object { isPublic, name, uuid }`
+- `DatasetEditResponse object { isPublic, name, uuid, deletedAt }`
 
   - `isPublic: boolean`
 
   - `name: string`
 
   - `uuid: string`
+
+  - `deletedAt: optional string`
 
 ### Dataset Raw Response
 
@@ -2257,6 +2291,30 @@ Creates a new tag to be used accross threat events.
 
 - `actorCategory: optional string`
 
+  Actor variety. Allowed values: Activist, Competitor, Customer, Crime Syndicate, Former Employee, Nation State, Organized Crime, Nation State Affiliated, Terrorist, Unaffiliated.
+
+- `actorCategoryConfidence: optional number`
+
+  Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.
+
+- `aliases: optional array of object { value, confidence, tlp }`
+
+  Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.
+
+  - `value: string`
+
+  - `confidence: optional number`
+
+  - `tlp: optional "red" or "amber" or "green" or "white"`
+
+    - `"red"`
+
+    - `"amber"`
+
+    - `"green"`
+
+    - `"white"`
+
 - `aliasGroupNames: optional array of string`
 
 - `aliasGroupNamesInternal: optional array of string`
@@ -2265,19 +2323,73 @@ Creates a new tag to be used accross threat events.
 
 - `attributionConfidence: optional string`
 
+- `attributionConfidenceScore: optional number`
+
 - `attributionOrganization: optional string`
 
 - `categoryUuid: optional string`
 
+- `dateOfDiscovery: optional string`
+
+  Date the actor was discovered (ISO YYYY-MM-DD).
+
 - `externalReferenceLinks: optional array of string`
+
+- `externalReferences: optional array of object { url, description }`
+
+  Structured external references ({ url, description }). Public: returned to all accounts.
+
+  - `url: string`
+
+  - `description: optional string`
+
+- `internalAliases: optional array of object { value, confidence, tlp }`
+
+  Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.
+
+  - `value: string`
+
+  - `confidence: optional number`
+
+  - `tlp: optional "red" or "amber" or "green" or "white"`
+
+    - `"red"`
+
+    - `"amber"`
+
+    - `"green"`
+
+    - `"white"`
 
 - `internalDescription: optional string`
 
 - `motive: optional string`
 
+  Actor motive. Allowed values: Convenience, Fear, Fun, Financial, Grudge, Ideology, Espionage.
+
+- `motiveConfidence: optional number`
+
+  Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.
+
 - `opsecLevel: optional string`
 
+- `originCountryConfidence: optional number`
+
+  Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.
+
 - `originCountryISO: optional string`
+
+- `originCountryTlp: optional "red" or "amber" or "green" or "white"`
+
+  TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.
+
+  - `"red"`
+
+  - `"amber"`
+
+  - `"green"`
+
+  - `"white"`
 
 - `priority: optional number`
 
@@ -2293,6 +2405,28 @@ Creates a new tag to be used accross threat events.
 
 - `actorCategory: optional string`
 
+- `actorCategoryConfidence: optional number`
+
+  Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.
+
+- `aliases: optional array of object { value, confidence, tlp }`
+
+  Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.
+
+  - `value: string`
+
+  - `confidence: optional number`
+
+  - `tlp: optional "red" or "amber" or "green" or "white"`
+
+    - `"red"`
+
+    - `"amber"`
+
+    - `"green"`
+
+    - `"white"`
+
 - `aliasGroupNames: optional array of string`
 
 - `aliasGroupNamesInternal: optional array of string`
@@ -2301,23 +2435,73 @@ Creates a new tag to be used accross threat events.
 
 - `attributionConfidence: optional string`
 
+- `attributionConfidenceScore: optional number`
+
 - `attributionOrganization: optional string`
 
 - `categoryName: optional string`
 
 - `categoryUuid: optional string`
 
+- `dateOfDiscovery: optional string`
+
 - `externalReferenceLinks: optional array of string`
+
+- `externalReferences: optional array of object { url, description }`
+
+  Structured external references ({ url, description }). Public: returned to all accounts.
+
+  - `url: string`
+
+  - `description: optional string`
+
+- `internalAliases: optional array of object { value, confidence, tlp }`
+
+  Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.
+
+  - `value: string`
+
+  - `confidence: optional number`
+
+  - `tlp: optional "red" or "amber" or "green" or "white"`
+
+    - `"red"`
+
+    - `"amber"`
+
+    - `"green"`
+
+    - `"white"`
 
 - `internalDescription: optional string`
 
 - `motive: optional string`
 
+- `motiveConfidence: optional number`
+
+  Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.
+
 - `opsecLevel: optional string`
+
+- `originCountryConfidence: optional number`
+
+  Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.
 
 - `originCountryISO: optional string`
 
 - `originCountryISOAlpha3: optional string`
+
+- `originCountryTlp: optional "red" or "amber" or "green" or "white"`
+
+  TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.
+
+  - `"red"`
+
+  - `"amber"`
+
+  - `"green"`
+
+  - `"white"`
 
 - `priority: optional number`
 
@@ -2331,7 +2515,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
     -d '{
           "value": "APT28",
-          "categoryUuid": "12345678-1234-1234-1234-1234567890ab"
+          "actorCategory": "Nation State",
+          "actorCategoryConfidence": 7,
+          "attributionConfidenceScore": 7,
+          "categoryUuid": "12345678-1234-1234-1234-1234567890ab",
+          "dateOfDiscovery": "2024-01-15",
+          "motive": "Espionage",
+          "motiveConfidence": 7,
+          "originCountryConfidence": 7,
+          "originCountryTlp": "amber"
         }'
 ```
 
@@ -2343,6 +2535,14 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
   "value": "APT28",
   "activeDuration": "activeDuration",
   "actorCategory": "actorCategory",
+  "actorCategoryConfidence": 7,
+  "aliases": [
+    {
+      "value": "Fancy Bear",
+      "confidence": 8,
+      "tlp": "amber"
+    }
+  ],
   "aliasGroupNames": [
     "string"
   ],
@@ -2351,17 +2551,35 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
   ],
   "analyticPriority": 0,
   "attributionConfidence": "attributionConfidence",
+  "attributionConfidenceScore": 7,
   "attributionOrganization": "attributionOrganization",
   "categoryName": "Nation State",
   "categoryUuid": "12345678-1234-1234-1234-1234567890ab",
+  "dateOfDiscovery": "2024-01-15",
   "externalReferenceLinks": [
     "string"
   ],
+  "externalReferences": [
+    {
+      "url": "https://example.com/report",
+      "description": "Vendor threat report"
+    }
+  ],
+  "internalAliases": [
+    {
+      "value": "Fancy Bear",
+      "confidence": 8,
+      "tlp": "amber"
+    }
+  ],
   "internalDescription": "internalDescription",
   "motive": "motive",
+  "motiveConfidence": 7,
   "opsecLevel": "opsecLevel",
+  "originCountryConfidence": 7,
   "originCountryISO": "originCountryISO",
   "originCountryISOAlpha3": "IRN",
+  "originCountryTlp": "amber",
   "priority": 0,
   "sophisticationLevel": "sophisticationLevel"
 }
@@ -2371,7 +2589,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
 
 ### Tag Create Response
 
-- `TagCreateResponse object { uuid, value, activeDuration, 16 more }`
+- `TagCreateResponse object { uuid, value, activeDuration, 25 more }`
 
   - `uuid: string`
 
@@ -2381,6 +2599,28 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
 
   - `actorCategory: optional string`
 
+  - `actorCategoryConfidence: optional number`
+
+    Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts.
+
+  - `aliases: optional array of object { value, confidence, tlp }`
+
+    Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts.
+
+    - `value: string`
+
+    - `confidence: optional number`
+
+    - `tlp: optional "red" or "amber" or "green" or "white"`
+
+      - `"red"`
+
+      - `"amber"`
+
+      - `"green"`
+
+      - `"white"`
+
   - `aliasGroupNames: optional array of string`
 
   - `aliasGroupNamesInternal: optional array of string`
@@ -2389,23 +2629,73 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
 
   - `attributionConfidence: optional string`
 
+  - `attributionConfidenceScore: optional number`
+
   - `attributionOrganization: optional string`
 
   - `categoryName: optional string`
 
   - `categoryUuid: optional string`
 
+  - `dateOfDiscovery: optional string`
+
   - `externalReferenceLinks: optional array of string`
+
+  - `externalReferences: optional array of object { url, description }`
+
+    Structured external references ({ url, description }). Public: returned to all accounts.
+
+    - `url: string`
+
+    - `description: optional string`
+
+  - `internalAliases: optional array of object { value, confidence, tlp }`
+
+    Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts.
+
+    - `value: string`
+
+    - `confidence: optional number`
+
+    - `tlp: optional "red" or "amber" or "green" or "white"`
+
+      - `"red"`
+
+      - `"amber"`
+
+      - `"green"`
+
+      - `"white"`
 
   - `internalDescription: optional string`
 
   - `motive: optional string`
 
+  - `motiveConfidence: optional number`
+
+    Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts.
+
   - `opsecLevel: optional string`
+
+  - `originCountryConfidence: optional number`
+
+    Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.
 
   - `originCountryISO: optional string`
 
   - `originCountryISOAlpha3: optional string`
+
+  - `originCountryTlp: optional "red" or "amber" or "green" or "white"`
+
+    TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts.
+
+    - `"red"`
+
+    - `"amber"`
+
+    - `"green"`
+
+    - `"white"`
 
   - `priority: optional number`
 

@@ -1842,7 +1842,7 @@ Lists WARP registrations.
 
   - `message: string`
 
-- `result: array of object { id, created_at, device, 9 more }`
+- `result: array of object { id, created_at, device, 11 more }`
 
   - `id: string`
 
@@ -1933,6 +1933,14 @@ Lists WARP registrations.
     - `name: optional string`
 
       The enrolled device user's name.
+
+  - `virtual_ipv4: optional string`
+
+    The virtual IPv4 address assigned to the network interface of the tunnel for this registration.
+
+  - `virtual_ipv6: optional string`
+
+    The virtual IPv6 address assigned to the network interface of the tunnel for this registration.
 
 - `success: boolean`
 
@@ -2057,7 +2065,7 @@ Fetches a single WARP registration.
 
   - `message: string`
 
-- `result: object { id, created_at, device, 9 more }`
+- `result: object { id, created_at, device, 11 more }`
 
   A WARP configuration tied to a single user. Multiple registrations can be created from a single WARP device.
 
@@ -2151,6 +2159,14 @@ Fetches a single WARP registration.
 
       The enrolled device user's name.
 
+  - `virtual_ipv4: optional string`
+
+    The virtual IPv4 address assigned to the network interface of the tunnel for this registration.
+
+  - `virtual_ipv6: optional string`
+
+    The virtual IPv6 address assigned to the network interface of the tunnel for this registration.
+
 - `success: boolean`
 
   Whether the API call was successful.
@@ -2204,7 +2220,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrat
       "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
       "email": "user@example.com",
       "name": "John Appleseed"
-    }
+    },
+    "virtual_ipv4": "100.96.0.1",
+    "virtual_ipv6": "2606:4700:0cf1:1000::1"
   },
   "success": true
 }
@@ -2548,7 +2566,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrat
 
 ### Registration List Response
 
-- `RegistrationListResponse object { id, created_at, device, 9 more }`
+- `RegistrationListResponse object { id, created_at, device, 11 more }`
 
   A WARP configuration tied to a single user. Multiple registrations can be created from a single WARP device.
 
@@ -2641,10 +2659,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrat
     - `name: optional string`
 
       The enrolled device user's name.
+
+  - `virtual_ipv4: optional string`
+
+    The virtual IPv4 address assigned to the network interface of the tunnel for this registration.
+
+  - `virtual_ipv6: optional string`
+
+    The virtual IPv6 address assigned to the network interface of the tunnel for this registration.
 
 ### Registration Get Response
 
-- `RegistrationGetResponse object { id, created_at, device, 9 more }`
+- `RegistrationGetResponse object { id, created_at, device, 11 more }`
 
   A WARP configuration tied to a single user. Multiple registrations can be created from a single WARP device.
 
@@ -2737,6 +2763,14 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrat
     - `name: optional string`
 
       The enrolled device user's name.
+
+  - `virtual_ipv4: optional string`
+
+    The virtual IPv4 address assigned to the network interface of the tunnel for this registration.
+
+  - `virtual_ipv6: optional string`
+
+    The virtual IPv6 address assigned to the network interface of the tunnel for this registration.
 
 ### Registration Delete Response
 
@@ -4164,6 +4198,10 @@ Lists WARP Device IP profiles.
 
 ### Query Parameters
 
+- `page: optional number`
+
+  The page number to return.
+
 - `per_page: optional number`
 
   The number of IP profiles to return per page.
@@ -4925,7 +4963,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
       "version_config": [
         {
           "target_environment": "windows",
-          "version": "2026.5.234.0"
+          "version": "2026.6.234.0"
         }
       ],
       "policy_ids": [
@@ -5040,7 +5078,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
     "version_config": [
       {
         "target_environment": "windows",
-        "version": "2026.5.234.0"
+        "version": "2026.6.234.0"
       }
     ],
     "policy_ids": [
@@ -5147,7 +5185,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
           "version_config": [
             {
               "target_environment": "windows",
-              "version": "2026.5.234.0"
+              "version": "2026.6.234.0"
             }
           ]
         }'
@@ -5177,7 +5215,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
     "version_config": [
       {
         "target_environment": "windows",
-        "version": "2026.5.234.0"
+        "version": "2026.6.234.0"
       }
     ],
     "policy_ids": [
@@ -5311,7 +5349,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
     "version_config": [
       {
         "target_environment": "windows",
-        "version": "2026.5.234.0"
+        "version": "2026.6.234.0"
       }
     ],
     "policy_ids": [
@@ -6164,11 +6202,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/networks/
 
 # Fleet Status
 
-## Get the live status of a latest device
+## Get the latest status of a device.
 
 **get** `/accounts/{account_id}/dex/devices/{device_id}/fleet-status/live`
 
-Get the live status of a latest device given device_id from the device_state table
+Get the latest status of a device given device_id from the device_state table.
 
 ### Path Parameters
 
@@ -7164,7 +7202,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dex/devices/$DEVI
 
 ### Settings Policy
 
-- `SettingsPolicy object { allow_mode_switch, allow_updates, allowed_to_leave, 26 more }`
+- `SettingsPolicy object { allow_mode_switch, allow_updates, allowed_to_leave, 27 more }`
 
   - `allow_mode_switch: optional boolean`
 
@@ -7257,6 +7295,26 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dex/devices/$DEVI
       A list of IP addresses to handle domain resolution.
 
   - `gateway_unique_id: optional string`
+
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
   - `include: optional array of SplitTunnelInclude`
 
@@ -7440,7 +7498,7 @@ Fetches the default device settings profile for an account.
 
   - `source: optional object { pointer }`
 
-- `result: object { allow_mode_switch, allow_updates, allowed_to_leave, 19 more }`
+- `result: object { allow_mode_switch, allow_updates, allowed_to_leave, 20 more }`
 
   - `allow_mode_switch: optional boolean`
 
@@ -7529,6 +7587,26 @@ Fetches the default device settings profile for an account.
       A list of IP addresses to handle domain resolution.
 
   - `gateway_unique_id: optional string`
+
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
   - `include: optional array of SplitTunnelInclude`
 
@@ -7667,6 +7745,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
       }
     ],
     "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+    "global_acceleration": {
+      "api_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "enabled": true,
+      "masque_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "wireguard_endpoints": [
+        "198.51.100.1:2408"
+      ]
+    },
     "include": [
       {
         "address": "192.0.2.0/24",
@@ -7770,6 +7860,26 @@ Updates the default device settings profile for an account.
 
   Whether to add Microsoft IPs to Split Tunnel exclusions.
 
+- `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+  Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+  - `api_endpoints: array of string`
+
+    IP:port entries for the API endpoints.
+
+  - `enabled: boolean`
+
+    Global acceleration settings are used only when "enabled".
+
+  - `masque_endpoints: array of string`
+
+    IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+  - `wireguard_endpoints: array of string`
+
+    IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
 - `include: optional array of SplitTunnelInclude`
 
   List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -7868,7 +7978,7 @@ Updates the default device settings profile for an account.
 
   - `source: optional object { pointer }`
 
-- `result: object { allow_mode_switch, allow_updates, allowed_to_leave, 19 more }`
+- `result: object { allow_mode_switch, allow_updates, allowed_to_leave, 20 more }`
 
   - `allow_mode_switch: optional boolean`
 
@@ -7957,6 +8067,26 @@ Updates the default device settings profile for an account.
       A list of IP addresses to handle domain resolution.
 
   - `gateway_unique_id: optional string`
+
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
   - `include: optional array of SplitTunnelInclude`
 
@@ -8111,6 +8241,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
       }
     ],
     "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+    "global_acceleration": {
+      "api_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "enabled": true,
+      "masque_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "wireguard_endpoints": [
+        "198.51.100.1:2408"
+      ]
+    },
     "include": [
       {
         "address": "192.0.2.0/24",
@@ -8142,7 +8284,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
 
 ### Default Get Response
 
-- `DefaultGetResponse object { allow_mode_switch, allow_updates, allowed_to_leave, 19 more }`
+- `DefaultGetResponse object { allow_mode_switch, allow_updates, allowed_to_leave, 20 more }`
 
   - `allow_mode_switch: optional boolean`
 
@@ -8231,6 +8373,26 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
       A list of IP addresses to handle domain resolution.
 
   - `gateway_unique_id: optional string`
+
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
   - `include: optional array of SplitTunnelInclude`
 
@@ -8302,7 +8464,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
 
 ### Default Edit Response
 
-- `DefaultEditResponse object { allow_mode_switch, allow_updates, allowed_to_leave, 19 more }`
+- `DefaultEditResponse object { allow_mode_switch, allow_updates, allowed_to_leave, 20 more }`
 
   - `allow_mode_switch: optional boolean`
 
@@ -8391,6 +8553,26 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
       A list of IP addresses to handle domain resolution.
 
   - `gateway_unique_id: optional string`
+
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
   - `include: optional array of SplitTunnelInclude`
 
@@ -9620,6 +9802,26 @@ Fetches a list of the device settings profiles for an account.
 
   - `gateway_unique_id: optional string`
 
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
   - `include: optional array of SplitTunnelInclude`
 
     List of routes included in the WARP client's tunnel.
@@ -9807,6 +10009,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policies 
         }
       ],
       "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+      "global_acceleration": {
+        "api_endpoints": [
+          "198.51.100.1:443"
+        ],
+        "enabled": true,
+        "masque_endpoints": [
+          "198.51.100.1:443"
+        ],
+        "wireguard_endpoints": [
+          "198.51.100.1:2408"
+        ]
+      },
       "include": [
         {
           "address": "192.0.2.0/24",
@@ -9982,6 +10196,26 @@ Fetches a device settings profile by ID.
 
   - `gateway_unique_id: optional string`
 
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
   - `include: optional array of SplitTunnelInclude`
 
     List of routes included in the WARP client's tunnel.
@@ -10150,6 +10384,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy/$P
       }
     ],
     "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+    "global_acceleration": {
+      "api_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "enabled": true,
+      "masque_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "wireguard_endpoints": [
+        "198.51.100.1:2408"
+      ]
+    },
     "include": [
       {
         "address": "192.0.2.0/24",
@@ -10283,6 +10529,26 @@ Creates a device settings profile to be applied to certain devices matching the 
 - `exclude_office_ips: optional boolean`
 
   Whether to add Microsoft IPs to Split Tunnel exclusions.
+
+- `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+  Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+  - `api_endpoints: array of string`
+
+    IP:port entries for the API endpoints.
+
+  - `enabled: boolean`
+
+    Global acceleration settings are used only when "enabled".
+
+  - `masque_endpoints: array of string`
+
+    IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+  - `wireguard_endpoints: array of string`
+
+    IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
 - `include: optional array of SplitTunnelInclude`
 
@@ -10476,6 +10742,26 @@ Creates a device settings profile to be applied to certain devices matching the 
 
   - `gateway_unique_id: optional string`
 
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
   - `include: optional array of SplitTunnelInclude`
 
     List of routes included in the WARP client's tunnel.
@@ -10664,6 +10950,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
       }
     ],
     "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+    "global_acceleration": {
+      "api_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "enabled": true,
+      "masque_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "wireguard_endpoints": [
+        "198.51.100.1:2408"
+      ]
+    },
     "include": [
       {
         "address": "192.0.2.0/24",
@@ -10787,6 +11085,26 @@ Updates a configured device settings profile.
 - `exclude_office_ips: optional boolean`
 
   Whether to add Microsoft IPs to Split Tunnel exclusions.
+
+- `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+  Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+  - `api_endpoints: array of string`
+
+    IP:port entries for the API endpoints.
+
+  - `enabled: boolean`
+
+    Global acceleration settings are used only when "enabled".
+
+  - `masque_endpoints: array of string`
+
+    IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+  - `wireguard_endpoints: array of string`
+
+    IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
 - `include: optional array of SplitTunnelInclude`
 
@@ -10992,6 +11310,26 @@ Updates a configured device settings profile.
 
   - `gateway_unique_id: optional string`
 
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
   - `include: optional array of SplitTunnelInclude`
 
     List of routes included in the WARP client's tunnel.
@@ -11181,6 +11519,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy/$P
       }
     ],
     "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+    "global_acceleration": {
+      "api_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "enabled": true,
+      "masque_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "wireguard_endpoints": [
+        "198.51.100.1:2408"
+      ]
+    },
     "include": [
       {
         "address": "192.0.2.0/24",
@@ -11348,6 +11698,26 @@ Deletes a device settings profile and fetches a list of the remaining profiles f
       A list of IP addresses to handle domain resolution.
 
   - `gateway_unique_id: optional string`
+
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
   - `include: optional array of SplitTunnelInclude`
 
@@ -11537,6 +11907,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy/$P
         }
       ],
       "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+      "global_acceleration": {
+        "api_endpoints": [
+          "198.51.100.1:443"
+        ],
+        "enabled": true,
+        "masque_endpoints": [
+          "198.51.100.1:443"
+        ],
+        "wireguard_endpoints": [
+          "198.51.100.1:2408"
+        ]
+      },
       "include": [
         {
           "address": "192.0.2.0/24",

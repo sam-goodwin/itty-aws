@@ -10,6 +10,12 @@ Lists all datasets in an account
 
   Account ID.
 
+### Query Parameters
+
+- `includeDeleted: optional boolean`
+
+  When true, include soft-deleted datasets in the response. Each item includes a `deletedAt` field (ISO 8601 or null). Default: false.
+
 ### Returns
 
 - `isPublic: boolean`
@@ -17,6 +23,8 @@ Lists all datasets in an account
 - `name: string`
 
 - `uuid: string`
+
+- `deletedAt: optional string`
 
 ### Example
 
@@ -32,7 +40,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/ev
   {
     "isPublic": true,
     "name": "friendly dataset name",
-    "uuid": "12345678-1234-1234-1234-1234567890ab"
+    "uuid": "12345678-1234-1234-1234-1234567890ab",
+    "deletedAt": "deletedAt"
   }
 ]
 ```

@@ -564,6 +564,24 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponseCacheOptions": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether caching is enabled for this Worker.",
+            "smithy.api#required": {}
+          }
+        },
+        "cross_version_cache": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether cached responses are shared across Worker version"
+          }
+        }
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList": {
       "type": "list",
       "member": {
@@ -885,6 +903,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The name used to identify the script."
+          }
+        },
+        "cache_options": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsUpdateResponseCacheOptions",
+          "traits": {
+            "smithy.api#documentation": "Global CacheW configuration for the Worker. When caching is on,"
           }
         },
         "compatibility_date": {
@@ -2319,10 +2343,37 @@
         "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseBindingsItem"
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseCacheOptions": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether caching is enabled for this Worker.",
+            "smithy.api#required": {}
+          }
+        },
+        "cross_version_cache": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether cached responses are shared across Worker version"
+          }
+        }
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseExportsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseLimits": {
@@ -2578,6 +2629,12 @@
             "smithy.api#documentation": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings."
           }
         },
+        "cache_options": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseCacheOptions",
+          "traits": {
+            "smithy.api#documentation": "Global CacheW configuration for the Worker. When caching is on,"
+          }
+        },
         "compatibility_date": {
           "target": "smithy.api#String",
           "traits": {
@@ -2588,6 +2645,12 @@
           "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList",
           "traits": {
             "smithy.api#documentation": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`."
+          }
+        },
+        "exports": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsEditResponseExportsMap",
+          "traits": {
+            "smithy.api#documentation": "Declarative exports for the Worker. Worker entrypoint entries"
           }
         },
         "limits": {
@@ -2949,10 +3012,37 @@
         "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseBindingsItem"
       }
     },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseCacheOptions": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether caching is enabled for this Worker.",
+            "smithy.api#required": {}
+          }
+        },
+        "cross_version_cache": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether cached responses are shared across Worker version"
+          }
+        }
+      }
+    },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList": {
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseExportsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
       }
     },
     "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseLimits": {
@@ -3208,6 +3298,12 @@
             "smithy.api#documentation": "List of bindings attached to a Worker. You can find more about bindings on our docs: https://developers.cloudflare.com/workers/configuration/multipart-upload-metadata/#bindings."
           }
         },
+        "cache_options": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseCacheOptions",
+          "traits": {
+            "smithy.api#documentation": "Global CacheW configuration for the Worker. When caching is on,"
+          }
+        },
         "compatibility_date": {
           "target": "smithy.api#String",
           "traits": {
@@ -3218,6 +3314,12 @@
           "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList",
           "traits": {
             "smithy.api#documentation": "Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`."
+          }
+        },
+        "exports": {
+          "target": "com.cloudflare.workers_for_platforms#DispatchNamespacesScriptsSettingsGetResponseExportsMap",
+          "traits": {
+            "smithy.api#documentation": "Declarative exports for the Worker. Worker entrypoint entries"
           }
         },
         "limits": {

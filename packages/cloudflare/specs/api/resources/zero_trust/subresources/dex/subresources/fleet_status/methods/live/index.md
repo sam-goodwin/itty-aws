@@ -1,8 +1,8 @@
-## List fleet status details by dimension
+## Get live aggregate device details by dimension
 
 **get** `/accounts/{account_id}/dex/fleet-status/live`
 
-List details for live (up to 60 minutes) devices using WARP.
+Get details for live (up to 60 minutes) devices using WARP.
 
 ### Path Parameters
 

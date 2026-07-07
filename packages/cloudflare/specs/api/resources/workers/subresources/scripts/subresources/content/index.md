@@ -77,6 +77,24 @@ Put script content without touching config or metadata.
 
     The name used to identify the script.
 
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
+
   - `compatibility_date: optional string`
 
     Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -499,6 +517,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts/$
   ],
   "result": {
     "id": "my-workers-script",
+    "cache_options": {
+      "enabled": true,
+      "cross_version_cache": true
+    },
     "compatibility_date": "2021-01-01",
     "compatibility_flags": [
       "nodejs_compat"

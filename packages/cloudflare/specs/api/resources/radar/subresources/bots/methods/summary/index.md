@@ -66,7 +66,7 @@ Retrieves an aggregated summary of bots HTTP requests grouped by the specified d
 
 - `botKind: optional array of "AGENT" or "BOT"`
 
-  Filters results by bot kind.
+  Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.
 
   - `"AGENT"`
 

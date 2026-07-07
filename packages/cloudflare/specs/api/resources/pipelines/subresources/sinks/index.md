@@ -1792,7 +1792,7 @@ Delete Pipeline in Account.
 
 - `force: optional string`
 
-  Delete sink forcefully, including deleting any dependent pipelines.
+  Deprecated: Delete sink forcefully, including deleting any dependent pipelines.
 
 ### Returns
 

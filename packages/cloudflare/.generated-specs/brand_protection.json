@@ -1503,12 +1503,6 @@
     "com.cloudflare.brand_protection#V2QueriesGetResponseParametersStringMatchesItem": {
       "type": "structure",
       "members": {
-        "max_edit_distance": {
-          "target": "smithy.api#Double",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
         "pattern": {
           "target": "smithy.api#String",
           "traits": {

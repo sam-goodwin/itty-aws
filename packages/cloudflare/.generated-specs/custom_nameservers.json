@@ -75,7 +75,7 @@
           "uri": "/accounts/{account_id}/custom_ns",
           "code": 200
         },
-        "smithy.api#documentation": "Add Account Custom Nameserver"
+        "smithy.api#documentation": "Adds a custom nameserver to the account for use as a vanity nameserver on zones."
       }
     },
     "com.cloudflare.custom_nameservers#DeleteRequest": {
@@ -137,7 +137,7 @@
           "uri": "/accounts/{account_id}/custom_ns/{custom_ns_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Delete Account Custom Nameserver",
+        "smithy.api#documentation": "Removes a custom nameserver from the account.",
         "smithy.api#idempotent": {}
       }
     },

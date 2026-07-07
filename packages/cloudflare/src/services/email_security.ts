@@ -9,6 +9,950 @@ import {
 } from "../protocol.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 
+export interface InvestigateBulkCancelCreateRequest {
+  account_id: string;
+  job_id: string;
+}
+export const InvestigateBulkCancelCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    job_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}/cancel",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InvestigateBulkCancelCreateRequest",
+}) as any as S.Schema<InvestigateBulkCancelCreateRequest>;
+
+export interface InvestigateBulkCancelCreateResponseActionParams {
+  Move_object___destination__type__expected_disposition__: unknown;
+  Release_object___type__: unknown;
+}
+export const InvestigateBulkCancelCreateResponseActionParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Move_object___destination__type__expected_disposition__: S.Unknown.pipe(
+        T.Body("Move object { destination, type, expected_disposition }"),
+      ),
+      Release_object___type__: S.Unknown.pipe(
+        T.Body("Release object { type }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkCancelCreateResponseActionParams",
+  }) as any as S.Schema<InvestigateBulkCancelCreateResponseActionParams>;
+
+export type InvestigateBulkCancelCreateResponseActionType =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkCancelCreateResponseActionType =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus =
+  | "delivered"
+  | "moved"
+  | "quarantined"
+  | (string & {});
+export const InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCancelCreateResponseSearchParamsFinalDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateBulkCancelCreateResponseSearchParamsFinalDisposition =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCancelCreateResponseSearchParamsMessageAction =
+  | "PREVIEW"
+  | "QUARANTINE_RELEASED"
+  | "MOVED"
+  | (string & {});
+export const InvestigateBulkCancelCreateResponseSearchParamsMessageAction =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkCancelCreateResponseSearchParams {
+  action_log?: boolean;
+  alert_id?: string;
+  delivery_status?: InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus;
+  detections_only?: boolean;
+  domain?: string;
+  end?: string;
+  exact_subject?: string;
+  final_disposition?: InvestigateBulkCancelCreateResponseSearchParamsFinalDisposition;
+  message_action?: InvestigateBulkCancelCreateResponseSearchParamsMessageAction;
+  message_id?: string;
+  metric?: string;
+  query?: string;
+  recipient?: string;
+  sender?: string;
+  start?: string;
+  subject?: string;
+  submissions?: boolean;
+}
+export const InvestigateBulkCancelCreateResponseSearchParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action_log: S.optional(S.Boolean),
+      alert_id: S.optional(S.String),
+      delivery_status: S.optional(
+        InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus,
+      ),
+      detections_only: S.optional(S.Boolean),
+      domain: S.optional(S.String),
+      end: S.optional(S.String),
+      exact_subject: S.optional(S.String),
+      final_disposition: S.optional(
+        InvestigateBulkCancelCreateResponseSearchParamsFinalDisposition,
+      ),
+      message_action: S.optional(
+        InvestigateBulkCancelCreateResponseSearchParamsMessageAction,
+      ),
+      message_id: S.optional(S.String),
+      metric: S.optional(S.String),
+      query: S.optional(S.String),
+      recipient: S.optional(S.String),
+      sender: S.optional(S.String),
+      start: S.optional(S.String),
+      subject: S.optional(S.String),
+      submissions: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkCancelCreateResponseSearchParams",
+  }) as any as S.Schema<InvestigateBulkCancelCreateResponseSearchParams>;
+
+export type InvestigateBulkCancelCreateResponseStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkCancelCreateResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface InvestigateBulkCancelCreateResponse {
+  action_params: InvestigateBulkCancelCreateResponseActionParams;
+  action_type: InvestigateBulkCancelCreateResponseActionType;
+  created_at: string;
+  job_id: string;
+  messages_failed: number;
+  messages_pending: number;
+  messages_successful: number;
+  search_params: InvestigateBulkCancelCreateResponseSearchParams;
+  status: InvestigateBulkCancelCreateResponseStatus;
+  total_messages_discovered: number;
+  comment?: string;
+  completed_at?: string;
+  started_at?: string;
+  status_message?: string;
+}
+export const InvestigateBulkCancelCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action_params: InvestigateBulkCancelCreateResponseActionParams,
+    action_type: InvestigateBulkCancelCreateResponseActionType,
+    created_at: S.String,
+    job_id: S.String,
+    messages_failed: S.Number,
+    messages_pending: S.Number,
+    messages_successful: S.Number,
+    search_params: InvestigateBulkCancelCreateResponseSearchParams,
+    status: InvestigateBulkCancelCreateResponseStatus,
+    total_messages_discovered: S.Number,
+    comment: S.optional(S.String),
+    completed_at: S.optional(S.String),
+    started_at: S.optional(S.String),
+    status_message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InvestigateBulkCancelCreateResponse",
+}) as any as S.Schema<InvestigateBulkCancelCreateResponse>;
+
+export type InvestigateBulkCreateRequestAction =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkCreateRequestAction = /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateRequestSearchParamsDeliveryStatus =
+  | "delivered"
+  | "moved"
+  | "quarantined"
+  | (string & {});
+export const InvestigateBulkCreateRequestSearchParamsDeliveryStatus =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateRequestSearchParamsFinalDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateBulkCreateRequestSearchParamsFinalDisposition =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateRequestSearchParamsMessageAction =
+  | "PREVIEW"
+  | "QUARANTINE_RELEASED"
+  | "MOVED"
+  | (string & {});
+export const InvestigateBulkCreateRequestSearchParamsMessageAction =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkCreateRequestSearchParams {
+  action_log?: boolean;
+  alert_id?: string;
+  delivery_status?: InvestigateBulkCreateRequestSearchParamsDeliveryStatus;
+  detections_only?: boolean;
+  domain?: string;
+  end?: string;
+  exact_subject?: string;
+  final_disposition?: InvestigateBulkCreateRequestSearchParamsFinalDisposition;
+  message_action?: InvestigateBulkCreateRequestSearchParamsMessageAction;
+  message_id?: string;
+  metric?: string;
+  query?: string;
+  recipient?: string;
+  sender?: string;
+  start?: string;
+  subject?: string;
+  submissions?: boolean;
+}
+export const InvestigateBulkCreateRequestSearchParams = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      action_log: S.optional(S.Boolean),
+      alert_id: S.optional(S.String),
+      delivery_status: S.optional(
+        InvestigateBulkCreateRequestSearchParamsDeliveryStatus,
+      ),
+      detections_only: S.optional(S.Boolean),
+      domain: S.optional(S.String),
+      end: S.optional(S.String),
+      exact_subject: S.optional(S.String),
+      final_disposition: S.optional(
+        InvestigateBulkCreateRequestSearchParamsFinalDisposition,
+      ),
+      message_action: S.optional(
+        InvestigateBulkCreateRequestSearchParamsMessageAction,
+      ),
+      message_id: S.optional(S.String),
+      metric: S.optional(S.String),
+      query: S.optional(S.String),
+      recipient: S.optional(S.String),
+      sender: S.optional(S.String),
+      start: S.optional(S.String),
+      subject: S.optional(S.String),
+      submissions: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "InvestigateBulkCreateRequestSearchParams",
+}) as any as S.Schema<InvestigateBulkCreateRequestSearchParams>;
+
+export type InvestigateBulkCreateRequestDestination =
+  | "Inbox"
+  | "JunkEmail"
+  | "DeletedItems"
+  | (string & {});
+export const InvestigateBulkCreateRequestDestination = /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateRequestExpectedDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateBulkCreateRequestExpectedDisposition =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkCreateRequest {
+  account_id: string;
+  action: InvestigateBulkCreateRequestAction;
+  search_params: InvestigateBulkCreateRequestSearchParams;
+  comment?: string;
+  destination?: InvestigateBulkCreateRequestDestination;
+  expected_disposition?: InvestigateBulkCreateRequestExpectedDisposition;
+}
+export const InvestigateBulkCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    action: InvestigateBulkCreateRequestAction,
+    search_params: InvestigateBulkCreateRequestSearchParams,
+    comment: S.optional(S.String),
+    destination: S.optional(InvestigateBulkCreateRequestDestination),
+    expected_disposition: S.optional(
+      InvestigateBulkCreateRequestExpectedDisposition,
+    ),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/email-security/investigate/bulk",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InvestigateBulkCreateRequest",
+}) as any as S.Schema<InvestigateBulkCreateRequest>;
+
+export interface InvestigateBulkCreateResponseActionParams {
+  Move_object___destination__type__expected_disposition__: unknown;
+  Release_object___type__: unknown;
+}
+export const InvestigateBulkCreateResponseActionParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Move_object___destination__type__expected_disposition__: S.Unknown.pipe(
+        T.Body("Move object { destination, type, expected_disposition }"),
+      ),
+      Release_object___type__: S.Unknown.pipe(
+        T.Body("Release object { type }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkCreateResponseActionParams",
+  }) as any as S.Schema<InvestigateBulkCreateResponseActionParams>;
+
+export type InvestigateBulkCreateResponseActionType =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkCreateResponseActionType = /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateResponseSearchParamsDeliveryStatus =
+  | "delivered"
+  | "moved"
+  | "quarantined"
+  | (string & {});
+export const InvestigateBulkCreateResponseSearchParamsDeliveryStatus =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateResponseSearchParamsFinalDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateBulkCreateResponseSearchParamsFinalDisposition =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkCreateResponseSearchParamsMessageAction =
+  | "PREVIEW"
+  | "QUARANTINE_RELEASED"
+  | "MOVED"
+  | (string & {});
+export const InvestigateBulkCreateResponseSearchParamsMessageAction =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkCreateResponseSearchParams {
+  action_log?: boolean;
+  alert_id?: string;
+  delivery_status?: InvestigateBulkCreateResponseSearchParamsDeliveryStatus;
+  detections_only?: boolean;
+  domain?: string;
+  end?: string;
+  exact_subject?: string;
+  final_disposition?: InvestigateBulkCreateResponseSearchParamsFinalDisposition;
+  message_action?: InvestigateBulkCreateResponseSearchParamsMessageAction;
+  message_id?: string;
+  metric?: string;
+  query?: string;
+  recipient?: string;
+  sender?: string;
+  start?: string;
+  subject?: string;
+  submissions?: boolean;
+}
+export const InvestigateBulkCreateResponseSearchParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action_log: S.optional(S.Boolean),
+      alert_id: S.optional(S.String),
+      delivery_status: S.optional(
+        InvestigateBulkCreateResponseSearchParamsDeliveryStatus,
+      ),
+      detections_only: S.optional(S.Boolean),
+      domain: S.optional(S.String),
+      end: S.optional(S.String),
+      exact_subject: S.optional(S.String),
+      final_disposition: S.optional(
+        InvestigateBulkCreateResponseSearchParamsFinalDisposition,
+      ),
+      message_action: S.optional(
+        InvestigateBulkCreateResponseSearchParamsMessageAction,
+      ),
+      message_id: S.optional(S.String),
+      metric: S.optional(S.String),
+      query: S.optional(S.String),
+      recipient: S.optional(S.String),
+      sender: S.optional(S.String),
+      start: S.optional(S.String),
+      subject: S.optional(S.String),
+      submissions: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkCreateResponseSearchParams",
+  }) as any as S.Schema<InvestigateBulkCreateResponseSearchParams>;
+
+export type InvestigateBulkCreateResponseStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkCreateResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface InvestigateBulkCreateResponse {
+  action_params: InvestigateBulkCreateResponseActionParams;
+  action_type: InvestigateBulkCreateResponseActionType;
+  created_at: string;
+  job_id: string;
+  messages_failed: number;
+  messages_pending: number;
+  messages_successful: number;
+  search_params: InvestigateBulkCreateResponseSearchParams;
+  status: InvestigateBulkCreateResponseStatus;
+  total_messages_discovered: number;
+  comment?: string;
+  completed_at?: string;
+  started_at?: string;
+  status_message?: string;
+}
+export const InvestigateBulkCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action_params: InvestigateBulkCreateResponseActionParams,
+    action_type: InvestigateBulkCreateResponseActionType,
+    created_at: S.String,
+    job_id: S.String,
+    messages_failed: S.Number,
+    messages_pending: S.Number,
+    messages_successful: S.Number,
+    search_params: InvestigateBulkCreateResponseSearchParams,
+    status: InvestigateBulkCreateResponseStatus,
+    total_messages_discovered: S.Number,
+    comment: S.optional(S.String),
+    completed_at: S.optional(S.String),
+    started_at: S.optional(S.String),
+    status_message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InvestigateBulkCreateResponse",
+}) as any as S.Schema<InvestigateBulkCreateResponse>;
+
+export interface InvestigateBulkDeleteRequest {
+  account_id: string;
+  job_id: string;
+}
+export const InvestigateBulkDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    job_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InvestigateBulkDeleteRequest",
+}) as any as S.Schema<InvestigateBulkDeleteRequest>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface InvestigateBulkDeleteResponse {
+  id: string;
+}
+export const InvestigateBulkDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+  }),
+).annotate({
+  identifier: "InvestigateBulkDeleteResponse",
+}) as any as S.Schema<InvestigateBulkDeleteResponse>;
+
+export interface InvestigateBulkGetRequest {
+  account_id: string;
+  job_id: string;
+}
+export const InvestigateBulkGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    job_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InvestigateBulkGetRequest",
+}) as any as S.Schema<InvestigateBulkGetRequest>;
+
+export interface InvestigateBulkGetResponseActionParams {
+  Move_object___destination__type__expected_disposition__: unknown;
+  Release_object___type__: unknown;
+}
+export const InvestigateBulkGetResponseActionParams = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      Move_object___destination__type__expected_disposition__: S.Unknown.pipe(
+        T.Body("Move object { destination, type, expected_disposition }"),
+      ),
+      Release_object___type__: S.Unknown.pipe(
+        T.Body("Release object { type }"),
+      ),
+    }),
+).annotate({
+  identifier: "InvestigateBulkGetResponseActionParams",
+}) as any as S.Schema<InvestigateBulkGetResponseActionParams>;
+
+export type InvestigateBulkGetResponseActionType =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkGetResponseActionType = /*@__PURE__*/ S.String;
+
+export type InvestigateBulkGetResponseSearchParamsDeliveryStatus =
+  | "delivered"
+  | "moved"
+  | "quarantined"
+  | (string & {});
+export const InvestigateBulkGetResponseSearchParamsDeliveryStatus =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkGetResponseSearchParamsFinalDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateBulkGetResponseSearchParamsFinalDisposition =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkGetResponseSearchParamsMessageAction =
+  | "PREVIEW"
+  | "QUARANTINE_RELEASED"
+  | "MOVED"
+  | (string & {});
+export const InvestigateBulkGetResponseSearchParamsMessageAction =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkGetResponseSearchParams {
+  action_log?: boolean;
+  alert_id?: string;
+  delivery_status?: InvestigateBulkGetResponseSearchParamsDeliveryStatus;
+  detections_only?: boolean;
+  domain?: string;
+  end?: string;
+  exact_subject?: string;
+  final_disposition?: InvestigateBulkGetResponseSearchParamsFinalDisposition;
+  message_action?: InvestigateBulkGetResponseSearchParamsMessageAction;
+  message_id?: string;
+  metric?: string;
+  query?: string;
+  recipient?: string;
+  sender?: string;
+  start?: string;
+  subject?: string;
+  submissions?: boolean;
+}
+export const InvestigateBulkGetResponseSearchParams = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      action_log: S.optional(S.Boolean),
+      alert_id: S.optional(S.String),
+      delivery_status: S.optional(
+        InvestigateBulkGetResponseSearchParamsDeliveryStatus,
+      ),
+      detections_only: S.optional(S.Boolean),
+      domain: S.optional(S.String),
+      end: S.optional(S.String),
+      exact_subject: S.optional(S.String),
+      final_disposition: S.optional(
+        InvestigateBulkGetResponseSearchParamsFinalDisposition,
+      ),
+      message_action: S.optional(
+        InvestigateBulkGetResponseSearchParamsMessageAction,
+      ),
+      message_id: S.optional(S.String),
+      metric: S.optional(S.String),
+      query: S.optional(S.String),
+      recipient: S.optional(S.String),
+      sender: S.optional(S.String),
+      start: S.optional(S.String),
+      subject: S.optional(S.String),
+      submissions: S.optional(S.Boolean),
+    }),
+).annotate({
+  identifier: "InvestigateBulkGetResponseSearchParams",
+}) as any as S.Schema<InvestigateBulkGetResponseSearchParams>;
+
+export type InvestigateBulkGetResponseStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkGetResponseStatus = /*@__PURE__*/ S.String;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface InvestigateBulkGetResponse {
+  action_params: InvestigateBulkGetResponseActionParams;
+  action_type: InvestigateBulkGetResponseActionType;
+  created_at: string;
+  job_id: string;
+  messages_failed: number;
+  messages_pending: number;
+  messages_successful: number;
+  search_params: InvestigateBulkGetResponseSearchParams;
+  status: InvestigateBulkGetResponseStatus;
+  total_messages_discovered: number;
+  comment?: string;
+  completed_at?: string;
+  started_at?: string;
+  status_message?: string;
+}
+export const InvestigateBulkGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action_params: InvestigateBulkGetResponseActionParams,
+    action_type: InvestigateBulkGetResponseActionType,
+    created_at: S.String,
+    job_id: S.String,
+    messages_failed: S.Number,
+    messages_pending: S.Number,
+    messages_successful: S.Number,
+    search_params: InvestigateBulkGetResponseSearchParams,
+    status: InvestigateBulkGetResponseStatus,
+    total_messages_discovered: S.Number,
+    comment: S.optional(S.String),
+    completed_at: S.optional(S.String),
+    started_at: S.optional(S.String),
+    status_message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InvestigateBulkGetResponse",
+}) as any as S.Schema<InvestigateBulkGetResponse>;
+
+export type InvestigateBulkListRequestActionType =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkListRequestActionType = /*@__PURE__*/ S.String;
+
+export type InvestigateBulkListRequestStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkListRequestStatus = /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkListRequest {
+  account_id: string;
+  action_type?: InvestigateBulkListRequestActionType;
+  page?: number;
+  per_page?: number;
+  status?: InvestigateBulkListRequestStatus;
+}
+export const InvestigateBulkListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    action_type: S.optional(
+      InvestigateBulkListRequestActionType.pipe(T.Query()),
+    ),
+    page: S.optional(S.Number.pipe(T.Query())),
+    per_page: S.optional(S.Number.pipe(T.Query())),
+    status: S.optional(InvestigateBulkListRequestStatus.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/investigate/bulk",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InvestigateBulkListRequest",
+}) as any as S.Schema<InvestigateBulkListRequest>;
+
+export interface InvestigateBulkListResultItemActionParams {
+  Move_object___destination__type__expected_disposition__: unknown;
+  Release_object___type__: unknown;
+}
+export const InvestigateBulkListResultItemActionParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Move_object___destination__type__expected_disposition__: S.Unknown.pipe(
+        T.Body("Move object { destination, type, expected_disposition }"),
+      ),
+      Release_object___type__: S.Unknown.pipe(
+        T.Body("Release object { type }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkListResultItemActionParams",
+  }) as any as S.Schema<InvestigateBulkListResultItemActionParams>;
+
+export type InvestigateBulkListResultItemActionType =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkListResultItemActionType = /*@__PURE__*/ S.String;
+
+export type InvestigateBulkListResultItemSearchParamsDeliveryStatus =
+  | "delivered"
+  | "moved"
+  | "quarantined"
+  | (string & {});
+export const InvestigateBulkListResultItemSearchParamsDeliveryStatus =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkListResultItemSearchParamsFinalDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateBulkListResultItemSearchParamsFinalDisposition =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkListResultItemSearchParamsMessageAction =
+  | "PREVIEW"
+  | "QUARANTINE_RELEASED"
+  | "MOVED"
+  | (string & {});
+export const InvestigateBulkListResultItemSearchParamsMessageAction =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkListResultItemSearchParams {
+  action_log?: boolean;
+  alert_id?: string;
+  delivery_status?: InvestigateBulkListResultItemSearchParamsDeliveryStatus;
+  detections_only?: boolean;
+  domain?: string;
+  end?: string;
+  exact_subject?: string;
+  final_disposition?: InvestigateBulkListResultItemSearchParamsFinalDisposition;
+  message_action?: InvestigateBulkListResultItemSearchParamsMessageAction;
+  message_id?: string;
+  metric?: string;
+  query?: string;
+  recipient?: string;
+  sender?: string;
+  start?: string;
+  subject?: string;
+  submissions?: boolean;
+}
+export const InvestigateBulkListResultItemSearchParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      action_log: S.optional(S.Boolean),
+      alert_id: S.optional(S.String),
+      delivery_status: S.optional(
+        InvestigateBulkListResultItemSearchParamsDeliveryStatus,
+      ),
+      detections_only: S.optional(S.Boolean),
+      domain: S.optional(S.String),
+      end: S.optional(S.String),
+      exact_subject: S.optional(S.String),
+      final_disposition: S.optional(
+        InvestigateBulkListResultItemSearchParamsFinalDisposition,
+      ),
+      message_action: S.optional(
+        InvestigateBulkListResultItemSearchParamsMessageAction,
+      ),
+      message_id: S.optional(S.String),
+      metric: S.optional(S.String),
+      query: S.optional(S.String),
+      recipient: S.optional(S.String),
+      sender: S.optional(S.String),
+      start: S.optional(S.String),
+      subject: S.optional(S.String),
+      submissions: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkListResultItemSearchParams",
+  }) as any as S.Schema<InvestigateBulkListResultItemSearchParams>;
+
+export type InvestigateBulkListResultItemStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkListResultItemStatus = /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkListResultItem {
+  action_params: InvestigateBulkListResultItemActionParams;
+  action_type: InvestigateBulkListResultItemActionType;
+  created_at: string;
+  job_id: string;
+  messages_failed: number;
+  messages_pending: number;
+  messages_successful: number;
+  search_params: InvestigateBulkListResultItemSearchParams;
+  status: InvestigateBulkListResultItemStatus;
+  total_messages_discovered: number;
+  comment?: string;
+  completed_at?: string;
+  started_at?: string;
+  status_message?: string;
+}
+export const InvestigateBulkListResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    action_params: InvestigateBulkListResultItemActionParams,
+    action_type: InvestigateBulkListResultItemActionType,
+    created_at: S.String,
+    job_id: S.String,
+    messages_failed: S.Number,
+    messages_pending: S.Number,
+    messages_successful: S.Number,
+    search_params: InvestigateBulkListResultItemSearchParams,
+    status: InvestigateBulkListResultItemStatus,
+    total_messages_discovered: S.Number,
+    comment: S.optional(S.String),
+    completed_at: S.optional(S.String),
+    started_at: S.optional(S.String),
+    status_message: S.optional(S.String),
+  }),
+).annotate({
+  identifier: "InvestigateBulkListResultItem",
+}) as any as S.Schema<InvestigateBulkListResultItem>;
+
+export type InvestigateBulkListResultList = InvestigateBulkListResultItem[];
+export const InvestigateBulkListResultList = /*@__PURE__*/ S.Array(
+  InvestigateBulkListResultItem,
+) as any as S.Schema<InvestigateBulkListResultList>;
+
+export interface InvestigateBulkListResponse {
+  result?: InvestigateBulkListResultList;
+}
+export const InvestigateBulkListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(InvestigateBulkListResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "InvestigateBulkListResponse",
+}) as any as S.Schema<InvestigateBulkListResponse>;
+
+export type InvestigateBulkMessagesListRequestStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkMessagesListRequestStatus = /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkMessagesListRequest {
+  account_id: string;
+  job_id: string;
+  page?: number;
+  per_page?: number;
+  status?: InvestigateBulkMessagesListRequestStatus;
+}
+export const InvestigateBulkMessagesListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    job_id: S.String.pipe(T.Label()),
+    page: S.optional(S.Number.pipe(T.Query())),
+    per_page: S.optional(S.Number.pipe(T.Query())),
+    status: S.optional(
+      InvestigateBulkMessagesListRequestStatus.pipe(T.Query()),
+    ),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "InvestigateBulkMessagesListRequest",
+}) as any as S.Schema<InvestigateBulkMessagesListRequest>;
+
+export interface InvestigateBulkMessagesListResultItemActionParams {
+  Move_object___client_recipient__destination__type__expected_disposition__: unknown;
+  Release_object___client_recipient__type__: unknown;
+}
+export const InvestigateBulkMessagesListResultItemActionParams =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      Move_object___client_recipient__destination__type__expected_disposition__:
+        S.Unknown.pipe(
+          T.Body(
+            "Move object { client_recipient, destination, type, expected_disposition }",
+          ),
+        ),
+      Release_object___client_recipient__type__: S.Unknown.pipe(
+        T.Body("Release object { client_recipient, type }"),
+      ),
+    }),
+  ).annotate({
+    identifier: "InvestigateBulkMessagesListResultItemActionParams",
+  }) as any as S.Schema<InvestigateBulkMessagesListResultItemActionParams>;
+
+export type InvestigateBulkMessagesListResultItemActionType =
+  | "MOVE"
+  | "RELEASE"
+  | (string & {});
+export const InvestigateBulkMessagesListResultItemActionType =
+  /*@__PURE__*/ S.String;
+
+export type InvestigateBulkMessagesListResultItemStatus =
+  | "PENDING"
+  | "DISCOVERING"
+  | "PROCESSING"
+  | (string & {});
+export const InvestigateBulkMessagesListResultItemStatus =
+  /*@__PURE__*/ S.String;
+
+export interface InvestigateBulkMessagesListResultItem {
+  action_params: InvestigateBulkMessagesListResultItemActionParams;
+  action_type: InvestigateBulkMessagesListResultItemActionType;
+  created_at: string;
+  message_id: string;
+  postfix_id: string;
+  retry_count: number;
+  status: InvestigateBulkMessagesListResultItemStatus;
+  alert_id?: string;
+  email_message_id?: string;
+  processed_at?: string;
+  retry_after?: string;
+  status_message?: string;
+}
+export const InvestigateBulkMessagesListResultItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      action_params: InvestigateBulkMessagesListResultItemActionParams,
+      action_type: InvestigateBulkMessagesListResultItemActionType,
+      created_at: S.String,
+      message_id: S.String,
+      postfix_id: S.String,
+      retry_count: S.Number,
+      status: InvestigateBulkMessagesListResultItemStatus,
+      alert_id: S.optional(S.String),
+      email_message_id: S.optional(S.String),
+      processed_at: S.optional(S.String),
+      retry_after: S.optional(S.String),
+      status_message: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "InvestigateBulkMessagesListResultItem",
+}) as any as S.Schema<InvestigateBulkMessagesListResultItem>;
+
+export type InvestigateBulkMessagesListResultList =
+  InvestigateBulkMessagesListResultItem[];
+export const InvestigateBulkMessagesListResultList = /*@__PURE__*/ S.Array(
+  InvestigateBulkMessagesListResultItem,
+) as any as S.Schema<InvestigateBulkMessagesListResultList>;
+
+export interface InvestigateBulkMessagesListResponse {
+  result?: InvestigateBulkMessagesListResultList;
+}
+export const InvestigateBulkMessagesListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      InvestigateBulkMessagesListResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "InvestigateBulkMessagesListResponse",
+}) as any as S.Schema<InvestigateBulkMessagesListResponse>;
+
 export interface InvestigateDetectionsGetRequest {
   account_id: string;
   investigate_id: string;
@@ -1052,6 +1996,14 @@ export type InvestigateMoveBulkRequestDestination =
   | (string & {});
 export const InvestigateMoveBulkRequestDestination = /*@__PURE__*/ S.String;
 
+export type InvestigateMoveBulkRequestExpectedDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateMoveBulkRequestExpectedDisposition =
+  /*@__PURE__*/ S.String;
+
 export type InvestigateMoveBulkRequestIdsList = string[];
 export const InvestigateMoveBulkRequestIdsList = /*@__PURE__*/ S.Array(
   S.String,
@@ -1065,6 +2017,7 @@ export const InvestigateMoveBulkRequestPostfixIdsList = /*@__PURE__*/ S.Array(
 export interface InvestigateMoveBulkRequest {
   account_id: string;
   destination: InvestigateMoveBulkRequestDestination;
+  expected_disposition?: InvestigateMoveBulkRequestExpectedDisposition;
   ids?: InvestigateMoveBulkRequestIdsList;
   postfix_ids?: InvestigateMoveBulkRequestPostfixIdsList;
 }
@@ -1072,6 +2025,9 @@ export const InvestigateMoveBulkRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
     destination: InvestigateMoveBulkRequestDestination,
+    expected_disposition: S.optional(
+      InvestigateMoveBulkRequestExpectedDisposition,
+    ),
     ids: S.optional(InvestigateMoveBulkRequestIdsList),
     postfix_ids: S.optional(InvestigateMoveBulkRequestPostfixIdsList),
   }).pipe(
@@ -1135,16 +2091,28 @@ export type InvestigateMoveCreateRequestDestination =
   | (string & {});
 export const InvestigateMoveCreateRequestDestination = /*@__PURE__*/ S.String;
 
+export type InvestigateMoveCreateRequestExpectedDisposition =
+  | "MALICIOUS"
+  | "MALICIOUS-BEC"
+  | "SUSPICIOUS"
+  | (string & {});
+export const InvestigateMoveCreateRequestExpectedDisposition =
+  /*@__PURE__*/ S.String;
+
 export interface InvestigateMoveCreateRequest {
   account_id: string;
   investigate_id: string;
   destination: InvestigateMoveCreateRequestDestination;
+  expected_disposition?: InvestigateMoveCreateRequestExpectedDisposition;
 }
 export const InvestigateMoveCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
     investigate_id: S.String.pipe(T.Label()),
     destination: InvestigateMoveCreateRequestDestination,
+    expected_disposition: S.optional(
+      InvestigateMoveCreateRequestExpectedDisposition,
+    ),
   }).pipe(
     T.Http({
       method: "POST",
@@ -4607,6 +5575,84 @@ export const SubmissionsListResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "SubmissionsListResponse",
 }) as any as S.Schema<SubmissionsListResponse>;
+
+/** Marks the job as cancelled and stops any pending message processing. The job record remains visible in list and detail endpoints. */
+export const InvestigateBulkCancelCreate: API.OperationMethod<
+  InvestigateBulkCancelCreateRequest,
+  InvestigateBulkCancelCreateResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: InvestigateBulkCancelCreateRequest,
+  output: InvestigateBulkCancelCreateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Create a bulk action job */
+export const InvestigateBulkCreate: API.OperationMethod<
+  InvestigateBulkCreateRequest,
+  InvestigateBulkCreateResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: InvestigateBulkCreateRequest,
+  output: InvestigateBulkCreateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Deletes the job, removing it from all list and detail endpoints. Only jobs in a terminal state (`COMPLETED`, `CANCELLED`, `FAILED`, or `SKIPPED`) can be deleted. To stop an in-progress job without removing it, use the cancel endpoint instead. */
+export const InvestigateBulkDelete: API.OperationMethod<
+  InvestigateBulkDeleteRequest,
+  InvestigateBulkDeleteResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: InvestigateBulkDeleteRequest,
+  output: InvestigateBulkDeleteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Get bulk action job details */
+export const InvestigateBulkGet: API.OperationMethod<
+  InvestigateBulkGetRequest,
+  InvestigateBulkGetResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: InvestigateBulkGetRequest,
+  output: InvestigateBulkGetResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** List bulk action jobs */
+export const InvestigateBulkList: API.OperationMethod<
+  InvestigateBulkListRequest,
+  InvestigateBulkListResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: InvestigateBulkListRequest,
+  output: InvestigateBulkListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** List messages for a bulk action job */
+export const InvestigateBulkMessagesList: API.OperationMethod<
+  InvestigateBulkMessagesListRequest,
+  InvestigateBulkMessagesListResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: InvestigateBulkMessagesListRequest,
+  output: InvestigateBulkMessagesListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
 
 /** Returns detection details such as threat categories and sender information for non-benign messages. */
 export const InvestigateDetectionsGet: API.OperationMethod<

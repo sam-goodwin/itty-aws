@@ -2,7 +2,7 @@
 
 **patch** `/accounts/{account_id}/images/v1/{image_id}`
 
-Update image access control. On access control change, all copies of the image are purged from cache.
+Update a CF Images image's metadata, creator, or access control. On access control change, all copies of the image are purged from cache.
 
 ### Path Parameters
 

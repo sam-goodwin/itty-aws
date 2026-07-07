@@ -3526,6 +3526,23 @@
         "target": "smithy.api#String"
       }
     },
+    "com.cloudflare.cloudforce_one#ThreatEventsListRequestSource": {
+      "type": "enum",
+      "members": {
+        "DO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "do"
+          }
+        },
+        "R2CATALOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2catalog"
+          }
+        }
+      }
+    },
     "com.cloudflare.cloudforce_one#ThreatEventsListRequest": {
       "type": "structure",
       "members": {
@@ -3593,6 +3610,13 @@
           "target": "com.cloudflare.cloudforce_one#ThreatEventsListRequestSearchList",
           "traits": {
             "smithy.api#httpQuery": "search"
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsListRequestSource",
+          "traits": {
+            "smithy.api#documentation": "Read backend. 'do' (default) reads Durable Object storage. 'r2catalog' reads R2 Data Catalog (admin-only, experimental; supports a subset of search fields — no 'tags').",
+            "smithy.api#httpQuery": "source"
           }
         }
       },
@@ -4516,6 +4540,9 @@
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "deletedAt": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -4598,6 +4625,9 @@
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "deletedAt": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -4666,6 +4696,9 @@
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "deletedAt": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -4701,6 +4734,13 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
+        },
+        "includeDeleted": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, include soft-deleted datasets in the response. Each item includes a `deletedAt` field (ISO 8601 or null). Default: false.",
+            "smithy.api#httpQuery": "includeDeleted"
+          }
         }
       },
       "traits": {
@@ -4727,6 +4767,9 @@
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "deletedAt": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -5269,6 +5312,58 @@
         "smithy.api#idempotent": {}
       }
     },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestAliasesItemTlp": {
+      "type": "enum",
+      "members": {
+        "RED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "red"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "GREEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "green"
+          }
+        },
+        "WHITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "white"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestAliasesItem": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Double"
+        },
+        "tlp": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestAliasesItemTlp"
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestAliasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestAliasesItem"
+      }
+    },
     "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestAliasGroupNamesList": {
       "type": "list",
       "member": {
@@ -5285,6 +5380,107 @@
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestExternalReferencesItem": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestExternalReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestExternalReferencesItem"
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestInternalAliasesItemTlp": {
+      "type": "enum",
+      "members": {
+        "RED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "red"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "GREEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "green"
+          }
+        },
+        "WHITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "white"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestInternalAliasesItem": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Double"
+        },
+        "tlp": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestInternalAliasesItemTlp"
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestInternalAliasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestInternalAliasesItem"
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestOriginCountryTlp": {
+      "type": "enum",
+      "members": {
+        "RED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "red"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "GREEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "green"
+          }
+        },
+        "WHITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "white"
+          }
+        }
       }
     },
     "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequest": {
@@ -5308,7 +5504,22 @@
           "target": "smithy.api#String"
         },
         "actorCategory": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Actor variety. Allowed values: Activist, Competitor, Customer, Crime Syndicate, Former Employee, Nation State, Organized Crime, Nation State Affiliated, Terrorist, Unaffiliated."
+          }
+        },
+        "actorCategoryConfidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts."
+          }
+        },
+        "aliases": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestAliasesList",
+          "traits": {
+            "smithy.api#documentation": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts."
+          }
         },
         "aliasGroupNames": {
           "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestAliasGroupNamesList"
@@ -5322,26 +5533,68 @@
         "attributionConfidence": {
           "target": "smithy.api#String"
         },
+        "attributionConfidenceScore": {
+          "target": "smithy.api#Double"
+        },
         "attributionOrganization": {
           "target": "smithy.api#String"
         },
         "categoryUuid": {
           "target": "smithy.api#String"
         },
+        "dateOfDiscovery": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Date the actor was discovered (ISO YYYY-MM-DD)."
+          }
+        },
         "externalReferenceLinks": {
           "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestExternalReferenceLinksList"
+        },
+        "externalReferences": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestExternalReferencesList",
+          "traits": {
+            "smithy.api#documentation": "Structured external references ({ url, description }). Public: returned to all accounts."
+          }
+        },
+        "internalAliases": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestInternalAliasesList",
+          "traits": {
+            "smithy.api#documentation": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts."
+          }
         },
         "internalDescription": {
           "target": "smithy.api#String"
         },
         "motive": {
-          "target": "smithy.api#String"
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Actor motive. Allowed values: Convenience, Fear, Fun, Financial, Grudge, Ideology, Espionage."
+          }
+        },
+        "motiveConfidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts."
+          }
         },
         "opsecLevel": {
           "target": "smithy.api#String"
         },
+        "originCountryConfidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts."
+          }
+        },
         "originCountryISO": {
           "target": "smithy.api#String"
+        },
+        "originCountryTlp": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateRequestOriginCountryTlp",
+          "traits": {
+            "smithy.api#documentation": "TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts."
+          }
         },
         "priority": {
           "target": "smithy.api#Double"
@@ -5352,6 +5605,58 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseAliasesItemTlp": {
+      "type": "enum",
+      "members": {
+        "RED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "red"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "GREEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "green"
+          }
+        },
+        "WHITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "white"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseAliasesItem": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Double"
+        },
+        "tlp": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseAliasesItemTlp"
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseAliasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseAliasesItem"
       }
     },
     "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseAliasGroupNamesList": {
@@ -5370,6 +5675,107 @@
       "type": "list",
       "member": {
         "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseExternalReferencesItem": {
+      "type": "structure",
+      "members": {
+        "url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseExternalReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseExternalReferencesItem"
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseInternalAliasesItemTlp": {
+      "type": "enum",
+      "members": {
+        "RED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "red"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "GREEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "green"
+          }
+        },
+        "WHITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "white"
+          }
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseInternalAliasesItem": {
+      "type": "structure",
+      "members": {
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "confidence": {
+          "target": "smithy.api#Double"
+        },
+        "tlp": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseInternalAliasesItemTlp"
+        }
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseInternalAliasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseInternalAliasesItem"
+      }
+    },
+    "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseOriginCountryTlp": {
+      "type": "enum",
+      "members": {
+        "RED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "red"
+          }
+        },
+        "AMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "amber"
+          }
+        },
+        "GREEN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "green"
+          }
+        },
+        "WHITE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "white"
+          }
+        }
       }
     },
     "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponse": {
@@ -5393,6 +5799,18 @@
         "actorCategory": {
           "target": "smithy.api#String"
         },
+        "actorCategoryConfidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Confidence (1-10) in the actor variety (actorCategory). CFONE-only: stripped from responses to non-CFONE accounts."
+          }
+        },
+        "aliases": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseAliasesList",
+          "traits": {
+            "smithy.api#documentation": "Structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: stripped from responses to non-CFONE accounts."
+          }
+        },
         "aliasGroupNames": {
           "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseAliasGroupNamesList"
         },
@@ -5405,6 +5823,9 @@
         "attributionConfidence": {
           "target": "smithy.api#String"
         },
+        "attributionConfidenceScore": {
+          "target": "smithy.api#Double"
+        },
         "attributionOrganization": {
           "target": "smithy.api#String"
         },
@@ -5414,8 +5835,23 @@
         "categoryUuid": {
           "target": "smithy.api#String"
         },
+        "dateOfDiscovery": {
+          "target": "smithy.api#String"
+        },
         "externalReferenceLinks": {
           "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseExternalReferenceLinksList"
+        },
+        "externalReferences": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseExternalReferencesList",
+          "traits": {
+            "smithy.api#documentation": "Structured external references ({ url, description }). Public: returned to all accounts."
+          }
+        },
+        "internalAliases": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseInternalAliasesList",
+          "traits": {
+            "smithy.api#documentation": "Internal structured aliases ({ value, confidence 1-10, tlp }). CFONE-only: never returned to non-CFONE accounts."
+          }
         },
         "internalDescription": {
           "target": "smithy.api#String"
@@ -5423,14 +5859,32 @@
         "motive": {
           "target": "smithy.api#String"
         },
+        "motiveConfidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Confidence (1-10) in the actor motive. CFONE-only: stripped from responses to non-CFONE accounts."
+          }
+        },
         "opsecLevel": {
           "target": "smithy.api#String"
+        },
+        "originCountryConfidence": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Confidence (1-10) in the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts."
+          }
         },
         "originCountryISO": {
           "target": "smithy.api#String"
         },
         "originCountryISOAlpha3": {
           "target": "smithy.api#String"
+        },
+        "originCountryTlp": {
+          "target": "com.cloudflare.cloudforce_one#ThreatEventsTagsCreateResponseOriginCountryTlp",
+          "traits": {
+            "smithy.api#documentation": "TLP marking for the origin-country attribution. CFONE-only: stripped from responses to non-CFONE accounts."
+          }
         },
         "priority": {
           "target": "smithy.api#Double"

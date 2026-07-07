@@ -946,6 +946,20 @@ export const BetaWorkersVersionsCreateRequestBindingsList =
     BetaWorkersVersionsCreateRequestBindingsItem,
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestBindingsList>;
 
+export interface BetaWorkersVersionsCreateRequestCacheOptions {
+  enabled: boolean;
+  cross_version_cache?: boolean;
+}
+export const BetaWorkersVersionsCreateRequestCacheOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      cross_version_cache: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateRequestCacheOptions",
+  }) as any as S.Schema<BetaWorkersVersionsCreateRequestCacheOptions>;
+
 export type BetaWorkersVersionsCreateRequestCompatibilityFlagsList = string[];
 export const BetaWorkersVersionsCreateRequestCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
@@ -1008,6 +1022,29 @@ export const BetaWorkersVersionsCreateRequestModulesList =
     BetaWorkersVersionsCreateRequestModulesItem,
   ) as any as S.Schema<BetaWorkersVersionsCreateRequestModulesList>;
 
+export interface BetaWorkersVersionsCreateRequestPackageDependenciesItem {
+  installedVersion: string;
+  name: string;
+  packageJsonVersion: string;
+}
+export const BetaWorkersVersionsCreateRequestPackageDependenciesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      installedVersion: S.String,
+      name: S.String,
+      packageJsonVersion: S.String,
+    }),
+  ).annotate({
+    identifier: "BetaWorkersVersionsCreateRequestPackageDependenciesItem",
+  }) as any as S.Schema<BetaWorkersVersionsCreateRequestPackageDependenciesItem>;
+
+export type BetaWorkersVersionsCreateRequestPackageDependenciesList =
+  BetaWorkersVersionsCreateRequestPackageDependenciesItem[];
+export const BetaWorkersVersionsCreateRequestPackageDependenciesList =
+  /*@__PURE__*/ S.Array(
+    BetaWorkersVersionsCreateRequestPackageDependenciesItem,
+  ) as any as S.Schema<BetaWorkersVersionsCreateRequestPackageDependenciesList>;
+
 export interface BetaWorkersVersionsCreateRequestPlacement {
   Mode_object___mode__: unknown;
   Region_object___region__: unknown;
@@ -1059,6 +1096,7 @@ export interface BetaWorkersVersionsCreateRequest {
   annotations?: BetaWorkersVersionsCreateRequestAnnotations;
   assets?: BetaWorkersVersionsCreateRequestAssets;
   bindings?: BetaWorkersVersionsCreateRequestBindingsList;
+  cache_options?: BetaWorkersVersionsCreateRequestCacheOptions;
   compatibility_date?: string;
   compatibility_flags?: BetaWorkersVersionsCreateRequestCompatibilityFlagsList;
   containers?: BetaWorkersVersionsCreateRequestContainersList;
@@ -1066,6 +1104,7 @@ export interface BetaWorkersVersionsCreateRequest {
   main_module?: string;
   migrations?: unknown;
   modules?: BetaWorkersVersionsCreateRequestModulesList;
+  package_dependencies?: BetaWorkersVersionsCreateRequestPackageDependenciesList;
   placement?: BetaWorkersVersionsCreateRequestPlacement;
   usage_model?: BetaWorkersVersionsCreateRequestUsageModel;
 }
@@ -1077,6 +1116,7 @@ export const BetaWorkersVersionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     annotations: S.optional(BetaWorkersVersionsCreateRequestAnnotations),
     assets: S.optional(BetaWorkersVersionsCreateRequestAssets),
     bindings: S.optional(BetaWorkersVersionsCreateRequestBindingsList),
+    cache_options: S.optional(BetaWorkersVersionsCreateRequestCacheOptions),
     compatibility_date: S.optional(S.String),
     compatibility_flags: S.optional(
       BetaWorkersVersionsCreateRequestCompatibilityFlagsList,
@@ -1086,6 +1126,9 @@ export const BetaWorkersVersionsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     main_module: S.optional(S.String),
     migrations: S.optional(S.Unknown),
     modules: S.optional(BetaWorkersVersionsCreateRequestModulesList),
+    package_dependencies: S.optional(
+      BetaWorkersVersionsCreateRequestPackageDependenciesList,
+    ),
     placement: S.optional(BetaWorkersVersionsCreateRequestPlacement),
     usage_model: S.optional(BetaWorkersVersionsCreateRequestUsageModel),
   }).pipe(
@@ -6322,6 +6365,19 @@ export const ScriptsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsListRequest",
 }) as any as S.Schema<ScriptsListRequest>;
 
+export interface ScriptsListResultItemCacheOptions {
+  enabled: boolean;
+  cross_version_cache?: boolean;
+}
+export const ScriptsListResultItemCacheOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    cross_version_cache: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ScriptsListResultItemCacheOptions",
+}) as any as S.Schema<ScriptsListResultItemCacheOptions>;
+
 export type ScriptsListResultItemCompatibilityFlagsList = string[];
 export const ScriptsListResultItemCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
@@ -6534,6 +6590,7 @@ export const ScriptsListResultItemUsageModel = /*@__PURE__*/ S.String;
 
 export interface ScriptsListResultItem {
   id?: string;
+  cache_options?: ScriptsListResultItemCacheOptions;
   compatibility_date?: string;
   compatibility_flags?: ScriptsListResultItemCompatibilityFlagsList;
   created_on?: string;
@@ -6559,6 +6616,7 @@ export interface ScriptsListResultItem {
 export const ScriptsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
+    cache_options: S.optional(ScriptsListResultItemCacheOptions),
     compatibility_date: S.optional(S.String),
     compatibility_flags: S.optional(
       ScriptsListResultItemCompatibilityFlagsList,
@@ -6941,12 +6999,35 @@ export const ScriptsScriptAndVersionSettingsEditResponseBindingsList =
     ScriptsScriptAndVersionSettingsEditResponseBindingsItem,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseBindingsList>;
 
+export interface ScriptsScriptAndVersionSettingsEditResponseCacheOptions {
+  enabled: boolean;
+  cross_version_cache?: boolean;
+}
+export const ScriptsScriptAndVersionSettingsEditResponseCacheOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      cross_version_cache: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "ScriptsScriptAndVersionSettingsEditResponseCacheOptions",
+  }) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseCacheOptions>;
+
 export type ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList =
   string[];
 export const ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList>;
+
+export type ScriptsScriptAndVersionSettingsEditResponseExportsMap = {
+  [key: string]: unknown | undefined;
+};
+export const ScriptsScriptAndVersionSettingsEditResponseExportsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ScriptsScriptAndVersionSettingsEditResponseExportsMap>;
 
 export interface ScriptsScriptAndVersionSettingsEditResponseLimits {
   cpu_ms?: number;
@@ -7111,8 +7192,10 @@ export const ScriptsScriptAndVersionSettingsEditResponseUsageModel =
 export interface ScriptsScriptAndVersionSettingsEditResponse {
   annotations?: ScriptsScriptAndVersionSettingsEditResponseAnnotations;
   bindings?: ScriptsScriptAndVersionSettingsEditResponseBindingsList;
+  cache_options?: ScriptsScriptAndVersionSettingsEditResponseCacheOptions;
   compatibility_date?: string;
   compatibility_flags?: ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList;
+  exports?: ScriptsScriptAndVersionSettingsEditResponseExportsMap;
   limits?: ScriptsScriptAndVersionSettingsEditResponseLimits;
   logpush?: boolean;
   migrations?: unknown;
@@ -7131,9 +7214,15 @@ export const ScriptsScriptAndVersionSettingsEditResponse =
       bindings: S.optional(
         ScriptsScriptAndVersionSettingsEditResponseBindingsList,
       ),
+      cache_options: S.optional(
+        ScriptsScriptAndVersionSettingsEditResponseCacheOptions,
+      ),
       compatibility_date: S.optional(S.String),
       compatibility_flags: S.optional(
         ScriptsScriptAndVersionSettingsEditResponseCompatibilityFlagsList,
+      ),
+      exports: S.optional(
+        ScriptsScriptAndVersionSettingsEditResponseExportsMap,
       ),
       limits: S.optional(ScriptsScriptAndVersionSettingsEditResponseLimits),
       logpush: S.optional(S.Boolean),
@@ -7363,12 +7452,35 @@ export const ScriptsScriptAndVersionSettingsGetResponseBindingsList =
     ScriptsScriptAndVersionSettingsGetResponseBindingsItem,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseBindingsList>;
 
+export interface ScriptsScriptAndVersionSettingsGetResponseCacheOptions {
+  enabled: boolean;
+  cross_version_cache?: boolean;
+}
+export const ScriptsScriptAndVersionSettingsGetResponseCacheOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      cross_version_cache: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "ScriptsScriptAndVersionSettingsGetResponseCacheOptions",
+  }) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseCacheOptions>;
+
 export type ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList =
   string[];
 export const ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList>;
+
+export type ScriptsScriptAndVersionSettingsGetResponseExportsMap = {
+  [key: string]: unknown | undefined;
+};
+export const ScriptsScriptAndVersionSettingsGetResponseExportsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<ScriptsScriptAndVersionSettingsGetResponseExportsMap>;
 
 export interface ScriptsScriptAndVersionSettingsGetResponseLimits {
   cpu_ms?: number;
@@ -7532,8 +7644,10 @@ export const ScriptsScriptAndVersionSettingsGetResponseUsageModel =
 export interface ScriptsScriptAndVersionSettingsGetResponse {
   annotations?: ScriptsScriptAndVersionSettingsGetResponseAnnotations;
   bindings?: ScriptsScriptAndVersionSettingsGetResponseBindingsList;
+  cache_options?: ScriptsScriptAndVersionSettingsGetResponseCacheOptions;
   compatibility_date?: string;
   compatibility_flags?: ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList;
+  exports?: ScriptsScriptAndVersionSettingsGetResponseExportsMap;
   limits?: ScriptsScriptAndVersionSettingsGetResponseLimits;
   logpush?: boolean;
   migrations?: unknown;
@@ -7552,10 +7666,14 @@ export const ScriptsScriptAndVersionSettingsGetResponse =
       bindings: S.optional(
         ScriptsScriptAndVersionSettingsGetResponseBindingsList,
       ),
+      cache_options: S.optional(
+        ScriptsScriptAndVersionSettingsGetResponseCacheOptions,
+      ),
       compatibility_date: S.optional(S.String),
       compatibility_flags: S.optional(
         ScriptsScriptAndVersionSettingsGetResponseCompatibilityFlagsList,
       ),
+      exports: S.optional(ScriptsScriptAndVersionSettingsGetResponseExportsMap),
       limits: S.optional(ScriptsScriptAndVersionSettingsGetResponseLimits),
       logpush: S.optional(S.Boolean),
       migrations: S.optional(S.Unknown),
@@ -8287,6 +8405,19 @@ export const ScriptsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "ScriptsUpdateRequest",
 }) as any as S.Schema<ScriptsUpdateRequest>;
 
+export interface ScriptsUpdateResponseCacheOptions {
+  enabled: boolean;
+  cross_version_cache?: boolean;
+}
+export const ScriptsUpdateResponseCacheOptions = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    enabled: S.Boolean,
+    cross_version_cache: S.optional(S.Boolean),
+  }),
+).annotate({
+  identifier: "ScriptsUpdateResponseCacheOptions",
+}) as any as S.Schema<ScriptsUpdateResponseCacheOptions>;
+
 export type ScriptsUpdateResponseCompatibilityFlagsList = string[];
 export const ScriptsUpdateResponseCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
@@ -8481,6 +8612,7 @@ export const ScriptsUpdateResponseUsageModel = /*@__PURE__*/ S.String;
 export interface ScriptsUpdateResponse {
   startup_time_ms: number;
   id?: string;
+  cache_options?: ScriptsUpdateResponseCacheOptions;
   compatibility_date?: string;
   compatibility_flags?: ScriptsUpdateResponseCompatibilityFlagsList;
   created_on?: string;
@@ -8507,6 +8639,7 @@ export const ScriptsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     startup_time_ms: S.Number,
     id: S.optional(S.String),
+    cache_options: S.optional(ScriptsUpdateResponseCacheOptions),
     compatibility_date: S.optional(S.String),
     compatibility_flags: S.optional(
       ScriptsUpdateResponseCompatibilityFlagsList,

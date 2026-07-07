@@ -78,7 +78,7 @@ Tests if a specific user has permission to access an application.
 
     - `email: optional string`
 
-    - `geo: optional UserPolicyCheckGeo`
+    - `geo: optional object { country }`
 
       - `country: optional string`
 

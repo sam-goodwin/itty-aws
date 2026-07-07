@@ -66,6 +66,8 @@ Retrieves a list of aggregate metrics grouped by time interval.
 | \>=      | Greater than or equal to | %3E%3D      |
 | <=       | Less than or equal to    | %3C%3D      |
 
+  Use the above to construct filters.
+
 - `metrics: optional array of "count" or "bytesIngress" or "bytesEgress" or 4 more`
 
   One or more metrics to compute. Options are:
@@ -198,6 +200,8 @@ Retrieves a list of aggregate metrics grouped by time interval.
 | \>=      | Greater than or equal to | %3E%3D      |
 | <=       | Less than or equal to    | %3C%3D      |
 
+      Use the above to construct filters.
+
     - `limit: optional number`
 
       Limit number of returned metrics.
@@ -252,7 +256,7 @@ Retrieves a list of aggregate metrics grouped by time interval.
 
   - `time_intervals: optional array of array of string`
 
-    List of time interval buckets: [start, end]
+    List of time interval buckets: [start, end].
 
 ### Example
 
@@ -402,6 +406,8 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/analytics/even
 | \>=      | Greater than or equal to | %3E%3D      |
 | <=       | Less than or equal to    | %3C%3D      |
 
+      Use the above to construct filters.
+
     - `limit: optional number`
 
       Limit number of returned metrics.
@@ -456,4 +462,4 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/analytics/even
 
   - `time_intervals: optional array of array of string`
 
-    List of time interval buckets: [start, end]
+    List of time interval buckets: [start, end].

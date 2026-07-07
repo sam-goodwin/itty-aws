@@ -60,28 +60,28 @@
         "bytesEgress": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Number of bytes sent",
+            "smithy.api#documentation": "Number of bytes sent.",
             "smithy.api#required": {}
           }
         },
         "bytesIngress": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Number of bytes received",
+            "smithy.api#documentation": "Number of bytes received.",
             "smithy.api#required": {}
           }
         },
         "connections": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Number of connections",
+            "smithy.api#documentation": "Number of connections.",
             "smithy.api#required": {}
           }
         },
         "durationAvg": {
           "target": "smithy.api#Double",
           "traits": {
-            "smithy.api#documentation": "Average duration of connections",
+            "smithy.api#documentation": "Average duration of connections.",
             "smithy.api#required": {}
           }
         }
@@ -460,7 +460,7 @@
         "time_intervals": {
           "target": "com.cloudflare.spectrum#AnalyticsEventsBytimesGetResponseTimeIntervalsList",
           "traits": {
-            "smithy.api#documentation": "List of time interval buckets: [start, end]"
+            "smithy.api#documentation": "List of time interval buckets: [start, end]."
           }
         }
       },
@@ -790,7 +790,7 @@
         "time_intervals": {
           "target": "com.cloudflare.spectrum#AnalyticsEventsSummariesGetResponseTimeIntervalsList",
           "traits": {
-            "smithy.api#documentation": "List of time interval buckets: [start, end]"
+            "smithy.api#documentation": "List of time interval buckets: [start, end]."
           }
         }
       },

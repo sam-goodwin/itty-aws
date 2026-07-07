@@ -2615,98 +2615,6 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.ssl#RecommendationsGetRequest": {
-      "type": "structure",
-      "members": {
-        "zone_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#input": {}
-      }
-    },
-    "com.cloudflare.ssl#RecommendationsGetResponseValue": {
-      "type": "enum",
-      "members": {
-        "AUTO": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "auto"
-          }
-        },
-        "CUSTOM": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "custom"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ssl#RecommendationsGetResponse": {
-      "type": "structure",
-      "members": {
-        "id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "editable": {
-          "target": "smithy.api#Boolean",
-          "traits": {
-            "smithy.api#documentation": "Whether this setting can be updated or not.",
-            "smithy.api#required": {}
-          }
-        },
-        "modified_on": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Last time this setting was modified.",
-            "smithy.api#required": {}
-          }
-        },
-        "value": {
-          "target": "com.cloudflare.ssl#RecommendationsGetResponseValue",
-          "traits": {
-            "smithy.api#documentation": "Current setting of the automatic SSL/TLS.",
-            "smithy.api#required": {}
-          }
-        },
-        "next_scheduled_scan": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "Next time this zone will be scanned by the Automatic SSL/TLS."
-          }
-        }
-      },
-      "traits": {
-        "smithy.api#output": {},
-        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
-      }
-    },
-    "com.cloudflare.ssl#RecommendationsGet": {
-      "type": "operation",
-      "input": {
-        "target": "com.cloudflare.ssl#RecommendationsGetRequest"
-      },
-      "output": {
-        "target": "com.cloudflare.ssl#RecommendationsGetResponse"
-      },
-      "traits": {
-        "smithy.api#http": {
-          "method": "GET",
-          "uri": "/zones/{zone_id}/ssl/recommendation",
-          "code": 200
-        },
-        "smithy.api#documentation": "Retrieve the SSL/TLS Recommender's recommendation for a zone.",
-        "smithy.api#readonly": {}
-      }
-    },
     "com.cloudflare.ssl#UniversalSettingsEditRequest": {
       "type": "structure",
       "members": {
@@ -3035,9 +2943,6 @@
         },
         {
           "target": "com.cloudflare.ssl#CertificatePacksQuotaGet"
-        },
-        {
-          "target": "com.cloudflare.ssl#RecommendationsGet"
         },
         {
           "target": "com.cloudflare.ssl#UniversalSettingsEdit"

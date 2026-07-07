@@ -4,7 +4,7 @@
 
 **get** `/zones/{zone_id}/api_gateway/schemas`
 
-Retrieve operations and features as OpenAPI schemas
+Retrieves API operations and their features exported as OpenAPI schemas.
 
 ### Path Parameters
 

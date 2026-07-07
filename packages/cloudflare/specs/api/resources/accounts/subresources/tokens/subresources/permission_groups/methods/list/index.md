@@ -54,11 +54,41 @@ Find all available permission groups for Account Owned API Tokens
 
   - `true`
 
-- `result: optional array of object { id, name, scopes }`
+- `result: optional array of object { id, category, name, scopes }`
 
   - `id: optional string`
 
     Public ID.
+
+  - `category: optional "developer_platform" or "ai_and_machine_learning" or "dns_and_zones" or 10 more`
+
+    Product category that this permission group belongs to.
+
+    - `"developer_platform"`
+
+    - `"ai_and_machine_learning"`
+
+    - `"dns_and_zones"`
+
+    - `"app_security"`
+
+    - `"rules_and_configuration"`
+
+    - `"cloudflare_one_and_zero_trust"`
+
+    - `"analytics_and_logs"`
+
+    - `"network_services"`
+
+    - `"media"`
+
+    - `"email_and_messaging"`
+
+    - `"cache_and_performance"`
+
+    - `"account_and_billing"`
+
+    - `"other"`
 
   - `name: optional string`
 
@@ -129,6 +159,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tokens/permission
   "result": [
     {
       "id": "7cf72faf220841aabcfdfab81c43c4f6",
+      "category": "account_and_billing",
       "name": "Billing Read",
       "scopes": [
         "com.cloudflare.api.account"
@@ -136,6 +167,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tokens/permission
     },
     {
       "id": "9d24387c6e8544e2bc4024a03991339f",
+      "category": "network_services",
       "name": "Load Balancing: Monitors and Pools Read",
       "scopes": [
         "com.cloudflare.api.account"
@@ -143,6 +175,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tokens/permission
     },
     {
       "id": "d2a1802cc9a34e30852f8b33869b2f3c",
+      "category": "network_services",
       "name": "Load Balancing: Monitors and Pools Write",
       "scopes": [
         "com.cloudflare.api.account"
@@ -150,6 +183,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tokens/permission
     },
     {
       "id": "8b47d2786a534c08a1f94ee8f9f599ef",
+      "category": "developer_platform",
       "name": "Workers KV Storage Read",
       "scopes": [
         "com.cloudflare.api.account"
@@ -157,6 +191,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tokens/permission
     },
     {
       "id": "f7f0eda5697f475c90846e879bab8666",
+      "category": "developer_platform",
       "name": "Workers KV Storage Write",
       "scopes": [
         "com.cloudflare.api.account"
@@ -164,6 +199,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tokens/permission
     },
     {
       "id": "1a71c399035b4950a1bd1466bbe4f420",
+      "category": "developer_platform",
       "name": "Workers Scripts Read",
       "scopes": [
         "com.cloudflare.api.account"
@@ -171,6 +207,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/tokens/permission
     },
     {
       "id": "e086da7e2179491d91ee5f35b3ca210a",
+      "category": "developer_platform",
       "name": "Workers Scripts Write",
       "scopes": [
         "com.cloudflare.api.account"

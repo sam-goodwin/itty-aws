@@ -1112,6 +1112,8 @@ export interface ConnectorsCreateRequest {
   interrupt_window_embargo_dates?: ConnectorsCreateRequestInterruptWindowEmbargoDatesList;
   interrupt_window_hour_of_day?: number;
   notes?: string;
+  primary?: boolean;
+  site_id?: string;
   timezone?: string;
 }
 export const ConnectorsCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1128,6 +1130,8 @@ export const ConnectorsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     interrupt_window_hour_of_day: S.optional(S.Number),
     notes: S.optional(S.String),
+    primary: S.optional(S.Boolean),
+    site_id: S.optional(S.String),
     timezone: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -1192,11 +1196,13 @@ export interface ConnectorsCreateResponse {
   interrupt_window_hour_of_day: number;
   last_updated: string;
   notes: string;
+  primary: boolean;
   timezone: string;
   device?: ConnectorsCreateResponseDevice;
   last_heartbeat?: string;
   last_seen_version?: string;
   license_key?: string;
+  site_id?: string;
 }
 export const ConnectorsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1210,11 +1216,13 @@ export const ConnectorsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     interrupt_window_hour_of_day: S.Number,
     last_updated: S.String,
     notes: S.String,
+    primary: S.Boolean,
     timezone: S.String,
     device: S.optional(ConnectorsCreateResponseDevice),
     last_heartbeat: S.optional(S.String),
     last_seen_version: S.optional(S.String),
     license_key: S.optional(S.String),
+    site_id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConnectorsCreateResponse",
@@ -1291,11 +1299,13 @@ export interface ConnectorsDeleteResponse {
   interrupt_window_hour_of_day: number;
   last_updated: string;
   notes: string;
+  primary: boolean;
   timezone: string;
   device?: ConnectorsDeleteResponseDevice;
   last_heartbeat?: string;
   last_seen_version?: string;
   license_key?: string;
+  site_id?: string;
 }
 export const ConnectorsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1309,11 +1319,13 @@ export const ConnectorsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
     interrupt_window_hour_of_day: S.Number,
     last_updated: S.String,
     notes: S.String,
+    primary: S.Boolean,
     timezone: S.String,
     device: S.optional(ConnectorsDeleteResponseDevice),
     last_heartbeat: S.optional(S.String),
     last_seen_version: S.optional(S.String),
     license_key: S.optional(S.String),
+    site_id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConnectorsDeleteResponse",
@@ -1349,7 +1361,9 @@ export interface ConnectorsEditRequest {
   interrupt_window_embargo_dates?: ConnectorsEditRequestInterruptWindowEmbargoDatesList;
   interrupt_window_hour_of_day?: number;
   notes?: string;
+  primary?: boolean;
   provision_license?: boolean;
+  site_id?: string;
   timezone?: string;
 }
 export const ConnectorsEditRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1366,7 +1380,9 @@ export const ConnectorsEditRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     interrupt_window_hour_of_day: S.optional(S.Number),
     notes: S.optional(S.String),
+    primary: S.optional(S.Boolean),
     provision_license: S.optional(S.Boolean),
+    site_id: S.optional(S.String),
     timezone: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -1431,11 +1447,13 @@ export interface ConnectorsEditResponse {
   interrupt_window_hour_of_day: number;
   last_updated: string;
   notes: string;
+  primary: boolean;
   timezone: string;
   device?: ConnectorsEditResponseDevice;
   last_heartbeat?: string;
   last_seen_version?: string;
   license_key?: string;
+  site_id?: string;
 }
 export const ConnectorsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1449,11 +1467,13 @@ export const ConnectorsEditResponse = /*@__PURE__*/ S.suspend(() =>
     interrupt_window_hour_of_day: S.Number,
     last_updated: S.String,
     notes: S.String,
+    primary: S.Boolean,
     timezone: S.String,
     device: S.optional(ConnectorsEditResponseDevice),
     last_heartbeat: S.optional(S.String),
     last_seen_version: S.optional(S.String),
     license_key: S.optional(S.String),
+    site_id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConnectorsEditResponse",
@@ -1873,11 +1893,13 @@ export interface ConnectorsGetResponse {
   interrupt_window_hour_of_day: number;
   last_updated: string;
   notes: string;
+  primary: boolean;
   timezone: string;
   device?: ConnectorsGetResponseDevice;
   last_heartbeat?: string;
   last_seen_version?: string;
   license_key?: string;
+  site_id?: string;
 }
 export const ConnectorsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1891,11 +1913,13 @@ export const ConnectorsGetResponse = /*@__PURE__*/ S.suspend(() =>
     interrupt_window_hour_of_day: S.Number,
     last_updated: S.String,
     notes: S.String,
+    primary: S.Boolean,
     timezone: S.String,
     device: S.optional(ConnectorsGetResponseDevice),
     last_heartbeat: S.optional(S.String),
     last_seen_version: S.optional(S.String),
     license_key: S.optional(S.String),
+    site_id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConnectorsGetResponse",
@@ -1977,11 +2001,13 @@ export interface ConnectorsListResultItem {
   interrupt_window_hour_of_day: number;
   last_updated: string;
   notes: string;
+  primary: boolean;
   timezone: string;
   device?: ConnectorsListResultItemDevice;
   last_heartbeat?: string;
   last_seen_version?: string;
   license_key?: string;
+  site_id?: string;
 }
 export const ConnectorsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -1995,11 +2021,13 @@ export const ConnectorsListResultItem = /*@__PURE__*/ S.suspend(() =>
     interrupt_window_hour_of_day: S.Number,
     last_updated: S.String,
     notes: S.String,
+    primary: S.Boolean,
     timezone: S.String,
     device: S.optional(ConnectorsListResultItemDevice),
     last_heartbeat: S.optional(S.String),
     last_seen_version: S.optional(S.String),
     license_key: S.optional(S.String),
+    site_id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConnectorsListResultItem",
@@ -2310,6 +2338,9 @@ export interface ConnectorsSnapshotsGetResponseTunnelsItem {
   health_value: number;
   interface_name: string;
   tunnel_id: string;
+  natd_result?: string;
+  natd_state?: number;
+  natd_target?: string;
   probed_mtu?: number;
   recent_healthy_pings?: number;
   recent_unhealthy_pings?: number;
@@ -2321,6 +2352,9 @@ export const ConnectorsSnapshotsGetResponseTunnelsItem =
       health_value: S.Number,
       interface_name: S.String,
       tunnel_id: S.String,
+      natd_result: S.optional(S.String),
+      natd_state: S.optional(S.Number),
+      natd_target: S.optional(S.String),
       probed_mtu: S.optional(S.Number),
       recent_healthy_pings: S.optional(S.Number),
       recent_unhealthy_pings: S.optional(S.Number),
@@ -2985,6 +3019,9 @@ export interface ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem {
   health_value: number;
   interface_name: string;
   tunnel_id: string;
+  natd_result?: string;
+  natd_state?: number;
+  natd_target?: string;
   probed_mtu?: number;
   recent_healthy_pings?: number;
   recent_unhealthy_pings?: number;
@@ -2996,6 +3033,9 @@ export const ConnectorsSnapshotsLatestListResponseItemsItemTunnelsItem =
       health_value: S.Number,
       interface_name: S.String,
       tunnel_id: S.String,
+      natd_result: S.optional(S.String),
+      natd_state: S.optional(S.Number),
+      natd_target: S.optional(S.String),
       probed_mtu: S.optional(S.Number),
       recent_healthy_pings: S.optional(S.Number),
       recent_unhealthy_pings: S.optional(S.Number),
@@ -3498,7 +3538,9 @@ export interface ConnectorsUpdateRequest {
   interrupt_window_embargo_dates?: ConnectorsUpdateRequestInterruptWindowEmbargoDatesList;
   interrupt_window_hour_of_day?: number;
   notes?: string;
+  primary?: boolean;
   provision_license?: boolean;
+  site_id?: string;
   timezone?: string;
 }
 export const ConnectorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -3515,7 +3557,9 @@ export const ConnectorsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     interrupt_window_hour_of_day: S.optional(S.Number),
     notes: S.optional(S.String),
+    primary: S.optional(S.Boolean),
     provision_license: S.optional(S.Boolean),
+    site_id: S.optional(S.String),
     timezone: S.optional(S.String),
   }).pipe(
     T.Http({
@@ -3580,11 +3624,13 @@ export interface ConnectorsUpdateResponse {
   interrupt_window_hour_of_day: number;
   last_updated: string;
   notes: string;
+  primary: boolean;
   timezone: string;
   device?: ConnectorsUpdateResponseDevice;
   last_heartbeat?: string;
   last_seen_version?: string;
   license_key?: string;
+  site_id?: string;
 }
 export const ConnectorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -3598,11 +3644,13 @@ export const ConnectorsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     interrupt_window_hour_of_day: S.Number,
     last_updated: S.String,
     notes: S.String,
+    primary: S.Boolean,
     timezone: S.String,
     device: S.optional(ConnectorsUpdateResponseDevice),
     last_heartbeat: S.optional(S.String),
     last_seen_version: S.optional(S.String),
     license_key: S.optional(S.String),
+    site_id: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ConnectorsUpdateResponse",
@@ -3640,16 +3688,20 @@ export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesL
 
 export interface GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       customer_asn: S.Number,
+      export_filter_id: S.optional(S.String),
       extra_prefixes: S.optional(
         GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList,
       ),
+      import_filter_id: S.optional(S.String),
       md5_key: S.optional(S.String),
     }),
   ).annotate({
@@ -3811,13 +3863,17 @@ export const GreTunnelsCreateRequestBgpExtraPrefixesList =
 
 export interface GreTunnelsCreateRequestBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: GreTunnelsCreateRequestBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const GreTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer_asn: S.Number,
+    export_filter_id: S.optional(S.String),
     extra_prefixes: S.optional(GreTunnelsCreateRequestBgpExtraPrefixesList),
+    import_filter_id: S.optional(S.String),
     md5_key: S.optional(S.String),
   }),
 ).annotate({
@@ -3917,13 +3973,17 @@ export const GreTunnelsCreateResponseBgpExtraPrefixesList =
 
 export interface GreTunnelsCreateResponseBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: GreTunnelsCreateResponseBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const GreTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer_asn: S.Number,
+    export_filter_id: S.optional(S.String),
     extra_prefixes: S.optional(GreTunnelsCreateResponseBgpExtraPrefixesList),
+    import_filter_id: S.optional(S.String),
     md5_key: S.optional(S.String),
   }),
 ).annotate({
@@ -4076,16 +4136,20 @@ export const GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList =
 
 export interface GreTunnelsDeleteResponseDeletedGreTunnelBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const GreTunnelsDeleteResponseDeletedGreTunnelBgp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       customer_asn: S.Number,
+      export_filter_id: S.optional(S.String),
       extra_prefixes: S.optional(
         GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList,
       ),
+      import_filter_id: S.optional(S.String),
       md5_key: S.optional(S.String),
     }),
   ).annotate({
@@ -4260,15 +4324,19 @@ export const GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList =
 
 export interface GreTunnelsGetResponseGreTunnelBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const GreTunnelsGetResponseGreTunnelBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer_asn: S.Number,
+    export_filter_id: S.optional(S.String),
     extra_prefixes: S.optional(
       GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList,
     ),
+    import_filter_id: S.optional(S.String),
     md5_key: S.optional(S.String),
   }),
 ).annotate({
@@ -4432,16 +4500,20 @@ export const GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList =
 
 export interface GreTunnelsListResponseGreTunnelsItemBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const GreTunnelsListResponseGreTunnelsItemBgp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       customer_asn: S.Number,
+      export_filter_id: S.optional(S.String),
       extra_prefixes: S.optional(
         GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList,
       ),
+      import_filter_id: S.optional(S.String),
       md5_key: S.optional(S.String),
     }),
 ).annotate({
@@ -4679,16 +4751,20 @@ export const GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList =
 
 export interface GreTunnelsUpdateResponseModifiedGreTunnelBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const GreTunnelsUpdateResponseModifiedGreTunnelBgp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       customer_asn: S.Number,
+      export_filter_id: S.optional(S.String),
       extra_prefixes: S.optional(
         GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList,
       ),
+      import_filter_id: S.optional(S.String),
       md5_key: S.optional(S.String),
     }),
   ).annotate({
@@ -4866,16 +4942,20 @@ export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefi
 
 export interface IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       customer_asn: S.Number,
+      export_filter_id: S.optional(S.String),
       extra_prefixes: S.optional(
         IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList,
       ),
+      import_filter_id: S.optional(S.String),
       md5_key: S.optional(S.String),
     }),
   ).annotate({
@@ -5058,13 +5138,17 @@ export const IpsecTunnelsCreateRequestBgpExtraPrefixesList =
 
 export interface IpsecTunnelsCreateRequestBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: IpsecTunnelsCreateRequestBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const IpsecTunnelsCreateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer_asn: S.Number,
+    export_filter_id: S.optional(S.String),
     extra_prefixes: S.optional(IpsecTunnelsCreateRequestBgpExtraPrefixesList),
+    import_filter_id: S.optional(S.String),
     md5_key: S.optional(S.String),
   }),
 ).annotate({
@@ -5181,13 +5265,17 @@ export const IpsecTunnelsCreateResponseBgpExtraPrefixesList =
 
 export interface IpsecTunnelsCreateResponseBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: IpsecTunnelsCreateResponseBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const IpsecTunnelsCreateResponseBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer_asn: S.Number,
+    export_filter_id: S.optional(S.String),
     extra_prefixes: S.optional(IpsecTunnelsCreateResponseBgpExtraPrefixesList),
+    import_filter_id: S.optional(S.String),
     md5_key: S.optional(S.String),
   }),
 ).annotate({
@@ -5359,16 +5447,20 @@ export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList =
 
 export interface IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       customer_asn: S.Number,
+      export_filter_id: S.optional(S.String),
       extra_prefixes: S.optional(
         IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList,
       ),
+      import_filter_id: S.optional(S.String),
       md5_key: S.optional(S.String),
     }),
   ).annotate({
@@ -5566,16 +5658,20 @@ export const IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList =
 
 export interface IpsecTunnelsGetResponseIpsecTunnelBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const IpsecTunnelsGetResponseIpsecTunnelBgp = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       customer_asn: S.Number,
+      export_filter_id: S.optional(S.String),
       extra_prefixes: S.optional(
         IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList,
       ),
+      import_filter_id: S.optional(S.String),
       md5_key: S.optional(S.String),
     }),
 ).annotate({
@@ -5760,16 +5856,20 @@ export const IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList =
 
 export interface IpsecTunnelsListResponseIpsecTunnelsItemBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const IpsecTunnelsListResponseIpsecTunnelsItemBgp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       customer_asn: S.Number,
+      export_filter_id: S.optional(S.String),
       extra_prefixes: S.optional(
         IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList,
       ),
+      import_filter_id: S.optional(S.String),
       md5_key: S.optional(S.String),
     }),
   ).annotate({
@@ -6055,13 +6155,17 @@ export const IpsecTunnelsUpdateRequestBgpExtraPrefixesList =
 
 export interface IpsecTunnelsUpdateRequestBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: IpsecTunnelsUpdateRequestBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const IpsecTunnelsUpdateRequestBgp = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     customer_asn: S.Number,
+    export_filter_id: S.optional(S.String),
     extra_prefixes: S.optional(IpsecTunnelsUpdateRequestBgpExtraPrefixesList),
+    import_filter_id: S.optional(S.String),
     md5_key: S.optional(S.String),
   }),
 ).annotate({
@@ -6181,16 +6285,20 @@ export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList =
 
 export interface IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp {
   customer_asn: number;
+  export_filter_id?: string;
   extra_prefixes?: IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList;
+  import_filter_id?: string;
   md5_key?: string;
 }
 export const IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgp =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       customer_asn: S.Number,
+      export_filter_id: S.optional(S.String),
       extra_prefixes: S.optional(
         IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList,
       ),
+      import_filter_id: S.optional(S.String),
       md5_key: S.optional(S.String),
     }),
   ).annotate({

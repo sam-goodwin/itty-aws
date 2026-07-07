@@ -2,7 +2,7 @@
 
 **get** `/accounts/{account_id}/images/v1/variants`
 
-Lists existing variants.
+List existing CF Images variants.
 
 ### Path Parameters
 

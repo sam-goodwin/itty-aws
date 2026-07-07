@@ -64,7 +64,7 @@ Retrieves a list of bots.
 
 - `kind: optional "AGENT" or "BOT"`
 
-  Filters results by bot kind.
+  Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.
 
   - `"AGENT"`
 
@@ -309,7 +309,7 @@ Retrieves an aggregated summary of bots HTTP requests grouped by the specified d
 
 - `botKind: optional array of "AGENT" or "BOT"`
 
-  Filters results by bot kind.
+  Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.
 
   - `"AGENT"`
 
@@ -628,7 +628,7 @@ Retrieves bots HTTP request volume over time.
 
 - `botKind: optional array of "AGENT" or "BOT"`
 
-  Filters results by bot kind.
+  Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.
 
   - `"AGENT"`
 
@@ -965,7 +965,7 @@ Retrieves the distribution of HTTP requests from bots, grouped by the specified 
 
 - `botKind: optional array of "AGENT" or "BOT"`
 
-  Filters results by bot kind.
+  Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.
 
   - `"AGENT"`
 

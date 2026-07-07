@@ -3427,6 +3427,24 @@ List all versions for a Worker.
 
         UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
 
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
+
   - `compatibility_date: optional string`
 
     Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -3573,6 +3591,23 @@ List all versions for a Worker.
     - `name: string`
 
       The name of the module.
+
+  - `package_dependencies: optional array of object { installedVersion, name, packageJsonVersion }`
+
+    The list of npm packages that were installed and used when this Worker
+    version was built.
+
+    - `installedVersion: string`
+
+      The exact version that was resolved and installed by the package manager.
+
+    - `name: string`
+
+      The npm package name.
+
+    - `packageJsonVersion: string`
+
+      The version constraint as written in package.json.
 
   - `placement: optional object { mode }  or object { region }  or object { hostname }  or 5 more`
 
@@ -3775,6 +3810,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/workers/$
           "type": "plain_text"
         }
       ],
+      "cache_options": {
+        "enabled": true,
+        "cross_version_cache": true
+      },
       "compatibility_date": "2021-01-01",
       "compatibility_flags": [
         "nodejs_compat"
@@ -3796,6 +3835,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/workers/$
           "content_base64": "ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ==",
           "content_type": "application/javascript+module",
           "name": "index.js"
+        }
+      ],
+      "package_dependencies": [
+        {
+          "installedVersion": "4.17.22",
+          "name": "lodash",
+          "packageJsonVersion": "^4.17.21"
         }
       ],
       "placement": {
@@ -4649,6 +4695,24 @@ Get details about a specific version.
 
         UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
 
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
+
   - `compatibility_date: optional string`
 
     Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -4795,6 +4859,23 @@ Get details about a specific version.
     - `name: string`
 
       The name of the module.
+
+  - `package_dependencies: optional array of object { installedVersion, name, packageJsonVersion }`
+
+    The list of npm packages that were installed and used when this Worker
+    version was built.
+
+    - `installedVersion: string`
+
+      The exact version that was resolved and installed by the package manager.
+
+    - `name: string`
+
+      The npm package name.
+
+    - `packageJsonVersion: string`
+
+      The version constraint as written in package.json.
 
   - `placement: optional object { mode }  or object { region }  or object { hostname }  or 5 more`
 
@@ -4974,6 +5055,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/workers/$
         "type": "plain_text"
       }
     ],
+    "cache_options": {
+      "enabled": true,
+      "cross_version_cache": true
+    },
     "compatibility_date": "2021-01-01",
     "compatibility_flags": [
       "nodejs_compat"
@@ -4995,6 +5080,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/workers/$
         "content_base64": "ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ==",
         "content_type": "application/javascript+module",
         "name": "index.js"
+      }
+    ],
+    "package_dependencies": [
+      {
+        "installedVersion": "4.17.22",
+        "name": "lodash",
+        "packageJsonVersion": "^4.17.21"
       }
     ],
     "placement": {
@@ -5792,6 +5884,24 @@ Create a new version.
 
       UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
 
+- `cache_options: optional object { enabled, cross_version_cache }`
+
+  Global CacheW configuration for the Worker. When caching is on,
+  the platform provisions a `cloudflare.app` zone for the Worker.
+  A `type: worker` entry in the `exports` map can override this
+  value for a single entrypoint.
+
+  - `enabled: boolean`
+
+    Whether caching is enabled for this Worker.
+
+  - `cross_version_cache: optional boolean`
+
+    Whether cached responses are shared across Worker version
+    uploads. This is independent of `enabled`. It can stay true
+    while caching is off, so the preference survives turning
+    caching off and back on.
+
 - `compatibility_date: optional string`
 
   Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -5934,6 +6044,23 @@ Create a new version.
   - `name: string`
 
     The name of the module.
+
+- `package_dependencies: optional array of object { installedVersion, name, packageJsonVersion }`
+
+  The list of npm packages that were installed and used when this Worker
+  version was built.
+
+  - `installedVersion: string`
+
+    The exact version that was resolved and installed by the package manager.
+
+  - `name: string`
+
+    The npm package name.
+
+  - `packageJsonVersion: string`
+
+    The version constraint as written in package.json.
 
 - `placement: optional object { mode }  or object { region }  or object { hostname }  or 5 more`
 
@@ -6845,6 +6972,24 @@ Create a new version.
 
         UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
 
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
+
   - `compatibility_date: optional string`
 
     Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -6991,6 +7136,23 @@ Create a new version.
     - `name: string`
 
       The name of the module.
+
+  - `package_dependencies: optional array of object { installedVersion, name, packageJsonVersion }`
+
+    The list of npm packages that were installed and used when this Worker
+    version was built.
+
+    - `installedVersion: string`
+
+      The exact version that was resolved and installed by the package manager.
+
+    - `name: string`
+
+      The npm package name.
+
+    - `packageJsonVersion: string`
+
+      The version constraint as written in package.json.
 
   - `placement: optional object { mode }  or object { region }  or object { hostname }  or 5 more`
 
@@ -7191,6 +7353,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/workers/$
         "type": "plain_text"
       }
     ],
+    "cache_options": {
+      "enabled": true,
+      "cross_version_cache": true
+    },
     "compatibility_date": "2021-01-01",
     "compatibility_flags": [
       "nodejs_compat"
@@ -7212,6 +7378,13 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/workers/$
         "content_base64": "ZXhwb3J0IGRlZmF1bHQgewogIGFzeW5jIGZldGNoKHJlcXVlc3QsIGVudiwgY3R4KSB7CiAgICByZXR1cm4gbmV3IFJlc3BvbnNlKCdIZWxsbyBXb3JsZCEnKQogIH0KfQ==",
         "content_type": "application/javascript+module",
         "name": "index.js"
+      }
+    ],
+    "package_dependencies": [
+      {
+        "installedVersion": "4.17.22",
+        "name": "lodash",
+        "packageJsonVersion": "^4.17.21"
       }
     ],
     "placement": {
@@ -7317,7 +7490,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/workers/$
 
 ### Version
 
-- `Version object { id, created_on, number, 16 more }`
+- `Version object { id, created_on, number, 18 more }`
 
   - `id: string`
 
@@ -8095,6 +8268,24 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/workers/$
 
         UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
 
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
+
   - `compatibility_date: optional string`
 
     Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -8241,6 +8432,23 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/workers/$
     - `name: string`
 
       The name of the module.
+
+  - `package_dependencies: optional array of object { installedVersion, name, packageJsonVersion }`
+
+    The list of npm packages that were installed and used when this Worker
+    version was built.
+
+    - `installedVersion: string`
+
+      The exact version that was resolved and installed by the package manager.
+
+    - `name: string`
+
+      The npm package name.
+
+    - `packageJsonVersion: string`
+
+      The version constraint as written in package.json.
 
   - `placement: optional object { mode }  or object { region }  or object { hostname }  or 5 more`
 

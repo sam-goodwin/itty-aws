@@ -16,7 +16,29 @@ Performs a chat completion request against an AI Search instance, using indexed 
 
 - `messages: array of object { content, role }`
 
-  - `content: string`
+  - `content: string or array of object { text, type }  or object { image_url, type }`
+
+    - `string`
+
+    - `array of object { text, type }  or object { image_url, type }`
+
+      - `object { text, type }`
+
+        - `text: string`
+
+        - `type: "text"`
+
+          - `"text"`
+
+      - `object { image_url, type }`
+
+        - `image_url: object { url }`
+
+          - `url: string`
+
+        - `type: "image_url"`
+
+          - `"image_url"`
 
   - `role: "system" or "developer" or "user" or 2 more`
 
@@ -160,7 +182,7 @@ Performs a chat completion request against an AI Search instance, using indexed 
 
     - `keyword_match_mode: optional "and" or "or"`
 
-      Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+      Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.
 
       - `"and"`
 
@@ -250,7 +272,29 @@ Performs a chat completion request against an AI Search instance, using indexed 
 
   - `message: object { content, role }`
 
-    - `content: string`
+    - `content: string or array of object { text, type }  or object { image_url, type }`
+
+      - `string`
+
+      - `array of object { text, type }  or object { image_url, type }`
+
+        - `object { text, type }`
+
+          - `text: string`
+
+          - `type: "text"`
+
+            - `"text"`
+
+        - `object { image_url, type }`
+
+          - `image_url: object { url }`
+
+            - `url: string`
+
+          - `type: "image_url"`
+
+            - `"image_url"`
 
     - `role: "system" or "developer" or "user" or 2 more`
 
@@ -317,7 +361,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/instanc
     -d '{
           "messages": [
             {
-              "content": "content",
+              "content": "string",
               "role": "system"
             }
           ]
@@ -331,7 +375,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/instanc
   "choices": [
     {
       "message": {
-        "content": "content",
+        "content": "string",
         "role": "system"
       },
       "index": 0

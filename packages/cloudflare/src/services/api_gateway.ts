@@ -3517,7 +3517,7 @@ export const OperationsSchemaValidationUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Retrieve operations and features as OpenAPI schemas */
+/** Retrieves API operations and their features exported as OpenAPI schemas. */
 export const SchemasList: API.OperationMethod<
   SchemasListRequest,
   SchemasListResponse,
@@ -3569,7 +3569,7 @@ export const SettingsSchemaValidationUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Upload a schema to a zone */
+/** Uploads a new OpenAPI schema for API Shield schema validation. The schema defines expected request/response formats for API endpoints. */
 export const UserSchemasCreate: API.OperationMethod<
   UserSchemasCreateRequest,
   UserSchemasCreateResponse,

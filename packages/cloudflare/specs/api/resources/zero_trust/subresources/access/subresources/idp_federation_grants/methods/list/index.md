@@ -48,10 +48,6 @@ Lists the IdP federation grants owned by the account.
 
     UID of the IdP federation grant.
 
-  - `created_at: string`
-
-    When the grant was created.
-
   - `idp_id: string`
 
     UID of the identity provider being federated.
@@ -113,7 +109,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federa
   "result": [
     {
       "id": "023e105f4ecef8ad9ca31a8372d0c353",
-      "created_at": "2026-05-07T19:11:00Z",
+      "created_at": "2014-01-01T05:20:00.12345Z",
       "idp_id": "a79de439-0e7f-4ebb-8a02-222222222222"
     }
   ],

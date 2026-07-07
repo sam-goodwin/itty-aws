@@ -2,7 +2,7 @@
 
 **delete** `/accounts/{account_id}/custom_ns/{custom_ns_id}`
 
-Delete Account Custom Nameserver
+Removes a custom nameserver from the account.
 
 ### Path Parameters
 

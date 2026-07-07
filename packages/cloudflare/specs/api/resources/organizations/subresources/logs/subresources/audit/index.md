@@ -1,6 +1,6 @@
 # Audit
 
-## Get organization audit logs (Version 2, Beta release)
+## Get organization audit logs (Version 2)
 
 **get** `/organizations/{organization_id}/logs/audit`
 

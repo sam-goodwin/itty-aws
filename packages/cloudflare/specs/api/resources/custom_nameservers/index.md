@@ -166,7 +166,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/custom_ns \
 
 **post** `/accounts/{account_id}/custom_ns`
 
-Add Account Custom Nameserver
+Adds a custom nameserver to the account for use as a vanity nameserver on zones.
 
 ### Path Parameters
 
@@ -314,7 +314,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/custom_ns \
 
 **delete** `/accounts/{account_id}/custom_ns/{custom_ns_id}`
 
-Delete Account Custom Nameserver
+Removes a custom nameserver from the account.
 
 ### Path Parameters
 

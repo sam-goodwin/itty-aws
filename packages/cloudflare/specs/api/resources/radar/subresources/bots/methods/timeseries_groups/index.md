@@ -78,7 +78,7 @@ Retrieves the distribution of HTTP requests from bots, grouped by the specified 
 
 - `botKind: optional array of "AGENT" or "BOT"`
 
-  Filters results by bot kind.
+  Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.
 
   - `"AGENT"`
 

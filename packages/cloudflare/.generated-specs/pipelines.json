@@ -2682,7 +2682,7 @@
         "force": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Delete sink forcefully, including deleting any dependent pipelines.",
+            "smithy.api#documentation": "Deprecated: Delete sink forcefully, including deleting any dependent pipelines.",
             "smithy.api#httpQuery": "force"
           }
         }
@@ -3820,7 +3820,7 @@
         "force": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#documentation": "Delete stream forcefully, including deleting any dependent pipelines.",
+            "smithy.api#documentation": "Deprecated: Delete stream forcefully, including deleting any dependent pipelines.",
             "smithy.api#httpQuery": "force"
           }
         }

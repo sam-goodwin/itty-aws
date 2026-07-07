@@ -2,7 +2,7 @@
 
 **delete** `/accounts/{account_id}/sso_connectors/{sso_connector_id}`
 
-Delete SSO connector
+Deletes an SSO connector from the account.
 
 ### Path Parameters
 

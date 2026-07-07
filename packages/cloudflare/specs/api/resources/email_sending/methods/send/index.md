@@ -26,9 +26,9 @@ Send an email
 
       Email address (e.g., 'user@example.com').
 
-    - `name: string`
+    - `name: optional string`
 
-      Display name for the email address (e.g., 'John Doe').
+      Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.
 
 - `subject: string`
 
@@ -82,29 +82,73 @@ Send an email
 
       MIME type of the attachment (e.g., 'application/pdf', 'text/plain').
 
-- `bcc: optional string or array of string`
+- `bcc: optional string or object { address, name }  or array of string or object { address, name }`
 
-  BCC recipient(s). A single email string or an array of email strings.
-
-  - `EmailSendingEmailAddressString = string`
-
-    An email address as a plain string.
-
-  - `EmailSendingEmailAddressList = array of string`
-
-    A list of email address strings.
-
-- `cc: optional string or array of string`
-
-  CC recipient(s). A single email string or an array of email strings.
+  BCC recipient(s). A single email string, a named address object, or an array of either.
 
   - `EmailSendingEmailAddressString = string`
 
     An email address as a plain string.
 
-  - `EmailSendingEmailAddressList = array of string`
+  - `EmailSendingEmailAddressObject object { address, name }`
 
-    A list of email address strings.
+    - `address: string`
+
+      Email address (e.g., 'user@example.com').
+
+    - `name: optional string`
+
+      Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.
+
+  - `array of string or object { address, name }`
+
+    - `EmailSendingEmailAddressString = string`
+
+      An email address as a plain string.
+
+    - `EmailSendingEmailAddressObject object { address, name }`
+
+      - `address: string`
+
+        Email address (e.g., 'user@example.com').
+
+      - `name: optional string`
+
+        Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.
+
+- `cc: optional string or object { address, name }  or array of string or object { address, name }`
+
+  CC recipient(s). A single email string, a named address object, or an array of either.
+
+  - `EmailSendingEmailAddressString = string`
+
+    An email address as a plain string.
+
+  - `EmailSendingEmailAddressObject object { address, name }`
+
+    - `address: string`
+
+      Email address (e.g., 'user@example.com').
+
+    - `name: optional string`
+
+      Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.
+
+  - `array of string or object { address, name }`
+
+    - `EmailSendingEmailAddressString = string`
+
+      An email address as a plain string.
+
+    - `EmailSendingEmailAddressObject object { address, name }`
+
+      - `address: string`
+
+        Email address (e.g., 'user@example.com').
+
+      - `name: optional string`
+
+        Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.
 
 - `headers: optional map[string]`
 
@@ -128,25 +172,47 @@ Send an email
 
       Email address (e.g., 'user@example.com').
 
-    - `name: string`
+    - `name: optional string`
 
-      Display name for the email address (e.g., 'John Doe').
+      Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.
 
 - `text: optional string`
 
   Plain text body of the email. At least one of text or html must be provided (non-empty).
 
-- `to: optional string or array of string`
+- `to: optional string or object { address, name }  or array of string or object { address, name }`
 
-  Recipient(s). Optional if cc or bcc is provided. A single email string or an array of email strings.
+  Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either.
 
   - `EmailSendingEmailAddressString = string`
 
     An email address as a plain string.
 
-  - `EmailSendingEmailAddressList = array of string`
+  - `EmailSendingEmailAddressObject object { address, name }`
 
-    A list of email address strings.
+    - `address: string`
+
+      Email address (e.g., 'user@example.com').
+
+    - `name: optional string`
+
+      Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.
+
+  - `array of string or object { address, name }`
+
+    - `EmailSendingEmailAddressString = string`
+
+      An email address as a plain string.
+
+    - `EmailSendingEmailAddressObject object { address, name }`
+
+      - `address: string`
+
+        Email address (e.g., 'user@example.com').
+
+      - `name: optional string`
+
+        Display name for the email address (e.g., 'John Doe'). Optional — omit or set to null for no display name.
 
 ### Returns
 
@@ -205,11 +271,28 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/email/sending/sen
     -d '{
           "from": "sender@example.com",
           "subject": "Monthly Report",
+          "bcc": [
+            "recipient-a@example.com",
+            {
+              "address": "recipient-b@example.com",
+              "name": "Recipient B"
+            }
+          ],
+          "cc": [
+            "recipient-a@example.com",
+            {
+              "address": "recipient-b@example.com",
+              "name": "Recipient B"
+            }
+          ],
           "headers": {
             "X-Custom-Header": "value"
           },
           "html": "<h1>Hello</h1><p>Please find your report attached.</p>",
-          "text": "Hello\\n\\nPlease find your report attached."
+          "text": "Hello\\n\\nPlease find your report attached.",
+          "to": [
+            "recipient@example.com"
+          ]
         }'
 ```
 

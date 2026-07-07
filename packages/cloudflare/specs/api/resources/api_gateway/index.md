@@ -6891,7 +6891,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/operations/
 
 **get** `/zones/{zone_id}/api_gateway/schemas`
 
-Retrieve operations and features as OpenAPI schemas
+Retrieves API operations and their features exported as OpenAPI schemas.
 
 ### Path Parameters
 
@@ -7579,7 +7579,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/user_schema
 
 **post** `/zones/{zone_id}/api_gateway/user_schemas`
 
-Upload a schema to a zone
+Uploads a new OpenAPI schema for API Shield schema validation. The schema defines expected request/response formats for API endpoints.
 
 ### Path Parameters
 

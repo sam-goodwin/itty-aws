@@ -42,7 +42,7 @@ Lists all sending-enabled subdomains for the zone.
 
   - `true`
 
-- `result: optional array of object { enabled, name, tag, 4 more }`
+- `result: optional array of object { enabled, name, tag, 5 more }`
 
   - `enabled: boolean`
 
@@ -67,6 +67,10 @@ Lists all sending-enabled subdomains for the zone.
   - `modified: optional string`
 
     The date and time the destination address was last modified.
+
+  - `preview_enabled: optional boolean`
+
+    Whether sent messages from this subdomain can be previewed in the activity log.
 
   - `return_path_domain: optional string`
 
@@ -135,6 +139,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/sending/subdomain
       "created": "2014-01-02T02:20:00Z",
       "dkim_selector": "cf-bounce",
       "modified": "2014-01-02T02:20:00Z",
+      "preview_enabled": true,
       "return_path_domain": "cf-bounce.sub.example.com"
     }
   ],

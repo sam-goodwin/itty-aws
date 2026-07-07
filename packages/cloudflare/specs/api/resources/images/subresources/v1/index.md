@@ -146,7 +146,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1 \
 
 **get** `/accounts/{account_id}/images/v1/{image_id}`
 
-Fetch details for a single image.
+Fetch details for a CF Images image.
 
 ### Path Parameters
 
@@ -272,8 +272,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/$IMAGE_
 
 **post** `/accounts/{account_id}/images/v1`
 
-Upload an image with up to 10 Megabytes using a single HTTP POST (multipart/form-data) request.
-An image can be uploaded by sending an image file or passing an accessible to an API url.
+Upload an image to CF Images. Images up to 10 Megabytes can be uploaded using a
+single HTTP POST (multipart/form-data) request by sending an image file or
+passing a URL accessible to the API.
 
 ### Path Parameters
 
@@ -398,7 +399,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1 \
 
 **patch** `/accounts/{account_id}/images/v1/{image_id}`
 
-Update image access control. On access control change, all copies of the image are purged from cache.
+Update a CF Images image's metadata, creator, or access control. On access control change, all copies of the image are purged from cache.
 
 ### Path Parameters
 
@@ -710,7 +711,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/$IMAGE_
 
 **get** `/accounts/{account_id}/images/v1/keys`
 
-Lists your signing keys. These can be found on your Cloudflare Images dashboard.
+List your CF Images signing keys.
 
 ### Path Parameters
 
@@ -807,7 +808,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/keys \
 
 **put** `/accounts/{account_id}/images/v1/keys/{signing_key_name}`
 
-Create a new signing key with specified name. Returns all keys available.
+Create a new CF Images signing key with specified name. Returns all keys available.
 
 ### Path Parameters
 
@@ -907,8 +908,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/keys/$S
 
 **delete** `/accounts/{account_id}/images/v1/keys/{signing_key_name}`
 
-Delete signing key with specified name. Returns all keys available.
-When last key is removed, a new default signing key will be generated.
+Delete a CF Images signing key with specified name. Returns all keys available.
+When the last key is removed, a new default signing key will be generated.
 
 ### Path Parameters
 
@@ -1179,7 +1180,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/stats \
 
 **get** `/accounts/{account_id}/images/v1/variants`
 
-Lists existing variants.
+List existing CF Images variants.
 
 ### Path Parameters
 
@@ -1318,7 +1319,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 **get** `/accounts/{account_id}/images/v1/variants/{variant_id}`
 
-Fetch details for a single variant.
+Fetch details for a CF Images variant.
 
 ### Path Parameters
 
@@ -1455,7 +1456,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 **post** `/accounts/{account_id}/images/v1/variants`
 
-Specify variants that allow you to resize images for different use cases.
+Create a CF Images variant that allows you to resize images for different use cases.
 
 ### Path Parameters
 
@@ -1645,7 +1646,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 **patch** `/accounts/{account_id}/images/v1/variants/{variant_id}`
 
-Updating a variant purges the cache for all images associated with the variant.
+Update a CF Images variant. This will purge the cache for all images associated with the variant.
 
 ### Path Parameters
 
@@ -1835,7 +1836,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 **delete** `/accounts/{account_id}/images/v1/variants/{variant_id}`
 
-Deleting a variant purges the cache for all images associated with the variant.
+Delete a CF Images variant. This will purge the cache for all images associated with the variant.
 
 ### Path Parameters
 
@@ -2124,11 +2125,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 # Blobs
 
-## Base image
+## Download image
 
 **get** `/accounts/{account_id}/images/v1/{image_id}/blob`
 
-Fetch base image. For most images this will be the originally uploaded file. For larger images it can be a near-lossless version of the original.
+Download an image from CF Images. For most images this will be the originally uploaded file. For larger images it can be a near-lossless version of the original.
 
 ### Path Parameters
 

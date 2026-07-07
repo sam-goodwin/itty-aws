@@ -148,7 +148,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1 \
 
 **get** `/accounts/{account_id}/images/v1/{image_id}`
 
-Fetch details for a single image.
+Fetch details for a CF Images image.
 
 ### Path Parameters
 
@@ -274,8 +274,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/$IMAGE_
 
 **post** `/accounts/{account_id}/images/v1`
 
-Upload an image with up to 10 Megabytes using a single HTTP POST (multipart/form-data) request.
-An image can be uploaded by sending an image file or passing an accessible to an API url.
+Upload an image to CF Images. Images up to 10 Megabytes can be uploaded using a
+single HTTP POST (multipart/form-data) request by sending an image file or
+passing a URL accessible to the API.
 
 ### Path Parameters
 
@@ -400,7 +401,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1 \
 
 **patch** `/accounts/{account_id}/images/v1/{image_id}`
 
-Update image access control. On access control change, all copies of the image are purged from cache.
+Update a CF Images image's metadata, creator, or access control. On access control change, all copies of the image are purged from cache.
 
 ### Path Parameters
 
@@ -712,7 +713,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/$IMAGE_
 
 **get** `/accounts/{account_id}/images/v1/keys`
 
-Lists your signing keys. These can be found on your Cloudflare Images dashboard.
+List your CF Images signing keys.
 
 ### Path Parameters
 
@@ -809,7 +810,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/keys \
 
 **put** `/accounts/{account_id}/images/v1/keys/{signing_key_name}`
 
-Create a new signing key with specified name. Returns all keys available.
+Create a new CF Images signing key with specified name. Returns all keys available.
 
 ### Path Parameters
 
@@ -909,8 +910,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/keys/$S
 
 **delete** `/accounts/{account_id}/images/v1/keys/{signing_key_name}`
 
-Delete signing key with specified name. Returns all keys available.
-When last key is removed, a new default signing key will be generated.
+Delete a CF Images signing key with specified name. Returns all keys available.
+When the last key is removed, a new default signing key will be generated.
 
 ### Path Parameters
 
@@ -1181,7 +1182,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/stats \
 
 **get** `/accounts/{account_id}/images/v1/variants`
 
-Lists existing variants.
+List existing CF Images variants.
 
 ### Path Parameters
 
@@ -1320,7 +1321,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 **get** `/accounts/{account_id}/images/v1/variants/{variant_id}`
 
-Fetch details for a single variant.
+Fetch details for a CF Images variant.
 
 ### Path Parameters
 
@@ -1457,7 +1458,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 **post** `/accounts/{account_id}/images/v1/variants`
 
-Specify variants that allow you to resize images for different use cases.
+Create a CF Images variant that allows you to resize images for different use cases.
 
 ### Path Parameters
 
@@ -1647,7 +1648,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 **patch** `/accounts/{account_id}/images/v1/variants/{variant_id}`
 
-Updating a variant purges the cache for all images associated with the variant.
+Update a CF Images variant. This will purge the cache for all images associated with the variant.
 
 ### Path Parameters
 
@@ -1837,7 +1838,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 **delete** `/accounts/{account_id}/images/v1/variants/{variant_id}`
 
-Deleting a variant purges the cache for all images associated with the variant.
+Delete a CF Images variant. This will purge the cache for all images associated with the variant.
 
 ### Path Parameters
 
@@ -2126,11 +2127,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 # Blobs
 
-## Base image
+## Download image
 
 **get** `/accounts/{account_id}/images/v1/{image_id}/blob`
 
-Fetch base image. For most images this will be the originally uploaded file. For larger images it can be a near-lossless version of the original.
+Download an image from CF Images. For most images this will be the originally uploaded file. For larger images it can be a near-lossless version of the original.
 
 ### Path Parameters
 
@@ -2155,7 +2156,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/$IMAGE_
 
 **get** `/accounts/{account_id}/images/v2`
 
-List up to 10000 images with up to 1000 results per page. Use the optional parameters below to get a specific range of images.
+List up to 10000 images from CF Images, with up to 1000 results per page. Use the optional parameters below to get a specific range of images.
 Pagination is supported via continuation_token.
 
 **Metadata Filtering (Optional):**
@@ -2165,6 +2166,10 @@ You can optionally filter images by custom metadata fields using the `meta.<fiel
 **Supported Operators:**
 
 - `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match
+- `gt` / `gt:number` - Greater than (number only)
+- `gte` / `gte:number` - Greater than or equal (number only)
+- `lt` / `lt:number` - Less than (number only)
+- `lte` / `lte:number` - Less than or equal (number only)
 - `in` / `in:string` / `in:number` - Match any value in list (pipe-separated)
 
 **Metadata Filter Constraints:**
@@ -2173,6 +2178,10 @@ You can optionally filter images by custom metadata fields using the `meta.<fiel
 - Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`)
 - Maximum 10 elements for list operators (`in`)
 - Supports string, number, and boolean value types
+- Range operators (`gt`, `gte`, `lt`, `lte`) only accept numeric values
+
+**Filter Consistency:**
+Filters are combined with AND logic. The system does not validate whether filter combinations are logically consistent. For example, `meta.priority[eq:number]=5&meta.priority[lte:number]=3` will return zero results because no value can satisfy both conditions simultaneously. It is the caller's responsibility to ensure filter combinations make sense.
 
 **Examples:**
 
@@ -2188,6 +2197,12 @@ You can optionally filter images by custom metadata fields using the `meta.<fiel
 
 # Filter by metadata [in:number]
 /images/v2?meta.ratings[in:number]=4|5
+
+# Filter by metadata range [gte:number]
+/images/v2?meta.priority[gte:number]=1
+
+# Filter by bounded range
+/images/v2?meta.priority[gte:number]=1&meta.priority[lte:number]=5
 
 # Filter by nested metadata
 /images/v2?meta.region.name[eq]=eu-west
@@ -2224,6 +2239,10 @@ You can optionally filter images by custom metadata fields using the `meta.<fiel
     **Operators:**
 
     - `eq`, `eq:string`, `eq:number`, `eq:boolean` - Exact match
+    - `gt`, `gt:number` - Greater than (number only)
+    - `gte`, `gte:number` - Greater than or equal (number only)
+    - `lt`, `lt:number` - Less than (number only)
+    - `lte`, `lte:number` - Less than or equal (number only)
     - `in`, `in:string`, `in:number` - Match any value in pipe-separated list
 
     **Examples:**
@@ -2231,7 +2250,11 @@ You can optionally filter images by custom metadata fields using the `meta.<fiel
     - `meta.status[eq]=active`
     - `meta.priority[eq:number]=5`
     - `meta.enabled[eq:boolean]=true`
+    - `meta.priority[gte:number]=1`
+    - `meta.score[lt:number]=100`
     - `meta.region[in]=us-east|us-west|eu-west`
+
+    **Note:** Filter consistency is not validated. Contradictory filters (e.g., `meta.priority[eq:number]=5&meta.priority[lte:number]=3`) will return zero results.
 
 - `per_page: optional number`
 

@@ -126,7 +126,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
       "version_config": [
         {
           "target_environment": "windows",
-          "version": "2026.5.234.0"
+          "version": "2026.6.234.0"
         }
       ],
       "policy_ids": [
@@ -241,7 +241,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
     "version_config": [
       {
         "target_environment": "windows",
-        "version": "2026.5.234.0"
+        "version": "2026.6.234.0"
       }
     ],
     "policy_ids": [
@@ -348,7 +348,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
           "version_config": [
             {
               "target_environment": "windows",
-              "version": "2026.5.234.0"
+              "version": "2026.6.234.0"
             }
           ]
         }'
@@ -378,7 +378,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
     "version_config": [
       {
         "target_environment": "windows",
-        "version": "2026.5.234.0"
+        "version": "2026.6.234.0"
       }
     ],
     "policy_ids": [
@@ -512,7 +512,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
     "version_config": [
       {
         "target_environment": "windows",
-        "version": "2026.5.234.0"
+        "version": "2026.6.234.0"
       }
     ],
     "policy_ids": [

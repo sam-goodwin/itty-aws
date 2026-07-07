@@ -66,6 +66,10 @@ List, search, sort, and filter a zones' DNS records.
 
   - `"desc"`
 
+- `include_shadow_metadata: optional boolean`
+
+  Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
 - `match: optional "any" or "all"`
 
   Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.
@@ -121,6 +125,14 @@ List, search, sort, and filter a zones' DNS records.
 - `search: optional string`
 
   Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.
+
+- `shadowed_by_name: optional string`
+
+  Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+- `shadowing_name: optional string`
+
+  Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
 - `tag: optional object { absent, contains, endswith, 3 more }`
 
@@ -236,7 +248,7 @@ List, search, sort, and filter a zones' DNS records.
 
 - `result: optional array of RecordResponse`
 
-  - `A = ARecord`
+  - `ARecord = ARecord`
 
     - `id: string`
 
@@ -246,9 +258,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -266,7 +294,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `AAAA = AAAARecord`
+  - `AAAARecord = AAAARecord`
 
     - `id: string`
 
@@ -276,9 +304,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -296,7 +340,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CNAME = CNAMERecord`
+  - `CNAMERecord = CNAMERecord`
 
     - `id: string`
 
@@ -306,9 +350,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -326,7 +386,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `MX = MXRecord`
+  - `MXRecord = MXRecord`
 
     - `id: string`
 
@@ -336,9 +396,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -356,7 +432,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NS = NSRecord`
+  - `NSRecord = NSRecord`
 
     - `id: string`
 
@@ -366,9 +442,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -386,7 +478,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `Openpgpkey object { id, comment, content, 12 more }`
+  - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
     - `id: string`
 
@@ -404,9 +496,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -466,7 +574,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `PTR = PTRRecord`
+  - `PTRRecord = PTRRecord`
 
     - `id: string`
 
@@ -476,9 +584,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -496,7 +620,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TXT = TXTRecord`
+  - `TXTRecord = TXTRecord`
 
     - `id: string`
 
@@ -506,9 +630,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -526,7 +666,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CAA = CAARecord`
+  - `CAARecord = CAARecord`
 
     - `id: string`
 
@@ -536,9 +676,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -556,7 +712,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CERT = CERTRecord`
+  - `CERTRecord = CERTRecord`
 
     - `id: string`
 
@@ -566,9 +722,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -586,7 +758,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DNSKEY = DNSKEYRecord`
+  - `DNSKEYRecord = DNSKEYRecord`
 
     - `id: string`
 
@@ -596,9 +768,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -616,7 +804,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DS = DSRecord`
+  - `DSRecord = DSRecord`
 
     - `id: string`
 
@@ -626,9 +814,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -646,7 +850,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `HTTPS = HTTPSRecord`
+  - `HTTPSRecord = HTTPSRecord`
 
     - `id: string`
 
@@ -656,9 +860,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -676,7 +896,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `LOC = LOCRecord`
+  - `LOCRecord = LOCRecord`
 
     - `id: string`
 
@@ -686,9 +906,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -706,7 +942,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NAPTR = NAPTRRecord`
+  - `NAPTRRecord = NAPTRRecord`
 
     - `id: string`
 
@@ -716,9 +952,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -736,7 +988,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SMIMEA = SMIMEARecord`
+  - `SMIMEARecord = SMIMEARecord`
 
     - `id: string`
 
@@ -746,9 +998,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -766,7 +1034,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SRV = SRVRecord`
+  - `SRVRecord = SRVRecord`
 
     - `id: string`
 
@@ -776,9 +1044,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -796,7 +1080,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SSHFP = SSHFPRecord`
+  - `SSHFPRecord = SSHFPRecord`
 
     - `id: string`
 
@@ -806,9 +1090,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -826,7 +1126,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SVCB = SVCBRecord`
+  - `SVCBRecord = SVCBRecord`
 
     - `id: string`
 
@@ -836,9 +1136,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -856,7 +1172,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TLSA = TLSARecord`
+  - `TLSARecord = TLSARecord`
 
     - `id: string`
 
@@ -866,9 +1182,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -886,7 +1218,7 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `URI = URIRecord`
+  - `URIRecord = URIRecord`
 
     - `id: string`
 
@@ -896,9 +1228,25 @@ List, search, sort, and filter a zones' DNS records.
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -988,7 +1336,14 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records \
       ],
       "id": "023e105f4ecef8ad9ca31a8372d0c353",
       "created_on": "2014-01-01T05:20:00.12345Z",
-      "meta": {},
+      "meta": {
+        "dead_glue": true,
+        "is_glue": true,
+        "shadowed_by": [
+          "372e67954025e0ba6aaa6d586b9e0b59"
+        ],
+        "shadowed_records_count": 42
+      },
       "modified_on": "2014-01-01T05:20:00.12345Z",
       "proxiable": true,
       "comment_modified_on": "2024-01-01T05:20:00.12345Z",
@@ -1009,7 +1364,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records \
 
 **get** `/zones/{zone_id}/dns_records/{dns_record_id}`
 
-DNS Record Details
+Retrieves details for a specific DNS record in the zone.
 
 ### Path Parameters
 
@@ -1020,6 +1375,12 @@ DNS Record Details
 - `dns_record_id: string`
 
   Identifier.
+
+### Query Parameters
+
+- `include_shadow_metadata: optional boolean`
+
+  Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
 ### Returns
 
@@ -1055,7 +1416,7 @@ DNS Record Details
 
 - `result: optional RecordResponse`
 
-  - `A = ARecord`
+  - `ARecord = ARecord`
 
     - `id: string`
 
@@ -1065,9 +1426,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1085,7 +1462,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `AAAA = AAAARecord`
+  - `AAAARecord = AAAARecord`
 
     - `id: string`
 
@@ -1095,9 +1472,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1115,7 +1508,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CNAME = CNAMERecord`
+  - `CNAMERecord = CNAMERecord`
 
     - `id: string`
 
@@ -1125,9 +1518,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1145,7 +1554,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `MX = MXRecord`
+  - `MXRecord = MXRecord`
 
     - `id: string`
 
@@ -1155,9 +1564,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1175,7 +1600,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NS = NSRecord`
+  - `NSRecord = NSRecord`
 
     - `id: string`
 
@@ -1185,9 +1610,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1205,7 +1646,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `Openpgpkey object { id, comment, content, 12 more }`
+  - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
     - `id: string`
 
@@ -1223,9 +1664,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1285,7 +1742,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `PTR = PTRRecord`
+  - `PTRRecord = PTRRecord`
 
     - `id: string`
 
@@ -1295,9 +1752,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1315,7 +1788,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TXT = TXTRecord`
+  - `TXTRecord = TXTRecord`
 
     - `id: string`
 
@@ -1325,9 +1798,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1345,7 +1834,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CAA = CAARecord`
+  - `CAARecord = CAARecord`
 
     - `id: string`
 
@@ -1355,9 +1844,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1375,7 +1880,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CERT = CERTRecord`
+  - `CERTRecord = CERTRecord`
 
     - `id: string`
 
@@ -1385,9 +1890,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1405,7 +1926,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DNSKEY = DNSKEYRecord`
+  - `DNSKEYRecord = DNSKEYRecord`
 
     - `id: string`
 
@@ -1415,9 +1936,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1435,7 +1972,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DS = DSRecord`
+  - `DSRecord = DSRecord`
 
     - `id: string`
 
@@ -1445,9 +1982,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1465,7 +2018,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `HTTPS = HTTPSRecord`
+  - `HTTPSRecord = HTTPSRecord`
 
     - `id: string`
 
@@ -1475,9 +2028,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1495,7 +2064,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `LOC = LOCRecord`
+  - `LOCRecord = LOCRecord`
 
     - `id: string`
 
@@ -1505,9 +2074,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1525,7 +2110,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NAPTR = NAPTRRecord`
+  - `NAPTRRecord = NAPTRRecord`
 
     - `id: string`
 
@@ -1535,9 +2120,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1555,7 +2156,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SMIMEA = SMIMEARecord`
+  - `SMIMEARecord = SMIMEARecord`
 
     - `id: string`
 
@@ -1565,9 +2166,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1585,7 +2202,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SRV = SRVRecord`
+  - `SRVRecord = SRVRecord`
 
     - `id: string`
 
@@ -1595,9 +2212,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1615,7 +2248,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SSHFP = SSHFPRecord`
+  - `SSHFPRecord = SSHFPRecord`
 
     - `id: string`
 
@@ -1625,9 +2258,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1645,7 +2294,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SVCB = SVCBRecord`
+  - `SVCBRecord = SVCBRecord`
 
     - `id: string`
 
@@ -1655,9 +2304,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1675,7 +2340,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TLSA = TLSARecord`
+  - `TLSARecord = TLSARecord`
 
     - `id: string`
 
@@ -1685,9 +2350,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1705,7 +2386,7 @@ DNS Record Details
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `URI = URIRecord`
+  - `URIRecord = URIRecord`
 
     - `id: string`
 
@@ -1715,9 +2396,25 @@ DNS Record Details
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -1784,7 +2481,14 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$DNS_RECORD
     ],
     "id": "023e105f4ecef8ad9ca31a8372d0c353",
     "created_on": "2014-01-01T05:20:00.12345Z",
-    "meta": {},
+    "meta": {
+      "dead_glue": true,
+      "is_glue": true,
+      "shadowed_by": [
+        "372e67954025e0ba6aaa6d586b9e0b59"
+      ],
+      "shadowed_records_count": 42
+    },
     "modified_on": "2014-01-01T05:20:00.12345Z",
     "proxiable": true,
     "comment_modified_on": "2024-01-01T05:20:00.12345Z",
@@ -1811,6 +2515,12 @@ Notes:
 - `zone_id: string`
 
   Identifier.
+
+### Query Parameters
+
+- `include_shadow_metadata: optional boolean`
+
+  Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
 ### Body Parameters
 
@@ -3088,7 +3798,7 @@ Notes:
 
 - `result: optional RecordResponse`
 
-  - `A = ARecord`
+  - `ARecord = ARecord`
 
     - `id: string`
 
@@ -3098,9 +3808,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3118,7 +3844,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `AAAA = AAAARecord`
+  - `AAAARecord = AAAARecord`
 
     - `id: string`
 
@@ -3128,9 +3854,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3148,7 +3890,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CNAME = CNAMERecord`
+  - `CNAMERecord = CNAMERecord`
 
     - `id: string`
 
@@ -3158,9 +3900,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3178,7 +3936,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `MX = MXRecord`
+  - `MXRecord = MXRecord`
 
     - `id: string`
 
@@ -3188,9 +3946,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3208,7 +3982,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NS = NSRecord`
+  - `NSRecord = NSRecord`
 
     - `id: string`
 
@@ -3218,9 +3992,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3238,7 +4028,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `Openpgpkey object { id, comment, content, 12 more }`
+  - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
     - `id: string`
 
@@ -3256,9 +4046,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3318,7 +4124,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `PTR = PTRRecord`
+  - `PTRRecord = PTRRecord`
 
     - `id: string`
 
@@ -3328,9 +4134,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3348,7 +4170,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TXT = TXTRecord`
+  - `TXTRecord = TXTRecord`
 
     - `id: string`
 
@@ -3358,9 +4180,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3378,7 +4216,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CAA = CAARecord`
+  - `CAARecord = CAARecord`
 
     - `id: string`
 
@@ -3388,9 +4226,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3408,7 +4262,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CERT = CERTRecord`
+  - `CERTRecord = CERTRecord`
 
     - `id: string`
 
@@ -3418,9 +4272,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3438,7 +4308,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DNSKEY = DNSKEYRecord`
+  - `DNSKEYRecord = DNSKEYRecord`
 
     - `id: string`
 
@@ -3448,9 +4318,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3468,7 +4354,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DS = DSRecord`
+  - `DSRecord = DSRecord`
 
     - `id: string`
 
@@ -3478,9 +4364,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3498,7 +4400,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `HTTPS = HTTPSRecord`
+  - `HTTPSRecord = HTTPSRecord`
 
     - `id: string`
 
@@ -3508,9 +4410,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3528,7 +4446,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `LOC = LOCRecord`
+  - `LOCRecord = LOCRecord`
 
     - `id: string`
 
@@ -3538,9 +4456,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3558,7 +4492,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NAPTR = NAPTRRecord`
+  - `NAPTRRecord = NAPTRRecord`
 
     - `id: string`
 
@@ -3568,9 +4502,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3588,7 +4538,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SMIMEA = SMIMEARecord`
+  - `SMIMEARecord = SMIMEARecord`
 
     - `id: string`
 
@@ -3598,9 +4548,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3618,7 +4584,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SRV = SRVRecord`
+  - `SRVRecord = SRVRecord`
 
     - `id: string`
 
@@ -3628,9 +4594,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3648,7 +4630,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SSHFP = SSHFPRecord`
+  - `SSHFPRecord = SSHFPRecord`
 
     - `id: string`
 
@@ -3658,9 +4640,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3678,7 +4676,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SVCB = SVCBRecord`
+  - `SVCBRecord = SVCBRecord`
 
     - `id: string`
 
@@ -3688,9 +4686,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3708,7 +4722,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TLSA = TLSARecord`
+  - `TLSARecord = TLSARecord`
 
     - `id: string`
 
@@ -3718,9 +4732,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3738,7 +4768,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `URI = URIRecord`
+  - `URIRecord = URIRecord`
 
     - `id: string`
 
@@ -3748,9 +4778,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -3827,7 +4873,14 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records \
     ],
     "id": "023e105f4ecef8ad9ca31a8372d0c353",
     "created_on": "2014-01-01T05:20:00.12345Z",
-    "meta": {},
+    "meta": {
+      "dead_glue": true,
+      "is_glue": true,
+      "shadowed_by": [
+        "372e67954025e0ba6aaa6d586b9e0b59"
+      ],
+      "shadowed_records_count": 42
+    },
     "modified_on": "2014-01-01T05:20:00.12345Z",
     "proxiable": true,
     "comment_modified_on": "2024-01-01T05:20:00.12345Z",
@@ -3858,6 +4911,12 @@ Notes:
 - `dns_record_id: string`
 
   Identifier.
+
+### Query Parameters
+
+- `include_shadow_metadata: optional boolean`
+
+  Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
 ### Body Parameters
 
@@ -5135,7 +6194,7 @@ Notes:
 
 - `result: optional RecordResponse`
 
-  - `A = ARecord`
+  - `ARecord = ARecord`
 
     - `id: string`
 
@@ -5145,9 +6204,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5165,7 +6240,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `AAAA = AAAARecord`
+  - `AAAARecord = AAAARecord`
 
     - `id: string`
 
@@ -5175,9 +6250,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5195,7 +6286,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CNAME = CNAMERecord`
+  - `CNAMERecord = CNAMERecord`
 
     - `id: string`
 
@@ -5205,9 +6296,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5225,7 +6332,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `MX = MXRecord`
+  - `MXRecord = MXRecord`
 
     - `id: string`
 
@@ -5235,9 +6342,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5255,7 +6378,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NS = NSRecord`
+  - `NSRecord = NSRecord`
 
     - `id: string`
 
@@ -5265,9 +6388,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5285,7 +6424,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `Openpgpkey object { id, comment, content, 12 more }`
+  - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
     - `id: string`
 
@@ -5303,9 +6442,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5365,7 +6520,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `PTR = PTRRecord`
+  - `PTRRecord = PTRRecord`
 
     - `id: string`
 
@@ -5375,9 +6530,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5395,7 +6566,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TXT = TXTRecord`
+  - `TXTRecord = TXTRecord`
 
     - `id: string`
 
@@ -5405,9 +6576,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5425,7 +6612,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CAA = CAARecord`
+  - `CAARecord = CAARecord`
 
     - `id: string`
 
@@ -5435,9 +6622,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5455,7 +6658,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CERT = CERTRecord`
+  - `CERTRecord = CERTRecord`
 
     - `id: string`
 
@@ -5465,9 +6668,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5485,7 +6704,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DNSKEY = DNSKEYRecord`
+  - `DNSKEYRecord = DNSKEYRecord`
 
     - `id: string`
 
@@ -5495,9 +6714,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5515,7 +6750,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DS = DSRecord`
+  - `DSRecord = DSRecord`
 
     - `id: string`
 
@@ -5525,9 +6760,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5545,7 +6796,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `HTTPS = HTTPSRecord`
+  - `HTTPSRecord = HTTPSRecord`
 
     - `id: string`
 
@@ -5555,9 +6806,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5575,7 +6842,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `LOC = LOCRecord`
+  - `LOCRecord = LOCRecord`
 
     - `id: string`
 
@@ -5585,9 +6852,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5605,7 +6888,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NAPTR = NAPTRRecord`
+  - `NAPTRRecord = NAPTRRecord`
 
     - `id: string`
 
@@ -5615,9 +6898,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5635,7 +6934,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SMIMEA = SMIMEARecord`
+  - `SMIMEARecord = SMIMEARecord`
 
     - `id: string`
 
@@ -5645,9 +6944,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5665,7 +6980,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SRV = SRVRecord`
+  - `SRVRecord = SRVRecord`
 
     - `id: string`
 
@@ -5675,9 +6990,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5695,7 +7026,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SSHFP = SSHFPRecord`
+  - `SSHFPRecord = SSHFPRecord`
 
     - `id: string`
 
@@ -5705,9 +7036,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5725,7 +7072,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SVCB = SVCBRecord`
+  - `SVCBRecord = SVCBRecord`
 
     - `id: string`
 
@@ -5735,9 +7082,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5755,7 +7118,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TLSA = TLSARecord`
+  - `TLSARecord = TLSARecord`
 
     - `id: string`
 
@@ -5765,9 +7128,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5785,7 +7164,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `URI = URIRecord`
+  - `URIRecord = URIRecord`
 
     - `id: string`
 
@@ -5795,9 +7174,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -5875,7 +7270,14 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$DNS_RECORD
     ],
     "id": "023e105f4ecef8ad9ca31a8372d0c353",
     "created_on": "2014-01-01T05:20:00.12345Z",
-    "meta": {},
+    "meta": {
+      "dead_glue": true,
+      "is_glue": true,
+      "shadowed_by": [
+        "372e67954025e0ba6aaa6d586b9e0b59"
+      ],
+      "shadowed_records_count": 42
+    },
     "modified_on": "2014-01-01T05:20:00.12345Z",
     "proxiable": true,
     "comment_modified_on": "2024-01-01T05:20:00.12345Z",
@@ -5906,6 +7308,12 @@ Notes:
 - `dns_record_id: string`
 
   Identifier.
+
+### Query Parameters
+
+- `include_shadow_metadata: optional boolean`
+
+  Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
 ### Body Parameters
 
@@ -7183,7 +8591,7 @@ Notes:
 
 - `result: optional RecordResponse`
 
-  - `A = ARecord`
+  - `ARecord = ARecord`
 
     - `id: string`
 
@@ -7193,9 +8601,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7213,7 +8637,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `AAAA = AAAARecord`
+  - `AAAARecord = AAAARecord`
 
     - `id: string`
 
@@ -7223,9 +8647,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7243,7 +8683,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CNAME = CNAMERecord`
+  - `CNAMERecord = CNAMERecord`
 
     - `id: string`
 
@@ -7253,9 +8693,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7273,7 +8729,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `MX = MXRecord`
+  - `MXRecord = MXRecord`
 
     - `id: string`
 
@@ -7283,9 +8739,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7303,7 +8775,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NS = NSRecord`
+  - `NSRecord = NSRecord`
 
     - `id: string`
 
@@ -7313,9 +8785,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7333,7 +8821,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `Openpgpkey object { id, comment, content, 12 more }`
+  - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
     - `id: string`
 
@@ -7351,9 +8839,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7413,7 +8917,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `PTR = PTRRecord`
+  - `PTRRecord = PTRRecord`
 
     - `id: string`
 
@@ -7423,9 +8927,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7443,7 +8963,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TXT = TXTRecord`
+  - `TXTRecord = TXTRecord`
 
     - `id: string`
 
@@ -7453,9 +8973,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7473,7 +9009,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CAA = CAARecord`
+  - `CAARecord = CAARecord`
 
     - `id: string`
 
@@ -7483,9 +9019,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7503,7 +9055,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CERT = CERTRecord`
+  - `CERTRecord = CERTRecord`
 
     - `id: string`
 
@@ -7513,9 +9065,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7533,7 +9101,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DNSKEY = DNSKEYRecord`
+  - `DNSKEYRecord = DNSKEYRecord`
 
     - `id: string`
 
@@ -7543,9 +9111,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7563,7 +9147,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DS = DSRecord`
+  - `DSRecord = DSRecord`
 
     - `id: string`
 
@@ -7573,9 +9157,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7593,7 +9193,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `HTTPS = HTTPSRecord`
+  - `HTTPSRecord = HTTPSRecord`
 
     - `id: string`
 
@@ -7603,9 +9203,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7623,7 +9239,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `LOC = LOCRecord`
+  - `LOCRecord = LOCRecord`
 
     - `id: string`
 
@@ -7633,9 +9249,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7653,7 +9285,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NAPTR = NAPTRRecord`
+  - `NAPTRRecord = NAPTRRecord`
 
     - `id: string`
 
@@ -7663,9 +9295,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7683,7 +9331,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SMIMEA = SMIMEARecord`
+  - `SMIMEARecord = SMIMEARecord`
 
     - `id: string`
 
@@ -7693,9 +9341,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7713,7 +9377,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SRV = SRVRecord`
+  - `SRVRecord = SRVRecord`
 
     - `id: string`
 
@@ -7723,9 +9387,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7743,7 +9423,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SSHFP = SSHFPRecord`
+  - `SSHFPRecord = SSHFPRecord`
 
     - `id: string`
 
@@ -7753,9 +9433,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7773,7 +9469,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SVCB = SVCBRecord`
+  - `SVCBRecord = SVCBRecord`
 
     - `id: string`
 
@@ -7783,9 +9479,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7803,7 +9515,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TLSA = TLSARecord`
+  - `TLSARecord = TLSARecord`
 
     - `id: string`
 
@@ -7813,9 +9525,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7833,7 +9561,7 @@ Notes:
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `URI = URIRecord`
+  - `URIRecord = URIRecord`
 
     - `id: string`
 
@@ -7843,9 +9571,25 @@ Notes:
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -7923,7 +9667,14 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$DNS_RECORD
     ],
     "id": "023e105f4ecef8ad9ca31a8372d0c353",
     "created_on": "2014-01-01T05:20:00.12345Z",
-    "meta": {},
+    "meta": {
+      "dead_glue": true,
+      "is_glue": true,
+      "shadowed_by": [
+        "372e67954025e0ba6aaa6d586b9e0b59"
+      ],
+      "shadowed_records_count": 42
+    },
     "modified_on": "2014-01-01T05:20:00.12345Z",
     "proxiable": true,
     "comment_modified_on": "2024-01-01T05:20:00.12345Z",
@@ -7936,7 +9687,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/$DNS_RECORD
 
 **delete** `/zones/{zone_id}/dns_records/{dns_record_id}`
 
-Delete DNS Record
+Permanently removes a DNS record from the zone.
 
 ### Path Parameters
 
@@ -9568,7 +11319,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
   - `accepts: optional array of RecordResponse`
 
-    - `A = ARecord`
+    - `ARecord = ARecord`
 
       - `id: string`
 
@@ -9578,9 +11329,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -9598,7 +11365,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `AAAA = AAAARecord`
+    - `AAAARecord = AAAARecord`
 
       - `id: string`
 
@@ -9608,9 +11375,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -9628,7 +11411,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `CNAME = CNAMERecord`
+    - `CNAMERecord = CNAMERecord`
 
       - `id: string`
 
@@ -9638,9 +11421,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -9658,7 +11457,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `MX = MXRecord`
+    - `MXRecord = MXRecord`
 
       - `id: string`
 
@@ -9668,9 +11467,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -9688,7 +11503,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `NS = NSRecord`
+    - `NSRecord = NSRecord`
 
       - `id: string`
 
@@ -9698,9 +11513,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -9718,7 +11549,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `Openpgpkey object { id, comment, content, 12 more }`
+    - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
       - `id: string`
 
@@ -9736,9 +11567,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -9798,7 +11645,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `PTR = PTRRecord`
+    - `PTRRecord = PTRRecord`
 
       - `id: string`
 
@@ -9808,9 +11655,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -9828,7 +11691,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `TXT = TXTRecord`
+    - `TXTRecord = TXTRecord`
 
       - `id: string`
 
@@ -9838,9 +11701,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -9858,7 +11737,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `CAA = CAARecord`
+    - `CAARecord = CAARecord`
 
       - `id: string`
 
@@ -9868,9 +11747,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -9888,7 +11783,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `CERT = CERTRecord`
+    - `CERTRecord = CERTRecord`
 
       - `id: string`
 
@@ -9898,9 +11793,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -9918,7 +11829,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `DNSKEY = DNSKEYRecord`
+    - `DNSKEYRecord = DNSKEYRecord`
 
       - `id: string`
 
@@ -9928,9 +11839,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -9948,7 +11875,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `DS = DSRecord`
+    - `DSRecord = DSRecord`
 
       - `id: string`
 
@@ -9958,9 +11885,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -9978,7 +11921,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `HTTPS = HTTPSRecord`
+    - `HTTPSRecord = HTTPSRecord`
 
       - `id: string`
 
@@ -9988,9 +11931,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -10008,7 +11967,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `LOC = LOCRecord`
+    - `LOCRecord = LOCRecord`
 
       - `id: string`
 
@@ -10018,9 +11977,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -10038,7 +12013,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `NAPTR = NAPTRRecord`
+    - `NAPTRRecord = NAPTRRecord`
 
       - `id: string`
 
@@ -10048,9 +12023,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -10068,7 +12059,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SMIMEA = SMIMEARecord`
+    - `SMIMEARecord = SMIMEARecord`
 
       - `id: string`
 
@@ -10078,9 +12069,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -10098,7 +12105,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SRV = SRVRecord`
+    - `SRVRecord = SRVRecord`
 
       - `id: string`
 
@@ -10108,9 +12115,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -10128,7 +12151,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SSHFP = SSHFPRecord`
+    - `SSHFPRecord = SSHFPRecord`
 
       - `id: string`
 
@@ -10138,9 +12161,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -10158,7 +12197,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SVCB = SVCBRecord`
+    - `SVCBRecord = SVCBRecord`
 
       - `id: string`
 
@@ -10168,9 +12207,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -10188,7 +12243,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `TLSA = TLSARecord`
+    - `TLSARecord = TLSARecord`
 
       - `id: string`
 
@@ -10198,9 +12253,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -10218,7 +12289,7 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `URI = URIRecord`
+    - `URIRecord = URIRecord`
 
       - `id: string`
 
@@ -10228,9 +12299,25 @@ Accept or reject DNS records found by the DNS records scan. Accepted records wil
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -10303,7 +12390,14 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/scan/review
         ],
         "id": "023e105f4ecef8ad9ca31a8372d0c353",
         "created_on": "2014-01-01T05:20:00.12345Z",
-        "meta": {},
+        "meta": {
+          "dead_glue": true,
+          "is_glue": true,
+          "shadowed_by": [
+            "372e67954025e0ba6aaa6d586b9e0b59"
+          ],
+          "shadowed_records_count": 42
+        },
         "modified_on": "2014-01-01T05:20:00.12345Z",
         "proxiable": true,
         "comment_modified_on": "2024-01-01T05:20:00.12345Z",
@@ -10363,7 +12457,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
 - `result: optional array of RecordResponse`
 
-  - `A = ARecord`
+  - `ARecord = ARecord`
 
     - `id: string`
 
@@ -10373,9 +12467,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10393,7 +12503,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `AAAA = AAAARecord`
+  - `AAAARecord = AAAARecord`
 
     - `id: string`
 
@@ -10403,9 +12513,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10423,7 +12549,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CNAME = CNAMERecord`
+  - `CNAMERecord = CNAMERecord`
 
     - `id: string`
 
@@ -10433,9 +12559,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10453,7 +12595,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `MX = MXRecord`
+  - `MXRecord = MXRecord`
 
     - `id: string`
 
@@ -10463,9 +12605,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10483,7 +12641,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NS = NSRecord`
+  - `NSRecord = NSRecord`
 
     - `id: string`
 
@@ -10493,9 +12651,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10513,7 +12687,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `Openpgpkey object { id, comment, content, 12 more }`
+  - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
     - `id: string`
 
@@ -10531,9 +12705,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10593,7 +12783,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `PTR = PTRRecord`
+  - `PTRRecord = PTRRecord`
 
     - `id: string`
 
@@ -10603,9 +12793,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10623,7 +12829,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TXT = TXTRecord`
+  - `TXTRecord = TXTRecord`
 
     - `id: string`
 
@@ -10633,9 +12839,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10653,7 +12875,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CAA = CAARecord`
+  - `CAARecord = CAARecord`
 
     - `id: string`
 
@@ -10663,9 +12885,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10683,7 +12921,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CERT = CERTRecord`
+  - `CERTRecord = CERTRecord`
 
     - `id: string`
 
@@ -10693,9 +12931,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10713,7 +12967,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DNSKEY = DNSKEYRecord`
+  - `DNSKEYRecord = DNSKEYRecord`
 
     - `id: string`
 
@@ -10723,9 +12977,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10743,7 +13013,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DS = DSRecord`
+  - `DSRecord = DSRecord`
 
     - `id: string`
 
@@ -10753,9 +13023,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10773,7 +13059,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `HTTPS = HTTPSRecord`
+  - `HTTPSRecord = HTTPSRecord`
 
     - `id: string`
 
@@ -10783,9 +13069,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10803,7 +13105,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `LOC = LOCRecord`
+  - `LOCRecord = LOCRecord`
 
     - `id: string`
 
@@ -10813,9 +13115,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10833,7 +13151,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NAPTR = NAPTRRecord`
+  - `NAPTRRecord = NAPTRRecord`
 
     - `id: string`
 
@@ -10843,9 +13161,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10863,7 +13197,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SMIMEA = SMIMEARecord`
+  - `SMIMEARecord = SMIMEARecord`
 
     - `id: string`
 
@@ -10873,9 +13207,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10893,7 +13243,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SRV = SRVRecord`
+  - `SRVRecord = SRVRecord`
 
     - `id: string`
 
@@ -10903,9 +13253,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10923,7 +13289,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SSHFP = SSHFPRecord`
+  - `SSHFPRecord = SSHFPRecord`
 
     - `id: string`
 
@@ -10933,9 +13299,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10953,7 +13335,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SVCB = SVCBRecord`
+  - `SVCBRecord = SVCBRecord`
 
     - `id: string`
 
@@ -10963,9 +13345,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -10983,7 +13381,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TLSA = TLSARecord`
+  - `TLSARecord = TLSARecord`
 
     - `id: string`
 
@@ -10993,9 +13391,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -11013,7 +13427,7 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `URI = URIRecord`
+  - `URIRecord = URIRecord`
 
     - `id: string`
 
@@ -11023,9 +13437,25 @@ Retrieves the list of DNS records discovered up to this point by the asynchronou
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -11115,7 +13545,14 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/scan/review
       ],
       "id": "023e105f4ecef8ad9ca31a8372d0c353",
       "created_on": "2014-01-01T05:20:00.12345Z",
-      "meta": {},
+      "meta": {
+        "dead_glue": true,
+        "is_glue": true,
+        "shadowed_by": [
+          "372e67954025e0ba6aaa6d586b9e0b59"
+        ],
+        "shadowed_records_count": 42
+      },
       "modified_on": "2014-01-01T05:20:00.12345Z",
       "proxiable": true,
       "comment_modified_on": "2024-01-01T05:20:00.12345Z",
@@ -11154,6 +13591,12 @@ Notes:
 - `zone_id: string`
 
   Identifier.
+
+### Query Parameters
+
+- `include_shadow_metadata: optional boolean`
+
+  Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
 ### Body Parameters
 
@@ -12779,7 +15222,7 @@ Notes:
 
   - `deletes: optional array of RecordResponse`
 
-    - `A = ARecord`
+    - `ARecord = ARecord`
 
       - `id: string`
 
@@ -12789,9 +15232,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -12809,7 +15268,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `AAAA = AAAARecord`
+    - `AAAARecord = AAAARecord`
 
       - `id: string`
 
@@ -12819,9 +15278,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -12839,7 +15314,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `CNAME = CNAMERecord`
+    - `CNAMERecord = CNAMERecord`
 
       - `id: string`
 
@@ -12849,9 +15324,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -12869,7 +15360,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `MX = MXRecord`
+    - `MXRecord = MXRecord`
 
       - `id: string`
 
@@ -12879,9 +15370,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -12899,7 +15406,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `NS = NSRecord`
+    - `NSRecord = NSRecord`
 
       - `id: string`
 
@@ -12909,9 +15416,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -12929,7 +15452,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `Openpgpkey object { id, comment, content, 12 more }`
+    - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
       - `id: string`
 
@@ -12947,9 +15470,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13009,7 +15548,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `PTR = PTRRecord`
+    - `PTRRecord = PTRRecord`
 
       - `id: string`
 
@@ -13019,9 +15558,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13039,7 +15594,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `TXT = TXTRecord`
+    - `TXTRecord = TXTRecord`
 
       - `id: string`
 
@@ -13049,9 +15604,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13069,7 +15640,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `CAA = CAARecord`
+    - `CAARecord = CAARecord`
 
       - `id: string`
 
@@ -13079,9 +15650,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13099,7 +15686,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `CERT = CERTRecord`
+    - `CERTRecord = CERTRecord`
 
       - `id: string`
 
@@ -13109,9 +15696,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13129,7 +15732,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `DNSKEY = DNSKEYRecord`
+    - `DNSKEYRecord = DNSKEYRecord`
 
       - `id: string`
 
@@ -13139,9 +15742,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13159,7 +15778,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `DS = DSRecord`
+    - `DSRecord = DSRecord`
 
       - `id: string`
 
@@ -13169,9 +15788,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13189,7 +15824,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `HTTPS = HTTPSRecord`
+    - `HTTPSRecord = HTTPSRecord`
 
       - `id: string`
 
@@ -13199,9 +15834,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13219,7 +15870,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `LOC = LOCRecord`
+    - `LOCRecord = LOCRecord`
 
       - `id: string`
 
@@ -13229,9 +15880,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13249,7 +15916,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `NAPTR = NAPTRRecord`
+    - `NAPTRRecord = NAPTRRecord`
 
       - `id: string`
 
@@ -13259,9 +15926,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13279,7 +15962,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SMIMEA = SMIMEARecord`
+    - `SMIMEARecord = SMIMEARecord`
 
       - `id: string`
 
@@ -13289,9 +15972,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13309,7 +16008,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SRV = SRVRecord`
+    - `SRVRecord = SRVRecord`
 
       - `id: string`
 
@@ -13319,9 +16018,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13339,7 +16054,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SSHFP = SSHFPRecord`
+    - `SSHFPRecord = SSHFPRecord`
 
       - `id: string`
 
@@ -13349,9 +16064,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13369,7 +16100,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SVCB = SVCBRecord`
+    - `SVCBRecord = SVCBRecord`
 
       - `id: string`
 
@@ -13379,9 +16110,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13399,7 +16146,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `TLSA = TLSARecord`
+    - `TLSARecord = TLSARecord`
 
       - `id: string`
 
@@ -13409,9 +16156,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13429,7 +16192,7 @@ Notes:
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `URI = URIRecord`
+    - `URIRecord = URIRecord`
 
       - `id: string`
 
@@ -13439,9 +16202,25 @@ Notes:
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -13461,135 +16240,135 @@ Notes:
 
   - `patches: optional array of RecordResponse`
 
-    - `A = ARecord`
+    - `ARecord = ARecord`
 
-    - `AAAA = AAAARecord`
+    - `AAAARecord = AAAARecord`
 
-    - `CNAME = CNAMERecord`
+    - `CNAMERecord = CNAMERecord`
 
-    - `MX = MXRecord`
+    - `MXRecord = MXRecord`
 
-    - `NS = NSRecord`
+    - `NSRecord = NSRecord`
 
-    - `Openpgpkey object { id, comment, content, 12 more }`
+    - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
-    - `PTR = PTRRecord`
+    - `PTRRecord = PTRRecord`
 
-    - `TXT = TXTRecord`
+    - `TXTRecord = TXTRecord`
 
-    - `CAA = CAARecord`
+    - `CAARecord = CAARecord`
 
-    - `CERT = CERTRecord`
+    - `CERTRecord = CERTRecord`
 
-    - `DNSKEY = DNSKEYRecord`
+    - `DNSKEYRecord = DNSKEYRecord`
 
-    - `DS = DSRecord`
+    - `DSRecord = DSRecord`
 
-    - `HTTPS = HTTPSRecord`
+    - `HTTPSRecord = HTTPSRecord`
 
-    - `LOC = LOCRecord`
+    - `LOCRecord = LOCRecord`
 
-    - `NAPTR = NAPTRRecord`
+    - `NAPTRRecord = NAPTRRecord`
 
-    - `SMIMEA = SMIMEARecord`
+    - `SMIMEARecord = SMIMEARecord`
 
-    - `SRV = SRVRecord`
+    - `SRVRecord = SRVRecord`
 
-    - `SSHFP = SSHFPRecord`
+    - `SSHFPRecord = SSHFPRecord`
 
-    - `SVCB = SVCBRecord`
+    - `SVCBRecord = SVCBRecord`
 
-    - `TLSA = TLSARecord`
+    - `TLSARecord = TLSARecord`
 
-    - `URI = URIRecord`
+    - `URIRecord = URIRecord`
 
   - `posts: optional array of RecordResponse`
 
-    - `A = ARecord`
+    - `ARecord = ARecord`
 
-    - `AAAA = AAAARecord`
+    - `AAAARecord = AAAARecord`
 
-    - `CNAME = CNAMERecord`
+    - `CNAMERecord = CNAMERecord`
 
-    - `MX = MXRecord`
+    - `MXRecord = MXRecord`
 
-    - `NS = NSRecord`
+    - `NSRecord = NSRecord`
 
-    - `Openpgpkey object { id, comment, content, 12 more }`
+    - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
-    - `PTR = PTRRecord`
+    - `PTRRecord = PTRRecord`
 
-    - `TXT = TXTRecord`
+    - `TXTRecord = TXTRecord`
 
-    - `CAA = CAARecord`
+    - `CAARecord = CAARecord`
 
-    - `CERT = CERTRecord`
+    - `CERTRecord = CERTRecord`
 
-    - `DNSKEY = DNSKEYRecord`
+    - `DNSKEYRecord = DNSKEYRecord`
 
-    - `DS = DSRecord`
+    - `DSRecord = DSRecord`
 
-    - `HTTPS = HTTPSRecord`
+    - `HTTPSRecord = HTTPSRecord`
 
-    - `LOC = LOCRecord`
+    - `LOCRecord = LOCRecord`
 
-    - `NAPTR = NAPTRRecord`
+    - `NAPTRRecord = NAPTRRecord`
 
-    - `SMIMEA = SMIMEARecord`
+    - `SMIMEARecord = SMIMEARecord`
 
-    - `SRV = SRVRecord`
+    - `SRVRecord = SRVRecord`
 
-    - `SSHFP = SSHFPRecord`
+    - `SSHFPRecord = SSHFPRecord`
 
-    - `SVCB = SVCBRecord`
+    - `SVCBRecord = SVCBRecord`
 
-    - `TLSA = TLSARecord`
+    - `TLSARecord = TLSARecord`
 
-    - `URI = URIRecord`
+    - `URIRecord = URIRecord`
 
   - `puts: optional array of RecordResponse`
 
-    - `A = ARecord`
+    - `ARecord = ARecord`
 
-    - `AAAA = AAAARecord`
+    - `AAAARecord = AAAARecord`
 
-    - `CNAME = CNAMERecord`
+    - `CNAMERecord = CNAMERecord`
 
-    - `MX = MXRecord`
+    - `MXRecord = MXRecord`
 
-    - `NS = NSRecord`
+    - `NSRecord = NSRecord`
 
-    - `Openpgpkey object { id, comment, content, 12 more }`
+    - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
-    - `PTR = PTRRecord`
+    - `PTRRecord = PTRRecord`
 
-    - `TXT = TXTRecord`
+    - `TXTRecord = TXTRecord`
 
-    - `CAA = CAARecord`
+    - `CAARecord = CAARecord`
 
-    - `CERT = CERTRecord`
+    - `CERTRecord = CERTRecord`
 
-    - `DNSKEY = DNSKEYRecord`
+    - `DNSKEYRecord = DNSKEYRecord`
 
-    - `DS = DSRecord`
+    - `DSRecord = DSRecord`
 
-    - `HTTPS = HTTPSRecord`
+    - `HTTPSRecord = HTTPSRecord`
 
-    - `LOC = LOCRecord`
+    - `LOCRecord = LOCRecord`
 
-    - `NAPTR = NAPTRRecord`
+    - `NAPTRRecord = NAPTRRecord`
 
-    - `SMIMEA = SMIMEARecord`
+    - `SMIMEARecord = SMIMEARecord`
 
-    - `SRV = SRVRecord`
+    - `SRVRecord = SRVRecord`
 
-    - `SSHFP = SSHFPRecord`
+    - `SSHFPRecord = SSHFPRecord`
 
-    - `SVCB = SVCBRecord`
+    - `SVCBRecord = SVCBRecord`
 
-    - `TLSA = TLSARecord`
+    - `TLSARecord = TLSARecord`
 
-    - `URI = URIRecord`
+    - `URIRecord = URIRecord`
 
 ### Example
 
@@ -13644,7 +16423,14 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
         ],
         "id": "023e105f4ecef8ad9ca31a8372d0c353",
         "created_on": "2014-01-01T05:20:00.12345Z",
-        "meta": {},
+        "meta": {
+          "dead_glue": true,
+          "is_glue": true,
+          "shadowed_by": [
+            "372e67954025e0ba6aaa6d586b9e0b59"
+          ],
+          "shadowed_records_count": 42
+        },
         "modified_on": "2014-01-01T05:20:00.12345Z",
         "proxiable": true,
         "comment_modified_on": "2024-01-01T05:20:00.12345Z",
@@ -13669,7 +16455,14 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
         ],
         "id": "023e105f4ecef8ad9ca31a8372d0c353",
         "created_on": "2014-01-01T05:20:00.12345Z",
-        "meta": {},
+        "meta": {
+          "dead_glue": true,
+          "is_glue": true,
+          "shadowed_by": [
+            "372e67954025e0ba6aaa6d586b9e0b59"
+          ],
+          "shadowed_records_count": 42
+        },
         "modified_on": "2014-01-01T05:20:00.12345Z",
         "proxiable": true,
         "comment_modified_on": "2024-01-01T05:20:00.12345Z",
@@ -13694,7 +16487,14 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
         ],
         "id": "023e105f4ecef8ad9ca31a8372d0c353",
         "created_on": "2014-01-01T05:20:00.12345Z",
-        "meta": {},
+        "meta": {
+          "dead_glue": true,
+          "is_glue": true,
+          "shadowed_by": [
+            "372e67954025e0ba6aaa6d586b9e0b59"
+          ],
+          "shadowed_records_count": 42
+        },
         "modified_on": "2014-01-01T05:20:00.12345Z",
         "proxiable": true,
         "comment_modified_on": "2024-01-01T05:20:00.12345Z",
@@ -13719,7 +16519,14 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
         ],
         "id": "023e105f4ecef8ad9ca31a8372d0c353",
         "created_on": "2014-01-01T05:20:00.12345Z",
-        "meta": {},
+        "meta": {
+          "dead_glue": true,
+          "is_glue": true,
+          "shadowed_by": [
+            "372e67954025e0ba6aaa6d586b9e0b59"
+          ],
+          "shadowed_records_count": 42
+        },
         "modified_on": "2014-01-01T05:20:00.12345Z",
         "proxiable": true,
         "comment_modified_on": "2024-01-01T05:20:00.12345Z",
@@ -16236,7 +19043,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
 - `RecordResponse = ARecord or AAAARecord or CNAMERecord or 18 more`
 
-  - `A = ARecord`
+  - `ARecord = ARecord`
 
     - `id: string`
 
@@ -16246,9 +19053,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16266,7 +19089,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `AAAA = AAAARecord`
+  - `AAAARecord = AAAARecord`
 
     - `id: string`
 
@@ -16276,9 +19099,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16296,7 +19135,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CNAME = CNAMERecord`
+  - `CNAMERecord = CNAMERecord`
 
     - `id: string`
 
@@ -16306,9 +19145,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16326,7 +19181,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `MX = MXRecord`
+  - `MXRecord = MXRecord`
 
     - `id: string`
 
@@ -16336,9 +19191,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16356,7 +19227,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NS = NSRecord`
+  - `NSRecord = NSRecord`
 
     - `id: string`
 
@@ -16366,9 +19237,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16386,7 +19273,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `Openpgpkey object { id, comment, content, 12 more }`
+  - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
     - `id: string`
 
@@ -16404,9 +19291,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16466,7 +19369,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `PTR = PTRRecord`
+  - `PTRRecord = PTRRecord`
 
     - `id: string`
 
@@ -16476,9 +19379,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16496,7 +19415,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TXT = TXTRecord`
+  - `TXTRecord = TXTRecord`
 
     - `id: string`
 
@@ -16506,9 +19425,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16526,7 +19461,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CAA = CAARecord`
+  - `CAARecord = CAARecord`
 
     - `id: string`
 
@@ -16536,9 +19471,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16556,7 +19507,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `CERT = CERTRecord`
+  - `CERTRecord = CERTRecord`
 
     - `id: string`
 
@@ -16566,9 +19517,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16586,7 +19553,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DNSKEY = DNSKEYRecord`
+  - `DNSKEYRecord = DNSKEYRecord`
 
     - `id: string`
 
@@ -16596,9 +19563,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16616,7 +19599,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `DS = DSRecord`
+  - `DSRecord = DSRecord`
 
     - `id: string`
 
@@ -16626,9 +19609,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16646,7 +19645,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `HTTPS = HTTPSRecord`
+  - `HTTPSRecord = HTTPSRecord`
 
     - `id: string`
 
@@ -16656,9 +19655,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16676,7 +19691,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `LOC = LOCRecord`
+  - `LOCRecord = LOCRecord`
 
     - `id: string`
 
@@ -16686,9 +19701,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16706,7 +19737,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `NAPTR = NAPTRRecord`
+  - `NAPTRRecord = NAPTRRecord`
 
     - `id: string`
 
@@ -16716,9 +19747,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16736,7 +19783,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SMIMEA = SMIMEARecord`
+  - `SMIMEARecord = SMIMEARecord`
 
     - `id: string`
 
@@ -16746,9 +19793,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16766,7 +19829,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SRV = SRVRecord`
+  - `SRVRecord = SRVRecord`
 
     - `id: string`
 
@@ -16776,9 +19839,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16796,7 +19875,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SSHFP = SSHFPRecord`
+  - `SSHFPRecord = SSHFPRecord`
 
     - `id: string`
 
@@ -16806,9 +19885,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16826,7 +19921,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `SVCB = SVCBRecord`
+  - `SVCBRecord = SVCBRecord`
 
     - `id: string`
 
@@ -16836,9 +19931,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16856,7 +19967,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `TLSA = TLSARecord`
+  - `TLSARecord = TLSARecord`
 
     - `id: string`
 
@@ -16866,9 +19977,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -16886,7 +20013,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record tags were last modified. Omitted if there are no tags.
 
-  - `URI = URIRecord`
+  - `URIRecord = URIRecord`
 
     - `id: string`
 
@@ -16896,9 +20023,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
       When the record was created.
 
-    - `meta: unknown`
+    - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-      Extra Cloudflare-specific information about the record.
+      Extra Cloudflare-specific metadata about the record.
+
+      - `dead_glue: optional boolean`
+
+        Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+      - `is_glue: optional boolean`
+
+        Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+      - `shadowed_by: optional array of string`
+
+        IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+      - `shadowed_records_count: optional number`
+
+        Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
     - `modified_on: string`
 
@@ -17502,7 +20645,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
   - `accepts: optional array of RecordResponse`
 
-    - `A = ARecord`
+    - `ARecord = ARecord`
 
       - `id: string`
 
@@ -17512,9 +20655,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17532,7 +20691,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `AAAA = AAAARecord`
+    - `AAAARecord = AAAARecord`
 
       - `id: string`
 
@@ -17542,9 +20701,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17562,7 +20737,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `CNAME = CNAMERecord`
+    - `CNAMERecord = CNAMERecord`
 
       - `id: string`
 
@@ -17572,9 +20747,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17592,7 +20783,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `MX = MXRecord`
+    - `MXRecord = MXRecord`
 
       - `id: string`
 
@@ -17602,9 +20793,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17622,7 +20829,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `NS = NSRecord`
+    - `NSRecord = NSRecord`
 
       - `id: string`
 
@@ -17632,9 +20839,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17652,7 +20875,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `Openpgpkey object { id, comment, content, 12 more }`
+    - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
       - `id: string`
 
@@ -17670,9 +20893,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17732,7 +20971,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `PTR = PTRRecord`
+    - `PTRRecord = PTRRecord`
 
       - `id: string`
 
@@ -17742,9 +20981,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17762,7 +21017,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `TXT = TXTRecord`
+    - `TXTRecord = TXTRecord`
 
       - `id: string`
 
@@ -17772,9 +21027,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17792,7 +21063,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `CAA = CAARecord`
+    - `CAARecord = CAARecord`
 
       - `id: string`
 
@@ -17802,9 +21073,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17822,7 +21109,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `CERT = CERTRecord`
+    - `CERTRecord = CERTRecord`
 
       - `id: string`
 
@@ -17832,9 +21119,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17852,7 +21155,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `DNSKEY = DNSKEYRecord`
+    - `DNSKEYRecord = DNSKEYRecord`
 
       - `id: string`
 
@@ -17862,9 +21165,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17882,7 +21201,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `DS = DSRecord`
+    - `DSRecord = DSRecord`
 
       - `id: string`
 
@@ -17892,9 +21211,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17912,7 +21247,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `HTTPS = HTTPSRecord`
+    - `HTTPSRecord = HTTPSRecord`
 
       - `id: string`
 
@@ -17922,9 +21257,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17942,7 +21293,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `LOC = LOCRecord`
+    - `LOCRecord = LOCRecord`
 
       - `id: string`
 
@@ -17952,9 +21303,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -17972,7 +21339,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `NAPTR = NAPTRRecord`
+    - `NAPTRRecord = NAPTRRecord`
 
       - `id: string`
 
@@ -17982,9 +21349,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18002,7 +21385,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SMIMEA = SMIMEARecord`
+    - `SMIMEARecord = SMIMEARecord`
 
       - `id: string`
 
@@ -18012,9 +21395,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18032,7 +21431,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SRV = SRVRecord`
+    - `SRVRecord = SRVRecord`
 
       - `id: string`
 
@@ -18042,9 +21441,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18062,7 +21477,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SSHFP = SSHFPRecord`
+    - `SSHFPRecord = SSHFPRecord`
 
       - `id: string`
 
@@ -18072,9 +21487,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18092,7 +21523,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SVCB = SVCBRecord`
+    - `SVCBRecord = SVCBRecord`
 
       - `id: string`
 
@@ -18102,9 +21533,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18122,7 +21569,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `TLSA = TLSARecord`
+    - `TLSARecord = TLSARecord`
 
       - `id: string`
 
@@ -18132,9 +21579,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18152,7 +21615,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `URI = URIRecord`
+    - `URIRecord = URIRecord`
 
       - `id: string`
 
@@ -18162,9 +21625,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18190,7 +21669,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
   - `deletes: optional array of RecordResponse`
 
-    - `A = ARecord`
+    - `ARecord = ARecord`
 
       - `id: string`
 
@@ -18200,9 +21679,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18220,7 +21715,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `AAAA = AAAARecord`
+    - `AAAARecord = AAAARecord`
 
       - `id: string`
 
@@ -18230,9 +21725,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18250,7 +21761,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `CNAME = CNAMERecord`
+    - `CNAMERecord = CNAMERecord`
 
       - `id: string`
 
@@ -18260,9 +21771,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18280,7 +21807,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `MX = MXRecord`
+    - `MXRecord = MXRecord`
 
       - `id: string`
 
@@ -18290,9 +21817,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18310,7 +21853,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `NS = NSRecord`
+    - `NSRecord = NSRecord`
 
       - `id: string`
 
@@ -18320,9 +21863,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18340,7 +21899,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `Openpgpkey object { id, comment, content, 12 more }`
+    - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
       - `id: string`
 
@@ -18358,9 +21917,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18420,7 +21995,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `PTR = PTRRecord`
+    - `PTRRecord = PTRRecord`
 
       - `id: string`
 
@@ -18430,9 +22005,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18450,7 +22041,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `TXT = TXTRecord`
+    - `TXTRecord = TXTRecord`
 
       - `id: string`
 
@@ -18460,9 +22051,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18480,7 +22087,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `CAA = CAARecord`
+    - `CAARecord = CAARecord`
 
       - `id: string`
 
@@ -18490,9 +22097,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18510,7 +22133,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `CERT = CERTRecord`
+    - `CERTRecord = CERTRecord`
 
       - `id: string`
 
@@ -18520,9 +22143,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18540,7 +22179,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `DNSKEY = DNSKEYRecord`
+    - `DNSKEYRecord = DNSKEYRecord`
 
       - `id: string`
 
@@ -18550,9 +22189,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18570,7 +22225,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `DS = DSRecord`
+    - `DSRecord = DSRecord`
 
       - `id: string`
 
@@ -18580,9 +22235,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18600,7 +22271,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `HTTPS = HTTPSRecord`
+    - `HTTPSRecord = HTTPSRecord`
 
       - `id: string`
 
@@ -18610,9 +22281,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18630,7 +22317,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `LOC = LOCRecord`
+    - `LOCRecord = LOCRecord`
 
       - `id: string`
 
@@ -18640,9 +22327,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18660,7 +22363,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `NAPTR = NAPTRRecord`
+    - `NAPTRRecord = NAPTRRecord`
 
       - `id: string`
 
@@ -18670,9 +22373,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18690,7 +22409,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SMIMEA = SMIMEARecord`
+    - `SMIMEARecord = SMIMEARecord`
 
       - `id: string`
 
@@ -18700,9 +22419,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18720,7 +22455,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SRV = SRVRecord`
+    - `SRVRecord = SRVRecord`
 
       - `id: string`
 
@@ -18730,9 +22465,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18750,7 +22501,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SSHFP = SSHFPRecord`
+    - `SSHFPRecord = SSHFPRecord`
 
       - `id: string`
 
@@ -18760,9 +22511,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18780,7 +22547,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `SVCB = SVCBRecord`
+    - `SVCBRecord = SVCBRecord`
 
       - `id: string`
 
@@ -18790,9 +22557,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18810,7 +22593,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `TLSA = TLSARecord`
+    - `TLSARecord = TLSARecord`
 
       - `id: string`
 
@@ -18820,9 +22603,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18840,7 +22639,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record tags were last modified. Omitted if there are no tags.
 
-    - `URI = URIRecord`
+    - `URIRecord = URIRecord`
 
       - `id: string`
 
@@ -18850,9 +22649,25 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
         When the record was created.
 
-      - `meta: unknown`
+      - `meta: object { dead_glue, is_glue, shadowed_by, shadowed_records_count }`
 
-        Extra Cloudflare-specific information about the record.
+        Extra Cloudflare-specific metadata about the record.
+
+        - `dead_glue: optional boolean`
+
+          Whether this glue record is not served because a shallower NS delegation takes precedence over the deeper delegation that needs it. Present only when true; reachable glue carries only `is_glue`. See [Unreachable glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#unreachable-glue-records).
+
+        - `is_glue: optional boolean`
+
+          Whether this A or AAAA record is glue for a subdomain NS delegation. See [Glue records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records#glue-records).
+
+        - `shadowed_by: optional array of string`
+
+          IDs of the NS records that shadow this record. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
+
+        - `shadowed_records_count: optional number`
+
+          Number of records shadowed by this NS delegation. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).
 
       - `modified_on: string`
 
@@ -18872,132 +22687,132 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records/batch \
 
   - `patches: optional array of RecordResponse`
 
-    - `A = ARecord`
+    - `ARecord = ARecord`
 
-    - `AAAA = AAAARecord`
+    - `AAAARecord = AAAARecord`
 
-    - `CNAME = CNAMERecord`
+    - `CNAMERecord = CNAMERecord`
 
-    - `MX = MXRecord`
+    - `MXRecord = MXRecord`
 
-    - `NS = NSRecord`
+    - `NSRecord = NSRecord`
 
-    - `Openpgpkey object { id, comment, content, 12 more }`
+    - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
-    - `PTR = PTRRecord`
+    - `PTRRecord = PTRRecord`
 
-    - `TXT = TXTRecord`
+    - `TXTRecord = TXTRecord`
 
-    - `CAA = CAARecord`
+    - `CAARecord = CAARecord`
 
-    - `CERT = CERTRecord`
+    - `CERTRecord = CERTRecord`
 
-    - `DNSKEY = DNSKEYRecord`
+    - `DNSKEYRecord = DNSKEYRecord`
 
-    - `DS = DSRecord`
+    - `DSRecord = DSRecord`
 
-    - `HTTPS = HTTPSRecord`
+    - `HTTPSRecord = HTTPSRecord`
 
-    - `LOC = LOCRecord`
+    - `LOCRecord = LOCRecord`
 
-    - `NAPTR = NAPTRRecord`
+    - `NAPTRRecord = NAPTRRecord`
 
-    - `SMIMEA = SMIMEARecord`
+    - `SMIMEARecord = SMIMEARecord`
 
-    - `SRV = SRVRecord`
+    - `SRVRecord = SRVRecord`
 
-    - `SSHFP = SSHFPRecord`
+    - `SSHFPRecord = SSHFPRecord`
 
-    - `SVCB = SVCBRecord`
+    - `SVCBRecord = SVCBRecord`
 
-    - `TLSA = TLSARecord`
+    - `TLSARecord = TLSARecord`
 
-    - `URI = URIRecord`
+    - `URIRecord = URIRecord`
 
   - `posts: optional array of RecordResponse`
 
-    - `A = ARecord`
+    - `ARecord = ARecord`
 
-    - `AAAA = AAAARecord`
+    - `AAAARecord = AAAARecord`
 
-    - `CNAME = CNAMERecord`
+    - `CNAMERecord = CNAMERecord`
 
-    - `MX = MXRecord`
+    - `MXRecord = MXRecord`
 
-    - `NS = NSRecord`
+    - `NSRecord = NSRecord`
 
-    - `Openpgpkey object { id, comment, content, 12 more }`
+    - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
-    - `PTR = PTRRecord`
+    - `PTRRecord = PTRRecord`
 
-    - `TXT = TXTRecord`
+    - `TXTRecord = TXTRecord`
 
-    - `CAA = CAARecord`
+    - `CAARecord = CAARecord`
 
-    - `CERT = CERTRecord`
+    - `CERTRecord = CERTRecord`
 
-    - `DNSKEY = DNSKEYRecord`
+    - `DNSKEYRecord = DNSKEYRecord`
 
-    - `DS = DSRecord`
+    - `DSRecord = DSRecord`
 
-    - `HTTPS = HTTPSRecord`
+    - `HTTPSRecord = HTTPSRecord`
 
-    - `LOC = LOCRecord`
+    - `LOCRecord = LOCRecord`
 
-    - `NAPTR = NAPTRRecord`
+    - `NAPTRRecord = NAPTRRecord`
 
-    - `SMIMEA = SMIMEARecord`
+    - `SMIMEARecord = SMIMEARecord`
 
-    - `SRV = SRVRecord`
+    - `SRVRecord = SRVRecord`
 
-    - `SSHFP = SSHFPRecord`
+    - `SSHFPRecord = SSHFPRecord`
 
-    - `SVCB = SVCBRecord`
+    - `SVCBRecord = SVCBRecord`
 
-    - `TLSA = TLSARecord`
+    - `TLSARecord = TLSARecord`
 
-    - `URI = URIRecord`
+    - `URIRecord = URIRecord`
 
   - `puts: optional array of RecordResponse`
 
-    - `A = ARecord`
+    - `ARecord = ARecord`
 
-    - `AAAA = AAAARecord`
+    - `AAAARecord = AAAARecord`
 
-    - `CNAME = CNAMERecord`
+    - `CNAMERecord = CNAMERecord`
 
-    - `MX = MXRecord`
+    - `MXRecord = MXRecord`
 
-    - `NS = NSRecord`
+    - `NSRecord = NSRecord`
 
-    - `Openpgpkey object { id, comment, content, 12 more }`
+    - `OpenpgpkeyRecord object { id, comment, content, 12 more }`
 
-    - `PTR = PTRRecord`
+    - `PTRRecord = PTRRecord`
 
-    - `TXT = TXTRecord`
+    - `TXTRecord = TXTRecord`
 
-    - `CAA = CAARecord`
+    - `CAARecord = CAARecord`
 
-    - `CERT = CERTRecord`
+    - `CERTRecord = CERTRecord`
 
-    - `DNSKEY = DNSKEYRecord`
+    - `DNSKEYRecord = DNSKEYRecord`
 
-    - `DS = DSRecord`
+    - `DSRecord = DSRecord`
 
-    - `HTTPS = HTTPSRecord`
+    - `HTTPSRecord = HTTPSRecord`
 
-    - `LOC = LOCRecord`
+    - `LOCRecord = LOCRecord`
 
-    - `NAPTR = NAPTRRecord`
+    - `NAPTRRecord = NAPTRRecord`
 
-    - `SMIMEA = SMIMEARecord`
+    - `SMIMEARecord = SMIMEARecord`
 
-    - `SRV = SRVRecord`
+    - `SRVRecord = SRVRecord`
 
-    - `SSHFP = SSHFPRecord`
+    - `SSHFPRecord = SSHFPRecord`
 
-    - `SVCB = SVCBRecord`
+    - `SVCBRecord = SVCBRecord`
 
-    - `TLSA = TLSARecord`
+    - `TLSARecord = TLSARecord`
 
-    - `URI = URIRecord`
+    - `URIRecord = URIRecord`

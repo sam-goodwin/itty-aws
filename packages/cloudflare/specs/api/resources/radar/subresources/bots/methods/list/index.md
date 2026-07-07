@@ -62,7 +62,7 @@ Retrieves a list of bots.
 
 - `kind: optional "AGENT" or "BOT"`
 
-  Filters results by bot kind.
+  Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.
 
   - `"AGENT"`
 

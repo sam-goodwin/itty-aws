@@ -66,9 +66,24 @@ Update actions and matches, or enable/disable specific routing rules. Forward ac
 
   Routing rule name.
 
+- `owner_worker_tag: optional string`
+
+  Public tag (script_tag) of the Worker that owns this rule. Required when
+  `source` is `wrangler`.
+
 - `priority: optional number`
 
   Priority of the routing rule.
+
+- `source: optional "api" or "wrangler"`
+
+  Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+  `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+  to `api` when omitted on write.
+
+  - `"api"`
+
+  - `"wrangler"`
 
 ### Returns
 
@@ -162,6 +177,16 @@ Update actions and matches, or enable/disable specific routing rules. Forward ac
 
     Priority of the routing rule.
 
+  - `source: optional "api" or "wrangler"`
+
+    Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+    `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+    to `api` when omitted on write.
+
+    - `"api"`
+
+    - `"wrangler"`
+
   - `tag: optional string`
 
     Routing rule tag. (Deprecated, replaced by routing rule identifier)
@@ -186,7 +211,9 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/routing/rules/$RU
             }
           ],
           "enabled": true,
-          "name": "Send to user@example.net rule."
+          "name": "Send to user@example.net rule.",
+          "owner_worker_tag": "a7e6fb77503c41d8a7f3113c6918f10c",
+          "source": "api"
         }'
 ```
 
@@ -235,6 +262,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/routing/rules/$RU
     ],
     "name": "Send to user@example.net rule.",
     "priority": 0,
+    "source": "api",
     "tag": "a7e6fb77503c41d8a7f3113c6918f10c"
   }
 }

@@ -49764,7 +49764,7 @@
         "kind": {
           "target": "com.cloudflare.radar#BotsListRequestKind",
           "traits": {
-            "smithy.api#documentation": "Filters results by bot kind.",
+            "smithy.api#documentation": "Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.",
             "smithy.api#httpQuery": "kind"
           }
         },
@@ -50089,7 +50089,7 @@
         "botKind": {
           "target": "com.cloudflare.radar#BotsSummaryRequestBotKindList",
           "traits": {
-            "smithy.api#documentation": "Filters results by bot kind.",
+            "smithy.api#documentation": "Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.",
             "smithy.api#httpQuery": "botKind"
           }
         },
@@ -50658,7 +50658,7 @@
         "botKind": {
           "target": "com.cloudflare.radar#BotsTimeseriesRequestBotKindList",
           "traits": {
-            "smithy.api#documentation": "Filters results by bot kind.",
+            "smithy.api#documentation": "Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.",
             "smithy.api#httpQuery": "botKind"
           }
         },
@@ -51272,7 +51272,7 @@
         "botKind": {
           "target": "com.cloudflare.radar#BotsTimeseriesGroupsRequestBotKindList",
           "traits": {
-            "smithy.api#documentation": "Filters results by bot kind.",
+            "smithy.api#documentation": "Filters results by bot kind. Deprecated: the Verified Bot / Signed Agent distinction is being removed.",
             "smithy.api#httpQuery": "botKind"
           }
         },

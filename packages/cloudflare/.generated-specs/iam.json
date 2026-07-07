@@ -2891,7 +2891,7 @@
           "uri": "/accounts/{account_id}/sso_connectors/{sso_connector_id}/begin_verification",
           "code": 200
         },
-        "smithy.api#documentation": "Begin SSO connector verification"
+        "smithy.api#documentation": "Validates the user has added the DNS TXT record required for validating ownership of the domain they are trying to set up a connector for."
       }
     },
     "com.cloudflare.iam#SsoCreateRequest": {
@@ -3031,7 +3031,7 @@
           "uri": "/accounts/{account_id}/sso_connectors",
           "code": 200
         },
-        "smithy.api#documentation": "Initialize new SSO connector"
+        "smithy.api#documentation": "Creates a new SSO connector for logging into Cloudflare through an identity provider."
       }
     },
     "com.cloudflare.iam#SsoDeleteRequest": {
@@ -3088,7 +3088,7 @@
           "uri": "/accounts/{account_id}/sso_connectors/{sso_connector_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Delete SSO connector",
+        "smithy.api#documentation": "Deletes an SSO connector from the account.",
         "smithy.api#idempotent": {}
       }
     },
@@ -3218,7 +3218,7 @@
           "uri": "/accounts/{account_id}/sso_connectors/{sso_connector_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Get single SSO connector",
+        "smithy.api#documentation": "Retrieves details for a specific SSO connector.",
         "smithy.api#readonly": {}
       }
     },
@@ -3357,7 +3357,7 @@
           "uri": "/accounts/{account_id}/sso_connectors",
           "code": 200
         },
-        "smithy.api#documentation": "Get all SSO connectors",
+        "smithy.api#documentation": "Lists all SSO connectors configured for the account.",
         "smithy.api#readonly": {}
       }
     },
@@ -3499,7 +3499,7 @@
           "uri": "/accounts/{account_id}/sso_connectors/{sso_connector_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Update SSO connector state"
+        "smithy.api#documentation": "Updates the state or configuration of an SSO connector."
       }
     },
     "com.cloudflare.iam#UserGroupsCreateRequestPoliciesItemAccess": {

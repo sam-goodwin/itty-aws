@@ -201,6 +201,10 @@ Retrieves details of an existing live input.
 
     Indicates whether the live input is enabled and can accept streams.
 
+  - `keysRotatedAt: optional string`
+
+    The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+
   - `meta: optional unknown`
 
     A user modifiable key-value store used to reference other systems of record for managing live inputs.
@@ -208,6 +212,10 @@ Retrieves details of an existing live input.
   - `modified: optional string`
 
     The date and time the live input was last modified.
+
+  - `preferLowLatency: optional boolean`
+
+    When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
 
   - `recording: optional object { allowedOrigins, hideLiveViewerCount, mode, 2 more }`
 
@@ -369,10 +377,12 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/live_input
     "created": "2014-01-02T02:20:00Z",
     "deleteRecordingAfterDays": 45,
     "enabled": true,
+    "keysRotatedAt": "2014-01-02T02:20:00Z",
     "meta": {
       "name": "test stream 1"
     },
     "modified": "2014-01-02T02:20:00Z",
+    "preferLowLatency": true,
     "recording": {
       "allowedOrigins": [
         "example.com"
@@ -441,6 +451,10 @@ Creates a live input, and returns credentials that you or your users can use to 
 - `meta: optional unknown`
 
   A user modifiable key-value store used to reference other systems of record for managing live inputs.
+
+- `preferLowLatency: optional boolean`
+
+  When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
 
 - `recording: optional object { allowedOrigins, hideLiveViewerCount, mode, 2 more }`
 
@@ -518,6 +532,10 @@ Creates a live input, and returns credentials that you or your users can use to 
 
     Indicates whether the live input is enabled and can accept streams.
 
+  - `keysRotatedAt: optional string`
+
+    The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+
   - `meta: optional unknown`
 
     A user modifiable key-value store used to reference other systems of record for managing live inputs.
@@ -525,6 +543,10 @@ Creates a live input, and returns credentials that you or your users can use to 
   - `modified: optional string`
 
     The date and time the live input was last modified.
+
+  - `preferLowLatency: optional boolean`
+
+    When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
 
   - `recording: optional object { allowedOrigins, hideLiveViewerCount, mode, 2 more }`
 
@@ -662,6 +684,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/live_input
           "meta": {
             "name": "test stream 1"
           },
+          "preferLowLatency": true,
           "recording": {
             "hideLiveViewerCount": false,
             "mode": "off",
@@ -700,10 +723,12 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/live_input
     "created": "2014-01-02T02:20:00Z",
     "deleteRecordingAfterDays": 45,
     "enabled": true,
+    "keysRotatedAt": "2014-01-02T02:20:00Z",
     "meta": {
       "name": "test stream 1"
     },
     "modified": "2014-01-02T02:20:00Z",
+    "preferLowLatency": true,
     "recording": {
       "allowedOrigins": [
         "example.com"
@@ -776,6 +801,10 @@ Updates a specified live input.
 - `meta: optional unknown`
 
   A user modifiable key-value store used to reference other systems of record for managing live inputs.
+
+- `preferLowLatency: optional boolean`
+
+  When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
 
 - `recording: optional object { allowedOrigins, hideLiveViewerCount, mode, 2 more }`
 
@@ -853,6 +882,10 @@ Updates a specified live input.
 
     Indicates whether the live input is enabled and can accept streams.
 
+  - `keysRotatedAt: optional string`
+
+    The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+
   - `meta: optional unknown`
 
     A user modifiable key-value store used to reference other systems of record for managing live inputs.
@@ -860,6 +893,10 @@ Updates a specified live input.
   - `modified: optional string`
 
     The date and time the live input was last modified.
+
+  - `preferLowLatency: optional boolean`
+
+    When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
 
   - `recording: optional object { allowedOrigins, hideLiveViewerCount, mode, 2 more }`
 
@@ -998,6 +1035,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/live_input
           "meta": {
             "name": "test stream 1"
           },
+          "preferLowLatency": true,
           "recording": {
             "hideLiveViewerCount": false,
             "mode": "off",
@@ -1036,10 +1074,12 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/live_input
     "created": "2014-01-02T02:20:00Z",
     "deleteRecordingAfterDays": 45,
     "enabled": true,
+    "keysRotatedAt": "2014-01-02T02:20:00Z",
     "meta": {
       "name": "test stream 1"
     },
     "modified": "2014-01-02T02:20:00Z",
+    "preferLowLatency": true,
     "recording": {
       "allowedOrigins": [
         "example.com"
@@ -1113,7 +1153,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/live_input
 
 ### Live Input
 
-- `LiveInput object { created, deleteRecordingAfterDays, enabled, 11 more }`
+- `LiveInput object { created, deleteRecordingAfterDays, enabled, 13 more }`
 
   Details about a live input.
 
@@ -1129,6 +1169,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/live_input
 
     Indicates whether the live input is enabled and can accept streams.
 
+  - `keysRotatedAt: optional string`
+
+    The date and time the live input keys were last rotated. Omitted for live inputs that have never had their keys rotated.
+
   - `meta: optional unknown`
 
     A user modifiable key-value store used to reference other systems of record for managing live inputs.
@@ -1136,6 +1180,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/stream/live_input
   - `modified: optional string`
 
     The date and time the live input was last modified.
+
+  - `preferLowLatency: optional boolean`
+
+    When enabled, the live stream is delivered using Low-Latency HLS (LL-HLS), reducing glass-to-glass latency for viewers at the cost of reduced player compatibility.
 
   - `recording: optional object { allowedOrigins, hideLiveViewerCount, mode, 2 more }`
 

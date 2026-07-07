@@ -18,13 +18,13 @@ export const InstancesChatCompletionsRequestMessagesItemRole =
   /*@__PURE__*/ S.String;
 
 export interface InstancesChatCompletionsRequestMessagesItem {
-  content: string;
+  content: unknown;
   role: InstancesChatCompletionsRequestMessagesItemRole;
 }
 export const InstancesChatCompletionsRequestMessagesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      content: S.String,
+      content: S.Unknown,
       role: InstancesChatCompletionsRequestMessagesItemRole,
     }),
   ).annotate({
@@ -273,13 +273,13 @@ export const InstancesChatCompletionsResponseChoicesItemMessageRole =
   /*@__PURE__*/ S.String;
 
 export interface InstancesChatCompletionsResponseChoicesItemMessage {
-  content: string;
+  content: unknown;
   role: InstancesChatCompletionsResponseChoicesItemMessageRole;
 }
 export const InstancesChatCompletionsResponseChoicesItemMessage =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      content: S.String,
+      content: S.Unknown,
       role: InstancesChatCompletionsResponseChoicesItemMessageRole,
     }),
   ).annotate({
@@ -459,8 +459,8 @@ export const InstancesCreateRequestCustomMetadataList = /*@__PURE__*/ S.Array(
 
 export type InstancesCreateRequestEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const InstancesCreateRequestEmbeddingModel = /*@__PURE__*/ S.String;
 
@@ -534,6 +534,13 @@ export const InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint =
       "InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint>;
 
+export type InstancesCreateRequestPublicEndpointParamsCustomDomainsList =
+  string[];
+export const InstancesCreateRequestPublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InstancesCreateRequestPublicEndpointParamsCustomDomainsList>;
+
 export interface InstancesCreateRequestPublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -588,6 +595,7 @@ export const InstancesCreateRequestPublicEndpointParamsSearchEndpoint =
 export interface InstancesCreateRequestPublicEndpointParams {
   authorized_hosts?: InstancesCreateRequestPublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: InstancesCreateRequestPublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: InstancesCreateRequestPublicEndpointParamsMcp;
   rate_limit?: InstancesCreateRequestPublicEndpointParamsRateLimit;
@@ -601,6 +609,9 @@ export const InstancesCreateRequestPublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        InstancesCreateRequestPublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(InstancesCreateRequestPublicEndpointParamsMcp),
@@ -695,36 +706,6 @@ export const InstancesCreateRequestSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesCreateRequestSourceParamsIncludeItemsList>;
 
-export type InstancesCreateRequestSourceParamsWebCrawlerCrawlOptionsSource =
-  | "all"
-  | "sitemaps"
-  | "links"
-  | (string & {});
-export const InstancesCreateRequestSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface InstancesCreateRequestSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: InstancesCreateRequestSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const InstancesCreateRequestSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        InstancesCreateRequestSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "InstancesCreateRequestSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<InstancesCreateRequestSourceParamsWebCrawlerCrawlOptions>;
-
 export interface InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -790,48 +771,23 @@ export const InstancesCreateRequestSourceParamsWebCrawlerParseOptions =
 
 export type InstancesCreateRequestSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const InstancesCreateRequestSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface InstancesCreateRequestSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const InstancesCreateRequestSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "InstancesCreateRequestSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<InstancesCreateRequestSourceParamsWebCrawlerStoreOptions>;
-
 export interface InstancesCreateRequestSourceParamsWebCrawler {
-  crawl_options?: InstancesCreateRequestSourceParamsWebCrawlerCrawlOptions;
   parse_options?: InstancesCreateRequestSourceParamsWebCrawlerParseOptions;
   parse_type?: InstancesCreateRequestSourceParamsWebCrawlerParseType;
-  store_options?: InstancesCreateRequestSourceParamsWebCrawlerStoreOptions;
 }
 export const InstancesCreateRequestSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        InstancesCreateRequestSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         InstancesCreateRequestSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         InstancesCreateRequestSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        InstancesCreateRequestSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -987,8 +943,8 @@ export const InstancesCreateResponseCustomMetadataList = /*@__PURE__*/ S.Array(
 
 export type InstancesCreateResponseEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const InstancesCreateResponseEmbeddingModel = /*@__PURE__*/ S.String;
 
@@ -1062,6 +1018,13 @@ export const InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint 
       "InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
+export type InstancesCreateResponsePublicEndpointParamsCustomDomainsList =
+  string[];
+export const InstancesCreateResponsePublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InstancesCreateResponsePublicEndpointParamsCustomDomainsList>;
+
 export interface InstancesCreateResponsePublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -1116,6 +1079,7 @@ export const InstancesCreateResponsePublicEndpointParamsSearchEndpoint =
 export interface InstancesCreateResponsePublicEndpointParams {
   authorized_hosts?: InstancesCreateResponsePublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: InstancesCreateResponsePublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: InstancesCreateResponsePublicEndpointParamsMcp;
   rate_limit?: InstancesCreateResponsePublicEndpointParamsRateLimit;
@@ -1129,6 +1093,9 @@ export const InstancesCreateResponsePublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        InstancesCreateResponsePublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(InstancesCreateResponsePublicEndpointParamsMcp),
@@ -1223,36 +1190,6 @@ export const InstancesCreateResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesCreateResponseSourceParamsIncludeItemsList>;
 
-export type InstancesCreateResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  | "all"
-  | "sitemaps"
-  | "links"
-  | (string & {});
-export const InstancesCreateResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface InstancesCreateResponseSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: InstancesCreateResponseSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const InstancesCreateResponseSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        InstancesCreateResponseSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "InstancesCreateResponseSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerCrawlOptions>;
-
 export interface InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -1318,48 +1255,23 @@ export const InstancesCreateResponseSourceParamsWebCrawlerParseOptions =
 
 export type InstancesCreateResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const InstancesCreateResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface InstancesCreateResponseSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const InstancesCreateResponseSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "InstancesCreateResponseSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<InstancesCreateResponseSourceParamsWebCrawlerStoreOptions>;
-
 export interface InstancesCreateResponseSourceParamsWebCrawler {
-  crawl_options?: InstancesCreateResponseSourceParamsWebCrawlerCrawlOptions;
   parse_options?: InstancesCreateResponseSourceParamsWebCrawlerParseOptions;
   parse_type?: InstancesCreateResponseSourceParamsWebCrawlerParseType;
-  store_options?: InstancesCreateResponseSourceParamsWebCrawlerStoreOptions;
 }
 export const InstancesCreateResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        InstancesCreateResponseSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         InstancesCreateResponseSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         InstancesCreateResponseSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        InstancesCreateResponseSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -1547,8 +1459,8 @@ export const InstancesDeleteResponseCustomMetadataList = /*@__PURE__*/ S.Array(
 
 export type InstancesDeleteResponseEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const InstancesDeleteResponseEmbeddingModel = /*@__PURE__*/ S.String;
 
@@ -1622,6 +1534,13 @@ export const InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint 
       "InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
+export type InstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
+  string[];
+export const InstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InstancesDeleteResponsePublicEndpointParamsCustomDomainsList>;
+
 export interface InstancesDeleteResponsePublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -1676,6 +1595,7 @@ export const InstancesDeleteResponsePublicEndpointParamsSearchEndpoint =
 export interface InstancesDeleteResponsePublicEndpointParams {
   authorized_hosts?: InstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: InstancesDeleteResponsePublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: InstancesDeleteResponsePublicEndpointParamsMcp;
   rate_limit?: InstancesDeleteResponsePublicEndpointParamsRateLimit;
@@ -1689,6 +1609,9 @@ export const InstancesDeleteResponsePublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        InstancesDeleteResponsePublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(InstancesDeleteResponsePublicEndpointParamsMcp),
@@ -1783,36 +1706,6 @@ export const InstancesDeleteResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesDeleteResponseSourceParamsIncludeItemsList>;
 
-export type InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  | "all"
-  | "sitemaps"
-  | "links"
-  | (string & {});
-export const InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions>;
-
 export interface InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -1878,48 +1771,23 @@ export const InstancesDeleteResponseSourceParamsWebCrawlerParseOptions =
 
 export type InstancesDeleteResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const InstancesDeleteResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface InstancesDeleteResponseSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const InstancesDeleteResponseSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "InstancesDeleteResponseSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<InstancesDeleteResponseSourceParamsWebCrawlerStoreOptions>;
-
 export interface InstancesDeleteResponseSourceParamsWebCrawler {
-  crawl_options?: InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions;
   parse_options?: InstancesDeleteResponseSourceParamsWebCrawlerParseOptions;
   parse_type?: InstancesDeleteResponseSourceParamsWebCrawlerParseType;
-  store_options?: InstancesDeleteResponseSourceParamsWebCrawlerStoreOptions;
 }
 export const InstancesDeleteResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         InstancesDeleteResponseSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         InstancesDeleteResponseSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        InstancesDeleteResponseSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -2356,8 +2224,8 @@ export const InstancesListResultItemCustomMetadataList = /*@__PURE__*/ S.Array(
 
 export type InstancesListResultItemEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const InstancesListResultItemEmbeddingModel = /*@__PURE__*/ S.String;
 
@@ -2431,6 +2299,13 @@ export const InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint 
       "InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint>;
 
+export type InstancesListResultItemPublicEndpointParamsCustomDomainsList =
+  string[];
+export const InstancesListResultItemPublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InstancesListResultItemPublicEndpointParamsCustomDomainsList>;
+
 export interface InstancesListResultItemPublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -2485,6 +2360,7 @@ export const InstancesListResultItemPublicEndpointParamsSearchEndpoint =
 export interface InstancesListResultItemPublicEndpointParams {
   authorized_hosts?: InstancesListResultItemPublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: InstancesListResultItemPublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: InstancesListResultItemPublicEndpointParamsMcp;
   rate_limit?: InstancesListResultItemPublicEndpointParamsRateLimit;
@@ -2498,6 +2374,9 @@ export const InstancesListResultItemPublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        InstancesListResultItemPublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(InstancesListResultItemPublicEndpointParamsMcp),
@@ -2592,36 +2471,6 @@ export const InstancesListResultItemSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesListResultItemSourceParamsIncludeItemsList>;
 
-export type InstancesListResultItemSourceParamsWebCrawlerCrawlOptionsSource =
-  | "all"
-  | "sitemaps"
-  | "links"
-  | (string & {});
-export const InstancesListResultItemSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface InstancesListResultItemSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: InstancesListResultItemSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const InstancesListResultItemSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        InstancesListResultItemSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "InstancesListResultItemSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerCrawlOptions>;
-
 export interface InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -2687,48 +2536,23 @@ export const InstancesListResultItemSourceParamsWebCrawlerParseOptions =
 
 export type InstancesListResultItemSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const InstancesListResultItemSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface InstancesListResultItemSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const InstancesListResultItemSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "InstancesListResultItemSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<InstancesListResultItemSourceParamsWebCrawlerStoreOptions>;
-
 export interface InstancesListResultItemSourceParamsWebCrawler {
-  crawl_options?: InstancesListResultItemSourceParamsWebCrawlerCrawlOptions;
   parse_options?: InstancesListResultItemSourceParamsWebCrawlerParseOptions;
   parse_type?: InstancesListResultItemSourceParamsWebCrawlerParseType;
-  store_options?: InstancesListResultItemSourceParamsWebCrawlerStoreOptions;
 }
 export const InstancesListResultItemSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        InstancesListResultItemSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         InstancesListResultItemSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         InstancesListResultItemSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        InstancesListResultItemSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -2931,8 +2755,8 @@ export const InstancesReadResponseCustomMetadataList = /*@__PURE__*/ S.Array(
 
 export type InstancesReadResponseEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const InstancesReadResponseEmbeddingModel = /*@__PURE__*/ S.String;
 
@@ -3006,6 +2830,13 @@ export const InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint =
       "InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
+export type InstancesReadResponsePublicEndpointParamsCustomDomainsList =
+  string[];
+export const InstancesReadResponsePublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InstancesReadResponsePublicEndpointParamsCustomDomainsList>;
+
 export interface InstancesReadResponsePublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -3060,6 +2891,7 @@ export const InstancesReadResponsePublicEndpointParamsSearchEndpoint =
 export interface InstancesReadResponsePublicEndpointParams {
   authorized_hosts?: InstancesReadResponsePublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: InstancesReadResponsePublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: InstancesReadResponsePublicEndpointParamsMcp;
   rate_limit?: InstancesReadResponsePublicEndpointParamsRateLimit;
@@ -3073,6 +2905,9 @@ export const InstancesReadResponsePublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        InstancesReadResponsePublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(InstancesReadResponsePublicEndpointParamsMcp),
@@ -3167,36 +3002,6 @@ export const InstancesReadResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesReadResponseSourceParamsIncludeItemsList>;
 
-export type InstancesReadResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  | "all"
-  | "sitemaps"
-  | "links"
-  | (string & {});
-export const InstancesReadResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface InstancesReadResponseSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: InstancesReadResponseSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const InstancesReadResponseSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        InstancesReadResponseSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "InstancesReadResponseSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerCrawlOptions>;
-
 export interface InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -3262,48 +3067,23 @@ export const InstancesReadResponseSourceParamsWebCrawlerParseOptions =
 
 export type InstancesReadResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const InstancesReadResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface InstancesReadResponseSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const InstancesReadResponseSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "InstancesReadResponseSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<InstancesReadResponseSourceParamsWebCrawlerStoreOptions>;
-
 export interface InstancesReadResponseSourceParamsWebCrawler {
-  crawl_options?: InstancesReadResponseSourceParamsWebCrawlerCrawlOptions;
   parse_options?: InstancesReadResponseSourceParamsWebCrawlerParseOptions;
   parse_type?: InstancesReadResponseSourceParamsWebCrawlerParseType;
-  store_options?: InstancesReadResponseSourceParamsWebCrawlerStoreOptions;
 }
 export const InstancesReadResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        InstancesReadResponseSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         InstancesReadResponseSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         InstancesReadResponseSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        InstancesReadResponseSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -3623,12 +3403,12 @@ export type InstancesSearchRequestMessagesItemRole =
 export const InstancesSearchRequestMessagesItemRole = /*@__PURE__*/ S.String;
 
 export interface InstancesSearchRequestMessagesItem {
-  content: string;
+  content: unknown;
   role: InstancesSearchRequestMessagesItemRole;
 }
 export const InstancesSearchRequestMessagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    content: S.String,
+    content: S.Unknown,
     role: InstancesSearchRequestMessagesItemRole,
   }),
 ).annotate({
@@ -3751,15 +3531,24 @@ export const InstancesSearchResponseChunksList = /*@__PURE__*/ S.Array(
   InstancesSearchResponseChunksItem,
 ) as any as S.Schema<InstancesSearchResponseChunksList>;
 
+export type InstancesSearchResponseQueryKind =
+  | "text"
+  | "image"
+  | "multimodal"
+  | (string & {});
+export const InstancesSearchResponseQueryKind = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface InstancesSearchResponse {
   chunks: InstancesSearchResponseChunksList;
-  search_query: string;
+  query_kind: InstancesSearchResponseQueryKind;
+  search_query?: string;
 }
 export const InstancesSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunks: InstancesSearchResponseChunksList,
-    search_query: S.String,
+    query_kind: InstancesSearchResponseQueryKind,
+    search_query: S.optional(S.String),
   }),
 ).annotate({
   identifier: "InstancesSearchResponse",
@@ -3921,8 +3710,8 @@ export const InstancesUpdateRequestCustomMetadataList = /*@__PURE__*/ S.Array(
 
 export type InstancesUpdateRequestEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const InstancesUpdateRequestEmbeddingModel = /*@__PURE__*/ S.String;
 
@@ -3996,6 +3785,13 @@ export const InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint =
       "InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint>;
 
+export type InstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
+  string[];
+export const InstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InstancesUpdateRequestPublicEndpointParamsCustomDomainsList>;
+
 export interface InstancesUpdateRequestPublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -4050,6 +3846,7 @@ export const InstancesUpdateRequestPublicEndpointParamsSearchEndpoint =
 export interface InstancesUpdateRequestPublicEndpointParams {
   authorized_hosts?: InstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: InstancesUpdateRequestPublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: InstancesUpdateRequestPublicEndpointParamsMcp;
   rate_limit?: InstancesUpdateRequestPublicEndpointParamsRateLimit;
@@ -4063,6 +3860,9 @@ export const InstancesUpdateRequestPublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        InstancesUpdateRequestPublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(InstancesUpdateRequestPublicEndpointParamsMcp),
@@ -4157,36 +3957,6 @@ export const InstancesUpdateRequestSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesUpdateRequestSourceParamsIncludeItemsList>;
 
-export type InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptionsSource =
-  | "all"
-  | "sitemaps"
-  | "links"
-  | (string & {});
-export const InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions>;
-
 export interface InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -4252,48 +4022,23 @@ export const InstancesUpdateRequestSourceParamsWebCrawlerParseOptions =
 
 export type InstancesUpdateRequestSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const InstancesUpdateRequestSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface InstancesUpdateRequestSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const InstancesUpdateRequestSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "InstancesUpdateRequestSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<InstancesUpdateRequestSourceParamsWebCrawlerStoreOptions>;
-
 export interface InstancesUpdateRequestSourceParamsWebCrawler {
-  crawl_options?: InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions;
   parse_options?: InstancesUpdateRequestSourceParamsWebCrawlerParseOptions;
   parse_type?: InstancesUpdateRequestSourceParamsWebCrawlerParseType;
-  store_options?: InstancesUpdateRequestSourceParamsWebCrawlerStoreOptions;
 }
 export const InstancesUpdateRequestSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         InstancesUpdateRequestSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         InstancesUpdateRequestSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        InstancesUpdateRequestSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -4356,6 +4101,7 @@ export interface InstancesUpdateRequest {
   rewrite_model?: InstancesUpdateRequestRewriteModel;
   rewrite_query?: boolean;
   score_threshold?: number;
+  source?: string;
   source_params?: InstancesUpdateRequestSourceParams;
   summarization?: boolean;
   summarization_model?: InstancesUpdateRequestSummarizationModel;
@@ -4394,6 +4140,7 @@ export const InstancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     rewrite_model: S.optional(InstancesUpdateRequestRewriteModel),
     rewrite_query: S.optional(S.Boolean),
     score_threshold: S.optional(S.Number),
+    source: S.optional(S.String),
     source_params: S.optional(InstancesUpdateRequestSourceParams),
     summarization: S.optional(S.Boolean),
     summarization_model: S.optional(InstancesUpdateRequestSummarizationModel),
@@ -4459,8 +4206,8 @@ export const InstancesUpdateResponseCustomMetadataList = /*@__PURE__*/ S.Array(
 
 export type InstancesUpdateResponseEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const InstancesUpdateResponseEmbeddingModel = /*@__PURE__*/ S.String;
 
@@ -4534,6 +4281,13 @@ export const InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint 
       "InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
+export type InstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
+  string[];
+export const InstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<InstancesUpdateResponsePublicEndpointParamsCustomDomainsList>;
+
 export interface InstancesUpdateResponsePublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -4588,6 +4342,7 @@ export const InstancesUpdateResponsePublicEndpointParamsSearchEndpoint =
 export interface InstancesUpdateResponsePublicEndpointParams {
   authorized_hosts?: InstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: InstancesUpdateResponsePublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: InstancesUpdateResponsePublicEndpointParamsMcp;
   rate_limit?: InstancesUpdateResponsePublicEndpointParamsRateLimit;
@@ -4601,6 +4356,9 @@ export const InstancesUpdateResponsePublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        InstancesUpdateResponsePublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(InstancesUpdateResponsePublicEndpointParamsMcp),
@@ -4695,36 +4453,6 @@ export const InstancesUpdateResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<InstancesUpdateResponseSourceParamsIncludeItemsList>;
 
-export type InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  | "all"
-  | "sitemaps"
-  | "links"
-  | (string & {});
-export const InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier: "InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions>;
-
 export interface InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -4790,48 +4518,23 @@ export const InstancesUpdateResponseSourceParamsWebCrawlerParseOptions =
 
 export type InstancesUpdateResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const InstancesUpdateResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface InstancesUpdateResponseSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const InstancesUpdateResponseSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier: "InstancesUpdateResponseSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<InstancesUpdateResponseSourceParamsWebCrawlerStoreOptions>;
-
 export interface InstancesUpdateResponseSourceParamsWebCrawler {
-  crawl_options?: InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions;
   parse_options?: InstancesUpdateResponseSourceParamsWebCrawlerParseOptions;
   parse_type?: InstancesUpdateResponseSourceParamsWebCrawlerParseType;
-  store_options?: InstancesUpdateResponseSourceParamsWebCrawlerStoreOptions;
 }
 export const InstancesUpdateResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         InstancesUpdateResponseSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         InstancesUpdateResponseSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        InstancesUpdateResponseSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -5163,13 +4866,13 @@ export const NamespacesChatCompletionsRequestMessagesItemRole =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesChatCompletionsRequestMessagesItem {
-  content: string;
+  content: unknown;
   role: NamespacesChatCompletionsRequestMessagesItemRole;
 }
 export const NamespacesChatCompletionsRequestMessagesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      content: S.String,
+      content: S.Unknown,
       role: NamespacesChatCompletionsRequestMessagesItemRole,
     }),
   ).annotate({
@@ -5226,13 +4929,13 @@ export const NamespacesChatCompletionsResponseChoicesItemMessageRole =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesChatCompletionsResponseChoicesItemMessage {
-  content: string;
+  content: unknown;
   role: NamespacesChatCompletionsResponseChoicesItemMessageRole;
 }
 export const NamespacesChatCompletionsResponseChoicesItemMessage =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      content: S.String,
+      content: S.Unknown,
       role: NamespacesChatCompletionsResponseChoicesItemMessageRole,
     }),
   ).annotate({
@@ -5445,13 +5148,13 @@ export const NamespacesInstancesChatCompletionsRequestMessagesItemRole =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesChatCompletionsRequestMessagesItem {
-  content: string;
+  content: unknown;
   role: NamespacesInstancesChatCompletionsRequestMessagesItemRole;
 }
 export const NamespacesInstancesChatCompletionsRequestMessagesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      content: S.String,
+      content: S.Unknown,
       role: NamespacesInstancesChatCompletionsRequestMessagesItemRole,
     }),
   ).annotate({
@@ -5707,13 +5410,13 @@ export const NamespacesInstancesChatCompletionsResponseChoicesItemMessageRole =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesChatCompletionsResponseChoicesItemMessage {
-  content: string;
+  content: unknown;
   role: NamespacesInstancesChatCompletionsResponseChoicesItemMessageRole;
 }
 export const NamespacesInstancesChatCompletionsResponseChoicesItemMessage =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      content: S.String,
+      content: S.Unknown,
       role: NamespacesInstancesChatCompletionsResponseChoicesItemMessageRole,
     }),
   ).annotate({
@@ -5900,8 +5603,8 @@ export const NamespacesInstancesCreateRequestCustomMetadataList =
 
 export type NamespacesInstancesCreateRequestEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const NamespacesInstancesCreateRequestEmbeddingModel =
   /*@__PURE__*/ S.String;
@@ -5982,6 +5685,13 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletions
       "NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint>;
 
+export type NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList =
+  string[];
+export const NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList>;
+
 export interface NamespacesInstancesCreateRequestPublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -6035,6 +5745,7 @@ export const NamespacesInstancesCreateRequestPublicEndpointParamsSearchEndpoint 
 export interface NamespacesInstancesCreateRequestPublicEndpointParams {
   authorized_hosts?: NamespacesInstancesCreateRequestPublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: NamespacesInstancesCreateRequestPublicEndpointParamsMcp;
   rate_limit?: NamespacesInstancesCreateRequestPublicEndpointParamsRateLimit;
@@ -6048,6 +5759,9 @@ export const NamespacesInstancesCreateRequestPublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(NamespacesInstancesCreateRequestPublicEndpointParamsMcp),
@@ -6144,34 +5858,6 @@ export const NamespacesInstancesCreateRequestSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsIncludeItemsList>;
 
-export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptionsSource =
-  "all" | "sitemaps" | "links" | (string & {});
-export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptions>;
-
 export interface NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -6238,49 +5924,23 @@ export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions 
 
 export type NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesCreateRequestSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const NamespacesInstancesCreateRequestSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesCreateRequestSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<NamespacesInstancesCreateRequestSourceParamsWebCrawlerStoreOptions>;
-
 export interface NamespacesInstancesCreateRequestSourceParamsWebCrawler {
-  crawl_options?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptions;
   parse_options?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions;
   parse_type?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType;
-  store_options?: NamespacesInstancesCreateRequestSourceParamsWebCrawlerStoreOptions;
 }
 export const NamespacesInstancesCreateRequestSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        NamespacesInstancesCreateRequestSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -6453,8 +6113,8 @@ export const NamespacesInstancesCreateResponseCustomMetadataList =
 
 export type NamespacesInstancesCreateResponseEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const NamespacesInstancesCreateResponseEmbeddingModel =
   /*@__PURE__*/ S.String;
@@ -6535,6 +6195,13 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletion
       "NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
+export type NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList =
+  string[];
+export const NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList>;
+
 export interface NamespacesInstancesCreateResponsePublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -6589,6 +6256,7 @@ export const NamespacesInstancesCreateResponsePublicEndpointParamsSearchEndpoint
 export interface NamespacesInstancesCreateResponsePublicEndpointParams {
   authorized_hosts?: NamespacesInstancesCreateResponsePublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: NamespacesInstancesCreateResponsePublicEndpointParamsMcp;
   rate_limit?: NamespacesInstancesCreateResponsePublicEndpointParamsRateLimit;
@@ -6602,6 +6270,9 @@ export const NamespacesInstancesCreateResponsePublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(NamespacesInstancesCreateResponsePublicEndpointParamsMcp),
@@ -6698,34 +6369,6 @@ export const NamespacesInstancesCreateResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsIncludeItemsList>;
 
-export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  "all" | "sitemaps" | "links" | (string & {});
-export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptions>;
-
 export interface NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -6792,49 +6435,23 @@ export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions
 
 export type NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesCreateResponseSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const NamespacesInstancesCreateResponseSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesCreateResponseSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<NamespacesInstancesCreateResponseSourceParamsWebCrawlerStoreOptions>;
-
 export interface NamespacesInstancesCreateResponseSourceParamsWebCrawler {
-  crawl_options?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptions;
   parse_options?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions;
   parse_type?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType;
-  store_options?: NamespacesInstancesCreateResponseSourceParamsWebCrawlerStoreOptions;
 }
 export const NamespacesInstancesCreateResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        NamespacesInstancesCreateResponseSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -7045,8 +6662,8 @@ export const NamespacesInstancesDeleteResponseCustomMetadataList =
 
 export type NamespacesInstancesDeleteResponseEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const NamespacesInstancesDeleteResponseEmbeddingModel =
   /*@__PURE__*/ S.String;
@@ -7127,6 +6744,13 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletion
       "NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
+export type NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
+  string[];
+export const NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList>;
+
 export interface NamespacesInstancesDeleteResponsePublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -7181,6 +6805,7 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParamsSearchEndpoint
 export interface NamespacesInstancesDeleteResponsePublicEndpointParams {
   authorized_hosts?: NamespacesInstancesDeleteResponsePublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: NamespacesInstancesDeleteResponsePublicEndpointParamsMcp;
   rate_limit?: NamespacesInstancesDeleteResponsePublicEndpointParamsRateLimit;
@@ -7194,6 +6819,9 @@ export const NamespacesInstancesDeleteResponsePublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(NamespacesInstancesDeleteResponsePublicEndpointParamsMcp),
@@ -7290,34 +6918,6 @@ export const NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsIncludeItemsList>;
 
-export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  "all" | "sitemaps" | "links" | (string & {});
-export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions>;
-
 export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -7384,49 +6984,23 @@ export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions
 
 export type NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const NamespacesInstancesDeleteResponseSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesDeleteResponseSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<NamespacesInstancesDeleteResponseSourceParamsWebCrawlerStoreOptions>;
-
 export interface NamespacesInstancesDeleteResponseSourceParamsWebCrawler {
-  crawl_options?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions;
   parse_options?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions;
   parse_type?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType;
-  store_options?: NamespacesInstancesDeleteResponseSourceParamsWebCrawlerStoreOptions;
 }
 export const NamespacesInstancesDeleteResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        NamespacesInstancesDeleteResponseSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -8640,8 +8214,8 @@ export const NamespacesInstancesListResultItemCustomMetadataList =
 
 export type NamespacesInstancesListResultItemEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const NamespacesInstancesListResultItemEmbeddingModel =
   /*@__PURE__*/ S.String;
@@ -8722,6 +8296,13 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsChatCompletion
       "NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint>;
 
+export type NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList =
+  string[];
+export const NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList>;
+
 export interface NamespacesInstancesListResultItemPublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -8776,6 +8357,7 @@ export const NamespacesInstancesListResultItemPublicEndpointParamsSearchEndpoint
 export interface NamespacesInstancesListResultItemPublicEndpointParams {
   authorized_hosts?: NamespacesInstancesListResultItemPublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: NamespacesInstancesListResultItemPublicEndpointParamsMcp;
   rate_limit?: NamespacesInstancesListResultItemPublicEndpointParamsRateLimit;
@@ -8789,6 +8371,9 @@ export const NamespacesInstancesListResultItemPublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(NamespacesInstancesListResultItemPublicEndpointParamsMcp),
@@ -8885,34 +8470,6 @@ export const NamespacesInstancesListResultItemSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsIncludeItemsList>;
 
-export type NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptionsSource =
-  "all" | "sitemaps" | "links" | (string & {});
-export const NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptions>;
-
 export interface NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -8979,49 +8536,23 @@ export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions
 
 export type NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesListResultItemSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const NamespacesInstancesListResultItemSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesListResultItemSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<NamespacesInstancesListResultItemSourceParamsWebCrawlerStoreOptions>;
-
 export interface NamespacesInstancesListResultItemSourceParamsWebCrawler {
-  crawl_options?: NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptions;
   parse_options?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions;
   parse_type?: NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType;
-  store_options?: NamespacesInstancesListResultItemSourceParamsWebCrawlerStoreOptions;
 }
 export const NamespacesInstancesListResultItemSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        NamespacesInstancesListResultItemSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -9250,8 +8781,8 @@ export const NamespacesInstancesReadResponseCustomMetadataList =
 
 export type NamespacesInstancesReadResponseEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const NamespacesInstancesReadResponseEmbeddingModel =
   /*@__PURE__*/ S.String;
@@ -9332,6 +8863,13 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsE
       "NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
+export type NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList =
+  string[];
+export const NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList>;
+
 export interface NamespacesInstancesReadResponsePublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -9385,6 +8923,7 @@ export const NamespacesInstancesReadResponsePublicEndpointParamsSearchEndpoint =
 export interface NamespacesInstancesReadResponsePublicEndpointParams {
   authorized_hosts?: NamespacesInstancesReadResponsePublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: NamespacesInstancesReadResponsePublicEndpointParamsMcp;
   rate_limit?: NamespacesInstancesReadResponsePublicEndpointParamsRateLimit;
@@ -9398,6 +8937,9 @@ export const NamespacesInstancesReadResponsePublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(NamespacesInstancesReadResponsePublicEndpointParamsMcp),
@@ -9494,34 +9036,6 @@ export const NamespacesInstancesReadResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsIncludeItemsList>;
 
-export type NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  "all" | "sitemaps" | "links" | (string & {});
-export const NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptions>;
-
 export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -9588,49 +9102,23 @@ export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions =
 
 export type NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesReadResponseSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const NamespacesInstancesReadResponseSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesReadResponseSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<NamespacesInstancesReadResponseSourceParamsWebCrawlerStoreOptions>;
-
 export interface NamespacesInstancesReadResponseSourceParamsWebCrawler {
-  crawl_options?: NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptions;
   parse_options?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions;
   parse_type?: NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType;
-  store_options?: NamespacesInstancesReadResponseSourceParamsWebCrawlerStoreOptions;
 }
 export const NamespacesInstancesReadResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        NamespacesInstancesReadResponseSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -9964,13 +9452,13 @@ export const NamespacesInstancesSearchRequestMessagesItemRole =
   /*@__PURE__*/ S.String;
 
 export interface NamespacesInstancesSearchRequestMessagesItem {
-  content: string;
+  content: unknown;
   role: NamespacesInstancesSearchRequestMessagesItemRole;
 }
 export const NamespacesInstancesSearchRequestMessagesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      content: S.String,
+      content: S.Unknown,
       role: NamespacesInstancesSearchRequestMessagesItemRole,
     }),
   ).annotate({
@@ -10100,15 +9588,25 @@ export const NamespacesInstancesSearchResponseChunksList =
     NamespacesInstancesSearchResponseChunksItem,
   ) as any as S.Schema<NamespacesInstancesSearchResponseChunksList>;
 
+export type NamespacesInstancesSearchResponseQueryKind =
+  | "text"
+  | "image"
+  | "multimodal"
+  | (string & {});
+export const NamespacesInstancesSearchResponseQueryKind =
+  /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface NamespacesInstancesSearchResponse {
   chunks: NamespacesInstancesSearchResponseChunksList;
-  search_query: string;
+  query_kind: NamespacesInstancesSearchResponseQueryKind;
+  search_query?: string;
 }
 export const NamespacesInstancesSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunks: NamespacesInstancesSearchResponseChunksList,
-    search_query: S.String,
+    query_kind: NamespacesInstancesSearchResponseQueryKind,
+    search_query: S.optional(S.String),
   }),
 ).annotate({
   identifier: "NamespacesInstancesSearchResponse",
@@ -10282,8 +9780,8 @@ export const NamespacesInstancesUpdateRequestCustomMetadataList =
 
 export type NamespacesInstancesUpdateRequestEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const NamespacesInstancesUpdateRequestEmbeddingModel =
   /*@__PURE__*/ S.String;
@@ -10364,6 +9862,13 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletions
       "NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint>;
 
+export type NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
+  string[];
+export const NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList>;
+
 export interface NamespacesInstancesUpdateRequestPublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -10417,6 +9922,7 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParamsSearchEndpoint 
 export interface NamespacesInstancesUpdateRequestPublicEndpointParams {
   authorized_hosts?: NamespacesInstancesUpdateRequestPublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: NamespacesInstancesUpdateRequestPublicEndpointParamsMcp;
   rate_limit?: NamespacesInstancesUpdateRequestPublicEndpointParamsRateLimit;
@@ -10430,6 +9936,9 @@ export const NamespacesInstancesUpdateRequestPublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(NamespacesInstancesUpdateRequestPublicEndpointParamsMcp),
@@ -10526,34 +10035,6 @@ export const NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsIncludeItemsList>;
 
-export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptionsSource =
-  "all" | "sitemaps" | "links" | (string & {});
-export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions>;
-
 export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -10620,49 +10101,23 @@ export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions 
 
 export type NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const NamespacesInstancesUpdateRequestSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesUpdateRequestSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<NamespacesInstancesUpdateRequestSourceParamsWebCrawlerStoreOptions>;
-
 export interface NamespacesInstancesUpdateRequestSourceParamsWebCrawler {
-  crawl_options?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions;
   parse_options?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions;
   parse_type?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType;
-  store_options?: NamespacesInstancesUpdateRequestSourceParamsWebCrawlerStoreOptions;
 }
 export const NamespacesInstancesUpdateRequestSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        NamespacesInstancesUpdateRequestSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -10730,6 +10185,7 @@ export interface NamespacesInstancesUpdateRequest {
   rewrite_model?: NamespacesInstancesUpdateRequestRewriteModel;
   rewrite_query?: boolean;
   score_threshold?: number;
+  source?: string;
   source_params?: NamespacesInstancesUpdateRequestSourceParams;
   summarization?: boolean;
   summarization_model?: NamespacesInstancesUpdateRequestSummarizationModel;
@@ -10775,6 +10231,7 @@ export const NamespacesInstancesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     rewrite_model: S.optional(NamespacesInstancesUpdateRequestRewriteModel),
     rewrite_query: S.optional(S.Boolean),
     score_threshold: S.optional(S.Number),
+    source: S.optional(S.String),
     source_params: S.optional(NamespacesInstancesUpdateRequestSourceParams),
     summarization: S.optional(S.Boolean),
     summarization_model: S.optional(
@@ -10845,8 +10302,8 @@ export const NamespacesInstancesUpdateResponseCustomMetadataList =
 
 export type NamespacesInstancesUpdateResponseEmbeddingModel =
   | "@cf/qwen/qwen3-embedding-0.6b"
+  | "@cf/qwen/qwen3-vl-embedding-2b"
   | "@cf/baai/bge-m3"
-  | "@cf/baai/bge-large-en-v1.5"
   | (string & {});
 export const NamespacesInstancesUpdateResponseEmbeddingModel =
   /*@__PURE__*/ S.String;
@@ -10927,6 +10384,13 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletion
       "NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint",
   }) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint>;
 
+export type NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
+  string[];
+export const NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList>;
+
 export interface NamespacesInstancesUpdateResponsePublicEndpointParamsMcp {
   description?: string;
   disabled?: boolean;
@@ -10981,6 +10445,7 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParamsSearchEndpoint
 export interface NamespacesInstancesUpdateResponsePublicEndpointParams {
   authorized_hosts?: NamespacesInstancesUpdateResponsePublicEndpointParamsAuthorizedHostsList;
   chat_completions_endpoint?: NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint;
+  custom_domains?: NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList;
   enabled?: boolean;
   mcp?: NamespacesInstancesUpdateResponsePublicEndpointParamsMcp;
   rate_limit?: NamespacesInstancesUpdateResponsePublicEndpointParamsRateLimit;
@@ -10994,6 +10459,9 @@ export const NamespacesInstancesUpdateResponsePublicEndpointParams =
       ),
       chat_completions_endpoint: S.optional(
         NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint,
+      ),
+      custom_domains: S.optional(
+        NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList,
       ),
       enabled: S.optional(S.Boolean),
       mcp: S.optional(NamespacesInstancesUpdateResponsePublicEndpointParamsMcp),
@@ -11090,34 +10558,6 @@ export const NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList =
     S.String,
   ) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsIncludeItemsList>;
 
-export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  "all" | "sitemaps" | "links" | (string & {});
-export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptionsSource =
-  /*@__PURE__*/ S.String;
-
-export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions {
-  depth?: number;
-  include_external_links?: boolean;
-  include_subdomains?: boolean;
-  max_age?: number;
-  source?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptionsSource;
-}
-export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      depth: S.optional(S.Number),
-      include_external_links: S.optional(S.Boolean),
-      include_subdomains: S.optional(S.Boolean),
-      max_age: S.optional(S.Number),
-      source: S.optional(
-        NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptionsSource,
-      ),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions",
-  }) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions>;
-
 export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem {
   path: string;
   selector: string;
@@ -11184,49 +10624,23 @@ export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions
 
 export type NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType =
   | "sitemap"
-  | "feed-rss"
   | "crawl"
   | (string & {});
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType =
   /*@__PURE__*/ S.String;
 
-export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawlerStoreOptions {
-  storage_id: string;
-  r2_jurisdiction?: string;
-  storage_type?: unknown;
-}
-export const NamespacesInstancesUpdateResponseSourceParamsWebCrawlerStoreOptions =
-  /*@__PURE__*/ S.suspend(() =>
-    S.Struct({
-      storage_id: S.String,
-      r2_jurisdiction: S.optional(S.String),
-      storage_type: S.optional(S.Unknown),
-    }),
-  ).annotate({
-    identifier:
-      "NamespacesInstancesUpdateResponseSourceParamsWebCrawlerStoreOptions",
-  }) as any as S.Schema<NamespacesInstancesUpdateResponseSourceParamsWebCrawlerStoreOptions>;
-
 export interface NamespacesInstancesUpdateResponseSourceParamsWebCrawler {
-  crawl_options?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions;
   parse_options?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions;
   parse_type?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType;
-  store_options?: NamespacesInstancesUpdateResponseSourceParamsWebCrawlerStoreOptions;
 }
 export const NamespacesInstancesUpdateResponseSourceParamsWebCrawler =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      crawl_options: S.optional(
-        NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions,
-      ),
       parse_options: S.optional(
         NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions,
       ),
       parse_type: S.optional(
         NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType,
-      ),
-      store_options: S.optional(
-        NamespacesInstancesUpdateResponseSourceParamsWebCrawlerStoreOptions,
       ),
     }),
   ).annotate({
@@ -11663,12 +11077,12 @@ export type NamespacesSearchRequestMessagesItemRole =
 export const NamespacesSearchRequestMessagesItemRole = /*@__PURE__*/ S.String;
 
 export interface NamespacesSearchRequestMessagesItem {
-  content: string;
+  content: unknown;
   role: NamespacesSearchRequestMessagesItemRole;
 }
 export const NamespacesSearchRequestMessagesItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    content: S.String,
+    content: S.Unknown,
     role: NamespacesSearchRequestMessagesItemRole,
   }),
 ).annotate({
@@ -11793,6 +11207,13 @@ export const NamespacesSearchResponseChunksList = /*@__PURE__*/ S.Array(
   NamespacesSearchResponseChunksItem,
 ) as any as S.Schema<NamespacesSearchResponseChunksList>;
 
+export type NamespacesSearchResponseQueryKind =
+  | "text"
+  | "image"
+  | "multimodal"
+  | (string & {});
+export const NamespacesSearchResponseQueryKind = /*@__PURE__*/ S.String;
+
 export interface NamespacesSearchResponseErrorsItem {
   instance_id: string;
   message: string;
@@ -11815,14 +11236,16 @@ export const NamespacesSearchResponseErrorsList = /*@__PURE__*/ S.Array(
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface NamespacesSearchResponse {
   chunks: NamespacesSearchResponseChunksList;
-  search_query: string;
+  query_kind: NamespacesSearchResponseQueryKind;
   errors?: NamespacesSearchResponseErrorsList;
+  search_query?: string;
 }
 export const NamespacesSearchResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     chunks: NamespacesSearchResponseChunksList,
-    search_query: S.String,
+    query_kind: NamespacesSearchResponseQueryKind,
     errors: S.optional(NamespacesSearchResponseErrorsList),
+    search_query: S.optional(S.String),
   }),
 ).annotate({
   identifier: "NamespacesSearchResponse",
@@ -12623,7 +12046,7 @@ export const NamespacesRead: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Multi-Instance Search */
+/** Performs a semantic search query against multiple AI Search instances in parallel, merging the retrieved results into a single ranked response. */
 export const NamespacesSearch: API.OperationMethod<
   NamespacesSearchRequest,
   NamespacesSearchResponse,

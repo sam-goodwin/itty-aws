@@ -2,8 +2,9 @@
 
 **post** `/accounts/{account_id}/images/v1`
 
-Upload an image with up to 10 Megabytes using a single HTTP POST (multipart/form-data) request.
-An image can be uploaded by sending an image file or passing an accessible to an API url.
+Upload an image to CF Images. Images up to 10 Megabytes can be uploaded using a
+single HTTP POST (multipart/form-data) request by sending an image file or
+passing a URL accessible to the API.
 
 ### Path Parameters
 

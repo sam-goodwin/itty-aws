@@ -1399,46 +1399,6 @@ export const CertificatePacksQuotaGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CertificatePacksQuotaGetResponse",
 }) as any as S.Schema<CertificatePacksQuotaGetResponse>;
 
-export interface RecommendationsGetRequest {
-  zone_id: string;
-}
-export const RecommendationsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/ssl/recommendation",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RecommendationsGetRequest",
-}) as any as S.Schema<RecommendationsGetRequest>;
-
-export type RecommendationsGetResponseValue = "auto" | "custom" | (string & {});
-export const RecommendationsGetResponseValue = /*@__PURE__*/ S.String;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface RecommendationsGetResponse {
-  id: string;
-  editable: boolean;
-  modified_on: string;
-  value: RecommendationsGetResponseValue;
-  next_scheduled_scan?: string;
-}
-export const RecommendationsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.String,
-    editable: S.Boolean,
-    modified_on: S.String,
-    value: RecommendationsGetResponseValue,
-    next_scheduled_scan: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "RecommendationsGetResponse",
-}) as any as S.Schema<RecommendationsGetResponse>;
-
 export interface UniversalSettingsEditRequest {
   zone_id: string;
   enabled?: boolean;
@@ -1722,19 +1682,6 @@ export const CertificatePacksQuotaGet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: CertificatePacksQuotaGetRequest,
   output: CertificatePacksQuotaGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
-/** Retrieve the SSL/TLS Recommender's recommendation for a zone. */
-export const RecommendationsGet: API.OperationMethod<
-  RecommendationsGetRequest,
-  RecommendationsGetResponse,
-  CloudflareOpError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RecommendationsGetRequest,
-  output: RecommendationsGetResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

@@ -54,6 +54,10 @@ Add a connector to your account
 
 - `notes: optional string`
 
+- `primary: optional boolean`
+
+- `site_id: optional string`
+
 - `timezone: optional string`
 
 ### Returns
@@ -70,7 +74,7 @@ Add a connector to your account
 
   - `message: string`
 
-- `result: object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `result: object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -106,6 +110,8 @@ Add a connector to your account
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -125,6 +131,8 @@ Add a connector to your account
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 - `success: boolean`
 
@@ -168,6 +176,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors 
     "interrupt_window_hour_of_day": 0,
     "last_updated": "last_updated",
     "notes": "notes",
+    "primary": true,
     "timezone": "timezone",
     "device": {
       "id": "id",
@@ -176,7 +185,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors 
     },
     "last_heartbeat": "last_heartbeat",
     "last_seen_version": "last_seen_version",
-    "license_key": "license_key"
+    "license_key": "license_key",
+    "site_id": "site_id"
   },
   "success": true
 }

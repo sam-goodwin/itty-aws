@@ -271,6 +271,7 @@ export interface UsagePaygoResultItem {
   PricingQuantity: number;
   ServiceName: string;
   ServiceFamilyName?: string;
+  SubscriptionId?: string;
   ZoneId?: string;
   ZoneName?: string;
 }
@@ -288,6 +289,7 @@ export const UsagePaygoResultItem = /*@__PURE__*/ S.suspend(() =>
     PricingQuantity: S.Number,
     ServiceName: S.String,
     ServiceFamilyName: S.optional(S.String),
+    SubscriptionId: S.optional(S.String),
     ZoneId: S.optional(S.String),
     ZoneName: S.optional(S.String),
   }),

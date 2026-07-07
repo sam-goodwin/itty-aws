@@ -137,7 +137,7 @@
           "uri": "/zones/{zone_id}/cloud_connector/rules",
           "code": 200
         },
-        "smithy.api#documentation": "Rules",
+        "smithy.api#documentation": "Retrieves the Cloud Connector rules configured for a zone. Rules define how traffic is routed to cloud services.",
         "smithy.api#readonly": {}
       }
     },
@@ -339,7 +339,7 @@
           "uri": "/zones/{zone_id}/cloud_connector/rules",
           "code": 200
         },
-        "smithy.api#documentation": "Put Rules",
+        "smithy.api#documentation": "Updates Cloud Connector rules for a zone, replacing the existing rule configuration.",
         "smithy.api#idempotent": {}
       }
     },

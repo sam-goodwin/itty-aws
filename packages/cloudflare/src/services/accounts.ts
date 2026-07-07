@@ -204,6 +204,11 @@ export const ListResponse = /*@__PURE__*/ S.suspend(() =>
 export type LogsAuditListRequestDirection = "desc" | "asc" | (string & {});
 export const LogsAuditListRequestDirection = /*@__PURE__*/ S.String;
 
+export type LogsAuditListRequestProductCategoryList = string[];
+export const LogsAuditListRequestProductCategoryList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<LogsAuditListRequestProductCategoryList>;
+
 export interface LogsAuditListRequest {
   account_id: string;
   before: string;
@@ -223,6 +228,7 @@ export interface LogsAuditListRequest {
   cursor?: string;
   direction?: LogsAuditListRequestDirection;
   limit?: number;
+  product_category?: LogsAuditListRequestProductCategoryList;
   raw_cf_ray_id?: string;
   raw_method?: string;
   raw_status_code?: string;
@@ -254,6 +260,9 @@ export const LogsAuditListRequest = /*@__PURE__*/ S.suspend(() =>
     cursor: S.optional(S.String.pipe(T.Query())),
     direction: S.optional(LogsAuditListRequestDirection.pipe(T.Query())),
     limit: S.optional(S.Number.pipe(T.Query())),
+    product_category: S.optional(
+      LogsAuditListRequestProductCategoryList.pipe(T.Query()),
+    ),
     raw_cf_ray_id: S.optional(S.String.pipe(T.Query())),
     raw_method: S.optional(S.String.pipe(T.Query())),
     raw_status_code: S.optional(S.String.pipe(T.Query())),
@@ -1127,6 +1136,14 @@ export const TokensPermissionGroupsGetRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensPermissionGroupsGetRequest",
 }) as any as S.Schema<TokensPermissionGroupsGetRequest>;
 
+export type TokensPermissionGroupsGetResultItemCategory =
+  | "developer_platform"
+  | "ai_and_machine_learning"
+  | "dns_and_zones"
+  | (string & {});
+export const TokensPermissionGroupsGetResultItemCategory =
+  /*@__PURE__*/ S.String;
+
 export type TokensPermissionGroupsGetResultItemScopesItem =
   | "com.cloudflare.api.account"
   | "com.cloudflare.api.account.zone"
@@ -1145,12 +1162,14 @@ export const TokensPermissionGroupsGetResultItemScopesList =
 
 export interface TokensPermissionGroupsGetResultItem {
   id?: string;
+  category?: TokensPermissionGroupsGetResultItemCategory;
   name?: string;
   scopes?: TokensPermissionGroupsGetResultItemScopesList;
 }
 export const TokensPermissionGroupsGetResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     id: S.optional(S.String),
+    category: S.optional(TokensPermissionGroupsGetResultItemCategory),
     name: S.optional(S.String),
     scopes: S.optional(TokensPermissionGroupsGetResultItemScopesList),
   }),
@@ -1198,6 +1217,14 @@ export const TokensPermissionGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensPermissionGroupsListRequest",
 }) as any as S.Schema<TokensPermissionGroupsListRequest>;
 
+export type TokensPermissionGroupsListResultItemCategory =
+  | "developer_platform"
+  | "ai_and_machine_learning"
+  | "dns_and_zones"
+  | (string & {});
+export const TokensPermissionGroupsListResultItemCategory =
+  /*@__PURE__*/ S.String;
+
 export type TokensPermissionGroupsListResultItemScopesItem =
   | "com.cloudflare.api.account"
   | "com.cloudflare.api.account.zone"
@@ -1216,6 +1243,7 @@ export const TokensPermissionGroupsListResultItemScopesList =
 
 export interface TokensPermissionGroupsListResultItem {
   id?: string;
+  category?: TokensPermissionGroupsListResultItemCategory;
   name?: string;
   scopes?: TokensPermissionGroupsListResultItemScopesList;
 }
@@ -1223,6 +1251,7 @@ export const TokensPermissionGroupsListResultItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
+      category: S.optional(TokensPermissionGroupsListResultItemCategory),
       name: S.optional(S.String),
       scopes: S.optional(TokensPermissionGroupsListResultItemScopesList),
     }),

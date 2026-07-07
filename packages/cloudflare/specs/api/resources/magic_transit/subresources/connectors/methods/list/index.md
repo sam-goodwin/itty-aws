@@ -34,7 +34,7 @@ List Connectors
 
   - `message: string`
 
-- `result: array of object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `result: array of object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -70,6 +70,8 @@ List Connectors
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -89,6 +91,8 @@ List Connectors
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 - `success: boolean`
 
@@ -129,6 +133,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors 
       "interrupt_window_hour_of_day": 0,
       "last_updated": "last_updated",
       "notes": "notes",
+      "primary": true,
       "timezone": "timezone",
       "device": {
         "id": "id",
@@ -137,7 +142,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors 
       },
       "last_heartbeat": "last_heartbeat",
       "last_seen_version": "last_seen_version",
-      "license_key": "license_key"
+      "license_key": "license_key",
+      "site_id": "site_id"
     }
   ],
   "success": true

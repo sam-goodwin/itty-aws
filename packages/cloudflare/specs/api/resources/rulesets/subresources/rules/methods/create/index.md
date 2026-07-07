@@ -20,7 +20,7 @@ Adds a new rule to an account or zone ruleset. The rule will be added to the end
 
 ### Body Parameters
 
-- `body: BlockRule or object { last_updated, version, id, 11 more }  or CompressResponseRule or 17 more`
+- `body: BlockRule or object { last_updated, version, id, 11 more }  or CompressResponseRule or 18 more`
 
   - `BlockRule = BlockRule`
 
@@ -1602,6 +1602,134 @@ Adds a new rule to an account or zone ruleset. The rule will be added to the end
 
           An index at which to place the rule, where index 1 is the first rule.
 
+  - `TransformResponseHTMLRule object { last_updated, version, id, 11 more }`
+
+    - `last_updated: string`
+
+      The timestamp of when the rule was last modified.
+
+    - `version: string`
+
+      The version of the rule.
+
+    - `id: optional string`
+
+      The unique ID of the rule.
+
+    - `action: optional "transform_response_html"`
+
+      The action to perform when the rule matches.
+
+      - `"transform_response_html"`
+
+    - `action_parameters: optional object { link_maze }`
+
+      The parameters configuring the rule's action.
+
+      - `link_maze: unknown`
+
+        Enables the link maze transformation on the response.
+
+    - `categories: optional array of string`
+
+      The categories of the rule.
+
+    - `description: optional string`
+
+      An informative description of the rule.
+
+    - `enabled: optional boolean`
+
+      Whether the rule should be executed.
+
+    - `exposed_credential_check: optional object { password_expression, username_expression }`
+
+      Configuration for exposed credential checking.
+
+      - `password_expression: string`
+
+        An expression that selects the password used in the credentials check.
+
+      - `username_expression: string`
+
+        An expression that selects the user ID used in the credentials check.
+
+    - `expression: optional string`
+
+      The expression defining which traffic will match the rule.
+
+    - `logging: optional Logging`
+
+      An object configuring the rule's logging behavior.
+
+    - `position: optional object { before }  or object { after }  or object { index }`
+
+      An object configuring where the rule will be placed.
+
+      - `BeforePosition object { before }`
+
+        An object configuring where the rule will be placed.
+
+        - `before: optional string`
+
+          The ID of another rule to place the rule before. An empty value causes the rule to be placed at the top.
+
+      - `AfterPosition object { after }`
+
+        An object configuring where the rule will be placed.
+
+        - `after: optional string`
+
+          The ID of another rule to place the rule after. An empty value causes the rule to be placed at the bottom.
+
+      - `IndexPosition object { index }`
+
+        An object configuring where the rule will be placed.
+
+        - `index: optional number`
+
+          An index at which to place the rule, where index 1 is the first rule.
+
+    - `ratelimit: optional object { characteristics, period, counting_expression, 5 more }`
+
+      An object configuring the rule's rate limit behavior.
+
+      - `characteristics: array of string`
+
+        Characteristics of the request on which the rate limit counter will be incremented.
+
+      - `period: number`
+
+        Period in seconds over which the counter is being incremented.
+
+      - `counting_expression: optional string`
+
+        An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression.
+
+      - `mitigation_timeout: optional number`
+
+        Period of time in seconds after which the action will be disabled following its first execution.
+
+      - `requests_per_period: optional number`
+
+        The threshold of requests per period after which the action will be executed for the first time.
+
+      - `requests_to_origin: optional boolean`
+
+        Whether counting is only performed when an origin is reached.
+
+      - `score_per_period: optional number`
+
+        The score threshold per period for which the action will be executed the first time.
+
+      - `score_response_header_name: optional string`
+
+        A response header name provided by the origin, which contains the score to increment rate limit counter with.
+
+    - `ref: optional string`
+
+      The reference of the rule (the rule's ID by default).
+
 ### Returns
 
 - `errors: array of object { message, code, source }`
@@ -1724,7 +1852,7 @@ Adds a new rule to an account or zone ruleset. The rule will be added to the end
 
     - `"magic_transit_ratelimit"`
 
-  - `rules: array of BlockRule or object { last_updated, version, id, 10 more }  or CompressResponseRule or 17 more`
+  - `rules: array of BlockRule or object { last_updated, version, id, 10 more }  or CompressResponseRule or 18 more`
 
     The list of rules in the ruleset.
 
@@ -4192,7 +4320,7 @@ Adds a new rule to an account or zone ruleset. The rule will be added to the end
 
         - `"set_cache_settings"`
 
-      - `action_parameters: optional object { additional_cacheable_ports, browser_ttl, cache, 12 more }`
+      - `action_parameters: optional object { additional_cacheable_ports, browser_ttl, cache, 13 more }`
 
         The parameters configuring the rule's action.
 
@@ -4429,6 +4557,46 @@ Adds a new rule to an account or zone ruleset. The rule will be added to the end
         - `strip_set_cookie: optional boolean`
 
           Whether to strip Set-Cookie headers from the origin response before caching.
+
+        - `vary: optional object { default, headers }`
+
+          Controls how cached responses vary based on request headers. `default` is required by the API and applies to any Vary response header that does not have a per-header override.
+
+          - `default: optional object { action }`
+
+            Controls how response Vary headers without a per-header override contribute to the cache key.
+
+            - `action: "bypass" or "passthrough" or "normalize"`
+
+              How the header value is treated when building the cache key.
+
+              - `"bypass"`
+
+              - `"passthrough"`
+
+              - `"normalize"`
+
+          - `headers: optional map[object { action, languages, media_types } ]`
+
+            A mapping of lowercase request header names to their vary configuration.
+
+            - `action: "bypass" or "passthrough" or "normalize"`
+
+              How the header value is treated when building the cache key.
+
+              - `"bypass"`
+
+              - `"passthrough"`
+
+              - `"normalize"`
+
+            - `languages: optional array of string`
+
+              The set of languages to normalize against. Only valid for the `accept-language` header.
+
+            - `media_types: optional array of string`
+
+              The set of media types to normalize against. Only valid for the `accept` header.
 
       - `categories: optional array of string`
 
@@ -5063,6 +5231,106 @@ Adds a new rule to an account or zone ruleset. The rule will be added to the end
         - `rulesets: optional array of string`
 
           A list of ruleset IDs to skip the execution of. This option is incompatible with the ruleset and phases options.
+
+      - `categories: optional array of string`
+
+        The categories of the rule.
+
+      - `description: optional string`
+
+        An informative description of the rule.
+
+      - `enabled: optional boolean`
+
+        Whether the rule should be executed.
+
+      - `exposed_credential_check: optional object { password_expression, username_expression }`
+
+        Configuration for exposed credential checking.
+
+        - `password_expression: string`
+
+          An expression that selects the password used in the credentials check.
+
+        - `username_expression: string`
+
+          An expression that selects the user ID used in the credentials check.
+
+      - `expression: optional string`
+
+        The expression defining which traffic will match the rule.
+
+      - `logging: optional Logging`
+
+        An object configuring the rule's logging behavior.
+
+      - `ratelimit: optional object { characteristics, period, counting_expression, 5 more }`
+
+        An object configuring the rule's rate limit behavior.
+
+        - `characteristics: array of string`
+
+          Characteristics of the request on which the rate limit counter will be incremented.
+
+        - `period: number`
+
+          Period in seconds over which the counter is being incremented.
+
+        - `counting_expression: optional string`
+
+          An expression that defines when the rate limit counter should be incremented. It defaults to the same as the rule's expression.
+
+        - `mitigation_timeout: optional number`
+
+          Period of time in seconds after which the action will be disabled following its first execution.
+
+        - `requests_per_period: optional number`
+
+          The threshold of requests per period after which the action will be executed for the first time.
+
+        - `requests_to_origin: optional boolean`
+
+          Whether counting is only performed when an origin is reached.
+
+        - `score_per_period: optional number`
+
+          The score threshold per period for which the action will be executed the first time.
+
+        - `score_response_header_name: optional string`
+
+          A response header name provided by the origin, which contains the score to increment rate limit counter with.
+
+      - `ref: optional string`
+
+        The reference of the rule (the rule's ID by default).
+
+    - `TransformResponseHTML object { last_updated, version, id, 10 more }`
+
+      - `last_updated: string`
+
+        The timestamp of when the rule was last modified.
+
+      - `version: string`
+
+        The version of the rule.
+
+      - `id: optional string`
+
+        The unique ID of the rule.
+
+      - `action: optional "transform_response_html"`
+
+        The action to perform when the rule matches.
+
+        - `"transform_response_html"`
+
+      - `action_parameters: optional object { link_maze }`
+
+        The parameters configuring the rule's action.
+
+        - `link_maze: unknown`
+
+          Enables the link maze transformation on the response.
 
       - `categories: optional array of string`
 

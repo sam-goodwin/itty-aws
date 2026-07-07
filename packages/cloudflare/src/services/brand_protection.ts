@@ -844,13 +844,11 @@ export const V2QueriesGetRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<V2QueriesGetRequest>;
 
 export interface V2QueriesGetResponseParametersStringMatchesItem {
-  max_edit_distance: number;
   pattern: string;
 }
 export const V2QueriesGetResponseParametersStringMatchesItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      max_edit_distance: S.Number,
       pattern: S.String,
     }),
   ).annotate({

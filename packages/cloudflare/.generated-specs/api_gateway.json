@@ -4823,7 +4823,7 @@
           "uri": "/zones/{zone_id}/api_gateway/schemas",
           "code": 200
         },
-        "smithy.api#documentation": "Retrieve operations and features as OpenAPI schemas",
+        "smithy.api#documentation": "Retrieves API operations and their features exported as OpenAPI schemas.",
         "smithy.api#readonly": {}
       }
     },
@@ -5176,7 +5176,7 @@
           "uri": "/zones/{zone_id}/api_gateway/user_schemas",
           "code": 200
         },
-        "smithy.api#documentation": "Upload a schema to a zone"
+        "smithy.api#documentation": "Uploads a new OpenAPI schema for API Shield schema validation. The schema defines expected request/response formats for API endpoints."
       }
     },
     "com.cloudflare.api_gateway#UserSchemasDeleteRequest": {

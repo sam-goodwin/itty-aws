@@ -866,6 +866,14 @@ export const TokensPermissionGroupsListRequest = /*@__PURE__*/ S.suspend(() =>
   identifier: "TokensPermissionGroupsListRequest",
 }) as any as S.Schema<TokensPermissionGroupsListRequest>;
 
+export type TokensPermissionGroupsListResultItemCategory =
+  | "developer_platform"
+  | "ai_and_machine_learning"
+  | "dns_and_zones"
+  | (string & {});
+export const TokensPermissionGroupsListResultItemCategory =
+  /*@__PURE__*/ S.String;
+
 export type TokensPermissionGroupsListResultItemScopesItem =
   | "com.cloudflare.api.account"
   | "com.cloudflare.api.account.zone"
@@ -884,6 +892,7 @@ export const TokensPermissionGroupsListResultItemScopesList =
 
 export interface TokensPermissionGroupsListResultItem {
   id?: string;
+  category?: TokensPermissionGroupsListResultItemCategory;
   name?: string;
   scopes?: TokensPermissionGroupsListResultItemScopesList;
 }
@@ -891,6 +900,7 @@ export const TokensPermissionGroupsListResultItem = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
       id: S.optional(S.String),
+      category: S.optional(TokensPermissionGroupsListResultItemCategory),
       name: S.optional(S.String),
       scopes: S.optional(TokensPermissionGroupsListResultItemScopesList),
     }),
@@ -1112,7 +1122,7 @@ export const Edit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** User Details */
+/** Retrieves detailed information about the currently authenticated user, including email, name, and account memberships. */
 export const Get: API.OperationMethod<
   GetRequest,
   GetResponse,

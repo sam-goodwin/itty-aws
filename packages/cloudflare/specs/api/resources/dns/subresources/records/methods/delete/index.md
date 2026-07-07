@@ -2,7 +2,7 @@
 
 **delete** `/zones/{zone_id}/dns_records/{dns_record_id}`
 
-Delete DNS Record
+Permanently removes a DNS record from the zone.
 
 ### Path Parameters
 

@@ -60,19 +60,19 @@ Retrieves analytics aggregated from the last minute of usage on Spectrum applica
 
   - `bytesEgress: number`
 
-    Number of bytes sent
+    Number of bytes sent.
 
   - `bytesIngress: number`
 
-    Number of bytes received
+    Number of bytes received.
 
   - `connections: number`
 
-    Number of connections
+    Number of connections.
 
   - `durationAvg: number`
 
-    Average duration of connections
+    Average duration of connections.
 
 ### Example
 

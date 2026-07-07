@@ -42,7 +42,7 @@ Get information on the default catch-all routing rule.
 
   - `true`
 
-- `result: optional object { id, actions, enabled, 3 more }`
+- `result: optional object { id, actions, enabled, 4 more }`
 
   - `id: optional string`
 
@@ -85,6 +85,16 @@ Get information on the default catch-all routing rule.
   - `name: optional string`
 
     Routing rule name.
+
+  - `source: optional "api" or "wrangler"`
+
+    Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+    `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+    to `api` when omitted on write.
+
+    - `"api"`
+
+    - `"wrangler"`
 
   - `tag: optional string`
 
@@ -140,6 +150,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/routing/rules/cat
       }
     ],
     "name": "Send to user@example.net rule.",
+    "source": "api",
     "tag": "a7e6fb77503c41d8a7f3113c6918f10c"
   }
 }

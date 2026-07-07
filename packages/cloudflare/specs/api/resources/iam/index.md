@@ -3511,7 +3511,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/iam/user_groups/$
 
 **get** `/accounts/{account_id}/sso_connectors`
 
-Get all SSO connectors
+Lists all SSO connectors configured for the account.
 
 ### Path Parameters
 
@@ -3668,7 +3668,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/sso_connectors \
 
 **get** `/accounts/{account_id}/sso_connectors/{sso_connector_id}`
 
-Get single SSO connector
+Retrieves details for a specific SSO connector.
 
 ### Path Parameters
 
@@ -3803,7 +3803,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/sso_connectors/$S
 
 **post** `/accounts/{account_id}/sso_connectors`
 
-Initialize new SSO connector
+Creates a new SSO connector for logging into Cloudflare through an identity provider.
 
 ### Path Parameters
 
@@ -3953,7 +3953,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/sso_connectors \
 
 **patch** `/accounts/{account_id}/sso_connectors/{sso_connector_id}`
 
-Update SSO connector state
+Updates the state or configuration of an SSO connector.
 
 ### Path Parameters
 
@@ -4099,7 +4099,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/sso_connectors/$S
 
 **delete** `/accounts/{account_id}/sso_connectors/{sso_connector_id}`
 
-Delete SSO connector
+Deletes an SSO connector from the account.
 
 ### Path Parameters
 
@@ -4192,7 +4192,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/sso_connectors/$S
 
 **post** `/accounts/{account_id}/sso_connectors/{sso_connector_id}/begin_verification`
 
-Begin SSO connector verification
+Validates the user has added the DNS TXT record required for validating ownership of the domain they are trying to set up a connector for.
 
 ### Path Parameters
 

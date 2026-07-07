@@ -86,7 +86,7 @@ List of Worker Versions. The first version in the list is the latest version.
 
         When the version was last modified.
 
-      - `source: optional "unknown" or "api" or "wrangler" or 7 more`
+      - `source: optional "unknown" or "api" or "wrangler" or 8 more`
 
         The source of the version upload.
 
@@ -99,6 +99,8 @@ List of Worker Versions. The first version in the list is the latest version.
         - `"terraform"`
 
         - `"dash"`
+
+        - `"cf_cli"`
 
         - `"dash_template"`
 
@@ -999,7 +1001,7 @@ Retrieves detailed information about a specific version of a Workers script.
 
       When the version was last modified.
 
-    - `source: optional "unknown" or "api" or "wrangler" or 7 more`
+    - `source: optional "unknown" or "api" or "wrangler" or 8 more`
 
       The source of the version upload.
 
@@ -1012,6 +1014,8 @@ Retrieves detailed information about a specific version of a Workers script.
       - `"terraform"`
 
       - `"dash"`
+
+      - `"cf_cli"`
 
       - `"dash_template"`
 
@@ -1949,7 +1953,7 @@ Upload a Worker Version without deploying to Cloudflare's network. You can find 
 
       When the version was last modified.
 
-    - `source: optional "unknown" or "api" or "wrangler" or 7 more`
+    - `source: optional "unknown" or "api" or "wrangler" or 8 more`
 
       The source of the version upload.
 
@@ -1962,6 +1966,8 @@ Upload a Worker Version without deploying to Cloudflare's network. You can find 
       - `"terraform"`
 
       - `"dash"`
+
+      - `"cf_cli"`
 
       - `"dash_template"`
 
@@ -2104,7 +2110,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts/$
 
       When the version was last modified.
 
-    - `source: optional "unknown" or "api" or "wrangler" or 7 more`
+    - `source: optional "unknown" or "api" or "wrangler" or 8 more`
 
       The source of the version upload.
 
@@ -2117,6 +2123,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts/$
       - `"terraform"`
 
       - `"dash"`
+
+      - `"cf_cli"`
 
       - `"dash_template"`
 
@@ -2918,7 +2926,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts/$
 
       When the version was last modified.
 
-    - `source: optional "unknown" or "api" or "wrangler" or 7 more`
+    - `source: optional "unknown" or "api" or "wrangler" or 8 more`
 
       The source of the version upload.
 
@@ -2931,6 +2939,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts/$
       - `"terraform"`
 
       - `"dash"`
+
+      - `"cf_cli"`
 
       - `"dash_template"`
 
@@ -3732,7 +3742,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts/$
 
       When the version was last modified.
 
-    - `source: optional "unknown" or "api" or "wrangler" or 7 more`
+    - `source: optional "unknown" or "api" or "wrangler" or 8 more`
 
       The source of the version upload.
 
@@ -3745,6 +3755,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts/$
       - `"terraform"`
 
       - `"dash"`
+
+      - `"cf_cli"`
 
       - `"dash_template"`
 

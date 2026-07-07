@@ -1,8 +1,8 @@
-## List fleet status devices
+## List details of devices using WARP.
 
 **get** `/accounts/{account_id}/dex/fleet-status/devices`
 
-List details for devices using WARP.
+List details of devices using WARP.
 
 ### Path Parameters
 

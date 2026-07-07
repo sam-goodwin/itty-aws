@@ -16,6 +16,10 @@ Starts recording a meeting. The meeting can be started by an App admin directly,
 
 ### Body Parameters
 
+- `meeting_id: string`
+
+  ID of the meeting to record.
+
 - `allow_multiple_recordings: optional boolean`
 
   By default, a meeting allows only one recording to run at a time. Enabling the `allow_multiple_recordings` parameter to true allows you to initiate multiple recordings concurrently in the same meeting. This allows you to record separate videos of the same meeting with different configurations, such as portrait mode or landscape mode.
@@ -61,10 +65,6 @@ Starts recording a meeting. The meeting can be started by an App admin directly,
 - `max_seconds: optional number`
 
   Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours.
-
-- `meeting_id: optional string`
-
-  ID of the meeting to record.
 
 - `realtimekit_bucket_config: optional object { enabled }`
 
@@ -404,7 +404,9 @@ Starts recording a meeting. The meeting can be started by an App admin directly,
 curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP_ID/recordings \
     -H 'Content-Type: application/json' \
     -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-    -d '{}'
+    -d '{
+          "meeting_id": "97440c6a-140b-40a9-9499-b23fd7a3868a"
+        }'
 ```
 
 #### Response

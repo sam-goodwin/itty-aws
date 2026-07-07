@@ -44,7 +44,7 @@ Get information on the default catch-all routing rule.
 
   - `true`
 
-- `result: optional object { id, actions, enabled, 3 more }`
+- `result: optional object { id, actions, enabled, 4 more }`
 
   - `id: optional string`
 
@@ -87,6 +87,16 @@ Get information on the default catch-all routing rule.
   - `name: optional string`
 
     Routing rule name.
+
+  - `source: optional "api" or "wrangler"`
+
+    Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+    `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+    to `api` when omitted on write.
+
+    - `"api"`
+
+    - `"wrangler"`
 
   - `tag: optional string`
 
@@ -142,6 +152,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/routing/rules/cat
       }
     ],
     "name": "Send to user@example.net rule.",
+    "source": "api",
     "tag": "a7e6fb77503c41d8a7f3113c6918f10c"
   }
 }
@@ -199,6 +210,21 @@ Enable or disable catch-all routing rule, or change action to forward to specifi
 
   Routing rule name.
 
+- `owner_worker_tag: optional string`
+
+  Public tag (script_tag) of the Worker that owns this rule. Required when
+  `source` is `wrangler`.
+
+- `source: optional "api" or "wrangler"`
+
+  Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+  `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+  to `api` when omitted on write.
+
+  - `"api"`
+
+  - `"wrangler"`
+
 ### Returns
 
 - `errors: array of object { code, message, documentation_url, source }`
@@ -231,7 +257,7 @@ Enable or disable catch-all routing rule, or change action to forward to specifi
 
   - `true`
 
-- `result: optional object { id, actions, enabled, 3 more }`
+- `result: optional object { id, actions, enabled, 4 more }`
 
   - `id: optional string`
 
@@ -275,6 +301,16 @@ Enable or disable catch-all routing rule, or change action to forward to specifi
 
     Routing rule name.
 
+  - `source: optional "api" or "wrangler"`
+
+    Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+    `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+    to `api` when omitted on write.
+
+    - `"api"`
+
+    - `"wrangler"`
+
   - `tag: optional string`
 
     Routing rule tag. (Deprecated, replaced by routing rule identifier)
@@ -299,7 +335,9 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/routing/rules/cat
             }
           ],
           "enabled": true,
-          "name": "Send to user@example.net rule."
+          "name": "Send to user@example.net rule.",
+          "owner_worker_tag": "a7e6fb77503c41d8a7f3113c6918f10c",
+          "source": "api"
         }'
 ```
 
@@ -345,6 +383,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/routing/rules/cat
       }
     ],
     "name": "Send to user@example.net rule.",
+    "source": "api",
     "tag": "a7e6fb77503c41d8a7f3113c6918f10c"
   }
 }
@@ -384,7 +423,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/routing/rules/cat
 
 ### Catch All Get Response
 
-- `CatchAllGetResponse object { id, actions, enabled, 3 more }`
+- `CatchAllGetResponse object { id, actions, enabled, 4 more }`
 
   - `id: optional string`
 
@@ -427,6 +466,16 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/routing/rules/cat
   - `name: optional string`
 
     Routing rule name.
+
+  - `source: optional "api" or "wrangler"`
+
+    Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+    `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+    to `api` when omitted on write.
+
+    - `"api"`
+
+    - `"wrangler"`
 
   - `tag: optional string`
 
@@ -434,7 +483,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/routing/rules/cat
 
 ### Catch All Update Response
 
-- `CatchAllUpdateResponse object { id, actions, enabled, 3 more }`
+- `CatchAllUpdateResponse object { id, actions, enabled, 4 more }`
 
   - `id: optional string`
 
@@ -477,6 +526,16 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/routing/rules/cat
   - `name: optional string`
 
     Routing rule name.
+
+  - `source: optional "api" or "wrangler"`
+
+    Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+    `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+    to `api` when omitted on write.
+
+    - `"api"`
+
+    - `"wrangler"`
 
   - `tag: optional string`
 

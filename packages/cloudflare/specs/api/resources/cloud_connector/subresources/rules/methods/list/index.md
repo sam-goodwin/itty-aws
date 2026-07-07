@@ -2,7 +2,7 @@
 
 **get** `/zones/{zone_id}/cloud_connector/rules`
 
-Rules
+Retrieves the Cloud Connector rules configured for a zone. Rules define how traffic is routed to cloud services.
 
 ### Path Parameters
 

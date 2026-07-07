@@ -30,7 +30,7 @@ Fetches a single WARP registration.
 
   - `message: string`
 
-- `result: object { id, created_at, device, 9 more }`
+- `result: object { id, created_at, device, 11 more }`
 
   A WARP configuration tied to a single user. Multiple registrations can be created from a single WARP device.
 
@@ -124,6 +124,14 @@ Fetches a single WARP registration.
 
       The enrolled device user's name.
 
+  - `virtual_ipv4: optional string`
+
+    The virtual IPv4 address assigned to the network interface of the tunnel for this registration.
+
+  - `virtual_ipv6: optional string`
+
+    The virtual IPv6 address assigned to the network interface of the tunnel for this registration.
+
 - `success: boolean`
 
   Whether the API call was successful.
@@ -177,7 +185,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrat
       "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
       "email": "user@example.com",
       "name": "John Appleseed"
-    }
+    },
+    "virtual_ipv4": "100.96.0.1",
+    "virtual_ipv6": "2606:4700:0cf1:1000::1"
   },
   "success": true
 }

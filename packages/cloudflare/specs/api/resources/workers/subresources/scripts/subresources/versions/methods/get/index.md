@@ -826,7 +826,7 @@ Retrieves detailed information about a specific version of a Workers script.
 
       When the version was last modified.
 
-    - `source: optional "unknown" or "api" or "wrangler" or 7 more`
+    - `source: optional "unknown" or "api" or "wrangler" or 8 more`
 
       The source of the version upload.
 
@@ -839,6 +839,8 @@ Retrieves detailed information about a specific version of a Workers script.
       - `"terraform"`
 
       - `"dash"`
+
+      - `"cf_cli"`
 
       - `"dash_template"`
 

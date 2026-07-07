@@ -97,7 +97,7 @@ export const GetResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "GetResponse" }) as any as S.Schema<GetResponse>;
 
-/** Add Account Custom Nameserver */
+/** Adds a custom nameserver to the account for use as a vanity nameserver on zones. */
 export const Create: API.OperationMethod<
   CreateRequest,
   CreateResponse,
@@ -110,7 +110,7 @@ export const Create: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Delete Account Custom Nameserver */
+/** Removes a custom nameserver from the account. */
 export const Delete: API.OperationMethod<
   DeleteRequest,
   DeleteResponse,

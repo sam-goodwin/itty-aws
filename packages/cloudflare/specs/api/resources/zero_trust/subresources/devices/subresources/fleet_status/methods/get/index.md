@@ -1,8 +1,8 @@
-## Get the live status of a latest device
+## Get the latest status of a device.
 
 **get** `/accounts/{account_id}/dex/devices/{device_id}/fleet-status/live`
 
-Get the live status of a latest device given device_id from the device_state table
+Get the latest status of a device given device_id from the device_state table.
 
 ### Path Parameters
 

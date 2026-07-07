@@ -6,8 +6,8 @@ Creates an IdP federation grant for the specified identity provider, making it
 available for federation to other accounts in the same Cloudflare organization.
 
 The account must belong to a Cloudflare organization. One-time pin and
-Cloudflare-managed identity providers cannot be federated. An identity
-provider may only have one active grant at a time.
+Cloudflare-managed identity providers cannot be federated. An account
+can federate at most five identity providers at a time.
 
 ### Path Parameters
 
@@ -59,10 +59,6 @@ provider may only have one active grant at a time.
 
     UID of the IdP federation grant.
 
-  - `created_at: string`
-
-    When the grant was created.
-
   - `idp_id: string`
 
     UID of the identity provider being federated.
@@ -105,7 +101,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federa
   "success": true,
   "result": {
     "id": "023e105f4ecef8ad9ca31a8372d0c353",
-    "created_at": "2026-05-07T19:11:00Z",
+    "created_at": "2014-01-01T05:20:00.12345Z",
     "idp_id": "a79de439-0e7f-4ebb-8a02-222222222222"
   }
 }

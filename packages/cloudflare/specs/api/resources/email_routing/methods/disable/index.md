@@ -94,6 +94,14 @@ Disable your Email Routing zone. Also removes additional MX records previously r
 
     - `"unlocked"`
 
+  - `support_subaddress: optional true or false`
+
+    Whether subaddressing (plus-addressing) is honored when matching incoming mail against routing rules.
+
+    - `true`
+
+    - `false`
+
   - `tag: optional string`
 
     Email Routing settings tag. (Deprecated, replaced by Email Routing settings identifier)
@@ -141,6 +149,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/routing/disable \
     "modified": "2014-01-02T02:20:00Z",
     "skip_wizard": true,
     "status": "ready",
+    "support_subaddress": true,
     "tag": "75610dab9e69410a82cf7e400a09ecec"
   }
 }

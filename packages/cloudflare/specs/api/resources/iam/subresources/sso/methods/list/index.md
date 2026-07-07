@@ -2,7 +2,7 @@
 
 **get** `/accounts/{account_id}/sso_connectors`
 
-Get all SSO connectors
+Lists all SSO connectors configured for the account.
 
 ### Path Parameters
 

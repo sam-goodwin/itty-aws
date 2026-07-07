@@ -617,6 +617,12 @@
         }
       }
     },
+    "com.cloudflare.accounts#LogsAuditListRequestProductCategoryList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.accounts#LogsAuditListRequest": {
       "type": "structure",
       "members": {
@@ -735,6 +741,13 @@
           "traits": {
             "smithy.api#documentation": "The number limits the objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit.",
             "smithy.api#httpQuery": "limit"
+          }
+        },
+        "product_category": {
+          "target": "com.cloudflare.accounts#LogsAuditListRequestProductCategoryList",
+          "traits": {
+            "smithy.api#documentation": "Filters audit logs by one or more predefined product categories. Each product category expands into a curated set of resource_product values and is unioned with any explicit resource_product filter. Matched case-insensitively; unknown product categories return 400. Repeatable. Use the audit log product categories endpoint to discover the available values.",
+            "smithy.api#httpQuery": "product_category"
           }
         },
         "raw_cf_ray_id": {
@@ -2711,6 +2724,29 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.accounts#TokensPermissionGroupsGetResultItemCategory": {
+      "type": "enum",
+      "members": {
+        "DEVELOPER_PLATFORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "developer_platform"
+          }
+        },
+        "AI_AND_MACHINE_LEARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_and_machine_learning"
+          }
+        },
+        "DNS_AND_ZONES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_and_zones"
+          }
+        }
+      }
+    },
     "com.cloudflare.accounts#TokensPermissionGroupsGetResultItemScopesItem": {
       "type": "enum",
       "members": {
@@ -2753,6 +2789,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Public ID."
+          }
+        },
+        "category": {
+          "target": "com.cloudflare.accounts#TokensPermissionGroupsGetResultItemCategory",
+          "traits": {
+            "smithy.api#documentation": "Product category that this permission group belongs to."
           }
         },
         "name": {
@@ -2838,6 +2880,29 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.accounts#TokensPermissionGroupsListResultItemCategory": {
+      "type": "enum",
+      "members": {
+        "DEVELOPER_PLATFORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "developer_platform"
+          }
+        },
+        "AI_AND_MACHINE_LEARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_and_machine_learning"
+          }
+        },
+        "DNS_AND_ZONES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_and_zones"
+          }
+        }
+      }
+    },
     "com.cloudflare.accounts#TokensPermissionGroupsListResultItemScopesItem": {
       "type": "enum",
       "members": {
@@ -2880,6 +2945,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Public ID."
+          }
+        },
+        "category": {
+          "target": "com.cloudflare.accounts#TokensPermissionGroupsListResultItemCategory",
+          "traits": {
+            "smithy.api#documentation": "Product category that this permission group belongs to."
           }
         },
         "name": {

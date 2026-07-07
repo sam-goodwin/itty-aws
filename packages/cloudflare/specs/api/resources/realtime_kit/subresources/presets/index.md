@@ -984,7 +984,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP
                 "video_bg": "video_bg",
                 "warning": "warning"
               },
-              "spacing_base": 0,
+              "spacing_base": 1,
               "theme": "darkest"
             }
           }
@@ -1119,7 +1119,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP
           "video_bg": "video_bg",
           "warning": "warning"
         },
-        "spacing_base": 0,
+        "spacing_base": 1,
         "theme": "darkest",
         "font_family": "font_family",
         "google_font": "google_font",
@@ -1679,7 +1679,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP
           "video_bg": "video_bg",
           "warning": "warning"
         },
-        "spacing_base": 0,
+        "spacing_base": 1,
         "theme": "darkest",
         "font_family": "font_family",
         "google_font": "google_font",
@@ -2240,7 +2240,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP
           "video_bg": "video_bg",
           "warning": "warning"
         },
-        "spacing_base": 0,
+        "spacing_base": 1,
         "theme": "darkest",
         "font_family": "font_family",
         "google_font": "google_font",
@@ -3177,7 +3177,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP
           "video_bg": "video_bg",
           "warning": "warning"
         },
-        "spacing_base": 0,
+        "spacing_base": 1,
         "theme": "darkest",
         "font_family": "font_family",
         "google_font": "google_font",

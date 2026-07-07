@@ -6,7 +6,7 @@
 
 **get** `/zones/{zone_id}/cloud_connector/rules`
 
-Rules
+Retrieves the Cloud Connector rules configured for a zone. Rules define how traffic is routed to cloud services.
 
 ### Path Parameters
 
@@ -130,7 +130,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/cloud_connector/rules \
 
 **put** `/zones/{zone_id}/cloud_connector/rules`
 
-Put Rules
+Updates Cloud Connector rules for a zone, replacing the existing rule configuration.
 
 ### Path Parameters
 

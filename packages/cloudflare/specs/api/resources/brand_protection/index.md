@@ -616,9 +616,7 @@ Get all saved brand protection queries for an account
 
 - `parameters: object { string_matches, max_time, min_time }`
 
-  - `string_matches: array of object { max_edit_distance, pattern }`
-
-    - `max_edit_distance: number`
+  - `string_matches: array of object { pattern }`
 
     - `pattern: string`
 
@@ -650,7 +648,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/v2
     "parameters": {
       "string_matches": [
         {
-          "max_edit_distance": 0,
           "pattern": "x"
         }
       ],
@@ -675,9 +672,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/cloudforce-one/v2
 
   - `parameters: object { string_matches, max_time, min_time }`
 
-    - `string_matches: array of object { max_edit_distance, pattern }`
-
-      - `max_edit_distance: number`
+    - `string_matches: array of object { pattern }`
 
       - `pattern: string`
 

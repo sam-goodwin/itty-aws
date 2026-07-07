@@ -88,7 +88,7 @@ Get an active session for a single user.
 
   - `email: optional string`
 
-  - `geo: optional UserPolicyCheckGeo`
+  - `geo: optional object { country }`
 
     - `country: optional string`
 

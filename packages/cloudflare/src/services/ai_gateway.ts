@@ -7164,7 +7164,7 @@ export const BillingInvoicePreview: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Configure a spending limit with amount, strategy, and duration. */
+/** Deprecated: spending limits can no longer be created, enabled, or modified and this endpoint always responds 403. Use the new AI Gateway spend limits instead: https://developers.cloudflare.com/ai-gateway/features/spend-limits/. Existing limits can be removed via DELETE /spending-limit. */
 export const BillingSpendingLimitCreate: API.OperationMethod<
   BillingSpendingLimitCreateRequest,
   BillingSpendingLimitCreateResponse,

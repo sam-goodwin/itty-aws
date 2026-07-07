@@ -54,7 +54,7 @@ Returns all recordings for an App. If the `meeting_id` parameter is passed, retu
 
   The start time range for which you want to retrieve the meetings. The time must be specified in ISO format.
 
-- `status: optional array of "INVOKED" or "RECORDING" or "UPLOADING" or "UPLOADED"`
+- `status: optional array of "INVOKED" or "RECORDING" or "UPLOADING" or 3 more`
 
   Filter by one or more recording status
 
@@ -65,6 +65,10 @@ Returns all recordings for an App. If the `meeting_id` parameter is passed, retu
   - `"UPLOADING"`
 
   - `"UPLOADED"`
+
+  - `"ERRORED"`
+
+  - `"PAUSED"`
 
 ### Returns
 

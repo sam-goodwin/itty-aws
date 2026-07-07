@@ -2,7 +2,7 @@
 
 **put** `/accounts/{account_id}/images/v1/keys/{signing_key_name}`
 
-Create a new signing key with specified name. Returns all keys available.
+Create a new CF Images signing key with specified name. Returns all keys available.
 
 ### Path Parameters
 

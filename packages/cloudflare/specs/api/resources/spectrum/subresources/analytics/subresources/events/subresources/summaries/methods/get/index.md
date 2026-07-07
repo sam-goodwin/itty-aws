@@ -44,6 +44,8 @@ Retrieves a list of summarised aggregate metrics over a given time period.
 | \>=      | Greater than or equal to | %3E%3D      |
 | <=       | Less than or equal to    | %3C%3D      |
 
+  Use the above to construct filters.
+
 - `metrics: optional array of "count" or "bytesIngress" or "bytesEgress" or 4 more`
 
   One or more metrics to compute. Options are:
@@ -176,6 +178,8 @@ Retrieves a list of summarised aggregate metrics over a given time period.
 | \>=      | Greater than or equal to | %3E%3D      |
 | <=       | Less than or equal to    | %3C%3D      |
 
+      Use the above to construct filters.
+
     - `limit: optional number`
 
       Limit number of returned metrics.
@@ -230,7 +234,7 @@ Retrieves a list of summarised aggregate metrics over a given time period.
 
   - `time_intervals: optional array of array of string`
 
-    List of time interval buckets: [start, end]
+    List of time interval buckets: [start, end].
 
 ### Example
 

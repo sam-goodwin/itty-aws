@@ -106,6 +106,16 @@ Get information for a specific routing rule already created.
 
     Priority of the routing rule.
 
+  - `source: optional "api" or "wrangler"`
+
+    Who manages the rule. `api` covers dashboard, generic API, and Terraform;
+    `wrangler` means the rule is managed by a Worker's wrangler.jsonc. Defaults
+    to `api` when omitted on write.
+
+    - `"api"`
+
+    - `"wrangler"`
+
   - `tag: optional string`
 
     Routing rule tag. (Deprecated, replaced by routing rule identifier)
@@ -163,6 +173,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/email/routing/rules/$RU
     ],
     "name": "Send to user@example.net rule.",
     "priority": 0,
+    "source": "api",
     "tag": "a7e6fb77503c41d8a7f3113c6918f10c"
   }
 }

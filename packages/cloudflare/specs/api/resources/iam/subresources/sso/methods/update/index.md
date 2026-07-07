@@ -2,7 +2,7 @@
 
 **patch** `/accounts/{account_id}/sso_connectors/{sso_connector_id}`
 
-Update SSO connector state
+Updates the state or configuration of an SSO connector.
 
 ### Path Parameters
 

@@ -84,7 +84,7 @@ List of Worker Versions. The first version in the list is the latest version.
 
         When the version was last modified.
 
-      - `source: optional "unknown" or "api" or "wrangler" or 7 more`
+      - `source: optional "unknown" or "api" or "wrangler" or 8 more`
 
         The source of the version upload.
 
@@ -97,6 +97,8 @@ List of Worker Versions. The first version in the list is the latest version.
         - `"terraform"`
 
         - `"dash"`
+
+        - `"cf_cli"`
 
         - `"dash_template"`
 

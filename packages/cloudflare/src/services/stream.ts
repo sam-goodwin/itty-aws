@@ -1110,6 +1110,7 @@ export interface LiveInputsCreateRequest {
   deleteRecordingAfterDays?: number;
   enabled?: boolean;
   meta?: unknown;
+  preferLowLatency?: boolean;
   recording?: LiveInputsCreateRequestRecording;
 }
 export const LiveInputsCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1119,6 +1120,7 @@ export const LiveInputsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     deleteRecordingAfterDays: S.optional(S.Number),
     enabled: S.optional(S.Boolean),
     meta: S.optional(S.Unknown),
+    preferLowLatency: S.optional(S.Boolean),
     recording: S.optional(LiveInputsCreateRequestRecording),
   }).pipe(
     T.Http({
@@ -1436,6 +1438,7 @@ export interface LiveInputsUpdateRequest {
   deleteRecordingAfterDays?: number;
   enabled?: boolean;
   meta?: unknown;
+  preferLowLatency?: boolean;
   recording?: LiveInputsUpdateRequestRecording;
 }
 export const LiveInputsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -1446,6 +1449,7 @@ export const LiveInputsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     deleteRecordingAfterDays: S.optional(S.Number),
     enabled: S.optional(S.Boolean),
     meta: S.optional(S.Unknown),
+    preferLowLatency: S.optional(S.Boolean),
     recording: S.optional(LiveInputsUpdateRequestRecording),
   }).pipe(
     T.Http({

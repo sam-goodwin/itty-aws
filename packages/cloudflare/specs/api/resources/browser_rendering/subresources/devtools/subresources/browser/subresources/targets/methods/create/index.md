@@ -16,6 +16,10 @@ Opens a new tab in the browser. Optionally specify a URL to navigate to.
 
 ### Query Parameters
 
+- `liveViewUrlExpiresInMs: optional number`
+
+  How long the live view URL remains valid, in milliseconds (max 60 minutes)
+
 - `url: optional string`
 
 ### Returns

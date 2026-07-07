@@ -292,6 +292,7 @@ export interface DevtoolsBrowserCreateRequest {
   account_id: string;
   keep_alive?: number;
   lab?: boolean;
+  liveViewUrlExpiresInMs?: number;
   recording?: boolean;
   targets?: boolean;
 }
@@ -300,6 +301,7 @@ export const DevtoolsBrowserCreateRequest = /*@__PURE__*/ S.suspend(() =>
     account_id: S.String.pipe(T.Label()),
     keep_alive: S.optional(S.Number.pipe(T.Query())),
     lab: S.optional(S.Boolean.pipe(T.Query())),
+    liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
     recording: S.optional(S.Boolean.pipe(T.Query())),
     targets: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
@@ -627,12 +629,14 @@ export const DevtoolsBrowserTargetsCloseResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DevtoolsBrowserTargetsCreateRequest {
   account_id: string;
   session_id: string;
+  liveViewUrlExpiresInMs?: number;
   url?: string;
 }
 export const DevtoolsBrowserTargetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
     session_id: S.String.pipe(T.Label()),
+    liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
     url: S.optional(S.String.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -718,11 +722,13 @@ export const DevtoolsBrowserTargetsGetResponse = /*@__PURE__*/ S.suspend(() =>
 export interface DevtoolsBrowserTargetsListRequest {
   account_id: string;
   session_id: string;
+  liveViewUrlExpiresInMs?: number;
 }
 export const DevtoolsBrowserTargetsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
     session_id: S.String.pipe(T.Label()),
+    liveViewUrlExpiresInMs: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -1451,7 +1457,7 @@ export const DevtoolsBrowserConnect: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Acquire a new browser DevTools session */
+/** Acquires a browser and returns its session ID and websocket URL. */
 export const DevtoolsBrowserCreate: API.OperationMethod<
   DevtoolsBrowserCreateRequest,
   DevtoolsBrowserCreateResponse,

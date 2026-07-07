@@ -201,7 +201,6 @@ export interface ActiveSessionGetActiveSessionResponseData {
   updated_at: string;
   breakout_rooms?: ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList;
   ended_at?: string;
-  meta?: unknown;
 }
 export const ActiveSessionGetActiveSessionResponseData =
   /*@__PURE__*/ S.suspend(() =>
@@ -222,7 +221,6 @@ export const ActiveSessionGetActiveSessionResponseData =
         ActiveSessionGetActiveSessionResponseDataBreakoutRoomsList,
       ),
       ended_at: S.optional(S.String),
-      meta: S.optional(S.Unknown),
     }),
   ).annotate({
     identifier: "ActiveSessionGetActiveSessionResponseData",
@@ -8589,7 +8587,6 @@ export type RecordingsGetRecordingsRequestStatus =
   | "INVOKED"
   | "RECORDING"
   | "UPLOADING"
-  | "UPLOADED"
   | (string & {});
 export const RecordingsGetRecordingsRequestStatus = /*@__PURE__*/ S.String;
 
@@ -9474,12 +9471,12 @@ export const RecordingsStartRecordingsRequestVideoConfig =
 export interface RecordingsStartRecordingsRequest {
   account_id: string;
   app_id: string;
+  meeting_id: string;
   allow_multiple_recordings?: boolean;
   audio_config?: RecordingsStartRecordingsRequestAudioConfig;
   file_name_prefix?: string;
   interactive_config?: RecordingsStartRecordingsRequestInteractiveConfig;
   max_seconds?: number;
-  meeting_id?: string;
   realtimekit_bucket_config?: RecordingsStartRecordingsRequestRealtimekitBucketConfig;
   rtmp_out_config?: RecordingsStartRecordingsRequestRtmpOutConfig;
   storage_config?: RecordingsStartRecordingsRequestStorageConfig;
@@ -9490,6 +9487,7 @@ export const RecordingsStartRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
     app_id: S.String.pipe(T.Label()),
+    meeting_id: S.String,
     allow_multiple_recordings: S.optional(S.Boolean),
     audio_config: S.optional(RecordingsStartRecordingsRequestAudioConfig),
     file_name_prefix: S.optional(S.String),
@@ -9497,7 +9495,6 @@ export const RecordingsStartRecordingsRequest = /*@__PURE__*/ S.suspend(() =>
       RecordingsStartRecordingsRequestInteractiveConfig,
     ),
     max_seconds: S.optional(S.Number),
-    meeting_id: S.optional(S.String),
     realtimekit_bucket_config: S.optional(
       RecordingsStartRecordingsRequestRealtimekitBucketConfig,
     ),
@@ -9921,49 +9918,2332 @@ export const SessionsGetParticipantDataFromPeerIdRequest =
     identifier: "SessionsGetParticipantDataFromPeerIdRequest",
   }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdRequest>;
 
-export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemMap =
-  { [key: string]: unknown | undefined };
-export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemMap>;
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName =
+  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING" | (string & {});
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName =
+  /*@__PURE__*/ S.String;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType =
+  "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType =
+  /*@__PURE__*/ S.String;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem {
+  id?: string;
+  created_at?: string;
+  event_name?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName;
+  minutes_consumed?: number;
+  participant_id?: string;
+  peer_id?: string;
+  preset_view_type?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType;
+  session_id?: string;
+  socket_session_id?: string;
+  updated_at?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      created_at: S.optional(S.String),
+      event_name: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName,
+      ),
+      minutes_consumed: S.optional(S.Number),
+      participant_id: S.optional(S.String),
+      peer_id: S.optional(S.String),
+      preset_view_type: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType,
+      ),
+      session_id: S.optional(S.String),
+      socket_session_id: S.optional(S.String),
+      updated_at: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem>;
 
 export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList =
-  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemMap[];
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem[];
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList =
   /*@__PURE__*/ S.Array(
-    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemMap,
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem,
   ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList>;
 
-export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataMap =
-  { [key: string]: unknown | undefined };
-export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataMap =
-  /*@__PURE__*/ S.Record(
-    S.String,
-    S.Unknown,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataMap>;
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem {
+  device_id?: string;
+  kind?: string;
+  label?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      device_id: S.optional(S.String),
+      kind: S.optional(S.String),
+      label: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem>;
 
-export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityMap =
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem {
+  device_id?: string;
+  kind?: string;
+  label?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      device_id: S.optional(S.String),
+      kind: S.optional(S.String),
+      label: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem {
+  added?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList;
+  removed?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      added: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList,
+      ),
+      removed: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList,
+      ),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata {
+  browser?: string;
+  browser_version?: string;
+  engine?: string;
+  user_agent?: string;
+  webgl_support?: boolean;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      browser: S.optional(S.String),
+      browser_version: S.optional(S.String),
+      engine: S.optional(S.String),
+      user_agent: S.optional(S.String),
+      webgl_support: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem {
+  available_incoming_bitrate?: number;
+  available_outgoing_bitrate?: number;
+  bytes_discarded_on_send?: number;
+  bytes_received?: number;
+  bytes_sent?: number;
+  current_round_trip_time?: number;
+  last_packet_received_timestamp?: number;
+  last_packet_sent_timestamp?: number;
+  local_candidate_address?: string;
+  local_candidate_id?: string;
+  local_candidate_network_type?: string;
+  local_candidate_port?: number;
+  local_candidate_protocol?: string;
+  local_candidate_related_address?: string;
+  local_candidate_related_port?: number;
+  local_candidate_type?: string;
+  local_candidate_url?: string;
+  nominated?: boolean;
+  packets_discarded_on_send?: number;
+  packets_received?: number;
+  packets_sent?: number;
+  remote_candidate_address?: string;
+  remote_candidate_id?: string;
+  remote_candidate_port?: number;
+  remote_candidate_protocol?: string;
+  remote_candidate_type?: string;
+  remote_candidate_url?: string;
+  total_round_trip_time?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      available_incoming_bitrate: S.optional(S.Number),
+      available_outgoing_bitrate: S.optional(S.Number),
+      bytes_discarded_on_send: S.optional(S.Number),
+      bytes_received: S.optional(S.Number),
+      bytes_sent: S.optional(S.Number),
+      current_round_trip_time: S.optional(S.Number),
+      last_packet_received_timestamp: S.optional(S.Number),
+      last_packet_sent_timestamp: S.optional(S.Number),
+      local_candidate_address: S.optional(S.String),
+      local_candidate_id: S.optional(S.String),
+      local_candidate_network_type: S.optional(S.String),
+      local_candidate_port: S.optional(S.Number),
+      local_candidate_protocol: S.optional(S.String),
+      local_candidate_related_address: S.optional(S.String),
+      local_candidate_related_port: S.optional(S.Number),
+      local_candidate_type: S.optional(S.String),
+      local_candidate_url: S.optional(S.String),
+      nominated: S.optional(S.Boolean),
+      packets_discarded_on_send: S.optional(S.Number),
+      packets_received: S.optional(S.Number),
+      packets_sent: S.optional(S.Number),
+      remote_candidate_address: S.optional(S.String),
+      remote_candidate_id: S.optional(S.String),
+      remote_candidate_port: S.optional(S.Number),
+      remote_candidate_protocol: S.optional(S.String),
+      remote_candidate_type: S.optional(S.String),
+      remote_candidate_url: S.optional(S.String),
+      total_round_trip_time: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem {
+  available_incoming_bitrate?: number;
+  available_outgoing_bitrate?: number;
+  bytes_discarded_on_send?: number;
+  bytes_received?: number;
+  bytes_sent?: number;
+  current_round_trip_time?: number;
+  last_packet_received_timestamp?: number;
+  last_packet_sent_timestamp?: number;
+  local_candidate_address?: string;
+  local_candidate_id?: string;
+  local_candidate_network_type?: string;
+  local_candidate_port?: number;
+  local_candidate_protocol?: string;
+  local_candidate_related_address?: string;
+  local_candidate_related_port?: number;
+  local_candidate_type?: string;
+  local_candidate_url?: string;
+  nominated?: boolean;
+  packets_discarded_on_send?: number;
+  packets_received?: number;
+  packets_sent?: number;
+  remote_candidate_address?: string;
+  remote_candidate_id?: string;
+  remote_candidate_port?: number;
+  remote_candidate_protocol?: string;
+  remote_candidate_type?: string;
+  remote_candidate_url?: string;
+  total_round_trip_time?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      available_incoming_bitrate: S.optional(S.Number),
+      available_outgoing_bitrate: S.optional(S.Number),
+      bytes_discarded_on_send: S.optional(S.Number),
+      bytes_received: S.optional(S.Number),
+      bytes_sent: S.optional(S.Number),
+      current_round_trip_time: S.optional(S.Number),
+      last_packet_received_timestamp: S.optional(S.Number),
+      last_packet_sent_timestamp: S.optional(S.Number),
+      local_candidate_address: S.optional(S.String),
+      local_candidate_id: S.optional(S.String),
+      local_candidate_network_type: S.optional(S.String),
+      local_candidate_port: S.optional(S.Number),
+      local_candidate_protocol: S.optional(S.String),
+      local_candidate_related_address: S.optional(S.String),
+      local_candidate_related_port: S.optional(S.Number),
+      local_candidate_type: S.optional(S.String),
+      local_candidate_url: S.optional(S.String),
+      nominated: S.optional(S.Boolean),
+      packets_discarded_on_send: S.optional(S.Number),
+      packets_received: S.optional(S.Number),
+      packets_sent: S.optional(S.Number),
+      remote_candidate_address: S.optional(S.String),
+      remote_candidate_id: S.optional(S.String),
+      remote_candidate_port: S.optional(S.Number),
+      remote_candidate_protocol: S.optional(S.String),
+      remote_candidate_type: S.optional(S.String),
+      remote_candidate_url: S.optional(S.String),
+      total_round_trip_time: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs {
+  consuming_transport?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList;
+  producing_transport?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      consuming_transport: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList,
+      ),
+      producing_transport: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo {
+  cpus?: number;
+  is_mobile?: boolean;
+  os?: string;
+  os_version?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      cpus: S.optional(S.Number),
+      is_mobile: S.optional(S.Boolean),
+      os: S.optional(S.String),
+      os_version: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap =
   { [key: string]: unknown | undefined };
-export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityMap =
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap =
   /*@__PURE__*/ S.Record(
     S.String,
     S.Unknown,
-  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityMap>;
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem {
+  metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap;
+  name?: string;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      metadata: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap,
+      ),
+      name: S.optional(S.String),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn {
+  asn?: string;
+  domain?: string;
+  name?: string;
+  route?: string;
+  type?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      asn: S.optional(S.String),
+      domain: S.optional(S.String),
+      name: S.optional(S.String),
+      route: S.optional(S.String),
+      type: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation {
+  asn?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn;
+  city?: string;
+  country?: string;
+  ipv4?: string;
+  org?: string;
+  region?: string;
+  timezone?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      asn: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn,
+      ),
+      city: S.optional(S.String),
+      country: S.optional(S.String),
+      ipv4: S.optional(S.String),
+      org: S.optional(S.String),
+      region: S.optional(S.String),
+      timezone: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata {
+  audio_encoder?: string;
+  video_encoder?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audio_encoder: S.optional(S.String),
+      video_encoder: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList =
+  string[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem {
+  effective_network_type?: string;
+  reflexive_connectivity?: boolean;
+  relay_connectivity?: boolean;
+  sdp?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList;
+  timestamp?: string;
+  turn_connectivity?: boolean;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      effective_network_type: S.optional(S.String),
+      reflexive_connectivity: S.optional(S.Boolean),
+      relay_connectivity: S.optional(S.Boolean),
+      sdp: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList,
+      ),
+      timestamp: S.optional(S.String),
+      turn_connectivity: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice {
+  device_id?: string;
+  kind?: string;
+  label?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      device_id: S.optional(S.String),
+      kind: S.optional(S.String),
+      label: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem {
+  device?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      device: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice,
+      ),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem {
+  device_id?: string;
+  kind?: string;
+  label?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      device_id: S.optional(S.String),
+      kind: S.optional(S.String),
+      label: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem {
+  device_id?: string;
+  kind?: string;
+  label?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      device_id: S.optional(S.String),
+      kind: S.optional(S.String),
+      label: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem {
+  added?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList;
+  removed?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      added: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList,
+      ),
+      removed: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList,
+      ),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem {
+  device_id?: string;
+  kind?: string;
+  label?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      device_id: S.optional(S.String),
+      kind: S.optional(S.String),
+      label: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem {
+  device_id?: string;
+  kind?: string;
+  label?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      device_id: S.optional(S.String),
+      kind: S.optional(S.String),
+      label: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem {
+  added?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList;
+  removed?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      added: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList,
+      ),
+      removed: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList,
+      ),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata {
+  audio_devices_updates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList;
+  browser_metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata;
+  candidate_pairs?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs;
+  device_info?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo;
+  events?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList;
+  ip_information?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation;
+  native_metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata;
+  pc_metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList;
+  room_view_type?: string;
+  sdk_name?: string;
+  sdk_type?: string;
+  sdk_version?: string;
+  selected_device_updates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList;
+  speaker_devices_updates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList;
+  video_devices_updates?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audio_devices_updates: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList,
+      ),
+      browser_metadata: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata,
+      ),
+      candidate_pairs: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs,
+      ),
+      device_info: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo,
+      ),
+      events: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList,
+      ),
+      ip_information: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation,
+      ),
+      native_metadata: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata,
+      ),
+      pc_metadata: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList,
+      ),
+      room_view_type: S.optional(S.String),
+      sdk_name: S.optional(S.String),
+      sdk_type: S.optional(S.String),
+      sdk_version: S.optional(S.String),
+      selected_device_updates: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList,
+      ),
+      speaker_devices_updates: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList,
+      ),
+      video_devices_updates: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem {
+  bytes_received?: number;
+  concealment_events?: number;
+  consumer_id?: string;
+  jitter?: number;
+  jitter_buffer_delay?: number;
+  jitter_buffer_emitted_count?: number;
+  mid?: string;
+  mos_quality?: number;
+  packets_lost?: number;
+  packets_received?: number;
+  peer_id?: string;
+  producer_id?: string;
+  ssrc?: number;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bytes_received: S.optional(S.Number),
+      concealment_events: S.optional(S.Number),
+      consumer_id: S.optional(S.String),
+      jitter: S.optional(S.Number),
+      jitter_buffer_delay: S.optional(S.Number),
+      jitter_buffer_emitted_count: S.optional(S.Number),
+      mid: S.optional(S.String),
+      mos_quality: S.optional(S.Number),
+      packets_lost: S.optional(S.Number),
+      packets_received: S.optional(S.Number),
+      peer_id: S.optional(S.String),
+      producer_id: S.optional(S.String),
+      ssrc: S.optional(S.Number),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay {
+  _100ms_or_greater_event_fraction_?: number;
+  _250ms_or_greater_event_fraction_?: number;
+  _500ms_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _100ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"100ms_or_greater_event_fraction"')),
+      ),
+      _250ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"250ms_or_greater_event_fraction"')),
+      ),
+      _500ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"500ms_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss {
+  _10_or_greater_event_fraction_?: number;
+  _25_or_greater_event_fraction_?: number;
+  _5_or_greater_event_fraction_?: number;
+  _50_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _10_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"10_or_greater_event_fraction"')),
+      ),
+      _25_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"25_or_greater_event_fraction"')),
+      ),
+      _5_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"5_or_greater_event_fraction"')),
+      ),
+      _50_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"50_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative {
+  jitter_buffer_delay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay;
+  packet_loss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss;
+  quality_mos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jitter_buffer_delay: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay,
+      ),
+      packet_loss: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss,
+      ),
+      quality_mos: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem {
+  bytes_sent?: number;
+  jitter?: number;
+  mid?: string;
+  mos_quality?: number;
+  packets_lost?: number;
+  packets_sent?: number;
+  producer_id?: string;
+  rtt?: number;
+  ssrc?: number;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bytes_sent: S.optional(S.Number),
+      jitter: S.optional(S.Number),
+      mid: S.optional(S.String),
+      mos_quality: S.optional(S.Number),
+      packets_lost: S.optional(S.Number),
+      packets_sent: S.optional(S.Number),
+      producer_id: S.optional(S.String),
+      rtt: S.optional(S.Number),
+      ssrc: S.optional(S.Number),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss {
+  _10_or_greater_event_fraction_?: number;
+  _25_or_greater_event_fraction_?: number;
+  _5_or_greater_event_fraction_?: number;
+  _50_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _10_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"10_or_greater_event_fraction"')),
+      ),
+      _25_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"25_or_greater_event_fraction"')),
+      ),
+      _5_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"5_or_greater_event_fraction"')),
+      ),
+      _50_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"50_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt {
+  _100ms_or_greater_event_fraction_?: number;
+  _250ms_or_greater_event_fraction_?: number;
+  _500ms_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _100ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"100ms_or_greater_event_fraction"')),
+      ),
+      _250ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"250ms_or_greater_event_fraction"')),
+      ),
+      _500ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"500ms_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative {
+  packet_loss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss;
+  quality_mos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos;
+  rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      packet_loss: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss,
+      ),
+      quality_mos: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos,
+      ),
+      rtt: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem {
+  bytes_received?: number;
+  concealment_events?: number;
+  consumer_id?: string;
+  jitter?: number;
+  jitter_buffer_delay?: number;
+  jitter_buffer_emitted_count?: number;
+  mid?: string;
+  mos_quality?: number;
+  packets_lost?: number;
+  packets_received?: number;
+  peer_id?: string;
+  producer_id?: string;
+  ssrc?: number;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bytes_received: S.optional(S.Number),
+      concealment_events: S.optional(S.Number),
+      consumer_id: S.optional(S.String),
+      jitter: S.optional(S.Number),
+      jitter_buffer_delay: S.optional(S.Number),
+      jitter_buffer_emitted_count: S.optional(S.Number),
+      mid: S.optional(S.String),
+      mos_quality: S.optional(S.Number),
+      packets_lost: S.optional(S.Number),
+      packets_received: S.optional(S.Number),
+      peer_id: S.optional(S.String),
+      producer_id: S.optional(S.String),
+      ssrc: S.optional(S.Number),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay {
+  _100ms_or_greater_event_fraction_?: number;
+  _250ms_or_greater_event_fraction_?: number;
+  _500ms_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _100ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"100ms_or_greater_event_fraction"')),
+      ),
+      _250ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"250ms_or_greater_event_fraction"')),
+      ),
+      _500ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"500ms_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss {
+  _10_or_greater_event_fraction_?: number;
+  _25_or_greater_event_fraction_?: number;
+  _5_or_greater_event_fraction_?: number;
+  _50_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _10_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"10_or_greater_event_fraction"')),
+      ),
+      _25_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"25_or_greater_event_fraction"')),
+      ),
+      _5_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"5_or_greater_event_fraction"')),
+      ),
+      _50_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"50_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative {
+  jitter_buffer_delay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay;
+  packet_loss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss;
+  quality_mos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      jitter_buffer_delay: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay,
+      ),
+      packet_loss: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss,
+      ),
+      quality_mos: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem {
+  bytes_sent?: number;
+  jitter?: number;
+  mid?: string;
+  mos_quality?: number;
+  packets_lost?: number;
+  packets_sent?: number;
+  producer_id?: string;
+  rtt?: number;
+  ssrc?: number;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bytes_sent: S.optional(S.Number),
+      jitter: S.optional(S.Number),
+      mid: S.optional(S.String),
+      mos_quality: S.optional(S.Number),
+      packets_lost: S.optional(S.Number),
+      packets_sent: S.optional(S.Number),
+      producer_id: S.optional(S.String),
+      rtt: S.optional(S.Number),
+      ssrc: S.optional(S.Number),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss {
+  _10_or_greater_event_fraction_?: number;
+  _25_or_greater_event_fraction_?: number;
+  _5_or_greater_event_fraction_?: number;
+  _50_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _10_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"10_or_greater_event_fraction"')),
+      ),
+      _25_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"25_or_greater_event_fraction"')),
+      ),
+      _5_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"5_or_greater_event_fraction"')),
+      ),
+      _50_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"50_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt {
+  _100ms_or_greater_event_fraction_?: number;
+  _250ms_or_greater_event_fraction_?: number;
+  _500ms_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _100ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"100ms_or_greater_event_fraction"')),
+      ),
+      _250ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"250ms_or_greater_event_fraction"')),
+      ),
+      _500ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"500ms_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative {
+  packet_loss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss;
+  quality_mos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos;
+  rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      packet_loss: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss,
+      ),
+      quality_mos: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos,
+      ),
+      rtt: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem {
+  bytes_received?: number;
+  consumer_id?: string;
+  fir_count?: number;
+  frame_height?: number;
+  frame_width?: number;
+  frames_decoded?: number;
+  frames_dropped?: number;
+  frames_per_second?: number;
+  jitter?: number;
+  jitter_buffer_delay?: number;
+  jitter_buffer_emitted_count?: number;
+  key_frames_decoded?: number;
+  mid?: string;
+  mos_quality?: number;
+  packets_lost?: number;
+  packets_received?: number;
+  peer_id?: string;
+  producer_id?: string;
+  ssrc?: number;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bytes_received: S.optional(S.Number),
+      consumer_id: S.optional(S.String),
+      fir_count: S.optional(S.Number),
+      frame_height: S.optional(S.Number),
+      frame_width: S.optional(S.Number),
+      frames_decoded: S.optional(S.Number),
+      frames_dropped: S.optional(S.Number),
+      frames_per_second: S.optional(S.Number),
+      jitter: S.optional(S.Number),
+      jitter_buffer_delay: S.optional(S.Number),
+      jitter_buffer_emitted_count: S.optional(S.Number),
+      key_frames_decoded: S.optional(S.Number),
+      mid: S.optional(S.String),
+      mos_quality: S.optional(S.Number),
+      packets_lost: S.optional(S.Number),
+      packets_received: S.optional(S.Number),
+      peer_id: S.optional(S.String),
+      producer_id: S.optional(S.String),
+      ssrc: S.optional(S.Number),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues {
+  lag_fraction?: number;
+  no_video_fraction?: number;
+  poor_resolution_fraction?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lag_fraction: S.optional(S.Number),
+      no_video_fraction: S.optional(S.Number),
+      poor_resolution_fraction: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay {
+  _100ms_or_greater_event_fraction_?: number;
+  _250ms_or_greater_event_fraction_?: number;
+  _500ms_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _100ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"100ms_or_greater_event_fraction"')),
+      ),
+      _250ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"250ms_or_greater_event_fraction"')),
+      ),
+      _500ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"500ms_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss {
+  _10_or_greater_event_fraction_?: number;
+  _25_or_greater_event_fraction_?: number;
+  _5_or_greater_event_fraction_?: number;
+  _50_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _10_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"10_or_greater_event_fraction"')),
+      ),
+      _25_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"25_or_greater_event_fraction"')),
+      ),
+      _5_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"5_or_greater_event_fraction"')),
+      ),
+      _50_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"50_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative {
+  frame_per_second?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond;
+  frame_width?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth;
+  issues?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues;
+  jitter_buffer_delay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay;
+  key_frames_decoded_fraction?: number;
+  packet_loss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss;
+  quality_mos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      frame_per_second: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond,
+      ),
+      frame_width: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth,
+      ),
+      issues: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues,
+      ),
+      jitter_buffer_delay: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay,
+      ),
+      key_frames_decoded_fraction: S.optional(S.Number),
+      packet_loss: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss,
+      ),
+      quality_mos: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations {
+  bandwidth?: number;
+  cpu?: number;
+  none?: number;
+  other?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bandwidth: S.optional(S.Number),
+      cpu: S.optional(S.Number),
+      none: S.optional(S.Number),
+      other: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason =
+  "cpu" | "bandwidth" | "none" | "other" | (string & {});
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason =
+  /*@__PURE__*/ S.String;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem {
+  bytes_sent?: number;
+  fir_count?: number;
+  frame_height?: number;
+  frame_width?: number;
+  frames_encoded?: number;
+  frames_per_second?: number;
+  jitter?: number;
+  key_frames_encoded?: number;
+  mid?: string;
+  mos_quality?: number;
+  packets_lost?: number;
+  packets_sent?: number;
+  pli_count?: number;
+  producer_id?: string;
+  quality_limitation_durations?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations;
+  quality_limitation_reason?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason;
+  quality_limitation_resolution_changes?: number;
+  rtt?: number;
+  ssrc?: number;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bytes_sent: S.optional(S.Number),
+      fir_count: S.optional(S.Number),
+      frame_height: S.optional(S.Number),
+      frame_width: S.optional(S.Number),
+      frames_encoded: S.optional(S.Number),
+      frames_per_second: S.optional(S.Number),
+      jitter: S.optional(S.Number),
+      key_frames_encoded: S.optional(S.Number),
+      mid: S.optional(S.String),
+      mos_quality: S.optional(S.Number),
+      packets_lost: S.optional(S.Number),
+      packets_sent: S.optional(S.Number),
+      pli_count: S.optional(S.Number),
+      producer_id: S.optional(S.String),
+      quality_limitation_durations: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations,
+      ),
+      quality_limitation_reason: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason,
+      ),
+      quality_limitation_resolution_changes: S.optional(S.Number),
+      rtt: S.optional(S.Number),
+      ssrc: S.optional(S.Number),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues {
+  bandwidth_quality_limitation_fraction?: number;
+  cpu_quality_limitation_fraction?: number;
+  no_video_fraction?: number;
+  poor_resolution_fraction?: number;
+  quality_limitation_fraction?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bandwidth_quality_limitation_fraction: S.optional(S.Number),
+      cpu_quality_limitation_fraction: S.optional(S.Number),
+      no_video_fraction: S.optional(S.Number),
+      poor_resolution_fraction: S.optional(S.Number),
+      quality_limitation_fraction: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss {
+  _10_or_greater_event_fraction_?: number;
+  _25_or_greater_event_fraction_?: number;
+  _5_or_greater_event_fraction_?: number;
+  _50_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _10_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"10_or_greater_event_fraction"')),
+      ),
+      _25_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"25_or_greater_event_fraction"')),
+      ),
+      _5_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"5_or_greater_event_fraction"')),
+      ),
+      _50_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"50_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt {
+  _100ms_or_greater_event_fraction_?: number;
+  _250ms_or_greater_event_fraction_?: number;
+  _500ms_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _100ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"100ms_or_greater_event_fraction"')),
+      ),
+      _250ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"250ms_or_greater_event_fraction"')),
+      ),
+      _500ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"500ms_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative {
+  frame_per_second?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond;
+  frame_width?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth;
+  high_negative_feedback_fraction?: number;
+  issues?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues;
+  key_frames_encoded_fraction?: number;
+  packet_loss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss;
+  quality_mos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos;
+  rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      frame_per_second: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond,
+      ),
+      frame_width: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth,
+      ),
+      high_negative_feedback_fraction: S.optional(S.Number),
+      issues: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues,
+      ),
+      key_frames_encoded_fraction: S.optional(S.Number),
+      packet_loss: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss,
+      ),
+      quality_mos: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos,
+      ),
+      rtt: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem {
+  bytes_received?: number;
+  consumer_id?: string;
+  fir_count?: number;
+  frame_height?: number;
+  frame_width?: number;
+  frames_decoded?: number;
+  frames_dropped?: number;
+  frames_per_second?: number;
+  jitter?: number;
+  jitter_buffer_delay?: number;
+  jitter_buffer_emitted_count?: number;
+  key_frames_decoded?: number;
+  mid?: string;
+  mos_quality?: number;
+  packets_lost?: number;
+  packets_received?: number;
+  peer_id?: string;
+  producer_id?: string;
+  ssrc?: number;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bytes_received: S.optional(S.Number),
+      consumer_id: S.optional(S.String),
+      fir_count: S.optional(S.Number),
+      frame_height: S.optional(S.Number),
+      frame_width: S.optional(S.Number),
+      frames_decoded: S.optional(S.Number),
+      frames_dropped: S.optional(S.Number),
+      frames_per_second: S.optional(S.Number),
+      jitter: S.optional(S.Number),
+      jitter_buffer_delay: S.optional(S.Number),
+      jitter_buffer_emitted_count: S.optional(S.Number),
+      key_frames_decoded: S.optional(S.Number),
+      mid: S.optional(S.String),
+      mos_quality: S.optional(S.Number),
+      packets_lost: S.optional(S.Number),
+      packets_received: S.optional(S.Number),
+      peer_id: S.optional(S.String),
+      producer_id: S.optional(S.String),
+      ssrc: S.optional(S.Number),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues {
+  lag_fraction?: number;
+  no_video_fraction?: number;
+  poor_resolution_fraction?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      lag_fraction: S.optional(S.Number),
+      no_video_fraction: S.optional(S.Number),
+      poor_resolution_fraction: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay {
+  _100ms_or_greater_event_fraction_?: number;
+  _250ms_or_greater_event_fraction_?: number;
+  _500ms_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _100ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"100ms_or_greater_event_fraction"')),
+      ),
+      _250ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"250ms_or_greater_event_fraction"')),
+      ),
+      _500ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"500ms_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss {
+  _10_or_greater_event_fraction_?: number;
+  _25_or_greater_event_fraction_?: number;
+  _5_or_greater_event_fraction_?: number;
+  _50_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _10_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"10_or_greater_event_fraction"')),
+      ),
+      _25_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"25_or_greater_event_fraction"')),
+      ),
+      _5_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"5_or_greater_event_fraction"')),
+      ),
+      _50_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"50_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative {
+  frame_per_second?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond;
+  frame_width?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth;
+  issues?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues;
+  jitter_buffer_delay?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay;
+  key_frames_decoded_fraction?: number;
+  packet_loss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss;
+  quality_mos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      frame_per_second: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond,
+      ),
+      frame_width: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth,
+      ),
+      issues: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues,
+      ),
+      jitter_buffer_delay: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay,
+      ),
+      key_frames_decoded_fraction: S.optional(S.Number),
+      packet_loss: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss,
+      ),
+      quality_mos: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations {
+  bandwidth?: number;
+  cpu?: number;
+  none?: number;
+  other?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bandwidth: S.optional(S.Number),
+      cpu: S.optional(S.Number),
+      none: S.optional(S.Number),
+      other: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason =
+  "cpu" | "bandwidth" | "none" | "other" | (string & {});
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason =
+  /*@__PURE__*/ S.String;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem {
+  bytes_sent?: number;
+  fir_count?: number;
+  frame_height?: number;
+  frame_width?: number;
+  frames_encoded?: number;
+  frames_per_second?: number;
+  jitter?: number;
+  key_frames_encoded?: number;
+  mid?: string;
+  mos_quality?: number;
+  packets_lost?: number;
+  packets_sent?: number;
+  pli_count?: number;
+  producer_id?: string;
+  quality_limitation_durations?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations;
+  quality_limitation_reason?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason;
+  quality_limitation_resolution_changes?: number;
+  rtt?: number;
+  ssrc?: number;
+  timestamp?: string;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bytes_sent: S.optional(S.Number),
+      fir_count: S.optional(S.Number),
+      frame_height: S.optional(S.Number),
+      frame_width: S.optional(S.Number),
+      frames_encoded: S.optional(S.Number),
+      frames_per_second: S.optional(S.Number),
+      jitter: S.optional(S.Number),
+      key_frames_encoded: S.optional(S.Number),
+      mid: S.optional(S.String),
+      mos_quality: S.optional(S.Number),
+      packets_lost: S.optional(S.Number),
+      packets_sent: S.optional(S.Number),
+      pli_count: S.optional(S.Number),
+      producer_id: S.optional(S.String),
+      quality_limitation_durations: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations,
+      ),
+      quality_limitation_reason: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason,
+      ),
+      quality_limitation_resolution_changes: S.optional(S.Number),
+      rtt: S.optional(S.Number),
+      ssrc: S.optional(S.Number),
+      timestamp: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem>;
+
+export type SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList =
+  SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem[];
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem,
+  ) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues {
+  bandwidth_quality_limitation_fraction?: number;
+  cpu_quality_limitation_fraction?: number;
+  no_video_fraction?: number;
+  poor_resolution_fraction?: number;
+  quality_limitation_fraction?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      bandwidth_quality_limitation_fraction: S.optional(S.Number),
+      cpu_quality_limitation_fraction: S.optional(S.Number),
+      no_video_fraction: S.optional(S.Number),
+      poor_resolution_fraction: S.optional(S.Number),
+      quality_limitation_fraction: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss {
+  _10_or_greater_event_fraction_?: number;
+  _25_or_greater_event_fraction_?: number;
+  _5_or_greater_event_fraction_?: number;
+  _50_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _10_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"10_or_greater_event_fraction"')),
+      ),
+      _25_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"25_or_greater_event_fraction"')),
+      ),
+      _5_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"5_or_greater_event_fraction"')),
+      ),
+      _50_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"50_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos {
+  avg?: number;
+  p50?: number;
+  p75?: number;
+  p90?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      avg: S.optional(S.Number),
+      p50: S.optional(S.Number),
+      p75: S.optional(S.Number),
+      p90: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt {
+  _100ms_or_greater_event_fraction_?: number;
+  _250ms_or_greater_event_fraction_?: number;
+  _500ms_or_greater_event_fraction_?: number;
+  avg?: number;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      _100ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"100ms_or_greater_event_fraction"')),
+      ),
+      _250ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"250ms_or_greater_event_fraction"')),
+      ),
+      _500ms_or_greater_event_fraction_: S.optional(
+        S.Number.pipe(T.Body('"500ms_or_greater_event_fraction"')),
+      ),
+      avg: S.optional(S.Number),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative {
+  frame_per_second?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond;
+  frame_width?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth;
+  high_negative_feedback_fraction?: number;
+  issues?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues;
+  key_frames_encoded_fraction?: number;
+  packet_loss?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss;
+  quality_mos?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos;
+  rtt?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      frame_per_second: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond,
+      ),
+      frame_width: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth,
+      ),
+      high_negative_feedback_fraction: S.optional(S.Number),
+      issues: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues,
+      ),
+      key_frames_encoded_fraction: S.optional(S.Number),
+      packet_loss: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss,
+      ),
+      quality_mos: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos,
+      ),
+      rtt: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative>;
+
+export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality {
+  audio_consumer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList;
+  audio_consumer_cumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative;
+  audio_producer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList;
+  audio_producer_cumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative;
+  screenshare_audio_consumer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList;
+  screenshare_audio_consumer_cumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative;
+  screenshare_audio_producer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList;
+  screenshare_audio_producer_cumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative;
+  screenshare_video_consumer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList;
+  screenshare_video_consumer_cumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative;
+  screenshare_video_producer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList;
+  screenshare_video_producer_cumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative;
+  video_consumer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList;
+  video_consumer_cumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative;
+  video_producer?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList;
+  video_producer_cumulative?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative;
+}
+export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      audio_consumer: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList,
+      ),
+      audio_consumer_cumulative: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative,
+      ),
+      audio_producer: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList,
+      ),
+      audio_producer_cumulative: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative,
+      ),
+      screenshare_audio_consumer: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList,
+      ),
+      screenshare_audio_consumer_cumulative: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative,
+      ),
+      screenshare_audio_producer: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList,
+      ),
+      screenshare_audio_producer_cumulative: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative,
+      ),
+      screenshare_video_consumer: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList,
+      ),
+      screenshare_video_consumer_cumulative: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative,
+      ),
+      screenshare_video_producer: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList,
+      ),
+      screenshare_video_producer_cumulative: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative,
+      ),
+      video_consumer: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList,
+      ),
+      video_consumer_cumulative: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative,
+      ),
+      video_producer: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList,
+      ),
+      video_producer_cumulative: S.optional(
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative,
+      ),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality",
+  }) as any as S.Schema<SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality>;
 
 export interface SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport {
-  metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataMap;
-  quality?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityMap;
+  metadata?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata;
+  quality?: SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality;
 }
 export const SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       metadata: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataMap,
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata,
       ),
       quality: S.optional(
-        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityMap,
+        SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality,
       ),
     }),
   ).annotate({
@@ -10142,7 +12422,6 @@ export interface SessionsGetSessionDetailsResponseData {
   updated_at: string;
   breakout_rooms?: SessionsGetSessionDetailsResponseDataBreakoutRoomsList;
   ended_at?: string;
-  meta?: unknown;
 }
 export const SessionsGetSessionDetailsResponseData = /*@__PURE__*/ S.suspend(
   () =>
@@ -10163,7 +12442,6 @@ export const SessionsGetSessionDetailsResponseData = /*@__PURE__*/ S.suspend(
         SessionsGetSessionDetailsResponseDataBreakoutRoomsList,
       ),
       ended_at: S.optional(S.String),
-      meta: S.optional(S.Unknown),
     }),
 ).annotate({
   identifier: "SessionsGetSessionDetailsResponseData",
@@ -10181,20 +12459,11 @@ export const SessionsGetSessionDetailsResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "SessionsGetSessionDetailsResponse",
 }) as any as S.Schema<SessionsGetSessionDetailsResponse>;
 
-export type SessionsGetSessionParticipantDetailsRequestFilters =
-  | "device_info"
-  | "ip_information"
-  | "precall_network_information"
-  | (string & {});
-export const SessionsGetSessionParticipantDetailsRequestFilters =
-  /*@__PURE__*/ S.String;
-
 export interface SessionsGetSessionParticipantDetailsRequest {
   account_id: string;
   app_id: string;
   session_id: string;
   participant_id: string;
-  filters?: SessionsGetSessionParticipantDetailsRequestFilters;
   include_peer_events?: boolean;
 }
 export const SessionsGetSessionParticipantDetailsRequest =
@@ -10204,9 +12473,6 @@ export const SessionsGetSessionParticipantDetailsRequest =
       app_id: S.String.pipe(T.Label()),
       session_id: S.String.pipe(T.Label()),
       participant_id: S.String.pipe(T.Label()),
-      filters: S.optional(
-        SessionsGetSessionParticipantDetailsRequestFilters.pipe(T.Query()),
-      ),
       include_peer_events: S.optional(S.Boolean.pipe(T.Query())),
     }).pipe(
       T.Http({
@@ -10219,6 +12485,58 @@ export const SessionsGetSessionParticipantDetailsRequest =
     identifier: "SessionsGetSessionParticipantDetailsRequest",
   }) as any as S.Schema<SessionsGetSessionParticipantDetailsRequest>;
 
+export type SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName =
+  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING" | (string & {});
+export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName =
+  /*@__PURE__*/ S.String;
+
+export type SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType =
+  "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
+export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType =
+  /*@__PURE__*/ S.String;
+
+export interface SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem {
+  id?: string;
+  created_at?: string;
+  event_name?: SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName;
+  minutes_consumed?: number;
+  participant_id?: string;
+  peer_id?: string;
+  preset_view_type?: SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType;
+  session_id?: string;
+  socket_session_id?: string;
+  updated_at?: string;
+}
+export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      created_at: S.optional(S.String),
+      event_name: S.optional(
+        SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName,
+      ),
+      minutes_consumed: S.optional(S.Number),
+      participant_id: S.optional(S.String),
+      peer_id: S.optional(S.String),
+      preset_view_type: S.optional(
+        SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType,
+      ),
+      session_id: S.optional(S.String),
+      socket_session_id: S.optional(S.String),
+      updated_at: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem",
+  }) as any as S.Schema<SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem>;
+
+export type SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList =
+  SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem[];
+export const SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem,
+  ) as any as S.Schema<SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList>;
+
 export interface SessionsGetSessionParticipantDetailsResponseDataParticipant {
   id?: string;
   created_at?: string;
@@ -10227,6 +12545,7 @@ export interface SessionsGetSessionParticipantDetailsResponseDataParticipant {
   duration?: number;
   joined_at?: string;
   left_at?: string;
+  peer_events?: SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList;
   preset_name?: string;
   updated_at?: string;
   user_id?: string;
@@ -10241,6 +12560,9 @@ export const SessionsGetSessionParticipantDetailsResponseDataParticipant =
       duration: S.optional(S.Number),
       joined_at: S.optional(S.String),
       left_at: S.optional(S.String),
+      peer_events: S.optional(
+        SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList,
+      ),
       preset_name: S.optional(S.String),
       updated_at: S.optional(S.String),
       user_id: S.optional(S.String),
@@ -10338,6 +12660,58 @@ export const SessionsGetSessionParticipantsRequest = /*@__PURE__*/ S.suspend(
   identifier: "SessionsGetSessionParticipantsRequest",
 }) as any as S.Schema<SessionsGetSessionParticipantsRequest>;
 
+export type SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName =
+  "PEER_CREATED" | "PEER_JOINING" | "PEER_LEAVING" | (string & {});
+export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName =
+  /*@__PURE__*/ S.String;
+
+export type SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType =
+  "GROUP_CALL" | "WEBINAR" | "AUDIO_ROOM" | (string & {});
+export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType =
+  /*@__PURE__*/ S.String;
+
+export interface SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem {
+  id?: string;
+  created_at?: string;
+  event_name?: SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName;
+  minutes_consumed?: number;
+  participant_id?: string;
+  peer_id?: string;
+  preset_view_type?: SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType;
+  session_id?: string;
+  socket_session_id?: string;
+  updated_at?: string;
+}
+export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      id: S.optional(S.String),
+      created_at: S.optional(S.String),
+      event_name: S.optional(
+        SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName,
+      ),
+      minutes_consumed: S.optional(S.Number),
+      participant_id: S.optional(S.String),
+      peer_id: S.optional(S.String),
+      preset_view_type: S.optional(
+        SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType,
+      ),
+      session_id: S.optional(S.String),
+      socket_session_id: S.optional(S.String),
+      updated_at: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem",
+  }) as any as S.Schema<SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem>;
+
+export type SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList =
+  SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem[];
+export const SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList =
+  /*@__PURE__*/ S.Array(
+    SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem,
+  ) as any as S.Schema<SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList>;
+
 export interface SessionsGetSessionParticipantsResponseDataParticipantsItem {
   id?: string;
   created_at?: string;
@@ -10346,6 +12720,7 @@ export interface SessionsGetSessionParticipantsResponseDataParticipantsItem {
   duration?: number;
   joined_at?: string;
   left_at?: string;
+  peer_events?: SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList;
   preset_name?: string;
   updated_at?: string;
   user_id?: string;
@@ -10360,6 +12735,9 @@ export const SessionsGetSessionParticipantsResponseDataParticipantsItem =
       duration: S.optional(S.Number),
       joined_at: S.optional(S.String),
       left_at: S.optional(S.String),
+      peer_events: S.optional(
+        SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList,
+      ),
       preset_name: S.optional(S.String),
       updated_at: S.optional(S.String),
       user_id: S.optional(S.String),
@@ -10493,7 +12871,6 @@ export interface SessionsGetSessionsResponseDataSessionsItem {
   updated_at: string;
   breakout_rooms?: SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList;
   ended_at?: string;
-  meta?: unknown;
 }
 export const SessionsGetSessionsResponseDataSessionsItem =
   /*@__PURE__*/ S.suspend(() =>
@@ -10514,7 +12891,6 @@ export const SessionsGetSessionsResponseDataSessionsItem =
         SessionsGetSessionsResponseDataSessionsItemBreakoutRoomsList,
       ),
       ended_at: S.optional(S.String),
-      meta: S.optional(S.Unknown),
     }),
   ).annotate({
     identifier: "SessionsGetSessionsResponseDataSessionsItem",

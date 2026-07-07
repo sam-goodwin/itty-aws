@@ -3416,7 +3416,7 @@ export const ResourceGroupsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Begin SSO connector verification */
+/** Validates the user has added the DNS TXT record required for validating ownership of the domain they are trying to set up a connector for. */
 export const SsoBeginVerification: API.OperationMethod<
   SsoBeginVerificationRequest,
   SsoBeginVerificationResponse,
@@ -3429,7 +3429,7 @@ export const SsoBeginVerification: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Initialize new SSO connector */
+/** Creates a new SSO connector for logging into Cloudflare through an identity provider. */
 export const SsoCreate: API.OperationMethod<
   SsoCreateRequest,
   SsoCreateResponse,
@@ -3442,7 +3442,7 @@ export const SsoCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Delete SSO connector */
+/** Deletes an SSO connector from the account. */
 export const SsoDelete: API.OperationMethod<
   SsoDeleteRequest,
   SsoDeleteResponse,
@@ -3455,7 +3455,7 @@ export const SsoDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Get single SSO connector */
+/** Retrieves details for a specific SSO connector. */
 export const SsoGet: API.OperationMethod<
   SsoGetRequest,
   SsoGetResponse,
@@ -3468,7 +3468,7 @@ export const SsoGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Get all SSO connectors */
+/** Lists all SSO connectors configured for the account. */
 export const SsoList: API.OperationMethod<
   SsoListRequest,
   SsoListResponse,
@@ -3481,7 +3481,7 @@ export const SsoList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Update SSO connector state */
+/** Updates the state or configuration of an SSO connector. */
 export const SsoUpdate: API.OperationMethod<
   SsoUpdateRequest,
   SsoUpdateResponse,

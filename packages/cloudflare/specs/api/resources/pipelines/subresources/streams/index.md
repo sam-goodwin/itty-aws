@@ -1571,7 +1571,7 @@ Delete Stream in Account.
 
 - `force: optional string`
 
-  Delete stream forcefully, including deleting any dependent pipelines.
+  Deprecated: Delete stream forcefully, including deleting any dependent pipelines.
 
 ### Returns
 

@@ -44,7 +44,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {}
           }
@@ -311,7 +311,7 @@
         "keyword_match_mode": {
           "target": "com.cloudflare.ai_search#InstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode",
           "traits": {
-            "smithy.api#documentation": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'."
+            "smithy.api#documentation": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'."
           }
         },
         "match_threshold": {
@@ -433,7 +433,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {}
           }
@@ -733,16 +733,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -839,6 +839,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesCreateRequestPublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#InstancesCreateRequestPublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -903,6 +909,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#InstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#InstancesCreateRequestPublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -1057,49 +1069,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#InstancesCreateRequestSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#InstancesCreateRequestSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#InstancesCreateRequestSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -1178,12 +1147,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -1192,37 +1155,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#InstancesCreateRequestSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesCreateRequestSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#InstancesCreateRequestSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#InstancesCreateRequestSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#InstancesCreateRequestSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#InstancesCreateRequestSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -1500,16 +1440,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -1606,6 +1546,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesCreateResponsePublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#InstancesCreateResponsePublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -1670,6 +1616,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#InstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#InstancesCreateResponsePublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -1824,49 +1776,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#InstancesCreateResponseSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#InstancesCreateResponseSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#InstancesCreateResponseSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -1945,12 +1854,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -1959,37 +1862,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#InstancesCreateResponseSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesCreateResponseSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#InstancesCreateResponseSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#InstancesCreateResponseSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#InstancesCreateResponseSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#InstancesCreateResponseSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -2336,16 +2216,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -2442,6 +2322,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesDeleteResponsePublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#InstancesDeleteResponsePublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -2506,6 +2392,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#InstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#InstancesDeleteResponsePublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -2660,49 +2552,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -2781,12 +2630,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -2795,37 +2638,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#InstancesDeleteResponseSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesDeleteResponseSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#InstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#InstancesDeleteResponseSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#InstancesDeleteResponseSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#InstancesDeleteResponseSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -3236,16 +3056,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -3342,6 +3162,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesListResultItemPublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#InstancesListResultItemPublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -3406,6 +3232,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#InstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#InstancesListResultItemPublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -3560,49 +3392,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#InstancesListResultItemSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#InstancesListResultItemSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#InstancesListResultItemSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -3681,12 +3470,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -3695,37 +3478,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#InstancesListResultItemSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesListResultItemSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#InstancesListResultItemSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#InstancesListResultItemSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#InstancesListResultItemSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#InstancesListResultItemSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -4090,16 +3850,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -4196,6 +3956,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesReadResponsePublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#InstancesReadResponsePublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -4260,6 +4026,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#InstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#InstancesReadResponsePublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -4414,49 +4186,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#InstancesReadResponseSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#InstancesReadResponseSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#InstancesReadResponseSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -4535,12 +4264,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -4549,37 +4272,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#InstancesReadResponseSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesReadResponseSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#InstancesReadResponseSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#InstancesReadResponseSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#InstancesReadResponseSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#InstancesReadResponseSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -5040,7 +4740,7 @@
         "keyword_match_mode": {
           "target": "com.cloudflare.ai_search#InstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode",
           "traits": {
-            "smithy.api#documentation": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'."
+            "smithy.api#documentation": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'."
           }
         },
         "match_threshold": {
@@ -5101,7 +4801,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {}
           }
@@ -5142,7 +4842,10 @@
           "target": "com.cloudflare.ai_search#InstancesSearchRequestAiSearchOptions"
         },
         "messages": {
-          "target": "com.cloudflare.ai_search#InstancesSearchRequestMessagesList"
+          "target": "com.cloudflare.ai_search#InstancesSearchRequestMessagesList",
+          "traits": {
+            "smithy.api#documentation": "OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities."
+          }
         },
         "query": {
           "target": "smithy.api#String",
@@ -5262,6 +4965,29 @@
         "target": "com.cloudflare.ai_search#InstancesSearchResponseChunksItem"
       }
     },
+    "com.cloudflare.ai_search#InstancesSearchResponseQueryKind": {
+      "type": "enum",
+      "members": {
+        "TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "text"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        },
+        "MULTIMODAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "multimodal"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#InstancesSearchResponse": {
       "type": "structure",
       "members": {
@@ -5271,11 +4997,14 @@
             "smithy.api#required": {}
           }
         },
-        "search_query": {
-          "target": "smithy.api#String",
+        "query_kind": {
+          "target": "com.cloudflare.ai_search#InstancesSearchResponseQueryKind",
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "search_query": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -5577,16 +5306,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -5683,6 +5412,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesUpdateRequestPublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#InstancesUpdateRequestPublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -5747,6 +5482,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#InstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#InstancesUpdateRequestPublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -5901,49 +5642,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -6022,12 +5720,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -6036,37 +5728,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#InstancesUpdateRequestSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesUpdateRequestSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#InstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#InstancesUpdateRequestSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#InstancesUpdateRequestSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#InstancesUpdateRequestSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -6210,6 +5879,9 @@
         },
         "score_threshold": {
           "target": "smithy.api#Double"
+        },
+        "source": {
+          "target": "smithy.api#String"
         },
         "source_params": {
           "target": "com.cloudflare.ai_search#InstancesUpdateRequestSourceParams"
@@ -6356,16 +6028,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -6462,6 +6134,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#InstancesUpdateResponsePublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#InstancesUpdateResponsePublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -6526,6 +6204,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#InstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#InstancesUpdateResponsePublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -6680,49 +6364,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -6801,12 +6442,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -6815,37 +6450,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#InstancesUpdateResponseSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#InstancesUpdateResponseSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#InstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#InstancesUpdateResponseSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#InstancesUpdateResponseSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#InstancesUpdateResponseSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -7742,7 +7354,7 @@
         "keyword_match_mode": {
           "target": "com.cloudflare.ai_search#NamespacesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode",
           "traits": {
-            "smithy.api#documentation": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'."
+            "smithy.api#documentation": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'."
           }
         },
         "match_threshold": {
@@ -7809,7 +7421,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {}
           }
@@ -7918,7 +7530,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {}
           }
@@ -8656,7 +8268,7 @@
         "keyword_match_mode": {
           "target": "com.cloudflare.ai_search#NamespacesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode",
           "traits": {
-            "smithy.api#documentation": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'."
+            "smithy.api#documentation": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'."
           }
         },
         "match_threshold": {
@@ -8723,7 +8335,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {}
           }
@@ -8766,7 +8378,10 @@
           }
         },
         "messages": {
-          "target": "com.cloudflare.ai_search#NamespacesSearchRequestMessagesList"
+          "target": "com.cloudflare.ai_search#NamespacesSearchRequestMessagesList",
+          "traits": {
+            "smithy.api#documentation": "OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities."
+          }
         },
         "query": {
           "target": "smithy.api#String",
@@ -8892,6 +8507,29 @@
         "target": "com.cloudflare.ai_search#NamespacesSearchResponseChunksItem"
       }
     },
+    "com.cloudflare.ai_search#NamespacesSearchResponseQueryKind": {
+      "type": "enum",
+      "members": {
+        "TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "text"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        },
+        "MULTIMODAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "multimodal"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesSearchResponseErrorsItem": {
       "type": "structure",
       "members": {
@@ -8924,14 +8562,17 @@
             "smithy.api#required": {}
           }
         },
-        "search_query": {
-          "target": "smithy.api#String",
+        "query_kind": {
+          "target": "com.cloudflare.ai_search#NamespacesSearchResponseQueryKind",
           "traits": {
             "smithy.api#required": {}
           }
         },
         "errors": {
           "target": "com.cloudflare.ai_search#NamespacesSearchResponseErrorsList"
+        },
+        "search_query": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -8953,7 +8594,7 @@
           "uri": "/accounts/{account_id}/ai-search/namespaces/{name}/search",
           "code": 200
         },
-        "smithy.api#documentation": "Multi-Instance Search"
+        "smithy.api#documentation": "Performs a semantic search query against multiple AI Search instances in parallel, merging the retrieved results into a single ranked response."
       }
     },
     "com.cloudflare.ai_search#NamespacesUpdateRequest": {
@@ -9056,7 +8697,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {}
           }
@@ -9323,7 +8964,7 @@
         "keyword_match_mode": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesChatCompletionsRequestAiSearchOptionsRetrievalKeywordMatchMode",
           "traits": {
-            "smithy.api#documentation": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'."
+            "smithy.api#documentation": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'."
           }
         },
         "match_threshold": {
@@ -9452,7 +9093,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {}
           }
@@ -9752,16 +9393,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -9858,6 +9499,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesCreateRequestPublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -9922,6 +9569,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesCreateRequestPublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#NamespacesInstancesCreateRequestPublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -10076,49 +9729,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -10197,12 +9807,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -10211,37 +9815,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesCreateRequestSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -10526,16 +10107,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -10632,6 +10213,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesCreateResponsePublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -10696,6 +10283,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesCreateResponsePublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#NamespacesInstancesCreateResponsePublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -10850,49 +10443,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -10971,12 +10521,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -10985,37 +10529,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesCreateResponseSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesCreateResponseSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesCreateResponseSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesCreateResponseSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesCreateResponseSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -11369,16 +10890,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -11475,6 +10996,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesDeleteResponsePublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -11539,6 +11066,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesDeleteResponsePublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#NamespacesInstancesDeleteResponsePublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -11693,49 +11226,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -11814,12 +11304,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -11828,37 +11312,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesDeleteResponseSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -12276,16 +11737,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -12382,6 +11843,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesListResultItemPublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -12446,6 +11913,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesListResultItemPublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#NamespacesInstancesListResultItemPublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -12600,49 +12073,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -12721,12 +12151,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -12735,37 +12159,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesListResultItemSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesListResultItemSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesListResultItemSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesListResultItemSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesListResultItemSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesListResultItemSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -13137,16 +12538,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -13243,6 +12644,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesReadResponsePublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -13307,6 +12714,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesReadResponsePublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#NamespacesInstancesReadResponsePublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -13461,49 +12874,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -13582,12 +12952,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -13596,37 +12960,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesReadResponseSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesReadResponseSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesReadResponseSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesReadResponseSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesReadResponseSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesReadResponseSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -14087,7 +13428,7 @@
         "keyword_match_mode": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesSearchRequestAiSearchOptionsRetrievalKeywordMatchMode",
           "traits": {
-            "smithy.api#documentation": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'."
+            "smithy.api#documentation": "Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'."
           }
         },
         "match_threshold": {
@@ -14148,7 +13489,7 @@
       "type": "structure",
       "members": {
         "content": {
-          "target": "smithy.api#String",
+          "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {}
           }
@@ -14196,7 +13537,10 @@
           "target": "com.cloudflare.ai_search#NamespacesInstancesSearchRequestAiSearchOptions"
         },
         "messages": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesSearchRequestMessagesList"
+          "target": "com.cloudflare.ai_search#NamespacesInstancesSearchRequestMessagesList",
+          "traits": {
+            "smithy.api#documentation": "OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities."
+          }
         },
         "query": {
           "target": "smithy.api#String",
@@ -14316,6 +13660,29 @@
         "target": "com.cloudflare.ai_search#NamespacesInstancesSearchResponseChunksItem"
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesSearchResponseQueryKind": {
+      "type": "enum",
+      "members": {
+        "TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "text"
+          }
+        },
+        "IMAGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "image"
+          }
+        },
+        "MULTIMODAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "multimodal"
+          }
+        }
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesSearchResponse": {
       "type": "structure",
       "members": {
@@ -14325,11 +13692,14 @@
             "smithy.api#required": {}
           }
         },
-        "search_query": {
-          "target": "smithy.api#String",
+        "query_kind": {
+          "target": "com.cloudflare.ai_search#NamespacesInstancesSearchResponseQueryKind",
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "search_query": {
+          "target": "smithy.api#String"
         }
       },
       "traits": {
@@ -14638,16 +14008,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -14744,6 +14114,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestPublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -14808,6 +14184,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestPublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestPublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -14962,49 +14344,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -15083,12 +14422,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -15097,37 +14430,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSourceParamsWebCrawlerStoreOptions"
         }
       }
     },
@@ -15279,6 +14589,9 @@
         "score_threshold": {
           "target": "smithy.api#Double"
         },
+        "source": {
+          "target": "smithy.api#String"
+        },
         "source_params": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateRequestSourceParams"
         },
@@ -15424,16 +14737,16 @@
             "smithy.api#enumValue": "@cf/qwen/qwen3-embedding-0.6b"
           }
         },
+        "CF_QWEN_QWEN3_VL_EMBEDDING_2B": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "@cf/qwen/qwen3-vl-embedding-2b"
+          }
+        },
         "CF_BAAI_BGE_M3": {
           "target": "smithy.api#Unit",
           "traits": {
             "smithy.api#enumValue": "@cf/baai/bge-m3"
-          }
-        },
-        "CF_BAAI_BGE_LARGE_EN_V1_5": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "@cf/baai/bge-large-en-v1.5"
           }
         }
       }
@@ -15530,6 +14843,12 @@
         }
       }
     },
+    "com.cloudflare.ai_search#NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
     "com.cloudflare.ai_search#NamespacesInstancesUpdateResponsePublicEndpointParamsMcp": {
       "type": "structure",
       "members": {
@@ -15594,6 +14913,12 @@
         },
         "chat_completions_endpoint": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateResponsePublicEndpointParamsChatCompletionsEndpoint"
+        },
+        "custom_domains": {
+          "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateResponsePublicEndpointParamsCustomDomainsList",
+          "traits": {
+            "smithy.api#documentation": "Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged)."
+          }
         },
         "enabled": {
           "target": "smithy.api#Boolean"
@@ -15748,49 +15073,6 @@
         "target": "smithy.api#String"
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptionsSource": {
-      "type": "enum",
-      "members": {
-        "ALL": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "all"
-          }
-        },
-        "SITEMAPS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "sitemaps"
-          }
-        },
-        "LINKS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "links"
-          }
-        }
-      }
-    },
-    "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions": {
-      "type": "structure",
-      "members": {
-        "depth": {
-          "target": "smithy.api#Double"
-        },
-        "include_external_links": {
-          "target": "smithy.api#Boolean"
-        },
-        "include_subdomains": {
-          "target": "smithy.api#Boolean"
-        },
-        "max_age": {
-          "target": "smithy.api#Double"
-        },
-        "source": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptionsSource"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptionsContentSelectorItem": {
       "type": "structure",
       "members": {
@@ -15869,12 +15151,6 @@
             "smithy.api#enumValue": "sitemap"
           }
         },
-        "FEED_RSS": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "feed-rss"
-          }
-        },
         "CRAWL": {
           "target": "smithy.api#Unit",
           "traits": {
@@ -15883,37 +15159,14 @@
         }
       }
     },
-    "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseSourceParamsWebCrawlerStoreOptions": {
-      "type": "structure",
-      "members": {
-        "storage_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#required": {}
-          }
-        },
-        "r2_jurisdiction": {
-          "target": "smithy.api#String"
-        },
-        "storage_type": {
-          "target": "smithy.api#Document"
-        }
-      }
-    },
     "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseSourceParamsWebCrawler": {
       "type": "structure",
       "members": {
-        "crawl_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseSourceParamsWebCrawlerCrawlOptions"
-        },
         "parse_options": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseOptions"
         },
         "parse_type": {
           "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseSourceParamsWebCrawlerParseType"
-        },
-        "store_options": {
-          "target": "com.cloudflare.ai_search#NamespacesInstancesUpdateResponseSourceParamsWebCrawlerStoreOptions"
         }
       }
     },

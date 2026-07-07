@@ -1528,6 +1528,1851 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.email_security#InvestigateBulkCreateRequestAction": {
+      "type": "enum",
+      "members": {
+        "MOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVE"
+          }
+        },
+        "RELEASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELEASE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateRequestSearchParamsDeliveryStatus": {
+      "type": "enum",
+      "members": {
+        "DELIVERED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delivered"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "moved"
+          }
+        },
+        "QUARANTINED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarantined"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateRequestSearchParamsFinalDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateRequestSearchParamsMessageAction": {
+      "type": "enum",
+      "members": {
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PREVIEW"
+          }
+        },
+        "QUARANTINE_RELEASED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QUARANTINE_RELEASED"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVED"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateRequestSearchParams": {
+      "type": "structure",
+      "members": {
+        "action_log": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026."
+          }
+        },
+        "alert_id": {
+          "target": "smithy.api#String"
+        },
+        "delivery_status": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateRequestSearchParamsDeliveryStatus",
+          "traits": {
+            "smithy.api#documentation": "Delivery status of the message."
+          }
+        },
+        "detections_only": {
+          "target": "smithy.api#Boolean"
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End of search date range"
+          }
+        },
+        "exact_subject": {
+          "target": "smithy.api#String"
+        },
+        "final_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateRequestSearchParamsFinalDisposition"
+        },
+        "message_action": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateRequestSearchParamsMessageAction"
+        },
+        "message_id": {
+          "target": "smithy.api#String"
+        },
+        "metric": {
+          "target": "smithy.api#String"
+        },
+        "query": {
+          "target": "smithy.api#String"
+        },
+        "recipient": {
+          "target": "smithy.api#String"
+        },
+        "sender": {
+          "target": "smithy.api#String"
+        },
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Beginning of search date range"
+          }
+        },
+        "subject": {
+          "target": "smithy.api#String"
+        },
+        "submissions": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateRequestDestination": {
+      "type": "enum",
+      "members": {
+        "INBOX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Inbox"
+          }
+        },
+        "JUNKEMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JunkEmail"
+          }
+        },
+        "DELETEDITEMS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DeletedItems"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateRequestExpectedDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateRequestAction",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "search_params": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateRequestSearchParams",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String"
+        },
+        "destination": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateRequestDestination"
+        },
+        "expected_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateRequestExpectedDisposition"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateResponseActionParams": {
+      "type": "structure",
+      "members": {
+        "Move_object___destination__type__expected_disposition__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Move object { destination, type, expected_disposition }"
+          }
+        },
+        "Release_object___type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Release object { type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateResponseActionType": {
+      "type": "enum",
+      "members": {
+        "MOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVE"
+          }
+        },
+        "RELEASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELEASE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateResponseSearchParamsDeliveryStatus": {
+      "type": "enum",
+      "members": {
+        "DELIVERED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delivered"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "moved"
+          }
+        },
+        "QUARANTINED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarantined"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateResponseSearchParamsFinalDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateResponseSearchParamsMessageAction": {
+      "type": "enum",
+      "members": {
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PREVIEW"
+          }
+        },
+        "QUARANTINE_RELEASED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QUARANTINE_RELEASED"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVED"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateResponseSearchParams": {
+      "type": "structure",
+      "members": {
+        "action_log": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026."
+          }
+        },
+        "alert_id": {
+          "target": "smithy.api#String"
+        },
+        "delivery_status": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateResponseSearchParamsDeliveryStatus",
+          "traits": {
+            "smithy.api#documentation": "Delivery status of the message."
+          }
+        },
+        "detections_only": {
+          "target": "smithy.api#Boolean"
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End of search date range"
+          }
+        },
+        "exact_subject": {
+          "target": "smithy.api#String"
+        },
+        "final_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateResponseSearchParamsFinalDisposition"
+        },
+        "message_action": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateResponseSearchParamsMessageAction"
+        },
+        "message_id": {
+          "target": "smithy.api#String"
+        },
+        "metric": {
+          "target": "smithy.api#String"
+        },
+        "query": {
+          "target": "smithy.api#String"
+        },
+        "recipient": {
+          "target": "smithy.api#String"
+        },
+        "sender": {
+          "target": "smithy.api#String"
+        },
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Beginning of search date range"
+          }
+        },
+        "subject": {
+          "target": "smithy.api#String"
+        },
+        "submissions": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PENDING"
+          }
+        },
+        "DISCOVERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DISCOVERING"
+          }
+        },
+        "PROCESSING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROCESSING"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreateResponse": {
+      "type": "structure",
+      "members": {
+        "action_params": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateResponseActionParams",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action_type": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateResponseActionType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "messages_failed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "messages_pending": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "messages_successful": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "search_params": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateResponseSearchParams",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreateResponseStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_messages_discovered": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String"
+        },
+        "completed_at": {
+          "target": "smithy.api#String"
+        },
+        "started_at": {
+          "target": "smithy.api#String"
+        },
+        "status_message": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.email_security#InvestigateBulkCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.email_security#InvestigateBulkCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/email-security/investigate/bulk",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a bulk action job"
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.email_security#InvestigateBulkDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.email_security#InvestigateBulkDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/email-security/investigate/bulk/{job_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes the job, removing it from all list and detail endpoints. Only jobs in a terminal state (`COMPLETED`, `CANCELLED`, `FAILED`, or `SKIPPED`) can be deleted. To stop an in-progress job without removing it, use the cancel endpoint instead.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkGetResponseActionParams": {
+      "type": "structure",
+      "members": {
+        "Move_object___destination__type__expected_disposition__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Move object { destination, type, expected_disposition }"
+          }
+        },
+        "Release_object___type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Release object { type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkGetResponseActionType": {
+      "type": "enum",
+      "members": {
+        "MOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVE"
+          }
+        },
+        "RELEASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELEASE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkGetResponseSearchParamsDeliveryStatus": {
+      "type": "enum",
+      "members": {
+        "DELIVERED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delivered"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "moved"
+          }
+        },
+        "QUARANTINED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarantined"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkGetResponseSearchParamsFinalDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkGetResponseSearchParamsMessageAction": {
+      "type": "enum",
+      "members": {
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PREVIEW"
+          }
+        },
+        "QUARANTINE_RELEASED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QUARANTINE_RELEASED"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVED"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkGetResponseSearchParams": {
+      "type": "structure",
+      "members": {
+        "action_log": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026."
+          }
+        },
+        "alert_id": {
+          "target": "smithy.api#String"
+        },
+        "delivery_status": {
+          "target": "com.cloudflare.email_security#InvestigateBulkGetResponseSearchParamsDeliveryStatus",
+          "traits": {
+            "smithy.api#documentation": "Delivery status of the message."
+          }
+        },
+        "detections_only": {
+          "target": "smithy.api#Boolean"
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End of search date range"
+          }
+        },
+        "exact_subject": {
+          "target": "smithy.api#String"
+        },
+        "final_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateBulkGetResponseSearchParamsFinalDisposition"
+        },
+        "message_action": {
+          "target": "com.cloudflare.email_security#InvestigateBulkGetResponseSearchParamsMessageAction"
+        },
+        "message_id": {
+          "target": "smithy.api#String"
+        },
+        "metric": {
+          "target": "smithy.api#String"
+        },
+        "query": {
+          "target": "smithy.api#String"
+        },
+        "recipient": {
+          "target": "smithy.api#String"
+        },
+        "sender": {
+          "target": "smithy.api#String"
+        },
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Beginning of search date range"
+          }
+        },
+        "subject": {
+          "target": "smithy.api#String"
+        },
+        "submissions": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkGetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PENDING"
+          }
+        },
+        "DISCOVERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DISCOVERING"
+          }
+        },
+        "PROCESSING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROCESSING"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkGetResponse": {
+      "type": "structure",
+      "members": {
+        "action_params": {
+          "target": "com.cloudflare.email_security#InvestigateBulkGetResponseActionParams",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action_type": {
+          "target": "com.cloudflare.email_security#InvestigateBulkGetResponseActionType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "messages_failed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "messages_pending": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "messages_successful": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "search_params": {
+          "target": "com.cloudflare.email_security#InvestigateBulkGetResponseSearchParams",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.email_security#InvestigateBulkGetResponseStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_messages_discovered": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String"
+        },
+        "completed_at": {
+          "target": "smithy.api#String"
+        },
+        "started_at": {
+          "target": "smithy.api#String"
+        },
+        "status_message": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.email_security#InvestigateBulkGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.email_security#InvestigateBulkGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/email-security/investigate/bulk/{job_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get bulk action job details",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListRequestActionType": {
+      "type": "enum",
+      "members": {
+        "MOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVE"
+          }
+        },
+        "RELEASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELEASE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListRequestStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PENDING"
+          }
+        },
+        "DISCOVERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DISCOVERING"
+          }
+        },
+        "PROCESSING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROCESSING"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "action_type": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListRequestActionType",
+          "traits": {
+            "smithy.api#httpQuery": "action_type"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Current page within paginated list of results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of results per page. Maximum value is 1000.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListRequestStatus",
+          "traits": {
+            "smithy.api#httpQuery": "status"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListResultItemActionParams": {
+      "type": "structure",
+      "members": {
+        "Move_object___destination__type__expected_disposition__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Move object { destination, type, expected_disposition }"
+          }
+        },
+        "Release_object___type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Release object { type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListResultItemActionType": {
+      "type": "enum",
+      "members": {
+        "MOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVE"
+          }
+        },
+        "RELEASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELEASE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListResultItemSearchParamsDeliveryStatus": {
+      "type": "enum",
+      "members": {
+        "DELIVERED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delivered"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "moved"
+          }
+        },
+        "QUARANTINED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarantined"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListResultItemSearchParamsFinalDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListResultItemSearchParamsMessageAction": {
+      "type": "enum",
+      "members": {
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PREVIEW"
+          }
+        },
+        "QUARANTINE_RELEASED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QUARANTINE_RELEASED"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVED"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListResultItemSearchParams": {
+      "type": "structure",
+      "members": {
+        "action_log": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026."
+          }
+        },
+        "alert_id": {
+          "target": "smithy.api#String"
+        },
+        "delivery_status": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListResultItemSearchParamsDeliveryStatus",
+          "traits": {
+            "smithy.api#documentation": "Delivery status of the message."
+          }
+        },
+        "detections_only": {
+          "target": "smithy.api#Boolean"
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End of search date range"
+          }
+        },
+        "exact_subject": {
+          "target": "smithy.api#String"
+        },
+        "final_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListResultItemSearchParamsFinalDisposition"
+        },
+        "message_action": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListResultItemSearchParamsMessageAction"
+        },
+        "message_id": {
+          "target": "smithy.api#String"
+        },
+        "metric": {
+          "target": "smithy.api#String"
+        },
+        "query": {
+          "target": "smithy.api#String"
+        },
+        "recipient": {
+          "target": "smithy.api#String"
+        },
+        "sender": {
+          "target": "smithy.api#String"
+        },
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Beginning of search date range"
+          }
+        },
+        "subject": {
+          "target": "smithy.api#String"
+        },
+        "submissions": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PENDING"
+          }
+        },
+        "DISCOVERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DISCOVERING"
+          }
+        },
+        "PROCESSING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROCESSING"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListResultItem": {
+      "type": "structure",
+      "members": {
+        "action_params": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListResultItemActionParams",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action_type": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListResultItemActionType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "messages_failed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "messages_pending": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "messages_successful": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "search_params": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListResultItemSearchParams",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListResultItemStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_messages_discovered": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String"
+        },
+        "completed_at": {
+          "target": "smithy.api#String"
+        },
+        "started_at": {
+          "target": "smithy.api#String"
+        },
+        "status_message": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.email_security#InvestigateBulkListResultItem"
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.email_security#InvestigateBulkListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.email_security#InvestigateBulkListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.email_security#InvestigateBulkListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/email-security/investigate/bulk",
+          "code": 200
+        },
+        "smithy.api#documentation": "List bulk action jobs",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseActionParams": {
+      "type": "structure",
+      "members": {
+        "Move_object___destination__type__expected_disposition__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Move object { destination, type, expected_disposition }"
+          }
+        },
+        "Release_object___type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Release object { type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseActionType": {
+      "type": "enum",
+      "members": {
+        "MOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVE"
+          }
+        },
+        "RELEASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELEASE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus": {
+      "type": "enum",
+      "members": {
+        "DELIVERED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "delivered"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "moved"
+          }
+        },
+        "QUARANTINED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "quarantined"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseSearchParamsFinalDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseSearchParamsMessageAction": {
+      "type": "enum",
+      "members": {
+        "PREVIEW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PREVIEW"
+          }
+        },
+        "QUARANTINE_RELEASED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "QUARANTINE_RELEASED"
+          }
+        },
+        "MOVED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVED"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseSearchParams": {
+      "type": "structure",
+      "members": {
+        "action_log": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Deprecated, use `GET /investigate/{investigate_id}/action_log` instead. End of life: November 1, 2026."
+          }
+        },
+        "alert_id": {
+          "target": "smithy.api#String"
+        },
+        "delivery_status": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseSearchParamsDeliveryStatus",
+          "traits": {
+            "smithy.api#documentation": "Delivery status of the message."
+          }
+        },
+        "detections_only": {
+          "target": "smithy.api#Boolean"
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End of search date range"
+          }
+        },
+        "exact_subject": {
+          "target": "smithy.api#String"
+        },
+        "final_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseSearchParamsFinalDisposition"
+        },
+        "message_action": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseSearchParamsMessageAction"
+        },
+        "message_id": {
+          "target": "smithy.api#String"
+        },
+        "metric": {
+          "target": "smithy.api#String"
+        },
+        "query": {
+          "target": "smithy.api#String"
+        },
+        "recipient": {
+          "target": "smithy.api#String"
+        },
+        "sender": {
+          "target": "smithy.api#String"
+        },
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Beginning of search date range"
+          }
+        },
+        "subject": {
+          "target": "smithy.api#String"
+        },
+        "submissions": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PENDING"
+          }
+        },
+        "DISCOVERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DISCOVERING"
+          }
+        },
+        "PROCESSING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROCESSING"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreateResponse": {
+      "type": "structure",
+      "members": {
+        "action_params": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseActionParams",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action_type": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseActionType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "messages_failed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "messages_pending": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "messages_successful": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "search_params": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseSearchParams",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.email_security#InvestigateBulkCancelCreateResponseStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "total_messages_discovered": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String"
+        },
+        "completed_at": {
+          "target": "smithy.api#String"
+        },
+        "started_at": {
+          "target": "smithy.api#String"
+        },
+        "status_message": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkCancelCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.email_security#InvestigateBulkCancelCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.email_security#InvestigateBulkCancelCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/email-security/investigate/bulk/{job_id}/cancel",
+          "code": 200
+        },
+        "smithy.api#documentation": "Marks the job as cancelled and stops any pending message processing. The job record remains visible in list and detail endpoints."
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkMessagesListRequestStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PENDING"
+          }
+        },
+        "DISCOVERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DISCOVERING"
+          }
+        },
+        "PROCESSING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROCESSING"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkMessagesListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "job_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Current page within paginated list of results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of results per page. Maximum value is 1000.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListRequestStatus",
+          "traits": {
+            "smithy.api#httpQuery": "status"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemActionParams": {
+      "type": "structure",
+      "members": {
+        "Move_object___client_recipient__destination__type__expected_disposition__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Move object { client_recipient, destination, type, expected_disposition }"
+          }
+        },
+        "Release_object___client_recipient__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Release object { client_recipient, type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemActionType": {
+      "type": "enum",
+      "members": {
+        "MOVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MOVE"
+          }
+        },
+        "RELEASE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "RELEASE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "PENDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PENDING"
+          }
+        },
+        "DISCOVERING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DISCOVERING"
+          }
+        },
+        "PROCESSING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PROCESSING"
+          }
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResultItem": {
+      "type": "structure",
+      "members": {
+        "action_params": {
+          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemActionParams",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "action_type": {
+          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemActionType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "message_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "postfix_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "retry_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItemStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "alert_id": {
+          "target": "smithy.api#String"
+        },
+        "email_message_id": {
+          "target": "smithy.api#String"
+        },
+        "processed_at": {
+          "target": "smithy.api#String"
+        },
+        "retry_after": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When to retry the action if it failed"
+          }
+        },
+        "status_message": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultItem"
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkMessagesListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.email_security#InvestigateBulkMessagesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.email_security#InvestigateBulkMessagesListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.email_security#InvestigateBulkMessagesListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/email-security/investigate/bulk/{job_id}/messages",
+          "code": 200
+        },
+        "smithy.api#documentation": "List messages for a bulk action job",
+        "smithy.api#readonly": {}
+      }
+    },
     "com.cloudflare.email_security#InvestigateDetectionsGetRequest": {
       "type": "structure",
       "members": {
@@ -2001,6 +3846,29 @@
         }
       }
     },
+    "com.cloudflare.email_security#InvestigateMoveBulkRequestExpectedDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
     "com.cloudflare.email_security#InvestigateMoveBulkRequestIdsList": {
       "type": "list",
       "member": {
@@ -2029,6 +3897,9 @@
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "expected_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateMoveBulkRequestExpectedDisposition"
         },
         "ids": {
           "target": "com.cloudflare.email_security#InvestigateMoveBulkRequestIdsList",
@@ -2168,6 +4039,29 @@
         }
       }
     },
+    "com.cloudflare.email_security#InvestigateMoveCreateRequestExpectedDisposition": {
+      "type": "enum",
+      "members": {
+        "MALICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS"
+          }
+        },
+        "MALICIOUS_BEC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MALICIOUS-BEC"
+          }
+        },
+        "SUSPICIOUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SUSPICIOUS"
+          }
+        }
+      }
+    },
     "com.cloudflare.email_security#InvestigateMoveCreateRequest": {
       "type": "structure",
       "members": {
@@ -2192,6 +4086,9 @@
           "traits": {
             "smithy.api#required": {}
           }
+        },
+        "expected_disposition": {
+          "target": "com.cloudflare.email_security#InvestigateMoveCreateRequestExpectedDisposition"
         }
       },
       "traits": {
@@ -8996,6 +10893,24 @@
         },
         {
           "target": "com.cloudflare.email_security#InvestigateList"
+        },
+        {
+          "target": "com.cloudflare.email_security#InvestigateBulkCreate"
+        },
+        {
+          "target": "com.cloudflare.email_security#InvestigateBulkDelete"
+        },
+        {
+          "target": "com.cloudflare.email_security#InvestigateBulkGet"
+        },
+        {
+          "target": "com.cloudflare.email_security#InvestigateBulkList"
+        },
+        {
+          "target": "com.cloudflare.email_security#InvestigateBulkCancelCreate"
+        },
+        {
+          "target": "com.cloudflare.email_security#InvestigateBulkMessagesList"
         },
         {
           "target": "com.cloudflare.email_security#InvestigateDetectionsGet"

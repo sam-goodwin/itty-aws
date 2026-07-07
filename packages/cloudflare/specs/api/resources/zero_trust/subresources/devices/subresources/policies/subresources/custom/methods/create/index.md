@@ -94,6 +94,26 @@ Creates a device settings profile to be applied to certain devices matching the 
 
   Whether to add Microsoft IPs to Split Tunnel exclusions.
 
+- `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+  Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+  - `api_endpoints: array of string`
+
+    IP:port entries for the API endpoints.
+
+  - `enabled: boolean`
+
+    Global acceleration settings are used only when "enabled".
+
+  - `masque_endpoints: array of string`
+
+    IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+  - `wireguard_endpoints: array of string`
+
+    IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
 - `include: optional array of SplitTunnelInclude`
 
   List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -286,6 +306,26 @@ Creates a device settings profile to be applied to certain devices matching the 
 
   - `gateway_unique_id: optional string`
 
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
   - `include: optional array of SplitTunnelInclude`
 
     List of routes included in the WARP client's tunnel.
@@ -474,6 +514,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
       }
     ],
     "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+    "global_acceleration": {
+      "api_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "enabled": true,
+      "masque_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "wireguard_endpoints": [
+        "198.51.100.1:2408"
+      ]
+    },
     "include": [
       {
         "address": "192.0.2.0/24",

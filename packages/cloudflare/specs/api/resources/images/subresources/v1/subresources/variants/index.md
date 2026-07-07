@@ -4,7 +4,7 @@
 
 **get** `/accounts/{account_id}/images/v1/variants`
 
-Lists existing variants.
+List existing CF Images variants.
 
 ### Path Parameters
 
@@ -143,7 +143,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 **get** `/accounts/{account_id}/images/v1/variants/{variant_id}`
 
-Fetch details for a single variant.
+Fetch details for a CF Images variant.
 
 ### Path Parameters
 
@@ -280,7 +280,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 **post** `/accounts/{account_id}/images/v1/variants`
 
-Specify variants that allow you to resize images for different use cases.
+Create a CF Images variant that allows you to resize images for different use cases.
 
 ### Path Parameters
 
@@ -470,7 +470,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 **patch** `/accounts/{account_id}/images/v1/variants/{variant_id}`
 
-Updating a variant purges the cache for all images associated with the variant.
+Update a CF Images variant. This will purge the cache for all images associated with the variant.
 
 ### Path Parameters
 
@@ -660,7 +660,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/variant
 
 **delete** `/accounts/{account_id}/images/v1/variants/{variant_id}`
 
-Deleting a variant purges the cache for all images associated with the variant.
+Delete a CF Images variant. This will purge the cache for all images associated with the variant.
 
 ### Path Parameters
 

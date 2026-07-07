@@ -2,7 +2,7 @@
 
 **post** `/accounts/{account_id}/images/v1/variants`
 
-Specify variants that allow you to resize images for different use cases.
+Create a CF Images variant that allows you to resize images for different use cases.
 
 ### Path Parameters
 

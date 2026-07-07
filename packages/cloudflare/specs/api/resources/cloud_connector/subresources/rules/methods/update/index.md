@@ -2,7 +2,7 @@
 
 **put** `/zones/{zone_id}/cloud_connector/rules`
 
-Put Rules
+Updates Cloud Connector rules for a zone, replacing the existing rule configuration.
 
 ### Path Parameters
 

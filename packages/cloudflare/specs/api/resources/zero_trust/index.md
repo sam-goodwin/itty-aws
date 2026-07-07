@@ -1844,7 +1844,7 @@ Lists WARP registrations.
 
   - `message: string`
 
-- `result: array of object { id, created_at, device, 9 more }`
+- `result: array of object { id, created_at, device, 11 more }`
 
   - `id: string`
 
@@ -1935,6 +1935,14 @@ Lists WARP registrations.
     - `name: optional string`
 
       The enrolled device user's name.
+
+  - `virtual_ipv4: optional string`
+
+    The virtual IPv4 address assigned to the network interface of the tunnel for this registration.
+
+  - `virtual_ipv6: optional string`
+
+    The virtual IPv6 address assigned to the network interface of the tunnel for this registration.
 
 - `success: boolean`
 
@@ -2059,7 +2067,7 @@ Fetches a single WARP registration.
 
   - `message: string`
 
-- `result: object { id, created_at, device, 9 more }`
+- `result: object { id, created_at, device, 11 more }`
 
   A WARP configuration tied to a single user. Multiple registrations can be created from a single WARP device.
 
@@ -2153,6 +2161,14 @@ Fetches a single WARP registration.
 
       The enrolled device user's name.
 
+  - `virtual_ipv4: optional string`
+
+    The virtual IPv4 address assigned to the network interface of the tunnel for this registration.
+
+  - `virtual_ipv6: optional string`
+
+    The virtual IPv6 address assigned to the network interface of the tunnel for this registration.
+
 - `success: boolean`
 
   Whether the API call was successful.
@@ -2206,7 +2222,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrat
       "id": "f174e90a-fafe-4643-bbbc-4a0ed4fc8415",
       "email": "user@example.com",
       "name": "John Appleseed"
-    }
+    },
+    "virtual_ipv4": "100.96.0.1",
+    "virtual_ipv6": "2606:4700:0cf1:1000::1"
   },
   "success": true
 }
@@ -2550,7 +2568,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrat
 
 ### Registration List Response
 
-- `RegistrationListResponse object { id, created_at, device, 9 more }`
+- `RegistrationListResponse object { id, created_at, device, 11 more }`
 
   A WARP configuration tied to a single user. Multiple registrations can be created from a single WARP device.
 
@@ -2643,10 +2661,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrat
     - `name: optional string`
 
       The enrolled device user's name.
+
+  - `virtual_ipv4: optional string`
+
+    The virtual IPv4 address assigned to the network interface of the tunnel for this registration.
+
+  - `virtual_ipv6: optional string`
+
+    The virtual IPv6 address assigned to the network interface of the tunnel for this registration.
 
 ### Registration Get Response
 
-- `RegistrationGetResponse object { id, created_at, device, 9 more }`
+- `RegistrationGetResponse object { id, created_at, device, 11 more }`
 
   A WARP configuration tied to a single user. Multiple registrations can be created from a single WARP device.
 
@@ -2739,6 +2765,14 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/registrat
     - `name: optional string`
 
       The enrolled device user's name.
+
+  - `virtual_ipv4: optional string`
+
+    The virtual IPv4 address assigned to the network interface of the tunnel for this registration.
+
+  - `virtual_ipv6: optional string`
+
+    The virtual IPv6 address assigned to the network interface of the tunnel for this registration.
 
 ### Registration Delete Response
 
@@ -4166,6 +4200,10 @@ Lists WARP Device IP profiles.
 
 ### Query Parameters
 
+- `page: optional number`
+
+  The page number to return.
+
 - `per_page: optional number`
 
   The number of IP profiles to return per page.
@@ -4927,7 +4965,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
       "version_config": [
         {
           "target_environment": "windows",
-          "version": "2026.5.234.0"
+          "version": "2026.6.234.0"
         }
       ],
       "policy_ids": [
@@ -5042,7 +5080,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
     "version_config": [
       {
         "target_environment": "windows",
-        "version": "2026.5.234.0"
+        "version": "2026.6.234.0"
       }
     ],
     "policy_ids": [
@@ -5149,7 +5187,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
           "version_config": [
             {
               "target_environment": "windows",
-              "version": "2026.5.234.0"
+              "version": "2026.6.234.0"
             }
           ]
         }'
@@ -5179,7 +5217,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
     "version_config": [
       {
         "target_environment": "windows",
-        "version": "2026.5.234.0"
+        "version": "2026.6.234.0"
       }
     ],
     "policy_ids": [
@@ -5313,7 +5351,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/deploymen
     "version_config": [
       {
         "target_environment": "windows",
-        "version": "2026.5.234.0"
+        "version": "2026.6.234.0"
       }
     ],
     "policy_ids": [
@@ -6166,11 +6204,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/networks/
 
 # Fleet Status
 
-## Get the live status of a latest device
+## Get the latest status of a device.
 
 **get** `/accounts/{account_id}/dex/devices/{device_id}/fleet-status/live`
 
-Get the live status of a latest device given device_id from the device_state table
+Get the latest status of a device given device_id from the device_state table.
 
 ### Path Parameters
 
@@ -7166,7 +7204,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dex/devices/$DEVI
 
 ### Settings Policy
 
-- `SettingsPolicy object { allow_mode_switch, allow_updates, allowed_to_leave, 26 more }`
+- `SettingsPolicy object { allow_mode_switch, allow_updates, allowed_to_leave, 27 more }`
 
   - `allow_mode_switch: optional boolean`
 
@@ -7259,6 +7297,26 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dex/devices/$DEVI
       A list of IP addresses to handle domain resolution.
 
   - `gateway_unique_id: optional string`
+
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
   - `include: optional array of SplitTunnelInclude`
 
@@ -7442,7 +7500,7 @@ Fetches the default device settings profile for an account.
 
   - `source: optional object { pointer }`
 
-- `result: object { allow_mode_switch, allow_updates, allowed_to_leave, 19 more }`
+- `result: object { allow_mode_switch, allow_updates, allowed_to_leave, 20 more }`
 
   - `allow_mode_switch: optional boolean`
 
@@ -7531,6 +7589,26 @@ Fetches the default device settings profile for an account.
       A list of IP addresses to handle domain resolution.
 
   - `gateway_unique_id: optional string`
+
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
   - `include: optional array of SplitTunnelInclude`
 
@@ -7669,6 +7747,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
       }
     ],
     "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+    "global_acceleration": {
+      "api_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "enabled": true,
+      "masque_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "wireguard_endpoints": [
+        "198.51.100.1:2408"
+      ]
+    },
     "include": [
       {
         "address": "192.0.2.0/24",
@@ -7772,6 +7862,26 @@ Updates the default device settings profile for an account.
 
   Whether to add Microsoft IPs to Split Tunnel exclusions.
 
+- `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+  Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+  - `api_endpoints: array of string`
+
+    IP:port entries for the API endpoints.
+
+  - `enabled: boolean`
+
+    Global acceleration settings are used only when "enabled".
+
+  - `masque_endpoints: array of string`
+
+    IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+  - `wireguard_endpoints: array of string`
+
+    IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
 - `include: optional array of SplitTunnelInclude`
 
   List of routes included in the WARP client's tunnel. Both 'exclude' and 'include' cannot be set in the same request.
@@ -7870,7 +7980,7 @@ Updates the default device settings profile for an account.
 
   - `source: optional object { pointer }`
 
-- `result: object { allow_mode_switch, allow_updates, allowed_to_leave, 19 more }`
+- `result: object { allow_mode_switch, allow_updates, allowed_to_leave, 20 more }`
 
   - `allow_mode_switch: optional boolean`
 
@@ -7959,6 +8069,26 @@ Updates the default device settings profile for an account.
       A list of IP addresses to handle domain resolution.
 
   - `gateway_unique_id: optional string`
+
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
   - `include: optional array of SplitTunnelInclude`
 
@@ -8113,6 +8243,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
       }
     ],
     "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+    "global_acceleration": {
+      "api_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "enabled": true,
+      "masque_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "wireguard_endpoints": [
+        "198.51.100.1:2408"
+      ]
+    },
     "include": [
       {
         "address": "192.0.2.0/24",
@@ -8144,7 +8286,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
 
 ### Default Get Response
 
-- `DefaultGetResponse object { allow_mode_switch, allow_updates, allowed_to_leave, 19 more }`
+- `DefaultGetResponse object { allow_mode_switch, allow_updates, allowed_to_leave, 20 more }`
 
   - `allow_mode_switch: optional boolean`
 
@@ -8233,6 +8375,26 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
       A list of IP addresses to handle domain resolution.
 
   - `gateway_unique_id: optional string`
+
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
   - `include: optional array of SplitTunnelInclude`
 
@@ -8304,7 +8466,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
 
 ### Default Edit Response
 
-- `DefaultEditResponse object { allow_mode_switch, allow_updates, allowed_to_leave, 19 more }`
+- `DefaultEditResponse object { allow_mode_switch, allow_updates, allowed_to_leave, 20 more }`
 
   - `allow_mode_switch: optional boolean`
 
@@ -8393,6 +8555,26 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
       A list of IP addresses to handle domain resolution.
 
   - `gateway_unique_id: optional string`
+
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
   - `include: optional array of SplitTunnelInclude`
 
@@ -9622,6 +9804,26 @@ Fetches a list of the device settings profiles for an account.
 
   - `gateway_unique_id: optional string`
 
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
   - `include: optional array of SplitTunnelInclude`
 
     List of routes included in the WARP client's tunnel.
@@ -9809,6 +10011,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policies 
         }
       ],
       "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+      "global_acceleration": {
+        "api_endpoints": [
+          "198.51.100.1:443"
+        ],
+        "enabled": true,
+        "masque_endpoints": [
+          "198.51.100.1:443"
+        ],
+        "wireguard_endpoints": [
+          "198.51.100.1:2408"
+        ]
+      },
       "include": [
         {
           "address": "192.0.2.0/24",
@@ -9984,6 +10198,26 @@ Fetches a device settings profile by ID.
 
   - `gateway_unique_id: optional string`
 
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
   - `include: optional array of SplitTunnelInclude`
 
     List of routes included in the WARP client's tunnel.
@@ -10152,6 +10386,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy/$P
       }
     ],
     "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+    "global_acceleration": {
+      "api_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "enabled": true,
+      "masque_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "wireguard_endpoints": [
+        "198.51.100.1:2408"
+      ]
+    },
     "include": [
       {
         "address": "192.0.2.0/24",
@@ -10285,6 +10531,26 @@ Creates a device settings profile to be applied to certain devices matching the 
 - `exclude_office_ips: optional boolean`
 
   Whether to add Microsoft IPs to Split Tunnel exclusions.
+
+- `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+  Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+  - `api_endpoints: array of string`
+
+    IP:port entries for the API endpoints.
+
+  - `enabled: boolean`
+
+    Global acceleration settings are used only when "enabled".
+
+  - `masque_endpoints: array of string`
+
+    IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+  - `wireguard_endpoints: array of string`
+
+    IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
 - `include: optional array of SplitTunnelInclude`
 
@@ -10478,6 +10744,26 @@ Creates a device settings profile to be applied to certain devices matching the 
 
   - `gateway_unique_id: optional string`
 
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
   - `include: optional array of SplitTunnelInclude`
 
     List of routes included in the WARP client's tunnel.
@@ -10666,6 +10952,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy \
       }
     ],
     "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+    "global_acceleration": {
+      "api_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "enabled": true,
+      "masque_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "wireguard_endpoints": [
+        "198.51.100.1:2408"
+      ]
+    },
     "include": [
       {
         "address": "192.0.2.0/24",
@@ -10789,6 +11087,26 @@ Updates a configured device settings profile.
 - `exclude_office_ips: optional boolean`
 
   Whether to add Microsoft IPs to Split Tunnel exclusions.
+
+- `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+  Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+  - `api_endpoints: array of string`
+
+    IP:port entries for the API endpoints.
+
+  - `enabled: boolean`
+
+    Global acceleration settings are used only when "enabled".
+
+  - `masque_endpoints: array of string`
+
+    IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+  - `wireguard_endpoints: array of string`
+
+    IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
 - `include: optional array of SplitTunnelInclude`
 
@@ -10994,6 +11312,26 @@ Updates a configured device settings profile.
 
   - `gateway_unique_id: optional string`
 
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
   - `include: optional array of SplitTunnelInclude`
 
     List of routes included in the WARP client's tunnel.
@@ -11183,6 +11521,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy/$P
       }
     ],
     "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+    "global_acceleration": {
+      "api_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "enabled": true,
+      "masque_endpoints": [
+        "198.51.100.1:443"
+      ],
+      "wireguard_endpoints": [
+        "198.51.100.1:2408"
+      ]
+    },
     "include": [
       {
         "address": "192.0.2.0/24",
@@ -11350,6 +11700,26 @@ Deletes a device settings profile and fetches a list of the remaining profiles f
       A list of IP addresses to handle domain resolution.
 
   - `gateway_unique_id: optional string`
+
+  - `global_acceleration: optional object { api_endpoints, enabled, masque_endpoints, wireguard_endpoints }`
+
+    Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/.
+
+    - `api_endpoints: array of string`
+
+      IP:port entries for the API endpoints.
+
+    - `enabled: boolean`
+
+      Global acceleration settings are used only when "enabled".
+
+    - `masque_endpoints: array of string`
+
+      IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
+
+    - `wireguard_endpoints: array of string`
+
+      IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.
 
   - `include: optional array of SplitTunnelInclude`
 
@@ -11539,6 +11909,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/devices/policy/$P
         }
       ],
       "gateway_unique_id": "699d98642c564d2e855e9661899b7252",
+      "global_acceleration": {
+        "api_endpoints": [
+          "198.51.100.1:443"
+        ],
+        "enabled": true,
+        "masque_endpoints": [
+          "198.51.100.1:443"
+        ],
+        "wireguard_endpoints": [
+          "198.51.100.1:2408"
+        ]
+      },
       "include": [
         {
           "address": "192.0.2.0/24",
@@ -33663,7 +34045,7 @@ Returns the configuration for your Zero Trust organization.
 
     Configures multi-factor authentication (MFA) settings for an organization.
 
-    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "ssh_piv_key"`
+    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "piv_key"`
 
       Lists the MFA methods that users can authenticate with.
 
@@ -33673,7 +34055,7 @@ Returns the configuration for your Zero Trust organization.
 
       - `"security_key"`
 
-      - `"ssh_piv_key"`
+      - `"piv_key"`
 
     - `amr_matching_session_duration: optional string`
 
@@ -33687,13 +34069,9 @@ Returns the configuration for your Zero Trust organization.
 
       Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 
-  - `mfa_required_for_all_apps: optional boolean`
+  - `mfa_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
 
-    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
-
-  - `mfa_ssh_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
-
-    Configures SSH PIV key requirements for MFA using hardware security keys.
+    Configures PIV key requirements for MFA using hardware security keys.
 
     - `pin_policy: optional "never" or "once" or "always"`
 
@@ -33707,7 +34085,7 @@ Returns the configuration for your Zero Trust organization.
 
     - `require_fips_device: optional boolean`
 
-      Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+      Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 
     - `ssh_key_size: optional array of 256 or 384 or 521 or 3 more`
 
@@ -33744,6 +34122,10 @@ Returns the configuration for your Zero Trust organization.
       - `"always"`
 
       - `"cached"`
+
+  - `mfa_required_for_all_apps: optional boolean`
+
+    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 
   - `name: optional string`
 
@@ -33828,8 +34210,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       "required_aaguids": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
       "session_duration": "24h"
     },
-    "mfa_required_for_all_apps": false,
-    "mfa_ssh_piv_key_requirements": {
+    "mfa_piv_key_requirements": {
       "pin_policy": "always",
       "require_fips_device": true,
       "ssh_key_size": [
@@ -33842,6 +34223,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       ],
       "touch_policy": "always"
     },
+    "mfa_required_for_all_apps": false,
     "name": "Widget Corps Internal Applications",
     "session_duration": "24h",
     "ui_read_only_toggle_reason": "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -33924,7 +34306,7 @@ Sets up a Zero Trust organization for your account or zone.
 
   Configures multi-factor authentication (MFA) settings for an organization.
 
-  - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "ssh_piv_key"`
+  - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "piv_key"`
 
     Lists the MFA methods that users can authenticate with.
 
@@ -33934,7 +34316,7 @@ Sets up a Zero Trust organization for your account or zone.
 
     - `"security_key"`
 
-    - `"ssh_piv_key"`
+    - `"piv_key"`
 
   - `amr_matching_session_duration: optional string`
 
@@ -33948,13 +34330,9 @@ Sets up a Zero Trust organization for your account or zone.
 
     Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 
-- `mfa_required_for_all_apps: optional boolean`
+- `mfa_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
 
-  Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
-
-- `mfa_ssh_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
-
-  Configures SSH PIV key requirements for MFA using hardware security keys.
+  Configures PIV key requirements for MFA using hardware security keys.
 
   - `pin_policy: optional "never" or "once" or "always"`
 
@@ -33968,7 +34346,7 @@ Sets up a Zero Trust organization for your account or zone.
 
   - `require_fips_device: optional boolean`
 
-    Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+    Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 
   - `ssh_key_size: optional array of 256 or 384 or 521 or 3 more`
 
@@ -34005,6 +34383,10 @@ Sets up a Zero Trust organization for your account or zone.
     - `"always"`
 
     - `"cached"`
+
+- `mfa_required_for_all_apps: optional boolean`
+
+  Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 
 - `session_duration: optional string`
 
@@ -34116,7 +34498,7 @@ Sets up a Zero Trust organization for your account or zone.
 
     Configures multi-factor authentication (MFA) settings for an organization.
 
-    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "ssh_piv_key"`
+    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "piv_key"`
 
       Lists the MFA methods that users can authenticate with.
 
@@ -34126,7 +34508,7 @@ Sets up a Zero Trust organization for your account or zone.
 
       - `"security_key"`
 
-      - `"ssh_piv_key"`
+      - `"piv_key"`
 
     - `amr_matching_session_duration: optional string`
 
@@ -34140,13 +34522,9 @@ Sets up a Zero Trust organization for your account or zone.
 
       Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 
-  - `mfa_required_for_all_apps: optional boolean`
+  - `mfa_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
 
-    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
-
-  - `mfa_ssh_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
-
-    Configures SSH PIV key requirements for MFA using hardware security keys.
+    Configures PIV key requirements for MFA using hardware security keys.
 
     - `pin_policy: optional "never" or "once" or "always"`
 
@@ -34160,7 +34538,7 @@ Sets up a Zero Trust organization for your account or zone.
 
     - `require_fips_device: optional boolean`
 
-      Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+      Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 
     - `ssh_key_size: optional array of 256 or 384 or 521 or 3 more`
 
@@ -34197,6 +34575,10 @@ Sets up a Zero Trust organization for your account or zone.
       - `"always"`
 
       - `"cached"`
+
+  - `mfa_required_for_all_apps: optional boolean`
+
+    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 
   - `name: optional string`
 
@@ -34293,8 +34675,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       "required_aaguids": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
       "session_duration": "24h"
     },
-    "mfa_required_for_all_apps": false,
-    "mfa_ssh_piv_key_requirements": {
+    "mfa_piv_key_requirements": {
       "pin_policy": "always",
       "require_fips_device": true,
       "ssh_key_size": [
@@ -34307,6 +34688,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       ],
       "touch_policy": "always"
     },
+    "mfa_required_for_all_apps": false,
     "name": "Widget Corps Internal Applications",
     "session_duration": "24h",
     "ui_read_only_toggle_reason": "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -34395,7 +34777,7 @@ Updates the configuration for your Zero Trust organization.
 
   Configures multi-factor authentication (MFA) settings for an organization.
 
-  - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "ssh_piv_key"`
+  - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "piv_key"`
 
     Lists the MFA methods that users can authenticate with.
 
@@ -34405,7 +34787,7 @@ Updates the configuration for your Zero Trust organization.
 
     - `"security_key"`
 
-    - `"ssh_piv_key"`
+    - `"piv_key"`
 
   - `amr_matching_session_duration: optional string`
 
@@ -34419,13 +34801,9 @@ Updates the configuration for your Zero Trust organization.
 
     Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 
-- `mfa_required_for_all_apps: optional boolean`
+- `mfa_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
 
-  Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
-
-- `mfa_ssh_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
-
-  Configures SSH PIV key requirements for MFA using hardware security keys.
+  Configures PIV key requirements for MFA using hardware security keys.
 
   - `pin_policy: optional "never" or "once" or "always"`
 
@@ -34439,7 +34817,7 @@ Updates the configuration for your Zero Trust organization.
 
   - `require_fips_device: optional boolean`
 
-    Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+    Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 
   - `ssh_key_size: optional array of 256 or 384 or 521 or 3 more`
 
@@ -34476,6 +34854,10 @@ Updates the configuration for your Zero Trust organization.
     - `"always"`
 
     - `"cached"`
+
+- `mfa_required_for_all_apps: optional boolean`
+
+  Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 
 - `name: optional string`
 
@@ -34591,7 +34973,7 @@ Updates the configuration for your Zero Trust organization.
 
     Configures multi-factor authentication (MFA) settings for an organization.
 
-    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "ssh_piv_key"`
+    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "piv_key"`
 
       Lists the MFA methods that users can authenticate with.
 
@@ -34601,7 +34983,7 @@ Updates the configuration for your Zero Trust organization.
 
       - `"security_key"`
 
-      - `"ssh_piv_key"`
+      - `"piv_key"`
 
     - `amr_matching_session_duration: optional string`
 
@@ -34615,13 +34997,9 @@ Updates the configuration for your Zero Trust organization.
 
       Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 
-  - `mfa_required_for_all_apps: optional boolean`
+  - `mfa_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
 
-    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
-
-  - `mfa_ssh_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
-
-    Configures SSH PIV key requirements for MFA using hardware security keys.
+    Configures PIV key requirements for MFA using hardware security keys.
 
     - `pin_policy: optional "never" or "once" or "always"`
 
@@ -34635,7 +35013,7 @@ Updates the configuration for your Zero Trust organization.
 
     - `require_fips_device: optional boolean`
 
-      Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+      Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 
     - `ssh_key_size: optional array of 256 or 384 or 521 or 3 more`
 
@@ -34672,6 +35050,10 @@ Updates the configuration for your Zero Trust organization.
       - `"always"`
 
       - `"cached"`
+
+  - `mfa_required_for_all_apps: optional boolean`
+
+    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 
   - `name: optional string`
 
@@ -34769,8 +35151,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       "required_aaguids": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
       "session_duration": "24h"
     },
-    "mfa_required_for_all_apps": false,
-    "mfa_ssh_piv_key_requirements": {
+    "mfa_piv_key_requirements": {
       "pin_policy": "always",
       "require_fips_device": true,
       "ssh_key_size": [
@@ -34783,6 +35164,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       ],
       "touch_policy": "always"
     },
+    "mfa_required_for_all_apps": false,
     "name": "Widget Corps Internal Applications",
     "session_duration": "24h",
     "ui_read_only_toggle_reason": "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -34960,7 +35342,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
     Configures multi-factor authentication (MFA) settings for an organization.
 
-    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "ssh_piv_key"`
+    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "piv_key"`
 
       Lists the MFA methods that users can authenticate with.
 
@@ -34970,7 +35352,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       - `"security_key"`
 
-      - `"ssh_piv_key"`
+      - `"piv_key"`
 
     - `amr_matching_session_duration: optional string`
 
@@ -34984,13 +35366,9 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 
-  - `mfa_required_for_all_apps: optional boolean`
+  - `mfa_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
 
-    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
-
-  - `mfa_ssh_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
-
-    Configures SSH PIV key requirements for MFA using hardware security keys.
+    Configures PIV key requirements for MFA using hardware security keys.
 
     - `pin_policy: optional "never" or "once" or "always"`
 
@@ -35004,7 +35382,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
     - `require_fips_device: optional boolean`
 
-      Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+      Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 
     - `ssh_key_size: optional array of 256 or 384 or 521 or 3 more`
 
@@ -35041,6 +35419,10 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       - `"always"`
 
       - `"cached"`
+
+  - `mfa_required_for_all_apps: optional boolean`
+
+    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 
   - `name: optional string`
 
@@ -35589,7 +35971,7 @@ Lists all MCP portals configured for the account.
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -35608,6 +35990,10 @@ Lists all MCP portals configured for the account.
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -35645,7 +36031,7 @@ Lists all MCP portals configured for the account.
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -35738,6 +36124,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
               "foo": "bar"
             }
           ],
+          "server_id": "my-mcp-server",
           "tools": [
             {
               "foo": "bar"
@@ -35870,7 +36257,7 @@ Creates a new MCP portal for managing AI tool access through Cloudflare Access.
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -35889,6 +36276,10 @@ Creates a new MCP portal for managing AI tool access through Cloudflare Access.
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -35926,7 +36317,7 @@ Creates a new MCP portal for managing AI tool access through Cloudflare Access.
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -36026,6 +36417,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
             "foo": "bar"
           }
         ],
+        "server_id": "my-mcp-server",
         "tools": [
           {
             "foo": "bar"
@@ -36111,7 +36503,7 @@ Read details of an MCP Portal
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -36130,6 +36522,10 @@ Read details of an MCP Portal
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -36167,7 +36563,7 @@ Read details of an MCP Portal
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -36259,6 +36655,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
             "foo": "bar"
           }
         ],
+        "server_id": "my-mcp-server",
         "tools": [
           {
             "foo": "bar"
@@ -36390,7 +36787,7 @@ Updates an MCP portal configuration.
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -36409,6 +36806,10 @@ Updates an MCP portal configuration.
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -36446,7 +36847,7 @@ Updates an MCP portal configuration.
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -36539,6 +36940,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
             "foo": "bar"
           }
         ],
+        "server_id": "my-mcp-server",
         "tools": [
           {
             "foo": "bar"
@@ -36686,7 +37088,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -36705,6 +37107,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -36742,7 +37148,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -36818,7 +37224,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -36837,6 +37243,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -36874,7 +37284,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -36950,7 +37360,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -36969,6 +37379,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -37006,7 +37420,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -37082,7 +37496,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `name: string`
 
-  - `servers: array of object { id, auth_type, hostname, 19 more }`
+  - `servers: array of object { id, auth_type, hostname, 20 more }`
 
     - `id: string`
 
@@ -37101,6 +37515,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
     - `name: string`
 
     - `prompts: array of map[unknown]`
+
+    - `server_id: string`
+
+      server id
 
     - `tools: array of map[unknown]`
 
@@ -37138,7 +37556,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
     - `is_shared_oauth_callback_enabled: optional boolean`
 
-      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+      When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
     - `last_successful_sync: optional string`
 
@@ -37310,7 +37728,7 @@ Lists all MCP portals configured for the account.
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -37449,7 +37867,7 @@ Creates a new MCP portal for managing AI tool access through Cloudflare Access.
 
 - `is_shared_oauth_callback_enabled: optional boolean`
 
-  When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
 - `secure_web_gateway: optional boolean`
 
@@ -37531,7 +37949,7 @@ Creates a new MCP portal for managing AI tool access through Cloudflare Access.
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -37712,7 +38130,7 @@ Retrieves gateway configuration for MCP portals.
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -37837,7 +38255,7 @@ Updates an MCP portal configuration.
 
 - `is_shared_oauth_callback_enabled: optional boolean`
 
-  When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+  When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
 - `name: optional string`
 
@@ -37921,7 +38339,7 @@ Updates an MCP portal configuration.
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -38095,7 +38513,7 @@ Deletes an MCP portal from the account.
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -38330,7 +38748,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -38422,7 +38840,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -38514,7 +38932,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -38606,7 +39024,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -38698,7 +39116,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/ai-control
 
   - `is_shared_oauth_callback_enabled: optional boolean`
 
-    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
+    When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key.
 
   - `last_successful_sync: optional string`
 
@@ -39163,10 +39581,6 @@ Lists the IdP federation grants owned by the account.
 
     UID of the IdP federation grant.
 
-  - `created_at: string`
-
-    When the grant was created.
-
   - `idp_id: string`
 
     UID of the identity provider being federated.
@@ -39228,7 +39642,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federa
   "result": [
     {
       "id": "023e105f4ecef8ad9ca31a8372d0c353",
-      "created_at": "2026-05-07T19:11:00Z",
+      "created_at": "2014-01-01T05:20:00.12345Z",
       "idp_id": "a79de439-0e7f-4ebb-8a02-222222222222"
     }
   ],
@@ -39250,8 +39664,8 @@ Creates an IdP federation grant for the specified identity provider, making it
 available for federation to other accounts in the same Cloudflare organization.
 
 The account must belong to a Cloudflare organization. One-time pin and
-Cloudflare-managed identity providers cannot be federated. An identity
-provider may only have one active grant at a time.
+Cloudflare-managed identity providers cannot be federated. An account
+can federate at most five identity providers at a time.
 
 ### Path Parameters
 
@@ -39303,10 +39717,6 @@ provider may only have one active grant at a time.
 
     UID of the IdP federation grant.
 
-  - `created_at: string`
-
-    When the grant was created.
-
   - `idp_id: string`
 
     UID of the identity provider being federated.
@@ -39349,7 +39759,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federa
   "success": true,
   "result": {
     "id": "023e105f4ecef8ad9ca31a8372d0c353",
-    "created_at": "2026-05-07T19:11:00Z",
+    "created_at": "2014-01-01T05:20:00.12345Z",
     "idp_id": "a79de439-0e7f-4ebb-8a02-222222222222"
   }
 }
@@ -39409,10 +39819,6 @@ Retrieves a single IdP federation grant by its UID.
 
     UID of the IdP federation grant.
 
-  - `created_at: string`
-
-    When the grant was created.
-
   - `idp_id: string`
 
     UID of the identity provider being federated.
@@ -39451,7 +39857,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federa
   "success": true,
   "result": {
     "id": "023e105f4ecef8ad9ca31a8372d0c353",
-    "created_at": "2026-05-07T19:11:00Z",
+    "created_at": "2014-01-01T05:20:00.12345Z",
     "idp_id": "a79de439-0e7f-4ebb-8a02-222222222222"
   }
 }
@@ -39555,15 +39961,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federa
 
 ### IdP Federation Grant
 
-- `IdPFederationGrant object { id, created_at, idp_id }`
+- `IdPFederationGrant object { id, idp_id }`
 
   - `id: string`
 
     UID of the IdP federation grant.
-
-  - `created_at: string`
-
-    When the grant was created.
 
   - `idp_id: string`
 
@@ -39576,10 +39978,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/idp_federa
   - `id: string`
 
     UID of the IdP federation grant.
-
-  - `created_at: string`
-
-    When the grant was created.
 
   - `idp_id: string`
 
@@ -41579,9 +41977,9 @@ Lists all Access applications in an account or zone.
 
   - `true`
 
-- `result: optional array of object { domain, type, id, 30 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 30 more }  or 10 more`
+- `result: optional array of object { domain, type, id, 31 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 31 more }  or 10 more`
 
-  - `SelfHostedApplication object { domain, type, id, 30 more }`
+  - `SelfHostedApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -41715,7 +42113,7 @@ Lists all Access applications in an account or zone.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -41772,6 +42170,50 @@ Lists all Access applications in an account or zone.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -43557,7 +43999,7 @@ Lists all Access applications in an account or zone.
 
       The application type.
 
-  - `BrowserSSHApplication object { domain, type, id, 30 more }`
+  - `BrowserSSHApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -43641,7 +44083,7 @@ Lists all Access applications in an account or zone.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -43698,6 +44140,50 @@ Lists all Access applications in an account or zone.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -44389,7 +44875,7 @@ Lists all Access applications in an account or zone.
       This allows users to access private domains without connecting to Gateway. The option requires
       Clientless Browser Isolation to be set up with policies that allow users of this application.
 
-  - `BrowserVNCApplication object { domain, type, id, 30 more }`
+  - `BrowserVNCApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -44473,7 +44959,7 @@ Lists all Access applications in an account or zone.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -44530,6 +45016,50 @@ Lists all Access applications in an account or zone.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -48057,11 +48587,11 @@ Lists all Access applications in an account or zone.
 
         Configures multi-factor authentication (MFA) settings for infrastructure applications.
 
-        - `allowed_authenticators: optional array of "ssh_piv_key"`
+        - `allowed_authenticators: optional array of "piv_key"`
 
-          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `ssh_piv_key` is supported.
+          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `piv_key` is supported.
 
-          - `"ssh_piv_key"`
+          - `"piv_key"`
 
         - `mfa_disabled: optional boolean`
 
@@ -48193,7 +48723,7 @@ Lists all Access applications in an account or zone.
 
       - `updated_at: optional string`
 
-  - `BrowserRDPApplication object { domain, target_criteria, type, 31 more }`
+  - `BrowserRDPApplication object { domain, target_criteria, type, 32 more }`
 
     - `domain: string`
 
@@ -48265,7 +48795,7 @@ Lists all Access applications in an account or zone.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -48322,6 +48852,50 @@ Lists all Access applications in an account or zone.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -49055,7 +49629,7 @@ Lists all Access applications in an account or zone.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -49112,6 +49686,46 @@ Lists all Access applications in an account or zone.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `http_only_cookie_attribute: optional boolean`
 
@@ -49787,7 +50401,7 @@ Lists all Access applications in an account or zone.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -49844,6 +50458,46 @@ Lists all Access applications in an account or zone.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `domain: optional string`
 
@@ -50607,8 +51261,23 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         {
           "mcp_server_id": "mcp-server-1",
           "type": "via_mcp_server_portal"
+        },
+        {
+          "type": "worker",
+          "worker_id": "617f1d0431a98306ff61e336d79fce86"
+        },
+        {
+          "type": "preview_worker",
+          "worker_id": "617f1d0431a98306ff61e336d79fce86"
+        },
+        {
+          "type": "all_workers"
+        },
+        {
+          "type": "all_preview_workers"
         }
       ],
+      "eager_redirect_cookie_setting": true,
       "enable_binding_cookie": true,
       "http_only_cookie_attribute": true,
       "logo_url": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
@@ -50809,9 +51478,9 @@ Fetches information about an Access application.
 
   - `true`
 
-- `result: optional object { domain, type, id, 30 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 30 more }  or 10 more`
+- `result: optional object { domain, type, id, 31 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 31 more }  or 10 more`
 
-  - `SelfHostedApplication object { domain, type, id, 30 more }`
+  - `SelfHostedApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -50945,7 +51614,7 @@ Fetches information about an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -51002,6 +51671,50 @@ Fetches information about an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -52787,7 +53500,7 @@ Fetches information about an Access application.
 
       The application type.
 
-  - `BrowserSSHApplication object { domain, type, id, 30 more }`
+  - `BrowserSSHApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -52871,7 +53584,7 @@ Fetches information about an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -52928,6 +53641,50 @@ Fetches information about an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -53619,7 +54376,7 @@ Fetches information about an Access application.
       This allows users to access private domains without connecting to Gateway. The option requires
       Clientless Browser Isolation to be set up with policies that allow users of this application.
 
-  - `BrowserVNCApplication object { domain, type, id, 30 more }`
+  - `BrowserVNCApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -53703,7 +54460,7 @@ Fetches information about an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -53760,6 +54517,50 @@ Fetches information about an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -57287,11 +58088,11 @@ Fetches information about an Access application.
 
         Configures multi-factor authentication (MFA) settings for infrastructure applications.
 
-        - `allowed_authenticators: optional array of "ssh_piv_key"`
+        - `allowed_authenticators: optional array of "piv_key"`
 
-          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `ssh_piv_key` is supported.
+          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `piv_key` is supported.
 
-          - `"ssh_piv_key"`
+          - `"piv_key"`
 
         - `mfa_disabled: optional boolean`
 
@@ -57423,7 +58224,7 @@ Fetches information about an Access application.
 
       - `updated_at: optional string`
 
-  - `BrowserRDPApplication object { domain, target_criteria, type, 31 more }`
+  - `BrowserRDPApplication object { domain, target_criteria, type, 32 more }`
 
     - `domain: string`
 
@@ -57495,7 +58296,7 @@ Fetches information about an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -57552,6 +58353,50 @@ Fetches information about an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -58285,7 +59130,7 @@ Fetches information about an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -58342,6 +59187,46 @@ Fetches information about an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `http_only_cookie_attribute: optional boolean`
 
@@ -59017,7 +59902,7 @@ Fetches information about an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -59074,6 +59959,46 @@ Fetches information about an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `domain: optional string`
 
@@ -59814,8 +60739,23 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       {
         "mcp_server_id": "mcp-server-1",
         "type": "via_mcp_server_portal"
+      },
+      {
+        "type": "worker",
+        "worker_id": "617f1d0431a98306ff61e336d79fce86"
+      },
+      {
+        "type": "preview_worker",
+        "worker_id": "617f1d0431a98306ff61e336d79fce86"
+      },
+      {
+        "type": "all_workers"
+      },
+      {
+        "type": "all_preview_workers"
       }
     ],
+    "eager_redirect_cookie_setting": true,
     "enable_binding_cookie": true,
     "http_only_cookie_attribute": true,
     "logo_url": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
@@ -59974,11 +60914,11 @@ Adds a new application to Access.
 
 ### Body Parameters
 
-- `body: object { domain, type, allow_authenticate_via_warp, 28 more }  or object { allowed_idps, app_launcher_visible, auto_redirect_to_identity, 8 more }  or object { domain, type, allow_authenticate_via_warp, 28 more }  or 10 more`
+- `body: object { domain, type, allow_authenticate_via_warp, 29 more }  or object { allowed_idps, app_launcher_visible, auto_redirect_to_identity, 8 more }  or object { domain, type, allow_authenticate_via_warp, 29 more }  or 10 more`
 
   Contains the targets secured by the application.
 
-  - `SelfHostedApplication object { domain, type, allow_authenticate_via_warp, 28 more }`
+  - `SelfHostedApplication object { domain, type, allow_authenticate_via_warp, 29 more }`
 
     - `domain: string`
 
@@ -60104,7 +61044,7 @@ Adds a new application to Access.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -60161,6 +61101,50 @@ Adds a new application to Access.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -60264,7 +61248,7 @@ Adds a new application to Access.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -60620,7 +61604,7 @@ Adds a new application to Access.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -61046,7 +62030,7 @@ Adds a new application to Access.
 
       The application type.
 
-  - `BrowserSSHApplication object { domain, type, allow_authenticate_via_warp, 28 more }`
+  - `BrowserSSHApplication object { domain, type, allow_authenticate_via_warp, 29 more }`
 
     - `domain: string`
 
@@ -61122,7 +62106,7 @@ Adds a new application to Access.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -61179,6 +62163,50 @@ Adds a new application to Access.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -61282,7 +62310,7 @@ Adds a new application to Access.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -61530,7 +62558,7 @@ Adds a new application to Access.
       This allows users to access private domains without connecting to Gateway. The option requires
       Clientless Browser Isolation to be set up with policies that allow users of this application.
 
-  - `BrowserVNCApplication object { domain, type, allow_authenticate_via_warp, 28 more }`
+  - `BrowserVNCApplication object { domain, type, allow_authenticate_via_warp, 29 more }`
 
     - `domain: string`
 
@@ -61606,7 +62634,7 @@ Adds a new application to Access.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -61663,6 +62691,50 @@ Adds a new application to Access.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -61766,7 +62838,7 @@ Adds a new application to Access.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -62140,7 +63212,7 @@ Adds a new application to Access.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -62290,7 +63362,7 @@ Adds a new application to Access.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -62436,7 +63508,7 @@ Adds a new application to Access.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -62582,7 +63654,7 @@ Adds a new application to Access.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -62712,7 +63784,7 @@ Adds a new application to Access.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -63314,11 +64386,11 @@ Adds a new application to Access.
 
         Configures multi-factor authentication (MFA) settings for infrastructure applications.
 
-        - `allowed_authenticators: optional array of "ssh_piv_key"`
+        - `allowed_authenticators: optional array of "piv_key"`
 
-          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `ssh_piv_key` is supported.
+          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `piv_key` is supported.
 
-          - `"ssh_piv_key"`
+          - `"piv_key"`
 
         - `mfa_disabled: optional boolean`
 
@@ -63444,7 +64516,7 @@ Adds a new application to Access.
           Matches users who are members of a specific Cloudflare account.
           Requires a Cloudflare identity provider.
 
-  - `BrowserRDPApplication object { domain, target_criteria, type, 29 more }`
+  - `BrowserRDPApplication object { domain, target_criteria, type, 30 more }`
 
     Contains the targets secured by the application.
 
@@ -63510,7 +64582,7 @@ Adds a new application to Access.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -63567,6 +64639,50 @@ Adds a new application to Access.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -63670,7 +64786,7 @@ Adds a new application to Access.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -63952,7 +65068,7 @@ Adds a new application to Access.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -64009,6 +65125,46 @@ Adds a new application to Access.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `http_only_cookie_attribute: optional boolean`
 
@@ -64082,7 +65238,7 @@ Adds a new application to Access.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -64336,7 +65492,7 @@ Adds a new application to Access.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -64393,6 +65549,46 @@ Adds a new application to Access.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `domain: optional string`
 
@@ -64470,7 +65666,7 @@ Adds a new application to Access.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -64722,9 +65918,9 @@ Adds a new application to Access.
 
   - `true`
 
-- `result: optional object { domain, type, id, 30 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 30 more }  or 10 more`
+- `result: optional object { domain, type, id, 31 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 31 more }  or 10 more`
 
-  - `SelfHostedApplication object { domain, type, id, 30 more }`
+  - `SelfHostedApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -64858,7 +66054,7 @@ Adds a new application to Access.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -64915,6 +66111,50 @@ Adds a new application to Access.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -66700,7 +67940,7 @@ Adds a new application to Access.
 
       The application type.
 
-  - `BrowserSSHApplication object { domain, type, id, 30 more }`
+  - `BrowserSSHApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -66784,7 +68024,7 @@ Adds a new application to Access.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -66841,6 +68081,50 @@ Adds a new application to Access.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -67532,7 +68816,7 @@ Adds a new application to Access.
       This allows users to access private domains without connecting to Gateway. The option requires
       Clientless Browser Isolation to be set up with policies that allow users of this application.
 
-  - `BrowserVNCApplication object { domain, type, id, 30 more }`
+  - `BrowserVNCApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -67616,7 +68900,7 @@ Adds a new application to Access.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -67673,6 +68957,50 @@ Adds a new application to Access.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -71200,11 +72528,11 @@ Adds a new application to Access.
 
         Configures multi-factor authentication (MFA) settings for infrastructure applications.
 
-        - `allowed_authenticators: optional array of "ssh_piv_key"`
+        - `allowed_authenticators: optional array of "piv_key"`
 
-          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `ssh_piv_key` is supported.
+          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `piv_key` is supported.
 
-          - `"ssh_piv_key"`
+          - `"piv_key"`
 
         - `mfa_disabled: optional boolean`
 
@@ -71336,7 +72664,7 @@ Adds a new application to Access.
 
       - `updated_at: optional string`
 
-  - `BrowserRDPApplication object { domain, target_criteria, type, 31 more }`
+  - `BrowserRDPApplication object { domain, target_criteria, type, 32 more }`
 
     - `domain: string`
 
@@ -71408,7 +72736,7 @@ Adds a new application to Access.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -71465,6 +72793,50 @@ Adds a new application to Access.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -72198,7 +73570,7 @@ Adds a new application to Access.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -72255,6 +73627,46 @@ Adds a new application to Access.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `http_only_cookie_attribute: optional boolean`
 
@@ -72930,7 +74342,7 @@ Adds a new application to Access.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -72987,6 +74399,46 @@ Adds a new application to Access.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `domain: optional string`
 
@@ -73662,8 +75114,23 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
             {
               "mcp_server_id": "mcp-server-1",
               "type": "via_mcp_server_portal"
+            },
+            {
+              "type": "worker",
+              "worker_id": "617f1d0431a98306ff61e336d79fce86"
+            },
+            {
+              "type": "preview_worker",
+              "worker_id": "617f1d0431a98306ff61e336d79fce86"
+            },
+            {
+              "type": "all_workers"
+            },
+            {
+              "type": "all_preview_workers"
             }
           ],
+          "eager_redirect_cookie_setting": true,
           "http_only_cookie_attribute": true,
           "logo_url": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
           "name": "Admin Site",
@@ -73777,8 +75244,23 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       {
         "mcp_server_id": "mcp-server-1",
         "type": "via_mcp_server_portal"
+      },
+      {
+        "type": "worker",
+        "worker_id": "617f1d0431a98306ff61e336d79fce86"
+      },
+      {
+        "type": "preview_worker",
+        "worker_id": "617f1d0431a98306ff61e336d79fce86"
+      },
+      {
+        "type": "all_workers"
+      },
+      {
+        "type": "all_preview_workers"
       }
     ],
+    "eager_redirect_cookie_setting": true,
     "enable_binding_cookie": true,
     "http_only_cookie_attribute": true,
     "logo_url": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
@@ -73941,11 +75423,11 @@ Updates an Access application.
 
 ### Body Parameters
 
-- `body: object { domain, type, allow_authenticate_via_warp, 28 more }  or object { allowed_idps, app_launcher_visible, auto_redirect_to_identity, 8 more }  or object { domain, type, allow_authenticate_via_warp, 28 more }  or 10 more`
+- `body: object { domain, type, allow_authenticate_via_warp, 29 more }  or object { allowed_idps, app_launcher_visible, auto_redirect_to_identity, 8 more }  or object { domain, type, allow_authenticate_via_warp, 29 more }  or 10 more`
 
   Contains the targets secured by the application.
 
-  - `SelfHostedApplication object { domain, type, allow_authenticate_via_warp, 28 more }`
+  - `SelfHostedApplication object { domain, type, allow_authenticate_via_warp, 29 more }`
 
     - `domain: string`
 
@@ -74071,7 +75553,7 @@ Updates an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -74128,6 +75610,50 @@ Updates an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -74231,7 +75757,7 @@ Updates an Access application.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -74587,7 +76113,7 @@ Updates an Access application.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -75013,7 +76539,7 @@ Updates an Access application.
 
       The application type.
 
-  - `BrowserSSHApplication object { domain, type, allow_authenticate_via_warp, 28 more }`
+  - `BrowserSSHApplication object { domain, type, allow_authenticate_via_warp, 29 more }`
 
     - `domain: string`
 
@@ -75089,7 +76615,7 @@ Updates an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -75146,6 +76672,50 @@ Updates an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -75249,7 +76819,7 @@ Updates an Access application.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -75497,7 +77067,7 @@ Updates an Access application.
       This allows users to access private domains without connecting to Gateway. The option requires
       Clientless Browser Isolation to be set up with policies that allow users of this application.
 
-  - `BrowserVNCApplication object { domain, type, allow_authenticate_via_warp, 28 more }`
+  - `BrowserVNCApplication object { domain, type, allow_authenticate_via_warp, 29 more }`
 
     - `domain: string`
 
@@ -75573,7 +77143,7 @@ Updates an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -75630,6 +77200,50 @@ Updates an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -75733,7 +77347,7 @@ Updates an Access application.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -76107,7 +77721,7 @@ Updates an Access application.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -76257,7 +77871,7 @@ Updates an Access application.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -76403,7 +78017,7 @@ Updates an Access application.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -76549,7 +78163,7 @@ Updates an Access application.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -76679,7 +78293,7 @@ Updates an Access application.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -77281,11 +78895,11 @@ Updates an Access application.
 
         Configures multi-factor authentication (MFA) settings for infrastructure applications.
 
-        - `allowed_authenticators: optional array of "ssh_piv_key"`
+        - `allowed_authenticators: optional array of "piv_key"`
 
-          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `ssh_piv_key` is supported.
+          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `piv_key` is supported.
 
-          - `"ssh_piv_key"`
+          - `"piv_key"`
 
         - `mfa_disabled: optional boolean`
 
@@ -77411,7 +79025,7 @@ Updates an Access application.
           Matches users who are members of a specific Cloudflare account.
           Requires a Cloudflare identity provider.
 
-  - `BrowserRDPApplication object { domain, target_criteria, type, 29 more }`
+  - `BrowserRDPApplication object { domain, target_criteria, type, 30 more }`
 
     Contains the targets secured by the application.
 
@@ -77477,7 +79091,7 @@ Updates an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -77534,6 +79148,50 @@ Updates an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -77637,7 +79295,7 @@ Updates an Access application.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -77919,7 +79577,7 @@ Updates an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -77976,6 +79634,46 @@ Updates an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `http_only_cookie_attribute: optional boolean`
 
@@ -78049,7 +79747,7 @@ Updates an Access application.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -78303,7 +80001,7 @@ Updates an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -78360,6 +80058,46 @@ Updates an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `domain: optional string`
 
@@ -78437,7 +80175,7 @@ Updates an Access application.
 
           The order of execution for this policy. Must be unique for each policy within an app.
 
-      - `AccessSchemasUUID = string`
+      - `AccessUUID2 = string`
 
         The UUID of the policy
 
@@ -78689,9 +80427,9 @@ Updates an Access application.
 
   - `true`
 
-- `result: optional object { domain, type, id, 30 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 30 more }  or 10 more`
+- `result: optional object { domain, type, id, 31 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 31 more }  or 10 more`
 
-  - `SelfHostedApplication object { domain, type, id, 30 more }`
+  - `SelfHostedApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -78825,7 +80563,7 @@ Updates an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -78882,6 +80620,50 @@ Updates an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -80667,7 +82449,7 @@ Updates an Access application.
 
       The application type.
 
-  - `BrowserSSHApplication object { domain, type, id, 30 more }`
+  - `BrowserSSHApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -80751,7 +82533,7 @@ Updates an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -80808,6 +82590,50 @@ Updates an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -81499,7 +83325,7 @@ Updates an Access application.
       This allows users to access private domains without connecting to Gateway. The option requires
       Clientless Browser Isolation to be set up with policies that allow users of this application.
 
-  - `BrowserVNCApplication object { domain, type, id, 30 more }`
+  - `BrowserVNCApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -81583,7 +83409,7 @@ Updates an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -81640,6 +83466,50 @@ Updates an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -85167,11 +87037,11 @@ Updates an Access application.
 
         Configures multi-factor authentication (MFA) settings for infrastructure applications.
 
-        - `allowed_authenticators: optional array of "ssh_piv_key"`
+        - `allowed_authenticators: optional array of "piv_key"`
 
-          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `ssh_piv_key` is supported.
+          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `piv_key` is supported.
 
-          - `"ssh_piv_key"`
+          - `"piv_key"`
 
         - `mfa_disabled: optional boolean`
 
@@ -85303,7 +87173,7 @@ Updates an Access application.
 
       - `updated_at: optional string`
 
-  - `BrowserRDPApplication object { domain, target_criteria, type, 31 more }`
+  - `BrowserRDPApplication object { domain, target_criteria, type, 32 more }`
 
     - `domain: string`
 
@@ -85375,7 +87245,7 @@ Updates an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -85432,6 +87302,50 @@ Updates an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -86165,7 +88079,7 @@ Updates an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -86222,6 +88136,46 @@ Updates an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `http_only_cookie_attribute: optional boolean`
 
@@ -86897,7 +88851,7 @@ Updates an Access application.
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -86954,6 +88908,46 @@ Updates an Access application.
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `domain: optional string`
 
@@ -87630,8 +89624,23 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
             {
               "mcp_server_id": "mcp-server-1",
               "type": "via_mcp_server_portal"
+            },
+            {
+              "type": "worker",
+              "worker_id": "617f1d0431a98306ff61e336d79fce86"
+            },
+            {
+              "type": "preview_worker",
+              "worker_id": "617f1d0431a98306ff61e336d79fce86"
+            },
+            {
+              "type": "all_workers"
+            },
+            {
+              "type": "all_preview_workers"
             }
           ],
+          "eager_redirect_cookie_setting": true,
           "http_only_cookie_attribute": true,
           "logo_url": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
           "name": "Admin Site",
@@ -87745,8 +89754,23 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       {
         "mcp_server_id": "mcp-server-1",
         "type": "via_mcp_server_portal"
+      },
+      {
+        "type": "worker",
+        "worker_id": "617f1d0431a98306ff61e336d79fce86"
+      },
+      {
+        "type": "preview_worker",
+        "worker_id": "617f1d0431a98306ff61e336d79fce86"
+      },
+      {
+        "type": "all_workers"
+      },
+      {
+        "type": "all_preview_workers"
       }
     ],
+    "eager_redirect_cookie_setting": true,
     "enable_binding_cookie": true,
     "http_only_cookie_attribute": true,
     "logo_url": "https://www.cloudflare.com/img/logo-web-badges/cf-logo-on-white-bg.svg",
@@ -88077,9 +90101,9 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
 ### Application
 
-- `Application = object { domain, type, id, 21 more }  or object { id, allowed_idps, app_launcher_visible, 9 more }  or object { domain, type, id, 21 more }  or 5 more`
+- `Application = object { domain, type, id, 22 more }  or object { id, allowed_idps, app_launcher_visible, 9 more }  or object { domain, type, id, 22 more }  or 5 more`
 
-  - `SelfHostedApplication object { domain, type, id, 21 more }`
+  - `SelfHostedApplication object { domain, type, id, 22 more }`
 
     - `domain: string`
 
@@ -88175,6 +90199,10 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom URL a user is redirected to when they are denied access to the application.
 
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
+
     - `enable_binding_cookie: optional boolean`
 
       Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
@@ -88199,7 +90227,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 
-    - `scim_config: optional ApplicationSCIMConfig`
+    - `scim_config: optional object { idp_uid, remote_uri, authentication, 3 more }`
 
       Configuration for provisioning to this application via SCIM. This is currently in closed beta.
 
@@ -88233,7 +90261,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
             User name used to authenticate with the remote SCIM service.
 
-        - `AccessSchemasSCIMConfigAuthenticationOAuthBearerToken object { token, scheme }`
+        - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
 
           Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
 
@@ -88295,7 +90323,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
             - `"access_service_token"`
 
-        - `AccessSchemasSCIMConfigMultiAuthentication = array of SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or object { client_id, client_secret, scheme }`
+        - `AccessSCIMConfigMultiAuthentication2 = array of SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or object { client_id, client_secret, scheme }`
 
           Multiple authentication schemes
 
@@ -88303,7 +90331,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
             Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
 
-          - `AccessSchemasSCIMConfigAuthenticationOAuthBearerToken object { token, scheme }`
+          - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
 
             Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
 
@@ -88445,7 +90473,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
     - `saas_app: optional object { auth_type, consumer_service_url, created_at, 8 more }  or object { access_token_lifetime, allow_pkce_without_client_secret, app_launcher_url, 13 more }`
 
-      - `AccessSchemasSAMLSaaSApp object { auth_type, consumer_service_url, created_at, 8 more }`
+      - `AccessSAMLSaaSApp2 object { auth_type, consumer_service_url, created_at, 8 more }`
 
         - `auth_type: optional "saml" or "oidc"`
 
@@ -88525,7 +90553,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
         - `updated_at: optional string`
 
-      - `AccessSchemasOIDCSaaSApp object { access_token_lifetime, allow_pkce_without_client_secret, app_launcher_url, 13 more }`
+      - `AccessOIDCSaaSApp2 object { access_token_lifetime, allow_pkce_without_client_secret, app_launcher_url, 13 more }`
 
         - `access_token_lifetime: optional string`
 
@@ -88653,9 +90681,141 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
         - `updated_at: optional string`
 
-    - `scim_config: optional ApplicationSCIMConfig`
+    - `scim_config: optional object { idp_uid, remote_uri, authentication, 3 more }`
 
       Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+
+      - `idp_uid: string`
+
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+
+      - `remote_uri: string`
+
+        The base URI for the application's SCIM-compatible API.
+
+      - `authentication: optional SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or 2 more`
+
+        Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+          Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+          Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+          - `token: string`
+
+            Token used to authenticate with the remote SCIM service.
+
+          - `scheme: "oauthbearertoken"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"oauthbearertoken"`
+
+        - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+          Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+          Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+          - `client_id: string`
+
+            Client ID of the Access service token used to authenticate with the remote service.
+
+          - `client_secret: string`
+
+            Client secret of the Access service token used to authenticate with the remote service.
+
+          - `scheme: "access_service_token"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"access_service_token"`
+
+        - `AccessSCIMConfigMultiAuthentication2 = array of SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or object { client_id, client_secret, scheme }`
+
+          Multiple authentication schemes
+
+          - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+            Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+            Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+            - `token: string`
+
+              Token used to authenticate with the remote SCIM service.
+
+            - `scheme: "oauthbearertoken"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"oauthbearertoken"`
+
+          - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+            Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+            Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+            - `client_id: string`
+
+              Client ID of the Access service token used to authenticate with the remote service.
+
+            - `client_secret: string`
+
+              Client secret of the Access service token used to authenticate with the remote service.
+
+            - `scheme: "access_service_token"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"access_service_token"`
+
+      - `deactivate_on_delete: optional boolean`
+
+        If false, we propagate DELETE requests to the target application for SCIM resources. If true, we only set `active` to false on the SCIM resource. This is useful because some targets do not support DELETE operations.
+
+      - `enabled: optional boolean`
+
+        Whether SCIM provisioning is turned on for this application.
+
+      - `mappings: optional array of SCIMConfigMapping`
+
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+
+        - `schema: string`
+
+          Which SCIM resource type this mapping applies to.
+
+        - `enabled: optional boolean`
+
+          Whether or not this mapping is enabled.
+
+        - `filter: optional string`
+
+          A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+
+        - `operations: optional object { create, delete, update }`
+
+          Whether or not this mapping applies to creates, updates, or deletes.
+
+        - `strictness: optional "strict" or "passthrough"`
+
+          The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+
+        - `transform_jsonata: optional string`
+
+          A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
 
     - `type: optional string`
 
@@ -88663,7 +90823,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
     - `updated_at: optional string`
 
-  - `BrowserSSHApplication object { domain, type, id, 21 more }`
+  - `BrowserSSHApplication object { domain, type, id, 22 more }`
 
     - `domain: string`
 
@@ -88759,6 +90919,10 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom URL a user is redirected to when they are denied access to the application.
 
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
+
     - `enable_binding_cookie: optional boolean`
 
       Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
@@ -88783,9 +90947,141 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 
-    - `scim_config: optional ApplicationSCIMConfig`
+    - `scim_config: optional object { idp_uid, remote_uri, authentication, 3 more }`
 
       Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+
+      - `idp_uid: string`
+
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+
+      - `remote_uri: string`
+
+        The base URI for the application's SCIM-compatible API.
+
+      - `authentication: optional SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or 2 more`
+
+        Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+          Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+          Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+          - `token: string`
+
+            Token used to authenticate with the remote SCIM service.
+
+          - `scheme: "oauthbearertoken"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"oauthbearertoken"`
+
+        - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+          Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+          Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+          - `client_id: string`
+
+            Client ID of the Access service token used to authenticate with the remote service.
+
+          - `client_secret: string`
+
+            Client secret of the Access service token used to authenticate with the remote service.
+
+          - `scheme: "access_service_token"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"access_service_token"`
+
+        - `AccessSCIMConfigMultiAuthentication2 = array of SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or object { client_id, client_secret, scheme }`
+
+          Multiple authentication schemes
+
+          - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+            Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+            Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+            - `token: string`
+
+              Token used to authenticate with the remote SCIM service.
+
+            - `scheme: "oauthbearertoken"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"oauthbearertoken"`
+
+          - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+            Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+            Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+            - `client_id: string`
+
+              Client ID of the Access service token used to authenticate with the remote service.
+
+            - `client_secret: string`
+
+              Client secret of the Access service token used to authenticate with the remote service.
+
+            - `scheme: "access_service_token"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"access_service_token"`
+
+      - `deactivate_on_delete: optional boolean`
+
+        If false, we propagate DELETE requests to the target application for SCIM resources. If true, we only set `active` to false on the SCIM resource. This is useful because some targets do not support DELETE operations.
+
+      - `enabled: optional boolean`
+
+        Whether SCIM provisioning is turned on for this application.
+
+      - `mappings: optional array of SCIMConfigMapping`
+
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+
+        - `schema: string`
+
+          Which SCIM resource type this mapping applies to.
+
+        - `enabled: optional boolean`
+
+          Whether or not this mapping is enabled.
+
+        - `filter: optional string`
+
+          A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+
+        - `operations: optional object { create, delete, update }`
+
+          Whether or not this mapping applies to creates, updates, or deletes.
+
+        - `strictness: optional "strict" or "passthrough"`
+
+          The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+
+        - `transform_jsonata: optional string`
+
+          A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
 
     - `service_auth_401_redirect: optional boolean`
 
@@ -88807,7 +91103,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       This allows users to access private domains without connecting to Gateway. The option requires
       Clientless Browser Isolation to be set up with policies that allow users of this application.
 
-  - `BrowserVNCApplication object { domain, type, id, 21 more }`
+  - `BrowserVNCApplication object { domain, type, id, 22 more }`
 
     - `domain: string`
 
@@ -88903,6 +91199,10 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom URL a user is redirected to when they are denied access to the application.
 
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
+
     - `enable_binding_cookie: optional boolean`
 
       Enables the binding cookie, which increases security against compromised authorization tokens and CSRF attacks.
@@ -88927,9 +91227,141 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       Sets the SameSite cookie setting, which provides increased security against CSRF attacks.
 
-    - `scim_config: optional ApplicationSCIMConfig`
+    - `scim_config: optional object { idp_uid, remote_uri, authentication, 3 more }`
 
       Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+
+      - `idp_uid: string`
+
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+
+      - `remote_uri: string`
+
+        The base URI for the application's SCIM-compatible API.
+
+      - `authentication: optional SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or 2 more`
+
+        Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+          Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+          Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+          - `token: string`
+
+            Token used to authenticate with the remote SCIM service.
+
+          - `scheme: "oauthbearertoken"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"oauthbearertoken"`
+
+        - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+          Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+          Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+          - `client_id: string`
+
+            Client ID of the Access service token used to authenticate with the remote service.
+
+          - `client_secret: string`
+
+            Client secret of the Access service token used to authenticate with the remote service.
+
+          - `scheme: "access_service_token"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"access_service_token"`
+
+        - `AccessSCIMConfigMultiAuthentication2 = array of SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or object { client_id, client_secret, scheme }`
+
+          Multiple authentication schemes
+
+          - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+            Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+            Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+            - `token: string`
+
+              Token used to authenticate with the remote SCIM service.
+
+            - `scheme: "oauthbearertoken"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"oauthbearertoken"`
+
+          - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+            Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+            Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+            - `client_id: string`
+
+              Client ID of the Access service token used to authenticate with the remote service.
+
+            - `client_secret: string`
+
+              Client secret of the Access service token used to authenticate with the remote service.
+
+            - `scheme: "access_service_token"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"access_service_token"`
+
+      - `deactivate_on_delete: optional boolean`
+
+        If false, we propagate DELETE requests to the target application for SCIM resources. If true, we only set `active` to false on the SCIM resource. This is useful because some targets do not support DELETE operations.
+
+      - `enabled: optional boolean`
+
+        Whether SCIM provisioning is turned on for this application.
+
+      - `mappings: optional array of SCIMConfigMapping`
+
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+
+        - `schema: string`
+
+          Which SCIM resource type this mapping applies to.
+
+        - `enabled: optional boolean`
+
+          Whether or not this mapping is enabled.
+
+        - `filter: optional string`
+
+          A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+
+        - `operations: optional object { create, delete, update }`
+
+          Whether or not this mapping applies to creates, updates, or deletes.
+
+        - `strictness: optional "strict" or "passthrough"`
+
+          The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+
+        - `transform_jsonata: optional string`
+
+          A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
 
     - `service_auth_401_redirect: optional boolean`
 
@@ -89001,9 +91433,141 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The name of the application.
 
-    - `scim_config: optional ApplicationSCIMConfig`
+    - `scim_config: optional object { idp_uid, remote_uri, authentication, 3 more }`
 
       Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+
+      - `idp_uid: string`
+
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+
+      - `remote_uri: string`
+
+        The base URI for the application's SCIM-compatible API.
+
+      - `authentication: optional SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or 2 more`
+
+        Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+          Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+          Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+          - `token: string`
+
+            Token used to authenticate with the remote SCIM service.
+
+          - `scheme: "oauthbearertoken"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"oauthbearertoken"`
+
+        - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+          Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+          Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+          - `client_id: string`
+
+            Client ID of the Access service token used to authenticate with the remote service.
+
+          - `client_secret: string`
+
+            Client secret of the Access service token used to authenticate with the remote service.
+
+          - `scheme: "access_service_token"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"access_service_token"`
+
+        - `AccessSCIMConfigMultiAuthentication2 = array of SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or object { client_id, client_secret, scheme }`
+
+          Multiple authentication schemes
+
+          - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+            Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+            Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+            - `token: string`
+
+              Token used to authenticate with the remote SCIM service.
+
+            - `scheme: "oauthbearertoken"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"oauthbearertoken"`
+
+          - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+            Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+            Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+            - `client_id: string`
+
+              Client ID of the Access service token used to authenticate with the remote service.
+
+            - `client_secret: string`
+
+              Client secret of the Access service token used to authenticate with the remote service.
+
+            - `scheme: "access_service_token"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"access_service_token"`
+
+      - `deactivate_on_delete: optional boolean`
+
+        If false, we propagate DELETE requests to the target application for SCIM resources. If true, we only set `active` to false on the SCIM resource. This is useful because some targets do not support DELETE operations.
+
+      - `enabled: optional boolean`
+
+        Whether SCIM provisioning is turned on for this application.
+
+      - `mappings: optional array of SCIMConfigMapping`
+
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+
+        - `schema: string`
+
+          Which SCIM resource type this mapping applies to.
+
+        - `enabled: optional boolean`
+
+          Whether or not this mapping is enabled.
+
+        - `filter: optional string`
+
+          A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+
+        - `operations: optional object { create, delete, update }`
+
+          Whether or not this mapping applies to creates, updates, or deletes.
+
+        - `strictness: optional "strict" or "passthrough"`
+
+          The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+
+        - `transform_jsonata: optional string`
+
+          A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
 
     - `session_duration: optional string`
 
@@ -89061,9 +91625,141 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The name of the application.
 
-    - `scim_config: optional ApplicationSCIMConfig`
+    - `scim_config: optional object { idp_uid, remote_uri, authentication, 3 more }`
 
       Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+
+      - `idp_uid: string`
+
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+
+      - `remote_uri: string`
+
+        The base URI for the application's SCIM-compatible API.
+
+      - `authentication: optional SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or 2 more`
+
+        Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+          Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+          Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+          - `token: string`
+
+            Token used to authenticate with the remote SCIM service.
+
+          - `scheme: "oauthbearertoken"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"oauthbearertoken"`
+
+        - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+          Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+          Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+          - `client_id: string`
+
+            Client ID of the Access service token used to authenticate with the remote service.
+
+          - `client_secret: string`
+
+            Client secret of the Access service token used to authenticate with the remote service.
+
+          - `scheme: "access_service_token"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"access_service_token"`
+
+        - `AccessSCIMConfigMultiAuthentication2 = array of SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or object { client_id, client_secret, scheme }`
+
+          Multiple authentication schemes
+
+          - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+            Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+            Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+            - `token: string`
+
+              Token used to authenticate with the remote SCIM service.
+
+            - `scheme: "oauthbearertoken"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"oauthbearertoken"`
+
+          - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+            Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+            Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+            - `client_id: string`
+
+              Client ID of the Access service token used to authenticate with the remote service.
+
+            - `client_secret: string`
+
+              Client secret of the Access service token used to authenticate with the remote service.
+
+            - `scheme: "access_service_token"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"access_service_token"`
+
+      - `deactivate_on_delete: optional boolean`
+
+        If false, we propagate DELETE requests to the target application for SCIM resources. If true, we only set `active` to false on the SCIM resource. This is useful because some targets do not support DELETE operations.
+
+      - `enabled: optional boolean`
+
+        Whether SCIM provisioning is turned on for this application.
+
+      - `mappings: optional array of SCIMConfigMapping`
+
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+
+        - `schema: string`
+
+          Which SCIM resource type this mapping applies to.
+
+        - `enabled: optional boolean`
+
+          Whether or not this mapping is enabled.
+
+        - `filter: optional string`
+
+          A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+
+        - `operations: optional object { create, delete, update }`
+
+          Whether or not this mapping applies to creates, updates, or deletes.
+
+        - `strictness: optional "strict" or "passthrough"`
+
+          The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+
+        - `transform_jsonata: optional string`
+
+          A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
 
     - `session_duration: optional string`
 
@@ -89121,9 +91817,141 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The name of the application.
 
-    - `scim_config: optional ApplicationSCIMConfig`
+    - `scim_config: optional object { idp_uid, remote_uri, authentication, 3 more }`
 
       Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+
+      - `idp_uid: string`
+
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+
+      - `remote_uri: string`
+
+        The base URI for the application's SCIM-compatible API.
+
+      - `authentication: optional SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or 2 more`
+
+        Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+          Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+          Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+          - `token: string`
+
+            Token used to authenticate with the remote SCIM service.
+
+          - `scheme: "oauthbearertoken"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"oauthbearertoken"`
+
+        - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+          Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+          Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+          - `client_id: string`
+
+            Client ID of the Access service token used to authenticate with the remote service.
+
+          - `client_secret: string`
+
+            Client secret of the Access service token used to authenticate with the remote service.
+
+          - `scheme: "access_service_token"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"access_service_token"`
+
+        - `AccessSCIMConfigMultiAuthentication2 = array of SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or object { client_id, client_secret, scheme }`
+
+          Multiple authentication schemes
+
+          - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+            Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+            Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+            - `token: string`
+
+              Token used to authenticate with the remote SCIM service.
+
+            - `scheme: "oauthbearertoken"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"oauthbearertoken"`
+
+          - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+            Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+            Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+            - `client_id: string`
+
+              Client ID of the Access service token used to authenticate with the remote service.
+
+            - `client_secret: string`
+
+              Client secret of the Access service token used to authenticate with the remote service.
+
+            - `scheme: "access_service_token"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"access_service_token"`
+
+      - `deactivate_on_delete: optional boolean`
+
+        If false, we propagate DELETE requests to the target application for SCIM resources. If true, we only set `active` to false on the SCIM resource. This is useful because some targets do not support DELETE operations.
+
+      - `enabled: optional boolean`
+
+        Whether SCIM provisioning is turned on for this application.
+
+      - `mappings: optional array of SCIMConfigMapping`
+
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+
+        - `schema: string`
+
+          Which SCIM resource type this mapping applies to.
+
+        - `enabled: optional boolean`
+
+          Whether or not this mapping is enabled.
+
+        - `filter: optional string`
+
+          A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+
+        - `operations: optional object { create, delete, update }`
+
+          Whether or not this mapping applies to creates, updates, or deletes.
+
+        - `strictness: optional "strict" or "passthrough"`
+
+          The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+
+        - `transform_jsonata: optional string`
+
+          A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
 
     - `session_duration: optional string`
 
@@ -89161,9 +91989,141 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The name of the application.
 
-    - `scim_config: optional ApplicationSCIMConfig`
+    - `scim_config: optional object { idp_uid, remote_uri, authentication, 3 more }`
 
       Configuration for provisioning to this application via SCIM. This is currently in closed beta.
+
+      - `idp_uid: string`
+
+        The UID of the IdP to use as the source for SCIM resources to provision to this application.
+
+      - `remote_uri: string`
+
+        The base URI for the application's SCIM-compatible API.
+
+      - `authentication: optional SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or 2 more`
+
+        Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+          Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+          Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+          - `token: string`
+
+            Token used to authenticate with the remote SCIM service.
+
+          - `scheme: "oauthbearertoken"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"oauthbearertoken"`
+
+        - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+          Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+        - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+          Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+          - `client_id: string`
+
+            Client ID of the Access service token used to authenticate with the remote service.
+
+          - `client_secret: string`
+
+            Client secret of the Access service token used to authenticate with the remote service.
+
+          - `scheme: "access_service_token"`
+
+            The authentication scheme to use when making SCIM requests to this application.
+
+            - `"access_service_token"`
+
+        - `AccessSCIMConfigMultiAuthentication2 = array of SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or object { client_id, client_secret, scheme }`
+
+          Multiple authentication schemes
+
+          - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
+
+            Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationOAuthBearerToken2 object { token, scheme }`
+
+            Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
+
+            - `token: string`
+
+              Token used to authenticate with the remote SCIM service.
+
+            - `scheme: "oauthbearertoken"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"oauthbearertoken"`
+
+          - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
+
+            Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
+
+          - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
+
+            Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
+
+            - `client_id: string`
+
+              Client ID of the Access service token used to authenticate with the remote service.
+
+            - `client_secret: string`
+
+              Client secret of the Access service token used to authenticate with the remote service.
+
+            - `scheme: "access_service_token"`
+
+              The authentication scheme to use when making SCIM requests to this application.
+
+              - `"access_service_token"`
+
+      - `deactivate_on_delete: optional boolean`
+
+        If false, we propagate DELETE requests to the target application for SCIM resources. If true, we only set `active` to false on the SCIM resource. This is useful because some targets do not support DELETE operations.
+
+      - `enabled: optional boolean`
+
+        Whether SCIM provisioning is turned on for this application.
+
+      - `mappings: optional array of SCIMConfigMapping`
+
+        A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
+
+        - `schema: string`
+
+          Which SCIM resource type this mapping applies to.
+
+        - `enabled: optional boolean`
+
+          Whether or not this mapping is enabled.
+
+        - `filter: optional string`
+
+          A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
+
+        - `operations: optional object { create, delete, update }`
+
+          Whether or not this mapping applies to creates, updates, or deletes.
+
+        - `strictness: optional "strict" or "passthrough"`
+
+          The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
+
+        - `transform_jsonata: optional string`
+
+          A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
 
     - `updated_at: optional string`
 
@@ -89825,200 +92785,6 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
   - `updated_at: optional string`
 
-### Application SCIM Config
-
-- `ApplicationSCIMConfig object { idp_uid, remote_uri, authentication, 3 more }`
-
-  Configuration for provisioning to this application via SCIM. This is currently in closed beta.
-
-  - `idp_uid: string`
-
-    The UID of the IdP to use as the source for SCIM resources to provision to this application.
-
-  - `remote_uri: string`
-
-    The base URI for the application's SCIM-compatible API.
-
-  - `authentication: optional SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or 2 more`
-
-    Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
-
-    - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
-
-      Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
-
-      - `password: string`
-
-        Password used to authenticate with the remote SCIM service.
-
-      - `scheme: "httpbasic"`
-
-        The authentication scheme to use when making SCIM requests to this application.
-
-        - `"httpbasic"`
-
-      - `user: string`
-
-        User name used to authenticate with the remote SCIM service.
-
-    - `AccessSchemasSCIMConfigAuthenticationOAuthBearerToken object { token, scheme }`
-
-      Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
-
-      - `token: string`
-
-        Token used to authenticate with the remote SCIM service.
-
-      - `scheme: "oauthbearertoken"`
-
-        The authentication scheme to use when making SCIM requests to this application.
-
-        - `"oauthbearertoken"`
-
-    - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
-
-      Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
-
-      - `authorization_url: string`
-
-        URL used to generate the auth code used during token generation.
-
-      - `client_id: string`
-
-        Client ID used to authenticate when generating a token for authenticating with the remote SCIM service.
-
-      - `client_secret: string`
-
-        Secret used to authenticate when generating a token for authenticating with the remove SCIM service.
-
-      - `scheme: "oauth2"`
-
-        The authentication scheme to use when making SCIM requests to this application.
-
-        - `"oauth2"`
-
-      - `token_url: string`
-
-        URL used to generate the token used to authenticate with the remote SCIM service.
-
-      - `scopes: optional array of string`
-
-        The authorization scopes to request when generating the token used to authenticate with the remove SCIM service.
-
-    - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
-
-      Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
-
-      - `client_id: string`
-
-        Client ID of the Access service token used to authenticate with the remote service.
-
-      - `client_secret: string`
-
-        Client secret of the Access service token used to authenticate with the remote service.
-
-      - `scheme: "access_service_token"`
-
-        The authentication scheme to use when making SCIM requests to this application.
-
-        - `"access_service_token"`
-
-    - `AccessSchemasSCIMConfigMultiAuthentication = array of SCIMConfigAuthenticationHTTPBasic or object { token, scheme }  or SCIMConfigAuthenticationOauth2 or object { client_id, client_secret, scheme }`
-
-      Multiple authentication schemes
-
-      - `SCIMConfigAuthenticationHTTPBasic object { password, scheme, user }`
-
-        Attributes for configuring HTTP Basic authentication scheme for SCIM provisioning to an application.
-
-      - `AccessSchemasSCIMConfigAuthenticationOAuthBearerToken object { token, scheme }`
-
-        Attributes for configuring OAuth Bearer Token authentication scheme for SCIM provisioning to an application.
-
-        - `token: string`
-
-          Token used to authenticate with the remote SCIM service.
-
-        - `scheme: "oauthbearertoken"`
-
-          The authentication scheme to use when making SCIM requests to this application.
-
-          - `"oauthbearertoken"`
-
-      - `SCIMConfigAuthenticationOauth2 object { authorization_url, client_id, client_secret, 3 more }`
-
-        Attributes for configuring OAuth 2 authentication scheme for SCIM provisioning to an application.
-
-      - `AccessSCIMConfigAuthenticationAccessServiceToken object { client_id, client_secret, scheme }`
-
-        Attributes for configuring Access Service Token authentication scheme for SCIM provisioning to an application.
-
-        - `client_id: string`
-
-          Client ID of the Access service token used to authenticate with the remote service.
-
-        - `client_secret: string`
-
-          Client secret of the Access service token used to authenticate with the remote service.
-
-        - `scheme: "access_service_token"`
-
-          The authentication scheme to use when making SCIM requests to this application.
-
-          - `"access_service_token"`
-
-  - `deactivate_on_delete: optional boolean`
-
-    If false, we propagate DELETE requests to the target application for SCIM resources. If true, we only set `active` to false on the SCIM resource. This is useful because some targets do not support DELETE operations.
-
-  - `enabled: optional boolean`
-
-    Whether SCIM provisioning is turned on for this application.
-
-  - `mappings: optional array of SCIMConfigMapping`
-
-    A list of mappings to apply to SCIM resources before provisioning them in this application. These can transform or filter the resources to be provisioned.
-
-    - `schema: string`
-
-      Which SCIM resource type this mapping applies to.
-
-    - `enabled: optional boolean`
-
-      Whether or not this mapping is enabled.
-
-    - `filter: optional string`
-
-      A [SCIM filter expression](https://datatracker.ietf.org/doc/html/rfc7644#section-3.4.2.2) that matches resources that should be provisioned to this application.
-
-    - `operations: optional object { create, delete, update }`
-
-      Whether or not this mapping applies to creates, updates, or deletes.
-
-      - `create: optional boolean`
-
-        Whether or not this mapping applies to create (POST) operations.
-
-      - `delete: optional boolean`
-
-        Whether or not this mapping applies to DELETE operations.
-
-      - `update: optional boolean`
-
-        Whether or not this mapping applies to update (PATCH/PUT) operations.
-
-    - `strictness: optional "strict" or "passthrough"`
-
-      The level of adherence to outbound resource schemas when provisioning to this mapping. ‘Strict’ removes unknown values, while ‘passthrough’ passes unknown values to the target.
-
-      - `"strict"`
-
-      - `"passthrough"`
-
-    - `transform_jsonata: optional string`
-
-      A [JSONata](https://jsonata.org/) expression that transforms the resource before provisioning it in the application.
-
 ### Application Type
 
 - `ApplicationType = "self_hosted" or "saas" or "ssh" or 11 more`
@@ -90465,9 +93231,9 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
 ### Application List Response
 
-- `ApplicationListResponse = object { domain, type, id, 30 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 30 more }  or 10 more`
+- `ApplicationListResponse = object { domain, type, id, 31 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 31 more }  or 10 more`
 
-  - `SelfHostedApplication object { domain, type, id, 30 more }`
+  - `SelfHostedApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -90601,7 +93367,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -90658,6 +93424,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -92443,7 +95253,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The application type.
 
-  - `BrowserSSHApplication object { domain, type, id, 30 more }`
+  - `BrowserSSHApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -92527,7 +95337,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -92584,6 +95394,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -93275,7 +96129,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       This allows users to access private domains without connecting to Gateway. The option requires
       Clientless Browser Isolation to be set up with policies that allow users of this application.
 
-  - `BrowserVNCApplication object { domain, type, id, 30 more }`
+  - `BrowserVNCApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -93359,7 +96213,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -93416,6 +96270,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -96943,11 +99841,11 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
         Configures multi-factor authentication (MFA) settings for infrastructure applications.
 
-        - `allowed_authenticators: optional array of "ssh_piv_key"`
+        - `allowed_authenticators: optional array of "piv_key"`
 
-          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `ssh_piv_key` is supported.
+          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `piv_key` is supported.
 
-          - `"ssh_piv_key"`
+          - `"piv_key"`
 
         - `mfa_disabled: optional boolean`
 
@@ -97079,7 +99977,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       - `updated_at: optional string`
 
-  - `BrowserRDPApplication object { domain, target_criteria, type, 31 more }`
+  - `BrowserRDPApplication object { domain, target_criteria, type, 32 more }`
 
     - `domain: string`
 
@@ -97151,7 +100049,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -97208,6 +100106,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -97941,7 +100883,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -97998,6 +100940,46 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `http_only_cookie_attribute: optional boolean`
 
@@ -98673,7 +101655,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -98730,6 +101712,46 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `domain: optional string`
 
@@ -99369,9 +102391,9 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
 ### Application Get Response
 
-- `ApplicationGetResponse = object { domain, type, id, 30 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 30 more }  or 10 more`
+- `ApplicationGetResponse = object { domain, type, id, 31 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 31 more }  or 10 more`
 
-  - `SelfHostedApplication object { domain, type, id, 30 more }`
+  - `SelfHostedApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -99505,7 +102527,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -99562,6 +102584,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -101347,7 +104413,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The application type.
 
-  - `BrowserSSHApplication object { domain, type, id, 30 more }`
+  - `BrowserSSHApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -101431,7 +104497,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -101488,6 +104554,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -102179,7 +105289,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       This allows users to access private domains without connecting to Gateway. The option requires
       Clientless Browser Isolation to be set up with policies that allow users of this application.
 
-  - `BrowserVNCApplication object { domain, type, id, 30 more }`
+  - `BrowserVNCApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -102263,7 +105373,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -102320,6 +105430,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -105847,11 +109001,11 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
         Configures multi-factor authentication (MFA) settings for infrastructure applications.
 
-        - `allowed_authenticators: optional array of "ssh_piv_key"`
+        - `allowed_authenticators: optional array of "piv_key"`
 
-          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `ssh_piv_key` is supported.
+          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `piv_key` is supported.
 
-          - `"ssh_piv_key"`
+          - `"piv_key"`
 
         - `mfa_disabled: optional boolean`
 
@@ -105983,7 +109137,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       - `updated_at: optional string`
 
-  - `BrowserRDPApplication object { domain, target_criteria, type, 31 more }`
+  - `BrowserRDPApplication object { domain, target_criteria, type, 32 more }`
 
     - `domain: string`
 
@@ -106055,7 +109209,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -106112,6 +109266,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -106845,7 +110043,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -106902,6 +110100,46 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `http_only_cookie_attribute: optional boolean`
 
@@ -107577,7 +110815,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -107634,6 +110872,46 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `domain: optional string`
 
@@ -108273,9 +111551,9 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
 ### Application Create Response
 
-- `ApplicationCreateResponse = object { domain, type, id, 30 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 30 more }  or 10 more`
+- `ApplicationCreateResponse = object { domain, type, id, 31 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 31 more }  or 10 more`
 
-  - `SelfHostedApplication object { domain, type, id, 30 more }`
+  - `SelfHostedApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -108409,7 +111687,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -108466,6 +111744,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -110251,7 +113573,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The application type.
 
-  - `BrowserSSHApplication object { domain, type, id, 30 more }`
+  - `BrowserSSHApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -110335,7 +113657,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -110392,6 +113714,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -111083,7 +114449,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       This allows users to access private domains without connecting to Gateway. The option requires
       Clientless Browser Isolation to be set up with policies that allow users of this application.
 
-  - `BrowserVNCApplication object { domain, type, id, 30 more }`
+  - `BrowserVNCApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -111167,7 +114533,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -111224,6 +114590,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -114751,11 +118161,11 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
         Configures multi-factor authentication (MFA) settings for infrastructure applications.
 
-        - `allowed_authenticators: optional array of "ssh_piv_key"`
+        - `allowed_authenticators: optional array of "piv_key"`
 
-          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `ssh_piv_key` is supported.
+          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `piv_key` is supported.
 
-          - `"ssh_piv_key"`
+          - `"piv_key"`
 
         - `mfa_disabled: optional boolean`
 
@@ -114887,7 +118297,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       - `updated_at: optional string`
 
-  - `BrowserRDPApplication object { domain, target_criteria, type, 31 more }`
+  - `BrowserRDPApplication object { domain, target_criteria, type, 32 more }`
 
     - `domain: string`
 
@@ -114959,7 +118369,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -115016,6 +118426,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -115749,7 +119203,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -115806,6 +119260,46 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `http_only_cookie_attribute: optional boolean`
 
@@ -116481,7 +119975,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -116538,6 +120032,46 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `domain: optional string`
 
@@ -117177,9 +120711,9 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
 ### Application Update Response
 
-- `ApplicationUpdateResponse = object { domain, type, id, 30 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 30 more }  or 10 more`
+- `ApplicationUpdateResponse = object { domain, type, id, 31 more }  or object { id, allowed_idps, app_launcher_visible, 10 more }  or object { domain, type, id, 31 more }  or 10 more`
 
-  - `SelfHostedApplication object { domain, type, id, 30 more }`
+  - `SelfHostedApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -117313,7 +120847,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -117370,6 +120904,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -119155,7 +122733,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The application type.
 
-  - `BrowserSSHApplication object { domain, type, id, 30 more }`
+  - `BrowserSSHApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -119239,7 +122817,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -119296,6 +122874,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -119987,7 +123609,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       This allows users to access private domains without connecting to Gateway. The option requires
       Clientless Browser Isolation to be set up with policies that allow users of this application.
 
-  - `BrowserVNCApplication object { domain, type, id, 30 more }`
+  - `BrowserVNCApplication object { domain, type, id, 31 more }`
 
     - `domain: string`
 
@@ -120071,7 +123693,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -120128,6 +123750,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -123655,11 +127321,11 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
         Configures multi-factor authentication (MFA) settings for infrastructure applications.
 
-        - `allowed_authenticators: optional array of "ssh_piv_key"`
+        - `allowed_authenticators: optional array of "piv_key"`
 
-          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `ssh_piv_key` is supported.
+          Lists the MFA methods that users can authenticate with. For infrastructure applications, only `piv_key` is supported.
 
-          - `"ssh_piv_key"`
+          - `"piv_key"`
 
         - `mfa_disabled: optional boolean`
 
@@ -123791,7 +127457,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       - `updated_at: optional string`
 
-  - `BrowserRDPApplication object { domain, target_criteria, type, 31 more }`
+  - `BrowserRDPApplication object { domain, target_criteria, type, 32 more }`
 
     - `domain: string`
 
@@ -123863,7 +127529,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -123920,6 +127586,50 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
+
+    - `eager_redirect_cookie_setting: optional boolean`
+
+      Preemptively sets the Access session cookie on every hostname in a multi-hostname self-hosted application during the initial redirect chain, rather than setting it lazily on first visit. Defaults to true. Set to false to disable the eager redirect cookie behavior.
 
     - `enable_binding_cookie: optional boolean`
 
@@ -124653,7 +128363,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -124710,6 +128420,46 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `http_only_cookie_attribute: optional boolean`
 
@@ -125385,7 +129135,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       The custom pages that will be displayed when applicable for this application
 
-    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }`
+    - `destinations: optional array of object { type, uri }  or object { cidr, hostname, l4_protocol, 3 more }  or object { mcp_server_id, type }  or 4 more`
 
       List of destinations secured by Access. This supersedes `self_hosted_domains` to allow for more flexibility in defining different types of domains. If `destinations` are provided, then `self_hosted_domains` will be ignored.
 
@@ -125442,6 +129192,46 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
         - `type: optional "via_mcp_server_portal"`
 
           - `"via_mcp_server_portal"`
+
+      - `WorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker that Access will secure. All requests routed to the specified Worker, including its preview deployments, will be protected. The `preview_worker` and `public` destination types takes precedence, so you can create separate applications to override the policies for the Worker's previews or specific paths.
+
+        - `type: "worker"`
+
+          - `"worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker to protect with Access.
+
+      - `PreviewWorkerDestination object { type, worker_id }`
+
+        A specific Cloudflare Worker whose preview deployments Access will secure. Only requests routed to the preview deployments of the specified Worker will be protected. The `public` destination type takes precedence, so you can create separate applications to override the policies for specific paths.
+
+        - `type: "preview_worker"`
+
+          - `"preview_worker"`
+
+        - `worker_id: string`
+
+          The ID of the Cloudflare Worker whose preview deployments to protect with Access.
+
+      - `AllWorkersDestination object { type }`
+
+        Protects all Cloudflare Workers on the account with Access, including their preview deployments. At most one destination of this type can exist per account. The `worker`, `preview_worker`, `all_preview_workers`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_workers"`
+
+          - `"all_workers"`
+
+      - `AllPreviewWorkersDestination object { type }`
+
+        Protects the preview deployments of all Cloudflare Workers on the account with Access. At most one destination of this type can exist per account. The `worker`, `preview_worker`, and `public` destination types take precedence, so you can create separate applications to override the policies for specific Workers, their previews, or specific paths.
+
+        - `type: "all_preview_workers"`
+
+          - `"all_preview_workers"`
 
     - `domain: optional string`
 
@@ -126654,7 +130444,7 @@ Tests if a specific user has permission to access an application.
 
     - `email: optional string`
 
-    - `geo: optional UserPolicyCheckGeo`
+    - `geo: optional object { country }`
 
       - `country: optional string`
 
@@ -126748,12 +130538,6 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
 ## Domain Types
 
-### User Policy Check Geo
-
-- `UserPolicyCheckGeo object { country }`
-
-  - `country: optional string`
-
 ### User Policy Check List Response
 
 - `UserPolicyCheckListResponse object { app_state, user_identity }`
@@ -126784,7 +130568,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
     - `email: optional string`
 
-    - `geo: optional UserPolicyCheckGeo`
+    - `geo: optional object { country }`
 
       - `country: optional string`
 
@@ -147056,7 +150840,7 @@ Get an active session for a single user.
 
   - `email: optional string`
 
-  - `geo: optional UserPolicyCheckGeo`
+  - `geo: optional object { country }`
 
     - `country: optional string`
 
@@ -147254,7 +151038,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/users/$USE
 
   - `email: optional string`
 
-  - `geo: optional UserPolicyCheckGeo`
+  - `geo: optional object { country }`
 
     - `country: optional string`
 
@@ -147384,7 +151168,7 @@ Get last seen identity for a single user.
 
   - `email: optional string`
 
-  - `geo: optional UserPolicyCheckGeo`
+  - `geo: optional object { country }`
 
     - `country: optional string`
 
@@ -147551,7 +151335,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/users/$USE
 
   - `email: optional string`
 
-  - `geo: optional UserPolicyCheckGeo`
+  - `geo: optional object { country }`
 
     - `country: optional string`
 
@@ -156995,6 +160779,2311 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/policies/$
 
     The UUID of the policy
 
+# Casb
+
+# Applications
+
+## List applications
+
+**get** `/accounts/{account_id}/one/applications`
+
+Returns a list of available applications with use cases and permissions.
+
+### Path Parameters
+
+- `account_id: string`
+
+### Query Parameters
+
+- `environment: optional string`
+
+  Filter by supported environment (standard, fedramp).
+
+### Returns
+
+- `auth_methods: array of object { display_name, slug }`
+
+  Available auth methods.
+
+  - `display_name: string`
+
+    Human-readable auth method name.
+
+  - `slug: string`
+
+    Auth method identifier.
+
+- `category: string`
+
+  Vendor category (e.g. Productivity, AI).
+
+- `description: string`
+
+  Brief description of the integration.
+
+- `display_name: string`
+
+  Human-readable vendor name.
+
+- `dlp_enabled: boolean`
+
+  Whether DLP scanning is supported.
+
+- `logo: string`
+
+  Logo path.
+
+- `permissions: array of object { display_name, scope, severity }`
+
+  All permissions with severity.
+
+  - `display_name: string`
+
+    Human-readable permission name.
+
+  - `scope: string`
+
+    Vendor-native scope identifier.
+
+  - `severity: "low" or "medium" or "high" or "critical"`
+
+    Permission sensitivity level.
+
+    * `low` - low
+    * `medium` - medium
+    * `high` - high
+    * `critical` - critical
+
+    - `"low"`
+
+    - `"medium"`
+
+    - `"high"`
+
+    - `"critical"`
+
+- `slug: "GITHUB" or "GOOGLE_WORKSPACE" or "MICROSOFT_INTERNAL" or 2 more`
+
+  Vendor identifier (e.g. microsoft_internal, google_workspace).
+
+  * `GITHUB` - GITHUB
+  * `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE
+  * `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL
+  * `SALESFORCE` - SALESFORCE
+  * `SLACK` - SLACK
+
+  - `"GITHUB"`
+
+  - `"GOOGLE_WORKSPACE"`
+
+  - `"MICROSOFT_INTERNAL"`
+
+  - `"SALESFORCE"`
+
+  - `"SLACK"`
+
+- `supported_environments: array of string`
+
+  Environments this vendor supports (standard, fedramp).
+
+- `use_cases: array of object { display_name, slug }`
+
+  Supported use cases.
+
+  - `display_name: string`
+
+    Human-readable use case name.
+
+  - `slug: string`
+
+    Use case identifier (e.g. casb, ces).
+
+### Example
+
+```http
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/one/applications \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+#### Response
+
+```json
+[
+  {
+    "auth_methods": [
+      {
+        "display_name": "OAuth 2.0 Admin Consent",
+        "slug": "oauth2_standard"
+      }
+    ],
+    "category": "Productivity",
+    "description": "Monitor OneDrive, SharePoint, Teams, and Outlook.",
+    "display_name": "Microsoft",
+    "dlp_enabled": true,
+    "logo": "/api/v4/accounts/12345678/casb/static/microsoft_internal.svg",
+    "permissions": [
+      {
+        "display_name": "Read all users' full profiles",
+        "scope": "User.Read.All",
+        "severity": "high"
+      },
+      {
+        "display_name": "Read all files",
+        "scope": "Files.Read.All",
+        "severity": "high"
+      },
+      {
+        "display_name": "Read and write mail",
+        "scope": "Mail.ReadWrite",
+        "severity": "critical"
+      }
+    ],
+    "slug": "MICROSOFT_INTERNAL",
+    "supported_environments": [
+      "standard",
+      "fedramp"
+    ],
+    "use_cases": [
+      {
+        "display_name": "Cloud Access Security Broker",
+        "slug": "casb"
+      },
+      {
+        "display_name": "Cloud Email Security",
+        "slug": "ces"
+      }
+    ]
+  }
+]
+```
+
+## Get application details
+
+**get** `/accounts/{account_id}/one/applications/{slug}`
+
+Returns full application details including auth methods, use cases, and permissions.
+
+### Path Parameters
+
+- `account_id: string`
+
+- `slug: "GITHUB" or "GOOGLE_WORKSPACE" or "MICROSOFT_INTERNAL" or 2 more`
+
+  - `"GITHUB"`
+
+  - `"GOOGLE_WORKSPACE"`
+
+  - `"MICROSOFT_INTERNAL"`
+
+  - `"SALESFORCE"`
+
+  - `"SLACK"`
+
+### Returns
+
+- `auth_methods: array of object { display_name, is_default, slug, supported_environments }`
+
+  Available authentication methods.
+
+  - `display_name: string`
+
+    Human-readable auth method name.
+
+  - `is_default: boolean`
+
+    Whether this is the default auth method.
+
+  - `slug: string`
+
+    Auth method identifier.
+
+  - `supported_environments: array of string`
+
+    Environments this auth method supports.
+
+- `category: string`
+
+  Vendor category.
+
+- `description: string`
+
+  Brief description.
+
+- `display_name: string`
+
+  Human-readable vendor name.
+
+- `dlp_enabled: boolean`
+
+  Whether DLP scanning is supported.
+
+- `instructions: string`
+
+  Setup instructions for the user.
+
+- `logo: string`
+
+  Logo path.
+
+- `slug: "GITHUB" or "GOOGLE_WORKSPACE" or "MICROSOFT_INTERNAL" or 2 more`
+
+  Vendor identifier.
+
+  * `GITHUB` - GITHUB
+  * `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE
+  * `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL
+  * `SALESFORCE` - SALESFORCE
+  * `SLACK` - SLACK
+
+  - `"GITHUB"`
+
+  - `"GOOGLE_WORKSPACE"`
+
+  - `"MICROSOFT_INTERNAL"`
+
+  - `"SALESFORCE"`
+
+  - `"SLACK"`
+
+- `use_cases: array of object { base_scopes, description, display_name, 2 more }`
+
+  Use cases with full scope details.
+
+  - `base_scopes: array of object { display_name, scope, severity }`
+
+    Scopes always required for this use case.
+
+    - `display_name: string`
+
+      Human-readable permission name.
+
+    - `scope: string`
+
+      Vendor-native scope identifier.
+
+    - `severity: "low" or "medium" or "high" or "critical"`
+
+      Permission sensitivity level.
+
+      * `low` - low
+      * `medium` - medium
+      * `high` - high
+      * `critical` - critical
+
+      - `"low"`
+
+      - `"medium"`
+
+      - `"high"`
+
+      - `"critical"`
+
+  - `description: string`
+
+    Use case description.
+
+  - `display_name: string`
+
+    Human-readable use case name.
+
+  - `features: array of object { description, display_name, scopes, slug }`
+
+    Optional features with extra scopes.
+
+    - `description: string`
+
+      Feature description.
+
+    - `display_name: string`
+
+      Human-readable feature name.
+
+    - `scopes: array of object { display_name, scope, severity }`
+
+      Additional scopes when feature is enabled.
+
+      - `display_name: string`
+
+        Human-readable permission name.
+
+      - `scope: string`
+
+        Vendor-native scope identifier.
+
+      - `severity: "low" or "medium" or "high" or "critical"`
+
+        Permission sensitivity level.
+
+        * `low` - low
+        * `medium` - medium
+        * `high` - high
+        * `critical` - critical
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+        - `"critical"`
+
+    - `slug: string`
+
+      Feature identifier.
+
+  - `slug: string`
+
+    Use case identifier.
+
+### Example
+
+```http
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/one/applications/$SLUG \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+#### Response
+
+```json
+{
+  "auth_methods": [
+    {
+      "display_name": "OAuth 2.0 Admin Consent",
+      "is_default": true,
+      "slug": "oauth2",
+      "supported_environments": [
+        "standard",
+        "fedramp"
+      ]
+    }
+  ],
+  "category": "Productivity",
+  "description": "Monitor OneDrive, SharePoint, Teams, and Outlook.",
+  "display_name": "Microsoft",
+  "dlp_enabled": true,
+  "instructions": "You'll need a Microsoft 365 admin account with Global Admin or Application Admin role.",
+  "logo": "/api/v4/accounts/12345678/casb/static/microsoft_internal.svg",
+  "slug": "MICROSOFT_INTERNAL",
+  "use_cases": [
+    {
+      "base_scopes": [
+        {
+          "display_name": "Read all users' full profiles",
+          "scope": "User.Read.All",
+          "severity": "high"
+        },
+        {
+          "display_name": "Read all files",
+          "scope": "Files.Read.All",
+          "severity": "high"
+        }
+      ],
+      "description": "Discover and secure SaaS applications",
+      "display_name": "Cloud Access Security Broker",
+      "features": [
+        {
+          "description": "Automatically remediate security issues",
+          "display_name": "Auto Remediation",
+          "scopes": [
+            {
+              "display_name": "Read and write all files",
+              "scope": "Files.ReadWrite.All",
+              "severity": "critical"
+            }
+          ],
+          "slug": "auto_remediation"
+        }
+      ],
+      "slug": "casb"
+    }
+  ]
+}
+```
+
+## Domain Types
+
+### Application List Response
+
+- `ApplicationListResponse = array of object { auth_methods, category, description, 7 more }`
+
+  - `auth_methods: array of object { display_name, slug }`
+
+    Available auth methods.
+
+    - `display_name: string`
+
+      Human-readable auth method name.
+
+    - `slug: string`
+
+      Auth method identifier.
+
+  - `category: string`
+
+    Vendor category (e.g. Productivity, AI).
+
+  - `description: string`
+
+    Brief description of the integration.
+
+  - `display_name: string`
+
+    Human-readable vendor name.
+
+  - `dlp_enabled: boolean`
+
+    Whether DLP scanning is supported.
+
+  - `logo: string`
+
+    Logo path.
+
+  - `permissions: array of object { display_name, scope, severity }`
+
+    All permissions with severity.
+
+    - `display_name: string`
+
+      Human-readable permission name.
+
+    - `scope: string`
+
+      Vendor-native scope identifier.
+
+    - `severity: "low" or "medium" or "high" or "critical"`
+
+      Permission sensitivity level.
+
+      * `low` - low
+      * `medium` - medium
+      * `high` - high
+      * `critical` - critical
+
+      - `"low"`
+
+      - `"medium"`
+
+      - `"high"`
+
+      - `"critical"`
+
+  - `slug: "GITHUB" or "GOOGLE_WORKSPACE" or "MICROSOFT_INTERNAL" or 2 more`
+
+    Vendor identifier (e.g. microsoft_internal, google_workspace).
+
+    * `GITHUB` - GITHUB
+    * `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE
+    * `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL
+    * `SALESFORCE` - SALESFORCE
+    * `SLACK` - SLACK
+
+    - `"GITHUB"`
+
+    - `"GOOGLE_WORKSPACE"`
+
+    - `"MICROSOFT_INTERNAL"`
+
+    - `"SALESFORCE"`
+
+    - `"SLACK"`
+
+  - `supported_environments: array of string`
+
+    Environments this vendor supports (standard, fedramp).
+
+  - `use_cases: array of object { display_name, slug }`
+
+    Supported use cases.
+
+    - `display_name: string`
+
+      Human-readable use case name.
+
+    - `slug: string`
+
+      Use case identifier (e.g. casb, ces).
+
+### Application Get Response
+
+- `ApplicationGetResponse object { auth_methods, category, description, 6 more }`
+
+  Full application detail for onboarding UI.
+
+  - `auth_methods: array of object { display_name, is_default, slug, supported_environments }`
+
+    Available authentication methods.
+
+    - `display_name: string`
+
+      Human-readable auth method name.
+
+    - `is_default: boolean`
+
+      Whether this is the default auth method.
+
+    - `slug: string`
+
+      Auth method identifier.
+
+    - `supported_environments: array of string`
+
+      Environments this auth method supports.
+
+  - `category: string`
+
+    Vendor category.
+
+  - `description: string`
+
+    Brief description.
+
+  - `display_name: string`
+
+    Human-readable vendor name.
+
+  - `dlp_enabled: boolean`
+
+    Whether DLP scanning is supported.
+
+  - `instructions: string`
+
+    Setup instructions for the user.
+
+  - `logo: string`
+
+    Logo path.
+
+  - `slug: "GITHUB" or "GOOGLE_WORKSPACE" or "MICROSOFT_INTERNAL" or 2 more`
+
+    Vendor identifier.
+
+    * `GITHUB` - GITHUB
+    * `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE
+    * `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL
+    * `SALESFORCE` - SALESFORCE
+    * `SLACK` - SLACK
+
+    - `"GITHUB"`
+
+    - `"GOOGLE_WORKSPACE"`
+
+    - `"MICROSOFT_INTERNAL"`
+
+    - `"SALESFORCE"`
+
+    - `"SLACK"`
+
+  - `use_cases: array of object { base_scopes, description, display_name, 2 more }`
+
+    Use cases with full scope details.
+
+    - `base_scopes: array of object { display_name, scope, severity }`
+
+      Scopes always required for this use case.
+
+      - `display_name: string`
+
+        Human-readable permission name.
+
+      - `scope: string`
+
+        Vendor-native scope identifier.
+
+      - `severity: "low" or "medium" or "high" or "critical"`
+
+        Permission sensitivity level.
+
+        * `low` - low
+        * `medium` - medium
+        * `high` - high
+        * `critical` - critical
+
+        - `"low"`
+
+        - `"medium"`
+
+        - `"high"`
+
+        - `"critical"`
+
+    - `description: string`
+
+      Use case description.
+
+    - `display_name: string`
+
+      Human-readable use case name.
+
+    - `features: array of object { description, display_name, scopes, slug }`
+
+      Optional features with extra scopes.
+
+      - `description: string`
+
+        Feature description.
+
+      - `display_name: string`
+
+        Human-readable feature name.
+
+      - `scopes: array of object { display_name, scope, severity }`
+
+        Additional scopes when feature is enabled.
+
+        - `display_name: string`
+
+          Human-readable permission name.
+
+        - `scope: string`
+
+          Vendor-native scope identifier.
+
+        - `severity: "low" or "medium" or "high" or "critical"`
+
+          Permission sensitivity level.
+
+          * `low` - low
+          * `medium` - medium
+          * `high` - high
+          * `critical` - critical
+
+          - `"low"`
+
+          - `"medium"`
+
+          - `"high"`
+
+          - `"critical"`
+
+      - `slug: string`
+
+        Feature identifier.
+
+    - `slug: string`
+
+      Use case identifier.
+
+# Setup Flows
+
+## Get application setup flows
+
+**get** `/accounts/{account_id}/one/applications/{slug}/setup-flows`
+
+Returns all available setup flows for the application, one per auth method.
+
+### Path Parameters
+
+- `account_id: string`
+
+- `slug: string`
+
+### Query Parameters
+
+- `auth_method: optional string`
+
+  Filter by auth method slug. Get available slugs from GET /v2/applications.
+
+- `environment: optional "fedramp" or "standard"`
+
+  Filter by environment.
+
+  - `"fedramp"`
+
+  - `"standard"`
+
+### Returns
+
+- `id: string`
+
+  Setup flow identifier.
+
+- `default: boolean`
+
+  Whether this is the default auth method.
+
+- `description: string`
+
+  Flow description.
+
+- `name: string`
+
+  Human-readable flow name.
+
+- `steps: array of object { type, component_id, description, 5 more }`
+
+  Ordered list of setup steps.
+
+  - `type: "component" or "instruction" or "form_input" or "oauth_redirect"`
+
+    Step type.
+
+    * `component` - component
+    * `instruction` - instruction
+    * `form_input` - form_input
+    * `oauth_redirect` - oauth_redirect
+
+    - `"component"`
+
+    - `"instruction"`
+
+    - `"form_input"`
+
+    - `"oauth_redirect"`
+
+  - `component_id: optional string`
+
+    Component identifier (for component type).
+
+  - `description: optional string`
+
+    Step description with markdown support.
+
+  - `dynamic_content: optional array of object { label, type, url_template, value_from }`
+
+    Dynamic content blocks (for instruction/form_input).
+
+    - `label: string`
+
+      Display label.
+
+    - `type: "copy_block" or "external_link"`
+
+      Content type.
+
+      * `copy_block` - copy_block
+      * `external_link` - external_link
+
+      - `"copy_block"`
+
+      - `"external_link"`
+
+    - `url_template: optional string`
+
+      URL template with {{ variable }} interpolation (for external_link).
+
+    - `value_from: optional string`
+
+      Field path to get value from (for copy_block).
+
+  - `form_fields: optional array of object { label, name, placeholder, 3 more }`
+
+    Form fields (for form_input).
+
+    - `label: string`
+
+      Human-readable field label.
+
+    - `name: string`
+
+      Field identifier (maps to credentials key).
+
+    - `placeholder: string`
+
+      Placeholder text.
+
+    - `required: boolean`
+
+      Whether field is required.
+
+    - `supported_file_types: array of string`
+
+      Allowed file extensions for file_upload type.
+
+    - `type: "text" or "password" or "email" or "file_upload"`
+
+      Field input type.
+
+      * `text` - text
+      * `password` - password
+      * `email` - email
+      * `file_upload` - file_upload
+
+      - `"text"`
+
+      - `"password"`
+
+      - `"email"`
+
+      - `"file_upload"`
+
+  - `is_required: optional boolean`
+
+    Whether step is required (for form_input).
+
+  - `parameters: optional map[string]`
+
+    Component parameters (for component type).
+
+  - `title: optional string`
+
+    Step title (for instruction/form_input/oauth_redirect).
+
+- `supported_environments: array of string`
+
+  Environments this auth method supports (standard, fedramp).
+
+- `auth_config: optional object { authorization_url, client_id, requires_pkce, 2 more }`
+
+  OAuth configuration (present for OAuth-based flows).
+
+  - `authorization_url: string`
+
+    Authorization URL for the requested environment.
+
+  - `client_id: string`
+
+    OAuth client ID.
+
+  - `requires_pkce: boolean`
+
+    Whether PKCE is required.
+
+  - `scopes: array of string`
+
+    OAuth scopes to request.
+
+  - `url_placeholders: array of string`
+
+    Placeholders in authorization URL that frontend must fill.
+
+### Example
+
+```http
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/one/applications/$SLUG/setup-flows \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+#### Response
+
+```json
+[
+  {
+    "default": true,
+    "description": "Connect via a Google Cloud Service Account with Domain-Wide Delegation.",
+    "id": "google_workspace_service_account",
+    "name": "Google Workspace (Service Account)",
+    "steps": [
+      {
+        "component_id": "common/name_integration",
+        "parameters": null,
+        "type": "component"
+      },
+      {
+        "description": "In the Google Cloud Console, create a service account...",
+        "dynamic_content": null,
+        "title": "Create a Service Account",
+        "type": "instruction"
+      },
+      {
+        "description": "Upload the JSON service account key file.",
+        "dynamic_content": null,
+        "form_fields": [
+          {
+            "label": "Service Account JSON File",
+            "name": "service_account_credentials",
+            "placeholder": null,
+            "required": true,
+            "supported_file_types": [
+              ".json"
+            ],
+            "type": "file_upload"
+          }
+        ],
+        "is_required": true,
+        "title": "Upload JSON Key",
+        "type": "form_input"
+      },
+      {
+        "description": "Navigate to your Google admin console and add the client ID.",
+        "dynamic_content": [
+          {
+            "label": "Client ID",
+            "type": "copy_block",
+            "value_from": "credentials.client_id"
+          },
+          {
+            "label": "OAuth Scopes",
+            "type": "copy_block",
+            "value_from": "required_scopes"
+          },
+          {
+            "label": "Open Domain-Wide Delegation Settings",
+            "type": "external_link",
+            "url_template": "https://admin.google.com/ac/owl/domainwidedelegation"
+          }
+        ],
+        "title": "Delegate Domain-Wide Authority",
+        "type": "instruction"
+      },
+      {
+        "description": "Provide the email of a Google Workspace Super Administrator.",
+        "dynamic_content": null,
+        "form_fields": [
+          {
+            "label": "Super Administrator Email",
+            "name": "administrator_email",
+            "placeholder": "admin@your-domain.com",
+            "required": true,
+            "supported_file_types": null,
+            "type": "email"
+          }
+        ],
+        "is_required": true,
+        "title": "Confirm Administrator Email",
+        "type": "form_input"
+      }
+    ],
+    "supported_environments": [
+      "standard"
+    ]
+  }
+]
+```
+
+## Domain Types
+
+### Setup Flow List Response
+
+- `SetupFlowListResponse = array of object { id, default, description, 4 more }`
+
+  - `id: string`
+
+    Setup flow identifier.
+
+  - `default: boolean`
+
+    Whether this is the default auth method.
+
+  - `description: string`
+
+    Flow description.
+
+  - `name: string`
+
+    Human-readable flow name.
+
+  - `steps: array of object { type, component_id, description, 5 more }`
+
+    Ordered list of setup steps.
+
+    - `type: "component" or "instruction" or "form_input" or "oauth_redirect"`
+
+      Step type.
+
+      * `component` - component
+      * `instruction` - instruction
+      * `form_input` - form_input
+      * `oauth_redirect` - oauth_redirect
+
+      - `"component"`
+
+      - `"instruction"`
+
+      - `"form_input"`
+
+      - `"oauth_redirect"`
+
+    - `component_id: optional string`
+
+      Component identifier (for component type).
+
+    - `description: optional string`
+
+      Step description with markdown support.
+
+    - `dynamic_content: optional array of object { label, type, url_template, value_from }`
+
+      Dynamic content blocks (for instruction/form_input).
+
+      - `label: string`
+
+        Display label.
+
+      - `type: "copy_block" or "external_link"`
+
+        Content type.
+
+        * `copy_block` - copy_block
+        * `external_link` - external_link
+
+        - `"copy_block"`
+
+        - `"external_link"`
+
+      - `url_template: optional string`
+
+        URL template with {{ variable }} interpolation (for external_link).
+
+      - `value_from: optional string`
+
+        Field path to get value from (for copy_block).
+
+    - `form_fields: optional array of object { label, name, placeholder, 3 more }`
+
+      Form fields (for form_input).
+
+      - `label: string`
+
+        Human-readable field label.
+
+      - `name: string`
+
+        Field identifier (maps to credentials key).
+
+      - `placeholder: string`
+
+        Placeholder text.
+
+      - `required: boolean`
+
+        Whether field is required.
+
+      - `supported_file_types: array of string`
+
+        Allowed file extensions for file_upload type.
+
+      - `type: "text" or "password" or "email" or "file_upload"`
+
+        Field input type.
+
+        * `text` - text
+        * `password` - password
+        * `email` - email
+        * `file_upload` - file_upload
+
+        - `"text"`
+
+        - `"password"`
+
+        - `"email"`
+
+        - `"file_upload"`
+
+    - `is_required: optional boolean`
+
+      Whether step is required (for form_input).
+
+    - `parameters: optional map[string]`
+
+      Component parameters (for component type).
+
+    - `title: optional string`
+
+      Step title (for instruction/form_input/oauth_redirect).
+
+  - `supported_environments: array of string`
+
+    Environments this auth method supports (standard, fedramp).
+
+  - `auth_config: optional object { authorization_url, client_id, requires_pkce, 2 more }`
+
+    OAuth configuration (present for OAuth-based flows).
+
+    - `authorization_url: string`
+
+      Authorization URL for the requested environment.
+
+    - `client_id: string`
+
+      OAuth client ID.
+
+    - `requires_pkce: boolean`
+
+      Whether PKCE is required.
+
+    - `scopes: array of string`
+
+      OAuth scopes to request.
+
+    - `url_placeholders: array of string`
+
+      Placeholders in authorization URL that frontend must fill.
+
+# Integrations
+
+## List integrations
+
+**get** `/accounts/{account_id}/one/integrations`
+
+Returns a paginated list of integrations for the account.
+
+### Path Parameters
+
+- `account_id: string`
+
+### Query Parameters
+
+- `application: optional string`
+
+  Filter by application/vendor (e.g., GOOGLE_WORKSPACE, MICROSOFT_INTERNAL).
+
+- `direction: optional "asc" or "desc"`
+
+  Direction to order results.
+
+  - `"asc"`
+
+  - `"desc"`
+
+- `dlp_enabled: optional boolean`
+
+  Filter by DLP enabled status (true/false).
+
+- `order: optional "application" or "created" or "name" or "status"`
+
+  Field to order results by.
+
+  - `"application"`
+
+  - `"created"`
+
+  - `"name"`
+
+  - `"status"`
+
+- `page: optional number`
+
+  Page number within the paginated result set.
+
+- `page_size: optional number`
+
+  Number of results per page.
+
+- `search: optional string`
+
+  Search integrations by name or application.
+
+- `status: optional "Healthy" or "Initializing" or "Offline" or "Unhealthy"`
+
+  Filter by integration status.
+
+  - `"Healthy"`
+
+  - `"Initializing"`
+
+  - `"Offline"`
+
+  - `"Unhealthy"`
+
+- `use_cases: optional string`
+
+  Filter by enabled use cases (e.g., casb, ces). Matches integrations enrolled in any of the specified values. Can be specified multiple times.
+
+### Example
+
+```http
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/one/integrations \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+#### Response
+
+```json
+{
+  "errors": [],
+  "messages": [],
+  "result": [
+    {
+      "application": {
+        "category": "Productivity",
+        "display_name": "Google Workspace",
+        "logo": "https://onprem.cloudflare.com/static/google_workspace.png"
+      },
+      "created": "2025-01-15T10:00:00Z",
+      "id": "019d2e6a-d995-7185-afbd-4feead9e42ec",
+      "is_paused": false,
+      "name": "My Google Workspace",
+      "status": "Healthy",
+      "updated": "2025-04-10T08:30:00Z"
+    }
+  ],
+  "result_info": {
+    "count": 1,
+    "next": null,
+    "page": 1,
+    "per_page": 10,
+    "previous": null,
+    "total_count": 1
+  },
+  "success": true
+}
+```
+
+## Get integration details
+
+**get** `/accounts/{account_id}/one/integrations/{id}`
+
+Returns full integration details including use cases and permissions.
+
+### Path Parameters
+
+- `account_id: string`
+
+- `id: string`
+
+### Returns
+
+- `id: string`
+
+  Integration ID.
+
+- `application: map[string]`
+
+- `auth_method: map[string]`
+
+  The integration's authentication method.
+
+- `authorization_link: object { components, link }`
+
+  Authorization link for the integration.
+
+  - `components: map[unknown]`
+
+  - `link: string`
+
+- `created: string`
+
+  When the integration was created.
+
+- `credentials_expiry: string`
+
+  Credentials expiry time.
+
+- `dlp_profiles: array of string`
+
+  DLP Profiles enabled for the integration.
+
+- `health_details: array of map[unknown]`
+
+  Health details with remediation hints.
+
+- `is_paused: boolean`
+
+  Whether the user paused the integration.
+
+- `last_hydrated: string`
+
+  Last time the integration was hydrated.
+
+- `name: string`
+
+  Name of the integration.
+
+- `organization_id: number`
+
+  Organization ID.
+
+- `status: string`
+
+  Integration status.
+
+- `updated: string`
+
+  When the integration was last updated.
+
+- `use_cases: array of map[unknown]`
+
+  Use cases enabled for the integration.
+
+### Example
+
+```http
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/one/integrations/$ID \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+#### Response
+
+```json
+{
+  "id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+  "application": {
+    "foo": "string"
+  },
+  "auth_method": {
+    "foo": "string"
+  },
+  "authorization_link": {
+    "components": {
+      "foo": "bar"
+    },
+    "link": "link"
+  },
+  "created": "2019-12-27T18:11:19.117Z",
+  "credentials_expiry": "2019-12-27T18:11:19.117Z",
+  "dlp_profiles": [
+    "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+  ],
+  "health_details": [
+    {
+      "foo": "bar"
+    }
+  ],
+  "is_paused": true,
+  "last_hydrated": "2019-12-27T18:11:19.117Z",
+  "name": "name",
+  "organization_id": 0,
+  "status": "status",
+  "updated": "2019-12-27T18:11:19.117Z",
+  "use_cases": [
+    {
+      "foo": "bar"
+    }
+  ]
+}
+```
+
+## Create integration
+
+**post** `/accounts/{account_id}/one/integrations`
+
+Creates a new integration for the specified application.
+
+### Path Parameters
+
+- `account_id: string`
+
+### Body Parameters
+
+- `application: "GITHUB" or "GOOGLE_WORKSPACE" or "MICROSOFT_INTERNAL" or 2 more`
+
+  Vendor/application slug (e.g., GOOGLE_WORKSPACE).
+
+  * `GITHUB` - GITHUB
+  * `GOOGLE_WORKSPACE` - GOOGLE_WORKSPACE
+  * `MICROSOFT_INTERNAL` - MICROSOFT_INTERNAL
+  * `SALESFORCE` - SALESFORCE
+  * `SLACK` - SLACK
+
+  - `"GITHUB"`
+
+  - `"GOOGLE_WORKSPACE"`
+
+  - `"MICROSOFT_INTERNAL"`
+
+  - `"SALESFORCE"`
+
+  - `"SLACK"`
+
+- `credentials: map[unknown]`
+
+  Credentials for the integration.
+
+- `name: string`
+
+  Name of the integration.
+
+- `auth_method: optional string`
+
+  Authentication method slug (uses default if omitted).
+
+- `dlp_profiles: optional array of string`
+
+  List of DLP profile IDs to associate.
+
+- `permissions: optional array of string`
+
+  List of permission scopes (uses policy defaults if empty).
+
+- `use_cases: optional array of "casb" or "ces" or "auto_remediation"`
+
+  List of use case or feature slugs to enroll (e.g., ['casb', 'ces', 'auto_remediation']).
+
+  - `"casb"`
+
+  - `"ces"`
+
+  - `"auto_remediation"`
+
+### Returns
+
+- `id: string`
+
+  Integration ID.
+
+- `application: map[string]`
+
+- `auth_method: map[string]`
+
+  The integration's authentication method.
+
+- `authorization_link: object { components, link }`
+
+  Authorization link for the integration.
+
+  - `components: map[unknown]`
+
+  - `link: string`
+
+- `created: string`
+
+  When the integration was created.
+
+- `credentials_expiry: string`
+
+  Credentials expiry time.
+
+- `dlp_profiles: array of string`
+
+  DLP Profiles enabled for the integration.
+
+- `health_details: array of map[unknown]`
+
+  Health details with remediation hints.
+
+- `is_paused: boolean`
+
+  Whether the user paused the integration.
+
+- `last_hydrated: string`
+
+  Last time the integration was hydrated.
+
+- `name: string`
+
+  Name of the integration.
+
+- `organization_id: number`
+
+  Organization ID.
+
+- `status: string`
+
+  Integration status.
+
+- `updated: string`
+
+  When the integration was last updated.
+
+- `use_cases: array of map[unknown]`
+
+  Use cases enabled for the integration.
+
+### Example
+
+```http
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/one/integrations \
+    -H 'Content-Type: application/json' \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+    -d '{
+          "application": "GOOGLE_WORKSPACE",
+          "credentials": {
+            "admin_email": "bar"
+          },
+          "name": "My Google Workspace"
+        }'
+```
+
+#### Response
+
+```json
+{
+  "id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+  "application": {
+    "foo": "string"
+  },
+  "auth_method": {
+    "foo": "string"
+  },
+  "authorization_link": {
+    "components": {
+      "foo": "bar"
+    },
+    "link": "link"
+  },
+  "created": "2019-12-27T18:11:19.117Z",
+  "credentials_expiry": "2019-12-27T18:11:19.117Z",
+  "dlp_profiles": [
+    "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+  ],
+  "health_details": [
+    {
+      "foo": "bar"
+    }
+  ],
+  "is_paused": true,
+  "last_hydrated": "2019-12-27T18:11:19.117Z",
+  "name": "name",
+  "organization_id": 0,
+  "status": "status",
+  "updated": "2019-12-27T18:11:19.117Z",
+  "use_cases": [
+    {
+      "foo": "bar"
+    }
+  ]
+}
+```
+
+## Update integration
+
+**patch** `/accounts/{account_id}/one/integrations/{id}`
+
+Updates an integration's name, permissions, DLP profiles, use cases, or credentials.
+
+### Path Parameters
+
+- `account_id: string`
+
+- `id: string`
+
+### Body Parameters
+
+- `credentials: optional map[unknown]`
+
+  Partial credential fields to merge with existing.
+
+- `dlp_profiles: optional array of string`
+
+  List of DLP profile IDs to associate with the integration.
+
+- `name: optional string`
+
+  Name of the integration.
+
+- `permissions: optional array of string`
+
+  List of permission scopes granted to the integration.
+
+- `use_cases: optional array of "casb" or "ces" or "auto_remediation"`
+
+  List of use case or feature slugs to enroll (e.g., ['casb', 'ces', 'auto_remediation']).
+
+  - `"casb"`
+
+  - `"ces"`
+
+  - `"auto_remediation"`
+
+### Returns
+
+- `id: string`
+
+  Integration ID.
+
+- `application: map[string]`
+
+- `auth_method: map[string]`
+
+  The integration's authentication method.
+
+- `authorization_link: object { components, link }`
+
+  Authorization link for the integration.
+
+  - `components: map[unknown]`
+
+  - `link: string`
+
+- `created: string`
+
+  When the integration was created.
+
+- `credentials_expiry: string`
+
+  Credentials expiry time.
+
+- `dlp_profiles: array of string`
+
+  DLP Profiles enabled for the integration.
+
+- `health_details: array of map[unknown]`
+
+  Health details with remediation hints.
+
+- `is_paused: boolean`
+
+  Whether the user paused the integration.
+
+- `last_hydrated: string`
+
+  Last time the integration was hydrated.
+
+- `name: string`
+
+  Name of the integration.
+
+- `organization_id: number`
+
+  Organization ID.
+
+- `status: string`
+
+  Integration status.
+
+- `updated: string`
+
+  When the integration was last updated.
+
+- `use_cases: array of map[unknown]`
+
+  Use cases enabled for the integration.
+
+### Example
+
+```http
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/one/integrations/$ID \
+    -X PATCH \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+#### Response
+
+```json
+{
+  "id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+  "application": {
+    "foo": "string"
+  },
+  "auth_method": {
+    "foo": "string"
+  },
+  "authorization_link": {
+    "components": {
+      "foo": "bar"
+    },
+    "link": "link"
+  },
+  "created": "2019-12-27T18:11:19.117Z",
+  "credentials_expiry": "2019-12-27T18:11:19.117Z",
+  "dlp_profiles": [
+    "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+  ],
+  "health_details": [
+    {
+      "foo": "bar"
+    }
+  ],
+  "is_paused": true,
+  "last_hydrated": "2019-12-27T18:11:19.117Z",
+  "name": "name",
+  "organization_id": 0,
+  "status": "status",
+  "updated": "2019-12-27T18:11:19.117Z",
+  "use_cases": [
+    {
+      "foo": "bar"
+    }
+  ]
+}
+```
+
+## Delete integration
+
+**delete** `/accounts/{account_id}/one/integrations/{id}`
+
+Delete an integration by soft-deleting it.
+
+### Path Parameters
+
+- `account_id: string`
+
+- `id: string`
+
+### Example
+
+```http
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/one/integrations/$ID \
+    -X DELETE \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+## Pause integration
+
+**post** `/accounts/{account_id}/one/integrations/{id}/pause`
+
+Pauses an integration, stopping all crawlers.
+
+### Path Parameters
+
+- `account_id: string`
+
+- `id: string`
+
+### Returns
+
+- `id: string`
+
+  Integration ID.
+
+- `application: map[string]`
+
+- `auth_method: map[string]`
+
+  The integration's authentication method.
+
+- `authorization_link: object { components, link }`
+
+  Authorization link for the integration.
+
+  - `components: map[unknown]`
+
+  - `link: string`
+
+- `created: string`
+
+  When the integration was created.
+
+- `credentials_expiry: string`
+
+  Credentials expiry time.
+
+- `dlp_profiles: array of string`
+
+  DLP Profiles enabled for the integration.
+
+- `health_details: array of map[unknown]`
+
+  Health details with remediation hints.
+
+- `is_paused: boolean`
+
+  Whether the user paused the integration.
+
+- `last_hydrated: string`
+
+  Last time the integration was hydrated.
+
+- `name: string`
+
+  Name of the integration.
+
+- `organization_id: number`
+
+  Organization ID.
+
+- `status: string`
+
+  Integration status.
+
+- `updated: string`
+
+  When the integration was last updated.
+
+- `use_cases: array of map[unknown]`
+
+  Use cases enabled for the integration.
+
+### Example
+
+```http
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/one/integrations/$ID/pause \
+    -X POST \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+#### Response
+
+```json
+{
+  "id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+  "application": {
+    "foo": "string"
+  },
+  "auth_method": {
+    "foo": "string"
+  },
+  "authorization_link": {
+    "components": {
+      "foo": "bar"
+    },
+    "link": "link"
+  },
+  "created": "2019-12-27T18:11:19.117Z",
+  "credentials_expiry": "2019-12-27T18:11:19.117Z",
+  "dlp_profiles": [
+    "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+  ],
+  "health_details": [
+    {
+      "foo": "bar"
+    }
+  ],
+  "is_paused": true,
+  "last_hydrated": "2019-12-27T18:11:19.117Z",
+  "name": "name",
+  "organization_id": 0,
+  "status": "status",
+  "updated": "2019-12-27T18:11:19.117Z",
+  "use_cases": [
+    {
+      "foo": "bar"
+    }
+  ]
+}
+```
+
+## Resume integration
+
+**post** `/accounts/{account_id}/one/integrations/{id}/resume`
+
+Resumes a paused integration, restarting crawlers.
+
+### Path Parameters
+
+- `account_id: string`
+
+- `id: string`
+
+### Returns
+
+- `id: string`
+
+  Integration ID.
+
+- `application: map[string]`
+
+- `auth_method: map[string]`
+
+  The integration's authentication method.
+
+- `authorization_link: object { components, link }`
+
+  Authorization link for the integration.
+
+  - `components: map[unknown]`
+
+  - `link: string`
+
+- `created: string`
+
+  When the integration was created.
+
+- `credentials_expiry: string`
+
+  Credentials expiry time.
+
+- `dlp_profiles: array of string`
+
+  DLP Profiles enabled for the integration.
+
+- `health_details: array of map[unknown]`
+
+  Health details with remediation hints.
+
+- `is_paused: boolean`
+
+  Whether the user paused the integration.
+
+- `last_hydrated: string`
+
+  Last time the integration was hydrated.
+
+- `name: string`
+
+  Name of the integration.
+
+- `organization_id: number`
+
+  Organization ID.
+
+- `status: string`
+
+  Integration status.
+
+- `updated: string`
+
+  When the integration was last updated.
+
+- `use_cases: array of map[unknown]`
+
+  Use cases enabled for the integration.
+
+### Example
+
+```http
+curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/one/integrations/$ID/resume \
+    -X POST \
+    -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN"
+```
+
+#### Response
+
+```json
+{
+  "id": "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+  "application": {
+    "foo": "string"
+  },
+  "auth_method": {
+    "foo": "string"
+  },
+  "authorization_link": {
+    "components": {
+      "foo": "bar"
+    },
+    "link": "link"
+  },
+  "created": "2019-12-27T18:11:19.117Z",
+  "credentials_expiry": "2019-12-27T18:11:19.117Z",
+  "dlp_profiles": [
+    "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"
+  ],
+  "health_details": [
+    {
+      "foo": "bar"
+    }
+  ],
+  "is_paused": true,
+  "last_hydrated": "2019-12-27T18:11:19.117Z",
+  "name": "name",
+  "organization_id": 0,
+  "status": "status",
+  "updated": "2019-12-27T18:11:19.117Z",
+  "use_cases": [
+    {
+      "foo": "bar"
+    }
+  ]
+}
+```
+
+## Domain Types
+
+### Integration List Response
+
+- `IntegrationListResponse = unknown`
+
+### Integration Get Response
+
+- `IntegrationGetResponse object { id, application, auth_method, 12 more }`
+
+  Serializer for v2 integration detail response with use cases.
+
+  - `id: string`
+
+    Integration ID.
+
+  - `application: map[string]`
+
+  - `auth_method: map[string]`
+
+    The integration's authentication method.
+
+  - `authorization_link: object { components, link }`
+
+    Authorization link for the integration.
+
+    - `components: map[unknown]`
+
+    - `link: string`
+
+  - `created: string`
+
+    When the integration was created.
+
+  - `credentials_expiry: string`
+
+    Credentials expiry time.
+
+  - `dlp_profiles: array of string`
+
+    DLP Profiles enabled for the integration.
+
+  - `health_details: array of map[unknown]`
+
+    Health details with remediation hints.
+
+  - `is_paused: boolean`
+
+    Whether the user paused the integration.
+
+  - `last_hydrated: string`
+
+    Last time the integration was hydrated.
+
+  - `name: string`
+
+    Name of the integration.
+
+  - `organization_id: number`
+
+    Organization ID.
+
+  - `status: string`
+
+    Integration status.
+
+  - `updated: string`
+
+    When the integration was last updated.
+
+  - `use_cases: array of map[unknown]`
+
+    Use cases enabled for the integration.
+
+### Integration Create Response
+
+- `IntegrationCreateResponse object { id, application, auth_method, 12 more }`
+
+  Serializer for v2 integration detail response with use cases.
+
+  - `id: string`
+
+    Integration ID.
+
+  - `application: map[string]`
+
+  - `auth_method: map[string]`
+
+    The integration's authentication method.
+
+  - `authorization_link: object { components, link }`
+
+    Authorization link for the integration.
+
+    - `components: map[unknown]`
+
+    - `link: string`
+
+  - `created: string`
+
+    When the integration was created.
+
+  - `credentials_expiry: string`
+
+    Credentials expiry time.
+
+  - `dlp_profiles: array of string`
+
+    DLP Profiles enabled for the integration.
+
+  - `health_details: array of map[unknown]`
+
+    Health details with remediation hints.
+
+  - `is_paused: boolean`
+
+    Whether the user paused the integration.
+
+  - `last_hydrated: string`
+
+    Last time the integration was hydrated.
+
+  - `name: string`
+
+    Name of the integration.
+
+  - `organization_id: number`
+
+    Organization ID.
+
+  - `status: string`
+
+    Integration status.
+
+  - `updated: string`
+
+    When the integration was last updated.
+
+  - `use_cases: array of map[unknown]`
+
+    Use cases enabled for the integration.
+
+### Integration Update Response
+
+- `IntegrationUpdateResponse object { id, application, auth_method, 12 more }`
+
+  Serializer for v2 integration detail response with use cases.
+
+  - `id: string`
+
+    Integration ID.
+
+  - `application: map[string]`
+
+  - `auth_method: map[string]`
+
+    The integration's authentication method.
+
+  - `authorization_link: object { components, link }`
+
+    Authorization link for the integration.
+
+    - `components: map[unknown]`
+
+    - `link: string`
+
+  - `created: string`
+
+    When the integration was created.
+
+  - `credentials_expiry: string`
+
+    Credentials expiry time.
+
+  - `dlp_profiles: array of string`
+
+    DLP Profiles enabled for the integration.
+
+  - `health_details: array of map[unknown]`
+
+    Health details with remediation hints.
+
+  - `is_paused: boolean`
+
+    Whether the user paused the integration.
+
+  - `last_hydrated: string`
+
+    Last time the integration was hydrated.
+
+  - `name: string`
+
+    Name of the integration.
+
+  - `organization_id: number`
+
+    Organization ID.
+
+  - `status: string`
+
+    Integration status.
+
+  - `updated: string`
+
+    When the integration was last updated.
+
+  - `use_cases: array of map[unknown]`
+
+    Use cases enabled for the integration.
+
+### Integration Pause Response
+
+- `IntegrationPauseResponse object { id, application, auth_method, 12 more }`
+
+  Serializer for v2 integration detail response with use cases.
+
+  - `id: string`
+
+    Integration ID.
+
+  - `application: map[string]`
+
+  - `auth_method: map[string]`
+
+    The integration's authentication method.
+
+  - `authorization_link: object { components, link }`
+
+    Authorization link for the integration.
+
+    - `components: map[unknown]`
+
+    - `link: string`
+
+  - `created: string`
+
+    When the integration was created.
+
+  - `credentials_expiry: string`
+
+    Credentials expiry time.
+
+  - `dlp_profiles: array of string`
+
+    DLP Profiles enabled for the integration.
+
+  - `health_details: array of map[unknown]`
+
+    Health details with remediation hints.
+
+  - `is_paused: boolean`
+
+    Whether the user paused the integration.
+
+  - `last_hydrated: string`
+
+    Last time the integration was hydrated.
+
+  - `name: string`
+
+    Name of the integration.
+
+  - `organization_id: number`
+
+    Organization ID.
+
+  - `status: string`
+
+    Integration status.
+
+  - `updated: string`
+
+    When the integration was last updated.
+
+  - `use_cases: array of map[unknown]`
+
+    Use cases enabled for the integration.
+
+### Integration Resume Response
+
+- `IntegrationResumeResponse object { id, application, auth_method, 12 more }`
+
+  Serializer for v2 integration detail response with use cases.
+
+  - `id: string`
+
+    Integration ID.
+
+  - `application: map[string]`
+
+  - `auth_method: map[string]`
+
+    The integration's authentication method.
+
+  - `authorization_link: object { components, link }`
+
+    Authorization link for the integration.
+
+    - `components: map[unknown]`
+
+    - `link: string`
+
+  - `created: string`
+
+    When the integration was created.
+
+  - `credentials_expiry: string`
+
+    Credentials expiry time.
+
+  - `dlp_profiles: array of string`
+
+    DLP Profiles enabled for the integration.
+
+  - `health_details: array of map[unknown]`
+
+    Health details with remediation hints.
+
+  - `is_paused: boolean`
+
+    Whether the user paused the integration.
+
+  - `last_hydrated: string`
+
+    Last time the integration was hydrated.
+
+  - `name: string`
+
+    Name of the integration.
+
+  - `organization_id: number`
+
+    Organization ID.
+
+  - `status: string`
+
+    Integration status.
+
+  - `updated: string`
+
+    When the integration was last updated.
+
+  - `use_cases: array of map[unknown]`
+
+    Use cases enabled for the integration.
+
 # DEX
 
 ## Domain Types
@@ -158576,11 +164665,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dex/colos \
 
 # Fleet Status
 
-## List fleet status details by dimension
+## Get live aggregate device details by dimension
 
 **get** `/accounts/{account_id}/dex/fleet-status/live`
 
-List details for live (up to 60 minutes) devices using WARP.
+Get details for live (up to 60 minutes) devices using WARP.
 
 ### Path Parameters
 
@@ -158744,11 +164833,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dex/fleet-status/
 }
 ```
 
-## List fleet status aggregate details by dimension
+## Get over time aggregate details for devices by dimension
 
 **get** `/accounts/{account_id}/dex/fleet-status/over-time`
 
-List details for devices using WARP, up to 7 days.
+Get aggregate details for devices using WARP, up to 7 days.
 
 ### Path Parameters
 
@@ -158834,28 +164923,6 @@ List details for devices using WARP, up to 7 days.
 
       Number of unique devices
 
-- `result_info: optional object { count, page, per_page, 2 more }`
-
-  - `count: optional number`
-
-    Total number of results for the requested service.
-
-  - `page: optional number`
-
-    Current page within paginated list of results.
-
-  - `per_page: optional number`
-
-    Number of results per page of results.
-
-  - `total_count: optional number`
-
-    Total results available without any search parameters.
-
-  - `total_pages: optional number`
-
-    The number of total pages in the entire result set.
-
 ### Example
 
 ```http
@@ -158906,13 +164973,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dex/fleet-status/
       ],
       "uniqueDevicesTotal": 0
     }
-  },
-  "result_info": {
-    "count": 1,
-    "page": 1,
-    "per_page": 20,
-    "total_count": 2000,
-    "total_pages": 100
   }
 }
 ```
@@ -159011,11 +165071,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dex/fleet-status/
 
 # Devices
 
-## List fleet status devices
+## List details of devices using WARP.
 
 **get** `/accounts/{account_id}/dex/fleet-status/devices`
 
-List details for devices using WARP.
+List details of devices using WARP.
 
 ### Path Parameters
 
@@ -197781,6 +203841,10 @@ Retrieve the current Zero Trust account configuration.
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -197912,6 +203976,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       "inspection": {
         "mode": "static"
       },
+      "max_ttl_secs": 3600,
       "protocol_detection": {
         "enabled": true
       },
@@ -198156,6 +204221,10 @@ Update the current Zero Trust account configuration.
 
       - `"dynamic"`
 
+  - `max_ttl_secs: optional number`
+
+    Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
   - `protocol_detection: optional ProtocolDetection`
 
     Specify whether to detect protocols from the initial bytes of client traffic.
@@ -198440,6 +204509,10 @@ Update the current Zero Trust account configuration.
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -198574,6 +204647,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       "inspection": {
         "mode": "static"
       },
+      "max_ttl_secs": 3600,
       "protocol_detection": {
         "enabled": true
       },
@@ -198594,7 +204668,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
 
 **patch** `/accounts/{account_id}/gateway/configuration`
 
-Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, or `certificate` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration.
+Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, `certificate`, or `max_ttl_secs` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration.
 
 ### Path Parameters
 
@@ -198818,6 +204892,10 @@ Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decr
 
       - `"dynamic"`
 
+  - `max_ttl_secs: optional number`
+
+    Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
   - `protocol_detection: optional ProtocolDetection`
 
     Specify whether to detect protocols from the initial bytes of client traffic.
@@ -199102,6 +205180,10 @@ Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decr
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -199236,6 +205318,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       "inspection": {
         "mode": "static"
       },
+      "max_ttl_secs": 3600,
       "protocol_detection": {
         "enabled": true
       },
@@ -199456,7 +205539,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
 
 ### Gateway Configuration Settings
 
-- `GatewayConfigurationSettings object { activity_log, antivirus, block_page, 11 more }`
+- `GatewayConfigurationSettings object { activity_log, antivirus, block_page, 12 more }`
 
   Specify account settings.
 
@@ -199671,6 +205754,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       - `"static"`
 
       - `"dynamic"`
+
+  - `max_ttl_secs: optional number`
+
+    Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
 
   - `protocol_detection: optional ProtocolDetection`
 
@@ -199970,6 +206057,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -200228,6 +206319,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -200485,6 +206580,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
         - `"static"`
 
         - `"dynamic"`
+
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
 
     - `protocol_detection: optional ProtocolDetection`
 
@@ -201954,6 +208053,24 @@ List Zero Trust Gateway locations for an account.
 
     Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
 
+  - `max_ttl: optional object { mode, ttl_secs }`
+
+    Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+    - `mode: "inherit" or "override" or "disabled"`
+
+      `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+      - `"inherit"`
+
+      - `"override"`
+
+      - `"disabled"`
+
+    - `ttl_secs: optional number`
+
+      Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
+
   - `name: optional string`
 
     Specify the location name.
@@ -202060,6 +208177,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/locations
       "ip": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
       "ipv4_destination": "172.64.36.1",
       "ipv4_destination_backup": "172.64.36.2",
+      "max_ttl": {
+        "mode": "override",
+        "ttl_secs": 3600
+      },
       "name": "Austin Office Location",
       "networks": [
         {
@@ -202214,6 +208335,24 @@ Get a single Zero Trust Gateway location.
 
     Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
 
+  - `max_ttl: optional object { mode, ttl_secs }`
+
+    Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+    - `mode: "inherit" or "override" or "disabled"`
+
+      `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+      - `"inherit"`
+
+      - `"override"`
+
+      - `"disabled"`
+
+    - `ttl_secs: optional number`
+
+      Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
+
   - `name: optional string`
 
     Specify the location name.
@@ -202301,6 +208440,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/locations
     "ip": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
     "ipv4_destination": "172.64.36.1",
     "ipv4_destination_backup": "172.64.36.2",
+    "max_ttl": {
+      "mode": "override",
+      "ttl_secs": 3600
+    },
     "name": "Austin Office Location",
     "networks": [
       {
@@ -202395,6 +208538,24 @@ Create a new Zero Trust Gateway location.
       - `network: string`
 
         Specify the IPv6 address or IPv6 CIDR.
+
+- `max_ttl: optional object { mode, ttl_secs }`
+
+  Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+  - `mode: "inherit" or "override" or "disabled"`
+
+    `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+    - `"inherit"`
+
+    - `"override"`
+
+    - `"disabled"`
+
+  - `ttl_secs: optional number`
+
+    Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
 
 - `networks: optional array of object { network }`
 
@@ -202528,6 +208689,24 @@ Create a new Zero Trust Gateway location.
 
     Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
 
+  - `max_ttl: optional object { mode, ttl_secs }`
+
+    Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+    - `mode: "inherit" or "override" or "disabled"`
+
+      `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+      - `"inherit"`
+
+      - `"override"`
+
+      - `"disabled"`
+
+    - `ttl_secs: optional number`
+
+      Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
+
   - `name: optional string`
 
     Specify the location name.
@@ -202620,6 +208799,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/locations
     "ip": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
     "ipv4_destination": "172.64.36.1",
     "ipv4_destination_backup": "172.64.36.2",
+    "max_ttl": {
+      "mode": "override",
+      "ttl_secs": 3600
+    },
     "name": "Austin Office Location",
     "networks": [
       {
@@ -202717,6 +208900,24 @@ Update a configured Zero Trust Gateway location.
 
         Specify the IPv6 address or IPv6 CIDR.
 
+- `max_ttl: optional object { mode, ttl_secs }`
+
+  Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+  - `mode: "inherit" or "override" or "disabled"`
+
+    `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+    - `"inherit"`
+
+    - `"override"`
+
+    - `"disabled"`
+
+  - `ttl_secs: optional number`
+
+    Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
+
 - `networks: optional array of object { network }`
 
   Specify the list of network ranges from which requests at this location originate. The list takes effect only if it is non-empty and the IPv4 endpoint is enabled for this location.
@@ -202849,6 +209050,24 @@ Update a configured Zero Trust Gateway location.
 
     Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
 
+  - `max_ttl: optional object { mode, ttl_secs }`
+
+    Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+    - `mode: "inherit" or "override" or "disabled"`
+
+      `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+      - `"inherit"`
+
+      - `"override"`
+
+      - `"disabled"`
+
+    - `ttl_secs: optional number`
+
+      Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
+
   - `name: optional string`
 
     Specify the location name.
@@ -202942,6 +209161,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/locations
     "ip": "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
     "ipv4_destination": "172.64.36.1",
     "ipv4_destination_backup": "172.64.36.2",
+    "max_ttl": {
+      "mode": "override",
+      "ttl_secs": 3600
+    },
     "name": "Austin Office Location",
     "networks": [
       {
@@ -203172,7 +209395,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/locations
 
 ### Location
 
-- `Location object { id, client_default, created_at, 11 more }`
+- `Location object { id, client_default, created_at, 12 more }`
 
   - `id: optional string`
 
@@ -203265,6 +209488,24 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/locations
   - `ipv4_destination_backup: optional string`
 
     Show the backup destination IPv4 address from the pair identified dns_destination_ips_id. This field read-only.
+
+  - `max_ttl: optional object { mode, ttl_secs }`
+
+    Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`.
+
+    - `mode: "inherit" or "override" or "disabled"`
+
+      `inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.
+
+      - `"inherit"`
+
+      - `"override"`
+
+      - `"disabled"`
+
+    - `ttl_secs: optional number`
+
+      Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`.
 
   - `name: optional string`
 

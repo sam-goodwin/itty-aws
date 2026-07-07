@@ -94,6 +94,14 @@ Use `datasetId=all` or `datasetId=*` to query all event datasets for the account
 
       - `number`
 
+- `source: optional "do" or "r2catalog"`
+
+  Read backend. 'do' (default) reads Durable Object storage. 'r2catalog' reads R2 Data Catalog (admin-only, experimental; supports a subset of search fields — no 'tags').
+
+  - `"do"`
+
+  - `"r2catalog"`
+
 ### Returns
 
 - `attacker: string`

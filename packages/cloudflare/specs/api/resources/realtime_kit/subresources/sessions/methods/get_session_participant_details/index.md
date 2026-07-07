@@ -20,20 +20,6 @@ Returns details of the given participant ID along with call statistics for the g
 
 ### Query Parameters
 
-- `filters: optional "device_info" or "ip_information" or "precall_network_information" or 2 more`
-
-  Comma separated list of filters to apply. Note that there must be no spaces between the filters.
-
-  - `"device_info"`
-
-  - `"ip_information"`
-
-  - `"precall_network_information"`
-
-  - `"events"`
-
-  - `"quality_stats"`
-
 - `include_peer_events: optional boolean`
 
   if true, response includes all the peer events of participant.
@@ -42,7 +28,7 @@ Returns details of the given participant ID along with call statistics for the g
 
 - `data: optional object { participant }`
 
-  - `participant: optional object { id, created_at, custom_participant_id, 7 more }`
+  - `participant: optional object { id, created_at, custom_participant_id, 8 more }`
 
     - `id: optional string`
 
@@ -71,6 +57,66 @@ Returns details of the given participant ID along with call statistics for the g
     - `left_at: optional string`
 
       timestamp at which participant left the session.
+
+    - `peer_events: optional array of object { id, created_at, event_name, 7 more }`
+
+      Connection lifecycle events for the participant's peer. Only included when `include_peer_events` is true.
+
+      - `id: optional string`
+
+        ID of the peer event.
+
+      - `created_at: optional string`
+
+        Timestamp when this peer event was created.
+
+      - `event_name: optional "PEER_CREATED" or "PEER_JOINING" or "PEER_LEAVING"`
+
+        Name of the peer event.
+
+        - `"PEER_CREATED"`
+
+        - `"PEER_JOINING"`
+
+        - `"PEER_LEAVING"`
+
+      - `minutes_consumed: optional number`
+
+        Minutes consumed attributed to this event.
+
+      - `participant_id: optional string`
+
+        ID of the participant this event belongs to.
+
+      - `peer_id: optional string`
+
+        Peer ID this event belongs to.
+
+      - `preset_view_type: optional "GROUP_CALL" or "WEBINAR" or "AUDIO_ROOM" or 2 more`
+
+        View type of the preset associated with the peer.
+
+        - `"GROUP_CALL"`
+
+        - `"WEBINAR"`
+
+        - `"AUDIO_ROOM"`
+
+        - `"LIVESTREAM"`
+
+        - `"CHAT"`
+
+      - `session_id: optional string`
+
+        ID of the session this event belongs to.
+
+      - `socket_session_id: optional string`
+
+        ID of the socket session associated with this event.
+
+      - `updated_at: optional string`
+
+        Timestamp when this peer event was last updated.
 
     - `preset_name: optional string`
 
@@ -106,6 +152,20 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP
       "duration": 0,
       "joined_at": "joined_at",
       "left_at": "left_at",
+      "peer_events": [
+        {
+          "id": "id",
+          "created_at": "created_at",
+          "event_name": "PEER_CREATED",
+          "minutes_consumed": 0,
+          "participant_id": "participant_id",
+          "peer_id": "peer_id",
+          "preset_view_type": "GROUP_CALL",
+          "session_id": "session_id",
+          "socket_session_id": "socket_session_id",
+          "updated_at": "updated_at"
+        }
+      ],
       "preset_name": "preset_name",
       "updated_at": "updated_at",
       "user_id": "user_id"

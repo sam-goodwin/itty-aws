@@ -477,6 +477,13 @@
             "smithy.api#required": {}
           }
         },
+        "include_shadow_metadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).",
+            "smithy.api#httpQuery": "include_shadow_metadata"
+          }
+        },
         "deletes": {
           "target": "com.cloudflare.dns#RecordsBatchRequestDeletesList"
         },
@@ -565,6 +572,13 @@
             "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "include_shadow_metadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).",
+            "smithy.api#httpQuery": "include_shadow_metadata"
           }
         },
         "body": {
@@ -663,7 +677,7 @@
           "uri": "/zones/{zone_id}/dns_records/{dns_record_id}",
           "code": 200
         },
-        "smithy.api#documentation": "Delete DNS Record",
+        "smithy.api#documentation": "Permanently removes a DNS record from the zone.",
         "smithy.api#idempotent": {}
       }
     },
@@ -684,6 +698,13 @@
             "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "include_shadow_metadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).",
+            "smithy.api#httpQuery": "include_shadow_metadata"
           }
         },
         "body": {
@@ -781,6 +802,13 @@
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
+        },
+        "include_shadow_metadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).",
+            "smithy.api#httpQuery": "include_shadow_metadata"
+          }
         }
       },
       "traits": {
@@ -816,7 +844,7 @@
           "uri": "/zones/{zone_id}/dns_records/{dns_record_id}",
           "code": 200
         },
-        "smithy.api#documentation": "DNS Record Details",
+        "smithy.api#documentation": "Retrieves details for a specific DNS record in the zone.",
         "smithy.api#readonly": {}
       }
     },
@@ -984,6 +1012,13 @@
             "smithy.api#httpQuery": "direction"
           }
         },
+        "include_shadow_metadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).",
+            "smithy.api#httpQuery": "include_shadow_metadata"
+          }
+        },
         "match": {
           "target": "com.cloudflare.dns#RecordsListRequestMatch",
           "traits": {
@@ -1030,6 +1065,20 @@
           "traits": {
             "smithy.api#documentation": "Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.",
             "smithy.api#httpQuery": "search"
+          }
+        },
+        "shadowed_by_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters to records at or below the given NS delegation name, excluding the NS records that form the delegation itself. The value must be a subdomain of the zone; the zone apex is not accepted. Requires `include_shadow_metadata=true`. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).",
+            "smithy.api#httpQuery": "shadowed_by_name"
+          }
+        },
+        "shadowing_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Returns NS records that shadow the given name, searching at the name itself and each of its ancestor names within the zone, excluding the zone apex. The value must be a subdomain of the zone; the zone apex is not accepted. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).",
+            "smithy.api#httpQuery": "shadowing_name"
           }
         },
         "tag": {
@@ -1351,6 +1400,13 @@
             "smithy.api#documentation": "Identifier.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "include_shadow_metadata": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to include shadow metadata in the `meta` field of each record in the response. See [Shadowed records](https://developers.cloudflare.com/dns/manage-dns-records/reference/shadowed-records).",
+            "smithy.api#httpQuery": "include_shadow_metadata"
           }
         },
         "body": {

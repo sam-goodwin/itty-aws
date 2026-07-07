@@ -2,8 +2,8 @@
 
 **delete** `/accounts/{account_id}/images/v1/keys/{signing_key_name}`
 
-Delete signing key with specified name. Returns all keys available.
-When last key is removed, a new default signing key will be generated.
+Delete a CF Images signing key with specified name. Returns all keys available.
+When the last key is removed, a new default signing key will be generated.
 
 ### Path Parameters
 

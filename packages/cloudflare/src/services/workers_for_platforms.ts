@@ -1064,12 +1064,35 @@ export const DispatchNamespacesScriptsSettingsEditResponseBindingsList =
     DispatchNamespacesScriptsSettingsEditResponseBindingsItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseBindingsList>;
 
+export interface DispatchNamespacesScriptsSettingsEditResponseCacheOptions {
+  enabled: boolean;
+  cross_version_cache?: boolean;
+}
+export const DispatchNamespacesScriptsSettingsEditResponseCacheOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      cross_version_cache: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSettingsEditResponseCacheOptions",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseCacheOptions>;
+
 export type DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList =
   string[];
 export const DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList>;
+
+export type DispatchNamespacesScriptsSettingsEditResponseExportsMap = {
+  [key: string]: unknown | undefined;
+};
+export const DispatchNamespacesScriptsSettingsEditResponseExportsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsEditResponseExportsMap>;
 
 export interface DispatchNamespacesScriptsSettingsEditResponseLimits {
   cpu_ms?: number;
@@ -1234,8 +1257,10 @@ export const DispatchNamespacesScriptsSettingsEditResponseUsageModel =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DispatchNamespacesScriptsSettingsEditResponse {
   bindings?: DispatchNamespacesScriptsSettingsEditResponseBindingsList;
+  cache_options?: DispatchNamespacesScriptsSettingsEditResponseCacheOptions;
   compatibility_date?: string;
   compatibility_flags?: DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList;
+  exports?: DispatchNamespacesScriptsSettingsEditResponseExportsMap;
   limits?: DispatchNamespacesScriptsSettingsEditResponseLimits;
   logpush?: boolean;
   migrations?: unknown;
@@ -1251,9 +1276,15 @@ export const DispatchNamespacesScriptsSettingsEditResponse =
       bindings: S.optional(
         DispatchNamespacesScriptsSettingsEditResponseBindingsList,
       ),
+      cache_options: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseCacheOptions,
+      ),
       compatibility_date: S.optional(S.String),
       compatibility_flags: S.optional(
         DispatchNamespacesScriptsSettingsEditResponseCompatibilityFlagsList,
+      ),
+      exports: S.optional(
+        DispatchNamespacesScriptsSettingsEditResponseExportsMap,
       ),
       limits: S.optional(DispatchNamespacesScriptsSettingsEditResponseLimits),
       logpush: S.optional(S.Boolean),
@@ -1467,12 +1498,35 @@ export const DispatchNamespacesScriptsSettingsGetResponseBindingsList =
     DispatchNamespacesScriptsSettingsGetResponseBindingsItem,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseBindingsList>;
 
+export interface DispatchNamespacesScriptsSettingsGetResponseCacheOptions {
+  enabled: boolean;
+  cross_version_cache?: boolean;
+}
+export const DispatchNamespacesScriptsSettingsGetResponseCacheOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      cross_version_cache: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsSettingsGetResponseCacheOptions",
+  }) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseCacheOptions>;
+
 export type DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList =
   string[];
 export const DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList =
   /*@__PURE__*/ S.Array(
     S.String,
   ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList>;
+
+export type DispatchNamespacesScriptsSettingsGetResponseExportsMap = {
+  [key: string]: unknown | undefined;
+};
+export const DispatchNamespacesScriptsSettingsGetResponseExportsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<DispatchNamespacesScriptsSettingsGetResponseExportsMap>;
 
 export interface DispatchNamespacesScriptsSettingsGetResponseLimits {
   cpu_ms?: number;
@@ -1636,8 +1690,10 @@ export const DispatchNamespacesScriptsSettingsGetResponseUsageModel =
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface DispatchNamespacesScriptsSettingsGetResponse {
   bindings?: DispatchNamespacesScriptsSettingsGetResponseBindingsList;
+  cache_options?: DispatchNamespacesScriptsSettingsGetResponseCacheOptions;
   compatibility_date?: string;
   compatibility_flags?: DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList;
+  exports?: DispatchNamespacesScriptsSettingsGetResponseExportsMap;
   limits?: DispatchNamespacesScriptsSettingsGetResponseLimits;
   logpush?: boolean;
   migrations?: unknown;
@@ -1653,9 +1709,15 @@ export const DispatchNamespacesScriptsSettingsGetResponse =
       bindings: S.optional(
         DispatchNamespacesScriptsSettingsGetResponseBindingsList,
       ),
+      cache_options: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseCacheOptions,
+      ),
       compatibility_date: S.optional(S.String),
       compatibility_flags: S.optional(
         DispatchNamespacesScriptsSettingsGetResponseCompatibilityFlagsList,
+      ),
+      exports: S.optional(
+        DispatchNamespacesScriptsSettingsGetResponseExportsMap,
       ),
       limits: S.optional(DispatchNamespacesScriptsSettingsGetResponseLimits),
       logpush: S.optional(S.Boolean),
@@ -1837,6 +1899,20 @@ export const DispatchNamespacesScriptsUpdateRequest = /*@__PURE__*/ S.suspend(
 ).annotate({
   identifier: "DispatchNamespacesScriptsUpdateRequest",
 }) as any as S.Schema<DispatchNamespacesScriptsUpdateRequest>;
+
+export interface DispatchNamespacesScriptsUpdateResponseCacheOptions {
+  enabled: boolean;
+  cross_version_cache?: boolean;
+}
+export const DispatchNamespacesScriptsUpdateResponseCacheOptions =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      cross_version_cache: S.optional(S.Boolean),
+    }),
+  ).annotate({
+    identifier: "DispatchNamespacesScriptsUpdateResponseCacheOptions",
+  }) as any as S.Schema<DispatchNamespacesScriptsUpdateResponseCacheOptions>;
 
 export type DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList =
   string[];
@@ -2050,6 +2126,7 @@ export const DispatchNamespacesScriptsUpdateResponseUsageModel =
 export interface DispatchNamespacesScriptsUpdateResponse {
   startup_time_ms: number;
   id?: string;
+  cache_options?: DispatchNamespacesScriptsUpdateResponseCacheOptions;
   compatibility_date?: string;
   compatibility_flags?: DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList;
   created_on?: string;
@@ -2077,6 +2154,9 @@ export const DispatchNamespacesScriptsUpdateResponse = /*@__PURE__*/ S.suspend(
     S.Struct({
       startup_time_ms: S.Number,
       id: S.optional(S.String),
+      cache_options: S.optional(
+        DispatchNamespacesScriptsUpdateResponseCacheOptions,
+      ),
       compatibility_date: S.optional(S.String),
       compatibility_flags: S.optional(
         DispatchNamespacesScriptsUpdateResponseCompatibilityFlagsList,

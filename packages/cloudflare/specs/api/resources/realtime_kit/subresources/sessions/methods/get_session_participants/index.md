@@ -58,7 +58,7 @@ Returns a list of participants for the given session ID.
 
 - `data: optional object { participants }`
 
-  - `participants: optional array of object { id, created_at, custom_participant_id, 7 more }`
+  - `participants: optional array of object { id, created_at, custom_participant_id, 8 more }`
 
     - `id: optional string`
 
@@ -87,6 +87,66 @@ Returns a list of participants for the given session ID.
     - `left_at: optional string`
 
       timestamp at which participant left the session.
+
+    - `peer_events: optional array of object { id, created_at, event_name, 7 more }`
+
+      Connection lifecycle events for the participant's peer. Only included when `include_peer_events` is true.
+
+      - `id: optional string`
+
+        ID of the peer event.
+
+      - `created_at: optional string`
+
+        Timestamp when this peer event was created.
+
+      - `event_name: optional "PEER_CREATED" or "PEER_JOINING" or "PEER_LEAVING"`
+
+        Name of the peer event.
+
+        - `"PEER_CREATED"`
+
+        - `"PEER_JOINING"`
+
+        - `"PEER_LEAVING"`
+
+      - `minutes_consumed: optional number`
+
+        Minutes consumed attributed to this event.
+
+      - `participant_id: optional string`
+
+        ID of the participant this event belongs to.
+
+      - `peer_id: optional string`
+
+        Peer ID this event belongs to.
+
+      - `preset_view_type: optional "GROUP_CALL" or "WEBINAR" or "AUDIO_ROOM" or 2 more`
+
+        View type of the preset associated with the peer.
+
+        - `"GROUP_CALL"`
+
+        - `"WEBINAR"`
+
+        - `"AUDIO_ROOM"`
+
+        - `"LIVESTREAM"`
+
+        - `"CHAT"`
+
+      - `session_id: optional string`
+
+        ID of the session this event belongs to.
+
+      - `socket_session_id: optional string`
+
+        ID of the socket session associated with this event.
+
+      - `updated_at: optional string`
+
+        Timestamp when this peer event was last updated.
 
     - `preset_name: optional string`
 

@@ -2,7 +2,7 @@
 
 **get** `/accounts/{account_id}/images/v1/variants/{variant_id}`
 
-Fetch details for a single variant.
+Fetch details for a CF Images variant.
 
 ### Path Parameters
 

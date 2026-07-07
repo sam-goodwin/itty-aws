@@ -2,7 +2,7 @@
 
 **post** `/accounts/{account_id}/custom_ns`
 
-Add Account Custom Nameserver
+Adds a custom nameserver to the account for use as a vanity nameserver on zones.
 
 ### Path Parameters
 

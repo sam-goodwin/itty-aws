@@ -2,7 +2,7 @@
 
 **get** `/accounts/{account_id}/sso_connectors/{sso_connector_id}`
 
-Get single SSO connector
+Retrieves details for a specific SSO connector.
 
 ### Path Parameters
 

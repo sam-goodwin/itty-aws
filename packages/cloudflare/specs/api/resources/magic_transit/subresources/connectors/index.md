@@ -36,7 +36,7 @@ List Connectors
 
   - `message: string`
 
-- `result: array of object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `result: array of object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -72,6 +72,8 @@ List Connectors
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -91,6 +93,8 @@ List Connectors
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 - `success: boolean`
 
@@ -131,6 +135,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors 
       "interrupt_window_hour_of_day": 0,
       "last_updated": "last_updated",
       "notes": "notes",
+      "primary": true,
       "timezone": "timezone",
       "device": {
         "id": "id",
@@ -139,7 +144,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors 
       },
       "last_heartbeat": "last_heartbeat",
       "last_seen_version": "last_seen_version",
-      "license_key": "license_key"
+      "license_key": "license_key",
+      "site_id": "site_id"
     }
   ],
   "success": true
@@ -174,7 +180,7 @@ Fetch Connector
 
   - `message: string`
 
-- `result: object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `result: object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -210,6 +216,8 @@ Fetch Connector
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -229,6 +237,8 @@ Fetch Connector
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 - `success: boolean`
 
@@ -268,6 +278,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
     "interrupt_window_hour_of_day": 0,
     "last_updated": "last_updated",
     "notes": "notes",
+    "primary": true,
     "timezone": "timezone",
     "device": {
       "id": "id",
@@ -276,7 +287,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
     },
     "last_heartbeat": "last_heartbeat",
     "last_seen_version": "last_seen_version",
-    "license_key": "license_key"
+    "license_key": "license_key",
+    "site_id": "site_id"
   },
   "success": true
 }
@@ -338,6 +350,10 @@ Add a connector to your account
 
 - `notes: optional string`
 
+- `primary: optional boolean`
+
+- `site_id: optional string`
+
 - `timezone: optional string`
 
 ### Returns
@@ -354,7 +370,7 @@ Add a connector to your account
 
   - `message: string`
 
-- `result: object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `result: object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -390,6 +406,8 @@ Add a connector to your account
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -409,6 +427,8 @@ Add a connector to your account
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 - `success: boolean`
 
@@ -452,6 +472,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors 
     "interrupt_window_hour_of_day": 0,
     "last_updated": "last_updated",
     "notes": "notes",
+    "primary": true,
     "timezone": "timezone",
     "device": {
       "id": "id",
@@ -460,7 +481,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors 
     },
     "last_heartbeat": "last_heartbeat",
     "last_seen_version": "last_seen_version",
-    "license_key": "license_key"
+    "license_key": "license_key",
+    "site_id": "site_id"
   },
   "success": true
 }
@@ -512,9 +534,13 @@ Replace Connector or Re-provision License Key
 
 - `notes: optional string`
 
+- `primary: optional boolean`
+
 - `provision_license: optional boolean`
 
   When true, regenerate license key for the connector.
+
+- `site_id: optional string`
 
 - `timezone: optional string`
 
@@ -532,7 +558,7 @@ Replace Connector or Re-provision License Key
 
   - `message: string`
 
-- `result: object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `result: object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -568,6 +594,8 @@ Replace Connector or Re-provision License Key
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -587,6 +615,8 @@ Replace Connector or Re-provision License Key
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 - `success: boolean`
 
@@ -629,6 +659,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
     "interrupt_window_hour_of_day": 0,
     "last_updated": "last_updated",
     "notes": "notes",
+    "primary": true,
     "timezone": "timezone",
     "device": {
       "id": "id",
@@ -637,7 +668,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
     },
     "last_heartbeat": "last_heartbeat",
     "last_seen_version": "last_seen_version",
-    "license_key": "license_key"
+    "license_key": "license_key",
+    "site_id": "site_id"
   },
   "success": true
 }
@@ -689,9 +721,13 @@ Edit Connector to update specific properties or Re-provision License Key
 
 - `notes: optional string`
 
+- `primary: optional boolean`
+
 - `provision_license: optional boolean`
 
   When true, regenerate license key for the connector.
+
+- `site_id: optional string`
 
 - `timezone: optional string`
 
@@ -709,7 +745,7 @@ Edit Connector to update specific properties or Re-provision License Key
 
   - `message: string`
 
-- `result: object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `result: object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -745,6 +781,8 @@ Edit Connector to update specific properties or Re-provision License Key
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -764,6 +802,8 @@ Edit Connector to update specific properties or Re-provision License Key
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 - `success: boolean`
 
@@ -806,6 +846,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
     "interrupt_window_hour_of_day": 0,
     "last_updated": "last_updated",
     "notes": "notes",
+    "primary": true,
     "timezone": "timezone",
     "device": {
       "id": "id",
@@ -814,7 +855,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
     },
     "last_heartbeat": "last_heartbeat",
     "last_seen_version": "last_seen_version",
-    "license_key": "license_key"
+    "license_key": "license_key",
+    "site_id": "site_id"
   },
   "success": true
 }
@@ -848,7 +890,7 @@ Remove a connector from your account
 
   - `message: string`
 
-- `result: object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `result: object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -884,6 +926,8 @@ Remove a connector from your account
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -903,6 +947,8 @@ Remove a connector from your account
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 - `success: boolean`
 
@@ -943,6 +989,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
     "interrupt_window_hour_of_day": 0,
     "last_updated": "last_updated",
     "notes": "notes",
+    "primary": true,
     "timezone": "timezone",
     "device": {
       "id": "id",
@@ -951,7 +998,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
     },
     "last_heartbeat": "last_heartbeat",
     "last_seen_version": "last_seen_version",
-    "license_key": "license_key"
+    "license_key": "license_key",
+    "site_id": "site_id"
   },
   "success": true
 }
@@ -961,7 +1009,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
 
 ### Connector List Response
 
-- `ConnectorListResponse object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `ConnectorListResponse object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -997,6 +1045,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -1016,10 +1066,12 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 ### Connector Get Response
 
-- `ConnectorGetResponse object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `ConnectorGetResponse object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -1055,6 +1107,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -1074,10 +1128,12 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 ### Connector Create Response
 
-- `ConnectorCreateResponse object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `ConnectorCreateResponse object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -1113,6 +1169,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -1132,10 +1190,12 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 ### Connector Update Response
 
-- `ConnectorUpdateResponse object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `ConnectorUpdateResponse object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -1171,6 +1231,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -1190,10 +1252,12 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 ### Connector Edit Response
 
-- `ConnectorEditResponse object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `ConnectorEditResponse object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -1229,6 +1293,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -1248,10 +1314,12 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 ### Connector Delete Response
 
-- `ConnectorDeleteResponse object { id, activated, interrupt_window_days_of_week, 10 more }`
+- `ConnectorDeleteResponse object { id, activated, interrupt_window_days_of_week, 12 more }`
 
   - `id: string`
 
@@ -1287,6 +1355,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
 
   - `notes: string`
 
+  - `primary: boolean`
+
   - `timezone: string`
 
   - `device: optional object { id, serial_number, type }`
@@ -1306,6 +1376,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
   - `last_seen_version: optional string`
 
   - `license_key: optional string`
+
+  - `site_id: optional string`
 
 # Events
 
@@ -3476,7 +3548,7 @@ Get Snapshot
 
       Maximum temperature of the component (degrees Celsius)
 
-  - `tunnels: optional array of object { health_state, health_value, interface_name, 4 more }`
+  - `tunnels: optional array of object { health_state, health_value, interface_name, 7 more }`
 
     - `health_state: string`
 
@@ -3493,6 +3565,18 @@ Get Snapshot
     - `tunnel_id: string`
 
       Tunnel identifier
+
+    - `natd_result: optional string`
+
+      Public socket address returned by the NAT detector
+
+    - `natd_state: optional number`
+
+      Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result)
+
+    - `natd_target: optional string`
+
+      Target socket address probed by the NAT detector, using the detector source port
 
     - `probed_mtu: optional number`
 
@@ -3805,6 +3889,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
         "health_value": 0,
         "interface_name": "interface_name",
         "tunnel_id": "tunnel_id",
+        "natd_result": "natd_result",
+        "natd_state": 0,
+        "natd_target": "natd_target",
         "probed_mtu": 0,
         "recent_healthy_pings": 0,
         "recent_unhealthy_pings": 0
@@ -4779,7 +4866,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
 
       Maximum temperature of the component (degrees Celsius)
 
-  - `tunnels: optional array of object { health_state, health_value, interface_name, 4 more }`
+  - `tunnels: optional array of object { health_state, health_value, interface_name, 7 more }`
 
     - `health_state: string`
 
@@ -4796,6 +4883,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
     - `tunnel_id: string`
 
       Tunnel identifier
+
+    - `natd_result: optional string`
+
+      Public socket address returned by the NAT detector
+
+    - `natd_state: optional number`
+
+      Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result)
+
+    - `natd_target: optional string`
+
+      Target socket address probed by the NAT detector, using the detector source port
 
     - `probed_mtu: optional number`
 
@@ -5765,7 +5864,7 @@ Get latest Snapshots
 
         Maximum temperature of the component (degrees Celsius)
 
-    - `tunnels: optional array of object { health_state, health_value, interface_name, 4 more }`
+    - `tunnels: optional array of object { health_state, health_value, interface_name, 7 more }`
 
       - `health_state: string`
 
@@ -5782,6 +5881,18 @@ Get latest Snapshots
       - `tunnel_id: string`
 
         Tunnel identifier
+
+      - `natd_result: optional string`
+
+        Public socket address returned by the NAT detector
+
+      - `natd_state: optional number`
+
+        Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result)
+
+      - `natd_target: optional string`
+
+        Target socket address probed by the NAT detector, using the detector source port
 
       - `probed_mtu: optional number`
 
@@ -6097,6 +6208,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
             "health_value": 0,
             "interface_name": "interface_name",
             "tunnel_id": "tunnel_id",
+            "natd_result": "natd_result",
+            "natd_state": 0,
+            "natd_target": "natd_target",
             "probed_mtu": 0,
             "recent_healthy_pings": 0,
             "recent_unhealthy_pings": 0
@@ -7057,7 +7171,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
 
         Maximum temperature of the component (degrees Celsius)
 
-    - `tunnels: optional array of object { health_state, health_value, interface_name, 4 more }`
+    - `tunnels: optional array of object { health_state, health_value, interface_name, 7 more }`
 
       - `health_state: string`
 
@@ -7074,6 +7188,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
       - `tunnel_id: string`
 
         Tunnel identifier
+
+      - `natd_result: optional string`
+
+        Public socket address returned by the NAT detector
+
+      - `natd_state: optional number`
+
+        Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result)
+
+      - `natd_target: optional string`
+
+        Target socket address probed by the NAT detector, using the detector source port
 
       - `probed_mtu: optional number`
 

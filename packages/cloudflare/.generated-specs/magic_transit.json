@@ -2007,6 +2007,12 @@
         "notes": {
           "target": "smithy.api#String"
         },
+        "primary": {
+          "target": "smithy.api#Boolean"
+        },
+        "site_id": {
+          "target": "smithy.api#String"
+        },
         "timezone": {
           "target": "smithy.api#String"
         }
@@ -2137,6 +2143,12 @@
             "smithy.api#required": {}
           }
         },
+        "primary": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "timezone": {
           "target": "smithy.api#String",
           "traits": {
@@ -2153,6 +2165,9 @@
           "target": "smithy.api#String"
         },
         "license_key": {
+          "target": "smithy.api#String"
+        },
+        "site_id": {
           "target": "smithy.api#String"
         }
       },
@@ -2323,6 +2338,12 @@
             "smithy.api#required": {}
           }
         },
+        "primary": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "timezone": {
           "target": "smithy.api#String",
           "traits": {
@@ -2339,6 +2360,9 @@
           "target": "smithy.api#String"
         },
         "license_key": {
+          "target": "smithy.api#String"
+        },
+        "site_id": {
           "target": "smithy.api#String"
         }
       },
@@ -2442,11 +2466,17 @@
         "notes": {
           "target": "smithy.api#String"
         },
+        "primary": {
+          "target": "smithy.api#Boolean"
+        },
         "provision_license": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, regenerate license key for the connector."
           }
+        },
+        "site_id": {
+          "target": "smithy.api#String"
         },
         "timezone": {
           "target": "smithy.api#String"
@@ -2578,6 +2608,12 @@
             "smithy.api#required": {}
           }
         },
+        "primary": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "timezone": {
           "target": "smithy.api#String",
           "traits": {
@@ -2594,6 +2630,9 @@
           "target": "smithy.api#String"
         },
         "license_key": {
+          "target": "smithy.api#String"
+        },
+        "site_id": {
           "target": "smithy.api#String"
         }
       },
@@ -2764,6 +2803,12 @@
             "smithy.api#required": {}
           }
         },
+        "primary": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "timezone": {
           "target": "smithy.api#String",
           "traits": {
@@ -2780,6 +2825,9 @@
           "target": "smithy.api#String"
         },
         "license_key": {
+          "target": "smithy.api#String"
+        },
+        "site_id": {
           "target": "smithy.api#String"
         }
       },
@@ -2968,6 +3016,12 @@
             "smithy.api#required": {}
           }
         },
+        "primary": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "timezone": {
           "target": "smithy.api#String",
           "traits": {
@@ -2984,6 +3038,9 @@
           "target": "smithy.api#String"
         },
         "license_key": {
+          "target": "smithy.api#String"
+        },
+        "site_id": {
           "target": "smithy.api#String"
         }
       }
@@ -3104,11 +3161,17 @@
         "notes": {
           "target": "smithy.api#String"
         },
+        "primary": {
+          "target": "smithy.api#Boolean"
+        },
         "provision_license": {
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "When true, regenerate license key for the connector."
           }
+        },
+        "site_id": {
+          "target": "smithy.api#String"
         },
         "timezone": {
           "target": "smithy.api#String"
@@ -3240,6 +3303,12 @@
             "smithy.api#required": {}
           }
         },
+        "primary": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
         "timezone": {
           "target": "smithy.api#String",
           "traits": {
@@ -3256,6 +3325,9 @@
           "target": "smithy.api#String"
         },
         "license_key": {
+          "target": "smithy.api#String"
+        },
+        "site_id": {
           "target": "smithy.api#String"
         }
       },
@@ -4494,6 +4566,24 @@
           "traits": {
             "smithy.api#documentation": "Tunnel identifier",
             "smithy.api#required": {}
+          }
+        },
+        "natd_result": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Public socket address returned by the NAT detector"
+          }
+        },
+        "natd_state": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result)"
+          }
+        },
+        "natd_target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target socket address probed by the NAT detector, using the detector source port"
           }
         },
         "probed_mtu": {
@@ -6262,6 +6352,24 @@
             "smithy.api#required": {}
           }
         },
+        "natd_result": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Public socket address returned by the NAT detector"
+          }
+        },
+        "natd_state": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result)"
+          }
+        },
+        "natd_target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Target socket address probed by the NAT detector, using the detector source port"
+          }
+        },
         "probed_mtu": {
           "target": "smithy.api#Double",
           "traits": {
@@ -7402,10 +7510,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsBulkUpdateResponseModifiedGreTunnelsItemBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -7694,10 +7814,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsCreateRequestBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -7881,10 +8013,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsCreateResponseBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -8185,10 +8329,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsDeleteResponseDeletedGreTunnelBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -8501,10 +8657,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsGetResponseGreTunnelBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -8806,10 +8974,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsListResponseGreTunnelsItemBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -9257,10 +9437,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#GreTunnelsUpdateResponseModifiedGreTunnelBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -9571,10 +9763,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsBulkUpdateResponseModifiedIpsecTunnelsItemBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -9882,10 +10086,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsCreateRequestBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -10082,10 +10298,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsCreateResponseBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -10405,10 +10633,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsDeleteResponseDeletedIpsecTunnelBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -10740,10 +10980,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsGetResponseIpsecTunnelBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -11064,10 +11316,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsListResponseIpsecTunnelsItemBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -11557,10 +11821,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsUpdateRequestBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {
@@ -11765,10 +12041,22 @@
             "smithy.api#required": {}
           }
         },
+        "export_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes advertised to the customer."
+          }
+        },
         "extra_prefixes": {
           "target": "com.cloudflare.magic_transit#IpsecTunnelsUpdateResponseModifiedIpsecTunnelBgpExtraPrefixesList",
           "traits": {
             "smithy.api#documentation": "Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table."
+          }
+        },
+        "import_filter_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the BGP filter profile applied to routes received from the customer."
           }
         },
         "md5_key": {

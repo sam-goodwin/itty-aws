@@ -306,7 +306,7 @@
           "uri": "/user",
           "code": 200
         },
-        "smithy.api#documentation": "User Details",
+        "smithy.api#documentation": "Retrieves detailed information about the currently authenticated user, including email, name, and account memberships.",
         "smithy.api#readonly": {}
       }
     },
@@ -2030,6 +2030,29 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.user#TokensPermissionGroupsListResultItemCategory": {
+      "type": "enum",
+      "members": {
+        "DEVELOPER_PLATFORM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "developer_platform"
+          }
+        },
+        "AI_AND_MACHINE_LEARNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ai_and_machine_learning"
+          }
+        },
+        "DNS_AND_ZONES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_and_zones"
+          }
+        }
+      }
+    },
     "com.cloudflare.user#TokensPermissionGroupsListResultItemScopesItem": {
       "type": "enum",
       "members": {
@@ -2072,6 +2095,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "Public ID."
+          }
+        },
+        "category": {
+          "target": "com.cloudflare.user#TokensPermissionGroupsListResultItemCategory",
+          "traits": {
+            "smithy.api#documentation": "Product category that this permission group belongs to."
           }
         },
         "name": {

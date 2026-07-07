@@ -1333,6 +1333,13 @@
             "smithy.api#documentation": "Skip DNS resolution lookups for faster response.",
             "smithy.api#httpQuery": "skip_dns"
           }
+        },
+        "skip_ranking": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Skip the domain ranking lookup for faster responses. Defaults to",
+            "smithy.api#httpQuery": "skip_ranking"
+          }
         }
       },
       "traits": {

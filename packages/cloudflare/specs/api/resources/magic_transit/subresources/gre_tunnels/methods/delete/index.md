@@ -72,15 +72,23 @@ Disables and removes a specific static GRE tunnel. Use `?validate_only=true` as 
 
       True if automatic stateful return routing should be enabled for a tunnel, false otherwise. Requires the `coupler_integration` account flag to be enabled; requests setting this to `true` without that flag will be rejected.
 
-    - `bgp: optional object { customer_asn, extra_prefixes, md5_key }`
+    - `bgp: optional object { customer_asn, export_filter_id, extra_prefixes, 2 more }`
 
       - `customer_asn: number`
 
         ASN used on the customer end of the BGP session
 
+      - `export_filter_id: optional string`
+
+        ID of the BGP filter profile applied to routes advertised to the customer.
+
       - `extra_prefixes: optional array of string`
 
         Prefixes in this list will be advertised to the customer device, in addition to the routes in the Magic routing table.
+
+      - `import_filter_id: optional string`
+
+        ID of the BGP filter profile applied to routes received from the customer.
 
       - `md5_key: optional string`
 
@@ -248,9 +256,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/gre_tunnels
       "automatic_return_routing": true,
       "bgp": {
         "customer_asn": 0,
+        "export_filter_id": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
         "extra_prefixes": [
           "string"
         ],
+        "import_filter_id": "a1b2c3d4e5f647890a1b2c3d4e5f6789",
         "md5_key": "md5_key"
       },
       "bgp_status": {

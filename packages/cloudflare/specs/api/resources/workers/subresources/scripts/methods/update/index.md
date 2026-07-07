@@ -48,13 +48,31 @@ Upload a worker module. You can find more about the multipart metadata on our do
 
     - `pointer: optional string`
 
-- `result: object { startup_time_ms, id, compatibility_date, 20 more }`
+- `result: object { startup_time_ms, id, cache_options, 21 more }`
 
   - `startup_time_ms: number`
 
   - `id: optional string`
 
     The name used to identify the script.
+
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
 
   - `compatibility_date: optional string`
 
@@ -479,6 +497,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/scripts/$
   "result": {
     "startup_time_ms": 10,
     "id": "this-is_my_script-01",
+    "cache_options": {
+      "enabled": true,
+      "cross_version_cache": true
+    },
     "compatibility_date": "2021-01-01",
     "compatibility_flags": [
       "nodejs_compat"

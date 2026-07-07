@@ -1645,7 +1645,7 @@ Run a temporary or saved query.
 
         - `object { eventType, requestId, scriptName, 10 more }`
 
-          - `eventType: "fetch" or "scheduled" or "alarm" or 8 more`
+          - `eventType: "fetch" or "scheduled" or "alarm" or 9 more`
 
             - `"fetch"`
 
@@ -1662,6 +1662,8 @@ Run a temporary or saved query.
             - `"tail"`
 
             - `"rpc"`
+
+            - `"jsrpc"`
 
             - `"websocket"`
 
@@ -1713,7 +1715,7 @@ Run a temporary or saved query.
 
           - `cpuTimeMs: number`
 
-          - `eventType: "fetch" or "scheduled" or "alarm" or 8 more`
+          - `eventType: "fetch" or "scheduled" or "alarm" or 9 more`
 
             - `"fetch"`
 
@@ -1730,6 +1732,8 @@ Run a temporary or saved query.
             - `"tail"`
 
             - `"rpc"`
+
+            - `"jsrpc"`
 
             - `"websocket"`
 
@@ -1995,7 +1999,7 @@ Run a temporary or saved query.
 
       - `object { eventType, requestId, scriptName, 10 more }`
 
-        - `eventType: "fetch" or "scheduled" or "alarm" or 8 more`
+        - `eventType: "fetch" or "scheduled" or "alarm" or 9 more`
 
           - `"fetch"`
 
@@ -2012,6 +2016,8 @@ Run a temporary or saved query.
           - `"tail"`
 
           - `"rpc"`
+
+          - `"jsrpc"`
 
           - `"websocket"`
 
@@ -2063,7 +2069,7 @@ Run a temporary or saved query.
 
         - `cpuTimeMs: number`
 
-        - `eventType: "fetch" or "scheduled" or "alarm" or 8 more`
+        - `eventType: "fetch" or "scheduled" or "alarm" or 9 more`
 
           - `"fetch"`
 
@@ -2080,6 +2086,8 @@ Run a temporary or saved query.
           - `"tail"`
 
           - `"rpc"`
+
+          - `"jsrpc"`
 
           - `"websocket"`
 
@@ -4101,7 +4109,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/observabi
 
         - `object { eventType, requestId, scriptName, 10 more }`
 
-          - `eventType: "fetch" or "scheduled" or "alarm" or 8 more`
+          - `eventType: "fetch" or "scheduled" or "alarm" or 9 more`
 
             - `"fetch"`
 
@@ -4118,6 +4126,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/observabi
             - `"tail"`
 
             - `"rpc"`
+
+            - `"jsrpc"`
 
             - `"websocket"`
 
@@ -4169,7 +4179,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/observabi
 
           - `cpuTimeMs: number`
 
-          - `eventType: "fetch" or "scheduled" or "alarm" or 8 more`
+          - `eventType: "fetch" or "scheduled" or "alarm" or 9 more`
 
             - `"fetch"`
 
@@ -4186,6 +4196,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/observabi
             - `"tail"`
 
             - `"rpc"`
+
+            - `"jsrpc"`
 
             - `"websocket"`
 
@@ -4451,7 +4463,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/observabi
 
       - `object { eventType, requestId, scriptName, 10 more }`
 
-        - `eventType: "fetch" or "scheduled" or "alarm" or 8 more`
+        - `eventType: "fetch" or "scheduled" or "alarm" or 9 more`
 
           - `"fetch"`
 
@@ -4468,6 +4480,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/observabi
           - `"tail"`
 
           - `"rpc"`
+
+          - `"jsrpc"`
 
           - `"websocket"`
 
@@ -4519,7 +4533,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/observabi
 
         - `cpuTimeMs: number`
 
-        - `eventType: "fetch" or "scheduled" or "alarm" or 8 more`
+        - `eventType: "fetch" or "scheduled" or "alarm" or 9 more`
 
           - `"fetch"`
 
@@ -4536,6 +4550,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/observabi
           - `"tail"`
 
           - `"rpc"`
+
+          - `"jsrpc"`
 
           - `"websocket"`
 

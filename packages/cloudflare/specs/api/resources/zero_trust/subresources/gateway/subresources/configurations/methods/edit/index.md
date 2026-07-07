@@ -2,7 +2,7 @@
 
 **patch** `/accounts/{account_id}/gateway/configuration`
 
-Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, or `certificate` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration.
+Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, `certificate`, or `max_ttl_secs` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration.
 
 ### Path Parameters
 
@@ -225,6 +225,10 @@ Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decr
       - `"static"`
 
       - `"dynamic"`
+
+  - `max_ttl_secs: optional number`
+
+    Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
 
   - `protocol_detection: optional ProtocolDetection`
 
@@ -510,6 +514,10 @@ Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decr
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -644,6 +652,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       "inspection": {
         "mode": "static"
       },
+      "max_ttl_secs": 3600,
       "protocol_detection": {
         "enabled": true
       },

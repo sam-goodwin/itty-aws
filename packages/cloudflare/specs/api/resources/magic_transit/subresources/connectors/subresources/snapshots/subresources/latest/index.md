@@ -946,7 +946,7 @@ Get latest Snapshots
 
         Maximum temperature of the component (degrees Celsius)
 
-    - `tunnels: optional array of object { health_state, health_value, interface_name, 4 more }`
+    - `tunnels: optional array of object { health_state, health_value, interface_name, 7 more }`
 
       - `health_state: string`
 
@@ -963,6 +963,18 @@ Get latest Snapshots
       - `tunnel_id: string`
 
         Tunnel identifier
+
+      - `natd_result: optional string`
+
+        Public socket address returned by the NAT detector
+
+      - `natd_state: optional number`
+
+        Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result)
+
+      - `natd_target: optional string`
+
+        Target socket address probed by the NAT detector, using the detector source port
 
       - `probed_mtu: optional number`
 
@@ -1278,6 +1290,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
             "health_value": 0,
             "interface_name": "interface_name",
             "tunnel_id": "tunnel_id",
+            "natd_result": "natd_result",
+            "natd_state": 0,
+            "natd_target": "natd_target",
             "probed_mtu": 0,
             "recent_healthy_pings": 0,
             "recent_unhealthy_pings": 0
@@ -2238,7 +2253,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
 
         Maximum temperature of the component (degrees Celsius)
 
-    - `tunnels: optional array of object { health_state, health_value, interface_name, 4 more }`
+    - `tunnels: optional array of object { health_state, health_value, interface_name, 7 more }`
 
       - `health_state: string`
 
@@ -2255,6 +2270,18 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/magic/connectors/
       - `tunnel_id: string`
 
         Tunnel identifier
+
+      - `natd_result: optional string`
+
+        Public socket address returned by the NAT detector
+
+      - `natd_state: optional number`
+
+        Numeric NAT detector state (0 = detected, 1 = missing result, 2 = stale result)
+
+      - `natd_target: optional string`
+
+        Target socket address probed by the NAT detector, using the detector source port
 
       - `probed_mtu: optional number`
 

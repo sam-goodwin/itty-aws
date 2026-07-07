@@ -337,6 +337,13 @@
             "smithy.api#required": {}
           }
         },
+        "server_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "server id",
+            "smithy.api#required": {}
+          }
+        },
         "tools": {
           "target": "com.cloudflare.zero_trust#AccessAiControlsMcpPortalsCreateResponseServersItemToolsList",
           "traits": {
@@ -364,7 +371,7 @@
         "is_shared_oauth_callback_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
+            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
           }
         },
         "last_successful_sync": {
@@ -799,6 +806,13 @@
             "smithy.api#required": {}
           }
         },
+        "server_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "server id",
+            "smithy.api#required": {}
+          }
+        },
         "tools": {
           "target": "com.cloudflare.zero_trust#AccessAiControlsMcpPortalsListResultItemServersItemToolsList",
           "traits": {
@@ -826,7 +840,7 @@
         "is_shared_oauth_callback_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
+            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
           }
         },
         "last_successful_sync": {
@@ -1172,6 +1186,13 @@
             "smithy.api#required": {}
           }
         },
+        "server_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "server id",
+            "smithy.api#required": {}
+          }
+        },
         "tools": {
           "target": "com.cloudflare.zero_trust#AccessAiControlsMcpPortalsReadResponseServersItemToolsList",
           "traits": {
@@ -1199,7 +1220,7 @@
         "is_shared_oauth_callback_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
+            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
           }
         },
         "last_successful_sync": {
@@ -1634,6 +1655,13 @@
             "smithy.api#required": {}
           }
         },
+        "server_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "server id",
+            "smithy.api#required": {}
+          }
+        },
         "tools": {
           "target": "com.cloudflare.zero_trust#AccessAiControlsMcpPortalsUpdateResponseServersItemToolsList",
           "traits": {
@@ -1661,7 +1689,7 @@
         "is_shared_oauth_callback_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
+            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
           }
         },
         "last_successful_sync": {
@@ -1900,7 +1928,7 @@
         "is_shared_oauth_callback_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
+            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
           }
         },
         "secure_web_gateway": {
@@ -2118,7 +2146,7 @@
         "is_shared_oauth_callback_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
+            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
           }
         },
         "last_successful_sync": {
@@ -2392,7 +2420,7 @@
         "is_shared_oauth_callback_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
+            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
           }
         },
         "last_successful_sync": {
@@ -2678,7 +2706,7 @@
         "is_shared_oauth_callback_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
+            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
           }
         },
         "last_successful_sync": {
@@ -2970,7 +2998,7 @@
         "is_shared_oauth_callback_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
+            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
           }
         },
         "last_successful_sync": {
@@ -3196,7 +3224,7 @@
         "is_shared_oauth_callback_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
+            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
           }
         },
         "name": {
@@ -3417,7 +3445,7 @@
         "is_shared_oauth_callback_enabled": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. New public server creates default to true; existing servers default to false from migration until explicitly updated. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
+            "smithy.api#documentation": "When true, the gateway worker uses the shared Cloudflare-owned OAuth callback endpoint as the redirect_uri for upstream on-behalf OAuth, instead of the customer portal hostname. Defaults to false (off); opt in per server by setting true. Effective behavior is gated by the gateway worker's per-env rollout mode KV key."
           }
         },
         "last_successful_sync": {
@@ -3474,11 +3502,11 @@
     "com.cloudflare.zero_trust#AccessApplicationsCreateRequestBody": {
       "type": "structure",
       "members": {
-        "SelfHostedApplication_object___domain__type__allow_authenticate_via_warp__28_more__": {
+        "SelfHostedApplication_object___domain__type__allow_authenticate_via_warp__29_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "SelfHostedApplication object { domain, type, allow_authenticate_via_warp, 28 more }"
+            "smithy.api#jsonName": "SelfHostedApplication object { domain, type, allow_authenticate_via_warp, 29 more }"
           }
         },
         "SaaSApplication_object___allowed_idps__app_launcher_visible__auto_redirect_to_identity__8_more__": {
@@ -3488,18 +3516,18 @@
             "smithy.api#jsonName": "SaaSApplication object { allowed_idps, app_launcher_visible, auto_redirect_to_identity, 8 more }"
           }
         },
-        "BrowserSSHApplication_object___domain__type__allow_authenticate_via_warp__28_more__": {
+        "BrowserSSHApplication_object___domain__type__allow_authenticate_via_warp__29_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserSSHApplication object { domain, type, allow_authenticate_via_warp, 28 more }"
+            "smithy.api#jsonName": "BrowserSSHApplication object { domain, type, allow_authenticate_via_warp, 29 more }"
           }
         },
-        "BrowserVNCApplication_object___domain__type__allow_authenticate_via_warp__28_more__": {
+        "BrowserVNCApplication_object___domain__type__allow_authenticate_via_warp__29_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserVNCApplication object { domain, type, allow_authenticate_via_warp, 28 more }"
+            "smithy.api#jsonName": "BrowserVNCApplication object { domain, type, allow_authenticate_via_warp, 29 more }"
           }
         },
         "AppLauncherApplication_object___type__allowed_idps__app_launcher_logo_url__13_more__": {
@@ -3544,12 +3572,12 @@
             "smithy.api#jsonName": "InfrastructureApplication object { target_criteria, type, name, policies }"
           }
         },
-        "BrowserRDPApplication_object___domain__target_criteria__type__29_more__": {
+        "BrowserRDPApplication_object___domain__target_criteria__type__30_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Contains the targets secured by the application.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserRDPApplication object { domain, target_criteria, type, 29 more }"
+            "smithy.api#jsonName": "BrowserRDPApplication object { domain, target_criteria, type, 30 more }"
           }
         },
         "McpServerApplication_object___type__allow_authenticate_via_warp__allowed_idps__16_more__": {
@@ -3600,11 +3628,11 @@
     "com.cloudflare.zero_trust#AccessApplicationsCreateResponse": {
       "type": "structure",
       "members": {
-        "SelfHostedApplication_object___domain__type__id__30_more__": {
+        "SelfHostedApplication_object___domain__type__id__31_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "SelfHostedApplication object { domain, type, id, 30 more }"
+            "smithy.api#jsonName": "SelfHostedApplication object { domain, type, id, 31 more }"
           }
         },
         "SaaSApplication_object___id__allowed_idps__app_launcher_visible__10_more__": {
@@ -3614,18 +3642,18 @@
             "smithy.api#jsonName": "SaaSApplication object { id, allowed_idps, app_launcher_visible, 10 more }"
           }
         },
-        "BrowserSSHApplication_object___domain__type__id__30_more__": {
+        "BrowserSSHApplication_object___domain__type__id__31_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserSSHApplication object { domain, type, id, 30 more }"
+            "smithy.api#jsonName": "BrowserSSHApplication object { domain, type, id, 31 more }"
           }
         },
-        "BrowserVNCApplication_object___domain__type__id__30_more__": {
+        "BrowserVNCApplication_object___domain__type__id__31_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserVNCApplication object { domain, type, id, 30 more }"
+            "smithy.api#jsonName": "BrowserVNCApplication object { domain, type, id, 31 more }"
           }
         },
         "AppLauncherApplication_object___type__id__allowed_idps__15_more__": {
@@ -3670,11 +3698,11 @@
             "smithy.api#jsonName": "InfrastructureApplication object { target_criteria, type, id, 3 more }"
           }
         },
-        "BrowserRDPApplication_object___domain__target_criteria__type__31_more__": {
+        "BrowserRDPApplication_object___domain__target_criteria__type__32_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserRDPApplication object { domain, target_criteria, type, 31 more }"
+            "smithy.api#jsonName": "BrowserRDPApplication object { domain, target_criteria, type, 32 more }"
           }
         },
         "McpServerApplication_object___type__id__allow_authenticate_via_warp__18_more__": {
@@ -3810,11 +3838,11 @@
     "com.cloudflare.zero_trust#AccessApplicationsGetResponse": {
       "type": "structure",
       "members": {
-        "SelfHostedApplication_object___domain__type__id__30_more__": {
+        "SelfHostedApplication_object___domain__type__id__31_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "SelfHostedApplication object { domain, type, id, 30 more }"
+            "smithy.api#jsonName": "SelfHostedApplication object { domain, type, id, 31 more }"
           }
         },
         "SaaSApplication_object___id__allowed_idps__app_launcher_visible__10_more__": {
@@ -3824,18 +3852,18 @@
             "smithy.api#jsonName": "SaaSApplication object { id, allowed_idps, app_launcher_visible, 10 more }"
           }
         },
-        "BrowserSSHApplication_object___domain__type__id__30_more__": {
+        "BrowserSSHApplication_object___domain__type__id__31_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserSSHApplication object { domain, type, id, 30 more }"
+            "smithy.api#jsonName": "BrowserSSHApplication object { domain, type, id, 31 more }"
           }
         },
-        "BrowserVNCApplication_object___domain__type__id__30_more__": {
+        "BrowserVNCApplication_object___domain__type__id__31_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserVNCApplication object { domain, type, id, 30 more }"
+            "smithy.api#jsonName": "BrowserVNCApplication object { domain, type, id, 31 more }"
           }
         },
         "AppLauncherApplication_object___type__id__allowed_idps__15_more__": {
@@ -3880,11 +3908,11 @@
             "smithy.api#jsonName": "InfrastructureApplication object { target_criteria, type, id, 3 more }"
           }
         },
-        "BrowserRDPApplication_object___domain__target_criteria__type__31_more__": {
+        "BrowserRDPApplication_object___domain__target_criteria__type__32_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserRDPApplication object { domain, target_criteria, type, 31 more }"
+            "smithy.api#jsonName": "BrowserRDPApplication object { domain, target_criteria, type, 32 more }"
           }
         },
         "McpServerApplication_object___type__id__allow_authenticate_via_warp__18_more__": {
@@ -4006,11 +4034,11 @@
     "com.cloudflare.zero_trust#AccessApplicationsListResultItem": {
       "type": "structure",
       "members": {
-        "SelfHostedApplication_object___domain__type__id__30_more__": {
+        "SelfHostedApplication_object___domain__type__id__31_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "SelfHostedApplication object { domain, type, id, 30 more }"
+            "smithy.api#jsonName": "SelfHostedApplication object { domain, type, id, 31 more }"
           }
         },
         "SaaSApplication_object___id__allowed_idps__app_launcher_visible__10_more__": {
@@ -4020,18 +4048,18 @@
             "smithy.api#jsonName": "SaaSApplication object { id, allowed_idps, app_launcher_visible, 10 more }"
           }
         },
-        "BrowserSSHApplication_object___domain__type__id__30_more__": {
+        "BrowserSSHApplication_object___domain__type__id__31_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserSSHApplication object { domain, type, id, 30 more }"
+            "smithy.api#jsonName": "BrowserSSHApplication object { domain, type, id, 31 more }"
           }
         },
-        "BrowserVNCApplication_object___domain__type__id__30_more__": {
+        "BrowserVNCApplication_object___domain__type__id__31_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserVNCApplication object { domain, type, id, 30 more }"
+            "smithy.api#jsonName": "BrowserVNCApplication object { domain, type, id, 31 more }"
           }
         },
         "AppLauncherApplication_object___type__id__allowed_idps__15_more__": {
@@ -4076,11 +4104,11 @@
             "smithy.api#jsonName": "InfrastructureApplication object { target_criteria, type, id, 3 more }"
           }
         },
-        "BrowserRDPApplication_object___domain__target_criteria__type__31_more__": {
+        "BrowserRDPApplication_object___domain__target_criteria__type__32_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserRDPApplication object { domain, target_criteria, type, 31 more }"
+            "smithy.api#jsonName": "BrowserRDPApplication object { domain, target_criteria, type, 32 more }"
           }
         },
         "McpServerApplication_object___type__id__allow_authenticate_via_warp__18_more__": {
@@ -4203,11 +4231,11 @@
     "com.cloudflare.zero_trust#AccessApplicationsUpdateRequestBody": {
       "type": "structure",
       "members": {
-        "SelfHostedApplication_object___domain__type__allow_authenticate_via_warp__28_more__": {
+        "SelfHostedApplication_object___domain__type__allow_authenticate_via_warp__29_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "SelfHostedApplication object { domain, type, allow_authenticate_via_warp, 28 more }"
+            "smithy.api#jsonName": "SelfHostedApplication object { domain, type, allow_authenticate_via_warp, 29 more }"
           }
         },
         "SaaSApplication_object___allowed_idps__app_launcher_visible__auto_redirect_to_identity__8_more__": {
@@ -4217,18 +4245,18 @@
             "smithy.api#jsonName": "SaaSApplication object { allowed_idps, app_launcher_visible, auto_redirect_to_identity, 8 more }"
           }
         },
-        "BrowserSSHApplication_object___domain__type__allow_authenticate_via_warp__28_more__": {
+        "BrowserSSHApplication_object___domain__type__allow_authenticate_via_warp__29_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserSSHApplication object { domain, type, allow_authenticate_via_warp, 28 more }"
+            "smithy.api#jsonName": "BrowserSSHApplication object { domain, type, allow_authenticate_via_warp, 29 more }"
           }
         },
-        "BrowserVNCApplication_object___domain__type__allow_authenticate_via_warp__28_more__": {
+        "BrowserVNCApplication_object___domain__type__allow_authenticate_via_warp__29_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserVNCApplication object { domain, type, allow_authenticate_via_warp, 28 more }"
+            "smithy.api#jsonName": "BrowserVNCApplication object { domain, type, allow_authenticate_via_warp, 29 more }"
           }
         },
         "AppLauncherApplication_object___type__allowed_idps__app_launcher_logo_url__13_more__": {
@@ -4273,12 +4301,12 @@
             "smithy.api#jsonName": "InfrastructureApplication object { target_criteria, type, name, policies }"
           }
         },
-        "BrowserRDPApplication_object___domain__target_criteria__type__29_more__": {
+        "BrowserRDPApplication_object___domain__target_criteria__type__30_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Contains the targets secured by the application.",
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserRDPApplication object { domain, target_criteria, type, 29 more }"
+            "smithy.api#jsonName": "BrowserRDPApplication object { domain, target_criteria, type, 30 more }"
           }
         },
         "McpServerApplication_object___type__allow_authenticate_via_warp__allowed_idps__16_more__": {
@@ -4337,11 +4365,11 @@
     "com.cloudflare.zero_trust#AccessApplicationsUpdateResponse": {
       "type": "structure",
       "members": {
-        "SelfHostedApplication_object___domain__type__id__30_more__": {
+        "SelfHostedApplication_object___domain__type__id__31_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "SelfHostedApplication object { domain, type, id, 30 more }"
+            "smithy.api#jsonName": "SelfHostedApplication object { domain, type, id, 31 more }"
           }
         },
         "SaaSApplication_object___id__allowed_idps__app_launcher_visible__10_more__": {
@@ -4351,18 +4379,18 @@
             "smithy.api#jsonName": "SaaSApplication object { id, allowed_idps, app_launcher_visible, 10 more }"
           }
         },
-        "BrowserSSHApplication_object___domain__type__id__30_more__": {
+        "BrowserSSHApplication_object___domain__type__id__31_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserSSHApplication object { domain, type, id, 30 more }"
+            "smithy.api#jsonName": "BrowserSSHApplication object { domain, type, id, 31 more }"
           }
         },
-        "BrowserVNCApplication_object___domain__type__id__30_more__": {
+        "BrowserVNCApplication_object___domain__type__id__31_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserVNCApplication object { domain, type, id, 30 more }"
+            "smithy.api#jsonName": "BrowserVNCApplication object { domain, type, id, 31 more }"
           }
         },
         "AppLauncherApplication_object___type__id__allowed_idps__15_more__": {
@@ -4407,11 +4435,11 @@
             "smithy.api#jsonName": "InfrastructureApplication object { target_criteria, type, id, 3 more }"
           }
         },
-        "BrowserRDPApplication_object___domain__target_criteria__type__31_more__": {
+        "BrowserRDPApplication_object___domain__target_criteria__type__32_more__": {
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#required": {},
-            "smithy.api#jsonName": "BrowserRDPApplication object { domain, target_criteria, type, 31 more }"
+            "smithy.api#jsonName": "BrowserRDPApplication object { domain, target_criteria, type, 32 more }"
           }
         },
         "McpServerApplication_object___type__id__allow_authenticate_via_warp__18_more__": {
@@ -6958,6 +6986,14 @@
         }
       }
     },
+    "com.cloudflare.zero_trust#AccessApplicationsUserPolicyChecksListResponseUserIdentityGeo": {
+      "type": "structure",
+      "members": {
+        "country": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
     "com.cloudflare.zero_trust#AccessApplicationsUserPolicyChecksListResponseUserIdentity": {
       "type": "structure",
       "members": {
@@ -6974,7 +7010,7 @@
           "target": "smithy.api#String"
         },
         "geo": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.zero_trust#AccessApplicationsUserPolicyChecksListResponseUserIdentityGeo"
         },
         "iat": {
           "target": "smithy.api#Double"
@@ -9076,7 +9112,7 @@
           "uri": "/accounts/{account_id}/access/idp_federation_grants",
           "code": 200
         },
-        "smithy.api#documentation": "Creates an IdP federation grant for the specified identity provider, making it available for federation to other accounts in the same Cloudflare organization. The account must belong to a Cloudflare organization. One-time pin and Cloudflare-managed identity providers cannot be federated. An identity provider may only have one active grant at a time."
+        "smithy.api#documentation": "Creates an IdP federation grant for the specified identity provider, making it available for federation to other accounts in the same Cloudflare organization. The account must belong to a Cloudflare organization. One-time pin and Cloudflare-managed identity providers cannot be federated. An account can federate at most five identity providers at a time."
       }
     },
     "com.cloudflare.zero_trust#AccessIdpFederationGrantsDeleteRequest": {
@@ -14908,6 +14944,14 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.zero_trust#AccessUsersActiveSessionsGetResponseGeo": {
+      "type": "structure",
+      "members": {
+        "country": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
     "com.cloudflare.zero_trust#AccessUsersActiveSessionsGetResponseIdp": {
       "type": "structure",
       "members": {
@@ -14964,7 +15008,7 @@
           "target": "smithy.api#String"
         },
         "geo": {
-          "target": "smithy.api#Document"
+          "target": "com.cloudflare.zero_trust#AccessUsersActiveSessionsGetResponseGeo"
         },
         "iat": {
           "target": "smithy.api#Double"
@@ -15258,6 +15302,2664 @@
         },
         "smithy.api#documentation": "Get last seen identity for a single user.",
         "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetRequestSlug": {
+      "type": "enum",
+      "members": {
+        "GITHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GITHUB"
+          }
+        },
+        "GOOGLE_WORKSPACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE_WORKSPACE"
+          }
+        },
+        "MICROSOFT_INTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MICROSOFT_INTERNAL"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsGetRequestSlug",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseAuthMethodsItemSupportedEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseAuthMethodsItem": {
+      "type": "structure",
+      "members": {
+        "display_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable auth method name.",
+            "smithy.api#required": {}
+          }
+        },
+        "is_default": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this is the default auth method.",
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Auth method identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "supported_environments": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseAuthMethodsItemSupportedEnvironmentsList",
+          "traits": {
+            "smithy.api#documentation": "Environments this auth method supports.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseAuthMethodsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseAuthMethodsItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseSlug": {
+      "type": "enum",
+      "members": {
+        "GITHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GITHUB"
+          }
+        },
+        "GOOGLE_WORKSPACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE_WORKSPACE"
+          }
+        },
+        "MICROSOFT_INTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MICROSOFT_INTERNAL"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemBaseScopesItemSeverity": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemBaseScopesItem": {
+      "type": "structure",
+      "members": {
+        "display_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable permission name.",
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Vendor-native scope identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "severity": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemBaseScopesItemSeverity",
+          "traits": {
+            "smithy.api#documentation": "Permission sensitivity level.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemBaseScopesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemBaseScopesItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItemSeverity": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItem": {
+      "type": "structure",
+      "members": {
+        "display_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable permission name.",
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Vendor-native scope identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "severity": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItemSeverity",
+          "traits": {
+            "smithy.api#documentation": "Permission sensitivity level.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemFeaturesItem": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Feature description.",
+            "smithy.api#required": {}
+          }
+        },
+        "display_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable feature name.",
+            "smithy.api#required": {}
+          }
+        },
+        "scopes": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesList",
+          "traits": {
+            "smithy.api#documentation": "Additional scopes when feature is enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Feature identifier.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemFeaturesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemFeaturesItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItem": {
+      "type": "structure",
+      "members": {
+        "base_scopes": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemBaseScopesList",
+          "traits": {
+            "smithy.api#documentation": "Scopes always required for this use case.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Use case description.",
+            "smithy.api#required": {}
+          }
+        },
+        "display_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable use case name.",
+            "smithy.api#required": {}
+          }
+        },
+        "features": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItemFeaturesList",
+          "traits": {
+            "smithy.api#documentation": "Optional features with extra scopes.",
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Use case identifier.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGetResponse": {
+      "type": "structure",
+      "members": {
+        "auth_methods": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseAuthMethodsList",
+          "traits": {
+            "smithy.api#documentation": "Available authentication methods.",
+            "smithy.api#required": {}
+          }
+        },
+        "category": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Vendor category.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Brief description.",
+            "smithy.api#required": {}
+          }
+        },
+        "display_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable vendor name.",
+            "smithy.api#required": {}
+          }
+        },
+        "dlp_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether DLP scanning is supported.",
+            "smithy.api#required": {}
+          }
+        },
+        "instructions": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Setup instructions for the user.",
+            "smithy.api#required": {}
+          }
+        },
+        "logo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Logo path.",
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseSlug",
+          "traits": {
+            "smithy.api#documentation": "Vendor identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "use_cases": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponseUseCasesList",
+          "traits": {
+            "smithy.api#documentation": "Use cases with full scope details.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/one/applications/{slug}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Returns full application details including auth methods, use cases, and permissions.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "environment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter by supported environment (standard, fedramp).",
+            "smithy.api#httpQuery": "environment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsListResponseAuthMethodsItem": {
+      "type": "structure",
+      "members": {
+        "display_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable auth method name.",
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Auth method identifier.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsListResponseAuthMethodsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsListResponseAuthMethodsItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsListResponsePermissionsItemSeverity": {
+      "type": "enum",
+      "members": {
+        "LOW": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "low"
+          }
+        },
+        "MEDIUM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "medium"
+          }
+        },
+        "HIGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "high"
+          }
+        },
+        "CRITICAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "critical"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsListResponsePermissionsItem": {
+      "type": "structure",
+      "members": {
+        "display_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable permission name.",
+            "smithy.api#required": {}
+          }
+        },
+        "scope": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Vendor-native scope identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "severity": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsListResponsePermissionsItemSeverity",
+          "traits": {
+            "smithy.api#documentation": "Permission sensitivity level.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsListResponsePermissionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsListResponsePermissionsItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsListResponseSlug": {
+      "type": "enum",
+      "members": {
+        "GITHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GITHUB"
+          }
+        },
+        "GOOGLE_WORKSPACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE_WORKSPACE"
+          }
+        },
+        "MICROSOFT_INTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MICROSOFT_INTERNAL"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsListResponseSupportedEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsListResponseUseCasesItem": {
+      "type": "structure",
+      "members": {
+        "display_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable use case name.",
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Use case identifier (e.g. casb, ces).",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsListResponseUseCasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsListResponseUseCasesItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsListResponse": {
+      "type": "structure",
+      "members": {
+        "auth_methods": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsListResponseAuthMethodsList",
+          "traits": {
+            "smithy.api#documentation": "Available auth methods.",
+            "smithy.api#required": {}
+          }
+        },
+        "category": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Vendor category (e.g. Productivity, AI).",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Brief description of the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "display_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable vendor name.",
+            "smithy.api#required": {}
+          }
+        },
+        "dlp_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether DLP scanning is supported.",
+            "smithy.api#required": {}
+          }
+        },
+        "logo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Logo path.",
+            "smithy.api#required": {}
+          }
+        },
+        "permissions": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsListResponsePermissionsList",
+          "traits": {
+            "smithy.api#documentation": "All permissions with severity.",
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsListResponseSlug",
+          "traits": {
+            "smithy.api#documentation": "Vendor identifier (e.g. microsoft_internal, google_workspace).",
+            "smithy.api#required": {}
+          }
+        },
+        "supported_environments": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsListResponseSupportedEnvironmentsList",
+          "traits": {
+            "smithy.api#documentation": "Environments this vendor supports (standard, fedramp).",
+            "smithy.api#required": {}
+          }
+        },
+        "use_cases": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsListResponseUseCasesList",
+          "traits": {
+            "smithy.api#documentation": "Supported use cases.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/one/applications",
+          "code": 200
+        },
+        "smithy.api#documentation": "Returns a list of available applications with use cases and permissions.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListRequestEnvironment": {
+      "type": "enum",
+      "members": {
+        "FEDRAMP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fedramp"
+          }
+        },
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "standard"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "slug": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "auth_method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter by auth method slug. Get available slugs from GET /v2/applications.",
+            "smithy.api#httpQuery": "auth_method"
+          }
+        },
+        "environment": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListRequestEnvironment",
+          "traits": {
+            "smithy.api#documentation": "Filter by environment.",
+            "smithy.api#httpQuery": "environment"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemType": {
+      "type": "enum",
+      "members": {
+        "COMPONENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "component"
+          }
+        },
+        "INSTRUCTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "instruction"
+          }
+        },
+        "FORM_INPUT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "form_input"
+          }
+        },
+        "OAUTH_REDIRECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "oauth_redirect"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItemType": {
+      "type": "enum",
+      "members": {
+        "COPY_BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "copy_block"
+          }
+        },
+        "EXTERNAL_LINK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "external_link"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItem": {
+      "type": "structure",
+      "members": {
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Display label.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItemType",
+          "traits": {
+            "smithy.api#documentation": "Content type.",
+            "smithy.api#required": {}
+          }
+        },
+        "url_template": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "URL template with {{ variable }} interpolation (for external_link)."
+          }
+        },
+        "value_from": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Field path to get value from (for copy_block)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemSupportedFileTypesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemType": {
+      "type": "enum",
+      "members": {
+        "TEXT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "text"
+          }
+        },
+        "PASSWORD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "password"
+          }
+        },
+        "EMAIL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "email"
+          }
+        },
+        "FILE_UPLOAD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "file_upload"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItem": {
+      "type": "structure",
+      "members": {
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable field label.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Field identifier (maps to credentials key).",
+            "smithy.api#required": {}
+          }
+        },
+        "placeholder": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Placeholder text.",
+            "smithy.api#required": {}
+          }
+        },
+        "required": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether field is required.",
+            "smithy.api#required": {}
+          }
+        },
+        "supported_file_types": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemSupportedFileTypesList",
+          "traits": {
+            "smithy.api#documentation": "Allowed file extensions for file_upload type.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemType",
+          "traits": {
+            "smithy.api#documentation": "Field input type.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemParametersMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItem": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemType",
+          "traits": {
+            "smithy.api#documentation": "Step type.",
+            "smithy.api#required": {}
+          }
+        },
+        "component_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Component identifier (for component type)."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Step description with markdown support."
+          }
+        },
+        "dynamic_content": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentList",
+          "traits": {
+            "smithy.api#documentation": "Dynamic content blocks (for instruction/form_input)."
+          }
+        },
+        "form_fields": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsList",
+          "traits": {
+            "smithy.api#documentation": "Form fields (for form_input)."
+          }
+        },
+        "is_required": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether step is required (for form_input)."
+          }
+        },
+        "parameters": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItemParametersMap",
+          "traits": {
+            "smithy.api#documentation": "Component parameters (for component type)."
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Step title (for instruction/form_input/oauth_redirect)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseSupportedEnvironmentsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseAuthConfigScopesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseAuthConfigUrlPlaceholdersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseAuthConfig": {
+      "type": "structure",
+      "members": {
+        "authorization_url": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Authorization URL for the requested environment.",
+            "smithy.api#required": {}
+          }
+        },
+        "client_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "OAuth client ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "requires_pkce": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether PKCE is required.",
+            "smithy.api#required": {}
+          }
+        },
+        "scopes": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseAuthConfigScopesList",
+          "traits": {
+            "smithy.api#documentation": "OAuth scopes to request.",
+            "smithy.api#required": {}
+          }
+        },
+        "url_placeholders": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseAuthConfigUrlPlaceholdersList",
+          "traits": {
+            "smithy.api#documentation": "Placeholders in authorization URL that frontend must fill.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Setup flow identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "default": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this is the default auth method.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Flow description.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable flow name.",
+            "smithy.api#required": {}
+          }
+        },
+        "steps": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseStepsList",
+          "traits": {
+            "smithy.api#documentation": "Ordered list of setup steps.",
+            "smithy.api#required": {}
+          }
+        },
+        "supported_environments": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseSupportedEnvironmentsList",
+          "traits": {
+            "smithy.api#documentation": "Environments this auth method supports (standard, fedramp).",
+            "smithy.api#required": {}
+          }
+        },
+        "auth_config": {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponseAuthConfig",
+          "traits": {
+            "smithy.api#documentation": "OAuth configuration (present for OAuth-based flows)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/one/applications/{slug}/setup-flows",
+          "code": 200
+        },
+        "smithy.api#documentation": "Returns all available setup flows for the application, one per auth method.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateRequestApplication": {
+      "type": "enum",
+      "members": {
+        "GITHUB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GITHUB"
+          }
+        },
+        "GOOGLE_WORKSPACE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GOOGLE_WORKSPACE"
+          }
+        },
+        "MICROSOFT_INTERNAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "MICROSOFT_INTERNAL"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateRequestCredentialsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateRequestDlpProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateRequestPermissionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateRequestUseCasesItem": {
+      "type": "enum",
+      "members": {
+        "CASB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb"
+          }
+        },
+        "CES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ces"
+          }
+        },
+        "AUTO_REMEDIATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto_remediation"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateRequestUseCasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateRequestUseCasesItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "application": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateRequestApplication",
+          "traits": {
+            "smithy.api#documentation": "Vendor/application slug (e.g., GOOGLE_WORKSPACE).",
+            "smithy.api#required": {}
+          }
+        },
+        "credentials": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateRequestCredentialsMap",
+          "traits": {
+            "smithy.api#documentation": "Credentials for the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "auth_method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Authentication method slug (uses default if omitted)."
+          }
+        },
+        "dlp_profiles": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateRequestDlpProfilesList",
+          "traits": {
+            "smithy.api#documentation": "List of DLP profile IDs to associate."
+          }
+        },
+        "permissions": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateRequestPermissionsList",
+          "traits": {
+            "smithy.api#documentation": "List of permission scopes (uses policy defaults if empty)."
+          }
+        },
+        "use_cases": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateRequestUseCasesList",
+          "traits": {
+            "smithy.api#documentation": "List of use case or feature slugs to enroll (e.g., ['casb', 'ces', 'auto_remediation'])."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseApplicationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseAuthMethodMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseAuthorizationLinkComponentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseAuthorizationLink": {
+      "type": "structure",
+      "members": {
+        "components": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseAuthorizationLinkComponentsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "link": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseDlpProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseHealthDetailsItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseHealthDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseHealthDetailsItemMap"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseUseCasesItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseUseCasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseUseCasesItemMap"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Integration ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "application": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseApplicationMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "auth_method": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseAuthMethodMap",
+          "traits": {
+            "smithy.api#documentation": "The integration's authentication method.",
+            "smithy.api#required": {}
+          }
+        },
+        "authorization_link": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseAuthorizationLink",
+          "traits": {
+            "smithy.api#documentation": "Authorization link for the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the integration was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "credentials_expiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Credentials expiry time.",
+            "smithy.api#required": {}
+          }
+        },
+        "dlp_profiles": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseDlpProfilesList",
+          "traits": {
+            "smithy.api#documentation": "DLP Profiles enabled for the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "health_details": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseHealthDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Health details with remediation hints.",
+            "smithy.api#required": {}
+          }
+        },
+        "is_paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the user paused the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_hydrated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the integration was hydrated.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "organization_id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Organization ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Integration status.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the integration was last updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "use_cases": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateResponseUseCasesList",
+          "traits": {
+            "smithy.api#documentation": "Use cases enabled for the integration.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/one/integrations",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates a new integration for the specified application."
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/one/integrations/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete an integration by soft-deleting it.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsGetResponseApplicationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsGetResponseAuthMethodMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsGetResponseAuthorizationLinkComponentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsGetResponseAuthorizationLink": {
+      "type": "structure",
+      "members": {
+        "components": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsGetResponseAuthorizationLinkComponentsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "link": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsGetResponseDlpProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsGetResponseHealthDetailsItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsGetResponseHealthDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsGetResponseHealthDetailsItemMap"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsGetResponseUseCasesItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsGetResponseUseCasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsGetResponseUseCasesItemMap"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Integration ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "application": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsGetResponseApplicationMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "auth_method": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsGetResponseAuthMethodMap",
+          "traits": {
+            "smithy.api#documentation": "The integration's authentication method.",
+            "smithy.api#required": {}
+          }
+        },
+        "authorization_link": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsGetResponseAuthorizationLink",
+          "traits": {
+            "smithy.api#documentation": "Authorization link for the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the integration was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "credentials_expiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Credentials expiry time.",
+            "smithy.api#required": {}
+          }
+        },
+        "dlp_profiles": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsGetResponseDlpProfilesList",
+          "traits": {
+            "smithy.api#documentation": "DLP Profiles enabled for the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "health_details": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsGetResponseHealthDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Health details with remediation hints.",
+            "smithy.api#required": {}
+          }
+        },
+        "is_paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the user paused the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_hydrated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the integration was hydrated.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "organization_id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Organization ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Integration status.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the integration was last updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "use_cases": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsGetResponseUseCasesList",
+          "traits": {
+            "smithy.api#documentation": "Use cases enabled for the integration.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/one/integrations/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Returns full integration details including use cases and permissions.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsListRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsListRequestOrder": {
+      "type": "enum",
+      "members": {
+        "APPLICATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "application"
+          }
+        },
+        "CREATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created"
+          }
+        },
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        },
+        "STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "status"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsListRequestStatus": {
+      "type": "enum",
+      "members": {
+        "HEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Healthy"
+          }
+        },
+        "INITIALIZING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Initializing"
+          }
+        },
+        "OFFLINE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Offline"
+          }
+        },
+        "UNHEALTHY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "Unhealthy"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "application": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter by application/vendor (e.g., GOOGLE_WORKSPACE, MICROSOFT_INTERNAL).",
+            "smithy.api#httpQuery": "application"
+          }
+        },
+        "direction": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsListRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "Direction to order results.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "dlp_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Filter by DLP enabled status (true/false).",
+            "smithy.api#httpQuery": "dlp_enabled"
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsListRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "Field to order results by.",
+            "smithy.api#httpQuery": "order"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number within the paginated result set.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "page_size": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of results per page.",
+            "smithy.api#httpQuery": "page_size"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Search integrations by name or application.",
+            "smithy.api#httpQuery": "search"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsListRequestStatus",
+          "traits": {
+            "smithy.api#documentation": "Filter by integration status.",
+            "smithy.api#httpQuery": "status"
+          }
+        },
+        "use_cases": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filter by enabled use cases (e.g., casb, ces). Matches integrations enrolled in any of the specified values. Can be specified multiple times.",
+            "smithy.api#httpQuery": "use_cases"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsListRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/one/integrations",
+          "code": 200
+        },
+        "smithy.api#documentation": "Returns a paginated list of integrations for the account.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsPauseRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseApplicationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseAuthMethodMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseAuthorizationLinkComponentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseAuthorizationLink": {
+      "type": "structure",
+      "members": {
+        "components": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseAuthorizationLinkComponentsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "link": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseDlpProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseHealthDetailsItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseHealthDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseHealthDetailsItemMap"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseUseCasesItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseUseCasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseUseCasesItemMap"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsPauseResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Integration ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "application": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseApplicationMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "auth_method": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseAuthMethodMap",
+          "traits": {
+            "smithy.api#documentation": "The integration's authentication method.",
+            "smithy.api#required": {}
+          }
+        },
+        "authorization_link": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseAuthorizationLink",
+          "traits": {
+            "smithy.api#documentation": "Authorization link for the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the integration was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "credentials_expiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Credentials expiry time.",
+            "smithy.api#required": {}
+          }
+        },
+        "dlp_profiles": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseDlpProfilesList",
+          "traits": {
+            "smithy.api#documentation": "DLP Profiles enabled for the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "health_details": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseHealthDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Health details with remediation hints.",
+            "smithy.api#required": {}
+          }
+        },
+        "is_paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the user paused the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_hydrated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the integration was hydrated.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "organization_id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Organization ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Integration status.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the integration was last updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "use_cases": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsPauseResponseUseCasesList",
+          "traits": {
+            "smithy.api#documentation": "Use cases enabled for the integration.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsPause": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsPauseRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsPauseResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/one/integrations/{id}/pause",
+          "code": 200
+        },
+        "smithy.api#documentation": "Pauses an integration, stopping all crawlers."
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsResumeRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseApplicationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseAuthMethodMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseAuthorizationLinkComponentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseAuthorizationLink": {
+      "type": "structure",
+      "members": {
+        "components": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseAuthorizationLinkComponentsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "link": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseDlpProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseHealthDetailsItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseHealthDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseHealthDetailsItemMap"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseUseCasesItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseUseCasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseUseCasesItemMap"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsResumeResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Integration ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "application": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseApplicationMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "auth_method": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseAuthMethodMap",
+          "traits": {
+            "smithy.api#documentation": "The integration's authentication method.",
+            "smithy.api#required": {}
+          }
+        },
+        "authorization_link": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseAuthorizationLink",
+          "traits": {
+            "smithy.api#documentation": "Authorization link for the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the integration was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "credentials_expiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Credentials expiry time.",
+            "smithy.api#required": {}
+          }
+        },
+        "dlp_profiles": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseDlpProfilesList",
+          "traits": {
+            "smithy.api#documentation": "DLP Profiles enabled for the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "health_details": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseHealthDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Health details with remediation hints.",
+            "smithy.api#required": {}
+          }
+        },
+        "is_paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the user paused the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_hydrated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the integration was hydrated.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "organization_id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Organization ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Integration status.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the integration was last updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "use_cases": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsResumeResponseUseCasesList",
+          "traits": {
+            "smithy.api#documentation": "Use cases enabled for the integration.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsResume": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsResumeRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsResumeResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/one/integrations/{id}/resume",
+          "code": 200
+        },
+        "smithy.api#documentation": "Resumes a paused integration, restarting crawlers."
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateRequestCredentialsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateRequestDlpProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateRequestPermissionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateRequestUseCasesItem": {
+      "type": "enum",
+      "members": {
+        "CASB": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "casb"
+          }
+        },
+        "CES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ces"
+          }
+        },
+        "AUTO_REMEDIATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto_remediation"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateRequestUseCasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateRequestUseCasesItem"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "credentials": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateRequestCredentialsMap",
+          "traits": {
+            "smithy.api#documentation": "Partial credential fields to merge with existing."
+          }
+        },
+        "dlp_profiles": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateRequestDlpProfilesList",
+          "traits": {
+            "smithy.api#documentation": "List of DLP profile IDs to associate with the integration."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the integration."
+          }
+        },
+        "permissions": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateRequestPermissionsList",
+          "traits": {
+            "smithy.api#documentation": "List of permission scopes granted to the integration."
+          }
+        },
+        "use_cases": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateRequestUseCasesList",
+          "traits": {
+            "smithy.api#documentation": "List of use case or feature slugs to enroll (e.g., ['casb', 'ces', 'auto_remediation'])."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseApplicationMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseAuthMethodMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseAuthorizationLinkComponentsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseAuthorizationLink": {
+      "type": "structure",
+      "members": {
+        "components": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseAuthorizationLinkComponentsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "link": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseDlpProfilesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseHealthDetailsItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseHealthDetailsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseHealthDetailsItemMap"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseUseCasesItemMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseUseCasesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseUseCasesItemMap"
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Integration ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "application": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseApplicationMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "auth_method": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseAuthMethodMap",
+          "traits": {
+            "smithy.api#documentation": "The integration's authentication method.",
+            "smithy.api#required": {}
+          }
+        },
+        "authorization_link": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseAuthorizationLink",
+          "traits": {
+            "smithy.api#documentation": "Authorization link for the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "created": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the integration was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "credentials_expiry": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Credentials expiry time.",
+            "smithy.api#required": {}
+          }
+        },
+        "dlp_profiles": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseDlpProfilesList",
+          "traits": {
+            "smithy.api#documentation": "DLP Profiles enabled for the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "health_details": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseHealthDetailsList",
+          "traits": {
+            "smithy.api#documentation": "Health details with remediation hints.",
+            "smithy.api#required": {}
+          }
+        },
+        "is_paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the user paused the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_hydrated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Last time the integration was hydrated.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the integration.",
+            "smithy.api#required": {}
+          }
+        },
+        "organization_id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Organization ID.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Integration status.",
+            "smithy.api#required": {}
+          }
+        },
+        "updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the integration was last updated.",
+            "smithy.api#required": {}
+          }
+        },
+        "use_cases": {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponseUseCasesList",
+          "traits": {
+            "smithy.api#documentation": "Use cases enabled for the integration.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.zero_trust#CasbIntegrationsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/accounts/{account_id}/one/integrations/{id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates an integration's name, permissions, DLP profiles, use cases, or credentials."
       }
     },
     "com.cloudflare.zero_trust#ConnectivitySettingsEditRequest": {
@@ -18757,7 +21459,7 @@
           "uri": "/accounts/{account_id}/dex/devices/{device_id}/fleet-status/live",
           "code": 200
         },
-        "smithy.api#documentation": "Get the live status of a latest device given device_id from the device_state table",
+        "smithy.api#documentation": "Get the latest status of a device given device_id from the device_state table.",
         "smithy.api#readonly": {}
       }
     },
@@ -18966,6 +21668,13 @@
           "traits": {
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The page number to return.",
+            "smithy.api#httpQuery": "page"
           }
         },
         "per_page": {
@@ -19634,6 +22343,57 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.zero_trust#DevicesPoliciesCustomCreateRequestGlobalAccelerationApiEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesCustomCreateRequestGlobalAccelerationMasqueEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesCustomCreateRequestGlobalAccelerationWireguardEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesCustomCreateRequestGlobalAcceleration": {
+      "type": "structure",
+      "members": {
+        "api_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesCustomCreateRequestGlobalAccelerationApiEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the API endpoints.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Global acceleration settings are used only when \"enabled\".",
+            "smithy.api#required": {}
+          }
+        },
+        "masque_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesCustomCreateRequestGlobalAccelerationMasqueEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+            "smithy.api#required": {}
+          }
+        },
+        "wireguard_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesCustomCreateRequestGlobalAccelerationWireguardEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.zero_trust#DevicesPoliciesCustomCreateRequestIncludeList": {
       "type": "list",
       "member": {
@@ -19777,6 +22537,12 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether to add Microsoft IPs to Split Tunnel exclusions."
+          }
+        },
+        "global_acceleration": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesCustomCreateRequestGlobalAcceleration",
+          "traits": {
+            "smithy.api#documentation": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/."
           }
         },
         "include": {
@@ -19964,6 +22730,57 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.zero_trust#DevicesPoliciesCustomEditRequestGlobalAccelerationApiEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesCustomEditRequestGlobalAccelerationMasqueEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesCustomEditRequestGlobalAccelerationWireguardEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesCustomEditRequestGlobalAcceleration": {
+      "type": "structure",
+      "members": {
+        "api_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesCustomEditRequestGlobalAccelerationApiEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the API endpoints.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Global acceleration settings are used only when \"enabled\".",
+            "smithy.api#required": {}
+          }
+        },
+        "masque_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesCustomEditRequestGlobalAccelerationMasqueEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+            "smithy.api#required": {}
+          }
+        },
+        "wireguard_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesCustomEditRequestGlobalAccelerationWireguardEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.zero_trust#DevicesPoliciesCustomEditRequestIncludeList": {
       "type": "list",
       "member": {
@@ -20093,6 +22910,12 @@
           "target": "smithy.api#Boolean",
           "traits": {
             "smithy.api#documentation": "Whether to add Microsoft IPs to Split Tunnel exclusions."
+          }
+        },
+        "global_acceleration": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesCustomEditRequestGlobalAcceleration",
+          "traits": {
+            "smithy.api#documentation": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/."
           }
         },
         "include": {
@@ -20748,6 +23571,57 @@
         "target": "smithy.api#Document"
       }
     },
+    "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditRequestGlobalAccelerationApiEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditRequestGlobalAccelerationMasqueEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditRequestGlobalAccelerationWireguardEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditRequestGlobalAcceleration": {
+      "type": "structure",
+      "members": {
+        "api_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditRequestGlobalAccelerationApiEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the API endpoints.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Global acceleration settings are used only when \"enabled\".",
+            "smithy.api#required": {}
+          }
+        },
+        "masque_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditRequestGlobalAccelerationMasqueEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+            "smithy.api#required": {}
+          }
+        },
+        "wireguard_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditRequestGlobalAccelerationWireguardEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
     "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditRequestIncludeList": {
       "type": "list",
       "member": {
@@ -20860,6 +23734,12 @@
             "smithy.api#documentation": "Whether to add Microsoft IPs to Split Tunnel exclusions."
           }
         },
+        "global_acceleration": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditRequestGlobalAcceleration",
+          "traits": {
+            "smithy.api#documentation": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/."
+          }
+        },
         "include": {
           "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditRequestIncludeList",
           "traits": {
@@ -20956,6 +23836,57 @@
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditResponseGlobalAccelerationApiEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditResponseGlobalAccelerationMasqueEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditResponseGlobalAccelerationWireguardEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditResponseGlobalAcceleration": {
+      "type": "structure",
+      "members": {
+        "api_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditResponseGlobalAccelerationApiEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the API endpoints.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Global acceleration settings are used only when \"enabled\".",
+            "smithy.api#required": {}
+          }
+        },
+        "masque_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditResponseGlobalAccelerationMasqueEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+            "smithy.api#required": {}
+          }
+        },
+        "wireguard_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditResponseGlobalAccelerationWireguardEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditResponseIncludeList": {
@@ -21081,6 +24012,12 @@
         "gateway_unique_id": {
           "target": "smithy.api#String"
         },
+        "global_acceleration": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditResponseGlobalAcceleration",
+          "traits": {
+            "smithy.api#documentation": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/."
+          }
+        },
         "include": {
           "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultEditResponseIncludeList",
           "traits": {
@@ -21201,6 +24138,57 @@
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesDefaultGetResponseGlobalAccelerationApiEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesDefaultGetResponseGlobalAccelerationMasqueEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesDefaultGetResponseGlobalAccelerationWireguardEndpointsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.zero_trust#DevicesPoliciesDefaultGetResponseGlobalAcceleration": {
+      "type": "structure",
+      "members": {
+        "api_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultGetResponseGlobalAccelerationApiEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the API endpoints.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Global acceleration settings are used only when \"enabled\".",
+            "smithy.api#required": {}
+          }
+        },
+        "masque_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultGetResponseGlobalAccelerationMasqueEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the MASQUE tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+            "smithy.api#required": {}
+          }
+        },
+        "wireguard_endpoints": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultGetResponseGlobalAccelerationWireguardEndpointsList",
+          "traits": {
+            "smithy.api#documentation": "IP:port entries for the WireGuard tunnel endpoints. Either wireguard_endpoints or masque_endpoints must be provided.",
+            "smithy.api#required": {}
+          }
+        }
       }
     },
     "com.cloudflare.zero_trust#DevicesPoliciesDefaultGetResponseIncludeList": {
@@ -21325,6 +24313,12 @@
         },
         "gateway_unique_id": {
           "target": "smithy.api#String"
+        },
+        "global_acceleration": {
+          "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultGetResponseGlobalAcceleration",
+          "traits": {
+            "smithy.api#documentation": "Global Acceleration settings for China. When configured, WARP clients connect to the Global Accelerator addresses instead of the default ones. Please contact your account representative to enable this feature on your account. See https://developers.cloudflare.com/china-network/concepts/global-acceleration/."
+          }
         },
         "include": {
           "target": "com.cloudflare.zero_trust#DevicesPoliciesDefaultGetResponseIncludeList",
@@ -23074,6 +26068,18 @@
         },
         "user": {
           "target": "com.cloudflare.zero_trust#DevicesRegistrationsGetResponseUser"
+        },
+        "virtual_ipv4": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The virtual IPv4 address assigned to the network interface of the tunnel for this registration."
+          }
+        },
+        "virtual_ipv6": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The virtual IPv6 address assigned to the network interface of the tunnel for this registration."
+          }
         }
       },
       "traits": {
@@ -23430,6 +26436,18 @@
         },
         "user": {
           "target": "com.cloudflare.zero_trust#DevicesRegistrationsListResultItemUser"
+        },
+        "virtual_ipv4": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The virtual IPv4 address assigned to the network interface of the tunnel for this registration."
+          }
+        },
+        "virtual_ipv6": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The virtual IPv6 address assigned to the network interface of the tunnel for this registration."
+          }
         }
       }
     },
@@ -25178,7 +28196,7 @@
           "uri": "/accounts/{account_id}/dex/fleet-status/live",
           "code": 200
         },
-        "smithy.api#documentation": "List details for live (up to 60 minutes) devices using WARP.",
+        "smithy.api#documentation": "Get details for live (up to 60 minutes) devices using WARP.",
         "smithy.api#readonly": {}
       }
     },
@@ -25317,7 +28335,7 @@
           "uri": "/accounts/{account_id}/dex/fleet-status/over-time",
           "code": 200
         },
-        "smithy.api#documentation": "List details for devices using WARP, up to 7 days.",
+        "smithy.api#documentation": "Get aggregate details for devices using WARP, up to 7 days.",
         "smithy.api#readonly": {}
       }
     },
@@ -26210,7 +29228,7 @@
           "uri": "/accounts/{account_id}/dex/fleet-status/devices",
           "code": 200
         },
-        "smithy.api#documentation": "List details for devices using WARP.",
+        "smithy.api#documentation": "List details of devices using WARP.",
         "smithy.api#readonly": {}
       }
     },
@@ -38594,7 +41612,7 @@
           "uri": "/accounts/{account_id}/gateway/configuration",
           "code": 200
         },
-        "smithy.api#documentation": "Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, or `certificate` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration."
+        "smithy.api#documentation": "Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, `certificate`, or `max_ttl_secs` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration."
       }
     },
     "com.cloudflare.zero_trust#GatewayConfigurationsGetRequest": {
@@ -39391,6 +42409,47 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.zero_trust#GatewayLocationsCreateRequestMaxTtlMode": {
+      "type": "enum",
+      "members": {
+        "INHERIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inherit"
+          }
+        },
+        "OVERRIDE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "override"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#GatewayLocationsCreateRequestMaxTtl": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.zero_trust#GatewayLocationsCreateRequestMaxTtlMode",
+          "traits": {
+            "smithy.api#documentation": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
+            "smithy.api#required": {}
+          }
+        },
+        "ttl_secs": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`."
+          }
+        }
+      }
+    },
     "com.cloudflare.zero_trust#GatewayLocationsCreateRequestNetworksItem": {
       "type": "structure",
       "members": {
@@ -39448,6 +42507,12 @@
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Configure the destination endpoints for this location."
+          }
+        },
+        "max_ttl": {
+          "target": "com.cloudflare.zero_trust#GatewayLocationsCreateRequestMaxTtl",
+          "traits": {
+            "smithy.api#documentation": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`."
           }
         },
         "networks": {
@@ -39657,6 +42722,47 @@
         "smithy.api#readonly": {}
       }
     },
+    "com.cloudflare.zero_trust#GatewayLocationsUpdateRequestMaxTtlMode": {
+      "type": "enum",
+      "members": {
+        "INHERIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "inherit"
+          }
+        },
+        "OVERRIDE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "override"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.zero_trust#GatewayLocationsUpdateRequestMaxTtl": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.zero_trust#GatewayLocationsUpdateRequestMaxTtlMode",
+          "traits": {
+            "smithy.api#documentation": "`inherit` uses the account `max_ttl_secs`. `override` uses this location's `ttl_secs`. `disabled` leaves returned TTLs unchanged.",
+            "smithy.api#required": {}
+          }
+        },
+        "ttl_secs": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Location-specific cap on DNS response TTLs, in seconds. Required when `mode` is `override`. Must be omitted when `mode` is `inherit` or `disabled`."
+          }
+        }
+      }
+    },
     "com.cloudflare.zero_trust#GatewayLocationsUpdateRequestNetworksItem": {
       "type": "structure",
       "members": {
@@ -39721,6 +42827,12 @@
           "target": "smithy.api#Document",
           "traits": {
             "smithy.api#documentation": "Configure the destination endpoints for this location."
+          }
+        },
+        "max_ttl": {
+          "target": "com.cloudflare.zero_trust#GatewayLocationsUpdateRequestMaxTtl",
+          "traits": {
+            "smithy.api#documentation": "Controls how DNS response TTLs are capped for this location relative to the account `max_ttl_secs` setting. Omitting `max_ttl` on update resets it to `inherit`."
           }
         },
         "networks": {
@@ -44101,10 +47213,10 @@
             "smithy.api#enumValue": "security_key"
           }
         },
-        "SSH_PIV_KEY": {
+        "PIV_KEY": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "ssh_piv_key"
+            "smithy.api#enumValue": "piv_key"
           }
         }
       }
@@ -44144,7 +47256,7 @@
         }
       }
     },
-    "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaSshPivKeyRequirementsPinPolicy": {
+    "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaPivKeyRequirementsPinPolicy": {
       "type": "enum",
       "members": {
         "NEVER": {
@@ -44167,13 +47279,13 @@
         }
       }
     },
-    "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeySizeList": {
+    "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaPivKeyRequirementsSshKeySizeList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeItem": {
+    "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeItem": {
       "type": "enum",
       "members": {
         "ECDSA": {
@@ -44196,13 +47308,13 @@
         }
       }
     },
-    "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeList": {
+    "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeItem"
+        "target": "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeItem"
       }
     },
-    "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaSshPivKeyRequirementsTouchPolicy": {
+    "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaPivKeyRequirementsTouchPolicy": {
       "type": "enum",
       "members": {
         "NEVER": {
@@ -44225,11 +47337,11 @@
         }
       }
     },
-    "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaSshPivKeyRequirements": {
+    "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaPivKeyRequirements": {
       "type": "structure",
       "members": {
         "pin_policy": {
-          "target": "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaSshPivKeyRequirementsPinPolicy",
+          "target": "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaPivKeyRequirementsPinPolicy",
           "traits": {
             "smithy.api#documentation": "Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use)."
           }
@@ -44237,23 +47349,23 @@
         "require_fips_device": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device."
+            "smithy.api#documentation": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device."
           }
         },
         "ssh_key_size": {
-          "target": "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeySizeList",
+          "target": "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaPivKeyRequirementsSshKeySizeList",
           "traits": {
             "smithy.api#documentation": "Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter."
           }
         },
         "ssh_key_type": {
-          "target": "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeList",
+          "target": "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeList",
           "traits": {
             "smithy.api#documentation": "Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`."
           }
         },
         "touch_policy": {
-          "target": "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaSshPivKeyRequirementsTouchPolicy",
+          "target": "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaPivKeyRequirementsTouchPolicy",
           "traits": {
             "smithy.api#documentation": "Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds)."
           }
@@ -44330,16 +47442,16 @@
             "smithy.api#documentation": "Configures multi-factor authentication (MFA) settings for an organization."
           }
         },
+        "mfa_piv_key_requirements": {
+          "target": "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaPivKeyRequirements",
+          "traits": {
+            "smithy.api#documentation": "Configures PIV key requirements for MFA using hardware security keys."
+          }
+        },
         "mfa_required_for_all_apps": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps."
-          }
-        },
-        "mfa_ssh_piv_key_requirements": {
-          "target": "com.cloudflare.zero_trust#OrganizationsCreateRequestMfaSshPivKeyRequirements",
-          "traits": {
-            "smithy.api#documentation": "Configures SSH PIV key requirements for MFA using hardware security keys."
+            "smithy.api#documentation": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps."
           }
         },
         "session_duration": {
@@ -44589,10 +47701,10 @@
             "smithy.api#enumValue": "security_key"
           }
         },
-        "SSH_PIV_KEY": {
+        "PIV_KEY": {
           "target": "smithy.api#Unit",
           "traits": {
-            "smithy.api#enumValue": "ssh_piv_key"
+            "smithy.api#enumValue": "piv_key"
           }
         }
       }
@@ -44632,7 +47744,7 @@
         }
       }
     },
-    "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaSshPivKeyRequirementsPinPolicy": {
+    "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaPivKeyRequirementsPinPolicy": {
       "type": "enum",
       "members": {
         "NEVER": {
@@ -44655,13 +47767,13 @@
         }
       }
     },
-    "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeySizeList": {
+    "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeySizeList": {
       "type": "list",
       "member": {
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeItem": {
+    "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeItem": {
       "type": "enum",
       "members": {
         "ECDSA": {
@@ -44684,13 +47796,13 @@
         }
       }
     },
-    "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeList": {
+    "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeItem"
+        "target": "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeItem"
       }
     },
-    "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaSshPivKeyRequirementsTouchPolicy": {
+    "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaPivKeyRequirementsTouchPolicy": {
       "type": "enum",
       "members": {
         "NEVER": {
@@ -44713,11 +47825,11 @@
         }
       }
     },
-    "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaSshPivKeyRequirements": {
+    "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaPivKeyRequirements": {
       "type": "structure",
       "members": {
         "pin_policy": {
-          "target": "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaSshPivKeyRequirementsPinPolicy",
+          "target": "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaPivKeyRequirementsPinPolicy",
           "traits": {
             "smithy.api#documentation": "Defines when a PIN is required to use the SSH key. Valid values: `never` (no PIN required), `once` (PIN required once per session), `always` (PIN required for each use)."
           }
@@ -44725,23 +47837,23 @@
         "require_fips_device": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device."
+            "smithy.api#documentation": "Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device."
           }
         },
         "ssh_key_size": {
-          "target": "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeySizeList",
+          "target": "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeySizeList",
           "traits": {
             "smithy.api#documentation": "Specifies the allowed SSH key sizes in bits. Valid sizes depend on key type. Ed25519 has a fixed key size and does not accept this parameter."
           }
         },
         "ssh_key_type": {
-          "target": "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeList",
+          "target": "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeList",
           "traits": {
             "smithy.api#documentation": "Specifies the allowed SSH key types. Valid values are `ecdsa`, `ed25519`, and `rsa`."
           }
         },
         "touch_policy": {
-          "target": "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaSshPivKeyRequirementsTouchPolicy",
+          "target": "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaPivKeyRequirementsTouchPolicy",
           "traits": {
             "smithy.api#documentation": "Defines when physical touch is required to use the SSH key. Valid values: `never` (no touch required), `always` (touch required for each use), `cached` (touch cached for 15 seconds)."
           }
@@ -44813,16 +47925,16 @@
             "smithy.api#documentation": "Configures multi-factor authentication (MFA) settings for an organization."
           }
         },
+        "mfa_piv_key_requirements": {
+          "target": "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaPivKeyRequirements",
+          "traits": {
+            "smithy.api#documentation": "Configures PIV key requirements for MFA using hardware security keys."
+          }
+        },
         "mfa_required_for_all_apps": {
           "target": "smithy.api#Boolean",
           "traits": {
-            "smithy.api#documentation": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps."
-          }
-        },
-        "mfa_ssh_piv_key_requirements": {
-          "target": "com.cloudflare.zero_trust#OrganizationsUpdateRequestMfaSshPivKeyRequirements",
-          "traits": {
-            "smithy.api#documentation": "Configures SSH PIV key requirements for MFA using hardware security keys."
+            "smithy.api#documentation": "Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps."
           }
         },
         "name": {
@@ -51439,6 +54551,36 @@
         },
         {
           "target": "com.cloudflare.zero_trust#AccessUsersLastSeenIdentityGet"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsGet"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsList"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#CasbApplicationsSetupFlowsList"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsCreate"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsDelete"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsGet"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsList"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsPause"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsResume"
+        },
+        {
+          "target": "com.cloudflare.zero_trust#CasbIntegrationsUpdate"
         },
         {
           "target": "com.cloudflare.zero_trust#ConnectivitySettingsEdit"

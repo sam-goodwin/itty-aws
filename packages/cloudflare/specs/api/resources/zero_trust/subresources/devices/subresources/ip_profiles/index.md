@@ -12,6 +12,10 @@ Lists WARP Device IP profiles.
 
 ### Query Parameters
 
+- `page: optional number`
+
+  The page number to return.
+
 - `per_page: optional number`
 
   The number of IP profiles to return per page.

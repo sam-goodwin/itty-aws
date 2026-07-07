@@ -66,19 +66,19 @@ Retrieves analytics aggregated from the last minute of usage on Spectrum applica
 
   - `bytesEgress: number`
 
-    Number of bytes sent
+    Number of bytes sent.
 
   - `bytesIngress: number`
 
-    Number of bytes received
+    Number of bytes received.
 
   - `connections: number`
 
-    Number of connections
+    Number of connections.
 
   - `durationAvg: number`
 
-    Average duration of connections
+    Average duration of connections.
 
 ### Example
 
@@ -136,19 +136,19 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/analytics/aggr
 
   - `bytesEgress: number`
 
-    Number of bytes sent
+    Number of bytes sent.
 
   - `bytesIngress: number`
 
-    Number of bytes received
+    Number of bytes received.
 
   - `connections: number`
 
-    Number of connections
+    Number of connections.
 
   - `durationAvg: number`
 
-    Average duration of connections
+    Average duration of connections.
 
 # Events
 
@@ -233,6 +233,8 @@ Retrieves a list of aggregate metrics grouped by time interval.
 | <        | Less Than                | %3C         |
 | \>=      | Greater than or equal to | %3E%3D      |
 | <=       | Less than or equal to    | %3C%3D      |
+
+  Use the above to construct filters.
 
 - `metrics: optional array of "count" or "bytesIngress" or "bytesEgress" or 4 more`
 
@@ -366,6 +368,8 @@ Retrieves a list of aggregate metrics grouped by time interval.
 | \>=      | Greater than or equal to | %3E%3D      |
 | <=       | Less than or equal to    | %3C%3D      |
 
+      Use the above to construct filters.
+
     - `limit: optional number`
 
       Limit number of returned metrics.
@@ -420,7 +424,7 @@ Retrieves a list of aggregate metrics grouped by time interval.
 
   - `time_intervals: optional array of array of string`
 
-    List of time interval buckets: [start, end]
+    List of time interval buckets: [start, end].
 
 ### Example
 
@@ -570,6 +574,8 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/analytics/even
 | \>=      | Greater than or equal to | %3E%3D      |
 | <=       | Less than or equal to    | %3C%3D      |
 
+      Use the above to construct filters.
+
     - `limit: optional number`
 
       Limit number of returned metrics.
@@ -624,7 +630,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/analytics/even
 
   - `time_intervals: optional array of array of string`
 
-    List of time interval buckets: [start, end]
+    List of time interval buckets: [start, end].
 
 # Summaries
 
@@ -673,6 +679,8 @@ Retrieves a list of summarised aggregate metrics over a given time period.
 | <        | Less Than                | %3C         |
 | \>=      | Greater than or equal to | %3E%3D      |
 | <=       | Less than or equal to    | %3C%3D      |
+
+  Use the above to construct filters.
 
 - `metrics: optional array of "count" or "bytesIngress" or "bytesEgress" or 4 more`
 
@@ -806,6 +814,8 @@ Retrieves a list of summarised aggregate metrics over a given time period.
 | \>=      | Greater than or equal to | %3E%3D      |
 | <=       | Less than or equal to    | %3C%3D      |
 
+      Use the above to construct filters.
+
     - `limit: optional number`
 
       Limit number of returned metrics.
@@ -860,7 +870,7 @@ Retrieves a list of summarised aggregate metrics over a given time period.
 
   - `time_intervals: optional array of array of string`
 
-    List of time interval buckets: [start, end]
+    List of time interval buckets: [start, end].
 
 ### Example
 
@@ -1010,6 +1020,8 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/analytics/even
 | \>=      | Greater than or equal to | %3E%3D      |
 | <=       | Less than or equal to    | %3C%3D      |
 
+      Use the above to construct filters.
+
     - `limit: optional number`
 
       Limit number of returned metrics.
@@ -1064,4 +1076,4 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/spectrum/analytics/even
 
   - `time_intervals: optional array of array of string`
 
-    List of time interval buckets: [start, end]
+    List of time interval buckets: [start, end].

@@ -761,7 +761,7 @@ export const V2ListResponse = /*@__PURE__*/ S.suspend(() =>
   }),
 ).annotate({ identifier: "V2ListResponse" }) as any as S.Schema<V2ListResponse>;
 
-/** Fetch base image. For most images this will be the originally uploaded file. For larger images it can be a near-lossless version of the original. */
+/** Download an image from CF Images. For most images this will be the originally uploaded file. For larger images it can be a near-lossless version of the original. */
 export const V1BlobsGet: API.OperationMethod<
   V1BlobsGetRequest,
   V1BlobsGetResponse,
@@ -774,7 +774,7 @@ export const V1BlobsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Upload an image with up to 10 Megabytes using a single HTTP POST (multipart/form-data) request. An image can be uploaded by sending an image file or passing an accessible to an API url. */
+/** Upload an image to CF Images. Images up to 10 Megabytes can be uploaded using a single HTTP POST (multipart/form-data) request by sending an image file or passing a URL accessible to the API. */
 export const V1Create: API.OperationMethod<
   V1CreateRequest,
   V1CreateResponse,
@@ -800,7 +800,7 @@ export const V1Delete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Update image access control. On access control change, all copies of the image are purged from cache. */
+/** Update a CF Images image's metadata, creator, or access control. On access control change, all copies of the image are purged from cache. */
 export const V1Edit: API.OperationMethod<
   V1EditRequest,
   V1EditResponse,
@@ -813,7 +813,7 @@ export const V1Edit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Fetch details for a single image. */
+/** Fetch details for a CF Images image. */
 export const V1Get: API.OperationMethod<
   V1GetRequest,
   V1GetResponse,
@@ -826,7 +826,7 @@ export const V1Get: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Delete signing key with specified name. Returns all keys available. When last key is removed, a new default signing key will be generated. */
+/** Delete a CF Images signing key with specified name. Returns all keys available. When the last key is removed, a new default signing key will be generated. */
 export const V1KeysDelete: API.OperationMethod<
   V1KeysDeleteRequest,
   V1KeysDeleteResponse,
@@ -839,7 +839,7 @@ export const V1KeysDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Lists your signing keys. These can be found on your Cloudflare Images dashboard. */
+/** List your CF Images signing keys. */
 export const V1KeysList: API.OperationMethod<
   V1KeysListRequest,
   V1KeysListResponse,
@@ -852,7 +852,7 @@ export const V1KeysList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Create a new signing key with specified name. Returns all keys available. */
+/** Create a new CF Images signing key with specified name. Returns all keys available. */
 export const V1KeysUpdate: API.OperationMethod<
   V1KeysUpdateRequest,
   V1KeysUpdateResponse,
@@ -891,7 +891,7 @@ export const V1StatsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Specify variants that allow you to resize images for different use cases. */
+/** Create a CF Images variant that allows you to resize images for different use cases. */
 export const V1VariantsCreate: API.OperationMethod<
   V1VariantsCreateRequest,
   V1VariantsCreateResponse,
@@ -904,7 +904,7 @@ export const V1VariantsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Deleting a variant purges the cache for all images associated with the variant. */
+/** Delete a CF Images variant. This will purge the cache for all images associated with the variant. */
 export const V1VariantsDelete: API.OperationMethod<
   V1VariantsDeleteRequest,
   V1VariantsDeleteResponse,
@@ -917,7 +917,7 @@ export const V1VariantsDelete: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Updating a variant purges the cache for all images associated with the variant. */
+/** Update a CF Images variant. This will purge the cache for all images associated with the variant. */
 export const V1VariantsEdit: API.OperationMethod<
   V1VariantsEditRequest,
   V1VariantsEditResponse,
@@ -930,7 +930,7 @@ export const V1VariantsEdit: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Fetch details for a single variant. */
+/** Fetch details for a CF Images variant. */
 export const V1VariantsGet: API.OperationMethod<
   V1VariantsGetRequest,
   V1VariantsGetResponse,
@@ -943,7 +943,7 @@ export const V1VariantsGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Lists existing variants. */
+/** List existing CF Images variants. */
 export const V1VariantsList: API.OperationMethod<
   V1VariantsListRequest,
   V1VariantsListResponse,
@@ -969,7 +969,7 @@ export const V2DirectUploadsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** List up to 10000 images with up to 1000 results per page. Use the optional parameters below to get a specific range of images. Pagination is supported via continuation_token. **Metadata Filtering (Optional):** You can optionally filter images by custom metadata fields using the `meta.<field>[<operator>]=<value>` syntax. **Supported Operators:** - `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match - `in` / `in:string` / `in:number` - Match any value in list (pipe-separated) **Metadata Filter Constraints:** - Maximum 5 metadata filters per request - Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`) - Maximum 10 elements for list operators (`in`) - Supports string, number, and boolean value types **Examples:** ``` # List all images /images/v2 # Filter by metadata [eq] /images/v2?meta.status[eq:string]=active # Filter by metadata [in] /images/v2?meta.status[in]=pending|deleted|flagged # Filter by metadata [in:number] /images/v2?meta.ratings[in:number]=4|5 # Filter by nested metadata /images/v2?meta.region.name[eq]=eu-west # Combine metadata filters with creator /images/v2?meta.status[eq]=active&creator=user123 # Multiple metadata filters (AND logic) /images/v2?meta.status[eq]=active&meta.priority[eq:number]=5 ``` */
+/** List up to 10000 images from CF Images, with up to 1000 results per page. Use the optional parameters below to get a specific range of images. Pagination is supported via continuation_token. **Metadata Filtering (Optional):** You can optionally filter images by custom metadata fields using the `meta.<field>[<operator>]=<value>` syntax. **Supported Operators:** - `eq` / `eq:string` / `eq:number` / `eq:boolean` - Exact match - `gt` / `gt:number` - Greater than (number only) - `gte` / `gte:number` - Greater than or equal (number only) - `lt` / `lt:number` - Less than (number only) - `lte` / `lte:number` - Less than or equal (number only) - `in` / `in:string` / `in:number` - Match any value in list (pipe-separated) **Metadata Filter Constraints:** - Maximum 5 metadata filters per request - Maximum 5 levels of nesting (e.g., `meta.first.second.third.fourth.fifth`) - Maximum 10 elements for list operators (`in`) - Supports string, number, and boolean value types - Range operators (`gt`, `gte`, `lt`, `lte`) only accept numeric values **Filter Consistency:** Filters are combined with AND logic. The system does not validate whether filter combinations are logically consistent. For example, `meta.priority[eq:number]=5&meta.priority[lte:number]=3` will return zero results because no value can satisfy both conditions simultaneously. It is the caller's responsibility to ensure filter combinations make sense. **Examples:** ``` # List all images /images/v2 # Filter by metadata [eq] /images/v2?meta.status[eq:string]=active # Filter by metadata [in] /images/v2?meta.status[in]=pending|deleted|flagged # Filter by metadata [in:number] /images/v2?meta.ratings[in:number]=4|5 # Filter by metadata range [gte:number] /images/v2?meta.priority[gte:number]=1 # Filter by bounded range /images/v2?meta.priority[gte:number]=1&meta.priority[lte:number]=5 # Filter by nested metadata /images/v2?meta.region.name[eq]=eu-west # Combine metadata filters with creator /images/v2?meta.status[eq]=active&creator=user123 # Multiple metadata filters (AND logic) /images/v2?meta.status[eq]=active&meta.priority[eq:number]=5 ``` */
 export const V2List: API.OperationMethod<
   V2ListRequest,
   V2ListResponse,

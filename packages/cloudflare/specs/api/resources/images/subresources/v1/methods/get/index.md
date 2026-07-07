@@ -2,7 +2,7 @@
 
 **get** `/accounts/{account_id}/images/v1/{image_id}`
 
-Fetch details for a single image.
+Fetch details for a CF Images image.
 
 ### Path Parameters
 

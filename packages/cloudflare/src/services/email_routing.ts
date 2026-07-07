@@ -69,6 +69,44 @@ export const AddressesDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "AddressesDeleteResponse",
 }) as any as S.Schema<AddressesDeleteResponse>;
 
+export type AddressesEditRequestStatus =
+  | "unverified"
+  | "verified"
+  | (string & {});
+export const AddressesEditRequestStatus = /*@__PURE__*/ S.String;
+
+export interface AddressesEditRequest {
+  account_id: string;
+  destination_address_identifier: string;
+  status: AddressesEditRequestStatus;
+}
+export const AddressesEditRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    destination_address_identifier: S.String.pipe(T.Label()),
+    status: AddressesEditRequestStatus,
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/email/routing/addresses/{destination_address_identifier}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "AddressesEditRequest",
+}) as any as S.Schema<AddressesEditRequest>;
+
+export interface AddressesEditResponse {
+  result?: unknown;
+}
+export const AddressesEditResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "AddressesEditResponse",
+}) as any as S.Schema<AddressesEditResponse>;
+
 export interface AddressesGetRequest {
   account_id: string;
   destination_address_identifier: string;
@@ -379,6 +417,12 @@ export const RulesCatchAllsGetResponseMatchersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RulesCatchAllsGetResponseMatchersList>;
 
+export type RulesCatchAllsGetResponseSource =
+  | "api"
+  | "wrangler"
+  | (string & {});
+export const RulesCatchAllsGetResponseSource = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RulesCatchAllsGetResponse {
   id?: string;
@@ -386,6 +430,7 @@ export interface RulesCatchAllsGetResponse {
   enabled?: unknown;
   matchers?: RulesCatchAllsGetResponseMatchersList;
   name?: string;
+  source?: RulesCatchAllsGetResponseSource;
   tag?: string;
 }
 export const RulesCatchAllsGetResponse = /*@__PURE__*/ S.suspend(() =>
@@ -395,6 +440,7 @@ export const RulesCatchAllsGetResponse = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.Unknown),
     matchers: S.optional(RulesCatchAllsGetResponseMatchersList),
     name: S.optional(S.String),
+    source: S.optional(RulesCatchAllsGetResponseSource),
     tag: S.optional(S.String),
   }),
 ).annotate({
@@ -411,12 +457,20 @@ export const RulesCatchAllsUpdateRequestMatchersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RulesCatchAllsUpdateRequestMatchersList>;
 
+export type RulesCatchAllsUpdateRequestSource =
+  | "api"
+  | "wrangler"
+  | (string & {});
+export const RulesCatchAllsUpdateRequestSource = /*@__PURE__*/ S.String;
+
 export interface RulesCatchAllsUpdateRequest {
   zone_id: string;
   actions: RulesCatchAllsUpdateRequestActionsList;
   matchers: RulesCatchAllsUpdateRequestMatchersList;
   enabled?: unknown;
   name?: string;
+  owner_worker_tag?: string;
+  source?: RulesCatchAllsUpdateRequestSource;
 }
 export const RulesCatchAllsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -425,6 +479,8 @@ export const RulesCatchAllsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     matchers: RulesCatchAllsUpdateRequestMatchersList,
     enabled: S.optional(S.Unknown),
     name: S.optional(S.String),
+    owner_worker_tag: S.optional(S.String),
+    source: S.optional(RulesCatchAllsUpdateRequestSource),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -446,6 +502,12 @@ export const RulesCatchAllsUpdateResponseMatchersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RulesCatchAllsUpdateResponseMatchersList>;
 
+export type RulesCatchAllsUpdateResponseSource =
+  | "api"
+  | "wrangler"
+  | (string & {});
+export const RulesCatchAllsUpdateResponseSource = /*@__PURE__*/ S.String;
+
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface RulesCatchAllsUpdateResponse {
   id?: string;
@@ -453,6 +515,7 @@ export interface RulesCatchAllsUpdateResponse {
   enabled?: unknown;
   matchers?: RulesCatchAllsUpdateResponseMatchersList;
   name?: string;
+  source?: RulesCatchAllsUpdateResponseSource;
   tag?: string;
 }
 export const RulesCatchAllsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
@@ -462,6 +525,7 @@ export const RulesCatchAllsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.Unknown),
     matchers: S.optional(RulesCatchAllsUpdateResponseMatchersList),
     name: S.optional(S.String),
+    source: S.optional(RulesCatchAllsUpdateResponseSource),
     tag: S.optional(S.String),
   }),
 ).annotate({
@@ -478,13 +542,18 @@ export const RulesCreateRequestMatchersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RulesCreateRequestMatchersList>;
 
+export type RulesCreateRequestSource = "api" | "wrangler" | (string & {});
+export const RulesCreateRequestSource = /*@__PURE__*/ S.String;
+
 export interface RulesCreateRequest {
   zone_id: string;
   actions: RulesCreateRequestActionsList;
   matchers: RulesCreateRequestMatchersList;
   enabled?: unknown;
   name?: string;
+  owner_worker_tag?: string;
   priority?: number;
+  source?: RulesCreateRequestSource;
 }
 export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -493,7 +562,9 @@ export const RulesCreateRequest = /*@__PURE__*/ S.suspend(() =>
     matchers: RulesCreateRequestMatchersList,
     enabled: S.optional(S.Unknown),
     name: S.optional(S.String),
+    owner_worker_tag: S.optional(S.String),
     priority: S.optional(S.Number),
+    source: S.optional(RulesCreateRequestSource),
   }).pipe(
     T.Http({
       method: "POST",
@@ -576,45 +647,6 @@ export const RulesGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "RulesGetResponse",
 }) as any as S.Schema<RulesGetResponse>;
 
-export interface RulesListRequest {
-  zone_id: string;
-  enabled?: string;
-  page?: number;
-  per_page?: number;
-}
-export const RulesListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    zone_id: S.String.pipe(T.Label()),
-    enabled: S.optional(S.String.pipe(T.Query())),
-    page: S.optional(S.Number.pipe(T.Query())),
-    per_page: S.optional(S.Number.pipe(T.Query())),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/zones/{zone_id}/email/routing/rules",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "RulesListRequest",
-}) as any as S.Schema<RulesListRequest>;
-
-export type RulesListResultList = unknown[];
-export const RulesListResultList = /*@__PURE__*/ S.Array(
-  S.Unknown,
-) as any as S.Schema<RulesListResultList>;
-
-export interface RulesListResponse {
-  result?: RulesListResultList;
-}
-export const RulesListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(RulesListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({
-  identifier: "RulesListResponse",
-}) as any as S.Schema<RulesListResponse>;
-
 export type RulesUpdateRequestActionsList = unknown[];
 export const RulesUpdateRequestActionsList = /*@__PURE__*/ S.Array(
   S.Unknown,
@@ -625,6 +657,9 @@ export const RulesUpdateRequestMatchersList = /*@__PURE__*/ S.Array(
   S.Unknown,
 ) as any as S.Schema<RulesUpdateRequestMatchersList>;
 
+export type RulesUpdateRequestSource = "api" | "wrangler" | (string & {});
+export const RulesUpdateRequestSource = /*@__PURE__*/ S.String;
+
 export interface RulesUpdateRequest {
   zone_id: string;
   rule_identifier: string;
@@ -632,7 +667,9 @@ export interface RulesUpdateRequest {
   matchers: RulesUpdateRequestMatchersList;
   enabled?: unknown;
   name?: string;
+  owner_worker_tag?: string;
   priority?: number;
+  source?: RulesUpdateRequestSource;
 }
 export const RulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -642,7 +679,9 @@ export const RulesUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     matchers: RulesUpdateRequestMatchersList,
     enabled: S.optional(S.Unknown),
     name: S.optional(S.String),
+    owner_worker_tag: S.optional(S.String),
     priority: S.optional(S.Number),
+    source: S.optional(RulesUpdateRequestSource),
   }).pipe(
     T.Http({
       method: "PUT",
@@ -664,6 +703,32 @@ export const RulesUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "RulesUpdateResponse",
 }) as any as S.Schema<RulesUpdateResponse>;
+
+export interface UnlockRequest {
+  zone_id: string;
+  name?: string;
+}
+export const UnlockRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zone_id: S.String.pipe(T.Label()),
+    name: S.optional(S.String),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/email/routing/unlock",
+      code: 200,
+    }),
+  ),
+).annotate({ identifier: "UnlockRequest" }) as any as S.Schema<UnlockRequest>;
+
+export interface UnlockResponse {
+  result?: unknown;
+}
+export const UnlockResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({ identifier: "UnlockResponse" }) as any as S.Schema<UnlockResponse>;
 
 /** Create a destination address to forward your emails to. Destination addresses need to be verified before they can be used. */
 export const AddressesCreate: API.OperationMethod<
@@ -687,6 +752,19 @@ export const AddressesDelete: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: AddressesDeleteRequest,
   output: AddressesDeleteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Updates the status of a specific destination address. */
+export const AddressesEdit: API.OperationMethod<
+  AddressesEditRequest,
+  AddressesEditResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: AddressesEditRequest,
+  output: AddressesEditResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));
@@ -873,19 +951,6 @@ export const RulesGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Lists existing routing rules. */
-export const RulesList: API.OperationMethod<
-  RulesListRequest,
-  RulesListResponse,
-  CloudflareOpError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: RulesListRequest,
-  output: RulesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-}));
-
 /** Update actions and matches, or enable/disable specific routing rules. Forward actions require all destination addresses to be verified. */
 export const RulesUpdate: API.OperationMethod<
   RulesUpdateRequest,
@@ -895,6 +960,19 @@ export const RulesUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: RulesUpdateRequest,
   output: RulesUpdateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Unlock MX records previously locked by Email Routing. Deprecated - use PATCH /zones/{zone_id}/email/routing/dns instead. */
+export const Unlock: API.OperationMethod<
+  UnlockRequest,
+  UnlockResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UnlockRequest,
+  output: UnlockResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

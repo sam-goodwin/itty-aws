@@ -389,12 +389,6 @@
           "traits": {
             "smithy.api#documentation": "timestamp when session ended"
           }
-        },
-        "meta": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Any meta data about session."
-          }
         }
       }
     },
@@ -15557,12 +15551,6 @@
           "traits": {
             "smithy.api#enumValue": "UPLOADING"
           }
-        },
-        "UPLOADED": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "UPLOADED"
-          }
         }
       }
     },
@@ -17256,6 +17244,13 @@
             "smithy.api#required": {}
           }
         },
+        "meeting_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the meeting to record.",
+            "smithy.api#required": {}
+          }
+        },
         "allow_multiple_recordings": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -17284,12 +17279,6 @@
           "target": "smithy.api#Double",
           "traits": {
             "smithy.api#documentation": "Specifies the maximum duration for recording in seconds, ranging from a minimum of 60 seconds to a maximum of 24 hours."
-          }
-        },
-        "meeting_id": {
-          "target": "smithy.api#String",
-          "traits": {
-            "smithy.api#documentation": "ID of the meeting to record."
           }
         },
         "realtimekit_bucket_config": {
@@ -18084,22 +18073,461 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemMap": {
-      "type": "map",
-      "key": {
-        "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName": {
+      "type": "enum",
+      "members": {
+        "PEER_CREATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PEER_CREATED"
+          }
+        },
+        "PEER_JOINING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PEER_JOINING"
+          }
+        },
+        "PEER_LEAVING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PEER_LEAVING"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType": {
+      "type": "enum",
+      "members": {
+        "GROUP_CALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GROUP_CALL"
+          }
+        },
+        "WEBINAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEBINAR"
+          }
+        },
+        "AUDIO_ROOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUDIO_ROOM"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the peer event."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp when this peer event was created."
+          }
+        },
+        "event_name": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemEventName",
+          "traits": {
+            "smithy.api#documentation": "Name of the peer event."
+          }
+        },
+        "minutes_consumed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Minutes consumed attributed to this event."
+          }
+        },
+        "participant_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the participant this event belongs to."
+          }
+        },
+        "peer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Peer ID this event belongs to."
+          }
+        },
+        "preset_view_type": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemPresetViewType",
+          "traits": {
+            "smithy.api#documentation": "View type of the preset associated with the peer."
+          }
+        },
+        "session_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the session this event belongs to."
+          }
+        },
+        "socket_session_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the socket session associated with this event."
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp when this peer event was last updated."
+          }
+        }
       }
     },
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItemMap"
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsItem"
       }
     },
-    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataMap": {
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem": {
+      "type": "structure",
+      "members": {
+        "device_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the device."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of device, for example audioinput or videoinput."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable label of the device."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem": {
+      "type": "structure",
+      "members": {
+        "device_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the device."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of device, for example audioinput or videoinput."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable label of the device."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem": {
+      "type": "structure",
+      "members": {
+        "added": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemAddedList",
+          "traits": {
+            "smithy.api#documentation": "Devices that became available."
+          }
+        },
+        "removed": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItemRemovedList",
+          "traits": {
+            "smithy.api#documentation": "Devices that became unavailable."
+          }
+        },
+        "timestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of the device update."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata": {
+      "type": "structure",
+      "members": {
+        "browser": {
+          "target": "smithy.api#String"
+        },
+        "browser_version": {
+          "target": "smithy.api#String"
+        },
+        "engine": {
+          "target": "smithy.api#String"
+        },
+        "user_agent": {
+          "target": "smithy.api#String"
+        },
+        "webgl_support": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem": {
+      "type": "structure",
+      "members": {
+        "available_incoming_bitrate": {
+          "target": "smithy.api#Double"
+        },
+        "available_outgoing_bitrate": {
+          "target": "smithy.api#Double"
+        },
+        "bytes_discarded_on_send": {
+          "target": "smithy.api#Double"
+        },
+        "bytes_received": {
+          "target": "smithy.api#Double"
+        },
+        "bytes_sent": {
+          "target": "smithy.api#Double"
+        },
+        "current_round_trip_time": {
+          "target": "smithy.api#Double"
+        },
+        "last_packet_received_timestamp": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Epoch milliseconds when the last packet was received."
+          }
+        },
+        "last_packet_sent_timestamp": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Epoch milliseconds when the last packet was sent."
+          }
+        },
+        "local_candidate_address": {
+          "target": "smithy.api#String"
+        },
+        "local_candidate_id": {
+          "target": "smithy.api#String"
+        },
+        "local_candidate_network_type": {
+          "target": "smithy.api#String"
+        },
+        "local_candidate_port": {
+          "target": "smithy.api#Double"
+        },
+        "local_candidate_protocol": {
+          "target": "smithy.api#String"
+        },
+        "local_candidate_related_address": {
+          "target": "smithy.api#String"
+        },
+        "local_candidate_related_port": {
+          "target": "smithy.api#Double"
+        },
+        "local_candidate_type": {
+          "target": "smithy.api#String"
+        },
+        "local_candidate_url": {
+          "target": "smithy.api#String"
+        },
+        "nominated": {
+          "target": "smithy.api#Boolean"
+        },
+        "packets_discarded_on_send": {
+          "target": "smithy.api#Double"
+        },
+        "packets_received": {
+          "target": "smithy.api#Double"
+        },
+        "packets_sent": {
+          "target": "smithy.api#Double"
+        },
+        "remote_candidate_address": {
+          "target": "smithy.api#String"
+        },
+        "remote_candidate_id": {
+          "target": "smithy.api#String"
+        },
+        "remote_candidate_port": {
+          "target": "smithy.api#Double"
+        },
+        "remote_candidate_protocol": {
+          "target": "smithy.api#String"
+        },
+        "remote_candidate_type": {
+          "target": "smithy.api#String"
+        },
+        "remote_candidate_url": {
+          "target": "smithy.api#String"
+        },
+        "total_round_trip_time": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem": {
+      "type": "structure",
+      "members": {
+        "available_incoming_bitrate": {
+          "target": "smithy.api#Double"
+        },
+        "available_outgoing_bitrate": {
+          "target": "smithy.api#Double"
+        },
+        "bytes_discarded_on_send": {
+          "target": "smithy.api#Double"
+        },
+        "bytes_received": {
+          "target": "smithy.api#Double"
+        },
+        "bytes_sent": {
+          "target": "smithy.api#Double"
+        },
+        "current_round_trip_time": {
+          "target": "smithy.api#Double"
+        },
+        "last_packet_received_timestamp": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Epoch milliseconds when the last packet was received."
+          }
+        },
+        "last_packet_sent_timestamp": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Epoch milliseconds when the last packet was sent."
+          }
+        },
+        "local_candidate_address": {
+          "target": "smithy.api#String"
+        },
+        "local_candidate_id": {
+          "target": "smithy.api#String"
+        },
+        "local_candidate_network_type": {
+          "target": "smithy.api#String"
+        },
+        "local_candidate_port": {
+          "target": "smithy.api#Double"
+        },
+        "local_candidate_protocol": {
+          "target": "smithy.api#String"
+        },
+        "local_candidate_related_address": {
+          "target": "smithy.api#String"
+        },
+        "local_candidate_related_port": {
+          "target": "smithy.api#Double"
+        },
+        "local_candidate_type": {
+          "target": "smithy.api#String"
+        },
+        "local_candidate_url": {
+          "target": "smithy.api#String"
+        },
+        "nominated": {
+          "target": "smithy.api#Boolean"
+        },
+        "packets_discarded_on_send": {
+          "target": "smithy.api#Double"
+        },
+        "packets_received": {
+          "target": "smithy.api#Double"
+        },
+        "packets_sent": {
+          "target": "smithy.api#Double"
+        },
+        "remote_candidate_address": {
+          "target": "smithy.api#String"
+        },
+        "remote_candidate_id": {
+          "target": "smithy.api#String"
+        },
+        "remote_candidate_port": {
+          "target": "smithy.api#Double"
+        },
+        "remote_candidate_protocol": {
+          "target": "smithy.api#String"
+        },
+        "remote_candidate_type": {
+          "target": "smithy.api#String"
+        },
+        "remote_candidate_url": {
+          "target": "smithy.api#String"
+        },
+        "total_round_trip_time": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs": {
+      "type": "structure",
+      "members": {
+        "consuming_transport": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsConsumingTransportList"
+        },
+        "producing_transport": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairsProducingTransportList"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo": {
+      "type": "structure",
+      "members": {
+        "cpus": {
+          "target": "smithy.api#Double"
+        },
+        "is_mobile": {
+          "target": "smithy.api#Boolean"
+        },
+        "os": {
+          "target": "smithy.api#String"
+        },
+        "os_version": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap": {
       "type": "map",
       "key": {
         "target": "smithy.api#String"
@@ -18108,23 +18536,2115 @@
         "target": "smithy.api#Document"
       }
     },
-    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityMap": {
-      "type": "map",
-      "key": {
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem": {
+      "type": "structure",
+      "members": {
+        "metadata": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItemMetadataMap",
+          "traits": {
+            "smithy.api#documentation": "Event-specific metadata. Keys vary per event; values are primitive scalars (string, number, boolean, or null)."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the event."
+          }
+        },
+        "timestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp when the event occurred."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn": {
+      "type": "structure",
+      "members": {
+        "asn": {
+          "target": "smithy.api#String"
+        },
+        "domain": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String"
+        },
+        "route": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation": {
+      "type": "structure",
+      "members": {
+        "asn": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformationAsn"
+        },
+        "city": {
+          "target": "smithy.api#String"
+        },
+        "country": {
+          "target": "smithy.api#String"
+        },
+        "ipv4": {
+          "target": "smithy.api#String"
+        },
+        "org": {
+          "target": "smithy.api#String"
+        },
+        "region": {
+          "target": "smithy.api#String"
+        },
+        "timezone": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata": {
+      "type": "structure",
+      "members": {
+        "audio_encoder": {
+          "target": "smithy.api#String"
+        },
+        "video_encoder": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList": {
+      "type": "list",
+      "member": {
         "target": "smithy.api#String"
-      },
-      "value": {
-        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem": {
+      "type": "structure",
+      "members": {
+        "effective_network_type": {
+          "target": "smithy.api#String"
+        },
+        "reflexive_connectivity": {
+          "target": "smithy.api#Boolean"
+        },
+        "relay_connectivity": {
+          "target": "smithy.api#Boolean"
+        },
+        "sdp": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItemSdpList"
+        },
+        "timestamp": {
+          "target": "smithy.api#String"
+        },
+        "turn_connectivity": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice": {
+      "type": "structure",
+      "members": {
+        "device_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the device."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of device, for example audioinput or videoinput."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable label of the device."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem": {
+      "type": "structure",
+      "members": {
+        "device": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItemDevice",
+          "traits": {
+            "smithy.api#documentation": "A media device (camera, microphone, or speaker)."
+          }
+        },
+        "timestamp": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem": {
+      "type": "structure",
+      "members": {
+        "device_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the device."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of device, for example audioinput or videoinput."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable label of the device."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem": {
+      "type": "structure",
+      "members": {
+        "device_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the device."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of device, for example audioinput or videoinput."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable label of the device."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem": {
+      "type": "structure",
+      "members": {
+        "added": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemAddedList",
+          "traits": {
+            "smithy.api#documentation": "Devices that became available."
+          }
+        },
+        "removed": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItemRemovedList",
+          "traits": {
+            "smithy.api#documentation": "Devices that became unavailable."
+          }
+        },
+        "timestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of the device update."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem": {
+      "type": "structure",
+      "members": {
+        "device_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the device."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of device, for example audioinput or videoinput."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable label of the device."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem": {
+      "type": "structure",
+      "members": {
+        "device_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the device."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Kind of device, for example audioinput or videoinput."
+          }
+        },
+        "label": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable label of the device."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem": {
+      "type": "structure",
+      "members": {
+        "added": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemAddedList",
+          "traits": {
+            "smithy.api#documentation": "Devices that became available."
+          }
+        },
+        "removed": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItemRemovedList",
+          "traits": {
+            "smithy.api#documentation": "Devices that became unavailable."
+          }
+        },
+        "timestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp of the device update."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata": {
+      "type": "structure",
+      "members": {
+        "audio_devices_updates": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataAudioDevicesUpdatesList"
+        },
+        "browser_metadata": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataBrowserMetadata"
+        },
+        "candidate_pairs": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataCandidatePairs"
+        },
+        "device_info": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataDeviceInfo"
+        },
+        "events": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataEventsList"
+        },
+        "ip_information": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataIpInformation"
+        },
+        "native_metadata": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataNativeMetadata"
+        },
+        "pc_metadata": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataPcMetadataList"
+        },
+        "room_view_type": {
+          "target": "smithy.api#String"
+        },
+        "sdk_name": {
+          "target": "smithy.api#String"
+        },
+        "sdk_type": {
+          "target": "smithy.api#String"
+        },
+        "sdk_version": {
+          "target": "smithy.api#String"
+        },
+        "selected_device_updates": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSelectedDeviceUpdatesList"
+        },
+        "speaker_devices_updates": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataSpeakerDevicesUpdatesList"
+        },
+        "video_devices_updates": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataVideoDevicesUpdatesList"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem": {
+      "type": "structure",
+      "members": {
+        "bytes_received": {
+          "target": "smithy.api#Double"
+        },
+        "concealment_events": {
+          "target": "smithy.api#Double"
+        },
+        "consumer_id": {
+          "target": "smithy.api#String"
+        },
+        "jitter": {
+          "target": "smithy.api#Double"
+        },
+        "jitter_buffer_delay": {
+          "target": "smithy.api#Double"
+        },
+        "jitter_buffer_emitted_count": {
+          "target": "smithy.api#Double"
+        },
+        "mid": {
+          "target": "smithy.api#String"
+        },
+        "mos_quality": {
+          "target": "smithy.api#Double"
+        },
+        "packets_lost": {
+          "target": "smithy.api#Double"
+        },
+        "packets_received": {
+          "target": "smithy.api#Double"
+        },
+        "peer_id": {
+          "target": "smithy.api#String"
+        },
+        "producer_id": {
+          "target": "smithy.api#String"
+        },
+        "ssrc": {
+          "target": "smithy.api#Double"
+        },
+        "timestamp": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay": {
+      "type": "structure",
+      "members": {
+        "_100ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+          }
+        },
+        "_250ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+          }
+        },
+        "_500ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss": {
+      "type": "structure",
+      "members": {
+        "_10_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+          }
+        },
+        "_25_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+          }
+        },
+        "_5_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+          }
+        },
+        "_50_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative": {
+      "type": "structure",
+      "members": {
+        "jitter_buffer_delay": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeJitterBufferDelay",
+          "traits": {
+            "smithy.api#documentation": "Cumulative latency distribution (milliseconds-based thresholds)."
+          }
+        },
+        "packet_loss": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativePacketLoss",
+          "traits": {
+            "smithy.api#documentation": "Cumulative packet loss distribution."
+          }
+        },
+        "quality_mos": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulativeQualityMos",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem": {
+      "type": "structure",
+      "members": {
+        "bytes_sent": {
+          "target": "smithy.api#Double"
+        },
+        "jitter": {
+          "target": "smithy.api#Double"
+        },
+        "mid": {
+          "target": "smithy.api#String"
+        },
+        "mos_quality": {
+          "target": "smithy.api#Double"
+        },
+        "packets_lost": {
+          "target": "smithy.api#Double"
+        },
+        "packets_sent": {
+          "target": "smithy.api#Double"
+        },
+        "producer_id": {
+          "target": "smithy.api#String"
+        },
+        "rtt": {
+          "target": "smithy.api#Double"
+        },
+        "ssrc": {
+          "target": "smithy.api#Double"
+        },
+        "timestamp": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss": {
+      "type": "structure",
+      "members": {
+        "_10_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+          }
+        },
+        "_25_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+          }
+        },
+        "_5_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+          }
+        },
+        "_50_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt": {
+      "type": "structure",
+      "members": {
+        "_100ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+          }
+        },
+        "_250ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+          }
+        },
+        "_500ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative": {
+      "type": "structure",
+      "members": {
+        "packet_loss": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativePacketLoss",
+          "traits": {
+            "smithy.api#documentation": "Cumulative packet loss distribution."
+          }
+        },
+        "quality_mos": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeQualityMos",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        },
+        "rtt": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulativeRtt",
+          "traits": {
+            "smithy.api#documentation": "Cumulative latency distribution (milliseconds-based thresholds)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem": {
+      "type": "structure",
+      "members": {
+        "bytes_received": {
+          "target": "smithy.api#Double"
+        },
+        "concealment_events": {
+          "target": "smithy.api#Double"
+        },
+        "consumer_id": {
+          "target": "smithy.api#String"
+        },
+        "jitter": {
+          "target": "smithy.api#Double"
+        },
+        "jitter_buffer_delay": {
+          "target": "smithy.api#Double"
+        },
+        "jitter_buffer_emitted_count": {
+          "target": "smithy.api#Double"
+        },
+        "mid": {
+          "target": "smithy.api#String"
+        },
+        "mos_quality": {
+          "target": "smithy.api#Double"
+        },
+        "packets_lost": {
+          "target": "smithy.api#Double"
+        },
+        "packets_received": {
+          "target": "smithy.api#Double"
+        },
+        "peer_id": {
+          "target": "smithy.api#String"
+        },
+        "producer_id": {
+          "target": "smithy.api#String"
+        },
+        "ssrc": {
+          "target": "smithy.api#Double"
+        },
+        "timestamp": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay": {
+      "type": "structure",
+      "members": {
+        "_100ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+          }
+        },
+        "_250ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+          }
+        },
+        "_500ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss": {
+      "type": "structure",
+      "members": {
+        "_10_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+          }
+        },
+        "_25_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+          }
+        },
+        "_5_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+          }
+        },
+        "_50_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative": {
+      "type": "structure",
+      "members": {
+        "jitter_buffer_delay": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeJitterBufferDelay",
+          "traits": {
+            "smithy.api#documentation": "Cumulative latency distribution (milliseconds-based thresholds)."
+          }
+        },
+        "packet_loss": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativePacketLoss",
+          "traits": {
+            "smithy.api#documentation": "Cumulative packet loss distribution."
+          }
+        },
+        "quality_mos": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulativeQualityMos",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem": {
+      "type": "structure",
+      "members": {
+        "bytes_sent": {
+          "target": "smithy.api#Double"
+        },
+        "jitter": {
+          "target": "smithy.api#Double"
+        },
+        "mid": {
+          "target": "smithy.api#String"
+        },
+        "mos_quality": {
+          "target": "smithy.api#Double"
+        },
+        "packets_lost": {
+          "target": "smithy.api#Double"
+        },
+        "packets_sent": {
+          "target": "smithy.api#Double"
+        },
+        "producer_id": {
+          "target": "smithy.api#String"
+        },
+        "rtt": {
+          "target": "smithy.api#Double"
+        },
+        "ssrc": {
+          "target": "smithy.api#Double"
+        },
+        "timestamp": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss": {
+      "type": "structure",
+      "members": {
+        "_10_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+          }
+        },
+        "_25_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+          }
+        },
+        "_5_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+          }
+        },
+        "_50_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt": {
+      "type": "structure",
+      "members": {
+        "_100ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+          }
+        },
+        "_250ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+          }
+        },
+        "_500ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative": {
+      "type": "structure",
+      "members": {
+        "packet_loss": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativePacketLoss",
+          "traits": {
+            "smithy.api#documentation": "Cumulative packet loss distribution."
+          }
+        },
+        "quality_mos": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeQualityMos",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        },
+        "rtt": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulativeRtt",
+          "traits": {
+            "smithy.api#documentation": "Cumulative latency distribution (milliseconds-based thresholds)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem": {
+      "type": "structure",
+      "members": {
+        "bytes_received": {
+          "target": "smithy.api#Double"
+        },
+        "consumer_id": {
+          "target": "smithy.api#String"
+        },
+        "fir_count": {
+          "target": "smithy.api#Double"
+        },
+        "frame_height": {
+          "target": "smithy.api#Double"
+        },
+        "frame_width": {
+          "target": "smithy.api#Double"
+        },
+        "frames_decoded": {
+          "target": "smithy.api#Double"
+        },
+        "frames_dropped": {
+          "target": "smithy.api#Double"
+        },
+        "frames_per_second": {
+          "target": "smithy.api#Double"
+        },
+        "jitter": {
+          "target": "smithy.api#Double"
+        },
+        "jitter_buffer_delay": {
+          "target": "smithy.api#Double"
+        },
+        "jitter_buffer_emitted_count": {
+          "target": "smithy.api#Double"
+        },
+        "key_frames_decoded": {
+          "target": "smithy.api#Double"
+        },
+        "mid": {
+          "target": "smithy.api#String"
+        },
+        "mos_quality": {
+          "target": "smithy.api#Double"
+        },
+        "packets_lost": {
+          "target": "smithy.api#Double"
+        },
+        "packets_received": {
+          "target": "smithy.api#Double"
+        },
+        "peer_id": {
+          "target": "smithy.api#String"
+        },
+        "producer_id": {
+          "target": "smithy.api#String"
+        },
+        "ssrc": {
+          "target": "smithy.api#Double"
+        },
+        "timestamp": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues": {
+      "type": "structure",
+      "members": {
+        "lag_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "no_video_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "poor_resolution_fraction": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay": {
+      "type": "structure",
+      "members": {
+        "_100ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+          }
+        },
+        "_250ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+          }
+        },
+        "_500ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss": {
+      "type": "structure",
+      "members": {
+        "_10_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+          }
+        },
+        "_25_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+          }
+        },
+        "_5_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+          }
+        },
+        "_50_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative": {
+      "type": "structure",
+      "members": {
+        "frame_per_second": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFramePerSecond",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        },
+        "frame_width": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeFrameWidth",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        },
+        "issues": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeIssues"
+        },
+        "jitter_buffer_delay": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeJitterBufferDelay",
+          "traits": {
+            "smithy.api#documentation": "Cumulative latency distribution (milliseconds-based thresholds)."
+          }
+        },
+        "key_frames_decoded_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "packet_loss": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativePacketLoss",
+          "traits": {
+            "smithy.api#documentation": "Cumulative packet loss distribution."
+          }
+        },
+        "quality_mos": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulativeQualityMos",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations": {
+      "type": "structure",
+      "members": {
+        "bandwidth": {
+          "target": "smithy.api#Double"
+        },
+        "cpu": {
+          "target": "smithy.api#Double"
+        },
+        "none": {
+          "target": "smithy.api#Double"
+        },
+        "other": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason": {
+      "type": "enum",
+      "members": {
+        "CPU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpu"
+          }
+        },
+        "BANDWIDTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bandwidth"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "other"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem": {
+      "type": "structure",
+      "members": {
+        "bytes_sent": {
+          "target": "smithy.api#Double"
+        },
+        "fir_count": {
+          "target": "smithy.api#Double"
+        },
+        "frame_height": {
+          "target": "smithy.api#Double"
+        },
+        "frame_width": {
+          "target": "smithy.api#Double"
+        },
+        "frames_encoded": {
+          "target": "smithy.api#Double"
+        },
+        "frames_per_second": {
+          "target": "smithy.api#Double"
+        },
+        "jitter": {
+          "target": "smithy.api#Double"
+        },
+        "key_frames_encoded": {
+          "target": "smithy.api#Double"
+        },
+        "mid": {
+          "target": "smithy.api#String"
+        },
+        "mos_quality": {
+          "target": "smithy.api#Double"
+        },
+        "packets_lost": {
+          "target": "smithy.api#Double"
+        },
+        "packets_sent": {
+          "target": "smithy.api#Double"
+        },
+        "pli_count": {
+          "target": "smithy.api#Double"
+        },
+        "producer_id": {
+          "target": "smithy.api#String"
+        },
+        "quality_limitation_durations": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationDurations"
+        },
+        "quality_limitation_reason": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItemQualityLimitationReason"
+        },
+        "quality_limitation_resolution_changes": {
+          "target": "smithy.api#Double"
+        },
+        "rtt": {
+          "target": "smithy.api#Double"
+        },
+        "ssrc": {
+          "target": "smithy.api#Double"
+        },
+        "timestamp": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues": {
+      "type": "structure",
+      "members": {
+        "bandwidth_quality_limitation_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "cpu_quality_limitation_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "no_video_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "poor_resolution_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "quality_limitation_fraction": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss": {
+      "type": "structure",
+      "members": {
+        "_10_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+          }
+        },
+        "_25_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+          }
+        },
+        "_5_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+          }
+        },
+        "_50_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt": {
+      "type": "structure",
+      "members": {
+        "_100ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+          }
+        },
+        "_250ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+          }
+        },
+        "_500ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative": {
+      "type": "structure",
+      "members": {
+        "frame_per_second": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFramePerSecond",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        },
+        "frame_width": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeFrameWidth",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        },
+        "high_negative_feedback_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "issues": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeIssues"
+        },
+        "key_frames_encoded_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "packet_loss": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativePacketLoss",
+          "traits": {
+            "smithy.api#documentation": "Cumulative packet loss distribution."
+          }
+        },
+        "quality_mos": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeQualityMos",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        },
+        "rtt": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulativeRtt",
+          "traits": {
+            "smithy.api#documentation": "Cumulative latency distribution (milliseconds-based thresholds)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem": {
+      "type": "structure",
+      "members": {
+        "bytes_received": {
+          "target": "smithy.api#Double"
+        },
+        "consumer_id": {
+          "target": "smithy.api#String"
+        },
+        "fir_count": {
+          "target": "smithy.api#Double"
+        },
+        "frame_height": {
+          "target": "smithy.api#Double"
+        },
+        "frame_width": {
+          "target": "smithy.api#Double"
+        },
+        "frames_decoded": {
+          "target": "smithy.api#Double"
+        },
+        "frames_dropped": {
+          "target": "smithy.api#Double"
+        },
+        "frames_per_second": {
+          "target": "smithy.api#Double"
+        },
+        "jitter": {
+          "target": "smithy.api#Double"
+        },
+        "jitter_buffer_delay": {
+          "target": "smithy.api#Double"
+        },
+        "jitter_buffer_emitted_count": {
+          "target": "smithy.api#Double"
+        },
+        "key_frames_decoded": {
+          "target": "smithy.api#Double"
+        },
+        "mid": {
+          "target": "smithy.api#String"
+        },
+        "mos_quality": {
+          "target": "smithy.api#Double"
+        },
+        "packets_lost": {
+          "target": "smithy.api#Double"
+        },
+        "packets_received": {
+          "target": "smithy.api#Double"
+        },
+        "peer_id": {
+          "target": "smithy.api#String"
+        },
+        "producer_id": {
+          "target": "smithy.api#String"
+        },
+        "ssrc": {
+          "target": "smithy.api#Double"
+        },
+        "timestamp": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues": {
+      "type": "structure",
+      "members": {
+        "lag_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "no_video_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "poor_resolution_fraction": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay": {
+      "type": "structure",
+      "members": {
+        "_100ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+          }
+        },
+        "_250ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+          }
+        },
+        "_500ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss": {
+      "type": "structure",
+      "members": {
+        "_10_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+          }
+        },
+        "_25_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+          }
+        },
+        "_5_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+          }
+        },
+        "_50_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative": {
+      "type": "structure",
+      "members": {
+        "frame_per_second": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFramePerSecond",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        },
+        "frame_width": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeFrameWidth",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        },
+        "issues": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeIssues"
+        },
+        "jitter_buffer_delay": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeJitterBufferDelay",
+          "traits": {
+            "smithy.api#documentation": "Cumulative latency distribution (milliseconds-based thresholds)."
+          }
+        },
+        "key_frames_decoded_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "packet_loss": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativePacketLoss",
+          "traits": {
+            "smithy.api#documentation": "Cumulative packet loss distribution."
+          }
+        },
+        "quality_mos": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulativeQualityMos",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations": {
+      "type": "structure",
+      "members": {
+        "bandwidth": {
+          "target": "smithy.api#Double"
+        },
+        "cpu": {
+          "target": "smithy.api#Double"
+        },
+        "none": {
+          "target": "smithy.api#Double"
+        },
+        "other": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason": {
+      "type": "enum",
+      "members": {
+        "CPU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cpu"
+          }
+        },
+        "BANDWIDTH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "bandwidth"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "OTHER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "other"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem": {
+      "type": "structure",
+      "members": {
+        "bytes_sent": {
+          "target": "smithy.api#Double"
+        },
+        "fir_count": {
+          "target": "smithy.api#Double"
+        },
+        "frame_height": {
+          "target": "smithy.api#Double"
+        },
+        "frame_width": {
+          "target": "smithy.api#Double"
+        },
+        "frames_encoded": {
+          "target": "smithy.api#Double"
+        },
+        "frames_per_second": {
+          "target": "smithy.api#Double"
+        },
+        "jitter": {
+          "target": "smithy.api#Double"
+        },
+        "key_frames_encoded": {
+          "target": "smithy.api#Double"
+        },
+        "mid": {
+          "target": "smithy.api#String"
+        },
+        "mos_quality": {
+          "target": "smithy.api#Double"
+        },
+        "packets_lost": {
+          "target": "smithy.api#Double"
+        },
+        "packets_sent": {
+          "target": "smithy.api#Double"
+        },
+        "pli_count": {
+          "target": "smithy.api#Double"
+        },
+        "producer_id": {
+          "target": "smithy.api#String"
+        },
+        "quality_limitation_durations": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationDurations"
+        },
+        "quality_limitation_reason": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItemQualityLimitationReason"
+        },
+        "quality_limitation_resolution_changes": {
+          "target": "smithy.api#Double"
+        },
+        "rtt": {
+          "target": "smithy.api#Double"
+        },
+        "ssrc": {
+          "target": "smithy.api#Double"
+        },
+        "timestamp": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerItem"
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues": {
+      "type": "structure",
+      "members": {
+        "bandwidth_quality_limitation_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "cpu_quality_limitation_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "no_video_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "poor_resolution_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "quality_limitation_fraction": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss": {
+      "type": "structure",
+      "members": {
+        "_10_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"10_or_greater_event_fraction\""
+          }
+        },
+        "_25_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"25_or_greater_event_fraction\""
+          }
+        },
+        "_5_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"5_or_greater_event_fraction\""
+          }
+        },
+        "_50_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"50_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos": {
+      "type": "structure",
+      "members": {
+        "avg": {
+          "target": "smithy.api#Double"
+        },
+        "p50": {
+          "target": "smithy.api#Double"
+        },
+        "p75": {
+          "target": "smithy.api#Double"
+        },
+        "p90": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt": {
+      "type": "structure",
+      "members": {
+        "_100ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"100ms_or_greater_event_fraction\""
+          }
+        },
+        "_250ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"250ms_or_greater_event_fraction\""
+          }
+        },
+        "_500ms_or_greater_event_fraction_": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#jsonName": "\"500ms_or_greater_event_fraction\""
+          }
+        },
+        "avg": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative": {
+      "type": "structure",
+      "members": {
+        "frame_per_second": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFramePerSecond",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        },
+        "frame_width": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeFrameWidth",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        },
+        "high_negative_feedback_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "issues": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeIssues"
+        },
+        "key_frames_encoded_fraction": {
+          "target": "smithy.api#Double"
+        },
+        "packet_loss": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativePacketLoss",
+          "traits": {
+            "smithy.api#documentation": "Cumulative packet loss distribution."
+          }
+        },
+        "quality_mos": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeQualityMos",
+          "traits": {
+            "smithy.api#documentation": "Distribution summary with average and percentiles."
+          }
+        },
+        "rtt": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulativeRtt",
+          "traits": {
+            "smithy.api#documentation": "Cumulative latency distribution (milliseconds-based thresholds)."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality": {
+      "type": "structure",
+      "members": {
+        "audio_consumer": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerList"
+        },
+        "audio_consumer_cumulative": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioConsumerCumulative",
+          "traits": {
+            "smithy.api#documentation": "Aggregated inbound (consumer) audio statistics for the session."
+          }
+        },
+        "audio_producer": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerList"
+        },
+        "audio_producer_cumulative": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityAudioProducerCumulative",
+          "traits": {
+            "smithy.api#documentation": "Aggregated outbound (producer) audio statistics for the session."
+          }
+        },
+        "screenshare_audio_consumer": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerList"
+        },
+        "screenshare_audio_consumer_cumulative": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioConsumerCumulative",
+          "traits": {
+            "smithy.api#documentation": "Aggregated inbound (consumer) audio statistics for the session."
+          }
+        },
+        "screenshare_audio_producer": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerList"
+        },
+        "screenshare_audio_producer_cumulative": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareAudioProducerCumulative",
+          "traits": {
+            "smithy.api#documentation": "Aggregated outbound (producer) audio statistics for the session."
+          }
+        },
+        "screenshare_video_consumer": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerList"
+        },
+        "screenshare_video_consumer_cumulative": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoConsumerCumulative",
+          "traits": {
+            "smithy.api#documentation": "Aggregated inbound (consumer) video statistics for the session."
+          }
+        },
+        "screenshare_video_producer": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerList"
+        },
+        "screenshare_video_producer_cumulative": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityScreenshareVideoProducerCumulative",
+          "traits": {
+            "smithy.api#documentation": "Aggregated outbound (producer) video statistics for the session."
+          }
+        },
+        "video_consumer": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerList"
+        },
+        "video_consumer_cumulative": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoConsumerCumulative",
+          "traits": {
+            "smithy.api#documentation": "Aggregated inbound (consumer) video statistics for the session."
+          }
+        },
+        "video_producer": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerList"
+        },
+        "video_producer_cumulative": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityVideoProducerCumulative",
+          "traits": {
+            "smithy.api#documentation": "Aggregated outbound (producer) video statistics for the session."
+          }
+        }
       }
     },
     "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport": {
       "type": "structure",
       "members": {
         "metadata": {
-          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadataMap"
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportMetadata",
+          "traits": {
+            "smithy.api#documentation": "Connection and device metadata for the participant."
+          }
         },
         "quality": {
-          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQualityMap"
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReportQuality",
+          "traits": {
+            "smithy.api#documentation": "Media quality statistics for the participant."
+          }
         }
       }
     },
@@ -18174,7 +20694,10 @@
           }
         },
         "peer_events": {
-          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList"
+          "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerEventsList",
+          "traits": {
+            "smithy.api#documentation": "Connection lifecycle events for the participant's peer."
+          }
         },
         "peer_report": {
           "target": "com.cloudflare.realtime_kit#SessionsGetParticipantDataFromPeerIdResponseDataParticipantPeerReport",
@@ -18502,12 +21025,6 @@
           "traits": {
             "smithy.api#documentation": "timestamp when session ended"
           }
-        },
-        "meta": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Any meta data about session."
-          }
         }
       }
     },
@@ -18539,29 +21056,6 @@
         },
         "smithy.api#documentation": "Returns data of the given session ID including recording details.",
         "smithy.api#readonly": {}
-      }
-    },
-    "com.cloudflare.realtime_kit#SessionsGetSessionParticipantDetailsRequestFilters": {
-      "type": "enum",
-      "members": {
-        "DEVICE_INFO": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "device_info"
-          }
-        },
-        "IP_INFORMATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "ip_information"
-          }
-        },
-        "PRECALL_NETWORK_INFORMATION": {
-          "target": "smithy.api#Unit",
-          "traits": {
-            "smithy.api#enumValue": "precall_network_information"
-          }
-        }
       }
     },
     "com.cloudflare.realtime_kit#SessionsGetSessionParticipantDetailsRequest": {
@@ -18597,13 +21091,6 @@
             "smithy.api#required": {}
           }
         },
-        "filters": {
-          "target": "com.cloudflare.realtime_kit#SessionsGetSessionParticipantDetailsRequestFilters",
-          "traits": {
-            "smithy.api#documentation": "Comma separated list of filters to apply. Note that there must be no spaces between the filters.",
-            "smithy.api#httpQuery": "filters"
-          }
-        },
         "include_peer_events": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -18614,6 +21101,123 @@
       },
       "traits": {
         "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName": {
+      "type": "enum",
+      "members": {
+        "PEER_CREATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PEER_CREATED"
+          }
+        },
+        "PEER_JOINING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PEER_JOINING"
+          }
+        },
+        "PEER_LEAVING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PEER_LEAVING"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType": {
+      "type": "enum",
+      "members": {
+        "GROUP_CALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GROUP_CALL"
+          }
+        },
+        "WEBINAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEBINAR"
+          }
+        },
+        "AUDIO_ROOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUDIO_ROOM"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the peer event."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp when this peer event was created."
+          }
+        },
+        "event_name": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemEventName",
+          "traits": {
+            "smithy.api#documentation": "Name of the peer event."
+          }
+        },
+        "minutes_consumed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Minutes consumed attributed to this event."
+          }
+        },
+        "participant_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the participant this event belongs to."
+          }
+        },
+        "peer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Peer ID this event belongs to."
+          }
+        },
+        "preset_view_type": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItemPresetViewType",
+          "traits": {
+            "smithy.api#documentation": "View type of the preset associated with the peer."
+          }
+        },
+        "session_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the session this event belongs to."
+          }
+        },
+        "socket_session_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the socket session associated with this event."
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp when this peer event was last updated."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsItem"
       }
     },
     "com.cloudflare.realtime_kit#SessionsGetSessionParticipantDetailsResponseDataParticipant": {
@@ -18659,6 +21263,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "timestamp at which participant left the session."
+          }
+        },
+        "peer_events": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetSessionParticipantDetailsResponseDataParticipantPeerEventsList",
+          "traits": {
+            "smithy.api#documentation": "Connection lifecycle events for the participant's peer. Only included when `include_peer_events` is true."
           }
         },
         "preset_name": {
@@ -18848,6 +21458,123 @@
         "smithy.api#input": {}
       }
     },
+    "com.cloudflare.realtime_kit#SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName": {
+      "type": "enum",
+      "members": {
+        "PEER_CREATED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PEER_CREATED"
+          }
+        },
+        "PEER_JOINING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PEER_JOINING"
+          }
+        },
+        "PEER_LEAVING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "PEER_LEAVING"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType": {
+      "type": "enum",
+      "members": {
+        "GROUP_CALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "GROUP_CALL"
+          }
+        },
+        "WEBINAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEBINAR"
+          }
+        },
+        "AUDIO_ROOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AUDIO_ROOM"
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the peer event."
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp when this peer event was created."
+          }
+        },
+        "event_name": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemEventName",
+          "traits": {
+            "smithy.api#documentation": "Name of the peer event."
+          }
+        },
+        "minutes_consumed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Minutes consumed attributed to this event."
+          }
+        },
+        "participant_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the participant this event belongs to."
+          }
+        },
+        "peer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Peer ID this event belongs to."
+          }
+        },
+        "preset_view_type": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItemPresetViewType",
+          "traits": {
+            "smithy.api#documentation": "View type of the preset associated with the peer."
+          }
+        },
+        "session_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the session this event belongs to."
+          }
+        },
+        "socket_session_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "ID of the socket session associated with this event."
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Timestamp when this peer event was last updated."
+          }
+        }
+      }
+    },
+    "com.cloudflare.realtime_kit#SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.realtime_kit#SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsItem"
+      }
+    },
     "com.cloudflare.realtime_kit#SessionsGetSessionParticipantsResponseDataParticipantsItem": {
       "type": "structure",
       "members": {
@@ -18891,6 +21618,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "timestamp at which participant left the session."
+          }
+        },
+        "peer_events": {
+          "target": "com.cloudflare.realtime_kit#SessionsGetSessionParticipantsResponseDataParticipantsItemPeerEventsList",
+          "traits": {
+            "smithy.api#documentation": "Connection lifecycle events for the participant's peer. Only included when `include_peer_events` is true."
           }
         },
         "preset_name": {
@@ -19446,12 +22179,6 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "timestamp when session ended"
-          }
-        },
-        "meta": {
-          "target": "smithy.api#Document",
-          "traits": {
-            "smithy.api#documentation": "Any meta data about session."
           }
         }
       }

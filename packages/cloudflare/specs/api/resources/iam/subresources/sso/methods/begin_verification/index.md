@@ -2,7 +2,7 @@
 
 **post** `/accounts/{account_id}/sso_connectors/{sso_connector_id}/begin_verification`
 
-Begin SSO connector verification
+Validates the user has added the DNS TXT record required for validating ownership of the domain they are trying to set up a connector for.
 
 ### Path Parameters
 

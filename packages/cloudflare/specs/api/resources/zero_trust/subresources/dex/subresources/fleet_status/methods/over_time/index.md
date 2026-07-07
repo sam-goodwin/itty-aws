@@ -1,8 +1,8 @@
-## List fleet status aggregate details by dimension
+## Get over time aggregate details for devices by dimension
 
 **get** `/accounts/{account_id}/dex/fleet-status/over-time`
 
-List details for devices using WARP, up to 7 days.
+Get aggregate details for devices using WARP, up to 7 days.
 
 ### Path Parameters
 
@@ -88,28 +88,6 @@ List details for devices using WARP, up to 7 days.
 
       Number of unique devices
 
-- `result_info: optional object { count, page, per_page, 2 more }`
-
-  - `count: optional number`
-
-    Total number of results for the requested service.
-
-  - `page: optional number`
-
-    Current page within paginated list of results.
-
-  - `per_page: optional number`
-
-    Number of results per page of results.
-
-  - `total_count: optional number`
-
-    Total results available without any search parameters.
-
-  - `total_pages: optional number`
-
-    The number of total pages in the entire result set.
-
 ### Example
 
 ```http
@@ -160,13 +138,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/dex/fleet-status/
       ],
       "uniqueDevicesTotal": 0
     }
-  },
-  "result_info": {
-    "count": 1,
-    "page": 1,
-    "per_page": 20,
-    "total_count": 2000,
-    "total_pages": 100
   }
 }
 ```

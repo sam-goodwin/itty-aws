@@ -88,7 +88,7 @@ Get last seen identity for a single user.
 
   - `email: optional string`
 
-  - `geo: optional UserPolicyCheckGeo`
+  - `geo: optional object { country }`
 
     - `country: optional string`
 
@@ -255,7 +255,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/access/users/$USE
 
   - `email: optional string`
 
-  - `geo: optional UserPolicyCheckGeo`
+  - `geo: optional object { country }`
 
     - `country: optional string`
 

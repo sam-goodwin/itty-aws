@@ -660,6 +660,24 @@ Fetch information about a script uploaded to a Workers for Platforms namespace.
 
       The name used to identify the script.
 
+    - `cache_options: optional object { enabled, cross_version_cache }`
+
+      Global CacheW configuration for the Worker. When caching is on,
+      the platform provisions a `cloudflare.app` zone for the Worker.
+      A `type: worker` entry in the `exports` map can override this
+      value for a single entrypoint.
+
+      - `enabled: boolean`
+
+        Whether caching is enabled for this Worker.
+
+      - `cross_version_cache: optional boolean`
+
+        Whether cached responses are shared across Worker version
+        uploads. This is independent of `enabled`. It can stay true
+        while caching is off, so the preference survives turning
+        caching off and back on.
+
     - `compatibility_date: optional string`
 
       Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -1083,6 +1101,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
     "modified_on": "2017-01-01T00:00:00Z",
     "script": {
       "id": "my-workers-script",
+      "cache_options": {
+        "enabled": true,
+        "cross_version_cache": true
+      },
       "compatibility_date": "2021-01-01",
       "compatibility_flags": [
         "nodejs_compat"
@@ -1209,13 +1231,31 @@ Upload a worker module to a Workers for Platforms namespace. You can find more a
 
     - `pointer: optional string`
 
-- `result: object { startup_time_ms, id, compatibility_date, 20 more }`
+- `result: object { startup_time_ms, id, cache_options, 21 more }`
 
   - `startup_time_ms: number`
 
   - `id: optional string`
 
     The name used to identify the script.
+
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
 
   - `compatibility_date: optional string`
 
@@ -1640,6 +1680,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
   "result": {
     "startup_time_ms": 10,
     "id": "this-is_my_script-01",
+    "cache_options": {
+      "enabled": true,
+      "cross_version_cache": true
+    },
     "compatibility_date": "2021-01-01",
     "compatibility_flags": [
       "nodejs_compat"
@@ -1833,6 +1877,24 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
     - `id: optional string`
 
       The name used to identify the script.
+
+    - `cache_options: optional object { enabled, cross_version_cache }`
+
+      Global CacheW configuration for the Worker. When caching is on,
+      the platform provisions a `cloudflare.app` zone for the Worker.
+      A `type: worker` entry in the `exports` map can override this
+      value for a single entrypoint.
+
+      - `enabled: boolean`
+
+        Whether caching is enabled for this Worker.
+
+      - `cross_version_cache: optional boolean`
+
+        Whether cached responses are shared across Worker version
+        uploads. This is independent of `enabled`. It can stay true
+        while caching is off, so the preference survives turning
+        caching off and back on.
 
     - `compatibility_date: optional string`
 
@@ -2216,13 +2278,31 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
 
 ### Script Update Response
 
-- `ScriptUpdateResponse object { startup_time_ms, id, compatibility_date, 20 more }`
+- `ScriptUpdateResponse object { startup_time_ms, id, cache_options, 21 more }`
 
   - `startup_time_ms: number`
 
   - `id: optional string`
 
     The name used to identify the script.
+
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
 
   - `compatibility_date: optional string`
 
@@ -2839,6 +2919,24 @@ Put script content for a script uploaded to a Workers for Platforms namespace.
 
     The name used to identify the script.
 
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
+
   - `compatibility_date: optional string`
 
     Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -3261,6 +3359,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
   ],
   "result": {
     "id": "my-workers-script",
+    "cache_options": {
+      "enabled": true,
+      "cross_version_cache": true
+    },
     "compatibility_date": "2021-01-01",
     "compatibility_flags": [
       "nodejs_compat"
@@ -3386,7 +3488,7 @@ Get script settings from a script uploaded to a Workers for Platforms namespace.
 
   - `true`
 
-- `result: optional object { bindings, compatibility_date, compatibility_flags, 8 more }`
+- `result: optional object { bindings, cache_options, compatibility_date, 10 more }`
 
   Script and version settings for Workers for Platforms namespace scripts. Same as script-and-version-settings-item but without annotations, which are not supported for namespace scripts.
 
@@ -4084,6 +4186,24 @@ Get script settings from a script uploaded to a Workers for Platforms namespace.
 
         UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
 
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
+
   - `compatibility_date: optional string`
 
     Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -4091,6 +4211,29 @@ Get script settings from a script uploaded to a Workers for Platforms namespace.
   - `compatibility_flags: optional array of string`
 
     Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+
+  - `exports: optional map[object { type, cache } ]`
+
+    Declarative exports for the Worker. Worker entrypoint entries
+    (`type: worker`) carry cache configuration for that entrypoint.
+
+    - `type: "worker" or "durable-object"`
+
+      The kind of export.
+
+      - `"worker"`
+
+      - `"durable-object"`
+
+    - `cache: optional object { enabled }`
+
+      Cache override for this entrypoint. It applies only to
+      `type: worker` entries and overrides the Worker's global
+      `cache_options.enabled` for that entrypoint.
+
+      - `enabled: boolean`
+
+        Whether caching is enabled for this entrypoint.
 
   - `limits: optional object { cpu_ms, subrequests }`
 
@@ -4428,6 +4571,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
         "type": "plain_text"
       }
     ],
+    "cache_options": {
+      "enabled": true,
+      "cross_version_cache": true
+    },
     "compatibility_date": "2021-01-01",
     "compatibility_flags": [
       "nodejs_compat"
@@ -4530,7 +4677,7 @@ Patch script metadata, such as bindings.
 
   - `true`
 
-- `result: optional object { bindings, compatibility_date, compatibility_flags, 8 more }`
+- `result: optional object { bindings, cache_options, compatibility_date, 10 more }`
 
   Script and version settings for Workers for Platforms namespace scripts. Same as script-and-version-settings-item but without annotations, which are not supported for namespace scripts.
 
@@ -5228,6 +5375,24 @@ Patch script metadata, such as bindings.
 
         UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
 
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
+
   - `compatibility_date: optional string`
 
     Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -5235,6 +5400,29 @@ Patch script metadata, such as bindings.
   - `compatibility_flags: optional array of string`
 
     Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+
+  - `exports: optional map[object { type, cache } ]`
+
+    Declarative exports for the Worker. Worker entrypoint entries
+    (`type: worker`) carry cache configuration for that entrypoint.
+
+    - `type: "worker" or "durable-object"`
+
+      The kind of export.
+
+      - `"worker"`
+
+      - `"durable-object"`
+
+    - `cache: optional object { enabled }`
+
+      Cache override for this entrypoint. It applies only to
+      `type: worker` entries and overrides the Worker's global
+      `cache_options.enabled` for that entrypoint.
+
+      - `enabled: boolean`
+
+        Whether caching is enabled for this entrypoint.
 
   - `limits: optional object { cpu_ms, subrequests }`
 
@@ -5574,6 +5762,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
         "type": "plain_text"
       }
     ],
+    "cache_options": {
+      "enabled": true,
+      "cross_version_cache": true
+    },
     "compatibility_date": "2021-01-01",
     "compatibility_flags": [
       "nodejs_compat"
@@ -5628,7 +5820,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
 
 ### Setting Get Response
 
-- `SettingGetResponse object { bindings, compatibility_date, compatibility_flags, 8 more }`
+- `SettingGetResponse object { bindings, cache_options, compatibility_date, 10 more }`
 
   Script and version settings for Workers for Platforms namespace scripts. Same as script-and-version-settings-item but without annotations, which are not supported for namespace scripts.
 
@@ -6326,6 +6518,24 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
 
         UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
 
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
+
   - `compatibility_date: optional string`
 
     Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -6333,6 +6543,29 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
   - `compatibility_flags: optional array of string`
 
     Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+
+  - `exports: optional map[object { type, cache } ]`
+
+    Declarative exports for the Worker. Worker entrypoint entries
+    (`type: worker`) carry cache configuration for that entrypoint.
+
+    - `type: "worker" or "durable-object"`
+
+      The kind of export.
+
+      - `"worker"`
+
+      - `"durable-object"`
+
+    - `cache: optional object { enabled }`
+
+      Cache override for this entrypoint. It applies only to
+      `type: worker` entries and overrides the Worker's global
+      `cache_options.enabled` for that entrypoint.
+
+      - `enabled: boolean`
+
+        Whether caching is enabled for this entrypoint.
 
   - `limits: optional object { cpu_ms, subrequests }`
 
@@ -6632,7 +6865,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
 
 ### Setting Edit Response
 
-- `SettingEditResponse object { bindings, compatibility_date, compatibility_flags, 8 more }`
+- `SettingEditResponse object { bindings, cache_options, compatibility_date, 10 more }`
 
   Script and version settings for Workers for Platforms namespace scripts. Same as script-and-version-settings-item but without annotations, which are not supported for namespace scripts.
 
@@ -7330,6 +7563,24 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
 
         UUID of the Cloudflare Tunnel to bind to. Mutually exclusive with network_id.
 
+  - `cache_options: optional object { enabled, cross_version_cache }`
+
+    Global CacheW configuration for the Worker. When caching is on,
+    the platform provisions a `cloudflare.app` zone for the Worker.
+    A `type: worker` entry in the `exports` map can override this
+    value for a single entrypoint.
+
+    - `enabled: boolean`
+
+      Whether caching is enabled for this Worker.
+
+    - `cross_version_cache: optional boolean`
+
+      Whether cached responses are shared across Worker version
+      uploads. This is independent of `enabled`. It can stay true
+      while caching is off, so the preference survives turning
+      caching off and back on.
+
   - `compatibility_date: optional string`
 
     Date indicating targeted support in the Workers runtime. Backwards incompatible fixes to the runtime following this date will not affect this Worker.
@@ -7337,6 +7588,29 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/workers/dispatch/
   - `compatibility_flags: optional array of string`
 
     Flags that enable or disable certain features in the Workers runtime. Used to enable upcoming features or opt in or out of specific changes not included in a `compatibility_date`.
+
+  - `exports: optional map[object { type, cache } ]`
+
+    Declarative exports for the Worker. Worker entrypoint entries
+    (`type: worker`) carry cache configuration for that entrypoint.
+
+    - `type: "worker" or "durable-object"`
+
+      The kind of export.
+
+      - `"worker"`
+
+      - `"durable-object"`
+
+    - `cache: optional object { enabled }`
+
+      Cache override for this entrypoint. It applies only to
+      `type: worker` entries and overrides the Worker's global
+      `cache_options.enabled` for that entrypoint.
+
+      - `enabled: boolean`
+
+        Whether caching is enabled for this entrypoint.
 
   - `limits: optional object { cpu_ms, subrequests }`
 

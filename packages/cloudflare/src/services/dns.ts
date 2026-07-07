@@ -219,6 +219,7 @@ export const RecordsBatchRequestPutsList = /*@__PURE__*/ S.Array(
 
 export interface RecordsBatchRequest {
   zone_id: string;
+  include_shadow_metadata?: boolean;
   deletes?: RecordsBatchRequestDeletesList;
   patches?: RecordsBatchRequestPatchesList;
   posts?: RecordsBatchRequestPostsList;
@@ -227,6 +228,7 @@ export interface RecordsBatchRequest {
 export const RecordsBatchRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zone_id: S.String.pipe(T.Label()),
+    include_shadow_metadata: S.optional(S.Boolean.pipe(T.Query())),
     deletes: S.optional(RecordsBatchRequestDeletesList),
     patches: S.optional(RecordsBatchRequestPatchesList),
     posts: S.optional(RecordsBatchRequestPostsList),
@@ -282,11 +284,13 @@ export const RecordsBatchResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface RecordsCreateRequest {
   zone_id: string;
+  include_shadow_metadata?: boolean;
   body: unknown;
 }
 export const RecordsCreateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zone_id: S.String.pipe(T.Label()),
+    include_shadow_metadata: S.optional(S.Boolean.pipe(T.Query())),
     body: S.Unknown,
   }).pipe(
     T.Http({ method: "POST", uri: "/zones/{zone_id}/dns_records", code: 200 }),
@@ -340,12 +344,14 @@ export const RecordsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RecordsEditRequest {
   zone_id: string;
   dns_record_id: string;
+  include_shadow_metadata?: boolean;
   body: unknown;
 }
 export const RecordsEditRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zone_id: S.String.pipe(T.Label()),
     dns_record_id: S.String.pipe(T.Label()),
+    include_shadow_metadata: S.optional(S.Boolean.pipe(T.Query())),
     body: S.Unknown,
   }).pipe(
     T.Http({
@@ -396,11 +402,13 @@ export const RecordsExportResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RecordsGetRequest {
   zone_id: string;
   dns_record_id: string;
+  include_shadow_metadata?: boolean;
 }
 export const RecordsGetRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zone_id: S.String.pipe(T.Label()),
     dns_record_id: S.String.pipe(T.Label()),
+    include_shadow_metadata: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -475,6 +483,7 @@ export interface RecordsListRequest {
   comment?: string;
   content?: string;
   direction?: string;
+  include_shadow_metadata?: boolean;
   match?: RecordsListRequestMatch;
   name?: string;
   order?: RecordsListRequestOrder;
@@ -482,6 +491,8 @@ export interface RecordsListRequest {
   per_page?: number;
   proxied?: boolean;
   search?: string;
+  shadowed_by_name?: string;
+  shadowing_name?: string;
   tag?: string;
   tag_match?: RecordsListRequestTagMatch;
   type?: RecordsListRequestType;
@@ -492,6 +503,7 @@ export const RecordsListRequest = /*@__PURE__*/ S.suspend(() =>
     comment: S.optional(S.String.pipe(T.Query())),
     content: S.optional(S.String.pipe(T.Query())),
     direction: S.optional(S.String.pipe(T.Query())),
+    include_shadow_metadata: S.optional(S.Boolean.pipe(T.Query())),
     match: S.optional(RecordsListRequestMatch.pipe(T.Query())),
     name: S.optional(S.String.pipe(T.Query())),
     order: S.optional(RecordsListRequestOrder.pipe(T.Query())),
@@ -499,6 +511,8 @@ export const RecordsListRequest = /*@__PURE__*/ S.suspend(() =>
     per_page: S.optional(S.Number.pipe(T.Query())),
     proxied: S.optional(S.Boolean.pipe(T.Query())),
     search: S.optional(S.String.pipe(T.Query())),
+    shadowed_by_name: S.optional(S.String.pipe(T.Query())),
+    shadowing_name: S.optional(S.String.pipe(T.Query())),
     tag: S.optional(S.String.pipe(T.Query())),
     tag_match: S.optional(RecordsListRequestTagMatch.pipe(T.Query())),
     type: S.optional(RecordsListRequestType.pipe(T.Query())),
@@ -685,12 +699,14 @@ export const RecordsScanTriggerResponse = /*@__PURE__*/ S.suspend(() =>
 export interface RecordsUpdateRequest {
   zone_id: string;
   dns_record_id: string;
+  include_shadow_metadata?: boolean;
   body: unknown;
 }
 export const RecordsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     zone_id: S.String.pipe(T.Label()),
     dns_record_id: S.String.pipe(T.Label()),
+    include_shadow_metadata: S.optional(S.Boolean.pipe(T.Query())),
     body: S.Unknown,
   }).pipe(
     T.Http({
@@ -2824,7 +2840,7 @@ export const RecordsCreate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Delete DNS Record */
+/** Permanently removes a DNS record from the zone. */
 export const RecordsDelete: API.OperationMethod<
   RecordsDeleteRequest,
   RecordsDeleteResponse,
@@ -2863,7 +2879,7 @@ export const RecordsExport: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** DNS Record Details */
+/** Retrieves details for a specific DNS record in the zone. */
 export const RecordsGet: API.OperationMethod<
   RecordsGetRequest,
   RecordsGetResponse,

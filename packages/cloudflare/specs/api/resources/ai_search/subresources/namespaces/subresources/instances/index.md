@@ -176,9 +176,11 @@ List instances.
 
     - `field_name: string`
 
-  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
     - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+    - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
     - `"@cf/baai/bge-m3"`
 
@@ -189,6 +191,8 @@ List instances.
     - `"google-ai-studio/gemini-embedding-001"`
 
     - `"google-ai-studio/gemini-embedding-2-preview"`
+
+    - `"google-ai-studio/gemini-embedding-2"`
 
     - `"openai/text-embedding-3-small"`
 
@@ -250,7 +254,7 @@ List instances.
 
   - `public_endpoint_id: optional string`
 
-  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
     - `authorized_hosts: optional array of string`
 
@@ -259,6 +263,10 @@ List instances.
       - `disabled: optional boolean`
 
         Disable chat completions endpoint for this public endpoint
+
+    - `custom_domains: optional array of string`
+
+      Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
     - `enabled: optional boolean`
 
@@ -408,25 +416,7 @@ List instances.
 
     - `r2_jurisdiction: optional string`
 
-    - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-      - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-        - `depth: optional number`
-
-        - `include_external_links: optional boolean`
-
-        - `include_subdomains: optional boolean`
-
-        - `max_age: optional number`
-
-        - `source: optional "all" or "sitemaps" or "links"`
-
-          - `"all"`
-
-          - `"sitemaps"`
-
-          - `"links"`
+    - `web_crawler: optional object { parse_options, parse_type }`
 
       - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -454,23 +444,11 @@ List instances.
 
         - `use_browser_rendering: optional boolean`
 
-      - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+      - `parse_type: optional "sitemap" or "crawl"`
 
         - `"sitemap"`
 
-        - `"feed-rss"`
-
         - `"crawl"`
-
-      - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-        - `storage_id: string`
-
-        - `r2_jurisdiction: optional string`
-
-        - `storage_type: optional Provider`
-
-          - `"r2"`
 
   - `status: optional string`
 
@@ -575,6 +553,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
         "chat_completions_endpoint": {
           "disabled": true
         },
+        "custom_domains": [
+          "search.example.com"
+        ],
         "enabled": true,
         "mcp": {
           "description": "description",
@@ -618,13 +599,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
         "prefix": "prefix",
         "r2_jurisdiction": "r2_jurisdiction",
         "web_crawler": {
-          "crawl_options": {
-            "depth": 1,
-            "include_external_links": true,
-            "include_subdomains": true,
-            "max_age": 0,
-            "source": "all"
-          },
           "parse_options": {
             "content_selector": [
               {
@@ -646,12 +620,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
             ],
             "use_browser_rendering": true
           },
-          "parse_type": "sitemap",
-          "store_options": {
-            "storage_id": "storage_id",
-            "r2_jurisdiction": "r2_jurisdiction",
-            "storage_type": "r2"
-          }
+          "parse_type": "sitemap"
         }
       },
       "status": "status",
@@ -808,9 +777,11 @@ Create a new instance.
 
   - `field_name: string`
 
-- `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+- `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
   - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+  - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
   - `"@cf/baai/bge-m3"`
 
@@ -821,6 +792,8 @@ Create a new instance.
   - `"google-ai-studio/gemini-embedding-001"`
 
   - `"google-ai-studio/gemini-embedding-2-preview"`
+
+  - `"google-ai-studio/gemini-embedding-2"`
 
   - `"openai/text-embedding-3-small"`
 
@@ -868,7 +841,7 @@ Create a new instance.
 
   - `worker_domain: optional string`
 
-- `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+- `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
   - `authorized_hosts: optional array of string`
 
@@ -877,6 +850,10 @@ Create a new instance.
     - `disabled: optional boolean`
 
       Disable chat completions endpoint for this public endpoint
+
+  - `custom_domains: optional array of string`
+
+    Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
   - `enabled: optional boolean`
 
@@ -1026,25 +1003,7 @@ Create a new instance.
 
   - `r2_jurisdiction: optional string`
 
-  - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-    - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-      - `depth: optional number`
-
-      - `include_external_links: optional boolean`
-
-      - `include_subdomains: optional boolean`
-
-      - `max_age: optional number`
-
-      - `source: optional "all" or "sitemaps" or "links"`
-
-        - `"all"`
-
-        - `"sitemaps"`
-
-        - `"links"`
+  - `web_crawler: optional object { parse_options, parse_type }`
 
     - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -1072,23 +1031,11 @@ Create a new instance.
 
       - `use_browser_rendering: optional boolean`
 
-    - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+    - `parse_type: optional "sitemap" or "crawl"`
 
       - `"sitemap"`
 
-      - `"feed-rss"`
-
       - `"crawl"`
-
-    - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-      - `storage_id: string`
-
-      - `r2_jurisdiction: optional string`
-
-      - `storage_type: optional Provider`
-
-        - `"r2"`
 
 - `sync_interval: optional 900 or 1800 or 3600 or 5 more`
 
@@ -1250,9 +1197,11 @@ Create a new instance.
 
     - `field_name: string`
 
-  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
     - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+    - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
     - `"@cf/baai/bge-m3"`
 
@@ -1263,6 +1212,8 @@ Create a new instance.
     - `"google-ai-studio/gemini-embedding-001"`
 
     - `"google-ai-studio/gemini-embedding-2-preview"`
+
+    - `"google-ai-studio/gemini-embedding-2"`
 
     - `"openai/text-embedding-3-small"`
 
@@ -1324,7 +1275,7 @@ Create a new instance.
 
   - `public_endpoint_id: optional string`
 
-  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
     - `authorized_hosts: optional array of string`
 
@@ -1333,6 +1284,10 @@ Create a new instance.
       - `disabled: optional boolean`
 
         Disable chat completions endpoint for this public endpoint
+
+    - `custom_domains: optional array of string`
+
+      Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
     - `enabled: optional boolean`
 
@@ -1482,25 +1437,7 @@ Create a new instance.
 
     - `r2_jurisdiction: optional string`
 
-    - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-      - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-        - `depth: optional number`
-
-        - `include_external_links: optional boolean`
-
-        - `include_subdomains: optional boolean`
-
-        - `max_age: optional number`
-
-        - `source: optional "all" or "sitemaps" or "links"`
-
-          - `"all"`
-
-          - `"sitemaps"`
-
-          - `"links"`
+    - `web_crawler: optional object { parse_options, parse_type }`
 
       - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -1528,23 +1465,11 @@ Create a new instance.
 
         - `use_browser_rendering: optional boolean`
 
-      - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+      - `parse_type: optional "sitemap" or "crawl"`
 
         - `"sitemap"`
 
-        - `"feed-rss"`
-
         - `"crawl"`
-
-      - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-        - `storage_id: string`
-
-        - `r2_jurisdiction: optional string`
-
-        - `storage_type: optional Provider`
-
-          - `"r2"`
 
   - `status: optional string`
 
@@ -1640,6 +1565,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       "chat_completions_endpoint": {
         "disabled": true
       },
+      "custom_domains": [
+        "search.example.com"
+      ],
       "enabled": true,
       "mcp": {
         "description": "description",
@@ -1683,13 +1611,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       "prefix": "prefix",
       "r2_jurisdiction": "r2_jurisdiction",
       "web_crawler": {
-        "crawl_options": {
-          "depth": 1,
-          "include_external_links": true,
-          "include_subdomains": true,
-          "max_age": 0,
-          "source": "all"
-        },
         "parse_options": {
           "content_selector": [
             {
@@ -1711,12 +1632,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
           ],
           "use_browser_rendering": true
         },
-        "parse_type": "sitemap",
-        "store_options": {
-          "storage_id": "storage_id",
-          "r2_jurisdiction": "r2_jurisdiction",
-          "storage_type": "r2"
-        }
+        "parse_type": "sitemap"
       }
     },
     "status": "status",
@@ -1874,9 +1790,11 @@ Read instance.
 
     - `field_name: string`
 
-  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
     - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+    - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
     - `"@cf/baai/bge-m3"`
 
@@ -1887,6 +1805,8 @@ Read instance.
     - `"google-ai-studio/gemini-embedding-001"`
 
     - `"google-ai-studio/gemini-embedding-2-preview"`
+
+    - `"google-ai-studio/gemini-embedding-2"`
 
     - `"openai/text-embedding-3-small"`
 
@@ -1948,7 +1868,7 @@ Read instance.
 
   - `public_endpoint_id: optional string`
 
-  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
     - `authorized_hosts: optional array of string`
 
@@ -1957,6 +1877,10 @@ Read instance.
       - `disabled: optional boolean`
 
         Disable chat completions endpoint for this public endpoint
+
+    - `custom_domains: optional array of string`
+
+      Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
     - `enabled: optional boolean`
 
@@ -2106,25 +2030,7 @@ Read instance.
 
     - `r2_jurisdiction: optional string`
 
-    - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-      - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-        - `depth: optional number`
-
-        - `include_external_links: optional boolean`
-
-        - `include_subdomains: optional boolean`
-
-        - `max_age: optional number`
-
-        - `source: optional "all" or "sitemaps" or "links"`
-
-          - `"all"`
-
-          - `"sitemaps"`
-
-          - `"links"`
+    - `web_crawler: optional object { parse_options, parse_type }`
 
       - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -2152,23 +2058,11 @@ Read instance.
 
         - `use_browser_rendering: optional boolean`
 
-      - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+      - `parse_type: optional "sitemap" or "crawl"`
 
         - `"sitemap"`
 
-        - `"feed-rss"`
-
         - `"crawl"`
-
-      - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-        - `storage_id: string`
-
-        - `r2_jurisdiction: optional string`
-
-        - `storage_type: optional Provider`
-
-          - `"r2"`
 
   - `status: optional string`
 
@@ -2260,6 +2154,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       "chat_completions_endpoint": {
         "disabled": true
       },
+      "custom_domains": [
+        "search.example.com"
+      ],
       "enabled": true,
       "mcp": {
         "description": "description",
@@ -2303,13 +2200,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       "prefix": "prefix",
       "r2_jurisdiction": "r2_jurisdiction",
       "web_crawler": {
-        "crawl_options": {
-          "depth": 1,
-          "include_external_links": true,
-          "include_subdomains": true,
-          "max_age": 0,
-          "source": "all"
-        },
         "parse_options": {
           "content_selector": [
             {
@@ -2331,12 +2221,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
           ],
           "use_browser_rendering": true
         },
-        "parse_type": "sitemap",
-        "store_options": {
-          "storage_id": "storage_id",
-          "r2_jurisdiction": "r2_jurisdiction",
-          "storage_type": "r2"
-        }
+        "parse_type": "sitemap"
       }
     },
     "status": "status",
@@ -2484,9 +2369,11 @@ Update instance.
 
   - `field_name: string`
 
-- `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+- `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
   - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+  - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
   - `"@cf/baai/bge-m3"`
 
@@ -2497,6 +2384,8 @@ Update instance.
   - `"google-ai-studio/gemini-embedding-001"`
 
   - `"google-ai-studio/gemini-embedding-2-preview"`
+
+  - `"google-ai-studio/gemini-embedding-2"`
 
   - `"openai/text-embedding-3-small"`
 
@@ -2542,7 +2431,7 @@ Update instance.
 
 - `paused: optional boolean`
 
-- `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+- `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
   - `authorized_hosts: optional array of string`
 
@@ -2551,6 +2440,10 @@ Update instance.
     - `disabled: optional boolean`
 
       Disable chat completions endpoint for this public endpoint
+
+  - `custom_domains: optional array of string`
+
+    Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
   - `enabled: optional boolean`
 
@@ -2684,6 +2577,8 @@ Update instance.
 
 - `score_threshold: optional number`
 
+- `source: optional string`
+
 - `source_params: optional object { exclude_items, include_items, prefix, 2 more }`
 
   - `exclude_items: optional array of string`
@@ -2698,25 +2593,7 @@ Update instance.
 
   - `r2_jurisdiction: optional string`
 
-  - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-    - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-      - `depth: optional number`
-
-      - `include_external_links: optional boolean`
-
-      - `include_subdomains: optional boolean`
-
-      - `max_age: optional number`
-
-      - `source: optional "all" or "sitemaps" or "links"`
-
-        - `"all"`
-
-        - `"sitemaps"`
-
-        - `"links"`
+  - `web_crawler: optional object { parse_options, parse_type }`
 
     - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -2744,23 +2621,11 @@ Update instance.
 
       - `use_browser_rendering: optional boolean`
 
-    - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+    - `parse_type: optional "sitemap" or "crawl"`
 
       - `"sitemap"`
 
-      - `"feed-rss"`
-
       - `"crawl"`
-
-    - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-      - `storage_id: string`
-
-      - `r2_jurisdiction: optional string`
-
-      - `storage_type: optional Provider`
-
-        - `"r2"`
 
 - `summarization: optional boolean`
 
@@ -2986,9 +2851,11 @@ Update instance.
 
     - `field_name: string`
 
-  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
     - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+    - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
     - `"@cf/baai/bge-m3"`
 
@@ -2999,6 +2866,8 @@ Update instance.
     - `"google-ai-studio/gemini-embedding-001"`
 
     - `"google-ai-studio/gemini-embedding-2-preview"`
+
+    - `"google-ai-studio/gemini-embedding-2"`
 
     - `"openai/text-embedding-3-small"`
 
@@ -3060,7 +2929,7 @@ Update instance.
 
   - `public_endpoint_id: optional string`
 
-  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
     - `authorized_hosts: optional array of string`
 
@@ -3069,6 +2938,10 @@ Update instance.
       - `disabled: optional boolean`
 
         Disable chat completions endpoint for this public endpoint
+
+    - `custom_domains: optional array of string`
+
+      Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
     - `enabled: optional boolean`
 
@@ -3218,25 +3091,7 @@ Update instance.
 
     - `r2_jurisdiction: optional string`
 
-    - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-      - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-        - `depth: optional number`
-
-        - `include_external_links: optional boolean`
-
-        - `include_subdomains: optional boolean`
-
-        - `max_age: optional number`
-
-        - `source: optional "all" or "sitemaps" or "links"`
-
-          - `"all"`
-
-          - `"sitemaps"`
-
-          - `"links"`
+    - `web_crawler: optional object { parse_options, parse_type }`
 
       - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -3264,23 +3119,11 @@ Update instance.
 
         - `use_browser_rendering: optional boolean`
 
-      - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+      - `parse_type: optional "sitemap" or "crawl"`
 
         - `"sitemap"`
 
-        - `"feed-rss"`
-
         - `"crawl"`
-
-      - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-        - `storage_id: string`
-
-        - `r2_jurisdiction: optional string`
-
-        - `storage_type: optional Provider`
-
-          - `"r2"`
 
   - `status: optional string`
 
@@ -3373,6 +3216,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       "chat_completions_endpoint": {
         "disabled": true
       },
+      "custom_domains": [
+        "search.example.com"
+      ],
       "enabled": true,
       "mcp": {
         "description": "description",
@@ -3416,13 +3262,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       "prefix": "prefix",
       "r2_jurisdiction": "r2_jurisdiction",
       "web_crawler": {
-        "crawl_options": {
-          "depth": 1,
-          "include_external_links": true,
-          "include_subdomains": true,
-          "max_age": 0,
-          "source": "all"
-        },
         "parse_options": {
           "content_selector": [
             {
@@ -3444,12 +3283,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
           ],
           "use_browser_rendering": true
         },
-        "parse_type": "sitemap",
-        "store_options": {
-          "storage_id": "storage_id",
-          "r2_jurisdiction": "r2_jurisdiction",
-          "storage_type": "r2"
-        }
+        "parse_type": "sitemap"
       }
     },
     "status": "status",
@@ -3607,9 +3441,11 @@ Delete instance.
 
     - `field_name: string`
 
-  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
     - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+    - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
     - `"@cf/baai/bge-m3"`
 
@@ -3620,6 +3456,8 @@ Delete instance.
     - `"google-ai-studio/gemini-embedding-001"`
 
     - `"google-ai-studio/gemini-embedding-2-preview"`
+
+    - `"google-ai-studio/gemini-embedding-2"`
 
     - `"openai/text-embedding-3-small"`
 
@@ -3681,7 +3519,7 @@ Delete instance.
 
   - `public_endpoint_id: optional string`
 
-  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
     - `authorized_hosts: optional array of string`
 
@@ -3690,6 +3528,10 @@ Delete instance.
       - `disabled: optional boolean`
 
         Disable chat completions endpoint for this public endpoint
+
+    - `custom_domains: optional array of string`
+
+      Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
     - `enabled: optional boolean`
 
@@ -3839,25 +3681,7 @@ Delete instance.
 
     - `r2_jurisdiction: optional string`
 
-    - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-      - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-        - `depth: optional number`
-
-        - `include_external_links: optional boolean`
-
-        - `include_subdomains: optional boolean`
-
-        - `max_age: optional number`
-
-        - `source: optional "all" or "sitemaps" or "links"`
-
-          - `"all"`
-
-          - `"sitemaps"`
-
-          - `"links"`
+    - `web_crawler: optional object { parse_options, parse_type }`
 
       - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -3885,23 +3709,11 @@ Delete instance.
 
         - `use_browser_rendering: optional boolean`
 
-      - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+      - `parse_type: optional "sitemap" or "crawl"`
 
         - `"sitemap"`
 
-        - `"feed-rss"`
-
         - `"crawl"`
-
-      - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-        - `storage_id: string`
-
-        - `r2_jurisdiction: optional string`
-
-        - `storage_type: optional Provider`
-
-          - `"r2"`
 
   - `status: optional string`
 
@@ -3994,6 +3806,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       "chat_completions_endpoint": {
         "disabled": true
       },
+      "custom_domains": [
+        "search.example.com"
+      ],
       "enabled": true,
       "mcp": {
         "description": "description",
@@ -4037,13 +3852,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       "prefix": "prefix",
       "r2_jurisdiction": "r2_jurisdiction",
       "web_crawler": {
-        "crawl_options": {
-          "depth": 1,
-          "include_external_links": true,
-          "include_subdomains": true,
-          "max_age": 0,
-          "source": "all"
-        },
         "parse_options": {
           "content_selector": [
             {
@@ -4065,12 +3873,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
           ],
           "use_browser_rendering": true
         },
-        "parse_type": "sitemap",
-        "store_options": {
-          "storage_id": "storage_id",
-          "r2_jurisdiction": "r2_jurisdiction",
-          "storage_type": "r2"
-        }
+        "parse_type": "sitemap"
       }
     },
     "status": "status",
@@ -4338,7 +4141,7 @@ Executes a semantic search query against an AI Search instance to find relevant 
 
     - `keyword_match_mode: optional "and" or "or"`
 
-      Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+      Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.
 
       - `"and"`
 
@@ -4360,7 +4163,31 @@ Executes a semantic search query against an AI Search instance to find relevant 
 
 - `messages: optional array of object { content, role }`
 
-  - `content: string`
+  OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities.
+
+  - `content: string or array of object { text, type }  or object { image_url, type }`
+
+    - `string`
+
+    - `array of object { text, type }  or object { image_url, type }`
+
+      - `object { text, type }`
+
+        - `text: string`
+
+        - `type: "text"`
+
+          - `"text"`
+
+      - `object { image_url, type }`
+
+        - `image_url: object { url }`
+
+          - `url: string`
+
+        - `type: "image_url"`
+
+          - `"image_url"`
 
   - `role: "system" or "developer" or "user" or 2 more`
 
@@ -4380,7 +4207,7 @@ Executes a semantic search query against an AI Search instance to find relevant 
 
 ### Returns
 
-- `result: object { chunks, search_query }`
+- `result: object { chunks, query_kind, search_query }`
 
   - `chunks: array of object { id, score, text, 3 more }`
 
@@ -4418,7 +4245,15 @@ Executes a semantic search query against an AI Search instance to find relevant 
 
       - `vector_score: optional number`
 
-  - `search_query: string`
+  - `query_kind: "text" or "image" or "multimodal"`
+
+    - `"text"`
+
+    - `"image"`
+
+    - `"multimodal"`
+
+  - `search_query: optional string`
 
 - `success: boolean`
 
@@ -4458,6 +4293,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
         }
       }
     ],
+    "query_kind": "text",
     "search_query": "search_query"
   },
   "success": true
@@ -4484,7 +4320,29 @@ Performs a chat completion request against an AI Search instance, using indexed 
 
 - `messages: array of object { content, role }`
 
-  - `content: string`
+  - `content: string or array of object { text, type }  or object { image_url, type }`
+
+    - `string`
+
+    - `array of object { text, type }  or object { image_url, type }`
+
+      - `object { text, type }`
+
+        - `text: string`
+
+        - `type: "text"`
+
+          - `"text"`
+
+      - `object { image_url, type }`
+
+        - `image_url: object { url }`
+
+          - `url: string`
+
+        - `type: "image_url"`
+
+          - `"image_url"`
 
   - `role: "system" or "developer" or "user" or 2 more`
 
@@ -4628,7 +4486,7 @@ Performs a chat completion request against an AI Search instance, using indexed 
 
     - `keyword_match_mode: optional "and" or "or"`
 
-      Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+      Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.
 
       - `"and"`
 
@@ -4718,7 +4576,29 @@ Performs a chat completion request against an AI Search instance, using indexed 
 
   - `message: object { content, role }`
 
-    - `content: string`
+    - `content: string or array of object { text, type }  or object { image_url, type }`
+
+      - `string`
+
+      - `array of object { text, type }  or object { image_url, type }`
+
+        - `object { text, type }`
+
+          - `text: string`
+
+          - `type: "text"`
+
+            - `"text"`
+
+        - `object { image_url, type }`
+
+          - `image_url: object { url }`
+
+            - `url: string`
+
+          - `type: "image_url"`
+
+            - `"image_url"`
 
     - `role: "system" or "developer" or "user" or 2 more`
 
@@ -4785,7 +4665,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
     -d '{
           "messages": [
             {
-              "content": "content",
+              "content": "string",
               "role": "system"
             }
           ]
@@ -4799,7 +4679,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
   "choices": [
     {
       "message": {
-        "content": "content",
+        "content": "string",
         "role": "system"
       },
       "index": 0
@@ -4968,9 +4848,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
     - `field_name: string`
 
-  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
     - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+    - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
     - `"@cf/baai/bge-m3"`
 
@@ -4981,6 +4863,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
     - `"google-ai-studio/gemini-embedding-001"`
 
     - `"google-ai-studio/gemini-embedding-2-preview"`
+
+    - `"google-ai-studio/gemini-embedding-2"`
 
     - `"openai/text-embedding-3-small"`
 
@@ -5042,7 +4926,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
   - `public_endpoint_id: optional string`
 
-  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
     - `authorized_hosts: optional array of string`
 
@@ -5051,6 +4935,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       - `disabled: optional boolean`
 
         Disable chat completions endpoint for this public endpoint
+
+    - `custom_domains: optional array of string`
+
+      Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
     - `enabled: optional boolean`
 
@@ -5200,25 +5088,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
     - `r2_jurisdiction: optional string`
 
-    - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-      - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-        - `depth: optional number`
-
-        - `include_external_links: optional boolean`
-
-        - `include_subdomains: optional boolean`
-
-        - `max_age: optional number`
-
-        - `source: optional "all" or "sitemaps" or "links"`
-
-          - `"all"`
-
-          - `"sitemaps"`
-
-          - `"links"`
+    - `web_crawler: optional object { parse_options, parse_type }`
 
       - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -5246,23 +5116,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
         - `use_browser_rendering: optional boolean`
 
-      - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+      - `parse_type: optional "sitemap" or "crawl"`
 
         - `"sitemap"`
 
-        - `"feed-rss"`
-
         - `"crawl"`
-
-      - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-        - `storage_id: string`
-
-        - `r2_jurisdiction: optional string`
-
-        - `storage_type: optional Provider`
-
-          - `"r2"`
 
   - `status: optional string`
 
@@ -5426,9 +5284,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
     - `field_name: string`
 
-  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
     - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+    - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
     - `"@cf/baai/bge-m3"`
 
@@ -5439,6 +5299,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
     - `"google-ai-studio/gemini-embedding-001"`
 
     - `"google-ai-studio/gemini-embedding-2-preview"`
+
+    - `"google-ai-studio/gemini-embedding-2"`
 
     - `"openai/text-embedding-3-small"`
 
@@ -5500,7 +5362,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
   - `public_endpoint_id: optional string`
 
-  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
     - `authorized_hosts: optional array of string`
 
@@ -5509,6 +5371,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       - `disabled: optional boolean`
 
         Disable chat completions endpoint for this public endpoint
+
+    - `custom_domains: optional array of string`
+
+      Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
     - `enabled: optional boolean`
 
@@ -5658,25 +5524,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
     - `r2_jurisdiction: optional string`
 
-    - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-      - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-        - `depth: optional number`
-
-        - `include_external_links: optional boolean`
-
-        - `include_subdomains: optional boolean`
-
-        - `max_age: optional number`
-
-        - `source: optional "all" or "sitemaps" or "links"`
-
-          - `"all"`
-
-          - `"sitemaps"`
-
-          - `"links"`
+    - `web_crawler: optional object { parse_options, parse_type }`
 
       - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -5704,23 +5552,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
         - `use_browser_rendering: optional boolean`
 
-      - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+      - `parse_type: optional "sitemap" or "crawl"`
 
         - `"sitemap"`
 
-        - `"feed-rss"`
-
         - `"crawl"`
-
-      - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-        - `storage_id: string`
-
-        - `r2_jurisdiction: optional string`
-
-        - `storage_type: optional Provider`
-
-          - `"r2"`
 
   - `status: optional string`
 
@@ -5884,9 +5720,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
     - `field_name: string`
 
-  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
     - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+    - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
     - `"@cf/baai/bge-m3"`
 
@@ -5897,6 +5735,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
     - `"google-ai-studio/gemini-embedding-001"`
 
     - `"google-ai-studio/gemini-embedding-2-preview"`
+
+    - `"google-ai-studio/gemini-embedding-2"`
 
     - `"openai/text-embedding-3-small"`
 
@@ -5958,7 +5798,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
   - `public_endpoint_id: optional string`
 
-  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
     - `authorized_hosts: optional array of string`
 
@@ -5967,6 +5807,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       - `disabled: optional boolean`
 
         Disable chat completions endpoint for this public endpoint
+
+    - `custom_domains: optional array of string`
+
+      Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
     - `enabled: optional boolean`
 
@@ -6116,25 +5960,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
     - `r2_jurisdiction: optional string`
 
-    - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-      - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-        - `depth: optional number`
-
-        - `include_external_links: optional boolean`
-
-        - `include_subdomains: optional boolean`
-
-        - `max_age: optional number`
-
-        - `source: optional "all" or "sitemaps" or "links"`
-
-          - `"all"`
-
-          - `"sitemaps"`
-
-          - `"links"`
+    - `web_crawler: optional object { parse_options, parse_type }`
 
       - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -6162,23 +5988,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
         - `use_browser_rendering: optional boolean`
 
-      - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+      - `parse_type: optional "sitemap" or "crawl"`
 
         - `"sitemap"`
 
-        - `"feed-rss"`
-
         - `"crawl"`
-
-      - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-        - `storage_id: string`
-
-        - `r2_jurisdiction: optional string`
-
-        - `storage_type: optional Provider`
-
-          - `"r2"`
 
   - `status: optional string`
 
@@ -6342,9 +6156,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
     - `field_name: string`
 
-  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
     - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+    - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
     - `"@cf/baai/bge-m3"`
 
@@ -6355,6 +6171,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
     - `"google-ai-studio/gemini-embedding-001"`
 
     - `"google-ai-studio/gemini-embedding-2-preview"`
+
+    - `"google-ai-studio/gemini-embedding-2"`
 
     - `"openai/text-embedding-3-small"`
 
@@ -6416,7 +6234,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
   - `public_endpoint_id: optional string`
 
-  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
     - `authorized_hosts: optional array of string`
 
@@ -6425,6 +6243,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       - `disabled: optional boolean`
 
         Disable chat completions endpoint for this public endpoint
+
+    - `custom_domains: optional array of string`
+
+      Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
     - `enabled: optional boolean`
 
@@ -6574,25 +6396,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
     - `r2_jurisdiction: optional string`
 
-    - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-      - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-        - `depth: optional number`
-
-        - `include_external_links: optional boolean`
-
-        - `include_subdomains: optional boolean`
-
-        - `max_age: optional number`
-
-        - `source: optional "all" or "sitemaps" or "links"`
-
-          - `"all"`
-
-          - `"sitemaps"`
-
-          - `"links"`
+    - `web_crawler: optional object { parse_options, parse_type }`
 
       - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -6620,23 +6424,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
         - `use_browser_rendering: optional boolean`
 
-      - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+      - `parse_type: optional "sitemap" or "crawl"`
 
         - `"sitemap"`
 
-        - `"feed-rss"`
-
         - `"crawl"`
-
-      - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-        - `storage_id: string`
-
-        - `r2_jurisdiction: optional string`
-
-        - `storage_type: optional Provider`
-
-          - `"r2"`
 
   - `status: optional string`
 
@@ -6800,9 +6592,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
     - `field_name: string`
 
-  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
     - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+    - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
     - `"@cf/baai/bge-m3"`
 
@@ -6813,6 +6607,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
     - `"google-ai-studio/gemini-embedding-001"`
 
     - `"google-ai-studio/gemini-embedding-2-preview"`
+
+    - `"google-ai-studio/gemini-embedding-2"`
 
     - `"openai/text-embedding-3-small"`
 
@@ -6874,7 +6670,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
   - `public_endpoint_id: optional string`
 
-  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
     - `authorized_hosts: optional array of string`
 
@@ -6883,6 +6679,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       - `disabled: optional boolean`
 
         Disable chat completions endpoint for this public endpoint
+
+    - `custom_domains: optional array of string`
+
+      Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
     - `enabled: optional boolean`
 
@@ -7032,25 +6832,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
     - `r2_jurisdiction: optional string`
 
-    - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-      - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-        - `depth: optional number`
-
-        - `include_external_links: optional boolean`
-
-        - `include_subdomains: optional boolean`
-
-        - `max_age: optional number`
-
-        - `source: optional "all" or "sitemaps" or "links"`
-
-          - `"all"`
-
-          - `"sitemaps"`
-
-          - `"links"`
+    - `web_crawler: optional object { parse_options, parse_type }`
 
       - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -7078,23 +6860,11 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
         - `use_browser_rendering: optional boolean`
 
-      - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+      - `parse_type: optional "sitemap" or "crawl"`
 
         - `"sitemap"`
 
-        - `"feed-rss"`
-
         - `"crawl"`
-
-      - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-        - `storage_id: string`
-
-        - `r2_jurisdiction: optional string`
-
-        - `storage_type: optional Provider`
-
-          - `"r2"`
 
   - `status: optional string`
 
@@ -7176,7 +6946,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
 ### Instance Search Response
 
-- `InstanceSearchResponse object { chunks, search_query }`
+- `InstanceSearchResponse object { chunks, query_kind, search_query }`
 
   - `chunks: array of object { id, score, text, 3 more }`
 
@@ -7214,7 +6984,15 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
       - `vector_score: optional number`
 
-  - `search_query: string`
+  - `query_kind: "text" or "image" or "multimodal"`
+
+    - `"text"`
+
+    - `"image"`
+
+    - `"multimodal"`
+
+  - `search_query: optional string`
 
 ### Instance Chat Completions Response
 
@@ -7224,7 +7002,29 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
 
     - `message: object { content, role }`
 
-      - `content: string`
+      - `content: string or array of object { text, type }  or object { image_url, type }`
+
+        - `string`
+
+        - `array of object { text, type }  or object { image_url, type }`
+
+          - `object { text, type }`
+
+            - `text: string`
+
+            - `type: "text"`
+
+              - `"text"`
+
+          - `object { image_url, type }`
+
+            - `image_url: object { url }`
+
+              - `url: string`
+
+            - `type: "image_url"`
+
+              - `"image_url"`
 
       - `role: "system" or "developer" or "user" or 2 more`
 

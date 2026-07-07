@@ -1935,12 +1935,14 @@ export interface ThreatEventsDatasetsCreateResponse {
   isPublic: boolean;
   name: string;
   uuid: string;
+  deletedAt?: string;
 }
 export const ThreatEventsDatasetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isPublic: S.Boolean,
     name: S.String,
     uuid: S.String,
+    deletedAt: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ThreatEventsDatasetsCreateResponse",
@@ -1974,12 +1976,14 @@ export interface ThreatEventsDatasetsEditResponse {
   isPublic: boolean;
   name: string;
   uuid: string;
+  deletedAt?: string;
 }
 export const ThreatEventsDatasetsEditResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isPublic: S.Boolean,
     name: S.String,
     uuid: S.String,
+    deletedAt: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ThreatEventsDatasetsEditResponse",
@@ -2009,12 +2013,14 @@ export interface ThreatEventsDatasetsGetResponse {
   isPublic: boolean;
   name: string;
   uuid: string;
+  deletedAt?: string;
 }
 export const ThreatEventsDatasetsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isPublic: S.Boolean,
     name: S.String,
     uuid: S.String,
+    deletedAt: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ThreatEventsDatasetsGetResponse",
@@ -2022,10 +2028,12 @@ export const ThreatEventsDatasetsGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface ThreatEventsDatasetsListRequest {
   account_id: string;
+  includeDeleted?: boolean;
 }
 export const ThreatEventsDatasetsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
+    includeDeleted: S.optional(S.Boolean.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2042,12 +2050,14 @@ export interface ThreatEventsDatasetsListResponse {
   isPublic: boolean;
   name: string;
   uuid: string;
+  deletedAt?: string;
 }
 export const ThreatEventsDatasetsListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     isPublic: S.Boolean,
     name: S.String,
     uuid: S.String,
+    deletedAt: S.optional(S.String),
   }),
 ).annotate({
   identifier: "ThreatEventsDatasetsListResponse",
@@ -2525,6 +2535,9 @@ export const ThreatEventsListRequestSearchList = /*@__PURE__*/ S.Array(
   S.String,
 ) as any as S.Schema<ThreatEventsListRequestSearchList>;
 
+export type ThreatEventsListRequestSource = "do" | "r2catalog" | (string & {});
+export const ThreatEventsListRequestSource = /*@__PURE__*/ S.String;
+
 export interface ThreatEventsListRequest {
   account_id: string;
   cursor?: string;
@@ -2536,6 +2549,7 @@ export interface ThreatEventsListRequest {
   page?: number;
   pageSize?: number;
   search?: ThreatEventsListRequestSearchList;
+  source?: ThreatEventsListRequestSource;
 }
 export const ThreatEventsListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -2549,6 +2563,7 @@ export const ThreatEventsListRequest = /*@__PURE__*/ S.suspend(() =>
     page: S.optional(S.Number.pipe(T.Query())),
     pageSize: S.optional(S.Number.pipe(T.Query())),
     search: S.optional(ThreatEventsListRequestSearchList.pipe(T.Query())),
+    source: S.optional(ThreatEventsListRequestSource.pipe(T.Query())),
   }).pipe(
     T.Http({
       method: "GET",
@@ -2778,6 +2793,37 @@ export const ThreatEventsRelateDeleteResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ThreatEventsRelateDeleteResponse",
 }) as any as S.Schema<ThreatEventsRelateDeleteResponse>;
 
+export type ThreatEventsTagsCreateRequestAliasesItemTlp =
+  | "red"
+  | "amber"
+  | "green"
+  | "white"
+  | (string & {});
+export const ThreatEventsTagsCreateRequestAliasesItemTlp =
+  /*@__PURE__*/ S.String;
+
+export interface ThreatEventsTagsCreateRequestAliasesItem {
+  value: string;
+  confidence?: number;
+  tlp?: ThreatEventsTagsCreateRequestAliasesItemTlp;
+}
+export const ThreatEventsTagsCreateRequestAliasesItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      value: S.String,
+      confidence: S.optional(S.Number),
+      tlp: S.optional(ThreatEventsTagsCreateRequestAliasesItemTlp),
+    }),
+).annotate({
+  identifier: "ThreatEventsTagsCreateRequestAliasesItem",
+}) as any as S.Schema<ThreatEventsTagsCreateRequestAliasesItem>;
+
+export type ThreatEventsTagsCreateRequestAliasesList =
+  ThreatEventsTagsCreateRequestAliasesItem[];
+export const ThreatEventsTagsCreateRequestAliasesList = /*@__PURE__*/ S.Array(
+  ThreatEventsTagsCreateRequestAliasesItem,
+) as any as S.Schema<ThreatEventsTagsCreateRequestAliasesList>;
+
 export type ThreatEventsTagsCreateRequestAliasGroupNamesList = string[];
 export const ThreatEventsTagsCreateRequestAliasGroupNamesList =
   /*@__PURE__*/ S.Array(
@@ -2796,22 +2842,93 @@ export const ThreatEventsTagsCreateRequestExternalReferenceLinksList =
     S.String,
   ) as any as S.Schema<ThreatEventsTagsCreateRequestExternalReferenceLinksList>;
 
+export interface ThreatEventsTagsCreateRequestExternalReferencesItem {
+  url: string;
+  description?: string;
+}
+export const ThreatEventsTagsCreateRequestExternalReferencesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      url: S.String,
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ThreatEventsTagsCreateRequestExternalReferencesItem",
+  }) as any as S.Schema<ThreatEventsTagsCreateRequestExternalReferencesItem>;
+
+export type ThreatEventsTagsCreateRequestExternalReferencesList =
+  ThreatEventsTagsCreateRequestExternalReferencesItem[];
+export const ThreatEventsTagsCreateRequestExternalReferencesList =
+  /*@__PURE__*/ S.Array(
+    ThreatEventsTagsCreateRequestExternalReferencesItem,
+  ) as any as S.Schema<ThreatEventsTagsCreateRequestExternalReferencesList>;
+
+export type ThreatEventsTagsCreateRequestInternalAliasesItemTlp =
+  | "red"
+  | "amber"
+  | "green"
+  | "white"
+  | (string & {});
+export const ThreatEventsTagsCreateRequestInternalAliasesItemTlp =
+  /*@__PURE__*/ S.String;
+
+export interface ThreatEventsTagsCreateRequestInternalAliasesItem {
+  value: string;
+  confidence?: number;
+  tlp?: ThreatEventsTagsCreateRequestInternalAliasesItemTlp;
+}
+export const ThreatEventsTagsCreateRequestInternalAliasesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.String,
+      confidence: S.optional(S.Number),
+      tlp: S.optional(ThreatEventsTagsCreateRequestInternalAliasesItemTlp),
+    }),
+  ).annotate({
+    identifier: "ThreatEventsTagsCreateRequestInternalAliasesItem",
+  }) as any as S.Schema<ThreatEventsTagsCreateRequestInternalAliasesItem>;
+
+export type ThreatEventsTagsCreateRequestInternalAliasesList =
+  ThreatEventsTagsCreateRequestInternalAliasesItem[];
+export const ThreatEventsTagsCreateRequestInternalAliasesList =
+  /*@__PURE__*/ S.Array(
+    ThreatEventsTagsCreateRequestInternalAliasesItem,
+  ) as any as S.Schema<ThreatEventsTagsCreateRequestInternalAliasesList>;
+
+export type ThreatEventsTagsCreateRequestOriginCountryTlp =
+  | "red"
+  | "amber"
+  | "green"
+  | "white"
+  | (string & {});
+export const ThreatEventsTagsCreateRequestOriginCountryTlp =
+  /*@__PURE__*/ S.String;
+
 export interface ThreatEventsTagsCreateRequest {
   account_id: string;
   value: string;
   activeDuration?: string;
   actorCategory?: string;
+  actorCategoryConfidence?: number;
+  aliases?: ThreatEventsTagsCreateRequestAliasesList;
   aliasGroupNames?: ThreatEventsTagsCreateRequestAliasGroupNamesList;
   aliasGroupNamesInternal?: ThreatEventsTagsCreateRequestAliasGroupNamesInternalList;
   analyticPriority?: number;
   attributionConfidence?: string;
+  attributionConfidenceScore?: number;
   attributionOrganization?: string;
   categoryUuid?: string;
+  dateOfDiscovery?: string;
   externalReferenceLinks?: ThreatEventsTagsCreateRequestExternalReferenceLinksList;
+  externalReferences?: ThreatEventsTagsCreateRequestExternalReferencesList;
+  internalAliases?: ThreatEventsTagsCreateRequestInternalAliasesList;
   internalDescription?: string;
   motive?: string;
+  motiveConfidence?: number;
   opsecLevel?: string;
+  originCountryConfidence?: number;
   originCountryISO?: string;
+  originCountryTlp?: ThreatEventsTagsCreateRequestOriginCountryTlp;
   priority?: number;
   sophisticationLevel?: string;
 }
@@ -2821,6 +2938,8 @@ export const ThreatEventsTagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     value: S.String,
     activeDuration: S.optional(S.String),
     actorCategory: S.optional(S.String),
+    actorCategoryConfidence: S.optional(S.Number),
+    aliases: S.optional(ThreatEventsTagsCreateRequestAliasesList),
     aliasGroupNames: S.optional(
       ThreatEventsTagsCreateRequestAliasGroupNamesList,
     ),
@@ -2829,15 +2948,26 @@ export const ThreatEventsTagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     analyticPriority: S.optional(S.Number),
     attributionConfidence: S.optional(S.String),
+    attributionConfidenceScore: S.optional(S.Number),
     attributionOrganization: S.optional(S.String),
     categoryUuid: S.optional(S.String),
+    dateOfDiscovery: S.optional(S.String),
     externalReferenceLinks: S.optional(
       ThreatEventsTagsCreateRequestExternalReferenceLinksList,
     ),
+    externalReferences: S.optional(
+      ThreatEventsTagsCreateRequestExternalReferencesList,
+    ),
+    internalAliases: S.optional(
+      ThreatEventsTagsCreateRequestInternalAliasesList,
+    ),
     internalDescription: S.optional(S.String),
     motive: S.optional(S.String),
+    motiveConfidence: S.optional(S.Number),
     opsecLevel: S.optional(S.String),
+    originCountryConfidence: S.optional(S.Number),
     originCountryISO: S.optional(S.String),
+    originCountryTlp: S.optional(ThreatEventsTagsCreateRequestOriginCountryTlp),
     priority: S.optional(S.Number),
     sophisticationLevel: S.optional(S.String),
   }).pipe(
@@ -2850,6 +2980,37 @@ export const ThreatEventsTagsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "ThreatEventsTagsCreateRequest",
 }) as any as S.Schema<ThreatEventsTagsCreateRequest>;
+
+export type ThreatEventsTagsCreateResponseAliasesItemTlp =
+  | "red"
+  | "amber"
+  | "green"
+  | "white"
+  | (string & {});
+export const ThreatEventsTagsCreateResponseAliasesItemTlp =
+  /*@__PURE__*/ S.String;
+
+export interface ThreatEventsTagsCreateResponseAliasesItem {
+  value: string;
+  confidence?: number;
+  tlp?: ThreatEventsTagsCreateResponseAliasesItemTlp;
+}
+export const ThreatEventsTagsCreateResponseAliasesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.String,
+      confidence: S.optional(S.Number),
+      tlp: S.optional(ThreatEventsTagsCreateResponseAliasesItemTlp),
+    }),
+  ).annotate({
+    identifier: "ThreatEventsTagsCreateResponseAliasesItem",
+  }) as any as S.Schema<ThreatEventsTagsCreateResponseAliasesItem>;
+
+export type ThreatEventsTagsCreateResponseAliasesList =
+  ThreatEventsTagsCreateResponseAliasesItem[];
+export const ThreatEventsTagsCreateResponseAliasesList = /*@__PURE__*/ S.Array(
+  ThreatEventsTagsCreateResponseAliasesItem,
+) as any as S.Schema<ThreatEventsTagsCreateResponseAliasesList>;
 
 export type ThreatEventsTagsCreateResponseAliasGroupNamesList = string[];
 export const ThreatEventsTagsCreateResponseAliasGroupNamesList =
@@ -2870,25 +3031,96 @@ export const ThreatEventsTagsCreateResponseExternalReferenceLinksList =
     S.String,
   ) as any as S.Schema<ThreatEventsTagsCreateResponseExternalReferenceLinksList>;
 
+export interface ThreatEventsTagsCreateResponseExternalReferencesItem {
+  url: string;
+  description?: string;
+}
+export const ThreatEventsTagsCreateResponseExternalReferencesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      url: S.String,
+      description: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ThreatEventsTagsCreateResponseExternalReferencesItem",
+  }) as any as S.Schema<ThreatEventsTagsCreateResponseExternalReferencesItem>;
+
+export type ThreatEventsTagsCreateResponseExternalReferencesList =
+  ThreatEventsTagsCreateResponseExternalReferencesItem[];
+export const ThreatEventsTagsCreateResponseExternalReferencesList =
+  /*@__PURE__*/ S.Array(
+    ThreatEventsTagsCreateResponseExternalReferencesItem,
+  ) as any as S.Schema<ThreatEventsTagsCreateResponseExternalReferencesList>;
+
+export type ThreatEventsTagsCreateResponseInternalAliasesItemTlp =
+  | "red"
+  | "amber"
+  | "green"
+  | "white"
+  | (string & {});
+export const ThreatEventsTagsCreateResponseInternalAliasesItemTlp =
+  /*@__PURE__*/ S.String;
+
+export interface ThreatEventsTagsCreateResponseInternalAliasesItem {
+  value: string;
+  confidence?: number;
+  tlp?: ThreatEventsTagsCreateResponseInternalAliasesItemTlp;
+}
+export const ThreatEventsTagsCreateResponseInternalAliasesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      value: S.String,
+      confidence: S.optional(S.Number),
+      tlp: S.optional(ThreatEventsTagsCreateResponseInternalAliasesItemTlp),
+    }),
+  ).annotate({
+    identifier: "ThreatEventsTagsCreateResponseInternalAliasesItem",
+  }) as any as S.Schema<ThreatEventsTagsCreateResponseInternalAliasesItem>;
+
+export type ThreatEventsTagsCreateResponseInternalAliasesList =
+  ThreatEventsTagsCreateResponseInternalAliasesItem[];
+export const ThreatEventsTagsCreateResponseInternalAliasesList =
+  /*@__PURE__*/ S.Array(
+    ThreatEventsTagsCreateResponseInternalAliasesItem,
+  ) as any as S.Schema<ThreatEventsTagsCreateResponseInternalAliasesList>;
+
+export type ThreatEventsTagsCreateResponseOriginCountryTlp =
+  | "red"
+  | "amber"
+  | "green"
+  | "white"
+  | (string & {});
+export const ThreatEventsTagsCreateResponseOriginCountryTlp =
+  /*@__PURE__*/ S.String;
+
 /** Raw response payload (operation does not use the standard v4 result envelope). */
 export interface ThreatEventsTagsCreateResponse {
   uuid: string;
   value: string;
   activeDuration?: string;
   actorCategory?: string;
+  actorCategoryConfidence?: number;
+  aliases?: ThreatEventsTagsCreateResponseAliasesList;
   aliasGroupNames?: ThreatEventsTagsCreateResponseAliasGroupNamesList;
   aliasGroupNamesInternal?: ThreatEventsTagsCreateResponseAliasGroupNamesInternalList;
   analyticPriority?: number;
   attributionConfidence?: string;
+  attributionConfidenceScore?: number;
   attributionOrganization?: string;
   categoryName?: string;
   categoryUuid?: string;
+  dateOfDiscovery?: string;
   externalReferenceLinks?: ThreatEventsTagsCreateResponseExternalReferenceLinksList;
+  externalReferences?: ThreatEventsTagsCreateResponseExternalReferencesList;
+  internalAliases?: ThreatEventsTagsCreateResponseInternalAliasesList;
   internalDescription?: string;
   motive?: string;
+  motiveConfidence?: number;
   opsecLevel?: string;
+  originCountryConfidence?: number;
   originCountryISO?: string;
   originCountryISOAlpha3?: string;
+  originCountryTlp?: ThreatEventsTagsCreateResponseOriginCountryTlp;
   priority?: number;
   sophisticationLevel?: string;
 }
@@ -2898,6 +3130,8 @@ export const ThreatEventsTagsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     value: S.String,
     activeDuration: S.optional(S.String),
     actorCategory: S.optional(S.String),
+    actorCategoryConfidence: S.optional(S.Number),
+    aliases: S.optional(ThreatEventsTagsCreateResponseAliasesList),
     aliasGroupNames: S.optional(
       ThreatEventsTagsCreateResponseAliasGroupNamesList,
     ),
@@ -2906,17 +3140,30 @@ export const ThreatEventsTagsCreateResponse = /*@__PURE__*/ S.suspend(() =>
     ),
     analyticPriority: S.optional(S.Number),
     attributionConfidence: S.optional(S.String),
+    attributionConfidenceScore: S.optional(S.Number),
     attributionOrganization: S.optional(S.String),
     categoryName: S.optional(S.String),
     categoryUuid: S.optional(S.String),
+    dateOfDiscovery: S.optional(S.String),
     externalReferenceLinks: S.optional(
       ThreatEventsTagsCreateResponseExternalReferenceLinksList,
     ),
+    externalReferences: S.optional(
+      ThreatEventsTagsCreateResponseExternalReferencesList,
+    ),
+    internalAliases: S.optional(
+      ThreatEventsTagsCreateResponseInternalAliasesList,
+    ),
     internalDescription: S.optional(S.String),
     motive: S.optional(S.String),
+    motiveConfidence: S.optional(S.Number),
     opsecLevel: S.optional(S.String),
+    originCountryConfidence: S.optional(S.Number),
     originCountryISO: S.optional(S.String),
     originCountryISOAlpha3: S.optional(S.String),
+    originCountryTlp: S.optional(
+      ThreatEventsTagsCreateResponseOriginCountryTlp,
+    ),
     priority: S.optional(S.Number),
     sophisticationLevel: S.optional(S.String),
   }),

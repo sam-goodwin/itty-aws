@@ -80,7 +80,7 @@ Tests if a specific user has permission to access an application.
 
     - `email: optional string`
 
-    - `geo: optional UserPolicyCheckGeo`
+    - `geo: optional object { country }`
 
       - `country: optional string`
 
@@ -174,12 +174,6 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
 ## Domain Types
 
-### User Policy Check Geo
-
-- `UserPolicyCheckGeo object { country }`
-
-  - `country: optional string`
-
 ### User Policy Check List Response
 
 - `UserPolicyCheckListResponse object { app_state, user_identity }`
@@ -210,7 +204,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
     - `email: optional string`
 
-    - `geo: optional UserPolicyCheckGeo`
+    - `geo: optional object { country }`
 
       - `country: optional string`
 

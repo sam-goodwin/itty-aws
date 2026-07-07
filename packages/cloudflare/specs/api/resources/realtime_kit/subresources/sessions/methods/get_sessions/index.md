@@ -64,7 +64,7 @@ Returns details of all sessions of an App.
 
 - `data: optional object { sessions }`
 
-  - `sessions: optional array of object { id, associated_id, created_at, 12 more }`
+  - `sessions: optional array of object { id, associated_id, created_at, 11 more }`
 
     - `id: string`
 
@@ -130,10 +130,6 @@ Returns details of all sessions of an App.
 
       timestamp when session ended
 
-    - `meta: optional unknown`
-
-      Any meta data about session.
-
 - `paging: optional object { end_offset, start_offset, total_count }`
 
   - `end_offset: optional number`
@@ -173,8 +169,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP
         "breakout_rooms": [
           {}
         ],
-        "ended_at": "ended_at",
-        "meta": {}
+        "ended_at": "ended_at"
       }
     ]
   },

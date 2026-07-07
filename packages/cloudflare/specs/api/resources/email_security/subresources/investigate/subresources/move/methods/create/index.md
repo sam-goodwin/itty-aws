@@ -28,6 +28,28 @@ Moves a single message to a specified mailbox folder (Inbox, JunkEmail, DeletedI
 
   - `"RecoverableItemsPurges"`
 
+- `expected_disposition: optional "MALICIOUS" or "MALICIOUS-BEC" or "SUSPICIOUS" or 7 more`
+
+  - `"MALICIOUS"`
+
+  - `"MALICIOUS-BEC"`
+
+  - `"SUSPICIOUS"`
+
+  - `"SPOOF"`
+
+  - `"SPAM"`
+
+  - `"BULK"`
+
+  - `"ENCRYPTED"`
+
+  - `"EXTERNAL"`
+
+  - `"UNKNOWN"`
+
+  - `"NONE"`
+
 ### Returns
 
 - `errors: array of object { code, message, documentation_url, source }`

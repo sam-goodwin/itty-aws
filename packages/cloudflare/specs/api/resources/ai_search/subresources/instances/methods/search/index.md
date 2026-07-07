@@ -144,7 +144,7 @@ Executes a semantic search query against an AI Search instance to find relevant 
 
     - `keyword_match_mode: optional "and" or "or"`
 
-      Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+      Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.
 
       - `"and"`
 
@@ -166,7 +166,31 @@ Executes a semantic search query against an AI Search instance to find relevant 
 
 - `messages: optional array of object { content, role }`
 
-  - `content: string`
+  OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities.
+
+  - `content: string or array of object { text, type }  or object { image_url, type }`
+
+    - `string`
+
+    - `array of object { text, type }  or object { image_url, type }`
+
+      - `object { text, type }`
+
+        - `text: string`
+
+        - `type: "text"`
+
+          - `"text"`
+
+      - `object { image_url, type }`
+
+        - `image_url: object { url }`
+
+          - `url: string`
+
+        - `type: "image_url"`
+
+          - `"image_url"`
 
   - `role: "system" or "developer" or "user" or 2 more`
 
@@ -186,7 +210,7 @@ Executes a semantic search query against an AI Search instance to find relevant 
 
 ### Returns
 
-- `result: object { chunks, search_query }`
+- `result: object { chunks, query_kind, search_query }`
 
   - `chunks: array of object { id, score, text, 3 more }`
 
@@ -224,7 +248,15 @@ Executes a semantic search query against an AI Search instance to find relevant 
 
       - `vector_score: optional number`
 
-  - `search_query: string`
+  - `query_kind: "text" or "image" or "multimodal"`
+
+    - `"text"`
+
+    - `"image"`
+
+    - `"multimodal"`
+
+  - `search_query: optional string`
 
 - `success: boolean`
 
@@ -264,6 +296,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/instanc
         }
       }
     ],
+    "query_kind": "text",
     "search_query": "search_query"
   },
   "success": true

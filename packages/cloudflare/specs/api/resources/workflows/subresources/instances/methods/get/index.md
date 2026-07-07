@@ -128,7 +128,7 @@ Retrieves logs and execution status for a specific workflow instance.
 
           - `delay: string or number`
 
-            Specifies the delay duration.
+            Specifies the delay duration. '[dynamic]' indicates the delay is computed by a user-supplied function.
 
             - `string`
 

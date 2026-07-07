@@ -138,6 +138,10 @@ Gets a list of audit logs for an account.
 
   The number limits the objects to return. The cursor attribute may be used to iterate over the next batch of objects if there are more than the limit.
 
+- `product_category: optional array of string`
+
+  Filters audit logs by one or more predefined product categories. Each product category expands into a curated set of resource_product values and is unioned with any explicit resource_product filter. Matched case-insensitively; unknown product categories return 400. Repeatable. Use the audit log product categories endpoint to discover the available values.
+
 - `raw_cf_ray_id: optional object { not }`
 
   - `not: optional array of string`

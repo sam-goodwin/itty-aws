@@ -250,6 +250,7 @@ export interface AccessAiControlsMcpPortalsCreateResponseServersItem {
   hostname: string;
   name: string;
   prompts: AccessAiControlsMcpPortalsCreateResponseServersItemPromptsList;
+  server_id: string;
   tools: AccessAiControlsMcpPortalsCreateResponseServersItemToolsList;
   created_at?: string;
   created_by?: string;
@@ -276,6 +277,7 @@ export const AccessAiControlsMcpPortalsCreateResponseServersItem =
       hostname: S.String,
       name: S.String,
       prompts: AccessAiControlsMcpPortalsCreateResponseServersItemPromptsList,
+      server_id: S.String,
       tools: AccessAiControlsMcpPortalsCreateResponseServersItemToolsList,
       created_at: S.optional(S.String),
       created_by: S.optional(S.String),
@@ -545,6 +547,7 @@ export interface AccessAiControlsMcpPortalsListResultItemServersItem {
   hostname: string;
   name: string;
   prompts: AccessAiControlsMcpPortalsListResultItemServersItemPromptsList;
+  server_id: string;
   tools: AccessAiControlsMcpPortalsListResultItemServersItemToolsList;
   created_at?: string;
   created_by?: string;
@@ -571,6 +574,7 @@ export const AccessAiControlsMcpPortalsListResultItemServersItem =
       hostname: S.String,
       name: S.String,
       prompts: AccessAiControlsMcpPortalsListResultItemServersItemPromptsList,
+      server_id: S.String,
       tools: AccessAiControlsMcpPortalsListResultItemServersItemToolsList,
       created_at: S.optional(S.String),
       created_by: S.optional(S.String),
@@ -804,6 +808,7 @@ export interface AccessAiControlsMcpPortalsReadResponseServersItem {
   hostname: string;
   name: string;
   prompts: AccessAiControlsMcpPortalsReadResponseServersItemPromptsList;
+  server_id: string;
   tools: AccessAiControlsMcpPortalsReadResponseServersItemToolsList;
   created_at?: string;
   created_by?: string;
@@ -830,6 +835,7 @@ export const AccessAiControlsMcpPortalsReadResponseServersItem =
       hostname: S.String,
       name: S.String,
       prompts: AccessAiControlsMcpPortalsReadResponseServersItemPromptsList,
+      server_id: S.String,
       tools: AccessAiControlsMcpPortalsReadResponseServersItemToolsList,
       created_at: S.optional(S.String),
       created_by: S.optional(S.String),
@@ -1139,6 +1145,7 @@ export interface AccessAiControlsMcpPortalsUpdateResponseServersItem {
   hostname: string;
   name: string;
   prompts: AccessAiControlsMcpPortalsUpdateResponseServersItemPromptsList;
+  server_id: string;
   tools: AccessAiControlsMcpPortalsUpdateResponseServersItemToolsList;
   created_at?: string;
   created_by?: string;
@@ -1165,6 +1172,7 @@ export const AccessAiControlsMcpPortalsUpdateResponseServersItem =
       hostname: S.String,
       name: S.String,
       prompts: AccessAiControlsMcpPortalsUpdateResponseServersItemPromptsList,
+      server_id: S.String,
       tools: AccessAiControlsMcpPortalsUpdateResponseServersItemToolsList,
       created_at: S.optional(S.String),
       created_by: S.optional(S.String),
@@ -2537,26 +2545,26 @@ export const AccessApplicationsCasListResponse = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessApplicationsCasListResponse>;
 
 export interface AccessApplicationsCreateRequestBody {
-  SelfHostedApplication_object___domain__type__allow_authenticate_via_warp__28_more__: unknown;
+  SelfHostedApplication_object___domain__type__allow_authenticate_via_warp__29_more__: unknown;
   SaaSApplication_object___allowed_idps__app_launcher_visible__auto_redirect_to_identity__8_more__: unknown;
-  BrowserSSHApplication_object___domain__type__allow_authenticate_via_warp__28_more__: unknown;
-  BrowserVNCApplication_object___domain__type__allow_authenticate_via_warp__28_more__: unknown;
+  BrowserSSHApplication_object___domain__type__allow_authenticate_via_warp__29_more__: unknown;
+  BrowserVNCApplication_object___domain__type__allow_authenticate_via_warp__29_more__: unknown;
   AppLauncherApplication_object___type__allowed_idps__app_launcher_logo_url__13_more__: unknown;
   DeviceEnrollmentPermissionsApplication_object___type__allowed_idps__auto_redirect_to_identity__7_more__: unknown;
   BrowserIsolationPermissionsApplication_object___type__allowed_idps__auto_redirect_to_identity__7_more__: unknown;
   GatewayIdentityProxyEndpointApplication_object___type__allowed_idps__auto_redirect_to_identity__7_more__: unknown;
   BookmarkApplication_object___app_launcher_visible__domain__logo_url__4_more__: unknown;
   InfrastructureApplication_object___target_criteria__type__name__policies__: unknown;
-  BrowserRDPApplication_object___domain__target_criteria__type__29_more__: unknown;
+  BrowserRDPApplication_object___domain__target_criteria__type__30_more__: unknown;
   McpServerApplication_object___type__allow_authenticate_via_warp__allowed_idps__16_more__: unknown;
   McpServerPortalApplication_object___type__allow_authenticate_via_warp__allowed_idps__17_more__: unknown;
 }
 export const AccessApplicationsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SelfHostedApplication_object___domain__type__allow_authenticate_via_warp__28_more__:
+    SelfHostedApplication_object___domain__type__allow_authenticate_via_warp__29_more__:
       S.Unknown.pipe(
         T.Body(
-          "SelfHostedApplication object { domain, type, allow_authenticate_via_warp, 28 more }",
+          "SelfHostedApplication object { domain, type, allow_authenticate_via_warp, 29 more }",
         ),
       ),
     SaaSApplication_object___allowed_idps__app_launcher_visible__auto_redirect_to_identity__8_more__:
@@ -2565,16 +2573,16 @@ export const AccessApplicationsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
           "SaaSApplication object { allowed_idps, app_launcher_visible, auto_redirect_to_identity, 8 more }",
         ),
       ),
-    BrowserSSHApplication_object___domain__type__allow_authenticate_via_warp__28_more__:
+    BrowserSSHApplication_object___domain__type__allow_authenticate_via_warp__29_more__:
       S.Unknown.pipe(
         T.Body(
-          "BrowserSSHApplication object { domain, type, allow_authenticate_via_warp, 28 more }",
+          "BrowserSSHApplication object { domain, type, allow_authenticate_via_warp, 29 more }",
         ),
       ),
-    BrowserVNCApplication_object___domain__type__allow_authenticate_via_warp__28_more__:
+    BrowserVNCApplication_object___domain__type__allow_authenticate_via_warp__29_more__:
       S.Unknown.pipe(
         T.Body(
-          "BrowserVNCApplication object { domain, type, allow_authenticate_via_warp, 28 more }",
+          "BrowserVNCApplication object { domain, type, allow_authenticate_via_warp, 29 more }",
         ),
       ),
     AppLauncherApplication_object___type__allowed_idps__app_launcher_logo_url__13_more__:
@@ -2613,10 +2621,10 @@ export const AccessApplicationsCreateRequestBody = /*@__PURE__*/ S.suspend(() =>
           "InfrastructureApplication object { target_criteria, type, name, policies }",
         ),
       ),
-    BrowserRDPApplication_object___domain__target_criteria__type__29_more__:
+    BrowserRDPApplication_object___domain__target_criteria__type__30_more__:
       S.Unknown.pipe(
         T.Body(
-          "BrowserRDPApplication object { domain, target_criteria, type, 29 more }",
+          "BrowserRDPApplication object { domain, target_criteria, type, 30 more }",
         ),
       ),
     McpServerApplication_object___type__allow_authenticate_via_warp__allowed_idps__16_more__:
@@ -2659,24 +2667,24 @@ export const AccessApplicationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AccessApplicationsCreateResponse {
-  SelfHostedApplication_object___domain__type__id__30_more__: unknown;
+  SelfHostedApplication_object___domain__type__id__31_more__: unknown;
   SaaSApplication_object___id__allowed_idps__app_launcher_visible__10_more__: unknown;
-  BrowserSSHApplication_object___domain__type__id__30_more__: unknown;
-  BrowserVNCApplication_object___domain__type__id__30_more__: unknown;
+  BrowserSSHApplication_object___domain__type__id__31_more__: unknown;
+  BrowserVNCApplication_object___domain__type__id__31_more__: unknown;
   AppLauncherApplication_object___type__id__allowed_idps__15_more__: unknown;
   DeviceEnrollmentPermissionsApplication_object___type__id__allowed_idps__9_more__: unknown;
   BrowserIsolationPermissionsApplication_object___type__id__allowed_idps__9_more__: unknown;
   GatewayIdentityProxyEndpointApplication_object___type__id__allowed_idps__9_more__: unknown;
   BookmarkApplication_object___id__app_launcher_visible__aud__6_more__: unknown;
   InfrastructureApplication_object___target_criteria__type__id__3_more__: unknown;
-  BrowserRDPApplication_object___domain__target_criteria__type__31_more__: unknown;
+  BrowserRDPApplication_object___domain__target_criteria__type__32_more__: unknown;
   McpServerApplication_object___type__id__allow_authenticate_via_warp__18_more__: unknown;
   McpServerPortalApplication_object___type__id__allow_authenticate_via_warp__19_more__: unknown;
 }
 export const AccessApplicationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SelfHostedApplication_object___domain__type__id__30_more__: S.Unknown.pipe(
-      T.Body("SelfHostedApplication object { domain, type, id, 30 more }"),
+    SelfHostedApplication_object___domain__type__id__31_more__: S.Unknown.pipe(
+      T.Body("SelfHostedApplication object { domain, type, id, 31 more }"),
     ),
     SaaSApplication_object___id__allowed_idps__app_launcher_visible__10_more__:
       S.Unknown.pipe(
@@ -2684,11 +2692,11 @@ export const AccessApplicationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
           "SaaSApplication object { id, allowed_idps, app_launcher_visible, 10 more }",
         ),
       ),
-    BrowserSSHApplication_object___domain__type__id__30_more__: S.Unknown.pipe(
-      T.Body("BrowserSSHApplication object { domain, type, id, 30 more }"),
+    BrowserSSHApplication_object___domain__type__id__31_more__: S.Unknown.pipe(
+      T.Body("BrowserSSHApplication object { domain, type, id, 31 more }"),
     ),
-    BrowserVNCApplication_object___domain__type__id__30_more__: S.Unknown.pipe(
-      T.Body("BrowserVNCApplication object { domain, type, id, 30 more }"),
+    BrowserVNCApplication_object___domain__type__id__31_more__: S.Unknown.pipe(
+      T.Body("BrowserVNCApplication object { domain, type, id, 31 more }"),
     ),
     AppLauncherApplication_object___type__id__allowed_idps__15_more__:
       S.Unknown.pipe(
@@ -2726,10 +2734,10 @@ export const AccessApplicationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
           "InfrastructureApplication object { target_criteria, type, id, 3 more }",
         ),
       ),
-    BrowserRDPApplication_object___domain__target_criteria__type__31_more__:
+    BrowserRDPApplication_object___domain__target_criteria__type__32_more__:
       S.Unknown.pipe(
         T.Body(
-          "BrowserRDPApplication object { domain, target_criteria, type, 31 more }",
+          "BrowserRDPApplication object { domain, target_criteria, type, 32 more }",
         ),
       ),
     McpServerApplication_object___type__id__allow_authenticate_via_warp__18_more__:
@@ -2805,24 +2813,24 @@ export const AccessApplicationsGetRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AccessApplicationsGetResponse {
-  SelfHostedApplication_object___domain__type__id__30_more__: unknown;
+  SelfHostedApplication_object___domain__type__id__31_more__: unknown;
   SaaSApplication_object___id__allowed_idps__app_launcher_visible__10_more__: unknown;
-  BrowserSSHApplication_object___domain__type__id__30_more__: unknown;
-  BrowserVNCApplication_object___domain__type__id__30_more__: unknown;
+  BrowserSSHApplication_object___domain__type__id__31_more__: unknown;
+  BrowserVNCApplication_object___domain__type__id__31_more__: unknown;
   AppLauncherApplication_object___type__id__allowed_idps__15_more__: unknown;
   DeviceEnrollmentPermissionsApplication_object___type__id__allowed_idps__9_more__: unknown;
   BrowserIsolationPermissionsApplication_object___type__id__allowed_idps__9_more__: unknown;
   GatewayIdentityProxyEndpointApplication_object___type__id__allowed_idps__9_more__: unknown;
   BookmarkApplication_object___id__app_launcher_visible__aud__6_more__: unknown;
   InfrastructureApplication_object___target_criteria__type__id__3_more__: unknown;
-  BrowserRDPApplication_object___domain__target_criteria__type__31_more__: unknown;
+  BrowserRDPApplication_object___domain__target_criteria__type__32_more__: unknown;
   McpServerApplication_object___type__id__allow_authenticate_via_warp__18_more__: unknown;
   McpServerPortalApplication_object___type__id__allow_authenticate_via_warp__19_more__: unknown;
 }
 export const AccessApplicationsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SelfHostedApplication_object___domain__type__id__30_more__: S.Unknown.pipe(
-      T.Body("SelfHostedApplication object { domain, type, id, 30 more }"),
+    SelfHostedApplication_object___domain__type__id__31_more__: S.Unknown.pipe(
+      T.Body("SelfHostedApplication object { domain, type, id, 31 more }"),
     ),
     SaaSApplication_object___id__allowed_idps__app_launcher_visible__10_more__:
       S.Unknown.pipe(
@@ -2830,11 +2838,11 @@ export const AccessApplicationsGetResponse = /*@__PURE__*/ S.suspend(() =>
           "SaaSApplication object { id, allowed_idps, app_launcher_visible, 10 more }",
         ),
       ),
-    BrowserSSHApplication_object___domain__type__id__30_more__: S.Unknown.pipe(
-      T.Body("BrowserSSHApplication object { domain, type, id, 30 more }"),
+    BrowserSSHApplication_object___domain__type__id__31_more__: S.Unknown.pipe(
+      T.Body("BrowserSSHApplication object { domain, type, id, 31 more }"),
     ),
-    BrowserVNCApplication_object___domain__type__id__30_more__: S.Unknown.pipe(
-      T.Body("BrowserVNCApplication object { domain, type, id, 30 more }"),
+    BrowserVNCApplication_object___domain__type__id__31_more__: S.Unknown.pipe(
+      T.Body("BrowserVNCApplication object { domain, type, id, 31 more }"),
     ),
     AppLauncherApplication_object___type__id__allowed_idps__15_more__:
       S.Unknown.pipe(
@@ -2872,10 +2880,10 @@ export const AccessApplicationsGetResponse = /*@__PURE__*/ S.suspend(() =>
           "InfrastructureApplication object { target_criteria, type, id, 3 more }",
         ),
       ),
-    BrowserRDPApplication_object___domain__target_criteria__type__31_more__:
+    BrowserRDPApplication_object___domain__target_criteria__type__32_more__:
       S.Unknown.pipe(
         T.Body(
-          "BrowserRDPApplication object { domain, target_criteria, type, 31 more }",
+          "BrowserRDPApplication object { domain, target_criteria, type, 32 more }",
         ),
       ),
     McpServerApplication_object___type__id__allow_authenticate_via_warp__18_more__:
@@ -2931,24 +2939,24 @@ export const AccessApplicationsListRequest = /*@__PURE__*/ S.suspend(() =>
 }) as any as S.Schema<AccessApplicationsListRequest>;
 
 export interface AccessApplicationsListResultItem {
-  SelfHostedApplication_object___domain__type__id__30_more__: unknown;
+  SelfHostedApplication_object___domain__type__id__31_more__: unknown;
   SaaSApplication_object___id__allowed_idps__app_launcher_visible__10_more__: unknown;
-  BrowserSSHApplication_object___domain__type__id__30_more__: unknown;
-  BrowserVNCApplication_object___domain__type__id__30_more__: unknown;
+  BrowserSSHApplication_object___domain__type__id__31_more__: unknown;
+  BrowserVNCApplication_object___domain__type__id__31_more__: unknown;
   AppLauncherApplication_object___type__id__allowed_idps__15_more__: unknown;
   DeviceEnrollmentPermissionsApplication_object___type__id__allowed_idps__9_more__: unknown;
   BrowserIsolationPermissionsApplication_object___type__id__allowed_idps__9_more__: unknown;
   GatewayIdentityProxyEndpointApplication_object___type__id__allowed_idps__9_more__: unknown;
   BookmarkApplication_object___id__app_launcher_visible__aud__6_more__: unknown;
   InfrastructureApplication_object___target_criteria__type__id__3_more__: unknown;
-  BrowserRDPApplication_object___domain__target_criteria__type__31_more__: unknown;
+  BrowserRDPApplication_object___domain__target_criteria__type__32_more__: unknown;
   McpServerApplication_object___type__id__allow_authenticate_via_warp__18_more__: unknown;
   McpServerPortalApplication_object___type__id__allow_authenticate_via_warp__19_more__: unknown;
 }
 export const AccessApplicationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SelfHostedApplication_object___domain__type__id__30_more__: S.Unknown.pipe(
-      T.Body("SelfHostedApplication object { domain, type, id, 30 more }"),
+    SelfHostedApplication_object___domain__type__id__31_more__: S.Unknown.pipe(
+      T.Body("SelfHostedApplication object { domain, type, id, 31 more }"),
     ),
     SaaSApplication_object___id__allowed_idps__app_launcher_visible__10_more__:
       S.Unknown.pipe(
@@ -2956,11 +2964,11 @@ export const AccessApplicationsListResultItem = /*@__PURE__*/ S.suspend(() =>
           "SaaSApplication object { id, allowed_idps, app_launcher_visible, 10 more }",
         ),
       ),
-    BrowserSSHApplication_object___domain__type__id__30_more__: S.Unknown.pipe(
-      T.Body("BrowserSSHApplication object { domain, type, id, 30 more }"),
+    BrowserSSHApplication_object___domain__type__id__31_more__: S.Unknown.pipe(
+      T.Body("BrowserSSHApplication object { domain, type, id, 31 more }"),
     ),
-    BrowserVNCApplication_object___domain__type__id__30_more__: S.Unknown.pipe(
-      T.Body("BrowserVNCApplication object { domain, type, id, 30 more }"),
+    BrowserVNCApplication_object___domain__type__id__31_more__: S.Unknown.pipe(
+      T.Body("BrowserVNCApplication object { domain, type, id, 31 more }"),
     ),
     AppLauncherApplication_object___type__id__allowed_idps__15_more__:
       S.Unknown.pipe(
@@ -2998,10 +3006,10 @@ export const AccessApplicationsListResultItem = /*@__PURE__*/ S.suspend(() =>
           "InfrastructureApplication object { target_criteria, type, id, 3 more }",
         ),
       ),
-    BrowserRDPApplication_object___domain__target_criteria__type__31_more__:
+    BrowserRDPApplication_object___domain__target_criteria__type__32_more__:
       S.Unknown.pipe(
         T.Body(
-          "BrowserRDPApplication object { domain, target_criteria, type, 31 more }",
+          "BrowserRDPApplication object { domain, target_criteria, type, 32 more }",
         ),
       ),
     McpServerApplication_object___type__id__allow_authenticate_via_warp__18_more__:
@@ -4389,26 +4397,26 @@ export const AccessApplicationsSettingsUpdateResponse = /*@__PURE__*/ S.suspend(
 }) as any as S.Schema<AccessApplicationsSettingsUpdateResponse>;
 
 export interface AccessApplicationsUpdateRequestBody {
-  SelfHostedApplication_object___domain__type__allow_authenticate_via_warp__28_more__: unknown;
+  SelfHostedApplication_object___domain__type__allow_authenticate_via_warp__29_more__: unknown;
   SaaSApplication_object___allowed_idps__app_launcher_visible__auto_redirect_to_identity__8_more__: unknown;
-  BrowserSSHApplication_object___domain__type__allow_authenticate_via_warp__28_more__: unknown;
-  BrowserVNCApplication_object___domain__type__allow_authenticate_via_warp__28_more__: unknown;
+  BrowserSSHApplication_object___domain__type__allow_authenticate_via_warp__29_more__: unknown;
+  BrowserVNCApplication_object___domain__type__allow_authenticate_via_warp__29_more__: unknown;
   AppLauncherApplication_object___type__allowed_idps__app_launcher_logo_url__13_more__: unknown;
   DeviceEnrollmentPermissionsApplication_object___type__allowed_idps__auto_redirect_to_identity__7_more__: unknown;
   BrowserIsolationPermissionsApplication_object___type__allowed_idps__auto_redirect_to_identity__7_more__: unknown;
   GatewayIdentityProxyEndpointApplication_object___type__allowed_idps__auto_redirect_to_identity__7_more__: unknown;
   BookmarkApplication_object___app_launcher_visible__domain__logo_url__4_more__: unknown;
   InfrastructureApplication_object___target_criteria__type__name__policies__: unknown;
-  BrowserRDPApplication_object___domain__target_criteria__type__29_more__: unknown;
+  BrowserRDPApplication_object___domain__target_criteria__type__30_more__: unknown;
   McpServerApplication_object___type__allow_authenticate_via_warp__allowed_idps__16_more__: unknown;
   McpServerPortalApplication_object___type__allow_authenticate_via_warp__allowed_idps__17_more__: unknown;
 }
 export const AccessApplicationsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SelfHostedApplication_object___domain__type__allow_authenticate_via_warp__28_more__:
+    SelfHostedApplication_object___domain__type__allow_authenticate_via_warp__29_more__:
       S.Unknown.pipe(
         T.Body(
-          "SelfHostedApplication object { domain, type, allow_authenticate_via_warp, 28 more }",
+          "SelfHostedApplication object { domain, type, allow_authenticate_via_warp, 29 more }",
         ),
       ),
     SaaSApplication_object___allowed_idps__app_launcher_visible__auto_redirect_to_identity__8_more__:
@@ -4417,16 +4425,16 @@ export const AccessApplicationsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
           "SaaSApplication object { allowed_idps, app_launcher_visible, auto_redirect_to_identity, 8 more }",
         ),
       ),
-    BrowserSSHApplication_object___domain__type__allow_authenticate_via_warp__28_more__:
+    BrowserSSHApplication_object___domain__type__allow_authenticate_via_warp__29_more__:
       S.Unknown.pipe(
         T.Body(
-          "BrowserSSHApplication object { domain, type, allow_authenticate_via_warp, 28 more }",
+          "BrowserSSHApplication object { domain, type, allow_authenticate_via_warp, 29 more }",
         ),
       ),
-    BrowserVNCApplication_object___domain__type__allow_authenticate_via_warp__28_more__:
+    BrowserVNCApplication_object___domain__type__allow_authenticate_via_warp__29_more__:
       S.Unknown.pipe(
         T.Body(
-          "BrowserVNCApplication object { domain, type, allow_authenticate_via_warp, 28 more }",
+          "BrowserVNCApplication object { domain, type, allow_authenticate_via_warp, 29 more }",
         ),
       ),
     AppLauncherApplication_object___type__allowed_idps__app_launcher_logo_url__13_more__:
@@ -4465,10 +4473,10 @@ export const AccessApplicationsUpdateRequestBody = /*@__PURE__*/ S.suspend(() =>
           "InfrastructureApplication object { target_criteria, type, name, policies }",
         ),
       ),
-    BrowserRDPApplication_object___domain__target_criteria__type__29_more__:
+    BrowserRDPApplication_object___domain__target_criteria__type__30_more__:
       S.Unknown.pipe(
         T.Body(
-          "BrowserRDPApplication object { domain, target_criteria, type, 29 more }",
+          "BrowserRDPApplication object { domain, target_criteria, type, 30 more }",
         ),
       ),
     McpServerApplication_object___type__allow_authenticate_via_warp__allowed_idps__16_more__:
@@ -4513,24 +4521,24 @@ export const AccessApplicationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
 export interface AccessApplicationsUpdateResponse {
-  SelfHostedApplication_object___domain__type__id__30_more__: unknown;
+  SelfHostedApplication_object___domain__type__id__31_more__: unknown;
   SaaSApplication_object___id__allowed_idps__app_launcher_visible__10_more__: unknown;
-  BrowserSSHApplication_object___domain__type__id__30_more__: unknown;
-  BrowserVNCApplication_object___domain__type__id__30_more__: unknown;
+  BrowserSSHApplication_object___domain__type__id__31_more__: unknown;
+  BrowserVNCApplication_object___domain__type__id__31_more__: unknown;
   AppLauncherApplication_object___type__id__allowed_idps__15_more__: unknown;
   DeviceEnrollmentPermissionsApplication_object___type__id__allowed_idps__9_more__: unknown;
   BrowserIsolationPermissionsApplication_object___type__id__allowed_idps__9_more__: unknown;
   GatewayIdentityProxyEndpointApplication_object___type__id__allowed_idps__9_more__: unknown;
   BookmarkApplication_object___id__app_launcher_visible__aud__6_more__: unknown;
   InfrastructureApplication_object___target_criteria__type__id__3_more__: unknown;
-  BrowserRDPApplication_object___domain__target_criteria__type__31_more__: unknown;
+  BrowserRDPApplication_object___domain__target_criteria__type__32_more__: unknown;
   McpServerApplication_object___type__id__allow_authenticate_via_warp__18_more__: unknown;
   McpServerPortalApplication_object___type__id__allow_authenticate_via_warp__19_more__: unknown;
 }
 export const AccessApplicationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    SelfHostedApplication_object___domain__type__id__30_more__: S.Unknown.pipe(
-      T.Body("SelfHostedApplication object { domain, type, id, 30 more }"),
+    SelfHostedApplication_object___domain__type__id__31_more__: S.Unknown.pipe(
+      T.Body("SelfHostedApplication object { domain, type, id, 31 more }"),
     ),
     SaaSApplication_object___id__allowed_idps__app_launcher_visible__10_more__:
       S.Unknown.pipe(
@@ -4538,11 +4546,11 @@ export const AccessApplicationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
           "SaaSApplication object { id, allowed_idps, app_launcher_visible, 10 more }",
         ),
       ),
-    BrowserSSHApplication_object___domain__type__id__30_more__: S.Unknown.pipe(
-      T.Body("BrowserSSHApplication object { domain, type, id, 30 more }"),
+    BrowserSSHApplication_object___domain__type__id__31_more__: S.Unknown.pipe(
+      T.Body("BrowserSSHApplication object { domain, type, id, 31 more }"),
     ),
-    BrowserVNCApplication_object___domain__type__id__30_more__: S.Unknown.pipe(
-      T.Body("BrowserVNCApplication object { domain, type, id, 30 more }"),
+    BrowserVNCApplication_object___domain__type__id__31_more__: S.Unknown.pipe(
+      T.Body("BrowserVNCApplication object { domain, type, id, 31 more }"),
     ),
     AppLauncherApplication_object___type__id__allowed_idps__15_more__:
       S.Unknown.pipe(
@@ -4580,10 +4588,10 @@ export const AccessApplicationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
           "InfrastructureApplication object { target_criteria, type, id, 3 more }",
         ),
       ),
-    BrowserRDPApplication_object___domain__target_criteria__type__31_more__:
+    BrowserRDPApplication_object___domain__target_criteria__type__32_more__:
       S.Unknown.pipe(
         T.Body(
-          "BrowserRDPApplication object { domain, target_criteria, type, 31 more }",
+          "BrowserRDPApplication object { domain, target_criteria, type, 32 more }",
         ),
       ),
     McpServerApplication_object___type__id__allow_authenticate_via_warp__18_more__:
@@ -4656,12 +4664,24 @@ export const AccessApplicationsUserPolicyChecksListResponseAppState =
     identifier: "AccessApplicationsUserPolicyChecksListResponseAppState",
   }) as any as S.Schema<AccessApplicationsUserPolicyChecksListResponseAppState>;
 
+export interface AccessApplicationsUserPolicyChecksListResponseUserIdentityGeo {
+  country?: string;
+}
+export const AccessApplicationsUserPolicyChecksListResponseUserIdentityGeo =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      country: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "AccessApplicationsUserPolicyChecksListResponseUserIdentityGeo",
+  }) as any as S.Schema<AccessApplicationsUserPolicyChecksListResponseUserIdentityGeo>;
+
 export interface AccessApplicationsUserPolicyChecksListResponseUserIdentity {
   id?: string;
   account_id?: string;
   device_sessions?: unknown;
   email?: string;
-  geo?: unknown;
+  geo?: AccessApplicationsUserPolicyChecksListResponseUserIdentityGeo;
   iat?: number;
   is_gateway?: boolean;
   is_warp?: boolean;
@@ -4676,7 +4696,9 @@ export const AccessApplicationsUserPolicyChecksListResponseUserIdentity =
       account_id: S.optional(S.String),
       device_sessions: S.optional(S.Unknown),
       email: S.optional(S.String),
-      geo: S.optional(S.Unknown),
+      geo: S.optional(
+        AccessApplicationsUserPolicyChecksListResponseUserIdentityGeo,
+      ),
       iat: S.optional(S.Number),
       is_gateway: S.optional(S.Boolean),
       is_warp: S.optional(S.Boolean),
@@ -8838,6 +8860,18 @@ export const AccessUsersActiveSessionsGetResponseDevicePostureMap =
     S.Unknown,
   ) as any as S.Schema<AccessUsersActiveSessionsGetResponseDevicePostureMap>;
 
+export interface AccessUsersActiveSessionsGetResponseGeo {
+  country?: string;
+}
+export const AccessUsersActiveSessionsGetResponseGeo = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      country: S.optional(S.String),
+    }),
+).annotate({
+  identifier: "AccessUsersActiveSessionsGetResponseGeo",
+}) as any as S.Schema<AccessUsersActiveSessionsGetResponseGeo>;
+
 export interface AccessUsersActiveSessionsGetResponseIdp {
   id?: string;
   type?: string;
@@ -8881,7 +8915,7 @@ export interface AccessUsersActiveSessionsGetResponse {
   device_sessions?: AccessUsersActiveSessionsGetResponseDeviceSessionsMap;
   devicePosture?: AccessUsersActiveSessionsGetResponseDevicePostureMap;
   email?: string;
-  geo?: unknown;
+  geo?: AccessUsersActiveSessionsGetResponseGeo;
   iat?: number;
   idp?: AccessUsersActiveSessionsGetResponseIdp;
   ip?: string;
@@ -8908,7 +8942,7 @@ export const AccessUsersActiveSessionsGetResponse = /*@__PURE__*/ S.suspend(
         AccessUsersActiveSessionsGetResponseDevicePostureMap,
       ),
       email: S.optional(S.String),
-      geo: S.optional(S.Unknown),
+      geo: S.optional(AccessUsersActiveSessionsGetResponseGeo),
       iat: S.optional(S.Number),
       idp: S.optional(AccessUsersActiveSessionsGetResponseIdp),
       ip: S.optional(S.String),
@@ -9356,6 +9390,1451 @@ export const AccessUsersUpdateResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "AccessUsersUpdateResponse",
 }) as any as S.Schema<AccessUsersUpdateResponse>;
+
+export type CasbApplicationsGetRequestSlug =
+  | "GITHUB"
+  | "GOOGLE_WORKSPACE"
+  | "MICROSOFT_INTERNAL"
+  | (string & {});
+export const CasbApplicationsGetRequestSlug = /*@__PURE__*/ S.String;
+
+export interface CasbApplicationsGetRequest {
+  account_id: string;
+  slug: CasbApplicationsGetRequestSlug;
+}
+export const CasbApplicationsGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    slug: CasbApplicationsGetRequestSlug.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/one/applications/{slug}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CasbApplicationsGetRequest",
+}) as any as S.Schema<CasbApplicationsGetRequest>;
+
+export type CasbApplicationsGetResponseAuthMethodsItemSupportedEnvironmentsList =
+  string[];
+export const CasbApplicationsGetResponseAuthMethodsItemSupportedEnvironmentsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbApplicationsGetResponseAuthMethodsItemSupportedEnvironmentsList>;
+
+export interface CasbApplicationsGetResponseAuthMethodsItem {
+  display_name: string;
+  is_default: boolean;
+  slug: string;
+  supported_environments: CasbApplicationsGetResponseAuthMethodsItemSupportedEnvironmentsList;
+}
+export const CasbApplicationsGetResponseAuthMethodsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      display_name: S.String,
+      is_default: S.Boolean,
+      slug: S.String,
+      supported_environments:
+        CasbApplicationsGetResponseAuthMethodsItemSupportedEnvironmentsList,
+    }),
+  ).annotate({
+    identifier: "CasbApplicationsGetResponseAuthMethodsItem",
+  }) as any as S.Schema<CasbApplicationsGetResponseAuthMethodsItem>;
+
+export type CasbApplicationsGetResponseAuthMethodsList =
+  CasbApplicationsGetResponseAuthMethodsItem[];
+export const CasbApplicationsGetResponseAuthMethodsList = /*@__PURE__*/ S.Array(
+  CasbApplicationsGetResponseAuthMethodsItem,
+) as any as S.Schema<CasbApplicationsGetResponseAuthMethodsList>;
+
+export type CasbApplicationsGetResponseSlug =
+  | "GITHUB"
+  | "GOOGLE_WORKSPACE"
+  | "MICROSOFT_INTERNAL"
+  | (string & {});
+export const CasbApplicationsGetResponseSlug = /*@__PURE__*/ S.String;
+
+export type CasbApplicationsGetResponseUseCasesItemBaseScopesItemSeverity =
+  | "low"
+  | "medium"
+  | "high"
+  | "critical"
+  | (string & {});
+export const CasbApplicationsGetResponseUseCasesItemBaseScopesItemSeverity =
+  /*@__PURE__*/ S.String;
+
+export interface CasbApplicationsGetResponseUseCasesItemBaseScopesItem {
+  display_name: string;
+  scope: string;
+  severity: CasbApplicationsGetResponseUseCasesItemBaseScopesItemSeverity;
+}
+export const CasbApplicationsGetResponseUseCasesItemBaseScopesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      display_name: S.String,
+      scope: S.String,
+      severity: CasbApplicationsGetResponseUseCasesItemBaseScopesItemSeverity,
+    }),
+  ).annotate({
+    identifier: "CasbApplicationsGetResponseUseCasesItemBaseScopesItem",
+  }) as any as S.Schema<CasbApplicationsGetResponseUseCasesItemBaseScopesItem>;
+
+export type CasbApplicationsGetResponseUseCasesItemBaseScopesList =
+  CasbApplicationsGetResponseUseCasesItemBaseScopesItem[];
+export const CasbApplicationsGetResponseUseCasesItemBaseScopesList =
+  /*@__PURE__*/ S.Array(
+    CasbApplicationsGetResponseUseCasesItemBaseScopesItem,
+  ) as any as S.Schema<CasbApplicationsGetResponseUseCasesItemBaseScopesList>;
+
+export type CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItemSeverity =
+  "low" | "medium" | "high" | "critical" | (string & {});
+export const CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItemSeverity =
+  /*@__PURE__*/ S.String;
+
+export interface CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItem {
+  display_name: string;
+  scope: string;
+  severity: CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItemSeverity;
+}
+export const CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      display_name: S.String,
+      scope: S.String,
+      severity:
+        CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItemSeverity,
+    }),
+  ).annotate({
+    identifier: "CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItem",
+  }) as any as S.Schema<CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItem>;
+
+export type CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesList =
+  CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItem[];
+export const CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesList =
+  /*@__PURE__*/ S.Array(
+    CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesItem,
+  ) as any as S.Schema<CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesList>;
+
+export interface CasbApplicationsGetResponseUseCasesItemFeaturesItem {
+  description: string;
+  display_name: string;
+  scopes: CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesList;
+  slug: string;
+}
+export const CasbApplicationsGetResponseUseCasesItemFeaturesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      description: S.String,
+      display_name: S.String,
+      scopes: CasbApplicationsGetResponseUseCasesItemFeaturesItemScopesList,
+      slug: S.String,
+    }),
+  ).annotate({
+    identifier: "CasbApplicationsGetResponseUseCasesItemFeaturesItem",
+  }) as any as S.Schema<CasbApplicationsGetResponseUseCasesItemFeaturesItem>;
+
+export type CasbApplicationsGetResponseUseCasesItemFeaturesList =
+  CasbApplicationsGetResponseUseCasesItemFeaturesItem[];
+export const CasbApplicationsGetResponseUseCasesItemFeaturesList =
+  /*@__PURE__*/ S.Array(
+    CasbApplicationsGetResponseUseCasesItemFeaturesItem,
+  ) as any as S.Schema<CasbApplicationsGetResponseUseCasesItemFeaturesList>;
+
+export interface CasbApplicationsGetResponseUseCasesItem {
+  base_scopes: CasbApplicationsGetResponseUseCasesItemBaseScopesList;
+  description: string;
+  display_name: string;
+  features: CasbApplicationsGetResponseUseCasesItemFeaturesList;
+  slug: string;
+}
+export const CasbApplicationsGetResponseUseCasesItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      base_scopes: CasbApplicationsGetResponseUseCasesItemBaseScopesList,
+      description: S.String,
+      display_name: S.String,
+      features: CasbApplicationsGetResponseUseCasesItemFeaturesList,
+      slug: S.String,
+    }),
+).annotate({
+  identifier: "CasbApplicationsGetResponseUseCasesItem",
+}) as any as S.Schema<CasbApplicationsGetResponseUseCasesItem>;
+
+export type CasbApplicationsGetResponseUseCasesList =
+  CasbApplicationsGetResponseUseCasesItem[];
+export const CasbApplicationsGetResponseUseCasesList = /*@__PURE__*/ S.Array(
+  CasbApplicationsGetResponseUseCasesItem,
+) as any as S.Schema<CasbApplicationsGetResponseUseCasesList>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CasbApplicationsGetResponse {
+  auth_methods: CasbApplicationsGetResponseAuthMethodsList;
+  category: string;
+  description: string;
+  display_name: string;
+  dlp_enabled: boolean;
+  instructions: string;
+  logo: string;
+  slug: CasbApplicationsGetResponseSlug;
+  use_cases: CasbApplicationsGetResponseUseCasesList;
+}
+export const CasbApplicationsGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    auth_methods: CasbApplicationsGetResponseAuthMethodsList,
+    category: S.String,
+    description: S.String,
+    display_name: S.String,
+    dlp_enabled: S.Boolean,
+    instructions: S.String,
+    logo: S.String,
+    slug: CasbApplicationsGetResponseSlug,
+    use_cases: CasbApplicationsGetResponseUseCasesList,
+  }),
+).annotate({
+  identifier: "CasbApplicationsGetResponse",
+}) as any as S.Schema<CasbApplicationsGetResponse>;
+
+export interface CasbApplicationsListRequest {
+  account_id: string;
+  environment?: string;
+}
+export const CasbApplicationsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    environment: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/one/applications",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CasbApplicationsListRequest",
+}) as any as S.Schema<CasbApplicationsListRequest>;
+
+export interface CasbApplicationsListResponseAuthMethodsItem {
+  display_name: string;
+  slug: string;
+}
+export const CasbApplicationsListResponseAuthMethodsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      display_name: S.String,
+      slug: S.String,
+    }),
+  ).annotate({
+    identifier: "CasbApplicationsListResponseAuthMethodsItem",
+  }) as any as S.Schema<CasbApplicationsListResponseAuthMethodsItem>;
+
+export type CasbApplicationsListResponseAuthMethodsList =
+  CasbApplicationsListResponseAuthMethodsItem[];
+export const CasbApplicationsListResponseAuthMethodsList =
+  /*@__PURE__*/ S.Array(
+    CasbApplicationsListResponseAuthMethodsItem,
+  ) as any as S.Schema<CasbApplicationsListResponseAuthMethodsList>;
+
+export type CasbApplicationsListResponsePermissionsItemSeverity =
+  | "low"
+  | "medium"
+  | "high"
+  | "critical"
+  | (string & {});
+export const CasbApplicationsListResponsePermissionsItemSeverity =
+  /*@__PURE__*/ S.String;
+
+export interface CasbApplicationsListResponsePermissionsItem {
+  display_name: string;
+  scope: string;
+  severity: CasbApplicationsListResponsePermissionsItemSeverity;
+}
+export const CasbApplicationsListResponsePermissionsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      display_name: S.String,
+      scope: S.String,
+      severity: CasbApplicationsListResponsePermissionsItemSeverity,
+    }),
+  ).annotate({
+    identifier: "CasbApplicationsListResponsePermissionsItem",
+  }) as any as S.Schema<CasbApplicationsListResponsePermissionsItem>;
+
+export type CasbApplicationsListResponsePermissionsList =
+  CasbApplicationsListResponsePermissionsItem[];
+export const CasbApplicationsListResponsePermissionsList =
+  /*@__PURE__*/ S.Array(
+    CasbApplicationsListResponsePermissionsItem,
+  ) as any as S.Schema<CasbApplicationsListResponsePermissionsList>;
+
+export type CasbApplicationsListResponseSlug =
+  | "GITHUB"
+  | "GOOGLE_WORKSPACE"
+  | "MICROSOFT_INTERNAL"
+  | (string & {});
+export const CasbApplicationsListResponseSlug = /*@__PURE__*/ S.String;
+
+export type CasbApplicationsListResponseSupportedEnvironmentsList = string[];
+export const CasbApplicationsListResponseSupportedEnvironmentsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbApplicationsListResponseSupportedEnvironmentsList>;
+
+export interface CasbApplicationsListResponseUseCasesItem {
+  display_name: string;
+  slug: string;
+}
+export const CasbApplicationsListResponseUseCasesItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      display_name: S.String,
+      slug: S.String,
+    }),
+).annotate({
+  identifier: "CasbApplicationsListResponseUseCasesItem",
+}) as any as S.Schema<CasbApplicationsListResponseUseCasesItem>;
+
+export type CasbApplicationsListResponseUseCasesList =
+  CasbApplicationsListResponseUseCasesItem[];
+export const CasbApplicationsListResponseUseCasesList = /*@__PURE__*/ S.Array(
+  CasbApplicationsListResponseUseCasesItem,
+) as any as S.Schema<CasbApplicationsListResponseUseCasesList>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CasbApplicationsListResponse {
+  auth_methods: CasbApplicationsListResponseAuthMethodsList;
+  category: string;
+  description: string;
+  display_name: string;
+  dlp_enabled: boolean;
+  logo: string;
+  permissions: CasbApplicationsListResponsePermissionsList;
+  slug: CasbApplicationsListResponseSlug;
+  supported_environments: CasbApplicationsListResponseSupportedEnvironmentsList;
+  use_cases: CasbApplicationsListResponseUseCasesList;
+}
+export const CasbApplicationsListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    auth_methods: CasbApplicationsListResponseAuthMethodsList,
+    category: S.String,
+    description: S.String,
+    display_name: S.String,
+    dlp_enabled: S.Boolean,
+    logo: S.String,
+    permissions: CasbApplicationsListResponsePermissionsList,
+    slug: CasbApplicationsListResponseSlug,
+    supported_environments:
+      CasbApplicationsListResponseSupportedEnvironmentsList,
+    use_cases: CasbApplicationsListResponseUseCasesList,
+  }),
+).annotate({
+  identifier: "CasbApplicationsListResponse",
+}) as any as S.Schema<CasbApplicationsListResponse>;
+
+export type CasbApplicationsSetupFlowsListRequestEnvironment =
+  | "fedramp"
+  | "standard"
+  | (string & {});
+export const CasbApplicationsSetupFlowsListRequestEnvironment =
+  /*@__PURE__*/ S.String;
+
+export interface CasbApplicationsSetupFlowsListRequest {
+  account_id: string;
+  slug: string;
+  auth_method?: string;
+  environment?: CasbApplicationsSetupFlowsListRequestEnvironment;
+}
+export const CasbApplicationsSetupFlowsListRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      account_id: S.String.pipe(T.Label()),
+      slug: S.String.pipe(T.Label()),
+      auth_method: S.optional(S.String.pipe(T.Query())),
+      environment: S.optional(
+        CasbApplicationsSetupFlowsListRequestEnvironment.pipe(T.Query()),
+      ),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/one/applications/{slug}/setup-flows",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CasbApplicationsSetupFlowsListRequest",
+}) as any as S.Schema<CasbApplicationsSetupFlowsListRequest>;
+
+export type CasbApplicationsSetupFlowsListResponseStepsItemType =
+  | "component"
+  | "instruction"
+  | "form_input"
+  | "oauth_redirect"
+  | (string & {});
+export const CasbApplicationsSetupFlowsListResponseStepsItemType =
+  /*@__PURE__*/ S.String;
+
+export type CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItemType =
+  "copy_block" | "external_link" | (string & {});
+export const CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItemType =
+  /*@__PURE__*/ S.String;
+
+export interface CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItem {
+  label: string;
+  type: CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItemType;
+  url_template?: string;
+  value_from?: string;
+}
+export const CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      label: S.String,
+      type: CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItemType,
+      url_template: S.optional(S.String),
+      value_from: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier:
+      "CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItem",
+  }) as any as S.Schema<CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItem>;
+
+export type CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentList =
+  CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItem[];
+export const CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentList =
+  /*@__PURE__*/ S.Array(
+    CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentItem,
+  ) as any as S.Schema<CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentList>;
+
+export type CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemSupportedFileTypesList =
+  string[];
+export const CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemSupportedFileTypesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemSupportedFileTypesList>;
+
+export type CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemType =
+  | "text"
+  | "password"
+  | "email"
+  | "file_upload"
+  | (string & {});
+export const CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemType =
+  /*@__PURE__*/ S.String;
+
+export interface CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItem {
+  label: string;
+  name: string;
+  placeholder: string;
+  required: boolean;
+  supported_file_types: CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemSupportedFileTypesList;
+  type: CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemType;
+}
+export const CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      label: S.String,
+      name: S.String,
+      placeholder: S.String,
+      required: S.Boolean,
+      supported_file_types:
+        CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemSupportedFileTypesList,
+      type: CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItemType,
+    }),
+  ).annotate({
+    identifier: "CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItem",
+  }) as any as S.Schema<CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItem>;
+
+export type CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsList =
+  CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItem[];
+export const CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsList =
+  /*@__PURE__*/ S.Array(
+    CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsItem,
+  ) as any as S.Schema<CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsList>;
+
+export type CasbApplicationsSetupFlowsListResponseStepsItemParametersMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbApplicationsSetupFlowsListResponseStepsItemParametersMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbApplicationsSetupFlowsListResponseStepsItemParametersMap>;
+
+export interface CasbApplicationsSetupFlowsListResponseStepsItem {
+  type: CasbApplicationsSetupFlowsListResponseStepsItemType;
+  component_id?: string;
+  description?: string;
+  dynamic_content?: CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentList;
+  form_fields?: CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsList;
+  is_required?: boolean;
+  parameters?: CasbApplicationsSetupFlowsListResponseStepsItemParametersMap;
+  title?: string;
+}
+export const CasbApplicationsSetupFlowsListResponseStepsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      type: CasbApplicationsSetupFlowsListResponseStepsItemType,
+      component_id: S.optional(S.String),
+      description: S.optional(S.String),
+      dynamic_content: S.optional(
+        CasbApplicationsSetupFlowsListResponseStepsItemDynamicContentList,
+      ),
+      form_fields: S.optional(
+        CasbApplicationsSetupFlowsListResponseStepsItemFormFieldsList,
+      ),
+      is_required: S.optional(S.Boolean),
+      parameters: S.optional(
+        CasbApplicationsSetupFlowsListResponseStepsItemParametersMap,
+      ),
+      title: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "CasbApplicationsSetupFlowsListResponseStepsItem",
+  }) as any as S.Schema<CasbApplicationsSetupFlowsListResponseStepsItem>;
+
+export type CasbApplicationsSetupFlowsListResponseStepsList =
+  CasbApplicationsSetupFlowsListResponseStepsItem[];
+export const CasbApplicationsSetupFlowsListResponseStepsList =
+  /*@__PURE__*/ S.Array(
+    CasbApplicationsSetupFlowsListResponseStepsItem,
+  ) as any as S.Schema<CasbApplicationsSetupFlowsListResponseStepsList>;
+
+export type CasbApplicationsSetupFlowsListResponseSupportedEnvironmentsList =
+  string[];
+export const CasbApplicationsSetupFlowsListResponseSupportedEnvironmentsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbApplicationsSetupFlowsListResponseSupportedEnvironmentsList>;
+
+export type CasbApplicationsSetupFlowsListResponseAuthConfigScopesList =
+  string[];
+export const CasbApplicationsSetupFlowsListResponseAuthConfigScopesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbApplicationsSetupFlowsListResponseAuthConfigScopesList>;
+
+export type CasbApplicationsSetupFlowsListResponseAuthConfigUrlPlaceholdersList =
+  string[];
+export const CasbApplicationsSetupFlowsListResponseAuthConfigUrlPlaceholdersList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbApplicationsSetupFlowsListResponseAuthConfigUrlPlaceholdersList>;
+
+export interface CasbApplicationsSetupFlowsListResponseAuthConfig {
+  authorization_url: string;
+  client_id: string;
+  requires_pkce: boolean;
+  scopes: CasbApplicationsSetupFlowsListResponseAuthConfigScopesList;
+  url_placeholders: CasbApplicationsSetupFlowsListResponseAuthConfigUrlPlaceholdersList;
+}
+export const CasbApplicationsSetupFlowsListResponseAuthConfig =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      authorization_url: S.String,
+      client_id: S.String,
+      requires_pkce: S.Boolean,
+      scopes: CasbApplicationsSetupFlowsListResponseAuthConfigScopesList,
+      url_placeholders:
+        CasbApplicationsSetupFlowsListResponseAuthConfigUrlPlaceholdersList,
+    }),
+  ).annotate({
+    identifier: "CasbApplicationsSetupFlowsListResponseAuthConfig",
+  }) as any as S.Schema<CasbApplicationsSetupFlowsListResponseAuthConfig>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CasbApplicationsSetupFlowsListResponse {
+  id: string;
+  default: boolean;
+  description: string;
+  name: string;
+  steps: CasbApplicationsSetupFlowsListResponseStepsList;
+  supported_environments: CasbApplicationsSetupFlowsListResponseSupportedEnvironmentsList;
+  auth_config?: CasbApplicationsSetupFlowsListResponseAuthConfig;
+}
+export const CasbApplicationsSetupFlowsListResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      id: S.String,
+      default: S.Boolean,
+      description: S.String,
+      name: S.String,
+      steps: CasbApplicationsSetupFlowsListResponseStepsList,
+      supported_environments:
+        CasbApplicationsSetupFlowsListResponseSupportedEnvironmentsList,
+      auth_config: S.optional(CasbApplicationsSetupFlowsListResponseAuthConfig),
+    }),
+).annotate({
+  identifier: "CasbApplicationsSetupFlowsListResponse",
+}) as any as S.Schema<CasbApplicationsSetupFlowsListResponse>;
+
+export type CasbIntegrationsCreateRequestApplication =
+  | "GITHUB"
+  | "GOOGLE_WORKSPACE"
+  | "MICROSOFT_INTERNAL"
+  | (string & {});
+export const CasbIntegrationsCreateRequestApplication = /*@__PURE__*/ S.String;
+
+export type CasbIntegrationsCreateRequestCredentialsMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsCreateRequestCredentialsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsCreateRequestCredentialsMap>;
+
+export type CasbIntegrationsCreateRequestDlpProfilesList = string[];
+export const CasbIntegrationsCreateRequestDlpProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbIntegrationsCreateRequestDlpProfilesList>;
+
+export type CasbIntegrationsCreateRequestPermissionsList = string[];
+export const CasbIntegrationsCreateRequestPermissionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbIntegrationsCreateRequestPermissionsList>;
+
+export type CasbIntegrationsCreateRequestUseCasesItem =
+  | "casb"
+  | "ces"
+  | "auto_remediation"
+  | (string & {});
+export const CasbIntegrationsCreateRequestUseCasesItem = /*@__PURE__*/ S.String;
+
+export type CasbIntegrationsCreateRequestUseCasesList =
+  CasbIntegrationsCreateRequestUseCasesItem[];
+export const CasbIntegrationsCreateRequestUseCasesList = /*@__PURE__*/ S.Array(
+  CasbIntegrationsCreateRequestUseCasesItem,
+) as any as S.Schema<CasbIntegrationsCreateRequestUseCasesList>;
+
+export interface CasbIntegrationsCreateRequest {
+  account_id: string;
+  application: CasbIntegrationsCreateRequestApplication;
+  credentials: CasbIntegrationsCreateRequestCredentialsMap;
+  name: string;
+  auth_method?: string;
+  dlp_profiles?: CasbIntegrationsCreateRequestDlpProfilesList;
+  permissions?: CasbIntegrationsCreateRequestPermissionsList;
+  use_cases?: CasbIntegrationsCreateRequestUseCasesList;
+}
+export const CasbIntegrationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    application: CasbIntegrationsCreateRequestApplication,
+    credentials: CasbIntegrationsCreateRequestCredentialsMap,
+    name: S.String,
+    auth_method: S.optional(S.String),
+    dlp_profiles: S.optional(CasbIntegrationsCreateRequestDlpProfilesList),
+    permissions: S.optional(CasbIntegrationsCreateRequestPermissionsList),
+    use_cases: S.optional(CasbIntegrationsCreateRequestUseCasesList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/one/integrations",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CasbIntegrationsCreateRequest",
+}) as any as S.Schema<CasbIntegrationsCreateRequest>;
+
+export type CasbIntegrationsCreateResponseApplicationMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsCreateResponseApplicationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsCreateResponseApplicationMap>;
+
+export type CasbIntegrationsCreateResponseAuthMethodMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsCreateResponseAuthMethodMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsCreateResponseAuthMethodMap>;
+
+export type CasbIntegrationsCreateResponseAuthorizationLinkComponentsMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsCreateResponseAuthorizationLinkComponentsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsCreateResponseAuthorizationLinkComponentsMap>;
+
+export interface CasbIntegrationsCreateResponseAuthorizationLink {
+  components: CasbIntegrationsCreateResponseAuthorizationLinkComponentsMap;
+  link: string;
+}
+export const CasbIntegrationsCreateResponseAuthorizationLink =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      components: CasbIntegrationsCreateResponseAuthorizationLinkComponentsMap,
+      link: S.String,
+    }),
+  ).annotate({
+    identifier: "CasbIntegrationsCreateResponseAuthorizationLink",
+  }) as any as S.Schema<CasbIntegrationsCreateResponseAuthorizationLink>;
+
+export type CasbIntegrationsCreateResponseDlpProfilesList = string[];
+export const CasbIntegrationsCreateResponseDlpProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbIntegrationsCreateResponseDlpProfilesList>;
+
+export type CasbIntegrationsCreateResponseHealthDetailsItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsCreateResponseHealthDetailsItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsCreateResponseHealthDetailsItemMap>;
+
+export type CasbIntegrationsCreateResponseHealthDetailsList =
+  CasbIntegrationsCreateResponseHealthDetailsItemMap[];
+export const CasbIntegrationsCreateResponseHealthDetailsList =
+  /*@__PURE__*/ S.Array(
+    CasbIntegrationsCreateResponseHealthDetailsItemMap,
+  ) as any as S.Schema<CasbIntegrationsCreateResponseHealthDetailsList>;
+
+export type CasbIntegrationsCreateResponseUseCasesItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsCreateResponseUseCasesItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsCreateResponseUseCasesItemMap>;
+
+export type CasbIntegrationsCreateResponseUseCasesList =
+  CasbIntegrationsCreateResponseUseCasesItemMap[];
+export const CasbIntegrationsCreateResponseUseCasesList = /*@__PURE__*/ S.Array(
+  CasbIntegrationsCreateResponseUseCasesItemMap,
+) as any as S.Schema<CasbIntegrationsCreateResponseUseCasesList>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CasbIntegrationsCreateResponse {
+  id: string;
+  application: CasbIntegrationsCreateResponseApplicationMap;
+  auth_method: CasbIntegrationsCreateResponseAuthMethodMap;
+  authorization_link: CasbIntegrationsCreateResponseAuthorizationLink;
+  created: string;
+  credentials_expiry: string;
+  dlp_profiles: CasbIntegrationsCreateResponseDlpProfilesList;
+  health_details: CasbIntegrationsCreateResponseHealthDetailsList;
+  is_paused: boolean;
+  last_hydrated: string;
+  name: string;
+  organization_id: number;
+  status: string;
+  updated: string;
+  use_cases: CasbIntegrationsCreateResponseUseCasesList;
+}
+export const CasbIntegrationsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    application: CasbIntegrationsCreateResponseApplicationMap,
+    auth_method: CasbIntegrationsCreateResponseAuthMethodMap,
+    authorization_link: CasbIntegrationsCreateResponseAuthorizationLink,
+    created: S.String,
+    credentials_expiry: S.String,
+    dlp_profiles: CasbIntegrationsCreateResponseDlpProfilesList,
+    health_details: CasbIntegrationsCreateResponseHealthDetailsList,
+    is_paused: S.Boolean,
+    last_hydrated: S.String,
+    name: S.String,
+    organization_id: S.Number,
+    status: S.String,
+    updated: S.String,
+    use_cases: CasbIntegrationsCreateResponseUseCasesList,
+  }),
+).annotate({
+  identifier: "CasbIntegrationsCreateResponse",
+}) as any as S.Schema<CasbIntegrationsCreateResponse>;
+
+export interface CasbIntegrationsDeleteRequest {
+  account_id: string;
+  id: string;
+}
+export const CasbIntegrationsDeleteRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "DELETE",
+      uri: "/accounts/{account_id}/one/integrations/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CasbIntegrationsDeleteRequest",
+}) as any as S.Schema<CasbIntegrationsDeleteRequest>;
+
+export interface CasbIntegrationsDeleteResponse {}
+export const CasbIntegrationsDeleteResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CasbIntegrationsDeleteResponse",
+}) as any as S.Schema<CasbIntegrationsDeleteResponse>;
+
+export interface CasbIntegrationsGetRequest {
+  account_id: string;
+  id: string;
+}
+export const CasbIntegrationsGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/one/integrations/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CasbIntegrationsGetRequest",
+}) as any as S.Schema<CasbIntegrationsGetRequest>;
+
+export type CasbIntegrationsGetResponseApplicationMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsGetResponseApplicationMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<CasbIntegrationsGetResponseApplicationMap>;
+
+export type CasbIntegrationsGetResponseAuthMethodMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsGetResponseAuthMethodMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<CasbIntegrationsGetResponseAuthMethodMap>;
+
+export type CasbIntegrationsGetResponseAuthorizationLinkComponentsMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsGetResponseAuthorizationLinkComponentsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsGetResponseAuthorizationLinkComponentsMap>;
+
+export interface CasbIntegrationsGetResponseAuthorizationLink {
+  components: CasbIntegrationsGetResponseAuthorizationLinkComponentsMap;
+  link: string;
+}
+export const CasbIntegrationsGetResponseAuthorizationLink =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      components: CasbIntegrationsGetResponseAuthorizationLinkComponentsMap,
+      link: S.String,
+    }),
+  ).annotate({
+    identifier: "CasbIntegrationsGetResponseAuthorizationLink",
+  }) as any as S.Schema<CasbIntegrationsGetResponseAuthorizationLink>;
+
+export type CasbIntegrationsGetResponseDlpProfilesList = string[];
+export const CasbIntegrationsGetResponseDlpProfilesList = /*@__PURE__*/ S.Array(
+  S.String,
+) as any as S.Schema<CasbIntegrationsGetResponseDlpProfilesList>;
+
+export type CasbIntegrationsGetResponseHealthDetailsItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsGetResponseHealthDetailsItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsGetResponseHealthDetailsItemMap>;
+
+export type CasbIntegrationsGetResponseHealthDetailsList =
+  CasbIntegrationsGetResponseHealthDetailsItemMap[];
+export const CasbIntegrationsGetResponseHealthDetailsList =
+  /*@__PURE__*/ S.Array(
+    CasbIntegrationsGetResponseHealthDetailsItemMap,
+  ) as any as S.Schema<CasbIntegrationsGetResponseHealthDetailsList>;
+
+export type CasbIntegrationsGetResponseUseCasesItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsGetResponseUseCasesItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsGetResponseUseCasesItemMap>;
+
+export type CasbIntegrationsGetResponseUseCasesList =
+  CasbIntegrationsGetResponseUseCasesItemMap[];
+export const CasbIntegrationsGetResponseUseCasesList = /*@__PURE__*/ S.Array(
+  CasbIntegrationsGetResponseUseCasesItemMap,
+) as any as S.Schema<CasbIntegrationsGetResponseUseCasesList>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CasbIntegrationsGetResponse {
+  id: string;
+  application: CasbIntegrationsGetResponseApplicationMap;
+  auth_method: CasbIntegrationsGetResponseAuthMethodMap;
+  authorization_link: CasbIntegrationsGetResponseAuthorizationLink;
+  created: string;
+  credentials_expiry: string;
+  dlp_profiles: CasbIntegrationsGetResponseDlpProfilesList;
+  health_details: CasbIntegrationsGetResponseHealthDetailsList;
+  is_paused: boolean;
+  last_hydrated: string;
+  name: string;
+  organization_id: number;
+  status: string;
+  updated: string;
+  use_cases: CasbIntegrationsGetResponseUseCasesList;
+}
+export const CasbIntegrationsGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    application: CasbIntegrationsGetResponseApplicationMap,
+    auth_method: CasbIntegrationsGetResponseAuthMethodMap,
+    authorization_link: CasbIntegrationsGetResponseAuthorizationLink,
+    created: S.String,
+    credentials_expiry: S.String,
+    dlp_profiles: CasbIntegrationsGetResponseDlpProfilesList,
+    health_details: CasbIntegrationsGetResponseHealthDetailsList,
+    is_paused: S.Boolean,
+    last_hydrated: S.String,
+    name: S.String,
+    organization_id: S.Number,
+    status: S.String,
+    updated: S.String,
+    use_cases: CasbIntegrationsGetResponseUseCasesList,
+  }),
+).annotate({
+  identifier: "CasbIntegrationsGetResponse",
+}) as any as S.Schema<CasbIntegrationsGetResponse>;
+
+export type CasbIntegrationsListRequestDirection =
+  | "asc"
+  | "desc"
+  | (string & {});
+export const CasbIntegrationsListRequestDirection = /*@__PURE__*/ S.String;
+
+export type CasbIntegrationsListRequestOrder =
+  | "application"
+  | "created"
+  | "name"
+  | "status"
+  | (string & {});
+export const CasbIntegrationsListRequestOrder = /*@__PURE__*/ S.String;
+
+export type CasbIntegrationsListRequestStatus =
+  | "Healthy"
+  | "Initializing"
+  | "Offline"
+  | "Unhealthy"
+  | (string & {});
+export const CasbIntegrationsListRequestStatus = /*@__PURE__*/ S.String;
+
+export interface CasbIntegrationsListRequest {
+  account_id: string;
+  application?: string;
+  direction?: CasbIntegrationsListRequestDirection;
+  dlp_enabled?: boolean;
+  order?: CasbIntegrationsListRequestOrder;
+  page?: number;
+  page_size?: number;
+  search?: string;
+  status?: CasbIntegrationsListRequestStatus;
+  use_cases?: string;
+}
+export const CasbIntegrationsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    application: S.optional(S.String.pipe(T.Query())),
+    direction: S.optional(CasbIntegrationsListRequestDirection.pipe(T.Query())),
+    dlp_enabled: S.optional(S.Boolean.pipe(T.Query())),
+    order: S.optional(CasbIntegrationsListRequestOrder.pipe(T.Query())),
+    page: S.optional(S.Number.pipe(T.Query())),
+    page_size: S.optional(S.Number.pipe(T.Query())),
+    search: S.optional(S.String.pipe(T.Query())),
+    status: S.optional(CasbIntegrationsListRequestStatus.pipe(T.Query())),
+    use_cases: S.optional(S.String.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/one/integrations",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CasbIntegrationsListRequest",
+}) as any as S.Schema<CasbIntegrationsListRequest>;
+
+export interface CasbIntegrationsListResponse {}
+export const CasbIntegrationsListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({}),
+).annotate({
+  identifier: "CasbIntegrationsListResponse",
+}) as any as S.Schema<CasbIntegrationsListResponse>;
+
+export interface CasbIntegrationsPauseRequest {
+  account_id: string;
+  id: string;
+}
+export const CasbIntegrationsPauseRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/one/integrations/{id}/pause",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CasbIntegrationsPauseRequest",
+}) as any as S.Schema<CasbIntegrationsPauseRequest>;
+
+export type CasbIntegrationsPauseResponseApplicationMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsPauseResponseApplicationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsPauseResponseApplicationMap>;
+
+export type CasbIntegrationsPauseResponseAuthMethodMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsPauseResponseAuthMethodMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsPauseResponseAuthMethodMap>;
+
+export type CasbIntegrationsPauseResponseAuthorizationLinkComponentsMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsPauseResponseAuthorizationLinkComponentsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsPauseResponseAuthorizationLinkComponentsMap>;
+
+export interface CasbIntegrationsPauseResponseAuthorizationLink {
+  components: CasbIntegrationsPauseResponseAuthorizationLinkComponentsMap;
+  link: string;
+}
+export const CasbIntegrationsPauseResponseAuthorizationLink =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      components: CasbIntegrationsPauseResponseAuthorizationLinkComponentsMap,
+      link: S.String,
+    }),
+  ).annotate({
+    identifier: "CasbIntegrationsPauseResponseAuthorizationLink",
+  }) as any as S.Schema<CasbIntegrationsPauseResponseAuthorizationLink>;
+
+export type CasbIntegrationsPauseResponseDlpProfilesList = string[];
+export const CasbIntegrationsPauseResponseDlpProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbIntegrationsPauseResponseDlpProfilesList>;
+
+export type CasbIntegrationsPauseResponseHealthDetailsItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsPauseResponseHealthDetailsItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsPauseResponseHealthDetailsItemMap>;
+
+export type CasbIntegrationsPauseResponseHealthDetailsList =
+  CasbIntegrationsPauseResponseHealthDetailsItemMap[];
+export const CasbIntegrationsPauseResponseHealthDetailsList =
+  /*@__PURE__*/ S.Array(
+    CasbIntegrationsPauseResponseHealthDetailsItemMap,
+  ) as any as S.Schema<CasbIntegrationsPauseResponseHealthDetailsList>;
+
+export type CasbIntegrationsPauseResponseUseCasesItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsPauseResponseUseCasesItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsPauseResponseUseCasesItemMap>;
+
+export type CasbIntegrationsPauseResponseUseCasesList =
+  CasbIntegrationsPauseResponseUseCasesItemMap[];
+export const CasbIntegrationsPauseResponseUseCasesList = /*@__PURE__*/ S.Array(
+  CasbIntegrationsPauseResponseUseCasesItemMap,
+) as any as S.Schema<CasbIntegrationsPauseResponseUseCasesList>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CasbIntegrationsPauseResponse {
+  id: string;
+  application: CasbIntegrationsPauseResponseApplicationMap;
+  auth_method: CasbIntegrationsPauseResponseAuthMethodMap;
+  authorization_link: CasbIntegrationsPauseResponseAuthorizationLink;
+  created: string;
+  credentials_expiry: string;
+  dlp_profiles: CasbIntegrationsPauseResponseDlpProfilesList;
+  health_details: CasbIntegrationsPauseResponseHealthDetailsList;
+  is_paused: boolean;
+  last_hydrated: string;
+  name: string;
+  organization_id: number;
+  status: string;
+  updated: string;
+  use_cases: CasbIntegrationsPauseResponseUseCasesList;
+}
+export const CasbIntegrationsPauseResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    application: CasbIntegrationsPauseResponseApplicationMap,
+    auth_method: CasbIntegrationsPauseResponseAuthMethodMap,
+    authorization_link: CasbIntegrationsPauseResponseAuthorizationLink,
+    created: S.String,
+    credentials_expiry: S.String,
+    dlp_profiles: CasbIntegrationsPauseResponseDlpProfilesList,
+    health_details: CasbIntegrationsPauseResponseHealthDetailsList,
+    is_paused: S.Boolean,
+    last_hydrated: S.String,
+    name: S.String,
+    organization_id: S.Number,
+    status: S.String,
+    updated: S.String,
+    use_cases: CasbIntegrationsPauseResponseUseCasesList,
+  }),
+).annotate({
+  identifier: "CasbIntegrationsPauseResponse",
+}) as any as S.Schema<CasbIntegrationsPauseResponse>;
+
+export interface CasbIntegrationsResumeRequest {
+  account_id: string;
+  id: string;
+}
+export const CasbIntegrationsResumeRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/accounts/{account_id}/one/integrations/{id}/resume",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CasbIntegrationsResumeRequest",
+}) as any as S.Schema<CasbIntegrationsResumeRequest>;
+
+export type CasbIntegrationsResumeResponseApplicationMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsResumeResponseApplicationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsResumeResponseApplicationMap>;
+
+export type CasbIntegrationsResumeResponseAuthMethodMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsResumeResponseAuthMethodMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsResumeResponseAuthMethodMap>;
+
+export type CasbIntegrationsResumeResponseAuthorizationLinkComponentsMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsResumeResponseAuthorizationLinkComponentsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsResumeResponseAuthorizationLinkComponentsMap>;
+
+export interface CasbIntegrationsResumeResponseAuthorizationLink {
+  components: CasbIntegrationsResumeResponseAuthorizationLinkComponentsMap;
+  link: string;
+}
+export const CasbIntegrationsResumeResponseAuthorizationLink =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      components: CasbIntegrationsResumeResponseAuthorizationLinkComponentsMap,
+      link: S.String,
+    }),
+  ).annotate({
+    identifier: "CasbIntegrationsResumeResponseAuthorizationLink",
+  }) as any as S.Schema<CasbIntegrationsResumeResponseAuthorizationLink>;
+
+export type CasbIntegrationsResumeResponseDlpProfilesList = string[];
+export const CasbIntegrationsResumeResponseDlpProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbIntegrationsResumeResponseDlpProfilesList>;
+
+export type CasbIntegrationsResumeResponseHealthDetailsItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsResumeResponseHealthDetailsItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsResumeResponseHealthDetailsItemMap>;
+
+export type CasbIntegrationsResumeResponseHealthDetailsList =
+  CasbIntegrationsResumeResponseHealthDetailsItemMap[];
+export const CasbIntegrationsResumeResponseHealthDetailsList =
+  /*@__PURE__*/ S.Array(
+    CasbIntegrationsResumeResponseHealthDetailsItemMap,
+  ) as any as S.Schema<CasbIntegrationsResumeResponseHealthDetailsList>;
+
+export type CasbIntegrationsResumeResponseUseCasesItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsResumeResponseUseCasesItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsResumeResponseUseCasesItemMap>;
+
+export type CasbIntegrationsResumeResponseUseCasesList =
+  CasbIntegrationsResumeResponseUseCasesItemMap[];
+export const CasbIntegrationsResumeResponseUseCasesList = /*@__PURE__*/ S.Array(
+  CasbIntegrationsResumeResponseUseCasesItemMap,
+) as any as S.Schema<CasbIntegrationsResumeResponseUseCasesList>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CasbIntegrationsResumeResponse {
+  id: string;
+  application: CasbIntegrationsResumeResponseApplicationMap;
+  auth_method: CasbIntegrationsResumeResponseAuthMethodMap;
+  authorization_link: CasbIntegrationsResumeResponseAuthorizationLink;
+  created: string;
+  credentials_expiry: string;
+  dlp_profiles: CasbIntegrationsResumeResponseDlpProfilesList;
+  health_details: CasbIntegrationsResumeResponseHealthDetailsList;
+  is_paused: boolean;
+  last_hydrated: string;
+  name: string;
+  organization_id: number;
+  status: string;
+  updated: string;
+  use_cases: CasbIntegrationsResumeResponseUseCasesList;
+}
+export const CasbIntegrationsResumeResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    application: CasbIntegrationsResumeResponseApplicationMap,
+    auth_method: CasbIntegrationsResumeResponseAuthMethodMap,
+    authorization_link: CasbIntegrationsResumeResponseAuthorizationLink,
+    created: S.String,
+    credentials_expiry: S.String,
+    dlp_profiles: CasbIntegrationsResumeResponseDlpProfilesList,
+    health_details: CasbIntegrationsResumeResponseHealthDetailsList,
+    is_paused: S.Boolean,
+    last_hydrated: S.String,
+    name: S.String,
+    organization_id: S.Number,
+    status: S.String,
+    updated: S.String,
+    use_cases: CasbIntegrationsResumeResponseUseCasesList,
+  }),
+).annotate({
+  identifier: "CasbIntegrationsResumeResponse",
+}) as any as S.Schema<CasbIntegrationsResumeResponse>;
+
+export type CasbIntegrationsUpdateRequestCredentialsMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsUpdateRequestCredentialsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsUpdateRequestCredentialsMap>;
+
+export type CasbIntegrationsUpdateRequestDlpProfilesList = string[];
+export const CasbIntegrationsUpdateRequestDlpProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbIntegrationsUpdateRequestDlpProfilesList>;
+
+export type CasbIntegrationsUpdateRequestPermissionsList = string[];
+export const CasbIntegrationsUpdateRequestPermissionsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbIntegrationsUpdateRequestPermissionsList>;
+
+export type CasbIntegrationsUpdateRequestUseCasesItem =
+  | "casb"
+  | "ces"
+  | "auto_remediation"
+  | (string & {});
+export const CasbIntegrationsUpdateRequestUseCasesItem = /*@__PURE__*/ S.String;
+
+export type CasbIntegrationsUpdateRequestUseCasesList =
+  CasbIntegrationsUpdateRequestUseCasesItem[];
+export const CasbIntegrationsUpdateRequestUseCasesList = /*@__PURE__*/ S.Array(
+  CasbIntegrationsUpdateRequestUseCasesItem,
+) as any as S.Schema<CasbIntegrationsUpdateRequestUseCasesList>;
+
+export interface CasbIntegrationsUpdateRequest {
+  account_id: string;
+  id: string;
+  credentials?: CasbIntegrationsUpdateRequestCredentialsMap;
+  dlp_profiles?: CasbIntegrationsUpdateRequestDlpProfilesList;
+  name?: string;
+  permissions?: CasbIntegrationsUpdateRequestPermissionsList;
+  use_cases?: CasbIntegrationsUpdateRequestUseCasesList;
+}
+export const CasbIntegrationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    account_id: S.String.pipe(T.Label()),
+    id: S.String.pipe(T.Label()),
+    credentials: S.optional(CasbIntegrationsUpdateRequestCredentialsMap),
+    dlp_profiles: S.optional(CasbIntegrationsUpdateRequestDlpProfilesList),
+    name: S.optional(S.String),
+    permissions: S.optional(CasbIntegrationsUpdateRequestPermissionsList),
+    use_cases: S.optional(CasbIntegrationsUpdateRequestUseCasesList),
+  }).pipe(
+    T.Http({
+      method: "PATCH",
+      uri: "/accounts/{account_id}/one/integrations/{id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "CasbIntegrationsUpdateRequest",
+}) as any as S.Schema<CasbIntegrationsUpdateRequest>;
+
+export type CasbIntegrationsUpdateResponseApplicationMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsUpdateResponseApplicationMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsUpdateResponseApplicationMap>;
+
+export type CasbIntegrationsUpdateResponseAuthMethodMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsUpdateResponseAuthMethodMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsUpdateResponseAuthMethodMap>;
+
+export type CasbIntegrationsUpdateResponseAuthorizationLinkComponentsMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsUpdateResponseAuthorizationLinkComponentsMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsUpdateResponseAuthorizationLinkComponentsMap>;
+
+export interface CasbIntegrationsUpdateResponseAuthorizationLink {
+  components: CasbIntegrationsUpdateResponseAuthorizationLinkComponentsMap;
+  link: string;
+}
+export const CasbIntegrationsUpdateResponseAuthorizationLink =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      components: CasbIntegrationsUpdateResponseAuthorizationLinkComponentsMap,
+      link: S.String,
+    }),
+  ).annotate({
+    identifier: "CasbIntegrationsUpdateResponseAuthorizationLink",
+  }) as any as S.Schema<CasbIntegrationsUpdateResponseAuthorizationLink>;
+
+export type CasbIntegrationsUpdateResponseDlpProfilesList = string[];
+export const CasbIntegrationsUpdateResponseDlpProfilesList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<CasbIntegrationsUpdateResponseDlpProfilesList>;
+
+export type CasbIntegrationsUpdateResponseHealthDetailsItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsUpdateResponseHealthDetailsItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsUpdateResponseHealthDetailsItemMap>;
+
+export type CasbIntegrationsUpdateResponseHealthDetailsList =
+  CasbIntegrationsUpdateResponseHealthDetailsItemMap[];
+export const CasbIntegrationsUpdateResponseHealthDetailsList =
+  /*@__PURE__*/ S.Array(
+    CasbIntegrationsUpdateResponseHealthDetailsItemMap,
+  ) as any as S.Schema<CasbIntegrationsUpdateResponseHealthDetailsList>;
+
+export type CasbIntegrationsUpdateResponseUseCasesItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const CasbIntegrationsUpdateResponseUseCasesItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<CasbIntegrationsUpdateResponseUseCasesItemMap>;
+
+export type CasbIntegrationsUpdateResponseUseCasesList =
+  CasbIntegrationsUpdateResponseUseCasesItemMap[];
+export const CasbIntegrationsUpdateResponseUseCasesList = /*@__PURE__*/ S.Array(
+  CasbIntegrationsUpdateResponseUseCasesItemMap,
+) as any as S.Schema<CasbIntegrationsUpdateResponseUseCasesList>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface CasbIntegrationsUpdateResponse {
+  id: string;
+  application: CasbIntegrationsUpdateResponseApplicationMap;
+  auth_method: CasbIntegrationsUpdateResponseAuthMethodMap;
+  authorization_link: CasbIntegrationsUpdateResponseAuthorizationLink;
+  created: string;
+  credentials_expiry: string;
+  dlp_profiles: CasbIntegrationsUpdateResponseDlpProfilesList;
+  health_details: CasbIntegrationsUpdateResponseHealthDetailsList;
+  is_paused: boolean;
+  last_hydrated: string;
+  name: string;
+  organization_id: number;
+  status: string;
+  updated: string;
+  use_cases: CasbIntegrationsUpdateResponseUseCasesList;
+}
+export const CasbIntegrationsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.String,
+    application: CasbIntegrationsUpdateResponseApplicationMap,
+    auth_method: CasbIntegrationsUpdateResponseAuthMethodMap,
+    authorization_link: CasbIntegrationsUpdateResponseAuthorizationLink,
+    created: S.String,
+    credentials_expiry: S.String,
+    dlp_profiles: CasbIntegrationsUpdateResponseDlpProfilesList,
+    health_details: CasbIntegrationsUpdateResponseHealthDetailsList,
+    is_paused: S.Boolean,
+    last_hydrated: S.String,
+    name: S.String,
+    organization_id: S.Number,
+    status: S.String,
+    updated: S.String,
+    use_cases: CasbIntegrationsUpdateResponseUseCasesList,
+  }),
+).annotate({
+  identifier: "CasbIntegrationsUpdateResponse",
+}) as any as S.Schema<CasbIntegrationsUpdateResponse>;
 
 export interface ConnectivitySettingsEditRequest {
   account_id: string;
@@ -11475,11 +12954,13 @@ export const DevicesIpProfilesGetResponse = /*@__PURE__*/ S.suspend(() =>
 
 export interface DevicesIpProfilesListRequest {
   account_id: string;
+  page?: number;
   per_page?: number;
 }
 export const DevicesIpProfilesListRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     account_id: S.String.pipe(T.Label()),
+    page: S.optional(S.Number.pipe(T.Query())),
     per_page: S.optional(S.Number.pipe(T.Query())),
   }).pipe(
     T.Http({
@@ -11889,6 +13370,48 @@ export const DevicesPoliciesCustomCreateRequestExcludeList =
     S.Unknown,
   ) as any as S.Schema<DevicesPoliciesCustomCreateRequestExcludeList>;
 
+export type DevicesPoliciesCustomCreateRequestGlobalAccelerationApiEndpointsList =
+  string[];
+export const DevicesPoliciesCustomCreateRequestGlobalAccelerationApiEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesCustomCreateRequestGlobalAccelerationApiEndpointsList>;
+
+export type DevicesPoliciesCustomCreateRequestGlobalAccelerationMasqueEndpointsList =
+  string[];
+export const DevicesPoliciesCustomCreateRequestGlobalAccelerationMasqueEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesCustomCreateRequestGlobalAccelerationMasqueEndpointsList>;
+
+export type DevicesPoliciesCustomCreateRequestGlobalAccelerationWireguardEndpointsList =
+  string[];
+export const DevicesPoliciesCustomCreateRequestGlobalAccelerationWireguardEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesCustomCreateRequestGlobalAccelerationWireguardEndpointsList>;
+
+export interface DevicesPoliciesCustomCreateRequestGlobalAcceleration {
+  api_endpoints: DevicesPoliciesCustomCreateRequestGlobalAccelerationApiEndpointsList;
+  enabled: boolean;
+  masque_endpoints: DevicesPoliciesCustomCreateRequestGlobalAccelerationMasqueEndpointsList;
+  wireguard_endpoints: DevicesPoliciesCustomCreateRequestGlobalAccelerationWireguardEndpointsList;
+}
+export const DevicesPoliciesCustomCreateRequestGlobalAcceleration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      api_endpoints:
+        DevicesPoliciesCustomCreateRequestGlobalAccelerationApiEndpointsList,
+      enabled: S.Boolean,
+      masque_endpoints:
+        DevicesPoliciesCustomCreateRequestGlobalAccelerationMasqueEndpointsList,
+      wireguard_endpoints:
+        DevicesPoliciesCustomCreateRequestGlobalAccelerationWireguardEndpointsList,
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesCustomCreateRequestGlobalAcceleration",
+  }) as any as S.Schema<DevicesPoliciesCustomCreateRequestGlobalAcceleration>;
+
 export type DevicesPoliciesCustomCreateRequestIncludeList = unknown[];
 export const DevicesPoliciesCustomCreateRequestIncludeList =
   /*@__PURE__*/ S.Array(
@@ -11946,6 +13469,7 @@ export interface DevicesPoliciesCustomCreateRequest {
   enabled?: boolean;
   exclude?: DevicesPoliciesCustomCreateRequestExcludeList;
   exclude_office_ips?: boolean;
+  global_acceleration?: DevicesPoliciesCustomCreateRequestGlobalAcceleration;
   include?: DevicesPoliciesCustomCreateRequestIncludeList;
   lan_allow_minutes?: number;
   lan_allow_subnet_size?: number;
@@ -11976,6 +13500,9 @@ export const DevicesPoliciesCustomCreateRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.Boolean),
     exclude: S.optional(DevicesPoliciesCustomCreateRequestExcludeList),
     exclude_office_ips: S.optional(S.Boolean),
+    global_acceleration: S.optional(
+      DevicesPoliciesCustomCreateRequestGlobalAcceleration,
+    ),
     include: S.optional(DevicesPoliciesCustomCreateRequestIncludeList),
     lan_allow_minutes: S.optional(S.Number),
     lan_allow_subnet_size: S.optional(S.Number),
@@ -12076,6 +13603,48 @@ export const DevicesPoliciesCustomEditRequestExcludeList =
     S.Unknown,
   ) as any as S.Schema<DevicesPoliciesCustomEditRequestExcludeList>;
 
+export type DevicesPoliciesCustomEditRequestGlobalAccelerationApiEndpointsList =
+  string[];
+export const DevicesPoliciesCustomEditRequestGlobalAccelerationApiEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesCustomEditRequestGlobalAccelerationApiEndpointsList>;
+
+export type DevicesPoliciesCustomEditRequestGlobalAccelerationMasqueEndpointsList =
+  string[];
+export const DevicesPoliciesCustomEditRequestGlobalAccelerationMasqueEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesCustomEditRequestGlobalAccelerationMasqueEndpointsList>;
+
+export type DevicesPoliciesCustomEditRequestGlobalAccelerationWireguardEndpointsList =
+  string[];
+export const DevicesPoliciesCustomEditRequestGlobalAccelerationWireguardEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesCustomEditRequestGlobalAccelerationWireguardEndpointsList>;
+
+export interface DevicesPoliciesCustomEditRequestGlobalAcceleration {
+  api_endpoints: DevicesPoliciesCustomEditRequestGlobalAccelerationApiEndpointsList;
+  enabled: boolean;
+  masque_endpoints: DevicesPoliciesCustomEditRequestGlobalAccelerationMasqueEndpointsList;
+  wireguard_endpoints: DevicesPoliciesCustomEditRequestGlobalAccelerationWireguardEndpointsList;
+}
+export const DevicesPoliciesCustomEditRequestGlobalAcceleration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      api_endpoints:
+        DevicesPoliciesCustomEditRequestGlobalAccelerationApiEndpointsList,
+      enabled: S.Boolean,
+      masque_endpoints:
+        DevicesPoliciesCustomEditRequestGlobalAccelerationMasqueEndpointsList,
+      wireguard_endpoints:
+        DevicesPoliciesCustomEditRequestGlobalAccelerationWireguardEndpointsList,
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesCustomEditRequestGlobalAcceleration",
+  }) as any as S.Schema<DevicesPoliciesCustomEditRequestGlobalAcceleration>;
+
 export type DevicesPoliciesCustomEditRequestIncludeList = unknown[];
 export const DevicesPoliciesCustomEditRequestIncludeList =
   /*@__PURE__*/ S.Array(
@@ -12131,6 +13700,7 @@ export interface DevicesPoliciesCustomEditRequest {
   enabled?: boolean;
   exclude?: DevicesPoliciesCustomEditRequestExcludeList;
   exclude_office_ips?: boolean;
+  global_acceleration?: DevicesPoliciesCustomEditRequestGlobalAcceleration;
   include?: DevicesPoliciesCustomEditRequestIncludeList;
   lan_allow_minutes?: number;
   lan_allow_subnet_size?: number;
@@ -12162,6 +13732,9 @@ export const DevicesPoliciesCustomEditRequest = /*@__PURE__*/ S.suspend(() =>
     enabled: S.optional(S.Boolean),
     exclude: S.optional(DevicesPoliciesCustomEditRequestExcludeList),
     exclude_office_ips: S.optional(S.Boolean),
+    global_acceleration: S.optional(
+      DevicesPoliciesCustomEditRequestGlobalAcceleration,
+    ),
     include: S.optional(DevicesPoliciesCustomEditRequestIncludeList),
     lan_allow_minutes: S.optional(S.Number),
     lan_allow_subnet_size: S.optional(S.Number),
@@ -12620,6 +14193,48 @@ export const DevicesPoliciesDefaultEditRequestExcludeList =
     S.Unknown,
   ) as any as S.Schema<DevicesPoliciesDefaultEditRequestExcludeList>;
 
+export type DevicesPoliciesDefaultEditRequestGlobalAccelerationApiEndpointsList =
+  string[];
+export const DevicesPoliciesDefaultEditRequestGlobalAccelerationApiEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesDefaultEditRequestGlobalAccelerationApiEndpointsList>;
+
+export type DevicesPoliciesDefaultEditRequestGlobalAccelerationMasqueEndpointsList =
+  string[];
+export const DevicesPoliciesDefaultEditRequestGlobalAccelerationMasqueEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesDefaultEditRequestGlobalAccelerationMasqueEndpointsList>;
+
+export type DevicesPoliciesDefaultEditRequestGlobalAccelerationWireguardEndpointsList =
+  string[];
+export const DevicesPoliciesDefaultEditRequestGlobalAccelerationWireguardEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesDefaultEditRequestGlobalAccelerationWireguardEndpointsList>;
+
+export interface DevicesPoliciesDefaultEditRequestGlobalAcceleration {
+  api_endpoints: DevicesPoliciesDefaultEditRequestGlobalAccelerationApiEndpointsList;
+  enabled: boolean;
+  masque_endpoints: DevicesPoliciesDefaultEditRequestGlobalAccelerationMasqueEndpointsList;
+  wireguard_endpoints: DevicesPoliciesDefaultEditRequestGlobalAccelerationWireguardEndpointsList;
+}
+export const DevicesPoliciesDefaultEditRequestGlobalAcceleration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      api_endpoints:
+        DevicesPoliciesDefaultEditRequestGlobalAccelerationApiEndpointsList,
+      enabled: S.Boolean,
+      masque_endpoints:
+        DevicesPoliciesDefaultEditRequestGlobalAccelerationMasqueEndpointsList,
+      wireguard_endpoints:
+        DevicesPoliciesDefaultEditRequestGlobalAccelerationWireguardEndpointsList,
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesDefaultEditRequestGlobalAcceleration",
+  }) as any as S.Schema<DevicesPoliciesDefaultEditRequestGlobalAcceleration>;
+
 export type DevicesPoliciesDefaultEditRequestIncludeList = unknown[];
 export const DevicesPoliciesDefaultEditRequestIncludeList =
   /*@__PURE__*/ S.Array(
@@ -12672,6 +14287,7 @@ export interface DevicesPoliciesDefaultEditRequest {
   dns_search_suffixes?: DevicesPoliciesDefaultEditRequestDnsSearchSuffixesList;
   exclude?: DevicesPoliciesDefaultEditRequestExcludeList;
   exclude_office_ips?: boolean;
+  global_acceleration?: DevicesPoliciesDefaultEditRequestGlobalAcceleration;
   include?: DevicesPoliciesDefaultEditRequestIncludeList;
   lan_allow_minutes?: number;
   lan_allow_subnet_size?: number;
@@ -12697,6 +14313,9 @@ export const DevicesPoliciesDefaultEditRequest = /*@__PURE__*/ S.suspend(() =>
     ),
     exclude: S.optional(DevicesPoliciesDefaultEditRequestExcludeList),
     exclude_office_ips: S.optional(S.Boolean),
+    global_acceleration: S.optional(
+      DevicesPoliciesDefaultEditRequestGlobalAcceleration,
+    ),
     include: S.optional(DevicesPoliciesDefaultEditRequestIncludeList),
     lan_allow_minutes: S.optional(S.Number),
     lan_allow_subnet_size: S.optional(S.Number),
@@ -12752,6 +14371,48 @@ export const DevicesPoliciesDefaultEditResponseFallbackDomainsList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
   ) as any as S.Schema<DevicesPoliciesDefaultEditResponseFallbackDomainsList>;
+
+export type DevicesPoliciesDefaultEditResponseGlobalAccelerationApiEndpointsList =
+  string[];
+export const DevicesPoliciesDefaultEditResponseGlobalAccelerationApiEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesDefaultEditResponseGlobalAccelerationApiEndpointsList>;
+
+export type DevicesPoliciesDefaultEditResponseGlobalAccelerationMasqueEndpointsList =
+  string[];
+export const DevicesPoliciesDefaultEditResponseGlobalAccelerationMasqueEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesDefaultEditResponseGlobalAccelerationMasqueEndpointsList>;
+
+export type DevicesPoliciesDefaultEditResponseGlobalAccelerationWireguardEndpointsList =
+  string[];
+export const DevicesPoliciesDefaultEditResponseGlobalAccelerationWireguardEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesDefaultEditResponseGlobalAccelerationWireguardEndpointsList>;
+
+export interface DevicesPoliciesDefaultEditResponseGlobalAcceleration {
+  api_endpoints: DevicesPoliciesDefaultEditResponseGlobalAccelerationApiEndpointsList;
+  enabled: boolean;
+  masque_endpoints: DevicesPoliciesDefaultEditResponseGlobalAccelerationMasqueEndpointsList;
+  wireguard_endpoints: DevicesPoliciesDefaultEditResponseGlobalAccelerationWireguardEndpointsList;
+}
+export const DevicesPoliciesDefaultEditResponseGlobalAcceleration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      api_endpoints:
+        DevicesPoliciesDefaultEditResponseGlobalAccelerationApiEndpointsList,
+      enabled: S.Boolean,
+      masque_endpoints:
+        DevicesPoliciesDefaultEditResponseGlobalAccelerationMasqueEndpointsList,
+      wireguard_endpoints:
+        DevicesPoliciesDefaultEditResponseGlobalAccelerationWireguardEndpointsList,
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesDefaultEditResponseGlobalAcceleration",
+  }) as any as S.Schema<DevicesPoliciesDefaultEditResponseGlobalAcceleration>;
 
 export type DevicesPoliciesDefaultEditResponseIncludeList = unknown[];
 export const DevicesPoliciesDefaultEditResponseIncludeList =
@@ -12809,6 +14470,7 @@ export interface DevicesPoliciesDefaultEditResponse {
   exclude_office_ips?: boolean;
   fallback_domains?: DevicesPoliciesDefaultEditResponseFallbackDomainsList;
   gateway_unique_id?: string;
+  global_acceleration?: DevicesPoliciesDefaultEditResponseGlobalAcceleration;
   include?: DevicesPoliciesDefaultEditResponseIncludeList;
   policy_id?: string;
   register_interface_ip_with_dns?: boolean;
@@ -12838,6 +14500,9 @@ export const DevicesPoliciesDefaultEditResponse = /*@__PURE__*/ S.suspend(() =>
       DevicesPoliciesDefaultEditResponseFallbackDomainsList,
     ),
     gateway_unique_id: S.optional(S.String),
+    global_acceleration: S.optional(
+      DevicesPoliciesDefaultEditResponseGlobalAcceleration,
+    ),
     include: S.optional(DevicesPoliciesDefaultEditResponseIncludeList),
     policy_id: S.optional(S.String),
     register_interface_ip_with_dns: S.optional(S.Boolean),
@@ -13081,6 +14746,48 @@ export const DevicesPoliciesDefaultGetResponseFallbackDomainsList =
     S.Unknown,
   ) as any as S.Schema<DevicesPoliciesDefaultGetResponseFallbackDomainsList>;
 
+export type DevicesPoliciesDefaultGetResponseGlobalAccelerationApiEndpointsList =
+  string[];
+export const DevicesPoliciesDefaultGetResponseGlobalAccelerationApiEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesDefaultGetResponseGlobalAccelerationApiEndpointsList>;
+
+export type DevicesPoliciesDefaultGetResponseGlobalAccelerationMasqueEndpointsList =
+  string[];
+export const DevicesPoliciesDefaultGetResponseGlobalAccelerationMasqueEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesDefaultGetResponseGlobalAccelerationMasqueEndpointsList>;
+
+export type DevicesPoliciesDefaultGetResponseGlobalAccelerationWireguardEndpointsList =
+  string[];
+export const DevicesPoliciesDefaultGetResponseGlobalAccelerationWireguardEndpointsList =
+  /*@__PURE__*/ S.Array(
+    S.String,
+  ) as any as S.Schema<DevicesPoliciesDefaultGetResponseGlobalAccelerationWireguardEndpointsList>;
+
+export interface DevicesPoliciesDefaultGetResponseGlobalAcceleration {
+  api_endpoints: DevicesPoliciesDefaultGetResponseGlobalAccelerationApiEndpointsList;
+  enabled: boolean;
+  masque_endpoints: DevicesPoliciesDefaultGetResponseGlobalAccelerationMasqueEndpointsList;
+  wireguard_endpoints: DevicesPoliciesDefaultGetResponseGlobalAccelerationWireguardEndpointsList;
+}
+export const DevicesPoliciesDefaultGetResponseGlobalAcceleration =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      api_endpoints:
+        DevicesPoliciesDefaultGetResponseGlobalAccelerationApiEndpointsList,
+      enabled: S.Boolean,
+      masque_endpoints:
+        DevicesPoliciesDefaultGetResponseGlobalAccelerationMasqueEndpointsList,
+      wireguard_endpoints:
+        DevicesPoliciesDefaultGetResponseGlobalAccelerationWireguardEndpointsList,
+    }),
+  ).annotate({
+    identifier: "DevicesPoliciesDefaultGetResponseGlobalAcceleration",
+  }) as any as S.Schema<DevicesPoliciesDefaultGetResponseGlobalAcceleration>;
+
 export type DevicesPoliciesDefaultGetResponseIncludeList = unknown[];
 export const DevicesPoliciesDefaultGetResponseIncludeList =
   /*@__PURE__*/ S.Array(
@@ -13137,6 +14844,7 @@ export interface DevicesPoliciesDefaultGetResponse {
   exclude_office_ips?: boolean;
   fallback_domains?: DevicesPoliciesDefaultGetResponseFallbackDomainsList;
   gateway_unique_id?: string;
+  global_acceleration?: DevicesPoliciesDefaultGetResponseGlobalAcceleration;
   include?: DevicesPoliciesDefaultGetResponseIncludeList;
   policy_id?: string;
   register_interface_ip_with_dns?: boolean;
@@ -13166,6 +14874,9 @@ export const DevicesPoliciesDefaultGetResponse = /*@__PURE__*/ S.suspend(() =>
       DevicesPoliciesDefaultGetResponseFallbackDomainsList,
     ),
     gateway_unique_id: S.optional(S.String),
+    global_acceleration: S.optional(
+      DevicesPoliciesDefaultGetResponseGlobalAcceleration,
+    ),
     include: S.optional(DevicesPoliciesDefaultGetResponseIncludeList),
     policy_id: S.optional(S.String),
     register_interface_ip_with_dns: S.optional(S.Boolean),
@@ -13952,6 +15663,8 @@ export interface DevicesRegistrationsGetResponse {
   revoked_at?: string;
   tunnel_type?: string;
   user?: DevicesRegistrationsGetResponseUser;
+  virtual_ipv4?: string;
+  virtual_ipv6?: string;
 }
 export const DevicesRegistrationsGetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -13967,6 +15680,8 @@ export const DevicesRegistrationsGetResponse = /*@__PURE__*/ S.suspend(() =>
     revoked_at: S.optional(S.String),
     tunnel_type: S.optional(S.String),
     user: S.optional(DevicesRegistrationsGetResponseUser),
+    virtual_ipv4: S.optional(S.String),
+    virtual_ipv6: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DevicesRegistrationsGetResponse",
@@ -14105,6 +15820,8 @@ export interface DevicesRegistrationsListResultItem {
   revoked_at?: string;
   tunnel_type?: string;
   user?: DevicesRegistrationsListResultItemUser;
+  virtual_ipv4?: string;
+  virtual_ipv6?: string;
 }
 export const DevicesRegistrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
@@ -14120,6 +15837,8 @@ export const DevicesRegistrationsListResultItem = /*@__PURE__*/ S.suspend(() =>
     revoked_at: S.optional(S.String),
     tunnel_type: S.optional(S.String),
     user: S.optional(DevicesRegistrationsListResultItemUser),
+    virtual_ipv4: S.optional(S.String),
+    virtual_ipv6: S.optional(S.String),
   }),
 ).annotate({
   identifier: "DevicesRegistrationsListResultItem",
@@ -23148,6 +24867,26 @@ export const GatewayListsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GatewayListsUpdateResponse",
 }) as any as S.Schema<GatewayListsUpdateResponse>;
 
+export type GatewayLocationsCreateRequestMaxTtlMode =
+  | "inherit"
+  | "override"
+  | "disabled"
+  | (string & {});
+export const GatewayLocationsCreateRequestMaxTtlMode = /*@__PURE__*/ S.String;
+
+export interface GatewayLocationsCreateRequestMaxTtl {
+  mode: GatewayLocationsCreateRequestMaxTtlMode;
+  ttl_secs?: number;
+}
+export const GatewayLocationsCreateRequestMaxTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: GatewayLocationsCreateRequestMaxTtlMode,
+    ttl_secs: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GatewayLocationsCreateRequestMaxTtl",
+}) as any as S.Schema<GatewayLocationsCreateRequestMaxTtl>;
+
 export interface GatewayLocationsCreateRequestNetworksItem {
   network: string;
 }
@@ -23173,6 +24912,7 @@ export interface GatewayLocationsCreateRequest {
   dns_destination_ips_id?: string;
   ecs_support?: boolean;
   endpoints?: unknown;
+  max_ttl?: GatewayLocationsCreateRequestMaxTtl;
   networks?: GatewayLocationsCreateRequestNetworksList;
 }
 export const GatewayLocationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -23183,6 +24923,7 @@ export const GatewayLocationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     dns_destination_ips_id: S.optional(S.String),
     ecs_support: S.optional(S.Boolean),
     endpoints: S.optional(S.Unknown),
+    max_ttl: S.optional(GatewayLocationsCreateRequestMaxTtl),
     networks: S.optional(GatewayLocationsCreateRequestNetworksList),
   }).pipe(
     T.Http({
@@ -23301,6 +25042,26 @@ export const GatewayLocationsListResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GatewayLocationsListResponse",
 }) as any as S.Schema<GatewayLocationsListResponse>;
 
+export type GatewayLocationsUpdateRequestMaxTtlMode =
+  | "inherit"
+  | "override"
+  | "disabled"
+  | (string & {});
+export const GatewayLocationsUpdateRequestMaxTtlMode = /*@__PURE__*/ S.String;
+
+export interface GatewayLocationsUpdateRequestMaxTtl {
+  mode: GatewayLocationsUpdateRequestMaxTtlMode;
+  ttl_secs?: number;
+}
+export const GatewayLocationsUpdateRequestMaxTtl = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    mode: GatewayLocationsUpdateRequestMaxTtlMode,
+    ttl_secs: S.optional(S.Number),
+  }),
+).annotate({
+  identifier: "GatewayLocationsUpdateRequestMaxTtl",
+}) as any as S.Schema<GatewayLocationsUpdateRequestMaxTtl>;
+
 export interface GatewayLocationsUpdateRequestNetworksItem {
   network: string;
 }
@@ -23327,6 +25088,7 @@ export interface GatewayLocationsUpdateRequest {
   dns_destination_ips_id?: string;
   ecs_support?: boolean;
   endpoints?: unknown;
+  max_ttl?: GatewayLocationsUpdateRequestMaxTtl;
   networks?: GatewayLocationsUpdateRequestNetworksList;
 }
 export const GatewayLocationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
@@ -23338,6 +25100,7 @@ export const GatewayLocationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     dns_destination_ips_id: S.optional(S.String),
     ecs_support: S.optional(S.Boolean),
     endpoints: S.optional(S.Unknown),
+    max_ttl: S.optional(GatewayLocationsUpdateRequestMaxTtl),
     networks: S.optional(GatewayLocationsUpdateRequestNetworksList),
   }).pipe(
     T.Http({
@@ -25592,7 +27355,7 @@ export type OrganizationsCreateRequestMfaConfigAllowedAuthenticatorsItem =
   | "totp"
   | "biometrics"
   | "security_key"
-  | "ssh_piv_key"
+  | "piv_key"
   | (string & {});
 export const OrganizationsCreateRequestMfaConfigAllowedAuthenticatorsItem =
   /*@__PURE__*/ S.String;
@@ -25623,71 +27386,71 @@ export const OrganizationsCreateRequestMfaConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationsCreateRequestMfaConfig",
 }) as any as S.Schema<OrganizationsCreateRequestMfaConfig>;
 
-export type OrganizationsCreateRequestMfaSshPivKeyRequirementsPinPolicy =
+export type OrganizationsCreateRequestMfaPivKeyRequirementsPinPolicy =
   | "never"
   | "once"
   | "always"
   | (string & {});
-export const OrganizationsCreateRequestMfaSshPivKeyRequirementsPinPolicy =
+export const OrganizationsCreateRequestMfaPivKeyRequirementsPinPolicy =
   /*@__PURE__*/ S.String;
 
-export type OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeySizeList =
+export type OrganizationsCreateRequestMfaPivKeyRequirementsSshKeySizeList =
   unknown[];
-export const OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeySizeList =
+export const OrganizationsCreateRequestMfaPivKeyRequirementsSshKeySizeList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
-  ) as any as S.Schema<OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeySizeList>;
+  ) as any as S.Schema<OrganizationsCreateRequestMfaPivKeyRequirementsSshKeySizeList>;
 
-export type OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeItem =
+export type OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeItem =
   | "ecdsa"
   | "ed25519"
   | "rsa"
   | (string & {});
-export const OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeItem =
+export const OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeItem =
   /*@__PURE__*/ S.String;
 
-export type OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeList =
-  OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeItem[];
-export const OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeList =
+export type OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeList =
+  OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeItem[];
+export const OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeList =
   /*@__PURE__*/ S.Array(
-    OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeItem,
-  ) as any as S.Schema<OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeList>;
+    OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeItem,
+  ) as any as S.Schema<OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeList>;
 
-export type OrganizationsCreateRequestMfaSshPivKeyRequirementsTouchPolicy =
+export type OrganizationsCreateRequestMfaPivKeyRequirementsTouchPolicy =
   | "never"
   | "always"
   | "cached"
   | (string & {});
-export const OrganizationsCreateRequestMfaSshPivKeyRequirementsTouchPolicy =
+export const OrganizationsCreateRequestMfaPivKeyRequirementsTouchPolicy =
   /*@__PURE__*/ S.String;
 
-export interface OrganizationsCreateRequestMfaSshPivKeyRequirements {
-  pin_policy?: OrganizationsCreateRequestMfaSshPivKeyRequirementsPinPolicy;
+export interface OrganizationsCreateRequestMfaPivKeyRequirements {
+  pin_policy?: OrganizationsCreateRequestMfaPivKeyRequirementsPinPolicy;
   require_fips_device?: boolean;
-  ssh_key_size?: OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeySizeList;
-  ssh_key_type?: OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeList;
-  touch_policy?: OrganizationsCreateRequestMfaSshPivKeyRequirementsTouchPolicy;
+  ssh_key_size?: OrganizationsCreateRequestMfaPivKeyRequirementsSshKeySizeList;
+  ssh_key_type?: OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeList;
+  touch_policy?: OrganizationsCreateRequestMfaPivKeyRequirementsTouchPolicy;
 }
-export const OrganizationsCreateRequestMfaSshPivKeyRequirements =
+export const OrganizationsCreateRequestMfaPivKeyRequirements =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pin_policy: S.optional(
-        OrganizationsCreateRequestMfaSshPivKeyRequirementsPinPolicy,
+        OrganizationsCreateRequestMfaPivKeyRequirementsPinPolicy,
       ),
       require_fips_device: S.optional(S.Boolean),
       ssh_key_size: S.optional(
-        OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeySizeList,
+        OrganizationsCreateRequestMfaPivKeyRequirementsSshKeySizeList,
       ),
       ssh_key_type: S.optional(
-        OrganizationsCreateRequestMfaSshPivKeyRequirementsSshKeyTypeList,
+        OrganizationsCreateRequestMfaPivKeyRequirementsSshKeyTypeList,
       ),
       touch_policy: S.optional(
-        OrganizationsCreateRequestMfaSshPivKeyRequirementsTouchPolicy,
+        OrganizationsCreateRequestMfaPivKeyRequirementsTouchPolicy,
       ),
     }),
   ).annotate({
-    identifier: "OrganizationsCreateRequestMfaSshPivKeyRequirements",
-  }) as any as S.Schema<OrganizationsCreateRequestMfaSshPivKeyRequirements>;
+    identifier: "OrganizationsCreateRequestMfaPivKeyRequirements",
+  }) as any as S.Schema<OrganizationsCreateRequestMfaPivKeyRequirements>;
 
 export interface OrganizationsCreateRequest {
   accounts_or_zones: string;
@@ -25701,8 +27464,8 @@ export interface OrganizationsCreateRequest {
   is_ui_read_only?: boolean;
   login_design?: unknown;
   mfa_config?: OrganizationsCreateRequestMfaConfig;
+  mfa_piv_key_requirements?: OrganizationsCreateRequestMfaPivKeyRequirements;
   mfa_required_for_all_apps?: boolean;
-  mfa_ssh_piv_key_requirements?: OrganizationsCreateRequestMfaSshPivKeyRequirements;
   session_duration?: string;
   ui_read_only_toggle_reason?: string;
   user_seat_expiration_inactive_time?: string;
@@ -25723,10 +27486,10 @@ export const OrganizationsCreateRequest = /*@__PURE__*/ S.suspend(() =>
     is_ui_read_only: S.optional(S.Boolean),
     login_design: S.optional(S.Unknown),
     mfa_config: S.optional(OrganizationsCreateRequestMfaConfig),
-    mfa_required_for_all_apps: S.optional(S.Boolean),
-    mfa_ssh_piv_key_requirements: S.optional(
-      OrganizationsCreateRequestMfaSshPivKeyRequirements,
+    mfa_piv_key_requirements: S.optional(
+      OrganizationsCreateRequestMfaPivKeyRequirements,
     ),
+    mfa_required_for_all_apps: S.optional(S.Boolean),
     session_duration: S.optional(S.String),
     ui_read_only_toggle_reason: S.optional(S.String),
     user_seat_expiration_inactive_time: S.optional(S.String),
@@ -25930,7 +27693,7 @@ export type OrganizationsUpdateRequestMfaConfigAllowedAuthenticatorsItem =
   | "totp"
   | "biometrics"
   | "security_key"
-  | "ssh_piv_key"
+  | "piv_key"
   | (string & {});
 export const OrganizationsUpdateRequestMfaConfigAllowedAuthenticatorsItem =
   /*@__PURE__*/ S.String;
@@ -25961,71 +27724,71 @@ export const OrganizationsUpdateRequestMfaConfig = /*@__PURE__*/ S.suspend(() =>
   identifier: "OrganizationsUpdateRequestMfaConfig",
 }) as any as S.Schema<OrganizationsUpdateRequestMfaConfig>;
 
-export type OrganizationsUpdateRequestMfaSshPivKeyRequirementsPinPolicy =
+export type OrganizationsUpdateRequestMfaPivKeyRequirementsPinPolicy =
   | "never"
   | "once"
   | "always"
   | (string & {});
-export const OrganizationsUpdateRequestMfaSshPivKeyRequirementsPinPolicy =
+export const OrganizationsUpdateRequestMfaPivKeyRequirementsPinPolicy =
   /*@__PURE__*/ S.String;
 
-export type OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeySizeList =
+export type OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeySizeList =
   unknown[];
-export const OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeySizeList =
+export const OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeySizeList =
   /*@__PURE__*/ S.Array(
     S.Unknown,
-  ) as any as S.Schema<OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeySizeList>;
+  ) as any as S.Schema<OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeySizeList>;
 
-export type OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeItem =
+export type OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeItem =
   | "ecdsa"
   | "ed25519"
   | "rsa"
   | (string & {});
-export const OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeItem =
+export const OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeItem =
   /*@__PURE__*/ S.String;
 
-export type OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeList =
-  OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeItem[];
-export const OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeList =
+export type OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeList =
+  OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeItem[];
+export const OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeList =
   /*@__PURE__*/ S.Array(
-    OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeItem,
-  ) as any as S.Schema<OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeList>;
+    OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeItem,
+  ) as any as S.Schema<OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeList>;
 
-export type OrganizationsUpdateRequestMfaSshPivKeyRequirementsTouchPolicy =
+export type OrganizationsUpdateRequestMfaPivKeyRequirementsTouchPolicy =
   | "never"
   | "always"
   | "cached"
   | (string & {});
-export const OrganizationsUpdateRequestMfaSshPivKeyRequirementsTouchPolicy =
+export const OrganizationsUpdateRequestMfaPivKeyRequirementsTouchPolicy =
   /*@__PURE__*/ S.String;
 
-export interface OrganizationsUpdateRequestMfaSshPivKeyRequirements {
-  pin_policy?: OrganizationsUpdateRequestMfaSshPivKeyRequirementsPinPolicy;
+export interface OrganizationsUpdateRequestMfaPivKeyRequirements {
+  pin_policy?: OrganizationsUpdateRequestMfaPivKeyRequirementsPinPolicy;
   require_fips_device?: boolean;
-  ssh_key_size?: OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeySizeList;
-  ssh_key_type?: OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeList;
-  touch_policy?: OrganizationsUpdateRequestMfaSshPivKeyRequirementsTouchPolicy;
+  ssh_key_size?: OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeySizeList;
+  ssh_key_type?: OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeList;
+  touch_policy?: OrganizationsUpdateRequestMfaPivKeyRequirementsTouchPolicy;
 }
-export const OrganizationsUpdateRequestMfaSshPivKeyRequirements =
+export const OrganizationsUpdateRequestMfaPivKeyRequirements =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       pin_policy: S.optional(
-        OrganizationsUpdateRequestMfaSshPivKeyRequirementsPinPolicy,
+        OrganizationsUpdateRequestMfaPivKeyRequirementsPinPolicy,
       ),
       require_fips_device: S.optional(S.Boolean),
       ssh_key_size: S.optional(
-        OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeySizeList,
+        OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeySizeList,
       ),
       ssh_key_type: S.optional(
-        OrganizationsUpdateRequestMfaSshPivKeyRequirementsSshKeyTypeList,
+        OrganizationsUpdateRequestMfaPivKeyRequirementsSshKeyTypeList,
       ),
       touch_policy: S.optional(
-        OrganizationsUpdateRequestMfaSshPivKeyRequirementsTouchPolicy,
+        OrganizationsUpdateRequestMfaPivKeyRequirementsTouchPolicy,
       ),
     }),
   ).annotate({
-    identifier: "OrganizationsUpdateRequestMfaSshPivKeyRequirements",
-  }) as any as S.Schema<OrganizationsUpdateRequestMfaSshPivKeyRequirements>;
+    identifier: "OrganizationsUpdateRequestMfaPivKeyRequirements",
+  }) as any as S.Schema<OrganizationsUpdateRequestMfaPivKeyRequirements>;
 
 export interface OrganizationsUpdateRequest {
   accounts_or_zones: string;
@@ -26039,8 +27802,8 @@ export interface OrganizationsUpdateRequest {
   is_ui_read_only?: boolean;
   login_design?: unknown;
   mfa_config?: OrganizationsUpdateRequestMfaConfig;
+  mfa_piv_key_requirements?: OrganizationsUpdateRequestMfaPivKeyRequirements;
   mfa_required_for_all_apps?: boolean;
-  mfa_ssh_piv_key_requirements?: OrganizationsUpdateRequestMfaSshPivKeyRequirements;
   name?: string;
   session_duration?: string;
   ui_read_only_toggle_reason?: string;
@@ -26062,10 +27825,10 @@ export const OrganizationsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
     is_ui_read_only: S.optional(S.Boolean),
     login_design: S.optional(S.Unknown),
     mfa_config: S.optional(OrganizationsUpdateRequestMfaConfig),
-    mfa_required_for_all_apps: S.optional(S.Boolean),
-    mfa_ssh_piv_key_requirements: S.optional(
-      OrganizationsUpdateRequestMfaSshPivKeyRequirements,
+    mfa_piv_key_requirements: S.optional(
+      OrganizationsUpdateRequestMfaPivKeyRequirements,
     ),
+    mfa_required_for_all_apps: S.optional(S.Boolean),
     name: S.optional(S.String),
     session_duration: S.optional(S.String),
     ui_read_only_toggle_reason: S.optional(S.String),
@@ -29911,7 +31674,7 @@ export const AccessGroupsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Creates an IdP federation grant for the specified identity provider, making it available for federation to other accounts in the same Cloudflare organization. The account must belong to a Cloudflare organization. One-time pin and Cloudflare-managed identity providers cannot be federated. An identity provider may only have one active grant at a time. */
+/** Creates an IdP federation grant for the specified identity provider, making it available for federation to other accounts in the same Cloudflare organization. The account must belong to a Cloudflare organization. One-time pin and Cloudflare-managed identity providers cannot be federated. An account can federate at most five identity providers at a time. */
 export const AccessIdpFederationGrantsCreate: API.OperationMethod<
   AccessIdpFederationGrantsCreateRequest,
   AccessIdpFederationGrantsCreateResponse,
@@ -30522,6 +32285,136 @@ export const AccessUsersUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
+/** Returns full application details including auth methods, use cases, and permissions. */
+export const CasbApplicationsGet: API.OperationMethod<
+  CasbApplicationsGetRequest,
+  CasbApplicationsGetResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CasbApplicationsGetRequest,
+  output: CasbApplicationsGetResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Returns a list of available applications with use cases and permissions. */
+export const CasbApplicationsList: API.OperationMethod<
+  CasbApplicationsListRequest,
+  CasbApplicationsListResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CasbApplicationsListRequest,
+  output: CasbApplicationsListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Returns all available setup flows for the application, one per auth method. */
+export const CasbApplicationsSetupFlowsList: API.OperationMethod<
+  CasbApplicationsSetupFlowsListRequest,
+  CasbApplicationsSetupFlowsListResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CasbApplicationsSetupFlowsListRequest,
+  output: CasbApplicationsSetupFlowsListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Creates a new integration for the specified application. */
+export const CasbIntegrationsCreate: API.OperationMethod<
+  CasbIntegrationsCreateRequest,
+  CasbIntegrationsCreateResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CasbIntegrationsCreateRequest,
+  output: CasbIntegrationsCreateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Delete an integration by soft-deleting it. */
+export const CasbIntegrationsDelete: API.OperationMethod<
+  CasbIntegrationsDeleteRequest,
+  CasbIntegrationsDeleteResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CasbIntegrationsDeleteRequest,
+  output: CasbIntegrationsDeleteResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Returns full integration details including use cases and permissions. */
+export const CasbIntegrationsGet: API.OperationMethod<
+  CasbIntegrationsGetRequest,
+  CasbIntegrationsGetResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CasbIntegrationsGetRequest,
+  output: CasbIntegrationsGetResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Returns a paginated list of integrations for the account. */
+export const CasbIntegrationsList: API.OperationMethod<
+  CasbIntegrationsListRequest,
+  CasbIntegrationsListResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CasbIntegrationsListRequest,
+  output: CasbIntegrationsListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Pauses an integration, stopping all crawlers. */
+export const CasbIntegrationsPause: API.OperationMethod<
+  CasbIntegrationsPauseRequest,
+  CasbIntegrationsPauseResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CasbIntegrationsPauseRequest,
+  output: CasbIntegrationsPauseResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Resumes a paused integration, restarting crawlers. */
+export const CasbIntegrationsResume: API.OperationMethod<
+  CasbIntegrationsResumeRequest,
+  CasbIntegrationsResumeResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CasbIntegrationsResumeRequest,
+  output: CasbIntegrationsResumeResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Updates an integration's name, permissions, DLP profiles, use cases, or credentials. */
+export const CasbIntegrationsUpdate: API.OperationMethod<
+  CasbIntegrationsUpdateRequest,
+  CasbIntegrationsUpdateResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CasbIntegrationsUpdateRequest,
+  output: CasbIntegrationsUpdateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
 /** Updates the Zero Trust Connectivity Settings for the given account. */
 export const ConnectivitySettingsEdit: API.OperationMethod<
   ConnectivitySettingsEditRequest,
@@ -30730,7 +32623,7 @@ export const DevicesDexTestsUpdate: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Get the live status of a latest device given device_id from the device_state table */
+/** Get the latest status of a device given device_id from the device_state table. */
 export const DevicesFleetStatusGet: API.OperationMethod<
   DevicesFleetStatusGetRequest,
   DevicesFleetStatusGetResponse,
@@ -31601,7 +33494,7 @@ export const DexDevicesIspsList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** List details for devices using WARP. */
+/** List details of devices using WARP. */
 export const DexFleetStatusDevicesList: API.OperationMethod<
   DexFleetStatusDevicesListRequest,
   DexFleetStatusDevicesListResponse,
@@ -31614,7 +33507,7 @@ export const DexFleetStatusDevicesList: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** List details for live (up to 60 minutes) devices using WARP. */
+/** Get details for live (up to 60 minutes) devices using WARP. */
 export const DexFleetStatusLive: API.OperationMethod<
   DexFleetStatusLiveRequest,
   DexFleetStatusLiveResponse,
@@ -31627,7 +33520,7 @@ export const DexFleetStatusLive: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** List details for devices using WARP, up to 7 days. */
+/** Get aggregate details for devices using WARP, up to 7 days. */
 export const DexFleetStatusOverTime: API.OperationMethod<
   DexFleetStatusOverTimeRequest,
   DexFleetStatusOverTimeResponse,
@@ -33096,7 +34989,7 @@ export const GatewayConfigurationsCustomCertificateGet: API.OperationMethod<
   protocol: CloudflareProtocol,
 }));
 
-/** Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, or `certificate` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration. */
+/** Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, `certificate`, or `max_ttl_secs` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration. */
 export const GatewayConfigurationsEdit: API.OperationMethod<
   GatewayConfigurationsEditRequest,
   GatewayConfigurationsEditResponse,

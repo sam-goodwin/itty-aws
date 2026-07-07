@@ -18,7 +18,7 @@ Returns details of an ongoing active session for the given meeting ID.
 
 ### Returns
 
-- `data: optional object { id, associated_id, created_at, 12 more }`
+- `data: optional object { id, associated_id, created_at, 11 more }`
 
   - `id: string`
 
@@ -84,10 +84,6 @@ Returns details of an ongoing active session for the given meeting ID.
 
     timestamp when session ended
 
-  - `meta: optional unknown`
-
-    Any meta data about session.
-
 - `success: optional boolean`
 
 ### Example
@@ -117,8 +113,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/realtime/kit/$APP
     "breakout_rooms": [
       {}
     ],
-    "ended_at": "ended_at",
-    "meta": {}
+    "ended_at": "ended_at"
   },
   "success": true
 }

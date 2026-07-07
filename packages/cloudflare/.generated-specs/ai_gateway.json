@@ -7406,7 +7406,7 @@
           "uri": "/accounts/{account_id}/ai-gateway/billing/spending-limit",
           "code": 200
         },
-        "smithy.api#documentation": "Configure a spending limit with amount, strategy, and duration."
+        "smithy.api#documentation": "Deprecated: spending limits can no longer be created, enabled, or modified and this endpoint always responds 403. Use the new AI Gateway spend limits instead: https://developers.cloudflare.com/ai-gateway/features/spend-limits/. Existing limits can be removed via DELETE /spending-limit."
       }
     },
     "com.cloudflare.ai_gateway#BillingSpendingLimitDeleteRequest": {

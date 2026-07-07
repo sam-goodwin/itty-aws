@@ -267,7 +267,7 @@ curl https://api.cloudflare.com/client/v4/zones/$ZONE_ID/api_gateway/user_schema
 
 **post** `/zones/{zone_id}/api_gateway/user_schemas`
 
-Upload a schema to a zone
+Uploads a new OpenAPI schema for API Shield schema validation. The schema defines expected request/response formats for API endpoints.
 
 ### Path Parameters
 

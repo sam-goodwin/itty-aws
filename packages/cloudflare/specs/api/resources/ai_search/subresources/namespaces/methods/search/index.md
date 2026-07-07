@@ -2,7 +2,7 @@
 
 **post** `/accounts/{account_id}/ai-search/namespaces/{name}/search`
 
-Multi-Instance Search
+Performs a semantic search query against multiple AI Search instances in parallel, merging the retrieved results into a single ranked response.
 
 ### Path Parameters
 
@@ -144,7 +144,7 @@ Multi-Instance Search
 
     - `keyword_match_mode: optional "and" or "or"`
 
-      Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. Defaults to 'and'.
+      Controls which documents are candidates for BM25 scoring. 'and' restricts candidates to documents containing all query terms; 'or' includes any document containing at least one term, ranked by BM25 relevance. When omitted, falls back to the instance-level retrieval_options.keyword_match_mode, then to 'and'.
 
       - `"and"`
 
@@ -166,7 +166,31 @@ Multi-Instance Search
 
 - `messages: optional array of object { content, role }`
 
-  - `content: string`
+  OpenAI-compatible message array. For multimodal queries, set the last user message's `content` to an array of typed parts: `[{type:'text', text:'…'}, {type:'image_url', image_url:{url:'…'}}]`. Image inputs require the RAG's embedding_model to declare 'image' in supported_modalities.
+
+  - `content: string or array of object { text, type }  or object { image_url, type }`
+
+    - `string`
+
+    - `array of object { text, type }  or object { image_url, type }`
+
+      - `object { text, type }`
+
+        - `text: string`
+
+        - `type: "text"`
+
+          - `"text"`
+
+      - `object { image_url, type }`
+
+        - `image_url: object { url }`
+
+          - `url: string`
+
+        - `type: "image_url"`
+
+          - `"image_url"`
 
   - `role: "system" or "developer" or "user" or 2 more`
 
@@ -186,7 +210,7 @@ Multi-Instance Search
 
 ### Returns
 
-- `result: object { chunks, search_query, errors }`
+- `result: object { chunks, query_kind, errors, search_query }`
 
   - `chunks: array of object { id, instance_id, score, 4 more }`
 
@@ -226,13 +250,21 @@ Multi-Instance Search
 
       - `vector_score: optional number`
 
-  - `search_query: string`
+  - `query_kind: "text" or "image" or "multimodal"`
+
+    - `"text"`
+
+    - `"image"`
+
+    - `"multimodal"`
 
   - `errors: optional array of object { instance_id, message }`
 
     - `instance_id: string`
 
     - `message: string`
+
+  - `search_query: optional string`
 
 - `success: boolean`
 
@@ -280,13 +312,14 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
         }
       }
     ],
-    "search_query": "search_query",
+    "query_kind": "text",
     "errors": [
       {
         "instance_id": "instance_id",
         "message": "message"
       }
-    ]
+    ],
+    "search_query": "search_query"
   },
   "success": true
 }

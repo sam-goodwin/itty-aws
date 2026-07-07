@@ -832,7 +832,7 @@ Upload a Worker Version without deploying to Cloudflare's network. You can find 
 
       When the version was last modified.
 
-    - `source: optional "unknown" or "api" or "wrangler" or 7 more`
+    - `source: optional "unknown" or "api" or "wrangler" or 8 more`
 
       The source of the version upload.
 
@@ -845,6 +845,8 @@ Upload a Worker Version without deploying to Cloudflare's network. You can find 
       - `"terraform"`
 
       - `"dash"`
+
+      - `"cf_cli"`
 
       - `"dash_template"`
 

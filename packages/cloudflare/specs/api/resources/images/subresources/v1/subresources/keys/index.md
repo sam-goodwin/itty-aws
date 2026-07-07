@@ -4,7 +4,7 @@
 
 **get** `/accounts/{account_id}/images/v1/keys`
 
-Lists your signing keys. These can be found on your Cloudflare Images dashboard.
+List your CF Images signing keys.
 
 ### Path Parameters
 
@@ -101,7 +101,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/keys \
 
 **put** `/accounts/{account_id}/images/v1/keys/{signing_key_name}`
 
-Create a new signing key with specified name. Returns all keys available.
+Create a new CF Images signing key with specified name. Returns all keys available.
 
 ### Path Parameters
 
@@ -201,8 +201,8 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/images/v1/keys/$S
 
 **delete** `/accounts/{account_id}/images/v1/keys/{signing_key_name}`
 
-Delete signing key with specified name. Returns all keys available.
-When last key is removed, a new default signing key will be generated.
+Delete a CF Images signing key with specified name. Returns all keys available.
+When the last key is removed, a new default signing key will be generated.
 
 ### Path Parameters
 

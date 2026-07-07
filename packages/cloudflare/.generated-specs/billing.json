@@ -621,6 +621,12 @@
             "smithy.api#documentation": "Identifies the product family for the Cloudflare service."
           }
         },
+        "SubscriptionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The identifier for the Cloudflare subscription."
+          }
+        },
         "ZoneId": {
           "target": "smithy.api#String",
           "traits": {

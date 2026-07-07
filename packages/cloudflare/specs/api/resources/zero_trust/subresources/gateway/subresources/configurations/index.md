@@ -262,6 +262,10 @@ Retrieve the current Zero Trust account configuration.
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -393,6 +397,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       "inspection": {
         "mode": "static"
       },
+      "max_ttl_secs": 3600,
       "protocol_detection": {
         "enabled": true
       },
@@ -637,6 +642,10 @@ Update the current Zero Trust account configuration.
 
       - `"dynamic"`
 
+  - `max_ttl_secs: optional number`
+
+    Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
   - `protocol_detection: optional ProtocolDetection`
 
     Specify whether to detect protocols from the initial bytes of client traffic.
@@ -921,6 +930,10 @@ Update the current Zero Trust account configuration.
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -1055,6 +1068,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       "inspection": {
         "mode": "static"
       },
+      "max_ttl_secs": 3600,
       "protocol_detection": {
         "enabled": true
       },
@@ -1075,7 +1089,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
 
 **patch** `/accounts/{account_id}/gateway/configuration`
 
-Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, or `certificate` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration.
+Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decrypt`, `activity_log`, `block_page`, `browser_isolation`, `fips`, `body_scanning`, `certificate`, or `max_ttl_secs` without updating the entire configuration object. This endpoint returns an error if any settings collection lacks proper configuration.
 
 ### Path Parameters
 
@@ -1299,6 +1313,10 @@ Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decr
 
       - `"dynamic"`
 
+  - `max_ttl_secs: optional number`
+
+    Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
   - `protocol_detection: optional ProtocolDetection`
 
     Specify whether to detect protocols from the initial bytes of client traffic.
@@ -1583,6 +1601,10 @@ Update (PATCH) a single subcollection of settings such as `antivirus`, `tls_decr
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -1717,6 +1739,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       "inspection": {
         "mode": "static"
       },
+      "max_ttl_secs": 3600,
       "protocol_detection": {
         "enabled": true
       },
@@ -1937,7 +1960,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
 
 ### Gateway Configuration Settings
 
-- `GatewayConfigurationSettings object { activity_log, antivirus, block_page, 11 more }`
+- `GatewayConfigurationSettings object { activity_log, antivirus, block_page, 12 more }`
 
   Specify account settings.
 
@@ -2152,6 +2175,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
       - `"static"`
 
       - `"dynamic"`
+
+  - `max_ttl_secs: optional number`
+
+    Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
 
   - `protocol_detection: optional ProtocolDetection`
 
@@ -2451,6 +2478,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -2709,6 +2740,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
 
         - `"dynamic"`
 
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
+
     - `protocol_detection: optional ProtocolDetection`
 
       Specify whether to detect protocols from the initial bytes of client traffic.
@@ -2966,6 +3001,10 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/gateway/configura
         - `"static"`
 
         - `"dynamic"`
+
+    - `max_ttl_secs: optional number`
+
+      Account-level cap on DNS response TTLs, in seconds. Gateway rewrites DNS responses so returned record TTLs do not exceed this value. Null means no cap. Each DNS location can inherit, override, or disable it through the location `max_ttl` setting.
 
     - `protocol_detection: optional ProtocolDetection`
 

@@ -144,9 +144,11 @@ Delete instance.
 
     - `field_name: string`
 
-  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/baai/bge-m3" or "@cf/baai/bge-large-en-v1.5" or 6 more`
+  - `embedding_model: optional "@cf/qwen/qwen3-embedding-0.6b" or "@cf/qwen/qwen3-vl-embedding-2b" or "@cf/baai/bge-m3" or 8 more`
 
     - `"@cf/qwen/qwen3-embedding-0.6b"`
+
+    - `"@cf/qwen/qwen3-vl-embedding-2b"`
 
     - `"@cf/baai/bge-m3"`
 
@@ -157,6 +159,8 @@ Delete instance.
     - `"google-ai-studio/gemini-embedding-001"`
 
     - `"google-ai-studio/gemini-embedding-2-preview"`
+
+    - `"google-ai-studio/gemini-embedding-2"`
 
     - `"openai/text-embedding-3-small"`
 
@@ -218,7 +222,7 @@ Delete instance.
 
   - `public_endpoint_id: optional string`
 
-  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, enabled, 3 more }`
+  - `public_endpoint_params: optional object { authorized_hosts, chat_completions_endpoint, custom_domains, 4 more }`
 
     - `authorized_hosts: optional array of string`
 
@@ -227,6 +231,10 @@ Delete instance.
       - `disabled: optional boolean`
 
         Disable chat completions endpoint for this public endpoint
+
+    - `custom_domains: optional array of string`
+
+      Custom domain hostnames that alias this public endpoint. GET and create responses return the current set; on update (PUT) this field is only echoed back when supplied in the request body, otherwise it is null (omit it to leave domains unchanged).
 
     - `enabled: optional boolean`
 
@@ -376,25 +384,7 @@ Delete instance.
 
     - `r2_jurisdiction: optional string`
 
-    - `web_crawler: optional object { crawl_options, parse_options, parse_type, store_options }`
-
-      - `crawl_options: optional object { depth, include_external_links, include_subdomains, 2 more }`
-
-        - `depth: optional number`
-
-        - `include_external_links: optional boolean`
-
-        - `include_subdomains: optional boolean`
-
-        - `max_age: optional number`
-
-        - `source: optional "all" or "sitemaps" or "links"`
-
-          - `"all"`
-
-          - `"sitemaps"`
-
-          - `"links"`
+    - `web_crawler: optional object { parse_options, parse_type }`
 
       - `parse_options: optional object { content_selector, include_headers, include_images, 2 more }`
 
@@ -422,23 +412,11 @@ Delete instance.
 
         - `use_browser_rendering: optional boolean`
 
-      - `parse_type: optional "sitemap" or "feed-rss" or "crawl"`
+      - `parse_type: optional "sitemap" or "crawl"`
 
         - `"sitemap"`
 
-        - `"feed-rss"`
-
         - `"crawl"`
-
-      - `store_options: optional object { storage_id, r2_jurisdiction, storage_type }`
-
-        - `storage_id: string`
-
-        - `r2_jurisdiction: optional string`
-
-        - `storage_type: optional Provider`
-
-          - `"r2"`
 
   - `status: optional string`
 
@@ -531,6 +509,9 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       "chat_completions_endpoint": {
         "disabled": true
       },
+      "custom_domains": [
+        "search.example.com"
+      ],
       "enabled": true,
       "mcp": {
         "description": "description",
@@ -574,13 +555,6 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
       "prefix": "prefix",
       "r2_jurisdiction": "r2_jurisdiction",
       "web_crawler": {
-        "crawl_options": {
-          "depth": 1,
-          "include_external_links": true,
-          "include_subdomains": true,
-          "max_age": 0,
-          "source": "all"
-        },
         "parse_options": {
           "content_selector": [
             {
@@ -602,12 +576,7 @@ curl https://api.cloudflare.com/client/v4/accounts/$ACCOUNT_ID/ai-search/namespa
           ],
           "use_browser_rendering": true
         },
-        "parse_type": "sitemap",
-        "store_options": {
-          "storage_id": "storage_id",
-          "r2_jurisdiction": "r2_jurisdiction",
-          "storage_type": "r2"
-        }
+        "parse_type": "sitemap"
       }
     },
     "status": "status",

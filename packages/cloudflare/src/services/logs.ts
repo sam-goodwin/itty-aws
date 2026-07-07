@@ -157,6 +157,266 @@ export const ControlRetentionGetResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "ControlRetentionGetResponse",
 }) as any as S.Schema<ControlRetentionGetResponse>;
 
+export interface LogExplorerDatasetsAvailableListRequest {
+  accounts_or_zones: string;
+  account_or_zone_id: string;
+}
+export const LogExplorerDatasetsAvailableListRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accounts_or_zones: S.String.pipe(T.Label()),
+      account_or_zone_id: S.String.pipe(T.Label()),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/{accounts_or_zones}/{account_or_zone_id}/logs/explorer/datasets/available",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "LogExplorerDatasetsAvailableListRequest",
+}) as any as S.Schema<LogExplorerDatasetsAvailableListRequest>;
+
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface LogExplorerDatasetsAvailableListResponse {
+  AvailableList_object___errors__messages__success__result__: unknown;
+}
+export const LogExplorerDatasetsAvailableListResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      AvailableList_object___errors__messages__success__result__:
+        S.Unknown.pipe(
+          T.Body("AvailableList object { errors, messages, success, result }"),
+        ),
+    }),
+).annotate({
+  identifier: "LogExplorerDatasetsAvailableListResponse",
+}) as any as S.Schema<LogExplorerDatasetsAvailableListResponse>;
+
+export interface LogExplorerDatasetsCreateRequestFieldsItem {
+  enabled: boolean;
+  name: string;
+}
+export const LogExplorerDatasetsCreateRequestFieldsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsCreateRequestFieldsItem",
+  }) as any as S.Schema<LogExplorerDatasetsCreateRequestFieldsItem>;
+
+export type LogExplorerDatasetsCreateRequestFieldsList =
+  LogExplorerDatasetsCreateRequestFieldsItem[];
+export const LogExplorerDatasetsCreateRequestFieldsList = /*@__PURE__*/ S.Array(
+  LogExplorerDatasetsCreateRequestFieldsItem,
+) as any as S.Schema<LogExplorerDatasetsCreateRequestFieldsList>;
+
+export interface LogExplorerDatasetsCreateRequest {
+  accounts_or_zones: string;
+  account_or_zone_id: string;
+  dataset: string;
+  fields?: LogExplorerDatasetsCreateRequestFieldsList;
+}
+export const LogExplorerDatasetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accounts_or_zones: S.String.pipe(T.Label()),
+    account_or_zone_id: S.String.pipe(T.Label()),
+    dataset: S.String,
+    fields: S.optional(LogExplorerDatasetsCreateRequestFieldsList),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/{accounts_or_zones}/{account_or_zone_id}/logs/explorer/datasets",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "LogExplorerDatasetsCreateRequest",
+}) as any as S.Schema<LogExplorerDatasetsCreateRequest>;
+
+export interface LogExplorerDatasetsCreateResponse {
+  result?: unknown;
+}
+export const LogExplorerDatasetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "LogExplorerDatasetsCreateResponse",
+}) as any as S.Schema<LogExplorerDatasetsCreateResponse>;
+
+export interface LogExplorerDatasetsGetRequest {
+  accounts_or_zones: string;
+  account_or_zone_id: string;
+  dataset_id: string;
+}
+export const LogExplorerDatasetsGetRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accounts_or_zones: S.String.pipe(T.Label()),
+    account_or_zone_id: S.String.pipe(T.Label()),
+    dataset_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{accounts_or_zones}/{account_or_zone_id}/logs/explorer/datasets/{dataset_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "LogExplorerDatasetsGetRequest",
+}) as any as S.Schema<LogExplorerDatasetsGetRequest>;
+
+export interface LogExplorerDatasetsGetResponse {
+  result?: unknown;
+}
+export const LogExplorerDatasetsGetResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "LogExplorerDatasetsGetResponse",
+}) as any as S.Schema<LogExplorerDatasetsGetResponse>;
+
+export interface LogExplorerDatasetsListRequest {
+  accounts_or_zones: string;
+  account_or_zone_id: string;
+  include_zones?: boolean;
+}
+export const LogExplorerDatasetsListRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accounts_or_zones: S.String.pipe(T.Label()),
+    account_or_zone_id: S.String.pipe(T.Label()),
+    include_zones: S.optional(S.Boolean.pipe(T.Query())),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/{accounts_or_zones}/{account_or_zone_id}/logs/explorer/datasets",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "LogExplorerDatasetsListRequest",
+}) as any as S.Schema<LogExplorerDatasetsListRequest>;
+
+export type LogExplorerDatasetsListResultList = unknown[];
+export const LogExplorerDatasetsListResultList = /*@__PURE__*/ S.Array(
+  S.Unknown,
+) as any as S.Schema<LogExplorerDatasetsListResultList>;
+
+export interface LogExplorerDatasetsListResponse {
+  result?: LogExplorerDatasetsListResultList;
+}
+export const LogExplorerDatasetsListResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(
+      LogExplorerDatasetsListResultList.pipe(T.EnvelopePayload()),
+    ),
+  }),
+).annotate({
+  identifier: "LogExplorerDatasetsListResponse",
+}) as any as S.Schema<LogExplorerDatasetsListResponse>;
+
+export interface LogExplorerDatasetsUpdateRequestFieldsItem {
+  enabled: boolean;
+  name: string;
+}
+export const LogExplorerDatasetsUpdateRequestFieldsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsUpdateRequestFieldsItem",
+  }) as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsItem>;
+
+export type LogExplorerDatasetsUpdateRequestFieldsList =
+  LogExplorerDatasetsUpdateRequestFieldsItem[];
+export const LogExplorerDatasetsUpdateRequestFieldsList = /*@__PURE__*/ S.Array(
+  LogExplorerDatasetsUpdateRequestFieldsItem,
+) as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsList>;
+
+export interface LogExplorerDatasetsUpdateRequest {
+  accounts_or_zones: string;
+  account_or_zone_id: string;
+  dataset_id: string;
+  enabled: boolean;
+  fields?: LogExplorerDatasetsUpdateRequestFieldsList;
+}
+export const LogExplorerDatasetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accounts_or_zones: S.String.pipe(T.Label()),
+    account_or_zone_id: S.String.pipe(T.Label()),
+    dataset_id: S.String.pipe(T.Label()),
+    enabled: S.Boolean,
+    fields: S.optional(LogExplorerDatasetsUpdateRequestFieldsList),
+  }).pipe(
+    T.Http({
+      method: "PUT",
+      uri: "/{accounts_or_zones}/{account_or_zone_id}/logs/explorer/datasets/{dataset_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "LogExplorerDatasetsUpdateRequest",
+}) as any as S.Schema<LogExplorerDatasetsUpdateRequest>;
+
+export interface LogExplorerDatasetsUpdateResponse {
+  result?: unknown;
+}
+export const LogExplorerDatasetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(S.Unknown.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "LogExplorerDatasetsUpdateResponse",
+}) as any as S.Schema<LogExplorerDatasetsUpdateResponse>;
+
+export interface LogExplorerQuerySqlRequest {
+  accounts_or_zones: string;
+  account_or_zone_id: string;
+}
+export const LogExplorerQuerySqlRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accounts_or_zones: S.String.pipe(T.Label()),
+    account_or_zone_id: S.String.pipe(T.Label()),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/{accounts_or_zones}/{account_or_zone_id}/logs/explorer/query/sql",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "LogExplorerQuerySqlRequest",
+}) as any as S.Schema<LogExplorerQuerySqlRequest>;
+
+export type LogExplorerQuerySqlResultItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const LogExplorerQuerySqlResultItemMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<LogExplorerQuerySqlResultItemMap>;
+
+export type LogExplorerQuerySqlResultList = LogExplorerQuerySqlResultItemMap[];
+export const LogExplorerQuerySqlResultList = /*@__PURE__*/ S.Array(
+  LogExplorerQuerySqlResultItemMap,
+) as any as S.Schema<LogExplorerQuerySqlResultList>;
+
+export interface LogExplorerQuerySqlResponse {
+  result?: LogExplorerQuerySqlResultList;
+}
+export const LogExplorerQuerySqlResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: S.optional(LogExplorerQuerySqlResultList.pipe(T.EnvelopePayload())),
+  }),
+).annotate({
+  identifier: "LogExplorerQuerySqlResponse",
+}) as any as S.Schema<LogExplorerQuerySqlResponse>;
+
 export type RayidGetRequestTimestamps =
   | "unix"
   | "unixnano"
@@ -337,6 +597,84 @@ export const ControlRetentionGet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ControlRetentionGetRequest,
   output: ControlRetentionGetResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Returns all dataset types that this account or zone can create. Each entry includes the dataset schema and timestamp field. The schema shows all possible fields for a dataset. However, not all fields may be available for your account or zone. When creating or updating a dataset, only fields available to your account or zone can be enabled. If you request a field that is not available, you will receive an error. */
+export const LogExplorerDatasetsAvailableList: API.OperationMethod<
+  LogExplorerDatasetsAvailableListRequest,
+  LogExplorerDatasetsAvailableListResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: LogExplorerDatasetsAvailableListRequest,
+  output: LogExplorerDatasetsAvailableListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Create a new Log Explorer dataset for the account or zone. Use the `/account or zones/{account or zone_id}/logs/explorer/datasets/available` endpoint to list dataset types you can create along with their available fields. The `fields` property is optional. If not specified, all available fields will be enabled. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/datasets For dataset field definitions, see: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
+export const LogExplorerDatasetsCreate: API.OperationMethod<
+  LogExplorerDatasetsCreateRequest,
+  LogExplorerDatasetsCreateResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: LogExplorerDatasetsCreateRequest,
+  output: LogExplorerDatasetsCreateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Retrieve a single Log Explorer dataset by ID for the account or zone. */
+export const LogExplorerDatasetsGet: API.OperationMethod<
+  LogExplorerDatasetsGetRequest,
+  LogExplorerDatasetsGetResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: LogExplorerDatasetsGetRequest,
+  output: LogExplorerDatasetsGetResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Returns all Log Explorer datasets configured for the account or zone. Pass `include_zones=true` to also include zone-level datasets that belong to this account or zone. List responses omit the `fields` property; use the single-dataset endpoint to retrieve field configuration. */
+export const LogExplorerDatasetsList: API.OperationMethod<
+  LogExplorerDatasetsListRequest,
+  LogExplorerDatasetsListResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: LogExplorerDatasetsListRequest,
+  output: LogExplorerDatasetsListResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Updates the enabled state and/or field configuration of an account or zone dataset. */
+export const LogExplorerDatasetsUpdate: API.OperationMethod<
+  LogExplorerDatasetsUpdateRequest,
+  LogExplorerDatasetsUpdateResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: LogExplorerDatasetsUpdateRequest,
+  output: LogExplorerDatasetsUpdateResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+}));
+
+/** Run a SQL query against account or zone-level datasets. Timestamp fields are RFC3339 strings. Filter with: WHERE {timestamp_field} >= now() - INTERVAL '30' DAY WHERE {timestamp_field} >= '2026-04-01T00:00:00Z' WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z' Check /account or zones/{account or zone_id}/logs/explorer/datasets to see enabled account or zone level datasets. Zone-level datasets will not appear here. Check /account or zones/{account or zone_id}/logs/explorer/datasets/available for the schemas, and the name of the timestamp fields. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/query/sql For more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
+export const LogExplorerQuerySql: API.OperationMethod<
+  LogExplorerQuerySqlRequest,
+  LogExplorerQuerySqlResponse,
+  CloudflareOpError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: LogExplorerQuerySqlRequest,
+  output: LogExplorerQuerySqlResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
 }));

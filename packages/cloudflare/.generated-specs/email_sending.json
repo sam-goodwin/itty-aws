@@ -85,13 +85,13 @@
         "bcc": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "BCC recipient(s). A single email string or an array of email strings."
+            "smithy.api#documentation": "BCC recipient(s). A single email string, a named address object, or an array of either."
           }
         },
         "cc": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "CC recipient(s). A single email string or an array of email strings."
+            "smithy.api#documentation": "CC recipient(s). A single email string, a named address object, or an array of either."
           }
         },
         "headers": {
@@ -121,7 +121,7 @@
         "to": {
           "target": "smithy.api#Document",
           "traits": {
-            "smithy.api#documentation": "Recipient(s). Optional if cc or bcc is provided. A single email string or an array of email strings."
+            "smithy.api#documentation": "Recipient(s). Optional if cc or bcc is provided. A single email string, a named address object, or an array of either."
           }
         }
       },
@@ -381,6 +381,12 @@
             "smithy.api#documentation": "The date and time the destination address was last modified."
           }
         },
+        "preview_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether sent messages from this subdomain can be previewed in the activity log."
+          }
+        },
         "return_path_domain": {
           "target": "smithy.api#String",
           "traits": {
@@ -518,6 +524,12 @@
             "smithy.api#documentation": "The date and time the destination address was last modified."
           }
         },
+        "preview_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether sent messages from this subdomain can be previewed in the activity log."
+          }
+        },
         "return_path_domain": {
           "target": "smithy.api#String",
           "traits": {
@@ -604,6 +616,12 @@
           "target": "smithy.api#String",
           "traits": {
             "smithy.api#documentation": "The date and time the destination address was last modified."
+          }
+        },
+        "preview_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether sent messages from this subdomain can be previewed in the activity log."
           }
         },
         "return_path_domain": {

@@ -96,7 +96,7 @@ Lists WARP registrations.
 
   - `message: string`
 
-- `result: array of object { id, created_at, device, 9 more }`
+- `result: array of object { id, created_at, device, 11 more }`
 
   - `id: string`
 
@@ -187,6 +187,14 @@ Lists WARP registrations.
     - `name: optional string`
 
       The enrolled device user's name.
+
+  - `virtual_ipv4: optional string`
+
+    The virtual IPv4 address assigned to the network interface of the tunnel for this registration.
+
+  - `virtual_ipv6: optional string`
+
+    The virtual IPv6 address assigned to the network interface of the tunnel for this registration.
 
 - `success: boolean`
 

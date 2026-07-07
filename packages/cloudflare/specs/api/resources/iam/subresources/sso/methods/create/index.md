@@ -2,7 +2,7 @@
 
 **post** `/accounts/{account_id}/sso_connectors`
 
-Initialize new SSO connector
+Creates a new SSO connector for logging into Cloudflare through an identity provider.
 
 ### Path Parameters
 

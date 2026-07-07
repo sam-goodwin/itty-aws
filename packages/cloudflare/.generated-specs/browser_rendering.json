@@ -592,6 +592,13 @@
             "smithy.api#httpQuery": "lab"
           }
         },
+        "liveViewUrlExpiresInMs": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How long the live view URL remains valid, in milliseconds (max 60 minutes). Only used when targets is true.",
+            "smithy.api#httpQuery": "liveViewUrlExpiresInMs"
+          }
+        },
         "recording": {
           "target": "smithy.api#Boolean",
           "traits": {
@@ -646,7 +653,7 @@
           "uri": "/accounts/{account_id}/browser-rendering/devtools/browser",
           "code": 200
         },
-        "smithy.api#documentation": "Acquire a new browser DevTools session"
+        "smithy.api#documentation": "Acquires a browser and returns its session ID and websocket URL."
       }
     },
     "com.cloudflare.browser_rendering#DevtoolsBrowserDeleteRequest": {
@@ -1257,6 +1264,13 @@
             "smithy.api#required": {}
           }
         },
+        "liveViewUrlExpiresInMs": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How long the live view URL remains valid, in milliseconds (max 60 minutes)",
+            "smithy.api#httpQuery": "liveViewUrlExpiresInMs"
+          }
+        },
         "url": {
           "target": "smithy.api#String",
           "traits": {
@@ -1461,6 +1475,13 @@
             "smithy.api#documentation": "Browser session ID.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
+          }
+        },
+        "liveViewUrlExpiresInMs": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How long the live view URLs remain valid, in milliseconds (max 60 minutes)",
+            "smithy.api#httpQuery": "liveViewUrlExpiresInMs"
           }
         }
       },

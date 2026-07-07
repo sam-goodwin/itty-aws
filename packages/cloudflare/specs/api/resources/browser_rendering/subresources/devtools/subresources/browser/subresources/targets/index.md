@@ -18,6 +18,10 @@ Opens a new tab in the browser. Optionally specify a URL to navigate to.
 
 ### Query Parameters
 
+- `liveViewUrlExpiresInMs: optional number`
+
+  How long the live view URL remains valid, in milliseconds (max 60 minutes)
+
 - `url: optional string`
 
 ### Returns
@@ -87,6 +91,12 @@ Returns a list of all debuggable targets including tabs, pages, service workers,
 - `session_id: string`
 
   Browser session ID.
+
+### Query Parameters
+
+- `liveViewUrlExpiresInMs: optional number`
+
+  How long the live view URLs remain valid, in milliseconds (max 60 minutes)
 
 ### Returns
 

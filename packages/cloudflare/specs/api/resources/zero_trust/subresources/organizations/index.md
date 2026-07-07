@@ -110,7 +110,7 @@ Returns the configuration for your Zero Trust organization.
 
     Configures multi-factor authentication (MFA) settings for an organization.
 
-    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "ssh_piv_key"`
+    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "piv_key"`
 
       Lists the MFA methods that users can authenticate with.
 
@@ -120,7 +120,7 @@ Returns the configuration for your Zero Trust organization.
 
       - `"security_key"`
 
-      - `"ssh_piv_key"`
+      - `"piv_key"`
 
     - `amr_matching_session_duration: optional string`
 
@@ -134,13 +134,9 @@ Returns the configuration for your Zero Trust organization.
 
       Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 
-  - `mfa_required_for_all_apps: optional boolean`
+  - `mfa_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
 
-    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
-
-  - `mfa_ssh_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
-
-    Configures SSH PIV key requirements for MFA using hardware security keys.
+    Configures PIV key requirements for MFA using hardware security keys.
 
     - `pin_policy: optional "never" or "once" or "always"`
 
@@ -154,7 +150,7 @@ Returns the configuration for your Zero Trust organization.
 
     - `require_fips_device: optional boolean`
 
-      Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+      Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 
     - `ssh_key_size: optional array of 256 or 384 or 521 or 3 more`
 
@@ -191,6 +187,10 @@ Returns the configuration for your Zero Trust organization.
       - `"always"`
 
       - `"cached"`
+
+  - `mfa_required_for_all_apps: optional boolean`
+
+    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 
   - `name: optional string`
 
@@ -275,8 +275,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       "required_aaguids": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
       "session_duration": "24h"
     },
-    "mfa_required_for_all_apps": false,
-    "mfa_ssh_piv_key_requirements": {
+    "mfa_piv_key_requirements": {
       "pin_policy": "always",
       "require_fips_device": true,
       "ssh_key_size": [
@@ -289,6 +288,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       ],
       "touch_policy": "always"
     },
+    "mfa_required_for_all_apps": false,
     "name": "Widget Corps Internal Applications",
     "session_duration": "24h",
     "ui_read_only_toggle_reason": "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -371,7 +371,7 @@ Sets up a Zero Trust organization for your account or zone.
 
   Configures multi-factor authentication (MFA) settings for an organization.
 
-  - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "ssh_piv_key"`
+  - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "piv_key"`
 
     Lists the MFA methods that users can authenticate with.
 
@@ -381,7 +381,7 @@ Sets up a Zero Trust organization for your account or zone.
 
     - `"security_key"`
 
-    - `"ssh_piv_key"`
+    - `"piv_key"`
 
   - `amr_matching_session_duration: optional string`
 
@@ -395,13 +395,9 @@ Sets up a Zero Trust organization for your account or zone.
 
     Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 
-- `mfa_required_for_all_apps: optional boolean`
+- `mfa_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
 
-  Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
-
-- `mfa_ssh_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
-
-  Configures SSH PIV key requirements for MFA using hardware security keys.
+  Configures PIV key requirements for MFA using hardware security keys.
 
   - `pin_policy: optional "never" or "once" or "always"`
 
@@ -415,7 +411,7 @@ Sets up a Zero Trust organization for your account or zone.
 
   - `require_fips_device: optional boolean`
 
-    Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+    Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 
   - `ssh_key_size: optional array of 256 or 384 or 521 or 3 more`
 
@@ -452,6 +448,10 @@ Sets up a Zero Trust organization for your account or zone.
     - `"always"`
 
     - `"cached"`
+
+- `mfa_required_for_all_apps: optional boolean`
+
+  Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 
 - `session_duration: optional string`
 
@@ -563,7 +563,7 @@ Sets up a Zero Trust organization for your account or zone.
 
     Configures multi-factor authentication (MFA) settings for an organization.
 
-    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "ssh_piv_key"`
+    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "piv_key"`
 
       Lists the MFA methods that users can authenticate with.
 
@@ -573,7 +573,7 @@ Sets up a Zero Trust organization for your account or zone.
 
       - `"security_key"`
 
-      - `"ssh_piv_key"`
+      - `"piv_key"`
 
     - `amr_matching_session_duration: optional string`
 
@@ -587,13 +587,9 @@ Sets up a Zero Trust organization for your account or zone.
 
       Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 
-  - `mfa_required_for_all_apps: optional boolean`
+  - `mfa_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
 
-    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
-
-  - `mfa_ssh_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
-
-    Configures SSH PIV key requirements for MFA using hardware security keys.
+    Configures PIV key requirements for MFA using hardware security keys.
 
     - `pin_policy: optional "never" or "once" or "always"`
 
@@ -607,7 +603,7 @@ Sets up a Zero Trust organization for your account or zone.
 
     - `require_fips_device: optional boolean`
 
-      Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+      Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 
     - `ssh_key_size: optional array of 256 or 384 or 521 or 3 more`
 
@@ -644,6 +640,10 @@ Sets up a Zero Trust organization for your account or zone.
       - `"always"`
 
       - `"cached"`
+
+  - `mfa_required_for_all_apps: optional boolean`
+
+    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 
   - `name: optional string`
 
@@ -740,8 +740,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       "required_aaguids": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
       "session_duration": "24h"
     },
-    "mfa_required_for_all_apps": false,
-    "mfa_ssh_piv_key_requirements": {
+    "mfa_piv_key_requirements": {
       "pin_policy": "always",
       "require_fips_device": true,
       "ssh_key_size": [
@@ -754,6 +753,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       ],
       "touch_policy": "always"
     },
+    "mfa_required_for_all_apps": false,
     "name": "Widget Corps Internal Applications",
     "session_duration": "24h",
     "ui_read_only_toggle_reason": "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -842,7 +842,7 @@ Updates the configuration for your Zero Trust organization.
 
   Configures multi-factor authentication (MFA) settings for an organization.
 
-  - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "ssh_piv_key"`
+  - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "piv_key"`
 
     Lists the MFA methods that users can authenticate with.
 
@@ -852,7 +852,7 @@ Updates the configuration for your Zero Trust organization.
 
     - `"security_key"`
 
-    - `"ssh_piv_key"`
+    - `"piv_key"`
 
   - `amr_matching_session_duration: optional string`
 
@@ -866,13 +866,9 @@ Updates the configuration for your Zero Trust organization.
 
     Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 
-- `mfa_required_for_all_apps: optional boolean`
+- `mfa_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
 
-  Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
-
-- `mfa_ssh_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
-
-  Configures SSH PIV key requirements for MFA using hardware security keys.
+  Configures PIV key requirements for MFA using hardware security keys.
 
   - `pin_policy: optional "never" or "once" or "always"`
 
@@ -886,7 +882,7 @@ Updates the configuration for your Zero Trust organization.
 
   - `require_fips_device: optional boolean`
 
-    Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+    Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 
   - `ssh_key_size: optional array of 256 or 384 or 521 or 3 more`
 
@@ -923,6 +919,10 @@ Updates the configuration for your Zero Trust organization.
     - `"always"`
 
     - `"cached"`
+
+- `mfa_required_for_all_apps: optional boolean`
+
+  Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 
 - `name: optional string`
 
@@ -1038,7 +1038,7 @@ Updates the configuration for your Zero Trust organization.
 
     Configures multi-factor authentication (MFA) settings for an organization.
 
-    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "ssh_piv_key"`
+    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "piv_key"`
 
       Lists the MFA methods that users can authenticate with.
 
@@ -1048,7 +1048,7 @@ Updates the configuration for your Zero Trust organization.
 
       - `"security_key"`
 
-      - `"ssh_piv_key"`
+      - `"piv_key"`
 
     - `amr_matching_session_duration: optional string`
 
@@ -1062,13 +1062,9 @@ Updates the configuration for your Zero Trust organization.
 
       Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 
-  - `mfa_required_for_all_apps: optional boolean`
+  - `mfa_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
 
-    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
-
-  - `mfa_ssh_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
-
-    Configures SSH PIV key requirements for MFA using hardware security keys.
+    Configures PIV key requirements for MFA using hardware security keys.
 
     - `pin_policy: optional "never" or "once" or "always"`
 
@@ -1082,7 +1078,7 @@ Updates the configuration for your Zero Trust organization.
 
     - `require_fips_device: optional boolean`
 
-      Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+      Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 
     - `ssh_key_size: optional array of 256 or 384 or 521 or 3 more`
 
@@ -1119,6 +1115,10 @@ Updates the configuration for your Zero Trust organization.
       - `"always"`
 
       - `"cached"`
+
+  - `mfa_required_for_all_apps: optional boolean`
+
+    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 
   - `name: optional string`
 
@@ -1216,8 +1216,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       "required_aaguids": "2fc0579f-8113-47ea-b116-bb5a8db9202a",
       "session_duration": "24h"
     },
-    "mfa_required_for_all_apps": false,
-    "mfa_ssh_piv_key_requirements": {
+    "mfa_piv_key_requirements": {
       "pin_policy": "always",
       "require_fips_device": true,
       "ssh_key_size": [
@@ -1230,6 +1229,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       ],
       "touch_policy": "always"
     },
+    "mfa_required_for_all_apps": false,
     "name": "Widget Corps Internal Applications",
     "session_duration": "24h",
     "ui_read_only_toggle_reason": "Temporarily turn off the UI read only lock to make a change via the UI",
@@ -1407,7 +1407,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
     Configures multi-factor authentication (MFA) settings for an organization.
 
-    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "ssh_piv_key"`
+    - `allowed_authenticators: optional array of "totp" or "biometrics" or "security_key" or "piv_key"`
 
       Lists the MFA methods that users can authenticate with.
 
@@ -1417,7 +1417,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       - `"security_key"`
 
-      - `"ssh_piv_key"`
+      - `"piv_key"`
 
     - `amr_matching_session_duration: optional string`
 
@@ -1431,13 +1431,9 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
       Defines the duration of an MFA session. Must be in minutes (m) or hours (h). Minimum: 0m. Maximum: 720h (30 days). Examples:`5m` or `24h`.
 
-  - `mfa_required_for_all_apps: optional boolean`
+  - `mfa_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
 
-    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'ssh_piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
-
-  - `mfa_ssh_piv_key_requirements: optional object { pin_policy, require_fips_device, ssh_key_size, 2 more }`
-
-    Configures SSH PIV key requirements for MFA using hardware security keys.
+    Configures PIV key requirements for MFA using hardware security keys.
 
     - `pin_policy: optional "never" or "once" or "always"`
 
@@ -1451,7 +1447,7 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
 
     - `require_fips_device: optional boolean`
 
-      Requires the SSH PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
+      Requires the PIV key to be stored on a FIPS 140-2 Level 1 or higher validated device.
 
     - `ssh_key_size: optional array of 256 or 384 or 521 or 3 more`
 
@@ -1488,6 +1484,10 @@ curl https://api.cloudflare.com/client/v4/$ACCOUNTS_OR_ZONES/$ACCOUNT_OR_ZONE_ID
       - `"always"`
 
       - `"cached"`
+
+  - `mfa_required_for_all_apps: optional boolean`
+
+    Determines whether global MFA settings apply to applications by default. The organization must have MFA enabled with at least one authentication method and a session duration configured. Note: 'allowed_authenticators' cannot only contain 'piv_key' if the organization has any non-infrastructure applications because PIV keys are only compatible with infrastructure apps.
 
   - `name: optional string`
 

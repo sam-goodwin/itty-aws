@@ -2,7 +2,7 @@
 
 **patch** `/accounts/{account_id}/images/v1/variants/{variant_id}`
 
-Updating a variant purges the cache for all images associated with the variant.
+Update a CF Images variant. This will purge the cache for all images associated with the variant.
 
 ### Path Parameters
 
