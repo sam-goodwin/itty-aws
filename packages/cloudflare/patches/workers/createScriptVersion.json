@@ -52,6 +52,7 @@
       },
       "metadata.cache": {
         "optional": true,
+        "wireKey": "cache_options",
         "definition": {
           "kind": "object",
           "properties": [

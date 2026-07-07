@@ -6996,7 +6996,7 @@ const Metadata2 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       tailConsumers: "tail_consumers",
       usageModel: "usage_model",
       containers: "containers",
-      cache: "cache",
+      cache: "cache_options",
     }),
   ),
 ) as unknown as Schema.Codec<Metadata2>;
@@ -9293,7 +9293,7 @@ const Metadata5 = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
       compatibilityFlags: "compatibility_flags",
       keepBindings: "keep_bindings",
       usageModel: "usage_model",
-      cache: "cache",
+      cache: "cache_options",
     }),
   ),
 ) as unknown as Schema.Codec<Metadata5>;
