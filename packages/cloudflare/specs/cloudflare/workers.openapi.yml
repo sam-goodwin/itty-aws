@@ -12319,7 +12319,7 @@ paths:
                             type: string
                         required:
                           - class_name
-                    cache:
+                    cache_options:
                       type: object
                       properties:
                         enabled:
@@ -21371,7 +21371,7 @@ paths:
                         - bundled
                         - unbound
                       description: Usage model for the Worker invocations.
-                    cache:
+                    cache_options:
                       type: object
                       properties:
                         enabled:
