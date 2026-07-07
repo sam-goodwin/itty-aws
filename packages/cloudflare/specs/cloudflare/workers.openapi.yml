@@ -12776,6 +12776,8 @@ paths:
           - code: 10021
             message:
               includes: No such module
+        SecretsStoreBindingNotFound:
+          - code: 10182
     delete:
       operationId: deleteScript
       description: "Delete your worker. This call has no response body on a successful
@@ -18919,6 +18921,10 @@ paths:
       x-distilled-errors:
         WorkerNotFound:
           - code: 10007
+        WorkerHasNoVersions:
+          - status: 404
+            message:
+              includes: has no versions
     patch:
       operationId: patchScriptSetting
       description: "Patch script-level settings when using [Worker

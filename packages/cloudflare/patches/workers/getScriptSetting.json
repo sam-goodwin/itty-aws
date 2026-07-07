@@ -1,6 +1,9 @@
 {
   "errors": {
-    "WorkerNotFound": [{ "code": 10007 }]
+    "WorkerNotFound": [{ "code": 10007 }],
+    "WorkerHasNoVersions": [
+      { "status": 404, "message": { "includes": "has no versions" } }
+    ]
   },
   "response": {
     "properties": {
