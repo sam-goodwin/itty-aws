@@ -170,6 +170,14 @@ export class SecretNotFound extends T.applyErrorMatchers(
   [{ code: 10056 }],
 ) {}
 
+export class SecretsStoreBindingNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<SecretsStoreBindingNotFound>()(
+    "SecretsStoreBindingNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10182 }],
+) {}
+
 export class ServiceBindingConflict extends T.applyErrorMatchers(
   Schema.TaggedErrorClass<ServiceBindingConflict>()("ServiceBindingConflict", {
     code: Schema.Number,
@@ -15124,7 +15132,8 @@ export type PutScriptError =
   | DurableObjectMustBeSqlite
   | DuplicateMigrationTarget
   | ScriptStartupError
-  | ScriptModuleNotFound;
+  | ScriptModuleNotFound
+  | SecretsStoreBindingNotFound;
 
 export const putScript: API.OperationMethod<
   PutScriptRequest,
@@ -15142,6 +15151,7 @@ export const putScript: API.OperationMethod<
     DuplicateMigrationTarget,
     ScriptStartupError,
     ScriptModuleNotFound,
+    SecretsStoreBindingNotFound,
   ],
 }));
 
@@ -17624,7 +17634,10 @@ export const GetScriptSettingResponse =
       .pipe(T.ResponsePath("result")),
   ) as unknown as Schema.Codec<GetScriptSettingResponse>;
 
-export type GetScriptSettingError = DefaultErrors | WorkerNotFound;
+export type GetScriptSettingError =
+  | DefaultErrors
+  | WorkerNotFound
+  | WorkerHasNoVersions;
 
 export const getScriptSetting: API.OperationMethod<
   GetScriptSettingRequest,
@@ -17634,7 +17647,7 @@ export const getScriptSetting: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: GetScriptSettingRequest,
   output: GetScriptSettingResponse,
-  errors: [WorkerNotFound],
+  errors: [WorkerNotFound, WorkerHasNoVersions],
 }));
 
 export interface PatchScriptSettingRequest {

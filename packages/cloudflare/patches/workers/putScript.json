@@ -28,7 +28,8 @@
         "code": 10021,
         "message": { "includes": "No such module" }
       }
-    ]
+    ],
+    "SecretsStoreBindingNotFound": [{ "code": 10182 }]
   },
   "request": {
     "properties": {

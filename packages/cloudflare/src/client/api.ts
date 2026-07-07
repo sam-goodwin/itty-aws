@@ -222,8 +222,15 @@ function matchesExpression(
   if (matcher.message !== undefined) {
     if (typeof matcher.message === "string") {
       if (matcher.message !== message) return false;
-    } else if (matcher.message.includes !== undefined) {
-      if (!message.includes(matcher.message.includes)) return false;
+    } else {
+      const { includes, matches } = matcher.message;
+      // An empty message-object constrains nothing and would otherwise
+      // match every error — reject it like the fully-empty matcher above.
+      if (includes === undefined && matches === undefined) return false;
+      if (includes !== undefined && !message.includes(includes)) return false;
+      if (matches !== undefined && !new RegExp(matches).test(message)) {
+        return false;
+      }
     }
   }
   return true;
