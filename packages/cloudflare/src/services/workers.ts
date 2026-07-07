@@ -25,12 +25,28 @@ export class ContentTypeRequired extends T.applyErrorMatchers(
   [{ code: 10001 }],
 ) {}
 
+export class D1DatabaseNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<D1DatabaseNotFound>()("D1DatabaseNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10181 }],
+) {}
+
 export class DeploymentNotFound extends T.applyErrorMatchers(
   Schema.TaggedErrorClass<DeploymentNotFound>()("DeploymentNotFound", {
     code: Schema.Number,
     message: Schema.String,
   }),
   [{ code: 10336 }],
+) {}
+
+export class DispatchNamespaceNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DispatchNamespaceNotFound>()(
+    "DispatchNamespaceNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 100119 }],
 ) {}
 
 export class DomainNotFound extends T.applyErrorMatchers(
@@ -52,6 +68,14 @@ export class DuplicateMigrationTarget extends T.applyErrorMatchers(
       message: { includes: "cannot be the target of more than one migration" },
     },
   ],
+) {}
+
+export class DurableObjectClassNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<DurableObjectClassNotFound>()(
+    "DurableObjectClassNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10061 }],
 ) {}
 
 export class DurableObjectMustBeSqlite extends T.applyErrorMatchers(
@@ -76,6 +100,14 @@ export class HostnameAlreadyInUse extends T.applyErrorMatchers(
     message: Schema.String,
   }),
   [{ code: 100116 }],
+) {}
+
+export class HyperdriveConfigNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<HyperdriveConfigNotFound>()(
+    "HyperdriveConfigNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 10157 }],
 ) {}
 
 T.applyErrorMatchers(InternalServerError, [
@@ -104,6 +136,22 @@ export class InvalidWorkerScript extends T.applyErrorMatchers(
     message: Schema.String,
   }),
   [{ code: 10068 }],
+) {}
+
+export class KVNamespaceNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<KVNamespaceNotFound>()("KVNamespaceNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10041 }],
+) {}
+
+export class MtlsCertificateNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<MtlsCertificateNotFound>()(
+    "MtlsCertificateNotFound",
+    { code: Schema.Number, message: Schema.String },
+  ),
+  [{ code: 100143 }],
 ) {}
 
 export class ObservabilityDestinationCreateFailed extends T.applyErrorMatchers(
@@ -136,6 +184,22 @@ export class QueueConsumerConflict extends T.applyErrorMatchers(
     message: Schema.String,
   }),
   [{ code: 10064 }],
+) {}
+
+export class QueueNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<QueueNotFound>()("QueueNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 11000 }],
+) {}
+
+export class R2BucketNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<R2BucketNotFound>()("R2BucketNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10085 }],
 ) {}
 
 export class RouteNotFound extends T.applyErrorMatchers(
@@ -186,6 +250,14 @@ export class ServiceBindingConflict extends T.applyErrorMatchers(
   [{ code: 10142 }],
 ) {}
 
+export class ServiceBindingNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<ServiceBindingNotFound>()("ServiceBindingNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10144 }],
+) {}
+
 export class SubdomainAlreadyExists extends T.applyErrorMatchers(
   Schema.TaggedErrorClass<SubdomainAlreadyExists>()("SubdomainAlreadyExists", {
     code: Schema.Number,
@@ -200,6 +272,14 @@ export class SubdomainNotFound extends T.applyErrorMatchers(
     message: Schema.String,
   }),
   [{ status: 404 }],
+) {}
+
+export class VectorizeIndexNotFound extends T.applyErrorMatchers(
+  Schema.TaggedErrorClass<VectorizeIndexNotFound>()("VectorizeIndexNotFound", {
+    code: Schema.Number,
+    message: Schema.String,
+  }),
+  [{ code: 10159 }],
 ) {}
 
 export class VersionNotFound extends T.applyErrorMatchers(
@@ -15133,7 +15213,17 @@ export type PutScriptError =
   | DuplicateMigrationTarget
   | ScriptStartupError
   | ScriptModuleNotFound
-  | SecretsStoreBindingNotFound;
+  | SecretsStoreBindingNotFound
+  | KVNamespaceNotFound
+  | R2BucketNotFound
+  | D1DatabaseNotFound
+  | QueueNotFound
+  | ServiceBindingNotFound
+  | DurableObjectClassNotFound
+  | HyperdriveConfigNotFound
+  | VectorizeIndexNotFound
+  | DispatchNamespaceNotFound
+  | MtlsCertificateNotFound;
 
 export const putScript: API.OperationMethod<
   PutScriptRequest,
@@ -15152,6 +15242,16 @@ export const putScript: API.OperationMethod<
     ScriptStartupError,
     ScriptModuleNotFound,
     SecretsStoreBindingNotFound,
+    KVNamespaceNotFound,
+    R2BucketNotFound,
+    D1DatabaseNotFound,
+    QueueNotFound,
+    ServiceBindingNotFound,
+    DurableObjectClassNotFound,
+    HyperdriveConfigNotFound,
+    VectorizeIndexNotFound,
+    DispatchNamespaceNotFound,
+    MtlsCertificateNotFound,
   ],
 }));
 

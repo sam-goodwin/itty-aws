@@ -12778,6 +12778,26 @@ paths:
               includes: No such module
         SecretsStoreBindingNotFound:
           - code: 10182
+        KVNamespaceNotFound:
+          - code: 10041
+        R2BucketNotFound:
+          - code: 10085
+        D1DatabaseNotFound:
+          - code: 10181
+        QueueNotFound:
+          - code: 11000
+        ServiceBindingNotFound:
+          - code: 10144
+        DurableObjectClassNotFound:
+          - code: 10061
+        HyperdriveConfigNotFound:
+          - code: 10157
+        VectorizeIndexNotFound:
+          - code: 10159
+        DispatchNamespaceNotFound:
+          - code: 100119
+        MtlsCertificateNotFound:
+          - code: 100143
     delete:
       operationId: deleteScript
       description: "Delete your worker. This call has no response body on a successful
