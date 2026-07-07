@@ -1,0 +1,1666 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.token_validation#ConfigurationCreateRequestCredentialsKeysItem": {
+      "type": "structure",
+      "members": {
+        "APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "JSON representation of an RSA key.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"
+          }
+        },
+        "APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "JSON representation of an ES256 key",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }"
+          }
+        },
+        "APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "JSON representation of an ES384 key",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCreateRequestCredentialsKeysList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#ConfigurationCreateRequestCredentialsKeysItem"
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCreateRequestCredentials": {
+      "type": "structure",
+      "members": {
+        "keys": {
+          "target": "com.cloudflare.token_validation#ConfigurationCreateRequestCredentialsKeysList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCreateRequestTokenSourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCreateRequestTokenType": {
+      "type": "enum",
+      "members": {
+        "JWT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "JWT"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "credentials": {
+          "target": "com.cloudflare.token_validation#ConfigurationCreateRequestCredentials",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "token_sources": {
+          "target": "com.cloudflare.token_validation#ConfigurationCreateRequestTokenSourcesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "token_type": {
+          "target": "com.cloudflare.token_validation#ConfigurationCreateRequestTokenType",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#ConfigurationCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#ConfigurationCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/token_validation/config",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a new Token Validation configuration"
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "config_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#ConfigurationDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#ConfigurationDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/token_validation/config/{config_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete Token Configuration",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationEditRequestTokenSourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "config_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "title": {
+          "target": "smithy.api#String"
+        },
+        "token_sources": {
+          "target": "com.cloudflare.token_validation#ConfigurationEditRequestTokenSourcesList"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationEditResponseTokenSourcesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationEditResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "title": {
+          "target": "smithy.api#String"
+        },
+        "token_sources": {
+          "target": "com.cloudflare.token_validation#ConfigurationEditResponseTokenSourcesList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#ConfigurationEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#ConfigurationEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/token_validation/config/{config_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Edit fields of an existing Token Configuration"
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "config_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#ConfigurationGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#ConfigurationGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/token_validation/config/{config_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get a single Token Configuration",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of results per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.token_validation#ConfigurationListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#ConfigurationListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#ConfigurationListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/token_validation/config",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists all token validation configurations for this zone",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequestKeysItem": {
+      "type": "structure",
+      "members": {
+        "APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "JSON representation of an RSA key.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"
+          }
+        },
+        "APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "JSON representation of an ES256 key",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }"
+          }
+        },
+        "APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "JSON representation of an ES384 key",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequestKeysList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequestKeysItem"
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "config_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "keys": {
+          "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequestKeysList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponseKeysItem": {
+      "type": "structure",
+      "members": {
+        "APIShieldCredentialsJWTKeyRSA_object___alg__e__kid__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "JSON representation of an RSA key.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyRSA object { alg, e, kid, 2 more }"
+          }
+        },
+        "APIShieldCredentialsJWTKeyEcEs256_object___alg__crv__kid__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "JSON representation of an ES256 key",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs256 object { alg, crv, kid, 3 more }"
+          }
+        },
+        "APIShieldCredentialsJWTKeyEcEs384_object___alg__crv__kid__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "JSON representation of an ES384 key",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldCredentialsJWTKeyEcEs384 object { alg, crv, kid, 3 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponseKeysList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponseKeysItem"
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "keys": {
+          "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponseKeysList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.token_validation#ConfigurationCredentialsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/token_validation/config/{config_id}/credentials",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update Token Configuration credentials",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemAction": {
+      "type": "enum",
+      "members": {
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelectorExcludeItem": {
+      "type": "structure",
+      "members": {
+        "operation_ids": {
+          "target": "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelectorExcludeItemOperationIdsList",
+          "traits": {
+            "smithy.api#documentation": "Excluded operation IDs."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelectorExcludeList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelectorExcludeItem"
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelectorIncludeItem": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelectorIncludeItemHostList",
+          "traits": {
+            "smithy.api#documentation": "Included hostnames."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelectorIncludeList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelectorIncludeItem"
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelector": {
+      "type": "structure",
+      "members": {
+        "exclude": {
+          "target": "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelectorExcludeList",
+          "traits": {
+            "smithy.api#documentation": "Ignore operations that were otherwise included by `include`."
+          }
+        },
+        "include": {
+          "target": "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelectorIncludeList",
+          "traits": {
+            "smithy.api#documentation": "Select all matching operations."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItem": {
+      "type": "structure",
+      "members": {
+        "action": {
+          "target": "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemAction",
+          "traits": {
+            "smithy.api#documentation": "Action to take on requests that match operations included in `selector` and fail `expression`.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description that gives more details than `title`.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Toggle rule on or off.",
+            "smithy.api#required": {}
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Rule expression. Requests that fail to match this expression will be subject to `action`.",
+            "smithy.api#required": {}
+          }
+        },
+        "selector": {
+          "target": "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItemSelector",
+          "traits": {
+            "smithy.api#documentation": "Select operations covered by this rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable name for the rule.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#RulesBulkCreateRequestBodyItem"
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.cloudflare.token_validation#RulesBulkCreateRequestBodyList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.token_validation#RulesBulkCreateResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#RulesBulkCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#RulesBulkCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/token_validation/rules/bulk",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create zone token validation rules. A request can create multiple Token Validation Rules."
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemAction": {
+      "type": "enum",
+      "members": {
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemPosition": {
+      "type": "structure",
+      "members": {
+        "APIShieldIndex_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldIndex object { index }"
+          }
+        },
+        "APIShieldBefore_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Move rule to after rule with ID.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldBefore object { before }"
+          }
+        },
+        "APIShieldAfter_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Move rule to before rule with ID.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldAfter object { after }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelectorExcludeItem": {
+      "type": "structure",
+      "members": {
+        "operation_ids": {
+          "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelectorExcludeItemOperationIdsList",
+          "traits": {
+            "smithy.api#documentation": "Excluded operation IDs."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelectorExcludeList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelectorExcludeItem"
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelectorIncludeItemHostList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelectorIncludeItem": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelectorIncludeItemHostList",
+          "traits": {
+            "smithy.api#documentation": "Included hostnames."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelectorIncludeList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelectorIncludeItem"
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelector": {
+      "type": "structure",
+      "members": {
+        "exclude": {
+          "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelectorExcludeList",
+          "traits": {
+            "smithy.api#documentation": "Ignore operations that were otherwise included by `include`."
+          }
+        },
+        "include": {
+          "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelectorIncludeList",
+          "traits": {
+            "smithy.api#documentation": "Select all matching operations."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Rule ID this patch applies to",
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemAction",
+          "traits": {
+            "smithy.api#documentation": "Action to take on requests that match operations included in `selector` and fail `expression`."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description that gives more details than `title`."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Toggle rule on or off."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Rule expression. Requests that fail to match this expression will be subject to `action`."
+          }
+        },
+        "position": {
+          "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemPosition",
+          "traits": {
+            "smithy.api#documentation": "Update rule order among zone rules."
+          }
+        },
+        "selector": {
+          "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItemSelector",
+          "traits": {
+            "smithy.api#documentation": "Select operations covered by this rule."
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable name for the rule."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyItem"
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.cloudflare.token_validation#RulesBulkEditRequestBodyList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.token_validation#RulesBulkEditResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesBulkEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#RulesBulkEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#RulesBulkEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/token_validation/rules/bulk",
+          "code": 200
+        },
+        "smithy.api#documentation": "Edit token validation rules. A request can update multiple Token Validation Rules. Rules can be re-ordered using the `position` field. Returns all updated rules."
+      }
+    },
+    "com.cloudflare.token_validation#RulesCreateRequestAction": {
+      "type": "enum",
+      "members": {
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesCreateRequestSelectorExcludeItemOperationIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.token_validation#RulesCreateRequestSelectorExcludeItem": {
+      "type": "structure",
+      "members": {
+        "operation_ids": {
+          "target": "com.cloudflare.token_validation#RulesCreateRequestSelectorExcludeItemOperationIdsList",
+          "traits": {
+            "smithy.api#documentation": "Excluded operation IDs."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesCreateRequestSelectorExcludeList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#RulesCreateRequestSelectorExcludeItem"
+      }
+    },
+    "com.cloudflare.token_validation#RulesCreateRequestSelectorIncludeItemHostList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.token_validation#RulesCreateRequestSelectorIncludeItem": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "com.cloudflare.token_validation#RulesCreateRequestSelectorIncludeItemHostList",
+          "traits": {
+            "smithy.api#documentation": "Included hostnames."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesCreateRequestSelectorIncludeList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#RulesCreateRequestSelectorIncludeItem"
+      }
+    },
+    "com.cloudflare.token_validation#RulesCreateRequestSelector": {
+      "type": "structure",
+      "members": {
+        "exclude": {
+          "target": "com.cloudflare.token_validation#RulesCreateRequestSelectorExcludeList",
+          "traits": {
+            "smithy.api#documentation": "Ignore operations that were otherwise included by `include`."
+          }
+        },
+        "include": {
+          "target": "com.cloudflare.token_validation#RulesCreateRequestSelectorIncludeList",
+          "traits": {
+            "smithy.api#documentation": "Select all matching operations."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.cloudflare.token_validation#RulesCreateRequestAction",
+          "traits": {
+            "smithy.api#documentation": "Action to take on requests that match operations included in `selector` and fail `expression`.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description that gives more details than `title`.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Toggle rule on or off.",
+            "smithy.api#required": {}
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Rule expression. Requests that fail to match this expression will be subject to `action`.",
+            "smithy.api#required": {}
+          }
+        },
+        "selector": {
+          "target": "com.cloudflare.token_validation#RulesCreateRequestSelector",
+          "traits": {
+            "smithy.api#documentation": "Select operations covered by this rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable name for the rule.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#RulesCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#RulesCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/token_validation/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a token validation rule."
+      }
+    },
+    "com.cloudflare.token_validation#RulesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#RulesDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#RulesDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/token_validation/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a zone token validation rule.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequestAction": {
+      "type": "enum",
+      "members": {
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequestPosition": {
+      "type": "structure",
+      "members": {
+        "APIShieldIndex_object___index__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldIndex object { index }"
+          }
+        },
+        "APIShieldBefore_object___before__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Move rule to after rule with ID.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldBefore object { before }"
+          }
+        },
+        "APIShieldAfter_object___after__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Move rule to before rule with ID.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "APIShieldAfter object { after }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequestSelectorExcludeItemOperationIdsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequestSelectorExcludeItem": {
+      "type": "structure",
+      "members": {
+        "operation_ids": {
+          "target": "com.cloudflare.token_validation#RulesEditRequestSelectorExcludeItemOperationIdsList",
+          "traits": {
+            "smithy.api#documentation": "Excluded operation IDs."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequestSelectorExcludeList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#RulesEditRequestSelectorExcludeItem"
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequestSelectorIncludeItemHostList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequestSelectorIncludeItem": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "com.cloudflare.token_validation#RulesEditRequestSelectorIncludeItemHostList",
+          "traits": {
+            "smithy.api#documentation": "Included hostnames."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequestSelectorIncludeList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.token_validation#RulesEditRequestSelectorIncludeItem"
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequestSelector": {
+      "type": "structure",
+      "members": {
+        "exclude": {
+          "target": "com.cloudflare.token_validation#RulesEditRequestSelectorExcludeList",
+          "traits": {
+            "smithy.api#documentation": "Ignore operations that were otherwise included by `include`."
+          }
+        },
+        "include": {
+          "target": "com.cloudflare.token_validation#RulesEditRequestSelectorIncludeList",
+          "traits": {
+            "smithy.api#documentation": "Select all matching operations."
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.cloudflare.token_validation#RulesEditRequestAction",
+          "traits": {
+            "smithy.api#documentation": "Action to take on requests that match operations included in `selector` and fail `expression`."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description that gives more details than `title`."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Toggle rule on or off."
+          }
+        },
+        "expression": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Rule expression. Requests that fail to match this expression will be subject to `action`."
+          }
+        },
+        "position": {
+          "target": "com.cloudflare.token_validation#RulesEditRequestPosition",
+          "traits": {
+            "smithy.api#documentation": "Update rule order among zone rules."
+          }
+        },
+        "selector": {
+          "target": "com.cloudflare.token_validation#RulesEditRequestSelector",
+          "traits": {
+            "smithy.api#documentation": "Select operations covered by this rule."
+          }
+        },
+        "title": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable name for the rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#RulesEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#RulesEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/token_validation/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Edit a zone token validation rule."
+      }
+    },
+    "com.cloudflare.token_validation#RulesGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "UUID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#RulesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#RulesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/token_validation/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get a zone token validation rule.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesListRequestAction": {
+      "type": "enum",
+      "members": {
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        }
+      }
+    },
+    "com.cloudflare.token_validation#RulesListRequestTokenConfigurationList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.token_validation#RulesListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Select rules with these IDs.",
+            "smithy.api#httpQuery": "id"
+          }
+        },
+        "action": {
+          "target": "com.cloudflare.token_validation#RulesListRequestAction",
+          "traits": {
+            "smithy.api#documentation": "Action to take on requests that match operations included in `selector` and fail `expression`.",
+            "smithy.api#httpQuery": "action"
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Toggle rule on or off.",
+            "smithy.api#httpQuery": "enabled"
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Select rules with this host in `include`.",
+            "smithy.api#httpQuery": "host"
+          }
+        },
+        "hostname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Select rules with this host in `include`.",
+            "smithy.api#httpQuery": "hostname"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of results per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Select rules with these IDs.",
+            "smithy.api#httpQuery": "rule_id"
+          }
+        },
+        "token_configuration": {
+          "target": "com.cloudflare.token_validation#RulesListRequestTokenConfigurationList",
+          "traits": {
+            "smithy.api#documentation": "Select rules using any of these token configurations.",
+            "smithy.api#httpQuery": "token_configuration"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.token_validation#RulesListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.token_validation#RulesListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.token_validation#RulesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.token_validation#RulesListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.token_validation#RulesListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/token_validation/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "List token validation rules",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.token_validation#TokenValidation": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.token_validation#ConfigurationCreate"
+        },
+        {
+          "target": "com.cloudflare.token_validation#ConfigurationDelete"
+        },
+        {
+          "target": "com.cloudflare.token_validation#ConfigurationEdit"
+        },
+        {
+          "target": "com.cloudflare.token_validation#ConfigurationGet"
+        },
+        {
+          "target": "com.cloudflare.token_validation#ConfigurationList"
+        },
+        {
+          "target": "com.cloudflare.token_validation#ConfigurationCredentialsUpdate"
+        },
+        {
+          "target": "com.cloudflare.token_validation#RulesBulkCreate"
+        },
+        {
+          "target": "com.cloudflare.token_validation#RulesBulkEdit"
+        },
+        {
+          "target": "com.cloudflare.token_validation#RulesCreate"
+        },
+        {
+          "target": "com.cloudflare.token_validation#RulesDelete"
+        },
+        {
+          "target": "com.cloudflare.token_validation#RulesEdit"
+        },
+        {
+          "target": "com.cloudflare.token_validation#RulesGet"
+        },
+        {
+          "target": "com.cloudflare.token_validation#RulesList"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare TokenValidation",
+        "smithy.api#documentation": "Cloudflare API — token_validation resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

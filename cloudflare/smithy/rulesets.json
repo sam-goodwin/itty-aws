@@ -1,0 +1,1865 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.rulesets#CreateRequestRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#CreateRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#CreateRequestRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#CreateResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#CreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#CreateResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.rulesets#Create": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#CreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#CreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates a ruleset."
+      }
+    },
+    "com.cloudflare.rulesets#DeleteRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#Delete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#DeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/{ruleset_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes all versions of an existing account or zone ruleset.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.rulesets#GetRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#GetResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#GetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#GetResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.rulesets#Get": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#GetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#GetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/{ruleset_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the latest version of an account or zone ruleset.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.rulesets#ListRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The cursor to use for the next page.",
+            "smithy.api#httpQuery": "cursor"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of rulesets to return per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#ListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#ListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.rulesets#ListResultItem"
+      }
+    },
+    "com.cloudflare.rulesets#ListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.rulesets#ListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.rulesets#List": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#ListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#ListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches all rulesets.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.rulesets#UpdateRequestRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#UpdateRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset."
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset."
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#UpdateRequestRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#UpdateResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#UpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#UpdateResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.rulesets#Update": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#UpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#UpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/{ruleset_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates an account or zone ruleset, creating a new version.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.rulesets#PhasesGetRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_phase": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#PhasesGetResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#PhasesGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#PhasesGetResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.rulesets#PhasesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#PhasesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#PhasesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/phases/{ruleset_phase}/entrypoint",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the latest version of the account or zone entry point ruleset for a given phase.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.rulesets#PhasesUpdateRequestRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#PhasesUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_phase": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset."
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#PhasesUpdateRequestRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#PhasesUpdateResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#PhasesUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#PhasesUpdateResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.rulesets#PhasesUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#PhasesUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#PhasesUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/phases/{ruleset_phase}/entrypoint",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates an account or zone entry point ruleset, creating a new version.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.rulesets#PhasesVersionsGetRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_phase": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#PhasesVersionsGetResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#PhasesVersionsGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#PhasesVersionsGetResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.rulesets#PhasesVersionsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#PhasesVersionsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#PhasesVersionsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions/{ruleset_version}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches a specific version of an account or zone entry point ruleset.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.rulesets#PhasesVersionsListRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_phase": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#PhasesVersionsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#PhasesVersionsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.rulesets#PhasesVersionsListResultItem"
+      }
+    },
+    "com.cloudflare.rulesets#PhasesVersionsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.rulesets#PhasesVersionsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.rulesets#PhasesVersionsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#PhasesVersionsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#PhasesVersionsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/phases/{ruleset_phase}/entrypoint/versions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the versions of an account or zone entry point ruleset.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#RulesCreateResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.rulesets#RulesCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#RulesCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#RulesCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/{ruleset_id}/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Adds a new rule to an account or zone ruleset. The rule will be added to the end of the existing list of rules in the ruleset by default."
+      }
+    },
+    "com.cloudflare.rulesets#RulesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#RulesDeleteResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#RulesDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#RulesDeleteResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.rulesets#RulesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#RulesDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#RulesDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/{ruleset_id}/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes an existing rule from an account or zone ruleset.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#RulesEditResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#RulesEditResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.rulesets#RulesEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#RulesEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#RulesEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/{ruleset_id}/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates an existing rule in an account or zone ruleset."
+      }
+    },
+    "com.cloudflare.rulesets#VersionsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#VersionsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#VersionsDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes an existing version of an account or zone ruleset.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.rulesets#VersionsGetRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#VersionsGetResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.rulesets#VersionsGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.rulesets#VersionsGetResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "The list of rules in the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.rulesets#VersionsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#VersionsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#VersionsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/{ruleset_id}/versions/{ruleset_version}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches a specific version of an account or zone ruleset.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.rulesets#VersionsListRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ruleset_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.rulesets#VersionsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique ID of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "kind": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The kind of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "last_updated": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the ruleset was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-readable name of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "phase": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The phase of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The version of the ruleset.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative description of the ruleset."
+          }
+        }
+      }
+    },
+    "com.cloudflare.rulesets#VersionsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.rulesets#VersionsListResultItem"
+      }
+    },
+    "com.cloudflare.rulesets#VersionsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.rulesets#VersionsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.rulesets#VersionsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.rulesets#VersionsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.rulesets#VersionsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/rulesets/{ruleset_id}/versions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the versions of an account or zone ruleset.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.rulesets#Rulesets": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.rulesets#Create"
+        },
+        {
+          "target": "com.cloudflare.rulesets#Delete"
+        },
+        {
+          "target": "com.cloudflare.rulesets#Get"
+        },
+        {
+          "target": "com.cloudflare.rulesets#List"
+        },
+        {
+          "target": "com.cloudflare.rulesets#Update"
+        },
+        {
+          "target": "com.cloudflare.rulesets#PhasesGet"
+        },
+        {
+          "target": "com.cloudflare.rulesets#PhasesUpdate"
+        },
+        {
+          "target": "com.cloudflare.rulesets#PhasesVersionsGet"
+        },
+        {
+          "target": "com.cloudflare.rulesets#PhasesVersionsList"
+        },
+        {
+          "target": "com.cloudflare.rulesets#RulesCreate"
+        },
+        {
+          "target": "com.cloudflare.rulesets#RulesDelete"
+        },
+        {
+          "target": "com.cloudflare.rulesets#RulesEdit"
+        },
+        {
+          "target": "com.cloudflare.rulesets#VersionsDelete"
+        },
+        {
+          "target": "com.cloudflare.rulesets#VersionsGet"
+        },
+        {
+          "target": "com.cloudflare.rulesets#VersionsList"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare Rulesets",
+        "smithy.api#documentation": "Cloudflare API — rulesets resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

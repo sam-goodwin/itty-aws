@@ -4,7 +4,8 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 import * as Schedule from "effect/Schedule";
-import * as Schema from "effect/Schema";
+import * as S from "effect/Schema";
+import * as HttpClient from "effect/unstable/http/HttpClient";
 import { hasCategory } from "./error-category.js";
 import { RETRYABLE } from "./errors.js";
 export const RetryPolicies = Context.Reference("RetryPolicies", {
@@ -36,24 +37,32 @@ export const addRetryPolicy = (fn) => {
         lifted,
     ]);
 };
+//#endregion
+//#region Protocol
+/**
+ * The Protocol service knows how to turn a value into an HTTP request using
+ * only the input schema's trait annotations, and how to turn a response back
+ * into an output value using the output schema's trait annotations.
+ *
+ * Swap implementations by providing a different `Layer<Protocol>`.
+ */
 export class Protocol extends Context.Service()("Protocol") {
 }
 export function make(configFn) {
-    // Implementation sketch (currently stubbed):
-    //
-    //   const cfg = configFn()
-    //   const inner = (input) => /* real operation effect that requires Protocol */
-    //   return (input) =>
-    //     Effect.gen(function*() {
-    //       // Only apply the baked Protocol layer when nothing else has provided one,
-    //       // so a caller's `Effect.provide(otherProtocol)` wins.
-    //       const existing = yield* Effect.serviceOption(Protocol)
-    //       const eff = inner(input)
-    //       return yield* Option.isSome(existing)
-    //         ? eff
-    //         : eff.pipe(Effect.provide(cfg.protocol))
-    //     })
-    return "TODO";
+    const cfg = configFn();
+    return ((input) => Effect.gen(function* () {
+        const protocol = yield* Protocol;
+        const client = yield* HttpClient.HttpClient;
+        const request = yield* protocol.encode({
+            input,
+            inputAst: cfg.input.ast,
+        });
+        const response = yield* client.execute(request);
+        return yield* protocol.decode({
+            response,
+            outputAst: cfg.output.ast,
+        });
+    }).pipe(Effect.provide(cfg.protocol)));
 }
 //#endregion
 //# sourceMappingURL=api.js.map

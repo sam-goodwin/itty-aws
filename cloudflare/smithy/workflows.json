@@ -1,0 +1,2488 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.workflows#DeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#DeleteResponseStatus": {
+      "type": "enum",
+      "members": {
+        "OK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ok"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#DeleteResponse": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.cloudflare.workflows#DeleteResponseStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "success": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.workflows#Delete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#DeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#DeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes a Workflow. This only deletes the Workflow and does not delete or modify any Worker associated to this Workflow or bounded to it.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.workflows#GetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#GetResponseInstances": {
+      "type": "structure",
+      "members": {
+        "complete": {
+          "target": "smithy.api#Double"
+        },
+        "errored": {
+          "target": "smithy.api#Double"
+        },
+        "paused": {
+          "target": "smithy.api#Double"
+        },
+        "queued": {
+          "target": "smithy.api#Double"
+        },
+        "rollingBack": {
+          "target": "smithy.api#Double"
+        },
+        "running": {
+          "target": "smithy.api#Double"
+        },
+        "terminated": {
+          "target": "smithy.api#Double"
+        },
+        "waiting": {
+          "target": "smithy.api#Double"
+        },
+        "waitingForPause": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.workflows#GetResponseSchedulesItem": {
+      "type": "structure",
+      "members": {
+        "cron": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "next_instance": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#GetResponseSchedulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workflows#GetResponseSchedulesItem"
+      }
+    },
+    "com.cloudflare.workflows#GetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "class_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "instances": {
+          "target": "com.cloudflare.workflows#GetResponseInstances",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "triggered_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "schedules": {
+          "target": "com.cloudflare.workflows#GetResponseSchedulesList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.workflows#Get": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#GetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#GetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieves configuration and metadata for a specific workflow.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.workflows#ListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Allows filtering workflows` name.",
+            "smithy.api#httpQuery": "search"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#ListResultItemInstances": {
+      "type": "structure",
+      "members": {
+        "complete": {
+          "target": "smithy.api#Double"
+        },
+        "errored": {
+          "target": "smithy.api#Double"
+        },
+        "paused": {
+          "target": "smithy.api#Double"
+        },
+        "queued": {
+          "target": "smithy.api#Double"
+        },
+        "rollingBack": {
+          "target": "smithy.api#Double"
+        },
+        "running": {
+          "target": "smithy.api#Double"
+        },
+        "terminated": {
+          "target": "smithy.api#Double"
+        },
+        "waiting": {
+          "target": "smithy.api#Double"
+        },
+        "waitingForPause": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.workflows#ListResultItemSchedulesItem": {
+      "type": "structure",
+      "members": {
+        "cron": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "next_instance": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#ListResultItemSchedulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workflows#ListResultItemSchedulesItem"
+      }
+    },
+    "com.cloudflare.workflows#ListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "class_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "instances": {
+          "target": "com.cloudflare.workflows#ListResultItemInstances",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "triggered_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "schedules": {
+          "target": "com.cloudflare.workflows#ListResultItemSchedulesList"
+        }
+      }
+    },
+    "com.cloudflare.workflows#ListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workflows#ListResultItem"
+      }
+    },
+    "com.cloudflare.workflows#ListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.workflows#ListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.workflows#List": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#ListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#ListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/workflows",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists all workflows configured for the account.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.workflows#UpdateRequestLimits": {
+      "type": "structure",
+      "members": {
+        "steps": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.workflows#UpdateRequestSchedulesItem": {
+      "type": "structure",
+      "members": {
+        "cron": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#UpdateRequestSchedulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workflows#UpdateRequestSchedulesItem"
+      }
+    },
+    "com.cloudflare.workflows#UpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "class_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "limits": {
+          "target": "com.cloudflare.workflows#UpdateRequestLimits"
+        },
+        "schedules": {
+          "target": "com.cloudflare.workflows#UpdateRequestSchedulesList"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#UpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "class_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "is_deleted": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "script_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "terminator_running": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "triggered_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.workflows#Update": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#UpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#UpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates a new workflow or updates an existing workflow definition.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesBulkRequestBodyItemInstanceRetention": {
+      "type": "structure",
+      "members": {
+        "error_retention": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Specifies the duration in milliseconds or as a string like '5 minutes'."
+          }
+        },
+        "success_retention": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Specifies the duration in milliseconds or as a string like '5 minutes'."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesBulkRequestBodyItem": {
+      "type": "structure",
+      "members": {
+        "instance_id": {
+          "target": "smithy.api#String"
+        },
+        "instance_retention": {
+          "target": "com.cloudflare.workflows#InstancesBulkRequestBodyItemInstanceRetention"
+        },
+        "params": {
+          "target": "smithy.api#Document"
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesBulkRequestBodyList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workflows#InstancesBulkRequestBodyItem"
+      }
+    },
+    "com.cloudflare.workflows#InstancesBulkRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.cloudflare.workflows#InstancesBulkRequestBodyList"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesBulkResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesBulkResultItemTriggerSource": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "api"
+          }
+        },
+        "BINDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binding"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesBulkResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workflows#InstancesBulkResultItemStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "trigger_source": {
+          "target": "com.cloudflare.workflows#InstancesBulkResultItemTriggerSource"
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesBulkResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workflows#InstancesBulkResultItem"
+      }
+    },
+    "com.cloudflare.workflows#InstancesBulkResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.workflows#InstancesBulkResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesBulk": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#InstancesBulkRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#InstancesBulkResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}/instances/batch",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates multiple workflow instances in a single batch operation."
+      }
+    },
+    "com.cloudflare.workflows#InstancesCreateRequestInstanceRetention": {
+      "type": "structure",
+      "members": {
+        "error_retention": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Specifies the duration in milliseconds or as a string like '5 minutes'."
+          }
+        },
+        "success_retention": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Specifies the duration in milliseconds or as a string like '5 minutes'."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "instance_id": {
+          "target": "smithy.api#String"
+        },
+        "instance_retention": {
+          "target": "com.cloudflare.workflows#InstancesCreateRequestInstanceRetention"
+        },
+        "params": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesCreateResponseStatus": {
+      "type": "enum",
+      "members": {
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesCreateResponseTriggerSource": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "api"
+          }
+        },
+        "BINDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binding"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workflows#InstancesCreateResponseStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "trigger_source": {
+          "target": "com.cloudflare.workflows#InstancesCreateResponseTriggerSource"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.workflows#InstancesCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#InstancesCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#InstancesCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}/instances",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates a new instance of a workflow, starting its execution."
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetRequestOrder": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetRequestSimple": {
+      "type": "enum",
+      "members": {
+        "TRUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "true"
+          }
+        },
+        "FALSE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "false"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "instance_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.workflows#InstancesGetRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "Step ordering: \"asc\" (default, oldest first) or \"desc\" (newest first).",
+            "smithy.api#httpQuery": "order"
+          }
+        },
+        "simple": {
+          "target": "com.cloudflare.workflows#InstancesGetRequestSimple",
+          "traits": {
+            "smithy.api#documentation": "When true, omits step details and returns only metadata with step_count.",
+            "smithy.api#httpQuery": "simple"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetResponseError": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetResponseRollbackError": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetResponseRollbackOutcome": {
+      "type": "enum",
+      "members": {
+        "COMPLETE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "complete"
+          }
+        },
+        "FAILED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "failed"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetResponseRollback": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "com.cloudflare.workflows#InstancesGetResponseRollbackError",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "outcome": {
+          "target": "com.cloudflare.workflows#InstancesGetResponseRollbackOutcome",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetResponseStatus": {
+      "type": "enum",
+      "members": {
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetResponseStepsItem": {
+      "type": "structure",
+      "members": {
+        "object___attempts__config__end__5_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { attempts, config, end, 5 more }"
+          }
+        },
+        "object___end__error__finished__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { end, error, finished, 3 more }"
+          }
+        },
+        "object___trigger__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { trigger, type }"
+          }
+        },
+        "object___end__error__finished__4_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { end, error, finished, 4 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetResponseStepsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workflows#InstancesGetResponseStepsItem"
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetResponseTriggerSource": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "api"
+          }
+        },
+        "BINDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binding"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetResponseTrigger": {
+      "type": "structure",
+      "members": {
+        "source": {
+          "target": "com.cloudflare.workflows#InstancesGetResponseTriggerSource",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetResponseSchedule": {
+      "type": "structure",
+      "members": {
+        "cron": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "scheduledTime": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesGetResponse": {
+      "type": "structure",
+      "members": {
+        "end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "error": {
+          "target": "com.cloudflare.workflows#InstancesGetResponseError",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "output": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "params": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "queued": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "rollback": {
+          "target": "com.cloudflare.workflows#InstancesGetResponseRollback",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workflows#InstancesGetResponseStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "step_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "steps": {
+          "target": "com.cloudflare.workflows#InstancesGetResponseStepsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "success": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "trigger": {
+          "target": "com.cloudflare.workflows#InstancesGetResponseTrigger",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "versionId": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "schedule": {
+          "target": "com.cloudflare.workflows#InstancesGetResponseSchedule"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.workflows#InstancesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#InstancesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#InstancesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieves logs and execution status for a specific workflow instance.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesListRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesListRequestStatus": {
+      "type": "enum",
+      "members": {
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Opaque token for cursor-based pagination. Mutually exclusive with `page`.",
+            "smithy.api#httpQuery": "cursor"
+          }
+        },
+        "date_end": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Accepts ISO 8601 with no timezone offsets and in UTC.",
+            "smithy.api#httpQuery": "date_end"
+          }
+        },
+        "date_start": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Accepts ISO 8601 with no timezone offsets and in UTC.",
+            "smithy.api#httpQuery": "date_start"
+          }
+        },
+        "direction": {
+          "target": "com.cloudflare.workflows#InstancesListRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "Defines the direction for cursor-based pagination.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Deprecated: use `cursor` for pagination instead.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workflows#InstancesListRequestStatus",
+          "traits": {
+            "smithy.api#httpQuery": "status"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesListResultItemStatus": {
+      "type": "enum",
+      "members": {
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesListResultItemTriggerSource": {
+      "type": "enum",
+      "members": {
+        "UNKNOWN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "unknown"
+          }
+        },
+        "API": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "api"
+          }
+        },
+        "BINDING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "binding"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "ended_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "started_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workflows#InstancesListResultItemStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "trigger_source": {
+          "target": "com.cloudflare.workflows#InstancesListResultItemTriggerSource"
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workflows#InstancesListResultItem"
+      }
+    },
+    "com.cloudflare.workflows#InstancesListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.workflows#InstancesListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#InstancesListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#InstancesListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}/instances",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists all instances of a workflow with their execution status.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesStepRequestType": {
+      "type": "enum",
+      "members": {
+        "STEP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "step"
+          }
+        },
+        "WAITFOREVENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "waitForEvent"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesStepRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "instance_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Exact step name from the instance logs response, including the generated counter suffix.",
+            "smithy.api#httpQuery": "name",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.workflows#InstancesStepRequestType",
+          "traits": {
+            "smithy.api#documentation": "Step type to disambiguate step.do and waitForEvent entries that share the same name.",
+            "smithy.api#httpQuery": "type",
+            "smithy.api#required": {}
+          }
+        },
+        "attempt": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specific attempt number to retrieve output or error for.",
+            "smithy.api#httpQuery": "attempt"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesStepResponseError": {
+      "type": "structure",
+      "members": {
+        "message": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesStepResponseStatus": {
+      "type": "enum",
+      "members": {
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesStepResponse": {
+      "type": "structure",
+      "members": {
+        "error": {
+          "target": "com.cloudflare.workflows#InstancesStepResponseError",
+          "traits": {
+            "smithy.api#documentation": "Error details when status='errored'; null otherwise.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.workflows#InstancesStepResponseStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "output": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Full step output or waitForEvent payload without truncation. Sensitive outputs are returned as '[REDACTED]'. Populated when status='complete'. May be a ReadableStream when the step returned one from step.do; stream outputs are served as application/octet-stream rather than JSON."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.workflows#InstancesStep": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#InstancesStepRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#InstancesStepResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/step",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieves the full, untruncated output for a specific step on a workflow instance. Returns a flat status-shaped JSON body with step `status` ('running' | 'waiting' | 'complete' | 'errored'), `error` (nullable), and `output` (the step value, or null while running/waiting/errored). When the step returned a ReadableStream from step.do, the response is served as 'application/octet-stream' with the raw bytes as the body instead of JSON. A `status='running'` response with non-null `error` indicates the step is currently retrying after a prior attempt failed.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesEventsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "instance_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "event_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesEventsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesEventsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#InstancesEventsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#InstancesEventsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/events/{event_type}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Sends an event to a running workflow instance to trigger state transitions."
+      }
+    },
+    "com.cloudflare.workflows#InstancesStatusEditRequestBody": {
+      "type": "structure",
+      "members": {
+        "Status_object___status__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Status object { status }"
+          }
+        },
+        "Status_object___status___2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Status object { status }"
+          }
+        },
+        "object___status__rollback__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { status, rollback }"
+          }
+        },
+        "object___status__from__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { status, from }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesStatusEditRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "instance_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Instance identifier. User-created instances match `^[a-zA-Z0-9_][a-zA-Z0-9-_]*$` (max 100 characters); cron-triggered instances can use a longer, system-generated id derived from the cron expression.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.cloudflare.workflows#InstancesStatusEditRequestBody"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#InstancesStatusEditResponseStatus": {
+      "type": "enum",
+      "members": {
+        "QUEUED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "queued"
+          }
+        },
+        "RUNNING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "running"
+          }
+        },
+        "PAUSED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "paused"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#InstancesStatusEditResponse": {
+      "type": "structure",
+      "members": {
+        "status": {
+          "target": "com.cloudflare.workflows#InstancesStatusEditResponseStatus",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "timestamp": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Accepts ISO 8601 with no timezone offsets and in UTC.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.workflows#InstancesStatusEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#InstancesStatusEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#InstancesStatusEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}/instances/{instance_id}/status",
+          "code": 200
+        },
+        "smithy.api#documentation": "Changes the execution status of a workflow instance (e.g., pause, resume, terminate)."
+      }
+    },
+    "com.cloudflare.workflows#VersionsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "version_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#VersionsGetResponseLanguage": {
+      "type": "enum",
+      "members": {
+        "JAVASCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "javascript"
+          }
+        },
+        "PYTHON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "python"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsGetResponseLimits": {
+      "type": "structure",
+      "members": {
+        "steps": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "class_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "has_dag": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "language": {
+          "target": "com.cloudflare.workflows#VersionsGetResponseLanguage",
+          "traits": {
+            "smithy.api#documentation": "The programming language of the workflow implementation",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "limits": {
+          "target": "com.cloudflare.workflows#VersionsGetResponseLimits"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.workflows#VersionsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#VersionsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#VersionsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieves details for a specific deployed workflow version.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "version_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowFunctionsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItem": {
+      "type": "structure",
+      "members": {
+        "object___duration__name__type__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { duration, name, type, 2 more }"
+          }
+        },
+        "object___config__name__nodes__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { config, name, nodes, 3 more }"
+          }
+        },
+        "object___name__options__type__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { name, options, type, 3 more }"
+          }
+        },
+        "object___name__timestamp__type__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { name, timestamp, type, 2 more }"
+          }
+        },
+        "object___nodes__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { nodes, type }"
+          }
+        },
+        "object___kind__nodes__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { kind, nodes, type }"
+          }
+        },
+        "object___catch_block__finally_block__try_block__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { catch_block, finally_block, try_block, type }"
+          }
+        },
+        "object___nodes__type___2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { nodes, type }"
+          }
+        },
+        "object___branches__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { branches, type }"
+          }
+        },
+        "object___branches__discriminant__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { branches, discriminant, type }"
+          }
+        },
+        "object___class_name__functions__nodes__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { class_name, functions, nodes, 2 more }"
+          }
+        },
+        "object___name__type__resolves__starts__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { name, type, resolves, starts }"
+          }
+        },
+        "object___name__nodes__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { name, nodes, type }"
+          }
+        },
+        "object___kind__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { kind, type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesItem"
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayload": {
+      "type": "structure",
+      "members": {
+        "Type_object___type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Type object { type }"
+          }
+        },
+        "object___fields__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { fields, type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflow": {
+      "type": "structure",
+      "members": {
+        "class_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "functions": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowFunctionsMap",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "nodes": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowNodesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "payload": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflowPayload",
+          "traits": {
+            "smithy.api#documentation": "Shape descriptor for JSON payloads."
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponseGraph": {
+      "type": "structure",
+      "members": {
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workflow": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraphWorkflow",
+          "traits": {
+            "smithy.api#documentation": "A parsed workflow entrypoint with its step graph.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraphResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "class_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "graph": {
+          "target": "com.cloudflare.workflows#VersionsGraphResponseGraph",
+          "traits": {
+            "smithy.api#documentation": "Versioned workflow graph payload.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.workflows#VersionsGraph": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#VersionsGraphRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#VersionsGraphResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}/versions/{version_id}/graph",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieves the graph visualization of a workflow version.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.workflows#VersionsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "per_page"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.workflows#VersionsListResultItemLanguage": {
+      "type": "enum",
+      "members": {
+        "JAVASCRIPT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "javascript"
+          }
+        },
+        "PYTHON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "python"
+          }
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsListResultItemLimits": {
+      "type": "structure",
+      "members": {
+        "steps": {
+          "target": "smithy.api#Double"
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "class_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "has_dag": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "language": {
+          "target": "com.cloudflare.workflows#VersionsListResultItemLanguage",
+          "traits": {
+            "smithy.api#documentation": "The programming language of the workflow implementation",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "workflow_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "limits": {
+          "target": "com.cloudflare.workflows#VersionsListResultItemLimits"
+        }
+      }
+    },
+    "com.cloudflare.workflows#VersionsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.workflows#VersionsListResultItem"
+      }
+    },
+    "com.cloudflare.workflows#VersionsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.workflows#VersionsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.workflows#VersionsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.workflows#VersionsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.workflows#VersionsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/workflows/{workflow_name}/versions",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists all deployed versions of a workflow.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.workflows#Workflows": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.workflows#Delete"
+        },
+        {
+          "target": "com.cloudflare.workflows#Get"
+        },
+        {
+          "target": "com.cloudflare.workflows#List"
+        },
+        {
+          "target": "com.cloudflare.workflows#Update"
+        },
+        {
+          "target": "com.cloudflare.workflows#InstancesBulk"
+        },
+        {
+          "target": "com.cloudflare.workflows#InstancesCreate"
+        },
+        {
+          "target": "com.cloudflare.workflows#InstancesGet"
+        },
+        {
+          "target": "com.cloudflare.workflows#InstancesList"
+        },
+        {
+          "target": "com.cloudflare.workflows#InstancesStep"
+        },
+        {
+          "target": "com.cloudflare.workflows#InstancesEventsCreate"
+        },
+        {
+          "target": "com.cloudflare.workflows#InstancesStatusEdit"
+        },
+        {
+          "target": "com.cloudflare.workflows#VersionsGet"
+        },
+        {
+          "target": "com.cloudflare.workflows#VersionsGraph"
+        },
+        {
+          "target": "com.cloudflare.workflows#VersionsList"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare Workflows",
+        "smithy.api#documentation": "Cloudflare API — workflows resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

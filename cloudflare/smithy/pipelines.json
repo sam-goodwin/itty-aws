@@ -1,0 +1,4794 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.pipelines#CreateRequestDestinationBatch": {
+      "type": "structure",
+      "members": {
+        "max_bytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies rough maximum size of files."
+          }
+        },
+        "max_duration_s": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies duration to wait to aggregate batches files."
+          }
+        },
+        "max_rows": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies rough maximum number of rows per file."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequestDestinationCompressionType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "GZIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        },
+        "DEFLATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deflate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequestDestinationCompression": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#CreateRequestDestinationCompressionType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the desired compression algorithm and format."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequestDestinationCredentials": {
+      "type": "structure",
+      "members": {
+        "access_key_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 Bucket Access Key Id.",
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 Endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "secret_access_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 Bucket Secret Access Key.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequestDestinationFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequestDestinationPath": {
+      "type": "structure",
+      "members": {
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 Bucket to store files.",
+            "smithy.api#required": {}
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name pattern to for individual data files."
+          }
+        },
+        "filepath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name pattern for directory."
+          }
+        },
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the base directory within the bucket."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequestDestinationType": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequestDestination": {
+      "type": "structure",
+      "members": {
+        "batch": {
+          "target": "com.cloudflare.pipelines#CreateRequestDestinationBatch",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.cloudflare.pipelines#CreateRequestDestinationCompression",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "credentials": {
+          "target": "com.cloudflare.pipelines#CreateRequestDestinationCredentials",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#CreateRequestDestinationFormat",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of data to deliver.",
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "com.cloudflare.pipelines#CreateRequestDestinationPath",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.pipelines#CreateRequestDestinationType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of destination.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequestSourceItem": {
+      "type": "structure",
+      "members": {
+        "CloudflarePipelinesWorkersPipelinesHTTPSource_object___format__type__authentication__cors__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "[DEPRECATED] HTTP source configuration. Use the new streams API instead.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesWorkersPipelinesHTTPSource object { format, type, authentication, cors }"
+          }
+        },
+        "CloudflarePipelinesWorkersPipelinesBindingSource_object___format__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "[DEPRECATED] Worker binding source configuration. Use the new streams API instead.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesWorkersPipelinesBindingSource object { format, type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequestSourceList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#CreateRequestSourceItem"
+      }
+    },
+    "com.cloudflare.pipelines#CreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "destination": {
+          "target": "com.cloudflare.pipelines#CreateRequestDestination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.pipelines#CreateRequestSourceList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponseDestinationBatch": {
+      "type": "structure",
+      "members": {
+        "max_bytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies rough maximum size of files.",
+            "smithy.api#required": {}
+          }
+        },
+        "max_duration_s": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies duration to wait to aggregate batches files.",
+            "smithy.api#required": {}
+          }
+        },
+        "max_rows": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies rough maximum number of rows per file.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponseDestinationCompressionType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "GZIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        },
+        "DEFLATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deflate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponseDestinationCompression": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#CreateResponseDestinationCompressionType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the desired compression algorithm and format.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponseDestinationFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponseDestinationPath": {
+      "type": "structure",
+      "members": {
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 Bucket to store files.",
+            "smithy.api#required": {}
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name pattern to for individual data files."
+          }
+        },
+        "filepath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name pattern for directory."
+          }
+        },
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the base directory within the bucket."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponseDestinationType": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponseDestination": {
+      "type": "structure",
+      "members": {
+        "batch": {
+          "target": "com.cloudflare.pipelines#CreateResponseDestinationBatch",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.cloudflare.pipelines#CreateResponseDestinationCompression",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#CreateResponseDestinationFormat",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of data to deliver.",
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "com.cloudflare.pipelines#CreateResponseDestinationPath",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.pipelines#CreateResponseDestinationType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of destination.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponseSourceItem": {
+      "type": "structure",
+      "members": {
+        "CloudflarePipelinesWorkersPipelinesHTTPSource_object___format__type__authentication__cors__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "[DEPRECATED] HTTP source configuration. Use the new streams API instead.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesWorkersPipelinesHTTPSource object { format, type, authentication, cors }"
+          }
+        },
+        "CloudflarePipelinesWorkersPipelinesBindingSource_object___format__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "[DEPRECATED] Worker binding source configuration. Use the new streams API instead.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesWorkersPipelinesBindingSource object { format, type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponseSourceList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#CreateResponseSourceItem"
+      }
+    },
+    "com.cloudflare.pipelines#CreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the pipeline identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "destination": {
+          "target": "com.cloudflare.pipelines#CreateResponseDestination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the endpoint URL to send traffic.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.pipelines#CreateResponseSourceList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Indicates the version number of last saved configuration.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.pipelines#Create": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#CreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#CreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/pipelines",
+          "code": 200
+        },
+        "smithy.api#documentation": "[DEPRECATED] Create a new pipeline. Use the new /pipelines/v1/pipelines endpoint instead."
+      }
+    },
+    "com.cloudflare.pipelines#CreateV1Request": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name of the Pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "sql": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies SQL for the Pipeline processing flow.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#CreateV1Response": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates a unique identifier for this pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the name of the Pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "sql": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies SQL for the Pipeline processing flow.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the current status of the Pipeline.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.pipelines#CreateV1": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#CreateV1Request"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#CreateV1Response"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/pipelines/v1/pipelines",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a new Pipeline."
+      }
+    },
+    "com.cloudflare.pipelines#DeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pipeline_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the pipeline.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#Delete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#DeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/pipelines/{pipeline_name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "[DEPRECATED] Delete a pipeline. Use the new /pipelines/v1/pipelines endpoint instead.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.pipelines#DeleteV1Request": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pipeline_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the pipeline.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#DeleteV1Response": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.pipelines#DeleteV1": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#DeleteV1Request"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#DeleteV1Response"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/pipelines/v1/pipelines/{pipeline_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete Pipeline in Account.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.pipelines#GetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pipeline_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the pipeline.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#GetResponseDestinationBatch": {
+      "type": "structure",
+      "members": {
+        "max_bytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies rough maximum size of files.",
+            "smithy.api#required": {}
+          }
+        },
+        "max_duration_s": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies duration to wait to aggregate batches files.",
+            "smithy.api#required": {}
+          }
+        },
+        "max_rows": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies rough maximum number of rows per file.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetResponseDestinationCompressionType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "GZIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        },
+        "DEFLATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deflate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetResponseDestinationCompression": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#GetResponseDestinationCompressionType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the desired compression algorithm and format.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetResponseDestinationFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetResponseDestinationPath": {
+      "type": "structure",
+      "members": {
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 Bucket to store files.",
+            "smithy.api#required": {}
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name pattern to for individual data files."
+          }
+        },
+        "filepath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name pattern for directory."
+          }
+        },
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the base directory within the bucket."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetResponseDestinationType": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetResponseDestination": {
+      "type": "structure",
+      "members": {
+        "batch": {
+          "target": "com.cloudflare.pipelines#GetResponseDestinationBatch",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.cloudflare.pipelines#GetResponseDestinationCompression",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#GetResponseDestinationFormat",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of data to deliver.",
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "com.cloudflare.pipelines#GetResponseDestinationPath",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.pipelines#GetResponseDestinationType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of destination.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetResponseSourceItem": {
+      "type": "structure",
+      "members": {
+        "CloudflarePipelinesWorkersPipelinesHTTPSource_object___format__type__authentication__cors__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "[DEPRECATED] HTTP source configuration. Use the new streams API instead.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesWorkersPipelinesHTTPSource object { format, type, authentication, cors }"
+          }
+        },
+        "CloudflarePipelinesWorkersPipelinesBindingSource_object___format__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "[DEPRECATED] Worker binding source configuration. Use the new streams API instead.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesWorkersPipelinesBindingSource object { format, type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetResponseSourceList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#GetResponseSourceItem"
+      }
+    },
+    "com.cloudflare.pipelines#GetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the pipeline identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "destination": {
+          "target": "com.cloudflare.pipelines#GetResponseDestination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the endpoint URL to send traffic.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.pipelines#GetResponseSourceList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Indicates the version number of last saved configuration.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.pipelines#Get": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#GetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#GetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/pipelines/{pipeline_name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "[DEPRECATED] Get configuration of a pipeline. Use the new /pipelines/v1/pipelines endpoint instead.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.pipelines#GetV1Request": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pipeline_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the pipeline.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#GetV1ResponseTablesItemType": {
+      "type": "enum",
+      "members": {
+        "STREAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "stream"
+          }
+        },
+        "SINK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "sink"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetV1ResponseTablesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the connection (stream or sink).",
+            "smithy.api#required": {}
+          }
+        },
+        "latest": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Latest available version of the connection.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Name of the connection.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.pipelines#GetV1ResponseTablesItemType",
+          "traits": {
+            "smithy.api#documentation": "Type of the connection.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Current version of the connection used by this pipeline.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#GetV1ResponseTablesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#GetV1ResponseTablesItem"
+      }
+    },
+    "com.cloudflare.pipelines#GetV1Response": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates a unique identifier for this pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the name of the Pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "sql": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies SQL for the Pipeline processing flow.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the current status of the Pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "tables": {
+          "target": "com.cloudflare.pipelines#GetV1ResponseTablesList",
+          "traits": {
+            "smithy.api#documentation": "List of streams and sinks used by this pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "failure_reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the reason for the failure of the Pipeline."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.pipelines#GetV1": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#GetV1Request"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#GetV1Response"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/pipelines/v1/pipelines/{pipeline_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Pipelines Details.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.pipelines#ListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies which page to retrieve.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the number of pipelines per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the prefix of pipeline name to search.",
+            "smithy.api#httpQuery": "search"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItemDestinationBatch": {
+      "type": "structure",
+      "members": {
+        "max_bytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies rough maximum size of files.",
+            "smithy.api#required": {}
+          }
+        },
+        "max_duration_s": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies duration to wait to aggregate batches files.",
+            "smithy.api#required": {}
+          }
+        },
+        "max_rows": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies rough maximum number of rows per file.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItemDestinationCompressionType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "GZIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        },
+        "DEFLATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deflate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItemDestinationCompression": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemDestinationCompressionType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the desired compression algorithm and format.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItemDestinationFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItemDestinationPath": {
+      "type": "structure",
+      "members": {
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 Bucket to store files.",
+            "smithy.api#required": {}
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name pattern to for individual data files."
+          }
+        },
+        "filepath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name pattern for directory."
+          }
+        },
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the base directory within the bucket."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItemDestinationType": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItemDestination": {
+      "type": "structure",
+      "members": {
+        "batch": {
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemDestinationBatch",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemDestinationCompression",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemDestinationFormat",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of data to deliver.",
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemDestinationPath",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemDestinationType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of destination.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItemSourceItem": {
+      "type": "structure",
+      "members": {
+        "CloudflarePipelinesWorkersPipelinesHTTPSource_object___format__type__authentication__cors__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "[DEPRECATED] HTTP source configuration. Use the new streams API instead.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesWorkersPipelinesHTTPSource object { format, type, authentication, cors }"
+          }
+        },
+        "CloudflarePipelinesWorkersPipelinesBindingSource_object___format__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "[DEPRECATED] Worker binding source configuration. Use the new streams API instead.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesWorkersPipelinesBindingSource object { format, type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItemSourceList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#ListResponseResultsItemSourceItem"
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the pipeline identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "destination": {
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemDestination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the endpoint URL to send traffic.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.pipelines#ListResponseResultsItemSourceList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Indicates the version number of last saved configuration.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListResponseResultsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#ListResponseResultsItem"
+      }
+    },
+    "com.cloudflare.pipelines#ListResponse": {
+      "type": "structure",
+      "members": {
+        "results": {
+          "target": "com.cloudflare.pipelines#ListResponseResultsList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.pipelines#List": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#ListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#ListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/pipelines",
+          "code": 200
+        },
+        "smithy.api#documentation": "[DEPRECATED] List, filter, and paginate pipelines in an account. Use the new /pipelines/v1/pipelines endpoint instead.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.pipelines#ListV1Request": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters pipelines by name (case-insensitive substring).",
+            "smithy.api#httpQuery": "name"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "per_page"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#ListV1ResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates a unique identifier for this pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the name of the Pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "sql": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies SQL for the Pipeline processing flow.",
+            "smithy.api#required": {}
+          }
+        },
+        "status": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the current status of the Pipeline.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ListV1ResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#ListV1ResultItem"
+      }
+    },
+    "com.cloudflare.pipelines#ListV1Response": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.pipelines#ListV1ResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.pipelines#ListV1": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#ListV1Request"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#ListV1Response"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/pipelines/v1/pipelines",
+          "code": 200
+        },
+        "smithy.api#documentation": "List/Filter Pipelines in Account.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestDestinationBatch": {
+      "type": "structure",
+      "members": {
+        "max_bytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies rough maximum size of files."
+          }
+        },
+        "max_duration_s": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies duration to wait to aggregate batches files."
+          }
+        },
+        "max_rows": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies rough maximum number of rows per file."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestDestinationCompressionType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "GZIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        },
+        "DEFLATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deflate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestDestinationCompression": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#UpdateRequestDestinationCompressionType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the desired compression algorithm and format."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestDestinationFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestDestinationPath": {
+      "type": "structure",
+      "members": {
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 Bucket to store files.",
+            "smithy.api#required": {}
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name pattern to for individual data files."
+          }
+        },
+        "filepath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name pattern for directory."
+          }
+        },
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the base directory within the bucket."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestDestinationType": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestDestinationCredentials": {
+      "type": "structure",
+      "members": {
+        "access_key_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 Bucket Access Key Id.",
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 Endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "secret_access_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 Bucket Secret Access Key.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestDestination": {
+      "type": "structure",
+      "members": {
+        "batch": {
+          "target": "com.cloudflare.pipelines#UpdateRequestDestinationBatch",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.cloudflare.pipelines#UpdateRequestDestinationCompression",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#UpdateRequestDestinationFormat",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of data to deliver.",
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "com.cloudflare.pipelines#UpdateRequestDestinationPath",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.pipelines#UpdateRequestDestinationType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of destination.",
+            "smithy.api#required": {}
+          }
+        },
+        "credentials": {
+          "target": "com.cloudflare.pipelines#UpdateRequestDestinationCredentials"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestSourceItem": {
+      "type": "structure",
+      "members": {
+        "CloudflarePipelinesWorkersPipelinesHTTPSource_object___format__type__authentication__cors__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "[DEPRECATED] HTTP source configuration. Use the new streams API instead.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesWorkersPipelinesHTTPSource object { format, type, authentication, cors }"
+          }
+        },
+        "CloudflarePipelinesWorkersPipelinesBindingSource_object___format__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "[DEPRECATED] Worker binding source configuration. Use the new streams API instead.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesWorkersPipelinesBindingSource object { format, type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequestSourceList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#UpdateRequestSourceItem"
+      }
+    },
+    "com.cloudflare.pipelines#UpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pipeline_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the pipeline.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "destination": {
+          "target": "com.cloudflare.pipelines#UpdateRequestDestination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.pipelines#UpdateRequestSourceList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponseDestinationBatch": {
+      "type": "structure",
+      "members": {
+        "max_bytes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies rough maximum size of files.",
+            "smithy.api#required": {}
+          }
+        },
+        "max_duration_s": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies duration to wait to aggregate batches files.",
+            "smithy.api#required": {}
+          }
+        },
+        "max_rows": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Specifies rough maximum number of rows per file.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponseDestinationCompressionType": {
+      "type": "enum",
+      "members": {
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "GZIP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "gzip"
+          }
+        },
+        "DEFLATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "deflate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponseDestinationCompression": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.pipelines#UpdateResponseDestinationCompressionType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the desired compression algorithm and format.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponseDestinationFormat": {
+      "type": "enum",
+      "members": {
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponseDestinationPath": {
+      "type": "structure",
+      "members": {
+        "bucket": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the R2 Bucket to store files.",
+            "smithy.api#required": {}
+          }
+        },
+        "filename": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name pattern to for individual data files."
+          }
+        },
+        "filepath": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name pattern for directory."
+          }
+        },
+        "prefix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the base directory within the bucket."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponseDestinationType": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponseDestination": {
+      "type": "structure",
+      "members": {
+        "batch": {
+          "target": "com.cloudflare.pipelines#UpdateResponseDestinationBatch",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "compression": {
+          "target": "com.cloudflare.pipelines#UpdateResponseDestinationCompression",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#UpdateResponseDestinationFormat",
+          "traits": {
+            "smithy.api#documentation": "Specifies the format of data to deliver.",
+            "smithy.api#required": {}
+          }
+        },
+        "path": {
+          "target": "com.cloudflare.pipelines#UpdateResponseDestinationPath",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.pipelines#UpdateResponseDestinationType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of destination.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponseSourceItem": {
+      "type": "structure",
+      "members": {
+        "CloudflarePipelinesWorkersPipelinesHTTPSource_object___format__type__authentication__cors__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "[DEPRECATED] HTTP source configuration. Use the new streams API instead.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesWorkersPipelinesHTTPSource object { format, type, authentication, cors }"
+          }
+        },
+        "CloudflarePipelinesWorkersPipelinesBindingSource_object___format__type__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "[DEPRECATED] Worker binding source configuration. Use the new streams API instead.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesWorkersPipelinesBindingSource object { format, type }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponseSourceList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#UpdateResponseSourceItem"
+      }
+    },
+    "com.cloudflare.pipelines#UpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the pipeline identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "destination": {
+          "target": "com.cloudflare.pipelines#UpdateResponseDestination",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the endpoint URL to send traffic.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the pipeline.",
+            "smithy.api#required": {}
+          }
+        },
+        "source": {
+          "target": "com.cloudflare.pipelines#UpdateResponseSourceList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Indicates the version number of last saved configuration.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.pipelines#Update": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#UpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#UpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{account_id}/pipelines/{pipeline_name}",
+          "code": 200
+        },
+        "smithy.api#documentation": "[DEPRECATED] Update an existing pipeline. Use the new /pipelines/v1/pipelines endpoint instead.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.pipelines#ValidateSqlRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "sql": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies SQL to validate.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#ValidateSqlResponseTablesMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.pipelines#ValidateSqlResponseGraphEdgesItem": {
+      "type": "structure",
+      "members": {
+        "dest_id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "edge_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "key_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "src_id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ValidateSqlResponseGraphEdgesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#ValidateSqlResponseGraphEdgesItem"
+      }
+    },
+    "com.cloudflare.pipelines#ValidateSqlResponseGraphNodesItem": {
+      "type": "structure",
+      "members": {
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "node_id": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "operator": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "parallelism": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ValidateSqlResponseGraphNodesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#ValidateSqlResponseGraphNodesItem"
+      }
+    },
+    "com.cloudflare.pipelines#ValidateSqlResponseGraph": {
+      "type": "structure",
+      "members": {
+        "edges": {
+          "target": "com.cloudflare.pipelines#ValidateSqlResponseGraphEdgesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "nodes": {
+          "target": "com.cloudflare.pipelines#ValidateSqlResponseGraphNodesList",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#ValidateSqlResponse": {
+      "type": "structure",
+      "members": {
+        "tables": {
+          "target": "com.cloudflare.pipelines#ValidateSqlResponseTablesMap",
+          "traits": {
+            "smithy.api#documentation": "Indicates tables involved in the processing.",
+            "smithy.api#required": {}
+          }
+        },
+        "graph": {
+          "target": "com.cloudflare.pipelines#ValidateSqlResponseGraph"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.pipelines#ValidateSql": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#ValidateSqlRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#ValidateSqlResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/pipelines/v1/validate_sql",
+          "code": 200
+        },
+        "smithy.api#documentation": "Validate Arroyo SQL."
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestType": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        },
+        "R2_DATA_CATALOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_data_catalog"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestConfig": {
+      "type": "structure",
+      "members": {
+        "CloudflarePipelinesR2Table_object___account_id__bucket__credentials__5_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesR2Table object { account_id, bucket, credentials, 5 more }"
+          }
+        },
+        "CloudflarePipelinesR2DataCatalogTable_object___token__account_id__bucket__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "R2 Data Catalog Sink",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesR2DataCatalogTable object { token, account_id, bucket, 3 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItem": {
+      "type": "structure",
+      "members": {
+        "Int32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Int64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Bool_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Bool object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "String_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "String object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Binary_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Binary object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Timestamp_object___type__metadata_key__name__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Timestamp object { type, metadata_key, name, 3 more }"
+          }
+        },
+        "Json_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Struct": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "List": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsItem"
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchemaFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequestSchema": {
+      "type": "structure",
+      "members": {
+        "fields": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFieldsList"
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchemaFormat"
+        },
+        "inferred": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the Sink.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of sink.",
+            "smithy.api#required": {}
+          }
+        },
+        "config": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestConfig",
+          "traits": {
+            "smithy.api#documentation": "Defines the configuration of the R2 Sink."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestFormat"
+        },
+        "schema": {
+          "target": "com.cloudflare.pipelines#SinksCreateRequestSchema"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseType": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        },
+        "R2_DATA_CATALOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_data_catalog"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseConfig": {
+      "type": "structure",
+      "members": {
+        "CloudflarePipelinesR2Table_object___account_id__bucket__credentials__5_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesR2Table object { account_id, bucket, credentials, 5 more }"
+          }
+        },
+        "CloudflarePipelinesR2DataCatalogTable_object___token__account_id__bucket__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "R2 Data Catalog Sink",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesR2DataCatalogTable object { token, account_id, bucket, 3 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItem": {
+      "type": "structure",
+      "members": {
+        "Int32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Int64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Bool_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Bool object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "String_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "String object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Binary_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Binary object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Timestamp_object___type__metadata_key__name__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Timestamp object { type, metadata_key, name, 3 more }"
+          }
+        },
+        "Json_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Struct": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "List": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsItem"
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchemaFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponseSchema": {
+      "type": "structure",
+      "members": {
+        "fields": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFieldsList"
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchemaFormat"
+        },
+        "inferred": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates a unique identifier for this sink.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the Sink.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of sink.",
+            "smithy.api#required": {}
+          }
+        },
+        "config": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseConfig",
+          "traits": {
+            "smithy.api#documentation": "R2 Data Catalog Sink"
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseFormat"
+        },
+        "schema": {
+          "target": "com.cloudflare.pipelines#SinksCreateResponseSchema"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.pipelines#SinksCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#SinksCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#SinksCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/pipelines/v1/sinks",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a new Sink."
+      }
+    },
+    "com.cloudflare.pipelines#SinksDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "sink_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the publid ID of the sink.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "force": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Delete sink forcefully, including deleting any dependent pipelines.",
+            "smithy.api#httpQuery": "force"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#SinksDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.pipelines#SinksDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#SinksDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#SinksDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/pipelines/v1/sinks/{sink_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete Pipeline in Account.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "sink_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the publid ID of the sink.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseType": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        },
+        "R2_DATA_CATALOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_data_catalog"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseConfig": {
+      "type": "structure",
+      "members": {
+        "CloudflarePipelinesR2TablePublic_object___account_id__bucket__file_naming__4_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "R2 Sink public configuration.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesR2TablePublic object { account_id, bucket, file_naming, 4 more }"
+          }
+        },
+        "CloudflarePipelinesR2DataCatalogTablePublic_object___account_id__bucket__table_name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "R2 Data Catalog Sink public configuration.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesR2DataCatalogTablePublic object { account_id, bucket, table_name, 2 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItem": {
+      "type": "structure",
+      "members": {
+        "Int32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Int64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Bool_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Bool object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "String_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "String object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Binary_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Binary object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Timestamp_object___type__metadata_key__name__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Timestamp object { type, metadata_key, name, 3 more }"
+          }
+        },
+        "Json_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Struct": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "List": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsItem"
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchemaFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponseSchema": {
+      "type": "structure",
+      "members": {
+        "fields": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFieldsList"
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchemaFormat"
+        },
+        "inferred": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates a unique identifier for this sink.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the Sink.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of sink.",
+            "smithy.api#required": {}
+          }
+        },
+        "config": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseConfig",
+          "traits": {
+            "smithy.api#documentation": "Defines the configuration of the R2 Sink."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseFormat"
+        },
+        "schema": {
+          "target": "com.cloudflare.pipelines#SinksGetResponseSchema"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.pipelines#SinksGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#SinksGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#SinksGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/pipelines/v1/sinks/{sink_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Sink Details.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.pipelines#SinksListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters sinks by name (case-insensitive substring).",
+            "smithy.api#httpQuery": "name"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "pipeline_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "pipeline_id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemType": {
+      "type": "enum",
+      "members": {
+        "R2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2"
+          }
+        },
+        "R2_DATA_CATALOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "r2_data_catalog"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemConfig": {
+      "type": "structure",
+      "members": {
+        "CloudflarePipelinesR2TablePublic_object___account_id__bucket__file_naming__4_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "R2 Sink public configuration.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesR2TablePublic object { account_id, bucket, file_naming, 4 more }"
+          }
+        },
+        "CloudflarePipelinesR2DataCatalogTablePublic_object___account_id__bucket__table_name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "R2 Data Catalog Sink public configuration.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "CloudflarePipelinesR2DataCatalogTablePublic object { account_id, bucket, table_name, 2 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItem": {
+      "type": "structure",
+      "members": {
+        "Int32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Int64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Bool_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Bool object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "String_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "String object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Binary_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Binary object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Timestamp_object___type__metadata_key__name__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Timestamp object { type, metadata_key, name, 3 more }"
+          }
+        },
+        "Json_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Struct": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "List": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsItem"
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchemaFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItemSchema": {
+      "type": "structure",
+      "members": {
+        "fields": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFieldsList"
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchemaFormat"
+        },
+        "inferred": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates a unique identifier for this sink.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the Sink.",
+            "smithy.api#required": {}
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemType",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of sink.",
+            "smithy.api#required": {}
+          }
+        },
+        "config": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemConfig",
+          "traits": {
+            "smithy.api#documentation": "Defines the configuration of the R2 Sink."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemFormat"
+        },
+        "schema": {
+          "target": "com.cloudflare.pipelines#SinksListResultItemSchema"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#SinksListResultItem"
+      }
+    },
+    "com.cloudflare.pipelines#SinksListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.pipelines#SinksListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.pipelines#SinksList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#SinksListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#SinksListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/pipelines/v1/sinks",
+          "code": 200
+        },
+        "smithy.api#documentation": "List/Filter Sinks in Account.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestHttpCorsOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestHttpCors": {
+      "type": "structure",
+      "members": {
+        "origins": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestHttpCorsOriginsList"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestHttp": {
+      "type": "structure",
+      "members": {
+        "authentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that authentication is required for the HTTP endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the HTTP endpoint is enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "cors": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestHttpCors",
+          "traits": {
+            "smithy.api#documentation": "Specifies the CORS options for the HTTP endpoint."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItem": {
+      "type": "structure",
+      "members": {
+        "Int32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Int64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Bool_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Bool object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "String_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "String object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Binary_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Binary object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Timestamp_object___type__metadata_key__name__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Timestamp object { type, metadata_key, name, 3 more }"
+          }
+        },
+        "Json_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Struct": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "List": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsItem"
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestSchema": {
+      "type": "structure",
+      "members": {
+        "fields": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFieldsList"
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchemaFormat"
+        },
+        "inferred": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequestWorkerBinding": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the worker binding is enabled.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the name of the Stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestFormat"
+        },
+        "http": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestHttp"
+        },
+        "schema": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestSchema"
+        },
+        "worker_binding": {
+          "target": "com.cloudflare.pipelines#StreamsCreateRequestWorkerBinding"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseHttpCorsOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseHttpCors": {
+      "type": "structure",
+      "members": {
+        "origins": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseHttpCorsOriginsList"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseHttp": {
+      "type": "structure",
+      "members": {
+        "authentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that authentication is required for the HTTP endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the HTTP endpoint is enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "cors": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseHttpCors",
+          "traits": {
+            "smithy.api#documentation": "Specifies the CORS options for the HTTP endpoint."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseWorkerBinding": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the worker binding is enabled.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItem": {
+      "type": "structure",
+      "members": {
+        "Int32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Int64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Bool_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Bool object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "String_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "String object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Binary_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Binary object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Timestamp_object___type__metadata_key__name__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Timestamp object { type, metadata_key, name, 3 more }"
+          }
+        },
+        "Json_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Struct": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "List": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsItem"
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponseSchema": {
+      "type": "structure",
+      "members": {
+        "fields": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFieldsList"
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchemaFormat"
+        },
+        "inferred": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates a unique identifier for this stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseHttp",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the name of the Stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Indicates the current version of this stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "worker_binding": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseWorkerBinding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the endpoint URL of this stream."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseFormat"
+        },
+        "schema": {
+          "target": "com.cloudflare.pipelines#StreamsCreateResponseSchema"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.pipelines#StreamsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#StreamsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#StreamsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/pipelines/v1/streams",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a new Stream."
+      }
+    },
+    "com.cloudflare.pipelines#StreamsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "stream_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the stream.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "force": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Delete stream forcefully, including deleting any dependent pipelines.",
+            "smithy.api#httpQuery": "force"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#StreamsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.pipelines#StreamsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#StreamsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#StreamsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete Stream in Account.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "stream_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the stream.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseHttpCorsOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseHttpCors": {
+      "type": "structure",
+      "members": {
+        "origins": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseHttpCorsOriginsList"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseHttp": {
+      "type": "structure",
+      "members": {
+        "authentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that authentication is required for the HTTP endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the HTTP endpoint is enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "cors": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseHttpCors",
+          "traits": {
+            "smithy.api#documentation": "Specifies the CORS options for the HTTP endpoint."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseWorkerBinding": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the worker binding is enabled.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItem": {
+      "type": "structure",
+      "members": {
+        "Int32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Int64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Bool_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Bool object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "String_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "String object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Binary_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Binary object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Timestamp_object___type__metadata_key__name__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Timestamp object { type, metadata_key, name, 3 more }"
+          }
+        },
+        "Json_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Struct": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "List": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsItem"
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchemaFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponseSchema": {
+      "type": "structure",
+      "members": {
+        "fields": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFieldsList"
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchemaFormat"
+        },
+        "inferred": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates a unique identifier for this stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseHttp",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the name of the Stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Indicates the current version of this stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "worker_binding": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseWorkerBinding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the endpoint URL of this stream."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseFormat"
+        },
+        "schema": {
+          "target": "com.cloudflare.pipelines#StreamsGetResponseSchema"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.pipelines#StreamsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#StreamsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#StreamsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Stream Details.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Filters streams by name (case-insensitive substring).",
+            "smithy.api#httpQuery": "name"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "pipeline_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the pipeline.",
+            "smithy.api#httpQuery": "pipeline_id"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemHttpCorsOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemHttpCors": {
+      "type": "structure",
+      "members": {
+        "origins": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemHttpCorsOriginsList"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemHttp": {
+      "type": "structure",
+      "members": {
+        "authentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that authentication is required for the HTTP endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the HTTP endpoint is enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "cors": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemHttpCors",
+          "traits": {
+            "smithy.api#documentation": "Specifies the CORS options for the HTTP endpoint."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemWorkerBinding": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the worker binding is enabled.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItem": {
+      "type": "structure",
+      "members": {
+        "Int32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Int64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Int64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float32_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float32 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Float64_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Float64 object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Bool_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Bool object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "String_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "String object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Binary_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Binary object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Timestamp_object___type__metadata_key__name__3_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Timestamp object { type, metadata_key, name, 3 more }"
+          }
+        },
+        "Json_object___type__metadata_key__name__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, metadata_key, name, 2 more }"
+          }
+        },
+        "Struct": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "List": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsItem"
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchemaFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItemSchema": {
+      "type": "structure",
+      "members": {
+        "fields": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFieldsList"
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchemaFormat"
+        },
+        "inferred": {
+          "target": "smithy.api#Boolean"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates a unique identifier for this stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemHttp",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the name of the Stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Indicates the current version of this stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "worker_binding": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemWorkerBinding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the endpoint URL of this stream."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemFormat"
+        },
+        "schema": {
+          "target": "com.cloudflare.pipelines#StreamsListResultItemSchema"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.pipelines#StreamsListResultItem"
+      }
+    },
+    "com.cloudflare.pipelines#StreamsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.pipelines#StreamsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.pipelines#StreamsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#StreamsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#StreamsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/pipelines/v1/streams",
+          "code": 200
+        },
+        "smithy.api#documentation": "List/Filter Streams in Account.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateRequestHttpCorsOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateRequestHttpCors": {
+      "type": "structure",
+      "members": {
+        "origins": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateRequestHttpCorsOriginsList"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateRequestHttp": {
+      "type": "structure",
+      "members": {
+        "authentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that authentication is required for the HTTP endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the HTTP endpoint is enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "cors": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateRequestHttpCors",
+          "traits": {
+            "smithy.api#documentation": "Specifies the CORS options for the HTTP endpoint."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateRequestWorkerBinding": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the worker binding is enabled.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the account.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "stream_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Specifies the public ID of the stream.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "http": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateRequestHttp"
+        },
+        "worker_binding": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateRequestWorkerBinding"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateResponseHttpCorsOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateResponseHttpCors": {
+      "type": "structure",
+      "members": {
+        "origins": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateResponseHttpCorsOriginsList"
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateResponseHttp": {
+      "type": "structure",
+      "members": {
+        "authentication": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that authentication is required for the HTTP endpoint.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the HTTP endpoint is enabled.",
+            "smithy.api#required": {}
+          }
+        },
+        "cors": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateResponseHttpCors",
+          "traits": {
+            "smithy.api#documentation": "Specifies the CORS options for the HTTP endpoint."
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateResponseWorkerBinding": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Indicates that the worker binding is enabled.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateResponseFormat": {
+      "type": "structure",
+      "members": {
+        "Json_object___type__decimal_encoding__timestamp_format__unstructured__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Json object { type, decimal_encoding, timestamp_format, unstructured }"
+          }
+        },
+        "Parquet_object___type__compression__row_group_bytes__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Parquet object { type, compression, row_group_bytes }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates a unique identifier for this stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "http": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateResponseHttp",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "modified_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the name of the Stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "version": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Indicates the current version of this stream.",
+            "smithy.api#required": {}
+          }
+        },
+        "worker_binding": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateResponseWorkerBinding",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "endpoint": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Indicates the endpoint URL of this stream."
+          }
+        },
+        "format": {
+          "target": "com.cloudflare.pipelines#StreamsUpdateResponseFormat"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.pipelines#StreamsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.pipelines#StreamsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.pipelines#StreamsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/accounts/{account_id}/pipelines/v1/streams/{stream_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update a Stream."
+      }
+    },
+    "com.cloudflare.pipelines#Pipelines": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.pipelines#Create"
+        },
+        {
+          "target": "com.cloudflare.pipelines#CreateV1"
+        },
+        {
+          "target": "com.cloudflare.pipelines#Delete"
+        },
+        {
+          "target": "com.cloudflare.pipelines#DeleteV1"
+        },
+        {
+          "target": "com.cloudflare.pipelines#Get"
+        },
+        {
+          "target": "com.cloudflare.pipelines#GetV1"
+        },
+        {
+          "target": "com.cloudflare.pipelines#List"
+        },
+        {
+          "target": "com.cloudflare.pipelines#ListV1"
+        },
+        {
+          "target": "com.cloudflare.pipelines#Update"
+        },
+        {
+          "target": "com.cloudflare.pipelines#ValidateSql"
+        },
+        {
+          "target": "com.cloudflare.pipelines#SinksCreate"
+        },
+        {
+          "target": "com.cloudflare.pipelines#SinksDelete"
+        },
+        {
+          "target": "com.cloudflare.pipelines#SinksGet"
+        },
+        {
+          "target": "com.cloudflare.pipelines#SinksList"
+        },
+        {
+          "target": "com.cloudflare.pipelines#StreamsCreate"
+        },
+        {
+          "target": "com.cloudflare.pipelines#StreamsDelete"
+        },
+        {
+          "target": "com.cloudflare.pipelines#StreamsGet"
+        },
+        {
+          "target": "com.cloudflare.pipelines#StreamsList"
+        },
+        {
+          "target": "com.cloudflare.pipelines#StreamsUpdate"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare Pipelines",
+        "smithy.api#documentation": "Cloudflare API — pipelines resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

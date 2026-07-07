@@ -1,0 +1,5488 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.dns#AnalyticsReportsGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "dimensions": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A comma-separated list of dimensions to group results by.",
+            "smithy.api#httpQuery": "dimensions"
+          }
+        },
+        "filters": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Segmentation filter in 'attribute operator value' format.",
+            "smithy.api#httpQuery": "filters"
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Limit number of returned metrics.",
+            "smithy.api#httpQuery": "limit"
+          }
+        },
+        "metrics": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A comma-separated list of metrics to query.",
+            "smithy.api#httpQuery": "metrics"
+          }
+        },
+        "since": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start date and time of requesting data period in ISO 8601 format.",
+            "smithy.api#httpQuery": "since"
+          }
+        },
+        "sort": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending).",
+            "smithy.api#httpQuery": "sort"
+          }
+        },
+        "until": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End date and time of requesting data period in ISO 8601 format.",
+            "smithy.api#httpQuery": "until"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#AnalyticsReportsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#AnalyticsReportsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#AnalyticsReportsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#AnalyticsReportsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/dns_analytics/report",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieves a list of summarised aggregate metrics over a given time period. See [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#AnalyticsReportsBytimesGetRequestTimeDelta": {
+      "type": "enum",
+      "members": {
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        },
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "YEAR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "year"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#AnalyticsReportsBytimesGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "dimensions": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A comma-separated list of dimensions to group results by.",
+            "smithy.api#httpQuery": "dimensions"
+          }
+        },
+        "filters": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Segmentation filter in 'attribute operator value' format.",
+            "smithy.api#httpQuery": "filters"
+          }
+        },
+        "limit": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Limit number of returned metrics.",
+            "smithy.api#httpQuery": "limit"
+          }
+        },
+        "metrics": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A comma-separated list of metrics to query.",
+            "smithy.api#httpQuery": "metrics"
+          }
+        },
+        "since": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Start date and time of requesting data period in ISO 8601 format.",
+            "smithy.api#httpQuery": "since"
+          }
+        },
+        "sort": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A comma-separated list of dimensions to sort by, where each dimension may be prefixed by - (descending) or + (ascending).",
+            "smithy.api#httpQuery": "sort"
+          }
+        },
+        "time_delta": {
+          "target": "com.cloudflare.dns#AnalyticsReportsBytimesGetRequestTimeDelta",
+          "traits": {
+            "smithy.api#documentation": "Unit of time to group data by.",
+            "smithy.api#httpQuery": "time_delta"
+          }
+        },
+        "until": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "End date and time of requesting data period in ISO 8601 format.",
+            "smithy.api#httpQuery": "until"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#AnalyticsReportsBytimesGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#AnalyticsReportsBytimesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#AnalyticsReportsBytimesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#AnalyticsReportsBytimesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/dns_analytics/report/bytime",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieves a list of aggregate metrics grouped by time interval. See [Analytics API properties](https://developers.cloudflare.com/dns/reference/analytics-api-properties/) for detailed information about the available query parameters.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#DnssecDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#DnssecDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#DnssecDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#DnssecDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#DnssecDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/dnssec",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete DNSSEC.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#DnssecEditRequestStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#DnssecEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "dnssec_multi_signer": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, multi-signer DNSSEC is enabled on the zone, allowing multiple"
+          }
+        },
+        "dnssec_presigned": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, allows Cloudflare to transfer in a DNSSEC-signed zone"
+          }
+        },
+        "dnssec_use_nsec3": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If true, enables the use of NSEC3 together with DNSSEC on the zone."
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.dns#DnssecEditRequestStatus",
+          "traits": {
+            "smithy.api#documentation": "Status of DNSSEC, based on user-desired state and presence of necessary records."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#DnssecEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#DnssecEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#DnssecEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#DnssecEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/dnssec",
+          "code": 200
+        },
+        "smithy.api#documentation": "Enable or disable DNSSEC."
+      }
+    },
+    "com.cloudflare.dns#DnssecGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#DnssecGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#DnssecGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#DnssecGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#DnssecGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/dnssec",
+          "code": 200
+        },
+        "smithy.api#documentation": "Details about DNSSEC status and configuration.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestDeletesItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestDeletesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.dns#RecordsBatchRequestDeletesItem"
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestPatchesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestPostsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequestPutsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "deletes": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestDeletesList"
+        },
+        "patches": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPatchesList"
+        },
+        "posts": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPostsList"
+        },
+        "puts": {
+          "target": "com.cloudflare.dns#RecordsBatchRequestPutsList"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchResponseDeletesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchResponsePatchesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchResponsePostsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchResponsePutsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsBatchResponse": {
+      "type": "structure",
+      "members": {
+        "deletes": {
+          "target": "com.cloudflare.dns#RecordsBatchResponseDeletesList"
+        },
+        "patches": {
+          "target": "com.cloudflare.dns#RecordsBatchResponsePatchesList"
+        },
+        "posts": {
+          "target": "com.cloudflare.dns#RecordsBatchResponsePostsList"
+        },
+        "puts": {
+          "target": "com.cloudflare.dns#RecordsBatchResponsePutsList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#RecordsBatch": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsBatchRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#RecordsBatchResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/dns_records/batch",
+          "code": 200
+        },
+        "smithy.api#documentation": "Send a Batch of DNS Record API calls to be executed together. Notes: - Although Cloudflare will execute the batched operations in a single database transaction, Cloudflare's distributed KV store must treat each record change as a single key-value pair. This means that the propagation of changes is not atomic. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/batch-record-changes/ \"Batch DNS records\") for more information. - The operations you specify within the /batch request body are always executed in the following order: - Deletes - Patches - Puts - Posts"
+      }
+    },
+    "com.cloudflare.dns#RecordsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#RecordsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/dns_records",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a new DNS record for a zone. Notes: - A/AAAA records cannot exist on the same name as CNAME records. - NS records cannot exist on the same name as any other record type. - Domain names are always represented in Punycode, even if Unicode characters were used when creating the record."
+      }
+    },
+    "com.cloudflare.dns#RecordsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "dns_record_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#RecordsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#RecordsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/dns_records/{dns_record_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete DNS Record",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "dns_record_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#RecordsEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/dns_records/{dns_record_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update an existing DNS record. Notes: - A/AAAA records cannot exist on the same name as CNAME records. - NS records cannot exist on the same name as any other record type. - Domain names are always represented in Punycode, even if Unicode characters were used when creating the record."
+      }
+    },
+    "com.cloudflare.dns#RecordsExportRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsExport": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsExportRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/dns_records/export",
+          "code": 200
+        },
+        "smithy.api#documentation": "You can export your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "dns_record_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#RecordsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/dns_records/{dns_record_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "DNS Record Details",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsImportRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsImportResponse": {
+      "type": "structure",
+      "members": {
+        "recs_added": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of DNS records added."
+          }
+        },
+        "total_records_parsed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total number of DNS records parsed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#RecordsImport": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsImportRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#RecordsImportResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/dns_records/import",
+          "code": 200
+        },
+        "smithy.api#documentation": "You can upload your [BIND config](https://en.wikipedia.org/wiki/Zone_file \"Zone file\") through this endpoint. It assumes that cURL is called from a location with bind_config.txt (valid BIND config) present. See [the documentation](https://developers.cloudflare.com/dns/manage-dns-records/how-to/import-and-export/ \"Import and export records\") for more information."
+      }
+    },
+    "com.cloudflare.dns#RecordsListRequestMatch": {
+      "type": "enum",
+      "members": {
+        "ANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsListRequestOrder": {
+      "type": "enum",
+      "members": {
+        "TYPE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "type"
+          }
+        },
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        },
+        "CONTENT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "content"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsListRequestTagMatch": {
+      "type": "enum",
+      "members": {
+        "ANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsListRequestType": {
+      "type": "enum",
+      "members": {
+        "A": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "A"
+          }
+        },
+        "AAAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "AAAA"
+          }
+        },
+        "CAA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CAA"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "comment": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "comment"
+          }
+        },
+        "content": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "content"
+          }
+        },
+        "direction": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Direction to order DNS records in.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "match": {
+          "target": "com.cloudflare.dns#RecordsListRequestMatch",
+          "traits": {
+            "smithy.api#documentation": "Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead. Note that the interaction between tag filters is controlled by the `tag-match` parameter instead.",
+            "smithy.api#httpQuery": "match"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "name"
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.dns#RecordsListRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "Field to order DNS records by.",
+            "smithy.api#httpQuery": "order"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of DNS records per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the record is receiving the performance and security benefits of Cloudflare.",
+            "smithy.api#httpQuery": "proxied"
+          }
+        },
+        "search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Allows searching in multiple properties of a DNS record simultaneously. This parameter is intended for human users, not automation. Its exact behavior is intentionally left unspecified and is subject to change in the future. This parameter works independently of the `match` setting. For automated searches, please use the other available parameters.",
+            "smithy.api#httpQuery": "search"
+          }
+        },
+        "tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "tag"
+          }
+        },
+        "tag_match": {
+          "target": "com.cloudflare.dns#RecordsListRequestTagMatch",
+          "traits": {
+            "smithy.api#documentation": "Whether to match all tag search requirements or at least one (any). If set to `all`, acts like a logical AND between tag filters. If set to `any`, acts like a logical OR instead. Note that the regular `match` parameter is still used to combine the resulting condition with other filters that aren't related to tags.",
+            "smithy.api#httpQuery": "tag_match"
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.dns#RecordsListRequestType",
+          "traits": {
+            "smithy.api#documentation": "Record type.",
+            "smithy.api#httpQuery": "type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.dns#RecordsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#RecordsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/dns_records",
+          "code": 200
+        },
+        "smithy.api#documentation": "List, search, sort, and filter a zones' DNS records.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsScanRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsScanResponse": {
+      "type": "structure",
+      "members": {
+        "recs_added": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of DNS records added."
+          }
+        },
+        "total_records_parsed": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Total number of DNS records parsed."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#RecordsScan": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsScanRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#RecordsScanResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/dns_records/scan",
+          "code": 200
+        },
+        "smithy.api#documentation": "Scan for common DNS records on your domain and automatically add them to your zone. Useful if you haven't updated your nameservers yet."
+      }
+    },
+    "com.cloudflare.dns#RecordsScanListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsScanListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsScanListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.dns#RecordsScanListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsScanList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsScanListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#RecordsScanListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/dns_records/scan/review",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieves the list of DNS records discovered up to this point by the asynchronous scan. These records are temporary until explicitly accepted or rejected via `POST /scan/review`. Additional records may be discovered by the scan later.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewRequestAcceptsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewRequestRejectsItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewRequestRejectsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.dns#RecordsScanReviewRequestRejectsItem"
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "accepts": {
+          "target": "com.cloudflare.dns#RecordsScanReviewRequestAcceptsList"
+        },
+        "rejects": {
+          "target": "com.cloudflare.dns#RecordsScanReviewRequestRejectsList"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewResponseAcceptsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewResponseRejectsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReviewResponse": {
+      "type": "structure",
+      "members": {
+        "accepts": {
+          "target": "com.cloudflare.dns#RecordsScanReviewResponseAcceptsList"
+        },
+        "rejects": {
+          "target": "com.cloudflare.dns#RecordsScanReviewResponseRejectsList"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#RecordsScanReview": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsScanReviewRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#RecordsScanReviewResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/dns_records/scan/review",
+          "code": 200
+        },
+        "smithy.api#documentation": "Accept or reject DNS records found by the DNS records scan. Accepted records will be permanently added to the zone, while rejected records will be permanently deleted."
+      }
+    },
+    "com.cloudflare.dns#RecordsScanTriggerRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsScanTrigger": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsScanTriggerRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/dns_records/scan/trigger",
+          "code": 200
+        },
+        "smithy.api#documentation": "Initiates an asynchronous scan for common DNS records on your domain. Note that this **does not** automatically add records to your zone. The scan runs in the background, and results can be reviewed later using the `/scan/review` endpoints. Useful if you haven't updated your nameservers yet."
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "dns_record_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#RecordsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#RecordsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#RecordsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/dns_records/{dns_record_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Overwrite an existing DNS record. Notes: - A/AAAA records cannot exist on the same name as CNAME records. - NS records cannot exist on the same name as any other record type. - Domain names are always represented in Punycode, even if Unicode characters were used when creating the record.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaultsInternalDns": {
+      "type": "structure",
+      "members": {
+        "reference_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the zone to fallback to."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaultsNameserversType": {
+      "type": "enum",
+      "members": {
+        "CLOUDFLARE_STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudflare.standard"
+          }
+        },
+        "CLOUDFLARE_STANDARD_RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudflare.standard.random"
+          }
+        },
+        "CUSTOM_ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.account"
+          }
+        },
+        "CUSTOM_TENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.tenant"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaultsNameservers": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaultsNameserversType",
+          "traits": {
+            "smithy.api#documentation": "Nameserver type"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaultsSoa": {
+      "type": "structure",
+      "members": {
+        "expire": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone."
+          }
+        },
+        "min_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) for negative caching of records within the zone."
+          }
+        },
+        "mname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used."
+          }
+        },
+        "refresh": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated."
+          }
+        },
+        "retry": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive."
+          }
+        },
+        "rname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the zone administrator, with the first label representing the local part of the email address."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) of the SOA record itself."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaultsZoneMode": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "standard"
+          }
+        },
+        "CDN_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdn_only"
+          }
+        },
+        "DNS_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_only"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaults": {
+      "type": "structure",
+      "members": {
+        "flatten_all_cnames": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened."
+          }
+        },
+        "foundation_dns": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable Foundation DNS Advanced Nameservers on the zone."
+          }
+        },
+        "internal_dns": {
+          "target": "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaultsInternalDns",
+          "traits": {
+            "smithy.api#documentation": "Settings for this internal zone."
+          }
+        },
+        "multi_provider": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers."
+          }
+        },
+        "nameservers": {
+          "target": "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaultsNameservers",
+          "traits": {
+            "smithy.api#documentation": "Settings determining the nameservers through which the zone should be available."
+          }
+        },
+        "ns_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) of the zone's nameserver (NS) records."
+          }
+        },
+        "secondary_overrides": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex."
+          }
+        },
+        "soa": {
+          "target": "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaultsSoa",
+          "traits": {
+            "smithy.api#documentation": "Components of the zone's SOA record."
+          }
+        },
+        "zone_mode": {
+          "target": "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaultsZoneMode",
+          "traits": {
+            "smithy.api#documentation": "Whether the zone mode is a regular or CDN/DNS only zone."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "enforce_dns_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only)."
+          }
+        },
+        "zone_defaults": {
+          "target": "com.cloudflare.dns#SettingsAccountEditRequestZoneDefaults"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditResponseZoneDefaultsInternalDns": {
+      "type": "structure",
+      "members": {
+        "reference_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the zone to fallback to."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditResponseZoneDefaultsNameserversType": {
+      "type": "enum",
+      "members": {
+        "CLOUDFLARE_STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudflare.standard"
+          }
+        },
+        "CLOUDFLARE_STANDARD_RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudflare.standard.random"
+          }
+        },
+        "CUSTOM_ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.account"
+          }
+        },
+        "CUSTOM_TENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.tenant"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditResponseZoneDefaultsNameservers": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.dns#SettingsAccountEditResponseZoneDefaultsNameserversType",
+          "traits": {
+            "smithy.api#documentation": "Nameserver type",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditResponseZoneDefaultsSoa": {
+      "type": "structure",
+      "members": {
+        "expire": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone."
+          }
+        },
+        "min_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) for negative caching of records within the zone."
+          }
+        },
+        "mname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used."
+          }
+        },
+        "refresh": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated."
+          }
+        },
+        "retry": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive."
+          }
+        },
+        "rname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the zone administrator, with the first label representing the local part of the email address."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) of the SOA record itself."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditResponseZoneDefaultsZoneMode": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "standard"
+          }
+        },
+        "CDN_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdn_only"
+          }
+        },
+        "DNS_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_only"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditResponseZoneDefaults": {
+      "type": "structure",
+      "members": {
+        "flatten_all_cnames": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
+            "smithy.api#required": {}
+          }
+        },
+        "foundation_dns": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "internal_dns": {
+          "target": "com.cloudflare.dns#SettingsAccountEditResponseZoneDefaultsInternalDns",
+          "traits": {
+            "smithy.api#documentation": "Settings for this internal zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "multi_provider": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
+            "smithy.api#required": {}
+          }
+        },
+        "nameservers": {
+          "target": "com.cloudflare.dns#SettingsAccountEditResponseZoneDefaultsNameservers",
+          "traits": {
+            "smithy.api#documentation": "Settings determining the nameservers through which the zone should be available.",
+            "smithy.api#required": {}
+          }
+        },
+        "ns_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) of the zone's nameserver (NS) records.",
+            "smithy.api#required": {}
+          }
+        },
+        "secondary_overrides": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
+            "smithy.api#required": {}
+          }
+        },
+        "soa": {
+          "target": "com.cloudflare.dns#SettingsAccountEditResponseZoneDefaultsSoa",
+          "traits": {
+            "smithy.api#documentation": "Components of the zone's SOA record.",
+            "smithy.api#required": {}
+          }
+        },
+        "zone_mode": {
+          "target": "com.cloudflare.dns#SettingsAccountEditResponseZoneDefaultsZoneMode",
+          "traits": {
+            "smithy.api#documentation": "Whether the zone mode is a regular or CDN/DNS only zone.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEditResponse": {
+      "type": "structure",
+      "members": {
+        "zone_defaults": {
+          "target": "com.cloudflare.dns#SettingsAccountEditResponseZoneDefaults",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enforce_dns_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#SettingsAccountEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#SettingsAccountEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/accounts/{account_id}/dns_settings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update DNS settings for an account"
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountGetResponseZoneDefaultsInternalDns": {
+      "type": "structure",
+      "members": {
+        "reference_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the zone to fallback to."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountGetResponseZoneDefaultsNameserversType": {
+      "type": "enum",
+      "members": {
+        "CLOUDFLARE_STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudflare.standard"
+          }
+        },
+        "CLOUDFLARE_STANDARD_RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudflare.standard.random"
+          }
+        },
+        "CUSTOM_ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.account"
+          }
+        },
+        "CUSTOM_TENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.tenant"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountGetResponseZoneDefaultsNameservers": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.dns#SettingsAccountGetResponseZoneDefaultsNameserversType",
+          "traits": {
+            "smithy.api#documentation": "Nameserver type",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountGetResponseZoneDefaultsSoa": {
+      "type": "structure",
+      "members": {
+        "expire": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone."
+          }
+        },
+        "min_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) for negative caching of records within the zone."
+          }
+        },
+        "mname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used."
+          }
+        },
+        "refresh": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated."
+          }
+        },
+        "retry": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive."
+          }
+        },
+        "rname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the zone administrator, with the first label representing the local part of the email address."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) of the SOA record itself."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountGetResponseZoneDefaultsZoneMode": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "standard"
+          }
+        },
+        "CDN_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdn_only"
+          }
+        },
+        "DNS_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_only"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountGetResponseZoneDefaults": {
+      "type": "structure",
+      "members": {
+        "flatten_all_cnames": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
+            "smithy.api#required": {}
+          }
+        },
+        "foundation_dns": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "internal_dns": {
+          "target": "com.cloudflare.dns#SettingsAccountGetResponseZoneDefaultsInternalDns",
+          "traits": {
+            "smithy.api#documentation": "Settings for this internal zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "multi_provider": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
+            "smithy.api#required": {}
+          }
+        },
+        "nameservers": {
+          "target": "com.cloudflare.dns#SettingsAccountGetResponseZoneDefaultsNameservers",
+          "traits": {
+            "smithy.api#documentation": "Settings determining the nameservers through which the zone should be available.",
+            "smithy.api#required": {}
+          }
+        },
+        "ns_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) of the zone's nameserver (NS) records.",
+            "smithy.api#required": {}
+          }
+        },
+        "secondary_overrides": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
+            "smithy.api#required": {}
+          }
+        },
+        "soa": {
+          "target": "com.cloudflare.dns#SettingsAccountGetResponseZoneDefaultsSoa",
+          "traits": {
+            "smithy.api#documentation": "Components of the zone's SOA record.",
+            "smithy.api#required": {}
+          }
+        },
+        "zone_mode": {
+          "target": "com.cloudflare.dns#SettingsAccountGetResponseZoneDefaultsZoneMode",
+          "traits": {
+            "smithy.api#documentation": "Whether the zone mode is a regular or CDN/DNS only zone.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountGetResponse": {
+      "type": "structure",
+      "members": {
+        "zone_defaults": {
+          "target": "com.cloudflare.dns#SettingsAccountGetResponseZoneDefaults",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "enforce_dns_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When enabled, forces all proxied DNS records in the account to behave as DNS-only at the edge, regardless of each record's individual proxy setting. Note that this account-level override does not modify the records themselves; it only affects how they are served at the edge. See more on [Enforce DNS-only](https://developers.cloudflare.com/dns/proxy-status/enforce-dns-only)."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#SettingsAccountGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#SettingsAccountGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/dns_settings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Show DNS settings for an account",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsCreateRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the view.",
+            "smithy.api#required": {}
+          }
+        },
+        "zones": {
+          "target": "com.cloudflare.dns#SettingsAccountViewsCreateRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The list of zones linked to this view.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsCreateResponseZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the view was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the view was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the view.",
+            "smithy.api#required": {}
+          }
+        },
+        "zones": {
+          "target": "com.cloudflare.dns#SettingsAccountViewsCreateResponseZonesList",
+          "traits": {
+            "smithy.api#documentation": "The list of zones linked to this view.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#SettingsAccountViewsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#SettingsAccountViewsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/dns_settings/views",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create Internal DNS View for an account"
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "view_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#SettingsAccountViewsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#SettingsAccountViewsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/dns_settings/views/{view_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete an existing Internal DNS View",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsEditRequestZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsEditRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "view_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the view."
+          }
+        },
+        "zones": {
+          "target": "com.cloudflare.dns#SettingsAccountViewsEditRequestZonesList",
+          "traits": {
+            "smithy.api#documentation": "The list of zones linked to this view."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsEditResponseZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsEditResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the view was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the view was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the view.",
+            "smithy.api#required": {}
+          }
+        },
+        "zones": {
+          "target": "com.cloudflare.dns#SettingsAccountViewsEditResponseZonesList",
+          "traits": {
+            "smithy.api#documentation": "The list of zones linked to this view.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#SettingsAccountViewsEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#SettingsAccountViewsEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/accounts/{account_id}/dns_settings/views/{view_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update an existing Internal DNS View"
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "view_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsGetResponseZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the view was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the view was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the view.",
+            "smithy.api#required": {}
+          }
+        },
+        "zones": {
+          "target": "com.cloudflare.dns#SettingsAccountViewsGetResponseZonesList",
+          "traits": {
+            "smithy.api#documentation": "The list of zones linked to this view.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#SettingsAccountViewsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#SettingsAccountViewsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/dns_settings/views/{view_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get DNS Internal View",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsListRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsListRequestMatch": {
+      "type": "enum",
+      "members": {
+        "ANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsListRequestOrder": {
+      "type": "enum",
+      "members": {
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        },
+        "CREATED_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "created_on"
+          }
+        },
+        "MODIFIED_ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "modified_on"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "direction": {
+          "target": "com.cloudflare.dns#SettingsAccountViewsListRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "Direction to order DNS views in.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "match": {
+          "target": "com.cloudflare.dns#SettingsAccountViewsListRequestMatch",
+          "traits": {
+            "smithy.api#documentation": "Whether to match all search requirements or at least one (any). If set to `all`, acts like a logical AND between filters. If set to `any`, acts like a logical OR instead.",
+            "smithy.api#httpQuery": "match"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "name"
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.dns#SettingsAccountViewsListRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "Field to order DNS views by.",
+            "smithy.api#httpQuery": "order"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of DNS views per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A zone ID that exists in the zones list for the view.",
+            "smithy.api#httpQuery": "zone_id"
+          }
+        },
+        "zone_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A zone name that exists in the zones list for the view.",
+            "smithy.api#httpQuery": "zone_name"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsListResultItemZonesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the view was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "modified_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the view was last modified.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the view.",
+            "smithy.api#required": {}
+          }
+        },
+        "zones": {
+          "target": "com.cloudflare.dns#SettingsAccountViewsListResultItemZonesList",
+          "traits": {
+            "smithy.api#documentation": "The list of zones linked to this view.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.dns#SettingsAccountViewsListResultItem"
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.dns#SettingsAccountViewsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsAccountViewsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#SettingsAccountViewsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#SettingsAccountViewsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/dns_settings/views",
+          "code": 200
+        },
+        "smithy.api#documentation": "List DNS Internal Views for an Account",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEditRequestInternalDns": {
+      "type": "structure",
+      "members": {
+        "reference_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the zone to fallback to."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEditRequestNameserversType": {
+      "type": "enum",
+      "members": {
+        "CLOUDFLARE_STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudflare.standard"
+          }
+        },
+        "CUSTOM_ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.account"
+          }
+        },
+        "CUSTOM_TENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.tenant"
+          }
+        },
+        "CUSTOM_ZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.zone"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEditRequestNameservers": {
+      "type": "structure",
+      "members": {
+        "ns_set": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Configured nameserver set to be used for this zone"
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.dns#SettingsZoneEditRequestNameserversType",
+          "traits": {
+            "smithy.api#documentation": "Nameserver type"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEditRequestSoa": {
+      "type": "structure",
+      "members": {
+        "expire": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone."
+          }
+        },
+        "min_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) for negative caching of records within the zone."
+          }
+        },
+        "mname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used."
+          }
+        },
+        "refresh": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated."
+          }
+        },
+        "retry": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive."
+          }
+        },
+        "rname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the zone administrator, with the first label representing the local part of the email address."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) of the SOA record itself."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEditRequestZoneMode": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "standard"
+          }
+        },
+        "CDN_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdn_only"
+          }
+        },
+        "DNS_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_only"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "flatten_all_cnames": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened."
+          }
+        },
+        "foundation_dns": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable Foundation DNS Advanced Nameservers on the zone."
+          }
+        },
+        "internal_dns": {
+          "target": "com.cloudflare.dns#SettingsZoneEditRequestInternalDns",
+          "traits": {
+            "smithy.api#documentation": "Settings for this internal zone."
+          }
+        },
+        "multi_provider": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers."
+          }
+        },
+        "nameservers": {
+          "target": "com.cloudflare.dns#SettingsZoneEditRequestNameservers",
+          "traits": {
+            "smithy.api#documentation": "Settings determining the nameservers through which the zone should be available."
+          }
+        },
+        "ns_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) of the zone's nameserver (NS) records."
+          }
+        },
+        "secondary_overrides": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex."
+          }
+        },
+        "soa": {
+          "target": "com.cloudflare.dns#SettingsZoneEditRequestSoa",
+          "traits": {
+            "smithy.api#documentation": "Components of the zone's SOA record."
+          }
+        },
+        "zone_mode": {
+          "target": "com.cloudflare.dns#SettingsZoneEditRequestZoneMode",
+          "traits": {
+            "smithy.api#documentation": "Whether the zone mode is a regular or CDN/DNS only zone."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEditResponseInternalDns": {
+      "type": "structure",
+      "members": {
+        "reference_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the zone to fallback to."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEditResponseNameserversType": {
+      "type": "enum",
+      "members": {
+        "CLOUDFLARE_STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudflare.standard"
+          }
+        },
+        "CUSTOM_ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.account"
+          }
+        },
+        "CUSTOM_TENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.tenant"
+          }
+        },
+        "CUSTOM_ZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.zone"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEditResponseNameservers": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.dns#SettingsZoneEditResponseNameserversType",
+          "traits": {
+            "smithy.api#documentation": "Nameserver type",
+            "smithy.api#required": {}
+          }
+        },
+        "ns_set": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Configured nameserver set to be used for this zone"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEditResponseSoa": {
+      "type": "structure",
+      "members": {
+        "expire": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone."
+          }
+        },
+        "min_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) for negative caching of records within the zone."
+          }
+        },
+        "mname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used."
+          }
+        },
+        "refresh": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated."
+          }
+        },
+        "retry": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive."
+          }
+        },
+        "rname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the zone administrator, with the first label representing the local part of the email address."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) of the SOA record itself."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEditResponseZoneMode": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "standard"
+          }
+        },
+        "CDN_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdn_only"
+          }
+        },
+        "DNS_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_only"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEditResponse": {
+      "type": "structure",
+      "members": {
+        "flatten_all_cnames": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
+            "smithy.api#required": {}
+          }
+        },
+        "foundation_dns": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "internal_dns": {
+          "target": "com.cloudflare.dns#SettingsZoneEditResponseInternalDns",
+          "traits": {
+            "smithy.api#documentation": "Settings for this internal zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "multi_provider": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
+            "smithy.api#required": {}
+          }
+        },
+        "nameservers": {
+          "target": "com.cloudflare.dns#SettingsZoneEditResponseNameservers",
+          "traits": {
+            "smithy.api#documentation": "Settings determining the nameservers through which the zone should be available.",
+            "smithy.api#required": {}
+          }
+        },
+        "ns_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) of the zone's nameserver (NS) records.",
+            "smithy.api#required": {}
+          }
+        },
+        "secondary_overrides": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
+            "smithy.api#required": {}
+          }
+        },
+        "soa": {
+          "target": "com.cloudflare.dns#SettingsZoneEditResponseSoa",
+          "traits": {
+            "smithy.api#documentation": "Components of the zone's SOA record.",
+            "smithy.api#required": {}
+          }
+        },
+        "zone_mode": {
+          "target": "com.cloudflare.dns#SettingsZoneEditResponseZoneMode",
+          "traits": {
+            "smithy.api#documentation": "Whether the zone mode is a regular or CDN/DNS only zone.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#SettingsZoneEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#SettingsZoneEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/dns_settings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update DNS settings for a zone"
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneGetResponseInternalDns": {
+      "type": "structure",
+      "members": {
+        "reference_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the zone to fallback to."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneGetResponseNameserversType": {
+      "type": "enum",
+      "members": {
+        "CLOUDFLARE_STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cloudflare.standard"
+          }
+        },
+        "CUSTOM_ACCOUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.account"
+          }
+        },
+        "CUSTOM_TENANT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.tenant"
+          }
+        },
+        "CUSTOM_ZONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "custom.zone"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneGetResponseNameservers": {
+      "type": "structure",
+      "members": {
+        "type": {
+          "target": "com.cloudflare.dns#SettingsZoneGetResponseNameserversType",
+          "traits": {
+            "smithy.api#documentation": "Nameserver type",
+            "smithy.api#required": {}
+          }
+        },
+        "ns_set": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Configured nameserver set to be used for this zone"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneGetResponseSoa": {
+      "type": "structure",
+      "members": {
+        "expire": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds of being unable to query the primary server after which secondary servers should stop serving the zone."
+          }
+        },
+        "min_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) for negative caching of records within the zone."
+          }
+        },
+        "mname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The primary nameserver, which may be used for outbound zone transfers. If null, a Cloudflare-assigned value will be used."
+          }
+        },
+        "refresh": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds after which secondary servers should re-check the SOA record to see if the zone has been updated."
+          }
+        },
+        "retry": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time in seconds after which secondary servers should retry queries after the primary server was unresponsive."
+          }
+        },
+        "rname": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The email address of the zone administrator, with the first label representing the local part of the email address."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) of the SOA record itself."
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneGetResponseZoneMode": {
+      "type": "enum",
+      "members": {
+        "STANDARD": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "standard"
+          }
+        },
+        "CDN_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "cdn_only"
+          }
+        },
+        "DNS_ONLY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "dns_only"
+          }
+        }
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneGetResponse": {
+      "type": "structure",
+      "members": {
+        "flatten_all_cnames": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to flatten all CNAME records in the zone. Note that, due to DNS limitations, a CNAME record at the zone apex will always be flattened.",
+            "smithy.api#required": {}
+          }
+        },
+        "foundation_dns": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable Foundation DNS Advanced Nameservers on the zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "internal_dns": {
+          "target": "com.cloudflare.dns#SettingsZoneGetResponseInternalDns",
+          "traits": {
+            "smithy.api#documentation": "Settings for this internal zone.",
+            "smithy.api#required": {}
+          }
+        },
+        "multi_provider": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable multi-provider DNS, which causes Cloudflare to activate the zone even when non-Cloudflare NS records exist, and to respect NS records at the zone apex during outbound zone transfers.",
+            "smithy.api#required": {}
+          }
+        },
+        "nameservers": {
+          "target": "com.cloudflare.dns#SettingsZoneGetResponseNameservers",
+          "traits": {
+            "smithy.api#documentation": "Settings determining the nameservers through which the zone should be available.",
+            "smithy.api#required": {}
+          }
+        },
+        "ns_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time to live (TTL) of the zone's nameserver (NS) records.",
+            "smithy.api#required": {}
+          }
+        },
+        "secondary_overrides": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Allows a Secondary DNS zone to use (proxied) override records and CNAME flattening at the zone apex.",
+            "smithy.api#required": {}
+          }
+        },
+        "soa": {
+          "target": "com.cloudflare.dns#SettingsZoneGetResponseSoa",
+          "traits": {
+            "smithy.api#documentation": "Components of the zone's SOA record.",
+            "smithy.api#required": {}
+          }
+        },
+        "zone_mode": {
+          "target": "com.cloudflare.dns#SettingsZoneGetResponseZoneMode",
+          "traits": {
+            "smithy.api#documentation": "Whether the zone mode is a regular or CDN/DNS only zone.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#SettingsZoneGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#SettingsZoneGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#SettingsZoneGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/dns_settings",
+          "code": 200
+        },
+        "smithy.api#documentation": "Show DNS settings for a zone",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#UsageAccountGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#UsageAccountGetResponse": {
+      "type": "structure",
+      "members": {
+        "record_quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of DNS records allowed across all public zones in the account. Null if using zone-level quota.",
+            "smithy.api#required": {}
+          }
+        },
+        "record_usage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Current number of DNS records across all public zones in the account.",
+            "smithy.api#required": {}
+          }
+        },
+        "internal_record_quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of DNS records allowed across all internal zones in the account. Only present if internal DNS is enabled."
+          }
+        },
+        "internal_record_usage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Current number of DNS records across all internal zones in the account. Only present if internal DNS is enabled."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#UsageAccountGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#UsageAccountGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#UsageAccountGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/dns_records/usage",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the current DNS record usage and quota for an account. May include internal DNS usage and quota.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#UsageZoneGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#UsageZoneGetResponse": {
+      "type": "structure",
+      "members": {
+        "record_quota": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of DNS records allowed for the zone. Null if using account-level quota.",
+            "smithy.api#required": {}
+          }
+        },
+        "record_usage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Current number of DNS records in the zone.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#UsageZoneGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#UsageZoneGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#UsageZoneGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/dns_records/usage",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the current DNS record usage for a zone, including the number of records and the quota limit.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ip_range": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the acl.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersAclsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersAclsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/secondary_dns/acls",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create ACL."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "acl_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersAclsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersAclsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete ACL.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "acl_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersAclsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersAclsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get ACL.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.dns#ZoneTransfersAclsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersAclsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersAclsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/secondary_dns/acls",
+          "code": 200
+        },
+        "smithy.api#documentation": "List ACLs.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "acl_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ip_range": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Allowed IPv4/IPv6 address range of primary or secondary nameservers. This will be applied for the entire account. The IP range is used to allow additional NOTIFY IPs for secondary zones and IPs Cloudflare allows AXFR/IXFR requests from for primary zones. CIDRs are limited to a maximum of /24 for IPv4 and /64 for IPv6 respectively.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the acl.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersAclsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersAclsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersAclsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{account_id}/secondary_dns/acls/{acl_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Modify ACL.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersForceAxfrCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersForceAxfrCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersForceAxfrCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersForceAxfrCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersForceAxfrCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/secondary_dns/force_axfr",
+          "code": 200
+        },
+        "smithy.api#documentation": "Sends AXFR zone transfer request to primary nameserver(s)."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingCreateRequestPeersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "auto_refresh_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zone name.",
+            "smithy.api#required": {}
+          }
+        },
+        "peers": {
+          "target": "com.cloudflare.dns#ZoneTransfersIncomingCreateRequestPeersList",
+          "traits": {
+            "smithy.api#documentation": "A list of peer tags.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingCreateResponsePeersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "auto_refresh_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How often should a secondary zone auto refresh regardless of DNS NOTIFY."
+          }
+        },
+        "checked_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "created_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "modified_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zone name."
+          }
+        },
+        "peers": {
+          "target": "com.cloudflare.dns#ZoneTransfersIncomingCreateResponsePeersList",
+          "traits": {
+            "smithy.api#documentation": "A list of peer tags."
+          }
+        },
+        "soa_serial": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The serial number of the SOA for the given zone."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersIncomingCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersIncomingCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/secondary_dns/incoming",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create secondary zone configuration for incoming zone transfers."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersIncomingDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersIncomingDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/secondary_dns/incoming",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete secondary zone configuration for incoming zone transfers.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingGetResponsePeersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "auto_refresh_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How often should a secondary zone auto refresh regardless of DNS NOTIFY."
+          }
+        },
+        "checked_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "created_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "modified_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zone name."
+          }
+        },
+        "peers": {
+          "target": "com.cloudflare.dns#ZoneTransfersIncomingGetResponsePeersList",
+          "traits": {
+            "smithy.api#documentation": "A list of peer tags."
+          }
+        },
+        "soa_serial": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The serial number of the SOA for the given zone."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersIncomingGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersIncomingGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/secondary_dns/incoming",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get secondary zone configuration for incoming zone transfers.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingUpdateRequestPeersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "auto_refresh_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How often should a secondary zone auto refresh regardless of DNS NOTIFY.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zone name.",
+            "smithy.api#required": {}
+          }
+        },
+        "peers": {
+          "target": "com.cloudflare.dns#ZoneTransfersIncomingUpdateRequestPeersList",
+          "traits": {
+            "smithy.api#documentation": "A list of peer tags.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingUpdateResponsePeersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "auto_refresh_seconds": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "How often should a secondary zone auto refresh regardless of DNS NOTIFY."
+          }
+        },
+        "checked_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "created_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "modified_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zone name."
+          }
+        },
+        "peers": {
+          "target": "com.cloudflare.dns#ZoneTransfersIncomingUpdateResponsePeersList",
+          "traits": {
+            "smithy.api#documentation": "A list of peer tags."
+          }
+        },
+        "soa_serial": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The serial number of the SOA for the given zone."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersIncomingUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersIncomingUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersIncomingUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/secondary_dns/incoming",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update secondary zone configuration for incoming zone transfers.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingCreateRequestPeersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zone name.",
+            "smithy.api#required": {}
+          }
+        },
+        "peers": {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingCreateRequestPeersList",
+          "traits": {
+            "smithy.api#documentation": "A list of peer tags.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingCreateResponsePeersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "checked_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "created_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "last_transferred_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zone name."
+          }
+        },
+        "peers": {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingCreateResponsePeersList",
+          "traits": {
+            "smithy.api#documentation": "A list of peer tags."
+          }
+        },
+        "soa_serial": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The serial number of the SOA for the given zone."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/secondary_dns/outgoing",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create primary zone configuration for outgoing zone transfers."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/secondary_dns/outgoing",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete primary zone configuration for outgoing zone transfers.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingDisableRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingDisableResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingDisable": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingDisableRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingDisableResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/secondary_dns/outgoing/disable",
+          "code": 200
+        },
+        "smithy.api#documentation": "Disable outgoing zone transfers for primary zone and clears IXFR backlog of primary zone."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingEnableRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingEnableResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingEnable": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingEnableRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingEnableResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/secondary_dns/outgoing/enable",
+          "code": 200
+        },
+        "smithy.api#documentation": "Enable outgoing zone transfers for primary zone."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingForceNotifyRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingForceNotifyResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#String",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingForceNotify": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingForceNotifyRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingForceNotifyResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/secondary_dns/outgoing/force_notify",
+          "code": 200
+        },
+        "smithy.api#documentation": "Notifies the secondary nameserver(s) and clears IXFR backlog of primary zone."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingGetResponsePeersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "checked_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "created_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "last_transferred_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zone name."
+          }
+        },
+        "peers": {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingGetResponsePeersList",
+          "traits": {
+            "smithy.api#documentation": "A list of peer tags."
+          }
+        },
+        "soa_serial": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The serial number of the SOA for the given zone."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/secondary_dns/outgoing",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get primary zone configuration for outgoing zone transfers.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingUpdateRequestPeersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zone name.",
+            "smithy.api#required": {}
+          }
+        },
+        "peers": {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingUpdateRequestPeersList",
+          "traits": {
+            "smithy.api#documentation": "A list of peer tags.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingUpdateResponsePeersList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "checked_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "created_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "last_transferred_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The time for a specific event."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Zone name."
+          }
+        },
+        "peers": {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingUpdateResponsePeersList",
+          "traits": {
+            "smithy.api#documentation": "A list of peer tags."
+          }
+        },
+        "soa_serial": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The serial number of the SOA for the given zone."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/secondary_dns/outgoing",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update primary zone configuration for outgoing zone transfers.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingStatusGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingStatusGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersOutgoingStatusGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingStatusGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersOutgoingStatusGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/secondary_dns/outgoing/status",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get primary zone transfer status.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the peer.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersPeersCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersPeersCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/secondary_dns/peers",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create Peer."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "peer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersPeersDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersPeersDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete Peer.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "peer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersPeersGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersPeersGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Peer.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.dns#ZoneTransfersPeersListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersPeersListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersPeersListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/secondary_dns/peers",
+          "code": 200
+        },
+        "smithy.api#documentation": "List Peers.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "peer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the peer.",
+            "smithy.api#required": {}
+          }
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "IPv4/IPv6 address of primary or secondary nameserver, depending on what zone this peer is linked to. For primary zones this IP defines the IP of the secondary nameserver Cloudflare will NOTIFY upon zone changes. For secondary zones this IP defines the IP of the primary nameserver Cloudflare will send AXFR/IXFR requests to."
+          }
+        },
+        "ixfr_enable": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Enable IXFR transfer protocol, default is AXFR. Only applicable to secondary zones."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "DNS port of primary or secondary nameserver, depending on what zone this peer is linked to."
+          }
+        },
+        "tsig_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TSIG authentication will be used for zone transfer if configured."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersPeersUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersPeersUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersPeersUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{account_id}/secondary_dns/peers/{peer_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Modify Peer.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "algo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TSIG algorithm.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TSIG key name.",
+            "smithy.api#required": {}
+          }
+        },
+        "secret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TSIG secret.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersTsigsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersTsigsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/secondary_dns/tsigs",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create TSIG."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "tsig_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersTsigsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersTsigsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete TSIG.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "tsig_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersTsigsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersTsigsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get TSIG.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.dns#ZoneTransfersTsigsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersTsigsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersTsigsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/secondary_dns/tsigs",
+          "code": 200
+        },
+        "smithy.api#documentation": "List TSIGs.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "tsig_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "algo": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TSIG algorithm.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TSIG key name.",
+            "smithy.api#required": {}
+          }
+        },
+        "secret": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "TSIG secret.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.dns#ZoneTransfersTsigsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.dns#ZoneTransfersTsigsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.dns#ZoneTransfersTsigsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{account_id}/secondary_dns/tsigs/{tsig_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Modify TSIG.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.dns#Dns": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.dns#AnalyticsReportsGet"
+        },
+        {
+          "target": "com.cloudflare.dns#AnalyticsReportsBytimesGet"
+        },
+        {
+          "target": "com.cloudflare.dns#DnssecDelete"
+        },
+        {
+          "target": "com.cloudflare.dns#DnssecEdit"
+        },
+        {
+          "target": "com.cloudflare.dns#DnssecGet"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsBatch"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsCreate"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsDelete"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsEdit"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsExport"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsGet"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsImport"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsList"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsScan"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsScanList"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsScanReview"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsScanTrigger"
+        },
+        {
+          "target": "com.cloudflare.dns#RecordsUpdate"
+        },
+        {
+          "target": "com.cloudflare.dns#SettingsAccountEdit"
+        },
+        {
+          "target": "com.cloudflare.dns#SettingsAccountGet"
+        },
+        {
+          "target": "com.cloudflare.dns#SettingsAccountViewsCreate"
+        },
+        {
+          "target": "com.cloudflare.dns#SettingsAccountViewsDelete"
+        },
+        {
+          "target": "com.cloudflare.dns#SettingsAccountViewsEdit"
+        },
+        {
+          "target": "com.cloudflare.dns#SettingsAccountViewsGet"
+        },
+        {
+          "target": "com.cloudflare.dns#SettingsAccountViewsList"
+        },
+        {
+          "target": "com.cloudflare.dns#SettingsZoneEdit"
+        },
+        {
+          "target": "com.cloudflare.dns#SettingsZoneGet"
+        },
+        {
+          "target": "com.cloudflare.dns#UsageAccountGet"
+        },
+        {
+          "target": "com.cloudflare.dns#UsageZoneGet"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersAclsCreate"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersAclsDelete"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersAclsGet"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersAclsList"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersAclsUpdate"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersForceAxfrCreate"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersIncomingCreate"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersIncomingDelete"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersIncomingGet"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersIncomingUpdate"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingCreate"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingDelete"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingDisable"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingEnable"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingForceNotify"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingGet"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingUpdate"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersOutgoingStatusGet"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersPeersCreate"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersPeersDelete"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersPeersGet"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersPeersList"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersPeersUpdate"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersTsigsCreate"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersTsigsDelete"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersTsigsGet"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersTsigsList"
+        },
+        {
+          "target": "com.cloudflare.dns#ZoneTransfersTsigsUpdate"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare Dns",
+        "smithy.api#documentation": "Cloudflare API — dns resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

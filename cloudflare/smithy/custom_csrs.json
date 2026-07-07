@@ -1,0 +1,711 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.custom_csrs#CreateRequestSansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.custom_csrs#CreateRequestKeyType": {
+      "type": "enum",
+      "members": {
+        "RSA2048": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rsa2048"
+          }
+        },
+        "P256V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "p256v1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.custom_csrs#CreateRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "common_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The common name (domain) for the CSR. Must be at most 64 characters.",
+            "smithy.api#required": {}
+          }
+        },
+        "country": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Two-letter ISO 3166-1 alpha-2 country code.",
+            "smithy.api#required": {}
+          }
+        },
+        "locality": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "City or locality name.",
+            "smithy.api#required": {}
+          }
+        },
+        "organization": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Organization name.",
+            "smithy.api#required": {}
+          }
+        },
+        "sans": {
+          "target": "com.cloudflare.custom_csrs#CreateRequestSansList",
+          "traits": {
+            "smithy.api#documentation": "Subject Alternative Names for the CSR. At least one SAN is required.",
+            "smithy.api#required": {}
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State or province name.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional description for the CSR."
+          }
+        },
+        "key_type": {
+          "target": "com.cloudflare.custom_csrs#CreateRequestKeyType",
+          "traits": {
+            "smithy.api#documentation": "Key algorithm to use for the CSR. Defaults to rsa2048 if not specified."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name for the CSR."
+          }
+        },
+        "organizational_unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Organizational unit name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.custom_csrs#CreateResponseKeyType": {
+      "type": "enum",
+      "members": {
+        "RSA2048": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rsa2048"
+          }
+        },
+        "P256V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "p256v1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.custom_csrs#CreateResponseSansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.custom_csrs#CreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom CSR identifier tag.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the CSR was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "key_type": {
+          "target": "com.cloudflare.custom_csrs#CreateResponseKeyType",
+          "traits": {
+            "smithy.api#documentation": "The key algorithm used to generate the CSR.",
+            "smithy.api#required": {}
+          }
+        },
+        "account_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account identifier associated with this CSR."
+          }
+        },
+        "common_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The common name (domain) for the CSR."
+          }
+        },
+        "country": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Two-letter ISO 3166-1 alpha-2 country code."
+          }
+        },
+        "csr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The PEM-encoded Certificate Signing Request."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional description for the CSR."
+          }
+        },
+        "locality": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "City or locality name."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name for the CSR."
+          }
+        },
+        "organization": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Organization name."
+          }
+        },
+        "organizational_unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Organizational unit name."
+          }
+        },
+        "sans": {
+          "target": "com.cloudflare.custom_csrs#CreateResponseSansList",
+          "traits": {
+            "smithy.api#documentation": "Subject Alternative Names included in the CSR."
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State or province name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.custom_csrs#Create": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.custom_csrs#CreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.custom_csrs#CreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/custom_csrs",
+          "code": 200
+        },
+        "smithy.api#documentation": "Generate a new custom Certificate Signing Request (CSR) for an account or zone. Cloudflare generates and securely stores the private key associated with the CSR."
+      }
+    },
+    "com.cloudflare.custom_csrs#DeleteRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "custom_csr_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom CSR identifier tag.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.custom_csrs#DeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom CSR identifier tag."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.custom_csrs#Delete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.custom_csrs#DeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.custom_csrs#DeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/custom_csrs/{custom_csr_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a custom Certificate Signing Request (CSR) and its associated private key.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.custom_csrs#GetRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "custom_csr_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom CSR identifier tag.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.custom_csrs#GetResponseKeyType": {
+      "type": "enum",
+      "members": {
+        "RSA2048": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rsa2048"
+          }
+        },
+        "P256V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "p256v1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.custom_csrs#GetResponseSansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.custom_csrs#GetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom CSR identifier tag.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the CSR was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "key_type": {
+          "target": "com.cloudflare.custom_csrs#GetResponseKeyType",
+          "traits": {
+            "smithy.api#documentation": "The key algorithm used to generate the CSR.",
+            "smithy.api#required": {}
+          }
+        },
+        "account_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account identifier associated with this CSR."
+          }
+        },
+        "common_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The common name (domain) for the CSR."
+          }
+        },
+        "country": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Two-letter ISO 3166-1 alpha-2 country code."
+          }
+        },
+        "csr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The PEM-encoded Certificate Signing Request."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional description for the CSR."
+          }
+        },
+        "locality": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "City or locality name."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name for the CSR."
+          }
+        },
+        "organization": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Organization name."
+          }
+        },
+        "organizational_unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Organizational unit name."
+          }
+        },
+        "sans": {
+          "target": "com.cloudflare.custom_csrs#GetResponseSansList",
+          "traits": {
+            "smithy.api#documentation": "Subject Alternative Names included in the CSR."
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State or province name."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.custom_csrs#Get": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.custom_csrs#GetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.custom_csrs#GetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/custom_csrs/{custom_csr_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Retrieve details for a specific custom Certificate Signing Request (CSR).",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.custom_csrs#ListRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of custom CSRs per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.custom_csrs#ListResultItemKeyType": {
+      "type": "enum",
+      "members": {
+        "RSA2048": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rsa2048"
+          }
+        },
+        "P256V1": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "p256v1"
+          }
+        }
+      }
+    },
+    "com.cloudflare.custom_csrs#ListResultItemSansList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.custom_csrs#ListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Custom CSR identifier tag.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "When the CSR was created.",
+            "smithy.api#required": {}
+          }
+        },
+        "key_type": {
+          "target": "com.cloudflare.custom_csrs#ListResultItemKeyType",
+          "traits": {
+            "smithy.api#documentation": "The key algorithm used to generate the CSR.",
+            "smithy.api#required": {}
+          }
+        },
+        "account_tag": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account identifier associated with this CSR."
+          }
+        },
+        "common_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The common name (domain) for the CSR."
+          }
+        },
+        "country": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Two-letter ISO 3166-1 alpha-2 country code."
+          }
+        },
+        "csr": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The PEM-encoded Certificate Signing Request."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Optional description for the CSR."
+          }
+        },
+        "locality": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "City or locality name."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Human-readable name for the CSR."
+          }
+        },
+        "organization": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Organization name."
+          }
+        },
+        "organizational_unit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Organizational unit name."
+          }
+        },
+        "sans": {
+          "target": "com.cloudflare.custom_csrs#ListResultItemSansList",
+          "traits": {
+            "smithy.api#documentation": "Subject Alternative Names included in the CSR."
+          }
+        },
+        "state": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "State or province name."
+          }
+        }
+      }
+    },
+    "com.cloudflare.custom_csrs#ListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.custom_csrs#ListResultItem"
+      }
+    },
+    "com.cloudflare.custom_csrs#ListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.custom_csrs#ListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.custom_csrs#List": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.custom_csrs#ListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.custom_csrs#ListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/custom_csrs",
+          "code": 200
+        },
+        "smithy.api#documentation": "List all custom Certificate Signing Requests (CSRs) for an account or zone.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.custom_csrs#CustomCsrs": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.custom_csrs#Create"
+        },
+        {
+          "target": "com.cloudflare.custom_csrs#Delete"
+        },
+        {
+          "target": "com.cloudflare.custom_csrs#Get"
+        },
+        {
+          "target": "com.cloudflare.custom_csrs#List"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare CustomCsrs",
+        "smithy.api#documentation": "Cloudflare API — custom_csrs resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

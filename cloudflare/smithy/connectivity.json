@@ -1,0 +1,430 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequestBody": {
+      "type": "structure",
+      "members": {
+        "InfraHTTPServiceConfig_object___host__name__type__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "InfraHTTPServiceConfig object { host, name, type, 6 more }"
+          }
+        },
+        "InfraTCPServiceConfig_object___host__name__type__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "InfraTCPServiceConfig object { host, name, type, 6 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequestBody",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreateResponse": {
+      "type": "structure",
+      "members": {
+        "InfraHTTPServiceConfig_object___host__name__type__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "InfraHTTPServiceConfig object { host, name, type, 6 more }"
+          }
+        },
+        "InfraTCPServiceConfig_object___host__name__type__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "InfraTCPServiceConfig object { host, name, type, 6 more }"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.connectivity#DirectoryServicesCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.connectivity#DirectoryServicesCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/connectivity/directory/services",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create Workers VPC connectivity service"
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "service_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.connectivity#DirectoryServicesDeleteRequest"
+      },
+      "output": {
+        "target": "smithy.api#Unit"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/connectivity/directory/services/{service_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete Workers VPC connectivity service",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "service_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesGetResponse": {
+      "type": "structure",
+      "members": {
+        "InfraHTTPServiceConfig_object___host__name__type__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "InfraHTTPServiceConfig object { host, name, type, 6 more }"
+          }
+        },
+        "InfraTCPServiceConfig_object___host__name__type__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "InfraTCPServiceConfig object { host, name, type, 6 more }"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.connectivity#DirectoryServicesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.connectivity#DirectoryServicesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/connectivity/directory/services/{service_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get Workers VPC connectivity service",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesListRequestType": {
+      "type": "enum",
+      "members": {
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        },
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Current page in the response",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Max amount of entries returned per page",
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesListRequestType",
+          "traits": {
+            "smithy.api#httpQuery": "type"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesListResultItem": {
+      "type": "structure",
+      "members": {
+        "InfraHTTPServiceConfig_object___host__name__type__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "InfraHTTPServiceConfig object { host, name, type, 6 more }"
+          }
+        },
+        "InfraTCPServiceConfig_object___host__name__type__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "InfraTCPServiceConfig object { host, name, type, 6 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.connectivity#DirectoryServicesListResultItem"
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.connectivity#DirectoryServicesListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.connectivity#DirectoryServicesListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/connectivity/directory/services",
+          "code": 200
+        },
+        "smithy.api#documentation": "List Workers VPC connectivity services",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBody": {
+      "type": "structure",
+      "members": {
+        "InfraHTTPServiceConfig_object___host__name__type__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "InfraHTTPServiceConfig object { host, name, type, 6 more }"
+          }
+        },
+        "InfraTCPServiceConfig_object___host__name__type__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "InfraTCPServiceConfig object { host, name, type, 6 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "service_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequestBody",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "InfraHTTPServiceConfig_object___host__name__type__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "InfraHTTPServiceConfig object { host, name, type, 6 more }"
+          }
+        },
+        "InfraTCPServiceConfig_object___host__name__type__6_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "InfraTCPServiceConfig object { host, name, type, 6 more }"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.connectivity#DirectoryServicesUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.connectivity#DirectoryServicesUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.connectivity#DirectoryServicesUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{account_id}/connectivity/directory/services/{service_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update Workers VPC connectivity service",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.connectivity#Connectivity": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.connectivity#DirectoryServicesCreate"
+        },
+        {
+          "target": "com.cloudflare.connectivity#DirectoryServicesDelete"
+        },
+        {
+          "target": "com.cloudflare.connectivity#DirectoryServicesGet"
+        },
+        {
+          "target": "com.cloudflare.connectivity#DirectoryServicesList"
+        },
+        {
+          "target": "com.cloudflare.connectivity#DirectoryServicesUpdate"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare Connectivity",
+        "smithy.api#documentation": "Cloudflare API — connectivity resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

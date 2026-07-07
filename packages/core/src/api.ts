@@ -4,7 +4,12 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 import * as Schedule from "effect/Schedule";
-import * as Schema from "effect/Schema";
+import * as S from "effect/Schema";
+import type * as AST from "effect/SchemaAST";
+import * as HttpClient from "effect/unstable/http/HttpClient";
+import type * as HttpClientError from "effect/unstable/http/HttpClientError";
+import type * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
+import type * as HttpClientResponse from "effect/unstable/http/HttpClientResponse";
 import { hasCategory } from "./error-category.ts";
 import { RETRYABLE } from "./errors.ts";
 
@@ -64,7 +69,27 @@ export const addRetryPolicy = (
 //#endregion
 
 //#region Protocol
-export class Protocol extends Context.Service<Protocol, {}>()("Protocol") {}
+
+/**
+ * The Protocol service knows how to turn a value into an HTTP request using
+ * only the input schema's trait annotations, and how to turn a response back
+ * into an output value using the output schema's trait annotations.
+ *
+ * Swap implementations by providing a different `Layer<Protocol>`.
+ */
+export class Protocol extends Context.Service<
+  Protocol,
+  {
+    readonly encode: (args: {
+      readonly input: unknown;
+      readonly inputAst: AST.AST;
+    }) => Effect.Effect<HttpClientRequest.HttpClientRequest>;
+    readonly decode: (args: {
+      readonly response: HttpClientResponse.HttpClientResponse;
+      readonly outputAst: AST.AST;
+    }) => Effect.Effect<unknown>;
+  }
+>()("Protocol") {}
 
 //#endregion
 
@@ -78,45 +103,50 @@ export type ApiErrorClass = {
 };
 
 export interface OperationConfig<
-  I extends Schema.Top,
-  O extends Schema.Top,
+  I extends S.Top,
+  O extends S.Top,
+  PE,
+  PR,
   E extends readonly ApiErrorClass[] = readonly ApiErrorClass[],
-  PE = never,
-  PR = never,
 > {
   input?: I;
   output?: O;
   errors?: E;
+  /** The protocol layer that knows how to encode/decode this operation's wire format. */
   protocol: Layer.Layer<Protocol, PE, PR>;
   retryPolicy?: RetryPolicyFn;
 }
 
 export function make<
-  I extends Schema.Top,
-  O extends Schema.Top,
+  I extends S.Top,
+  O extends S.Top,
+  PE,
+  PR,
   const E extends readonly ApiErrorClass[] = readonly [],
-  PE = never,
-  PR = never,
 >(
-  configFn: () => OperationConfig<I, O, E, PE, PR>,
+  configFn: () => OperationConfig<I, O, PE, PR, E>,
 ): (
-  input: Schema.Schema.Type<I>,
-) => Effect.Effect<Schema.Schema.Type<O>, InstanceType<E[number]> | PE, PR> {
-  // Implementation sketch (currently stubbed):
-  //
-  //   const cfg = configFn()
-  //   const inner = (input) => /* real operation effect that requires Protocol */
-  //   return (input) =>
-  //     Effect.gen(function*() {
-  //       // Only apply the baked Protocol layer when nothing else has provided one,
-  //       // so a caller's `Effect.provide(otherProtocol)` wins.
-  //       const existing = yield* Effect.serviceOption(Protocol)
-  //       const eff = inner(input)
-  //       return yield* Option.isSome(existing)
-  //         ? eff
-  //         : eff.pipe(Effect.provide(cfg.protocol))
-  //     })
-  return "TODO" as any;
+  input: S.Schema.Type<I>,
+) => Effect.Effect<
+  S.Schema.Type<O>,
+  InstanceType<E[number]> | PE | HttpClientError.HttpClientError,
+  PR | HttpClient.HttpClient
+> {
+  const cfg = configFn();
+  return ((input: unknown) =>
+    Effect.gen(function* () {
+      const protocol = yield* Protocol;
+      const client = yield* HttpClient.HttpClient;
+      const request = yield* protocol.encode({
+        input,
+        inputAst: cfg.input!.ast,
+      });
+      const response = yield* client.execute(request);
+      return yield* protocol.decode({
+        response,
+        outputAst: cfg.output!.ast,
+      });
+    }).pipe(Effect.provide(cfg.protocol))) as any;
 }
 
 //#endregion

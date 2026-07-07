@@ -1,0 +1,4447 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.firewall#AccessRulesCreateRequestMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesCreateRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The rule configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#AccessRulesCreateRequestMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request.",
+            "smithy.api#required": {}
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule, typically used as a reminder or explanation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesCreateResponseAllowedModesItem": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesCreateResponseAllowedModesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.firewall#AccessRulesCreateResponseAllowedModesItem"
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesCreateResponseMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesCreateResponseScopeType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "ORGANIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "organization"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesCreateResponseScope": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier."
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The contact email address of the user."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.firewall#AccessRulesCreateResponseScopeType",
+          "traits": {
+            "smithy.api#documentation": "Defines the scope of the rule."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the IP Access rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "allowed_modes": {
+          "target": "com.cloudflare.firewall#AccessRulesCreateResponseAllowedModesList",
+          "traits": {
+            "smithy.api#documentation": "The available actions that a rule can apply to a matched request.",
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The rule configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#AccessRulesCreateResponseMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the rule was created."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the rule was last modified."
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule, typically used as a reminder or explanation."
+          }
+        },
+        "scope": {
+          "target": "com.cloudflare.firewall#AccessRulesCreateResponseScope",
+          "traits": {
+            "smithy.api#documentation": "All zones owned by the user will have the rule applied."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#AccessRulesCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#AccessRulesCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/firewall/access_rules/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates a new IP Access rule for an account or zone. The rule will apply to all zones in the account or zone. Note: To create an IP Access rule that applies to a single zone, refer to the [IP Access rules for a zone](#ip-access-rules-for-a-zone) endpoints."
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for a rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#AccessRulesDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#AccessRulesDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/firewall/access_rules/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes an existing IP Access rule defined. Note: This operation will affect all zones in the account or zone.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesEditRequestMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesEditRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for a rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The rule configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#AccessRulesEditRequestMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request.",
+            "smithy.api#required": {}
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule, typically used as a reminder or explanation."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesEditResponseAllowedModesItem": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesEditResponseAllowedModesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.firewall#AccessRulesEditResponseAllowedModesItem"
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesEditResponseMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesEditResponseScopeType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "ORGANIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "organization"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesEditResponseScope": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier."
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The contact email address of the user."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.firewall#AccessRulesEditResponseScopeType",
+          "traits": {
+            "smithy.api#documentation": "Defines the scope of the rule."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesEditResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the IP Access rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "allowed_modes": {
+          "target": "com.cloudflare.firewall#AccessRulesEditResponseAllowedModesList",
+          "traits": {
+            "smithy.api#documentation": "The available actions that a rule can apply to a matched request.",
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The rule configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#AccessRulesEditResponseMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the rule was created."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the rule was last modified."
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule, typically used as a reminder or explanation."
+          }
+        },
+        "scope": {
+          "target": "com.cloudflare.firewall#AccessRulesEditResponseScope",
+          "traits": {
+            "smithy.api#documentation": "All zones owned by the user will have the rule applied."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#AccessRulesEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#AccessRulesEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/firewall/access_rules/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates an IP Access rule defined. Note: This operation will affect all zones in the account or zone."
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesGetRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for a rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesGetResponseAllowedModesItem": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesGetResponseAllowedModesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.firewall#AccessRulesGetResponseAllowedModesItem"
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesGetResponseMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesGetResponseScopeType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "ORGANIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "organization"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesGetResponseScope": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier."
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The contact email address of the user."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.firewall#AccessRulesGetResponseScopeType",
+          "traits": {
+            "smithy.api#documentation": "Defines the scope of the rule."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the IP Access rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "allowed_modes": {
+          "target": "com.cloudflare.firewall#AccessRulesGetResponseAllowedModesList",
+          "traits": {
+            "smithy.api#documentation": "The available actions that a rule can apply to a matched request.",
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The rule configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#AccessRulesGetResponseMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the rule was created."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the rule was last modified."
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule, typically used as a reminder or explanation."
+          }
+        },
+        "scope": {
+          "target": "com.cloudflare.firewall#AccessRulesGetResponseScope",
+          "traits": {
+            "smithy.api#documentation": "All zones owned by the user will have the rule applied."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#AccessRulesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#AccessRulesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/firewall/access_rules/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the details of an IP Access rule defined.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListRequestMatch": {
+      "type": "enum",
+      "members": {
+        "ANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListRequestMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListRequestOrder": {
+      "type": "enum",
+      "members": {
+        "CONFIGURATION_TARGET": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "configuration.target"
+          }
+        },
+        "CONFIGURATION_VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "configuration.value"
+          }
+        },
+        "MODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mode"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListRequest": {
+      "type": "structure",
+      "members": {
+        "accounts_or_zones": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "account_or_zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpQuery": "configuration"
+          }
+        },
+        "direction": {
+          "target": "com.cloudflare.firewall#AccessRulesListRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "Defines the direction used to sort returned rules.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "match": {
+          "target": "com.cloudflare.firewall#AccessRulesListRequestMatch",
+          "traits": {
+            "smithy.api#documentation": "Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.",
+            "smithy.api#httpQuery": "match"
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#AccessRulesListRequestMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request.",
+            "smithy.api#httpQuery": "mode"
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the string to search for in the notes of existing IP Access rules.",
+            "smithy.api#httpQuery": "notes"
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.firewall#AccessRulesListRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "Defines the field used to sort returned rules.",
+            "smithy.api#httpQuery": "order"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines the requested page within paginated list of results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines the maximum number of results requested.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListResultItemAllowedModesItem": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListResultItemAllowedModesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.firewall#AccessRulesListResultItemAllowedModesItem"
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListResultItemMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListResultItemScopeType": {
+      "type": "enum",
+      "members": {
+        "USER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "user"
+          }
+        },
+        "ORGANIZATION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "organization"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListResultItemScope": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier."
+          }
+        },
+        "email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The contact email address of the user."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.firewall#AccessRulesListResultItemScopeType",
+          "traits": {
+            "smithy.api#documentation": "Defines the scope of the rule."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the IP Access rule.",
+            "smithy.api#required": {}
+          }
+        },
+        "allowed_modes": {
+          "target": "com.cloudflare.firewall#AccessRulesListResultItemAllowedModesList",
+          "traits": {
+            "smithy.api#documentation": "The available actions that a rule can apply to a matched request.",
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The rule configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#AccessRulesListResultItemMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request.",
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the rule was created."
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the rule was last modified."
+          }
+        },
+        "notes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule, typically used as a reminder or explanation."
+          }
+        },
+        "scope": {
+          "target": "com.cloudflare.firewall#AccessRulesListResultItemScope",
+          "traits": {
+            "smithy.api#documentation": "All zones owned by the user will have the rule applied."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.firewall#AccessRulesListResultItem"
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.firewall#AccessRulesListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#AccessRulesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#AccessRulesListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#AccessRulesListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/{accounts_or_zones}/{account_or_zone_id}/firewall/access_rules/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches IP Access rules of an account or zone. These rules apply to all the zones in the account or zone. You can filter the results using several optional parameters.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsCreateRequestUrlsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#LockdownsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "configurations": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+            "smithy.api#required": {}
+          }
+        },
+        "urls": {
+          "target": "com.cloudflare.firewall#LockdownsCreateRequestUrlsList",
+          "traits": {
+            "smithy.api#documentation": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule. This value is sanitized and any tags will be removed."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the rule is currently paused."
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#LockdownsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#LockdownsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/firewall/lockdowns",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates a new Zone Lockdown rule."
+      }
+    },
+    "com.cloudflare.firewall#LockdownsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "lock_downs_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the Zone Lockdown rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the Zone Lockdown rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.firewall#LockdownsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#LockdownsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#LockdownsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes an existing Zone Lockdown rule.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "lock_downs_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the Zone Lockdown rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#LockdownsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#LockdownsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the details of a Zone Lockdown rule.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the rule was created.",
+            "smithy.api#httpQuery": "created_on"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string to search for in the description of existing rules.",
+            "smithy.api#httpQuery": "description"
+          }
+        },
+        "description_search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string to search for in the description of existing rules.",
+            "smithy.api#httpQuery": "description_search"
+          }
+        },
+        "ip": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single IP address to search for in existing rules.",
+            "smithy.api#httpQuery": "ip"
+          }
+        },
+        "ip_range_search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single IP address range to search for in existing rules.",
+            "smithy.api#httpQuery": "ip_range_search"
+          }
+        },
+        "ip_search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single IP address to search for in existing rules.",
+            "smithy.api#httpQuery": "ip_search"
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the rule was last modified.",
+            "smithy.api#httpQuery": "modified_on"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule to control the processing order. A lower number indicates higher priority. If not provided, any rules with a configured priority will be processed before rules without a priority.",
+            "smithy.api#httpQuery": "priority"
+          }
+        },
+        "uri_search": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A single URI to search for in the list of URLs of existing rules.",
+            "smithy.api#httpQuery": "uri_search"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#LockdownsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.firewall#LockdownsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#LockdownsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#LockdownsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/lockdowns",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches Zone Lockdown rules. You can filter the results using several optional parameters.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsUpdateRequestUrlsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#LockdownsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "lock_downs_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the Zone Lockdown rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "configurations": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "A list of IP addresses or CIDR ranges that will be allowed to access the URLs specified in the Zone Lockdown rule. You can include any number of `ip` or `ip_range` configurations.",
+            "smithy.api#required": {}
+          }
+        },
+        "urls": {
+          "target": "com.cloudflare.firewall#LockdownsUpdateRequestUrlsList",
+          "traits": {
+            "smithy.api#documentation": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#LockdownsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#LockdownsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#LockdownsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/firewall/lockdowns/{lock_downs_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates an existing Zone Lockdown rule.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesBulkDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesBulkDeleteResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#RulesBulkDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.firewall#RulesBulkDeleteResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesBulkDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#RulesBulkDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#RulesBulkDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/firewall/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes existing firewall rules.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesBulkEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesBulkEditResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#RulesBulkEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.firewall#RulesBulkEditResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesBulkEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#RulesBulkEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#RulesBulkEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/firewall/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates the priority of existing firewall rules."
+      }
+    },
+    "com.cloudflare.firewall#RulesBulkUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "body": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesBulkUpdateResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#RulesBulkUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.firewall#RulesBulkUpdateResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesBulkUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#RulesBulkUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#RulesBulkUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/firewall/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates one or more existing firewall rules.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesCreateRequestActionMode": {
+      "type": "enum",
+      "members": {
+        "SIMULATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simulate"
+          }
+        },
+        "BAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ban"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#RulesCreateRequestActionResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The response body to return. The value must conform to the configured content type."
+          }
+        },
+        "content_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#RulesCreateRequestAction": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.firewall#RulesCreateRequestActionMode",
+          "traits": {
+            "smithy.api#documentation": "The action to perform."
+          }
+        },
+        "response": {
+          "target": "com.cloudflare.firewall#RulesCreateRequestActionResponse",
+          "traits": {
+            "smithy.api#documentation": "A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#RulesCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.cloudflare.firewall#RulesCreateRequestAction",
+          "traits": {
+            "smithy.api#documentation": "The action to perform when the threshold of matched traffic within the configured period is exceeded.",
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesCreateResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#RulesCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.firewall#RulesCreateResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#RulesCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#RulesCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/firewall/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create one or more firewall rules."
+      }
+    },
+    "com.cloudflare.firewall#RulesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the firewall rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#RulesDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#RulesDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/firewall/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes an existing firewall rule.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the firewall rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesEditResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#RulesEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.firewall#RulesEditResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#RulesEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#RulesEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/firewall/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates the priority of an existing firewall rule."
+      }
+    },
+    "com.cloudflare.firewall#RulesGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the firewall rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#RulesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#RulesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the details of a firewall rule.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the firewall rule.",
+            "smithy.api#httpQuery": "id"
+          }
+        },
+        "action": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The action to search for. Must be an exact match.",
+            "smithy.api#httpQuery": "action"
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A case-insensitive string to find in the description.",
+            "smithy.api#httpQuery": "description"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the firewall rule is currently paused.",
+            "smithy.api#httpQuery": "paused"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Number of firewall rules per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#RulesListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.firewall#RulesListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#RulesListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#RulesListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches firewall rules in a zone. You can filter the results using several optional parameters.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesUpdateRequestActionMode": {
+      "type": "enum",
+      "members": {
+        "SIMULATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simulate"
+          }
+        },
+        "BAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ban"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#RulesUpdateRequestActionResponse": {
+      "type": "structure",
+      "members": {
+        "body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The response body to return. The value must conform to the configured content type."
+          }
+        },
+        "content_type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The content type of the body. Must be one of the following: `text/plain`, `text/xml`, or `application/json`."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#RulesUpdateRequestAction": {
+      "type": "structure",
+      "members": {
+        "mode": {
+          "target": "com.cloudflare.firewall#RulesUpdateRequestActionMode",
+          "traits": {
+            "smithy.api#documentation": "The action to perform."
+          }
+        },
+        "response": {
+          "target": "com.cloudflare.firewall#RulesUpdateRequestActionResponse",
+          "traits": {
+            "smithy.api#documentation": "A custom content type and reponse to return when the threshold is exceeded. The custom response configured in this object will override the custom error for the zone. This object is optional."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The time in seconds during which Cloudflare will perform the mitigation action. Must be an integer value greater than or equal to the period."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#RulesUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the firewall rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "action": {
+          "target": "com.cloudflare.firewall#RulesUpdateRequestAction",
+          "traits": {
+            "smithy.api#documentation": "The action to perform when the threshold of matched traffic within the configured period is exceeded.",
+            "smithy.api#required": {}
+          }
+        },
+        "filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#RulesUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#RulesUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#RulesUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/firewall/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates an existing firewall rule.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.firewall#UaRulesCreateRequestConfigurationTarget": {
+      "type": "enum",
+      "members": {
+        "UA": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ua"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesCreateRequestConfiguration": {
+      "type": "structure",
+      "members": {
+        "target": {
+          "target": "com.cloudflare.firewall#UaRulesCreateRequestConfigurationTarget",
+          "traits": {
+            "smithy.api#documentation": "The configuration target. You must set the target to `ua` when specifying a user agent in the rule."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "the user agent to exactly match"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesCreateRequestMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "com.cloudflare.firewall#UaRulesCreateRequestConfiguration",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#UaRulesCreateRequestMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule. This value is sanitized and any tags will be removed."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the rule is currently paused."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#UaRulesCreateResponseConfiguration": {
+      "type": "structure",
+      "members": {
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesCreateResponseMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "JS_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "js_challenge"
+          }
+        },
+        "MANAGED_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_challenge"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the User Agent Blocking rule."
+          }
+        },
+        "configuration": {
+          "target": "com.cloudflare.firewall#UaRulesCreateResponseConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The configuration object for the current rule."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule."
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#UaRulesCreateResponseMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the rule is currently paused."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.firewall#UaRulesCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#UaRulesCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#UaRulesCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/firewall/ua_rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates a new User Agent Blocking rule in a zone."
+      }
+    },
+    "com.cloudflare.firewall#UaRulesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ua_rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the User Agent Blocking rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#UaRulesDeleteResponseConfiguration": {
+      "type": "structure",
+      "members": {
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesDeleteResponseMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "JS_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "js_challenge"
+          }
+        },
+        "MANAGED_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_challenge"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the User Agent Blocking rule."
+          }
+        },
+        "configuration": {
+          "target": "com.cloudflare.firewall#UaRulesDeleteResponseConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The configuration object for the current rule."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule."
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#UaRulesDeleteResponseMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the rule is currently paused."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.firewall#UaRulesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#UaRulesDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#UaRulesDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes an existing User Agent Blocking rule.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.firewall#UaRulesGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ua_rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the User Agent Blocking rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#UaRulesGetResponseConfiguration": {
+      "type": "structure",
+      "members": {
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesGetResponseMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "JS_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "js_challenge"
+          }
+        },
+        "MANAGED_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_challenge"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the User Agent Blocking rule."
+          }
+        },
+        "configuration": {
+          "target": "com.cloudflare.firewall#UaRulesGetResponseConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The configuration object for the current rule."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule."
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#UaRulesGetResponseMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the rule is currently paused."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.firewall#UaRulesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#UaRulesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#UaRulesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the details of a User Agent Blocking rule.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#UaRulesListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string to search for in the description of existing rules.",
+            "smithy.api#httpQuery": "description"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the rule is currently paused.",
+            "smithy.api#httpQuery": "paused"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The maximum number of results per page. You can only set the value to `1` or to a multiple of 5 such as `5`, `10`, `15`, or `20`.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "user_agent": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A string to search for in the user agent values of existing rules.",
+            "smithy.api#httpQuery": "user_agent"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#UaRulesListResultItemConfiguration": {
+      "type": "structure",
+      "members": {
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesListResultItemMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "JS_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "js_challenge"
+          }
+        },
+        "MANAGED_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_challenge"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the User Agent Blocking rule."
+          }
+        },
+        "configuration": {
+          "target": "com.cloudflare.firewall#UaRulesListResultItemConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The configuration object for the current rule."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule."
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#UaRulesListResultItemMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the rule is currently paused."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.firewall#UaRulesListResultItem"
+      }
+    },
+    "com.cloudflare.firewall#UaRulesListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.firewall#UaRulesListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#UaRulesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#UaRulesListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#UaRulesListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/ua_rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches User Agent Blocking rules in a zone. You can filter the results using several optional parameters.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#UaRulesUpdateRequestMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "WHITELIST": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "whitelist"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ua_rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the User Agent Blocking rule.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "configuration": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "The rule configuration.",
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#UaRulesUpdateRequestMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule. This value is sanitized and any tags will be removed."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the rule is currently paused."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#UaRulesUpdateResponseConfiguration": {
+      "type": "structure",
+      "members": {
+        "target": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The configuration target for this rule. You must set the target to `ua` for User Agent Blocking rules."
+          }
+        },
+        "value": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The exact user agent string to match. This value will be compared to the received `User-Agent` HTTP header value."
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesUpdateResponseMode": {
+      "type": "enum",
+      "members": {
+        "BLOCK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "block"
+          }
+        },
+        "CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "challenge"
+          }
+        },
+        "JS_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "js_challenge"
+          }
+        },
+        "MANAGED_CHALLENGE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "managed_challenge"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#UaRulesUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the User Agent Blocking rule."
+          }
+        },
+        "configuration": {
+          "target": "com.cloudflare.firewall#UaRulesUpdateResponseConfiguration",
+          "traits": {
+            "smithy.api#documentation": "The configuration object for the current rule."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An informative summary of the rule."
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#UaRulesUpdateResponseMode",
+          "traits": {
+            "smithy.api#documentation": "The action to apply to a matched request."
+          }
+        },
+        "paused": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When true, indicates that the rule is currently paused."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.firewall#UaRulesUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#UaRulesUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#UaRulesUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/firewall/ua_rules/{ua_rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates an existing User Agent Blocking rule.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesCreateRequestUrlsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "urls": {
+          "target": "com.cloudflare.firewall#WafOverridesCreateRequestUrlsList",
+          "traits": {
+            "smithy.api#documentation": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafOverridesCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafOverridesCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/firewall/waf/overrides",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates a URI-based WAF override for a zone. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/)."
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "overrides_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the WAF override.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the WAF override."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafOverridesDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafOverridesDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/firewall/waf/overrides/{overrides_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes an existing URI-based WAF override. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "overrides_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the WAF override.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafOverridesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafOverridesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/waf/overrides/{overrides_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the details of a URI-based WAF override. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of WAF overrides per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.firewall#WafOverridesListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafOverridesListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafOverridesListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/waf/overrides",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the URI-based WAF overrides in a zone. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesUpdateRequestUrlsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "overrides_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The unique identifier of the WAF override.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#required": {}
+          }
+        },
+        "rewrite_action": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Specifies that, when a WAF rule matches, its configured action will be replaced by the action configured in this object.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "An object that allows you to override the action of specific WAF rules. Each key of this object must be the ID of a WAF rule, and each value must be a valid WAF action. Unless you are disabling a rule, ensure that you also enable the rule group that this WAF rule belongs to. When creating a new URI-based WAF override, you must provide a `groups` object or a `rules` object.",
+            "smithy.api#required": {}
+          }
+        },
+        "urls": {
+          "target": "com.cloudflare.firewall#WafOverridesUpdateRequestUrlsList",
+          "traits": {
+            "smithy.api#documentation": "The URLs to include in the current WAF override. You can use wildcards. Each entered URL will be escaped before use, which means you can only use simple wildcard patterns.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#WafOverridesUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafOverridesUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafOverridesUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/firewall/waf/overrides/{overrides_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates an existing URI-based WAF override. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "package_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines a package identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGetResponse": {
+      "type": "structure",
+      "members": {
+        "FirewallAPIResponseSingle_object___errors__messages__result__success__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "FirewallAPIResponseSingle object { errors, messages, result, success }"
+          }
+        },
+        "Result_object___result__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Result object { result }"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafPackagesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafPackagesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/waf/packages/{package_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the details of a WAF package. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesListRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesListRequestMatch": {
+      "type": "enum",
+      "members": {
+        "ANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesListRequestOrder": {
+      "type": "enum",
+      "members": {
+        "NAME": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "name"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "direction": {
+          "target": "com.cloudflare.firewall#WafPackagesListRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "The direction used to sort returned packages.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "match": {
+          "target": "com.cloudflare.firewall#WafPackagesListRequestMatch",
+          "traits": {
+            "smithy.api#documentation": "When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.",
+            "smithy.api#httpQuery": "match"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The name of the WAF package.",
+            "smithy.api#httpQuery": "name"
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.firewall#WafPackagesListRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "The field used to sort returned packages.",
+            "smithy.api#httpQuery": "order"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of packages per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesListResponse": {
+      "type": "structure",
+      "members": {
+        "FirewallAPIResponseCollection_object___errors__messages__result__2_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "FirewallAPIResponseCollection object { errors, messages, result, 2 more }"
+          }
+        },
+        "Result_object___result__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "Result object { result }"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafPackagesListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafPackagesListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/waf/packages",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches WAF packages for a zone. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsEditRequestMode": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier of a schema.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "package_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of a WAF package.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "group_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of a WAF package.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#WafPackagesGroupsEditRequestMode",
+          "traits": {
+            "smithy.api#documentation": "Defines the state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafPackagesGroupsEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafPackagesGroupsEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates a WAF rule group. You can update the state (`mode` parameter) of a rule group. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/)."
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier of a schema.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "package_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of a WAF package.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "group_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of a WAF package.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafPackagesGroupsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafPackagesGroupsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups/{group_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the details of a WAF rule group. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsListRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsListRequestMatch": {
+      "type": "enum",
+      "members": {
+        "ANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsListRequestMode": {
+      "type": "enum",
+      "members": {
+        "ON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "on"
+          }
+        },
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsListRequestOrder": {
+      "type": "enum",
+      "members": {
+        "MODE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "mode"
+          }
+        },
+        "RULES_COUNT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "rules_count"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier of a schema.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "package_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of a WAF package.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "direction": {
+          "target": "com.cloudflare.firewall#WafPackagesGroupsListRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "Defines the direction used to sort returned rule groups.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "match": {
+          "target": "com.cloudflare.firewall#WafPackagesGroupsListRequestMatch",
+          "traits": {
+            "smithy.api#documentation": "Defines the condition for search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.",
+            "smithy.api#httpQuery": "match"
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#WafPackagesGroupsListRequestMode",
+          "traits": {
+            "smithy.api#documentation": "Defines the state of the rules contained in the rule group. When `on`, the rules in the group are configurable/usable.",
+            "smithy.api#httpQuery": "mode"
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the name of the rule group.",
+            "smithy.api#httpQuery": "name"
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.firewall#WafPackagesGroupsListRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "Defines the field used to sort returned rule groups.",
+            "smithy.api#httpQuery": "order"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines the page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines the number of rule groups per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "rules_count": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines the number of rules in the current rule group.",
+            "smithy.api#httpQuery": "rules_count"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.firewall#WafPackagesGroupsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesGroupsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafPackagesGroupsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafPackagesGroupsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/waf/packages/{package_id}/groups",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the WAF rule groups in a WAF package. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesEditRequestMode": {
+      "type": "enum",
+      "members": {
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "default"
+          }
+        },
+        "DISABLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disable"
+          }
+        },
+        "SIMULATE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "simulate"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesEditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier of a schema.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "package_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of a WAF package.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of a WAF package.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#WafPackagesRulesEditRequestMode",
+          "traits": {
+            "smithy.api#documentation": "Defines the mode/action of the rule when triggered. You must use a value from the `allowed_modes` array of the current rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesEditResponse": {
+      "type": "structure",
+      "members": {
+        "WAFManagedRulesAnomalyRule_object___id__allowed_modes__description__4_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "WAFManagedRulesAnomalyRule object { id, allowed_modes, description, 4 more }"
+          }
+        },
+        "WAFManagedRulesTraditionalDenyRule_object___id__allowed_modes__default_mode__5_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "WAFManagedRulesTraditionalDenyRule object { id, allowed_modes, default_mode, 5 more }"
+          }
+        },
+        "WAFManagedRulesTraditionalAllowRule_object___id__allowed_modes__description__4_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "WAFManagedRulesTraditionalAllowRule object { id, allowed_modes, description, 4 more }"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafPackagesRulesEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafPackagesRulesEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates a WAF rule. You can only update the mode/action of the rule. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/)."
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier of a schema.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "package_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of a WAF package.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "rule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of a WAF package.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafPackagesRulesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafPackagesRulesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules/{rule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the details of a WAF rule in a WAF package. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesListRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesListRequestMatch": {
+      "type": "enum",
+      "members": {
+        "ANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesListRequestMode": {
+      "type": "enum",
+      "members": {
+        "DIS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DIS"
+          }
+        },
+        "CHL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "CHL"
+          }
+        },
+        "BLK": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "BLK"
+          }
+        },
+        "SIM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SIM"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesListRequestOrder": {
+      "type": "enum",
+      "members": {
+        "PRIORITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "priority"
+          }
+        },
+        "GROUP_ID": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "group_id"
+          }
+        },
+        "DESCRIPTION": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "description"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines an identifier of a schema.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "package_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of a WAF package.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the public description of the WAF rule.",
+            "smithy.api#httpQuery": "description"
+          }
+        },
+        "direction": {
+          "target": "com.cloudflare.firewall#WafPackagesRulesListRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "Defines the direction used to sort returned rules.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "group_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the unique identifier of the rule group.",
+            "smithy.api#httpQuery": "group_id"
+          }
+        },
+        "match": {
+          "target": "com.cloudflare.firewall#WafPackagesRulesListRequestMatch",
+          "traits": {
+            "smithy.api#documentation": "Defines the search requirements. When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.",
+            "smithy.api#httpQuery": "match"
+          }
+        },
+        "mode": {
+          "target": "com.cloudflare.firewall#WafPackagesRulesListRequestMode",
+          "traits": {
+            "smithy.api#documentation": "Defines the action/mode a rule has been overridden to perform.",
+            "smithy.api#httpQuery": "mode"
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.firewall#WafPackagesRulesListRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "Defines the field used to sort returned rules.",
+            "smithy.api#httpQuery": "order"
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines the page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Defines the number of rules per page.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "priority": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Defines the order in which the individual WAF rule is executed within its rule group.",
+            "smithy.api#httpQuery": "priority"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesListResultItem": {
+      "type": "structure",
+      "members": {
+        "WAFManagedRulesAnomalyRule_object___id__allowed_modes__description__4_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "When triggered, anomaly detection WAF rules contribute to an overall threat score that will determine if a request is considered malicious. You can configure the total scoring threshold through the 'sensitivity' property of the WAF package.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "WAFManagedRulesAnomalyRule object { id, allowed_modes, description, 4 more }"
+          }
+        },
+        "WAFManagedRulesTraditionalDenyRule_object___id__allowed_modes__default_mode__5_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "When triggered, traditional WAF rules cause the firewall to immediately act upon the request based on the configuration of the rule. A 'deny' rule will immediately respond to the request based on the configured rule action/mode (for example, 'block') and no other rules will be processed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "WAFManagedRulesTraditionalDenyRule object { id, allowed_modes, default_mode, 5 more }"
+          }
+        },
+        "WAFManagedRulesTraditionalAllowRule_object___id__allowed_modes__description__4_more__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "When triggered, traditional WAF rules cause the firewall to immediately act on the request based on the rule configuration. An 'allow' rule will immediately allow the request and no other rules will be processed.",
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "WAFManagedRulesTraditionalAllowRule object { id, allowed_modes, description, 4 more }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.firewall#WafPackagesRulesListResultItem"
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.firewall#WafPackagesRulesListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.firewall#WafPackagesRulesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.firewall#WafPackagesRulesListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.firewall#WafPackagesRulesListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/firewall/waf/packages/{package_id}/rules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches WAF rules in a WAF package. **Note:** Applies only to the [previous version of WAF managed rules](https://developers.cloudflare.com/support/firewall/managed-rules-web-application-firewall-waf/understanding-waf-managed-rules-web-application-firewall/).",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.firewall#Firewall": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.firewall#AccessRulesCreate"
+        },
+        {
+          "target": "com.cloudflare.firewall#AccessRulesDelete"
+        },
+        {
+          "target": "com.cloudflare.firewall#AccessRulesEdit"
+        },
+        {
+          "target": "com.cloudflare.firewall#AccessRulesGet"
+        },
+        {
+          "target": "com.cloudflare.firewall#AccessRulesList"
+        },
+        {
+          "target": "com.cloudflare.firewall#LockdownsCreate"
+        },
+        {
+          "target": "com.cloudflare.firewall#LockdownsDelete"
+        },
+        {
+          "target": "com.cloudflare.firewall#LockdownsGet"
+        },
+        {
+          "target": "com.cloudflare.firewall#LockdownsList"
+        },
+        {
+          "target": "com.cloudflare.firewall#LockdownsUpdate"
+        },
+        {
+          "target": "com.cloudflare.firewall#RulesBulkDelete"
+        },
+        {
+          "target": "com.cloudflare.firewall#RulesBulkEdit"
+        },
+        {
+          "target": "com.cloudflare.firewall#RulesBulkUpdate"
+        },
+        {
+          "target": "com.cloudflare.firewall#RulesCreate"
+        },
+        {
+          "target": "com.cloudflare.firewall#RulesDelete"
+        },
+        {
+          "target": "com.cloudflare.firewall#RulesEdit"
+        },
+        {
+          "target": "com.cloudflare.firewall#RulesGet"
+        },
+        {
+          "target": "com.cloudflare.firewall#RulesList"
+        },
+        {
+          "target": "com.cloudflare.firewall#RulesUpdate"
+        },
+        {
+          "target": "com.cloudflare.firewall#UaRulesCreate"
+        },
+        {
+          "target": "com.cloudflare.firewall#UaRulesDelete"
+        },
+        {
+          "target": "com.cloudflare.firewall#UaRulesGet"
+        },
+        {
+          "target": "com.cloudflare.firewall#UaRulesList"
+        },
+        {
+          "target": "com.cloudflare.firewall#UaRulesUpdate"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafOverridesCreate"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafOverridesDelete"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafOverridesGet"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafOverridesList"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafOverridesUpdate"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafPackagesGet"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafPackagesList"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafPackagesGroupsEdit"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafPackagesGroupsGet"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafPackagesGroupsList"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafPackagesRulesEdit"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafPackagesRulesGet"
+        },
+        {
+          "target": "com.cloudflare.firewall#WafPackagesRulesList"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare Firewall",
+        "smithy.api#documentation": "Cloudflare API — firewall resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

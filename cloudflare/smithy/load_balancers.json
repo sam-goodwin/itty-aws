@@ -1,0 +1,4046 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.load_balancers#CreateRequestDefaultPoolsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#CreateRequestCountryPoolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#CreateRequestNetworksList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.load_balancers#CreateRequestPopPoolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#CreateRequestRegionPoolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#CreateRequestRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#CreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "default_pools": {
+          "target": "com.cloudflare.load_balancers#CreateRequestDefaultPoolsList",
+          "traits": {
+            "smithy.api#documentation": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.",
+            "smithy.api#required": {}
+          }
+        },
+        "fallback_pool": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The pool ID to use when all other pools are detected as unhealthy.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.",
+            "smithy.api#required": {}
+          }
+        },
+        "adaptive_routing": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin."
+          }
+        },
+        "country_pools": {
+          "target": "com.cloudflare.load_balancers#CreateRequestCountryPoolsMap",
+          "traits": {
+            "smithy.api#documentation": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object description."
+          }
+        },
+        "location_strategy": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected."
+          }
+        },
+        "networks": {
+          "target": "com.cloudflare.load_balancers#CreateRequestNetworksList",
+          "traits": {
+            "smithy.api#documentation": "List of networks where Load Balancer or Pool is enabled."
+          }
+        },
+        "pop_pools": {
+          "target": "com.cloudflare.load_balancers#CreateRequestPopPoolsMap",
+          "traits": {
+            "smithy.api#documentation": "Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools."
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the hostname should be gray clouded (false) or orange clouded (true)."
+          }
+        },
+        "random_steering": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Configures pool weights."
+          }
+        },
+        "region_pools": {
+          "target": "com.cloudflare.load_balancers#CreateRequestRegionPoolsMap",
+          "traits": {
+            "smithy.api#documentation": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools."
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.load_balancers#CreateRequestRulesList",
+          "traits": {
+            "smithy.api#documentation": "BETA Field Not General Access: A list of rules for this load balancer to execute."
+          }
+        },
+        "session_affinity": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
+          }
+        },
+        "session_affinity_attributes": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Configures attributes for session affinity."
+          }
+        },
+        "session_affinity_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `\"cookie\"` / `\"ip_cookie\"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `\"header\"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified."
+          }
+        },
+        "steering_policy": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Steering Policy for this load balancer."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#CreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#Create": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#CreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#CreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/load_balancers",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a new load balancer."
+      }
+    },
+    "com.cloudflare.load_balancers#DeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "load_balancer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#DeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.load_balancers#Delete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#DeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#DeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a configured load balancer.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.load_balancers#EditRequestCountryPoolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#EditRequestDefaultPoolsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#EditRequestPopPoolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#EditRequestRegionPoolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#EditRequestRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#EditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "load_balancer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "adaptive_routing": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin."
+          }
+        },
+        "country_pools": {
+          "target": "com.cloudflare.load_balancers#EditRequestCountryPoolsMap",
+          "traits": {
+            "smithy.api#documentation": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools."
+          }
+        },
+        "default_pools": {
+          "target": "com.cloudflare.load_balancers#EditRequestDefaultPoolsList",
+          "traits": {
+            "smithy.api#documentation": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object description."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable (the default) this load balancer."
+          }
+        },
+        "fallback_pool": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The pool ID to use when all other pools are detected as unhealthy."
+          }
+        },
+        "location_strategy": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used."
+          }
+        },
+        "pop_pools": {
+          "target": "com.cloudflare.load_balancers#EditRequestPopPoolsMap",
+          "traits": {
+            "smithy.api#documentation": "Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools."
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the hostname should be gray clouded (false) or orange clouded (true)."
+          }
+        },
+        "random_steering": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Configures pool weights."
+          }
+        },
+        "region_pools": {
+          "target": "com.cloudflare.load_balancers#EditRequestRegionPoolsMap",
+          "traits": {
+            "smithy.api#documentation": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools."
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.load_balancers#EditRequestRulesList",
+          "traits": {
+            "smithy.api#documentation": "BETA Field Not General Access: A list of rules for this load balancer to execute."
+          }
+        },
+        "session_affinity": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
+          }
+        },
+        "session_affinity_attributes": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Configures attributes for session affinity."
+          }
+        },
+        "session_affinity_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `\"cookie\"` / `\"ip_cookie\"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `\"header\"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified."
+          }
+        },
+        "steering_policy": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Steering Policy for this load balancer."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#EditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#Edit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#EditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#EditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Apply changes to an existing load balancer, overwriting the supplied properties."
+      }
+    },
+    "com.cloudflare.load_balancers#GetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "load_balancer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#GetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#Get": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#GetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#GetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetch a single configured load balancer.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#ListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#ListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#ListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.load_balancers#ListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#List": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#ListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#ListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/load_balancers",
+          "code": 200
+        },
+        "smithy.api#documentation": "List configured load balancers.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#UpdateRequestDefaultPoolsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#UpdateRequestCountryPoolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#UpdateRequestNetworksList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.load_balancers#UpdateRequestPopPoolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#UpdateRequestRegionPoolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#UpdateRequestRulesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#UpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "load_balancer_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "default_pools": {
+          "target": "com.cloudflare.load_balancers#UpdateRequestDefaultPoolsList",
+          "traits": {
+            "smithy.api#documentation": "A list of pool IDs ordered by their failover priority. Pools defined here are used by default, or when region_pools are not configured for a given region.",
+            "smithy.api#required": {}
+          }
+        },
+        "fallback_pool": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The pool ID to use when all other pools are detected as unhealthy.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The DNS hostname to associate with your Load Balancer. If this hostname already exists as a DNS record in Cloudflare's DNS, the Load Balancer will take precedence and the DNS record will not be used.",
+            "smithy.api#required": {}
+          }
+        },
+        "adaptive_routing": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Controls features that modify the routing of requests to pools and origins in response to dynamic conditions, such as during the interval between active health monitoring requests. For example, zero-downtime failover occurs immediately when an origin becomes unavailable due to HTTP 521, 522, or 523 response codes. If there is another healthy origin in the same pool, the request is retried once against this alternate origin."
+          }
+        },
+        "country_pools": {
+          "target": "com.cloudflare.load_balancers#UpdateRequestCountryPoolsMap",
+          "traits": {
+            "smithy.api#documentation": "A mapping of country codes to a list of pool IDs (ordered by their failover priority) for the given country. Any country not explicitly defined will fall back to using the corresponding region_pool mapping if it exists else to default_pools."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object description."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable (the default) this load balancer."
+          }
+        },
+        "location_strategy": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Controls location-based steering for non-proxied requests. See `steering_policy` to learn how steering is affected."
+          }
+        },
+        "networks": {
+          "target": "com.cloudflare.load_balancers#UpdateRequestNetworksList",
+          "traits": {
+            "smithy.api#documentation": "List of networks where Load Balancer or Pool is enabled."
+          }
+        },
+        "pop_pools": {
+          "target": "com.cloudflare.load_balancers#UpdateRequestPopPoolsMap",
+          "traits": {
+            "smithy.api#documentation": "Enterprise only: A mapping of Cloudflare PoP identifiers to a list of pool IDs (ordered by their failover priority) for the PoP (datacenter). Any PoPs not explicitly defined will fall back to using the corresponding country_pool, then region_pool mapping if it exists else to default_pools."
+          }
+        },
+        "proxied": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether the hostname should be gray clouded (false) or orange clouded (true)."
+          }
+        },
+        "random_steering": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Configures pool weights."
+          }
+        },
+        "region_pools": {
+          "target": "com.cloudflare.load_balancers#UpdateRequestRegionPoolsMap",
+          "traits": {
+            "smithy.api#documentation": "A mapping of region codes to a list of pool IDs (ordered by their failover priority) for the given region. Any regions not explicitly defined will fall back to using default_pools."
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.load_balancers#UpdateRequestRulesList",
+          "traits": {
+            "smithy.api#documentation": "BETA Field Not General Access: A list of rules for this load balancer to execute."
+          }
+        },
+        "session_affinity": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Specifies the type of session affinity the load balancer should use unless specified as `\"none\"`. The supported types are: - `\"cookie\"`: On the first request to a proxied load balancer, a cookie is generated, encoding information of which origin the request will be forwarded to. Subsequent requests, by the same client to the same load balancer, will be sent to the origin server the cookie encodes, for the duration of the cookie and as long as the origin server remains healthy. If the cookie has expired or the origin server is unhealthy, then a new origin server is calculated and used. - `\"ip_cookie\"`: Behaves the same as `\"cookie\"` except the initial origin selection is stable and based on the client's ip address. - `\"header\"`: On the first request to a proxied load balancer, a session key based on the configured HTTP headers (see `session_affinity_attributes.headers`) is generated, encoding the request headers used for storing in the load balancer session state which origin the request will be forwarded to. Subsequent requests to the load balancer with the same headers will be sent to the same origin server, for the duration of the session and as long as the origin server remains healthy. If the session has been idle for the duration of `session_affinity_ttl` seconds or the origin server is unhealthy, then a new origin server is calculated and used. See `headers` in `session_affinity_attributes` for additional required configuration."
+          }
+        },
+        "session_affinity_attributes": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Configures attributes for session affinity."
+          }
+        },
+        "session_affinity_ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time, in seconds, until a client's session expires after being created. Once the expiry time has been reached, subsequent requests may get sent to a different origin server. The accepted ranges per `session_affinity` policy are: - `\"cookie\"` / `\"ip_cookie\"`: The current default of 23 hours will be used unless explicitly set. The accepted range of values is between [1800, 604800]. - `\"header\"`: The current default of 1800 seconds will be used unless explicitly set. The accepted range of values is between [30, 3600]. Note: With session affinity by header, sessions only expire after they haven't been used for the number of seconds specified."
+          }
+        },
+        "steering_policy": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Steering Policy for this load balancer."
+          }
+        },
+        "ttl": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Time to live (TTL) of the DNS entry for the IP address returned by this load balancer. This only applies to gray-clouded (unproxied) load balancers."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#UpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#Update": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#UpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#UpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/load_balancers/{load_balancer_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update a configured load balancer.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsCreateRequestMembersItem": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this monitor is enabled in the group",
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Monitor to use for checking the health of origins within this pool.",
+            "smithy.api#required": {}
+          }
+        },
+        "monitoring_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this monitor is used for monitoring only (does not affect pool health)",
+            "smithy.api#required": {}
+          }
+        },
+        "must_be_healthy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this monitor must be healthy for the pool to be considered healthy",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the monitor was added to the group"
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the monitor group member was last updated"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsCreateRequestMembersList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsCreateRequestMembersItem"
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short description of the monitor group",
+            "smithy.api#required": {}
+          }
+        },
+        "members": {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsCreateRequestMembersList",
+          "traits": {
+            "smithy.api#documentation": "List of monitors in this group",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/load_balancers/monitor_groups",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a new monitor group."
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_group_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a configured monitor group.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsEditRequestMembersItem": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this monitor is enabled in the group",
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Monitor to use for checking the health of origins within this pool.",
+            "smithy.api#required": {}
+          }
+        },
+        "monitoring_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this monitor is used for monitoring only (does not affect pool health)",
+            "smithy.api#required": {}
+          }
+        },
+        "must_be_healthy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this monitor must be healthy for the pool to be considered healthy",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the monitor was added to the group"
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the monitor group member was last updated"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsEditRequestMembersList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsEditRequestMembersItem"
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsEditRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_group_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short description of the monitor group",
+            "smithy.api#required": {}
+          }
+        },
+        "members": {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsEditRequestMembersList",
+          "traits": {
+            "smithy.api#documentation": "List of monitors in this group",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Apply changes to an existing monitor group, overwriting the supplied properties."
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_group_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetch a single configured monitor group.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/monitor_groups",
+          "code": 200
+        },
+        "smithy.api#documentation": "List configured monitor groups.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsUpdateRequestMembersItem": {
+      "type": "structure",
+      "members": {
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this monitor is enabled in the group",
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Monitor to use for checking the health of origins within this pool.",
+            "smithy.api#required": {}
+          }
+        },
+        "monitoring_only": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this monitor is used for monitoring only (does not affect pool health)",
+            "smithy.api#required": {}
+          }
+        },
+        "must_be_healthy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether this monitor must be healthy for the pool to be considered healthy",
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the monitor was added to the group"
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The timestamp of when the monitor group member was last updated"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsUpdateRequestMembersList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsUpdateRequestMembersItem"
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_group_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short description of the monitor group",
+            "smithy.api#required": {}
+          }
+        },
+        "members": {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsUpdateRequestMembersList",
+          "traits": {
+            "smithy.api#documentation": "List of monitors in this group",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Modify a configured monitor group.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsReferencesGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_group_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsReferencesGetResultItemReferenceType": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "*"
+          }
+        },
+        "REFERRAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "referral"
+          }
+        },
+        "REFERRER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "referrer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsReferencesGetResultItem": {
+      "type": "structure",
+      "members": {
+        "reference_type": {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsReferencesGetResultItemReferenceType"
+        },
+        "resource_id": {
+          "target": "smithy.api#String"
+        },
+        "resource_name": {
+          "target": "smithy.api#String"
+        },
+        "resource_type": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsReferencesGetResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsReferencesGetResultItem"
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsReferencesGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsReferencesGetResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorGroupsReferencesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsReferencesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorGroupsReferencesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/monitor_groups/{monitor_group_id}/references",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the list of resources that reference the provided monitor group.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsCreateRequestHeaderMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsCreateRequestType": {
+      "type": "enum",
+      "members": {
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https"
+          }
+        },
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "allow_insecure": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "consecutive_down": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times."
+          }
+        },
+        "consecutive_up": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object description."
+          }
+        },
+        "expected_body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "expected_codes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "follow_redirects": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "header": {
+          "target": "com.cloudflare.load_balancers#MonitorsCreateRequestHeaderMap",
+          "traits": {
+            "smithy.api#documentation": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations."
+          }
+        },
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks."
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443)."
+          }
+        },
+        "probe_zone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.load_balancers#MonitorsCreateRequestType",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/load_balancers/monitors",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a configured monitor."
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a configured monitor.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsEditRequestHeaderMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsEditRequestType": {
+      "type": "enum",
+      "members": {
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https"
+          }
+        },
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsEditRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "allow_insecure": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "consecutive_down": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times."
+          }
+        },
+        "consecutive_up": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object description."
+          }
+        },
+        "expected_body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "expected_codes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "follow_redirects": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "header": {
+          "target": "com.cloudflare.load_balancers#MonitorsEditRequestHeaderMap",
+          "traits": {
+            "smithy.api#documentation": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations."
+          }
+        },
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks."
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443)."
+          }
+        },
+        "probe_zone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.load_balancers#MonitorsEditRequestType",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorsEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorsEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Apply changes to an existing monitor, overwriting the supplied properties."
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "List a single configured monitor for an account.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.load_balancers#MonitorsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/monitors",
+          "code": 200
+        },
+        "smithy.api#documentation": "List configured monitors for an account.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsUpdateRequestHeaderMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsUpdateRequestType": {
+      "type": "enum",
+      "members": {
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https"
+          }
+        },
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "allow_insecure": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "consecutive_down": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times."
+          }
+        },
+        "consecutive_up": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object description."
+          }
+        },
+        "expected_body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "expected_codes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "follow_redirects": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "header": {
+          "target": "com.cloudflare.load_balancers#MonitorsUpdateRequestHeaderMap",
+          "traits": {
+            "smithy.api#documentation": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations."
+          }
+        },
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks."
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443)."
+          }
+        },
+        "probe_zone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.load_balancers#MonitorsUpdateRequestType",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{account_id}/load_balancers/monitors/{monitor_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Modify a configured monitor.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsPreviewsCreateRequestHeaderMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsPreviewsCreateRequestType": {
+      "type": "enum",
+      "members": {
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https"
+          }
+        },
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsPreviewsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "allow_insecure": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "consecutive_down": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times."
+          }
+        },
+        "consecutive_up": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object description."
+          }
+        },
+        "expected_body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "expected_codes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "follow_redirects": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "header": {
+          "target": "com.cloudflare.load_balancers#MonitorsPreviewsCreateRequestHeaderMap",
+          "traits": {
+            "smithy.api#documentation": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations."
+          }
+        },
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks."
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443)."
+          }
+        },
+        "probe_zone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.load_balancers#MonitorsPreviewsCreateRequestType",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsPreviewsCreateResponsePoolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsPreviewsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "pools": {
+          "target": "com.cloudflare.load_balancers#MonitorsPreviewsCreateResponsePoolsMap",
+          "traits": {
+            "smithy.api#documentation": "Monitored pool IDs mapped to their respective names."
+          }
+        },
+        "preview_id": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsPreviewsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorsPreviewsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorsPreviewsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/load_balancers/monitors/{monitor_id}/preview",
+          "code": 200
+        },
+        "smithy.api#documentation": "Preview pools using the specified monitor with provided monitor details. The returned preview_id can be used in the preview endpoint to retrieve the results."
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsReferencesGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "monitor_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsReferencesGetResultItemReferenceType": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "*"
+          }
+        },
+        "REFERRAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "referral"
+          }
+        },
+        "REFERRER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "referrer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsReferencesGetResultItem": {
+      "type": "structure",
+      "members": {
+        "reference_type": {
+          "target": "com.cloudflare.load_balancers#MonitorsReferencesGetResultItemReferenceType"
+        },
+        "resource_id": {
+          "target": "smithy.api#String"
+        },
+        "resource_name": {
+          "target": "smithy.api#String"
+        },
+        "resource_type": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsReferencesGetResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.load_balancers#MonitorsReferencesGetResultItem"
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsReferencesGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.load_balancers#MonitorsReferencesGetResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#MonitorsReferencesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#MonitorsReferencesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#MonitorsReferencesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/monitors/{monitor_id}/references",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the list of resources that reference the provided monitor.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsBulkEditRequestNotificationEmail": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsBulkEditRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "notification_email": {
+          "target": "com.cloudflare.load_balancers#PoolsBulkEditRequestNotificationEmail",
+          "traits": {
+            "smithy.api#documentation": "The email address to send health status notifications to. This field is now deprecated in favor of Cloudflare Notifications for Load Balancing, so only resetting this field with an empty string `\"\"` is accepted."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsBulkEditResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsBulkEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.load_balancers#PoolsBulkEditResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsBulkEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#PoolsBulkEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#PoolsBulkEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/accounts/{account_id}/load_balancers/pools",
+          "code": 200
+        },
+        "smithy.api#documentation": "Apply changes to a number of existing pools, overwriting the supplied properties. Pools are ordered by ascending `name`. Returns the list of affected pools. Supports the standard pagination query parameters, either `limit`/`offset` or `per_page`/`page`."
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsCreateRequestOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
+            "smithy.api#required": {}
+          }
+        },
+        "origins": {
+          "target": "com.cloudflare.load_balancers#PoolsCreateRequestOriginsList",
+          "traits": {
+            "smithy.api#documentation": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description of the pool."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any)."
+          }
+        },
+        "latitude": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set."
+          }
+        },
+        "load_shedding": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Configures load shedding policies and percentages for the pool."
+          }
+        },
+        "longitude": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set."
+          }
+        },
+        "minimum_origins": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool."
+          }
+        },
+        "monitor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Monitor to use for checking the health of origins within this pool."
+          }
+        },
+        "monitor_group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Monitor Group to use for checking the health of origins within this pool."
+          }
+        },
+        "notification_email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list."
+          }
+        },
+        "notification_filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Filter pool and origin health notifications by resource type or health status. Use null to reset."
+          }
+        },
+        "origin_steering": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#PoolsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#PoolsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/load_balancers/pools",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a new pool."
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pool_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#PoolsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#PoolsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/load_balancers/pools/{pool_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a configured pool.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsEditRequestCheckRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsEditRequestOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsEditRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pool_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "check_regions": {
+          "target": "com.cloudflare.load_balancers#PoolsEditRequestCheckRegionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of regions from which to run health checks. Null means every Cloudflare data center."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description of the pool."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any)."
+          }
+        },
+        "latitude": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set."
+          }
+        },
+        "load_shedding": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Configures load shedding policies and percentages for the pool."
+          }
+        },
+        "longitude": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set."
+          }
+        },
+        "minimum_origins": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool."
+          }
+        },
+        "monitor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Monitor to use for checking the health of origins within this pool."
+          }
+        },
+        "monitor_group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Monitor Group to use for checking the health of origins within this pool."
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed."
+          }
+        },
+        "notification_email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list."
+          }
+        },
+        "notification_filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Filter pool and origin health notifications by resource type or health status. Use null to reset."
+          }
+        },
+        "origin_steering": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity."
+          }
+        },
+        "origins": {
+          "target": "com.cloudflare.load_balancers#PoolsEditRequestOriginsList",
+          "traits": {
+            "smithy.api#documentation": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsEditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsEdit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#PoolsEditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#PoolsEditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/accounts/{account_id}/load_balancers/pools/{pool_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Apply changes to an existing pool, overwriting the supplied properties."
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pool_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#PoolsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#PoolsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/pools/{pool_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetch a single configured pool.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "monitor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Monitor to use for checking the health of origins within this pool.",
+            "smithy.api#httpQuery": "monitor"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.load_balancers#PoolsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#PoolsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#PoolsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/pools",
+          "code": 200
+        },
+        "smithy.api#documentation": "List configured pools.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsUpdateRequestOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsUpdateRequestCheckRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pool_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name (tag) for the pool. Only alphanumeric characters, hyphens, and underscores are allowed.",
+            "smithy.api#required": {}
+          }
+        },
+        "origins": {
+          "target": "com.cloudflare.load_balancers#PoolsUpdateRequestOriginsList",
+          "traits": {
+            "smithy.api#documentation": "The list of origins within this pool. Traffic directed at this pool is balanced across all currently healthy origins, provided the pool itself is healthy.",
+            "smithy.api#required": {}
+          }
+        },
+        "check_regions": {
+          "target": "com.cloudflare.load_balancers#PoolsUpdateRequestCheckRegionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of regions from which to run health checks. Null means every Cloudflare data center."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description of the pool."
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether to enable (the default) or disable this pool. Disabled pools will not receive traffic and are excluded from health checks. Disabling a pool will cause any load balancers using it to failover to the next pool (if any)."
+          }
+        },
+        "latitude": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The latitude of the data center containing the origins used in this pool in decimal degrees. If this is set, longitude must also be set."
+          }
+        },
+        "load_shedding": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Configures load shedding policies and percentages for the pool."
+          }
+        },
+        "longitude": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The longitude of the data center containing the origins used in this pool in decimal degrees. If this is set, latitude must also be set."
+          }
+        },
+        "minimum_origins": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The minimum number of origins that must be healthy for this pool to serve traffic. If the number of healthy origins falls below this number, the pool will be marked unhealthy and will failover to the next available pool."
+          }
+        },
+        "monitor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Monitor to use for checking the health of origins within this pool."
+          }
+        },
+        "monitor_group": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The ID of the Monitor Group to use for checking the health of origins within this pool."
+          }
+        },
+        "notification_email": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "This field is now deprecated. It has been moved to Cloudflare's Centralized Notification service https://developers.cloudflare.com/fundamentals/notifications/. The email address to send health status notifications to. This can be an individual mailbox or a mailing list. Multiple emails can be supplied as a comma delimited list."
+          }
+        },
+        "notification_filter": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Filter pool and origin health notifications by resource type or health status. Use null to reset."
+          }
+        },
+        "origin_steering": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Configures origin steering for the pool. Controls how origins are selected for new sessions and traffic without session affinity."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#PoolsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#PoolsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{account_id}/load_balancers/pools/{pool_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Modify a configured pool.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthCreateRequestHeaderMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthCreateRequestType": {
+      "type": "enum",
+      "members": {
+        "HTTP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "http"
+          }
+        },
+        "HTTPS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "https"
+          }
+        },
+        "TCP": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "tcp"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pool_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "allow_insecure": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Do not validate the certificate when monitor use HTTPS. This parameter is currently only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "consecutive_down": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "To be marked unhealthy the monitored origin must fail this healthcheck N consecutive times."
+          }
+        },
+        "consecutive_up": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "To be marked healthy the monitored origin must pass this healthcheck N consecutive times."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Object description."
+          }
+        },
+        "expected_body": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A case-insensitive sub-string to look for in the response body. If this string is not found, the origin will be marked as unhealthy. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "expected_codes": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The expected HTTP response code or code range of the health check. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "follow_redirects": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Follow redirects if returned by the origin. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "header": {
+          "target": "com.cloudflare.load_balancers#PoolsHealthCreateRequestHeaderMap",
+          "traits": {
+            "smithy.api#documentation": "The HTTP request headers to send in the health check. It is recommended you set a Host header by default. The User-Agent header cannot be overridden. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may improve failover time, but will increase load on the origins as we check from multiple locations."
+          }
+        },
+        "method": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The method to use for the health check. This defaults to 'GET' for HTTP/HTTPS based checks and 'connection_established' for TCP based health checks."
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The endpoint path you want to conduct a health check against. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "port": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The port number to connect to for the health check. Required for TCP, UDP, and SMTP checks. HTTP and HTTPS checks should only define the port when using a non-standard port (HTTP: default 80, HTTPS: default 443)."
+          }
+        },
+        "probe_zone": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Assign this monitor to emulate the specified zone while probing. This parameter is only valid for HTTP and HTTPS monitors."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "com.cloudflare.load_balancers#PoolsHealthCreateRequestType",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP','HTTPS', 'TCP', 'ICMP-PING', 'UDP-ICMP', and 'SMTP'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthCreateResponsePoolsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthCreateResponse": {
+      "type": "structure",
+      "members": {
+        "pools": {
+          "target": "com.cloudflare.load_balancers#PoolsHealthCreateResponsePoolsMap",
+          "traits": {
+            "smithy.api#documentation": "Monitored pool IDs mapped to their respective names."
+          }
+        },
+        "preview_id": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#PoolsHealthCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#PoolsHealthCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/load_balancers/pools/{pool_id}/preview",
+          "code": 200
+        },
+        "smithy.api#documentation": "Preview pool health using provided monitor details. The returned preview_id can be used in the preview endpoint to retrieve the results."
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pool_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthGetResponsePopHealthOriginsItemIp": {
+      "type": "structure",
+      "members": {
+        "failure_reason": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Failure reason."
+          }
+        },
+        "healthy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Origin health status."
+          }
+        },
+        "response_code": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Response code from origin health check."
+          }
+        },
+        "rtt": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Origin RTT (Round Trip Time) response."
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthGetResponsePopHealthOriginsItem": {
+      "type": "structure",
+      "members": {
+        "ip": {
+          "target": "com.cloudflare.load_balancers#PoolsHealthGetResponsePopHealthOriginsItemIp"
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthGetResponsePopHealthOriginsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.load_balancers#PoolsHealthGetResponsePopHealthOriginsItem"
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthGetResponsePopHealth": {
+      "type": "structure",
+      "members": {
+        "healthy": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Whether health check in region is healthy."
+          }
+        },
+        "origins": {
+          "target": "com.cloudflare.load_balancers#PoolsHealthGetResponsePopHealthOriginsList"
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthGetResponse": {
+      "type": "structure",
+      "members": {
+        "pool_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pool ID."
+          }
+        },
+        "pop_health": {
+          "target": "com.cloudflare.load_balancers#PoolsHealthGetResponsePopHealth",
+          "traits": {
+            "smithy.api#documentation": "List of regions and associated health status."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsHealthGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#PoolsHealthGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#PoolsHealthGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/pools/{pool_id}/health",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetch the latest pool health status for a single pool.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsReferencesGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pool_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsReferencesGetResultItemReferenceType": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "*"
+          }
+        },
+        "REFERRAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "referral"
+          }
+        },
+        "REFERRER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "referrer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsReferencesGetResultItem": {
+      "type": "structure",
+      "members": {
+        "reference_type": {
+          "target": "com.cloudflare.load_balancers#PoolsReferencesGetResultItemReferenceType"
+        },
+        "resource_id": {
+          "target": "smithy.api#String"
+        },
+        "resource_name": {
+          "target": "smithy.api#String"
+        },
+        "resource_type": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsReferencesGetResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.load_balancers#PoolsReferencesGetResultItem"
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsReferencesGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.load_balancers#PoolsReferencesGetResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PoolsReferencesGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#PoolsReferencesGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#PoolsReferencesGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/pools/{pool_id}/references",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the list of resources that reference the provided pool.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PreviewsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "preview_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PreviewsGetResultMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#PreviewsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.load_balancers#PreviewsGetResultMap",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#PreviewsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#PreviewsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#PreviewsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/preview/{preview_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get the result of a previous preview operation using the provided preview_id.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#RegionsGetRequestRegionId": {
+      "type": "enum",
+      "members": {
+        "WNAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WNAM"
+          }
+        },
+        "ENAM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "ENAM"
+          }
+        },
+        "WEU": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "WEU"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#RegionsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "region_id": {
+          "target": "com.cloudflare.load_balancers#RegionsGetRequestRegionId",
+          "traits": {
+            "smithy.api#documentation": "A list of Cloudflare regions. WNAM: Western North America, ENAM: Eastern North America, WEU: Western Europe, EEU: Eastern Europe, NSAM: Northern South America, SSAM: Southern South America, OC: Oceania, ME: Middle East, NAF: North Africa, SAF: South Africa, SAS: Southern Asia, SEAS: South East Asia, NEAS: North East Asia).",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#RegionsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#RegionsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#RegionsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#RegionsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/regions/{region_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Get a single region mapping.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#RegionsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "country_code_a2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Two-letter alpha-2 country code followed in ISO 3166-1.",
+            "smithy.api#httpQuery": "country_code_a2"
+          }
+        },
+        "subdivision_code": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Two-letter subdivision code followed in ISO 3166-2.",
+            "smithy.api#httpQuery": "subdivision_code"
+          }
+        },
+        "subdivision_code_a2": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Two-letter subdivision code followed in ISO 3166-2.",
+            "smithy.api#httpQuery": "subdivision_code_a2"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#RegionsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.load_balancers#RegionsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#RegionsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#RegionsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/regions",
+          "code": 200
+        },
+        "smithy.api#documentation": "List all region mappings.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#SearchesListRequestReferences": {
+      "type": "enum",
+      "members": {
+        "VALUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": ""
+          }
+        },
+        "VALUE_2": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "*"
+          }
+        },
+        "REFERRAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "referral"
+          }
+        },
+        "REFERRER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "referrer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#SearchesListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#httpQuery": "per_page"
+          }
+        },
+        "query": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Search query term.",
+            "smithy.api#httpQuery": "query"
+          }
+        },
+        "references": {
+          "target": "com.cloudflare.load_balancers#SearchesListRequestReferences",
+          "traits": {
+            "smithy.api#documentation": "The type of references to include. \"*\" to include both referral and referrer references. \"\" to not include any reference information.",
+            "smithy.api#httpQuery": "references"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.load_balancers#SearchesListResponseResourcesItemReferenceType": {
+      "type": "enum",
+      "members": {
+        "REFERRAL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "referral"
+          }
+        },
+        "REFERRER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "referrer"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#SearchesListResponseResourcesItemReferencesList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.load_balancers#SearchesListResponseResourcesItemResourceType": {
+      "type": "enum",
+      "members": {
+        "LOAD_BALANCER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "load_balancer"
+          }
+        },
+        "MONITOR": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "monitor"
+          }
+        },
+        "POOL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "pool"
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#SearchesListResponseResourcesItem": {
+      "type": "structure",
+      "members": {
+        "reference_type": {
+          "target": "com.cloudflare.load_balancers#SearchesListResponseResourcesItemReferenceType",
+          "traits": {
+            "smithy.api#documentation": "When listed as a reference, the type (direction) of the reference."
+          }
+        },
+        "references": {
+          "target": "com.cloudflare.load_balancers#SearchesListResponseResourcesItemReferencesList",
+          "traits": {
+            "smithy.api#documentation": "A list of references to (referrer) or from (referral) this resource."
+          }
+        },
+        "resource_id": {
+          "target": "smithy.api#String"
+        },
+        "resource_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The human-identifiable name of the resource."
+          }
+        },
+        "resource_type": {
+          "target": "com.cloudflare.load_balancers#SearchesListResponseResourcesItemResourceType",
+          "traits": {
+            "smithy.api#documentation": "The type of the resource."
+          }
+        }
+      }
+    },
+    "com.cloudflare.load_balancers#SearchesListResponseResourcesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.load_balancers#SearchesListResponseResourcesItem"
+      }
+    },
+    "com.cloudflare.load_balancers#SearchesListResponse": {
+      "type": "structure",
+      "members": {
+        "resources": {
+          "target": "com.cloudflare.load_balancers#SearchesListResponseResourcesList",
+          "traits": {
+            "smithy.api#documentation": "A list of resources matching the search query."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.load_balancers#SearchesList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.load_balancers#SearchesListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.load_balancers#SearchesListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/load_balancers/search",
+          "code": 200
+        },
+        "smithy.api#documentation": "Search for Load Balancing resources.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.load_balancers#LoadBalancers": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.load_balancers#Create"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#Delete"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#Edit"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#Get"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#List"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#Update"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsCreate"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsDelete"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsEdit"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsGet"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsList"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsUpdate"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorGroupsReferencesGet"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorsCreate"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorsDelete"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorsEdit"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorsGet"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorsList"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorsUpdate"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorsPreviewsCreate"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#MonitorsReferencesGet"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#PoolsBulkEdit"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#PoolsCreate"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#PoolsDelete"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#PoolsEdit"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#PoolsGet"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#PoolsList"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#PoolsUpdate"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#PoolsHealthCreate"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#PoolsHealthGet"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#PoolsReferencesGet"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#PreviewsGet"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#RegionsGet"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#RegionsList"
+        },
+        {
+          "target": "com.cloudflare.load_balancers#SearchesList"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare LoadBalancers",
+        "smithy.api#documentation": "Cloudflare API — load_balancers resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

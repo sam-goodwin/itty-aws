@@ -3,21 +3,35 @@ import * as Effect from "effect/Effect";
 import * as Layer from "effect/Layer";
 import * as Option from "effect/Option";
 import * as Schedule from "effect/Schedule";
-import * as Schema from "effect/Schema";
+import * as S from "effect/Schema";
+import type * as AST from "effect/SchemaAST";
+import * as HttpClient from "effect/unstable/http/HttpClient";
+import type * as HttpClientError from "effect/unstable/http/HttpClientError";
+import type * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
+import type * as HttpClientResponse from "effect/unstable/http/HttpClientResponse";
 export type RetrySchedule = Schedule.Schedule<unknown, any, never, never>;
 export type RetryPolicyFn = (error: unknown) => Effect.Effect<Option.Option<RetrySchedule>>;
 export declare const RetryPolicies: Context.Reference<ReadonlyArray<RetryPolicyFn>>;
 export type DefaultRetryPolicyFn = (error: unknown) => Effect.Effect<RetrySchedule>;
 export declare const DefaultRetryPolicy: Context.Reference<DefaultRetryPolicyFn>;
 export declare const addRetryPolicy: (fn: RetryPolicyFn | ((error: unknown) => Option.Option<RetrySchedule>)) => Layer.Layer<never>;
+declare const Protocol_base: Context.ServiceClass<Protocol, "Protocol", {
+    readonly encode: (args: {
+        readonly input: unknown;
+        readonly inputAst: AST.AST;
+    }) => Effect.Effect<HttpClientRequest.HttpClientRequest>;
+    readonly decode: (args: {
+        readonly response: HttpClientResponse.HttpClientResponse;
+        readonly outputAst: AST.AST;
+    }) => Effect.Effect<unknown>;
+}>;
 /**
- * Protocol is a strict `Context.Service` — no global default. Every operation
- * bakes one in via its `protocol` config; the user can override by providing
- * their own Protocol Layer at the call site (the operation skips its baked
- * Layer when one is already in context).
+ * The Protocol service knows how to turn a value into an HTTP request using
+ * only the input schema's trait annotations, and how to turn a response back
+ * into an output value using the output schema's trait annotations.
+ *
+ * Swap implementations by providing a different `Layer<Protocol>`.
  */
-export type ProtocolShape = {};
-declare const Protocol_base: Context.ServiceClass<Protocol, "Protocol", ProtocolShape>;
 export declare class Protocol extends Protocol_base {
 }
 export type ApiErrorClass = {
@@ -26,23 +40,14 @@ export type ApiErrorClass = {
         readonly message: string;
     };
 };
-export interface OperationConfig<I extends Schema.Top, O extends Schema.Top, E extends readonly ApiErrorClass[] = readonly ApiErrorClass[], PE = never, PR = never> {
+export interface OperationConfig<I extends S.Top, O extends S.Top, PE, PR, E extends readonly ApiErrorClass[] = readonly ApiErrorClass[]> {
     input?: I;
     output?: O;
     errors?: E;
-    /**
-     * The default protocol Layer the operation runs against. Required — every
-     * operation has one. Sets the `Protocol` reference value for the inner
-     * effect.
-     */
+    /** The protocol layer that knows how to encode/decode this operation's wire format. */
     protocol: Layer.Layer<Protocol, PE, PR>;
-    /**
-     * Optional per-operation retry-policy candidate. `null` (or omitted) means
-     * no baked policy — only the call-site `RetryPolicies` stack and the
-     * `DefaultRetryPolicy` reference are consulted.
-     */
-    retryPolicy?: RetryPolicyFn | null;
+    retryPolicy?: RetryPolicyFn;
 }
-export declare function make<I extends Schema.Top, O extends Schema.Top, const E extends readonly ApiErrorClass[] = readonly [], PE = never, PR = never>(configFn: () => OperationConfig<I, O, E, PE, PR>): (input: Schema.Schema.Type<I>) => Effect.Effect<Schema.Schema.Type<O>, InstanceType<E[number]> | PE, PR>;
+export declare function make<I extends S.Top, O extends S.Top, PE, PR, const E extends readonly ApiErrorClass[] = readonly []>(configFn: () => OperationConfig<I, O, PE, PR, E>): (input: S.Schema.Type<I>) => Effect.Effect<S.Schema.Type<O>, InstanceType<E[number]> | PE | HttpClientError.HttpClientError, PR | HttpClient.HttpClient>;
 export {};
 //# sourceMappingURL=api.d.ts.map

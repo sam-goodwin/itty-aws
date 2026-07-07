@@ -1,0 +1,220 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.custom_nameservers#CreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account identifier tag.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "ns_name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The FQDN of the name server.",
+            "smithy.api#required": {}
+          }
+        },
+        "ns_set": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of the set that this name server belongs to."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.custom_nameservers#CreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.custom_nameservers#Create": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.custom_nameservers#CreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.custom_nameservers#CreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/custom_ns",
+          "code": 200
+        },
+        "smithy.api#documentation": "Add Account Custom Nameserver"
+      }
+    },
+    "com.cloudflare.custom_nameservers#DeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account identifier tag.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "custom_ns_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The FQDN of the name server.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.custom_nameservers#DeleteResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#String"
+      }
+    },
+    "com.cloudflare.custom_nameservers#DeleteResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.custom_nameservers#DeleteResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.custom_nameservers#Delete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.custom_nameservers#DeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.custom_nameservers#DeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/custom_ns/{custom_ns_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete Account Custom Nameserver",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.custom_nameservers#GetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Account identifier tag.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.custom_nameservers#GetResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.custom_nameservers#GetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.custom_nameservers#GetResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.custom_nameservers#Get": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.custom_nameservers#GetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.custom_nameservers#GetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/custom_ns",
+          "code": 200
+        },
+        "smithy.api#documentation": "List an account's custom nameservers.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.custom_nameservers#CustomNameservers": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.custom_nameservers#Create"
+        },
+        {
+          "target": "com.cloudflare.custom_nameservers#Delete"
+        },
+        {
+          "target": "com.cloudflare.custom_nameservers#Get"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare CustomNameservers",
+        "smithy.api#documentation": "Cloudflare API — custom_nameservers resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

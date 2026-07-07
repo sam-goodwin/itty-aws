@@ -1,0 +1,640 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.page_rules#CreateRequestActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequestStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#CreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "actions": {
+          "target": "com.cloudflare.page_rules#CreateRequestActionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of actions to perform if the targets of this rule match the",
+            "smithy.api#required": {}
+          }
+        },
+        "targets": {
+          "target": "com.cloudflare.page_rules#CreateRequestTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The rule targets to evaluate on each request.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule, used to define which Page Rule is processed"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#CreateRequestStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.page_rules#CreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.page_rules#Create": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.page_rules#CreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.page_rules#CreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/pagerules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates a new Page Rule."
+      }
+    },
+    "com.cloudflare.page_rules#DeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pagerule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.page_rules#DeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.page_rules#Delete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.page_rules#DeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.page_rules#DeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/pagerules/{pagerule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes an existing Page Rule.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#EditRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.page_rules#EditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pagerule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "actions": {
+          "target": "com.cloudflare.page_rules#EditRequestActionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of actions to perform if the targets of this rule match the"
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule, used to define which Page Rule is processed"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#EditRequestStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule."
+          }
+        },
+        "targets": {
+          "target": "com.cloudflare.page_rules#EditRequestTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The rule targets to evaluate on each request."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.page_rules#EditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.page_rules#Edit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.page_rules#EditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.page_rules#EditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/pagerules/{pagerule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates one or more fields of an existing Page Rule."
+      }
+    },
+    "com.cloudflare.page_rules#GetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pagerule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.page_rules#GetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.page_rules#Get": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.page_rules#GetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.page_rules#GetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/pagerules/{pagerule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches the details of a Page Rule.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.page_rules#ListRequestDirection": {
+      "type": "enum",
+      "members": {
+        "ASC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "asc"
+          }
+        },
+        "DESC": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "desc"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListRequestMatch": {
+      "type": "enum",
+      "members": {
+        "ANY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "any"
+          }
+        },
+        "ALL": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "all"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListRequestOrder": {
+      "type": "enum",
+      "members": {
+        "STATUS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "status"
+          }
+        },
+        "PRIORITY": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "priority"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListRequestStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#ListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "direction": {
+          "target": "com.cloudflare.page_rules#ListRequestDirection",
+          "traits": {
+            "smithy.api#documentation": "The direction used to sort returned Page Rules.",
+            "smithy.api#httpQuery": "direction"
+          }
+        },
+        "match": {
+          "target": "com.cloudflare.page_rules#ListRequestMatch",
+          "traits": {
+            "smithy.api#documentation": "When set to `all`, all the search requirements must match. When set to `any`, only one of the search requirements has to match.",
+            "smithy.api#httpQuery": "match"
+          }
+        },
+        "order": {
+          "target": "com.cloudflare.page_rules#ListRequestOrder",
+          "traits": {
+            "smithy.api#documentation": "The field used to sort returned Page Rules.",
+            "smithy.api#httpQuery": "order"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#ListRequestStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule.",
+            "smithy.api#httpQuery": "status"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.page_rules#ListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.page_rules#ListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.page_rules#ListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.page_rules#List": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.page_rules#ListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.page_rules#ListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/pagerules",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetches Page Rules in a zone.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestActionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestTargetsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequestStatus": {
+      "type": "enum",
+      "members": {
+        "ACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "active"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "disabled"
+          }
+        }
+      }
+    },
+    "com.cloudflare.page_rules#UpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "pagerule_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "actions": {
+          "target": "com.cloudflare.page_rules#UpdateRequestActionsList",
+          "traits": {
+            "smithy.api#documentation": "The set of actions to perform if the targets of this rule match the",
+            "smithy.api#required": {}
+          }
+        },
+        "targets": {
+          "target": "com.cloudflare.page_rules#UpdateRequestTargetsList",
+          "traits": {
+            "smithy.api#documentation": "The rule targets to evaluate on each request.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The priority of the rule, used to define which Page Rule is processed"
+          }
+        },
+        "status": {
+          "target": "com.cloudflare.page_rules#UpdateRequestStatus",
+          "traits": {
+            "smithy.api#documentation": "The status of the Page Rule."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.page_rules#UpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.page_rules#Update": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.page_rules#UpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.page_rules#UpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/pagerules/{pagerule_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Replaces the configuration of an existing Page Rule. The configuration of the updated Page Rule will exactly match the data passed in the API request.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.page_rules#PageRules": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.page_rules#Create"
+        },
+        {
+          "target": "com.cloudflare.page_rules#Delete"
+        },
+        {
+          "target": "com.cloudflare.page_rules#Edit"
+        },
+        {
+          "target": "com.cloudflare.page_rules#Get"
+        },
+        {
+          "target": "com.cloudflare.page_rules#List"
+        },
+        {
+          "target": "com.cloudflare.page_rules#Update"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare PageRules",
+        "smithy.api#documentation": "Cloudflare API — page_rules resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

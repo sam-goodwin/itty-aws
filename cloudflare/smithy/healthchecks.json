@@ -1,0 +1,909 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.healthchecks#CreateRequestCheckRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.healthchecks#CreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hostname or IP address of the origin server to run health checks on.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
+            "smithy.api#required": {}
+          }
+        },
+        "check_regions": {
+          "target": "com.cloudflare.healthchecks#CreateRequestCheckRegionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region."
+          }
+        },
+        "consecutive_fails": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of consecutive fails required from a health check before changing the health to unhealthy."
+          }
+        },
+        "consecutive_successes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of consecutive successes required from a health check before changing the health to healthy."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description of the health check."
+          }
+        },
+        "http_config": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to an HTTP or HTTPS health check."
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
+          }
+        },
+        "tcp_config": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to TCP health check."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.healthchecks#CreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.healthchecks#Create": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.healthchecks#CreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.healthchecks#CreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/healthchecks",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a new health check."
+      }
+    },
+    "com.cloudflare.healthchecks#DeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "healthcheck_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.healthchecks#DeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.healthchecks#Delete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.healthchecks#DeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.healthchecks#DeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/healthchecks/{healthcheck_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a health check.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.healthchecks#EditRequestCheckRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.healthchecks#EditRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "healthcheck_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hostname or IP address of the origin server to run health checks on.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
+            "smithy.api#required": {}
+          }
+        },
+        "check_regions": {
+          "target": "com.cloudflare.healthchecks#EditRequestCheckRegionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region."
+          }
+        },
+        "consecutive_fails": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of consecutive fails required from a health check before changing the health to unhealthy."
+          }
+        },
+        "consecutive_successes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of consecutive successes required from a health check before changing the health to healthy."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description of the health check."
+          }
+        },
+        "http_config": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to an HTTP or HTTPS health check."
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
+          }
+        },
+        "tcp_config": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to TCP health check."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.healthchecks#EditResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.healthchecks#Edit": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.healthchecks#EditRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.healthchecks#EditResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PATCH",
+          "uri": "/zones/{zone_id}/healthchecks/{healthcheck_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Patch a configured health check."
+      }
+    },
+    "com.cloudflare.healthchecks#GetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "healthcheck_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.healthchecks#GetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.healthchecks#Get": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.healthchecks#GetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.healthchecks#GetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/healthchecks/{healthcheck_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetch a single configured health check.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.healthchecks#ListRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of results per page. Must be a multiple of 5.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.healthchecks#ListResultList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.healthchecks#ListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.healthchecks#ListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.healthchecks#List": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.healthchecks#ListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.healthchecks#ListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/healthchecks",
+          "code": 200
+        },
+        "smithy.api#documentation": "List configured health checks.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.healthchecks#UpdateRequestCheckRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.healthchecks#UpdateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "healthcheck_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hostname or IP address of the origin server to run health checks on.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
+            "smithy.api#required": {}
+          }
+        },
+        "check_regions": {
+          "target": "com.cloudflare.healthchecks#UpdateRequestCheckRegionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region."
+          }
+        },
+        "consecutive_fails": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of consecutive fails required from a health check before changing the health to unhealthy."
+          }
+        },
+        "consecutive_successes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of consecutive successes required from a health check before changing the health to healthy."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description of the health check."
+          }
+        },
+        "http_config": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to an HTTP or HTTPS health check."
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
+          }
+        },
+        "tcp_config": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to TCP health check."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.healthchecks#UpdateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.healthchecks#Update": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.healthchecks#UpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.healthchecks#UpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/zones/{zone_id}/healthchecks/{healthcheck_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Update a configured health check.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.healthchecks#PreviewsCreateRequestCheckRegionsList": {
+      "type": "list",
+      "member": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.healthchecks#PreviewsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "address": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hostname or IP address of the origin server to run health checks on.",
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A short name to identify the health check. Only alphanumeric characters, hyphens and underscores are allowed.",
+            "smithy.api#required": {}
+          }
+        },
+        "check_regions": {
+          "target": "com.cloudflare.healthchecks#PreviewsCreateRequestCheckRegionsList",
+          "traits": {
+            "smithy.api#documentation": "A list of regions from which to run health checks. Null means Cloudflare will pick a default region."
+          }
+        },
+        "consecutive_fails": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of consecutive fails required from a health check before changing the health to unhealthy."
+          }
+        },
+        "consecutive_successes": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of consecutive successes required from a health check before changing the health to healthy."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A human-readable description of the health check."
+          }
+        },
+        "http_config": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to an HTTP or HTTPS health check."
+          }
+        },
+        "interval": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The interval between each health check. Shorter intervals may give quicker notifications if the origin status changes, but will increase load on the origin as we check from multiple locations."
+          }
+        },
+        "retries": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The number of retries to attempt in case of a timeout before marking the origin as unhealthy. Retries are attempted immediately."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If suspended, no health checks are sent to the origin."
+          }
+        },
+        "tcp_config": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#documentation": "Parameters specific to TCP health check."
+          }
+        },
+        "timeout": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "The timeout (in seconds) before marking the health check as failed."
+          }
+        },
+        "type": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The protocol to use for the health check. Currently supported protocols are 'HTTP', 'HTTPS' and 'TCP'."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.healthchecks#PreviewsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.healthchecks#PreviewsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.healthchecks#PreviewsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.healthchecks#PreviewsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/zones/{zone_id}/healthchecks/preview",
+          "code": 200
+        },
+        "smithy.api#documentation": "Create a new preview health check."
+      }
+    },
+    "com.cloudflare.healthchecks#PreviewsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "healthcheck_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.healthchecks#PreviewsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.healthchecks#PreviewsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.healthchecks#PreviewsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.healthchecks#PreviewsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/zones/{zone_id}/healthchecks/preview/{healthcheck_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Delete a health check.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.healthchecks#PreviewsGetRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "healthcheck_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Identifier",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.healthchecks#PreviewsGetResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.healthchecks#PreviewsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.healthchecks#PreviewsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.healthchecks#PreviewsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/healthchecks/preview/{healthcheck_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Fetch a single configured health check preview.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.healthchecks#Healthchecks": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.healthchecks#Create"
+        },
+        {
+          "target": "com.cloudflare.healthchecks#Delete"
+        },
+        {
+          "target": "com.cloudflare.healthchecks#Edit"
+        },
+        {
+          "target": "com.cloudflare.healthchecks#Get"
+        },
+        {
+          "target": "com.cloudflare.healthchecks#List"
+        },
+        {
+          "target": "com.cloudflare.healthchecks#Update"
+        },
+        {
+          "target": "com.cloudflare.healthchecks#PreviewsCreate"
+        },
+        {
+          "target": "com.cloudflare.healthchecks#PreviewsDelete"
+        },
+        {
+          "target": "com.cloudflare.healthchecks#PreviewsGet"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare Healthchecks",
+        "smithy.api#documentation": "Cloudflare API — healthchecks resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

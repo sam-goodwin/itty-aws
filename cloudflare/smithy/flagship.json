@@ -1,0 +1,1988 @@
+{
+  "smithy": "2.0",
+  "metadata": {
+    "suppressions": [
+      {
+        "id": "HttpUriConflict",
+        "namespace": "*"
+      },
+      {
+        "id": "HttpMethodSemantics",
+        "namespace": "*"
+      },
+      {
+        "id": "UnreferencedShape",
+        "namespace": "*"
+      }
+    ]
+  },
+  "shapes": {
+    "com.cloudflare.flagship#AppsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updated_by": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.flagship#AppsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.flagship#AppsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.flagship#AppsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/flagship/apps",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates an app. The returned `id` is used in all subsequent flag, changelog, and evaluation requests."
+      }
+    },
+    "com.cloudflare.flagship#AppsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.flagship#AppsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.flagship#AppsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.flagship#AppsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/flagship/apps/{app_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Deletes an app and all its flags and changelog history. Returns 409 if any Worker still references this app via a Flagship binding.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsGetResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updated_by": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.flagship#AppsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.flagship#AppsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.flagship#AppsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/flagship/apps/{app_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Returns an app's name and audit fields. Flag definitions are not included.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsListResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updated_by": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.",
+            "smithy.api#required": {}
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsListResultItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.flagship#AppsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.flagship#AppsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.flagship#AppsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/flagship/apps",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists all apps in the account. Returns identity and audit fields only — flag definitions are not included.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "created_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "updated_by": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Email of the actor who last modified the app, or `edge-gateway` for gateway-authenticated changes.",
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.flagship#AppsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.flagship#AppsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.flagship#AppsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{account_id}/flagship/apps/{app_id}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Updates an app. Only `name` is mutable.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsEvaluateGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "flagKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The flag key to evaluate.",
+            "smithy.api#httpQuery": "flagKey",
+            "smithy.api#required": {}
+          }
+        },
+        "targetingKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Context targeting key (per OpenFeature spec); used for percentage rollout bucketing.",
+            "smithy.api#httpQuery": "targetingKey"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsEvaluateGetResponseReason": {
+      "type": "enum",
+      "members": {
+        "TARGETING_MATCH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "TARGETING_MATCH"
+          }
+        },
+        "DEFAULT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DEFAULT"
+          }
+        },
+        "DISABLED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "DISABLED"
+          }
+        },
+        "SPLIT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "SPLIT"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsEvaluateGetResponse": {
+      "type": "structure",
+      "members": {
+        "flagKey": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "reason": {
+          "target": "com.cloudflare.flagship#AppsEvaluateGetResponseReason",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "variant": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        },
+        "value": {
+          "target": "smithy.api#Document"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Raw response payload (operation does not use the standard v4 result envelope)."
+      }
+    },
+    "com.cloudflare.flagship#AppsEvaluateGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.flagship#AppsEvaluateGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.flagship#AppsEvaluateGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/flagship/apps/{app_id}/evaluate",
+          "code": 200
+        },
+        "smithy.api#documentation": "Evaluates a flag against the provided context. Pass context attributes as query parameters; boolean and numeric strings are coerced automatically. For low-latency in-Worker evaluation, prefer the Flagship binding over this endpoint.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateRequestRulesItemConditionsItem": {
+      "type": "structure",
+      "members": {
+        "object___attribute__operator__value__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { attribute, operator, value }"
+          }
+        },
+        "object___clauses__logical_operator__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { clauses, logical_operator }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateRequestRulesItemConditionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsCreateRequestRulesItemConditionsItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateRequestRulesItemRollout": {
+      "type": "structure",
+      "members": {
+        "percentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+            "smithy.api#required": {}
+          }
+        },
+        "attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateRequestRulesItem": {
+      "type": "structure",
+      "members": {
+        "conditions": {
+          "target": "com.cloudflare.flagship#AppsFlagsCreateRequestRulesItemConditionsList",
+          "traits": {
+            "smithy.api#documentation": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+            "smithy.api#required": {}
+          }
+        },
+        "serve_variation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variation served when this rule matches. Must be a key in `variations`.",
+            "smithy.api#required": {}
+          }
+        },
+        "rollout": {
+          "target": "com.cloudflare.flagship#AppsFlagsCreateRequestRulesItemRollout"
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateRequestRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsCreateRequestRulesItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateRequestVariationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateRequestType": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "default_variation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When false, the flag bypasses all rules and always serves `default_variation`.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.flagship#AppsFlagsCreateRequestRulesList",
+          "traits": {
+            "smithy.api#documentation": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+            "smithy.api#required": {}
+          }
+        },
+        "variations": {
+          "target": "com.cloudflare.flagship#AppsFlagsCreateRequestVariationsMap",
+          "traits": {
+            "smithy.api#documentation": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.flagship#AppsFlagsCreateRequestType",
+          "traits": {
+            "smithy.api#documentation": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateResponseRulesItemConditionsItem": {
+      "type": "structure",
+      "members": {
+        "object___attribute__operator__value__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { attribute, operator, value }"
+          }
+        },
+        "object___clauses__logical_operator__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { clauses, logical_operator }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateResponseRulesItemConditionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsCreateResponseRulesItemConditionsItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateResponseRulesItemRollout": {
+      "type": "structure",
+      "members": {
+        "percentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+            "smithy.api#required": {}
+          }
+        },
+        "attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "conditions": {
+          "target": "com.cloudflare.flagship#AppsFlagsCreateResponseRulesItemConditionsList",
+          "traits": {
+            "smithy.api#documentation": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+            "smithy.api#required": {}
+          }
+        },
+        "serve_variation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variation served when this rule matches. Must be a key in `variations`.",
+            "smithy.api#required": {}
+          }
+        },
+        "rollout": {
+          "target": "com.cloudflare.flagship#AppsFlagsCreateResponseRulesItemRollout"
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsCreateResponseRulesItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateResponseVariationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateResponseType": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreateResponse": {
+      "type": "structure",
+      "members": {
+        "default_variation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When false, the flag bypasses all rules and always serves `default_variation`.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.flagship#AppsFlagsCreateResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+            "smithy.api#required": {}
+          }
+        },
+        "variations": {
+          "target": "com.cloudflare.flagship#AppsFlagsCreateResponseVariationsMap",
+          "traits": {
+            "smithy.api#documentation": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.flagship#AppsFlagsCreateResponseType",
+          "traits": {
+            "smithy.api#documentation": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests."
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String"
+        },
+        "updated_by": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsCreate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.flagship#AppsFlagsCreateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.flagship#AppsFlagsCreateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "POST",
+          "uri": "/accounts/{account_id}/flagship/apps/{app_id}/flags",
+          "code": 200
+        },
+        "smithy.api#documentation": "Creates a flag. Returns 409 if the key already exists. `type` is inferred from variation values and may be omitted."
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsDeleteRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "flag_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Flag key (slug).",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsDeleteResponse": {
+      "type": "structure",
+      "members": {
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsDelete": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.flagship#AppsFlagsDeleteRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.flagship#AppsFlagsDeleteResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "DELETE",
+          "uri": "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Permanently deletes a flag. Subsequent evaluations fall back to the caller-supplied default. Cannot be undone.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsGetRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "flag_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Flag key (slug).",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsGetResponseRulesItemConditionsItem": {
+      "type": "structure",
+      "members": {
+        "object___attribute__operator__value__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { attribute, operator, value }"
+          }
+        },
+        "object___clauses__logical_operator__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { clauses, logical_operator }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsGetResponseRulesItemConditionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsGetResponseRulesItemConditionsItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsGetResponseRulesItemRollout": {
+      "type": "structure",
+      "members": {
+        "percentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+            "smithy.api#required": {}
+          }
+        },
+        "attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsGetResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "conditions": {
+          "target": "com.cloudflare.flagship#AppsFlagsGetResponseRulesItemConditionsList",
+          "traits": {
+            "smithy.api#documentation": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+            "smithy.api#required": {}
+          }
+        },
+        "serve_variation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variation served when this rule matches. Must be a key in `variations`.",
+            "smithy.api#required": {}
+          }
+        },
+        "rollout": {
+          "target": "com.cloudflare.flagship#AppsFlagsGetResponseRulesItemRollout"
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsGetResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsGetResponseRulesItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsGetResponseVariationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsGetResponseType": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsGetResponse": {
+      "type": "structure",
+      "members": {
+        "default_variation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When false, the flag bypasses all rules and always serves `default_variation`.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.flagship#AppsFlagsGetResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+            "smithy.api#required": {}
+          }
+        },
+        "variations": {
+          "target": "com.cloudflare.flagship#AppsFlagsGetResponseVariationsMap",
+          "traits": {
+            "smithy.api#documentation": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.flagship#AppsFlagsGetResponseType",
+          "traits": {
+            "smithy.api#documentation": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests."
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String"
+        },
+        "updated_by": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsGet": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.flagship#AppsFlagsGetRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.flagship#AppsFlagsGetResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Returns the full flag definition including rules, variations, and audit fields.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pagination cursor from a previous response.",
+            "smithy.api#httpQuery": "cursor"
+          }
+        },
+        "limit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Max items to return (1–200).",
+            "smithy.api#httpQuery": "limit"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsListResultItemRulesItemConditionsItem": {
+      "type": "structure",
+      "members": {
+        "object___attribute__operator__value__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { attribute, operator, value }"
+          }
+        },
+        "object___clauses__logical_operator__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { clauses, logical_operator }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsListResultItemRulesItemConditionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsListResultItemRulesItemConditionsItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsListResultItemRulesItemRollout": {
+      "type": "structure",
+      "members": {
+        "percentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+            "smithy.api#required": {}
+          }
+        },
+        "attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsListResultItemRulesItem": {
+      "type": "structure",
+      "members": {
+        "conditions": {
+          "target": "com.cloudflare.flagship#AppsFlagsListResultItemRulesItemConditionsList",
+          "traits": {
+            "smithy.api#documentation": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+            "smithy.api#required": {}
+          }
+        },
+        "serve_variation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variation served when this rule matches. Must be a key in `variations`.",
+            "smithy.api#required": {}
+          }
+        },
+        "rollout": {
+          "target": "com.cloudflare.flagship#AppsFlagsListResultItemRulesItemRollout"
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsListResultItemRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsListResultItemRulesItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsListResultItemVariationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsListResultItemType": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsListResultItem": {
+      "type": "structure",
+      "members": {
+        "default_variation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When false, the flag bypasses all rules and always serves `default_variation`.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.flagship#AppsFlagsListResultItemRulesList",
+          "traits": {
+            "smithy.api#documentation": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+            "smithy.api#required": {}
+          }
+        },
+        "variations": {
+          "target": "com.cloudflare.flagship#AppsFlagsListResultItemVariationsMap",
+          "traits": {
+            "smithy.api#documentation": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.flagship#AppsFlagsListResultItemType",
+          "traits": {
+            "smithy.api#documentation": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests."
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String"
+        },
+        "updated_by": {
+          "target": "smithy.api#String"
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsListResultItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.flagship#AppsFlagsListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.flagship#AppsFlagsListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.flagship#AppsFlagsListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/flagship/apps/{app_id}/flags",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists an app's flags ordered by key. Pass `cursor` from `result_info` to page forward; a null cursor indicates the last page.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateRequestRulesItemConditionsItem": {
+      "type": "structure",
+      "members": {
+        "object___attribute__operator__value__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { attribute, operator, value }"
+          }
+        },
+        "object___clauses__logical_operator__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { clauses, logical_operator }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateRequestRulesItemConditionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsUpdateRequestRulesItemConditionsItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateRequestRulesItemRollout": {
+      "type": "structure",
+      "members": {
+        "percentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+            "smithy.api#required": {}
+          }
+        },
+        "attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateRequestRulesItem": {
+      "type": "structure",
+      "members": {
+        "conditions": {
+          "target": "com.cloudflare.flagship#AppsFlagsUpdateRequestRulesItemConditionsList",
+          "traits": {
+            "smithy.api#documentation": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+            "smithy.api#required": {}
+          }
+        },
+        "serve_variation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variation served when this rule matches. Must be a key in `variations`.",
+            "smithy.api#required": {}
+          }
+        },
+        "rollout": {
+          "target": "com.cloudflare.flagship#AppsFlagsUpdateRequestRulesItemRollout"
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateRequestRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsUpdateRequestRulesItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateRequestVariationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateRequestType": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "flag_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Flag key (slug).",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "default_variation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When false, the flag bypasses all rules and always serves `default_variation`.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.flagship#AppsFlagsUpdateRequestRulesList",
+          "traits": {
+            "smithy.api#documentation": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+            "smithy.api#required": {}
+          }
+        },
+        "variations": {
+          "target": "com.cloudflare.flagship#AppsFlagsUpdateRequestVariationsMap",
+          "traits": {
+            "smithy.api#documentation": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.flagship#AppsFlagsUpdateRequestType",
+          "traits": {
+            "smithy.api#documentation": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateResponseRulesItemConditionsItem": {
+      "type": "structure",
+      "members": {
+        "object___attribute__operator__value__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { attribute, operator, value }"
+          }
+        },
+        "object___clauses__logical_operator__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { clauses, logical_operator }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateResponseRulesItemConditionsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsUpdateResponseRulesItemConditionsItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateResponseRulesItemRollout": {
+      "type": "structure",
+      "members": {
+        "percentage": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Percentage of matching traffic (0–100) served this variation. For multi-way splits, use cumulative upper bounds across rules (e.g. 30, 70, 100).",
+            "smithy.api#required": {}
+          }
+        },
+        "attribute": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Context attribute used for sticky bucketing. Defaults to `targetingKey`. If absent at evaluation time, bucketing is random per request."
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateResponseRulesItem": {
+      "type": "structure",
+      "members": {
+        "conditions": {
+          "target": "com.cloudflare.flagship#AppsFlagsUpdateResponseRulesItemConditionsList",
+          "traits": {
+            "smithy.api#documentation": "Conditions the context must satisfy for this rule to match. An empty array matches all contexts.",
+            "smithy.api#required": {}
+          }
+        },
+        "priority": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Evaluation order; lower numbers are evaluated first. Must be unique across the flag's rules.",
+            "smithy.api#required": {}
+          }
+        },
+        "serve_variation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variation served when this rule matches. Must be a key in `variations`.",
+            "smithy.api#required": {}
+          }
+        },
+        "rollout": {
+          "target": "com.cloudflare.flagship#AppsFlagsUpdateResponseRulesItemRollout"
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateResponseRulesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsUpdateResponseRulesItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateResponseVariationsMap": {
+      "type": "map",
+      "key": {
+        "target": "smithy.api#String"
+      },
+      "value": {
+        "target": "smithy.api#Document"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateResponseType": {
+      "type": "enum",
+      "members": {
+        "BOOLEAN": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "boolean"
+          }
+        },
+        "STRING": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "string"
+          }
+        },
+        "NUMBER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "number"
+          }
+        },
+        "JSON": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "json"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdateResponse": {
+      "type": "structure",
+      "members": {
+        "default_variation": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Variation served when no rule matches or the flag is disabled. Must be a key in `variations`.",
+            "smithy.api#required": {}
+          }
+        },
+        "enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "When false, the flag bypasses all rules and always serves `default_variation`.",
+            "smithy.api#required": {}
+          }
+        },
+        "key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Unique identifier for the flag within an app. Used in all evaluation and SDK calls.",
+            "smithy.api#required": {}
+          }
+        },
+        "rules": {
+          "target": "com.cloudflare.flagship#AppsFlagsUpdateResponseRulesList",
+          "traits": {
+            "smithy.api#documentation": "Targeting rules evaluated in ascending `priority`; the first matching rule wins. An empty array means the flag always serves `default_variation`.",
+            "smithy.api#required": {}
+          }
+        },
+        "variations": {
+          "target": "com.cloudflare.flagship#AppsFlagsUpdateResponseVariationsMap",
+          "traits": {
+            "smithy.api#documentation": "Map of variation name to value. All values must be the same type (boolean, string, number, or JSON object/array). Each serialized value must be 10KB or smaller.",
+            "smithy.api#required": {}
+          }
+        },
+        "description": {
+          "target": "smithy.api#String"
+        },
+        "type": {
+          "target": "com.cloudflare.flagship#AppsFlagsUpdateResponseType",
+          "traits": {
+            "smithy.api#documentation": "Value type of the flag's variations. Inferred from the variation values on write, so it may be omitted in requests."
+          }
+        },
+        "updated_at": {
+          "target": "smithy.api#String"
+        },
+        "updated_by": {
+          "target": "smithy.api#String"
+        }
+      },
+      "traits": {
+        "smithy.api#output": {},
+        "smithy.api#documentation": "Unwrapped `result` payload of the Cloudflare v4 response envelope."
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsUpdate": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.flagship#AppsFlagsUpdateRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.flagship#AppsFlagsUpdateResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "PUT",
+          "uri": "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}",
+          "code": 200
+        },
+        "smithy.api#documentation": "Replaces the entire flag definition. Omitted fields are dropped, not preserved — read before writing. Each update appends a changelog entry.",
+        "smithy.api#idempotent": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsChangelogListRequest": {
+      "type": "structure",
+      "members": {
+        "account_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Cloudflare account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "app_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "App identifier.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "flag_key": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Flag key (slug).",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "cursor": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Pagination cursor from a previous response.",
+            "smithy.api#httpQuery": "cursor"
+          }
+        },
+        "limit": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Max items to return (1–200).",
+            "smithy.api#httpQuery": "limit"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsChangelogListResultItem": {
+      "type": "structure",
+      "members": {
+        "object___after__event__flag_key__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { after, event, flag_key }"
+          }
+        },
+        "object___after__event__flag_key___2": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { after, event, flag_key }"
+          }
+        },
+        "object___after__diff__event__flag_key__": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "object { after, diff, event, flag_key }"
+          }
+        }
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsChangelogListResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.flagship#AppsFlagsChangelogListResultItem"
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsChangelogListResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.flagship#AppsFlagsChangelogListResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.flagship#AppsFlagsChangelogList": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.flagship#AppsFlagsChangelogListRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.flagship#AppsFlagsChangelogListResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/accounts/{account_id}/flagship/apps/{app_id}/flags/{flag_key}/changelog",
+          "code": 200
+        },
+        "smithy.api#documentation": "Returns the audit history for a flag, newest first. Each entry includes the event type and full flag state after the change; `update` entries include a field-level diff. Capped at 200 entries per flag.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.flagship#Flagship": {
+      "type": "service",
+      "version": "4.0",
+      "operations": [
+        {
+          "target": "com.cloudflare.flagship#AppsCreate"
+        },
+        {
+          "target": "com.cloudflare.flagship#AppsDelete"
+        },
+        {
+          "target": "com.cloudflare.flagship#AppsGet"
+        },
+        {
+          "target": "com.cloudflare.flagship#AppsList"
+        },
+        {
+          "target": "com.cloudflare.flagship#AppsUpdate"
+        },
+        {
+          "target": "com.cloudflare.flagship#AppsEvaluateGet"
+        },
+        {
+          "target": "com.cloudflare.flagship#AppsFlagsCreate"
+        },
+        {
+          "target": "com.cloudflare.flagship#AppsFlagsDelete"
+        },
+        {
+          "target": "com.cloudflare.flagship#AppsFlagsGet"
+        },
+        {
+          "target": "com.cloudflare.flagship#AppsFlagsList"
+        },
+        {
+          "target": "com.cloudflare.flagship#AppsFlagsUpdate"
+        },
+        {
+          "target": "com.cloudflare.flagship#AppsFlagsChangelogList"
+        }
+      ],
+      "traits": {
+        "com.cloudflare.protocols#v4Json": {},
+        "smithy.api#title": "Cloudflare Flagship",
+        "smithy.api#documentation": "Cloudflare API — flagship resource. Speaks the v4 JSON envelope protocol; operation outputs describe the unwrapped `result` payload."
+      }
+    }
+  }
+}

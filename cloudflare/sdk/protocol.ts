@@ -1,0 +1,206 @@
+/**
+ * CloudflareProtocol — hand-written.
+ *
+ * Speaks Cloudflare's client-v4 JSON protocol. It reads the trait annotations
+ * the generated schemas carry to build each request, and unwraps the v4
+ * response envelope on the way back:
+ *
+ *   request:  Http({method, uri})  → request line (URI `{labels}` filled from Label() members)
+ *             Label(name?)         → URI path placeholder
+ *             Query(name?)         → query string parameter
+ *             Header(name?)        → HTTP header
+ *             (no binding)         → JSON request body field
+ *
+ *   response: { success, errors, messages, result, result_info }
+ *             • success:false / non-2xx → CloudflareError | CloudflareRateLimited
+ *             • result (the payload) → mapped onto the output schema:
+ *                 EnvelopePayload()  → receives the whole `result`
+ *                 Header(name?)      → read from a response header
+ *                 ResponseCode()     → the HTTP status code
+ *                 (otherwise)        → result.<field>
+ */
+import * as Effect from "effect/Effect";
+import * as Layer from "effect/Layer";
+import type * as AST from "effect/SchemaAST";
+import * as HttpClientRequest from "effect/unstable/http/HttpClientRequest";
+import * as API from "@distilled.cloud/core/api";
+import {
+  bodySymbol,
+  headerSymbol,
+  httpSymbol,
+  labelSymbol,
+  querySymbol,
+  responseCodeSymbol,
+  type HttpTrait,
+} from "@distilled.cloud/core/trait";
+import { CloudflareCredentials } from "./credentials.ts";
+import { CloudflareError, CloudflareRateLimited } from "./errors.ts";
+import { envelopePayloadSymbol } from "./traits.ts";
+
+// --- AST helpers (survive S.optional / Suspend / transforms) -----------------
+
+const getProps = (ast: AST.AST): readonly AST.PropertySignature[] => {
+  if (ast._tag === "Objects") return ast.propertySignatures;
+  if (ast._tag === "Suspend") return getProps(ast.thunk());
+  if (ast.encoding && ast.encoding.length > 0)
+    return getProps(ast.encoding[0]!.to);
+  return [];
+};
+
+const getAnn = (ast: AST.AST, symbol: symbol): unknown => {
+  const direct = (ast.annotations as Record<symbol, unknown> | undefined)?.[
+    symbol
+  ];
+  if (direct !== undefined) return direct;
+  if (ast._tag === "Suspend") return getAnn(ast.thunk(), symbol);
+  if (ast.encoding && ast.encoding.length > 0)
+    return getAnn(ast.encoding[0]!.to, symbol);
+  // S.optional → Union[self, Undefined]; descend into the single real member.
+  if (ast._tag === "Union") {
+    const real = (ast as AST.Union).types.filter(
+      (t) =>
+        t._tag !== "Undefined" &&
+        !(t._tag === "Literal" && (t as any).literal === null),
+    );
+    if (real.length === 1) return getAnn(real[0]!, symbol);
+  }
+  return undefined;
+};
+
+const getPropAnn = (prop: AST.PropertySignature, symbol: symbol): unknown =>
+  getAnn(prop.type, symbol);
+const hasPropAnn = (prop: AST.PropertySignature, symbol: symbol): boolean =>
+  getPropAnn(prop, symbol) !== undefined;
+const nameOf = (prop: AST.PropertySignature, symbol: symbol): string => {
+  const v = getPropAnn(prop, symbol);
+  return typeof v === "string" ? v : String(prop.name);
+};
+
+const BODYLESS = new Set(["GET", "HEAD"]);
+
+// Bridge: Protocol.decode is typed as Effect<unknown> (no error channel), but
+// Cloudflare failures are real typed errors that an operation re-surfaces via
+// its `errors: [...]` list. Fail with the instance and erase the error type
+// here; `API.make`'s signature reintroduces it for callers.
+const fail = (
+  e: CloudflareError | CloudflareRateLimited,
+): Effect.Effect<never> => Effect.fail(e) as Effect.Effect<never>;
+
+export const CloudflareProtocol = Layer.effect(
+  API.Protocol,
+  Effect.gen(function* () {
+    const creds = yield* CloudflareCredentials;
+
+    return API.Protocol.of({
+      encode: ({ input, inputAst }) =>
+        Effect.gen(function* () {
+          const inputObj = (input ?? {}) as Record<string, unknown>;
+          const http = getAnn(inputAst, httpSymbol) as HttpTrait | undefined;
+          if (!http) {
+            return yield* Effect.die(
+              new Error("operation input is missing the Http() trait"),
+            );
+          }
+
+          const headers: Record<string, string> = {
+            authorization: `Bearer ${creds.apiToken}`,
+          };
+          const body: Record<string, unknown> = {};
+          const query = new URLSearchParams();
+          let uri = http.uri;
+
+          for (const prop of getProps(inputAst)) {
+            const key = String(prop.name);
+            const value = inputObj[key];
+            if (value === undefined) continue;
+
+            if (hasPropAnn(prop, labelSymbol)) {
+              const token = nameOf(prop, labelSymbol);
+              uri = uri.replace(
+                `{${token}}`,
+                encodeURIComponent(String(value)),
+              );
+            } else if (hasPropAnn(prop, headerSymbol)) {
+              headers[nameOf(prop, headerSymbol).toLowerCase()] = String(value);
+            } else if (hasPropAnn(prop, querySymbol)) {
+              const name = nameOf(prop, querySymbol);
+              if (Array.isArray(value)) {
+                for (const v of value) query.append(name, String(v));
+              } else {
+                query.append(name, String(value));
+              }
+            } else {
+              body[nameOf(prop, bodySymbol)] = value;
+            }
+          }
+
+          const qs = query.toString();
+          const url = `${creds.baseUrl}${uri}${qs ? `?${qs}` : ""}`;
+
+          let request = HttpClientRequest.make(http.method)(url).pipe(
+            HttpClientRequest.setHeaders(headers),
+          );
+          if (!BODYLESS.has(http.method) && Object.keys(body).length > 0) {
+            request = request.pipe(HttpClientRequest.bodyJsonUnsafe(body));
+          }
+          return request;
+        }),
+
+      decode: ({ response, outputAst }) =>
+        Effect.gen(function* () {
+          const json = ((yield* response.json.pipe(Effect.orDie)) ??
+            {}) as Record<string, unknown>;
+
+          // Error envelope or non-2xx → typed Cloudflare error.
+          const failed = response.status >= 400 || json.success === false;
+          if (failed) {
+            const rawErrors = Array.isArray(json.errors) ? json.errors : [];
+            const errors = rawErrors.map((e: any) => ({
+              code: typeof e?.code === "number" ? e.code : undefined,
+              message: String(e?.message ?? `HTTP ${response.status}`),
+            }));
+            if (errors.length === 0) {
+              errors.push({
+                code: undefined,
+                message: `HTTP ${response.status}`,
+              });
+            }
+            if (response.status === 429) {
+              return yield* fail(
+                new CloudflareRateLimited({ status: response.status, errors }),
+              );
+            }
+            return yield* fail(
+              new CloudflareError({ status: response.status, errors }),
+            );
+          }
+
+          // Unwrap the envelope: the payload is `result` (fall back to the whole
+          // body for the handful of endpoints that don't use the envelope).
+          const payload = ("result" in json ? json.result : json) as
+            | Record<string, unknown>
+            | unknown;
+          const result: Record<string, unknown> = {};
+
+          for (const prop of getProps(outputAst)) {
+            const key = String(prop.name);
+            if (hasPropAnn(prop, envelopePayloadSymbol)) {
+              result[key] = payload;
+            } else if (hasPropAnn(prop, headerSymbol)) {
+              const v =
+                response.headers[nameOf(prop, headerSymbol).toLowerCase()];
+              if (v !== undefined) result[key] = v;
+            } else if (hasPropAnn(prop, responseCodeSymbol)) {
+              result[key] = response.status;
+            } else {
+              const wire = nameOf(prop, bodySymbol);
+              if (payload && typeof payload === "object" && wire in payload) {
+                result[key] = (payload as Record<string, unknown>)[wire];
+              }
+            }
+          }
+          return result;
+        }),
+    });
+  }),
+);

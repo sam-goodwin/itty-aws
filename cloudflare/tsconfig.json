@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.base.json",
+  "include": ["sdk/**/*.ts"],
+  "compilerOptions": {
+    "noEmit": true,
+    "paths": {
+      "@distilled.cloud/core/*": ["../packages/core/src/*"]
+    }
+  }
+}

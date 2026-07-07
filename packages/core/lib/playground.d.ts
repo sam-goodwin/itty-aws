@@ -17,32 +17,45 @@ declare const SampleErrorB_base: S.Class<SampleErrorB, S.TaggedStruct<"SampleErr
 export declare class SampleErrorB extends SampleErrorB_base {
 }
 export declare const SampleRequest: S.Struct<{
-    readonly body: S.Top;
-    readonly bodyName: S.Top;
-    readonly header: S.Top;
-    readonly headerName: S.Top;
+    readonly body: S.String;
+    readonly bodyName: S.String;
+    readonly header: S.String;
+    readonly headerName: S.String;
 }>;
 export declare const SampleResponse: S.Struct<{
-    readonly body: S.Top;
-    readonly bodyName: S.Top;
-    readonly header: S.Top;
-    readonly headerName: S.Top;
+    readonly body: S.String;
+    readonly bodyName: S.String;
+    readonly header: S.String;
+    readonly headerName: S.String;
 }>;
-declare const SampleCredentials_base: Context.ServiceClass<SampleCredentials, "SampleCredentials", {}>;
+declare const SampleCredentials_base: Context.ServiceClass<SampleCredentials, "SampleCredentials", {
+    readonly endpoint: string;
+    readonly token: string;
+}>;
 export declare class SampleCredentials extends SampleCredentials_base {
 }
+/**
+ * SampleProtocol — happy-path JSON over HTTP. Reads trait annotations to
+ * decide where each field on the request/response lives:
+ *
+ *   - `Body(name?)`         → JSON body field
+ *   - `Header(name?)`       → HTTP header
+ *   - `Query(name?)`        → query string parameter
+ *   - `ResponseCode()`      → response status code (decode only)
+ *   - no trait              → JSON body field
+ */
 export declare const SampleProtocol: Layer.Layer<API.Protocol, never, SampleCredentials>;
 export declare const SampleRetryPolicy: Layer.Layer<never, never, never>;
 export declare const SampleOperation: (input: {
-    readonly body: unknown;
-    readonly bodyName: unknown;
-    readonly header: unknown;
-    readonly headerName: unknown;
+    readonly body: string;
+    readonly bodyName: string;
+    readonly header: string;
+    readonly headerName: string;
 }) => Effect.Effect<{
-    readonly body: unknown;
-    readonly bodyName: unknown;
-    readonly header: unknown;
-    readonly headerName: unknown;
-}, SampleErrorA | SampleErrorB | SampleRetryableError, SampleCredentials>;
+    readonly body: string;
+    readonly bodyName: string;
+    readonly header: string;
+    readonly headerName: string;
+}, import("effect/unstable/http/HttpClientError").HttpClientError | SampleErrorA | SampleErrorB | SampleRetryableError, import("effect/unstable/http/HttpClient").HttpClient | SampleCredentials>;
 export {};
 //# sourceMappingURL=playground.d.ts.map
