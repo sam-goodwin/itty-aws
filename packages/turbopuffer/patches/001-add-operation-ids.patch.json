@@ -1,0 +1,72 @@
+{
+  "description": "The turbopuffer OpenAPI spec omits operationId on every operation, which the shared generator requires to name functions. Add an operationId per path+method. Also remove the three Stainless `?stainless_overload=` virtual paths (branchFrom, copyFrom, multiQuery) — they encode multiple request-body variants on a single real method+path that the one-operation-per-method-per-path generator can't model; those three are hand-authored in src/operations/manual/ instead.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1namespaces/get/operationId",
+      "value": "ListNamespaces"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1namespaces~1{namespace}~1schema/get/operationId",
+      "value": "GetNamespaceSchema"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1namespaces~1{namespace}~1schema/post/operationId",
+      "value": "UpdateNamespaceSchema"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v2~1namespaces~1{namespace}~1metadata/get/operationId",
+      "value": "GetNamespaceMetadata"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1namespaces~1{namespace}~1metadata/patch/operationId",
+      "value": "UpdateNamespaceMetadata"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1namespaces~1{namespace}~1hint_cache_warm/get/operationId",
+      "value": "HintCacheWarm"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v1~1namespaces~1{namespace}~1_debug~1recall/post/operationId",
+      "value": "DebugRecall"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v2~1namespaces~1{namespace}/post/operationId",
+      "value": "WriteNamespace"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v2~1namespaces~1{namespace}/delete/operationId",
+      "value": "DeleteNamespace"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v2~1namespaces~1{namespace}~1query/post/operationId",
+      "value": "QueryNamespace"
+    },
+    {
+      "op": "add",
+      "path": "/paths/~1v2~1namespaces~1{namespace}~1explain_query/post/operationId",
+      "value": "ExplainQuery"
+    },
+    {
+      "op": "remove",
+      "path": "/paths/~1v2~1namespaces~1{namespace}~1query?stainless_overload=multiQuery"
+    },
+    {
+      "op": "remove",
+      "path": "/paths/~1v2~1namespaces~1{namespace}?stainless_overload=branchFrom"
+    },
+    {
+      "op": "remove",
+      "path": "/paths/~1v2~1namespaces~1{namespace}?stainless_overload=copyFrom"
+    }
+  ]
+}
