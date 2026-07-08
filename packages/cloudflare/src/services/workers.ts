@@ -303,7 +303,7 @@ export class WorkerNotFound extends T.applyErrorMatchers(
     code: Schema.Number,
     message: Schema.String,
   }),
-  [{ code: 10007 }],
+  [{ code: 10007 }, { code: 10019 }],
 ) {}
 
 export class WorkerVersionNotFound extends T.applyErrorMatchers(
@@ -14359,6 +14359,7 @@ export const CreateRouteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
 
 export type CreateRouteError =
   | DefaultErrors
+  | WorkerNotFound
   | InvalidRoutePattern
   | InvalidRoute
   | Forbidden;
@@ -14371,7 +14372,7 @@ export const createRoute: API.OperationMethod<
 > = /*@__PURE__*/ /*#__PURE__*/ API.make(() => ({
   input: CreateRouteRequest,
   output: CreateRouteResponse,
-  errors: [InvalidRoutePattern, InvalidRoute, Forbidden],
+  errors: [WorkerNotFound, InvalidRoutePattern, InvalidRoute, Forbidden],
 }));
 
 export interface UpdateRouteRequest {
