@@ -255,6 +255,18 @@ function renderEnumLiterals(
   return `Schema.Literals([${literals}])`;
 }
 
+function renderParameterSchema3(
+  schema: SchemaObject | undefined,
+  spec: OpenAPI3Spec,
+  ctx: SchemaGenerationContext,
+): string {
+  if (!schema) return "Schema.String";
+  if (schema.enum && schema.enum.length > 0) {
+    return renderEnumLiterals(schema.enum, schema.type);
+  }
+  return openApiTypeToEffectSchema(schema, spec, "", new Set(), ctx);
+}
+
 // ============================================================================
 // Version Detection
 // ============================================================================
@@ -1323,22 +1335,7 @@ function generateInputSchema3(
   const tsFields: string[] = [];
   const paramSchemaTs = (schema: SchemaObject | undefined): string => {
     if (!schema) return "string";
-    if (schema.enum && schema.enum.length > 0) {
-      return schema.enum
-        .map((v) =>
-          schema.type === "integer" ||
-          schema.type === "number" ||
-          schema.type === "boolean"
-            ? String(v)
-            : JSON.stringify(v),
-        )
-        .join(" | ");
-    }
-    return schema.type === "integer" || schema.type === "number"
-      ? "number"
-      : schema.type === "boolean"
-        ? "boolean"
-        : "string";
+    return openApiTypeToTsType(schema, spec, new Set(), ctx);
   };
   const usedNames = new Set<string>();
 
@@ -1362,14 +1359,7 @@ function generateInputSchema3(
     if (usedNames.has(param.name)) continue;
     usedNames.add(param.name);
     const schema = param.schema;
-    let schemaStr =
-      schema?.enum && schema.enum.length > 0
-        ? renderEnumLiterals(schema.enum, schema.type)
-        : schema?.type === "integer" || schema?.type === "number"
-          ? "Schema.Number"
-          : schema?.type === "boolean"
-            ? "Schema.Boolean"
-            : "Schema.String";
+    let schemaStr = renderParameterSchema3(schema, spec, ctx);
 
     if (!param.required) {
       schemaStr = `Schema.optional(${schemaStr})`;

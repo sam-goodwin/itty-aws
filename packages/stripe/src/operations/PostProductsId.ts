@@ -8,15 +8,15 @@ export interface PostProductsIdInput {
   active?: boolean;
   default_price?: string;
   description?: string | "";
-  expand?: string[];
-  images?: string[] | "";
-  marketing_features?: { name: string }[] | "";
+  expand?: ReadonlyArray<string>;
+  images?: ReadonlyArray<string> | "";
+  marketing_features?: ReadonlyArray<{ name: string }> | "";
   metadata?: Record<string, string> | "";
   name?: string;
   package_dimensions?:
     | { height: number; length: number; weight: number; width: number }
     | "";
-  shippable?: boolean;
+  shippable?: boolean | "";
   statement_descriptor?: string;
   tax_code?: string | "";
   unit_label?: string | "";
@@ -61,7 +61,9 @@ export const PostProductsIdInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
       Schema.Literals([""]),
     ]),
   ),
-  shippable: Schema.optional(Schema.Boolean),
+  shippable: Schema.optional(
+    Schema.Union([Schema.Boolean, Schema.Literals([""])]),
+  ),
   statement_descriptor: Schema.optional(Schema.String),
   tax_code: Schema.optional(
     Schema.Union([Schema.String, Schema.Literals([""])]),
@@ -98,13 +100,13 @@ export interface PostProductsIdOutput {
               preset: number | null;
             } | null;
             tax_behavior: "exclusive" | "inclusive" | "unspecified" | null;
-            tiers?: {
+            tiers?: ReadonlyArray<{
               flat_amount: number | null;
               flat_amount_decimal: string | null;
               unit_amount: number | null;
               unit_amount_decimal: string | null;
               up_to: number | null;
-            }[];
+            }>;
             unit_amount: number | null;
             unit_amount_decimal: string | null;
           }
@@ -128,9 +130,9 @@ export interface PostProductsIdOutput {
               default_price?: string | unknown | null;
               description: string | null;
               id: string;
-              images: string[];
+              images: ReadonlyArray<string>;
               livemode: boolean;
-              marketing_features: { name?: string }[];
+              marketing_features: ReadonlyArray<{ name?: string }>;
               metadata: Record<string, string>;
               name: string;
               object: "product";
@@ -165,13 +167,13 @@ export interface PostProductsIdOutput {
           usage_type: "licensed" | "metered";
         } | null;
         tax_behavior: "exclusive" | "inclusive" | "unspecified" | null;
-        tiers?: {
+        tiers?: ReadonlyArray<{
           flat_amount: number | null;
           flat_amount_decimal: string | null;
           unit_amount: number | null;
           unit_amount_decimal: string | null;
           up_to: number | null;
-        }[];
+        }>;
         tiers_mode: "graduated" | "volume" | null;
         transform_quantity: { divide_by: number; round: "down" | "up" } | null;
         type: "one_time" | "recurring";
@@ -181,9 +183,9 @@ export interface PostProductsIdOutput {
     | null;
   description: string | null;
   id: string;
-  images: string[];
+  images: ReadonlyArray<string>;
   livemode: boolean;
-  marketing_features: { name?: string }[];
+  marketing_features: ReadonlyArray<{ name?: string }>;
   metadata: Record<string, string>;
   name: string;
   object: "product";

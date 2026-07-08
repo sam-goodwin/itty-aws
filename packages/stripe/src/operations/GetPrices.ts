@@ -5,27 +5,49 @@ import * as T from "../traits.ts";
 // Input Schema
 export interface GetPricesInput {
   active?: boolean;
-  created?: string;
+  created?: { gt?: number; gte?: number; lt?: number; lte?: number } | number;
   currency?: string;
   ending_before?: string;
-  expand?: string;
+  expand?: ReadonlyArray<string>;
   limit?: number;
-  lookup_keys?: string;
+  lookup_keys?: ReadonlyArray<string>;
   product?: string;
-  recurring?: string;
+  recurring?: {
+    interval?: "day" | "month" | "week" | "year";
+    meter?: string;
+    usage_type?: "licensed" | "metered";
+  };
   starting_after?: string;
   type?: "one_time" | "recurring";
 }
 export const GetPricesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
   active: Schema.optional(Schema.Boolean),
-  created: Schema.optional(Schema.String),
+  created: Schema.optional(
+    Schema.Union([
+      Schema.Struct({
+        gt: Schema.optional(Schema.Number),
+        gte: Schema.optional(Schema.Number),
+        lt: Schema.optional(Schema.Number),
+        lte: Schema.optional(Schema.Number),
+      }),
+      Schema.Number,
+    ]),
+  ),
   currency: Schema.optional(Schema.String),
   ending_before: Schema.optional(Schema.String),
-  expand: Schema.optional(Schema.String),
+  expand: Schema.optional(Schema.Array(Schema.String)),
   limit: Schema.optional(Schema.Number),
-  lookup_keys: Schema.optional(Schema.String),
+  lookup_keys: Schema.optional(Schema.Array(Schema.String)),
   product: Schema.optional(Schema.String),
-  recurring: Schema.optional(Schema.String),
+  recurring: Schema.optional(
+    Schema.Struct({
+      interval: Schema.optional(
+        Schema.Literals(["day", "month", "week", "year"]),
+      ),
+      meter: Schema.optional(Schema.String),
+      usage_type: Schema.optional(Schema.Literals(["licensed", "metered"])),
+    }),
+  ),
   starting_after: Schema.optional(Schema.String),
   type: Schema.optional(Schema.Literals(["one_time", "recurring"])),
 }).pipe(
@@ -34,7 +56,7 @@ export const GetPricesInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
 
 // Output Schema
 export interface GetPricesOutput {
-  data: {
+  data: ReadonlyArray<{
     active: boolean;
     billing_scheme: "per_unit" | "tiered";
     created: number;
@@ -48,13 +70,13 @@ export interface GetPricesOutput {
           preset: number | null;
         } | null;
         tax_behavior: "exclusive" | "inclusive" | "unspecified" | null;
-        tiers?: {
+        tiers?: ReadonlyArray<{
           flat_amount: number | null;
           flat_amount_decimal: string | null;
           unit_amount: number | null;
           unit_amount_decimal: string | null;
           up_to: number | null;
-        }[];
+        }>;
         unit_amount: number | null;
         unit_amount_decimal: string | null;
       }
@@ -78,9 +100,9 @@ export interface GetPricesOutput {
           default_price?: string | unknown | null;
           description: string | null;
           id: string;
-          images: string[];
+          images: ReadonlyArray<string>;
           livemode: boolean;
-          marketing_features: { name?: string }[];
+          marketing_features: ReadonlyArray<{ name?: string }>;
           metadata: Record<string, string>;
           name: string;
           object: "product";
@@ -115,19 +137,19 @@ export interface GetPricesOutput {
       usage_type: "licensed" | "metered";
     } | null;
     tax_behavior: "exclusive" | "inclusive" | "unspecified" | null;
-    tiers?: {
+    tiers?: ReadonlyArray<{
       flat_amount: number | null;
       flat_amount_decimal: string | null;
       unit_amount: number | null;
       unit_amount_decimal: string | null;
       up_to: number | null;
-    }[];
+    }>;
     tiers_mode: "graduated" | "volume" | null;
     transform_quantity: { divide_by: number; round: "down" | "up" } | null;
     type: "one_time" | "recurring";
     unit_amount: number | null;
     unit_amount_decimal: string | null;
-  }[];
+  }>;
   has_more: boolean;
   object: "list";
   url: string;
