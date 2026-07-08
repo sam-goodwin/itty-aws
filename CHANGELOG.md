@@ -1,3 +1,23 @@
+## v0.28.2
+
+### &nbsp;&nbsp;&nbsp;🚀 Features
+
+- **cloudflare**:
+  - **workers**: Add cache to script + version upload metadata &nbsp;-&nbsp; by **Matthew Aylward** in https://github.com/alchemy-run/distilled/issues/366 [<samp>(3be17)</samp>](https://github.com/alchemy-run/distilled/commit/3be177e81)
+
+### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
+
+- **cloudflare**:
+  - **workers**:
+    - Type WorkerHasNoVersions and SecretsStoreBindingNotFound &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/363 [<samp>(d5796)</samp>](https://github.com/alchemy-run/distilled/commit/d5796413c)
+    - Type every binding-target-not-found error on script upload &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/365 [<samp>(15c5c)</samp>](https://github.com/alchemy-run/distilled/commit/15c5cf763)
+    - Serialize metadata.cache as cache_options on the wire &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/367 [<samp>(bb548)</samp>](https://github.com/alchemy-run/distilled/commit/bb54823f2)
+    - Type createRoute code 10019 as RouteScriptNotFound &nbsp;-&nbsp; by **sam** in https://github.com/alchemy-run/distilled/issues/368 [<samp>(b8d02)</samp>](https://github.com/alchemy-run/distilled/commit/b8d025d28)
+
+##### &nbsp;&nbsp;&nbsp;&nbsp;[View changes on GitHub](https://github.com/alchemy-run/distilled/compare/v0.28.1...HEAD)
+
+---
+
 ## v0.28.1
 
 ### &nbsp;&nbsp;&nbsp;🐞 Bug Fixes
