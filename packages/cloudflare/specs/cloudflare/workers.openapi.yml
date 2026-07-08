@@ -10989,7 +10989,7 @@ paths:
                   - pattern
       x-distilled-response-path: result
       x-distilled-errors:
-        WorkerNotFound:
+        RouteScriptNotFound:
           - code: 10019
         InvalidRoutePattern:
           - code: 10022
