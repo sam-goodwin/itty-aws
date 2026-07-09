@@ -1089,13 +1089,13 @@ export const RatePlansGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetRatePlanResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RatePlansGetResultList;
+  result: RatePlansGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetRatePlanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RatePlansGetResultList.pipe(T.EnvelopePayload())),
+    result: RatePlansGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2014,13 +2014,13 @@ export const PlansListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPlansResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PlansListResultList;
+  result: PlansListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPlansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PlansListResultList.pipe(T.EnvelopePayload())),
+    result: PlansListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2339,13 +2339,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListZonesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListZonesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3286,15 +3286,13 @@ export const CustomNameserversUpdateResultList = /*@__PURE__*/ S.Array(
 
 export interface PutCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CustomNameserversUpdateResultList;
+  result: CustomNameserversUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const PutCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      CustomNameserversUpdateResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: CustomNameserversUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

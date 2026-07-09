@@ -46,7 +46,9 @@ import {
 import { CloudflareError, CloudflareRateLimited } from "./errors.ts";
 import {
   envelopePayloadSymbol,
+  formDataFileSymbol,
   getErrorMatchers,
+  keyDictionarySymbol,
   resultInfoSymbol,
 } from "./traits.ts";
 
@@ -133,6 +135,28 @@ const resolveNode = (ast: AST.AST): AST.AST => {
   return ast;
 };
 
+/** Deep-rename keys via a plain dictionary (see `T.KeyDictionary`). */
+const mapKeysByDictionary = (
+  dict: Record<string, string>,
+  value: unknown,
+  direction: "encode" | "decode",
+): unknown => {
+  if (value === null || typeof value !== "object") return value;
+  if (Array.isArray(value)) {
+    return value.map((v) => mapKeysByDictionary(dict, v, direction));
+  }
+  const reverse =
+    direction === "decode"
+      ? Object.fromEntries(Object.entries(dict).map(([k, v]) => [v, k]))
+      : dict;
+  const out: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+    if (v === undefined) continue;
+    out[reverse[k] ?? k] = mapKeysByDictionary(dict, v, direction);
+  }
+  return out;
+};
+
 /** Recursively rename keys between TS names and wire names, per the schema. */
 const mapKeys = (
   ast: AST.AST,
@@ -142,6 +166,10 @@ const mapKeys = (
   if (value === null || value === undefined || typeof value !== "object") {
     return value;
   }
+  const dict = getAnn(ast, keyDictionarySymbol) as
+    | Record<string, string>
+    | undefined;
+  if (dict) return mapKeysByDictionary(dict, value, direction);
   const node = resolveNode(ast);
 
   if (node._tag === "Arrays") {
@@ -222,12 +250,21 @@ const encode = ({
       ...formatHeaders(creds),
     };
     const body: Record<string, unknown> = {};
+    const files: Array<Blob | File> = [];
     const query = new URLSearchParams();
     let uri = http.uri;
+    const consumed = new Set<string>();
+    let hasBodyMembers = false;
 
     for (const prop of getProps(inputAst)) {
       const key = String(prop.name);
+      consumed.add(key);
       const value = inputObj[key];
+      const isBodyMember =
+        !hasPropAnn(prop, labelSymbol) &&
+        !hasPropAnn(prop, headerSymbol) &&
+        !hasPropAnn(prop, querySymbol);
+      if (isBodyMember) hasBodyMembers = true;
       if (value === undefined) continue;
 
       if (hasPropAnn(prop, labelSymbol)) {
@@ -242,9 +279,22 @@ const encode = ({
         } else {
           query.append(name, String(value));
         }
+      } else if (hasPropAnn(prop, formDataFileSymbol)) {
+        for (const f of Array.isArray(value) ? value : [value]) {
+          files.push(f as Blob | File);
+        }
       } else {
         body[nameOf(prop, bodySymbol)] = mapKeys(prop.type, value, "encode");
       }
+    }
+
+    // Input keys the schema doesn't know pass through as body fields — the
+    // docs-sourced schemas can lag the real API, and silently dropping them
+    // would break working callers.
+    for (const [key, value] of Object.entries(inputObj)) {
+      if (consumed.has(key) || value === undefined) continue;
+      body[key] = value;
+      hasBodyMembers = true;
     }
 
     const qs = query.toString();
@@ -253,7 +303,33 @@ const encode = ({
     let request = HttpClientRequest.make(http.method)(url).pipe(
       HttpClientRequest.setHeaders(headers),
     );
-    if (!BODYLESS.has(http.method) && Object.keys(body).length > 0) {
+    if (http.contentType === "multipart") {
+      // Multipart upload (e.g. Worker module upload): each body member is a
+      // form part (objects JSON-encoded under their wire name), each file
+      // appends under its own filename.
+      const form = new FormData();
+      for (const [name, value] of Object.entries(body)) {
+        form.append(
+          name,
+          typeof value === "string"
+            ? value
+            : value instanceof Blob
+              ? value // named single-file part (e.g. Pages `_worker.bundle`)
+              : new Blob([JSON.stringify(value)], { type: "application/json" }),
+        );
+      }
+      for (const f of files) {
+        const filename = (f as File).name ?? "file";
+        form.append(filename, f, filename);
+      }
+      request = request.pipe(HttpClientRequest.bodyFormData(form));
+    } else if (
+      !BODYLESS.has(http.method) &&
+      (Object.keys(body).length > 0 ||
+        (hasBodyMembers && http.method !== "DELETE"))
+    ) {
+      // Send `{}` rather than no body when the schema declares body members —
+      // several endpoints reject a missing JSON body outright.
       request = request.pipe(HttpClientRequest.bodyJsonUnsafe(body));
     }
     return request;

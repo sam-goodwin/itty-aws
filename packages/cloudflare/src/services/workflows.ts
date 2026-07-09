@@ -219,13 +219,13 @@ export const InstancesBulkResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkInstanceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InstancesBulkResultList;
+  result: InstancesBulkResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkInstanceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(InstancesBulkResultList.pipe(T.EnvelopePayload())),
+    result: InstancesBulkResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1040,13 +1040,13 @@ export const InstancesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListInstancesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InstancesListResultList;
+  result: InstancesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(InstancesListResultList.pipe(T.EnvelopePayload())),
+    result: InstancesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1126,13 +1126,13 @@ export const VersionsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListVersionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: VersionsListResultList;
+  result: VersionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListVersionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(VersionsListResultList.pipe(T.EnvelopePayload())),
+    result: VersionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1240,13 +1240,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListWorkflowsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListWorkflowsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

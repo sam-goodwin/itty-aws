@@ -273,13 +273,13 @@ export const DetectionsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListDetectionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DetectionsListResultList;
+  result: DetectionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListDetectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(DetectionsListResultList.pipe(T.EnvelopePayload())),
+    result: DetectionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

@@ -185,13 +185,13 @@ export const InvestigateMoveBulkResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkInvestigateMoveResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvestigateMoveBulkResultList;
+  result: InvestigateMoveBulkResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkInvestigateMoveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(InvestigateMoveBulkResultList.pipe(T.EnvelopePayload())),
+    result: InvestigateMoveBulkResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -269,15 +269,13 @@ export const InvestigateReleaseBulkResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkInvestigateReleaseResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvestigateReleaseBulkResultList;
+  result: InvestigateReleaseBulkResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkInvestigateReleaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      InvestigateReleaseBulkResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: InvestigateReleaseBulkResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -847,15 +845,13 @@ export const InvestigateMoveCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface CreateInvestigateMoveResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvestigateMoveCreateResultList;
+  result: InvestigateMoveCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const CreateInvestigateMoveResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      InvestigateMoveCreateResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: InvestigateMoveCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3494,15 +3490,13 @@ export const InvestigateBulkMessagesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListInvestigateBulkMessagesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvestigateBulkMessagesListResultList;
+  result: InvestigateBulkMessagesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListInvestigateBulkMessagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      InvestigateBulkMessagesListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: InvestigateBulkMessagesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3715,13 +3709,13 @@ export const InvestigateBulkListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListInvestigateBulksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvestigateBulkListResultList;
+  result: InvestigateBulkListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListInvestigateBulksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(InvestigateBulkListResultList.pipe(T.EnvelopePayload())),
+    result: InvestigateBulkListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -4213,13 +4207,13 @@ export const InvestigateListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListInvestigatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvestigateListResultList;
+  result: InvestigateListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListInvestigatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(InvestigateListResultList.pipe(T.EnvelopePayload())),
+    result: InvestigateListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -4348,15 +4342,13 @@ export const PhishguardReportsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPhishguardReportsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PhishguardReportsListResultList;
+  result: PhishguardReportsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPhishguardReportsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      PhishguardReportsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: PhishguardReportsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -4516,15 +4508,13 @@ export const SettingsAllowPoliciesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSettingAllowPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsAllowPoliciesListResultList;
+  result: SettingsAllowPoliciesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSettingAllowPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      SettingsAllowPoliciesListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: SettingsAllowPoliciesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -4644,15 +4634,13 @@ export const SettingsBlockSendersListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSettingBlockSendersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsBlockSendersListResultList;
+  result: SettingsBlockSendersListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSettingBlockSendersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      SettingsBlockSendersListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: SettingsBlockSendersListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -4962,13 +4950,13 @@ export const SettingsDomainsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSettingDomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsDomainsListResultList;
+  result: SettingsDomainsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSettingDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SettingsDomainsListResultList.pipe(T.EnvelopePayload())),
+    result: SettingsDomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -5099,15 +5087,15 @@ export const SettingsImpersonationRegistryListResultList =
 
 export interface ListSettingImpersonationRegistriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsImpersonationRegistryListResultList;
+  result: SettingsImpersonationRegistryListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSettingImpersonationRegistriesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      result: S.optional(
-        SettingsImpersonationRegistryListResultList.pipe(T.EnvelopePayload()),
+      result: SettingsImpersonationRegistryListResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -5213,17 +5201,15 @@ export const SettingsSendingDomainRestrictionsListResultList =
 
 export interface ListSettingSendingDomainRestrictionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsSendingDomainRestrictionsListResultList;
+  result: SettingsSendingDomainRestrictionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSettingSendingDomainRestrictionsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      result: S.optional(
-        SettingsSendingDomainRestrictionsListResultList.pipe(
-          T.EnvelopePayload(),
-        ),
+      result: SettingsSendingDomainRestrictionsListResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -5327,15 +5313,13 @@ export const SettingsTrustedDomainsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSettingTrustedDomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsTrustedDomainsListResultList;
+  result: SettingsTrustedDomainsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSettingTrustedDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      SettingsTrustedDomainsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: SettingsTrustedDomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -5400,16 +5384,14 @@ export const SettingsUrlIgnorePatternsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSettingUrlIgnorePatternsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsUrlIgnorePatternsListResultList;
+  result: SettingsUrlIgnorePatternsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSettingUrlIgnorePatternsResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      result: S.optional(
-        SettingsUrlIgnorePatternsListResultList.pipe(T.EnvelopePayload()),
-      ),
+      result: SettingsUrlIgnorePatternsListResultList.pipe(T.EnvelopePayload()),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
 ).annotate({
@@ -5617,13 +5599,13 @@ export const SubmissionsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSubmissionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SubmissionsListResultList;
+  result: SubmissionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSubmissionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SubmissionsListResultList.pipe(T.EnvelopePayload())),
+    result: SubmissionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

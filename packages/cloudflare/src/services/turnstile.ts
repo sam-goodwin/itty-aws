@@ -485,13 +485,13 @@ export const WidgetsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListWidgetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: WidgetsListResultList;
+  result: WidgetsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListWidgetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(WidgetsListResultList.pipe(T.EnvelopePayload())),
+    result: WidgetsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

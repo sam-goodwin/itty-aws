@@ -4,9 +4,11 @@ import * as API from "@distilled.cloud/core/api";
 import * as T from "../traits.ts";
 import {
   CloudflareProtocol,
+  CloudflarePaginatedProtocol,
   type CloudflareOpError,
   type CloudflareOpContext,
 } from "../protocol.ts";
+import { cloudflarePaginate, ResultInfo } from "../pagination.ts";
 import { CloudflareError, CloudflareRateLimited } from "../errors.ts";
 import * as Retry from "../retry.ts";
 
@@ -114,6 +116,236 @@ export const CreateControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "CreateControlRetentionResponse",
 }) as any as S.Schema<CreateControlRetentionResponse>;
 
+export interface LogExplorerDatasetsCreateForAccountRequestFieldsItem {
+  /** Whether the API includes this field in log ingest. */
+  enabled: boolean;
+  /** Field name in lowercase. */
+  name: string;
+}
+export const LogExplorerDatasetsCreateForAccountRequestFieldsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsCreateForAccountRequestFieldsItem",
+  }) as any as S.Schema<LogExplorerDatasetsCreateForAccountRequestFieldsItem>;
+
+export type LogExplorerDatasetsCreateForAccountRequestFieldsList =
+  LogExplorerDatasetsCreateForAccountRequestFieldsItem[];
+export const LogExplorerDatasetsCreateForAccountRequestFieldsList =
+  /*@__PURE__*/ S.Array(
+    LogExplorerDatasetsCreateForAccountRequestFieldsItem,
+  ) as any as S.Schema<LogExplorerDatasetsCreateForAccountRequestFieldsList>;
+
+export interface CreateLogExplorerDatasetForAccountRequest {
+  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  accountId: string;
+  /** Dataset type name to create (e.g. `http_requests`). */
+  dataset: string;
+  /** Controls which fields the API ingests. Defaults to all available */
+  fields?: LogExplorerDatasetsCreateForAccountRequestFieldsList;
+}
+export const CreateLogExplorerDatasetForAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      dataset: S.String,
+      fields: S.optional(LogExplorerDatasetsCreateForAccountRequestFieldsList),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/logs/explorer/datasets",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "CreateLogExplorerDatasetForAccountRequest",
+  }) as any as S.Schema<CreateLogExplorerDatasetForAccountRequest>;
+
+export type LogExplorerDatasetsCreateForAccountResponseObjectType =
+  | "account"
+  | "zone"
+  | (string & {});
+export const LogExplorerDatasetsCreateForAccountResponseObjectType =
+  /*@__PURE__*/ S.String;
+
+export interface LogExplorerDatasetsCreateForAccountResponseFieldsItem {
+  /** Whether the API includes this field in log ingest. */
+  enabled: boolean;
+  /** Field name in lowercase. */
+  name: string;
+}
+export const LogExplorerDatasetsCreateForAccountResponseFieldsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsCreateForAccountResponseFieldsItem",
+  }) as any as S.Schema<LogExplorerDatasetsCreateForAccountResponseFieldsItem>;
+
+export type LogExplorerDatasetsCreateForAccountResponseFieldsList =
+  LogExplorerDatasetsCreateForAccountResponseFieldsItem[];
+export const LogExplorerDatasetsCreateForAccountResponseFieldsList =
+  /*@__PURE__*/ S.Array(
+    LogExplorerDatasetsCreateForAccountResponseFieldsItem,
+  ) as any as S.Schema<LogExplorerDatasetsCreateForAccountResponseFieldsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateLogExplorerDatasetForAccountResponse {
+  /** RFC3339 timestamp recording when the API created this dataset. */
+  createdAt: string;
+  /** Dataset type name (e.g. `http_requests`). */
+  dataset: string;
+  /** Unique dataset ID. */
+  datasetId: string;
+  /** Whether log ingest is currently active for this dataset. */
+  enabled: boolean;
+  /** Public ID of the account or zone that owns this dataset. */
+  objectId: string;
+  /** Whether this dataset belongs to an account or a zone. */
+  objectType: LogExplorerDatasetsCreateForAccountResponseObjectType;
+  /** RFC3339 timestamp recording when the API last updated this dataset. */
+  updatedAt: string;
+  /** The field configuration for this dataset. */
+  fields?: LogExplorerDatasetsCreateForAccountResponseFieldsList;
+}
+export const CreateLogExplorerDatasetForAccountResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      dataset: S.String,
+      datasetId: S.String.pipe(T.Body("dataset_id")),
+      enabled: S.Boolean,
+      objectId: S.String.pipe(T.Body("object_id")),
+      objectType: LogExplorerDatasetsCreateForAccountResponseObjectType.pipe(
+        T.Body("object_type"),
+      ),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      fields: S.optional(LogExplorerDatasetsCreateForAccountResponseFieldsList),
+    }),
+  ).annotate({
+    identifier: "CreateLogExplorerDatasetForAccountResponse",
+  }) as any as S.Schema<CreateLogExplorerDatasetForAccountResponse>;
+
+export interface LogExplorerDatasetsCreateForZoneRequestFieldsItem {
+  /** Whether the API includes this field in log ingest. */
+  enabled: boolean;
+  /** Field name in lowercase. */
+  name: string;
+}
+export const LogExplorerDatasetsCreateForZoneRequestFieldsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsCreateForZoneRequestFieldsItem",
+  }) as any as S.Schema<LogExplorerDatasetsCreateForZoneRequestFieldsItem>;
+
+export type LogExplorerDatasetsCreateForZoneRequestFieldsList =
+  LogExplorerDatasetsCreateForZoneRequestFieldsItem[];
+export const LogExplorerDatasetsCreateForZoneRequestFieldsList =
+  /*@__PURE__*/ S.Array(
+    LogExplorerDatasetsCreateForZoneRequestFieldsItem,
+  ) as any as S.Schema<LogExplorerDatasetsCreateForZoneRequestFieldsList>;
+
+export interface CreateLogExplorerDatasetForZoneRequest {
+  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  zoneId: string;
+  /** Dataset type name to create (e.g. `http_requests`). */
+  dataset: string;
+  /** Controls which fields the API ingests. Defaults to all available */
+  fields?: LogExplorerDatasetsCreateForZoneRequestFieldsList;
+}
+export const CreateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      dataset: S.String,
+      fields: S.optional(LogExplorerDatasetsCreateForZoneRequestFieldsList),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/zones/{zone_id}/logs/explorer/datasets",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "CreateLogExplorerDatasetForZoneRequest",
+}) as any as S.Schema<CreateLogExplorerDatasetForZoneRequest>;
+
+export type LogExplorerDatasetsCreateForZoneResponseObjectType =
+  | "account"
+  | "zone"
+  | (string & {});
+export const LogExplorerDatasetsCreateForZoneResponseObjectType =
+  /*@__PURE__*/ S.String;
+
+export interface LogExplorerDatasetsCreateForZoneResponseFieldsItem {
+  /** Whether the API includes this field in log ingest. */
+  enabled: boolean;
+  /** Field name in lowercase. */
+  name: string;
+}
+export const LogExplorerDatasetsCreateForZoneResponseFieldsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsCreateForZoneResponseFieldsItem",
+  }) as any as S.Schema<LogExplorerDatasetsCreateForZoneResponseFieldsItem>;
+
+export type LogExplorerDatasetsCreateForZoneResponseFieldsList =
+  LogExplorerDatasetsCreateForZoneResponseFieldsItem[];
+export const LogExplorerDatasetsCreateForZoneResponseFieldsList =
+  /*@__PURE__*/ S.Array(
+    LogExplorerDatasetsCreateForZoneResponseFieldsItem,
+  ) as any as S.Schema<LogExplorerDatasetsCreateForZoneResponseFieldsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface CreateLogExplorerDatasetForZoneResponse {
+  /** RFC3339 timestamp recording when the API created this dataset. */
+  createdAt: string;
+  /** Dataset type name (e.g. `http_requests`). */
+  dataset: string;
+  /** Unique dataset ID. */
+  datasetId: string;
+  /** Whether log ingest is currently active for this dataset. */
+  enabled: boolean;
+  /** Public ID of the account or zone that owns this dataset. */
+  objectId: string;
+  /** Whether this dataset belongs to an account or a zone. */
+  objectType: LogExplorerDatasetsCreateForZoneResponseObjectType;
+  /** RFC3339 timestamp recording when the API last updated this dataset. */
+  updatedAt: string;
+  /** The field configuration for this dataset. */
+  fields?: LogExplorerDatasetsCreateForZoneResponseFieldsList;
+}
+export const CreateLogExplorerDatasetForZoneResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      dataset: S.String,
+      datasetId: S.String.pipe(T.Body("dataset_id")),
+      enabled: S.Boolean,
+      objectId: S.String.pipe(T.Body("object_id")),
+      objectType: LogExplorerDatasetsCreateForZoneResponseObjectType.pipe(
+        T.Body("object_type"),
+      ),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      fields: S.optional(LogExplorerDatasetsCreateForZoneResponseFieldsList),
+    }),
+).annotate({
+  identifier: "CreateLogExplorerDatasetForZoneResponse",
+}) as any as S.Schema<CreateLogExplorerDatasetForZoneResponse>;
+
 export interface DeleteControlCmbConfigRequest {
   /** Identifier. */
   accountId: string;
@@ -210,6 +442,181 @@ export const GetControlRetentionResponse = /*@__PURE__*/ S.suspend(() =>
 ).annotate({
   identifier: "GetControlRetentionResponse",
 }) as any as S.Schema<GetControlRetentionResponse>;
+
+export interface GetLogExplorerDatasetForAccountRequest {
+  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  accountId: string;
+  datasetId: string;
+}
+export const GetLogExplorerDatasetForAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      datasetId: S.String.pipe(T.Label("dataset_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "GetLogExplorerDatasetForAccountRequest",
+}) as any as S.Schema<GetLogExplorerDatasetForAccountRequest>;
+
+export type LogExplorerDatasetsGetForAccountResponseObjectType =
+  | "account"
+  | "zone"
+  | (string & {});
+export const LogExplorerDatasetsGetForAccountResponseObjectType =
+  /*@__PURE__*/ S.String;
+
+export interface LogExplorerDatasetsGetForAccountResponseFieldsItem {
+  /** Whether the API includes this field in log ingest. */
+  enabled: boolean;
+  /** Field name in lowercase. */
+  name: string;
+}
+export const LogExplorerDatasetsGetForAccountResponseFieldsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsGetForAccountResponseFieldsItem",
+  }) as any as S.Schema<LogExplorerDatasetsGetForAccountResponseFieldsItem>;
+
+export type LogExplorerDatasetsGetForAccountResponseFieldsList =
+  LogExplorerDatasetsGetForAccountResponseFieldsItem[];
+export const LogExplorerDatasetsGetForAccountResponseFieldsList =
+  /*@__PURE__*/ S.Array(
+    LogExplorerDatasetsGetForAccountResponseFieldsItem,
+  ) as any as S.Schema<LogExplorerDatasetsGetForAccountResponseFieldsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetLogExplorerDatasetForAccountResponse {
+  /** RFC3339 timestamp recording when the API created this dataset. */
+  createdAt: string;
+  /** Dataset type name (e.g. `http_requests`). */
+  dataset: string;
+  /** Unique dataset ID. */
+  datasetId: string;
+  /** Whether log ingest is currently active for this dataset. */
+  enabled: boolean;
+  /** Public ID of the account or zone that owns this dataset. */
+  objectId: string;
+  /** Whether this dataset belongs to an account or a zone. */
+  objectType: LogExplorerDatasetsGetForAccountResponseObjectType;
+  /** RFC3339 timestamp recording when the API last updated this dataset. */
+  updatedAt: string;
+  /** The field configuration for this dataset. */
+  fields?: LogExplorerDatasetsGetForAccountResponseFieldsList;
+}
+export const GetLogExplorerDatasetForAccountResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      dataset: S.String,
+      datasetId: S.String.pipe(T.Body("dataset_id")),
+      enabled: S.Boolean,
+      objectId: S.String.pipe(T.Body("object_id")),
+      objectType: LogExplorerDatasetsGetForAccountResponseObjectType.pipe(
+        T.Body("object_type"),
+      ),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      fields: S.optional(LogExplorerDatasetsGetForAccountResponseFieldsList),
+    }),
+).annotate({
+  identifier: "GetLogExplorerDatasetForAccountResponse",
+}) as any as S.Schema<GetLogExplorerDatasetForAccountResponse>;
+
+export interface GetLogExplorerDatasetForZoneRequest {
+  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  zoneId: string;
+  datasetId: string;
+}
+export const GetLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    datasetId: S.String.pipe(T.Label("dataset_id")),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "GetLogExplorerDatasetForZoneRequest",
+}) as any as S.Schema<GetLogExplorerDatasetForZoneRequest>;
+
+export type LogExplorerDatasetsGetForZoneResponseObjectType =
+  | "account"
+  | "zone"
+  | (string & {});
+export const LogExplorerDatasetsGetForZoneResponseObjectType =
+  /*@__PURE__*/ S.String;
+
+export interface LogExplorerDatasetsGetForZoneResponseFieldsItem {
+  /** Whether the API includes this field in log ingest. */
+  enabled: boolean;
+  /** Field name in lowercase. */
+  name: string;
+}
+export const LogExplorerDatasetsGetForZoneResponseFieldsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsGetForZoneResponseFieldsItem",
+  }) as any as S.Schema<LogExplorerDatasetsGetForZoneResponseFieldsItem>;
+
+export type LogExplorerDatasetsGetForZoneResponseFieldsList =
+  LogExplorerDatasetsGetForZoneResponseFieldsItem[];
+export const LogExplorerDatasetsGetForZoneResponseFieldsList =
+  /*@__PURE__*/ S.Array(
+    LogExplorerDatasetsGetForZoneResponseFieldsItem,
+  ) as any as S.Schema<LogExplorerDatasetsGetForZoneResponseFieldsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface GetLogExplorerDatasetForZoneResponse {
+  /** RFC3339 timestamp recording when the API created this dataset. */
+  createdAt: string;
+  /** Dataset type name (e.g. `http_requests`). */
+  dataset: string;
+  /** Unique dataset ID. */
+  datasetId: string;
+  /** Whether log ingest is currently active for this dataset. */
+  enabled: boolean;
+  /** Public ID of the account or zone that owns this dataset. */
+  objectId: string;
+  /** Whether this dataset belongs to an account or a zone. */
+  objectType: LogExplorerDatasetsGetForZoneResponseObjectType;
+  /** RFC3339 timestamp recording when the API last updated this dataset. */
+  updatedAt: string;
+  /** The field configuration for this dataset. */
+  fields?: LogExplorerDatasetsGetForZoneResponseFieldsList;
+}
+export const GetLogExplorerDatasetForZoneResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      dataset: S.String,
+      datasetId: S.String.pipe(T.Body("dataset_id")),
+      enabled: S.Boolean,
+      objectId: S.String.pipe(T.Body("object_id")),
+      objectType: LogExplorerDatasetsGetForZoneResponseObjectType.pipe(
+        T.Body("object_type"),
+      ),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      fields: S.optional(LogExplorerDatasetsGetForZoneResponseFieldsList),
+    }),
+).annotate({
+  identifier: "GetLogExplorerDatasetForZoneResponse",
+}) as any as S.Schema<GetLogExplorerDatasetForZoneResponse>;
 
 export type RayidGetRequestTimestamps =
   | "unix"
@@ -342,269 +749,104 @@ export const GetReceivedFieldResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetReceivedFieldResponse",
 }) as any as S.Schema<GetReceivedFieldResponse>;
 
-export interface LogExplorerDatasetsAvailableListRequest {
-  accountsOrZones: string;
-  accountOrZoneId: string;
+export interface ListLogExplorerDatasetAvailablesForAccountRequest {
+  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  accountId: string;
 }
-export const LogExplorerDatasetsAvailableListRequest = /*@__PURE__*/ S.suspend(
-  () =>
+export const ListLogExplorerDatasetAvailablesForAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
-      accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
+      accountId: S.String.pipe(T.Label("account_id")),
     }).pipe(
       T.Http({
         method: "GET",
-        uri: "/{accounts_or_zones}/{account_or_zone_id}/logs/explorer/datasets/available",
+        uri: "/accounts/{account_id}/logs/explorer/datasets/available",
         code: 200,
       }),
     ),
-).annotate({
-  identifier: "LogExplorerDatasetsAvailableListRequest",
-}) as any as S.Schema<LogExplorerDatasetsAvailableListRequest>;
+  ).annotate({
+    identifier: "ListLogExplorerDatasetAvailablesForAccountRequest",
+  }) as any as S.Schema<ListLogExplorerDatasetAvailablesForAccountRequest>;
 
 /** Raw response payload (operation does not use the standard v4 result envelope). */
-export interface LogExplorerDatasetsAvailableListResponse {
+export interface ListLogExplorerDatasetAvailablesForAccountResponse {
   AvailableListObjectErrorsMessagesSuccessResult__: unknown;
 }
-export const LogExplorerDatasetsAvailableListResponse = /*@__PURE__*/ S.suspend(
-  () =>
+export const ListLogExplorerDatasetAvailablesForAccountResponse =
+  /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       AvailableListObjectErrorsMessagesSuccessResult__: S.Unknown.pipe(
         T.Body("AvailableList object { errors, messages, success, result }"),
       ),
     }),
-).annotate({
-  identifier: "LogExplorerDatasetsAvailableListResponse",
-}) as any as S.Schema<LogExplorerDatasetsAvailableListResponse>;
+  ).annotate({
+    identifier: "ListLogExplorerDatasetAvailablesForAccountResponse",
+  }) as any as S.Schema<ListLogExplorerDatasetAvailablesForAccountResponse>;
 
-export interface LogExplorerDatasetsCreateRequestFieldsItem {
-  /** Whether the API includes this field in log ingest. */
-  enabled: boolean;
-  /** Field name in lowercase. */
-  name: string;
+export interface ListLogExplorerDatasetAvailablesForZoneRequest {
+  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  zoneId: string;
 }
-export const LogExplorerDatasetsCreateRequestFieldsItem =
+export const ListLogExplorerDatasetAvailablesForZoneRequest =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.Boolean,
-      name: S.String,
-    }),
+      zoneId: S.String.pipe(T.Label("zone_id")),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/logs/explorer/datasets/available",
+        code: 200,
+      }),
+    ),
   ).annotate({
-    identifier: "LogExplorerDatasetsCreateRequestFieldsItem",
-  }) as any as S.Schema<LogExplorerDatasetsCreateRequestFieldsItem>;
+    identifier: "ListLogExplorerDatasetAvailablesForZoneRequest",
+  }) as any as S.Schema<ListLogExplorerDatasetAvailablesForZoneRequest>;
 
-export type LogExplorerDatasetsCreateRequestFieldsList =
-  LogExplorerDatasetsCreateRequestFieldsItem[];
-export const LogExplorerDatasetsCreateRequestFieldsList = /*@__PURE__*/ S.Array(
-  LogExplorerDatasetsCreateRequestFieldsItem,
-) as any as S.Schema<LogExplorerDatasetsCreateRequestFieldsList>;
-
-export interface LogExplorerDatasetsCreateRequest {
-  accountsOrZones: string;
-  accountOrZoneId: string;
-  /** Dataset type name to create (e.g. `http_requests`). */
-  dataset: string;
-  /** Controls which fields the API ingests. Defaults to all available */
-  fields?: LogExplorerDatasetsCreateRequestFieldsList;
+/** Raw response payload (operation does not use the standard v4 result envelope). */
+export interface ListLogExplorerDatasetAvailablesForZoneResponse {
+  AvailableListObjectErrorsMessagesSuccessResult__: unknown;
 }
-export const LogExplorerDatasetsCreateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
-    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
-    dataset: S.String,
-    fields: S.optional(LogExplorerDatasetsCreateRequestFieldsList),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/{accounts_or_zones}/{account_or_zone_id}/logs/explorer/datasets",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LogExplorerDatasetsCreateRequest",
-}) as any as S.Schema<LogExplorerDatasetsCreateRequest>;
-
-export type LogExplorerDatasetsCreateResponseObjectType =
-  | "account"
-  | "zone"
-  | (string & {});
-export const LogExplorerDatasetsCreateResponseObjectType =
-  /*@__PURE__*/ S.String;
-
-export interface LogExplorerDatasetsCreateResponseFieldsItem {
-  /** Whether the API includes this field in log ingest. */
-  enabled: boolean;
-  /** Field name in lowercase. */
-  name: string;
-}
-export const LogExplorerDatasetsCreateResponseFieldsItem =
+export const ListLogExplorerDatasetAvailablesForZoneResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      enabled: S.Boolean,
-      name: S.String,
+      AvailableListObjectErrorsMessagesSuccessResult__: S.Unknown.pipe(
+        T.Body("AvailableList object { errors, messages, success, result }"),
+      ),
     }),
   ).annotate({
-    identifier: "LogExplorerDatasetsCreateResponseFieldsItem",
-  }) as any as S.Schema<LogExplorerDatasetsCreateResponseFieldsItem>;
+    identifier: "ListLogExplorerDatasetAvailablesForZoneResponse",
+  }) as any as S.Schema<ListLogExplorerDatasetAvailablesForZoneResponse>;
 
-export type LogExplorerDatasetsCreateResponseFieldsList =
-  LogExplorerDatasetsCreateResponseFieldsItem[];
-export const LogExplorerDatasetsCreateResponseFieldsList =
-  /*@__PURE__*/ S.Array(
-    LogExplorerDatasetsCreateResponseFieldsItem,
-  ) as any as S.Schema<LogExplorerDatasetsCreateResponseFieldsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LogExplorerDatasetsCreateResponse {
-  /** RFC3339 timestamp recording when the API created this dataset. */
-  createdAt: string;
-  /** Dataset type name (e.g. `http_requests`). */
-  dataset: string;
-  /** Unique dataset ID. */
-  datasetId: string;
-  /** Whether log ingest is currently active for this dataset. */
-  enabled: boolean;
-  /** Public ID of the account or zone that owns this dataset. */
-  objectId: string;
-  /** Whether this dataset belongs to an account or a zone. */
-  objectType: LogExplorerDatasetsCreateResponseObjectType;
-  /** RFC3339 timestamp recording when the API last updated this dataset. */
-  updatedAt: string;
-  /** The field configuration for this dataset. */
-  fields?: LogExplorerDatasetsCreateResponseFieldsList;
-}
-export const LogExplorerDatasetsCreateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String.pipe(T.Body("created_at")),
-    dataset: S.String,
-    datasetId: S.String.pipe(T.Body("dataset_id")),
-    enabled: S.Boolean,
-    objectId: S.String.pipe(T.Body("object_id")),
-    objectType: LogExplorerDatasetsCreateResponseObjectType.pipe(
-      T.Body("object_type"),
-    ),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    fields: S.optional(LogExplorerDatasetsCreateResponseFieldsList),
-  }),
-).annotate({
-  identifier: "LogExplorerDatasetsCreateResponse",
-}) as any as S.Schema<LogExplorerDatasetsCreateResponse>;
-
-export interface LogExplorerDatasetsGetRequest {
-  accountsOrZones: string;
-  accountOrZoneId: string;
-  datasetId: string;
-}
-export const LogExplorerDatasetsGetRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
-    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
-    datasetId: S.String.pipe(T.Label("dataset_id")),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{accounts_or_zones}/{account_or_zone_id}/logs/explorer/datasets/{dataset_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LogExplorerDatasetsGetRequest",
-}) as any as S.Schema<LogExplorerDatasetsGetRequest>;
-
-export type LogExplorerDatasetsGetResponseObjectType =
-  | "account"
-  | "zone"
-  | (string & {});
-export const LogExplorerDatasetsGetResponseObjectType = /*@__PURE__*/ S.String;
-
-export interface LogExplorerDatasetsGetResponseFieldsItem {
-  /** Whether the API includes this field in log ingest. */
-  enabled: boolean;
-  /** Field name in lowercase. */
-  name: string;
-}
-export const LogExplorerDatasetsGetResponseFieldsItem = /*@__PURE__*/ S.suspend(
-  () =>
-    S.Struct({
-      enabled: S.Boolean,
-      name: S.String,
-    }),
-).annotate({
-  identifier: "LogExplorerDatasetsGetResponseFieldsItem",
-}) as any as S.Schema<LogExplorerDatasetsGetResponseFieldsItem>;
-
-export type LogExplorerDatasetsGetResponseFieldsList =
-  LogExplorerDatasetsGetResponseFieldsItem[];
-export const LogExplorerDatasetsGetResponseFieldsList = /*@__PURE__*/ S.Array(
-  LogExplorerDatasetsGetResponseFieldsItem,
-) as any as S.Schema<LogExplorerDatasetsGetResponseFieldsList>;
-
-/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LogExplorerDatasetsGetResponse {
-  /** RFC3339 timestamp recording when the API created this dataset. */
-  createdAt: string;
-  /** Dataset type name (e.g. `http_requests`). */
-  dataset: string;
-  /** Unique dataset ID. */
-  datasetId: string;
-  /** Whether log ingest is currently active for this dataset. */
-  enabled: boolean;
-  /** Public ID of the account or zone that owns this dataset. */
-  objectId: string;
-  /** Whether this dataset belongs to an account or a zone. */
-  objectType: LogExplorerDatasetsGetResponseObjectType;
-  /** RFC3339 timestamp recording when the API last updated this dataset. */
-  updatedAt: string;
-  /** The field configuration for this dataset. */
-  fields?: LogExplorerDatasetsGetResponseFieldsList;
-}
-export const LogExplorerDatasetsGetResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String.pipe(T.Body("created_at")),
-    dataset: S.String,
-    datasetId: S.String.pipe(T.Body("dataset_id")),
-    enabled: S.Boolean,
-    objectId: S.String.pipe(T.Body("object_id")),
-    objectType: LogExplorerDatasetsGetResponseObjectType.pipe(
-      T.Body("object_type"),
-    ),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    fields: S.optional(LogExplorerDatasetsGetResponseFieldsList),
-  }),
-).annotate({
-  identifier: "LogExplorerDatasetsGetResponse",
-}) as any as S.Schema<LogExplorerDatasetsGetResponse>;
-
-export interface LogExplorerDatasetsListRequest {
-  accountsOrZones: string;
-  accountOrZoneId: string;
+export interface ListLogExplorerDatasetsForAccountRequest {
+  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  accountId: string;
   /** Set to true to include zone-scoped datasets belonging to this account. */
   includeZones?: boolean;
 }
-export const LogExplorerDatasetsListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
-    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
-    includeZones: S.optional(S.Boolean.pipe(T.Query("include_zones"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{accounts_or_zones}/{account_or_zone_id}/logs/explorer/datasets",
-      code: 200,
-    }),
-  ),
+export const ListLogExplorerDatasetsForAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      includeZones: S.optional(S.Boolean.pipe(T.Query("include_zones"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/accounts/{account_id}/logs/explorer/datasets",
+        code: 200,
+      }),
+    ),
 ).annotate({
-  identifier: "LogExplorerDatasetsListRequest",
-}) as any as S.Schema<LogExplorerDatasetsListRequest>;
+  identifier: "ListLogExplorerDatasetsForAccountRequest",
+}) as any as S.Schema<ListLogExplorerDatasetsForAccountRequest>;
 
-export type LogExplorerDatasetsListResultItemObjectType =
+export type LogExplorerDatasetsListForAccountResultItemObjectType =
   | "account"
   | "zone"
   | (string & {});
-export const LogExplorerDatasetsListResultItemObjectType =
+export const LogExplorerDatasetsListForAccountResultItemObjectType =
   /*@__PURE__*/ S.String;
 
-export interface LogExplorerDatasetsListResultItem {
+export interface LogExplorerDatasetsListForAccountResultItem {
   /** RFC3339 timestamp recording when the API created this dataset. */
   createdAt: string;
   /** Dataset type name (e.g. `http_requests`). */
@@ -616,127 +858,317 @@ export interface LogExplorerDatasetsListResultItem {
   /** Public ID of the account or zone that owns this dataset. */
   objectId: string;
   /** Whether this dataset belongs to an account or a zone. */
-  objectType: LogExplorerDatasetsListResultItemObjectType;
+  objectType: LogExplorerDatasetsListForAccountResultItemObjectType;
   /** RFC3339 timestamp recording when the API last updated this dataset. */
   updatedAt: string;
 }
-export const LogExplorerDatasetsListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String.pipe(T.Body("created_at")),
-    dataset: S.String,
-    datasetId: S.String.pipe(T.Body("dataset_id")),
-    enabled: S.Boolean,
-    objectId: S.String.pipe(T.Body("object_id")),
-    objectType: LogExplorerDatasetsListResultItemObjectType.pipe(
-      T.Body("object_type"),
-    ),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-  }),
-).annotate({
-  identifier: "LogExplorerDatasetsListResultItem",
-}) as any as S.Schema<LogExplorerDatasetsListResultItem>;
+export const LogExplorerDatasetsListForAccountResultItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      dataset: S.String,
+      datasetId: S.String.pipe(T.Body("dataset_id")),
+      enabled: S.Boolean,
+      objectId: S.String.pipe(T.Body("object_id")),
+      objectType: LogExplorerDatasetsListForAccountResultItemObjectType.pipe(
+        T.Body("object_type"),
+      ),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsListForAccountResultItem",
+  }) as any as S.Schema<LogExplorerDatasetsListForAccountResultItem>;
 
-export type LogExplorerDatasetsListResultList =
-  LogExplorerDatasetsListResultItem[];
-export const LogExplorerDatasetsListResultList = /*@__PURE__*/ S.Array(
-  LogExplorerDatasetsListResultItem,
-) as any as S.Schema<LogExplorerDatasetsListResultList>;
+export type LogExplorerDatasetsListForAccountResultList =
+  LogExplorerDatasetsListForAccountResultItem[];
+export const LogExplorerDatasetsListForAccountResultList =
+  /*@__PURE__*/ S.Array(
+    LogExplorerDatasetsListForAccountResultItem,
+  ) as any as S.Schema<LogExplorerDatasetsListForAccountResultList>;
 
-export interface LogExplorerDatasetsListResponse {
+export interface ListLogExplorerDatasetsForAccountResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LogExplorerDatasetsListResultList;
+  result: LogExplorerDatasetsListForAccountResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
-export const LogExplorerDatasetsListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(
-      LogExplorerDatasetsListResultList.pipe(T.EnvelopePayload()),
+export const ListLogExplorerDatasetsForAccountResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      result: LogExplorerDatasetsListForAccountResultList.pipe(
+        T.EnvelopePayload(),
+      ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+    }),
+  ).annotate({
+    identifier: "ListLogExplorerDatasetsForAccountResponse",
+  }) as any as S.Schema<ListLogExplorerDatasetsForAccountResponse>;
+
+export interface ListLogExplorerDatasetsForZoneRequest {
+  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  zoneId: string;
+  /** Set to true to include zone-scoped datasets belonging to this account. */
+  includeZones?: boolean;
+}
+export const ListLogExplorerDatasetsForZoneRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      includeZones: S.optional(S.Boolean.pipe(T.Query("include_zones"))),
+    }).pipe(
+      T.Http({
+        method: "GET",
+        uri: "/zones/{zone_id}/logs/explorer/datasets",
+        code: 200,
+      }),
     ),
+).annotate({
+  identifier: "ListLogExplorerDatasetsForZoneRequest",
+}) as any as S.Schema<ListLogExplorerDatasetsForZoneRequest>;
+
+export type LogExplorerDatasetsListForZoneResultItemObjectType =
+  | "account"
+  | "zone"
+  | (string & {});
+export const LogExplorerDatasetsListForZoneResultItemObjectType =
+  /*@__PURE__*/ S.String;
+
+export interface LogExplorerDatasetsListForZoneResultItem {
+  /** RFC3339 timestamp recording when the API created this dataset. */
+  createdAt: string;
+  /** Dataset type name (e.g. `http_requests`). */
+  dataset: string;
+  /** Unique dataset ID. */
+  datasetId: string;
+  /** Whether log ingest is currently active for this dataset. */
+  enabled: boolean;
+  /** Public ID of the account or zone that owns this dataset. */
+  objectId: string;
+  /** Whether this dataset belongs to an account or a zone. */
+  objectType: LogExplorerDatasetsListForZoneResultItemObjectType;
+  /** RFC3339 timestamp recording when the API last updated this dataset. */
+  updatedAt: string;
+}
+export const LogExplorerDatasetsListForZoneResultItem = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      dataset: S.String,
+      datasetId: S.String.pipe(T.Body("dataset_id")),
+      enabled: S.Boolean,
+      objectId: S.String.pipe(T.Body("object_id")),
+      objectType: LogExplorerDatasetsListForZoneResultItemObjectType.pipe(
+        T.Body("object_type"),
+      ),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+    }),
+).annotate({
+  identifier: "LogExplorerDatasetsListForZoneResultItem",
+}) as any as S.Schema<LogExplorerDatasetsListForZoneResultItem>;
+
+export type LogExplorerDatasetsListForZoneResultList =
+  LogExplorerDatasetsListForZoneResultItem[];
+export const LogExplorerDatasetsListForZoneResultList = /*@__PURE__*/ S.Array(
+  LogExplorerDatasetsListForZoneResultItem,
+) as any as S.Schema<LogExplorerDatasetsListForZoneResultList>;
+
+export interface ListLogExplorerDatasetsForZoneResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result: LogExplorerDatasetsListForZoneResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
+}
+export const ListLogExplorerDatasetsForZoneResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      result: LogExplorerDatasetsListForZoneResultList.pipe(
+        T.EnvelopePayload(),
+      ),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+    }),
+).annotate({
+  identifier: "ListLogExplorerDatasetsForZoneResponse",
+}) as any as S.Schema<ListLogExplorerDatasetsForZoneResponse>;
+
+export interface SqlLogExplorerQueryForAccountRequest {
+  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  accountId: string;
+}
+export const SqlLogExplorerQueryForAccountRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+    }).pipe(
+      T.Http({
+        method: "POST",
+        uri: "/accounts/{account_id}/logs/explorer/query/sql",
+        code: 200,
+      }),
+    ),
+).annotate({
+  identifier: "SqlLogExplorerQueryForAccountRequest",
+}) as any as S.Schema<SqlLogExplorerQueryForAccountRequest>;
+
+export type LogExplorerQuerySqlForAccountResultItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const LogExplorerQuerySqlForAccountResultItemMap =
+  /*@__PURE__*/ S.Record(
+    S.String,
+    S.Unknown,
+  ) as any as S.Schema<LogExplorerQuerySqlForAccountResultItemMap>;
+
+export type LogExplorerQuerySqlForAccountResultList =
+  LogExplorerQuerySqlForAccountResultItemMap[];
+export const LogExplorerQuerySqlForAccountResultList = /*@__PURE__*/ S.Array(
+  LogExplorerQuerySqlForAccountResultItemMap,
+) as any as S.Schema<LogExplorerQuerySqlForAccountResultList>;
+
+export interface SqlLogExplorerQueryForAccountResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result: LogExplorerQuerySqlForAccountResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
+}
+export const SqlLogExplorerQueryForAccountResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      result: LogExplorerQuerySqlForAccountResultList.pipe(T.EnvelopePayload()),
+      resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+    }),
+).annotate({
+  identifier: "SqlLogExplorerQueryForAccountResponse",
+}) as any as S.Schema<SqlLogExplorerQueryForAccountResponse>;
+
+export interface SqlLogExplorerQueryForZoneRequest {
+  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  zoneId: string;
+}
+export const SqlLogExplorerQueryForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+  }).pipe(
+    T.Http({
+      method: "POST",
+      uri: "/zones/{zone_id}/logs/explorer/query/sql",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "SqlLogExplorerQueryForZoneRequest",
+}) as any as S.Schema<SqlLogExplorerQueryForZoneRequest>;
+
+export type LogExplorerQuerySqlForZoneResultItemMap = {
+  [key: string]: unknown | undefined;
+};
+export const LogExplorerQuerySqlForZoneResultItemMap = /*@__PURE__*/ S.Record(
+  S.String,
+  S.Unknown,
+) as any as S.Schema<LogExplorerQuerySqlForZoneResultItemMap>;
+
+export type LogExplorerQuerySqlForZoneResultList =
+  LogExplorerQuerySqlForZoneResultItemMap[];
+export const LogExplorerQuerySqlForZoneResultList = /*@__PURE__*/ S.Array(
+  LogExplorerQuerySqlForZoneResultItemMap,
+) as any as S.Schema<LogExplorerQuerySqlForZoneResultList>;
+
+export interface SqlLogExplorerQueryForZoneResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result: LogExplorerQuerySqlForZoneResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
+}
+export const SqlLogExplorerQueryForZoneResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: LogExplorerQuerySqlForZoneResultList.pipe(T.EnvelopePayload()),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
-  identifier: "LogExplorerDatasetsListResponse",
-}) as any as S.Schema<LogExplorerDatasetsListResponse>;
+  identifier: "SqlLogExplorerQueryForZoneResponse",
+}) as any as S.Schema<SqlLogExplorerQueryForZoneResponse>;
 
-export interface LogExplorerDatasetsUpdateRequestFieldsItem {
+export interface LogExplorerDatasetsUpdateForAccountRequestFieldsItem {
   /** Whether the API includes this field in log ingest. */
   enabled: boolean;
   /** Field name in lowercase. */
   name: string;
 }
-export const LogExplorerDatasetsUpdateRequestFieldsItem =
+export const LogExplorerDatasetsUpdateForAccountRequestFieldsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
       name: S.String,
     }),
   ).annotate({
-    identifier: "LogExplorerDatasetsUpdateRequestFieldsItem",
-  }) as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsItem>;
+    identifier: "LogExplorerDatasetsUpdateForAccountRequestFieldsItem",
+  }) as any as S.Schema<LogExplorerDatasetsUpdateForAccountRequestFieldsItem>;
 
-export type LogExplorerDatasetsUpdateRequestFieldsList =
-  LogExplorerDatasetsUpdateRequestFieldsItem[];
-export const LogExplorerDatasetsUpdateRequestFieldsList = /*@__PURE__*/ S.Array(
-  LogExplorerDatasetsUpdateRequestFieldsItem,
-) as any as S.Schema<LogExplorerDatasetsUpdateRequestFieldsList>;
+export type LogExplorerDatasetsUpdateForAccountRequestFieldsList =
+  LogExplorerDatasetsUpdateForAccountRequestFieldsItem[];
+export const LogExplorerDatasetsUpdateForAccountRequestFieldsList =
+  /*@__PURE__*/ S.Array(
+    LogExplorerDatasetsUpdateForAccountRequestFieldsItem,
+  ) as any as S.Schema<LogExplorerDatasetsUpdateForAccountRequestFieldsList>;
 
-export interface LogExplorerDatasetsUpdateRequest {
-  accountsOrZones: string;
-  accountOrZoneId: string;
+export interface UpdateLogExplorerDatasetForAccountRequest {
+  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  accountId: string;
   datasetId: string;
   /** Whether to enable or disable log ingest for this dataset. */
   enabled: boolean;
   /** Controls which fields the API ingests after the update. Defaults */
-  fields?: LogExplorerDatasetsUpdateRequestFieldsList;
+  fields?: LogExplorerDatasetsUpdateForAccountRequestFieldsList;
 }
-export const LogExplorerDatasetsUpdateRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
-    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
-    datasetId: S.String.pipe(T.Label("dataset_id")),
-    enabled: S.Boolean,
-    fields: S.optional(LogExplorerDatasetsUpdateRequestFieldsList),
-  }).pipe(
-    T.Http({
-      method: "PUT",
-      uri: "/{accounts_or_zones}/{account_or_zone_id}/logs/explorer/datasets/{dataset_id}",
-      code: 200,
-    }),
-  ),
-).annotate({
-  identifier: "LogExplorerDatasetsUpdateRequest",
-}) as any as S.Schema<LogExplorerDatasetsUpdateRequest>;
+export const UpdateLogExplorerDatasetForAccountRequest =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      accountId: S.String.pipe(T.Label("account_id")),
+      datasetId: S.String.pipe(T.Label("dataset_id")),
+      enabled: S.Boolean,
+      fields: S.optional(LogExplorerDatasetsUpdateForAccountRequestFieldsList),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/accounts/{account_id}/logs/explorer/datasets/{dataset_id}",
+        code: 200,
+      }),
+    ),
+  ).annotate({
+    identifier: "UpdateLogExplorerDatasetForAccountRequest",
+  }) as any as S.Schema<UpdateLogExplorerDatasetForAccountRequest>;
 
-export type LogExplorerDatasetsUpdateResponseObjectType =
+export type LogExplorerDatasetsUpdateForAccountResponseObjectType =
   | "account"
   | "zone"
   | (string & {});
-export const LogExplorerDatasetsUpdateResponseObjectType =
+export const LogExplorerDatasetsUpdateForAccountResponseObjectType =
   /*@__PURE__*/ S.String;
 
-export interface LogExplorerDatasetsUpdateResponseFieldsItem {
+export interface LogExplorerDatasetsUpdateForAccountResponseFieldsItem {
   /** Whether the API includes this field in log ingest. */
   enabled: boolean;
   /** Field name in lowercase. */
   name: string;
 }
-export const LogExplorerDatasetsUpdateResponseFieldsItem =
+export const LogExplorerDatasetsUpdateForAccountResponseFieldsItem =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
       enabled: S.Boolean,
       name: S.String,
     }),
   ).annotate({
-    identifier: "LogExplorerDatasetsUpdateResponseFieldsItem",
-  }) as any as S.Schema<LogExplorerDatasetsUpdateResponseFieldsItem>;
+    identifier: "LogExplorerDatasetsUpdateForAccountResponseFieldsItem",
+  }) as any as S.Schema<LogExplorerDatasetsUpdateForAccountResponseFieldsItem>;
 
-export type LogExplorerDatasetsUpdateResponseFieldsList =
-  LogExplorerDatasetsUpdateResponseFieldsItem[];
-export const LogExplorerDatasetsUpdateResponseFieldsList =
+export type LogExplorerDatasetsUpdateForAccountResponseFieldsList =
+  LogExplorerDatasetsUpdateForAccountResponseFieldsItem[];
+export const LogExplorerDatasetsUpdateForAccountResponseFieldsList =
   /*@__PURE__*/ S.Array(
-    LogExplorerDatasetsUpdateResponseFieldsItem,
-  ) as any as S.Schema<LogExplorerDatasetsUpdateResponseFieldsList>;
+    LogExplorerDatasetsUpdateForAccountResponseFieldsItem,
+  ) as any as S.Schema<LogExplorerDatasetsUpdateForAccountResponseFieldsList>;
 
 /** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
-export interface LogExplorerDatasetsUpdateResponse {
+export interface UpdateLogExplorerDatasetForAccountResponse {
   /** RFC3339 timestamp recording when the API created this dataset. */
   createdAt: string;
   /** Dataset type name (e.g. `http_requests`). */
@@ -748,72 +1180,146 @@ export interface LogExplorerDatasetsUpdateResponse {
   /** Public ID of the account or zone that owns this dataset. */
   objectId: string;
   /** Whether this dataset belongs to an account or a zone. */
-  objectType: LogExplorerDatasetsUpdateResponseObjectType;
+  objectType: LogExplorerDatasetsUpdateForAccountResponseObjectType;
   /** RFC3339 timestamp recording when the API last updated this dataset. */
   updatedAt: string;
   /** The field configuration for this dataset. */
-  fields?: LogExplorerDatasetsUpdateResponseFieldsList;
+  fields?: LogExplorerDatasetsUpdateForAccountResponseFieldsList;
 }
-export const LogExplorerDatasetsUpdateResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    createdAt: S.String.pipe(T.Body("created_at")),
-    dataset: S.String,
-    datasetId: S.String.pipe(T.Body("dataset_id")),
-    enabled: S.Boolean,
-    objectId: S.String.pipe(T.Body("object_id")),
-    objectType: LogExplorerDatasetsUpdateResponseObjectType.pipe(
-      T.Body("object_type"),
-    ),
-    updatedAt: S.String.pipe(T.Body("updated_at")),
-    fields: S.optional(LogExplorerDatasetsUpdateResponseFieldsList),
-  }),
-).annotate({
-  identifier: "LogExplorerDatasetsUpdateResponse",
-}) as any as S.Schema<LogExplorerDatasetsUpdateResponse>;
-
-export interface LogExplorerQuerySqlRequest {
-  accountsOrZones: string;
-  accountOrZoneId: string;
-}
-export const LogExplorerQuerySqlRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
-    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
-  }).pipe(
-    T.Http({
-      method: "POST",
-      uri: "/{accounts_or_zones}/{account_or_zone_id}/logs/explorer/query/sql",
-      code: 200,
+export const UpdateLogExplorerDatasetForAccountResponse =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      dataset: S.String,
+      datasetId: S.String.pipe(T.Body("dataset_id")),
+      enabled: S.Boolean,
+      objectId: S.String.pipe(T.Body("object_id")),
+      objectType: LogExplorerDatasetsUpdateForAccountResponseObjectType.pipe(
+        T.Body("object_type"),
+      ),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      fields: S.optional(LogExplorerDatasetsUpdateForAccountResponseFieldsList),
     }),
-  ),
-).annotate({
-  identifier: "LogExplorerQuerySqlRequest",
-}) as any as S.Schema<LogExplorerQuerySqlRequest>;
+  ).annotate({
+    identifier: "UpdateLogExplorerDatasetForAccountResponse",
+  }) as any as S.Schema<UpdateLogExplorerDatasetForAccountResponse>;
 
-export type LogExplorerQuerySqlResultItemMap = {
-  [key: string]: unknown | undefined;
-};
-export const LogExplorerQuerySqlResultItemMap = /*@__PURE__*/ S.Record(
-  S.String,
-  S.Unknown,
-) as any as S.Schema<LogExplorerQuerySqlResultItemMap>;
-
-export type LogExplorerQuerySqlResultList = LogExplorerQuerySqlResultItemMap[];
-export const LogExplorerQuerySqlResultList = /*@__PURE__*/ S.Array(
-  LogExplorerQuerySqlResultItemMap,
-) as any as S.Schema<LogExplorerQuerySqlResultList>;
-
-export interface LogExplorerQuerySqlResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LogExplorerQuerySqlResultList;
+export interface LogExplorerDatasetsUpdateForZoneRequestFieldsItem {
+  /** Whether the API includes this field in log ingest. */
+  enabled: boolean;
+  /** Field name in lowercase. */
+  name: string;
 }
-export const LogExplorerQuerySqlResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(LogExplorerQuerySqlResultList.pipe(T.EnvelopePayload())),
-  }),
+export const LogExplorerDatasetsUpdateForZoneRequestFieldsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsUpdateForZoneRequestFieldsItem",
+  }) as any as S.Schema<LogExplorerDatasetsUpdateForZoneRequestFieldsItem>;
+
+export type LogExplorerDatasetsUpdateForZoneRequestFieldsList =
+  LogExplorerDatasetsUpdateForZoneRequestFieldsItem[];
+export const LogExplorerDatasetsUpdateForZoneRequestFieldsList =
+  /*@__PURE__*/ S.Array(
+    LogExplorerDatasetsUpdateForZoneRequestFieldsItem,
+  ) as any as S.Schema<LogExplorerDatasetsUpdateForZoneRequestFieldsList>;
+
+export interface UpdateLogExplorerDatasetForZoneRequest {
+  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  zoneId: string;
+  datasetId: string;
+  /** Whether to enable or disable log ingest for this dataset. */
+  enabled: boolean;
+  /** Controls which fields the API ingests after the update. Defaults */
+  fields?: LogExplorerDatasetsUpdateForZoneRequestFieldsList;
+}
+export const UpdateLogExplorerDatasetForZoneRequest = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      zoneId: S.String.pipe(T.Label("zone_id")),
+      datasetId: S.String.pipe(T.Label("dataset_id")),
+      enabled: S.Boolean,
+      fields: S.optional(LogExplorerDatasetsUpdateForZoneRequestFieldsList),
+    }).pipe(
+      T.Http({
+        method: "PUT",
+        uri: "/zones/{zone_id}/logs/explorer/datasets/{dataset_id}",
+        code: 200,
+      }),
+    ),
 ).annotate({
-  identifier: "LogExplorerQuerySqlResponse",
-}) as any as S.Schema<LogExplorerQuerySqlResponse>;
+  identifier: "UpdateLogExplorerDatasetForZoneRequest",
+}) as any as S.Schema<UpdateLogExplorerDatasetForZoneRequest>;
+
+export type LogExplorerDatasetsUpdateForZoneResponseObjectType =
+  | "account"
+  | "zone"
+  | (string & {});
+export const LogExplorerDatasetsUpdateForZoneResponseObjectType =
+  /*@__PURE__*/ S.String;
+
+export interface LogExplorerDatasetsUpdateForZoneResponseFieldsItem {
+  /** Whether the API includes this field in log ingest. */
+  enabled: boolean;
+  /** Field name in lowercase. */
+  name: string;
+}
+export const LogExplorerDatasetsUpdateForZoneResponseFieldsItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      enabled: S.Boolean,
+      name: S.String,
+    }),
+  ).annotate({
+    identifier: "LogExplorerDatasetsUpdateForZoneResponseFieldsItem",
+  }) as any as S.Schema<LogExplorerDatasetsUpdateForZoneResponseFieldsItem>;
+
+export type LogExplorerDatasetsUpdateForZoneResponseFieldsList =
+  LogExplorerDatasetsUpdateForZoneResponseFieldsItem[];
+export const LogExplorerDatasetsUpdateForZoneResponseFieldsList =
+  /*@__PURE__*/ S.Array(
+    LogExplorerDatasetsUpdateForZoneResponseFieldsItem,
+  ) as any as S.Schema<LogExplorerDatasetsUpdateForZoneResponseFieldsList>;
+
+/** Unwrapped `result` payload of the Cloudflare v4 response envelope. */
+export interface UpdateLogExplorerDatasetForZoneResponse {
+  /** RFC3339 timestamp recording when the API created this dataset. */
+  createdAt: string;
+  /** Dataset type name (e.g. `http_requests`). */
+  dataset: string;
+  /** Unique dataset ID. */
+  datasetId: string;
+  /** Whether log ingest is currently active for this dataset. */
+  enabled: boolean;
+  /** Public ID of the account or zone that owns this dataset. */
+  objectId: string;
+  /** Whether this dataset belongs to an account or a zone. */
+  objectType: LogExplorerDatasetsUpdateForZoneResponseObjectType;
+  /** RFC3339 timestamp recording when the API last updated this dataset. */
+  updatedAt: string;
+  /** The field configuration for this dataset. */
+  fields?: LogExplorerDatasetsUpdateForZoneResponseFieldsList;
+}
+export const UpdateLogExplorerDatasetForZoneResponse = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      createdAt: S.String.pipe(T.Body("created_at")),
+      dataset: S.String,
+      datasetId: S.String.pipe(T.Body("dataset_id")),
+      enabled: S.Boolean,
+      objectId: S.String.pipe(T.Body("object_id")),
+      objectType: LogExplorerDatasetsUpdateForZoneResponseObjectType.pipe(
+        T.Body("object_type"),
+      ),
+      updatedAt: S.String.pipe(T.Body("updated_at")),
+      fields: S.optional(LogExplorerDatasetsUpdateForZoneResponseFieldsList),
+    }),
+).annotate({
+  identifier: "UpdateLogExplorerDatasetForZoneResponse",
+}) as any as S.Schema<UpdateLogExplorerDatasetForZoneResponse>;
 
 export type CreateControlCmbConfigError =
   | LogsControlNotAuthorized
@@ -857,6 +1363,36 @@ export const createControlRetention: API.OperationMethod<
     CloudflareRateLimited,
     CloudflareError,
   ],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateLogExplorerDatasetForAccountError = CloudflareOpError;
+/** Create a new Log Explorer dataset for the account or zone. Use the `/account or zones/{account or zone_id}/logs/explorer/datasets/available` endpoint to list dataset types you can create along with their available fields. The `fields` property is optional. If not specified, all available fields will be enabled. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/datasets For dataset field definitions, see: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
+export const createLogExplorerDatasetForAccount: API.OperationMethod<
+  CreateLogExplorerDatasetForAccountRequest,
+  CreateLogExplorerDatasetForAccountResponse,
+  CreateLogExplorerDatasetForAccountError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateLogExplorerDatasetForAccountRequest,
+  output: CreateLogExplorerDatasetForAccountResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type CreateLogExplorerDatasetForZoneError = CloudflareOpError;
+/** Create a new Log Explorer dataset for the account or zone. Use the `/account or zones/{account or zone_id}/logs/explorer/datasets/available` endpoint to list dataset types you can create along with their available fields. The `fields` property is optional. If not specified, all available fields will be enabled. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/datasets For dataset field definitions, see: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
+export const createLogExplorerDatasetForZone: API.OperationMethod<
+  CreateLogExplorerDatasetForZoneRequest,
+  CreateLogExplorerDatasetForZoneResponse,
+  CreateLogExplorerDatasetForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: CreateLogExplorerDatasetForZoneRequest,
+  output: CreateLogExplorerDatasetForZoneResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
@@ -934,6 +1470,36 @@ export const getControlRetention: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
+export type GetLogExplorerDatasetForAccountError = CloudflareOpError;
+/** Retrieve a single Log Explorer dataset by ID for the account or zone. */
+export const getLogExplorerDatasetForAccount: API.OperationMethod<
+  GetLogExplorerDatasetForAccountRequest,
+  GetLogExplorerDatasetForAccountResponse,
+  GetLogExplorerDatasetForAccountError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLogExplorerDatasetForAccountRequest,
+  output: GetLogExplorerDatasetForAccountResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type GetLogExplorerDatasetForZoneError = CloudflareOpError;
+/** Retrieve a single Log Explorer dataset by ID for the account or zone. */
+export const getLogExplorerDatasetForZone: API.OperationMethod<
+  GetLogExplorerDatasetForZoneRequest,
+  GetLogExplorerDatasetForZoneResponse,
+  GetLogExplorerDatasetForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: GetLogExplorerDatasetForZoneRequest,
+  output: GetLogExplorerDatasetForZoneResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
 export type GetRayidError = CloudflareOpError;
 /** The `/rayids` api route allows lookups by specific rayid. The rayids route will return zero, one, or more records (ray ids are not unique). */
 export const getRayid: API.OperationMethod<
@@ -979,91 +1545,137 @@ export const getReceivedField: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type LogExplorerDatasetsAvailableListError = CloudflareOpError;
+export type ListLogExplorerDatasetAvailablesForAccountError = CloudflareOpError;
 /** Returns all dataset types that this account or zone can create. Each entry includes the dataset schema and timestamp field. The schema shows all possible fields for a dataset. However, not all fields may be available for your account or zone. When creating or updating a dataset, only fields available to your account or zone can be enabled. If you request a field that is not available, you will receive an error. */
-export const logExplorerDatasetsAvailableList: API.OperationMethod<
-  LogExplorerDatasetsAvailableListRequest,
-  LogExplorerDatasetsAvailableListResponse,
-  LogExplorerDatasetsAvailableListError,
+export const listLogExplorerDatasetAvailablesForAccount: API.OperationMethod<
+  ListLogExplorerDatasetAvailablesForAccountRequest,
+  ListLogExplorerDatasetAvailablesForAccountResponse,
+  ListLogExplorerDatasetAvailablesForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogExplorerDatasetsAvailableListRequest,
-  output: LogExplorerDatasetsAvailableListResponse,
+  input: ListLogExplorerDatasetAvailablesForAccountRequest,
+  output: ListLogExplorerDatasetAvailablesForAccountResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type LogExplorerDatasetsCreateError = CloudflareOpError;
-/** Create a new Log Explorer dataset for the account or zone. Use the `/account or zones/{account or zone_id}/logs/explorer/datasets/available` endpoint to list dataset types you can create along with their available fields. The `fields` property is optional. If not specified, all available fields will be enabled. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/datasets For dataset field definitions, see: https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
-export const logExplorerDatasetsCreate: API.OperationMethod<
-  LogExplorerDatasetsCreateRequest,
-  LogExplorerDatasetsCreateResponse,
-  LogExplorerDatasetsCreateError,
+export type ListLogExplorerDatasetAvailablesForZoneError = CloudflareOpError;
+/** Returns all dataset types that this account or zone can create. Each entry includes the dataset schema and timestamp field. The schema shows all possible fields for a dataset. However, not all fields may be available for your account or zone. When creating or updating a dataset, only fields available to your account or zone can be enabled. If you request a field that is not available, you will receive an error. */
+export const listLogExplorerDatasetAvailablesForZone: API.OperationMethod<
+  ListLogExplorerDatasetAvailablesForZoneRequest,
+  ListLogExplorerDatasetAvailablesForZoneResponse,
+  ListLogExplorerDatasetAvailablesForZoneError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogExplorerDatasetsCreateRequest,
-  output: LogExplorerDatasetsCreateResponse,
+  input: ListLogExplorerDatasetAvailablesForZoneRequest,
+  output: ListLogExplorerDatasetAvailablesForZoneResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type LogExplorerDatasetsGetError = CloudflareOpError;
-/** Retrieve a single Log Explorer dataset by ID for the account or zone. */
-export const logExplorerDatasetsGet: API.OperationMethod<
-  LogExplorerDatasetsGetRequest,
-  LogExplorerDatasetsGetResponse,
-  LogExplorerDatasetsGetError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LogExplorerDatasetsGetRequest,
-  output: LogExplorerDatasetsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
-export type LogExplorerDatasetsListError = CloudflareOpError;
+export type ListLogExplorerDatasetsForAccountError = CloudflareOpError;
 /** Returns all Log Explorer datasets configured for the account or zone. Pass `include_zones=true` to also include zone-level datasets that belong to this account or zone. List responses omit the `fields` property; use the single-dataset endpoint to retrieve field configuration. */
-export const logExplorerDatasetsList: API.OperationMethod<
-  LogExplorerDatasetsListRequest,
-  LogExplorerDatasetsListResponse,
-  LogExplorerDatasetsListError,
+export const listLogExplorerDatasetsForAccount: API.PaginatedOperationMethod<
+  ListLogExplorerDatasetsForAccountRequest,
+  ListLogExplorerDatasetsForAccountResponse,
+  ListLogExplorerDatasetsForAccountError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LogExplorerDatasetsListRequest,
-  output: LogExplorerDatasetsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListLogExplorerDatasetsForAccountRequest,
+    output: ListLogExplorerDatasetsForAccountResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
-export type LogExplorerDatasetsUpdateError = CloudflareOpError;
-/** Updates the enabled state and/or field configuration of an account or zone dataset. */
-export const logExplorerDatasetsUpdate: API.OperationMethod<
-  LogExplorerDatasetsUpdateRequest,
-  LogExplorerDatasetsUpdateResponse,
-  LogExplorerDatasetsUpdateError,
+export type ListLogExplorerDatasetsForZoneError = CloudflareOpError;
+/** Returns all Log Explorer datasets configured for the account or zone. Pass `include_zones=true` to also include zone-level datasets that belong to this account or zone. List responses omit the `fields` property; use the single-dataset endpoint to retrieve field configuration. */
+export const listLogExplorerDatasetsForZone: API.PaginatedOperationMethod<
+  ListLogExplorerDatasetsForZoneRequest,
+  ListLogExplorerDatasetsForZoneResponse,
+  ListLogExplorerDatasetsForZoneError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: LogExplorerDatasetsUpdateRequest,
-  output: LogExplorerDatasetsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListLogExplorerDatasetsForZoneRequest,
+    output: ListLogExplorerDatasetsForZoneResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
 
-export type LogExplorerQuerySqlError = CloudflareOpError;
+export type SqlLogExplorerQueryForAccountError = CloudflareOpError;
 /** Run a SQL query against account or zone-level datasets. Timestamp fields are RFC3339 strings. Filter with: WHERE {timestamp_field} >= now() - INTERVAL '30' DAY WHERE {timestamp_field} >= '2026-04-01T00:00:00Z' WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z' Check /account or zones/{account or zone_id}/logs/explorer/datasets to see enabled account or zone level datasets. Zone-level datasets will not appear here. Check /account or zones/{account or zone_id}/logs/explorer/datasets/available for the schemas, and the name of the timestamp fields. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/query/sql For more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
-export const logExplorerQuerySql: API.OperationMethod<
-  LogExplorerQuerySqlRequest,
-  LogExplorerQuerySqlResponse,
-  LogExplorerQuerySqlError,
+export const sqlLogExplorerQueryForAccount: API.PaginatedOperationMethod<
+  SqlLogExplorerQueryForAccountRequest,
+  SqlLogExplorerQueryForAccountResponse,
+  SqlLogExplorerQueryForAccountError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: SqlLogExplorerQueryForAccountRequest,
+    output: SqlLogExplorerQueryForAccountResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
+
+export type SqlLogExplorerQueryForZoneError = CloudflareOpError;
+/** Run a SQL query against account or zone-level datasets. Timestamp fields are RFC3339 strings. Filter with: WHERE {timestamp_field} >= now() - INTERVAL '30' DAY WHERE {timestamp_field} >= '2026-04-01T00:00:00Z' WHERE {timestamp_field} BETWEEN '2026-04-01T00:00:00Z' AND '2026-04-30T23:59:59Z' Check /account or zones/{account or zone_id}/logs/explorer/datasets to see enabled account or zone level datasets. Zone-level datasets will not appear here. Check /account or zones/{account or zone_id}/logs/explorer/datasets/available for the schemas, and the name of the timestamp fields. For zone-level datasets use the zone-scoped endpoint: POST /zones/{zone_id}/logs/explorer/query/sql For more information about the datasets, and the meaning of each field, check out https://developers.cloudflare.com/logs/logpush/logpush-job/datasets/ */
+export const sqlLogExplorerQueryForZone: API.PaginatedOperationMethod<
+  SqlLogExplorerQueryForZoneRequest,
+  SqlLogExplorerQueryForZoneResponse,
+  SqlLogExplorerQueryForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: SqlLogExplorerQueryForZoneRequest,
+    output: SqlLogExplorerQueryForZoneResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);
+
+export type UpdateLogExplorerDatasetForAccountError = CloudflareOpError;
+/** Updates the enabled state and/or field configuration of an account or zone dataset. */
+export const updateLogExplorerDatasetForAccount: API.OperationMethod<
+  UpdateLogExplorerDatasetForAccountRequest,
+  UpdateLogExplorerDatasetForAccountResponse,
+  UpdateLogExplorerDatasetForAccountError,
   CloudflareOpContext
 > = /*@__PURE__*/ API.make(() => ({
-  input: LogExplorerQuerySqlRequest,
-  output: LogExplorerQuerySqlResponse,
+  input: UpdateLogExplorerDatasetForAccountRequest,
+  output: UpdateLogExplorerDatasetForAccountResponse,
+  errors: [CloudflareRateLimited, CloudflareError],
+  protocol: CloudflareProtocol,
+  retry: Retry.Retry,
+}));
+
+export type UpdateLogExplorerDatasetForZoneError = CloudflareOpError;
+/** Updates the enabled state and/or field configuration of an account or zone dataset. */
+export const updateLogExplorerDatasetForZone: API.OperationMethod<
+  UpdateLogExplorerDatasetForZoneRequest,
+  UpdateLogExplorerDatasetForZoneResponse,
+  UpdateLogExplorerDatasetForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.make(() => ({
+  input: UpdateLogExplorerDatasetForZoneRequest,
+  output: UpdateLogExplorerDatasetForZoneResponse,
   errors: [CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,

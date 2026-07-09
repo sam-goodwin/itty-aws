@@ -718,13 +718,13 @@ export const ConnectionsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListConnectionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ConnectionsListResultList;
+  result: ConnectionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListConnectionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ConnectionsListResultList.pipe(T.EnvelopePayload())),
+    result: ConnectionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -884,13 +884,13 @@ export const CookiesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListCookiesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CookiesListResultList;
+  result: CookiesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListCookiesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(CookiesListResultList.pipe(T.EnvelopePayload())),
+    result: CookiesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -956,13 +956,13 @@ export const PoliciesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PoliciesListResultList;
+  result: PoliciesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PoliciesListResultList.pipe(T.EnvelopePayload())),
+    result: PoliciesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1140,13 +1140,13 @@ export const ScriptsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListScriptsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ScriptsListResultList;
+  result: ScriptsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListScriptsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ScriptsListResultList.pipe(T.EnvelopePayload())),
+    result: ScriptsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

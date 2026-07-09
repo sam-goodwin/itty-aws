@@ -87,15 +87,13 @@ export const NamespacesObjectsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListNamespaceObjectsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: NamespacesObjectsListResultList;
+  result: NamespacesObjectsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListNamespaceObjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      NamespacesObjectsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: NamespacesObjectsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -152,13 +150,13 @@ export const NamespacesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListNamespacesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: NamespacesListResultList;
+  result: NamespacesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(NamespacesListResultList.pipe(T.EnvelopePayload())),
+    result: NamespacesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

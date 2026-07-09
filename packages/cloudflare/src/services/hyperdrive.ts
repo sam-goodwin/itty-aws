@@ -530,13 +530,13 @@ export const ConfigsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListConfigsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ConfigsListResultList;
+  result: ConfigsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ConfigsListResultList.pipe(T.EnvelopePayload())),
+    result: ConfigsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

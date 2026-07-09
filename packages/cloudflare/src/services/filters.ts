@@ -140,13 +140,13 @@ export const BulkUpdateResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkPutFiltersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: BulkUpdateResultList;
+  result: BulkUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkPutFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(BulkUpdateResultList.pipe(T.EnvelopePayload())),
+    result: BulkUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -229,13 +229,13 @@ export const CreateResultList = /*@__PURE__*/ S.Array(
 
 export interface CreateFilterResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CreateResultList;
+  result: CreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const CreateFilterResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(CreateResultList.pipe(T.EnvelopePayload())),
+    result: CreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -386,13 +386,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListFiltersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListFiltersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

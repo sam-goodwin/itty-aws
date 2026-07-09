@@ -330,13 +330,13 @@ export const TraceroutesCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface CreateTracerouteResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TraceroutesCreateResultList;
+  result: TraceroutesCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const CreateTracerouteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(TraceroutesCreateResultList.pipe(T.EnvelopePayload())),
+    result: TraceroutesCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

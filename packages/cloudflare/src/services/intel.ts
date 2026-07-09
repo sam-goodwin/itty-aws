@@ -609,15 +609,15 @@ export const AttackSurfaceReportIssueTypesGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetAttackSurfaceReportIssueTypeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AttackSurfaceReportIssueTypesGetResultList;
+  result: AttackSurfaceReportIssueTypesGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetAttackSurfaceReportIssueTypeResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      result: S.optional(
-        AttackSurfaceReportIssueTypesGetResultList.pipe(T.EnvelopePayload()),
+      result: AttackSurfaceReportIssueTypesGetResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -2148,13 +2148,13 @@ export const IndicatorFeedsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListIndicatorFeedsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: IndicatorFeedsListResultList;
+  result: IndicatorFeedsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListIndicatorFeedsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(IndicatorFeedsListResultList.pipe(T.EnvelopePayload())),
+    result: IndicatorFeedsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2216,13 +2216,13 @@ export const SinkholesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSinkholesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SinkholesListResultList;
+  result: SinkholesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSinkholesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SinkholesListResultList.pipe(T.EnvelopePayload())),
+    result: SinkholesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

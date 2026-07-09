@@ -2390,15 +2390,15 @@ export const CatalogSyncsPrebuiltPoliciesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListCatalogSyncPrebuiltPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CatalogSyncsPrebuiltPoliciesListResultList;
+  result: CatalogSyncsPrebuiltPoliciesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListCatalogSyncPrebuiltPoliciesResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      result: S.optional(
-        CatalogSyncsPrebuiltPoliciesListResultList.pipe(T.EnvelopePayload()),
+      result: CatalogSyncsPrebuiltPoliciesListResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -2493,13 +2493,13 @@ export const CatalogSyncsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListCatalogSyncsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CatalogSyncsListResultList;
+  result: CatalogSyncsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListCatalogSyncsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(CatalogSyncsListResultList.pipe(T.EnvelopePayload())),
+    result: CatalogSyncsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2774,15 +2774,13 @@ export const CloudIntegrationsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListCloudIntegrationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CloudIntegrationsListResultList;
+  result: CloudIntegrationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListCloudIntegrationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      CloudIntegrationsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: CloudIntegrationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3258,13 +3256,13 @@ export const OnRampsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListOnRampsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: OnRampsListResultList;
+  result: OnRampsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListOnRampsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(OnRampsListResultList.pipe(T.EnvelopePayload())),
+    result: OnRampsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3652,13 +3650,13 @@ export const ResourcesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListResourcesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ResourcesListResultList;
+  result: ResourcesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ResourcesListResultList.pipe(T.EnvelopePayload())),
+    result: ResourcesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

@@ -725,13 +725,13 @@ export const DatabaseListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListDatabasesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DatabaseListResultList;
+  result: DatabaseListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListDatabasesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(DatabaseListResultList.pipe(T.EnvelopePayload())),
+    result: DatabaseListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -971,13 +971,13 @@ export const DatabaseQueryResultList = /*@__PURE__*/ S.Array(
 
 export interface QueryDatabaseResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DatabaseQueryResultList;
+  result: DatabaseQueryResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const QueryDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(DatabaseQueryResultList.pipe(T.EnvelopePayload())),
+    result: DatabaseQueryResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1151,13 +1151,13 @@ export const DatabaseRawResultList = /*@__PURE__*/ S.Array(
 
 export interface RawDatabaseResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DatabaseRawResultList;
+  result: DatabaseRawResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const RawDatabaseResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(DatabaseRawResultList.pipe(T.EnvelopePayload())),
+    result: DatabaseRawResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

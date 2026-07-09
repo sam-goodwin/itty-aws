@@ -863,13 +863,13 @@ export const SubscriptionsGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetSubscriptionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SubscriptionsGetResultList;
+  result: SubscriptionsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SubscriptionsGetResultList.pipe(T.EnvelopePayload())),
+    result: SubscriptionsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1346,13 +1346,13 @@ export const BillingHistoryListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListBillingHistoriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: BillingHistoryListResultList;
+  result: BillingHistoryListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListBillingHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(BillingHistoryListResultList.pipe(T.EnvelopePayload())),
+    result: BillingHistoryListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1431,13 +1431,13 @@ export const InvitesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListInvitesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InvitesListResultList;
+  result: InvitesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListInvitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(InvitesListResultList.pipe(T.EnvelopePayload())),
+    result: InvitesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1534,13 +1534,13 @@ export const OrganizationsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListOrganizationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: OrganizationsListResultList;
+  result: OrganizationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(OrganizationsListResultList.pipe(T.EnvelopePayload())),
+    result: OrganizationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1657,13 +1657,13 @@ export const TenantsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListTenantsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TenantsListResultList;
+  result: TenantsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListTenantsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(TenantsListResultList.pipe(T.EnvelopePayload())),
+    result: TenantsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1741,15 +1741,13 @@ export const TokensPermissionGroupsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListTokenPermissionGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TokensPermissionGroupsListResultList;
+  result: TokensPermissionGroupsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListTokenPermissionGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      TokensPermissionGroupsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: TokensPermissionGroupsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1993,13 +1991,13 @@ export const TokensListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListTokensResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TokensListResultList;
+  result: TokensListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(TokensListResultList.pipe(T.EnvelopePayload())),
+    result: TokensListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

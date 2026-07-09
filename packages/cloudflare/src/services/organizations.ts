@@ -750,13 +750,13 @@ export const LogsAuditListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListLogAuditsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LogsAuditListResultList;
+  result: LogsAuditListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListLogAuditsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(LogsAuditListResultList.pipe(T.EnvelopePayload())),
+    result: LogsAuditListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -893,13 +893,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListOrganizationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListOrganizationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

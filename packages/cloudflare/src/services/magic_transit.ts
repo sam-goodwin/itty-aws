@@ -1197,13 +1197,13 @@ export const Cf1SitesCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface CreateCf1SiteResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: Cf1SitesCreateResultList;
+  result: Cf1SitesCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const CreateCf1SiteResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(Cf1SitesCreateResultList.pipe(T.EnvelopePayload())),
+    result: Cf1SitesCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1366,13 +1366,13 @@ export const Cf1SitesRampsCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface CreateCf1SiteRampResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: Cf1SitesRampsCreateResultList;
+  result: Cf1SitesRampsCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const CreateCf1SiteRampResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(Cf1SitesRampsCreateResultList.pipe(T.EnvelopePayload())),
+    result: Cf1SitesRampsCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3209,13 +3209,13 @@ export const SitesLansCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface CreateSiteLanResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SitesLansCreateResultList;
+  result: SitesLansCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const CreateSiteLanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SitesLansCreateResultList.pipe(T.EnvelopePayload())),
+    result: SitesLansCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3348,13 +3348,13 @@ export const SitesWansCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface CreateSiteWanResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SitesWansCreateResultList;
+  result: SitesWansCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const CreateSiteWanResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SitesWansCreateResultList.pipe(T.EnvelopePayload())),
+    result: SitesWansCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -7307,13 +7307,13 @@ export const PcapsOwnershipGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetPcapOwnershipResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PcapsOwnershipGetResultList;
+  result: PcapsOwnershipGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetPcapOwnershipResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PcapsOwnershipGetResultList.pipe(T.EnvelopePayload())),
+    result: PcapsOwnershipGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -7970,13 +7970,13 @@ export const AppsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListAppsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AppsListResultList;
+  result: AppsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(AppsListResultList.pipe(T.EnvelopePayload())),
+    result: AppsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -8116,13 +8116,13 @@ export const Cf1SitesRampsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListCf1SiteRampsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: Cf1SitesRampsListResultList;
+  result: Cf1SitesRampsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListCf1SiteRampsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(Cf1SitesRampsListResultList.pipe(T.EnvelopePayload())),
+    result: Cf1SitesRampsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -8196,13 +8196,13 @@ export const Cf1SitesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListCf1SitesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: Cf1SitesListResultList;
+  result: Cf1SitesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListCf1SitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(Cf1SitesListResultList.pipe(T.EnvelopePayload())),
+    result: Cf1SitesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -8718,13 +8718,13 @@ export const ConnectorsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListConnectorsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ConnectorsListResultList;
+  result: ConnectorsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListConnectorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ConnectorsListResultList.pipe(T.EnvelopePayload())),
+    result: ConnectorsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -10532,13 +10532,13 @@ export const PcapsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPcapsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PcapsListResultList;
+  result: PcapsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPcapsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PcapsListResultList.pipe(T.EnvelopePayload())),
+    result: PcapsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -10753,13 +10753,13 @@ export const SitesAclsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSiteAclsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SitesAclsListResultList;
+  result: SitesAclsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSiteAclsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SitesAclsListResultList.pipe(T.EnvelopePayload())),
+    result: SitesAclsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -11014,13 +11014,13 @@ export const SitesLansListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSiteLansResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SitesLansListResultList;
+  result: SitesLansListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSiteLansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SitesLansListResultList.pipe(T.EnvelopePayload())),
+    result: SitesLansListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -11101,13 +11101,13 @@ export const SitesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSitesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SitesListResultList;
+  result: SitesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSitesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SitesListResultList.pipe(T.EnvelopePayload())),
+    result: SitesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -11203,13 +11203,13 @@ export const SitesWansListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSiteWansResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SitesWansListResultList;
+  result: SitesWansListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSiteWansResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SitesWansListResultList.pipe(T.EnvelopePayload())),
+    result: SitesWansListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

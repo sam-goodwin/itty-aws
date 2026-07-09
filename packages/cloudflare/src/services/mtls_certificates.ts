@@ -232,13 +232,13 @@ export const AssociationsGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetAssociationResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AssociationsGetResultList;
+  result: AssociationsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetAssociationResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(AssociationsGetResultList.pipe(T.EnvelopePayload())),
+    result: AssociationsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -397,13 +397,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListMtlsCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListMtlsCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

@@ -168,15 +168,13 @@ export const LabelsUserBulkCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkCreateLabelUsersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LabelsUserBulkCreateResultList;
+  result: LabelsUserBulkCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkCreateLabelUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      LabelsUserBulkCreateResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: LabelsUserBulkCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -362,15 +360,13 @@ export const OperationsLabelsBulkCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkCreateOperationLabelsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: OperationsLabelsBulkCreateResultList;
+  result: OperationsLabelsBulkCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkCreateOperationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      OperationsLabelsBulkCreateResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: OperationsLabelsBulkCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -503,15 +499,13 @@ export const OperationsBulkCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkCreateOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: OperationsBulkCreateResultList;
+  result: OperationsBulkCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkCreateOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      OperationsBulkCreateResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: OperationsBulkCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -574,15 +568,13 @@ export const LabelsUserBulkDeleteResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkDeleteLabelUsersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LabelsUserBulkDeleteResultList;
+  result: LabelsUserBulkDeleteResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkDeleteLabelUsersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      LabelsUserBulkDeleteResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: LabelsUserBulkDeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -689,15 +681,13 @@ export const OperationsLabelsBulkDeleteResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkDeleteOperationLabelsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: OperationsLabelsBulkDeleteResultList;
+  result: OperationsLabelsBulkDeleteResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkDeleteOperationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      OperationsLabelsBulkDeleteResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: OperationsLabelsBulkDeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -961,15 +951,13 @@ export const OperationsLabelsBulkUpdateResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkUpdateOperationLabelsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: OperationsLabelsBulkUpdateResultList;
+  result: OperationsLabelsBulkUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkUpdateOperationLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      OperationsLabelsBulkUpdateResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: OperationsLabelsBulkUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2404,15 +2392,13 @@ export const DiscoveryOperationsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListDiscoveryOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DiscoveryOperationsListResultList;
+  result: DiscoveryOperationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListDiscoveryOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      DiscoveryOperationsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: DiscoveryOperationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2511,13 +2497,13 @@ export const LabelsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListLabelsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LabelsListResultList;
+  result: LabelsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListLabelsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(LabelsListResultList.pipe(T.EnvelopePayload())),
+    result: LabelsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2673,13 +2659,13 @@ export const OperationsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: OperationsListResultList;
+  result: OperationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(OperationsListResultList.pipe(T.EnvelopePayload())),
+    result: OperationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2802,15 +2788,13 @@ export const UserSchemasHostsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListUserSchemaHostsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: UserSchemasHostsListResultList;
+  result: UserSchemasHostsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListUserSchemaHostsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      UserSchemasHostsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: UserSchemasHostsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2924,15 +2908,13 @@ export const UserSchemasOperationsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListUserSchemaOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: UserSchemasOperationsListResultList;
+  result: UserSchemasOperationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListUserSchemaOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      UserSchemasOperationsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: UserSchemasOperationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3007,13 +2989,13 @@ export const UserSchemasListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListUserSchemasResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: UserSchemasListResultList;
+  result: UserSchemasListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListUserSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(UserSchemasListResultList.pipe(T.EnvelopePayload())),
+    result: UserSchemasListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

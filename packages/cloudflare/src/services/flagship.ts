@@ -697,15 +697,13 @@ export const AppsFlagsChangelogListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListAppFlagChangelogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AppsFlagsChangelogListResultList;
+  result: AppsFlagsChangelogListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAppFlagChangelogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      AppsFlagsChangelogListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: AppsFlagsChangelogListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -862,13 +860,13 @@ export const AppsFlagsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListAppFlagsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AppsFlagsListResultList;
+  result: AppsFlagsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAppFlagsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(AppsFlagsListResultList.pipe(T.EnvelopePayload())),
+    result: AppsFlagsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -920,13 +918,13 @@ export const AppsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListAppsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AppsListResultList;
+  result: AppsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAppsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(AppsListResultList.pipe(T.EnvelopePayload())),
+    result: AppsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

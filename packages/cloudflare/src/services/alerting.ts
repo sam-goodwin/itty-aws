@@ -1031,15 +1031,13 @@ export const DestinationsPagerdutyGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetDestinationPagerdutyResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DestinationsPagerdutyGetResultList;
+  result: DestinationsPagerdutyGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetDestinationPagerdutyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      DestinationsPagerdutyGetResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: DestinationsPagerdutyGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1900,15 +1898,13 @@ export const DestinationsWebhooksListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListDestinationWebhooksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DestinationsWebhooksListResultList;
+  result: DestinationsWebhooksListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListDestinationWebhooksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      DestinationsWebhooksListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: DestinationsWebhooksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1997,13 +1993,13 @@ export const HistoryListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListHistoriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: HistoryListResultList;
+  result: HistoryListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(HistoryListResultList.pipe(T.EnvelopePayload())),
+    result: HistoryListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2630,13 +2626,13 @@ export const PoliciesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPoliciesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PoliciesListResultList;
+  result: PoliciesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPoliciesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PoliciesListResultList.pipe(T.EnvelopePayload())),
+    result: PoliciesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2695,13 +2691,13 @@ export const SilencesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSilencesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SilencesListResultList;
+  result: SilencesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSilencesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SilencesListResultList.pipe(T.EnvelopePayload())),
+    result: SilencesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3440,13 +3436,13 @@ export const SilencesUpdateResultList = /*@__PURE__*/ S.Array(
 
 export interface UpdateSilenceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SilencesUpdateResultList;
+  result: SilencesUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const UpdateSilenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SilencesUpdateResultList.pipe(T.EnvelopePayload())),
+    result: SilencesUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

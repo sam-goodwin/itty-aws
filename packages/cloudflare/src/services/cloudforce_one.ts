@@ -399,15 +399,13 @@ export const RequestsAssetsCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface CreateRequestAssetResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RequestsAssetsCreateResultList;
+  result: RequestsAssetsCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const CreateRequestAssetResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      RequestsAssetsCreateResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: RequestsAssetsCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1789,13 +1787,13 @@ export const RequestsMessageGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetRequestMessageResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RequestsMessageGetResultList;
+  result: RequestsMessageGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetRequestMessageResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RequestsMessageGetResultList.pipe(T.EnvelopePayload())),
+    result: RequestsMessageGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2257,13 +2255,13 @@ export const ScansConfigListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListScanConfigsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ScansConfigListResultList;
+  result: ScansConfigListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListScanConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ScansConfigListResultList.pipe(T.EnvelopePayload())),
+    result: ScansConfigListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

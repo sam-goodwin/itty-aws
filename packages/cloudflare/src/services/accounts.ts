@@ -1998,13 +1998,13 @@ export const SubscriptionsGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetSubscriptionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SubscriptionsGetResultList;
+  result: SubscriptionsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetSubscriptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SubscriptionsGetResultList.pipe(T.EnvelopePayload())),
+    result: SubscriptionsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2413,13 +2413,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListAccountsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2697,13 +2697,13 @@ export const LogsAuditListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListLogAuditsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LogsAuditListResultList;
+  result: LogsAuditListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListLogAuditsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(LogsAuditListResultList.pipe(T.EnvelopePayload())),
+    result: LogsAuditListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3067,13 +3067,13 @@ export const MembersListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListMembersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: MembersListResultList;
+  result: MembersListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(MembersListResultList.pipe(T.EnvelopePayload())),
+    result: MembersListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3174,13 +3174,13 @@ export const RolesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListRolesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RolesListResultList;
+  result: RolesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListRolesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RolesListResultList.pipe(T.EnvelopePayload())),
+    result: RolesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3429,13 +3429,13 @@ export const TokensListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListTokensResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TokensListResultList;
+  result: TokensListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(TokensListResultList.pipe(T.EnvelopePayload())),
+    result: TokensListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -5146,7 +5146,7 @@ export const putTokenValue: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type TokensPermissionGroupsListError = CloudflareOpError;
+export type TokensPermissionGroupsListError = InvalidRoute | CloudflareOpError;
 /** Find all available permission groups for Account Owned API Tokens */
 export const tokensPermissionGroupsList: API.OperationMethod<
   TokensPermissionGroupsListRequest,
@@ -5156,7 +5156,7 @@ export const tokensPermissionGroupsList: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TokensPermissionGroupsListRequest,
   output: TokensPermissionGroupsListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [InvalidRoute, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

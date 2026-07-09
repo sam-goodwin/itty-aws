@@ -495,13 +495,13 @@ export const ListsItemsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListListItemsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListsItemsListResultList;
+  result: ListsItemsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListListItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListsItemsListResultList.pipe(T.EnvelopePayload())),
+    result: ListsItemsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -574,13 +574,13 @@ export const ListsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListListsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListsListResultList;
+  result: ListsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListListsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListsListResultList.pipe(T.EnvelopePayload())),
+    result: ListsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

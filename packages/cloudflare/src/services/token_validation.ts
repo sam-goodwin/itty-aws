@@ -305,13 +305,13 @@ export const RulesBulkCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkCreateRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RulesBulkCreateResultList;
+  result: RulesBulkCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkCreateRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RulesBulkCreateResultList.pipe(T.EnvelopePayload())),
+    result: RulesBulkCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -593,13 +593,13 @@ export const RulesBulkEditResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkPatchRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RulesBulkEditResultList;
+  result: RulesBulkEditResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkPatchRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RulesBulkEditResultList.pipe(T.EnvelopePayload())),
+    result: RulesBulkEditResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1405,13 +1405,13 @@ export const ConfigurationListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListConfigurationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ConfigurationListResultList;
+  result: ConfigurationListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListConfigurationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ConfigurationListResultList.pipe(T.EnvelopePayload())),
+    result: ConfigurationListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1588,13 +1588,13 @@ export const RulesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RulesListResultList;
+  result: RulesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RulesListResultList.pipe(T.EnvelopePayload())),
+    result: RulesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

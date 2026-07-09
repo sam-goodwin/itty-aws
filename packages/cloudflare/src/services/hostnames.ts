@@ -191,13 +191,13 @@ export const SettingsTlsGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetSettingTlsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsTlsGetResultList;
+  result: SettingsTlsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetSettingTlsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SettingsTlsGetResultList.pipe(T.EnvelopePayload())),
+    result: SettingsTlsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

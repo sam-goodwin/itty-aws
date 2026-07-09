@@ -420,13 +420,13 @@ export const AccountsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListAccountsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AccountsListResultList;
+  result: AccountsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAccountsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(AccountsListResultList.pipe(T.EnvelopePayload())),
+    result: AccountsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -457,13 +457,13 @@ export const AccountTypesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListAccountTypesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AccountTypesListResultList;
+  result: AccountTypesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAccountTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(AccountTypesListResultList.pipe(T.EnvelopePayload())),
+    result: AccountTypesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -509,13 +509,13 @@ export const MembershipsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListMembershipsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: MembershipsListResultList;
+  result: MembershipsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListMembershipsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(MembershipsListResultList.pipe(T.EnvelopePayload())),
+    result: MembershipsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

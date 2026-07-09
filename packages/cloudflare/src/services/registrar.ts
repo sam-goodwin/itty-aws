@@ -570,13 +570,13 @@ export const DomainsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListDomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DomainsListResultList;
+  result: DomainsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(DomainsListResultList.pipe(T.EnvelopePayload())),
+    result: DomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

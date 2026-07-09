@@ -159,13 +159,13 @@ export const DeleteResultList = /*@__PURE__*/ S.Array(
 
 export interface DeleteCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DeleteResultList;
+  result: DeleteResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const DeleteCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(DeleteResultList.pipe(T.EnvelopePayload())),
+    result: DeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -249,13 +249,13 @@ export const GetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetCustomNameserverResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: GetResultList;
+  result: GetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetCustomNameserverResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(GetResultList.pipe(T.EnvelopePayload())),
+    result: GetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

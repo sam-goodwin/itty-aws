@@ -92,6 +92,32 @@ export const getErrorMatchers = (
 ): ReadonlyArray<ErrorMatcher> | undefined =>
   (cls as any)?.[errorMatchersSymbol];
 
+export const keyDictionarySymbol = Symbol.for(
+  "@distilled.cloud/cloudflare/key-dictionary",
+);
+
+/**
+ * Deep camelCase→wire key dictionary for members whose full structure is not
+ * modeled (e.g. the Worker upload `metadata` — a 12k-line union in the
+ * upstream SDK). The protocol renames any matching key at any depth on
+ * encode (and the reverse on decode); keys not in the dictionary pass
+ * through verbatim. Mirrors `com.cloudflare.protocols#keyDictionary`.
+ */
+export const KeyDictionary = (dict: Record<string, string>) =>
+  makeAnnotation(keyDictionarySymbol, dict);
+
+export const formDataFileSymbol = Symbol.for(
+  "@distilled.cloud/cloudflare/form-data-file",
+);
+
+/**
+ * Marks an input member holding `File`/`Blob` parts for a multipart upload
+ * (`Http({ contentType: "multipart" })`). Each file is appended to the form
+ * under its own filename. Mirrors
+ * `com.cloudflare.protocols#formDataFile` in the Smithy models.
+ */
+export const FormDataFile = () => makeAnnotation(formDataFileSymbol, true);
+
 export const resultInfoSymbol = Symbol.for(
   "@distilled.cloud/cloudflare/result-info",
 );

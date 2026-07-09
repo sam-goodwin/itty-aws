@@ -330,13 +330,13 @@ export const RelaysListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListRelaysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RelaysListResultList;
+  result: RelaysListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListRelaysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RelaysListResultList.pipe(T.EnvelopePayload())),
+    result: RelaysListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

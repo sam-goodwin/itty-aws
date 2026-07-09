@@ -386,13 +386,13 @@ export const PoolsBulkEditResultList = /*@__PURE__*/ S.Array(
 
 export interface BulkPatchPoolsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PoolsBulkEditResultList;
+  result: PoolsBulkEditResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkPatchPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PoolsBulkEditResultList.pipe(T.EnvelopePayload())),
+    result: PoolsBulkEditResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3016,15 +3016,13 @@ export const MonitorGroupsReferencesGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetMonitorGroupReferenceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: MonitorGroupsReferencesGetResultList;
+  result: MonitorGroupsReferencesGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetMonitorGroupReferenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      MonitorGroupsReferencesGetResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: MonitorGroupsReferencesGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3087,15 +3085,13 @@ export const MonitorsReferencesGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetMonitorReferenceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: MonitorsReferencesGetResultList;
+  result: MonitorsReferencesGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetMonitorReferenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      MonitorsReferencesGetResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: MonitorsReferencesGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3490,13 +3486,13 @@ export const PoolsReferencesGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetPoolReferenceResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PoolsReferencesGetResultList;
+  result: PoolsReferencesGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetPoolReferenceResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PoolsReferencesGetResultList.pipe(T.EnvelopePayload())),
+    result: PoolsReferencesGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -4023,13 +4019,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListLoadBalancersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListLoadBalancersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -4119,13 +4115,13 @@ export const MonitorGroupsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListMonitorGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: MonitorGroupsListResultList;
+  result: MonitorGroupsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListMonitorGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(MonitorGroupsListResultList.pipe(T.EnvelopePayload())),
+    result: MonitorGroupsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -4235,13 +4231,13 @@ export const MonitorsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListMonitorsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: MonitorsListResultList;
+  result: MonitorsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListMonitorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(MonitorsListResultList.pipe(T.EnvelopePayload())),
+    result: MonitorsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -4511,13 +4507,13 @@ export const PoolsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPoolsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PoolsListResultList;
+  result: PoolsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPoolsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PoolsListResultList.pipe(T.EnvelopePayload())),
+    result: PoolsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

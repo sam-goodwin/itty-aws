@@ -114,6 +114,11 @@
       "bun": "./src/services/custom_certificates.ts",
       "default": "./src/services/custom_certificates.ts"
     },
+    "./custom-csrs": {
+      "types": "./src/services/custom_csrs.ts",
+      "bun": "./src/services/custom_csrs.ts",
+      "default": "./src/services/custom_csrs.ts"
+    },
     "./custom-hostnames": {
       "types": "./src/services/custom_hostnames.ts",
       "bun": "./src/services/custom_hostnames.ts",
@@ -123,6 +128,11 @@
       "types": "./src/services/custom_nameservers.ts",
       "bun": "./src/services/custom_nameservers.ts",
       "default": "./src/services/custom_nameservers.ts"
+    },
+    "./custom-pages": {
+      "types": "./src/services/custom_pages.ts",
+      "bun": "./src/services/custom_pages.ts",
+      "default": "./src/services/custom_pages.ts"
     },
     "./dcv-delegation": {
       "types": "./src/services/dcv_delegation.ts",

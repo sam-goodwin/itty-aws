@@ -999,15 +999,13 @@ export const UserGroupsMembersCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface CreateUserGroupMemberResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: UserGroupsMembersCreateResultList;
+  result: UserGroupsMembersCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const CreateUserGroupMemberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      UserGroupsMembersCreateResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: UserGroupsMembersCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2147,13 +2145,13 @@ export const OauthClientsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListOauthClientsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: OauthClientsListResultList;
+  result: OauthClientsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListOauthClientsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(OauthClientsListResultList.pipe(T.EnvelopePayload())),
+    result: OauthClientsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2200,13 +2198,13 @@ export const OauthScopesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListOauthScopesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: OauthScopesListResultList;
+  result: OauthScopesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListOauthScopesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(OauthScopesListResultList.pipe(T.EnvelopePayload())),
+    result: OauthScopesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2284,15 +2282,13 @@ export const PermissionGroupsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPermissionGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PermissionGroupsListResultList;
+  result: PermissionGroupsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPermissionGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      PermissionGroupsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: PermissionGroupsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2406,13 +2402,13 @@ export const ResourceGroupsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListResourceGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ResourceGroupsListResultList;
+  result: ResourceGroupsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListResourceGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ResourceGroupsListResultList.pipe(T.EnvelopePayload())),
+    result: ResourceGroupsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2496,13 +2492,13 @@ export const SsoListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSsosResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SsoListResultList;
+  result: SsoListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSsosResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SsoListResultList.pipe(T.EnvelopePayload())),
+    result: SsoListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2581,15 +2577,13 @@ export const UserGroupsMembersListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListUserGroupMembersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: UserGroupsMembersListResultList;
+  result: UserGroupsMembersListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListUserGroupMembersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      UserGroupsMembersListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: UserGroupsMembersListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2842,13 +2836,13 @@ export const UserGroupsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListUserGroupsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: UserGroupsListResultList;
+  result: UserGroupsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListUserGroupsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(UserGroupsListResultList.pipe(T.EnvelopePayload())),
+    result: UserGroupsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3807,15 +3801,13 @@ export const UserGroupsMembersUpdateResultList = /*@__PURE__*/ S.Array(
 
 export interface UpdateUserGroupMemberResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: UserGroupsMembersUpdateResultList;
+  result: UserGroupsMembersUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const UpdateUserGroupMemberResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      UserGroupsMembersUpdateResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: UserGroupsMembersUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

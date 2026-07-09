@@ -822,13 +822,13 @@ export const HistoryListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListHistoriesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: HistoryListResultList;
+  result: HistoryListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListHistoriesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(HistoryListResultList.pipe(T.EnvelopePayload())),
+    result: HistoryListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

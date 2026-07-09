@@ -166,17 +166,15 @@ export const AdvancedTcpProtectionPrefixesBulkCreateResultList =
 
 export interface BulkCreateAdvancedTcpProtectionPrefixesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AdvancedTcpProtectionPrefixesBulkCreateResultList;
+  result: AdvancedTcpProtectionPrefixesBulkCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const BulkCreateAdvancedTcpProtectionPrefixesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      result: S.optional(
-        AdvancedTcpProtectionPrefixesBulkCreateResultList.pipe(
-          T.EnvelopePayload(),
-        ),
+      result: AdvancedTcpProtectionPrefixesBulkCreateResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -1280,15 +1278,15 @@ export const AdvancedTcpProtectionAllowlistListResultList =
 
 export interface ListAdvancedTcpProtectionAllowlistsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AdvancedTcpProtectionAllowlistListResultList;
+  result: AdvancedTcpProtectionAllowlistListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAdvancedTcpProtectionAllowlistsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      result: S.optional(
-        AdvancedTcpProtectionAllowlistListResultList.pipe(T.EnvelopePayload()),
+      result: AdvancedTcpProtectionAllowlistListResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -1364,15 +1362,15 @@ export const AdvancedTcpProtectionPrefixesListResultList =
 
 export interface ListAdvancedTcpProtectionPrefixesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AdvancedTcpProtectionPrefixesListResultList;
+  result: AdvancedTcpProtectionPrefixesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAdvancedTcpProtectionPrefixesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      result: S.optional(
-        AdvancedTcpProtectionPrefixesListResultList.pipe(T.EnvelopePayload()),
+      result: AdvancedTcpProtectionPrefixesListResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -1448,17 +1446,15 @@ export const AdvancedTcpProtectionSynProtectionFiltersListResultList =
 
 export interface ListAdvancedTcpProtectionSynProtectionFiltersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AdvancedTcpProtectionSynProtectionFiltersListResultList;
+  result: AdvancedTcpProtectionSynProtectionFiltersListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAdvancedTcpProtectionSynProtectionFiltersResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      result: S.optional(
-        AdvancedTcpProtectionSynProtectionFiltersListResultList.pipe(
-          T.EnvelopePayload(),
-        ),
+      result: AdvancedTcpProtectionSynProtectionFiltersListResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -1543,17 +1539,15 @@ export const AdvancedTcpProtectionSynProtectionRulesListResultList =
 
 export interface ListAdvancedTcpProtectionSynProtectionRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AdvancedTcpProtectionSynProtectionRulesListResultList;
+  result: AdvancedTcpProtectionSynProtectionRulesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAdvancedTcpProtectionSynProtectionRulesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      result: S.optional(
-        AdvancedTcpProtectionSynProtectionRulesListResultList.pipe(
-          T.EnvelopePayload(),
-        ),
+      result: AdvancedTcpProtectionSynProtectionRulesListResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -1629,17 +1623,15 @@ export const AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList =
 
 export interface ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList;
+  result: AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAdvancedTcpProtectionTcpFlowProtectionFiltersResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      result: S.optional(
-        AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList.pipe(
-          T.EnvelopePayload(),
-        ),
+      result: AdvancedTcpProtectionTcpFlowProtectionFiltersListResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -1721,17 +1713,15 @@ export const AdvancedTcpProtectionTcpFlowProtectionRulesListResultList =
 
 export interface ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AdvancedTcpProtectionTcpFlowProtectionRulesListResultList;
+  result: AdvancedTcpProtectionTcpFlowProtectionRulesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAdvancedTcpProtectionTcpFlowProtectionRulesResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      result: S.optional(
-        AdvancedTcpProtectionTcpFlowProtectionRulesListResultList.pipe(
-          T.EnvelopePayload(),
-        ),
+      result: AdvancedTcpProtectionTcpFlowProtectionRulesListResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),

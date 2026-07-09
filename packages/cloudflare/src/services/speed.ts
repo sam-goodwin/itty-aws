@@ -1265,13 +1265,13 @@ export const PagesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPagesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PagesListResultList;
+  result: PagesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPagesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PagesListResultList.pipe(T.EnvelopePayload())),
+    result: PagesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1463,13 +1463,13 @@ export const PagesTestsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPageTestsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PagesTestsListResultList;
+  result: PagesTestsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPageTestsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PagesTestsListResultList.pipe(T.EnvelopePayload())),
+    result: PagesTestsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

@@ -657,15 +657,13 @@ export const HostnameCertificatesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListHostnameCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: HostnameCertificatesListResultList;
+  result: HostnameCertificatesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListHostnameCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      HostnameCertificatesListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: HostnameCertificatesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -716,13 +714,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListOriginTlsClientAuthsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListOriginTlsClientAuthsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -807,13 +805,13 @@ export const HostnamesUpdateResultList = /*@__PURE__*/ S.Array(
 
 export interface PutHostnameResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: HostnamesUpdateResultList;
+  result: HostnamesUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const PutHostnameResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(HostnamesUpdateResultList.pipe(T.EnvelopePayload())),
+    result: HostnamesUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1032,13 +1030,14 @@ export const ZoneCertificatesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ZoneCertificatesListResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ZoneCertificatesListResultList;
+  result: ZoneCertificatesListResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
 }
 export const ZoneCertificatesListResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      ZoneCertificatesListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: ZoneCertificatesListResultList.pipe(T.EnvelopePayload()),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ZoneCertificatesListResponse",
@@ -1322,7 +1321,12 @@ export const putSetting: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ZoneCertificatesCreateError = CloudflareOpError;
+export type ZoneCertificatesCreateError =
+  | CertificateAlreadyExists
+  | InvalidCertificate
+  | ZoneClientCertConflict
+  | Forbidden
+  | CloudflareOpError;
 /** Upload your own certificate you want Cloudflare to use for edge-to-origin communication to override the shared certificate. Please note that it is important to keep only one certificate active. Also, make sure to enable zone-level authenticated origin pulls by making a PUT call to settings endpoint to see the uploaded certificate in use. */
 export const zoneCertificatesCreate: API.OperationMethod<
   ZoneCertificatesCreateRequest,
@@ -1332,12 +1336,25 @@ export const zoneCertificatesCreate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneCertificatesCreateRequest,
   output: ZoneCertificatesCreateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    CertificateAlreadyExists,
+    InvalidCertificate,
+    ZoneClientCertConflict,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type ZoneCertificatesDeleteError = CloudflareOpError;
+export type ZoneCertificatesDeleteError =
+  | CertificateNotFound
+  | Forbidden
+  | CertificateAlreadyDeleted
+  | CertificatePendingDeployment
+  | ZoneClientCertConflict
+  | CloudflareOpError;
 /** Removes a client certificate used for zone-level authenticated origin pulls. */
 export const zoneCertificatesDelete: API.OperationMethod<
   ZoneCertificatesDeleteRequest,
@@ -1347,12 +1364,23 @@ export const zoneCertificatesDelete: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneCertificatesDeleteRequest,
   output: ZoneCertificatesDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    CertificateNotFound,
+    Forbidden,
+    CertificateAlreadyDeleted,
+    CertificatePendingDeployment,
+    ZoneClientCertConflict,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type ZoneCertificatesGetError = CloudflareOpError;
+export type ZoneCertificatesGetError =
+  | CertificateNotFound
+  | Forbidden
+  | CloudflareOpError;
 /** Retrieves details for a specific client certificate used in zone-level authenticated origin pulls. */
 export const zoneCertificatesGet: API.OperationMethod<
   ZoneCertificatesGetRequest,
@@ -1362,22 +1390,31 @@ export const zoneCertificatesGet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: ZoneCertificatesGetRequest,
   output: ZoneCertificatesGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    CertificateNotFound,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type ZoneCertificatesListError = CloudflareOpError;
+export type ZoneCertificatesListError = Forbidden | CloudflareOpError;
 /** Lists all client certificates configured for zone-level authenticated origin pulls. */
-export const zoneCertificatesList: API.OperationMethod<
+export const zoneCertificatesList: API.PaginatedOperationMethod<
   ZoneCertificatesListRequest,
   ZoneCertificatesListResponse,
   ZoneCertificatesListError,
   CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ZoneCertificatesListRequest,
-  output: ZoneCertificatesListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ZoneCertificatesListRequest,
+    output: ZoneCertificatesListResponse,
+    errors: [Forbidden, CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: { mode: "single", items: "result" } as const,
+  }),
+  cloudflarePaginate,
+);

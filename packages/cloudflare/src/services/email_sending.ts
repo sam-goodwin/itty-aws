@@ -252,13 +252,13 @@ export const SubdomainsDnsGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetSubdomainDnsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SubdomainsDnsGetResultList;
+  result: SubdomainsDnsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetSubdomainDnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SubdomainsDnsGetResultList.pipe(T.EnvelopePayload())),
+    result: SubdomainsDnsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -323,13 +323,13 @@ export const SubdomainsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSubdomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SubdomainsListResultList;
+  result: SubdomainsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSubdomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SubdomainsListResultList.pipe(T.EnvelopePayload())),
+    result: SubdomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

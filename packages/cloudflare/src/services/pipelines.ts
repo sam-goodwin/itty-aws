@@ -2358,13 +2358,13 @@ export const SinksListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSinksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SinksListResultList;
+  result: SinksListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSinksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SinksListResultList.pipe(T.EnvelopePayload())),
+    result: SinksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2596,13 +2596,13 @@ export const StreamsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListStreamsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: StreamsListResultList;
+  result: StreamsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(StreamsListResultList.pipe(T.EnvelopePayload())),
+    result: StreamsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2666,13 +2666,13 @@ export const ListV1ResultList = /*@__PURE__*/ S.Array(
 
 export interface ListV1PipelineResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListV1ResultList;
+  result: ListV1ResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListV1PipelineResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListV1ResultList.pipe(T.EnvelopePayload())),
+    result: ListV1ResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

@@ -299,13 +299,13 @@ export const RulesCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface CreateRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RulesCreateResultList;
+  result: RulesCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const CreateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RulesCreateResultList.pipe(T.EnvelopePayload())),
+    result: RulesCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -836,13 +836,13 @@ export const RulesDeleteResultList = /*@__PURE__*/ S.Array(
 
 export interface DeleteRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RulesDeleteResultList;
+  result: RulesDeleteResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const DeleteRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RulesDeleteResultList.pipe(T.EnvelopePayload())),
+    result: RulesDeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1122,13 +1122,13 @@ export const RulesGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RulesGetResultList;
+  result: RulesGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RulesGetResultList.pipe(T.EnvelopePayload())),
+    result: RulesGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1460,260 +1460,6 @@ export const GetWaitingRoomResponse = /*@__PURE__*/ S.suspend(() =>
   identifier: "GetWaitingRoomResponse",
 }) as any as S.Schema<GetWaitingRoomResponse>;
 
-export interface ListRequest {
-  accountsOrZones: string;
-  accountOrZoneId: string;
-  /** Page number of paginated results. */
-  page?: number;
-  /** Maximum number of results per page. Must be a multiple of 5. */
-  perPage?: number;
-}
-export const ListRequest = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    accountsOrZones: S.String.pipe(T.Label("accounts_or_zones")),
-    accountOrZoneId: S.String.pipe(T.Label("account_or_zone_id")),
-    page: S.optional(S.Number.pipe(T.Query())),
-    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
-  }).pipe(
-    T.Http({
-      method: "GET",
-      uri: "/{accounts_or_zones}/{account_or_zone_id}/waiting_rooms",
-      code: 200,
-    }),
-  ),
-).annotate({ identifier: "ListRequest" }) as any as S.Schema<ListRequest>;
-
-export interface ListResultItemAdditionalRoutesItem {
-  /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
-  host?: string;
-  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
-}
-export const ListResultItemAdditionalRoutesItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    host: S.optional(S.String),
-    path: S.optional(S.String),
-  }),
-).annotate({
-  identifier: "ListResultItemAdditionalRoutesItem",
-}) as any as S.Schema<ListResultItemAdditionalRoutesItem>;
-
-export type ListResultItemAdditionalRoutesList =
-  ListResultItemAdditionalRoutesItem[];
-export const ListResultItemAdditionalRoutesList = /*@__PURE__*/ S.Array(
-  ListResultItemAdditionalRoutesItem,
-) as any as S.Schema<ListResultItemAdditionalRoutesList>;
-
-export type ListResultItemCookieAttributesSamesite =
-  | "auto"
-  | "lax"
-  | "none"
-  | "strict"
-  | (string & {});
-export const ListResultItemCookieAttributesSamesite = /*@__PURE__*/ S.String;
-
-export type ListResultItemCookieAttributesSecure =
-  | "auto"
-  | "always"
-  | "never"
-  | (string & {});
-export const ListResultItemCookieAttributesSecure = /*@__PURE__*/ S.String;
-
-export interface ListResultItemCookieAttributes {
-  /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
-  samesite?: ListResultItemCookieAttributesSamesite;
-  /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
-  secure?: ListResultItemCookieAttributesSecure;
-}
-export const ListResultItemCookieAttributes = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    samesite: S.optional(ListResultItemCookieAttributesSamesite),
-    secure: S.optional(ListResultItemCookieAttributesSecure),
-  }),
-).annotate({
-  identifier: "ListResultItemCookieAttributes",
-}) as any as S.Schema<ListResultItemCookieAttributes>;
-
-export type ListResultItemDefaultTemplateLanguage =
-  | "en-US"
-  | "es-ES"
-  | "de-DE"
-  | (string & {});
-export const ListResultItemDefaultTemplateLanguage = /*@__PURE__*/ S.String;
-
-export type ListResultItemEnabledOriginCommandsItem = "revoke" | (string & {});
-export const ListResultItemEnabledOriginCommandsItem = /*@__PURE__*/ S.String;
-
-export type ListResultItemEnabledOriginCommandsList =
-  ListResultItemEnabledOriginCommandsItem[];
-export const ListResultItemEnabledOriginCommandsList = /*@__PURE__*/ S.Array(
-  ListResultItemEnabledOriginCommandsItem,
-) as any as S.Schema<ListResultItemEnabledOriginCommandsList>;
-
-export type ListResultItemQueueingMethod =
-  | "fifo"
-  | "random"
-  | "passthrough"
-  | "reject"
-  | (string & {});
-export const ListResultItemQueueingMethod = /*@__PURE__*/ S.String;
-
-export interface ListResultItemQueueingStatusCode {
-  "200": unknown;
-  "202": unknown;
-  "429": unknown;
-}
-export const ListResultItemQueueingStatusCode = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    "200": S.Unknown,
-    "202": S.Unknown,
-    "429": S.Unknown,
-  }),
-).annotate({
-  identifier: "ListResultItemQueueingStatusCode",
-}) as any as S.Schema<ListResultItemQueueingStatusCode>;
-
-export type ListResultItemTurnstileAction =
-  | "log"
-  | "infinite_queue"
-  | (string & {});
-export const ListResultItemTurnstileAction = /*@__PURE__*/ S.String;
-
-export type ListResultItemTurnstileMode =
-  | "off"
-  | "invisible"
-  | "visible_non_interactive"
-  | "visible_managed"
-  | (string & {});
-export const ListResultItemTurnstileMode = /*@__PURE__*/ S.String;
-
-export interface ListResultItem {
-  id?: string;
-  /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
-  additionalRoutes?: ListResultItemAdditionalRoutesList;
-  /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
-  cookieAttributes?: ListResultItemCookieAttributes;
-  /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
-  cookieSuffix?: string;
-  createdOn?: string;
-  /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
-  customPageHtml?: string;
-  /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
-  defaultTemplateLanguage?: ListResultItemDefaultTemplateLanguage;
-  /** A note that you can use to add more details about the waiting room. */
-  description?: string;
-  /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
-  disableSessionRenewal?: boolean;
-  /** A list of enabled origin commands. */
-  enabledOriginCommands?: ListResultItemEnabledOriginCommandsList;
-  /** The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique. */
-  host?: string;
-  /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
-  jsonResponseEnabled?: boolean;
-  modifiedOn?: string;
-  /** A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed. */
-  name?: string;
-  /** Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world. */
-  newUsersPerMinute?: number;
-  /** An ISO 8601 timestamp that marks when the next event will begin queueing. */
-  nextEventPrequeueStartTime?: string;
-  /** An ISO 8601 timestamp that marks when the next event will start. */
-  nextEventStartTime?: string;
-  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
-  path?: string;
-  /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
-  queueAll?: boolean;
-  /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
-  queueingMethod?: ListResultItemQueueingMethod;
-  /** HTTP status code returned to a user while in the queue. */
-  queueingStatusCode?: ListResultItemQueueingStatusCode;
-  /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
-  sessionDuration?: number;
-  /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
-  suspended?: boolean;
-  /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
-  totalActiveUsers?: number;
-  /** Which action to take when a bot is detected using Turnstile. `log` will */
-  turnstileAction?: ListResultItemTurnstileAction;
-  /** Which Turnstile widget type to use for detecting bot traffic. See */
-  turnstileMode?: ListResultItemTurnstileMode;
-}
-export const ListResultItem = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    id: S.optional(S.String),
-    additionalRoutes: S.optional(
-      ListResultItemAdditionalRoutesList.pipe(T.Body("additional_routes")),
-    ),
-    cookieAttributes: S.optional(
-      ListResultItemCookieAttributes.pipe(T.Body("cookie_attributes")),
-    ),
-    cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
-    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
-    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
-    defaultTemplateLanguage: S.optional(
-      ListResultItemDefaultTemplateLanguage.pipe(
-        T.Body("default_template_language"),
-      ),
-    ),
-    description: S.optional(S.String),
-    disableSessionRenewal: S.optional(
-      S.Boolean.pipe(T.Body("disable_session_renewal")),
-    ),
-    enabledOriginCommands: S.optional(
-      ListResultItemEnabledOriginCommandsList.pipe(
-        T.Body("enabled_origin_commands"),
-      ),
-    ),
-    host: S.optional(S.String),
-    jsonResponseEnabled: S.optional(
-      S.Boolean.pipe(T.Body("json_response_enabled")),
-    ),
-    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
-    name: S.optional(S.String),
-    newUsersPerMinute: S.optional(
-      S.Number.pipe(T.Body("new_users_per_minute")),
-    ),
-    nextEventPrequeueStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_prequeue_start_time")),
-    ),
-    nextEventStartTime: S.optional(
-      S.String.pipe(T.Body("next_event_start_time")),
-    ),
-    path: S.optional(S.String),
-    queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
-    queueingMethod: S.optional(
-      ListResultItemQueueingMethod.pipe(T.Body("queueing_method")),
-    ),
-    queueingStatusCode: S.optional(
-      ListResultItemQueueingStatusCode.pipe(T.Body("queueing_status_code")),
-    ),
-    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
-    suspended: S.optional(S.Boolean),
-    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
-    turnstileAction: S.optional(
-      ListResultItemTurnstileAction.pipe(T.Body("turnstile_action")),
-    ),
-    turnstileMode: S.optional(
-      ListResultItemTurnstileMode.pipe(T.Body("turnstile_mode")),
-    ),
-  }),
-).annotate({ identifier: "ListResultItem" }) as any as S.Schema<ListResultItem>;
-
-export type ListResultList = ListResultItem[];
-export const ListResultList = /*@__PURE__*/ S.Array(
-  ListResultItem,
-) as any as S.Schema<ListResultList>;
-
-export interface ListResponse {
-  /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
-}
-export const ListResponse = /*@__PURE__*/ S.suspend(() =>
-  S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
-  }),
-).annotate({ identifier: "ListResponse" }) as any as S.Schema<ListResponse>;
-
 export interface ListEventsRequest {
   /** Identifier. */
   zoneId: string;
@@ -1831,18 +1577,569 @@ export const EventsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListEventsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: EventsListResultList;
+  result: EventsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListEventsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(EventsListResultList.pipe(T.EnvelopePayload())),
+    result: EventsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
   identifier: "ListEventsResponse",
 }) as any as S.Schema<ListEventsResponse>;
+
+export interface ListWaitingRoomsForAccountRequest {
+  /** The Account ID to use for this endpoint. Mutually exclusive with the Zone ID. */
+  accountId: string;
+  /** Page number of paginated results. */
+  page?: number;
+  /** Maximum number of results per page. Must be a multiple of 5. */
+  perPage?: number;
+}
+export const ListWaitingRoomsForAccountRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    accountId: S.String.pipe(T.Label("account_id")),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  }).pipe(
+    T.Http({
+      method: "GET",
+      uri: "/accounts/{account_id}/waiting_rooms",
+      code: 200,
+    }),
+  ),
+).annotate({
+  identifier: "ListWaitingRoomsForAccountRequest",
+}) as any as S.Schema<ListWaitingRoomsForAccountRequest>;
+
+export interface ListForAccountResultItemAdditionalRoutesItem {
+  /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
+  host?: string;
+  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
+  path?: string;
+}
+export const ListForAccountResultItemAdditionalRoutesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.optional(S.String),
+      path: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListForAccountResultItemAdditionalRoutesItem",
+  }) as any as S.Schema<ListForAccountResultItemAdditionalRoutesItem>;
+
+export type ListForAccountResultItemAdditionalRoutesList =
+  ListForAccountResultItemAdditionalRoutesItem[];
+export const ListForAccountResultItemAdditionalRoutesList =
+  /*@__PURE__*/ S.Array(
+    ListForAccountResultItemAdditionalRoutesItem,
+  ) as any as S.Schema<ListForAccountResultItemAdditionalRoutesList>;
+
+export type ListForAccountResultItemCookieAttributesSamesite =
+  | "auto"
+  | "lax"
+  | "none"
+  | "strict"
+  | (string & {});
+export const ListForAccountResultItemCookieAttributesSamesite =
+  /*@__PURE__*/ S.String;
+
+export type ListForAccountResultItemCookieAttributesSecure =
+  | "auto"
+  | "always"
+  | "never"
+  | (string & {});
+export const ListForAccountResultItemCookieAttributesSecure =
+  /*@__PURE__*/ S.String;
+
+export interface ListForAccountResultItemCookieAttributes {
+  /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
+  samesite?: ListForAccountResultItemCookieAttributesSamesite;
+  /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
+  secure?: ListForAccountResultItemCookieAttributesSecure;
+}
+export const ListForAccountResultItemCookieAttributes = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      samesite: S.optional(ListForAccountResultItemCookieAttributesSamesite),
+      secure: S.optional(ListForAccountResultItemCookieAttributesSecure),
+    }),
+).annotate({
+  identifier: "ListForAccountResultItemCookieAttributes",
+}) as any as S.Schema<ListForAccountResultItemCookieAttributes>;
+
+export type ListForAccountResultItemDefaultTemplateLanguage =
+  | "en-US"
+  | "es-ES"
+  | "de-DE"
+  | (string & {});
+export const ListForAccountResultItemDefaultTemplateLanguage =
+  /*@__PURE__*/ S.String;
+
+export type ListForAccountResultItemEnabledOriginCommandsItem =
+  | "revoke"
+  | (string & {});
+export const ListForAccountResultItemEnabledOriginCommandsItem =
+  /*@__PURE__*/ S.String;
+
+export type ListForAccountResultItemEnabledOriginCommandsList =
+  ListForAccountResultItemEnabledOriginCommandsItem[];
+export const ListForAccountResultItemEnabledOriginCommandsList =
+  /*@__PURE__*/ S.Array(
+    ListForAccountResultItemEnabledOriginCommandsItem,
+  ) as any as S.Schema<ListForAccountResultItemEnabledOriginCommandsList>;
+
+export type ListForAccountResultItemQueueingMethod =
+  | "fifo"
+  | "random"
+  | "passthrough"
+  | "reject"
+  | (string & {});
+export const ListForAccountResultItemQueueingMethod = /*@__PURE__*/ S.String;
+
+export interface ListForAccountResultItemQueueingStatusCode {
+  "200": unknown;
+  "202": unknown;
+  "429": unknown;
+}
+export const ListForAccountResultItemQueueingStatusCode =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      "200": S.Unknown,
+      "202": S.Unknown,
+      "429": S.Unknown,
+    }),
+  ).annotate({
+    identifier: "ListForAccountResultItemQueueingStatusCode",
+  }) as any as S.Schema<ListForAccountResultItemQueueingStatusCode>;
+
+export type ListForAccountResultItemTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
+export const ListForAccountResultItemTurnstileAction = /*@__PURE__*/ S.String;
+
+export type ListForAccountResultItemTurnstileMode =
+  | "off"
+  | "invisible"
+  | "visible_non_interactive"
+  | "visible_managed"
+  | (string & {});
+export const ListForAccountResultItemTurnstileMode = /*@__PURE__*/ S.String;
+
+export interface ListForAccountResultItem {
+  id?: string;
+  /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
+  additionalRoutes?: ListForAccountResultItemAdditionalRoutesList;
+  /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
+  cookieAttributes?: ListForAccountResultItemCookieAttributes;
+  /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
+  cookieSuffix?: string;
+  createdOn?: string;
+  /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
+  customPageHtml?: string;
+  /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
+  defaultTemplateLanguage?: ListForAccountResultItemDefaultTemplateLanguage;
+  /** A note that you can use to add more details about the waiting room. */
+  description?: string;
+  /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
+  disableSessionRenewal?: boolean;
+  /** A list of enabled origin commands. */
+  enabledOriginCommands?: ListForAccountResultItemEnabledOriginCommandsList;
+  /** The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique. */
+  host?: string;
+  /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
+  jsonResponseEnabled?: boolean;
+  modifiedOn?: string;
+  /** A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed. */
+  name?: string;
+  /** Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world. */
+  newUsersPerMinute?: number;
+  /** An ISO 8601 timestamp that marks when the next event will begin queueing. */
+  nextEventPrequeueStartTime?: string;
+  /** An ISO 8601 timestamp that marks when the next event will start. */
+  nextEventStartTime?: string;
+  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
+  path?: string;
+  /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
+  queueAll?: boolean;
+  /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
+  queueingMethod?: ListForAccountResultItemQueueingMethod;
+  /** HTTP status code returned to a user while in the queue. */
+  queueingStatusCode?: ListForAccountResultItemQueueingStatusCode;
+  /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
+  sessionDuration?: number;
+  /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
+  suspended?: boolean;
+  /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
+  totalActiveUsers?: number;
+  /** Which action to take when a bot is detected using Turnstile. `log` will */
+  turnstileAction?: ListForAccountResultItemTurnstileAction;
+  /** Which Turnstile widget type to use for detecting bot traffic. See */
+  turnstileMode?: ListForAccountResultItemTurnstileMode;
+}
+export const ListForAccountResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    additionalRoutes: S.optional(
+      ListForAccountResultItemAdditionalRoutesList.pipe(
+        T.Body("additional_routes"),
+      ),
+    ),
+    cookieAttributes: S.optional(
+      ListForAccountResultItemCookieAttributes.pipe(
+        T.Body("cookie_attributes"),
+      ),
+    ),
+    cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
+    defaultTemplateLanguage: S.optional(
+      ListForAccountResultItemDefaultTemplateLanguage.pipe(
+        T.Body("default_template_language"),
+      ),
+    ),
+    description: S.optional(S.String),
+    disableSessionRenewal: S.optional(
+      S.Boolean.pipe(T.Body("disable_session_renewal")),
+    ),
+    enabledOriginCommands: S.optional(
+      ListForAccountResultItemEnabledOriginCommandsList.pipe(
+        T.Body("enabled_origin_commands"),
+      ),
+    ),
+    host: S.optional(S.String),
+    jsonResponseEnabled: S.optional(
+      S.Boolean.pipe(T.Body("json_response_enabled")),
+    ),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+    newUsersPerMinute: S.optional(
+      S.Number.pipe(T.Body("new_users_per_minute")),
+    ),
+    nextEventPrequeueStartTime: S.optional(
+      S.String.pipe(T.Body("next_event_prequeue_start_time")),
+    ),
+    nextEventStartTime: S.optional(
+      S.String.pipe(T.Body("next_event_start_time")),
+    ),
+    path: S.optional(S.String),
+    queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
+    queueingMethod: S.optional(
+      ListForAccountResultItemQueueingMethod.pipe(T.Body("queueing_method")),
+    ),
+    queueingStatusCode: S.optional(
+      ListForAccountResultItemQueueingStatusCode.pipe(
+        T.Body("queueing_status_code"),
+      ),
+    ),
+    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+    suspended: S.optional(S.Boolean),
+    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    turnstileAction: S.optional(
+      ListForAccountResultItemTurnstileAction.pipe(T.Body("turnstile_action")),
+    ),
+    turnstileMode: S.optional(
+      ListForAccountResultItemTurnstileMode.pipe(T.Body("turnstile_mode")),
+    ),
+  }),
+).annotate({
+  identifier: "ListForAccountResultItem",
+}) as any as S.Schema<ListForAccountResultItem>;
+
+export type ListForAccountResultList = ListForAccountResultItem[];
+export const ListForAccountResultList = /*@__PURE__*/ S.Array(
+  ListForAccountResultItem,
+) as any as S.Schema<ListForAccountResultList>;
+
+export interface ListWaitingRoomsForAccountResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result: ListForAccountResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
+}
+export const ListWaitingRoomsForAccountResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: ListForAccountResultList.pipe(T.EnvelopePayload()),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+  }),
+).annotate({
+  identifier: "ListWaitingRoomsForAccountResponse",
+}) as any as S.Schema<ListWaitingRoomsForAccountResponse>;
+
+export interface ListWaitingRoomsForZoneRequest {
+  /** The Zone ID to use for this endpoint. Mutually exclusive with the Account ID. */
+  zoneId: string;
+  /** Page number of paginated results. */
+  page?: number;
+  /** Maximum number of results per page. Must be a multiple of 5. */
+  perPage?: number;
+}
+export const ListWaitingRoomsForZoneRequest = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    zoneId: S.String.pipe(T.Label("zone_id")),
+    page: S.optional(S.Number.pipe(T.Query())),
+    perPage: S.optional(S.Number.pipe(T.Query("per_page"))),
+  }).pipe(
+    T.Http({ method: "GET", uri: "/zones/{zone_id}/waiting_rooms", code: 200 }),
+  ),
+).annotate({
+  identifier: "ListWaitingRoomsForZoneRequest",
+}) as any as S.Schema<ListWaitingRoomsForZoneRequest>;
+
+export interface ListForZoneResultItemAdditionalRoutesItem {
+  /** The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://). */
+  host?: string;
+  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
+  path?: string;
+}
+export const ListForZoneResultItemAdditionalRoutesItem =
+  /*@__PURE__*/ S.suspend(() =>
+    S.Struct({
+      host: S.optional(S.String),
+      path: S.optional(S.String),
+    }),
+  ).annotate({
+    identifier: "ListForZoneResultItemAdditionalRoutesItem",
+  }) as any as S.Schema<ListForZoneResultItemAdditionalRoutesItem>;
+
+export type ListForZoneResultItemAdditionalRoutesList =
+  ListForZoneResultItemAdditionalRoutesItem[];
+export const ListForZoneResultItemAdditionalRoutesList = /*@__PURE__*/ S.Array(
+  ListForZoneResultItemAdditionalRoutesItem,
+) as any as S.Schema<ListForZoneResultItemAdditionalRoutesList>;
+
+export type ListForZoneResultItemCookieAttributesSamesite =
+  | "auto"
+  | "lax"
+  | "none"
+  | "strict"
+  | (string & {});
+export const ListForZoneResultItemCookieAttributesSamesite =
+  /*@__PURE__*/ S.String;
+
+export type ListForZoneResultItemCookieAttributesSecure =
+  | "auto"
+  | "always"
+  | "never"
+  | (string & {});
+export const ListForZoneResultItemCookieAttributesSecure =
+  /*@__PURE__*/ S.String;
+
+export interface ListForZoneResultItemCookieAttributes {
+  /** Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`. */
+  samesite?: ListForZoneResultItemCookieAttributesSamesite;
+  /** Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled. */
+  secure?: ListForZoneResultItemCookieAttributesSecure;
+}
+export const ListForZoneResultItemCookieAttributes = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      samesite: S.optional(ListForZoneResultItemCookieAttributesSamesite),
+      secure: S.optional(ListForZoneResultItemCookieAttributesSecure),
+    }),
+).annotate({
+  identifier: "ListForZoneResultItemCookieAttributes",
+}) as any as S.Schema<ListForZoneResultItemCookieAttributes>;
+
+export type ListForZoneResultItemDefaultTemplateLanguage =
+  | "en-US"
+  | "es-ES"
+  | "de-DE"
+  | (string & {});
+export const ListForZoneResultItemDefaultTemplateLanguage =
+  /*@__PURE__*/ S.String;
+
+export type ListForZoneResultItemEnabledOriginCommandsItem =
+  | "revoke"
+  | (string & {});
+export const ListForZoneResultItemEnabledOriginCommandsItem =
+  /*@__PURE__*/ S.String;
+
+export type ListForZoneResultItemEnabledOriginCommandsList =
+  ListForZoneResultItemEnabledOriginCommandsItem[];
+export const ListForZoneResultItemEnabledOriginCommandsList =
+  /*@__PURE__*/ S.Array(
+    ListForZoneResultItemEnabledOriginCommandsItem,
+  ) as any as S.Schema<ListForZoneResultItemEnabledOriginCommandsList>;
+
+export type ListForZoneResultItemQueueingMethod =
+  | "fifo"
+  | "random"
+  | "passthrough"
+  | "reject"
+  | (string & {});
+export const ListForZoneResultItemQueueingMethod = /*@__PURE__*/ S.String;
+
+export interface ListForZoneResultItemQueueingStatusCode {
+  "200": unknown;
+  "202": unknown;
+  "429": unknown;
+}
+export const ListForZoneResultItemQueueingStatusCode = /*@__PURE__*/ S.suspend(
+  () =>
+    S.Struct({
+      "200": S.Unknown,
+      "202": S.Unknown,
+      "429": S.Unknown,
+    }),
+).annotate({
+  identifier: "ListForZoneResultItemQueueingStatusCode",
+}) as any as S.Schema<ListForZoneResultItemQueueingStatusCode>;
+
+export type ListForZoneResultItemTurnstileAction =
+  | "log"
+  | "infinite_queue"
+  | (string & {});
+export const ListForZoneResultItemTurnstileAction = /*@__PURE__*/ S.String;
+
+export type ListForZoneResultItemTurnstileMode =
+  | "off"
+  | "invisible"
+  | "visible_non_interactive"
+  | "visible_managed"
+  | (string & {});
+export const ListForZoneResultItemTurnstileMode = /*@__PURE__*/ S.String;
+
+export interface ListForZoneResultItem {
+  id?: string;
+  /** Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms. */
+  additionalRoutes?: ListForZoneResultItemAdditionalRoutesList;
+  /** Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position. */
+  cookieAttributes?: ListForZoneResultItemCookieAttributes;
+  /** Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is "abcd", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`. */
+  cookieSuffix?: string;
+  createdOn?: string;
+  /** Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge: */
+  customPageHtml?: string;
+  /** The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used. */
+  defaultTemplateLanguage?: ListForZoneResultItemDefaultTemplateLanguage;
+  /** A note that you can use to add more details about the waiting room. */
+  description?: string;
+  /** Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request. */
+  disableSessionRenewal?: boolean;
+  /** A list of enabled origin commands. */
+  enabledOriginCommands?: ListForZoneResultItemEnabledOriginCommandsList;
+  /** The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique. */
+  host?: string;
+  /** Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields: */
+  jsonResponseEnabled?: boolean;
+  modifiedOn?: string;
+  /** A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed. */
+  name?: string;
+  /** Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world. */
+  newUsersPerMinute?: number;
+  /** An ISO 8601 timestamp that marks when the next event will begin queueing. */
+  nextEventPrequeueStartTime?: string;
+  /** An ISO 8601 timestamp that marks when the next event will start. */
+  nextEventStartTime?: string;
+  /** Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported. */
+  path?: string;
+  /** If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable. */
+  queueAll?: boolean;
+  /** Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are: */
+  queueingMethod?: ListForZoneResultItemQueueingMethod;
+  /** HTTP status code returned to a user while in the queue. */
+  queueingStatusCode?: ListForZoneResultItemQueueingStatusCode;
+  /** Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route. */
+  sessionDuration?: number;
+  /** Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room. */
+  suspended?: boolean;
+  /** Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world. */
+  totalActiveUsers?: number;
+  /** Which action to take when a bot is detected using Turnstile. `log` will */
+  turnstileAction?: ListForZoneResultItemTurnstileAction;
+  /** Which Turnstile widget type to use for detecting bot traffic. See */
+  turnstileMode?: ListForZoneResultItemTurnstileMode;
+}
+export const ListForZoneResultItem = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    id: S.optional(S.String),
+    additionalRoutes: S.optional(
+      ListForZoneResultItemAdditionalRoutesList.pipe(
+        T.Body("additional_routes"),
+      ),
+    ),
+    cookieAttributes: S.optional(
+      ListForZoneResultItemCookieAttributes.pipe(T.Body("cookie_attributes")),
+    ),
+    cookieSuffix: S.optional(S.String.pipe(T.Body("cookie_suffix"))),
+    createdOn: S.optional(S.String.pipe(T.Body("created_on"))),
+    customPageHtml: S.optional(S.String.pipe(T.Body("custom_page_html"))),
+    defaultTemplateLanguage: S.optional(
+      ListForZoneResultItemDefaultTemplateLanguage.pipe(
+        T.Body("default_template_language"),
+      ),
+    ),
+    description: S.optional(S.String),
+    disableSessionRenewal: S.optional(
+      S.Boolean.pipe(T.Body("disable_session_renewal")),
+    ),
+    enabledOriginCommands: S.optional(
+      ListForZoneResultItemEnabledOriginCommandsList.pipe(
+        T.Body("enabled_origin_commands"),
+      ),
+    ),
+    host: S.optional(S.String),
+    jsonResponseEnabled: S.optional(
+      S.Boolean.pipe(T.Body("json_response_enabled")),
+    ),
+    modifiedOn: S.optional(S.String.pipe(T.Body("modified_on"))),
+    name: S.optional(S.String),
+    newUsersPerMinute: S.optional(
+      S.Number.pipe(T.Body("new_users_per_minute")),
+    ),
+    nextEventPrequeueStartTime: S.optional(
+      S.String.pipe(T.Body("next_event_prequeue_start_time")),
+    ),
+    nextEventStartTime: S.optional(
+      S.String.pipe(T.Body("next_event_start_time")),
+    ),
+    path: S.optional(S.String),
+    queueAll: S.optional(S.Boolean.pipe(T.Body("queue_all"))),
+    queueingMethod: S.optional(
+      ListForZoneResultItemQueueingMethod.pipe(T.Body("queueing_method")),
+    ),
+    queueingStatusCode: S.optional(
+      ListForZoneResultItemQueueingStatusCode.pipe(
+        T.Body("queueing_status_code"),
+      ),
+    ),
+    sessionDuration: S.optional(S.Number.pipe(T.Body("session_duration"))),
+    suspended: S.optional(S.Boolean),
+    totalActiveUsers: S.optional(S.Number.pipe(T.Body("total_active_users"))),
+    turnstileAction: S.optional(
+      ListForZoneResultItemTurnstileAction.pipe(T.Body("turnstile_action")),
+    ),
+    turnstileMode: S.optional(
+      ListForZoneResultItemTurnstileMode.pipe(T.Body("turnstile_mode")),
+    ),
+  }),
+).annotate({
+  identifier: "ListForZoneResultItem",
+}) as any as S.Schema<ListForZoneResultItem>;
+
+export type ListForZoneResultList = ListForZoneResultItem[];
+export const ListForZoneResultList = /*@__PURE__*/ S.Array(
+  ListForZoneResultItem,
+) as any as S.Schema<ListForZoneResultList>;
+
+export interface ListWaitingRoomsForZoneResponse {
+  /** The unwrapped `result` payload of the v4 response envelope. */
+  result: ListForZoneResultList;
+  /** Pagination info from the envelope's `result_info`. */
+  resultInfo?: ResultInfo | null;
+}
+export const ListWaitingRoomsForZoneResponse = /*@__PURE__*/ S.suspend(() =>
+  S.Struct({
+    result: ListForZoneResultList.pipe(T.EnvelopePayload()),
+    resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
+  }),
+).annotate({
+  identifier: "ListWaitingRoomsForZoneResponse",
+}) as any as S.Schema<ListWaitingRoomsForZoneResponse>;
 
 export type EventsEditRequestTurnstileAction =
   | "log"
@@ -2115,13 +2412,13 @@ export const RulesEditResultList = /*@__PURE__*/ S.Array(
 
 export interface PatchRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RulesEditResultList;
+  result: RulesEditResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const PatchRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RulesEditResultList.pipe(T.EnvelopePayload())),
+    result: RulesEditResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2935,13 +3232,13 @@ export const RulesUpdateResultList = /*@__PURE__*/ S.Array(
 
 export interface UpdateRuleResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RulesUpdateResultList;
+  result: RulesUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const UpdateRuleResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RulesUpdateResultList.pipe(T.EnvelopePayload())),
+    result: RulesUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3589,21 +3886,6 @@ export const getWaitingRoom: API.OperationMethod<
   retry: Retry.Retry,
 }));
 
-export type ListError = CloudflareOpError;
-/** Lists waiting rooms for account or zone. */
-export const list: API.OperationMethod<
-  ListRequest,
-  ListResponse,
-  ListError,
-  CloudflareOpContext
-> = /*@__PURE__*/ API.make(() => ({
-  input: ListRequest,
-  output: ListResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
-  protocol: CloudflareProtocol,
-  retry: Retry.Retry,
-}));
-
 export type ListEventsError = CloudflareOpError;
 /** Lists events for a waiting room. */
 export const listEvents: API.PaginatedOperationMethod<
@@ -3615,6 +3897,56 @@ export const listEvents: API.PaginatedOperationMethod<
   () => ({
     input: ListEventsRequest,
     output: ListEventsResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
+
+export type ListWaitingRoomsForAccountError = CloudflareOpError;
+/** Lists waiting rooms for account or zone. */
+export const listWaitingRoomsForAccount: API.PaginatedOperationMethod<
+  ListWaitingRoomsForAccountRequest,
+  ListWaitingRoomsForAccountResponse,
+  ListWaitingRoomsForAccountError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListWaitingRoomsForAccountRequest,
+    output: ListWaitingRoomsForAccountResponse,
+    errors: [CloudflareRateLimited, CloudflareError],
+    protocol: CloudflarePaginatedProtocol,
+    retry: Retry.Retry,
+    pagination: {
+      mode: "page",
+      inputToken: "page",
+      outputToken: "resultInfo.page",
+      items: "result",
+      pageSize: "perPage",
+    } as const,
+  }),
+  cloudflarePaginate,
+);
+
+export type ListWaitingRoomsForZoneError = CloudflareOpError;
+/** Lists waiting rooms for account or zone. */
+export const listWaitingRoomsForZone: API.PaginatedOperationMethod<
+  ListWaitingRoomsForZoneRequest,
+  ListWaitingRoomsForZoneResponse,
+  ListWaitingRoomsForZoneError,
+  CloudflareOpContext
+> = /*@__PURE__*/ API.makePaginated(
+  () => ({
+    input: ListWaitingRoomsForZoneRequest,
+    output: ListWaitingRoomsForZoneResponse,
     errors: [CloudflareRateLimited, CloudflareError],
     protocol: CloudflarePaginatedProtocol,
     retry: Retry.Retry,

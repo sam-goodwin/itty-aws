@@ -38,6 +38,12 @@ export interface HttpTrait {
   readonly uri: string;
   /** Default success status code (a `ResponseCode()` member can still read the actual code). */
   readonly code?: number;
+  /**
+   * Request body encoding. Default is JSON; `"multipart"` sends
+   * multipart/form-data — body members become form parts (objects
+   * JSON-encoded) and members marked `FormDataFile()` append their files.
+   */
+  readonly contentType?: "multipart";
 }
 
 export const httpSymbol = Symbol.for("@distilled.cloud/core/http");

@@ -6305,13 +6305,13 @@ export const InstancesJobsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListInstanceJobsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InstancesJobsListResultList;
+  result: InstancesJobsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListInstanceJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(InstancesJobsListResultList.pipe(T.EnvelopePayload())),
+    result: InstancesJobsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -7014,13 +7014,13 @@ export const InstancesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListInstancesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: InstancesListResultList;
+  result: InstancesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(InstancesListResultList.pipe(T.EnvelopePayload())),
+    result: InstancesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -7146,15 +7146,13 @@ export const NamespacesInstancesItemsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListNamespaceInstanceItemsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: NamespacesInstancesItemsListResultList;
+  result: NamespacesInstancesItemsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListNamespaceInstanceItemsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      NamespacesInstancesItemsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: NamespacesInstancesItemsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -7226,15 +7224,13 @@ export const NamespacesInstancesJobsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListNamespaceInstanceJobsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: NamespacesInstancesJobsListResultList;
+  result: NamespacesInstancesJobsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListNamespaceInstanceJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      NamespacesInstancesJobsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: NamespacesInstancesJobsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -7989,15 +7985,13 @@ export const NamespacesInstancesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListNamespaceInstancesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: NamespacesInstancesListResultList;
+  result: NamespacesInstancesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListNamespaceInstancesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      NamespacesInstancesListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: NamespacesInstancesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -8053,13 +8047,13 @@ export const NamespacesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListNamespacesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: NamespacesListResultList;
+  result: NamespacesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(NamespacesListResultList.pipe(T.EnvelopePayload())),
+    result: NamespacesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -8126,13 +8120,13 @@ export const TokensListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListTokensResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TokensListResultList;
+  result: TokensListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListTokensResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(TokensListResultList.pipe(T.EnvelopePayload())),
+    result: TokensListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

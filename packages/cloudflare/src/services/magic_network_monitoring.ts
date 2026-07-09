@@ -904,13 +904,13 @@ export const RulesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListRulesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RulesListResultList;
+  result: RulesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListRulesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RulesListResultList.pipe(T.EnvelopePayload())),
+    result: RulesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

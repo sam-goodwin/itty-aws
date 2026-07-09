@@ -1593,15 +1593,13 @@ export const CertificatePacksListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListCertificatePacksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CertificatePacksListResultList;
+  result: CertificatePacksListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListCertificatePacksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      CertificatePacksListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: CertificatePacksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

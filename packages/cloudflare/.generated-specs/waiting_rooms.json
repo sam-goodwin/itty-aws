@@ -2077,19 +2077,13 @@
         "smithy.api#readonly": {}
       }
     },
-    "com.cloudflare.waiting_rooms#ListRequest": {
+    "com.cloudflare.waiting_rooms#ListForAccountRequest": {
       "type": "structure",
       "members": {
-        "accounts_or_zones": {
+        "account_id": {
           "target": "smithy.api#String",
           "traits": {
-            "smithy.api#httpLabel": {},
-            "smithy.api#required": {}
-          }
-        },
-        "account_or_zone_id": {
-          "target": "smithy.api#String",
-          "traits": {
+            "smithy.api#documentation": "The Account ID to use for this endpoint. Mutually exclusive with the Zone ID.",
             "smithy.api#httpLabel": {},
             "smithy.api#required": {}
           }
@@ -2113,7 +2107,7 @@
         "smithy.api#input": {}
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItemAdditionalRoutesItem": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItemAdditionalRoutesItem": {
       "type": "structure",
       "members": {
         "host": {
@@ -2130,13 +2124,13 @@
         }
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItemAdditionalRoutesList": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItemAdditionalRoutesList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.waiting_rooms#ListResultItemAdditionalRoutesItem"
+        "target": "com.cloudflare.waiting_rooms#ListForAccountResultItemAdditionalRoutesItem"
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItemCookieAttributesSamesite": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItemCookieAttributesSamesite": {
       "type": "enum",
       "members": {
         "AUTO": {
@@ -2165,7 +2159,7 @@
         }
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItemCookieAttributesSecure": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItemCookieAttributesSecure": {
       "type": "enum",
       "members": {
         "AUTO": {
@@ -2188,24 +2182,24 @@
         }
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItemCookieAttributes": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItemCookieAttributes": {
       "type": "structure",
       "members": {
         "samesite": {
-          "target": "com.cloudflare.waiting_rooms#ListResultItemCookieAttributesSamesite",
+          "target": "com.cloudflare.waiting_rooms#ListForAccountResultItemCookieAttributesSamesite",
           "traits": {
             "smithy.api#documentation": "Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`."
           }
         },
         "secure": {
-          "target": "com.cloudflare.waiting_rooms#ListResultItemCookieAttributesSecure",
+          "target": "com.cloudflare.waiting_rooms#ListForAccountResultItemCookieAttributesSecure",
           "traits": {
             "smithy.api#documentation": "Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled."
           }
         }
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItemDefaultTemplateLanguage": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItemDefaultTemplateLanguage": {
       "type": "enum",
       "members": {
         "EN_US": {
@@ -2228,7 +2222,7 @@
         }
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItemEnabledOriginCommandsItem": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItemEnabledOriginCommandsItem": {
       "type": "enum",
       "members": {
         "REVOKE": {
@@ -2239,13 +2233,13 @@
         }
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItemEnabledOriginCommandsList": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItemEnabledOriginCommandsList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.waiting_rooms#ListResultItemEnabledOriginCommandsItem"
+        "target": "com.cloudflare.waiting_rooms#ListForAccountResultItemEnabledOriginCommandsItem"
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItemQueueingMethod": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItemQueueingMethod": {
       "type": "enum",
       "members": {
         "FIFO": {
@@ -2274,7 +2268,7 @@
         }
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItemQueueingStatusCode": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItemQueueingStatusCode": {
       "type": "structure",
       "members": {
         "_200": {
@@ -2300,7 +2294,7 @@
         }
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItemTurnstileAction": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItemTurnstileAction": {
       "type": "enum",
       "members": {
         "LOG": {
@@ -2317,7 +2311,7 @@
         }
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItemTurnstileMode": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItemTurnstileMode": {
       "type": "enum",
       "members": {
         "OFF": {
@@ -2346,20 +2340,20 @@
         }
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultItem": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultItem": {
       "type": "structure",
       "members": {
         "id": {
           "target": "smithy.api#String"
         },
         "additional_routes": {
-          "target": "com.cloudflare.waiting_rooms#ListResultItemAdditionalRoutesList",
+          "target": "com.cloudflare.waiting_rooms#ListForAccountResultItemAdditionalRoutesList",
           "traits": {
             "smithy.api#documentation": "Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms."
           }
         },
         "cookie_attributes": {
-          "target": "com.cloudflare.waiting_rooms#ListResultItemCookieAttributes",
+          "target": "com.cloudflare.waiting_rooms#ListForAccountResultItemCookieAttributes",
           "traits": {
             "smithy.api#documentation": "Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position."
           }
@@ -2380,7 +2374,7 @@
           }
         },
         "default_template_language": {
-          "target": "com.cloudflare.waiting_rooms#ListResultItemDefaultTemplateLanguage",
+          "target": "com.cloudflare.waiting_rooms#ListForAccountResultItemDefaultTemplateLanguage",
           "traits": {
             "smithy.api#documentation": "The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used."
           }
@@ -2398,7 +2392,7 @@
           }
         },
         "enabled_origin_commands": {
-          "target": "com.cloudflare.waiting_rooms#ListResultItemEnabledOriginCommandsList",
+          "target": "com.cloudflare.waiting_rooms#ListForAccountResultItemEnabledOriginCommandsList",
           "traits": {
             "smithy.api#documentation": "A list of enabled origin commands."
           }
@@ -2455,13 +2449,13 @@
           }
         },
         "queueing_method": {
-          "target": "com.cloudflare.waiting_rooms#ListResultItemQueueingMethod",
+          "target": "com.cloudflare.waiting_rooms#ListForAccountResultItemQueueingMethod",
           "traits": {
             "smithy.api#documentation": "Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are:"
           }
         },
         "queueing_status_code": {
-          "target": "com.cloudflare.waiting_rooms#ListResultItemQueueingStatusCode",
+          "target": "com.cloudflare.waiting_rooms#ListForAccountResultItemQueueingStatusCode",
           "traits": {
             "smithy.api#documentation": "HTTP status code returned to a user while in the queue."
           }
@@ -2485,30 +2479,30 @@
           }
         },
         "turnstile_action": {
-          "target": "com.cloudflare.waiting_rooms#ListResultItemTurnstileAction",
+          "target": "com.cloudflare.waiting_rooms#ListForAccountResultItemTurnstileAction",
           "traits": {
             "smithy.api#documentation": "Which action to take when a bot is detected using Turnstile. `log` will"
           }
         },
         "turnstile_mode": {
-          "target": "com.cloudflare.waiting_rooms#ListResultItemTurnstileMode",
+          "target": "com.cloudflare.waiting_rooms#ListForAccountResultItemTurnstileMode",
           "traits": {
             "smithy.api#documentation": "Which Turnstile widget type to use for detecting bot traffic. See"
           }
         }
       }
     },
-    "com.cloudflare.waiting_rooms#ListResultList": {
+    "com.cloudflare.waiting_rooms#ListForAccountResultList": {
       "type": "list",
       "member": {
-        "target": "com.cloudflare.waiting_rooms#ListResultItem"
+        "target": "com.cloudflare.waiting_rooms#ListForAccountResultItem"
       }
     },
-    "com.cloudflare.waiting_rooms#ListResponse": {
+    "com.cloudflare.waiting_rooms#ListForAccountResponse": {
       "type": "structure",
       "members": {
         "result": {
-          "target": "com.cloudflare.waiting_rooms#ListResultList",
+          "target": "com.cloudflare.waiting_rooms#ListForAccountResultList",
           "traits": {
             "com.cloudflare.protocols#envelopePayload": {},
             "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
@@ -2519,18 +2513,472 @@
         "smithy.api#output": {}
       }
     },
-    "com.cloudflare.waiting_rooms#List": {
+    "com.cloudflare.waiting_rooms#ListForAccount": {
       "type": "operation",
       "input": {
-        "target": "com.cloudflare.waiting_rooms#ListRequest"
+        "target": "com.cloudflare.waiting_rooms#ListForAccountRequest"
       },
       "output": {
-        "target": "com.cloudflare.waiting_rooms#ListResponse"
+        "target": "com.cloudflare.waiting_rooms#ListForAccountResponse"
       },
       "traits": {
         "smithy.api#http": {
           "method": "GET",
-          "uri": "/{accounts_or_zones}/{account_or_zone_id}/waiting_rooms",
+          "uri": "/accounts/{account_id}/waiting_rooms",
+          "code": 200
+        },
+        "smithy.api#documentation": "Lists waiting rooms for account or zone.",
+        "smithy.api#readonly": {}
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneRequest": {
+      "type": "structure",
+      "members": {
+        "zone_id": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
+            "smithy.api#httpLabel": {},
+            "smithy.api#required": {}
+          }
+        },
+        "page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Page number of paginated results.",
+            "smithy.api#httpQuery": "page"
+          }
+        },
+        "per_page": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Maximum number of results per page. Must be a multiple of 5.",
+            "smithy.api#httpQuery": "per_page"
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#input": {}
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItemAdditionalRoutesItem": {
+      "type": "structure",
+      "members": {
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The hostname to which this waiting room will be applied (no wildcards). The hostname must be the primary domain, subdomain, or custom hostname (if using SSL for SaaS) of this zone. Please do not include the scheme (http:// or https://)."
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported."
+          }
+        }
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItemAdditionalRoutesList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.waiting_rooms#ListForZoneResultItemAdditionalRoutesItem"
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItemCookieAttributesSamesite": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "LAX": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "lax"
+          }
+        },
+        "NONE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "none"
+          }
+        },
+        "STRICT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "strict"
+          }
+        }
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItemCookieAttributesSecure": {
+      "type": "enum",
+      "members": {
+        "AUTO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "auto"
+          }
+        },
+        "ALWAYS": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "always"
+          }
+        },
+        "NEVER": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "never"
+          }
+        }
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItemCookieAttributes": {
+      "type": "structure",
+      "members": {
+        "samesite": {
+          "target": "com.cloudflare.waiting_rooms#ListForZoneResultItemCookieAttributesSamesite",
+          "traits": {
+            "smithy.api#documentation": "Configures the SameSite attribute on the waiting room cookie. Value `auto` will be translated to `lax` or `none` depending if **Always Use HTTPS** is enabled. Note that when using value `none`, the secure attribute cannot be set to `never`."
+          }
+        },
+        "secure": {
+          "target": "com.cloudflare.waiting_rooms#ListForZoneResultItemCookieAttributesSecure",
+          "traits": {
+            "smithy.api#documentation": "Configures the Secure attribute on the waiting room cookie. Value `always` indicates that the Secure attribute will be set in the Set-Cookie header, `never` indicates that the Secure attribute will not be set, and `auto` will set the Secure attribute depending if **Always Use HTTPS** is enabled."
+          }
+        }
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItemDefaultTemplateLanguage": {
+      "type": "enum",
+      "members": {
+        "EN_US": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "en-US"
+          }
+        },
+        "ES_ES": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "es-ES"
+          }
+        },
+        "DE_DE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "de-DE"
+          }
+        }
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItemEnabledOriginCommandsItem": {
+      "type": "enum",
+      "members": {
+        "REVOKE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "revoke"
+          }
+        }
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItemEnabledOriginCommandsList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.waiting_rooms#ListForZoneResultItemEnabledOriginCommandsItem"
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItemQueueingMethod": {
+      "type": "enum",
+      "members": {
+        "FIFO": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "fifo"
+          }
+        },
+        "RANDOM": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "random"
+          }
+        },
+        "PASSTHROUGH": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "passthrough"
+          }
+        },
+        "REJECT": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "reject"
+          }
+        }
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItemQueueingStatusCode": {
+      "type": "structure",
+      "members": {
+        "_200": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "200"
+          }
+        },
+        "_202": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "202"
+          }
+        },
+        "_429": {
+          "target": "smithy.api#Document",
+          "traits": {
+            "smithy.api#required": {},
+            "smithy.api#jsonName": "429"
+          }
+        }
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItemTurnstileAction": {
+      "type": "enum",
+      "members": {
+        "LOG": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "log"
+          }
+        },
+        "INFINITE_QUEUE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "infinite_queue"
+          }
+        }
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItemTurnstileMode": {
+      "type": "enum",
+      "members": {
+        "OFF": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "off"
+          }
+        },
+        "INVISIBLE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "invisible"
+          }
+        },
+        "VISIBLE_NON_INTERACTIVE": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "visible_non_interactive"
+          }
+        },
+        "VISIBLE_MANAGED": {
+          "target": "smithy.api#Unit",
+          "traits": {
+            "smithy.api#enumValue": "visible_managed"
+          }
+        }
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultItem": {
+      "type": "structure",
+      "members": {
+        "id": {
+          "target": "smithy.api#String"
+        },
+        "additional_routes": {
+          "target": "com.cloudflare.waiting_rooms#ListForZoneResultItemAdditionalRoutesList",
+          "traits": {
+            "smithy.api#documentation": "Only available for the Waiting Room Advanced subscription. Additional hostname and path combinations to which this waiting room will be applied. There is an implied wildcard at the end of the path. The hostname and path combination must be unique to this and all other waiting rooms."
+          }
+        },
+        "cookie_attributes": {
+          "target": "com.cloudflare.waiting_rooms#ListForZoneResultItemCookieAttributes",
+          "traits": {
+            "smithy.api#documentation": "Configures cookie attributes for the waiting room cookie. This encrypted cookie stores a user's status in the waiting room, such as queue position."
+          }
+        },
+        "cookie_suffix": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Appends a '_' + a custom suffix to the end of Cloudflare Waiting Room's cookie name(__cf_waitingroom). If `cookie_suffix` is \"abcd\", the cookie name will be `__cf_waitingroom_abcd`. This field is required if using `additional_routes`."
+          }
+        },
+        "created_on": {
+          "target": "smithy.api#String"
+        },
+        "custom_page_html": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Only available for the Waiting Room Advanced subscription. This is a template html file that will be rendered at the edge. If no custom_page_html is provided, the default waiting room will be used. The template is based on mustache ( https://mustache.github.io/ ). There are several variables that are evaluated by the Cloudflare edge:"
+          }
+        },
+        "default_template_language": {
+          "target": "com.cloudflare.waiting_rooms#ListForZoneResultItemDefaultTemplateLanguage",
+          "traits": {
+            "smithy.api#documentation": "The language of the default page template. If no default_template_language is provided, then `en-US` (English) will be used."
+          }
+        },
+        "description": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A note that you can use to add more details about the waiting room."
+          }
+        },
+        "disable_session_renewal": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Only available for the Waiting Room Advanced subscription. Disables automatic renewal of session cookies. If `true`, an accepted user will have session_duration minutes to browse the site. After that, they will have to go through the waiting room again. If `false`, a user's session cookie will be automatically renewed on every request."
+          }
+        },
+        "enabled_origin_commands": {
+          "target": "com.cloudflare.waiting_rooms#ListForZoneResultItemEnabledOriginCommandsList",
+          "traits": {
+            "smithy.api#documentation": "A list of enabled origin commands."
+          }
+        },
+        "host": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "The host name to which the waiting room will be applied (no wildcards). Please do not include the scheme (http:// or https://). The host and path combination must be unique."
+          }
+        },
+        "json_response_enabled": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Only available for the Waiting Room Advanced subscription. If `true`, requests to the waiting room with the header `Accept: application/json` will receive a JSON response object with information on the user's status in the waiting room as opposed to the configured static HTML page. This JSON response object has one property `cfWaitingRoom` which is an object containing the following fields:"
+          }
+        },
+        "modified_on": {
+          "target": "smithy.api#String"
+        },
+        "name": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "A unique name to identify the waiting room. Only alphanumeric characters, hyphens and underscores are allowed."
+          }
+        },
+        "new_users_per_minute": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Sets the number of new users that will be let into the route every minute. This value is used as baseline for the number of users that are let in per minute. So it is possible that there is a little more or little less traffic coming to the route based on the traffic patterns at that time around the world."
+          }
+        },
+        "next_event_prequeue_start_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An ISO 8601 timestamp that marks when the next event will begin queueing."
+          }
+        },
+        "next_event_start_time": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "An ISO 8601 timestamp that marks when the next event will start."
+          }
+        },
+        "path": {
+          "target": "smithy.api#String",
+          "traits": {
+            "smithy.api#documentation": "Sets the path within the host to enable the waiting room on. The waiting room will be enabled for all subpaths as well. If there are two waiting rooms on the same subpath, the waiting room for the most specific path will be chosen. Wildcards and query parameters are not supported."
+          }
+        },
+        "queue_all": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "If queue_all is `true`, all the traffic that is coming to a route will be sent to the waiting room. No new traffic can get to the route once this field is set and estimated time will become unavailable."
+          }
+        },
+        "queueing_method": {
+          "target": "com.cloudflare.waiting_rooms#ListForZoneResultItemQueueingMethod",
+          "traits": {
+            "smithy.api#documentation": "Sets the queueing method used by the waiting room. Changing this parameter from the **default** queueing method is only available for the Waiting Room Advanced subscription. Regardless of the queueing method, if `queue_all` is enabled or an event is prequeueing, users in the waiting room will not be accepted to the origin. These users will always see a waiting room page that refreshes automatically. The valid queueing methods are:"
+          }
+        },
+        "queueing_status_code": {
+          "target": "com.cloudflare.waiting_rooms#ListForZoneResultItemQueueingStatusCode",
+          "traits": {
+            "smithy.api#documentation": "HTTP status code returned to a user while in the queue."
+          }
+        },
+        "session_duration": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Lifetime of a cookie (in minutes) set by Cloudflare for users who get access to the route. If a user is not seen by Cloudflare again in that time period, they will be treated as a new user that visits the route."
+          }
+        },
+        "suspended": {
+          "target": "smithy.api#Boolean",
+          "traits": {
+            "smithy.api#documentation": "Suspends or allows traffic going to the waiting room. If set to `true`, the traffic will not go to the waiting room."
+          }
+        },
+        "total_active_users": {
+          "target": "smithy.api#Double",
+          "traits": {
+            "smithy.api#documentation": "Sets the total number of active user sessions on the route at a point in time. A route is a combination of host and path on which a waiting room is available. This value is used as a baseline for the total number of active user sessions on the route. It is possible to have a situation where there are more or less active users sessions on the route based on the traffic patterns at that time around the world."
+          }
+        },
+        "turnstile_action": {
+          "target": "com.cloudflare.waiting_rooms#ListForZoneResultItemTurnstileAction",
+          "traits": {
+            "smithy.api#documentation": "Which action to take when a bot is detected using Turnstile. `log` will"
+          }
+        },
+        "turnstile_mode": {
+          "target": "com.cloudflare.waiting_rooms#ListForZoneResultItemTurnstileMode",
+          "traits": {
+            "smithy.api#documentation": "Which Turnstile widget type to use for detecting bot traffic. See"
+          }
+        }
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResultList": {
+      "type": "list",
+      "member": {
+        "target": "com.cloudflare.waiting_rooms#ListForZoneResultItem"
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZoneResponse": {
+      "type": "structure",
+      "members": {
+        "result": {
+          "target": "com.cloudflare.waiting_rooms#ListForZoneResultList",
+          "traits": {
+            "com.cloudflare.protocols#envelopePayload": {},
+            "smithy.api#documentation": "The unwrapped `result` payload of the v4 response envelope."
+          }
+        }
+      },
+      "traits": {
+        "smithy.api#output": {}
+      }
+    },
+    "com.cloudflare.waiting_rooms#ListForZone": {
+      "type": "operation",
+      "input": {
+        "target": "com.cloudflare.waiting_rooms#ListForZoneRequest"
+      },
+      "output": {
+        "target": "com.cloudflare.waiting_rooms#ListForZoneResponse"
+      },
+      "traits": {
+        "smithy.api#http": {
+          "method": "GET",
+          "uri": "/zones/{zone_id}/waiting_rooms",
           "code": 200
         },
         "smithy.api#documentation": "Lists waiting rooms for account or zone.",
@@ -6055,7 +6503,10 @@
           "target": "com.cloudflare.waiting_rooms#Get"
         },
         {
-          "target": "com.cloudflare.waiting_rooms#List"
+          "target": "com.cloudflare.waiting_rooms#ListForAccount"
+        },
+        {
+          "target": "com.cloudflare.waiting_rooms#ListForZone"
         },
         {
           "target": "com.cloudflare.waiting_rooms#Update"

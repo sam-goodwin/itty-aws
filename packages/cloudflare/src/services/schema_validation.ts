@@ -470,13 +470,13 @@ export const SchemasListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSchemasResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SchemasListResultList;
+  result: SchemasListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSchemasResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SchemasListResultList.pipe(T.EnvelopePayload())),
+    result: SchemasListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -540,15 +540,13 @@ export const SettingsOperationsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSettingOperationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsOperationsListResultList;
+  result: SettingsOperationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSettingOperationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      SettingsOperationsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: SettingsOperationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

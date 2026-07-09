@@ -272,13 +272,13 @@ export const StoresSecretsCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface CreateStoreSecretResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: StoresSecretsCreateResultList;
+  result: StoresSecretsCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const CreateStoreSecretResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(StoresSecretsCreateResultList.pipe(T.EnvelopePayload())),
+    result: StoresSecretsCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -671,13 +671,13 @@ export const StoresListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListStoresResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: StoresListResultList;
+  result: StoresListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(StoresListResultList.pipe(T.EnvelopePayload())),
+    result: StoresListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -789,13 +789,13 @@ export const StoresSecretsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListStoreSecretsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: StoresSecretsListResultList;
+  result: StoresSecretsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListStoreSecretsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(StoresSecretsListResultList.pipe(T.EnvelopePayload())),
+    result: StoresSecretsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

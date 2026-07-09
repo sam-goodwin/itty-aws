@@ -553,13 +553,13 @@ export const NamespacesKeysListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListNamespaceKeysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: NamespacesKeysListResultList;
+  result: NamespacesKeysListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListNamespaceKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(NamespacesKeysListResultList.pipe(T.EnvelopePayload())),
+    result: NamespacesKeysListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -629,13 +629,13 @@ export const NamespacesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListNamespacesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: NamespacesListResultList;
+  result: NamespacesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(NamespacesListResultList.pipe(T.EnvelopePayload())),
+    result: NamespacesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1194,7 +1194,11 @@ export const listNamespaces: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type NamespacesKeysBulkDeleteError = CloudflareOpError;
+export type NamespacesKeysBulkDeleteError =
+  | NamespaceNotFound
+  | InvalidRequestBody
+  | InvalidObjectIdentifier
+  | CloudflareOpError;
 /** Remove multiple KV pairs from the namespace. Body should be an array of up to 10,000 keys to be removed. */
 export const namespacesKeysBulkDelete: API.OperationMethod<
   NamespacesKeysBulkDeleteRequest,
@@ -1204,12 +1208,23 @@ export const namespacesKeysBulkDelete: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: NamespacesKeysBulkDeleteRequest,
   output: NamespacesKeysBulkDeleteResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    NamespaceNotFound,
+    InvalidRequestBody,
+    InvalidObjectIdentifier,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type NamespacesKeysBulkGetError = CloudflareOpError;
+export type NamespacesKeysBulkGetError =
+  | InvalidRequestBody
+  | MinimumKeysRequired
+  | NamespaceNotFound
+  | InvalidObjectIdentifier
+  | CloudflareOpError;
 /** Retrieve up to 100 KV pairs from the namespace. Keys must contain text-based values. JSON values can optionally be parsed instead of being returned as a string value. Metadata can be included if `withMetadata` is true. */
 export const namespacesKeysBulkGet: API.OperationMethod<
   NamespacesKeysBulkGetRequest,
@@ -1219,12 +1234,23 @@ export const namespacesKeysBulkGet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: NamespacesKeysBulkGetRequest,
   output: NamespacesKeysBulkGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    InvalidRequestBody,
+    MinimumKeysRequired,
+    NamespaceNotFound,
+    InvalidObjectIdentifier,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type NamespacesKeysBulkUpdateError = CloudflareOpError;
+export type NamespacesKeysBulkUpdateError =
+  | InvalidRequestBody
+  | NamespaceNotFound
+  | InvalidObjectIdentifier
+  | CloudflareOpError;
 /** Write multiple keys and values at once. Body should be an array of up to 10,000 key-value pairs to be stored, along with optional expiration information. Existing values and expirations will be overwritten. If neither `expiration` nor `expiration_ttl` is specified, the key-value pair will never expire. If both are set, `expiration_ttl` is used and `expiration` is ignored. The entire request size must be 100 megabytes or less. */
 export const namespacesKeysBulkUpdate: API.OperationMethod<
   NamespacesKeysBulkUpdateRequest,
@@ -1234,7 +1260,13 @@ export const namespacesKeysBulkUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: NamespacesKeysBulkUpdateRequest,
   output: NamespacesKeysBulkUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    InvalidRequestBody,
+    NamespaceNotFound,
+    InvalidObjectIdentifier,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

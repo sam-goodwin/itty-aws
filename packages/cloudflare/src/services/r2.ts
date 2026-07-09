@@ -2497,13 +2497,13 @@ export const BucketsObjectsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListBucketObjectsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: BucketsObjectsListResultList;
+  result: BucketsObjectsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListBucketObjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(BucketsObjectsListResultList.pipe(T.EnvelopePayload())),
+    result: BucketsObjectsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2686,15 +2686,13 @@ export const SuperSlurperJobsLogsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSuperSlurperJobLogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SuperSlurperJobsLogsListResultList;
+  result: SuperSlurperJobsLogsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSuperSlurperJobLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      SuperSlurperJobsLogsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: SuperSlurperJobsLogsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2814,15 +2812,13 @@ export const SuperSlurperJobsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSuperSlurperJobsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SuperSlurperJobsListResultList;
+  result: SuperSlurperJobsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSuperSlurperJobsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      SuperSlurperJobsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: SuperSlurperJobsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

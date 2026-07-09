@@ -470,13 +470,13 @@ export const KeysListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListKeysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: KeysListResultList;
+  result: KeysListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListKeysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(KeysListResultList.pipe(T.EnvelopePayload())),
+    result: KeysListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -679,13 +679,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListResourceTaggingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListResourceTaggingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -732,13 +732,13 @@ export const ValuesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListValuesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ValuesListResultList;
+  result: ValuesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListValuesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ValuesListResultList.pipe(T.EnvelopePayload())),
+    result: ValuesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

@@ -5033,13 +5033,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListAiGatewaysResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAiGatewaysResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -5120,13 +5120,13 @@ export const CustomProvidersListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListCustomProvidersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CustomProvidersListResultList;
+  result: CustomProvidersListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListCustomProvidersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(CustomProvidersListResultList.pipe(T.EnvelopePayload())),
+    result: CustomProvidersListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -5253,13 +5253,13 @@ export const DatasetsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListDatasetsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DatasetsListResultList;
+  result: DatasetsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListDatasetsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(DatasetsListResultList.pipe(T.EnvelopePayload())),
+    result: DatasetsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -5716,13 +5716,13 @@ export const EvaluationsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListEvaluationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: EvaluationsListResultList;
+  result: EvaluationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListEvaluationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(EvaluationsListResultList.pipe(T.EnvelopePayload())),
+    result: EvaluationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -5797,13 +5797,13 @@ export const EvaluationTypesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListEvaluationTypesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: EvaluationTypesListResultList;
+  result: EvaluationTypesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListEvaluationTypesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(EvaluationTypesListResultList.pipe(T.EnvelopePayload())),
+    result: EvaluationTypesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -5968,13 +5968,13 @@ export const LogsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListLogsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LogsListResultList;
+  result: LogsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListLogsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(LogsListResultList.pipe(T.EnvelopePayload())),
+    result: LogsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -6042,13 +6042,13 @@ export const ProviderConfigsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListProviderConfigsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ProviderConfigsListResultList;
+  result: ProviderConfigsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListProviderConfigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ProviderConfigsListResultList.pipe(T.EnvelopePayload())),
+    result: ProviderConfigsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

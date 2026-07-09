@@ -675,13 +675,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListCustomCertificatesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListCustomCertificatesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1118,13 +1118,13 @@ export const PrioritizeUpdateResultList = /*@__PURE__*/ S.Array(
 
 export interface PutPrioritizeResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PrioritizeUpdateResultList;
+  result: PrioritizeUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const PutPrioritizeResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PrioritizeUpdateResultList.pipe(T.EnvelopePayload())),
+    result: PrioritizeUpdateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

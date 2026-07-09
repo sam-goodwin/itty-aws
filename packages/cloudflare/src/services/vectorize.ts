@@ -589,13 +589,13 @@ export const IndexesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListIndexesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: IndexesListResultList;
+  result: IndexesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListIndexesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(IndexesListResultList.pipe(T.EnvelopePayload())),
+    result: IndexesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

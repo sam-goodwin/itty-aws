@@ -1438,13 +1438,13 @@ export const AddressesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListAddressesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AddressesListResultList;
+  result: AddressesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAddressesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(AddressesListResultList.pipe(T.EnvelopePayload())),
+    result: AddressesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

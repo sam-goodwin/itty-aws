@@ -8505,13 +8505,13 @@ export const RecordsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListRecordsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RecordsListResultList;
+  result: RecordsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListRecordsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RecordsListResultList.pipe(T.EnvelopePayload())),
+    result: RecordsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -8618,15 +8618,13 @@ export const SettingsAccountViewsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSettingAccountViewsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SettingsAccountViewsListResultList;
+  result: SettingsAccountViewsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSettingAccountViewsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      SettingsAccountViewsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: SettingsAccountViewsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -8674,15 +8672,13 @@ export const ZoneTransfersAclsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListZoneTransferAclsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ZoneTransfersAclsListResultList;
+  result: ZoneTransfersAclsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListZoneTransferAclsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      ZoneTransfersAclsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: ZoneTransfersAclsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -8740,15 +8736,13 @@ export const ZoneTransfersPeersListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListZoneTransferPeersResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ZoneTransfersPeersListResultList;
+  result: ZoneTransfersPeersListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListZoneTransferPeersResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      ZoneTransfersPeersListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: ZoneTransfersPeersListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -8800,15 +8794,13 @@ export const ZoneTransfersTsigsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListZoneTransferTsigsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ZoneTransfersTsigsListResultList;
+  result: ZoneTransfersTsigsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListZoneTransferTsigsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      ZoneTransfersTsigsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: ZoneTransfersTsigsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -12288,13 +12280,13 @@ export const RecordsScanListResultList = /*@__PURE__*/ S.Array(
 
 export interface ScanListRecordResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RecordsScanListResultList;
+  result: RecordsScanListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ScanListRecordResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RecordsScanListResultList.pipe(T.EnvelopePayload())),
+    result: RecordsScanListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

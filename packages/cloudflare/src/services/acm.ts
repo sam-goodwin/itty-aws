@@ -352,15 +352,13 @@ export const CustomTrustStoreListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListCustomTrustStoresResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CustomTrustStoreListResultList;
+  result: CustomTrustStoreListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListCustomTrustStoresResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      CustomTrustStoreListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: CustomTrustStoreListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -625,7 +623,13 @@ export const listCustomTrustStores: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type TotalTlsUpdateError = CloudflareOpError;
+export type TotalTlsUpdateError =
+  | InvalidObjectIdentifier
+  | AdvancedCertificateManagerRequired
+  | NoStateChange
+  | PreviousJobInProgress
+  | Forbidden
+  | CloudflareOpError;
 /** Set Total TLS Settings or disable the feature for a Zone. */
 export const totalTlsUpdate: API.OperationMethod<
   TotalTlsUpdateRequest,
@@ -635,7 +639,15 @@ export const totalTlsUpdate: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: TotalTlsUpdateRequest,
   output: TotalTlsUpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    InvalidObjectIdentifier,
+    AdvancedCertificateManagerRequired,
+    NoStateChange,
+    PreviousJobInProgress,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

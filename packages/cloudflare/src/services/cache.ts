@@ -875,15 +875,13 @@ export const OriginCloudRegionsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListOriginCloudRegionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: OriginCloudRegionsListResultList;
+  result: OriginCloudRegionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListOriginCloudRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      OriginCloudRegionsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: OriginCloudRegionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

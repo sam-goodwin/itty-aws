@@ -2057,16 +2057,51 @@ export interface CreateProjectDeploymentRequest {
   accountId: string;
   /** Name of the project. */
   projectName: string;
+  /** The branch to build the new deployment from. */
+  branch?: string;
+  commitDirty?: boolean;
+  commitHash?: string;
+  commitMessage?: string;
+  /** JSON string mapping file paths to their content hashes. */
+  manifest?: string;
+  pagesBuildOutputDir?: string;
+  wranglerConfigHash?: string;
+  headers?: unknown;
+  redirects?: unknown;
+  routesJson?: unknown;
+  workerBundle?: unknown;
+  workerJs?: unknown;
+  functionsFilepathRoutingConfigJson?: unknown;
 }
 export const CreateProjectDeploymentRequest = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
     accountId: S.String.pipe(T.Label("account_id")),
     projectName: S.String.pipe(T.Label("project_name")),
+    branch: S.optional(S.String),
+    commitDirty: S.optional(S.Boolean.pipe(T.Body("commit_dirty"))),
+    commitHash: S.optional(S.String.pipe(T.Body("commit_hash"))),
+    commitMessage: S.optional(S.String.pipe(T.Body("commit_message"))),
+    manifest: S.optional(S.String),
+    pagesBuildOutputDir: S.optional(
+      S.String.pipe(T.Body("pages_build_output_dir")),
+    ),
+    wranglerConfigHash: S.optional(
+      S.String.pipe(T.Body("wrangler_config_hash")),
+    ),
+    headers: S.optional(S.Unknown.pipe(T.Body("_headers"))),
+    redirects: S.optional(S.Unknown.pipe(T.Body("_redirects"))),
+    routesJson: S.optional(S.Unknown.pipe(T.Body("_routes.json"))),
+    workerBundle: S.optional(S.Unknown.pipe(T.Body("_worker.bundle"))),
+    workerJs: S.optional(S.Unknown.pipe(T.Body("_worker.js"))),
+    functionsFilepathRoutingConfigJson: S.optional(
+      S.Unknown.pipe(T.Body("functions-filepath-routing-config.json")),
+    ),
   }).pipe(
     T.Http({
       method: "POST",
       uri: "/accounts/{account_id}/pages/projects/{project_name}/deployments",
       code: 200,
+      contentType: "multipart",
     }),
   ),
 ).annotate({
@@ -4867,15 +4902,13 @@ export const ProjectsDeploymentsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListProjectDeploymentsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ProjectsDeploymentsListResultList;
+  result: ProjectsDeploymentsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListProjectDeploymentsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      ProjectsDeploymentsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: ProjectsDeploymentsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -5016,13 +5049,13 @@ export const ProjectsDomainsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListProjectDomainsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ProjectsDomainsListResultList;
+  result: ProjectsDomainsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListProjectDomainsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ProjectsDomainsListResultList.pipe(T.EnvelopePayload())),
+    result: ProjectsDomainsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -6238,13 +6271,13 @@ export const ProjectsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListProjectsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ProjectsListResultList;
+  result: ProjectsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListProjectsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ProjectsListResultList.pipe(T.EnvelopePayload())),
+    result: ProjectsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

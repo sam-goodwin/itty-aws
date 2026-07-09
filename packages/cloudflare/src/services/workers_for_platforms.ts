@@ -1158,17 +1158,15 @@ export const DispatchNamespacesScriptsBindingsGetResultList =
 
 export interface GetDispatchNamespaceScriptBindingResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DispatchNamespacesScriptsBindingsGetResultList;
+  result: DispatchNamespacesScriptsBindingsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetDispatchNamespaceScriptBindingResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      result: S.optional(
-        DispatchNamespacesScriptsBindingsGetResultList.pipe(
-          T.EnvelopePayload(),
-        ),
+      result: DispatchNamespacesScriptsBindingsGetResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -1826,15 +1824,13 @@ export const DispatchNamespacesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListDispatchNamespacesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DispatchNamespacesListResultList;
+  result: DispatchNamespacesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListDispatchNamespacesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      DispatchNamespacesListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: DispatchNamespacesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1893,17 +1889,15 @@ export const DispatchNamespacesScriptsSecretsListResultList =
 
 export interface ListDispatchNamespaceScriptSecretsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DispatchNamespacesScriptsSecretsListResultList;
+  result: DispatchNamespacesScriptsSecretsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListDispatchNamespaceScriptSecretsResponse =
   /*@__PURE__*/ S.suspend(() =>
     S.Struct({
-      result: S.optional(
-        DispatchNamespacesScriptsSecretsListResultList.pipe(
-          T.EnvelopePayload(),
-        ),
+      result: DispatchNamespacesScriptsSecretsListResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -1944,15 +1938,15 @@ export const DispatchNamespacesScriptsTagsListResultList =
 
 export interface ListDispatchNamespaceScriptTagsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DispatchNamespacesScriptsTagsListResultList;
+  result: DispatchNamespacesScriptsTagsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListDispatchNamespaceScriptTagsResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      result: S.optional(
-        DispatchNamespacesScriptsTagsListResultList.pipe(T.EnvelopePayload()),
+      result: DispatchNamespacesScriptsTagsListResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),
@@ -3402,15 +3396,15 @@ export const DispatchNamespacesScriptsTagsUpdateResultList =
 
 export interface PutDispatchNamespaceScriptTagResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DispatchNamespacesScriptsTagsUpdateResultList;
+  result: DispatchNamespacesScriptsTagsUpdateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const PutDispatchNamespaceScriptTagResponse = /*@__PURE__*/ S.suspend(
   () =>
     S.Struct({
-      result: S.optional(
-        DispatchNamespacesScriptsTagsUpdateResultList.pipe(T.EnvelopePayload()),
+      result: DispatchNamespacesScriptsTagsUpdateResultList.pipe(
+        T.EnvelopePayload(),
       ),
       resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
     }),

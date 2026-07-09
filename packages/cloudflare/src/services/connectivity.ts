@@ -220,15 +220,13 @@ export const DirectoryServicesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListDirectoryServicesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: DirectoryServicesListResultList;
+  result: DirectoryServicesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListDirectoryServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      DirectoryServicesListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: DirectoryServicesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

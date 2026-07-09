@@ -1200,13 +1200,13 @@ export const RecipientsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListRecipientsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RecipientsListResultList;
+  result: RecipientsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListRecipientsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(RecipientsListResultList.pipe(T.EnvelopePayload())),
+    result: RecipientsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1321,13 +1321,13 @@ export const ResourcesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListResourcesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ResourcesListResultList;
+  result: ResourcesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListResourcesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ResourcesListResultList.pipe(T.EnvelopePayload())),
+    result: ResourcesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1558,13 +1558,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListResourceSharingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListResourceSharingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

@@ -209,13 +209,13 @@ export const AuthorsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListAuthorsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AuthorsListResultList;
+  result: AuthorsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAuthorsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(AuthorsListResultList.pipe(T.EnvelopePayload())),
+    result: AuthorsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -278,13 +278,13 @@ export const FinetunesPublicListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListFinetunePublicsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: FinetunesPublicListResultList;
+  result: FinetunesPublicListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListFinetunePublicsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(FinetunesPublicListResultList.pipe(T.EnvelopePayload())),
+    result: FinetunesPublicListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -418,13 +418,13 @@ export const TasksListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListTasksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TasksListResultList;
+  result: TasksListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListTasksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(TasksListResultList.pipe(T.EnvelopePayload())),
+    result: TasksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -725,13 +725,13 @@ export const ToMarkdownSupportedResultList = /*@__PURE__*/ S.Array(
 
 export interface SupportedToMarkdownResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ToMarkdownSupportedResultList;
+  result: ToMarkdownSupportedResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const SupportedToMarkdownResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ToMarkdownSupportedResultList.pipe(T.EnvelopePayload())),
+    result: ToMarkdownSupportedResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

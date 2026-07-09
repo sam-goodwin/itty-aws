@@ -141,6 +141,8 @@ const lowerFirst = (s: string): string => {
 
 const NULLABLE_TRAIT = "com.cloudflare.protocols#nullable";
 const ERROR_MATCHERS_TRAIT = "com.cloudflare.protocols#errorMatchers";
+const FORM_DATA_FILE_TRAIT = "com.cloudflare.protocols#formDataFile";
+const KEY_DICTIONARY_TRAIT = "com.cloudflare.protocols#keyDictionary";
 const PAGINATED_TRAIT = "smithy.api#paginated";
 
 const oneLine = (s: string | undefined): string | undefined =>
@@ -264,10 +266,11 @@ const generateModel = (
     tsName: string;
     wire: string;
     target: string;
-    binding: "label" | "query" | "header" | "payload" | "body";
+    binding: "label" | "query" | "header" | "payload" | "file" | "body";
     required: boolean;
     nullable: boolean;
     doc: string | undefined;
+    keyDictionary: Record<string, string> | undefined;
   }
 
   const memberInfos = (d: any): MemberInfo[] => {
@@ -289,7 +292,9 @@ const generateModel = (
               ? "header"
               : ENVELOPE_PAYLOAD_TRAIT in traits
                 ? "payload"
-                : "body";
+                : FORM_DATA_FILE_TRAIT in traits
+                  ? "file"
+                  : "body";
       const wire =
         binding === "label"
           ? mn // URI placeholders use the smithy member name
@@ -313,6 +318,7 @@ const generateModel = (
         required: "smithy.api#required" in traits,
         nullable: NULLABLE_TRAIT in traits,
         doc: oneLine(traits["smithy.api#documentation"]),
+        keyDictionary: traits[KEY_DICTIONARY_TRAIT],
       };
     });
   };
@@ -343,8 +349,14 @@ const generateModel = (
       case "payload":
         pipes.push("T.EnvelopePayload()");
         break;
+      case "file":
+        pipes.push("T.FormDataFile()");
+        break;
       case "body":
         if (info.wire !== info.tsName) pipes.push(`T.Body(${q(info.wire)})`);
+        if (info.keyDictionary) {
+          pipes.push(`T.KeyDictionary(${JSON.stringify(info.keyDictionary)})`);
+        }
         break;
     }
 
@@ -358,6 +370,7 @@ const generateModel = (
   //    on the output — otherwise `.pages()` would loop or yield nothing, so
   //    the op degrades to a plain operation.
   const paginatedOutputs = new Set<string>();
+  const paginatedItemsRoot = new Map<string, string>();
   for (const op of selected) {
     const pg = op.def.traits?.[PAGINATED_TRAIT];
     if (!pg) continue;
@@ -375,6 +388,7 @@ const generateModel = (
     if (tokenOk && itemsOk) {
       op.def.__pagination = pg;
       paginatedOutputs.add(op.def.__output);
+      paginatedItemsRoot.set(op.def.__output, itemsRoot);
     }
   }
 
@@ -433,10 +447,19 @@ const generateModel = (
     if (doc) out.push(`/** ${doc} */`);
 
     if (d.type === "structure") {
-      const infos = memberInfos(d);
+      // Paginated list responses always deliver their items member (the
+      // protocol maps the envelope's `result`), so type it required even
+      // though the docs mark `result` optional in the envelope.
+      const itemsRoot = paginatedItemsRoot.get(id);
+      const infos = memberInfos(d).map((info) =>
+        info.tsName === itemsRoot ? { ...info, required: true } : info,
+      );
       const fields = infos.flatMap((info) => {
         const opt = info.required ? "" : "?";
-        const type = `${tsRef(info.target)}${info.nullable ? " | null" : ""}`;
+        const type =
+          info.binding === "file"
+            ? "(File | Blob)[]"
+            : `${tsRef(info.target)}${info.nullable ? " | null" : ""}`;
         return [
           ...(info.doc ? [`  /** ${info.doc} */`] : []),
           `  ${tsKey(info.tsName)}${opt}: ${type};`,

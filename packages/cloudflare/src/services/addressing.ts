@@ -1537,13 +1537,13 @@ export const AddressMapsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListAddressMapsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: AddressMapsListResultList;
+  result: AddressMapsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListAddressMapsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(AddressMapsListResultList.pipe(T.EnvelopePayload())),
+    result: AddressMapsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1659,15 +1659,13 @@ export const PrefixesBgpPrefixesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPrefixBgpPrefixesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PrefixesBgpPrefixesListResultList;
+  result: PrefixesBgpPrefixesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPrefixBgpPrefixesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      PrefixesBgpPrefixesListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: PrefixesBgpPrefixesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1730,15 +1728,13 @@ export const PrefixesDelegationsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPrefixDelegationsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PrefixesDelegationsListResultList;
+  result: PrefixesDelegationsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPrefixDelegationsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      PrefixesDelegationsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: PrefixesDelegationsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1843,13 +1839,13 @@ export const PrefixesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPrefixesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PrefixesListResultList;
+  result: PrefixesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPrefixesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PrefixesListResultList.pipe(T.EnvelopePayload())),
+    result: PrefixesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1932,15 +1928,13 @@ export const PrefixesServiceBindingsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPrefixServiceBindingsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PrefixesServiceBindingsListResultList;
+  result: PrefixesServiceBindingsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPrefixServiceBindingsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      PrefixesServiceBindingsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: PrefixesServiceBindingsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -1989,15 +1983,13 @@ export const RegionalHostnamesRegionsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListRegionalHostnameRegionsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RegionalHostnamesRegionsListResultList;
+  result: RegionalHostnamesRegionsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListRegionalHostnameRegionsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      RegionalHostnamesRegionsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: RegionalHostnamesRegionsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2050,15 +2042,13 @@ export const RegionalHostnamesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListRegionalHostnamesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: RegionalHostnamesListResultList;
+  result: RegionalHostnamesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListRegionalHostnamesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      RegionalHostnamesListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: RegionalHostnamesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2105,13 +2095,13 @@ export const ServicesListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListServicesResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ServicesListResultList;
+  result: ServicesListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListServicesResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ServicesListResultList.pipe(T.EnvelopePayload())),
+    result: ServicesListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

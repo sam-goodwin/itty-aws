@@ -42,6 +42,8 @@ const DIST_PATCHES = path.join(DISTILLED, "packages/cloudflare/patches");
 
 const upperFirst = (s: string): string =>
   s.charAt(0).toUpperCase() + s.slice(1);
+const lowerFirst = (s: string): string =>
+  s.charAt(0).toLowerCase() + s.slice(1);
 const normPath = (p: string): string => p.replace(/\{[^}]+\}/g, "{}");
 
 // ============================================================================
@@ -181,8 +183,16 @@ for (const file of fs.readdirSync(SMITHY_DIR)) {
 
     const patches: Array<Record<string, unknown>> = [];
 
+    // Our merged services (e.g. zero_trust) can map to several distilled
+    // services whose export names overlap — the first op keeps distilled's
+    // name; later ones keep their docs-derived name but still get errors and
+    // pagination (their patch file is keyed by our op name instead).
+    const fileKey = `${resource}/${dist.exportName}`;
+    const isDuplicate = writtenFiles.has(fileKey);
+    if (isDuplicate) collisions++;
+
     // --- Renames: operation + Request/Response shapes -----------------------
-    if (ourOpName !== wantOpName) {
+    if (!isDuplicate && ourOpName !== wantOpName) {
       // Skip the rename if the target names already exist as different shapes.
       const wanted = [
         wantOpName,
@@ -287,26 +297,16 @@ for (const file of fs.readdirSync(SMITHY_DIR)) {
 
     if (!patches.length) continue;
 
-    // Our merged services (e.g. zero_trust) can map to several distilled
-    // services whose export names overlap — first op wins, rest are skipped
-    // so a later patch never silently clobbers an earlier rename.
-    const fileKey = `${resource}/${dist.exportName}`;
-    if (writtenFiles.has(fileKey)) {
-      console.warn(
-        `⚠️  duplicate export name, skipping: ${fileKey} (for ${ourOpName})`,
-      );
-      collisions++;
-      continue;
-    }
     writtenFiles.add(fileKey);
+    const fileName = isDuplicate ? lowerFirst(ourOpName) : dist.exportName;
 
     const dir = path.join(PATCH_DIR, resource);
     fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(
-      path.join(dir, `${dist.exportName}.json`),
+      path.join(dir, `${fileName}.json`),
       JSON.stringify(
         {
-          description: `Align ${resource}#${ourOpName} with distilled cloudflare/${dist.service} ${dist.exportName}`,
+          description: `Align ${resource}#${ourOpName} with distilled cloudflare/${dist.service} ${dist.exportName}${isDuplicate ? " (duplicate export name — errors/pagination only, no rename)" : ""}`,
           patches,
         },
         null,

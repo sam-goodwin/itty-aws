@@ -2244,13 +2244,13 @@ export const CaptionsGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetCaptionResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: CaptionsGetResultList;
+  result: CaptionsGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetCaptionResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(CaptionsGetResultList.pipe(T.EnvelopePayload())),
+    result: CaptionsGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -2497,13 +2497,13 @@ export const KeysGetResultList = /*@__PURE__*/ S.Array(
 
 export interface GetKeyResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: KeysGetResultList;
+  result: KeysGetResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const GetKeyResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(KeysGetResultList.pipe(T.EnvelopePayload())),
+    result: KeysGetResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({ identifier: "GetKeyResponse" }) as any as S.Schema<GetKeyResponse>;
@@ -3105,15 +3105,13 @@ export const LiveInputsOutputsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListLiveInputOutputsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: LiveInputsOutputsListResultList;
+  result: LiveInputsOutputsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListLiveInputOutputsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(
-      LiveInputsOutputsListResultList.pipe(T.EnvelopePayload()),
-    ),
+    result: LiveInputsOutputsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3472,13 +3470,13 @@ export const ListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListStreamsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: ListResultList;
+  result: ListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListStreamsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(ListResultList.pipe(T.EnvelopePayload())),
+    result: ListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -3552,13 +3550,13 @@ export const WatermarksListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListWatermarksResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: WatermarksListResultList;
+  result: WatermarksListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListWatermarksResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(WatermarksListResultList.pipe(T.EnvelopePayload())),
+    result: WatermarksListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({

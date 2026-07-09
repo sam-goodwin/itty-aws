@@ -140,13 +140,13 @@ export const PayloadsCreateResultList = /*@__PURE__*/ S.Array(
 
 export interface CreatePayloadResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PayloadsCreateResultList;
+  result: PayloadsCreateResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const CreatePayloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PayloadsCreateResultList.pipe(T.EnvelopePayload())),
+    result: PayloadsCreateResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -196,13 +196,13 @@ export const PayloadsDeleteResultList = /*@__PURE__*/ S.Array(
 
 export interface DeletePayloadResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PayloadsDeleteResultList;
+  result: PayloadsDeleteResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const DeletePayloadResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PayloadsDeleteResultList.pipe(T.EnvelopePayload())),
+    result: PayloadsDeleteResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -343,13 +343,13 @@ export const PayloadsListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListPayloadsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: PayloadsListResultList;
+  result: PayloadsListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListPayloadsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(PayloadsListResultList.pipe(T.EnvelopePayload())),
+    result: PayloadsListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -577,7 +577,7 @@ export const listPayloads: API.PaginatedOperationMethod<
   cloudflarePaginate,
 );
 
-export type SettingsGetError = CloudflareOpError;
+export type SettingsGetError = Forbidden | CloudflareOpError;
 /** Retrieve the current status of Content Scanning. */
 export const settingsGet: API.OperationMethod<
   SettingsGetRequest,
@@ -587,12 +587,15 @@ export const settingsGet: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: SettingsGetRequest,
   output: SettingsGetResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [Forbidden, CloudflareRateLimited, CloudflareError],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));
 
-export type UpdateError = CloudflareOpError;
+export type UpdateError =
+  | ContentScanningNotEntitled
+  | Forbidden
+  | CloudflareOpError;
 /** Update the Content Scanning status. */
 export const update: API.OperationMethod<
   UpdateRequest,
@@ -602,7 +605,12 @@ export const update: API.OperationMethod<
 > = /*@__PURE__*/ API.make(() => ({
   input: UpdateRequest,
   output: UpdateResponse,
-  errors: [CloudflareRateLimited, CloudflareError],
+  errors: [
+    ContentScanningNotEntitled,
+    Forbidden,
+    CloudflareRateLimited,
+    CloudflareError,
+  ],
   protocol: CloudflareProtocol,
   retry: Retry.Retry,
 }));

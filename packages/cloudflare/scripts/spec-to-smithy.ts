@@ -519,6 +519,52 @@ const buildMembers = (
 const ENVELOPE_KEYS = new Set(["success", "errors", "messages", "result_info"]);
 
 /** Build one operation (plus its input/output shapes) into the bag. */
+/**
+ * Split a dual-scope operation (docs write `/{accounts_or_zones}/
+ * {account_or_zone_id}/…` for endpoints that exist under both accounts and
+ * zones) into two concrete operations, `<Name>ForAccount` and `<Name>ForZone`.
+ * A single parameterized op would force callers to pass the scope segment
+ * explicitly and can never line up with the per-scope operations other
+ * Cloudflare tooling exposes.
+ */
+const splitDualScope = (
+  opName: string,
+  parsed: ParsedOp,
+): Array<{ opName: string; parsed: ParsedOp }> => {
+  if (!parsed.uri.includes("{accounts_or_zones}")) {
+    return [{ opName, parsed }];
+  }
+  const scoped = (
+    scope: "accounts" | "zones",
+    idName: string,
+    suffix: string,
+  ): { opName: string; parsed: ParsedOp } => ({
+    opName: `${opName}${suffix}`,
+    parsed: {
+      ...parsed,
+      uri: parsed.uri
+        .replace("{accounts_or_zones}", scope)
+        .replace("{account_or_zone_id}", `{${idName}}`),
+      pathParams: [
+        {
+          name: idName,
+          typeStr: "string",
+          doc: "Identifier.",
+          children: [],
+        } as FieldNode,
+        ...parsed.pathParams.filter(
+          (p) =>
+            p.name !== "accounts_or_zones" && p.name !== "account_or_zone_id",
+        ),
+      ],
+    },
+  });
+  return [
+    scoped("accounts", "account_id", "ForAccount"),
+    scoped("zones", "zone_id", "ForZone"),
+  ];
+};
+
 const buildOperation = (bag: Bag, opName: string, parsed: ParsedOp): string => {
   // ---- Input ----
   const pathMap = new Map<string, FieldNode>();
@@ -896,8 +942,10 @@ const command = Command.make(
         }
 
         try {
-          const opId = buildOperation(bag, opName, parsed);
-          serviceOps.get(top)!.push({ target: opId });
+          for (const variant of splitDualScope(opName, parsed)) {
+            const opId = buildOperation(bag, variant.opName, variant.parsed);
+            serviceOps.get(top)!.push({ target: opId });
+          }
           converted++;
         } catch (err) {
           skipped++;

@@ -342,13 +342,13 @@ export const SfuListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListSfusResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: SfuListResultList;
+  result: SfuListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListSfusResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(SfuListResultList.pipe(T.EnvelopePayload())),
+    result: SfuListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
@@ -401,13 +401,13 @@ export const TurnListResultList = /*@__PURE__*/ S.Array(
 
 export interface ListTurnsResponse {
   /** The unwrapped `result` payload of the v4 response envelope. */
-  result?: TurnListResultList;
+  result: TurnListResultList;
   /** Pagination info from the envelope's `result_info`. */
   resultInfo?: ResultInfo | null;
 }
 export const ListTurnsResponse = /*@__PURE__*/ S.suspend(() =>
   S.Struct({
-    result: S.optional(TurnListResultList.pipe(T.EnvelopePayload())),
+    result: TurnListResultList.pipe(T.EnvelopePayload()),
     resultInfo: S.optional(S.NullOr(ResultInfo).pipe(T.ResultInfo())),
   }),
 ).annotate({
