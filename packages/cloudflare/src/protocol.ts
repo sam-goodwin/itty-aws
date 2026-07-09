@@ -290,10 +290,12 @@ const encode = ({
 
     // Input keys the schema doesn't know pass through as body fields — the
     // docs-sourced schemas can lag the real API, and silently dropping them
-    // would break working callers.
+    // would break working callers. Callers write camelCase against the
+    // TS-facing surface while Cloudflare's wire is snake_case, so unknown
+    // top-level keys are snake_cased (nested content passes verbatim).
     for (const [key, value] of Object.entries(inputObj)) {
       if (consumed.has(key) || value === undefined) continue;
-      body[key] = value;
+      body[key.replace(/([a-z0-9])([A-Z])/g, "$1_$2").toLowerCase()] = value;
       hasBodyMembers = true;
     }
 
