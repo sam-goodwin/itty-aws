@@ -1,0 +1,40 @@
+{
+  "description": "Add the undocumented DELETE /api/billing/v1/subscriptions/{subscriptionId} (cancel subscription) endpoint. Not present in the published OpenAPI spec, but used by Hostinger's own official Terraform provider (hostinger/terraform-provider-hostinger hostinger/client.go CancelSubscription), which treats HTTP 200/204 as success. This is the only way to delete a VPS: cancelling its backing billing subscription.",
+  "patches": [
+    {
+      "op": "add",
+      "path": "/paths/~1api~1billing~1v1~1subscriptions~1{subscriptionId}",
+      "value": {
+        "delete": {
+          "tags": ["Billing: Subscriptions"],
+          "summary": "Cancel subscription",
+          "description": "Cancel a subscription. UNDOCUMENTED endpoint observed in Hostinger's official Terraform provider; cancelling the subscription of a VPS deprovisions the virtual machine.",
+          "operationId": "billing_cancelSubscriptionV1",
+          "parameters": [
+            {
+              "$ref": "#/components/parameters/subscriptionId"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Success empty response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Common.SuccessEmptyResource"
+                  }
+                }
+              }
+            },
+            "401": {
+              "$ref": "#/components/responses/Common.Response.UnauthorizedResponse"
+            },
+            "500": {
+              "$ref": "#/components/responses/Common.Response.ErrorResponse"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

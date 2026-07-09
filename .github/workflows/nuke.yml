@@ -70,6 +70,10 @@ on:
         description: "Eas"
         type: boolean
         default: false
+      hostinger:
+        description: "Hostinger"
+        type: boolean
+        default: false
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
