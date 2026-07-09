@@ -107,6 +107,79 @@ const nameOf = (prop: AST.PropertySignature, symbol: symbol): string => {
 
 const BODYLESS = new Set(["GET", "HEAD"]);
 
+// --- Recursive wire-name mapping ---------------------------------------------
+//
+// TS-facing member names are camelCase; wire names (from `T.Body(...)`
+// annotations) are whatever the API uses (usually snake_case). The mapping
+// applies at EVERY nesting level, so requests/responses are walked against
+// the schema AST. Keys the schema doesn't know pass through verbatim — the
+// docs-sourced schemas can lag the real API, and dropping unknown fields
+// would silently break working callers.
+
+/** Resolve wrappers to the real node: Suspend, encoding, optional/null unions. */
+const resolveNode = (ast: AST.AST): AST.AST => {
+  if (ast._tag === "Suspend") return resolveNode(ast.thunk());
+  if (ast.encoding && ast.encoding.length > 0)
+    return resolveNode(ast.encoding[0]!.to);
+  if (ast._tag === "Union") {
+    const real = (ast as AST.Union).types.filter(
+      (t) =>
+        t._tag !== "Undefined" &&
+        t._tag !== "Null" &&
+        !(t._tag === "Literal" && (t as any).literal === null),
+    );
+    if (real.length === 1) return resolveNode(real[0]!);
+  }
+  return ast;
+};
+
+/** Recursively rename keys between TS names and wire names, per the schema. */
+const mapKeys = (
+  ast: AST.AST,
+  value: unknown,
+  direction: "encode" | "decode",
+): unknown => {
+  if (value === null || value === undefined || typeof value !== "object") {
+    return value;
+  }
+  const node = resolveNode(ast);
+
+  if (node._tag === "Arrays") {
+    if (!Array.isArray(value)) return value;
+    const elem = (node as any).rest?.[0] as AST.AST | undefined;
+    return elem ? value.map((v) => mapKeys(elem, v, direction)) : value;
+  }
+
+  if (node._tag === "Objects" && !Array.isArray(value)) {
+    const props = (node as any)
+      .propertySignatures as readonly AST.PropertySignature[];
+    const isigs = (node as any).indexSignatures as
+      | readonly { type: AST.AST }[]
+      | undefined;
+    if (props.length === 0 && !(isigs && isigs.length)) return value; // opaque
+    const out: Record<string, unknown> = {};
+    const consumed = new Set<string>();
+    for (const p of props) {
+      const tsName = String(p.name);
+      const wire = nameOf(p, bodySymbol);
+      const from = direction === "encode" ? tsName : wire;
+      const to = direction === "encode" ? wire : tsName;
+      consumed.add(from);
+      const v = (value as Record<string, unknown>)[from];
+      if (v === undefined) continue;
+      out[to] = mapKeys(p.type, v, direction);
+    }
+    for (const [k, v] of Object.entries(value as Record<string, unknown>)) {
+      if (consumed.has(k) || v === undefined) continue;
+      out[k] =
+        isigs && isigs.length ? mapKeys(isigs[0]!.type, v, direction) : v;
+    }
+    return out;
+  }
+
+  return value;
+};
+
 // Bridge: Protocol.decode is typed as Effect<unknown> (no error channel), but
 // Cloudflare failures are real typed errors that an operation re-surfaces via
 // its `errors: [...]` list. Fail with the instance and erase the error type
@@ -170,7 +243,7 @@ const encode = ({
           query.append(name, String(value));
         }
       } else {
-        body[nameOf(prop, bodySymbol)] = value;
+        body[nameOf(prop, bodySymbol)] = mapKeys(prop.type, value, "encode");
       }
     }
 
@@ -330,7 +403,7 @@ const makeDecode =
             result[key] = camelizeKeys(json.result_info);
           }
         } else if (hasPropAnn(prop, envelopePayloadSymbol)) {
-          result[key] = payload;
+          result[key] = mapKeys(prop.type, payload, "decode");
         } else if (hasPropAnn(prop, headerSymbol)) {
           const v = response.headers[nameOf(prop, headerSymbol).toLowerCase()];
           if (v !== undefined) result[key] = v;
@@ -339,7 +412,11 @@ const makeDecode =
         } else {
           const wire = nameOf(prop, bodySymbol);
           if (payload && typeof payload === "object" && wire in payload) {
-            result[key] = (payload as Record<string, unknown>)[wire];
+            result[key] = mapKeys(
+              prop.type,
+              (payload as Record<string, unknown>)[wire],
+              "decode",
+            );
           }
         }
       }

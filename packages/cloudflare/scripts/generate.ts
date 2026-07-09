@@ -604,9 +604,28 @@ const command = Command.make(
       yield* Console.log(`   Smithy: ${smithyDir}`);
       yield* Console.log(`   Output: ${outDir}`);
 
-      const entries = (yield* fs.readDirectory(smithyDir))
+      // Models come from the generated smithy dir plus manual-specs/ —
+      // hand-authored models for APIs the Cloudflare docs don't cover
+      // (e.g. Containers). A manual model must not shadow a generated one.
+      const manualDir = path.resolve(root, "manual-specs");
+      const generated = (yield* fs.readDirectory(smithyDir))
         .filter((f) => f.endsWith(".json") && f !== "cloudflare.protocols.json")
-        .sort();
+        .map((f) => ({ file: f, dir: smithyDir }));
+      const manual = (yield* fs.exists(manualDir))
+        ? (yield* fs.readDirectory(manualDir))
+            .filter((f) => f.endsWith(".json"))
+            .map((f) => ({ file: f, dir: manualDir }))
+        : [];
+      for (const m of manual) {
+        if (generated.some((g) => g.file === m.file)) {
+          return yield* Effect.dieMessage(
+            `manual-specs/${m.file} shadows a generated model — rename or delete it`,
+          );
+        }
+      }
+      const entries = [...generated, ...manual].sort((a, b) =>
+        a.file.localeCompare(b.file),
+      );
 
       yield* fs.makeDirectory(outDir, { recursive: true });
 
@@ -623,7 +642,9 @@ const command = Command.make(
       // silently dropped — flag it instead.
       const patchRoot = path.join(root, "patches");
       if (yield* fs.exists(patchRoot)) {
-        const resources = new Set(entries.map((f) => f.replace(/\.json$/, "")));
+        const resources = new Set(
+          entries.map((e) => e.file.replace(/\.json$/, "")),
+        );
         for (const dir of yield* fs.readDirectory(patchRoot)) {
           if (!resources.has(dir)) {
             yield* Console.warn(
@@ -633,13 +654,13 @@ const command = Command.make(
         }
       }
 
-      for (const file of entries) {
+      for (const { file, dir } of entries) {
         const resource = file.replace(/\.json$/, "");
         if (config.resource && resource !== config.resource) continue;
         if (limitRef.remaining <= 0) break;
 
         const model = JSON.parse(
-          yield* fs.readFileString(path.join(smithyDir, file)),
+          yield* fs.readFileString(path.join(dir, file)),
         );
 
         // Apply patches/<resource>/*.json (RFC 6902, one file per operation)
