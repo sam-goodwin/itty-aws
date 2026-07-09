@@ -8,6 +8,7 @@
  * its error set.
  */
 import * as S from "effect/Schema";
+import { withThrottlingError } from "@distilled.cloud/core/category";
 import { withCategory } from "@distilled.cloud/core/error-category";
 import { RETRYABLE } from "@distilled.cloud/core/errors";
 
@@ -35,8 +36,9 @@ export class CloudflareError extends S.TaggedErrorClass<CloudflareError>()(
 ) {}
 
 /**
- * Rate-limit / 429 error. Tagged RETRYABLE so the default retry policy backs
- * off and retries (see `@distilled.cloud/core/api`'s DefaultRetryPolicy).
+ * Rate-limit / 429 error. Carries the ThrottlingError category (from
+ * `core/category`) so retry policies built on `Retry.makeDefault` /
+ * `isThrottling` back off and retry it, plus the legacy RETRYABLE tag.
  */
 export class CloudflareRateLimited extends S.TaggedErrorClass<CloudflareRateLimited>()(
   "CloudflareRateLimited",
@@ -49,4 +51,4 @@ export class CloudflareRateLimited extends S.TaggedErrorClass<CloudflareRateLimi
       }),
     ),
   },
-).pipe(withCategory(RETRYABLE)) {}
+).pipe(withCategory(RETRYABLE), withThrottlingError) {}
