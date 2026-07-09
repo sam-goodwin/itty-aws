@@ -9,7 +9,7 @@
  * out.
  *
  * The scripts in this repo don't strictly type or validate the contents —
- * Claude reads and writes it via the normal Read/Write tools. This module
+ * Agents read and write it via their normal file tools. This module
  * exposes the canonical path and a prompt snippet to keep the convention
  * consistent across every agent.
  */
@@ -95,7 +95,7 @@ export const initMetadata = (
       name,
       pkgDir,
       userNote: note || null,
-      // Populated by later stages. Free-form — Claude may add more keys.
+      // Populated by later stages. Free-form — agents may add more keys.
       layout: null, // "operations" | "services"
       testDir: null, // "tests" | "test"
       framework: null, // "vitest-runEffect" | "vitest-effect"
@@ -113,7 +113,7 @@ export const initMetadata = (
   });
 
 /**
- * Standard prompt snippet to include in every agent. Instructs Claude to
+ * Standard prompt snippet to include in every agent. Instructs the agent to
  * read the metadata file before acting and update it as new facts emerge.
  */
 export const metadataPromptSection = (name: string): string => {

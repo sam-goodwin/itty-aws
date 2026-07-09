@@ -2,12 +2,12 @@
 /**
  * Generate Tests Agent
  *
- * Uses the Claude Agent SDK to generate tests for all operations (or a specific
+ * Uses the selected agent provider to generate tests for all operations (or a specific
  * one) in an SDK package. For each operation, generates at least 1 happy path
  * test and at least 1 error test for every non-generic (operation-specific) error.
  *
- * Authentication: uses your Claude Max plan via the Claude Code CLI auth.
- * Make sure you're logged in with `claude` before running.
+ * Select the provider with DISTILLED_AGENT=codex or DISTILLED_AGENT=claude.
+ * Make sure the selected provider is authenticated before running.
  *
  * Usage:
  *   bun scripts/generate-tests.ts <provider>

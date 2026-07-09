@@ -1433,7 +1433,7 @@ const updateTestYml = (
 // Post-agent: Wire test env vars
 // ============================================================================
 //
-// After the Claude agent finishes credentials.ts, we know which environment
+// After the agent finishes credentials.ts, we know which environment
 // variables the SDK reads. Append a `bun run test` step + matching `env:`
 // block to the ci-{name} job so CI runs the integration tests with the
 // secrets piped in.
@@ -1743,7 +1743,7 @@ const updateNukeYml = (
   });
 
 // ============================================================================
-// Step 5: Run Generation & Claude Agent for SDK Refinement
+// Step 5: Run Generation & Agent SDK Refinement
 // ============================================================================
 
 const installAndGenerate = (
@@ -1783,12 +1783,12 @@ const installAndGenerate = (
       yield* Console.log("  ✅ Operations generated successfully");
     } else {
       yield* Console.log(
-        "  ⚠️  Operations directory is empty (only index.ts) — the Claude agent will write the generator for the spec format found in the submodule",
+        "  ⚠️  Operations directory is empty (only index.ts) — the agent will write the generator for the spec format found in the submodule",
       );
     }
   });
 
-const refineWithClaude = (
+const refineWithAgent = (
   root: string,
   name: string,
   specInfo: SpecInfo,
@@ -1803,9 +1803,7 @@ const refineWithClaude = (
     const capitalName = capitalize(name);
     const operationsEmpty = !(yield* hasGeneratedOperations(root, name));
 
-    yield* Console.log(
-      `\n🤖 Calling Claude agent to refine ${capitalName} SDK...`,
-    );
+    yield* Console.log(`\n🤖 Calling agent to refine ${capitalName} SDK...`);
 
     const specLocations =
       specInfo.submodulePaths.length > 0
@@ -1987,7 +1985,7 @@ If any fail, fix and retry until all pass.
       ).pipe(
         Effect.catch((err) =>
           Effect.gen(function* () {
-            yield* Console.error(`\n⚠️  Claude agent failed: ${err.message}`);
+            yield* Console.error(`\n⚠️  Agent failed: ${err.message}`);
             return {
               sessionId: sessionId ?? "",
               durationMs: 0,
@@ -2006,14 +2004,14 @@ If any fail, fix and retry until all pass.
       const hasOpsNow = yield* hasGeneratedOperations(root, name);
       if (hasOpsNow) {
         yield* Console.log(
-          `✅ Claude refinement complete — operations generated successfully`,
+          `✅ Agent refinement complete — operations generated successfully`,
         );
         return;
       }
 
       if (!sessionId) {
         yield* Console.log(
-          `\n⚠️  Claude agent failed before a session was created — aborting refinement`,
+          `\n⚠️  Agent failed before a session was created — aborting refinement`,
         );
         return;
       }
@@ -2050,7 +2048,7 @@ const createSdk = Command.make(
     note: Flag.string("note").pipe(
       Flag.withDefault(""),
       Flag.withDescription(
-        "Free-form guidance for the Claude agent — e.g. the path to the spec within the submodule, scope restrictions, or any context the spec itself doesn't make obvious. Saved to metadata.json and injected into the refinement prompt.",
+        "Free-form guidance for the agent — e.g. the path to the spec within the submodule, scope restrictions, or any context the spec itself doesn't make obvious. Saved to metadata.json and injected into the refinement prompt.",
       ),
     ),
   },
@@ -2091,9 +2089,9 @@ const createSdk = Command.make(
       // Step 5: Install dependencies and run generator
       yield* installAndGenerate(root, config.name);
 
-      // Step 6: Refine with Claude agent
+      // Step 6: Refine with selected agent
       const stats = new AgentStatsAccumulator();
-      yield* refineWithClaude(root, config.name, specInfo, stats, note);
+      yield* refineWithAgent(root, config.name, specInfo, stats, note);
 
       // Step 7: Wire test env vars into test.yml now that credentials.ts is final
       yield* wireTestEnvVars(root, config.name);

@@ -2,14 +2,14 @@
 /**
  * Generate Nuke Script
  *
- * Uses the Claude Agent SDK to generate a reusable nuke script for a cloud
+ * Uses the selected agent provider to generate a reusable nuke script for a cloud
  * provider. The generated script lives at packages/<provider>/scripts/nuke.ts
  * and can list or delete all resources in the account.
  *
  * If the nuke script already exists, this is a no-op.
  *
- * Authentication: uses your Claude Max plan via the Claude Code CLI auth.
- * Make sure you're logged in with `claude` before running.
+ * Select the provider with DISTILLED_AGENT=codex or DISTILLED_AGENT=claude.
+ * Make sure the selected provider is authenticated before running.
  *
  * Usage:
  *   bun scripts/generate-nuke.ts <provider>

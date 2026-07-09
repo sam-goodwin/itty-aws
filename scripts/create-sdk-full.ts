@@ -8,7 +8,7 @@
  *   3. generate-tests      — writes happy-path + error tests
  *   4. generate-nuke       — writes the resource cleanup script
  *
- * Each stage runs as its own subprocess so the Claude Agent SDK session is
+ * Each stage runs as its own subprocess so the selected agent session is
  * isolated. Output streams to the terminal live.
  *
  * Notes on built-in behaviors that the scaffold wires automatically:
